@@ -1,0 +1,186 @@
+{
+  "codeName" : "run",
+  "controlType" : "SEARCHBAR",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run/PSSEARCHBARS/run.json",
+  "logicName" : "执行用例搜索栏",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+  },
+  "getPSSearchBarFilters" : [ {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "identifier",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "Identifier"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "identifier"
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "STATE"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "state",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__Test_case_state.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "caption" : "执行人",
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "executor_id",
+    "getPSAppDEField" : {
+      "name" : "EXECUTOR_ID",
+      "codeName" : "Executor_id"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "ISADDSYMBOL" : "true",
+        "MULTIPLE" : "true",
+        "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "URL" : "libraries/${context.library}/library_members/fetchdefault",
+        "PICKUPVIEW" : "FALSE",
+        "USERMETHOD" : "post",
+        "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+        "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+        "DEPTMETHOD" : "get",
+        "DEPTURL" : "/users/fetchdefault"
+      },
+      "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "executor_id",
+      "getPSNavigateParams" : [ {
+        "key" : "n_department_id_eq",
+        "name" : "n_department_id_eq",
+        "value" : "srforgsectorid",
+        "rawValue" : false
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "EDITOR_CUSTOMSTYLE",
+        "pluginCode" : "PERSON_SELECT",
+        "runtimeObject" : true
+      },
+      "valueItemName" : "executor_id",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "executor_id",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "status",
+    "getPSAppDEField" : {
+      "name" : "STATUS",
+      "codeName" : "Status"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "status",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__Run_status.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "level",
+    "getPSAppDEField" : {
+      "name" : "LEVEL",
+      "codeName" : "Level"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "level",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__Test_case_level.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "type",
+    "getPSAppDEField" : {
+      "name" : "TYPE",
+      "codeName" : "Type"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "type",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__Test_case_type.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  } ],
+  "quickGroupCount" : -1,
+  "quickSearchMode" : 1,
+  "quickSearchWidth" : 0,
+  "enableFilter" : true,
+  "enableGroup" : false,
+  "enableQuickSearch" : true,
+  "mobileSearchBar" : false,
+  "modelid" : "175946c752bb00a6cb742e8d7315bb8e",
+  "modeltype" : "PSSYSSEARCHBAR"
+}

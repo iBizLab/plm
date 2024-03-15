@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaidea_copy" isClosed="false" isExecutable="true" name="prodmgmt_idea_idea_copy_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaidea_copy">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ideaidea_copydefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="ideaidea_copyattachment" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="ideaidea_copyattachments" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attention()" name="ideaidea_copyattention" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attention()" name="ideaidea_copyattentions" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.Idea()" name="ideaidea_copyfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="ideaidea_copyid" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.Idea()" name="ideaidea_copyidea_new" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.Idea()" name="ideaidea_copysrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.Idea()" name="ideaidea_copytemp_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IIdeaService))" name="ideaservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttachmentService))" name="attachmentservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttentionService))" name="attentionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IIdeaService))" name="iBzSysIdeaDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ideaidea_copydefault" type="cn.ibizlab.plm.core.prodmgmt.domain.Idea" />
+                            <tns:global identifier="ideaidea_copyattachment" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="ideaidea_copyattachments" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="ideaidea_copyattention" type="cn.ibizlab.plm.core.base.domain.Attention" />
+                            <tns:global identifier="ideaidea_copyattentions" type="cn.ibizlab.plm.core.base.domain.Attention" />
+                            <tns:global identifier="ideaidea_copyfor_temp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.Idea" />
+                            <tns:global identifier="ideaidea_copyidea_new" type="cn.ibizlab.plm.core.prodmgmt.domain.Idea" />
+                            <tns:global identifier="ideaidea_copysrfactionparam" type="cn.ibizlab.plm.core.prodmgmt.domain.Idea" />
+                            <tns:global identifier="ideaidea_copytemp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.Idea" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copydebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copybindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copydeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置需求信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copydeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="置空附件ID及owner_id"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copydeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="创建附件并绑定"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copydeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_copyend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_bindparam1" sourceRef="debugparam1" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam3" sourceRef="bindparam1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_loopsubcall1" sourceRef="prepareparam3" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction2" sourceRef="loopsubcall1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam1" sourceRef="deaction2" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_loopsubcall2" sourceRef="gateway-deaction1" targetRef="loopsubcall2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaidea_copydefault:Idea();
+                                            $ideaidea_copyattachment:Attachment();
+                                            $ideaidea_copyattachments:Attachment();
+                                            $ideaidea_copyattention:Attention();
+                                            $ideaidea_copyattentions:Attention();
+                                            $ideaidea_copyfor_temp_obj:Idea();
+                                            $ideaidea_copyid:Map();
+                                            $ideaidea_copyidea_new:Idea();
+                                            $ideaidea_copysrfactionparam:Idea();
+                                            $ideaidea_copytemp_obj:Idea();
+                                    eval($ideaidea_copydefault==ideaidea_copydefault && $ideaidea_copyattachment==ideaidea_copyattachment && $ideaidea_copyattachments==ideaidea_copyattachments && $ideaidea_copyattention==ideaidea_copyattention && $ideaidea_copyattentions==ideaidea_copyattentions && $ideaidea_copyfor_temp_obj==ideaidea_copyfor_temp_obj && $ideaidea_copyidea_new==ideaidea_copyidea_new && $ideaidea_copysrfactionparam==ideaidea_copysrfactionparam && $ideaidea_copytemp_obj==ideaidea_copytemp_obj);
+                                eval((RuleUtils.test($ideaidea_copytemp_obj.get("attachments"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam4" sourceRef="deaction1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam2" sourceRef="loopsubcall2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction3" sourceRef="prepareparam2" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction4" sourceRef="prepareparam4" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_end2" sourceRef="deaction4" targetRef="end2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
+                            <endEvent id="gateway-deaction1_end" name="end"/>
+        </process>
+    </definitions>

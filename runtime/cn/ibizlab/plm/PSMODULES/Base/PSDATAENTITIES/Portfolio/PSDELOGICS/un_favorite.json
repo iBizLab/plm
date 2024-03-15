@@ -1,0 +1,90 @@
+{
+  "codeName" : "un_favorite",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/Portfolio/PSDELOGICS/un_favorite.json",
+  "logicName" : "取消星标",
+  "name" : "取消星标",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "删除收藏数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "用户全局对象[srfuserid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfuserid",
+      "srcValueType" : "SESSION"
+    }, {
+      "name" : "Default[owner_id]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "owner_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "delete from `favorite` where create_man = ? and owner_id = ?",
+    "topPos" : 416
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 677
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Portfolio.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "updateobj",
+    "logicName" : "更新对象",
+    "name" : "更新对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Portfolio.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

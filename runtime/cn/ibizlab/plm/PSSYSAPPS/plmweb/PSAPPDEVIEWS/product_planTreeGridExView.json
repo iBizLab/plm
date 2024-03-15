@@ -1,0 +1,176 @@
+{
+  "accUserMode" : 2,
+  "caption" : "当前计划内容",
+  "codeName" : "product_planTreeGridExView",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_planTreeGridExView.json",
+  "mDCtrlActiveMode" : 1,
+  "name" : "product_planTreeGridExView",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeGridExView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realTitle" : "排期编辑视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/planEditView.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "排期数据重定向视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/planRedirectView.json",
+      "viewType" : "DEREDIRECTVIEW"
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "TreeGridExViewtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "计划关联需求工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "选择需求",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "编辑",
+        "codeName" : "edit_plan",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_planupdate_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "Product_plan_edit_plan",
+        "name" : "编辑",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf044@FontAwesome",
+          "cssClass" : "fa fa-edit"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "edit_plan",
+        "uIActionType" : "DEUIACTION",
+        "id" : "edit_plan@Product_plan"
+      },
+      "tooltip" : "选择需求",
+      "uIActionTarget" : "SINGLEKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "treegridex",
+    "modelid" : "3DEF272B-8934-4BA9-95BF-4EC9ED76C630",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false
+  }, {
+    "caption" : "当前计划内容",
+    "codeName" : "TreeGridExViewcaptionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "TreeGridExView",
+  "getPSDEViewId" : "8833D934-9D86-47DB-8468-080C698DADA3",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "Layoutpanel",
+    "controlStyle" : "APPDETREEGRIDEXVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "refFlag" : false,
+  "title" : "排期计划树表格视图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEGRIDEXVIEW",
+  "xDataControlName" : "treegridex",
+  "xDataPSControl" : "视图[ProdMgmt.product_planTreeGridExView]无法获取部件[treegridex]",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableSearch" : true,
+  "modelid" : "f963df002d4d21727c90060b653099dd",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "plans",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "Product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product.json"
+    },
+    "minorDECodeName" : "Product_plan",
+    "minorDEName" : "PRODUCT_PLAN",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_plan.json"
+    },
+    "name" : "DER1N_PLAN_PRODUCT_PRODUCT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRODUCT_ID",
+      "codeName" : "Product_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

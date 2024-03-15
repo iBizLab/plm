@@ -1,0 +1,128 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.add_space;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.Space spaceadd_spacedefault;
+                global cn.ibizlab.plm.core.wiki.domain.Space spaceadd_spacefor_temp_obj;
+                global cn.ibizlab.plm.core.wiki.domain.Space spaceadd_spacespace_info;
+                global cn.ibizlab.plm.core.wiki.domain.Space spaceadd_spacesrfactionparam;
+                    global cn.ibizlab.plm.core.wiki.service.ISpaceService spaceservice;
+        global cn.ibizlab.plm.core.wiki.service.ISpaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spaceadd_spacebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[添加空间准备参数]
+            rule "debugparam1"
+            ruleflow-group "spaceadd_spacedebugparam1"
+            when
+            then
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取选中列表]
+            rule "prepareparam1"
+            ruleflow-group "spaceadd_spaceprepareparam1"
+            when
+            then
+                            spaceadd_spacesrfactionparam.set("",spaceadd_spacedefault.get("srfactionparam"));
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "spaceadd_spaceloopsubcall1"
+            when
+            then
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "spaceadd_spaceprepareparam2"
+            when
+            then
+                            spaceadd_spacespace_info.set("id",spaceadd_spacefor_temp_obj.get("id"));
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction2"
+            ruleflow-group "spaceadd_spacedeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(spaceservice.get(spaceadd_spacespace_info.getId()),spaceadd_spacespace_info);
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "spaceadd_spaceprepareparam3"
+            when
+            then
+                            spaceadd_spacespace_info.set("categoryid",spaceadd_spacedefault.get("category"));
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询的sapce]
+            rule "debugparam3"
+            ruleflow-group "spaceadd_spacedebugparam3"
+            when
+            then
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "spaceadd_spacedeaction1"
+            when
+            then
+                        spaceservice.update(spaceadd_spacespace_info);
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spaceadd_spaceend1"
+            when
+            then
+                        update(spaceadd_spacedefault);//更新fact中变量值
+                        update(spaceadd_spacefor_temp_obj);//更新fact中变量值
+                        update(spaceadd_spacespace_info);//更新fact中变量值
+                        update(spaceadd_spacesrfactionparam);//更新fact中变量值
+            end

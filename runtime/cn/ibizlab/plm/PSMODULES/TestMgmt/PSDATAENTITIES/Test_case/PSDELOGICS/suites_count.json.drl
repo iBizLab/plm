@@ -1,0 +1,124 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.suites_count;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.Test_case test_casesuites_countdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.Test_suite test_casesuites_countsuite_info;
+                global cn.ibizlab.plm.core.testmgmt.domain.Test_suite test_casesuites_counttemp_obj_suite;
+                    global cn.ibizlab.plm.core.testmgmt.service.ITest_suiteService test_suiteservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.ITest_caseService test_caseservice;
+        global cn.ibizlab.plm.core.testmgmt.service.ITest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_casesuites_countbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam3"
+            ruleflow-group "test_casesuites_countdebugparam3"
+            when
+            then
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置模块id，重置模块路径]
+            rule "prepareparam1"
+            ruleflow-group "test_casesuites_countprepareparam1"
+            when
+            then
+                            test_casesuites_countsuite_info.set("id",test_casesuites_countdefault.get("suiteid"));
+                                test_casesuites_countdefault.set("suites",null);
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取上一次的父id作为本次的id]
+            rule "prepareparam2"
+            ruleflow-group "test_casesuites_countprepareparam2"
+            when
+            then
+                            test_casesuites_countsuite_info.set("id",test_casesuites_countdefault.get("suite_id2"));
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[根据模块id获取模块]
+            rule "deaction1"
+            ruleflow-group "test_casesuites_countdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_suiteservice.get(test_casesuites_countsuite_info.getId()),test_casesuites_countsuite_info);
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[追加路径]
+            rule "rawsfcode1"
+            ruleflow-group "test_casesuites_countrawsfcode1"
+            when
+            then
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_casesuites_countend1"
+            when
+            then
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新用例的模块路径]
+            rule "rawsqlcall1"
+            ruleflow-group "test_casesuites_countrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_casesuites_countdefault.get("suites"));
+        param.put("param1",test_casesuites_countdefault.get("id"));
+    String strSql="update test_case set suites = #{et.param0} WHERE id = #{et.param1}";
+                        iBzSysTest_caseDefaultService.execute(strSql,param);//SQL调用
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取父id]
+            rule "prepareparam3"
+            ruleflow-group "test_casesuites_countprepareparam3"
+            when
+            then
+                            test_casesuites_countdefault.set("suite_id2",test_casesuites_countsuite_info.get("pid"));
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[递归调用]
+            rule "delogic1"
+            ruleflow-group "test_casesuites_countdelogic1"
+            when
+            then
+                        update(test_casesuites_countdefault);//更新fact中变量值
+                        update(test_casesuites_countsuite_info);//更新fact中变量值
+                        update(test_casesuites_counttemp_obj_suite);//更新fact中变量值
+            end

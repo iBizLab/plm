@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.test_casecase_move_plan" isClosed="false" isExecutable="true" name="testmgmt_test_case_case_move_plan_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.test_casecase_move_plan">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="test_casecase_move_plandefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Run()" name="test_casecase_move_planruninfo" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="test_casecase_move_planattachment" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="test_casecase_move_planattachments" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attention()" name="test_casecase_move_planattention_info" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecase_move_planfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="test_casecase_move_planid" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="test_casecase_move_planids" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecase_move_plansrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="test_casecase_move_plantemp_att_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecase_move_plantemp_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.ITest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IRunService))" name="runservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttentionService))" name="attentionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.ITest_caseService))" name="iBzSysTest_caseDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="test_casecase_move_plandefault" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecase_move_planruninfo" type="cn.ibizlab.plm.core.testmgmt.domain.Run" />
+                            <tns:global identifier="test_casecase_move_planattachment" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="test_casecase_move_planattachments" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="test_casecase_move_planattention_info" type="cn.ibizlab.plm.core.base.domain.Attention" />
+                            <tns:global identifier="test_casecase_move_planfor_temp_obj" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecase_move_plansrfactionparam" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecase_move_plantemp_att_obj" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="test_casecase_move_plantemp_obj" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_plandebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取表单数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planbindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_plandeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置执行用例信息（附件置空）"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_plandeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建执行用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="关注信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_plandeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecase_move_planend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_bindparam1" sourceRef="debugparam1" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_bindparam2" sourceRef="bindparam1" targetRef="bindparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_loopsubcall1" sourceRef="bindparam2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_deaction2" sourceRef="renewparam1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam1" sourceRef="deaction2" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_resetparam1" sourceRef="prepareparam1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_deaction1" sourceRef="resetparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction3" sourceRef="prepareparam2" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction3_end2" sourceRef="deaction3" targetRef="end2">
+                    </sequenceFlow>
+        </process>
+    </definitions>

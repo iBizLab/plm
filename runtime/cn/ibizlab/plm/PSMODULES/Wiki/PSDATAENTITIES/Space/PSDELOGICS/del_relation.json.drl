@@ -1,0 +1,79 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.del_relation;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.Space spacedel_relationdefault;
+                global cn.ibizlab.plm.core.base.domain.Relation spacedel_relationrelationobj;
+                global cn.ibizlab.plm.core.base.domain.Relation spacedel_relationrelationobj2;
+                    global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
+        global cn.ibizlab.plm.core.wiki.service.ISpaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spacedel_relationbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "spacedel_relationprepareparam1"
+            when
+            then
+                            spacedel_relationrelationobj.set("principalid",spacedel_relationdefault.get("principal_id"));
+                            spacedel_relationrelationobj2.set("targetid",spacedel_relationdefault.get("principal_id"));
+                            spacedel_relationrelationobj2.set("principalid",spacedel_relationdefault.get("id"));
+                            spacedel_relationrelationobj.set("targetid",spacedel_relationdefault.get("id"));
+                        update(spacedel_relationdefault);//更新fact中变量值
+                        update(spacedel_relationrelationobj);//更新fact中变量值
+                        update(spacedel_relationrelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接关联对象的主键]
+            rule "rawsfcode1"
+            ruleflow-group "spacedel_relationrawsfcode1"
+            when
+            then
+                        update(spacedel_relationdefault);//更新fact中变量值
+                        update(spacedel_relationrelationobj);//更新fact中变量值
+                        update(spacedel_relationrelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除正向关联]
+            rule "deaction2"
+            ruleflow-group "spacedel_relationdeaction2"
+            when
+            then
+                        relationservice.remove(spacedel_relationrelationobj.getId());
+                        update(spacedel_relationdefault);//更新fact中变量值
+                        update(spacedel_relationrelationobj);//更新fact中变量值
+                        update(spacedel_relationrelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除反向关联]
+            rule "deaction3"
+            ruleflow-group "spacedel_relationdeaction3"
+            when
+            then
+                        relationservice.remove(spacedel_relationrelationobj2.getId());
+                        update(spacedel_relationdefault);//更新fact中变量值
+                        update(spacedel_relationrelationobj);//更新fact中变量值
+                        update(spacedel_relationrelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spacedel_relationend1"
+            when
+            then
+                        update(spacedel_relationdefault);//更新fact中变量值
+                        update(spacedel_relationrelationobj);//更新fact中变量值
+                        update(spacedel_relationrelationobj2);//更新fact中变量值
+            end

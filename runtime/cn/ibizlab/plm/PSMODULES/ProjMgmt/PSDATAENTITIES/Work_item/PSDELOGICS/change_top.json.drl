@@ -1,0 +1,137 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_top;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemchange_topdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemchange_topchild_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemchange_topfilter;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemchange_topfor_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemchange_topparent_item;
+                    global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemchange_topbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemchange_topprepareparam1"
+            when
+            then
+                            work_itemchange_topfilter.set("n_pid_eq",work_itemchange_topdefault.get("id"));
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拷贝参数]
+            rule "copyparam1"
+            ruleflow-group "work_itemchange_topcopyparam1"
+            when
+            then
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[子工作项继承父工作项的顶级标识]
+            rule "prepareparam2"
+            ruleflow-group "work_itemchange_topprepareparam2"
+            when
+            then
+                            work_itemchange_topfor_temp.set("topid",work_itemchange_topparent_item.get("topid"));
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[update]
+            rule "deaction1"
+            ruleflow-group "work_itemchange_topdeaction1"
+            when
+            then
+                        work_itemservice.update(work_itemchange_topdefault);
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取子级工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemchange_topdedataset1"
+            when
+            then
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemchange_toploopsubcall1"
+            when
+            then
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[递归调用]
+            rule "delogic1"
+            ruleflow-group "work_itemchange_topdelogic1"
+            when
+            then
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[子工作项的顶级标识为父工作项]
+            rule "prepareparam3"
+            ruleflow-group "work_itemchange_topprepareparam3"
+            when
+            then
+                            work_itemchange_topfor_temp.set("topid",work_itemchange_topparent_item.get("id"));
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemchange_topend1"
+            when
+            then
+                        update(work_itemchange_topdefault);//更新fact中变量值
+                        update(work_itemchange_topchild_page);//更新fact中变量值
+                        update(work_itemchange_topfilter);//更新fact中变量值
+                        update(work_itemchange_topfor_temp);//更新fact中变量值
+                        update(work_itemchange_topparent_item);//更新fact中变量值
+            end

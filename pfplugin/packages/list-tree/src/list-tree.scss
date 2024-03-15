@@ -1,0 +1,224 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable selector-class-pattern */
+// 列表树
+// 计数器样式
+@include b(control-treeview-counter) {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  height: 100%;
+
+  @include e(dot) {
+    margin: 0 var(--ibiz-spacing-extra-tight);
+  }
+
+  .#{bem(badge)}.#{bem(badge)} {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    height: 100%;
+    padding: 0;
+    color: inherit;
+    text-align: left;
+    background-color: transparent;
+  }
+}
+
+@include b(control-treeview-node) {
+  @include e(label) {
+    flex-grow: initial;
+    flex-shrink: initial;
+  }
+
+  .#{bem(context-menu)} {
+    margin-left: auto;
+  }
+}
+
+.el-tree.is-list1 {
+  // 第一层样式
+  >.el-tree-node {
+    // 第一层节点
+    >.el-tree-node__content {
+      height: 48px;
+
+      .el-icon {
+        display: none;
+      }
+
+      .ibiz-control-treeview-node {
+        padding-left: var(--ibiz-spacing-tight);
+        pointer-events: none;
+      }
+
+      // 第一层数据节点
+      >.ibiz-control-treeview-node__item {
+        height: 32px;
+        padding-left: 20px;
+        pointer-events: inherit;
+        border-radius: var(--ibiz-border-radius-small);
+      }
+    }
+
+    // 第一层内容样式
+    >.el-tree-node__children {
+      >.el-tree-node>.el-tree-node__content {
+        padding-left: 0 !important;
+        margin-bottom: var(--ibiz-spacing-extra-tight);
+        border-radius: var(--ibiz-border-radius-small);
+
+        >.#{bem(control-treeview-node__item)} {
+          padding-left: 24px;
+          margin-right: -24px;
+          transform: translate(-24px, 0);
+        }
+      }
+
+      .el-tree-node__content {
+        height: 32px;
+        margin-bottom: var(--ibiz-spacing-extra-tight);
+        border-radius: var(--ibiz-border-radius-small);
+
+        .el-tree-node__expand-icon {
+          padding: 4px;
+        }
+      }
+    }
+  }
+
+  >.el-tree-node+.el-tree-node {
+    // 默认绘制第一层绘制边框
+    border-top: 1px solid getCssVar(color, border);
+  }
+
+  .el-tree-node.is-current .el-tree-node__content {
+    background: transparent !important;
+  }
+
+  // 第二层收缩样式
+  >.el-tree-node {
+    &>.el-tree-node__children {
+      &>.el-tree-node {
+        .el-tree-node__content {
+          // 配置图标居中对齐
+          .ibiz-icon {
+            line-height: 18px;
+          }
+        }
+
+        &>.el-tree-node__children {
+          .el-tree-node {
+            &>.el-tree-node__content {
+              // 处理子与分组空白太宽及对齐
+              margin-right: -12px;
+              transform: translate(-12px, 0);
+            }
+
+            .el-tree-node__children {
+              padding-left: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 激活移入统一样式
+.el-tree.is-list1 {
+  .el-tree-node {
+    .el-tree-node__content {
+      background: transparent;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    &.is-current>.el-tree-node__content {
+      background: transparent;
+    }
+
+    // 禁用状态颜色
+    .#{bem(control-treeview-node)}--disabled {
+      color: getCssVar(color, disabled, text);
+      cursor: pointer;
+
+      svg {
+        fill: getCssVar(color, disabled, text) !important;
+
+        g,
+        path {
+          fill: getCssVar(color, disabled, text) !important;
+        }
+      }
+    }
+  }
+
+  &>.el-tree-node {
+    // 第一级
+    &>.el-tree-node__content>.#{bem(control-treeview-node__group)} .#{bem(control-treeview-node__label)} {
+      color: var(--ibiz-color-text-3);
+    }
+
+    // 移入颜色
+    &>.el-tree-node__content:hover>.ibiz-control-treeview-node__item {
+      background: var(--el-tree-node-hover-bg-color);
+    }
+
+    // 激活色
+    &>.el-tree-node__children>.el-tree-node.is-current>.el-tree-node__content>.ibiz-control-treeview-node__item {
+      color: var(--ibiz-color-primary);
+    }
+
+    // 第二级向下的所有颜色
+    // 移入颜色
+    &>.el-tree-node__children .el-tree-node>.el-tree-node__content:hover {
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: var(--el-tree-node-hover-bg-color);
+        border-radius: var(--ibiz-border-radius-small);
+      }
+
+      >.el-icon {
+        z-index: 9;
+      }
+
+      .#{bem(control-treeview-node)} {
+        z-index: 9;
+      }
+    }
+
+    // 激活色
+    &>.el-tree-node__children .el-tree-node.is-current>.el-tree-node__content {
+      position: relative;
+      overflow: hidden;
+      color: var(--ibiz-color-primary);
+
+      &::before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: var(--ibiz-color-primary-light-default);
+        border-radius: var(--ibiz-border-radius-small);
+      }
+
+      >.el-icon {
+        z-index: 9;
+      }
+
+      .#{bem(control-treeview-node)} {
+        z-index: 9;
+      }
+    }
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "codeName" : "Setting_actual_executor_form",
+  "controlType" : "FORM",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "nothing",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Nothing"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+    }
+  },
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run/PSFORMS/Setting_actual_executor_form.json",
+  "getGetDraftFromPSControlAction" : {
+    "modelref" : true,
+    "id" : "loaddraftfrom",
+    "actionName" : "GETDRAFTFROM",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraftfrom",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+    }
+  },
+  "getGetDraftPSControlAction" : {
+    "modelref" : true,
+    "id" : "loaddraft",
+    "actionName" : "GetDraft",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraft",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "GetDraft"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "nothing",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Nothing"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+    }
+  },
+  "logicName" : "设置执行人_表单",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+  },
+  "getPSCtrlMsg" : {
+    "codeName" : "UsrCtrlMsg0228593610",
+    "dynaModelFilePath" : "PSCTRLMSGS/UsrCtrlMsg0228593610.json",
+    "name" : "编辑表单自定义消息(隐藏)",
+    "getPSCtrlMsgItems" : [ {
+      "name" : "CREATESUCCESS_HIDDEN"
+    }, {
+      "name" : "UPDATESUCCESS_HIDDEN"
+    } ]
+  },
+  "getPSDEFormItems" : [ {
+    "id" : "srfupdatedate",
+    "hidden" : true,
+    "dataType" : 5,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "Update_time"
+    }
+  }, {
+    "id" : "srforikey",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfkey",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    }
+  }, {
+    "id" : "srfmajortext",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "TITLE"
+    }
+  }, {
+    "id" : "srftempmode",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfuf",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfdeid",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "srfsourcekey",
+    "hidden" : true,
+    "dataType" : 25
+  }, {
+    "id" : "executor_name",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "EXECUTOR_NAME",
+      "codeName" : "Executor_name"
+    }
+  }, {
+    "id" : "id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    }
+  }, {
+    "id" : "executor_id",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "EXECUTOR_ID",
+      "codeName" : "Executor_id"
+    }
+  } ],
+  "getPSDEFormPages" : [ {
+    "caption" : "基本信息",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "caption" : "执行人",
+      "codeName" : "executor_name",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executor_name",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_NAME",
+        "codeName" : "Executor_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVCTX.library" : "%library%",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "URL" : "libraries/${context.library}/library_members/fetchdefault",
+          "SRFNAVPARAM.n_library_id_eq" : "%library%",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTURL" : "/users/fetchdefault"
+        },
+        "editorStyle" : "PERSONEL_SELECT",
+        "editorType" : "PICKEREX_TRIGGER",
+        "handlerType" : "PickupText",
+        "name" : "executor_name",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Member_select"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "FetchDefault"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library_member.json"
+        },
+        "getPSEditorItems" : [ {
+          "name" : "executor_id"
+        } ],
+        "getPSNavigateContexts" : [ {
+          "key" : "LIBRARY",
+          "name" : "LIBRARY",
+          "value" : "library",
+          "rawValue" : false
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        }, {
+          "key" : "n_library_id_eq",
+          "name" : "n_library_id_eq",
+          "value" : "library",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "getPSUIActionGroup" : {
+          "codeName" : "Usr0311619181",
+          "name" : "跳转至成员设置",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library_member.json"
+          },
+          "getPSUIActionGroupDetails" : [ {
+            "caption" : "跳转至成员设置",
+            "detailType" : "DEUIACTION",
+            "name" : "u2011858",
+            "getPSSysImage" : {
+              "glyph" : "xf0f0@FontAwesome",
+              "cssClass" : "fa fa-user-md"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "跳转至成员设置",
+              "codeName" : "jump_to_member_set",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "Library_member_jump_to_member_set",
+              "name" : "跳转至成员设置",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "jump_to_member_set"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library_member.json"
+              },
+              "getPSSysImage" : {
+                "glyph" : "xf0f0@FontAwesome",
+                "cssClass" : "fa fa-user-md"
+              },
+              "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/projectRedirectView/-/projectsetting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_membergrid_view_config/-`);",
+              "timeout" : 60000,
+              "tooltip" : "跳转至成员设置",
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "jump_to_member_set",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "globalUIAction" : true,
+              "id" : "jump_to_member_set@Library_member"
+            },
+            "tooltip" : "跳转至成员设置",
+            "addSeparator" : false,
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "uniqueTag" : "Library_member__Usr0311619181"
+        },
+        "valueItemName" : "executor_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "executor_id",
+      "allowEmpty" : true
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.ID"
+      },
+      "caption" : "标识",
+      "codeName" : "id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "Id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "执行人标识",
+      "codeName" : "executor_id",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "executor_id",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "Executor_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "executor_id"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true,
+      "showCaption" : true
+    } ],
+    "getPSLayout" : {
+      "childColLG" : -1,
+      "childColMD" : 24,
+      "childColSM" : -1,
+      "childColXS" : -1,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSLayout" : {
+    "childColLG" : -1,
+    "childColMD" : 24,
+    "childColSM" : -1,
+    "childColXS" : -1,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+    }
+  },
+  "tabHeaderPos" : "TOP",
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "nothing",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Nothing"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Run.json"
+    }
+  },
+  "noTabHeader" : true,
+  "modelid" : "D9EC2A21-999E-4755-9039-7188BB355C6C",
+  "modeltype" : "PSDEFORM_EDITFORM"
+}

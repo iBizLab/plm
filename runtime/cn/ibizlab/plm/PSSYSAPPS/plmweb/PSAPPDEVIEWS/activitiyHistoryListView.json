@@ -1,0 +1,742 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.ACTIVITIY"
+  },
+  "caption" : "活动历史列表",
+  "codeName" : "activitiyHistoryListView",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/activitiyHistoryListView.json",
+  "mDCtrlActiveMode" : 0,
+  "name" : "activitiyHistoryListView",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "ListView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_objectid_eq",
+    "name" : "n_objectid_eq",
+    "value" : "principal_id",
+    "rawValue" : false
+  }, {
+    "key" : "n_auditinfo_isnotnull",
+    "name" : "n_auditinfo_isnotnull",
+    "value" : "1",
+    "rawValue" : true
+  } ],
+  "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA"
+  }, {
+    "name" : "EDITDATA"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "History_list",
+    "controlType" : "LIST",
+    "getCreatePSControlAction" : {
+      "modelref" : true,
+      "id" : "create",
+      "actionName" : "Create",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "name" : "create",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Create"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+      }
+    },
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy/PSLISTS/History_list.json",
+    "getFetchPSControlAction" : {
+      "modelref" : true,
+      "id" : "fetch",
+      "actionType" : "DEDATASET",
+      "name" : "fetch",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "FetchALL"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+      }
+    },
+    "getGetPSControlAction" : {
+      "modelref" : true,
+      "id" : "load",
+      "actionName" : "Get",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "name" : "load",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Get"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+      }
+    },
+    "groupMode" : "NONE",
+    "getItemPSLayoutPanel" : {
+      "getAllPSPanelFields" : [ {
+        "id" : "user_name",
+        "viewFieldName" : "OPPERSONNAME"
+      }, {
+        "id" : "time",
+        "viewFieldName" : "UPDATE_TIME"
+      }, {
+        "id" : "audittype",
+        "hidden" : true,
+        "viewFieldName" : "AUDITTYPE"
+      }, {
+        "id" : "objecttype",
+        "hidden" : true,
+        "viewFieldName" : "OBJECTTYPE"
+      }, {
+        "id" : "auditinfo",
+        "viewFieldName" : "AUDITINFO"
+      } ],
+      "codeName" : "Usr0218550985",
+      "controlType" : "PANEL",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy/PSPANELS/Usr0218550985.json",
+      "layoutMode" : "TABLE_24COL",
+      "logicName" : "HISTORY_LIST_列表项面板",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+      },
+      "getPSControlParam" : { },
+      "getPSLayout" : {
+        "childColLG" : -1,
+        "childColMD" : 24,
+        "childColSM" : -1,
+        "childColXS" : -1,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getRootPSPanelItems" : [ {
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "page_container",
+        "getPSLayout" : {
+          "dir" : "column",
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "align" : "flex-start",
+            "dir" : "row",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "user_name",
+            "getPSEditor" : {
+              "editorStyle" : "PERSONNEL_INFO",
+              "editorType" : "SPAN",
+              "name" : "user_name",
+              "getPSSysPFPlugin" : {
+                "pluginType" : "EDITOR_CUSTOMSTYLE",
+                "pluginCode" : "PERSONNEL_INFO",
+                "runtimeObject" : true
+              },
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "OPPERSONNAME",
+            "hidden" : false,
+            "showCaption" : false
+          }, {
+            "caption" : "文本(动态)",
+            "cssStyle" : "line-height: var(--ibiz-height-control-default);",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "time",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "time",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingLeft" : "OUTERSMALL"
+            },
+            "getPSSysCss" : {
+              "cssName" : "transition-time"
+            },
+            "viewFieldName" : "UPDATE_TIME",
+            "hidden" : false,
+            "showCaption" : false
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "audittype",
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "audittype",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "AUDITTYPE",
+            "hidden" : true,
+            "showCaption" : false
+          }, {
+            "caption" : "文本框",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "objecttype",
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "objecttype",
+              "predefinedType" : "FIELD_TEXTBOX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "OBJECTTYPE",
+            "hidden" : true,
+            "showCaption" : false
+          } ]
+        }, {
+          "caption" : "容器",
+          "cssStyle" : "padding-left: 36px;",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container1",
+          "getPSLayout" : {
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingBottom" : "OUTERSMALL"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "文本框",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "auditinfo",
+            "getPSEditor" : {
+              "contentType" : "HTML",
+              "editorParams" : {
+                "contenttype" : "HTML",
+                "template" : "{{#each this as | item |}}<div class='activity-item'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
+              },
+              "editorStyle" : "RAW_ACTIVITY",
+              "editorType" : "RAW",
+              "name" : "auditinfo",
+              "getPSSysPFPlugin" : {
+                "pluginType" : "EDITOR_CUSTOMSTYLE",
+                "pluginCode" : "RAW_ACTIVITY",
+                "runtimeObject" : true
+              },
+              "template" : "{{#each this as | item |}}<div class='activity-item'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "name" : "面板成员[auditinfo][面板显示]逻辑",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "NOTEQ",
+                "dstModelField" : "AUDITTYPE",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "Create"
+              } ],
+              "relatedItemNames" : [ "audittype" ],
+              "notMode" : false
+            } ],
+            "viewFieldName" : "AUDITINFO",
+            "hidden" : false,
+            "showCaption" : false
+          }, {
+            "caption" : "容器",
+            "cssStyle" : "padding-left: 4px;",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container3",
+            "getPSLayout" : {
+              "layout" : "FLEX"
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "getPSPanelItemGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "name" : "面板成员[container3][面板显示]逻辑",
+              "getPSPanelItemLogics" : [ {
+                "condOp" : "EQ",
+                "dstModelField" : "AUDITTYPE",
+                "logicType" : "SINGLE",
+                "name" : "逻辑项",
+                "value" : "Create"
+              } ],
+              "relatedItemNames" : [ "audittype" ],
+              "notMode" : false
+            } ],
+            "getPSPanelItems" : [ {
+              "caption" : "创建工作项",
+              "contentType" : "RAW",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "work_item",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[work_item][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "OBJECTTYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "WORK_ITEM"
+                } ],
+                "relatedItemNames" : [ "objecttype" ],
+                "notMode" : false
+              } ],
+              "getPSRawItem" : {
+                "caption" : "创建工作项",
+                "contentType" : "RAW",
+                "name" : "work_item",
+                "predefinedType" : "STATIC_TEXT",
+                "renderMode" : "TEXT"
+              },
+              "rawContent" : "创建工作项",
+              "showCaption" : true
+            }, {
+              "caption" : "创建用例",
+              "contentType" : "RAW",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "run",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[run][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "groupOP" : "OR",
+                  "logicType" : "GROUP",
+                  "name" : "逻辑分组",
+                  "getPSPanelItemLogics" : [ {
+                    "condOp" : "EQ",
+                    "dstModelField" : "OBJECTTYPE",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项",
+                    "value" : "RUN"
+                  }, {
+                    "condOp" : "EQ",
+                    "dstModelField" : "OBJECTTYPE",
+                    "logicType" : "SINGLE",
+                    "name" : "逻辑项",
+                    "value" : "TEST_CASE"
+                  } ],
+                  "notMode" : false
+                } ],
+                "relatedItemNames" : [ "objecttype" ],
+                "notMode" : false
+              } ],
+              "getPSRawItem" : {
+                "caption" : "创建用例",
+                "contentType" : "RAW",
+                "name" : "run",
+                "predefinedType" : "STATIC_TEXT",
+                "renderMode" : "TEXT"
+              },
+              "rawContent" : "创建用例",
+              "showCaption" : true
+            }, {
+              "caption" : "创建工单",
+              "contentType" : "RAW",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "ticket",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[ticket][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "OBJECTTYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "TICKET"
+                } ],
+                "relatedItemNames" : [ "objecttype" ],
+                "notMode" : false
+              } ],
+              "getPSRawItem" : {
+                "caption" : "创建工单",
+                "contentType" : "RAW",
+                "name" : "ticket",
+                "predefinedType" : "STATIC_TEXT",
+                "renderMode" : "TEXT"
+              },
+              "rawContent" : "创建工单",
+              "showCaption" : true
+            }, {
+              "caption" : "创建需求",
+              "contentType" : "RAW",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "idea",
+              "getPSLayoutPos" : {
+                "grow" : -1,
+                "layout" : "FLEX"
+              },
+              "getPSPanelItemGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "面板成员[idea][面板显示]逻辑",
+                "getPSPanelItemLogics" : [ {
+                  "condOp" : "EQ",
+                  "dstModelField" : "OBJECTTYPE",
+                  "logicType" : "SINGLE",
+                  "name" : "逻辑项",
+                  "value" : "IDEA"
+                } ],
+                "relatedItemNames" : [ "objecttype" ],
+                "notMode" : false
+              } ],
+              "getPSRawItem" : {
+                "caption" : "创建需求",
+                "contentType" : "RAW",
+                "name" : "idea",
+                "predefinedType" : "STATIC_TEXT",
+                "renderMode" : "TEXT"
+              },
+              "rawContent" : "创建需求",
+              "showCaption" : true
+            } ]
+          } ]
+        } ]
+      } ],
+      "name" : "list_itempanel",
+      "modelid" : "34EC41FF-7A3B-4A42-AF85-352C7E8EC5D0",
+      "modeltype" : "PSSYSVIEWPANEL"
+    },
+    "logicName" : "HISTORY_LIST",
+    "minorSortDir" : "DESC",
+    "getMinorSortPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "Update_time"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+        }
+      }, {
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+        }
+      }, {
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+        }
+      }, {
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "FetchALL"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+        }
+      } ],
+      "userDRAction" : "READ",
+      "enableDEFieldPrivilege" : false,
+      "id" : "列表控件处理器"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "LIST"
+    },
+    "getPSDEListDataItems" : [ {
+      "dataType" : 21,
+      "name" : "auditinfo",
+      "getPSAppDEField" : {
+        "name" : "AUDITINFO",
+        "codeName" : "AuditInfo"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "oppersonname",
+      "getPSAppDEField" : {
+        "name" : "OPPERSONNAME",
+        "codeName" : "OPPersonName"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "audittype",
+      "getPSAppDEField" : {
+        "name" : "AUDITTYPE",
+        "codeName" : "AuditType"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "objecttype",
+      "getPSAppDEField" : {
+        "name" : "OBJECTTYPE",
+        "codeName" : "ObjectType"
+      }
+    }, {
+      "dataType" : 5,
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "name" : "update_time",
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "Update_time"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfkey",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "Id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "srfmajortext",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "Name"
+      }
+    } ],
+    "getPSSysCss" : {
+      "cssName" : "comment-list-height-auto"
+    },
+    "pagingSize" : 1000,
+    "getRemovePSControlAction" : {
+      "modelref" : true,
+      "id" : "remove",
+      "actionName" : "Remove",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "DELETE",
+      "name" : "remove",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Remove"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+      }
+    },
+    "getUpdatePSControlAction" : {
+      "modelref" : true,
+      "id" : "update",
+      "actionName" : "Update",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "name" : "update",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Update"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+      }
+    },
+    "hasWFDataItems" : false,
+    "enableGroup" : false,
+    "enableRowEdit" : false,
+    "enableRowEditGroup" : false,
+    "enableRowEditOrder" : false,
+    "enableRowNew" : false,
+    "noSort" : false,
+    "showHeader" : true,
+    "name" : "list",
+    "modelid" : "00305D90-D9F0-4F68-9E24-38D62CCC6EBC",
+    "modeltype" : "PSDELIST"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 0,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : false,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.ACTIVITIY"
+    },
+    "caption" : "活动历史列表",
+    "codeName" : "HistoryListViewcaptionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "HistoryListView",
+  "getPSDEViewId" : "3B807FD5-37F2-430B-A6B6-09FAE1DACE36",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "Layoutpanel",
+    "controlStyle" : "APPDELISTVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Activitiy.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "活动历史列表",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DELISTVIEW",
+  "xDataControlName" : "list",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableSearch" : true,
+  "showCaptionBar" : false,
+  "modelid" : "51559909a83be8c5c9dbccd9c29f592d",
+  "modeltype" : "PSAPPDEVIEW"
+}

@@ -1,0 +1,72 @@
+{
+  "codeName" : "remaining_updateform",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDELOGICS/remaining_updateform.json",
+  "logicName" : "剩余工时表单项更新",
+  "name" : "剩余工时表单项更新",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 220,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar actual_workload = defaultObj.get(\"actual_workload\") == null ? 0 : defaultObj.get(\"actual_workload\");\r\nvar remaining_workload = defaultObj.get(\"remaining_workload\") == null ? 0 : defaultObj.get(\"remaining_workload\");\r\nif((actual_workload + remaining_workload) > 0 && actual_workload > 0){\r\n    var workload_schedule = (actual_workload / (actual_workload + remaining_workload)) * 100;\r\n    defaultObj.set(\"workload_schedule\", workload_schedule.toFixed(1));\r\n    if(workload_schedule > 100){\r\n        defaultObj.set(\"workload_schedule\", 100);\r\n    }\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 180,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算工时进度",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 377
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 220,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 540
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

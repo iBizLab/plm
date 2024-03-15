@@ -1,0 +1,214 @@
+/* stylelint-disable selector-class-pattern */
+@include b(rawitem) {
+  width: 100%;
+  height: 100%;
+  font-size: getCssVar(font-size, regular);
+  color: getCssVar(editor, default, text-color);
+
+  @include e('paragraph') {
+    display: flex;
+    gap: 16px;
+
+    @include m('ancho') {
+      position: sticky;
+      top: 56px;
+      right: 5px;
+      width: 200px;
+    }
+
+    @include m('html-content') {
+      flex-grow: 1;
+      padding-right: 5px;
+
+      img {
+        cursor: zoom-in;
+      }
+
+      table {
+        border-collapse: collapse;
+
+        th {
+          padding: 8px;
+          background-color: #F3F3F3;
+          border: 1px solid lightgray;
+        }
+
+        td {
+          height: 49px;
+          min-height: 49px;
+          padding: 8px;
+          empty-cells: show;
+          border: 1px solid lightgray;
+        }
+      }
+
+      * {
+        white-space: pre-wrap;
+      }
+    }
+
+    @include m('ancho-container') {
+      flex: 0;
+      max-width: 200px;
+    }
+
+    @include b('rawitem-ancho') {
+      transition: all 0.5s ease;
+
+      @include when('ancho-collapse') {
+        width: 56px;
+
+        @include e('title-item') {
+          @include m('text') {
+            >p {
+              visibility: hidden;
+            }
+          }
+        }
+      }
+
+      @include e('directory') {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        >i {
+          margin-right: 10px;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--ibiz-color-primary);
+          }
+        }
+
+        @include m('title') {
+          font-size: 15px;
+          font-weight: bold;
+        }
+      }
+
+      @include e('title-item') {
+        position: relative;
+        height: max-content;
+        max-height: calc(80vh - 175px);
+        overflow: auto;
+
+        @include m('text') {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
+
+          >p {
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+        }
+
+        @include m('text-1') {
+          padding-left: 12px;
+        }
+
+        @include m('text-2') {
+          padding-left: 24px;
+        }
+
+        @include m('text-3') {
+          padding-left: 36px;
+        }
+
+        @include m('text-4') {
+          padding-left: 48px;
+        }
+
+        @include m('text-5') {
+          padding-left: 60px;
+        }
+
+        @include m('text-6') {
+          padding-left: 72px;
+        }
+
+        @include m('text-title') {
+          position: relative;
+          font-size: 14px;
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            margin: 0;
+            overflow: hidden;
+            font-size: 14px;
+            font-weight: normal;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          * {
+            font-size: 14px !important;
+            color: rgb(85 91 97) !important;
+          }
+
+          strong {
+            margin: 0;
+            font-size: 14px;
+            font-weight: normal;
+          }
+
+          @include when('ancho-select') {
+            overflow: hidden;
+            font-size: 16px;
+            color: var(--ibiz-color-primary);
+
+            &::before {
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+              width: 3px;
+              height: 32px;
+              visibility: visible;
+              content: "";
+              background-color: var(--ibiz-color-primary);
+            }
+          }
+
+          &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 3px;
+            height: 32px;
+            visibility: visible;
+            content: "";
+            background-color: lightgray;
+          }
+
+          &:hover {
+            color: var(--ibiz-color-primary);
+          }
+        }
+      }
+    }
+  }
+
+  // 控制图片预览模态的样式
+  .el-image-viewer__canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  @include b(icon) {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.project.get.afterLogic" isClosed="false" isExecutable="true" name="projmgmt_project_get_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.project.get.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.projmgmt.domain.Project"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.projmgmt.service.logic.projectcreate_recent" id="FBE86BDC-B0C1-4D6C-824F-59032C3072EA" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="begin_FBE86BDC-B0C1-4D6C-824F-59032C3072EA" sourceRef="begin" targetRef="FBE86BDC-B0C1-4D6C-824F-59032C3072EA"/>
+                            <sequenceFlow id="FBE86BDC-B0C1-4D6C-824F-59032C3072EA_prepareparam1_end" sourceRef="FBE86BDC-B0C1-4D6C-824F-59032C3072EA" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,72 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.get_schedule;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Project projectget_scheduledefault;
+        global cn.ibizlab.plm.core.projmgmt.service.IProjectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectget_schedulebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取已完成数目]
+            rule "rawsqlcall1"
+            ruleflow-group "projectget_schedulerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",projectget_scheduledefault.get("id"));
+    String strSql="select count(1) as `dividend` from work_item where IS_DELETED = '0' and `STATE` = '40' and PROJECT_ID = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysProjectDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    projectget_scheduledefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(projectget_scheduledefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取全部数目]
+            rule "rawsqlcall2"
+            ruleflow-group "projectget_schedulerawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",projectget_scheduledefault.get("id"));
+    String strSql="select count(1) as `divisor` from work_item where IS_DELETED = '0'  and PROJECT_ID = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysProjectDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    projectget_scheduledefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(projectget_scheduledefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[计算项目进度]
+            rule "rawsfcode1"
+            ruleflow-group "projectget_schedulerawsfcode1"
+            when
+            then
+                        update(projectget_scheduledefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "projectget_scheduleend1"
+            when
+            then
+                        update(projectget_scheduledefault);//更新fact中变量值
+            end

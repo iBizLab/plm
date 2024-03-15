@@ -1,0 +1,74 @@
+package cn.ibizlab.plm.projmgmt.logic.sprintlogic.get_not_finish;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Sprint sprintget_not_finishdefault;
+                    global cn.ibizlab.plm.core.projmgmt.service.ISprintService sprintservice;
+        global cn.ibizlab.plm.core.projmgmt.service.ISprintService iBzSysSprintDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "sprintget_not_finishbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "sprintget_not_finishdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(sprintservice.get(sprintget_not_finishdefault.getId()),sprintget_not_finishdefault);
+                        update(sprintget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询该迭代下未完成的工作项]
+            rule "rawsqlcall1"
+            ruleflow-group "sprintget_not_finishrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",sprintget_not_finishdefault.get("id"));
+        param.put("param1",sprintget_not_finishdefault.get("projectid"));
+    String strSql="select count(1) as not_finish_num from work_item where `state` <> '40' and sprint_id = #{et.param0} and project_id = #{et.param1}";
+                        java.util.List<JSONObject> entities=iBzSysSprintDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    sprintget_not_finishdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(sprintget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "sprintget_not_finishprepareparam1"
+            when
+            then
+                            sprintget_not_finishdefault.set("remind","该迭代下工作项已全部完成");
+                        update(sprintget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加未完成提醒内容]
+            rule "rawsfcode1"
+            ruleflow-group "sprintget_not_finishrawsfcode1"
+            when
+            then
+                        update(sprintget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "sprintget_not_finishend1"
+            when
+            then
+                        update(sprintget_not_finishdefault);//更新fact中变量值
+            end

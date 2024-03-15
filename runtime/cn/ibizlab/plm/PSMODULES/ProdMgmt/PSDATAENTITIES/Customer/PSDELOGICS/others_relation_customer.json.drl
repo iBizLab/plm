@@ -1,0 +1,131 @@
+package cn.ibizlab.plm.prodmgmt.logic.customerlogic.others_relation_customer;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customerothers_relation_customerdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customerothers_relation_customerfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation customerothers_relation_customerrelationobj;
+                global cn.ibizlab.plm.core.base.domain.Relation customerothers_relation_customerrelationobj2;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customerothers_relation_customerselectdata;
+                    global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.ICustomerService iBzSysCustomerDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "customerothers_relation_customerbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "customerothers_relation_customerbindparam1"
+            when
+            then
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "customerothers_relation_customerloopsubcall1"
+            when
+            then
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "customerothers_relation_customerrenewparam1"
+            when
+            then
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam2"
+            ruleflow-group "customerothers_relation_customerrenewparam2"
+            when
+            then
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "customerothers_relation_customerprepareparam1"
+            when
+            then
+                            customerothers_relation_customerrelationobj.set("principalid",customerothers_relation_customerdefault.get("principal_id"));
+                            customerothers_relation_customerrelationobj2.set("principalid",customerothers_relation_customerfor_temp_obj.get("id"));
+                            customerothers_relation_customerrelationobj2.set("targetid",customerothers_relation_customerdefault.get("principal_id"));
+                            customerothers_relation_customerrelationobj2.set("principaltype",customerothers_relation_customerdefault.get("target_type"));
+                            customerothers_relation_customerrelationobj2.set("targettype",customerothers_relation_customerdefault.get("principal_type"));
+                            customerothers_relation_customerrelationobj.set("principaltype",customerothers_relation_customerdefault.get("principal_type"));
+                            customerothers_relation_customerrelationobj.set("targettype",customerothers_relation_customerdefault.get("target_type"));
+                            customerothers_relation_customerrelationobj.set("targetid",customerothers_relation_customerfor_temp_obj.get("id"));
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "customerothers_relation_customerend1"
+            when
+            then
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "customerothers_relation_customerdeaction1"
+            when
+            then
+                        relationservice.save(customerothers_relation_customerrelationobj);
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "customerothers_relation_customerdeaction2"
+            when
+            then
+                        relationservice.save(customerothers_relation_customerrelationobj2);
+                        update(customerothers_relation_customerdefault);//更新fact中变量值
+                        update(customerothers_relation_customerfor_temp_obj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj);//更新fact中变量值
+                        update(customerothers_relation_customerrelationobj2);//更新fact中变量值
+                        update(customerothers_relation_customerselectdata);//更新fact中变量值
+            end

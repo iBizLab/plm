@@ -1,0 +1,16 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`TYPE`",
+    "name" : "TYPE"
+  } ],
+  "queryCode" : "SELECT\nt1.`ID`,\nt1.`NAME`,\nt1.`TYPE`\nFROM (SELECT\n'LIBRARY' AS `TYPE`,v1.`ID` AS `ID`\n,v1.`NAME` AS `NAME`\nFROM\n(SELECT\nt1.`ID`,\nt1.`NAME`\nFROM `LIBRARY` t1 \n) v1\nUNION ALL\nSELECT\n'PRODUCT' AS `TYPE`,v2.`ID` AS `ID`\n,v2.`NAME` AS `NAME`\nFROM\n(SELECT\nt1.`ID`,\nt1.`NAME`\nFROM `PRODUCT` t1 \n) v2\nUNION ALL\nSELECT\n'PROJECT' AS `TYPE`,v3.`ID` AS `ID`\n,v3.`NAME` AS `NAME`\nFROM\n(SELECT\nt1.`ID`,\nt1.`NAME`\nFROM `PROJECT` t1 \n) v3\n) t1 \n",
+  "id" : "PSMODULES/Base/PSDATAENTITIES/References_index/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
+}

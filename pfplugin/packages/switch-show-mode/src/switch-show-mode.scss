@@ -1,0 +1,114 @@
+/* stylelint-disable selector-class-pattern */
+$switch-show-mode: (
+  icon-margin: getCssVar(spacing, extra-tight),
+  icon-max-width: getCssVar(width-icon, medium),
+  icon-max-height: getCssVar(width-icon, medium),
+  'color': getCssVar(color, text, 0),
+);
+
+@include b(switch-show-mode) {
+  @include set-component-css-var(switch-show-mode, $switch-show-mode);
+
+  width: 100%;
+  padding: getCssVar(spacing, tight);
+  overflow: hidden;
+
+  .el-button{
+    width: 100%;
+
+    @include b(switch-show-mode-content){
+      @include flex(row, flex-start, center);
+
+      background: transparent;
+
+      img,i{
+        display: inline-block;
+        max-width: getCssVar(switch-show-mode, icon-max-width);
+        max-height: getCssVar(switch-show-mode, icon-max-height);
+      }
+
+      // 同时存在图标和文本时，给文本加左margin
+      .#{bem(icon)} + .#{bem(switch-show-mode-content, '', caption)}{
+        margin-left: getCssVar(switch-show-mode, icon-margin);
+      }
+
+      .#{bem(icon)} {
+        display: inline-block;
+        min-width: getCssVar('width-icon', 'medium');
+        color: getCssVar(color, primary, text);;
+
+        svg {
+          fill: getCssVar(color, primary, text);
+        }
+      }
+    }
+  }
+
+  @include when(loading){
+    .el-button{
+      .#{bem(icon)}{
+        display: none;
+      }
+    }
+  }
+}
+
+@include b(switch-show-mode-popper) {
+  @include set-component-css-var(switch-show-mode, $switch-show-mode);
+
+  &.el-popper.el-dropdown__popper .el-scrollbar .el-dropdown__list .el-dropdown-menu__item {
+    padding: 0;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      color: getCssVar(color, primary, text);
+      cursor: default;
+      background: transparent;
+
+      .item-view {
+        padding-left: getCssVar('spacing', 'tight');
+      }
+
+      .item-divider {
+        width: 100%;
+        height: 1px;
+        padding-top: 0;
+        border: none;
+        border-top: 1px solid getCssVar(color, primary, text);
+      }
+    }
+  }
+
+  .el-dropdown-menu__item i {
+    margin: 0;
+  }
+  .#{bem(switch-show-mode-content)} {
+    padding: getCssVar('spacing', 'tight') getCssVar('spacing', 'base');
+
+    img,i{
+      display: inline-block;
+      max-width: getCssVar(switch-show-mode, icon-max-width);
+      max-height: getCssVar(switch-show-mode, icon-max-height);
+    }
+
+    // 同时存在图标和文本时，给文本加左margin
+    .#{bem(icon)} + .#{bem(switch-show-mode-content--caption)}{
+      margin-left: 4px;
+    }
+    .#{bem(icon)} {
+      display: inline-block;
+      min-width: 16px;
+      color: getCssVar(color, primary, text);;
+
+      svg {
+        fill: getCssVar(color, primary, text);;
+      }
+    }
+  }
+}
+
+@include b(switch-show-mode-content){
+  @include e(selected) {
+    background: getCssVar(color, primary, hover);
+  }
+}

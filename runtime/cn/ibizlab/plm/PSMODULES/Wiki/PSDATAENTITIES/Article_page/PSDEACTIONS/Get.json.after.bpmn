@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.article_page.get.afterLogic" isClosed="false" isExecutable="true" name="wiki_article_page_get_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.article_page.get.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.wiki.domain.Article_page"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.wiki.service.logic.article_pagecreate_recent" id="F6A83A4F-85CB-40D2-8E1A-0EDB92C7CAF9" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="begin_F6A83A4F-85CB-40D2-8E1A-0EDB92C7CAF9" sourceRef="begin" targetRef="F6A83A4F-85CB-40D2-8E1A-0EDB92C7CAF9"/>
+                            <sequenceFlow id="F6A83A4F-85CB-40D2-8E1A-0EDB92C7CAF9_prepareparam1_end" sourceRef="F6A83A4F-85CB-40D2-8E1A-0EDB92C7CAF9" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,217 @@
+{
+  "codeName" : "create_default_board",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDELOGICS/create_default_board.json",
+  "logicName" : "生成默认看板",
+  "name" : "生成默认看板",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 210,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "如果新建看板项目",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TYPE] 等于(=) kanban",
+          "paramValue" : "kanban"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "默认看板名称",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "board"
+      },
+      "name" : "直接值[默认看板] ==> board[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "srcValue" : "默认看板",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "board"
+      },
+      "name" : "Default[ID] ==> board[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PROJECT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "board"
+      },
+      "name" : "Default[ID] ==> board[PROJECT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 421
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Board/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "board"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Board.json"
+    },
+    "leftPos" : 170,
+    "logicNodeType" : "DEACTION",
+    "name" : "建立默认看板",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "board"
+    },
+    "topPos" : 520
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 210,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 670
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "board",
+    "logicName" : "默认看板",
+    "name" : "默认看板",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Board.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "design_entry",
+    "logicName" : "设计看板栏",
+    "name" : "设计看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "idea_pool_entry",
+    "logicName" : "需求池看板栏",
+    "name" : "需求池看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "issue_entry",
+    "logicName" : "发布看板栏",
+    "name" : "发布看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "rd_entry",
+    "logicName" : "研发看板栏",
+    "name" : "研发看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Entry.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "swimlane",
+    "logicName" : "默认泳道",
+    "name" : "默认泳道",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Swimlane.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "test_entry",
+    "logicName" : "测试看板栏",
+    "name" : "测试看板栏",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Entry.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

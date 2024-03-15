@@ -1,0 +1,207 @@
+{
+  "codeName" : "edlin_update",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDELOGICS/edlin_update.json",
+  "logicName" : "行编辑更新",
+  "name" : "行编辑更新",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "指定行编辑属性组",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[TITLE] ==> edlin_obj[TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "STATE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[STATE] ==> edlin_obj[STATE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "STATE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ASSIGNEE_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[ASSIGNEE_NAME] ==> edlin_obj[ASSIGNEE_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ASSIGNEE_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ASSIGNEE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[ASSIGNEE_ID] ==> edlin_obj[ASSIGNEE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ASSIGNEE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "START_AT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[START_AT] ==> edlin_obj[START_AT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "START_AT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "END_AT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[END_AT] ==> edlin_obj[END_AT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "END_AT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "PRIORITY",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "edlin_obj"
+      },
+      "name" : "Default[PRIORITY] ==> edlin_obj[PRIORITY]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRIORITY",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 341
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "edlin_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "edlin_obj"
+    },
+    "topPos" : 505
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 622
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "edlin_obj",
+    "logicName" : "行编辑对象",
+    "name" : "行编辑对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

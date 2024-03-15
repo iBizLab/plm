@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.set_default_entry;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemset_default_entrydefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.Entry work_itemset_default_entryentry_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.Entry work_itemset_default_entryentry_page;
+                    global cn.ibizlab.plm.core.projmgmt.service.IEntryService entryservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemset_default_entrybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemset_default_entryprepareparam1"
+            when
+            then
+                            work_itemset_default_entryentry_filter.set("n_board_id_eq",work_itemset_default_entrydefault.get("boardid"));
+                            work_itemset_default_entryentry_filter.set("sort","showorder,asc");
+                        update(work_itemset_default_entrydefault);//更新fact中变量值
+                        update(work_itemset_default_entryentry_filter);//更新fact中变量值
+                        update(work_itemset_default_entryentry_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询所属看板下的看板栏]
+            rule "dedataset1"
+            ruleflow-group "work_itemset_default_entrydedataset1"
+            when
+            then
+                        update(work_itemset_default_entrydefault);//更新fact中变量值
+                        update(work_itemset_default_entryentry_filter);//更新fact中变量值
+                        update(work_itemset_default_entryentry_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[默认填充看板栏]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemset_default_entryrawsfcode1"
+            when
+            then
+                        update(work_itemset_default_entrydefault);//更新fact中变量值
+                        update(work_itemset_default_entryentry_filter);//更新fact中变量值
+                        update(work_itemset_default_entryentry_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemset_default_entryend1"
+            when
+            then
+                        update(work_itemset_default_entrydefault);//更新fact中变量值
+                        update(work_itemset_default_entryentry_filter);//更新fact中变量值
+                        update(work_itemset_default_entryentry_page);//更新fact中变量值
+            end

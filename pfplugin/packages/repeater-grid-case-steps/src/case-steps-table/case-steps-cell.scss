@@ -1,0 +1,26 @@
+@include b(case-steps-cell){
+    box-sizing: border-box;
+    display: inline;
+    padding: 8px 12px;
+    overflow: hidden;
+    line-height: 23px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: normal;
+    border-right: 1px solid getCssVar(color, border);
+
+    @include when(left) {
+        text-align: left;
+    }
+    @include when(center) {
+        text-align: center;
+    }
+    @include when(right) {
+        text-align: right;
+    }
+    .#{bem(grid-edit-item, tooltip)} {
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}

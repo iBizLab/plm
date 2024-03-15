@@ -1,0 +1,216 @@
+{
+  "codeName" : "get_workload_workitem",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/Workload/PSDELOGICS/get_workload_workitem.json",
+  "logicName" : "获取数据（工作项）",
+  "name" : "获取数据（工作项）",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Workload/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Workload.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "Get",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 329
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "获取已登记工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[PRINCIPAL_ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select t1.ESTIMATED_WORKLOAD, t1.REMAINING_WORKLOAD, sum(t2.DURATION) as `ACTUAL_WORKLOAD`\r\nfrom work_item t1 left join workload t2 on t1.ID = t2.PRINCIPAL_ID\r\nwhere t1.ID = ? and t2.ID <>  ?",
+    "topPos" : 414,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充工时属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "actual_workload",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "temp_obj[ACTUAL_WORKLOAD] ==> Default[actual_workload]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ACTUAL_WORKLOAD",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "estimated_workload",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "temp_obj[ESTIMATED_WORKLOAD] ==> Default[estimated_workload]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ESTIMATED_WORKLOAD",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "remaining_workload",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "temp_obj[REMAINING_WORKLOAD] ==> Default[remaining_workload]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "REMAINING_WORKLOAD",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 500
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar actual_workload = defaultObj.get(\"actual_workload\") == null ? 0 : defaultObj.get(\"actual_workload\");\r\nvar remaining_workload = defaultObj.get(\"remaining_workload\") == null ? 0 : defaultObj.get(\"remaining_workload\");\r\nif((actual_workload + remaining_workload) > 0 && actual_workload > 0){\r\n    var workload_schedule = (actual_workload / (actual_workload + remaining_workload)) * 100;\r\n    defaultObj.set(\"workload_schedule\", workload_schedule.toFixed(1));\r\n    if(workload_schedule > 100){\r\n        defaultObj.set(\"workload_schedule\", 100);\r\n    }\r\n}\r\nif(defaultObj.get(\"actual_workload\") != null){\r\n    defaultObj.set(\"actual_workload\", Number(actual_workload).toFixed(1));\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算工时进度：（实际工时 / (实际工时+剩余工时)）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 594
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 744
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Workload.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "temp_obj",
+    "logicName" : "临时变量",
+    "name" : "临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

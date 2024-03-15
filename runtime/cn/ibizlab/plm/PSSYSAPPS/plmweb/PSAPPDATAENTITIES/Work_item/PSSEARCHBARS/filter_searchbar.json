@@ -1,0 +1,493 @@
+{
+  "codeName" : "filter_searchbar",
+  "controlType" : "SEARCHBAR",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item/PSSEARCHBARS/filter_searchbar.json",
+  "groupMoreText" : "更多",
+  "logicName" : "筛选器-搜索栏",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+  },
+  "getPSSearchBarFilters" : [ {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "State"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "state",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_state.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "work_item_type_id",
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "Work_item_type_id"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "work_item_type_id",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_type.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "priority",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "Priority"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "priority",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_priority.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 9,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "is_archived",
+    "getPSAppDEField" : {
+      "name" : "IS_ARCHIVED",
+      "codeName" : "Is_archived"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "is_archived",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "caption" : "负责人",
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "assignee_id",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "Assignee_id"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "ISADDSYMBOL" : "true",
+        "MULTIPLE" : "true",
+        "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "URL" : "projects/${context.project}/project_members/fetchdefault",
+        "PICKUPVIEW" : "FALSE",
+        "USERMETHOD" : "post",
+        "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+        "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+        "DEPTMETHOD" : "get",
+        "DEPTURL" : "/users/fetchdefault"
+      },
+      "editorStyle" : "PERSONEL_SELECT_PROJECT",
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "assignee_id",
+      "getPSNavigateParams" : [ {
+        "key" : "n_department_id_eq",
+        "name" : "n_department_id_eq",
+        "value" : "srforgsectorid",
+        "rawValue" : false
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "EDITOR_CUSTOMSTYLE",
+        "pluginCode" : "PERSON_SELECT",
+        "runtimeObject" : true
+      },
+      "valueItemName" : "assignee_id",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "assignee_id",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "创建人",
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "create_man",
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "Create_man"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "MULTIPLE" : "false",
+        "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "URL" : "projects/${context.project}/project_members/fetchdefault",
+        "PICKUPVIEW" : "FALSE",
+        "USERMETHOD" : "post",
+        "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+        "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+        "DEPTMETHOD" : "get",
+        "DEPTURL" : "/users/fetchdefault"
+      },
+      "editorStyle" : "PERSONEL_SELECT_PROJECT",
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "create_man",
+      "getPSNavigateParams" : [ {
+        "key" : "n_department_id_eq",
+        "name" : "n_department_id_eq",
+        "value" : "srforgsectorid",
+        "rawValue" : false
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "EDITOR_CUSTOMSTYLE",
+        "pluginCode" : "PERSON_SELECT",
+        "runtimeObject" : true
+      },
+      "valueItemName" : "create_man",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "create_man",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "关注",
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "AEUSER_ID_EQ",
+    "getPSAppDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "Attentions"
+    },
+    "getPSDEFSearchMode" : {
+      "codeName" : "N_ATTENTIONS_EXISTS__N_USER_ID_EQ",
+      "getDstPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_USER_ID_EQ"
+      },
+      "getDstPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "User_id"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention.json"
+      },
+      "name" : "N_ATTENTIONS_EXISTS__N_USER_ID_EQ",
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention/PSDERS/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID.json"
+      },
+      "stdDataType" : 25,
+      "valueOP" : "EXISTS"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "PICKUPVIEW" : "FALSE"
+      },
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "AEUSER_ID_EQ",
+      "getPSAppDEACMode" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "FetchDefault"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/User.json"
+      },
+      "valueItemName" : "user_id",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "user_id",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "description",
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "Description"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "description"
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "关注",
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "AETYPE_EQ",
+    "getPSAppDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "Attentions"
+    },
+    "getPSDEFSearchMode" : {
+      "codeName" : "N_ATTENTIONS_EXISTS__N_TYPE_EQ",
+      "getDstPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_TYPE_EQ"
+      },
+      "getDstPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "Type"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention.json"
+      },
+      "name" : "N_ATTENTIONS_EXISTS__N_TYPE_EQ",
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention/PSDERS/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID.json"
+      },
+      "stdDataType" : 25,
+      "valueOP" : "EXISTS"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "AETYPE_EQ"
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "关注",
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "AEOWNER_ID_EQ",
+    "getPSAppDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "Attentions"
+    },
+    "getPSDEFSearchMode" : {
+      "codeName" : "N_ATTENTIONS_EXISTS__N_OWNER_ID_EQ",
+      "getDstPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_OWNER_ID_EQ"
+      },
+      "getDstPSDEField" : {
+        "name" : "OWNER_ID",
+        "codeName" : "Owner_id"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention.json"
+      },
+      "name" : "N_ATTENTIONS_EXISTS__N_OWNER_ID_EQ",
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention/PSDERS/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID.json"
+      },
+      "stdDataType" : 25,
+      "valueOP" : "EXISTS"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "AEOWNER_ID_EQ"
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "关注",
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "ANEN_TYPE_EQ",
+    "getPSAppDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "Attentions"
+    },
+    "getPSDEFSearchMode" : {
+      "codeName" : "N_ATTENTIONS_NOTEXISTS__N_TYPE_EQ",
+      "getDstPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_TYPE_EQ"
+      },
+      "getDstPSDEField" : {
+        "name" : "TYPE",
+        "codeName" : "Type"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention.json"
+      },
+      "name" : "N_ATTENTIONS_NOTEXISTS__N_TYPE_EQ",
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention/PSDERS/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID.json"
+      },
+      "stdDataType" : 25,
+      "valueOP" : "NOTEXISTS"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "ANEN_TYPE_EQ"
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "关注",
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "ANEUSER_ID_EQ",
+    "getPSAppDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "Attentions"
+    },
+    "getPSDEFSearchMode" : {
+      "codeName" : "N_ATTENTIONS_NOTEXISTS__N_USER_ID_EQ",
+      "getDstPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_USER_ID_EQ"
+      },
+      "getDstPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "User_id"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention.json"
+      },
+      "name" : "N_ATTENTIONS_NOTEXISTS__N_USER_ID_EQ",
+      "getPSDER" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Attention/PSDERS/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID.json"
+      },
+      "stdDataType" : 25,
+      "valueOP" : "NOTEXISTS"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "ANEUSER_ID_EQ"
+    },
+    "refPSDEDataSet" : "[PSDEDataSetGlobalModel]无法获取指定模型[ca044c4879a63d30121ff19610f25e6a]",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  } ],
+  "getPSSearchBarGroups" : [ {
+    "caption" : "我负责的工作项",
+    "data" : "{\"theme_model\":{\"searchconds\":[{\"condtype\":\"GROUP\",\"condop\":\"AND\",\"bnotmode\":false,\"searchconds\":[{\"condtype\":\"DEFIELD\",\"fieldname\":\"assignee_id\",\"condop\":\"EQ\",\"value\":\"${context.srfpersonid}\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "my_assignee",
+    "width" : 0.0,
+    "addSeparator" : false,
+    "defaultGroup" : true
+  }, {
+    "caption" : "我创建的工作项",
+    "data" : "{\"theme_model\":{\"searchconds\":[{\"condtype\":\"GROUP\",\"condop\":\"AND\",\"bnotmode\":false,\"searchconds\":[{\"condtype\":\"DEFIELD\",\"fieldname\":\"create_man\",\"condop\":\"EQ\",\"value\":\"${context.srfpersonid}\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "my_create",
+    "width" : 0.0,
+    "addSeparator" : false
+  }, {
+    "caption" : "我参与的工作项",
+    "data" : "{\n  \"theme_model\": {\n    \"searchconds\": [\n      {\n        \"condtype\": \"GROUP\",\n        \"condop\": \"AND\",\n        \"bnotmode\": false,\n        \"searchconds\": [\n          {\n            \"condtype\": \"ITEMS\",\n            \"fieldname\": \"attentions\",\n            \"condop\": \"EXISTS\",\n            \"searchconds\": [\n\t\t\t\t{\n\t\t\t\t\"condtype\": \"DEFIELD\",\n\t\t\t\t\"fieldname\": \"user_id\",\n\t\t\t\t\"condop\": \"EQ\",\n\t\t\t\t\"value\": \"${context.srfpersonid}\"\n\t\t\t\t}\n\t\t\t\t]\n          }\n        ]\n      }\n    ]\n  }\n}",
+    "itemType" : "GROUP",
+    "memo" : "{\n  \"theme_model\": {\n    \"searchconds\": [\n      {\n        \"condtype\": \"GROUP\",\n        \"condop\": \"AND\",\n        \"bnotmode\": false,\n        \"searchconds\": [\n          {\n            \"condtype\": \"ITEMS\",\n            \"fieldname\": \"attentions\",\n            \"condop\": \"EXISTS\",\n            \"searchconds\": [\n\t\t\t\t{\n\t\t\t\t\"condtype\": \"DEFIELD\",\n\t\t\t\t\"fieldname\": \"user_id\",\n\t\t\t\t\"condop\": \"EQ\",\n\t\t\t\t\"value\": \"${context.srfpersonid}\"\n\t\t\t\t}\n\t\t\t\t]\n          }\n        ]\n      }\n    ]\n  }\n}",
+    "name" : "my_involved",
+    "width" : 0.0,
+    "addSeparator" : false
+  } ],
+  "quickGroupCount" : 3,
+  "quickSearchMode" : 1,
+  "quickSearchWidth" : 0,
+  "searchBarStyle" : "SEARCHBAR2",
+  "enableFilter" : true,
+  "enableGroup" : true,
+  "enableQuickSearch" : true,
+  "mobileSearchBar" : false,
+  "modelid" : "6D10875F-692A-4F17-8423-2273FD548A4D",
+  "modeltype" : "PSSYSSEARCHBAR"
+}

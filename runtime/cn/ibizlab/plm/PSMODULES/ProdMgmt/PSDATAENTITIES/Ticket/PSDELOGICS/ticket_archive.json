@@ -1,0 +1,192 @@
+{
+  "codeName" : "ticket_archive",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Ticket/PSDELOGICS/ticket_archive.json",
+  "logicName" : "工单归档",
+  "name" : "工单归档",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 260,
+    "parallelOutput" : true
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar ids = logic.getParam(\"ids\");\r\nvar id = defaultObj.get(\"id\");\r\nif(id != null && id != ''){\r\n    if(id.contains(\";\")){\r\n        var idArray = [];\r\n        idArray = id.split(\";\");\r\n        for (var i = 0; i < idArray.length; i++) {\r\n            ids.add(idArray[i]);\r\n        }\r\n    } else {\r\n        ids.add(id);\r\n    }\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "拆分选中主键",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 400
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "id"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ids"
+    },
+    "topPos" : 500
+  }, {
+    "codeName" : "RENEWPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_obj"
+    },
+    "leftPos" : 410,
+    "logicNodeType" : "RENEWPARAM",
+    "name" : "重新建立参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      }
+    } ],
+    "topPos" : 500
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 410,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "修改是否归档标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "IS_ARCHIVED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "temp_obj"
+      },
+      "name" : "直接值[1] ==> temp_obj[IS_ARCHIVED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 663
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Ticket/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Ticket.json"
+    },
+    "leftPos" : 410,
+    "logicNodeType" : "DEACTION",
+    "name" : "执行更新操作",
+    "topPos" : 823
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 1019
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Ticket.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "id",
+    "logicName" : "要更改状态的主键",
+    "name" : "要更改状态的主键",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  }, {
+    "codeName" : "ids",
+    "logicName" : "选中工作项的主键",
+    "name" : "选中工作项的主键",
+    "stdDataType" : 25,
+    "simpleListParam" : true
+  }, {
+    "codeName" : "temp_obj",
+    "logicName" : "临时变量",
+    "name" : "临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Ticket.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

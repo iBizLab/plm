@@ -1,0 +1,181 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.save_workload_workitem;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.Workload workloadsave_workload_workitemdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea workloadsave_workload_workitemidea;
+                global cn.ibizlab.plm.core.base.domain.Extend_storage workloadsave_workload_workitemremaining;
+                global cn.ibizlab.plm.core.testmgmt.domain.Test_case workloadsave_workload_workitemtest_case;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item workloadsave_workload_workitemwork_item;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IIdeaService ideaservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.ITest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.base.service.IWorkloadService workloadservice;
+                    global cn.ibizlab.plm.core.base.service.IExtend_storageService extend_storageservice;
+        global cn.ibizlab.plm.core.base.service.IWorkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadsave_workload_workitembegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定所属对象标识]
+            rule "prepareparam2"
+            ruleflow-group "workloadsave_workload_workitemprepareparam2"
+            when
+            then
+                            workloadsave_workload_workitemtest_case.set("id",workloadsave_workload_workitemdefault.get("principalid"));
+                            workloadsave_workload_workitemremaining.set("name","REMAINING_WORKLOAD");
+                            workloadsave_workload_workitemremaining.set("ownerid",workloadsave_workload_workitemdefault.get("principalid"));
+                            workloadsave_workload_workitemremaining.set("decimalvalue",workloadsave_workload_workitemdefault.get("remaining_workload"));
+                            workloadsave_workload_workitemwork_item.set("id",workloadsave_workload_workitemdefault.get("principalid"));
+                            workloadsave_workload_workitemidea.set("id",workloadsave_workload_workitemdefault.get("principalid"));
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取需求]
+            rule "deaction3"
+            ruleflow-group "workloadsave_workload_workitemdeaction3"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(workloadsave_workload_workitemidea.getId()),workloadsave_workload_workitemidea);
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工作项]
+            rule "deaction4"
+            ruleflow-group "workloadsave_workload_workitemdeaction4"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(workloadsave_workload_workitemwork_item.getId()),workloadsave_workload_workitemwork_item);
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例]
+            rule "deaction5"
+            ruleflow-group "workloadsave_workload_workitemdeaction5"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(workloadsave_workload_workitemtest_case.getId()),workloadsave_workload_workitemtest_case);
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[工作项和项目明细属性]
+            rule "prepareparam3"
+            ruleflow-group "workloadsave_workload_workitemprepareparam3"
+            when
+            then
+                            workloadsave_workload_workitemdefault.set("identifier",workloadsave_workload_workitemwork_item.get("identifier"));
+                            workloadsave_workload_workitemremaining.set("ownertype","WORK_ITEM");
+                            workloadsave_workload_workitemdefault.set("principaltype","WORK_ITEM");
+                            workloadsave_workload_workitemdefault.set("recentparent",workloadsave_workload_workitemwork_item.get("projectid"));
+                            workloadsave_workload_workitemdefault.set("recentparentidentifier",workloadsave_workload_workitemwork_item.get("projectidentifier"));
+                            workloadsave_workload_workitemdefault.set("recentparentname",workloadsave_workload_workitemwork_item.get("projectname"));
+                            workloadsave_workload_workitemdefault.set("name",workloadsave_workload_workitemwork_item.get("title"));
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "workloadsave_workload_workitemprepareparam4"
+            when
+            then
+                            workloadsave_workload_workitemdefault.set("identifier",workloadsave_workload_workitemidea.get("identifier"));
+                            workloadsave_workload_workitemremaining.set("ownertype","IDEA");
+                            workloadsave_workload_workitemdefault.set("recentparent",workloadsave_workload_workitemidea.get("productid"));
+                            workloadsave_workload_workitemdefault.set("recentparentname",workloadsave_workload_workitemidea.get("productname"));
+                            workloadsave_workload_workitemdefault.set("recentparentidentifier",workloadsave_workload_workitemidea.get("productidentifier"));
+                            workloadsave_workload_workitemdefault.set("name",workloadsave_workload_workitemidea.get("title"));
+                            workloadsave_workload_workitemdefault.set("principaltype","IDEA");
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam5"
+            ruleflow-group "workloadsave_workload_workitemprepareparam5"
+            when
+            then
+                            workloadsave_workload_workitemdefault.set("identifier",workloadsave_workload_workitemtest_case.get("identifier"));
+                            workloadsave_workload_workitemremaining.set("ownertype","TEST_CASE");
+                            workloadsave_workload_workitemdefault.set("recentparentidentifier",workloadsave_workload_workitemtest_case.get("libraryidentifier"));
+                            workloadsave_workload_workitemdefault.set("recentparent",workloadsave_workload_workitemtest_case.get("testlibraryid"));
+                            workloadsave_workload_workitemdefault.set("name",workloadsave_workload_workitemtest_case.get("testlibraryname"));
+                            workloadsave_workload_workitemdefault.set("name",workloadsave_workload_workitemtest_case.get("title"));
+                            workloadsave_workload_workitemdefault.set("principaltype","TEST_CASE");
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存工时]
+            rule "deaction2"
+            ruleflow-group "workloadsave_workload_workitemdeaction2"
+            when
+            then
+                        workloadservice.save(workloadsave_workload_workitemdefault);
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新剩余工时]
+            rule "deaction6"
+            ruleflow-group "workloadsave_workload_workitemdeaction6"
+            when
+            then
+                        extend_storageservice.save(workloadsave_workload_workitemremaining);
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadsave_workload_workitemend1"
+            when
+            then
+                        update(workloadsave_workload_workitemdefault);//更新fact中变量值
+                        update(workloadsave_workload_workitemidea);//更新fact中变量值
+                        update(workloadsave_workload_workitemremaining);//更新fact中变量值
+                        update(workloadsave_workload_workitemtest_case);//更新fact中变量值
+                        update(workloadsave_workload_workitemwork_item);//更新fact中变量值
+            end

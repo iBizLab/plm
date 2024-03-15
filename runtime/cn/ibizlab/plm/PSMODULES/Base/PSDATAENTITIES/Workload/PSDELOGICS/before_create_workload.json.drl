@@ -1,0 +1,55 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.before_create_workload;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.Workload workloadbefore_create_workloaddefault;
+        global cn.ibizlab.plm.core.base.service.IWorkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadbefore_create_workloadbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "workloadbefore_create_workloadprepareparam1"
+            when
+            then
+                            workloadbefore_create_workloaddefault.set("principaltype","IDEA");
+                        update(workloadbefore_create_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "workloadbefore_create_workloadprepareparam2"
+            when
+            then
+                            workloadbefore_create_workloaddefault.set("principaltype","WORK_ITEM");
+                        update(workloadbefore_create_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "workloadbefore_create_workloadprepareparam3"
+            when
+            then
+                            workloadbefore_create_workloaddefault.set("principaltype","TEST_CASE");
+                        update(workloadbefore_create_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadbefore_create_workloadend1"
+            when
+            then
+                        update(workloadbefore_create_workloaddefault);//更新fact中变量值
+            end

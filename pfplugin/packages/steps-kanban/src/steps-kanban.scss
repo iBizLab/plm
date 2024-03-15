@@ -1,0 +1,52 @@
+@include b(control-kanban-split) {
+    @include flex;
+
+    column-gap: getCssVar(spacing, base);
+    height: 100%;
+    @include e(header) {
+        padding-top: getCssVar(spacing, base);
+        color: getCssVar(color, primary);
+    }
+    .#{bem(control-kanban-group, draggable)} {
+        min-height: calc(100% - 53px);
+    }
+    @include e(left) {
+        position: relative;
+        flex: auto;
+        width: 50%;
+        @include flex(column);
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: -8px;
+            height: 100%;
+            content: '';
+            border-right: 1px solid var(--ibiz-color-border);
+        }
+    }
+    @include e(right) {
+        position: relative;
+        flex: auto;
+        width: 50%;
+        @include flex(column);
+    }
+
+    .#{bem(control-kanban-group, list)}{
+        @include when(empty) {
+            height: auto;
+        }
+    }
+}
+
+@include b(control-kanban-group) {
+    @include e(list) {
+        @include when(empty) {
+            .#{bem(control-kanban-split)}{
+                .#{bem(control-kanban, quicktoolbar)}{
+                    transform: translateY(110px) !important;
+                }
+            }
+        }
+    }
+}

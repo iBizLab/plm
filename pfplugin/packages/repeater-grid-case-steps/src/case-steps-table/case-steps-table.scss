@@ -1,0 +1,87 @@
+@include b(case-steps-table) {
+    border: 1px solid getCssVar(color, border);
+    border-bottom: none;
+
+    @include when(disabled) {
+        border-right: none;
+        .#{bem(case-steps-table, cell, operations)}{
+            display: none
+        }
+    }
+    @include e(row) {
+        @include flex;
+
+        border-bottom: 1px solid getCssVar(color, border);
+    
+        @include m(ghost) {
+            border-bottom: 1px solid getCssVar(color, primary);
+        }
+        @include when(group) {
+            .#{bem(case-steps-table, cell, index)}{
+                &:hover {
+                    .#{bem(case-steps-table, cell, icon)}{
+                        display: none;
+                    }
+
+                    span {
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+
+    @include e(header) {
+        height: 40px;
+    }
+
+    @include e(body) {
+        .#{bem(case-steps-table, cell, index)}{
+            cursor: pointer;
+
+            &:hover {
+                .#{bem(case-steps-table, cell, icon)}{
+                    display: inline;
+                }
+
+                span {
+                    display: none;
+                }
+            }
+        }
+        .#{bem(case-steps-cell)}{
+            display: contents;
+            .#{bem(grid-edit-item)} {
+                flex: auto;
+                height: auto;
+                border-right: 1px solid getCssVar(color, border);
+                .#{bem(grid-edit-item, tooltip)}>div {
+                    align-self: center;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .#{bem(case-steps-cell)}{
+        flex: auto;
+        flex-basis: 0;
+    }
+
+    .#{bem(case-steps-table, cell, icon)}{
+        position: absolute;
+        display: none;
+        font-size: 1.8em;
+        color: getCssVar(color, primary);
+    }
+
+    .#{bem(case-steps-table, cell, index)}{
+        flex: none;
+        @include flex(row, center, center);
+    }
+    .#{bem(case-steps-table, cell, operations)}{
+        flex: none;
+        @include flex(row, center, center);
+    }
+
+}

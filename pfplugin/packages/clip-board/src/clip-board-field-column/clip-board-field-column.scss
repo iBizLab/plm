@@ -1,0 +1,112 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable selector-class-pattern */
+$grid-field-column: (
+  cell-padding: getCssVar(spacing, tight),
+  clickable-text-color: getCssVar(color, primary),
+  clickable-hover-text-color: getCssVar(color, primary-hover),
+  color: getCssVar(color, text, 2),
+);
+
+@include b(grid-field-column) {
+  @include set-component-css-var(grid-field-column, $grid-field-column);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: getCssVar('grid-column', 'justify-content');
+  width: 100%;
+  height: 100%;
+  padding: getCssVar(grid-field-column, cell-padding);
+
+  @include e(text) {
+    font-size: getCssVar(font-size, regular);
+    font-weight: getCssVar(font-weight, regular);
+    color: getCssVar(grid-field-column, color);
+  }
+
+  @include m(clickable) {
+    @include e(text) {
+      color: getCssVar(grid-field-column, clickable-text-color);
+
+      &:hover {
+        color: getCssVar(grid-field-column, clickable-hover-text-color);
+      }
+    }
+
+    cursor: pointer;
+  }
+
+  @include m(ellipsis) {
+    // 内部所有的span都呈现成省略号
+    span {
+      @include utils-ellipsis;
+    }
+
+  }
+
+  @include m(wrap) {
+    @include overflow-wrap;
+  }
+
+  // 有行为组时
+  @include when(has-action) {
+    justify-content: space-between;
+  }
+}
+
+@include b(grid-field-column-text-container) {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: getCssVar('grid-column', 'justify-content');
+  height: 100%;
+}
+
+@include b(grid-field-column-toolbar-container) {
+  // 关键操作不隐藏
+  .#{bem(action-toolbar,item)}:not(.#{bem(action-toolbar,item,level-250)}) {
+    opacity: 0;
+  }
+
+  .#{bem(action-toolbar,separator)} {
+    opacity: 0;
+  }
+}
+
+.el-table .el-table__body-wrapper tr:hover {
+  .#{bem(action-toolbar,item)} {
+    opacity: 1;
+  }
+
+  .#{bem(action-toolbar,separator)} {
+    opacity: 1;
+  }
+}
+
+.el-table .el-table__body-wrapper tr {
+  .#{bem(action-toolbar,item)} {
+    &.is-expand {
+      opacity: 1;
+    }
+  }
+}
+
+@include b(grid-field-column-clip-board) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    .#{bem(grid-field-column__copy)} {
+      display: block;
+    }
+  }
+  .#{bem(grid-field-column__copy)} {
+    display: none;
+  }
+
+  .#{bem(grid-field-column__text)} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

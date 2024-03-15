@@ -1,0 +1,110 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.plan_delete_idea;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideaplan_delete_ideadefault;
+                global cn.ibizlab.plm.core.base.domain.Relation ideaplan_delete_idearelationobj;
+                global cn.ibizlab.plm.core.base.domain.Relation ideaplan_delete_idearelationobj2;
+                    global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IIdeaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideaplan_delete_ideabegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取上下文及传入变量]
+            rule "prepareparam1"
+            ruleflow-group "ideaplan_delete_ideaprepareparam1"
+            when
+            then
+                            ideaplan_delete_idearelationobj.set("principalid",ideaplan_delete_ideadefault.get("principal_id"));
+                            ideaplan_delete_idearelationobj.set("targetid",ideaplan_delete_ideadefault.get("id"));
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接正向关联对象的主键]
+            rule "rawsfcode1"
+            ruleflow-group "ideaplan_delete_idearawsfcode1"
+            when
+            then
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "ideaplan_delete_ideaprepareparam2"
+            when
+            then
+                            ideaplan_delete_idearelationobj2.set("principalid",ideaplan_delete_ideadefault.get("id"));
+                            ideaplan_delete_idearelationobj2.set("targetid",ideaplan_delete_ideadefault.get("principal_id"));
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除关联数据]
+            rule "deaction1"
+            ruleflow-group "ideaplan_delete_ideadeaction1"
+            when
+            then
+                        relationservice.remove(ideaplan_delete_idearelationobj.getId());
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接反向关联对象的主键]
+            rule "rawsfcode2"
+            ruleflow-group "ideaplan_delete_idearawsfcode2"
+            when
+            then
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除正向关联]
+            rule "deaction2"
+            ruleflow-group "ideaplan_delete_ideadeaction2"
+            when
+            then
+                        relationservice.remove(ideaplan_delete_idearelationobj.getId());
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除反向关联]
+            rule "deaction3"
+            ruleflow-group "ideaplan_delete_ideadeaction3"
+            when
+            then
+                        relationservice.remove(ideaplan_delete_idearelationobj2.getId());
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideaplan_delete_ideaend1"
+            when
+            then
+                        update(ideaplan_delete_ideadefault);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj);//更新fact中变量值
+                        update(ideaplan_delete_idearelationobj2);//更新fact中变量值
+            end

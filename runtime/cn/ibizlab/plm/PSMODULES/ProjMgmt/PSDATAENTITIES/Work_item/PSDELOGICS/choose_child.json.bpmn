@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemchoose_child" isClosed="false" isExecutable="true" name="projmgmt_work_item_choose_child_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemchoose_child">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemchoose_childdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemchoose_childfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemchoose_childparent_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemchoose_childsrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemchoose_childupdate_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IWork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IWork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemchoose_childdefault" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemchoose_childfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemchoose_childparent_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemchoose_childsrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemchoose_childupdate_obj" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取父工作项内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更父工作项"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="父工作项标识为子工作项的顶级标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="继承父工作项的顶级标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="变更顶级工作项"/>
+                        <endEvent id="delogic1_end" name="end"/>
+                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction2" sourceRef="prepareparam2" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_bindparam1" sourceRef="deaction2" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_debugparam1" sourceRef="prepareparam1" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_deaction1" sourceRef="debugparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_delogic1" sourceRef="prepareparam3" targetRef="delogic1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_delogic1" sourceRef="prepareparam4" targetRef="delogic1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

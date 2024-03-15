@@ -1,0 +1,78 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_recent;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcreate_recentdefault;
+                global cn.ibizlab.plm.core.base.domain.Recent work_itemcreate_recentrecent;
+                    global cn.ibizlab.plm.core.base.service.IRecentService recentservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemcreate_recentbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备最近访问参数]
+            rule "prepareparam1"
+            ruleflow-group "work_itemcreate_recentprepareparam1"
+            when
+            then
+                            work_itemcreate_recentrecent.set("ownerid",work_itemcreate_recentdefault.get("id"));
+                            work_itemcreate_recentrecent.set("recentparentidentifier",work_itemcreate_recentdefault.get("projectidentifier"));
+                            work_itemcreate_recentrecent.set("recentparentname",work_itemcreate_recentdefault.get("projectname"));
+                            work_itemcreate_recentrecent.set("recentparent",work_itemcreate_recentdefault.get("projectid"));
+                                work_itemcreate_recentrecent.set("createman",curuser.getSessionParams().get("srfpersonid"));
+                            work_itemcreate_recentrecent.set("identifier",work_itemcreate_recentdefault.get("identifier"));
+                            work_itemcreate_recentrecent.set("type","2");
+                            work_itemcreate_recentrecent.set("name",work_itemcreate_recentdefault.get("title"));
+                            work_itemcreate_recentrecent.set("ownertype","project");
+                            work_itemcreate_recentrecent.set("ownersubtype","work_item");
+                        update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentrecent);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存最近访问]
+            rule "deaction1"
+            ruleflow-group "work_itemcreate_recentdeaction1"
+            when
+            then
+                        recentservice.save(work_itemcreate_recentrecent);
+                        update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentrecent);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新登记工时中的业务信息]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemcreate_recentrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemcreate_recentdefault.get("identifier"));
+        param.put("param1",work_itemcreate_recentdefault.get("projectid"));
+        param.put("param2",work_itemcreate_recentdefault.get("projectidentifier"));
+        param.put("param3",work_itemcreate_recentdefault.get("projectname"));
+        param.put("param4",work_itemcreate_recentdefault.get("title"));
+        param.put("param5",work_itemcreate_recentdefault.get("id"));
+    String strSql="UPDATE `WORKLOAD` SET IDENTIFIER = #{et.param0}, RECENT_PARENT = #{et.param1}, RECENT_PARENT_IDENTIFIER = #{et.param2}, RECENT_PARENT_NAME= #{et.param3}, `NAME` = #{et.param4} WHERE PRINCIPAL_ID = #{et.param5} and PRINCIPAL_TYPE = 'WORK_ITEM'";
+                        iBzSysWork_itemDefaultService.execute(strSql,param);//SQL调用
+                        update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentrecent);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemcreate_recentend1"
+            when
+            then
+                        update(work_itemcreate_recentdefault);//更新fact中变量值
+                        update(work_itemcreate_recentrecent);//更新fact中变量值
+            end

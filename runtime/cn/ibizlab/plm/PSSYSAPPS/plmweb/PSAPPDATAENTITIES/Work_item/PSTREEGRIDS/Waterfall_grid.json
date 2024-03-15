@@ -1,0 +1,1556 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "Waterfall_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "TREEGRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item/PSTREEGRIDS/Waterfall_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchDefault"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+    }
+  },
+  "gridStyle" : "TREEGRID",
+  "groupMode" : "NONE",
+  "logicName" : "工作项表格（waterfall）",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+  },
+  "getPSControls" : [ {
+    "codeName" : "TreeGridTestViewtreegrid_batchtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "批操作工具栏（工作项）",
+    "name" : "treegrid_batchtoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+    },
+    "getPSControlParam" : {
+      "id" : "treegrid_batchtoolbar"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "移入迭代",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction9",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "treegrid_batchtoolbar_deuiaction9"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf1d9@FontAwesome",
+        "cssClass" : "fa fa-send-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "caption" : "移入迭代",
+        "codeName" : "shift_in_sprint",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprintpick_up_view.json",
+          "viewType" : "DEPICKUPVIEW2"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "Work_item_shift_in_sprint",
+        "name" : "移入迭代",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Shift_in_sprint"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-send-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "成功移入迭代",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "shift_in_sprint",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "shift_in_sprint@Work_item"
+      },
+      "tooltip" : "移入迭代",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "移入发布",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "treegrid_batchtoolbar_deuiaction2"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf1d9@FontAwesome",
+        "cssClass" : "fa fa-send-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "caption" : "移入发布",
+        "codeName" : "shift_in_version",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/versionpick_up_view.json",
+          "viewType" : "DEPICKUPVIEW2"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "Work_item_shift_in_version",
+        "name" : "移入发布",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Shift_in_version"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-send-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "成功移入发布",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "shift_in_version",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "shift_in_version@Work_item"
+      },
+      "tooltip" : "移入发布",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "变更状态",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction3",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "treegrid_batchtoolbar_deuiaction3"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf18d@FontAwesome",
+        "cssClass" : "fa fa-stack-exchange"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "caption" : "变更状态",
+        "codeName" : "change_state",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemchange_state_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "Work_item_change_state",
+        "name" : "变更状态",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf18d@FontAwesome",
+          "cssClass" : "fa fa-stack-exchange"
+        },
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "change_state",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "change_state@Work_item"
+      },
+      "tooltip" : "变更状态",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "分配负责人",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction4",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "treegrid_batchtoolbar_deuiaction4"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf234@FontAwesome",
+        "cssClass" : "fa fa-user-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "caption" : "分配负责人",
+        "codeName" : "change_assignee",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemchange_assignee_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "Work_item_change_assignee",
+        "name" : "分配负责人",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf234@FontAwesome",
+          "cssClass" : "fa fa-user-plus"
+        },
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "change_assignee",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "change_assignee@Work_item"
+      },
+      "tooltip" : "分配负责人",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "更多",
+      "itemType" : "ITEMS",
+      "name" : "items1",
+      "getPSDEToolbarItems" : [ {
+        "getCapPSLanguageRes" : {
+          "defaultContent" : "拷贝",
+          "lanResTag" : "TBB.TEXT.*.COPY",
+          "lanResType" : "TBB.TEXT",
+          "name" : "工具栏按钮文本[*.COPY]",
+          "refFlag" : true
+        },
+        "caption" : "复制",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treegrid_batchtoolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0c5@FontAwesome",
+          "cssClass" : "fa fa-copy"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "getCapPSLanguageRes" : {
+            "defaultContent" : "拷贝",
+            "lanResTag" : "TBB.TEXT.*.COPY",
+            "lanResType" : "TBB.TEXT",
+            "name" : "工具栏按钮文本[*.COPY]",
+            "refFlag" : true
+          },
+          "caption" : "拷贝",
+          "codeName" : "Copy",
+          "fullCodeName" : "Copy",
+          "name" : "表格界面_拷贝操作",
+          "getPSSysImage" : {
+            "glyph" : "xf0c5@FontAwesome",
+            "cssClass" : "fa fa-copy"
+          },
+          "predefinedType" : "GRIDVIEW_COPYACTION",
+          "timeout" : 60000,
+          "getTooltipPSLanguageRes" : {
+            "defaultContent" : "拷贝",
+            "lanResTag" : "TBB.TOOLTIP.*.COPY",
+            "lanResType" : "TBB.TOOLTIP",
+            "name" : "工具栏按钮提示[*.COPY]",
+            "refFlag" : true
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Copy",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "复制",
+        "getTooltipPSLanguageRes" : {
+          "defaultContent" : "拷贝",
+          "lanResTag" : "TBB.TOOLTIP.*.COPY",
+          "lanResType" : "TBB.TOOLTIP",
+          "name" : "工具栏按钮提示[*.COPY]",
+          "refFlag" : true
+        },
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "移动",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction5",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treegrid_batchtoolbar_deuiaction5"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf047@FontAwesome",
+          "cssClass" : "fa fa-arrows"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "移动",
+          "codeName" : "move",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemmove_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Work_item_move",
+          "name" : "移动",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "rawValue" : true
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf047@FontAwesome",
+            "cssClass" : "fa fa-arrows"
+          },
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "move",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "move@Work_item"
+        },
+        "tooltip" : "移动",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "归档",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction6",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treegrid_batchtoolbar_deuiaction6"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf187@FontAwesome",
+          "cssClass" : "fa fa-archive"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "归档",
+          "codeName" : "archive",
+          "confirmMsg" : "确认归档？",
+          "fullCodeName" : "Work_item_archive",
+          "name" : "归档",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Archive"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf187@FontAwesome",
+            "cssClass" : "fa fa-archive"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "归档成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "archive",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "archive@Work_item"
+        },
+        "tooltip" : "归档",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "激活",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction7",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treegrid_batchtoolbar_deuiaction7"
+        },
+        "getPSSysImage" : {
+          "cssClass" : "key"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "激活",
+          "codeName" : "activate",
+          "confirmMsg" : "确认激活？",
+          "fullCodeName" : "Work_item_activate",
+          "name" : "激活",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Activate"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "cssClass" : "key"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "激活成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "activate",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "activate@Work_item"
+        },
+        "tooltip" : "激活",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "删除",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction8",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treegrid_batchtoolbar_deuiaction8"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "删除",
+          "codeName" : "delete",
+          "confirmMsg" : "确定删除吗？（可在回收站恢复）",
+          "fullCodeName" : "Work_item_delete",
+          "name" : "删除",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Delete"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "delete",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "delete@Work_item"
+        },
+        "tooltip" : "删除",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "tooltip" : "更多",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "9366DB7F-2A7F-438D-90F0-B2B936356967",
+    "modeltype" : "PSDETOOLBAR"
+  } ],
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "编号",
+    "codeName" : "identifier",
+    "columnType" : "DEFTREEGRIDCOLUMN",
+    "dataItemName" : "identifier",
+    "excelCaption" : "编号",
+    "name" : "identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "Identifier"
+    },
+    "width" : 80,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "标题",
+    "codeName" : "title",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "title",
+    "excelCaption" : "标题",
+    "name" : "title",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "Title"
+    },
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr1220197218",
+      "name" : "工作项操作列",
+      "getPSUIActionGroupDetails" : [ {
+        "getCapPSLanguageRes" : {
+          "defaultContent" : "拷贝",
+          "lanResTag" : "TBB.TEXT.*.COPY",
+          "lanResType" : "TBB.TEXT",
+          "name" : "工具栏按钮文本[*.COPY]",
+          "refFlag" : true
+        },
+        "caption" : "拷贝",
+        "detailType" : "DEUIACTION",
+        "name" : "u1fb616f",
+        "getPSSysImage" : {
+          "glyph" : "xf0c5@FontAwesome",
+          "cssClass" : "fa fa-copy"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "getCapPSLanguageRes" : {
+            "defaultContent" : "拷贝",
+            "lanResTag" : "TBB.TEXT.*.COPY",
+            "lanResType" : "TBB.TEXT",
+            "name" : "工具栏按钮文本[*.COPY]",
+            "refFlag" : true
+          },
+          "caption" : "拷贝",
+          "codeName" : "Copy",
+          "fullCodeName" : "Copy",
+          "name" : "表格界面_拷贝操作",
+          "getPSSysImage" : {
+            "glyph" : "xf0c5@FontAwesome",
+            "cssClass" : "fa fa-copy"
+          },
+          "predefinedType" : "GRIDVIEW_COPYACTION",
+          "timeout" : 60000,
+          "getTooltipPSLanguageRes" : {
+            "defaultContent" : "拷贝",
+            "lanResTag" : "TBB.TOOLTIP.*.COPY",
+            "lanResType" : "TBB.TOOLTIP",
+            "name" : "工具栏按钮提示[*.COPY]",
+            "refFlag" : true
+          },
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "Copy",
+          "uIActionType" : "DEUIACTION"
+        },
+        "getTooltipPSLanguageRes" : {
+          "defaultContent" : "拷贝",
+          "lanResTag" : "TBB.TOOLTIP.*.COPY",
+          "lanResType" : "TBB.TOOLTIP",
+          "name" : "工具栏按钮提示[*.COPY]",
+          "refFlag" : true
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "移动",
+        "detailType" : "DEUIACTION",
+        "name" : "u2588787",
+        "getPSSysImage" : {
+          "glyph" : "xf047@FontAwesome",
+          "cssClass" : "fa fa-arrows"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "移动",
+          "codeName" : "move",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemmove_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Work_item_move",
+          "name" : "移动",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "PROJECT",
+            "name" : "PROJECT",
+            "rawValue" : true
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf047@FontAwesome",
+            "cssClass" : "fa fa-arrows"
+          },
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "move",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "move@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "归档",
+        "detailType" : "DEUIACTION",
+        "name" : "ud0137d9",
+        "getPSSysImage" : {
+          "glyph" : "xf187@FontAwesome",
+          "cssClass" : "fa fa-archive"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "归档",
+          "codeName" : "archive",
+          "confirmMsg" : "确认归档？",
+          "fullCodeName" : "Work_item_archive",
+          "name" : "归档",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Archive"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf187@FontAwesome",
+            "cssClass" : "fa fa-archive"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "归档成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "archive",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "archive@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "删除",
+        "detailType" : "DEUIACTION",
+        "name" : "ua4fae66",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "删除",
+          "codeName" : "delete",
+          "confirmMsg" : "确定删除吗？（可在回收站恢复）",
+          "fullCodeName" : "Work_item_delete",
+          "name" : "删除",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Delete"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "delete",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "delete@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "激活",
+        "detailType" : "DEUIACTION",
+        "name" : "uf4b02b1",
+        "getPSSysImage" : {
+          "cssClass" : "key"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "激活",
+          "codeName" : "activate",
+          "confirmMsg" : "确认激活？",
+          "fullCodeName" : "Work_item_activate",
+          "name" : "激活",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Activate"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "cssClass" : "key"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "激活成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "activate",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "activate@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "恢复",
+        "detailType" : "DEUIACTION",
+        "name" : "u2e8686e",
+        "getPSSysImage" : {
+          "glyph" : "xf021@FontAwesome",
+          "cssClass" : "fa fa-refresh"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "恢复",
+          "codeName" : "recover",
+          "confirmMsg" : "确认恢复？",
+          "fullCodeName" : "Work_item_recover",
+          "name" : "恢复",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Recover"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf021@FontAwesome",
+            "cssClass" : "fa fa-refresh"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "恢复成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "recover",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "recover@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "变更父工作项",
+        "detailType" : "DEUIACTION",
+        "name" : "uda36756",
+        "getPSSysImage" : {
+          "cssClass" : "git-branch"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "变更父工作项",
+          "codeName" : "update_parent",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemparent_pick_up_view.json",
+            "viewType" : "DEPICKUPVIEW2"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Work_item_update_parent",
+          "name" : "设置父工作项",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "workitemid",
+            "name" : "workitemid",
+            "value" : "work_item",
+            "rawValue" : false
+          }, {
+            "key" : "workpid",
+            "name" : "workpid",
+            "value" : "pid",
+            "rawValue" : false
+          }, {
+            "key" : "sprintid",
+            "name" : "sprintid",
+            "value" : "sprint",
+            "rawValue" : false
+          } ],
+          "getPSSysImage" : {
+            "cssClass" : "git-branch"
+          },
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "update_parent",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "update_parent@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "关联工作项",
+        "detailType" : "DEUIACTION",
+        "name" : "uff8cd76",
+        "getPSSysImage" : {
+          "glyph" : "xf0c1@FontAwesome",
+          "cssClass" : "fa fa-link"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "关联工作项",
+          "codeName" : "relation_work_item",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemrelation_mpick_up_view.json",
+            "viewType" : "DEMPICKUPVIEW2"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Work_item_relation_work_item",
+          "name" : "关联工作项",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c1@FontAwesome",
+            "cssClass" : "fa fa-link"
+          },
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "relation_work_item",
+          "uIActionType" : "DEUIACTION",
+          "reloadData" : true,
+          "id" : "relation_work_item@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "移入迭代",
+        "detailType" : "DEUIACTION",
+        "name" : "u177ee71",
+        "getPSSysImage" : {
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-send-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "移入迭代",
+          "codeName" : "shift_in_sprint",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprintpick_up_view.json",
+            "viewType" : "DEPICKUPVIEW2"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Work_item_shift_in_sprint",
+          "name" : "移入迭代",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Shift_in_sprint"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf1d9@FontAwesome",
+            "cssClass" : "fa fa-send-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "成功移入迭代",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "shift_in_sprint",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "shift_in_sprint@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "移入发布",
+        "detailType" : "DEUIACTION",
+        "name" : "u55c2849",
+        "getPSSysImage" : {
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-send-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "移入发布",
+          "codeName" : "shift_in_version",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/versionpick_up_view.json",
+            "viewType" : "DEPICKUPVIEW2"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Work_item_shift_in_version",
+          "name" : "移入发布",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Shift_in_version"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf1d9@FontAwesome",
+            "cssClass" : "fa fa-send-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "成功移入发布",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "shift_in_version",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "shift_in_version@Work_item"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "界面行为支持获取编辑列",
+        "detailType" : "DEUIACTION",
+        "name" : "u96e02ff",
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "界面行为支持获取编辑列",
+          "codeName" : "GET_EDITOR_COLUMN",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "GET_EDITOR_COLUMN",
+          "memo" : "该界面行为的标识固定为【GET_EDITOR_COLUMN】，同时，该界面行为是配置插件【表格列界面行为支持获取编辑列 】共同使用",
+          "name" : "界面行为支持获取编辑列",
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "GET_EDITOR_COLUMN",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "Work_item__Usr1220197218"
+    },
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_COLRENDER",
+      "pluginCode" : "COLUMN_ACTION_EDIT",
+      "runtimeObject" : true
+    },
+    "width" : 300,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "类型",
+    "codeName" : "work_item_type_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "work_item_type_name",
+    "excelCaption" : "类型",
+    "name" : "work_item_type_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_NAME",
+      "codeName" : "Work_item_type_name"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "状态",
+    "codeName" : "state",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "state_text",
+    "excelCaption" : "状态",
+    "name" : "state",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Work_item_state.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "State"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "负责人",
+    "codeName" : "assignee_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "assignee_name",
+    "excelCaption" : "负责人",
+    "name" : "assignee_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "Assignee_name"
+    },
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_COLRENDER",
+      "pluginCode" : "ICON_PERSON",
+      "runtimeObject" : true
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "优先级",
+    "codeName" : "priority",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "priority",
+    "excelCaption" : "优先级",
+    "name" : "priority",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Work_item_priority.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "Priority"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "父工作项",
+    "codeName" : "ptitle",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "ptitle",
+    "excelCaption" : "父工作项",
+    "getLinkPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemRedirectView.json",
+      "viewType" : "DEREDIRECTVIEW"
+    },
+    "linkValueItem" : "pid",
+    "name" : "ptitle",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PTITLE",
+      "codeName" : "Ptitle"
+    },
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableLinkView" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "开始时间",
+    "codeName" : "start_at",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "start_at",
+    "excelCaption" : "开始时间",
+    "name" : "start_at",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "START_AT",
+      "codeName" : "Start_at"
+    },
+    "valueFormat" : "YYYY-MM-DD",
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "截止时间",
+    "codeName" : "end_at",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "end_at",
+    "excelCaption" : "截止时间",
+    "name" : "end_at",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "END_AT",
+      "codeName" : "End_at"
+    },
+    "valueFormat" : "YYYY-MM-DD",
+    "width" : 150,
+    "widthUnit" : "STAR",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "标签",
+    "codeName" : "tags",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "tags",
+    "excelCaption" : "标签",
+    "name" : "tags",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TAGS",
+      "codeName" : "Tags"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
+    "enableSort" : true,
+    "hiddenDataItem" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "defaultContent" : "标识",
+      "lanResTag" : "DEF.LNAME.ID",
+      "lanResType" : "DEF.LNAME",
+      "name" : "属性逻辑名称（DEF.LNAME.*）[ID]",
+      "refFlag" : true
+    },
+    "caption" : "标识",
+    "codeName" : "id",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "id",
+    "excelCaption" : "标识",
+    "name" : "id",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    },
+    "treeColumnMode" : 2,
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : true,
+    "hiddenDataItem" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "工作项类型标识",
+    "codeName" : "work_item_type_id",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "work_item_type_id",
+    "excelCaption" : "工作项类型标识",
+    "name" : "work_item_type_id",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "Work_item_type_id"
+    },
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : true,
+    "hiddenDataItem" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "父标识",
+    "codeName" : "pid",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "pid",
+    "excelCaption" : "父标识",
+    "name" : "pid",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PID",
+      "codeName" : "Pid"
+    },
+    "treeColumnMode" : 4,
+    "width" : 100,
+    "widthUnit" : "PX",
+    "enableSort" : true,
+    "hiddenDataItem" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "identifier",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "Identifier"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "Title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "work_item_type_name",
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_NAME",
+      "codeName" : "Work_item_type_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "state_text",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "State"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "State"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "Assignee_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "priority",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "Priority"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "ptitle",
+    "getPSAppDEField" : {
+      "name" : "PTITLE",
+      "codeName" : "Ptitle"
+    }
+  }, {
+    "format" : "YYYY-MM-DD",
+    "dataType" : 5,
+    "name" : "start_at",
+    "getPSAppDEField" : {
+      "name" : "START_AT",
+      "codeName" : "Start_at"
+    }
+  }, {
+    "format" : "YYYY-MM-DD",
+    "dataType" : 5,
+    "name" : "end_at",
+    "getPSAppDEField" : {
+      "name" : "END_AT",
+      "codeName" : "End_at"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "tags",
+    "getPSAppDEField" : {
+      "name" : "TAGS",
+      "codeName" : "Tags"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "work_item_type_id",
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "Work_item_type_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "pid",
+    "getPSAppDEField" : {
+      "name" : "PID",
+      "codeName" : "Pid"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "project_id",
+    "getPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "Project_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "sprint_id",
+    "getPSAppDEField" : {
+      "name" : "SPRINT_ID",
+      "codeName" : "Sprint_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "version_id",
+    "getPSAppDEField" : {
+      "name" : "VERSION_ID",
+      "codeName" : "Version_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "board_id",
+    "getPSAppDEField" : {
+      "name" : "BOARD_ID",
+      "codeName" : "Board_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "entry_id",
+    "getPSAppDEField" : {
+      "name" : "ENTRY_ID",
+      "codeName" : "Entry_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "swimlane_id",
+    "getPSAppDEField" : {
+      "name" : "SWIMLANE_ID",
+      "codeName" : "Swimlane_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "Title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmstag"
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "状态",
+    "codeName" : "state",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "State"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "state",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Work_item_state.json"
+      },
+      "getPSEditorItems" : [ {
+        "name" : "state"
+      } ],
+      "singleSelect" : true
+    },
+    "valueItemName" : "state",
+    "allowEmpty" : true,
+    "needCodeListConfig" : true
+  }, {
+    "caption" : "负责人",
+    "codeName" : "assignee_name",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "assignee_name",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_NAME",
+      "codeName" : "Assignee_name"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "maxLength" : 100,
+      "name" : "assignee_name"
+    },
+    "allowEmpty" : true
+  }, {
+    "caption" : "优先级",
+    "codeName" : "priority",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "priority",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "Priority"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "priority",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Work_item_priority.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "needCodeListConfig" : true
+  }, {
+    "caption" : "开始时间",
+    "codeName" : "start_at",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "start_at",
+    "getPSAppDEField" : {
+      "name" : "START_AT",
+      "codeName" : "Start_at"
+    },
+    "getPSEditor" : {
+      "dateTimeFormat" : "YYYY-MM-DD",
+      "editorParams" : {
+        "TIMEFMT" : "YYYY-MM-DD"
+      },
+      "editorType" : "DATEPICKEREX_NOTIME",
+      "name" : "start_at"
+    },
+    "allowEmpty" : true
+  }, {
+    "caption" : "截止时间",
+    "codeName" : "end_at",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "end_at",
+    "getPSAppDEField" : {
+      "name" : "END_AT",
+      "codeName" : "End_at"
+    },
+    "getPSEditor" : {
+      "dateTimeFormat" : "YYYY-MM-DD",
+      "editorParams" : {
+        "TIMEFMT" : "YYYY-MM-DD"
+      },
+      "editorType" : "DATEPICKEREX_NOTIME",
+      "name" : "end_at"
+    },
+    "allowEmpty" : true
+  }, {
+    "caption" : "标签",
+    "codeName" : "tags",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "tags",
+    "getPSAppDEField" : {
+      "name" : "TAGS",
+      "codeName" : "Tags"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "PICKUPVIEW" : "TRUE"
+      },
+      "editorType" : "ADDRESSPICKUP",
+      "name" : "tags",
+      "enableAC" : false,
+      "enablePickupView" : true,
+      "forceSelection" : true,
+      "showTrigger" : true
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "133ED9CD-D999-4247-B343-52A4F78AAA4A",
+  "modeltype" : "PSDEGRID"
+}

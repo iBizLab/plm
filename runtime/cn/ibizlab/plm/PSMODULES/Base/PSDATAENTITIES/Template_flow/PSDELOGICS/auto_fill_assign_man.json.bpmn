@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.template_flowauto_fill_assign_man" isClosed="false" isExecutable="true" name="base_template_flow_auto_fill_assign_man_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.template_flowauto_fill_assign_man">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="template_flowauto_fill_assign_mandefault" type="entity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ITemplate_flowService))" name="iBzSysTemplate_flowDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="template_flowauto_fill_assign_mandefault" type="cn.ibizlab.plm.core.base.domain.Template_flow" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <endEvent id="begin_end" name="end"/>
+                        <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,330 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "Ticket_delete_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket/PSGRIDS/Ticket_delete_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchDeleted"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "工单回收站表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+  },
+  "getPSControls" : [ {
+    "codeName" : "recover_grid_viewgrid_batchtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "回收站工单批操作工具栏",
+    "name" : "grid_batchtoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+    },
+    "getPSControlParam" : {
+      "id" : "grid_batchtoolbar"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "恢复",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "grid_batchtoolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf021@FontAwesome",
+        "cssClass" : "fa fa-refresh"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "caption" : "恢复",
+        "codeName" : "ticket_recover",
+        "confirmMsg" : "确定恢复所选工单吗？",
+        "fullCodeName" : "Ticket_ticket_recover",
+        "name" : "工单恢复",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Recover"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf021@FontAwesome",
+          "cssClass" : "fa fa-refresh"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "成功恢复",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "ticket_recover",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "ticket_recover@Ticket"
+      },
+      "tooltip" : "恢复",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "C2B440EB-5535-446A-8546-5DED93928234",
+    "modeltype" : "PSDETOOLBAR"
+  } ],
+  "getPSDEDataImport" : {
+    "modelref" : true,
+    "id" : "import_ticket"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "工单",
+    "codeName" : "title",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "title",
+    "excelCaption" : "工单",
+    "name" : "title",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "Title"
+    },
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr1228162074",
+      "name" : "回收站工单恢复",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "caption" : "恢复",
+        "detailType" : "DEUIACTION",
+        "name" : "u559dbb0",
+        "getPSSysImage" : {
+          "glyph" : "xf021@FontAwesome",
+          "cssClass" : "fa fa-refresh"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "恢复",
+          "codeName" : "ticket_recover",
+          "confirmMsg" : "确定恢复所选工单吗？",
+          "fullCodeName" : "Ticket_ticket_recover",
+          "name" : "工单恢复",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Recover"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf021@FontAwesome",
+            "cssClass" : "fa fa-refresh"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "成功恢复",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "ticket_recover",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "ticket_recover@Ticket"
+        },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "Ticket__Usr1228162074"
+    },
+    "width" : 300,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "caption" : "删除人",
+    "codeName" : "update_man",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "update_man",
+    "excelCaption" : "删除人",
+    "name" : "update_man",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "UPDATE_MAN",
+      "codeName" : "Update_man"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "caption" : "删除时间",
+    "codeName" : "update_time",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "update_time",
+    "excelCaption" : "删除时间",
+    "name" : "update_time",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "Update_time"
+    },
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "Title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "update_man",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_MAN",
+      "codeName" : "Update_man"
+    }
+  }, {
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "dataType" : 5,
+    "name" : "update_time",
+    "getPSAppDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "Update_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "assignee_id",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "Assignee_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "product_id",
+    "getPSAppDEField" : {
+      "name" : "PRODUCT_ID",
+      "codeName" : "Product_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "customer_id",
+    "getPSAppDEField" : {
+      "name" : "CUSTOMER_ID",
+      "codeName" : "Customer_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "Title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmstag"
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : true,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : false,
+  "modelid" : "B16B0CD1-1E4E-46E6-B62D-BD4AE2BA87CC",
+  "modeltype" : "PSDEGRID"
+}

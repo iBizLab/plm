@@ -1,0 +1,312 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcopy_work_itemdefault;
+                global cn.ibizlab.plm.core.base.domain.Attachment work_itemcopy_work_itemattachment;
+                global cn.ibizlab.plm.core.base.domain.Attachment work_itemcopy_work_itemattachments;
+                global cn.ibizlab.plm.core.base.domain.Attention work_itemcopy_work_itemattention;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcopy_work_itemcopy_child;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcopy_work_itemfor_temp_obj;
+                global java.util.Map work_itemcopy_work_itemid;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcopy_work_itemnew_work_item;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcopy_work_itemsrfactionparam;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemcopy_work_itemtemp_obj;
+                    global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.IAttentionService attentionservice;
+                    global cn.ibizlab.plm.core.base.service.IAttachmentService attachmentservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemcopy_work_itembegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "work_itemcopy_work_itembindparam1"
+            when
+            then
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam5"
+            ruleflow-group "work_itemcopy_work_itemprepareparam5"
+            when
+            then
+                            work_itemcopy_work_itemid.set("",work_itemcopy_work_itemdefault.get("id"));
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemcopy_work_itemloopsubcall1"
+            when
+            then
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工作项]
+            rule "deaction4"
+            ruleflow-group "work_itemcopy_work_itemdeaction4"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(work_itemservice.get(work_itemcopy_work_itemid.getId()),work_itemcopy_work_itemid);
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[同步属性]
+            rule "prepareparam2"
+            ruleflow-group "work_itemcopy_work_itemprepareparam2"
+            when
+            then
+                            work_itemcopy_work_itemnew_work_item.set("projectid",work_itemcopy_work_itemfor_temp_obj.get("target_project_id"));
+                            work_itemcopy_work_itemattachments.set("",work_itemcopy_work_itemtemp_obj.get("attachments"));
+                            work_itemcopy_work_itemnew_work_item.set("workitemtypeid",work_itemcopy_work_itemtemp_obj.get("workitemtypeid"));
+                            work_itemcopy_work_itemnew_work_item.set("title",work_itemcopy_work_itemtemp_obj.get("title"));
+                            work_itemcopy_work_itemnew_work_item.set("description",work_itemcopy_work_itemtemp_obj.get("description"));
+                            work_itemcopy_work_itemnew_work_item.set("priority",work_itemcopy_work_itemtemp_obj.get("priority"));
+                            work_itemcopy_work_itemnew_work_item.set("startat",work_itemcopy_work_itemtemp_obj.get("startat"));
+                            work_itemcopy_work_itemnew_work_item.set("endat",work_itemcopy_work_itemtemp_obj.get("endat"));
+                            work_itemcopy_work_itemnew_work_item.set("state",work_itemcopy_work_itemtemp_obj.get("state"));
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建工作项]
+            rule "deaction1"
+            ruleflow-group "work_itemcopy_work_itemdeaction1"
+            when
+            then
+                        work_itemservice.create(work_itemcopy_work_itemnew_work_item);
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam1"
+            ruleflow-group "work_itemcopy_work_itemresetparam1"
+            when
+            then
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备关注参数]
+            rule "prepareparam7"
+            ruleflow-group "work_itemcopy_work_itemprepareparam7"
+            when
+            then
+                            work_itemcopy_work_itemattention.set("userid",work_itemcopy_work_itemnew_work_item.get("createman"));
+                                work_itemcopy_work_itemattention.set("name",curuser.getSessionParams().get("srfpersonname"));
+                            work_itemcopy_work_itemattention.set("ownerid",work_itemcopy_work_itemnew_work_item.get("id"));
+                            work_itemcopy_work_itemattention.set("ownertype","WORK_ITEM");
+                            work_itemcopy_work_itemattention.set("ownersubtype","WORK_ITEM");
+                            work_itemcopy_work_itemattention.set("type","40");
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建默认关注人]
+            rule "deaction5"
+            ruleflow-group "work_itemcopy_work_itemdeaction5"
+            when
+            then
+                        attentionservice.save(work_itemcopy_work_itemattention);
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数去复制子工作项]
+            rule "prepareparam6"
+            ruleflow-group "work_itemcopy_work_itemprepareparam6"
+            when
+            then
+                            work_itemcopy_work_itemcopy_child.set("old_parent_id",work_itemcopy_work_itemtemp_obj.get("id"));
+                            work_itemcopy_work_itemcopy_child.set("new_parent_id",work_itemcopy_work_itemnew_work_item.get("id"));
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[复制子工作项]
+            rule "delogic1"
+            ruleflow-group "work_itemcopy_work_itemdelogic1"
+            when
+            then
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "work_itemcopy_work_itemloopsubcall2"
+            when
+            then
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "work_itemcopy_work_itemprepareparam4"
+            when
+            then
+                                work_itemcopy_work_itemattachment.set("id",null);
+                            work_itemcopy_work_itemattachment.set("ownerid",work_itemcopy_work_itemnew_work_item.get("id"));
+                            work_itemcopy_work_itemattachment.set("ownertype","WORK_ITEM");
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建附件]
+            rule "deaction3"
+            ruleflow-group "work_itemcopy_work_itemdeaction3"
+            when
+            then
+                        attachmentservice.create(work_itemcopy_work_itemattachment);
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemcopy_work_itemend1"
+            when
+            then
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end

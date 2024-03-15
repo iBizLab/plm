@@ -1,0 +1,47 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.customer_del_ticket;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Ticket ticketcustomer_del_ticketdefault;
+                    global cn.ibizlab.plm.core.prodmgmt.service.ITicketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.ITicketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketcustomer_del_ticketbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "ticketcustomer_del_ticketprepareparam1"
+            when
+            then
+                                ticketcustomer_del_ticketdefault.set("customerid",null);
+                        update(ticketcustomer_del_ticketdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "ticketcustomer_del_ticketdeaction1"
+            when
+            then
+                        ticketservice.update(ticketcustomer_del_ticketdefault);
+                        update(ticketcustomer_del_ticketdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ticketcustomer_del_ticketend1"
+            when
+            then
+                        update(ticketcustomer_del_ticketdefault);//更新fact中变量值
+            end

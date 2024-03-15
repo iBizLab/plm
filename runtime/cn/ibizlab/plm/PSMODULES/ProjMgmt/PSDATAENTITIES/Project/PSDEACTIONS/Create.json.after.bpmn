@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.project.create.afterLogic" isClosed="false" isExecutable="true" name="projmgmt_project_create_afterLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.project.create.afterLogic">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.projmgmt.domain.Project"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.projmgmt.service.logic.projectcreate_recent" id="96A0E283-C227-4C2D-82E2-654A18C94D6E" name="create_recent.json.bpmn"/>
+                        <sequenceFlow id="begin_96A0E283-C227-4C2D-82E2-654A18C94D6E" sourceRef="begin" targetRef="96A0E283-C227-4C2D-82E2-654A18C94D6E"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.projmgmt.service.logic.projectcreate_default_board" id="1C956B0B-B5FE-4063-B325-6F1F07CA916A" name="create_default_board.json.bpmn"/>
+                        <sequenceFlow id="96A0E283-C227-4C2D-82E2-654A18C94D6E_1C956B0B-B5FE-4063-B325-6F1F07CA916A" sourceRef="96A0E283-C227-4C2D-82E2-654A18C94D6E" targetRef="1C956B0B-B5FE-4063-B325-6F1F07CA916A"/>
+                            <sequenceFlow id="1C956B0B-B5FE-4063-B325-6F1F07CA916A_prepareparam1_end" sourceRef="1C956B0B-B5FE-4063-B325-6F1F07CA916A" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

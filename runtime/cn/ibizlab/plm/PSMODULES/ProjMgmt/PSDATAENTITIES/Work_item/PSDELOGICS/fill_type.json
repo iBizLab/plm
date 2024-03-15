@@ -1,0 +1,305 @@
+{
+  "codeName" : "fill_type",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDELOGICS/fill_type.json",
+  "logicName" : "需求树表新建时填充类型",
+  "memo" : "需求树表 新建行操作 根据父级类型判断 填充子的类型",
+  "name" : "需求树表新建时填充类型",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "如果新建时类型为空且父标识不为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "PID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[PID] 值不为空(NotNil)"
+        }, {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "WORK_ITEM_TYPE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[WORK_ITEM_TYPE_ID] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parent"
+      },
+      "name" : "Default[PID] ==> parent[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 420
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "parent"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取父工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "父工作项类型为史诗",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "WORK_ITEM_TYPE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "parent"
+          },
+          "logicType" : "SINGLE",
+          "name" : "parent[WORK_ITEM_TYPE_ID] 等于(=) scrum_epic",
+          "paramValue" : "scrum_epic"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "父工作项类型为特性",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "WORK_ITEM_TYPE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "parent"
+          },
+          "logicType" : "SINGLE",
+          "name" : "parent[WORK_ITEM_TYPE_ID] 等于(=) scrum_feature",
+          "paramValue" : "scrum_feature"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "父工作项类型为用户故事",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "WORK_ITEM_TYPE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "parent"
+          },
+          "logicType" : "SINGLE",
+          "name" : "parent[WORK_ITEM_TYPE_ID] 等于(=) scrum_story",
+          "paramValue" : "scrum_story"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "parent"
+    },
+    "topPos" : 536
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 10,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "子工作项类型设置为特性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "WORK_ITEM_TYPE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[scrum_feature] ==> Default[WORK_ITEM_TYPE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "scrum_feature",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 740
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 219,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "子工作项类型设置为用户故事",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "WORK_ITEM_TYPE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[scrum_story] ==> Default[WORK_ITEM_TYPE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "scrum_story",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 740
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 430,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "子工作项类型设置为用户故事",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "WORK_ITEM_TYPE_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[scrum_story] ==> Default[WORK_ITEM_TYPE_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "scrum_story",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 740
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 924
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "parent",
+    "logicName" : "父工作项",
+    "name" : "父工作项",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

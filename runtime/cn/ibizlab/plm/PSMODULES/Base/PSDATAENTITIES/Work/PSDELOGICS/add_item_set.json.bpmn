@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.workadd_item_set" isClosed="false" isExecutable="true" name="base_work_add_item_set_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.workadd_item_set">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="workadd_item_setdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Work()" name="workadd_item_setcreate_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Portfolio()" name="workadd_item_setfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Portfolio()" name="workadd_item_setsrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IWorkService))" name="workservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IWorkService))" name="iBzSysWorkDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="workadd_item_setdefault" type="cn.ibizlab.plm.core.base.domain.Work" />
+                            <tns:global identifier="workadd_item_setcreate_obj" type="cn.ibizlab.plm.core.base.domain.Work" />
+                            <tns:global identifier="workadd_item_setfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.Portfolio" />
+                            <tns:global identifier="workadd_item_setsrfactionparam" type="cn.ibizlab.plm.core.base.domain.Portfolio" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workadd_item_setprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workadd_item_setloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workadd_item_setresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workadd_item_setprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workadd_item_setdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_loopsubcall1" sourceRef="prepareparam2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam1" sourceRef="loopsubcall1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_prepareparam1" sourceRef="resetparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

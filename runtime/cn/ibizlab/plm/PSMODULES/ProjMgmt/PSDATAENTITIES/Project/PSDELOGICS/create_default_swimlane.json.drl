@@ -1,0 +1,45 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.create_default_swimlane;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Project projectcreate_default_swimlanedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.Swimlane projectcreate_default_swimlaneswimlane;
+                    global cn.ibizlab.plm.core.projmgmt.service.ISwimlaneService swimlaneservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IProjectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectcreate_default_swimlanebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "projectcreate_default_swimlaneprepareparam1"
+            when
+            then
+                            projectcreate_default_swimlaneswimlane.set("id",projectcreate_default_swimlanedefault.get("id"));
+                            projectcreate_default_swimlaneswimlane.set("boardid",projectcreate_default_swimlanedefault.get("id"));
+                            projectcreate_default_swimlaneswimlane.set("projectid",projectcreate_default_swimlanedefault.get("id"));
+                            projectcreate_default_swimlaneswimlane.set("name","默认泳道");
+                        update(projectcreate_default_swimlanedefault);//更新fact中变量值
+                        update(projectcreate_default_swimlaneswimlane);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "projectcreate_default_swimlanedeaction1"
+            when
+            then
+                        swimlaneservice.create(projectcreate_default_swimlaneswimlane);
+                        update(projectcreate_default_swimlanedefault);//更新fact中变量值
+                        update(projectcreate_default_swimlaneswimlane);//更新fact中变量值
+            end

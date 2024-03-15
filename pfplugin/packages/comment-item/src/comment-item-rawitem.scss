@@ -1,0 +1,39 @@
+/* stylelint-disable selector-class-pattern */
+@include b(raw) {
+    @include when(comment-item) {
+        img {
+            cursor: zoom-in;
+        }
+        @include e(preview) {
+            position: absolute;
+            height: 0;
+
+            .el-image-viewer__wrapper {
+                width: 90%;
+                height: 90%;
+                margin: auto;
+            }
+          
+            .el-image-viewer__mask {
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                cursor: zoom-out;
+                opacity: 0.7;
+            }
+          
+            .el-image-viewer__close {
+                top: -32px;
+                right: -36px;
+                width: 32px;
+                height: 32px;
+            }
+
+            .el-image-viewer__canvas {
+                img {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

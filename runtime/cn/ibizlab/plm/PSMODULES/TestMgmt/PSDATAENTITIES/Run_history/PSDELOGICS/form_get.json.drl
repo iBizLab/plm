@@ -1,0 +1,32 @@
+package cn.ibizlab.plm.testmgmt.logic.run_historylogic.form_get;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run_history run_historyform_getdefault;
+                global java.util.Map run_historyform_getrun;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run_history run_historyform_getrun_history_page;
+        global cn.ibizlab.plm.core.testmgmt.service.IRun_historyService iBzSysRun_historyDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "run_historyform_getbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "run_historyform_getend1"
+            when
+            then
+                        update(run_historyform_getdefault);//更新fact中变量值
+                        update(run_historyform_getrun);//更新fact中变量值
+                        update(run_historyform_getrun_history_page);//更新fact中变量值
+            end

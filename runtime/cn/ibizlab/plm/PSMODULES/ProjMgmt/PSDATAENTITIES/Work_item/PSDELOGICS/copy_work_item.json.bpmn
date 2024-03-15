@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemcopy_work_item" isClosed="false" isExecutable="true" name="projmgmt_work_item_copy_work_item_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemcopy_work_item">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemcopy_work_itemdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="work_itemcopy_work_itemattachment" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="work_itemcopy_work_itemattachments" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attention()" name="work_itemcopy_work_itemattention" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemcopy_work_itemcopy_child" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemcopy_work_itemfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="work_itemcopy_work_itemid" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemcopy_work_itemnew_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemcopy_work_itemsrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemcopy_work_itemtemp_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IWork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttentionService))" name="attentionservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttachmentService))" name="attachmentservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IWork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemcopy_work_itemdefault" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemattachment" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="work_itemcopy_work_itemattachments" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="work_itemcopy_work_itemattention" type="cn.ibizlab.plm.core.base.domain.Attention" />
+                            <tns:global identifier="work_itemcopy_work_itemcopy_child" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemnew_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemsrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemtemp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itembindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="同步属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备关注参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="创建默认关注人"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备参数去复制子工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="复制子工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="创建附件"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam5" sourceRef="bindparam1" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_loopsubcall1" sourceRef="prepareparam5" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction4" sourceRef="loopsubcall1" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam2" sourceRef="deaction4" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_resetparam1" sourceRef="deaction1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_prepareparam7" sourceRef="resetparam1" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam7_deaction5" sourceRef="prepareparam7" targetRef="deaction5">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction5_prepareparam6" sourceRef="deaction5" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_delogic1" sourceRef="prepareparam6" targetRef="delogic1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-delogic1_loopsubcall2" sourceRef="gateway-delogic1" targetRef="loopsubcall2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemcopy_work_itemdefault:Work_item();
+                                            $work_itemcopy_work_itemattachment:Attachment();
+                                            $work_itemcopy_work_itemattachments:Attachment();
+                                            $work_itemcopy_work_itemattention:Attention();
+                                            $work_itemcopy_work_itemcopy_child:Work_item();
+                                            $work_itemcopy_work_itemfor_temp_obj:Work_item();
+                                            $work_itemcopy_work_itemid:Map();
+                                            $work_itemcopy_work_itemnew_work_item:Work_item();
+                                            $work_itemcopy_work_itemsrfactionparam:Work_item();
+                                            $work_itemcopy_work_itemtemp_obj:Work_item();
+                                    eval($work_itemcopy_work_itemdefault==work_itemcopy_work_itemdefault && $work_itemcopy_work_itemattachment==work_itemcopy_work_itemattachment && $work_itemcopy_work_itemattachments==work_itemcopy_work_itemattachments && $work_itemcopy_work_itemattention==work_itemcopy_work_itemattention && $work_itemcopy_work_itemcopy_child==work_itemcopy_work_itemcopy_child && $work_itemcopy_work_itemfor_temp_obj==work_itemcopy_work_itemfor_temp_obj && $work_itemcopy_work_itemnew_work_item==work_itemcopy_work_itemnew_work_item && $work_itemcopy_work_itemsrfactionparam==work_itemcopy_work_itemsrfactionparam && $work_itemcopy_work_itemtemp_obj==work_itemcopy_work_itemtemp_obj);
+                                eval((RuleUtils.test($work_itemcopy_work_itemtemp_obj.get("attachments"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam4" sourceRef="loopsubcall2" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction3" sourceRef="prepareparam4" targetRef="deaction3">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-delogic1" name="Gateway" gatewayDirection="Diverging" default="gateway-delogic1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="delogic1_gateway-delogic1_gatewayline" sourceRef="delogic1" targetRef="gateway-delogic1"></sequenceFlow>
+                            <sequenceFlow id="gateway-delogic1_end_line" sourceRef="gateway-delogic1" targetRef="gateway-delogic1_end"/>
+                            <endEvent id="gateway-delogic1_end" name="end"/>
+        </process>
+    </definitions>

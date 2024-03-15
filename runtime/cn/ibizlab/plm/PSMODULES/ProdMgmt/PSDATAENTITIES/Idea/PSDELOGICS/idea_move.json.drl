@@ -1,0 +1,122 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.idea_move;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideaidea_movedefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideaidea_movefor_temp_obj;
+                global java.util.Map ideaidea_moveid;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideaidea_movenew_idea;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideaidea_movesrfactionparam;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideaidea_movetemp_obj;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IIdeaService ideaservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IIdeaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideaidea_movebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取表单数据]
+            rule "bindparam1"
+            ruleflow-group "ideaidea_movebindparam1"
+            when
+            then
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取id]
+            rule "bindparam2"
+            ruleflow-group "ideaidea_movebindparam2"
+            when
+            then
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ideaidea_moveloopsubcall1"
+            when
+            then
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取需求信息]
+            rule "deaction2"
+            ruleflow-group "ideaidea_movedeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(ideaidea_moveid.getId()),ideaidea_moveid);
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填入移动产品id，置空id]
+            rule "prepareparam1"
+            ruleflow-group "ideaidea_moveprepareparam1"
+            when
+            then
+                            ideaidea_movetemp_obj.set("productid",ideaidea_movefor_temp_obj.get("target_product_id"));
+                            ideaidea_movetemp_obj.set("id",ideaidea_movedefault.get("id"));
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填入模块]
+            rule "prepareparam2"
+            ruleflow-group "ideaidea_moveprepareparam2"
+            when
+            then
+                            ideaidea_movetemp_obj.set("categoryid",ideaidea_movefor_temp_obj.get("categoryid"));
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修改需要移动的需求]
+            rule "deaction1"
+            ruleflow-group "ideaidea_movedeaction1"
+            when
+            then
+                        ideaservice.update(ideaidea_movetemp_obj);
+                        update(ideaidea_movedefault);//更新fact中变量值
+                        update(ideaidea_movefor_temp_obj);//更新fact中变量值
+                        update(ideaidea_moveid);//更新fact中变量值
+                        update(ideaidea_movenew_idea);//更新fact中变量值
+                        update(ideaidea_movesrfactionparam);//更新fact中变量值
+                        update(ideaidea_movetemp_obj);//更新fact中变量值
+            end

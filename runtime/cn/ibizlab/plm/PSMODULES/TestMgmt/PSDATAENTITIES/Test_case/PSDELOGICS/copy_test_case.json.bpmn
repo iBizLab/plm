@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.test_casecopy_test_case" isClosed="false" isExecutable="true" name="testmgmt_test_case_copy_test_case_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.test_casecopy_test_case">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="test_casecopy_test_casedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="test_casecopy_test_caseattachment" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attachment()" name="test_casecopy_test_caseattachments" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attention()" name="test_casecopy_test_caseattention" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Attention()" name="test_casecopy_test_caseattentions" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecopy_test_casefor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="test_casecopy_test_caseid" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="test_casecopy_test_caseids" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecopy_test_casesrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecopy_test_casetemp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.Test_case()" name="test_casecopy_test_casetest_case_new" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.ITest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttachmentService))" name="attachmentservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IAttentionService))" name="attentionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.ITest_caseService))" name="iBzSysTest_caseDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="test_casecopy_test_casedefault" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecopy_test_caseattachment" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="test_casecopy_test_caseattachments" type="cn.ibizlab.plm.core.base.domain.Attachment" />
+                            <tns:global identifier="test_casecopy_test_caseattention" type="cn.ibizlab.plm.core.base.domain.Attention" />
+                            <tns:global identifier="test_casecopy_test_caseattentions" type="cn.ibizlab.plm.core.base.domain.Attention" />
+                            <tns:global identifier="test_casecopy_test_casefor_temp_obj" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecopy_test_casesrfactionparam" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecopy_test_casetemp_obj" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+                            <tns:global identifier="test_casecopy_test_casetest_case_new" type="cn.ibizlab.plm.core.testmgmt.domain.Test_case" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_casebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定表单数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_casebindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caserenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_casedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置用例信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_casedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建测试用例"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="置空附件ID及owner_id"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_casedeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="创建附件并绑定"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_casedeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casecopy_test_caseend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_bindparam2" sourceRef="bindparam1" targetRef="bindparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_loopsubcall1" sourceRef="bindparam2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_deaction2" sourceRef="renewparam1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam1" sourceRef="deaction2" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_loopsubcall2" sourceRef="gateway-deaction1" targetRef="loopsubcall2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_casecopy_test_casedefault:Test_case();
+                                            $test_casecopy_test_caseattachment:Attachment();
+                                            $test_casecopy_test_caseattachments:Attachment();
+                                            $test_casecopy_test_caseattention:Attention();
+                                            $test_casecopy_test_caseattentions:Attention();
+                                            $test_casecopy_test_casefor_temp_obj:Test_case();
+                                            $test_casecopy_test_caseid:Map();
+                                            $test_casecopy_test_caseids:Map();
+                                            $test_casecopy_test_casesrfactionparam:Test_case();
+                                            $test_casecopy_test_casetemp_obj:Test_case();
+                                            $test_casecopy_test_casetest_case_new:Test_case();
+                                    eval($test_casecopy_test_casedefault==test_casecopy_test_casedefault && $test_casecopy_test_caseattachment==test_casecopy_test_caseattachment && $test_casecopy_test_caseattachments==test_casecopy_test_caseattachments && $test_casecopy_test_caseattention==test_casecopy_test_caseattention && $test_casecopy_test_caseattentions==test_casecopy_test_caseattentions && $test_casecopy_test_casefor_temp_obj==test_casecopy_test_casefor_temp_obj && $test_casecopy_test_casesrfactionparam==test_casecopy_test_casesrfactionparam && $test_casecopy_test_casetemp_obj==test_casecopy_test_casetemp_obj && $test_casecopy_test_casetest_case_new==test_casecopy_test_casetest_case_new);
+                                eval((RuleUtils.test($test_casecopy_test_casetemp_obj.get("attachments"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam3" sourceRef="deaction1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam2" sourceRef="loopsubcall2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction3" sourceRef="prepareparam2" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction4" sourceRef="prepareparam3" targetRef="deaction4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_end2" sourceRef="deaction4" targetRef="end2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
+                            <endEvent id="gateway-deaction1_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,121 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.create_result;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run runcreate_resultdefault;
+                global java.util.Map runcreate_resultid;
+                global java.util.Map runcreate_resultids;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run_history runcreate_resultrun_history;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run_history runcreate_resultsteps;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run runcreate_resulttemp_obj;
+                    global cn.ibizlab.plm.core.testmgmt.service.IRun_historyService run_historyservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.IRunService runservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IRunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runcreate_resultbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end3"
+            ruleflow-group "runcreate_resultend3"
+            when
+            then
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拆分选中主键]
+            rule "rawsfcode1"
+            ruleflow-group "runcreate_resultrawsfcode1"
+            when
+            then
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行结果数据准备]
+            rule "prepareparam5"
+            ruleflow-group "runcreate_resultprepareparam5"
+            when
+            then
+                            runcreate_resultrun_history.set("",runcreate_resultdefault.get(""));
+                            runcreate_resultrun_history.set("remark",runcreate_resultdefault.get("remark"));
+                                runcreate_resultrun_history.set("executorid",null);
+                            runcreate_resulttemp_obj.set("id",runcreate_resultdefault.get("id"));
+                                runcreate_resultrun_history.set("executedat",null);
+                            runcreate_resultrun_history.set("runid",runcreate_resultdefault.get("id"));
+                                runcreate_resultrun_history.set("id",null);
+                            runcreate_resultrun_history.set("steps",runcreate_resultdefault.get("steps"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建执行结果]
+            rule "deaction6"
+            ruleflow-group "runcreate_resultdeaction6"
+            when
+            then
+                        run_historyservice.create(runcreate_resultrun_history);
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行用例数据准备]
+            rule "prepareparam6"
+            ruleflow-group "runcreate_resultprepareparam6"
+            when
+            then
+                            runcreate_resulttemp_obj.set("executedat",runcreate_resultrun_history.get("executedat"));
+                            runcreate_resulttemp_obj.set("attachments",runcreate_resultdefault.get("attachments"));
+                            runcreate_resulttemp_obj.set("steps",runcreate_resultrun_history.get("steps"));
+                            runcreate_resulttemp_obj.set("status",runcreate_resultrun_history.get("status"));
+                            runcreate_resulttemp_obj.set("id",runcreate_resultrun_history.get("runid"));
+                            runcreate_resulttemp_obj.set("executorname",runcreate_resultrun_history.get("executorname"));
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新执行用例]
+            rule "deaction7"
+            ruleflow-group "runcreate_resultdeaction7"
+            when
+            then
+                        runservice.update(runcreate_resulttemp_obj);
+                        update(runcreate_resultdefault);//更新fact中变量值
+                        update(runcreate_resultid);//更新fact中变量值
+                        update(runcreate_resultids);//更新fact中变量值
+                        update(runcreate_resultrun_history);//更新fact中变量值
+                        update(runcreate_resultsteps);//更新fact中变量值
+                        update(runcreate_resulttemp_obj);//更新fact中变量值
+            end

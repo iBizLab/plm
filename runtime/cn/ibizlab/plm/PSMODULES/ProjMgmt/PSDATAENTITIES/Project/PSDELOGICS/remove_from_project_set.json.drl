@@ -1,0 +1,49 @@
+package cn.ibizlab.plm.projmgmt.logic.projectlogic.remove_from_project_set;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Project projectremove_from_project_setdefault;
+        global cn.ibizlab.plm.core.projmgmt.service.IProjectService iBzSysProjectDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "projectremove_from_project_setbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "projectremove_from_project_setdebugparam1"
+            when
+            then
+                        update(projectremove_from_project_setdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[从项目集中删除]
+            rule "rawsqlcall1"
+            ruleflow-group "projectremove_from_project_setrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",projectremove_from_project_setdefault.get("portfolio_id"));
+        param.put("param1",projectremove_from_project_setdefault.get("id"));
+    String strSql="delete from `work` where PORTFOLIO_ID = #{et.param0} and PRINCIPAL_ID = #{et.param1}";
+                        iBzSysProjectDefaultService.execute(strSql,param);//SQL调用
+                        update(projectremove_from_project_setdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "projectremove_from_project_setend1"
+            when
+            then
+                        update(projectremove_from_project_setdefault);//更新fact中变量值
+            end

@@ -1,0 +1,158 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable selector-class-pattern */
+$control-group-tree: (
+  padding: getCssVar(spacing, tight) getCssVar(spacing, base),
+);
+
+@include b(control-group-tree) {
+  @include set-component-css-var(control-group-tree, $control-group-tree);
+
+  height: 100%;
+  padding: getCssVar(control-group-tree, padding);
+}
+
+@include b(control-group-tree-node) {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  min-width: 1px;
+  height: 100%;
+  font-size: getCssVar(font-size, regular);
+  line-height: getCssVar('height-control', 'default');
+  @include e(icon) {
+    min-width: getCssVar(spacing, base);
+    max-width: getCssVar(spacing, base);
+    margin-right: getCssVar(spacing, tight);
+  }
+
+  @include e(label) {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 1px;
+    @include utils-ellipsis;
+  }
+
+  &:hover {
+    .#{bem(control-group-tree-context-menu-trigger)} {
+      display: inline-block;
+    }
+  }
+  @include e(icon) {
+    line-height: 0;
+  }
+  @include e(newing) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: getCssVar('height-control', 'default');
+
+    .el-input {
+      font-size: getCssVar(font-size, regular);
+    }
+  }
+
+  .el-input {
+    font-size: getCssVar(font-size, regular);
+  }
+}
+
+@include b(control-group-tree-context-menu-trigger) {
+  display: none;
+  flex-shrink: 0;
+  width: getCssVar(spacing, base);
+  height: getCssVar(spacing, base);
+  line-height: 0;
+  text-align: center;
+  cursor: pointer;
+  @include e(caption-icon){
+    vertical-align: middle;
+    transform: rotate(90deg);
+  }
+}
+
+// 树节点上下文菜单样式
+@include b(control-group-tree-context-menu) {
+  &.mx-context-menu {
+    padding: getCssVar(spacing, extra-tight) 0;
+
+    .mx-context-menu-item {
+      padding: getCssVar(spacing, tight) getCssVar(spacing, base);
+    }
+  }
+}
+
+@include b(control-group-tree-quick-search) {
+  margin-bottom: getCssVar(spacing, tight);
+}
+
+@include b(control-group-tree-tree-box) {
+  width: 100%;
+  height: 100%;
+
+  .el-tree {
+    // 饿了么控padding不能控margin
+    &.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+      color: var(--ibiz-color-primary);
+      background-color: var(--ibiz-color-primary-light-default);
+    }
+
+    .el-tree-node.is-expanded.is-focusable,
+    .el-tree-node {
+      min-height: getCssVar('height-control', 'default');
+
+      .el-tree-node__content {
+        height: auto;
+      }
+    }
+
+    .el-tree-node__content {
+      margin-bottom: getCssVar('spacing', 'extra-tight');
+      border-radius: getCssVar('border-radius', 'small');
+    }
+
+    .el-icon.el-tree-node__expand-icon {
+      padding: 6px 3px;
+    }
+
+    // 拖拽样式
+    .el-tree-node.is-drop-inner>.el-tree-node__content {
+      color: getCssVar(color, primary,);
+      background-color: getCssVar(color, primary, light, default);
+    }
+  }
+
+  // 计数器样式
+  .#{bem(control-group-tree__counter--box)} {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: center;
+    height: 100%;
+
+    .#{bem(control-group-tree__dot)} {
+      margin: 0 var(--ibiz-spacing-extra-tight);
+    }
+    .#{bem(badge)} {
+      max-width: 100%;
+      height: 100%;
+      padding: 0;
+      line-height: getCssVar(height, control, default);
+      color: inherit;
+      text-align: left;
+      background-color: transparent;
+    }
+  }
+  .#{bem(control-group-tree-node__label)} {
+    flex-grow: initial;
+    flex-shrink: initial;
+  }
+  .#{bem(context-menu)} {
+    margin-left: auto;
+  }
+}
+
+@include b(control-group-tree-editing-node) {
+  min-height: getCssVar('height-control', 'default');
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.workloadget_register_workload" isClosed="false" isExecutable="true" name="base_workload_get_register_workload_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.workloadget_register_workload">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="workloadget_register_workloaddefault" type="entity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IWorkloadService))" name="workloadservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IWorkloadService))" name="iBzSysWorkloadDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="workloadget_register_workloaddefault" type="cn.ibizlab.plm.core.base.domain.Workload" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloaddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工时明细"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取已登记工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="获取剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="获取预估工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="计算进度"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadget_register_workloadend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall3_rawsfcode1" sourceRef="rawsqlcall3" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

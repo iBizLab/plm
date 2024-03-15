@@ -1,0 +1,274 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_griddefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridfor_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridpage;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridresult_list;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridresult_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridtop_fiter;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridtop_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridtop_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridwork_item;
+                    global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemidea_tree_gridbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "work_itemidea_tree_gridprepareparam4"
+            when
+            then
+                            work_itemidea_tree_griddefault.set("n_is_archived_eq","0");
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "work_itemidea_tree_griddebugparam1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[平铺数据集合]
+            rule "dedataset2"
+            ruleflow-group "work_itemidea_tree_griddedataset2"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[需求类型工作项]
+            rule "prepareparam3"
+            ruleflow-group "work_itemidea_tree_gridprepareparam3"
+            when
+            then
+                            work_itemidea_tree_griddefault.set("n_work_item_type_group_eq","requirement");
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取顶级工作项]
+            rule "dedataset1"
+            ruleflow-group "work_itemidea_tree_griddedataset1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemidea_tree_gridloopsubcall1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[拼接top_ids]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemidea_tree_gridrawsfcode1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam1"
+            ruleflow-group "work_itemidea_tree_gridappendparam1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[top_ids放入过滤器]
+            rule "prepareparam1"
+            ruleflow-group "work_itemidea_tree_gridprepareparam1"
+            when
+            then
+                            work_itemidea_tree_gridtop_fiter.set("n_top_id_in",work_itemidea_tree_gridwork_item.get("top_ids"));
+                            work_itemidea_tree_gridtop_fiter.set("n_work_item_type_group_eq","requirement");
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[顶级工作项下的所有子工作项]
+            rule "dedataset3"
+            ruleflow-group "work_itemidea_tree_griddedataset3"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "work_itemidea_tree_gridloopsubcall2"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam2"
+            ruleflow-group "work_itemidea_tree_gridappendparam2"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "work_itemidea_tree_gridbindparam1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemidea_tree_gridend1"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[复制分页参数]
+            rule "prepareparam2"
+            ruleflow-group "work_itemidea_tree_gridprepareparam2"
+            when
+            then
+                            work_itemidea_tree_gridresult_page.set("total",work_itemidea_tree_gridpage.get("total"));
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end

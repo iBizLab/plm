@@ -1,0 +1,352 @@
+{
+  "codeName" : "get_last_run_info",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDELOGICS/get_last_run_info.json",
+  "logicName" : "获取最后运行状态",
+  "name" : "获取最后运行状态",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 250,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置上下文",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "psdelogic",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "context"
+      },
+      "name" : "Default[psdelogicid] ==> context[psdelogic]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "psdelogicid",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 310
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "context"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "leftPos" : 486,
+    "logicNodeType" : "DEACTION",
+    "name" : "实体行为",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 310
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 486,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "过滤参数设置",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_owner_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "logic_log_filter"
+      },
+      "name" : "context[psdelogic] ==> logic_log_filter[n_owner_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "psdelogic",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "context"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "sort",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "logic_log_filter"
+      },
+      "name" : "直接值[start_at,desc] ==> logic_log_filter[sort]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "start_at,desc",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 428
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "logic_log_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_log.json"
+    },
+    "leftPos" : 486,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取日志",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "logs"
+          },
+          "logicType" : "SINGLE",
+          "name" : "logs[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "logs"
+          },
+          "logicType" : "SINGLE",
+          "name" : "logs[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "logs"
+    },
+    "topPos" : 541,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "logic_log"
+    },
+    "leftPos" : 760,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "0",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "logs"
+    },
+    "topPos" : 541
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1043,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 668
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 760,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "LAST_START_AT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "logic_log[START_AT] ==> Default[LAST_START_AT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "START_AT",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "logic_log"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "LAST_STATE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "logic_log[STATE] ==> Default[LAST_STATE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "STATE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "logic_log"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 676
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 526,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 736
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDELogic.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "context",
+    "logicName" : "上下文",
+    "name" : "上下文",
+    "appContextParam" : true
+  }, {
+    "codeName" : "logic_log",
+    "logicName" : "最新日志",
+    "name" : "最新日志",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_log.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "logic_log_filter",
+    "logicName" : "逻辑记录",
+    "name" : "逻辑记录",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_log.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "logs",
+    "logicName" : "日志数组",
+    "name" : "日志数组",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_log.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

@@ -1,0 +1,72 @@
+{
+  "codeName" : "duration_updateform",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/Workload/PSDELOGICS/duration_updateform.json",
+  "logicName" : "工作时长表单项更新",
+  "name" : "工作时长表单项更新",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar actual_workload = defaultObj.get(\"actual_workload\") == null ? 0 : defaultObj.get(\"actual_workload\");\r\nvar estimated_workload = defaultObj.get(\"estimated_workload\") == null ? 0 : defaultObj.get(\"estimated_workload\");\r\nvar duration = defaultObj.get(\"duration\");\r\nvar remaining_workload = estimated_workload - actual_workload - duration;\r\nremaining_workload = remaining_workload < 0 ? 0 : remaining_workload;\r\ndefaultObj.set(\"remaining_workload\", remaining_workload.toFixed(1));\r\n\r\nif((Number(actual_workload) + Number(remaining_workload) + duration) > 0 && (Number(actual_workload) + duration > 0)){\r\n    var workload_schedule = ((Number(actual_workload) + Number(duration)) / (Number(actual_workload) + duration + Number(remaining_workload))) * 100;\r\n    defaultObj.set(\"workload_schedule\", workload_schedule);\r\n    if(workload_schedule > 100){\r\n        defaultObj.set(\"workload_schedule\", 100);\r\n    }\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "计算剩余工时和工时进度",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 367
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 496
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Workload.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

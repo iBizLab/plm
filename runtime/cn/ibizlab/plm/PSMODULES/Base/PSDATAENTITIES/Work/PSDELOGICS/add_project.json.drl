@@ -1,0 +1,85 @@
+package cn.ibizlab.plm.base.logic.worklogic.add_project;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.Work workadd_projectdefault;
+                global cn.ibizlab.plm.core.base.domain.Work workadd_projectcreate_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.Project workadd_projectfor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.Project workadd_projectsrfactionparam;
+                    global cn.ibizlab.plm.core.base.service.IWorkService workservice;
+        global cn.ibizlab.plm.core.base.service.IWorkService iBzSysWorkDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workadd_projectbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "workadd_projectprepareparam2"
+            when
+            then
+                            workadd_projectsrfactionparam.set("",workadd_projectdefault.get("srfactionparam"));
+                        update(workadd_projectdefault);//更新fact中变量值
+                        update(workadd_projectcreate_obj);//更新fact中变量值
+                        update(workadd_projectfor_temp_obj);//更新fact中变量值
+                        update(workadd_projectsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "workadd_projectloopsubcall1"
+            when
+            then
+                        update(workadd_projectdefault);//更新fact中变量值
+                        update(workadd_projectcreate_obj);//更新fact中变量值
+                        update(workadd_projectfor_temp_obj);//更新fact中变量值
+                        update(workadd_projectsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam1"
+            ruleflow-group "workadd_projectresetparam1"
+            when
+            then
+                        update(workadd_projectdefault);//更新fact中变量值
+                        update(workadd_projectcreate_obj);//更新fact中变量值
+                        update(workadd_projectfor_temp_obj);//更新fact中变量值
+                        update(workadd_projectsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "workadd_projectprepareparam1"
+            when
+            then
+                            workadd_projectcreate_obj.set("principalid",workadd_projectfor_temp_obj.get("id"));
+                            workadd_projectcreate_obj.set("portfolioid",workadd_projectdefault.get("portfolioid"));
+                            workadd_projectcreate_obj.set("principaltype","project");
+                            workadd_projectcreate_obj.set("name",workadd_projectfor_temp_obj.get("name"));
+                        update(workadd_projectdefault);//更新fact中变量值
+                        update(workadd_projectcreate_obj);//更新fact中变量值
+                        update(workadd_projectfor_temp_obj);//更新fact中变量值
+                        update(workadd_projectsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "workadd_projectdeaction1"
+            when
+            then
+                        workservice.save(workadd_projectcreate_obj);
+                        update(workadd_projectdefault);//更新fact中变量值
+                        update(workadd_projectcreate_obj);//更新fact中变量值
+                        update(workadd_projectfor_temp_obj);//更新fact中变量值
+                        update(workadd_projectsrfactionparam);//更新fact中变量值
+            end
