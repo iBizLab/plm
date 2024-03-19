@@ -40,6 +40,7 @@ iBizPLM划分为5大模块：
 - 演示管理员账号/密码：demo_admin/123456
 - 演示普通用户账号/密码：demo_user/123456
 - 欢迎加入iBizPLM交流QQ群：1067434627
+- 系统详细设计文档：[http://plmdoc.ibizlab.cn](http://plmdoc.ibizlab.cn) 特别鸣谢：[doc-generator](https://github.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
 
 ### 安装部署
 
