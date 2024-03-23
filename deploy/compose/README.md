@@ -10,7 +10,7 @@ git clone https://github.com/ibizlab/plm.git
 ##### 切换到此目录：
 
 ```
-cd iBizPLM/deploy/compose
+cd plm/deploy/compose
 ```
 
 ##### 复制示例`.env`文件并编辑要更改的任何值：
@@ -39,7 +39,7 @@ rt_data：allinone存放文件的持久化目录，例如：图片，附件等
 ##### 切换到此目录：
 
 ```
-cd iBizPLM/deploy/compose
+cd plm/deploy/compose
 ```
 
 ##### 从存储库中检索任何更改：
