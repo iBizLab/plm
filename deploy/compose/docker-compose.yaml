@@ -51,6 +51,8 @@ services:
   #redis
   redis:
     image: ibizlab/redis:6.2.6
+    ports:
+    - "6379:6379"
     environment:
     - TZ=Asia/Shanghai
     logging:
@@ -61,6 +63,8 @@ services:
   #zookeeper
   zoo1:
     image: ibizlab/zookeeper:3.7.0
+    ports:
+    - "2181:2181"
     networks:
     - agent_network
     environment:
