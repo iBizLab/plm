@@ -18,6 +18,7 @@
     }
   },
   "height" : 1.0,
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "my_work_item_count",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -63,6 +64,24 @@
     } ],
     "id" : "0"
   } ],
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "dashboard_sysportlet6_chart",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "logic_custom_params",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "chart_show_count"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+    }
+  } ],
+  "getPSDEChartDataGrid" : {
+    "index" : 0,
+    "id" : "0"
+  },
   "getPSDEChartLegend" : {
     "index" : 0,
     "legendPos" : "BOTTOM",
@@ -70,7 +89,7 @@
     "id" : "0"
   },
   "getPSDEChartSerieses" : [ {
-    "caption" : "访问来源",
+    "caption" : "状态",
     "catalogField" : "STATE_TYPE",
     "getCatalogPSCodeList" : {
       "modelref" : true,
@@ -111,10 +130,11 @@
     "id" : "0"
   },
   "readOnly" : true,
-  "modelid" : "DDFA8DD7-7AB4-4DC1-A615-B8E9362C06BA",
+  "modelid" : "c1171b62713874c9abc534ca1a13df2a",
   "modeltype" : "PSDECHART",
   "getUserParam" : {
     "EC.emphasis" : "{\"show\":true,\"itemStyle\":{\"opacity\":0.8,\"borderWidth\":6,\"borderColor\":\"\"},\"focus\":\"self\",\"scale\":true,\"shadowBlur\":10,\"shadowOffsetX\":0,\"shadowColor\":\"rgba(0,0,0,0.5)\"}",
+    "EC.title" : "{\"text\":\"\",\"left\":\"center\",\"top\":\"center\",\"textStyle\":{\"fontSize\":\"18px\"}}",
     "EC.legend" : "{\"left\":\"center\",\"bottom\":0,\"orient\":\"horizontal\",\"icon\":\"circle\",\"type\":\"plain\"}",
     "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\"]"
   }

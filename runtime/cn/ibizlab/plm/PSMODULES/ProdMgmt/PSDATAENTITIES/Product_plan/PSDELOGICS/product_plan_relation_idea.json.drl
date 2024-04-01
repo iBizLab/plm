@@ -1,0 +1,157 @@
+package cn.ibizlab.plm.prodmgmt.logic.product_planlogic.product_plan_relation_idea;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Product_plan product_planproduct_plan_relation_ideadefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Product_plan product_planproduct_plan_relation_ideafor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation product_planproduct_plan_relation_idearelationobj;
+                global cn.ibizlab.plm.core.base.domain.Relation product_planproduct_plan_relation_idearelationobj2;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Product_plan product_planproduct_plan_relation_ideaselectdata;
+                    global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IProduct_planService iBzSysProduct_planDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "product_planproduct_plan_relation_ideabegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "product_planproduct_plan_relation_ideadebugparam1"
+            when
+            then
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "product_planproduct_plan_relation_ideabindparam1"
+            when
+            then
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "product_planproduct_plan_relation_idealoopsubcall1"
+            when
+            then
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "product_planproduct_plan_relation_idearenewparam1"
+            when
+            then
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam2"
+            ruleflow-group "product_planproduct_plan_relation_idearenewparam2"
+            when
+            then
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "product_planproduct_plan_relation_ideaprepareparam2"
+            when
+            then
+                            product_planproduct_plan_relation_idearelationobj2.set("principalid",product_planproduct_plan_relation_ideafor_temp_obj.get("owner_id"));
+                            product_planproduct_plan_relation_idearelationobj.set("targetid",product_planproduct_plan_relation_ideafor_temp_obj.get("owner_id"));
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "product_planproduct_plan_relation_ideaprepareparam1"
+            when
+            then
+                            product_planproduct_plan_relation_idearelationobj.set("principalid",product_planproduct_plan_relation_ideadefault.get("principal_id"));
+                            product_planproduct_plan_relation_idearelationobj2.set("principalid",product_planproduct_plan_relation_ideafor_temp_obj.get("id"));
+                            product_planproduct_plan_relation_idearelationobj2.set("targetid",product_planproduct_plan_relation_ideadefault.get("principal_id"));
+                            product_planproduct_plan_relation_idearelationobj2.set("principaltype",product_planproduct_plan_relation_ideadefault.get("target_type"));
+                            product_planproduct_plan_relation_idearelationobj2.set("targettype",product_planproduct_plan_relation_ideadefault.get("principal_type"));
+                            product_planproduct_plan_relation_idearelationobj.set("principaltype",product_planproduct_plan_relation_ideadefault.get("principal_type"));
+                            product_planproduct_plan_relation_idearelationobj.set("targettype",product_planproduct_plan_relation_ideadefault.get("target_type"));
+                            product_planproduct_plan_relation_idearelationobj.set("targetid",product_planproduct_plan_relation_ideafor_temp_obj.get("id"));
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "product_planproduct_plan_relation_ideaend1"
+            when
+            then
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "product_planproduct_plan_relation_ideadeaction1"
+            when
+            then
+                        relationservice.save(product_planproduct_plan_relation_idearelationobj);
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "product_planproduct_plan_relation_ideadeaction2"
+            when
+            then
+                        relationservice.save(product_planproduct_plan_relation_idearelationobj2);
+                        update(product_planproduct_plan_relation_ideadefault);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideafor_temp_obj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj);//更新fact中变量值
+                        update(product_planproduct_plan_relation_idearelationobj2);//更新fact中变量值
+                        update(product_planproduct_plan_relation_ideaselectdata);//更新fact中变量值
+            end

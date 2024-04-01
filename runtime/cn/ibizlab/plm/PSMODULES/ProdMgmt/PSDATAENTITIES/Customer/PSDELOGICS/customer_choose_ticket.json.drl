@@ -1,0 +1,101 @@
+package cn.ibizlab.plm.prodmgmt.logic.customerlogic.customer_choose_ticket;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customercustomer_choose_ticketdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customercustomer_choose_ticketfor_temp_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customercustomer_choose_ticketsrfactionparam;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customercustomer_choose_ticketthis_ticket;
+                global cn.ibizlab.plm.core.prodmgmt.domain.Customer customercustomer_choose_ticketupdate_obj;
+                    global cn.ibizlab.plm.core.prodmgmt.service.ITicketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.ICustomerService iBzSysCustomerDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "customercustomer_choose_ticketbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "customercustomer_choose_ticketdebugparam1"
+            when
+            then
+                        update(customercustomer_choose_ticketdefault);//更新fact中变量值
+                        update(customercustomer_choose_ticketfor_temp_obj);//更新fact中变量值
+                        update(customercustomer_choose_ticketsrfactionparam);//更新fact中变量值
+                        update(customercustomer_choose_ticketthis_ticket);//更新fact中变量值
+                        update(customercustomer_choose_ticketupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "customercustomer_choose_ticketprepareparam1"
+            when
+            then
+                            customercustomer_choose_ticketsrfactionparam.set("",customercustomer_choose_ticketdefault.get("srfactionparam"));
+                        update(customercustomer_choose_ticketdefault);//更新fact中变量值
+                        update(customercustomer_choose_ticketfor_temp_obj);//更新fact中变量值
+                        update(customercustomer_choose_ticketsrfactionparam);//更新fact中变量值
+                        update(customercustomer_choose_ticketthis_ticket);//更新fact中变量值
+                        update(customercustomer_choose_ticketupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "customercustomer_choose_ticketloopsubcall1"
+            when
+            then
+                        update(customercustomer_choose_ticketdefault);//更新fact中变量值
+                        update(customercustomer_choose_ticketfor_temp_obj);//更新fact中变量值
+                        update(customercustomer_choose_ticketsrfactionparam);//更新fact中变量值
+                        update(customercustomer_choose_ticketthis_ticket);//更新fact中变量值
+                        update(customercustomer_choose_ticketupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "customercustomer_choose_ticketrenewparam1"
+            when
+            then
+                        update(customercustomer_choose_ticketdefault);//更新fact中变量值
+                        update(customercustomer_choose_ticketfor_temp_obj);//更新fact中变量值
+                        update(customercustomer_choose_ticketsrfactionparam);//更新fact中变量值
+                        update(customercustomer_choose_ticketthis_ticket);//更新fact中变量值
+                        update(customercustomer_choose_ticketupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "customercustomer_choose_ticketprepareparam2"
+            when
+            then
+                            customercustomer_choose_ticketupdate_obj.set("id",customercustomer_choose_ticketfor_temp_obj.get("owner_id"));
+                            customercustomer_choose_ticketupdate_obj.set("customer_id",customercustomer_choose_ticketdefault.get("customer_id"));
+                        update(customercustomer_choose_ticketdefault);//更新fact中变量值
+                        update(customercustomer_choose_ticketfor_temp_obj);//更新fact中变量值
+                        update(customercustomer_choose_ticketsrfactionparam);//更新fact中变量值
+                        update(customercustomer_choose_ticketthis_ticket);//更新fact中变量值
+                        update(customercustomer_choose_ticketupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "customercustomer_choose_ticketdeaction1"
+            when
+            then
+                        ticketservice.update(customercustomer_choose_ticketupdate_obj);
+                        update(customercustomer_choose_ticketdefault);//更新fact中变量值
+                        update(customercustomer_choose_ticketfor_temp_obj);//更新fact中变量值
+                        update(customercustomer_choose_ticketsrfactionparam);//更新fact中变量值
+                        update(customercustomer_choose_ticketthis_ticket);//更新fact中变量值
+                        update(customercustomer_choose_ticketupdate_obj);//更新fact中变量值
+            end

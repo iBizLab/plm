@@ -1,0 +1,131 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.others_relation_run;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run runothers_relation_rundefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run runothers_relation_runfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation runothers_relation_runrelationobj;
+                global cn.ibizlab.plm.core.base.domain.Relation runothers_relation_runrelationobj2;
+                global cn.ibizlab.plm.core.testmgmt.domain.Run runothers_relation_runselectdata;
+                    global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IRunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runothers_relation_runbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "runothers_relation_runbindparam1"
+            when
+            then
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "runothers_relation_runloopsubcall1"
+            when
+            then
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "runothers_relation_runrenewparam1"
+            when
+            then
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam2"
+            ruleflow-group "runothers_relation_runrenewparam2"
+            when
+            then
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "runothers_relation_runprepareparam1"
+            when
+            then
+                            runothers_relation_runrelationobj.set("principalid",runothers_relation_rundefault.get("principal_id"));
+                            runothers_relation_runrelationobj2.set("principalid",runothers_relation_runfor_temp_obj.get("owner_id"));
+                            runothers_relation_runrelationobj2.set("targetid",runothers_relation_rundefault.get("principal_id"));
+                            runothers_relation_runrelationobj2.set("principaltype",runothers_relation_rundefault.get("target_type"));
+                            runothers_relation_runrelationobj2.set("targettype",runothers_relation_rundefault.get("principal_type"));
+                            runothers_relation_runrelationobj.set("principaltype",runothers_relation_rundefault.get("principal_type"));
+                            runothers_relation_runrelationobj.set("targettype",runothers_relation_rundefault.get("target_type"));
+                            runothers_relation_runrelationobj.set("targetid",runothers_relation_runfor_temp_obj.get("owner_id"));
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "runothers_relation_runend1"
+            when
+            then
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "runothers_relation_rundeaction1"
+            when
+            then
+                        relationservice.save(runothers_relation_runrelationobj);
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "runothers_relation_rundeaction2"
+            when
+            then
+                        relationservice.save(runothers_relation_runrelationobj2);
+                        update(runothers_relation_rundefault);//更新fact中变量值
+                        update(runothers_relation_runfor_temp_obj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj);//更新fact中变量值
+                        update(runothers_relation_runrelationobj2);//更新fact中变量值
+                        update(runothers_relation_runselectdata);//更新fact中变量值
+            end

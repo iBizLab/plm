@@ -6,8 +6,8 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.del_relation;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.wiki.domain.Space spacedel_relationdefault;
-                global cn.ibizlab.plm.core.base.domain.Relation spacedel_relationrelationobj;
-                global cn.ibizlab.plm.core.base.domain.Relation spacedel_relationrelationobj2;
+                global cn.ibizlab.plm.core.base.domain.Relation spacedel_relationforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation spacedel_relationreverse_relation_obj;
                     global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
         global cn.ibizlab.plm.core.wiki.service.ISpaceService iBzSysSpaceDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -22,28 +22,28 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.del_relation;
             then
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[填充正反关联对象的主要关联属性]
             rule "prepareparam1"
             ruleflow-group "spacedel_relationprepareparam1"
             when
             then
-                            spacedel_relationrelationobj.set("principalid",spacedel_relationdefault.get("principal_id"));
-                            spacedel_relationrelationobj2.set("targetid",spacedel_relationdefault.get("principal_id"));
-                            spacedel_relationrelationobj2.set("principalid",spacedel_relationdefault.get("id"));
-                            spacedel_relationrelationobj.set("targetid",spacedel_relationdefault.get("id"));
+                            spacedel_relationforward_relation_obj.set("principalid",spacedel_relationdefault.get("principal_id"));
+                            spacedel_relationreverse_relation_obj.set("targetid",spacedel_relationdefault.get("principal_id"));
+                            spacedel_relationreverse_relation_obj.set("principalid",spacedel_relationdefault.get("id"));
+                            spacedel_relationforward_relation_obj.set("targetid",spacedel_relationdefault.get("id"));
                         update(spacedel_relationdefault);//更新fact中变量值
-                        update(spacedel_relationrelationobj);//更新fact中变量值
-                        update(spacedel_relationrelationobj2);//更新fact中变量值
+                        update(spacedel_relationforward_relation_obj);//更新fact中变量值
+                        update(spacedel_relationreverse_relation_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[拼接关联对象的主键]
+            //逻辑处理节点[拼接正反关联对象的主键]
             rule "rawsfcode1"
             ruleflow-group "spacedel_relationrawsfcode1"
             when
             then
                         update(spacedel_relationdefault);//更新fact中变量值
-                        update(spacedel_relationrelationobj);//更新fact中变量值
-                        update(spacedel_relationrelationobj2);//更新fact中变量值
+                        update(spacedel_relationforward_relation_obj);//更新fact中变量值
+                        update(spacedel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除正向关联]
@@ -51,10 +51,10 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.del_relation;
             ruleflow-group "spacedel_relationdeaction2"
             when
             then
-                        relationservice.remove(spacedel_relationrelationobj.getId());
+                        relationservice.remove(spacedel_relationforward_relation_obj.getId());
                         update(spacedel_relationdefault);//更新fact中变量值
-                        update(spacedel_relationrelationobj);//更新fact中变量值
-                        update(spacedel_relationrelationobj2);//更新fact中变量值
+                        update(spacedel_relationforward_relation_obj);//更新fact中变量值
+                        update(spacedel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除反向关联]
@@ -62,10 +62,10 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.del_relation;
             ruleflow-group "spacedel_relationdeaction3"
             when
             then
-                        relationservice.remove(spacedel_relationrelationobj2.getId());
+                        relationservice.remove(spacedel_relationreverse_relation_obj.getId());
                         update(spacedel_relationdefault);//更新fact中变量值
-                        update(spacedel_relationrelationobj);//更新fact中变量值
-                        update(spacedel_relationrelationobj2);//更新fact中变量值
+                        update(spacedel_relationforward_relation_obj);//更新fact中变量值
+                        update(spacedel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -74,6 +74,6 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.del_relation;
             when
             then
                         update(spacedel_relationdefault);//更新fact中变量值
-                        update(spacedel_relationrelationobj);//更新fact中变量值
-                        update(spacedel_relationrelationobj2);//更新fact中变量值
+                        update(spacedel_relationforward_relation_obj);//更新fact中变量值
+                        update(spacedel_relationreverse_relation_obj);//更新fact中变量值
             end

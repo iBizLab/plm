@@ -4,6 +4,20 @@
   "columnEnableFilter" : 2,
   "columnEnableLink" : 2,
   "controlType" : "GRID",
+  "getCreatePSControlAction" : {
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
+    }
+  },
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member/PSGRIDS/Setting_table.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
@@ -13,6 +27,34 @@
     "getPSAppDEMethod" : {
       "modelref" : true,
       "id" : "FetchDefault"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
+    }
+  },
+  "getGetDraftPSControlAction" : {
+    "actionName" : "GetDraft",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraft",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "GetDraft"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Get"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -39,17 +81,13 @@
     },
     "getPSDEToolbarItems" : [ {
       "getCapPSLanguageRes" : {
-        "defaultContent" : "删除",
-        "lanResTag" : "TBB.TEXT.*.REMOVE",
-        "lanResType" : "TBB.TEXT",
-        "name" : "工具栏按钮文本[*.REMOVE]",
-        "refFlag" : true
+        "lanResTag" : "TBB.TEXT.*.REMOVE"
       },
       "caption" : "删除",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "deuiaction2",
-      "noPrivDisplayMode" : 2,
+      "noPrivDisplayMode" : 1,
       "getPSAppViewUIAction" : {
         "modelref" : true,
         "id" : "grid_batchtoolbar_deuiaction2"
@@ -60,17 +98,19 @@
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
         "getCapPSLanguageRes" : {
-          "defaultContent" : "删除",
-          "lanResTag" : "TBB.TEXT.*.REMOVE",
-          "lanResType" : "TBB.TEXT",
-          "name" : "工具栏按钮文本[*.REMOVE]",
-          "refFlag" : true
+          "lanResTag" : "TBB.TEXT.*.REMOVE"
         },
         "caption" : "删除",
         "codeName" : "Remove",
+        "dataAccessAction" : "DELETE",
         "fullCodeName" : "Remove",
         "name" : "表格界面_删除操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "DELETE"
+        },
         "getPSSysImage" : {
           "glyph" : "xf00d@FontAwesome",
           "cssClass" : "fa fa-remove"
@@ -78,11 +118,7 @@
         "predefinedType" : "GRIDVIEW_REMOVEACTION",
         "timeout" : 60000,
         "getTooltipPSLanguageRes" : {
-          "defaultContent" : "删除",
-          "lanResTag" : "TBB.TOOLTIP.*.REMOVE",
-          "lanResType" : "TBB.TOOLTIP",
-          "name" : "工具栏按钮提示[*.REMOVE]",
-          "refFlag" : true
+          "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
         },
         "uIActionMode" : "SYS",
         "uIActionTag" : "Remove",
@@ -90,40 +126,26 @@
       },
       "tooltip" : "删除",
       "getTooltipPSLanguageRes" : {
-        "defaultContent" : "删除",
-        "lanResTag" : "TBB.TOOLTIP.*.REMOVE",
-        "lanResType" : "TBB.TOOLTIP",
-        "name" : "工具栏按钮提示[*.REMOVE]",
-        "refFlag" : true
+        "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
       },
       "uIActionTarget" : "MULTIKEY",
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "modelid" : "74CCFEF5-0654-4145-852A-227C53342218",
+    "modelid" : "824333fc6aa069bfea300fcc0b94336d",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
     "getCapPSLanguageRes" : {
-      "defaultContent" : "名称",
-      "lanResTag" : "DEF.LNAME.NAME",
-      "lanResType" : "DEF.LNAME",
-      "name" : "属性逻辑名称（DEF.LNAME.*）[NAME]",
-      "refFlag" : true
+      "lanResTag" : "DEF.LNAME.NAME"
     },
     "caption" : "姓名",
     "codeName" : "name",
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "name",
     "excelCaption" : "姓名",
-    "getLinkPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/userRedirectView.json",
-      "viewType" : "DEREDIRECTVIEW"
-    },
-    "linkValueItem" : "user_id",
     "name" : "name",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
@@ -132,17 +154,34 @@
     },
     "width" : 200,
     "widthUnit" : "STAR",
-    "enableLinkView" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "caption" : "角色",
+    "codeName" : "role_id",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "role_id",
+    "excelCaption" : "角色",
+    "name" : "role_id",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__Role_type.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "ROLE_ID",
+      "codeName" : "Role_id"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableRowEdit" : true,
     "enableSort" : true
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "FRONT",
     "getCapPSLanguageRes" : {
-      "defaultContent" : "更新人",
-      "lanResTag" : "DEF.LNAME.UPDATE_MAN",
-      "lanResType" : "DEF.LNAME",
-      "name" : "属性逻辑名称（DEF.LNAME.*）[UPDATE_MAN]",
-      "refFlag" : true
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
     },
     "caption" : "更新人",
     "codeName" : "update_man",
@@ -159,18 +198,14 @@
       "name" : "UPDATE_MAN",
       "codeName" : "Update_man"
     },
-    "width" : 200,
+    "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : true
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
     "getCapPSLanguageRes" : {
-      "defaultContent" : "更新时间",
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME",
-      "lanResType" : "DEF.LNAME",
-      "name" : "属性逻辑名称（DEF.LNAME.*）[UPDATE_TIME]",
-      "refFlag" : true
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
     "caption" : "更新时间",
     "codeName" : "update_time",
@@ -187,81 +222,6 @@
     "width" : 200,
     "widthUnit" : "PX",
     "enableSort" : true
-  }, {
-    "align" : "CENTER",
-    "caption" : "操作",
-    "codeName" : "uagridcolumn1",
-    "columnType" : "UAGRIDCOLUMN",
-    "name" : "uagridcolumn1",
-    "noPrivDisplayMode" : 1,
-    "getPSDEUIActionGroup" : {
-      "codeName" : "Usr1220055289",
-      "name" : "项目成员配置",
-      "getPSUIActionGroupDetails" : [ {
-        "detailType" : "DEUIACTION",
-        "name" : "u879e07c",
-        "getPSSysImage" : {
-          "cssClass" : "settings"
-        },
-        "getPSUIAction" : {
-          "caption" : "设置角色",
-          "codeName" : "setting_role",
-          "fullCodeName" : "setting_role",
-          "name" : "设置角色",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-          },
-          "predefinedType" : "EDITVIEW_NEWACTION",
-          "timeout" : 60000,
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "setting_role",
-          "uIActionType" : "DEUIACTION"
-        },
-        "addSeparator" : false,
-        "showCaption" : false,
-        "showIcon" : true
-      }, {
-        "detailType" : "DEUIACTION",
-        "name" : "ua83cdb4",
-        "getPSSysImage" : {
-          "glyph" : "xf1f8@FontAwesome",
-          "cssClass" : "fa fa-trash"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "SINGLEKEY",
-          "caption" : "移除成员",
-          "codeName" : "remove_member",
-          "confirmMsg" : "确认删除该成员？",
-          "fullCodeName" : "Project_member_remove_member",
-          "name" : "移除成员",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "Remove"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-          },
-          "refreshMode" : 1,
-          "successMsg" : "删除成功",
-          "timeout" : 60000,
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "remove_member",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "remove_member@Project_member"
-        },
-        "addSeparator" : false,
-        "showCaption" : false,
-        "showIcon" : true
-      } ],
-      "uniqueTag" : "Project_member__Usr1220055289"
-    },
-    "width" : 200,
-    "widthUnit" : "PX",
-    "enableSort" : false
   } ],
   "getPSDEGridDataItems" : [ {
     "dataType" : 25,
@@ -269,6 +229,13 @@
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "Name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "role_id",
+    "getPSAppDEField" : {
+      "name" : "ROLE_ID",
+      "codeName" : "Role_id"
     }
   }, {
     "dataType" : 25,
@@ -284,6 +251,13 @@
     "getPSAppDEField" : {
       "name" : "UPDATE_TIME",
       "codeName" : "Update_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
     }
   }, {
     "dataType" : 25,
@@ -323,9 +297,30 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
+    "caption" : "角色",
+    "codeName" : "role_id",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "role_id",
+    "getPSAppDEField" : {
+      "name" : "ROLE_ID",
+      "codeName" : "Role_id"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "role_id",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__Role_type.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "needCodeListConfig" : true
+  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
-    "enableCond" : 3,
+    "enableCond" : 0,
     "ignoreInput" : 0,
     "name" : "srfkey",
     "getPSAppDEField" : {
@@ -354,18 +349,32 @@
     }
   },
   "sortMode" : "REMOTE",
+  "getUpdatePSControlAction" : {
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
+    }
+  },
   "hasWFDataItems" : false,
   "enableColFilter" : false,
   "enableCustomized" : true,
   "enableGroup" : false,
   "enablePagingBar" : true,
-  "enableRowEdit" : false,
+  "enableRowEdit" : true,
   "enableRowEditOrder" : false,
-  "enableRowNew" : false,
+  "enableRowNew" : true,
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : false,
   "singleSelect" : false,
-  "modelid" : "684B7847-7020-480C-AAAE-750829D11CDC",
+  "modelid" : "112de0e8ac280a71beb62a6d7c6df6d8",
   "modeltype" : "PSDEGRID"
 }

@@ -163,7 +163,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_test_case\r\nFROM\r\n\ttest_case t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'test_case' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND (\r\n\t\t\t\t t.`IS_ARCHIVED` = 0 AND t.`IS_DELETED` = 0 \r\n\t\t\t)",
+    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_test_case\r\nFROM\r\n\ttest_case t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'test_case' \r\n\t\t\tAND (t11.`PRINCIPAL_TYPE` = 'work_item' OR t11.`PRINCIPAL_TYPE` = 'bug')\r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND (\r\n\t\t\t\t t.`IS_ARCHIVED` = 0 AND t.`IS_DELETED` = 0 \r\n\t\t\t)",
     "topPos" : 208,
     "fillDstLogicParam" : true
   }, {

@@ -42,7 +42,7 @@
       "name" : "NAME",
       "codeName" : "Name"
     },
-    "width" : 100,
+    "width" : 200,
     "widthUnit" : "STAR",
     "enableSort" : true
   }, {
@@ -66,8 +66,8 @@
       "name" : "CREATE_MAN",
       "codeName" : "Create_man"
     },
-    "width" : 100,
-    "widthUnit" : "STAR",
+    "width" : 150,
+    "widthUnit" : "PX",
     "enableSort" : true
   }, {
     "align" : "LEFT",
@@ -87,8 +87,8 @@
       "codeName" : "Create_time"
     },
     "valueFormat" : "YYYY-MM-DD HH:mm:ss",
-    "width" : 100,
-    "widthUnit" : "STAR",
+    "width" : 200,
+    "widthUnit" : "PX",
     "enableSort" : true
   }, {
     "align" : "CENTER",
@@ -106,15 +106,17 @@
       },
       "getPSUIActionGroupDetails" : [ {
         "detailType" : "DEUIACTION",
-        "name" : "u0971a9e",
+        "name" : "ud38e74b",
         "getPSSysImage" : {
           "glyph" : "xf044@FontAwesome",
           "cssClass" : "fa fa-edit"
         },
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
+          "noPrivDisplayMode" : 1,
           "caption" : "编辑标签",
           "codeName" : "edit_tag",
+          "dataAccessAction" : "UPDATE",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tagoption_view_edit.json",
@@ -126,6 +128,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_tag.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
           },
           "timeout" : 60000,
           "tooltip" : "编辑标签",
@@ -140,16 +146,18 @@
         "showIcon" : true
       }, {
         "detailType" : "DEUIACTION",
-        "name" : "u0e77fe6",
+        "name" : "ub539582",
         "getPSSysImage" : {
           "glyph" : "xf1f8@FontAwesome",
           "cssClass" : "fa fa-trash"
         },
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
+          "noPrivDisplayMode" : 1,
           "caption" : "删除标签",
           "codeName" : "delete_tag",
           "confirmMsg" : "确认删除该标签？",
+          "dataAccessAction" : "DELETE",
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "Product_tag_delete_tag",
           "name" : "删除标签",
@@ -160,6 +168,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_tag.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "DELETE"
           },
           "refreshMode" : 1,
           "successMsg" : "删除成功",
@@ -179,8 +191,8 @@
       } ],
       "uniqueTag" : "Product_tag__Usr1220692267"
     },
-    "width" : 100,
-    "widthUnit" : "STAR",
+    "width" : 200,
+    "widthUnit" : "PX",
     "enableSort" : false
   } ],
   "getPSDEGridDataItems" : [ {
@@ -279,6 +291,6 @@
   "hideHeader" : false,
   "noSort" : false,
   "singleSelect" : false,
-  "modelid" : "85F17CBD-B50B-4A6E-BAD2-B07A6DB0C816",
+  "modelid" : "d7574d308a30ebe11f73f83e211c78a1",
   "modeltype" : "PSDEGRID"
 }

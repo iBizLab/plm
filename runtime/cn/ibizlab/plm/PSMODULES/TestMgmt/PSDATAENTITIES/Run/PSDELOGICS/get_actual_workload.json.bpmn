@@ -6,18 +6,28 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="runget_actual_workloaddefault" type="entity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IRunService))" name="runservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IRunService))" name="iBzSysRunDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="runget_actual_workloaddefault" type="cn.ibizlab.plm.core.testmgmt.domain.Run" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_actual_workloaddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取执行用例"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_actual_workloadrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="获取已登记的工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_actual_workloadrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="获取剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_actual_workloadrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="获取预估工时"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_actual_workloadend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
+                    <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall3_end1" sourceRef="rawsqlcall3" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

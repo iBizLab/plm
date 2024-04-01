@@ -17,7 +17,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
   },
   "getPSDEViewCodeName" : "all_grid_view",
-  "getPSDEViewId" : "390D1C93-7EBC-42B6-99F2-A0272714C0F9",
+  "getPSDEViewId" : "ff83056019ea41f8f4b318b12c0a1a97",
   "getPSViewLayoutPanel" : {
     "codeName" : "Usr0205806150",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -193,7 +193,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "662290C9-B466-4760-8118-9CAA24DC97DE",
+    "modelid" : "3b47e988adf32f0f2124063f2978f4ea",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -257,15 +257,6 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "EDITDATA",
-      "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-      "realTitle" : "客户实体主视图",
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customermain_view.json",
-        "viewType" : "DEEDITVIEW"
-      }
-    }, {
       "name" : "NEWDATA",
       "realOpenMode" : "POPUPMODAL",
       "realTitle" : "新建客户",
@@ -273,6 +264,15 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customerquick_create_view.json",
         "viewType" : "DEOPTVIEW"
+      }
+    }, {
+      "name" : "EDITDATA",
+      "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+      "realTitle" : "客户实体主视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customermain_view.json",
+        "viewType" : "DEEDITVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -650,7 +650,7 @@
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction2",
-          "noPrivDisplayMode" : 2,
+          "noPrivDisplayMode" : 1,
           "getPSAppViewUIAction" : {
             "modelref" : true,
             "id" : "grid_batchtoolbar_deuiaction2"
@@ -661,13 +661,19 @@
           },
           "getPSUIAction" : {
             "actionTarget" : "MULTIKEY",
+            "noPrivDisplayMode" : 1,
             "getCapPSLanguageRes" : {
               "lanResTag" : "TBB.TEXT.*.REMOVE"
             },
             "caption" : "删除",
             "codeName" : "Remove",
+            "dataAccessAction" : "DELETE",
             "fullCodeName" : "Remove",
             "name" : "表格界面_删除操作",
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "DELETE"
+            },
             "getPSSysImage" : {
               "glyph" : "xf00d@FontAwesome",
               "cssClass" : "fa fa-remove"
@@ -689,7 +695,7 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
-        "modelid" : "8C637232-D9E3-44B4-8BDD-CC707BD27436",
+        "modelid" : "e36afab8d7a6fa9a3baac0dd6536bfb0",
         "modeltype" : "PSDETOOLBAR"
       } ],
       "getPSDEDataImport" : {
@@ -723,7 +729,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "设置类别",
             "detailType" : "DEUIACTION",
-            "name" : "u8e57b38",
+            "name" : "u3b2b1f1",
             "getPSSysImage" : {
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
@@ -768,7 +774,7 @@
           }, {
             "caption" : "删除",
             "detailType" : "DEUIACTION",
-            "name" : "u05aaac5",
+            "name" : "u40c2174",
             "getPSSysImage" : {
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
@@ -1189,7 +1195,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "跳转至成员设置",
               "detailType" : "DEUIACTION",
-              "name" : "u653ff49",
+              "name" : "u4befff7",
               "getPSSysImage" : {
                 "glyph" : "xf0f0@FontAwesome",
                 "cssClass" : "fa fa-user-md"
@@ -1370,6 +1376,14 @@
         "showBusyIndicator" : true,
         "id" : "SEARCHFORM"
       },
+      "getPSDEFormItems" : [ {
+        "id" : "n_name_like",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "Name"
+        }
+      } ],
       "getPSDEFormPages" : [ {
         "getCapPSLanguageRes" : {
           "lanResTag" : "CONTROL.DEFORM.CUSTOMER.DEFAULT.FORMPAGE.FORMPAGE1"
@@ -1379,9 +1393,40 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMPAGE",
         "name" : "formpage1",
+        "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "CONTROL.DEFSFITEM.CUSTOMER.N_NAME_LIKE"
+          },
+          "caption" : "客户名称",
+          "codeName" : "n_name_like",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "n_name_like",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "Name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "n_name_like",
+            "placeHolder" : "请输入客户名称"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 8,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true
+        } ],
         "getPSLayout" : {
-          "childColLG" : -1,
-          "childColMD" : 24,
+          "childColLG" : 8,
+          "childColMD" : 8,
           "childColSM" : -1,
           "childColXS" : -1,
           "columnCount" : 24,
@@ -1545,7 +1590,7 @@
       "enableQuickSearch" : true,
       "mobileSearchBar" : false,
       "name" : "searchbar",
-      "modelid" : "1BA8A3D5-0E45-45B8-953F-BF34D65C4691",
+      "modelid" : "459c8dea97b668920b46f6dc260a0720",
       "modeltype" : "PSSYSSEARCHBAR"
     }, {
       "getCapPSLanguageRes" : {
@@ -1574,7 +1619,7 @@
   "enableRowEdit" : true,
   "enableSearch" : true,
   "rowEditDefault" : true,
-  "modelid" : "e359fc0faaa907ce6173b6dba5c0541a",
+  "modelid" : "0074777c49b9acb0c8b11f09f553231f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

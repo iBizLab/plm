@@ -36,6 +36,20 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
     },
     "getPSViewCtrlName" : "form"
+  }, {
+    "eventNames" : "onLoadDraftSuccess",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "LOGIC2",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "set_default_attention"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+    },
+    "getPSViewCtrlName" : "form"
   } ],
   "getPSAppViewNavParams" : [ {
     "key" : "n_owner_id_eq",
@@ -219,20 +233,8 @@
       "id" : "FORM"
     },
     "getPSDEFormItemUpdates" : [ {
-      "codeName" : "set_type_bug",
-      "name" : "设置缺陷类型",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "Set_type_bug"
-      },
-      "getPSDEFIUpdateDetails" : [ {
-        "name" : "work_item_type_name"
-      }, {
-        "name" : "work_item_type_id"
-      } ]
-    }, {
       "codeName" : "set_default_entry",
-      "name" : "选择看板后设置默认看板栏",
+      "name" : "选择看板后填充默认看板栏",
       "getPSAppDEMethod" : {
         "modelref" : true,
         "id" : "Set_default_entry"
@@ -248,6 +250,18 @@
       } ],
       "scriptCode" : "if (ctrl.scheduler) {\r\n    ctrl.scheduler.triggerControlEvent(\r\n        'work_item_type_name',\r\n        'onChange',\r\n        null,\r\n    );\r\n}\r\nconsole.log(223)",
       "customCode" : true
+    }, {
+      "codeName" : "set_type_bug",
+      "name" : "设置缺陷类型",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "Set_type_bug"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "work_item_type_name"
+      }, {
+        "name" : "work_item_type_id"
+      } ]
     } ],
     "getPSDEFormItemVRs" : [ {
       "checkMode" : 1,
@@ -269,20 +283,20 @@
               "dEFName" : "END_AT",
               "name" : "[常规条件] 值为空(Nil)"
             }, {
-              "condOp" : "LT",
+              "condOp" : "LTANDEQ",
               "condType" : "SIMPLE",
               "dEFName" : "START_AT",
-              "name" : "[常规条件] 小于(<) 数据对象属性 (END_AT)",
+              "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
               "paramType" : "ENTITYFIELD",
               "paramValue" : "END_AT",
-              "ruleInfo" : "开始时间必须小于结束时间"
+              "ruleInfo" : "开始时间必须小于等于结束时间"
             } ],
-            "ruleInfo" : "开始时间必须小于结束时间"
+            "ruleInfo" : "开始时间必须小于等于结束时间"
           } ],
-          "ruleInfo" : "开始时间必须小于结束时间"
+          "ruleInfo" : "开始时间必须小于等于结束时间"
         },
-        "ruleInfo" : "开始时间必须小于结束时间",
-        "checkDefault" : false,
+        "ruleInfo" : "开始时间必须小于等于结束时间",
+        "checkDefault" : true,
         "defaultMode" : false,
         "enableBackend" : true,
         "enableFront" : true
@@ -309,20 +323,20 @@
               "dEFName" : "START_AT",
               "name" : "[常规条件] 值为空(Nil)"
             }, {
-              "condOp" : "GT",
+              "condOp" : "GTANDEQ",
               "condType" : "SIMPLE",
               "dEFName" : "END_AT",
-              "name" : "[常规条件] 大于(>) 数据对象属性 (START_AT)",
+              "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
               "paramType" : "ENTITYFIELD",
               "paramValue" : "START_AT",
-              "ruleInfo" : "结束时间必须大于开始时间"
+              "ruleInfo" : "结束时间必须大于等于开始时间"
             } ],
-            "ruleInfo" : "结束时间必须大于开始时间"
+            "ruleInfo" : "结束时间必须大于等于开始时间"
           } ],
-          "ruleInfo" : "结束时间必须大于开始时间"
+          "ruleInfo" : "结束时间必须大于等于开始时间"
         },
-        "ruleInfo" : "结束时间必须大于开始时间",
-        "checkDefault" : false,
+        "ruleInfo" : "结束时间必须大于等于开始时间",
+        "checkDefault" : true,
         "defaultMode" : false,
         "enableBackend" : true,
         "enableFront" : true
@@ -461,16 +475,6 @@
       "getPSAppDEField" : {
         "name" : "SPRINT_ID",
         "codeName" : "Sprint_id"
-      }
-    }, {
-      "id" : "version_id",
-      "hidden" : true,
-      "dataType" : 25,
-      "createDVT" : "APPDATA",
-      "createDV" : "version",
-      "getPSAppDEField" : {
-        "name" : "VERSION_ID",
-        "codeName" : "Version_id"
       }
     }, {
       "id" : "work_item_type_id",
@@ -712,7 +716,7 @@
                   "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
                   "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
                   "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-                  "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]}]",
+                  "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
                   "QUOTEURL" : "`recents/fetchrecent_access`"
                 },
                 "editorStyle" : "COLLAPSE",
@@ -1002,7 +1006,7 @@
                     "getPSUIActionGroupDetails" : [ {
                       "actionLevel" : 250,
                       "detailType" : "DEUIACTION",
-                      "name" : "u0b42a77",
+                      "name" : "u73b8ba5",
                       "getPSSysImage" : {
                         "glyph" : "xf019@FontAwesome",
                         "cssClass" : "fa fa-download"
@@ -1052,7 +1056,7 @@
                     }, {
                       "caption" : "删除",
                       "detailType" : "DEUIACTION",
-                      "name" : "u8aff03a",
+                      "name" : "u44d00e2",
                       "getPSSysImage" : {
                         "glyph" : "xf014@FontAwesome",
                         "cssClass" : "fa fa-trash-o"
@@ -1289,7 +1293,7 @@
               "getPSUIActionGroupDetails" : [ {
                 "caption" : "添加附件",
                 "detailType" : "DEUIACTION",
-                "name" : "u78a2300",
+                "name" : "uaa6fcf7",
                 "getPSSysImage" : {
                   "glyph" : "xf067@FontAwesome",
                   "cssClass" : "fa fa-plus"
@@ -1381,6 +1385,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "board_id",
+            "resetItemNames" : [ "board_id" ],
             "allowEmpty" : true,
             "hidden" : true,
             "showCaption" : true
@@ -1574,35 +1580,6 @@
             "hidden" : true,
             "showCaption" : true
           }, {
-            "caption" : "项目发布标识",
-            "codeName" : "version_id",
-            "createDV" : "version",
-            "createDVT" : "APPDATA",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 130,
-            "name" : "version_id",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "VERSION_ID",
-              "codeName" : "Version_id"
-            },
-            "getPSEditor" : {
-              "editorType" : "HIDDEN",
-              "name" : "version_id"
-            },
-            "getPSLayoutPos" : {
-              "colMD" : 24,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : true,
-            "hidden" : true,
-            "showCaption" : true
-          }, {
             "caption" : "工作项类型",
             "codeName" : "work_item_type_id",
             "dataType" : 25,
@@ -1740,7 +1717,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "caption" : "项目配置",
                   "detailType" : "DEUIACTION",
-                  "name" : "u25405e6",
+                  "name" : "u3fee786",
                   "getPSUIAction" : {
                     "actionTarget" : "NONE",
                     "caption" : "项目配置",
@@ -1948,6 +1925,18 @@
               "notMode" : false
             }, {
               "groupOP" : "AND",
+              "logicCat" : "ITEMENABLE",
+              "logicType" : "GROUP",
+              "name" : "表单成员[work_item_type_name][表单项启用]逻辑",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "project_name",
+                "logicType" : "SINGLE"
+              } ],
+              "relatedDetailNames" : [ "project_name" ],
+              "notMode" : false
+            }, {
+              "groupOP" : "AND",
               "logicCat" : "SCRIPTCODE_CHANGE",
               "logicType" : "GROUP",
               "name" : "表单成员[work_item_type_name][表单项值变更（脚本处理）]逻辑",
@@ -1962,6 +1951,7 @@
             },
             "getPSEditor" : {
               "editorParams" : {
+                "SRFNAVPARAM.n_code_in" : "%children_work_item_type_id%",
                 "SRFNAVPARAM.N_GROUP_EQ" : "%work_item_type_group_bug%",
                 "SRFNAVPARAM.PROJECT_ID" : "%PROJECT_ID%",
                 "AC" : "TRUE",
@@ -1987,6 +1977,11 @@
                 "name" : "work_item_type_id"
               } ],
               "getPSNavigateParams" : [ {
+                "key" : "n_code_in",
+                "name" : "n_code_in",
+                "value" : "children_work_item_type_id",
+                "rawValue" : false
+              }, {
                 "key" : "n_group_eq",
                 "name" : "n_group_eq",
                 "value" : "work_item_type_group_bug",
@@ -2271,7 +2266,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "caption" : "跳转至成员设置",
                   "detailType" : "DEUIACTION",
-                  "name" : "ue68004d",
+                  "name" : "uc5eeb4c",
                   "getPSSysImage" : {
                     "glyph" : "xf0f0@FontAwesome",
                     "cssClass" : "fa fa-user-md"
@@ -2372,6 +2367,11 @@
               "name" : "START_AT",
               "codeName" : "Start_at"
             },
+            "getPSControlAttributes" : [ {
+              "attrName" : "disabledDate",
+              "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+              "name" : "start_at_disabledDate"
+            } ],
             "getPSEditor" : {
               "dateTimeFormat" : "YYYY-MM-DD",
               "editorParams" : {
@@ -2405,6 +2405,11 @@
               "name" : "END_AT",
               "codeName" : "End_at"
             },
+            "getPSControlAttributes" : [ {
+              "attrName" : "disabledDate",
+              "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+              "name" : "end_at_disabledDate"
+            } ],
             "getPSEditor" : {
               "dateTimeFormat" : "YYYY-MM-DD",
               "editorParams" : {
@@ -2784,7 +2789,6 @@
                   "DEFAULTATNVALUE" : "40",
                   "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
                   "AC" : "TRUE",
-                  "DEFAULTSELCURUSER" : "true",
                   "TRIGGER" : "TRUE",
                   "SELFFILLMAP" : "{\"user_id\":\"user_id\",\"user_name\":\"name\"}",
                   "URL" : "projects/${context.project}/project_members/fetchdefault",
@@ -2983,7 +2987,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "quick_create_view",
-  "getPSDEViewId" : "3aa575eb9b879281eb2405b5174288fb",
+  "getPSDEViewId" : "28b90aa4dc349d21b981cdfdebb57ea4",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEOPTVIEW",
@@ -3005,7 +3009,7 @@
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "b0344d8afa1b303cd83a3a75b16c0673",
+  "modelid" : "8259894ac295830936fa3f219f86a96f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

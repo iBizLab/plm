@@ -32,6 +32,17 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_level;
                         update(test_caseset_levelsrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[变更状态]
+            rule "deaction1"
+            ruleflow-group "test_caseset_leveldeaction1"
+            when
+            then
+                        test_caseservice.update(test_caseset_leveldefault);
+                        update(test_caseset_leveldefault);//更新fact中变量值
+                        update(test_caseset_levelfor_temp_obj);//更新fact中变量值
+                        update(test_caseset_levelsrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[循环子调用]
             rule "loopsubcall1"
             ruleflow-group "test_caseset_levelloopsubcall1"
@@ -48,17 +59,6 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_level;
             when
             then
                             test_caseset_leveldefault.set("level",test_caseset_levelfor_temp_obj.get("level"));
-                        update(test_caseset_leveldefault);//更新fact中变量值
-                        update(test_caseset_levelfor_temp_obj);//更新fact中变量值
-                        update(test_caseset_levelsrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[变更状态]
-            rule "deaction1"
-            ruleflow-group "test_caseset_leveldeaction1"
-            when
-            then
-                        test_caseservice.update(test_caseset_leveldefault);
                         update(test_caseset_leveldefault);//更新fact中变量值
                         update(test_caseset_levelfor_temp_obj);//更新fact中变量值
                         update(test_caseset_levelsrfactionparam);//更新fact中变量值

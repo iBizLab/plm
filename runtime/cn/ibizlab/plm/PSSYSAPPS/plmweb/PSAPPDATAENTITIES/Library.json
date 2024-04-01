@@ -87,7 +87,7 @@
       } ],
       "layoutPanel" : true,
       "name" : "panel",
-      "modelid" : "0ABDAA98-EE83-4D65-AB0B-62128A3C2322",
+      "modelid" : "63ea700f092bfb62681548343f50d263",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "DEFAULT2",
@@ -1189,6 +1189,44 @@
     "requestPath" : "/fetchproject_relation_library",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchReader",
+    "dataSetName" : "reader",
+    "dataSetTag" : "Reader",
+    "methodType" : "FETCH",
+    "name" : "FetchReader",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "LibraryFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "LibraryDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Reader"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchReader"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchreader",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchUser",
     "dataSetName" : "user",
     "dataSetTag" : "User",
@@ -1236,7 +1274,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[IDENTIFIER][测试库标识]",
         "stringLength" : 15,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
@@ -1248,6 +1287,7 @@
         "name" : "[IDENTIFIER][测试库标识]移动端默认",
         "stringLength" : 15,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1269,6 +1309,7 @@
         "name" : "[VISIBILITY][可见范围]",
         "stringLength" : 60,
         "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
@@ -1281,6 +1322,7 @@
         "name" : "[VISIBILITY][可见范围]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
@@ -1531,7 +1573,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[NAME][名称]",
         "stringLength" : 200,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
@@ -1546,6 +1589,7 @@
         "name" : "[NAME][名称]移动端默认",
         "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1743,7 +1787,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Visibility",
       "logicName" : "可见范围",
@@ -1754,7 +1799,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Color",
       "logicName" : "主题色",
@@ -1879,7 +1925,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Update_man",
       "logicName" : "更新人",
@@ -1912,9 +1959,31 @@
     "codeName" : "LibraryFilterDTO",
     "name" : "LibraryFilterDTO",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "N_IDENTIFIER_EQ",
+      "logicName" : "测试库标识",
+      "name" : "N_IDENTIFIER_EQ",
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "Identifier"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "N_ID_EQ",
       "logicName" : "标识",
       "name" : "N_ID_EQ",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "Id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_ID_NOTEQ",
+      "logicName" : "标识",
+      "name" : "N_ID_NOTEQ",
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "Id"
@@ -3036,6 +3105,44 @@
     "requestPath" : "/fetchproject_relation_library",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchReader",
+    "dataSetName" : "reader",
+    "dataSetTag" : "Reader",
+    "methodType" : "FETCH",
+    "name" : "FetchReader",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "LibraryFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "LibraryDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Reader"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchReader"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchreader",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchUser",
     "dataSetName" : "user",
     "dataSetTag" : "User",
@@ -3329,6 +3436,7 @@
     "codeName" : "FetchTempProject_relation_library",
     "dataSetTag" : "Project_relation_library",
     "dataSetType" : "DATAQUERY",
+    "memo" : "通过测试计划中进行关联项目展示测试库",
     "methodType" : "FETCHTEMP",
     "name" : "project_relation_library",
     "getPSAppDEMethodInput" : {
@@ -3374,6 +3482,48 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "Project_relation_library"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempReader",
+    "dataSetTag" : "Reader",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "reader",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ReaderInput",
+      "name" : "ReaderInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "LibraryFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ReaderResult",
+      "name" : "ReaderResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "LibraryDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "public",
+        "fieldName" : "VISIBILITY",
+        "name" : "(VISIBILITY) 等于(=) public"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Reader"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false
@@ -3523,10 +3673,11 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "回收站",
     "codeName" : "open_deleted_view",
+    "dataAccessAction" : "UPDATE",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_details_setting.json",
-      "viewType" : "DETREEEXPVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_view.json",
+      "viewType" : "DEEDITVIEW2"
     },
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Library_open_deleted_view",
@@ -3535,11 +3686,15 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library.json"
     },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
     "getPSSysImage" : {
       "glyph" : "xf014@FontAwesome",
       "cssClass" : "fa fa-trash-o"
     },
-    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/librarytree_exp_view_details_setting/srfnav=${encodeURIComponent('root:normal:recycle')}/test_caserecycle_grid_view/-`",
+    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=recycle/test_caserecycle_grid_view/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_deleted_view",
@@ -3549,10 +3704,11 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "更多设置",
     "codeName" : "open_details_setting_view",
+    "dataAccessAction" : "UPDATE",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_details_setting.json",
-      "viewType" : "DETREEEXPVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_view.json",
+      "viewType" : "DEEDITVIEW2"
     },
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Library_open_details_setting_view",
@@ -3561,11 +3717,15 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library.json"
     },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
     "getPSSysImage" : {
       "glyph" : "xf00b@FontAwesome",
       "cssClass" : "fa fa-th-list"
     },
-    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/librarytree_exp_view_details_setting/srfnav=${encodeURIComponent('root:normal:member')}/library_membergrid_view_config/-`",
+    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=member/library_membergrid_view_config/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_details_setting_view",
@@ -3715,10 +3875,11 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "编辑基本信息",
     "codeName" : "setting_base_info",
+    "dataAccessAction" : "UPDATE",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_details_setting.json",
-      "viewType" : "DETREEEXPVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_view.json",
+      "viewType" : "DEEDITVIEW2"
     },
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Library_setting_base_info",
@@ -3727,11 +3888,15 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library.json"
     },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
     "getPSSysImage" : {
       "glyph" : "xf044@FontAwesome",
       "cssClass" : "fa fa-edit"
     },
-    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/librarytree_exp_view_details_setting/srfnav=${encodeURIComponent('root:setting:info')}/libraryedit_view_base_info/-`",
+    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=base/libraryedit_view_base_info/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "setting_base_info",
@@ -3743,8 +3908,8 @@
     "codeName" : "setting_library_member",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_details_setting.json",
-      "viewType" : "DETREEEXPVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_view.json",
+      "viewType" : "DEEDITVIEW2"
     },
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Library_setting_library_member",
@@ -3757,7 +3922,7 @@
       "glyph" : "xf0c0@FontAwesome",
       "cssClass" : "fa fa-users"
     },
-    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/librarytree_exp_view_details_setting/srfnav=${encodeURIComponent('root:normal:member')}/library_membergrid_view_config/-`",
+    "scriptCode" : "const srfkey = context.library ? context.library : data[0].id;\r\nwindow.location.hash=`/-/index/library=${srfkey}/libraryindex_view/srfnav=usrdrgroup1227882118/library_setting_view/srfnav=member/library_membergrid_view_config/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "setting_library_member",
@@ -3910,6 +4075,13 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "code" : "view.call('Refresh');\r\nsetTimeout(() => {\r\n    if (view.layoutPanel.panelItems.nav_pos && view.layoutPanel.panelItems.nav_pos.curNavViewMsg) {\r\n        // 找到当前的右侧视图\r\n        const viewId = view.layoutPanel.panelItems.nav_pos.curNavViewMsg.viewId;\r\n        if (viewId) {\r\n            const key = viewId.split('.').pop();\r\n            const viewPos = view.getController(key);\r\n            if (viewPos) {\r\n                viewPos.call('Refresh');\r\n            }\r\n        }\r\n    }\r\n}, 300)",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 650,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "刷新视图",
+      "topPos" : 540
+    }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
         "modelref" : true,
@@ -3924,15 +4096,13 @@
       "logicNodeType" : "VIEWCTRLINVOKE",
       "name" : "视图部件调用",
       "topPos" : 208
-    }, {
-      "code" : "view.call('Refresh');\r\nsetTimeout(() => {\r\n    if (view.layoutPanel.panelItems.nav_pos && view.layoutPanel.panelItems.nav_pos.curNavViewMsg) {\r\n        // 找到当前的右侧视图\r\n        const viewId = view.layoutPanel.panelItems.nav_pos.curNavViewMsg.viewId;\r\n        if (viewId) {\r\n            const key = viewId.split('.').pop();\r\n            const viewPos = view.getController(key);\r\n            if (viewPos) {\r\n                viewPos.call('Refresh');\r\n            }\r\n        }\r\n    }\r\n}, 300)",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 650,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "刷新视图",
-      "topPos" : 540
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "grid",
+      "logicName" : "当前表格",
+      "name" : "当前表格",
+      "ctrlParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -3943,11 +4113,6 @@
       "logicName" : "当前工具栏",
       "name" : "当前工具栏",
       "activeViewParam" : true
-    }, {
-      "codeName" : "grid",
-      "logicName" : "当前表格",
-      "name" : "当前表格",
-      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -4022,28 +4187,24 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarysetting_member_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view.json",
     "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryedit_view_base_info.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryindex_view.json",
-    "viewType" : "DEINDEXVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryshow_edit_view.json",
-    "viewType" : "DEEDITVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_config.json",
+    "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryPickupGridView.json",
     "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarygrid_view_in_progress.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytab_exp_view_config.json",
+    "viewType" : "DETABEXPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarygrid_view_all.json",
@@ -4054,11 +4215,15 @@
     "viewType" : "DETABEXPVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarygrid_view_deleted.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryquick_create_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryedit_view_advanced_setting.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryshow_edit_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
@@ -4070,20 +4235,28 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarygrid_view_deleted.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryindex_view.json",
+    "viewType" : "DEINDEXVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryedit_view_base_info.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarysetting_member_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryRedirectView.json",
+    "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_details_setting.json",
     "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarygrid_view_in_progress.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryRedirectView.json",
-    "viewType" : "DEREDIRECTVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarycreate_wizard_view.json",
+    "viewType" : "DEWIZARDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryEditView.json",
@@ -4094,20 +4267,16 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarycreate_wizard_view.json",
-    "viewType" : "DEWIZARDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_setting_view.json",
+    "viewType" : "DEEDITVIEW2"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryedit_view_advanced_setting.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryGridView.json",
     "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytab_exp_view_config.json",
-    "viewType" : "DETABEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/librarytree_exp_view_config.json",
-    "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/libraryPickupView.json",
@@ -4247,7 +4416,7 @@
     "uniqueTag" : "Library__Usr1219570203",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u64d74c3",
+      "name" : "u0fccb24",
       "getPSSysImage" : {
         "glyph" : "xf079@FontAwesome",
         "cssClass" : "fa fa-retweet"
@@ -4274,7 +4443,7 @@
     "uniqueTag" : "Library__Usr1219840776",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u9e5ff37",
+      "name" : "uf444d6d",
       "getPSSysImage" : {
         "glyph" : "xf187@FontAwesome",
         "cssClass" : "fa fa-archive"
@@ -4292,7 +4461,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "uc4c5569",
+      "name" : "uc3bf41b",
       "getPSSysImage" : {
         "glyph" : "xf1f8@FontAwesome",
         "cssClass" : "fa fa-trash"
@@ -4319,7 +4488,7 @@
     "uniqueTag" : "Library__Usr1219849106",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u681b42b",
+      "name" : "udab4e80",
       "getPSSysImage" : {
         "glyph" : "xf0eb@FontAwesome",
         "cssClass" : "fa fa-lightbulb-o"
@@ -4337,7 +4506,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u1bd23d1",
+      "name" : "u3c4ca85",
       "getPSSysImage" : {
         "glyph" : "xf1f8@FontAwesome",
         "cssClass" : "fa fa-trash"
@@ -4365,7 +4534,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 250,
       "detailType" : "DEUIACTION",
-      "name" : "ucaa2cd0",
+      "name" : "ub4724e8",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -4384,7 +4553,7 @@
     }, {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "uff33c63",
+      "name" : "u802fbe7",
       "getPSSysCss" : {
         "cssName" : "star_css"
       },
@@ -4406,7 +4575,7 @@
     }, {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "uee63fb3",
+      "name" : "u1fcd256",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M7.875,1.75 C7.94375,1.75 8,1.80625 8,1.875 L8,2.75 C8,2.81875 7.94375,2.875 7.875,2.875 L2.875,2.875 L2.875,13.125 L13.125,13.125 L13.125,8.125 C13.125,8.05625 13.18125,8 13.25,8 L14.125,8 C14.19375,8 14.25,8.05625 14.25,8.125 L14.25,13.75 C14.25,14.0265625 14.0265625,14.25 13.75,14.25 L2.25,14.25 C1.9734375,14.25 1.75,14.0265625 1.75,13.75 L1.75,2.25 C1.75,1.9734375 1.9734375,1.75 2.25,1.75 Z M12.7666777,2.4349185 C12.7666777,2.333356 12.8838652,2.277106 12.9635527,2.339606 L14.9635527,3.917731 C15.0260527,3.9661685 15.0260527,4.0599185 14.9635527,4.1099185 L12.9619902,5.689606 C12.8823027,5.752106 12.7651152,5.695856 12.7651152,5.5942935 L12.7651152,4.595856 C12.5635527,4.5974185 12.3619902,4.6099185 12.1588652,4.6349185 C11.4994902,4.7161685 10.8760527,4.9192935 10.2979277,5.2411685 C9.70261522,5.570856 9.18542772,6.0161685 8.76042772,6.558356 C8.33699022,7.1005435 8.03074022,7.708356 7.85261522,8.367731 C7.68074022,9.0036685 7.63386522,9.6599185 7.71355272,10.317731 C7.72449022,10.402106 7.73699022,10.486481 7.75105272,10.5692935 L6.58074022,10.5692935 C6.35261522,8.9474185 6.76042772,7.2380435 7.84792772,5.8442935 C9.07917772,4.2692935 10.9104277,3.442731 12.7635527,3.4349185 Z\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -4425,7 +4594,7 @@
     }, {
       "caption" : "测试库信息",
       "detailType" : "DEUIACTION",
-      "name" : "uab3e10a",
+      "name" : "uaf37005",
       "getPSSysImage" : {
         "glyph" : "xf05a@FontAwesome",
         "cssClass" : "fa fa-info-circle"
@@ -4444,7 +4613,7 @@
     }, {
       "caption" : "测试库成员",
       "detailType" : "DEUIACTION",
-      "name" : "u86bf386",
+      "name" : "u174806a",
       "getPSSysImage" : {
         "glyph" : "xf0c0@FontAwesome",
         "cssClass" : "fa fa-users"
@@ -4463,7 +4632,7 @@
     }, {
       "caption" : "编辑基本信息",
       "detailType" : "DEUIACTION",
-      "name" : "uded533f",
+      "name" : "u97a7072",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -4482,7 +4651,7 @@
     }, {
       "caption" : "更多设置",
       "detailType" : "DEUIACTION",
-      "name" : "u94a69e5",
+      "name" : "u8a4ebc6",
       "getPSSysImage" : {
         "glyph" : "xf00b@FontAwesome",
         "cssClass" : "fa fa-th-list"
@@ -4501,7 +4670,7 @@
     }, {
       "caption" : "回收站",
       "detailType" : "DEUIACTION",
-      "name" : "u67ad8f9",
+      "name" : "u39450b8",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

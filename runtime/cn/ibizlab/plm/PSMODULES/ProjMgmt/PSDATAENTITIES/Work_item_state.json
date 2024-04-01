@@ -402,6 +402,17 @@
       "standardColumnName" : "`COLOR`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[COLOR][颜色]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[COLOR][颜色]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[COLOR][颜色]移动端默认",
       "getPSDEFFormItem" : {
@@ -414,17 +425,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[COLOR][颜色]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[COLOR][颜色]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -562,18 +562,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[TYPE][状态类型]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[TYPE][状态类型]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[TYPE][状态类型]移动端默认",
       "getPSDEFFormItem" : {
@@ -587,6 +575,18 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TYPE][状态类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[TYPE][状态类型]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1588,10 +1588,10 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "edit_view",
-    "logicName" : "工作项状态编辑视图",
-    "name" : "工作项状态编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
+    "codeName" : "PickupGridView",
+    "logicName" : "工作项状态实体选择表格视图（部件视图）",
+    "name" : "工作项状态实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "quick_edit_view",
@@ -1600,16 +1600,16 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "工作项状态实体选择表格视图（部件视图）",
-    "name" : "工作项状态实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "EditView2",
     "logicName" : "工作项状态实体编辑视图（左右关系）",
     "name" : "工作项状态实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "edit_view",
+    "logicName" : "工作项状态编辑视图",
+    "name" : "工作项状态编辑视图",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -1619,17 +1619,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "edit_view_Form",
-    "logicName" : "工作项状态编辑视图_表单",
-    "modelTag2" : "0",
-    "name" : "工作项状态编辑视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "quick_edit_view_Form",
     "logicName" : "工作项状态快速建立视图_表单",
     "modelTag2" : "0",
     "name" : "工作项状态快速建立视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "edit_view_Form",
+    "logicName" : "工作项状态编辑视图_表单",
+    "modelTag2" : "0",
+    "name" : "工作项状态编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -1704,6 +1704,7 @@
     "serviceCodeName" : "Work_item_state",
     "enableFKey" : true
   } ],
+  "memo" : "代表工作项在生命周期中的不同阶段状态，支持用户为工作项自定义状态。",
   "getMinorPSDERs" : [ {
     "codeName" : "Work_item_type",
     "dERType" : "DER1N",

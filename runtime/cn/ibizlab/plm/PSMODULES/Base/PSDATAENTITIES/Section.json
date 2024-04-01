@@ -532,6 +532,16 @@
       "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[SEQUENCE][序号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SEQUENCE][序号]",
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[SEQUENCE][序号]移动端默认",
       "getPSDEFFormItem" : {
@@ -543,16 +553,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[SEQUENCE][序号]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[SEQUENCE][序号]",
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1544,6 +1544,34 @@
       },
       "topPos" : 320
     }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 440,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "修改需求信息",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "UPDATE idea t \r\nINNER JOIN category t21 ON t.category_id = t21.ID \r\nINNER JOIN section t31 on t21.SECTION_ID = t31.id\r\nSET t.category_id = NULL\r\nWHERE (t21.SECTION_ID = ? )",
+      "topPos" : -30
+    }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -1647,34 +1675,6 @@
         }
       } ],
       "topPos" : 523
-    }, {
-      "codeName" : "RAWSQLCALL1",
-      "leftPos" : 440,
-      "logicNodeType" : "RAWSQLCALL",
-      "name" : "修改需求信息",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL1"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "name" : "Default[ID]",
-        "paramAction" : "SQLPARAM",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "sql" : "UPDATE idea t \r\nINNER JOIN category t21 ON t.category_id = t21.ID \r\nINNER JOIN section t31 on t21.SECTION_ID = t31.id\r\nSET t.category_id = NULL\r\nWHERE (t21.SECTION_ID = ? )",
-      "topPos" : -30
     }, {
       "codeName" : "END1",
       "leftPos" : 480,
@@ -2048,13 +2048,6 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_create_form_idea",
-    "logicName" : "需求子产品快速建立视图_表单",
-    "modelTag2" : "0",
-    "name" : "需求子产品快速建立视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "quick_create_form_test_plan",
     "logicName" : "测试计划分组快速建立视图_表单",
     "modelTag2" : "0",
@@ -2069,17 +2062,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
+    "codeName" : "quick_create_form_customer",
+    "logicName" : "客户分组快速建立视图_表单",
+    "modelTag2" : "0",
+    "name" : "客户分组快速建立视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "quick_create_form_sprint",
     "logicName" : "迭代分组快速建立视图_表单",
     "modelTag2" : "0",
     "name" : "迭代分组快速建立视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
-    "codeName" : "quick_create_form_product_plan",
-    "logicName" : "排期分组快速建立视图_表单",
-    "modelTag2" : "0",
-    "name" : "排期分组快速建立视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
@@ -2090,10 +2083,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "quick_create_form_customer",
-    "logicName" : "客户分组快速建立视图_表单",
+    "codeName" : "quick_create_form_idea",
+    "logicName" : "需求子产品快速建立视图_表单",
     "modelTag2" : "0",
-    "name" : "客户分组快速建立视图_表单",
+    "name" : "需求子产品快速建立视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "quick_create_form_product_plan",
+    "logicName" : "排期分组快速建立视图_表单",
+    "modelTag2" : "0",
+    "name" : "排期分组快速建立视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -2181,6 +2181,7 @@
     "serviceCodeName" : "Section",
     "enableFKey" : true
   } ],
+  "memo" : "用于结构化管理需求、工单等。",
   "name" : "SECTION",
   "getPSSysDBScheme" : {
     "modelref" : true,

@@ -1,6 +1,477 @@
 {
+  "aPICodeNameMode" : "LOWER_UNDERSCORE",
   "aPISource" : "NONE",
   "aPIType" : "RESTFUL",
+  "getAllPSSubSysServiceAPIDEs" : [ {
+    "aPIMode" : 1,
+    "codeName" : "system_extension_notify_setting",
+    "logicName" : "通知设置",
+    "name" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+    "getPSSubSysServiceAPIDEFields" : [ {
+      "codeName" : "owner_type",
+      "length" : 30,
+      "logicName" : "所有者类型",
+      "name" : "OWNER_TYPE",
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "owner_id",
+      "length" : 100,
+      "logicName" : "所有者标识",
+      "name" : "OWNER_ID",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "name",
+      "length" : 200,
+      "logicName" : "名称",
+      "name" : "NAME",
+      "stdDataType" : 25,
+      "majorDEField" : true
+    }, {
+      "codeName" : "id",
+      "length" : 100,
+      "logicName" : "标识",
+      "name" : "ID",
+      "stdDataType" : 25,
+      "allowEmpty" : false,
+      "keyDEField" : true
+    }, {
+      "codeName" : "update_man",
+      "length" : 100,
+      "logicName" : "更新人",
+      "name" : "UPDATE_MAN",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "create_time",
+      "logicName" : "建立时间",
+      "name" : "CREATE_TIME",
+      "stdDataType" : 5,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "update_time",
+      "logicName" : "更新时间",
+      "name" : "UPDATE_TIME",
+      "stdDataType" : 5,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "create_man",
+      "length" : 100,
+      "logicName" : "建立人",
+      "name" : "CREATE_MAN",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSCODELISTS/SysOperator.json"
+      },
+      "stdDataType" : 25,
+      "allowEmpty" : false
+    }, {
+      "codeName" : "system_tag",
+      "length" : 100,
+      "logicName" : "系统标记",
+      "name" : "SYSTEM_TAG",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "setting_model",
+      "length" : 1048576,
+      "logicName" : "设置模型",
+      "name" : "SETTING_MODEL",
+      "stdDataType" : 21
+    } ],
+    "getPSSubSysServiceAPIDEMethods" : [ {
+      "actionType" : "DEACTION",
+      "codeName" : "check_key",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "SIMPLE"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__CHECKKEY"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "create",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__CREATE",
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__GET",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "get_draft",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__GETDRAFT"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "remove",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "id"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__REMOVE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "save",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__SAVE",
+      "needResourceKey" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "update",
+      "keyField" : "ID",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__DEACTION__UPDATE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_cur_user",
+      "keyField" : "ID",
+      "methodType" : "FETCH",
+      "name" : "CUR_USER",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__FETCH__CUR_USER"
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "fetch_default",
+      "keyField" : "ID",
+      "methodType" : "FETCH",
+      "name" : "DEFAULT",
+      "getPSDECodeName" : "System_extension_notify_setting",
+      "getPSDELogicName" : "通知设置",
+      "getPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "system_extension_notify_setting"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "System_extension_notify_settingDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "ID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYSTEM_EXTENSION_NOTIFY_SETTING__FETCH__DEFAULT"
+    } ],
+    "major" : true
+  } ],
+  "getAllPSSubSysServiceAPIDTOs" : [ {
+    "codeName" : "System_extension_notify_settingDTO",
+    "name" : "System_extension_notify_settingDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "Owner_type",
+      "name" : "Owner_type",
+      "orderValue" : 230,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "Owner_id",
+      "name" : "Owner_id",
+      "orderValue" : 260,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "Create_man",
+      "name" : "Create_man",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "Create_time",
+      "name" : "Create_time",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "Id",
+      "name" : "Id",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "Name",
+      "name" : "Name",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "Update_man",
+      "name" : "Update_man",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "Update_time",
+      "name" : "Update_time",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "System_tag",
+      "name" : "System_tag",
+      "orderValue" : 2000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "Setting_model",
+      "name" : "Setting_model",
+      "orderValue" : 2900,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "type" : "DTOS"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "System_extension_notify_settingFilterDTO",
+    "name" : "System_extension_notify_settingFilterDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "N_ID_EQ",
+      "name" : "N_ID_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_NAME_LIKE",
+      "name" : "N_NAME_LIKE",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_OWNER_TYPE_EQ",
+      "name" : "N_OWNER_TYPE_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  } ],
   "authMode" : "NONE",
   "codeName" : "extension",
   "dynaModelFilePath" : "PSMODULES/extension/PSSUBSYSSERVICEAPIS/extension.json",

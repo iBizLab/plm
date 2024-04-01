@@ -13,7 +13,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
   },
   "getPSDEViewCodeName" : "index_view",
-  "getPSDEViewId" : "E8ED4613-21D0-4532-8F95-BBF0C3C938F0",
+  "getPSDEViewId" : "2087b26e9db62df9ee8726beba0f92d6",
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "route_picker"
@@ -487,7 +487,7 @@
       },
       "uniqueTag" : "productindex_view__drbar",
       "showTitle" : true,
-      "modelid" : "9EA9D723-3793-4090-AEF6-7CEE47609A43",
+      "modelid" : "1842ec47d0c1674d37d3c1368731abb2",
       "modeltype" : "PSDEDRBAR"
     }, {
       "codeName" : "Index_view_Form",
@@ -787,7 +787,7 @@
       "enableItemPrivilege" : true,
       "noTabHeader" : true,
       "name" : "form",
-      "modelid" : "DD49D95D-7954-4BE0-82AF-E3FFEDA499F9",
+      "modelid" : "fafc79267d14df97f63d7cd394ed33c3",
       "modeltype" : "PSDEFORM_EDITFORM"
     }, {
       "codeName" : "index_viewtoolbar",
@@ -989,8 +989,8 @@
             "codeName" : "open_product_member",
             "getFrontPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/productdetails_setting_view.json",
-              "viewType" : "DETREEEXPVIEW"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_setting_view.json",
+              "viewType" : "DEEDITVIEW2"
             },
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Product_open_product_member",
@@ -1003,7 +1003,7 @@
               "glyph" : "xf0c0@FontAwesome",
               "cssClass" : "fa fa-users"
             },
-            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/productdetails_setting_view/srfnav=${encodeURIComponent('root:normal:member')}/product_membergrid_view_config/-`",
+            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/product_setting_view/srfnav=member/product_membergrid_view_config/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_product_member",
@@ -1019,7 +1019,7 @@
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction5",
-          "noPrivDisplayMode" : 6,
+          "noPrivDisplayMode" : 2,
           "getPSAppViewUIAction" : {
             "modelref" : true,
             "id" : "toolbar_deuiaction5"
@@ -1030,14 +1030,13 @@
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
-            "noPrivDisplayMode" : 6,
             "caption" : "编辑基本信息",
             "codeName" : "open_edit_view",
-            "dataAccessAction" : "SRFUR__PRODUCT_M",
+            "dataAccessAction" : "UPDATE",
             "getFrontPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/productdetails_setting_view.json",
-              "viewType" : "DETREEEXPVIEW"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_setting_view.json",
+              "viewType" : "DEEDITVIEW2"
             },
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Product_open_edit_view",
@@ -1048,13 +1047,13 @@
             },
             "getPSDEOPPriv" : {
               "modelref" : true,
-              "id" : "SRFUR__PRODUCT_M"
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
             },
-            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/productdetails_setting_view/srfnav=${encodeURIComponent('root:setting:info')}/productedit_view_base_information/-`",
+            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/product_setting_view/srfnav=base/productedit_view_base_information/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_edit_view",
@@ -1083,10 +1082,11 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "更多设置",
             "codeName" : "opne_setting_view",
+            "dataAccessAction" : "UPDATE",
             "getFrontPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/productdetails_setting_view.json",
-              "viewType" : "DETREEEXPVIEW"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_setting_view.json",
+              "viewType" : "DEEDITVIEW2"
             },
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Product_opne_setting_view",
@@ -1095,11 +1095,15 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product.json"
             },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
             "getPSSysImage" : {
               "glyph" : "xf00b@FontAwesome",
               "cssClass" : "fa fa-th-list"
             },
-            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/productdetails_setting_view/srfnav=${encodeURIComponent('root:normal:member')}/product_membergrid_view_config/-`",
+            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/product_setting_view/srfnav=member/product_membergrid_view_config/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "opne_setting_view",
@@ -1115,7 +1119,7 @@
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction7",
-          "noPrivDisplayMode" : 6,
+          "noPrivDisplayMode" : 2,
           "getPSAppViewUIAction" : {
             "modelref" : true,
             "id" : "toolbar_deuiaction7"
@@ -1126,10 +1130,9 @@
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
-            "noPrivDisplayMode" : 6,
             "caption" : "回收站",
             "codeName" : "open_deleted_view",
-            "dataAccessAction" : "SRFUR__PRODUCT_M",
+            "dataAccessAction" : "UPDATE",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/productdetails_setting_view.json",
@@ -1144,13 +1147,13 @@
             },
             "getPSDEOPPriv" : {
               "modelref" : true,
-              "id" : "SRFUR__PRODUCT_M"
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
             },
-            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/productdetails_setting_view/srfnav=${encodeURIComponent('root:normal:recycle')}/productrecover_tab_exp_view/-`",
+            "scriptCode" : "const srfkey = context.product ? context.product : data[0].id;\r\nwindow.location.hash=`/-/index/product=${srfkey}/productindex_view/srfnav=usrdrgroup1228809432/product_setting_view/srfnav=recycle/productrecover_tab_exp_view/srfnav=idea/idearecycle_bin_grid_view/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_deleted_view",
@@ -1170,7 +1173,7 @@
         "showCaption" : false,
         "showIcon" : true
       } ],
-      "modelid" : "A42E116F-73C1-41BF-8A8B-044F4AAF3F03",
+      "modelid" : "0b38513c497c7160761706429e278613",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "caption" : "产品",
@@ -1188,6 +1191,6 @@
   "viewStyle" : "DEFAULT",
   "viewType" : "DEINDEXVIEW",
   "enableDP" : true,
-  "modelid" : "ffd7154b8a589990fd07cbb5712f5993",
+  "modelid" : "163cbdfa983fe6d2148c14d0c986ae45",
   "modeltype" : "PSAPPDEVIEW"
 }

@@ -18,6 +18,36 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
+        "id" : "DENOTIFY2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 110,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_case/PSDENOTIFIES/maintainer_onchange_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_case.json"
+    },
+    "leftPos" : 140,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "维护人变更通知",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
         "id" : "DENOTIFY1"
       },
       "name" : "连接名称",
@@ -34,36 +64,26 @@
           },
           "logicType" : "SINGLE",
           "name" : "Default[MAINTENANCE_ID] 值不为空(NotNil)"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "Begin"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DENOTIFY2"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "ID",
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "MAINTENANCE_ID",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[ID] 值不为空(NotNil)"
+          "name" : "Default[MAINTENANCE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DENOTIFY2"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -84,15 +104,29 @@
           },
           "logicType" : "SINGLE",
           "name" : "Last[MAINTENANCE_ID] 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "MAINTENANCE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Last"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Last[MAINTENANCE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DENOTIFY2"
       }
     } ],
-    "topPos" : 110,
-    "parallelOutput" : true
+    "topPos" : 240
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 290,
@@ -123,6 +157,20 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "UPDATE_TIME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "name" : "Default[UPDATE_TIME] ==> Last[UPDATE_TIME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "UPDATE_TIME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 350
   }, {
@@ -142,24 +190,6 @@
     "leftPos" : -2,
     "logicNodeType" : "DENOTIFY",
     "name" : "分配维护人通知",
-    "topPos" : 450
-  }, {
-    "codeName" : "DENOTIFY2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDENotify" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_case/PSDENOTIFIES/maintainer_onchange_notify.json"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_case.json"
-    },
-    "leftPos" : -216,
-    "logicNodeType" : "DENOTIFY",
-    "name" : "维护人变更通知",
     "topPos" : 450
   }, {
     "codeName" : "DENOTIFY3",

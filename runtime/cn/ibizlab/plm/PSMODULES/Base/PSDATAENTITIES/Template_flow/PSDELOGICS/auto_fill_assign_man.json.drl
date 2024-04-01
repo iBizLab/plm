@@ -18,3 +18,21 @@ package cn.ibizlab.plm.base.logic.template_flowlogic.auto_fill_assign_man;
             when
             then
             end
+
+            //逻辑处理节点[设置人员]
+            rule "prepareparam1"
+            ruleflow-group "template_flowauto_fill_assign_manprepareparam1"
+            when
+            then
+                                template_flowauto_fill_assign_mandefault.set("assignee_name",curuser.getSessionParams().get("srfpersonname"));
+                                template_flowauto_fill_assign_mandefault.set("assignee_id",curuser.getSessionParams().get("srfpersonid"));
+                        update(template_flowauto_fill_assign_mandefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "template_flowauto_fill_assign_manend1"
+            when
+            then
+                        update(template_flowauto_fill_assign_mandefault);//更新fact中变量值
+            end

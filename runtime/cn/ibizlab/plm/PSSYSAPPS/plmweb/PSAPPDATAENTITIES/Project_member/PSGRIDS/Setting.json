@@ -87,7 +87,7 @@
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "deuiaction2",
-      "noPrivDisplayMode" : 2,
+      "noPrivDisplayMode" : 1,
       "getPSAppViewUIAction" : {
         "modelref" : true,
         "id" : "grid_batchtoolbar_deuiaction2"
@@ -98,13 +98,19 @@
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
         "getCapPSLanguageRes" : {
           "lanResTag" : "TBB.TEXT.*.REMOVE"
         },
         "caption" : "删除",
         "codeName" : "Remove",
+        "dataAccessAction" : "DELETE",
         "fullCodeName" : "Remove",
         "name" : "表格界面_删除操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "DELETE"
+        },
         "getPSSysImage" : {
           "glyph" : "xf00d@FontAwesome",
           "cssClass" : "fa fa-remove"
@@ -126,7 +132,7 @@
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "modelid" : "74CCFEF5-0654-4145-852A-227C53342218",
+    "modelid" : "824333fc6aa069bfea300fcc0b94336d",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDEGridColumns" : [ {
@@ -216,67 +222,6 @@
     "width" : 200,
     "widthUnit" : "PX",
     "enableSort" : true
-  }, {
-    "align" : "CENTER",
-    "caption" : "操作",
-    "codeName" : "uagridcolumn1",
-    "columnType" : "UAGRIDCOLUMN",
-    "name" : "uagridcolumn1",
-    "noPrivDisplayMode" : 1,
-    "getPSDEUIActionGroup" : {
-      "codeName" : "Usr1220055289",
-      "name" : "项目成员配置",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-      },
-      "getPSUIActionGroupDetails" : [ {
-        "detailType" : "DEUIACTION",
-        "name" : "ua83cdb4",
-        "getPSSysImage" : {
-          "glyph" : "xf1f8@FontAwesome",
-          "cssClass" : "fa fa-trash"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "SINGLEKEY",
-          "noPrivDisplayMode" : 6,
-          "caption" : "移除成员",
-          "codeName" : "remove_member",
-          "confirmMsg" : "确认删除该成员？",
-          "dataAccessAction" : "DELETE",
-          "fullCodeName" : "Project_member_remove_member",
-          "name" : "移除成员",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "Remove"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-          },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "DELETE"
-          },
-          "refreshMode" : 1,
-          "successMsg" : "删除成功",
-          "timeout" : 60000,
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "remove_member",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "remove_member@Project_member"
-        },
-        "addSeparator" : false,
-        "showCaption" : false,
-        "showIcon" : true
-      } ],
-      "uniqueTag" : "Project_member__Usr1220055289"
-    },
-    "width" : 100,
-    "widthUnit" : "PX",
-    "enableSort" : false
   } ],
   "getPSDEGridDataItems" : [ {
     "dataType" : 25,
@@ -306,6 +251,13 @@
     "getPSAppDEField" : {
       "name" : "UPDATE_TIME",
       "codeName" : "Update_time"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "id",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "Id"
     }
   }, {
     "dataType" : 25,
@@ -424,6 +376,6 @@
   "hideHeader" : false,
   "noSort" : false,
   "singleSelect" : false,
-  "modelid" : "684B7847-7020-480C-AAAE-750829D11CDC",
+  "modelid" : "112de0e8ac280a71beb62a6d7c6df6d8",
   "modeltype" : "PSDEGRID"
 }

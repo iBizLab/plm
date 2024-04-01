@@ -287,7 +287,7 @@
         "name" : "连接条件",
         "getPSDEDQConditions" : [ {
           "condType" : "CUSTOM",
-          "condition" : "`PROJECT_TYPE` = (select type from project where id= #{ctx.webcontext.project_id})",
+          "condition" : "`PROJECT_TYPE` = (select type from project where id=#{ctx.webcontext.project_id})",
           "name" : "查询项目对应类型"
         } ]
       }
@@ -329,7 +329,7 @@
         "name" : "连接条件",
         "getPSDEDQConditions" : [ {
           "condType" : "CUSTOM",
-          "condition" : "`PROJECT_TYPE` = (select type from project where id=#{ctx.webcontext.project_id}) and `group` <> 'bug'",
+          "condition" : "`PROJECT_TYPE` = (select type from project where id=#{ctx.webcontext.project_id}) and `group` <> 'bug'\n",
           "name" : "非缺陷类型的工作项类型"
         } ]
       }
@@ -802,6 +802,12 @@
       "name" : "CODE",
       "queryCodeExp" : "t1.`CODE`",
       "standardColumnName" : "`CODE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CODE_IN",
+      "name" : "N_CODE_IN",
+      "stdDataType" : 25,
+      "valueOP" : "IN"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1641,6 +1647,20 @@
   }, {
     "name" : "Work_item_typeFilterDTO",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "编码",
+      "name" : "N_CODE_IN",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CODE_IN"
+      },
+      "getPSDEField" : {
+        "name" : "CODE",
+        "codeName" : "Code"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "类型分组",
       "name" : "N_GROUP_EQ",
       "getPSDEFSearchMode" : {
@@ -1771,12 +1791,6 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "global_setting_view_scrum",
-    "logicName" : "scrum项目工作项配置（全局）",
-    "name" : "scrum项目工作项配置（全局）",
-    "realModelSubType" : "DELISTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "PickupView",
     "logicName" : "工作项类型实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
@@ -1789,6 +1803,12 @@
     "modelTag" : "EDITVIEW",
     "name" : "工作项类型实体编辑视图",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "global_setting_view_scrum",
+    "logicName" : "scrum项目工作项配置（全局）",
+    "name" : "scrum项目工作项配置（全局）",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "setting_view_scrum",
@@ -1941,7 +1961,7 @@
     "serviceCodeName" : "Work_item_type",
     "enableFKey" : true
   } ],
-  "memo" : "仅瀑布类型项目可以自定义工作项类型",
+  "memo" : "仅瀑布类型项目可以自定义工作项类型（定义瀑布型项目中可自定义的不同工作项类别。）",
   "name" : "WORK_ITEM_TYPE",
   "getPSSysDBScheme" : {
     "modelref" : true,

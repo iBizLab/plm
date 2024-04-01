@@ -1,6 +1,114 @@
 {
   "getAllPSAppDEACModes" : [ {
     "codeName" : "Create_board",
+    "getItemPSLayoutPanel" : {
+      "getAllPSPanelFields" : [ {
+        "id" : "name",
+        "viewFieldName" : "NAME"
+      } ],
+      "codeName" : "Choose_board",
+      "controlType" : "PANEL",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Board/PSPANELS/Choose_board.json",
+      "layoutMode" : "TABLE_24COL",
+      "logicName" : "选择看板布局面板",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Board.json"
+      },
+      "getPSControlParam" : {
+        "id" : "panel"
+      },
+      "getPSLayout" : {
+        "childColLG" : -1,
+        "childColMD" : 24,
+        "childColSM" : -1,
+        "childColXS" : -1,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getRootPSPanelItems" : [ {
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "page_container",
+        "getPSLayout" : {
+          "dir" : "column",
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container3",
+          "getPSLayout" : {
+            "dir" : "row",
+            "layout" : "FLEX"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingTop" : "INNERSMALL"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "图片",
+            "contentHeight" : 30.0,
+            "contentType" : "IMAGE",
+            "height" : 30.0,
+            "itemStyle" : "DEFAULT",
+            "itemType" : "RAWITEM",
+            "name" : "static_image",
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "height" : 30,
+              "heightMode" : "PERCENTAGE",
+              "layout" : "FLEX"
+            },
+            "getPSRawItem" : {
+              "contentType" : "IMAGE",
+              "name" : "static_image",
+              "getPSSysImage" : {
+                "glyph" : "xf181@FontAwesome",
+                "cssClass" : "fa fa-trello"
+              },
+              "predefinedType" : "STATIC_IMAGE",
+              "rawItemHeight" : 30.0
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf181@FontAwesome",
+              "cssClass" : "fa fa-trello"
+            },
+            "rawItemHeight" : 30.0,
+            "showCaption" : true
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "name",
+            "getPSEditor" : {
+              "editorType" : "SPAN",
+              "name" : "name",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "NAME",
+            "hidden" : false,
+            "showCaption" : false
+          } ]
+        } ]
+      } ],
+      "layoutPanel" : true,
+      "name" : "panel",
+      "modelid" : "cbf3c1d84991b67894b7429728fc4ff7",
+      "modeltype" : "PSSYSVIEWPANEL"
+    },
     "logicName" : "新建看板",
     "name" : "create_board",
     "getPSDEACModeDataItems" : [ {
@@ -19,17 +127,17 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "id",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "Id"
-      }
-    }, {
-      "dataType" : 25,
       "name" : "name",
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "Name"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "Id"
       }
     } ],
     "getPSDEUIActionGroup" : {
@@ -42,7 +150,11 @@
       "getPSUIActionGroupDetails" : [ {
         "caption" : "新建看板",
         "detailType" : "DEUIACTION",
-        "name" : "u7c7be3c",
+        "name" : "u243d7d9",
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "新建看板",
@@ -64,6 +176,10 @@
             "name" : "BOARD",
             "rawValue" : true
           } ],
+          "getPSSysImage" : {
+            "glyph" : "xf067@FontAwesome",
+            "cssClass" : "fa fa-plus"
+          },
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "New",
@@ -1184,6 +1300,10 @@
       "name" : "BOARD",
       "rawValue" : true
     } ],
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "New",
@@ -1226,9 +1346,6 @@
     "id" : "Project__CREATE"
   }, {
     "logicName" : "删除",
-    "name" : "DELETE"
-  }, {
-    "logicName" : "删除",
     "mapPSDEName" : "PROJECT",
     "mapPSDEOPPrivName" : "SUBDATA",
     "getMapPSDER" : {
@@ -1241,6 +1358,9 @@
     },
     "name" : "DELETE",
     "id" : "Project__DELETE"
+  }, {
+    "logicName" : "删除",
+    "name" : "DELETE"
   }, {
     "logicName" : "读取",
     "mapPSDEName" : "PROJECT",
@@ -1357,7 +1477,11 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "新建看板",
       "detailType" : "DEUIACTION",
-      "name" : "u7c7be3c",
+      "name" : "u243d7d9",
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,

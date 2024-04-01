@@ -3,6 +3,7 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDELOGICS/idea_re_plan.json",
   "logicName" : "需求排期",
+  "memo" : "需求排期，用户在排期内关联相应需求，生成正反向关联关系",
   "name" : "需求排期",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
@@ -68,6 +69,61 @@
       "id" : "Default"
     },
     "topPos" : 403
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Relation/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "relationobj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Relation.json"
+    },
+    "leftPos" : 370,
+    "logicNodeType" : "DEACTION",
+    "name" : "生成正向关联数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 562
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : -90,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "topPos" : 562
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 122,
@@ -183,35 +239,6 @@
     } ],
     "topPos" : 562
   }, {
-    "codeName" : "DEACTION1",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/Relation/PSDEACTIONS/Save.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "relationobj"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/Relation.json"
-    },
-    "leftPos" : 370,
-    "logicNodeType" : "DEACTION",
-    "name" : "生成正向关联数据",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      }
-    } ],
-    "topPos" : 562
-  }, {
     "codeName" : "DEACTION2",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -228,32 +255,6 @@
     "leftPos" : 630,
     "logicNodeType" : "DEACTION",
     "name" : "生成反向关联数据",
-    "topPos" : 562
-  }, {
-    "codeName" : "LOOPSUBCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "for_temp_obj"
-    },
-    "leftPos" : -90,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环子调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "srfactionparam"
-    },
     "topPos" : 562
   } ],
   "getPSDELogicParams" : [ {

@@ -7,6 +7,7 @@
   "codeName" : "article_pageedit_view_document",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pageedit_view_document.json",
   "height" : 90,
+  "markOpenDataMode" : "OPENDATA;EDITDATA;DISPLAYOPPERSON;NOTICERELOAD",
   "name" : "article_pageedit_view_document",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -35,9 +36,6 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-      },
       "caption" : "发布",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
@@ -52,34 +50,38 @@
         "cssClass" : "fa fa-paper-plane-o"
       },
       "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "发布",
+        "codeName" : "release",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "Article_page_release",
+        "name" : "发布",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "save_notify_refresh"
         },
-        "caption" : "保存并关闭",
-        "codeName" : "SaveAndExit",
-        "fullCodeName" : "SaveAndExit",
-        "name" : "编辑界面_保存并退出操作",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page.json"
+        },
         "getPSSysImage" : {
-          "cssClass" : "sx-tb-saveandclose"
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-paper-plane-o"
         },
-        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
         "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "SaveAndExit",
-        "uIActionType" : "DEUIACTION"
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "release",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "id" : "release@Article_page"
       },
       "tooltip" : "发布",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-      },
+      "uIActionTarget" : "SINGLEDATA",
       "showCaption" : true,
       "showIcon" : true
     } ],
     "xDataControlName" : "form",
-    "modelid" : "59D82179-790C-4BAF-B8C6-1F5CD18CC6A6",
+    "modelid" : "51c637de933831860a8716591fa19673",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "Edit_view_document_form",
@@ -422,6 +424,7 @@
               "MODE" : "default",
               "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
               "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
+              "ENABLEREALTIME" : "true",
               "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
               "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
@@ -766,7 +769,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "actionLevel" : 250,
                   "detailType" : "DEUIACTION",
-                  "name" : "u0b42a77",
+                  "name" : "u73b8ba5",
                   "getPSSysImage" : {
                     "glyph" : "xf019@FontAwesome",
                     "cssClass" : "fa fa-download"
@@ -816,7 +819,7 @@
                 }, {
                   "caption" : "删除",
                   "detailType" : "DEUIACTION",
-                  "name" : "u8aff03a",
+                  "name" : "u44d00e2",
                   "getPSSysImage" : {
                     "glyph" : "xf014@FontAwesome",
                     "cssClass" : "fa fa-trash-o"
@@ -1053,7 +1056,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "添加附件",
             "detailType" : "DEUIACTION",
-            "name" : "u14721d8",
+            "name" : "u7f64bbb",
             "getPSSysImage" : {
               "glyph" : "xf067@FontAwesome",
               "cssClass" : "fa fa-plus"
@@ -1176,7 +1179,7 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "27f429d7c178ba5e96ef52f8a27e8d2b",
+    "modelid" : "f3fa75d7170445c8e54fc523c57f4df4",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "edit_view_documentdatainfobar",
@@ -1204,7 +1207,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "edit_view_document",
-  "getPSDEViewId" : "f078657ddc05fe09411bb800b32182e5",
+  "getPSDEViewId" : "04ee9a868a4db30ea1f6275886bad7a2",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEEDITVIEW",
@@ -1226,7 +1229,7 @@
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "eeeb9dcec5cfd5e68e44e83d47473c39",
+  "modelid" : "faf368059394baea6f8875fd486d4b18",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

@@ -199,6 +199,86 @@
           "enableFront" : true
         },
         "valueRuleType" : "SYSVALUERULE"
+      }, {
+        "checkMode" : 1,
+        "name" : "表单项值规则",
+        "getPSDEFValueRule" : {
+          "codeName" : "START_AT",
+          "name" : "开始时间",
+          "getPSDEFVRGroupCondition" : {
+            "condOp" : "AND",
+            "condType" : "GROUP",
+            "name" : "默认组",
+            "getPSDEFVRConditions" : [ {
+              "condOp" : "OR",
+              "condType" : "GROUP",
+              "name" : "[条件组]OR",
+              "getPSDEFVRConditions" : [ {
+                "condOp" : "ISNULL",
+                "condType" : "SIMPLE",
+                "dEFName" : "END_AT",
+                "name" : "[常规条件] 值为空(Nil)"
+              }, {
+                "condOp" : "LTANDEQ",
+                "condType" : "SIMPLE",
+                "dEFName" : "START_AT",
+                "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
+                "paramType" : "ENTITYFIELD",
+                "paramValue" : "END_AT",
+                "ruleInfo" : "开始时间必须小于等于结束时间"
+              } ],
+              "ruleInfo" : "开始时间必须小于等于结束时间"
+            } ],
+            "ruleInfo" : "开始时间必须小于等于结束时间"
+          },
+          "ruleInfo" : "开始时间必须小于等于结束时间",
+          "checkDefault" : true,
+          "defaultMode" : false,
+          "enableBackend" : true,
+          "enableFront" : true
+        },
+        "getPSDEFormItemName" : "start_at",
+        "valueRuleType" : "DEFVALUERULE"
+      }, {
+        "checkMode" : 1,
+        "name" : "表单项值规则",
+        "getPSDEFValueRule" : {
+          "codeName" : "END_AT",
+          "name" : "结束时间",
+          "getPSDEFVRGroupCondition" : {
+            "condOp" : "AND",
+            "condType" : "GROUP",
+            "name" : "默认组",
+            "getPSDEFVRConditions" : [ {
+              "condOp" : "OR",
+              "condType" : "GROUP",
+              "name" : "[条件组]OR",
+              "getPSDEFVRConditions" : [ {
+                "condOp" : "ISNULL",
+                "condType" : "SIMPLE",
+                "dEFName" : "START_AT",
+                "name" : "[常规条件] 值为空(Nil)"
+              }, {
+                "condOp" : "GTANDEQ",
+                "condType" : "SIMPLE",
+                "dEFName" : "END_AT",
+                "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
+                "paramType" : "ENTITYFIELD",
+                "paramValue" : "START_AT",
+                "ruleInfo" : "结束时间必须大于等于开始时间"
+              } ],
+              "ruleInfo" : "结束时间必须大于等于开始时间"
+            } ],
+            "ruleInfo" : "结束时间必须大于等于开始时间"
+          },
+          "ruleInfo" : "结束时间必须大于等于开始时间",
+          "checkDefault" : true,
+          "defaultMode" : false,
+          "enableBackend" : true,
+          "enableFront" : true
+        },
+        "getPSDEFormItemName" : "end_at",
+        "valueRuleType" : "DEFVALUERULE"
       } ],
       "getPSDEFormItems" : [ {
         "id" : "srfupdatedate",
@@ -746,7 +826,7 @@
       },
       "noTabHeader" : true,
       "name" : "wizardpanel_form_fill_info",
-      "modelid" : "BB9E4F12-ECC6-4C64-9665-8CCC9F96FE4C",
+      "modelid" : "de0146c149c47af2a0b73504e94f144a",
       "modeltype" : "PSDEFORM_EDITFORM"
     }, {
       "codeName" : "Project_member_form",
@@ -1041,7 +1121,7 @@
               "caption" : "文件夹成员",
               "codeName" : "portfolio_memberproject_bind_member_grid_view",
               "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_memberproject_bind_member_grid_view.json",
-              "gridRowActiveMode" : 1,
+              "gridRowActiveMode" : 0,
               "name" : "portfolio_memberproject_bind_member_grid_view",
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -1269,7 +1349,7 @@
                   "showIcon" : true
                 } ],
                 "xDataControlName" : "grid",
-                "modelid" : "3578EE3F-43CD-42AA-AD53-B428092A4C08",
+                "modelid" : "e482ccd2f4e6a521985a544538b1425d",
                 "modeltype" : "PSDETOOLBAR"
               }, {
                 "aggMode" : "NONE",
@@ -1421,7 +1501,7 @@
                     },
                     "getPSUIActionGroupDetails" : [ {
                       "detailType" : "DEUIACTION",
-                      "name" : "udf7e024",
+                      "name" : "u53f5978",
                       "getPSSysImage" : {
                         "glyph" : "xf1f8@FontAwesome",
                         "cssClass" : "fa fa-trash"
@@ -1548,9 +1628,9 @@
                 "forceFit" : false,
                 "hideHeader" : false,
                 "noSort" : false,
-                "singleSelect" : false,
+                "singleSelect" : true,
                 "name" : "grid",
-                "modelid" : "03BBCB90-2D63-45CD-9DBB-4F31B1C7FA9A",
+                "modelid" : "78b341142b5bc47a3f60878ffe2bc3b3",
                 "modeltype" : "PSDEGRID"
               }, {
                 "codeName" : "Default",
@@ -1639,7 +1719,7 @@
                 "enableFilterSave" : false,
                 "noTabHeader" : true,
                 "name" : "searchform",
-                "modelid" : "36f00418626849f569424629e07d060a",
+                "modelid" : "d7419f2e1297e18a847b44198e6eb472",
                 "modeltype" : "PSDEFORM_SEARCHFORM"
               }, {
                 "controlType" : "SEARCHBAR",
@@ -1673,7 +1753,7 @@
                 "getPSControlParam" : { }
               } ],
               "getPSDEViewCodeName" : "project_bind_member_grid_view",
-              "getPSDEViewId" : "DB8BD346-9A82-4BE0-979C-574CF15FB080",
+              "getPSDEViewId" : "dbab4f333c9a360b27b1c5e897b48d7f",
               "getPSViewLayoutPanel" : {
                 "codeName" : "Layoutpanel",
                 "controlStyle" : "APPDEGRIDVIEW",
@@ -1700,7 +1780,7 @@
               "enableSearch" : true,
               "rowEditDefault" : false,
               "showCaptionBar" : false,
-              "modelid" : "8da7284b93a73821a1497df5ba36075c",
+              "modelid" : "4f6431664ca9e6f9bcafed2cdfef397d",
               "modeltype" : "PSAPPDEVIEW",
               "getPSAppDERSPaths" : [ [ {
                 "actionRSMode" : 1,
@@ -2099,7 +2179,7 @@
       },
       "noTabHeader" : true,
       "name" : "wizardpanel_form_bind_member",
-      "modelid" : "7F141319-2AE1-4666-88A5-D460273819D8",
+      "modelid" : "ff37a85f61bd151ed448aafc215379b1",
       "modeltype" : "PSDEFORM_EDITFORM"
     } ],
     "getPSDEWizard" : {
@@ -2150,7 +2230,7 @@
     "showActionBar" : true,
     "showStepBar" : true,
     "name" : "wizardpanel",
-    "modelid" : "8C3EADEF-834F-4A20-A5AF-0AF7FC175A4D",
+    "modelid" : "e443d84a84cbf9f289567d6f3e6cb1f4",
     "modeltype" : "PSDEWIZARDPANEL"
   }, {
     "getCapPSLanguageRes" : {
@@ -2167,7 +2247,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "project_create_wizard_view",
-  "getPSDEViewId" : "D95B90F8-842D-470B-9D0A-D132D295CB95",
+  "getPSDEViewId" : "c995ffb39b3f5986045a51b74f0a7511",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEWIZARDVIEW",
@@ -2190,6 +2270,6 @@
   "viewType" : "DEWIZARDVIEW",
   "width" : 1024,
   "enableDP" : true,
-  "modelid" : "ecea935ea8c808ebb004b6a2cf05d715",
+  "modelid" : "031a249cb7dda272b01eaa94dc643dd1",
   "modeltype" : "PSAPPDEVIEW"
 }

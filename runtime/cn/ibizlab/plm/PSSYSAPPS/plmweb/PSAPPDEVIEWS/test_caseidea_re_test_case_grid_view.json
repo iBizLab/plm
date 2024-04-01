@@ -17,7 +17,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
   },
   "getPSDEViewCodeName" : "idea_re_test_case_grid_view",
-  "getPSDEViewId" : "BA614C43-3AF3-4900-9326-BA0B2EE385FF",
+  "getPSDEViewId" : "2e4df047d261a1d0ae49d007dfd27de0",
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "total",
@@ -43,7 +43,7 @@
       "name" : "logic",
       "getPSAppDEUILogic" : {
         "modelref" : true,
-        "id" : "relation_test_case_change"
+        "id" : "idea_relation_test_case"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -283,7 +283,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "新建",
               "detailType" : "DEUIACTION",
-              "name" : "udccf23a",
+              "name" : "ua2b3bbd",
               "getPSSysImage" : {
                 "glyph" : "xf067@FontAwesome",
                 "cssClass" : "fa fa-plus"
@@ -365,7 +365,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "E24AA21E-5842-4332-9C4B-DA746C1A7AD1",
+    "modelid" : "e926131c63832bd36476bd0b092cb89a",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -377,7 +377,7 @@
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
       "name" : "viewmounted",
-      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了')\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
     }, {
       "eventNames" : "onLoadSuccess",
       "logicTrigger" : "VIEWEVENT",
@@ -458,6 +458,17 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "NEWDATA",
+      "realTitle" : "用例编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.TEST_CASE.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseEditView.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    }, {
       "name" : "EDITDATA",
       "openMode" : "POPUPMODAL",
       "getPSNavigateContexts" : [ {
@@ -471,17 +482,6 @@
       "getRefPSAppView" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemain_view.json",
-        "viewType" : "DEEDITVIEW"
-      }
-    }, {
-      "name" : "NEWDATA",
-      "realTitle" : "用例编辑视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.TEST_CASE.EDITVIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseEditView.json",
         "viewType" : "DEEDITVIEW"
       }
     } ],
@@ -507,14 +507,6 @@
           "modelref" : true,
           "id" : "toolbar_deuiaction3"
         },
-        "getPSControlLogics" : [ {
-          "itemName" : "deuiaction3",
-          "logicTag" : "toolbar",
-          "logicType" : "SCRIPT",
-          "name" : "action",
-          "scriptCode" : "!context.is_delete",
-          "triggerType" : "ITEMVISIBLE"
-        } ],
         "getPSSysImage" : {
           "glyph" : "xf067@FontAwesome",
           "cssClass" : "fa fa-plus"
@@ -547,7 +539,7 @@
         "showIcon" : true
       } ],
       "xDataControlName" : "grid",
-      "modelid" : "3BE052B6-F897-4358-B992-30D335FAEA42",
+      "modelid" : "854dbf2dc2a8faa68eb23f2dfab451cc",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "aggMode" : "NONE",
@@ -747,7 +739,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "取消关联",
             "detailType" : "DEUIACTION",
-            "name" : "u7dd0b15",
+            "name" : "u08d9a95",
             "getPSSysImage" : {
               "glyph" : "xf127@FontAwesome",
               "cssClass" : "fa fa-unlink"
@@ -919,7 +911,7 @@
       "noSort" : false,
       "singleSelect" : true,
       "name" : "grid",
-      "modelid" : "231B32FB-75E5-4C2E-9E0E-BB4838BD4D61",
+      "modelid" : "ebd3a28c91c7ca8912ac078389e75fb9",
       "modeltype" : "PSDEGRID"
     }, {
       "controlType" : "SEARCHBAR",
@@ -966,7 +958,7 @@
   "enableSearch" : true,
   "rowEditDefault" : false,
   "showCaptionBar" : false,
-  "modelid" : "250419b016448db4474d287058ada29d",
+  "modelid" : "568f13740e7cf4f669be4fd71b44cb52",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

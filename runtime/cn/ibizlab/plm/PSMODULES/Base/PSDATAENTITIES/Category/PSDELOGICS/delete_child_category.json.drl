@@ -40,6 +40,19 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
+            //逻辑处理节点[输出默认参数]
+            rule "debugparam1"
+            ruleflow-group "categorydelete_child_categorydebugparam1"
+            when
+            then
+                        update(categorydelete_child_categorydefault);//更新fact中变量值
+                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
+                        update(categorydelete_child_categoryfilter);//更新fact中变量值
+                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
+            end
+
             //逻辑处理节点[设置过滤器参数]
             rule "prepareparam1"
             ruleflow-group "categorydelete_child_categoryprepareparam1"
@@ -67,6 +80,19 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
+            //逻辑处理节点[结束前的默认参数]
+            rule "debugparam2"
+            ruleflow-group "categorydelete_child_categorydebugparam2"
+            when
+            then
+                        update(categorydelete_child_categorydefault);//更新fact中变量值
+                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
+                        update(categorydelete_child_categoryfilter);//更新fact中变量值
+                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
+            end
+
             //逻辑处理节点[上级的是否叶子节点变更]
             rule "prepareparam2"
             ruleflow-group "categorydelete_child_categoryprepareparam2"
@@ -83,38 +109,12 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
-            //逻辑处理节点[模块下模块]
-            rule "dedataset3"
-            ruleflow-group "categorydelete_child_categorydedataset3"
-            when
-            then
-                        update(categorydelete_child_categorydefault);//更新fact中变量值
-                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
-                        update(categorydelete_child_categoryfilter);//更新fact中变量值
-                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
-            end
-
             //逻辑处理节点[变更上级节点]
             rule "deaction3"
             ruleflow-group "categorydelete_child_categorydeaction3"
             when
             then
                         categoryservice.update(categorydelete_child_categoryparent_category);
-                        update(categorydelete_child_categorydefault);//更新fact中变量值
-                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
-                        update(categorydelete_child_categoryfilter);//更新fact中变量值
-                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
-            end
-
-            //逻辑处理节点[输出默认参数]
-            rule "debugparam1"
-            ruleflow-group "categorydelete_child_categorydebugparam1"
-            when
-            then
                         update(categorydelete_child_categorydefault);//更新fact中变量值
                         update(categorydelete_child_categorycategory_page);//更新fact中变量值
                         update(categorydelete_child_categoryfilter);//更新fact中变量值
@@ -167,19 +167,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束前的默认参数]
-            rule "debugparam2"
-            ruleflow-group "categorydelete_child_categorydebugparam2"
-            when
-            then
-                        update(categorydelete_child_categorydefault);//更新fact中变量值
-                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
-                        update(categorydelete_child_categoryfilter);//更新fact中变量值
-                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
-            end
-
             //逻辑处理节点[上级的是否叶子节点变更]
             rule "prepareparam3"
             ruleflow-group "categorydelete_child_categoryprepareparam3"
@@ -188,6 +175,19 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                             categorydelete_child_categoryparent_section.set("id",categorydelete_child_categorydefault.get("sectionid"));
                             categorydelete_child_categoryfilter.set("n_section_id_eq",categorydelete_child_categorydefault.get("sectionid"));
                             categorydelete_child_categoryparent_section.set("isleaf","1");
+                        update(categorydelete_child_categorydefault);//更新fact中变量值
+                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
+                        update(categorydelete_child_categoryfilter);//更新fact中变量值
+                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
+            end
+
+            //逻辑处理节点[模块下模块]
+            rule "dedataset3"
+            ruleflow-group "categorydelete_child_categorydedataset3"
+            when
+            then
                         update(categorydelete_child_categorydefault);//更新fact中变量值
                         update(categorydelete_child_categorycategory_page);//更新fact中变量值
                         update(categorydelete_child_categoryfilter);//更新fact中变量值

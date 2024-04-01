@@ -35,18 +35,6 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.delete;
                         update(article_pagedeleteselected_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[设置删除状态]
-            rule "prepareparam2"
-            ruleflow-group "article_pagedeleteprepareparam2"
-            when
-            then
-                            article_pagedeletedefault.set("isdeleted","1");
-                        update(article_pagedeletedefault);//更新fact中变量值
-                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
-                        update(article_pagedeleteselected_filter);//更新fact中变量值
-                        update(article_pagedeleteselected_page);//更新fact中变量值
-            end
-
             //逻辑处理节点[删除最近访问]
             rule "rawsqlcall1"
             ruleflow-group "article_pagedeleterawsqlcall1"
@@ -79,6 +67,18 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.delete;
             ruleflow-group "article_pagedeletededataset1"
             when
             then
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam2"
+            ruleflow-group "article_pagedeleteprepareparam2"
+            when
+            then
+                            article_pagedeletedefault.set("isdeleted","1");
                         update(article_pagedeletedefault);//更新fact中变量值
                         update(article_pagedeletefor_temp_obj);//更新fact中变量值
                         update(article_pagedeleteselected_filter);//更新fact中变量值

@@ -3,7 +3,7 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.INSIGHT"
   },
-  "caption" : "洞察力",
+  "caption" : "scrum报表",
   "codeName" : "insightgrid_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insightgrid_view.json",
   "funcViewMode" : "MDATAVIEW",
@@ -79,10 +79,27 @@
   "getPSAppViewNavContexts" : [ {
     "key" : "PROJECT",
     "name" : "PROJECT",
-    "value" : "ee11e5a96002f4f3937ddba025ec7d44",
+    "value" : "cc1ca882-84ed-cf02-b1a7-b6a2d2569a23",
+    "rawValue" : true
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_belong_eq",
+    "name" : "n_belong_eq",
+    "value" : "scrum",
     "rawValue" : true
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA",
+    "realTitle" : "洞察力数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.INSIGHT.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insightredirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    }
+  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "洞察力编辑视图",
@@ -93,17 +110,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insightedit_view.json",
       "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "EDITDATA",
-    "realTitle" : "洞察力数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.INSIGHT.REDIRECTVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insightredirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -266,7 +272,7 @@
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "tbitem8",
-      "noPrivDisplayMode" : 2,
+      "noPrivDisplayMode" : 1,
       "getPSAppViewUIAction" : {
         "modelref" : true,
         "id" : "toolbar_tbitem8"
@@ -277,13 +283,19 @@
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
         "getCapPSLanguageRes" : {
           "lanResTag" : "TBB.TEXT.*.REMOVE"
         },
         "caption" : "删除",
         "codeName" : "Remove",
+        "dataAccessAction" : "DELETE",
         "fullCodeName" : "Remove",
         "name" : "表格界面_删除操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "DELETE"
+        },
         "getPSSysImage" : {
           "glyph" : "xf00d@FontAwesome",
           "cssClass" : "fa fa-remove"
@@ -555,6 +567,11 @@
     },
     "groupMode" : "NONE",
     "logicName" : "主表格",
+    "minorSortDir" : "ASC",
+    "getMinorSortPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "Name"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Insight.json"
@@ -668,7 +685,7 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "NONE",
+      "cLConvertMode" : "FRONT",
       "caption" : "组别",
       "codeName" : "group",
       "columnType" : "DEFGRIDCOLUMN",
@@ -676,6 +693,10 @@
       "excelCaption" : "组别",
       "name" : "group",
       "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__Insight_group.json"
+      },
       "getPSAppDEField" : {
         "name" : "GROUP",
         "codeName" : "Group"
@@ -802,9 +823,9 @@
     "forceFit" : false,
     "hideHeader" : false,
     "noSort" : false,
-    "singleSelect" : false,
+    "singleSelect" : true,
     "name" : "grid",
-    "modelid" : "52e9c6710b4f931130b13ac250f97e15",
+    "modelid" : "765f14ab61579f80efaa01666c13fcbb",
     "modeltype" : "PSDEGRID"
   }, {
     "codeName" : "Default",
@@ -893,7 +914,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "c4c78d9b609ff88d2a65f0ad11354ab6",
+    "modelid" : "7cae254282ecc57068b6e571661dc252",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "controlType" : "SEARCHBAR",
@@ -916,7 +937,7 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.INSIGHT"
     },
-    "caption" : "洞察力",
+    "caption" : "scrum报表",
     "codeName" : "grid_viewcaptionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
@@ -927,7 +948,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "grid_view",
-  "getPSDEViewId" : "513fb2ca671f9b2c8574746cc3205a07",
+  "getPSDEViewId" : "d57d81c7b6d675822d95a67e947c1209",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -942,7 +963,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "title" : "洞察力表格视图",
+  "title" : "scrum报表视图",
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.INSIGHT.GRIDVIEW"
   },
@@ -957,6 +978,6 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "0bfd344d66f56f9837c43f387df5e4cf",
+  "modelid" : "7f3a4e2d95ee8b462d1d4d74fbbf1648",
   "modeltype" : "PSAPPDEVIEW"
 }

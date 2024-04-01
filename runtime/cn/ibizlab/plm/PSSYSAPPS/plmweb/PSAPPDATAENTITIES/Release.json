@@ -179,6 +179,46 @@
     "requestPath" : "/getdraft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "UPDATE",
+    "actionName" : "plan_work_item",
+    "codeName" : "Plan_work_item",
+    "methodType" : "DEACTION",
+    "name" : "Plan_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ReleaseDTO"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ReleaseDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Release/PSDEACTIONS/Plan_work_item.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "Project__UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "Plan_work_item"
+    },
+    "requestMethod" : "PUT",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/plan_work_item",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "DELETE",
     "batchActionMode" : 1,
     "codeName" : "Remove",
@@ -357,6 +397,17 @@
     "valueFormat" : "YYYY-MM-DD"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[END_AT][发布时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKEREX_NOTIME",
+        "name" : "[END_AT][发布时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[END_AT][发布时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -369,17 +420,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[END_AT][发布时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DATEPICKEREX_NOTIME",
-        "name" : "[END_AT][发布时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "End_at",
     "logicName" : "发布时间",
@@ -447,6 +487,18 @@
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[STATUS][状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[STATUS][状态]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[STATUS][状态]移动端默认",
       "getPSDEFFormItem" : {
@@ -460,18 +512,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[STATUS][状态]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DROPDOWNLIST",
-        "name" : "[STATUS][状态]",
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT",
-        "needCodeListConfig" : true
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Status",
     "logicName" : "状态",
@@ -480,17 +520,6 @@
     "stringLength" : 60
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CATEGORIES][类别]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[CATEGORIES][类别]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CATEGORIES][类别]移动端默认",
       "getPSDEFFormItem" : {
@@ -503,6 +532,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CATEGORIES][类别]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CATEGORIES][类别]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Categories",
     "logicName" : "类别",
@@ -511,6 +551,17 @@
     "stringLength" : 2000
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ASSIGNEE_NAME][负责人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ASSIGNEE_NAME][负责人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ASSIGNEE_NAME][负责人]移动端默认",
       "getPSDEFFormItem" : {
@@ -523,17 +574,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ASSIGNEE_NAME][负责人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ASSIGNEE_NAME][负责人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Assignee_name",
     "logicName" : "负责人",
@@ -542,6 +582,18 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ASSIGNEE_ID][负责人标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ASSIGNEE_ID][负责人标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ASSIGNEE_ID][负责人标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -550,21 +602,11 @@
         "name" : "[ASSIGNEE_ID][负责人标识]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ASSIGNEE_ID][负责人标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ASSIGNEE_ID][负责人标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Assignee_id",
     "logicName" : "负责人标识",
@@ -573,20 +615,6 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -598,10 +626,26 @@
         "name" : "[NAME][名称]移动端默认",
         "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Name",
     "getLNPSLanguageRes" : {
@@ -615,21 +659,6 @@
     "majorField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_MAN][更新人]移动端默认",
       "getPSDEFFormItem" : {
@@ -646,6 +675,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Update_man",
     "getLNPSLanguageRes" : {
@@ -657,21 +701,6 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CREATE_MAN][建立人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_MAN][建立人]移动端默认",
       "getPSDEFFormItem" : {
@@ -688,6 +717,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATE_MAN][建立人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_MAN][建立人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Create_man",
     "getLNPSLanguageRes" : {
@@ -742,21 +786,6 @@
     "keyField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -773,6 +802,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[CREATE_TIME][建立时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Create_time",
     "getLNPSLanguageRes" : {
@@ -784,21 +828,6 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -815,6 +844,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Update_time",
     "getLNPSLanguageRes" : {
@@ -826,21 +870,6 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PROJECT_ID][项目标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[PROJECT_ID][项目标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PROJECT_ID][项目标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -853,10 +882,27 @@
         },
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PROJECT_ID][项目标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PROJECT_ID][项目标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Project_id",
     "logicName" : "项目标识",
@@ -865,6 +911,28 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PROJECT_NAME][项目名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[PROJECT_NAME][项目名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PROJECT_NAME][项目名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -888,28 +956,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PROJECT_NAME][项目名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "PICKER",
-        "name" : "[PROJECT_NAME][项目名称]",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Project_name",
     "logicName" : "项目名称",
@@ -1009,7 +1055,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Create_man",
       "logicName" : "建立人",
@@ -1057,7 +1104,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Project_id",
       "logicName" : "项目标识",
@@ -1068,7 +1116,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Project_name",
       "logicName" : "项目名称",
@@ -1341,6 +1390,46 @@
     "requestPath" : "/getdraft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "UPDATE",
+    "actionName" : "plan_work_item",
+    "codeName" : "Plan_work_item",
+    "methodType" : "DEACTION",
+    "name" : "Plan_work_item",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ReleaseDTO"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ReleaseDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Release/PSDEACTIONS/Plan_work_item.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "Project__UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "Plan_work_item"
+    },
+    "requestMethod" : "PUT",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/plan_work_item",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "DELETE",
     "batchActionMode" : 1,
     "codeName" : "Remove",
@@ -1545,6 +1634,41 @@
     "uIActionTag" : "open_update_view",
     "uIActionType" : "DEUIACTION",
     "id" : "open_update_view@Release"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "规划工作项",
+    "codeName" : "plan_work_item",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemplan_work_item_pickview.json",
+      "viewType" : "DEMPICKUPVIEW2"
+    },
+    "fullCodeName" : "Release_plan_work_item",
+    "name" : "规划工作项（release）",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Plan_work_item"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Release.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "release_id",
+      "name" : "release_id",
+      "value" : "release",
+      "rawValue" : false
+    } ],
+    "refreshMode" : 1,
+    "successMsg" : "规划工作项成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "plan_work_item",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "globalUIAction" : true,
+    "reloadData" : true,
+    "id" : "plan_work_item@Release"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "删除",
@@ -1867,19 +1991,14 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "defaultValue",
-      "logicName" : "默认值对象",
-      "name" : "默认值对象",
-      "entityParam" : true
-    }, {
-      "codeName" : "context",
-      "logicName" : "上下文对象",
-      "name" : "上下文对象",
-      "navContextParam" : true
-    }, {
       "codeName" : "node_param",
       "logicName" : "节点参数",
       "name" : "节点参数",
+      "entityParam" : true
+    }, {
+      "codeName" : "defaultValue",
+      "logicName" : "默认值对象",
+      "name" : "默认值对象",
       "entityParam" : true
     }, {
       "codeName" : "Default",
@@ -1892,6 +2011,11 @@
       "logicName" : "树部件",
       "name" : "树部件",
       "ctrlParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2014,11 +2138,6 @@
       "topPos" : 238
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "context",
-      "logicName" : "上下文对象",
-      "name" : "上下文对象",
-      "navContextParam" : true
-    }, {
       "codeName" : "node_param",
       "logicName" : "节点参数",
       "name" : "节点参数",
@@ -2039,6 +2158,11 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文对象",
+      "name" : "上下文对象",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2257,20 +2381,32 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasePickupGridView.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasequick_create_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasePickupView.json",
-    "viewType" : "DEPICKUPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasegrid_view_all.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasepick_up_view_PickupGridView.json",
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasePickupGridView.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasepick_up_view.json",
+    "viewType" : "DEPICKUPVIEW2"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasetree_exp_view.json",
     "viewType" : "DETREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasePickupView.json",
+    "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releaseupdate_view.json",
@@ -2279,18 +2415,6 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasemain_view.json",
     "viewType" : "DETABEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasegrid_view_all.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasequick_create_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/releasepick_up_view.json",
-    "viewType" : "DEPICKUPVIEW2"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -2442,7 +2566,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "编辑",
       "detailType" : "DEUIACTION",
-      "name" : "u9fd56b0",
+      "name" : "u9d68440",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -2461,7 +2585,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u09615cf",
+      "name" : "u43f56f4",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"

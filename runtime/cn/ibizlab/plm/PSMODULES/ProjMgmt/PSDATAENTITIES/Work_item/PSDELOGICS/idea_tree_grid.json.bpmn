@@ -6,6 +6,7 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="work_itemidea_tree_griddefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemidea_tree_gridflag" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemidea_tree_gridfor_temp" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemidea_tree_gridpage" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Work_item()" name="work_itemidea_tree_gridresult_list" type="refentity"/>
@@ -18,6 +19,7 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IWork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="work_itemidea_tree_griddefault" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
+                            <tns:global identifier="work_itemidea_tree_gridflag" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
                             <tns:global identifier="work_itemidea_tree_gridfor_temp" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
                             <tns:global identifier="work_itemidea_tree_gridpage" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
                             <tns:global identifier="work_itemidea_tree_gridresult_list" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
@@ -28,10 +30,9 @@
                             <tns:global identifier="work_itemidea_tree_gridwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_griddebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_griddedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="平铺数据集合"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="获取查询参数决定查询方式"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="需求类型工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_griddedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="平铺数据集合"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_griddedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取顶级工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接top_ids"/>
@@ -48,14 +49,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemidea_tree_gridprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="复制分页参数"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    <sequenceFlow id="begin_rawsfcode2" sourceRef="begin" targetRef="rawsfcode2">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_dedataset2" sourceRef="prepareparam4" targetRef="dedataset2">
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam1_prepareparam3" sourceRef="gateway-debugparam1" targetRef="prepareparam3">
+                    <sequenceFlow id="gateway-rawsfcode2_prepareparam3" sourceRef="gateway-rawsfcode2" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemidea_tree_griddefault:Work_item();
+                                            $work_itemidea_tree_gridflag:Work_item();
                                             $work_itemidea_tree_gridfor_temp:Work_item();
                                             $work_itemidea_tree_gridpage:Work_item();
                                             $work_itemidea_tree_gridresult_list:Work_item();
@@ -64,14 +63,15 @@
                                             $work_itemidea_tree_gridtop_page:Work_item();
                                             $work_itemidea_tree_gridtop_temp:Work_item();
                                             $work_itemidea_tree_gridwork_item:Work_item();
-                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
-                                eval((RuleUtils.test($work_itemidea_tree_griddefault.get("srfshowmode"),"EQ","tree"))&&(RuleUtils.test($work_itemidea_tree_griddefault.get("query"),"ISNULL",""))&&(RuleUtils.test($work_itemidea_tree_griddefault.get("searchconds"),"ISNULL","")))
+                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridflag==work_itemidea_tree_gridflag && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
+                                eval((RuleUtils.test($work_itemidea_tree_gridflag.get("srfshowmode_flag"),"EQ","1"))&&(RuleUtils.test($work_itemidea_tree_gridflag.get("searchconds_flag"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam1_dedataset2" sourceRef="gateway-debugparam1" targetRef="dedataset2">
+                    <sequenceFlow id="gateway-rawsfcode2_dedataset2" sourceRef="gateway-rawsfcode2" targetRef="dedataset2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemidea_tree_griddefault:Work_item();
+                                            $work_itemidea_tree_gridflag:Work_item();
                                             $work_itemidea_tree_gridfor_temp:Work_item();
                                             $work_itemidea_tree_gridpage:Work_item();
                                             $work_itemidea_tree_gridresult_list:Work_item();
@@ -80,34 +80,19 @@
                                             $work_itemidea_tree_gridtop_page:Work_item();
                                             $work_itemidea_tree_gridtop_temp:Work_item();
                                             $work_itemidea_tree_gridwork_item:Work_item();
-                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
-                                eval((((RuleUtils.test($work_itemidea_tree_griddefault.get("searchconds"),"ISNOTNULL",""))&&(RuleUtils.test($work_itemidea_tree_griddefault.get("srfshowmode"),"ISNULL","")))&&((RuleUtils.test($work_itemidea_tree_griddefault.get("srfshowmode"),"EQ","tree"))&&((RuleUtils.test($work_itemidea_tree_griddefault.get("query"),"ISNOTNULL",""))||(RuleUtils.test($work_itemidea_tree_griddefault.get("searchconds"),"ISNOTNULL",""))))))
+                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridflag==work_itemidea_tree_gridflag && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
+                                eval((((RuleUtils.test($work_itemidea_tree_gridflag.get("searchconds_flag"),"EQ","1"))&&(RuleUtils.test($work_itemidea_tree_gridflag.get("srfshowmode_flag"),"EQ","1")))&&(RuleUtils.test($work_itemidea_tree_gridflag.get("srfshowmode_flag"),"EQ","0"))))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam1_prepareparam4" sourceRef="gateway-debugparam1" targetRef="prepareparam4">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemidea_tree_griddefault:Work_item();
-                                            $work_itemidea_tree_gridfor_temp:Work_item();
-                                            $work_itemidea_tree_gridpage:Work_item();
-                                            $work_itemidea_tree_gridresult_list:Work_item();
-                                            $work_itemidea_tree_gridresult_page:Work_item();
-                                            $work_itemidea_tree_gridtop_fiter:Work_item();
-                                            $work_itemidea_tree_gridtop_page:Work_item();
-                                            $work_itemidea_tree_gridtop_temp:Work_item();
-                                            $work_itemidea_tree_gridwork_item:Work_item();
-                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
-                                eval((RuleUtils.test($work_itemidea_tree_griddefault.get("searchconds"),"ISNULL",""))&&(RuleUtils.test($work_itemidea_tree_griddefault.get("srfshowmode"),"ISNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="dedataset2_end1" sourceRef="dedataset2" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_end1" sourceRef="dedataset2" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemidea_tree_griddefault:Work_item();
+                                            $work_itemidea_tree_gridflag:Work_item();
                                             $work_itemidea_tree_gridfor_temp:Work_item();
                                             $work_itemidea_tree_gridpage:Work_item();
                                             $work_itemidea_tree_gridresult_list:Work_item();
@@ -116,7 +101,7 @@
                                             $work_itemidea_tree_gridtop_page:Work_item();
                                             $work_itemidea_tree_gridtop_temp:Work_item();
                                             $work_itemidea_tree_gridwork_item:Work_item();
-                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
+                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridflag==work_itemidea_tree_gridflag && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
                                 eval((RuleUtils.test($work_itemidea_tree_gridpage.get("size"),"GT","0")))
                                 ]]>
                             </conditionExpression>
@@ -124,6 +109,7 @@
                     <sequenceFlow id="gateway-dedataset1_end1" sourceRef="gateway-dedataset1" targetRef="end1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemidea_tree_griddefault:Work_item();
+                                            $work_itemidea_tree_gridflag:Work_item();
                                             $work_itemidea_tree_gridfor_temp:Work_item();
                                             $work_itemidea_tree_gridpage:Work_item();
                                             $work_itemidea_tree_gridresult_list:Work_item();
@@ -132,7 +118,7 @@
                                             $work_itemidea_tree_gridtop_page:Work_item();
                                             $work_itemidea_tree_gridtop_temp:Work_item();
                                             $work_itemidea_tree_gridwork_item:Work_item();
-                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
+                                    eval($work_itemidea_tree_griddefault==work_itemidea_tree_griddefault && $work_itemidea_tree_gridflag==work_itemidea_tree_gridflag && $work_itemidea_tree_gridfor_temp==work_itemidea_tree_gridfor_temp && $work_itemidea_tree_gridpage==work_itemidea_tree_gridpage && $work_itemidea_tree_gridresult_list==work_itemidea_tree_gridresult_list && $work_itemidea_tree_gridresult_page==work_itemidea_tree_gridresult_page && $work_itemidea_tree_gridtop_fiter==work_itemidea_tree_gridtop_fiter && $work_itemidea_tree_gridtop_page==work_itemidea_tree_gridtop_page && $work_itemidea_tree_gridtop_temp==work_itemidea_tree_gridtop_temp && $work_itemidea_tree_gridwork_item==work_itemidea_tree_gridwork_item);
                                 eval((RuleUtils.test($work_itemidea_tree_gridpage.get("size"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
@@ -151,14 +137,12 @@
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall2_bindparam1" sourceRef="loopsubcall2" targetRef="bindparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="bindparam1_prepareparam2" sourceRef="bindparam1" targetRef="prepareparam2">
+                    <sequenceFlow id="bindparam1_end1" sourceRef="bindparam1" targetRef="end1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
-                    </sequenceFlow>
-                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
-                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
-                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
-                            <endEvent id="gateway-debugparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsfcode2" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode2_gateway-rawsfcode2_gatewayline" sourceRef="rawsfcode2" targetRef="gateway-rawsfcode2"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode2_end_line" sourceRef="gateway-rawsfcode2" targetRef="gateway-rawsfcode2_end"/>
+                            <endEvent id="gateway-rawsfcode2_end" name="end"/>
                             <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>

@@ -180,6 +180,34 @@
     },
     "topPos" : 320
   }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 440,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "修改需求信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "UPDATE idea t \r\nINNER JOIN category t21 ON t.category_id = t21.ID \r\nINNER JOIN section t31 on t21.SECTION_ID = t31.id\r\nSET t.category_id = NULL\r\nWHERE (t21.SECTION_ID = ? )",
+    "topPos" : -30
+  }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -283,34 +311,6 @@
       }
     } ],
     "topPos" : 523
-  }, {
-    "codeName" : "RAWSQLCALL1",
-    "leftPos" : 440,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "修改需求信息",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "UPDATE idea t \r\nINNER JOIN category t21 ON t.category_id = t21.ID \r\nINNER JOIN section t31 on t21.SECTION_ID = t31.id\r\nSET t.category_id = NULL\r\nWHERE (t21.SECTION_ID = ? )",
-    "topPos" : -30
   }, {
     "codeName" : "END1",
     "leftPos" : 480,

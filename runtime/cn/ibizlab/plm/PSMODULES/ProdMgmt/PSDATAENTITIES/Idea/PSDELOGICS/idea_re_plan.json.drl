@@ -48,6 +48,31 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.idea_re_plan;
                         update(ideaidea_re_plansrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "ideaidea_re_plandeaction1"
+            when
+            then
+                        relationservice.save(ideaidea_re_planrelationobj);
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ideaidea_re_planloopsubcall1"
+            when
+            then
+                        update(ideaidea_re_plandefault);//更新fact中变量值
+                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj);//更新fact中变量值
+                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
+                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[填充需要的属性]
             rule "prepareparam1"
             ruleflow-group "ideaidea_re_planprepareparam1"
@@ -68,37 +93,12 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.idea_re_plan;
                         update(ideaidea_re_plansrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[生成正向关联数据]
-            rule "deaction1"
-            ruleflow-group "ideaidea_re_plandeaction1"
-            when
-            then
-                        relationservice.save(ideaidea_re_planrelationobj);
-                        update(ideaidea_re_plandefault);//更新fact中变量值
-                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
-                        update(ideaidea_re_planrelationobj);//更新fact中变量值
-                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
-                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[生成反向关联数据]
             rule "deaction2"
             ruleflow-group "ideaidea_re_plandeaction2"
             when
             then
                         relationservice.save(ideaidea_re_planrelationobj2);
-                        update(ideaidea_re_plandefault);//更新fact中变量值
-                        update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
-                        update(ideaidea_re_planrelationobj);//更新fact中变量值
-                        update(ideaidea_re_planrelationobj2);//更新fact中变量值
-                        update(ideaidea_re_plansrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "ideaidea_re_planloopsubcall1"
-            when
-            then
                         update(ideaidea_re_plandefault);//更新fact中变量值
                         update(ideaidea_re_planfor_temp_obj);//更新fact中变量值
                         update(ideaidea_re_planrelationobj);//更新fact中变量值

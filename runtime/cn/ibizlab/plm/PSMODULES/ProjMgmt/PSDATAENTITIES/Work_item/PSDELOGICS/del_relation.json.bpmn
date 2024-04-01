@@ -6,17 +6,17 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="work_itemdel_relationdefault" type="entity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Relation()" name="work_itemdel_relationrelationobj" type="refentity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Relation()" name="work_itemdel_relationrelationobj2" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Relation()" name="work_itemdel_relationforward_relation_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.Relation()" name="work_itemdel_relationreverse_relation_obj" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IRelationService))" name="relationservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IWork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="work_itemdel_relationdefault" type="cn.ibizlab.plm.core.projmgmt.domain.Work_item" />
-                            <tns:global identifier="work_itemdel_relationrelationobj" type="cn.ibizlab.plm.core.base.domain.Relation" />
-                            <tns:global identifier="work_itemdel_relationrelationobj2" type="cn.ibizlab.plm.core.base.domain.Relation" />
+                            <tns:global identifier="work_itemdel_relationforward_relation_obj" type="cn.ibizlab.plm.core.base.domain.Relation" />
+                            <tns:global identifier="work_itemdel_relationreverse_relation_obj" type="cn.ibizlab.plm.core.base.domain.Relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemdel_relationprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemdel_relationprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充正反关联对象的主要关联属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemdel_relationrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接关联对象的主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemdel_relationdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除正向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemdel_relationdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="删除反向关联"/>

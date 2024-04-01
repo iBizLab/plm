@@ -5,6 +5,7 @@
   "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDEFLOGICS/assignee_onchange.json",
   "logicName" : "负责人变更附加逻辑",
   "logicSubType" : "DEFIELD",
+  "memo" : "负责人变更触发相关通知",
   "name" : "负责人变更附加逻辑",
   "getPSDEField" : {
     "name" : "ASSIGNEE_ID",
@@ -12,9 +13,39 @@
   },
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 210,
+    "leftPos" : 220,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DENOTIFY2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -20,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DENOTIFY2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDENOTIFIES/assignee_onchange_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea.json"
+    },
+    "leftPos" : 180,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "负责人变更通知",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -34,36 +65,26 @@
           },
           "logicType" : "SINGLE",
           "name" : "Default[ASSIGNEE_ID] 值不为空(NotNil)"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "Begin"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DENOTIFY2"
-      },
-      "name" : "连接名称",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "ID",
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ASSIGNEE_ID",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[ID] 值不为空(NotNil)"
+          "name" : "Default[ASSIGNEE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DENOTIFY2"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -84,15 +105,47 @@
           },
           "logicType" : "SINGLE",
           "name" : "Last[ASSIGNEE_ID] 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Last"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Last[ASSIGNEE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DENOTIFY2"
       }
     } ],
-    "topPos" : 110,
-    "parallelOutput" : true
+    "topPos" : 130
+  }, {
+    "codeName" : "DENOTIFY1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDENotify" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDENOTIFIES/assignee_notify.json"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea.json"
+    },
+    "leftPos" : 130,
+    "logicNodeType" : "DENOTIFY",
+    "name" : "分配负责人通知",
+    "topPos" : 420
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 320,
@@ -123,44 +176,22 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "UPDATE_TIME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "name" : "Default[UPDATE_TIME] ==> Last[UPDATE_TIME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "UPDATE_TIME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 290
-  }, {
-    "codeName" : "DENOTIFY1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDENotify" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDENOTIFIES/assignee_notify.json"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea.json"
-    },
-    "leftPos" : 130,
-    "logicNodeType" : "DENOTIFY",
-    "name" : "分配负责人通知",
-    "topPos" : 420
-  }, {
-    "codeName" : "DENOTIFY2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDENotify" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDENOTIFIES/assignee_onchange_notify.json"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea.json"
-    },
-    "leftPos" : -80,
-    "logicNodeType" : "DENOTIFY",
-    "name" : "负责人变更通知",
-    "topPos" : 420
   }, {
     "codeName" : "DENOTIFY3",
     "getDstPSDELogicParam" : {

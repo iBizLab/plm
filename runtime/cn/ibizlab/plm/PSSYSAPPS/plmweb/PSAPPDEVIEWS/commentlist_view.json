@@ -17,13 +17,18 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
   },
   "getPSAppViewNavParams" : [ {
+    "key" : "n_owner_type_eq",
+    "name" : "n_owner_type_eq",
+    "value" : "principal_type",
+    "rawValue" : false
+  }, {
     "key" : "n_principal_id_eq",
     "name" : "n_principal_id_eq",
     "value" : "principal_id",
     "rawValue" : false
   } ],
   "getPSDEViewCodeName" : "list_view",
-  "getPSDEViewId" : "EBC99E58-2108-44EA-94A6-A643A266FB36",
+  "getPSDEViewId" : "2cd57b81d6d3e24a97d721002d13a493",
   "getPSViewLayoutPanel" : {
     "codeName" : "Usr0103274907",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -187,7 +192,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "9E9F7E9C-F8E1-4141-91F0-80366DADD68E",
+    "modelid" : "ec74278f1f5a797ebc942e090298d91c",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -202,6 +207,20 @@
         "actionAfterWizard" : "DEFAULT",
         "logicType" : "PREDEFINED",
         "name" : "新建数据",
+        "getNewDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
         "viewLogicType" : "APP_NEWDATA",
         "batchAddOnly" : false,
         "enableBatchAdd" : false,
@@ -214,14 +233,46 @@
       "getPSAppUILogic" : {
         "logicType" : "PREDEFINED",
         "name" : "打开数据",
+        "getOpenDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
         "viewLogicType" : "APP_OPENDATA",
         "editMode" : true
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "NEWDATA"
+      "name" : "NEWDATA",
+      "realTitle" : "评论编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.COMMENT.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+        "viewType" : "DEEDITVIEW"
+      }
     }, {
-      "name" : "EDITDATA"
+      "name" : "EDITDATA",
+      "realTitle" : "评论编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.COMMENT.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+        "viewType" : "DEEDITVIEW"
+      }
     } ],
     "getPSControls" : [ {
       "codeName" : "List",
@@ -302,12 +353,21 @@
         "codeName" : "Usr0103471499",
         "controlType" : "PANEL",
         "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Comment/PSPANELS/Usr0103471499.json",
+        "hookEventNames" : [ "ONCLICK" ],
         "layoutMode" : "TABLE_24COL",
         "logicName" : "list_列表项面板",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Comment.json"
         },
+        "getPSControlLogics" : [ {
+          "eventNames" : "onClick",
+          "itemName" : "BUTTON_CALLUILOGIC2",
+          "logicTag" : "list_itempanel",
+          "logicType" : "SCRIPT",
+          "name" : "logic",
+          "scriptCode" : "const panelItems = view.layoutPanel.panelItems;\r\n panelItems.container_comment.state.visible = true;"
+        } ],
         "getPSControlParam" : { },
         "getPSLayout" : {
           "childColLG" : -1,
@@ -489,8 +549,8 @@
                   "layout" : "FLEX"
                 },
                 "getPSSysImage" : {
-                  "glyph" : "xf1e8@FontAwesome",
-                  "cssClass" : "fa fa-twitch"
+                  "glyph" : "xf0e5@FontAwesome",
+                  "cssClass" : "fa fa-comment-o"
                 },
                 "getPSUIAction" : {
                   "actionTarget" : "SINGLEDATA",
@@ -528,6 +588,14 @@
                   "modelref" : true,
                   "id" : "list_itempanel_button_calluilogic1"
                 },
+                "getPSControlLogics" : [ {
+                  "itemName" : "BUTTON_CALLUILOGIC1",
+                  "logicTag" : "list_itempanel",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic_edit",
+                  "scriptCode" : "data?.create_man === context?.srfuserid",
+                  "triggerType" : "ITEMVISIBLE"
+                } ],
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
@@ -572,6 +640,14 @@
                   "modelref" : true,
                   "id" : "list_itempanel_button_calluilogic"
                 },
+                "getPSControlLogics" : [ {
+                  "itemName" : "BUTTON_CALLUILOGIC",
+                  "logicTag" : "list_itempanel",
+                  "logicType" : "SCRIPT",
+                  "name" : "logic_dele",
+                  "scriptCode" : "data?.create_man === context?.srfuserid",
+                  "triggerType" : "ITEMVISIBLE"
+                } ],
                 "getPSLayoutPos" : {
                   "grow" : -1,
                   "layout" : "FLEX"
@@ -758,7 +834,7 @@
           } ]
         } ],
         "name" : "list_itempanel",
-        "modelid" : "42AC4D7C-0311-4B52-8AFB-500470D66A00",
+        "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "list",
@@ -846,23 +922,11 @@
         "id" : "LIST"
       },
       "getPSDEListDataItems" : [ {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-        },
-        "name" : "pcreate_man",
+        "dataType" : 21,
+        "name" : "pcontent",
         "getPSAppDEField" : {
-          "name" : "PCREATE_MAN",
-          "codeName" : "Pcreate_man"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD HH:mm:ss",
-        "name" : "create_time",
-        "getPSAppDEField" : {
-          "name" : "CREATE_TIME",
-          "codeName" : "Create_time"
+          "name" : "PCONTENT",
+          "codeName" : "Pcontent"
         }
       }, {
         "dataType" : 25,
@@ -873,17 +937,22 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "pid",
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "name" : "create_man",
         "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "Pid"
+          "name" : "CREATE_MAN",
+          "codeName" : "Create_man"
         }
       }, {
-        "dataType" : 21,
-        "name" : "pcontent",
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "name" : "create_time",
         "getPSAppDEField" : {
-          "name" : "PCONTENT",
-          "codeName" : "Pcontent"
+          "name" : "CREATE_TIME",
+          "codeName" : "Create_time"
         }
       }, {
         "dataType" : 21,
@@ -898,10 +967,17 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
         },
-        "name" : "create_man",
+        "name" : "pcreate_man",
         "getPSAppDEField" : {
-          "name" : "CREATE_MAN",
-          "codeName" : "Create_man"
+          "name" : "PCREATE_MAN",
+          "codeName" : "Pcreate_man"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "pid",
+        "getPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "Pid"
         }
       }, {
         "dataType" : 25,
@@ -963,7 +1039,7 @@
       "noSort" : false,
       "showHeader" : true,
       "name" : "list",
-      "modelid" : "D2480E29-78F4-47E2-8523-9E8819F79D0A",
+      "modelid" : "9b4452e60e1fe2c3e394cd0199c78969",
       "modeltype" : "PSDELIST"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1005,6 +1081,6 @@
   "enableFilter" : true,
   "enableSearch" : true,
   "showCaptionBar" : false,
-  "modelid" : "7710eddbecab1aa5864175faecb8101d",
+  "modelid" : "eac2aa8e4fe80453d257341ab278a79a",
   "modeltype" : "PSAPPDEVIEW"
 }

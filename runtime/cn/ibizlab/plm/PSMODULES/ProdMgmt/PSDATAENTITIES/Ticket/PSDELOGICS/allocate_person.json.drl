@@ -32,6 +32,18 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.allocate_person;
                         update(ticketallocate_personsrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "ticketallocate_personprepareparam2"
+            when
+            then
+                            ticketallocate_persondefault.set("assigneeid",ticketallocate_personfor_temp_obj.get("assigneeid"));
+                            ticketallocate_persondefault.set("assigneename",ticketallocate_personfor_temp_obj.get("assigneename"));
+                        update(ticketallocate_persondefault);//更新fact中变量值
+                        update(ticketallocate_personfor_temp_obj);//更新fact中变量值
+                        update(ticketallocate_personsrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[变更状态]
             rule "deaction1"
             ruleflow-group "ticketallocate_persondeaction1"
@@ -48,18 +60,6 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.allocate_person;
             ruleflow-group "ticketallocate_personloopsubcall1"
             when
             then
-                        update(ticketallocate_persondefault);//更新fact中变量值
-                        update(ticketallocate_personfor_temp_obj);//更新fact中变量值
-                        update(ticketallocate_personsrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam2"
-            ruleflow-group "ticketallocate_personprepareparam2"
-            when
-            then
-                            ticketallocate_persondefault.set("assigneeid",ticketallocate_personfor_temp_obj.get("assigneeid"));
-                            ticketallocate_persondefault.set("assigneename",ticketallocate_personfor_temp_obj.get("assigneename"));
                         update(ticketallocate_persondefault);//更新fact中变量值
                         update(ticketallocate_personfor_temp_obj);//更新fact中变量值
                         update(ticketallocate_personsrfactionparam);//更新fact中变量值

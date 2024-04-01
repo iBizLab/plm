@@ -22,6 +22,20 @@
     "engineType" : "EditView",
     "name" : "engine"
   } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onViewMounted",
+    "logicTrigger" : "VIEWEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "CLOSE_LOGIC",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "close_stencil"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page.json"
+    }
+  } ],
   "getPSControls" : [ {
     "codeName" : "new_view_form_stenciltoolbar",
     "controlType" : "TOOLBAR",
@@ -35,9 +49,6 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
-      },
       "caption" : "发布",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
@@ -52,34 +63,38 @@
         "cssClass" : "fa fa-paper-plane-o"
       },
       "getPSUIAction" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "TBB.TEXT.EDITVIEW.SAVEANDCLOSE"
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "发布",
+        "codeName" : "release",
+        "frontProcessType" : "OTHER",
+        "fullCodeName" : "Article_page_release",
+        "name" : "发布",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "save_notify_refresh"
         },
-        "caption" : "保存并关闭",
-        "codeName" : "SaveAndExit",
-        "fullCodeName" : "SaveAndExit",
-        "name" : "编辑界面_保存并退出操作",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page.json"
+        },
         "getPSSysImage" : {
-          "cssClass" : "sx-tb-saveandclose"
+          "glyph" : "xf1d9@FontAwesome",
+          "cssClass" : "fa fa-paper-plane-o"
         },
-        "predefinedType" : "EDITVIEW_SAVEANDEXITACTION",
         "timeout" : 60000,
-        "getTooltipPSLanguageRes" : {
-          "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-        },
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "SaveAndExit",
-        "uIActionType" : "DEUIACTION"
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "release",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "REPLACE",
+        "id" : "release@Article_page"
       },
       "tooltip" : "发布",
-      "getTooltipPSLanguageRes" : {
-        "lanResTag" : "TBB.TOOLTIP.EDITVIEW.SAVEANDCLOSE"
-      },
+      "uIActionTarget" : "SINGLEDATA",
       "showCaption" : true,
       "showIcon" : true
     } ],
     "xDataControlName" : "form",
-    "modelid" : "59D82179-790C-4BAF-B8C6-1F5CD18CC6A6",
+    "modelid" : "51c637de933831860a8716591fa19673",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "New_view_form_stencil_Form",
@@ -752,7 +767,7 @@
                 "getPSUIActionGroupDetails" : [ {
                   "actionLevel" : 250,
                   "detailType" : "DEUIACTION",
-                  "name" : "u0b42a77",
+                  "name" : "u73b8ba5",
                   "getPSSysImage" : {
                     "glyph" : "xf019@FontAwesome",
                     "cssClass" : "fa fa-download"
@@ -802,7 +817,7 @@
                 }, {
                   "caption" : "删除",
                   "detailType" : "DEUIACTION",
-                  "name" : "u8aff03a",
+                  "name" : "u44d00e2",
                   "getPSSysImage" : {
                     "glyph" : "xf014@FontAwesome",
                     "cssClass" : "fa fa-trash-o"
@@ -1039,7 +1054,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "添加附件",
             "detailType" : "DEUIACTION",
-            "name" : "u14721d8",
+            "name" : "u7f64bbb",
             "getPSSysImage" : {
               "glyph" : "xf067@FontAwesome",
               "cssClass" : "fa fa-plus"
@@ -1248,7 +1263,7 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "92776EE1-8B71-4A21-AF68-2AF1B99985FB",
+    "modelid" : "f5ac64ae994caa6377d6766e51ff808b",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "new_view_form_stencildatainfobar",
@@ -1276,7 +1291,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "new_view_form_stencil",
-  "getPSDEViewId" : "5605F1D6-33B7-40AE-835D-83D9E669699A",
+  "getPSDEViewId" : "e881bce58caf9721bdf68241b48a1c3d",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEEDITVIEW",
@@ -1299,7 +1314,7 @@
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,
-  "modelid" : "ee8bd10b1639ec2a119d33ac12f35f70",
+  "modelid" : "cb090df10c9e68c7763b9902314bbabd",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

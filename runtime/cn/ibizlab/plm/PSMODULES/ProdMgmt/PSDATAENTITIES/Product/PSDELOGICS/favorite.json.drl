@@ -6,7 +6,6 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.favorite;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.prodmgmt.domain.Product productfavoritedefault;
-                global java.util.Map productfavoritectx;
                 global cn.ibizlab.plm.core.base.domain.Favorite productfavoritefavorite;
                     global cn.ibizlab.plm.core.base.service.IFavoriteService favoriteservice;
         global cn.ibizlab.plm.core.prodmgmt.service.IProductService iBzSysProductDefaultService;
@@ -31,7 +30,6 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.favorite;
                             productfavoritefavorite.set("ownertype","product");
                             productfavoritefavorite.set("ownerid",productfavoritedefault.get("owner_id"));
                         update(productfavoritedefault);//更新fact中变量值
-                        update(productfavoritectx);//更新fact中变量值
                         update(productfavoritefavorite);//更新fact中变量值
             end
 
@@ -42,7 +40,6 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.favorite;
             then
                         favoriteservice.save(productfavoritefavorite);
                         update(productfavoritedefault);//更新fact中变量值
-                        update(productfavoritectx);//更新fact中变量值
                         update(productfavoritefavorite);//更新fact中变量值
             end
 
@@ -52,6 +49,5 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.favorite;
             when
             then
                         update(productfavoritedefault);//更新fact中变量值
-                        update(productfavoritectx);//更新fact中变量值
                         update(productfavoritefavorite);//更新fact中变量值
             end

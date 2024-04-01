@@ -6,6 +6,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.Workload workloadbefore_removedefault;
+                global cn.ibizlab.plm.core.base.domain.Extend_storage workloadbefore_removeactual;
                 global cn.ibizlab.plm.core.base.domain.Extend_storage workloadbefore_removeestimated;
                 global cn.ibizlab.plm.core.base.domain.Extend_storage workloadbefore_removeestimated_page;
                 global cn.ibizlab.plm.core.base.domain.Extend_storage workloadbefore_removefilter;
@@ -34,6 +35,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(workloadservice.get(workloadbefore_removedefault.getId()),workloadbefore_removedefault);
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -59,6 +61,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
                                     }
                             }
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -76,6 +79,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
                             workloadbefore_removefilter.set("n_owner_type_eq",workloadbefore_removedefault.get("principaltype"));
                             workloadbefore_removefilter.set("n_name_eq","ESTIMATED_WORKLOAD");
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -90,6 +94,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             when
             then
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -104,6 +109,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             when
             then
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -118,10 +124,14 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             when
             then
                             workloadbefore_removefilter.set("n_name_eq","REMAINING_WORKLOAD");
+                            workloadbefore_removeactual.set("ownerid",workloadbefore_removedefault.get("principalid"));
+                            workloadbefore_removeactual.set("name","ACTUAL_WORKLOAD");
+                            workloadbefore_removeactual.set("ownertype",workloadbefore_removedefault.get("principaltype"));
                             workloadbefore_removeremaining.set("ownerid",workloadbefore_removedefault.get("principalid"));
                             workloadbefore_removeremaining.set("ownertype",workloadbefore_removedefault.get("principaltype"));
                             workloadbefore_removeremaining.set("name","REMAINING_WORKLOAD");
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -136,6 +146,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             when
             then
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -150,6 +161,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             when
             then
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -164,6 +176,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             when
             then
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -179,6 +192,7 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
             then
                         extend_storageservice.save(workloadbefore_removeremaining);
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值
@@ -187,12 +201,30 @@ package cn.ibizlab.plm.base.logic.workloadlogic.before_remove;
                         update(workloadbefore_removetotal_register);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "workloadbefore_removeend1"
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "workloadbefore_removeprepareparam3"
             when
             then
+                                workloadbefore_removeactual.set("decimalvalue",null);
                         update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
+                        update(workloadbefore_removeestimated);//更新fact中变量值
+                        update(workloadbefore_removeestimated_page);//更新fact中变量值
+                        update(workloadbefore_removefilter);//更新fact中变量值
+                        update(workloadbefore_removeremaining);//更新fact中变量值
+                        update(workloadbefore_removeremaining_page);//更新fact中变量值
+                        update(workloadbefore_removetotal_register);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新实际工时]
+            rule "deaction3"
+            ruleflow-group "workloadbefore_removedeaction3"
+            when
+            then
+                        extend_storageservice.save(workloadbefore_removeactual);
+                        update(workloadbefore_removedefault);//更新fact中变量值
+                        update(workloadbefore_removeactual);//更新fact中变量值
                         update(workloadbefore_removeestimated);//更新fact中变量值
                         update(workloadbefore_removeestimated_page);//更新fact中变量值
                         update(workloadbefore_removefilter);//更新fact中变量值

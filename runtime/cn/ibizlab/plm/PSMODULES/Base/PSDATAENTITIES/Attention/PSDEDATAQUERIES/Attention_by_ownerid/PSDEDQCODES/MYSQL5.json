@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( t1.`OWNER_ID` = #{ctx.webcontext.id}  AND  <choose><when test=\"ctx.webcontext.principal_id !=null \">  t1.`OWNER_ID` = #{ctx.webcontext.principal_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`TYPE` IN ('30','40') )",
+    "customCond" : "( t1.`OWNER_ID` = #{ctx.webcontext.id}  AND  <choose><when test=\"ctx.webcontext.principal_id !=null \">  t1.`OWNER_ID` = #{ctx.webcontext.principal_id}  </when><otherwise>1=1</otherwise></choose>  AND  ( t1.`TYPE` = '30'  OR  t1.`TYPE` = '40' )  AND  t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid} )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {

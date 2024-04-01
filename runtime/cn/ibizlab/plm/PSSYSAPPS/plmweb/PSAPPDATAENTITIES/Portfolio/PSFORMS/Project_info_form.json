@@ -83,6 +83,86 @@
       "enableFront" : true
     },
     "valueRuleType" : "SYSVALUERULE"
+  }, {
+    "checkMode" : 1,
+    "name" : "表单项值规则",
+    "getPSDEFValueRule" : {
+      "codeName" : "START_AT",
+      "name" : "开始时间",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "[条件组]OR",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "ISNULL",
+            "condType" : "SIMPLE",
+            "dEFName" : "END_AT",
+            "name" : "[常规条件] 值为空(Nil)"
+          }, {
+            "condOp" : "LTANDEQ",
+            "condType" : "SIMPLE",
+            "dEFName" : "START_AT",
+            "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
+            "paramType" : "ENTITYFIELD",
+            "paramValue" : "END_AT",
+            "ruleInfo" : "开始时间必须小于等于结束时间"
+          } ],
+          "ruleInfo" : "开始时间必须小于等于结束时间"
+        } ],
+        "ruleInfo" : "开始时间必须小于等于结束时间"
+      },
+      "ruleInfo" : "开始时间必须小于等于结束时间",
+      "checkDefault" : true,
+      "defaultMode" : false,
+      "enableBackend" : true,
+      "enableFront" : true
+    },
+    "getPSDEFormItemName" : "start_at",
+    "valueRuleType" : "DEFVALUERULE"
+  }, {
+    "checkMode" : 1,
+    "name" : "表单项值规则",
+    "getPSDEFValueRule" : {
+      "codeName" : "END_AT",
+      "name" : "结束时间",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "[条件组]OR",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "ISNULL",
+            "condType" : "SIMPLE",
+            "dEFName" : "START_AT",
+            "name" : "[常规条件] 值为空(Nil)"
+          }, {
+            "condOp" : "GTANDEQ",
+            "condType" : "SIMPLE",
+            "dEFName" : "END_AT",
+            "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
+            "paramType" : "ENTITYFIELD",
+            "paramValue" : "START_AT",
+            "ruleInfo" : "结束时间必须大于等于开始时间"
+          } ],
+          "ruleInfo" : "结束时间必须大于等于开始时间"
+        } ],
+        "ruleInfo" : "结束时间必须大于等于开始时间"
+      },
+      "ruleInfo" : "结束时间必须大于等于开始时间",
+      "checkDefault" : true,
+      "defaultMode" : false,
+      "enableBackend" : true,
+      "enableFront" : true
+    },
+    "getPSDEFormItemName" : "end_at",
+    "valueRuleType" : "DEFVALUERULE"
   } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
@@ -673,6 +753,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "203B428D-D0D5-4B1C-879A-E1B41BC236A2",
+  "modelid" : "c3d1fd317fb5f8102114bcd4346f5dd4",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

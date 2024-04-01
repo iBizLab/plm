@@ -9,7 +9,15 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
   },
   "getPSDEFormItems" : [ {
+    "id" : "n_sprint_name_eq",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "SPRINT_NAME",
+      "codeName" : "Sprint_name"
+    }
+  }, {
     "id" : "n_sprint_id_eq",
+    "hidden" : true,
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "SPRINT_ID",
@@ -18,6 +26,13 @@
   }, {
     "id" : "data_range",
     "dataType" : 25
+  }, {
+    "id" : "n_priority_eq",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "Priority"
+    }
   }, {
     "id" : "n_severity_eq",
     "dataType" : 25,
@@ -57,6 +72,65 @@
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
       "caption" : "所属迭代",
+      "codeName" : "n_sprint_name_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "n_sprint_name_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "SPRINT_NAME",
+        "codeName" : "Sprint_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "AC" : "TRUE",
+          "PICKUPVIEW" : "TRUE"
+        },
+        "editorType" : "PICKER",
+        "handlerType" : "PickupText",
+        "name" : "n_sprint_name_eq",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "FetchDefault"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Sprint.json"
+        },
+        "getPSEditorItems" : [ {
+          "name" : "n_sprint_id_eq"
+        } ],
+        "getPickupPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprintPickupView.json",
+          "viewType" : "DEPICKUPVIEW"
+        },
+        "placeHolder" : "选择所属迭代",
+        "valueItemName" : "n_sprint_id_eq",
+        "enableAC" : true,
+        "enablePickupView" : true,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "n_sprint_id_eq",
+      "allowEmpty" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "所属迭代",
       "codeName" : "n_sprint_id_eq",
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
@@ -72,38 +146,16 @@
         "codeName" : "Sprint_id"
       },
       "getPSEditor" : {
-        "editorParams" : {
-          "AC" : "TRUE",
-          "TRIGGER" : "TRUE",
-          "PICKUPVIEW" : "FALSE"
-        },
-        "editorType" : "PICKEREX_TRIGGER",
-        "handlerType" : "PickupText",
+        "editorType" : "HIDDEN",
         "name" : "n_sprint_id_eq",
-        "getPSAppDEACMode" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "FetchDefault"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Sprint.json"
-        },
-        "placeHolder" : "选择迭代",
-        "enableAC" : true,
-        "enablePickupView" : false,
-        "forceSelection" : true,
-        "showTrigger" : true,
-        "singleSelect" : true
+        "placeHolder" : "选择迭代"
       },
       "getPSLayoutPos" : {
         "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
       "allowEmpty" : true,
+      "hidden" : true,
       "showCaption" : true
     }, {
       "caption" : "创建时间",
@@ -125,17 +177,51 @@
         "editorType" : "DATERANGE_NOTIME",
         "name" : "data_range",
         "getPSEditorItems" : [ {
-          "name" : "n_create_time_ltandeq"
-        }, {
           "name" : "n_create_time_gtandeq"
-        } ]
+        }, {
+          "name" : "n_create_time_ltandeq"
+        } ],
+        "placeHolder" : "选择时间范围"
       },
       "getPSLayoutPos" : {
         "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
-      "valueItemName" : "n_create_time_ltandeq",
+      "valueItemName" : "n_create_time_gtandeq",
       "allowEmpty" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "优先级",
+      "codeName" : "n_priority_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "n_priority_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "PRIORITY",
+        "codeName" : "Priority"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "n_priority_eq",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_priority.json"
+        },
+        "placeHolder" : "选择优先级",
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true,
       "showCaption" : true
     }, {
       "caption" : "严重程度",
@@ -283,6 +369,6 @@
   "enableAutoSearch" : true,
   "enableFilterSave" : false,
   "noTabHeader" : true,
-  "modelid" : "B62BD2AD-7112-4B28-9B53-F994B8D84196",
+  "modelid" : "cd449ab28d75f997fd5cebc1dbcff674",
   "modeltype" : "PSDEFORM_SEARCHFORM"
 }

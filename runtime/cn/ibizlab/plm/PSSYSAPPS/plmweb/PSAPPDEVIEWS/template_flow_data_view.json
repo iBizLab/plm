@@ -3,6 +3,7 @@
   "caption" : "模板库",
   "codeName" : "template_flow_data_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/template_flow_data_view.json",
+  "mDCtrlActiveMode" : 1,
   "name" : "template_flow_data_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -30,7 +31,7 @@
     "rawValue" : true
   } ],
   "getPSDEViewCodeName" : "template_flow_data_view",
-  "getPSDEViewId" : "0960E260-1B79-49E8-B36F-5C793F1159D0",
+  "getPSDEViewId" : "8fb578de97db391a50661ce08cdbccb2",
   "getPSViewLayoutPanel" : {
     "codeName" : "Usr0227868395",
     "controlType" : "VIEWLAYOUTPANEL",
@@ -132,8 +133,85 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "064C68E2-E2E9-4F3D-A666-FF0C64204997",
+    "modelid" : "5fd4b5e436368e60b97a9d978620ca68",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+    "getPSAppViewEngines" : [ {
+      "engineCat" : "VIEW",
+      "engineType" : "DataView",
+      "name" : "engine"
+    } ],
+    "getPSAppViewLogics" : [ {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "newdata",
+      "getPSAppUILogic" : {
+        "actionAfterWizard" : "DEFAULT",
+        "logicType" : "PREDEFINED",
+        "name" : "新建数据",
+        "getNewDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogicEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogicEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
+        "viewLogicType" : "APP_NEWDATA",
+        "batchAddOnly" : false,
+        "enableBatchAdd" : false,
+        "enableWizardAdd" : false
+      }
+    }, {
+      "logicTrigger" : "CUSTOM",
+      "logicType" : "APPUILOGIC",
+      "name" : "opendata",
+      "getPSAppUILogic" : {
+        "logicType" : "PREDEFINED",
+        "name" : "打开数据",
+        "getOpenDataPSAppView" : {
+          "openMode" : "POPUPMODAL",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogictemplate_info_view.json",
+            "viewType" : "DECUSTOMVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "openMode" : "POPUPMODAL",
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogictemplate_info_view.json",
+            "viewType" : "DECUSTOMVIEW"
+          }
+        } ],
+        "viewLogicType" : "APP_OPENDATA",
+        "editMode" : true
+      }
+    } ],
+    "getPSAppViewRefs" : [ {
+      "name" : "EDITDATA",
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "自动规则模板信息",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogictemplate_info_view.json",
+        "viewType" : "DECUSTOMVIEW"
+      }
+    }, {
+      "name" : "NEWDATA",
+      "realTitle" : "实体处理逻辑编辑视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDELogicEditView.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    } ],
     "getPSControls" : [ {
       "cardHeight" : 120,
       "cardWidth" : 380,
@@ -276,8 +354,10 @@
                   "itemType" : "RAWITEM",
                   "name" : "static_image",
                   "getPSLayoutPos" : {
-                    "grow" : -1,
-                    "layout" : "FLEX"
+                    "grow" : 1,
+                    "heightMode" : "FULL",
+                    "layout" : "FLEX",
+                    "widthMode" : "FULL"
                   },
                   "getPSPanelItemGroupLogics" : [ {
                     "groupOP" : "AND",
@@ -308,17 +388,15 @@
                   "showCaption" : true
                 }, {
                   "caption" : "图片",
-                  "contentHeight" : 36.0,
                   "contentType" : "IMAGE",
-                  "height" : 36.0,
                   "itemStyle" : "DEFAULT",
                   "itemType" : "RAWITEM",
                   "name" : "static_image1",
                   "getPSLayoutPos" : {
-                    "grow" : -1,
-                    "height" : 36,
-                    "heightMode" : "PX",
-                    "layout" : "FLEX"
+                    "grow" : 1,
+                    "heightMode" : "FULL",
+                    "layout" : "FLEX",
+                    "widthMode" : "FULL"
                   },
                   "getPSPanelItemGroupLogics" : [ {
                     "groupOP" : "AND",
@@ -341,13 +419,11 @@
                     "getPSSysImage" : {
                       "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAIAAABuYg/PAAACKklEQVRIDe1XvU4bQRCeHZ/5iR3JuHAKqBwUCRmlskKEKUKCKKFxlQfgGfIEeYrU1CmQUBoqFClpgqIoCogCW5ZiZAPhPzr7djPrQ/fnu9sV5lxEHl0xN+uZb77ZufEuM02TczC7YAkQAh5cGIMUgzEDEMEgpNtOIjB23kSgK8DqwGQakDglQShQIYIgIKTqDUcICIdAy6knDoeWjTICe5BqG/FRjlpsey9Vb7OoPprKiKU5XnnG4+PYqwqw3X08v4blEkcWHq1xwj7tpRZmuaGx+wqweou9KvHF6MQvbtj7j0bzD5vJqz9YRT5cMJpsMYJMYtDM0xEFMyfE7i/82fBlls+K6kvL+YGO4vOPcaCxHZC/3YBB/doXI8LlxSynJ2JR16zLLCoepqBYEBPpqHWfXZcZdV37UnoWciI77oZ4NAYbK7oF1QXb+obfa7IM5ae8uuD2xddDpL5fK7sWN5E+TRfsbcWip88dTq5Y4zT24/D4DLpnNMbolKEpuswC4Q6b7MOO6/tuU3bI63m++jyEvePrOjgmr/J4UhyfyyERyH46LzbeyL740tuz9d6e5bJe1xBdATY3LXZ+4OcDX7Wp16kDi0/koNr/DWfXYOsh4f0mBdjKvFUs8Jr8i3G55TLqmetHuXtjpxdm6EISRl99kgDwxhyBeatxb/0/LqP+ZLt39WxHAsL488yAAF53AkI6XAyBHEH0Lp8o74R0xEwIksJScHntRPgHlwCdRhGDYTsAAAAASUVORK5CYII="
                     },
-                    "predefinedType" : "STATIC_IMAGE",
-                    "rawItemHeight" : 36.0
+                    "predefinedType" : "STATIC_IMAGE"
                   },
                   "getPSSysImage" : {
                     "rawContent" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAIAAABuYg/PAAACKklEQVRIDe1XvU4bQRCeHZ/5iR3JuHAKqBwUCRmlskKEKUKCKKFxlQfgGfIEeYrU1CmQUBoqFClpgqIoCogCW5ZiZAPhPzr7djPrQ/fnu9sV5lxEHl0xN+uZb77ZufEuM02TczC7YAkQAh5cGIMUgzEDEMEgpNtOIjB23kSgK8DqwGQakDglQShQIYIgIKTqDUcICIdAy6knDoeWjTICe5BqG/FRjlpsey9Vb7OoPprKiKU5XnnG4+PYqwqw3X08v4blEkcWHq1xwj7tpRZmuaGx+wqweou9KvHF6MQvbtj7j0bzD5vJqz9YRT5cMJpsMYJMYtDM0xEFMyfE7i/82fBlls+K6kvL+YGO4vOPcaCxHZC/3YBB/doXI8LlxSynJ2JR16zLLCoepqBYEBPpqHWfXZcZdV37UnoWciI77oZ4NAYbK7oF1QXb+obfa7IM5ae8uuD2xddDpL5fK7sWN5E+TRfsbcWip88dTq5Y4zT24/D4DLpnNMbolKEpuswC4Q6b7MOO6/tuU3bI63m++jyEvePrOjgmr/J4UhyfyyERyH46LzbeyL740tuz9d6e5bJe1xBdATY3LXZ+4OcDX7Wp16kDi0/koNr/DWfXYOsh4f0mBdjKvFUs8Jr8i3G55TLqmetHuXtjpxdm6EISRl99kgDwxhyBeatxb/0/LqP+ZLt39WxHAsL488yAAF53AkI6XAyBHEH0Lp8o74R0xEwIksJScHntRPgHlwCdRhGDYTsAAAAASUVORK5CYII="
                   },
-                  "rawItemHeight" : 36.0,
                   "showCaption" : true
                 } ]
               } ]
@@ -430,7 +506,7 @@
           } ]
         } ],
         "name" : "itemlayoutpanel",
-        "modelid" : "5F94A392-BCBE-4853-A89B-902299877E10",
+        "modelid" : "1f8221bf7a33b296ba118e00d50502cf",
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "模板规则卡片",
@@ -605,10 +681,27 @@
       "enableGroup" : false,
       "enablePagingBar" : false,
       "noSort" : true,
-      "singleSelect" : false,
+      "singleSelect" : true,
       "name" : "dataview",
-      "modelid" : "317F29FD-B7A8-450F-9B79-9BEE7ECC07E8",
+      "modelid" : "a0ebede0e456c1ff2ce8392c480b0e45",
       "modeltype" : "PSDEDATAVIEW"
+    }, {
+      "controlType" : "SEARCHBAR",
+      "name" : "searchbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
+      },
+      "getPSControlParam" : {
+        "id" : "searchbar"
+      },
+      "quickGroupCount" : -1,
+      "quickSearchMode" : 1,
+      "quickSearchWidth" : 0,
+      "enableFilter" : false,
+      "enableGroup" : false,
+      "enableQuickSearch" : true,
+      "mobileSearchBar" : false
     }, {
       "caption" : "模板库",
       "codeName" : "template_flow_data_viewcaptionbar",
@@ -623,8 +716,12 @@
   },
   "title" : "模板库",
   "viewStyle" : "DEFAULT",
-  "viewType" : "DECUSTOMVIEW",
+  "viewType" : "DEDATAVIEW",
+  "xDataControlName" : "dataview",
   "enableDP" : true,
-  "modelid" : "608241d634fa1ddd0a3b275f6db90e89",
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "modelid" : "4098d599e7d122e462d073a3a0428649",
   "modeltype" : "PSAPPDEVIEW"
 }

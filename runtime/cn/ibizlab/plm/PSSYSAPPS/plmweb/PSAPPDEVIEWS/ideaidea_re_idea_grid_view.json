@@ -17,7 +17,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProdMgmt.json"
   },
   "getPSDEViewCodeName" : "idea_re_idea_grid_view",
-  "getPSDEViewId" : "7CB52BE8-61C7-4745-95C8-698642CAC84F",
+  "getPSDEViewId" : "21f44eebd58765869fc873c2802f49cf",
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "total",
@@ -43,7 +43,7 @@
       "name" : "idea_change",
       "getPSAppDEUILogic" : {
         "modelref" : true,
-        "id" : "relation_idea_change"
+        "id" : "idea_relation_idea"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -283,7 +283,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "新建",
               "detailType" : "DEUIACTION",
-              "name" : "uc3dd255",
+              "name" : "uc95d0ba",
               "getPSSysImage" : {
                 "glyph" : "xf067@FontAwesome",
                 "cssClass" : "fa fa-plus"
@@ -365,7 +365,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "323F3436-3EED-4B1E-AE2C-16D0BC919CF1",
+    "modelid" : "99814d8e24e81fee905eed000cb54b4e",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -377,7 +377,7 @@
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
       "name" : "viewmounted",
-      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了')\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
     }, {
       "eventNames" : "onLoadSuccess",
       "logicTrigger" : "VIEWEVENT",
@@ -460,6 +460,19 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "NEWDATA",
+      "openMode" : "POPUPMODAL",
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "关联需求快速新建视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.IDEA.CREATE_RELATION_IDEA_VIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ideacreate_re_idea_view.json",
+        "viewType" : "DEOPTVIEW"
+      }
+    }, {
       "name" : "EDITDATA",
       "openMode" : "POPUPMODAL",
       "getPSNavigateContexts" : [ {
@@ -477,19 +490,6 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ideamain_view.json",
         "viewType" : "DEEDITVIEW"
-      }
-    }, {
-      "name" : "NEWDATA",
-      "openMode" : "POPUPMODAL",
-      "realOpenMode" : "POPUPMODAL",
-      "realTitle" : "关联需求快速新建视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.IDEA.CREATE_RELATION_IDEA_VIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ideacreate_re_idea_view.json",
-        "viewType" : "DEOPTVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -514,14 +514,6 @@
           "modelref" : true,
           "id" : "toolbar_deuiaction1"
         },
-        "getPSControlLogics" : [ {
-          "itemName" : "deuiaction1",
-          "logicTag" : "toolbar",
-          "logicType" : "SCRIPT",
-          "name" : "action",
-          "scriptCode" : "!context.is_delete",
-          "triggerType" : "ITEMVISIBLE"
-        } ],
         "getPSSysImage" : {
           "glyph" : "xf067@FontAwesome",
           "cssClass" : "fa fa-plus"
@@ -555,7 +547,7 @@
         "showIcon" : true
       } ],
       "xDataControlName" : "grid",
-      "modelid" : "C0861029-9FB2-4403-96FC-AC56F9763942",
+      "modelid" : "edb08943d81fe3c8d910ddd7915b7dc1",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "aggMode" : "NONE",
@@ -678,6 +670,9 @@
       "getPSDEGridColumns" : [ {
         "align" : "LEFT",
         "cLConvertMode" : "NONE",
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.SHOW_IDENTIFIER"
+        },
         "caption" : "编号",
         "codeName" : "identifier",
         "columnType" : "DEFGRIDCOLUMN",
@@ -758,84 +753,25 @@
         "enableSort" : true
       }, {
         "align" : "LEFT",
-        "cLConvertMode" : "NONE",
+        "cLConvertMode" : "FRONT",
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+          "lanResTag" : "DEF.LNAME.PRIORITY"
         },
-        "caption" : "建立时间",
-        "codeName" : "create_time",
+        "caption" : "优先级",
+        "codeName" : "priority",
         "columnType" : "DEFGRIDCOLUMN",
-        "dataItemName" : "create_time",
-        "excelCaption" : "建立时间",
-        "name" : "create_time",
+        "dataItemName" : "priority",
+        "excelCaption" : "优先级",
+        "name" : "priority",
         "noPrivDisplayMode" : 1,
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__Idea_priority.json"
+        },
         "getPSAppDEField" : {
-          "name" : "CREATE_TIME",
-          "codeName" : "Create_time"
+          "name" : "PRIORITY",
+          "codeName" : "Priority"
         },
-        "getPSDEUIActionGroup" : {
-          "codeName" : "Usr1227985234",
-          "name" : "取消关联",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Idea.json"
-          },
-          "getPSUIActionGroupDetails" : [ {
-            "caption" : "取消关联",
-            "detailType" : "DEUIACTION",
-            "name" : "u93d6c8f",
-            "getPSSysImage" : {
-              "glyph" : "xf127@FontAwesome",
-              "cssClass" : "fa fa-unlink"
-            },
-            "getPSUIAction" : {
-              "actionTarget" : "SINGLEKEY",
-              "caption" : "取消关联",
-              "codeName" : "del_relation",
-              "confirmMsg" : "确定取消关联？",
-              "fullCodeName" : "Idea_del_relation",
-              "memo" : "其他实体关联需求表格、需求关联需求表格上界面行为组调用；",
-              "name" : "取消关联（其他实体关联）",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "Del_relation"
-              },
-              "getPSAppDEUILogic" : {
-                "modelref" : true,
-                "id" : "refresh_counter"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Idea.json"
-              },
-              "getPSNavigateParams" : [ {
-                "key" : "principal_id",
-                "name" : "principal_id",
-                "value" : "principal_id",
-                "rawValue" : false
-              } ],
-              "getPSSysImage" : {
-                "glyph" : "xf127@FontAwesome",
-                "cssClass" : "fa fa-unlink"
-              },
-              "refreshMode" : 1,
-              "successMsg" : "取消关联成功",
-              "timeout" : 60000,
-              "uIActionMode" : "BACKEND",
-              "uIActionTag" : "del_relation",
-              "uIActionType" : "DEUIACTION",
-              "uILogicAttachMode" : "AFTER",
-              "enableConfirm" : true,
-              "reloadData" : true,
-              "id" : "del_relation@Idea"
-            },
-            "addSeparator" : false,
-            "showCaption" : true,
-            "showIcon" : true
-          } ],
-          "uniqueTag" : "Idea__Usr1227985234"
-        },
-        "valueFormat" : "YYYY-MM-DD",
         "width" : 150,
         "widthUnit" : "PX",
         "enableSort" : true
@@ -867,6 +803,13 @@
         "getPSAppDEField" : {
           "name" : "ASSIGNEE_NAME",
           "codeName" : "Assignee_name"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "priority",
+        "getPSAppDEField" : {
+          "name" : "PRIORITY",
+          "codeName" : "Priority"
         }
       }, {
         "format" : "YYYY-MM-DD",
@@ -959,7 +902,7 @@
       "enableColFilter" : false,
       "enableCustomized" : false,
       "enableGroup" : false,
-      "enablePagingBar" : true,
+      "enablePagingBar" : false,
       "enableRowEdit" : false,
       "enableRowEditOrder" : false,
       "enableRowNew" : false,
@@ -968,7 +911,7 @@
       "noSort" : false,
       "singleSelect" : true,
       "name" : "grid",
-      "modelid" : "445109D6-5D98-4052-B066-6E540A55CD61",
+      "modelid" : "6a26f4af9a8fca306f0c9d135a5c1e3a",
       "modeltype" : "PSDEGRID"
     }, {
       "controlType" : "SEARCHBAR",
@@ -1018,7 +961,7 @@
   "enableSearch" : true,
   "rowEditDefault" : false,
   "showCaptionBar" : false,
-  "modelid" : "6399a672efc0b24b0bea331bc0d76891",
+  "modelid" : "d63120c52df441853c38622e05791be2",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

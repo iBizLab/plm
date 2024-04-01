@@ -6,9 +6,31 @@
   "name" : "新建评论后通知",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 530,
+    "leftPos" : 546,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -100,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 506,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -33,7 +55,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -53,13 +75,13 @@
             "id" : "Default"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[PRINCIPAL_TYPE] 等于(=) TEST_CASE",
-          "paramValue" : "TEST_CASE"
+          "name" : "Default[PRINCIPAL_TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -85,7 +107,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -111,7 +133,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -137,7 +159,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -163,7 +185,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -189,11 +211,10 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "Begin"
+        "id" : "DEBUGPARAM1"
       }
     } ],
-    "topPos" : 140,
-    "parallelOutput" : true
+    "topPos" : 100
   }, {
     "codeName" : "DENOTIFY1",
     "getDstPSDELogicParam" : {

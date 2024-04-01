@@ -270,6 +270,48 @@
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Comment/PSDEDATAQUERIES/Advanced_search/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "Advanced_search",
+    "logicName" : "高级搜索查询",
+    "name" : "advanced_search",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/Comment.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "COMMENT",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "1=1 <choose><when test=\"ctx.webcontext.n_project_id_eq !=null \"> and  exists(select 1 from `work_item` t2 where t1.principal_id = t2.id and t2.PROJECT_ID = #{ctx.webcontext.n_project_id_eq} )</when>\n<when test=\"ctx.webcontext.n_product_id_eq !=null \"> \nand  ((exists(select 1 from `idea` t2 where t1.principal_id = t2.id and t2.PRODUCT_ID = #{ctx.webcontext.n_product_id_eq})) \nor \n(exists(select 1 from `ticket` t2 where t1.principal_id = t2.id and t2.PRODUCT_ID = #{ctx.webcontext.n_product_id_eq})) \nor \n(exists(select 1 from `customer` t2 where t1.principal_id = t2.id and t1.principal_type = 'CUSTOMER' and t2.PRODUCT_ID = #{ctx.webcontext.n_product_id_eq})))  </when>\n<when test=\"ctx.webcontext.n_library_id_eq !=null \"> and   exists(select 1 from `test_case` t2 where t1.principal_id = t2.id and t2.LIBRARY_ID = #{ctx.webcontext.n_library_id_eq})  </when>\n<when test=\"ctx.webcontext.n_space_id_eq !=null \"> and   exists(select 1 from `page` t2 where t1.principal_id = t2.id and t2.SPACE_ID = #{ctx.webcontext.n_space_id_eq})  </when>\n</choose>",
+          "name" : "所属模块"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Advanced_searchInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "CommentFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Advanced_searchResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "CommentDTO"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/Comment/PSDEDATAQUERIES/Default/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "Default",
@@ -339,6 +381,32 @@
     "path" : "PSMODULES/Base/PSDATAENTITIES/Comment/PSDEDATARELATIONS/Default.json"
   } ],
   "getAllPSDEDataSets" : [ {
+    "codeName" : "Advanced_search",
+    "logicName" : "高级搜索查询",
+    "name" : "advanced_search",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "Advanced_search"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Advanced_searchInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "CommentFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Advanced_searchResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "CommentDTO"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "Default",
     "logicName" : "数据集",
     "name" : "DEFAULT",
@@ -459,17 +527,6 @@
       "standardColumnName" : "`PRINCIPAL_NAME`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PRINCIPAL_NAME][评论主体名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[PRINCIPAL_NAME][评论主体名称]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PRINCIPAL_NAME][评论主体名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -482,6 +539,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PRINCIPAL_NAME][评论主体名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PRINCIPAL_NAME][评论主体名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -535,6 +603,12 @@
       "name" : "OWNER_TYPE",
       "queryCodeExp" : "t1.`OWNER_TYPE`",
       "standardColumnName" : "`OWNER_TYPE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_OWNER_TYPE_EQ",
+      "name" : "N_OWNER_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -615,17 +689,6 @@
       "standardColumnName" : "`PRINCIPAL_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PRINCIPAL_TYPE][工时主体类型]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[PRINCIPAL_TYPE][工时主体类型]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PRINCIPAL_TYPE][工时主体类型]移动端默认",
       "getPSDEFFormItem" : {
@@ -638,6 +701,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PRINCIPAL_TYPE][工时主体类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[PRINCIPAL_TYPE][工时主体类型]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -887,25 +961,6 @@
       "standardColumnName" : "`PCREATE_MAN`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PCREATE_MAN][父建立人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[PCREATE_MAN][父建立人]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/Comment/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/Comment.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PCREATE_MAN][父建立人]移动端默认",
       "getPSDEFFormItem" : {
@@ -926,6 +981,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PCREATE_MAN][父建立人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PCREATE_MAN][父建立人]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/Comment/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/Comment.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1005,21 +1079,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ID][标识]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[ID][标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1036,6 +1095,21 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ID][标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1102,6 +1176,20 @@
       "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -1117,20 +1205,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1188,6 +1262,12 @@
       "name" : "CREATE_MAN",
       "queryCodeExp" : "t1.`CREATE_MAN`",
       "standardColumnName" : "`CREATE_MAN`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CREATE_MAN_EQ",
+      "name" : "N_CREATE_MAN_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1284,6 +1364,22 @@
       "queryCodeExp" : "t1.`CREATE_TIME`",
       "standardColumnName" : "`CREATE_TIME`"
     } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_CREATE_TIME_EQ",
+      "name" : "N_CREATE_TIME_EQ",
+      "stdDataType" : 5,
+      "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_CREATE_TIME_GTANDEQ",
+      "name" : "N_CREATE_TIME_GTANDEQ",
+      "stdDataType" : 5,
+      "valueOP" : "GTANDEQ"
+    }, {
+      "codeName" : "N_CREATE_TIME_LTANDEQ",
+      "name" : "N_CREATE_TIME_LTANDEQ",
+      "stdDataType" : 5,
+      "valueOP" : "LTANDEQ"
+    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
       "name" : "[CREATE_TIME][建立时间]",
@@ -1363,6 +1459,21 @@
       "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -1379,21 +1490,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1441,6 +1537,21 @@
       "standardColumnName" : "`UPDATE_MAN`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[UPDATE_MAN][更新人]移动端默认",
       "getPSDEFFormItem" : {
@@ -1457,21 +1568,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1648,9 +1744,31 @@
     "name" : "新建评论后通知",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 530,
+      "leftPos" : 546,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : -100,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 506,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1675,7 +1793,7 @@
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDELogicNode" : {
@@ -1695,13 +1813,13 @@
               "id" : "Default"
             },
             "logicType" : "SINGLE",
-            "name" : "Default[PRINCIPAL_TYPE] 等于(=) TEST_CASE",
-            "paramValue" : "TEST_CASE"
+            "name" : "Default[PRINCIPAL_TYPE] 等于(=) IDEA",
+            "paramValue" : "IDEA"
           } ]
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDELogicNode" : {
@@ -1727,7 +1845,7 @@
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDELogicNode" : {
@@ -1753,7 +1871,7 @@
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDELogicNode" : {
@@ -1779,7 +1897,7 @@
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDELogicNode" : {
@@ -1805,7 +1923,7 @@
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       }, {
         "getDstPSDELogicNode" : {
@@ -1831,11 +1949,10 @@
         },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "DEBUGPARAM1"
         }
       } ],
-      "topPos" : 140,
-      "parallelOutput" : true
+      "topPos" : 100
     }, {
       "codeName" : "DENOTIFY1",
       "getDstPSDELogicParam" : {
@@ -2261,6 +2378,65 @@
   }, {
     "name" : "CommentFilterDTO",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "建立人",
+      "name" : "N_CREATE_MAN_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CREATE_MAN_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "Create_man"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "N_CREATE_TIME_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CREATE_TIME_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "Create_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "N_CREATE_TIME_GTANDEQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CREATE_TIME_GTANDEQ"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "Create_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "N_CREATE_TIME_LTANDEQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_CREATE_TIME_LTANDEQ"
+      },
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "Create_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标识",
       "name" : "N_ID_EQ",
       "getPSDEFSearchMode" : {
@@ -2284,6 +2460,20 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "Name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属数据对象",
+      "name" : "N_OWNER_TYPE_EQ",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_OWNER_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "OWNER_TYPE",
+        "codeName" : "Owner_type"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -2327,17 +2517,17 @@
     "msgType" : 65,
     "name" : "评论客户通知",
     "getPSDENotifyTargets" : [ {
-      "name" : "负责人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_customer_assignee.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_attention.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "负责人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_customer_assignee.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
@@ -2407,17 +2597,17 @@
     "msgType" : 65,
     "name" : "评论执行用例通知",
     "getPSDENotifyTargets" : [ {
-      "name" : "关注人员",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_attention.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "执行人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_run_executor.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "关注人员",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSSYSMSGTARGETS/comment_attention.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
@@ -2570,18 +2760,10 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "MPickupView",
-    "logicName" : "评论实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
-    "name" : "评论实体数据多项选择视图",
-    "realModelSubType" : "DEMPICKUPVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "GridView",
-    "logicName" : "评论实体表格视图",
-    "modelTag" : "MDATAVIEW",
-    "name" : "评论实体表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
+    "codeName" : "list_view_customer_connect",
+    "logicName" : "客户沟通列表视图",
+    "name" : "客户沟通列表视图",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -2591,17 +2773,23 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupGridView",
-    "logicName" : "评论实体选择表格视图（部件视图）",
-    "name" : "评论实体选择表格视图（部件视图）",
-    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "codeName" : "list_view",
+    "logicName" : "评论列表视图",
+    "name" : "评论列表视图",
+    "realModelSubType" : "DELISTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupView",
-    "logicName" : "评论实体数据选择视图",
-    "modelTag" : "PICKUPVIEW",
-    "name" : "评论实体数据选择视图",
-    "realModelSubType" : "DEPICKUPVIEW",
+    "codeName" : "MPickupView",
+    "logicName" : "评论实体数据多项选择视图",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "评论实体数据多项选择视图",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "advanced_search_grid_view",
+    "logicName" : "评论高级搜索表格视图",
+    "name" : "评论高级搜索表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "list_view_wiki",
@@ -2616,10 +2804,11 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "list_view",
-    "logicName" : "评论列表视图",
-    "name" : "评论列表视图",
-    "realModelSubType" : "DELISTVIEW",
+    "codeName" : "GridView",
+    "logicName" : "评论实体表格视图",
+    "modelTag" : "MDATAVIEW",
+    "name" : "评论实体表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -2627,6 +2816,19 @@
     "modelTag" : "REDIRECTVIEW",
     "name" : "评论实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "PickupGridView",
+    "logicName" : "评论实体选择表格视图（部件视图）",
+    "name" : "评论实体选择表格视图（部件视图）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "PickupView",
+    "logicName" : "评论实体数据选择视图",
+    "modelTag" : "PICKUPVIEW",
+    "name" : "评论实体数据选择视图",
+    "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -2707,6 +2909,7 @@
     "serviceCodeName" : "Comment",
     "enableFKey" : true
   } ],
+  "memo" : "用于存储用户在需求、工单、工作项、页面、等内容上发布的评论。",
   "getMinorPSDERs" : [ {
     "codeName" : "Comment",
     "dERType" : "DER1N",

@@ -88,7 +88,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.work_item_re_counters;
             then
     Map param =new HashMap();
         param.put("param0",work_itemwork_item_re_countersdefault.get("id"));
-    String strSql="SELECT 	count( t.id ) AS work_item_re_test_case FROM 	test_case t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				 t.`IS_ARCHIVED` = 0 AND t.`IS_DELETED` = 0  			)";
+    String strSql="SELECT 	count( t.id ) AS work_item_re_test_case FROM 	test_case t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'test_case'  			AND (t11.`PRINCIPAL_TYPE` = 'work_item' OR t11.`PRINCIPAL_TYPE` = 'bug') 			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				 t.`IS_ARCHIVED` = 0 AND t.`IS_DELETED` = 0  			)";
                         java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);

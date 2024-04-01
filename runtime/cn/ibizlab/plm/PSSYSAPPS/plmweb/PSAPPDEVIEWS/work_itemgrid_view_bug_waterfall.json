@@ -232,7 +232,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "7AF875CD-3BB1-4F2D-A118-3C4BBB5F8542",
+    "modelid" : "ab852699b498ec7d35edc4cb681347fe",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -299,6 +299,7 @@
       }
     },
     "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "工作项表格（缺陷）",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -386,6 +387,20 @@
       "enableDEFieldPrivilege" : false,
       "id" : "数据表格处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "calc_button_state",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calc_column_action_state"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -823,7 +838,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "9366DB7F-2A7F-438D-90F0-B2B936356967",
+      "modelid" : "559be635e58fa6cfe7ed880e88bf87e6",
       "modeltype" : "PSDETOOLBAR"
     } ],
     "getPSDEDataImport" : {
@@ -863,7 +878,7 @@
       },
       "getPSDEUIActionGroup" : {
         "codeName" : "Usr1220197218",
-        "name" : "工作项操作列",
+        "name" : "敏捷项目工作项操作列",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
@@ -871,7 +886,7 @@
         "getPSUIActionGroupDetails" : [ {
           "caption" : "复制",
           "detailType" : "DEUIACTION",
-          "name" : "u9c9c725",
+          "name" : "uf11d057",
           "getPSSysImage" : {
             "glyph" : "xf0c5@FontAwesome",
             "cssClass" : "fa fa-copy"
@@ -916,7 +931,7 @@
         }, {
           "caption" : "移动",
           "detailType" : "DEUIACTION",
-          "name" : "u2588787",
+          "name" : "u2cec520",
           "getPSSysImage" : {
             "glyph" : "xf047@FontAwesome",
             "cssClass" : "fa fa-arrows"
@@ -961,7 +976,7 @@
         }, {
           "caption" : "归档",
           "detailType" : "DEUIACTION",
-          "name" : "ud0137d9",
+          "name" : "u4fdad0f",
           "getPSSysImage" : {
             "glyph" : "xf187@FontAwesome",
             "cssClass" : "fa fa-archive"
@@ -1001,7 +1016,7 @@
         }, {
           "caption" : "删除",
           "detailType" : "DEUIACTION",
-          "name" : "ua4fae66",
+          "name" : "u774a363",
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
@@ -1041,7 +1056,7 @@
         }, {
           "caption" : "激活",
           "detailType" : "DEUIACTION",
-          "name" : "uf4b02b1",
+          "name" : "u6aa52c1",
           "getPSSysImage" : {
             "cssClass" : "key"
           },
@@ -1079,7 +1094,7 @@
         }, {
           "caption" : "变更父工作项",
           "detailType" : "DEUIACTION",
-          "name" : "uda36756",
+          "name" : "ua2ab7cd",
           "getPSSysImage" : {
             "cssClass" : "git-branch"
           },
@@ -1131,7 +1146,7 @@
         }, {
           "caption" : "关联工作项",
           "detailType" : "DEUIACTION",
-          "name" : "uff8cd76",
+          "name" : "ud5a51ef",
           "getPSSysImage" : {
             "glyph" : "xf0c1@FontAwesome",
             "cssClass" : "fa fa-link"
@@ -1198,7 +1213,7 @@
         }, {
           "caption" : "移入迭代",
           "detailType" : "DEUIACTION",
-          "name" : "u177ee71",
+          "name" : "u6586895",
           "getPSSysImage" : {
             "glyph" : "xf1d9@FontAwesome",
             "cssClass" : "fa fa-send-o"
@@ -1243,7 +1258,7 @@
         }, {
           "caption" : "移入发布",
           "detailType" : "DEUIACTION",
-          "name" : "u55c2849",
+          "name" : "u0f2b72c",
           "getPSSysImage" : {
             "glyph" : "xf1d9@FontAwesome",
             "cssClass" : "fa fa-send-o"
@@ -1288,7 +1303,7 @@
         }, {
           "caption" : "界面行为支持获取编辑列",
           "detailType" : "DEUIACTION",
-          "name" : "u96e02ff",
+          "name" : "u951f751",
           "getPSUIAction" : {
             "actionTarget" : "NONE",
             "caption" : "界面行为支持获取编辑列",
@@ -1465,7 +1480,7 @@
         "name" : "CREATE_TIME",
         "codeName" : "Create_time"
       },
-      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+      "valueFormat" : "YYYY-MM-DD",
       "width" : 200,
       "widthUnit" : "PX",
       "enableSort" : true
@@ -1534,7 +1549,7 @@
         "codeName" : "Reappear_probability"
       }
     }, {
-      "format" : "YYYY-MM-DD HH:mm:ss",
+      "format" : "YYYY-MM-DD",
       "dataType" : 5,
       "name" : "create_time",
       "getPSAppDEField" : {
@@ -1614,13 +1629,6 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "version_id",
-      "getPSAppDEField" : {
-        "name" : "VERSION_ID",
-        "codeName" : "Version_id"
-      }
-    }, {
-      "dataType" : 25,
       "name" : "board_id",
       "getPSAppDEField" : {
         "name" : "BOARD_ID",
@@ -1680,7 +1688,7 @@
         "maxLength" : 500,
         "name" : "title"
       },
-      "allowEmpty" : true
+      "allowEmpty" : false
     }, {
       "caption" : "状态",
       "codeName" : "state",
@@ -1779,7 +1787,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "跳转至成员设置",
             "detailType" : "DEUIACTION",
-            "name" : "ue68004d",
+            "name" : "uc5eeb4c",
             "getPSSysImage" : {
               "glyph" : "xf0f0@FontAwesome",
               "cssClass" : "fa fa-user-md"
@@ -1968,7 +1976,7 @@
     "noSort" : false,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "0e63cfb0f6eef0fe56aae5e0f45c660f",
+    "modelid" : "d316bc548b0ac7e3f29765efa3dd1b7b",
     "modeltype" : "PSDEGRID"
   }, {
     "codeName" : "project_work_item",
@@ -2261,7 +2269,7 @@
     "enableQuickSearch" : true,
     "mobileSearchBar" : false,
     "name" : "searchbar",
-    "modelid" : "9701F628-102D-4832-8906-134802344863",
+    "modelid" : "e3715ecb283b07a7ddc9d46974124392",
     "modeltype" : "PSSYSSEARCHBAR"
   }, {
     "getCapPSLanguageRes" : {

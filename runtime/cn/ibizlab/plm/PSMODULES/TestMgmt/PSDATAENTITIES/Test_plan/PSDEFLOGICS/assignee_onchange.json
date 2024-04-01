@@ -34,6 +34,21 @@
           },
           "logicType" : "SINGLE",
           "name" : "Default[ASSIGNEE_ID] 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[ASSIGNEE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -59,6 +74,21 @@
           },
           "logicType" : "SINGLE",
           "name" : "Last[ASSIGNEE_ID] 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ASSIGNEE_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Last"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Last[ASSIGNEE_ID] 不等于(<>) update_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "update_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -93,6 +123,20 @@
       "name" : "Default[UPDATE_MAN] ==> Last[UPDATE_MAN]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "UPDATE_MAN",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "UPDATE_TIME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Last"
+      },
+      "name" : "Default[UPDATE_TIME] ==> Last[UPDATE_TIME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "UPDATE_TIME",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"

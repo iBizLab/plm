@@ -3,6 +3,7 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDELOGICS/del_relation.json",
   "logicName" : "取消关联",
+  "memo" : "产品需求取消关联数据（正反向关联数据同时删除）",
   "name" : "取消关联",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
@@ -25,7 +26,7 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "填充正反关联对象的主要关联属性",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -41,9 +42,9 @@
       "dstFieldName" : "PRINCIPAL_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "relationobj"
+        "id" : "forward_relation_obj"
       },
-      "name" : "Default[principal_id] ==> relationobj[PRINCIPAL_ID]",
+      "name" : "Default[principal_id] ==> forward_relation_obj[PRINCIPAL_ID]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "principal_id",
       "getSrcPSDELogicParam" : {
@@ -55,9 +56,9 @@
       "dstFieldName" : "TARGET_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "relationobj2"
+        "id" : "reverse_relation_obj"
       },
-      "name" : "Default[principal_id] ==> relationobj2[TARGET_ID]",
+      "name" : "Default[principal_id] ==> reverse_relation_obj[TARGET_ID]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "principal_id",
       "getSrcPSDELogicParam" : {
@@ -69,9 +70,9 @@
       "dstFieldName" : "PRINCIPAL_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "relationobj2"
+        "id" : "reverse_relation_obj"
       },
-      "name" : "Default[ID] ==> relationobj2[PRINCIPAL_ID]",
+      "name" : "Default[ID] ==> reverse_relation_obj[PRINCIPAL_ID]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "ID",
       "getSrcPSDELogicParam" : {
@@ -83,9 +84,9 @@
       "dstFieldName" : "TARGET_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "relationobj"
+        "id" : "forward_relation_obj"
       },
-      "name" : "Default[ID] ==> relationobj[TARGET_ID]",
+      "name" : "Default[ID] ==> forward_relation_obj[TARGET_ID]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "ID",
       "getSrcPSDELogicParam" : {
@@ -122,7 +123,7 @@
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "relationobj"
+      "id" : "forward_relation_obj"
     },
     "getDstPSDataEntity" : {
       "modelref" : true,
@@ -151,7 +152,7 @@
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "relationobj2"
+      "id" : "reverse_relation_obj"
     },
     "getDstPSDataEntity" : {
       "modelref" : true,
@@ -190,7 +191,7 @@
     "default" : true,
     "entityParam" : true
   }, {
-    "codeName" : "relationobj",
+    "codeName" : "forward_relation_obj",
     "logicName" : "正向关联对象",
     "name" : "正向关联对象",
     "getParamPSDataEntity" : {
@@ -199,7 +200,7 @@
     },
     "entityParam" : true
   }, {
-    "codeName" : "relationobj2",
+    "codeName" : "reverse_relation_obj",
     "logicName" : "反向关联对象",
     "name" : "反向关联对象",
     "getParamPSDataEntity" : {

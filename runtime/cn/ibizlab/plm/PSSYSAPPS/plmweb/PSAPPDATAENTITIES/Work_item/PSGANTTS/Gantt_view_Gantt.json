@@ -13,45 +13,6 @@
   "getPSAppViewLogics" : [ {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
-    "name" : "top_node_newdata",
-    "getPSAppUILogic" : {
-      "actionAfterWizard" : "DEFAULT",
-      "logicType" : "PREDEFINED",
-      "name" : "新建数据",
-      "viewLogicType" : "APP_NEWDATA",
-      "batchAddOnly" : false,
-      "enableBatchAdd" : false,
-      "enableWizardAdd" : false
-    }
-  }, {
-    "logicTrigger" : "CUSTOM",
-    "logicType" : "APPUILOGIC",
-    "name" : "top_node_opendata",
-    "getPSAppUILogic" : {
-      "logicType" : "PREDEFINED",
-      "name" : "打开数据",
-      "getOpenDataPSAppView" : {
-        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-        "getRefPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemmain_view.json",
-          "viewType" : "DEEDITVIEW"
-        }
-      },
-      "getPSAppUILogicRefViews" : [ {
-        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
-        "getRefPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemmain_view.json",
-          "viewType" : "DEEDITVIEW"
-        }
-      } ],
-      "viewLogicType" : "APP_OPENDATA",
-      "editMode" : true
-    }
-  }, {
-    "logicTrigger" : "CUSTOM",
-    "logicType" : "APPUILOGIC",
     "name" : "node_newdata",
     "getPSAppUILogic" : {
       "actionAfterWizard" : "DEFAULT",
@@ -88,126 +49,47 @@
       "viewLogicType" : "APP_OPENDATA",
       "editMode" : true
     }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "top_node_newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "top_node_opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "getOpenDataPSAppView" : {
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemmain_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      },
+      "getPSAppUILogicRefViews" : [ {
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+        "getRefPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemmain_view.json",
+          "viewType" : "DEEDITVIEW"
+        }
+      } ],
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
   } ],
   "getPSControls" : [ {
-    "codeName" : "gantt_viewtop_node_cm",
-    "controlType" : "CONTEXTMENU",
-    "logicName" : "甘特图节点上下文菜单",
-    "name" : "top_node_cm",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
-    },
-    "getPSControlParam" : {
-      "id" : "top_node_cm"
-    },
-    "getPSDEToolbarItems" : [ {
-      "caption" : "新建计划",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "top_node_cm_deuiaction1"
-      },
-      "getPSSysImage" : {
-        "cssClass" : "add"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "SINGLEDATA",
-        "caption" : "新建计划",
-        "codeName" : "new_waterfall_plan",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemquick_create_view.json",
-          "viewType" : "DEOPTVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "Work_item_new_waterfall_plan",
-        "name" : "新建计划（waterfall）",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
-        },
-        "getPSNavigateContexts" : [ {
-          "key" : "WORK_ITEM",
-          "name" : "WORK_ITEM",
-          "rawValue" : true
-        } ],
-        "getPSNavigateParams" : [ {
-          "key" : "pid",
-          "name" : "pid",
-          "value" : "id",
-          "rawValue" : false
-        } ],
-        "getPSSysImage" : {
-          "cssClass" : "add"
-        },
-        "refreshMode" : 1,
-        "timeout" : 60000,
-        "tooltip" : "新建计划",
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "new_waterfall_plan",
-        "uIActionType" : "DEUIACTION",
-        "reloadData" : true,
-        "id" : "new_waterfall_plan@Work_item"
-      },
-      "tooltip" : "新建计划",
-      "uIActionTarget" : "SINGLEDATA",
-      "showCaption" : true,
-      "showIcon" : true
-    }, {
-      "caption" : "删除计划",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction2",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "top_node_cm_deuiaction2"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf014@FontAwesome",
-        "cssClass" : "fa fa-trash-o"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "SINGLEKEY",
-        "caption" : "删除计划",
-        "codeName" : "remove_waterfall_plan",
-        "confirmMsg" : "删除工作项会一起删除子工作项，确认删除工作项吗？",
-        "fullCodeName" : "Work_item_remove_waterfall_plan",
-        "name" : "删除计划",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "Remove"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf014@FontAwesome",
-          "cssClass" : "fa fa-trash-o"
-        },
-        "refreshMode" : 2,
-        "successMsg" : "已删除工作项",
-        "timeout" : 60000,
-        "uIActionMode" : "BACKEND",
-        "uIActionTag" : "remove_waterfall_plan",
-        "uIActionType" : "DEUIACTION",
-        "enableConfirm" : true,
-        "reloadData" : true,
-        "id" : "remove_waterfall_plan@Work_item"
-      },
-      "tooltip" : "删除计划",
-      "uIActionTarget" : "SINGLEKEY",
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "modelid" : "8722D7DE-BAAF-406F-BA90-70D31AB92438",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
     "codeName" : "gantt_viewnode_cm",
     "controlType" : "CONTEXTMENU",
     "logicName" : "甘特图节点上下文菜单",
@@ -323,7 +205,125 @@
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "modelid" : "8722D7DE-BAAF-406F-BA90-70D31AB92438",
+    "modelid" : "0a34a6f6b626c24922b75f3d9f736eb8",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "codeName" : "gantt_viewtop_node_cm",
+    "controlType" : "CONTEXTMENU",
+    "logicName" : "甘特图节点上下文菜单",
+    "name" : "top_node_cm",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+    },
+    "getPSControlParam" : {
+      "id" : "top_node_cm"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "新建计划",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "top_node_cm_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "cssClass" : "add"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEDATA",
+        "caption" : "新建计划",
+        "codeName" : "new_waterfall_plan",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemquick_create_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "Work_item_new_waterfall_plan",
+        "name" : "新建计划（waterfall）",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "WORK_ITEM",
+          "name" : "WORK_ITEM",
+          "rawValue" : true
+        } ],
+        "getPSNavigateParams" : [ {
+          "key" : "pid",
+          "name" : "pid",
+          "value" : "id",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "cssClass" : "add"
+        },
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "tooltip" : "新建计划",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "new_waterfall_plan",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true,
+        "id" : "new_waterfall_plan@Work_item"
+      },
+      "tooltip" : "新建计划",
+      "uIActionTarget" : "SINGLEDATA",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "caption" : "删除计划",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "top_node_cm_deuiaction2"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "删除计划",
+        "codeName" : "remove_waterfall_plan",
+        "confirmMsg" : "删除工作项会一起删除子工作项，确认删除工作项吗？",
+        "fullCodeName" : "Work_item_remove_waterfall_plan",
+        "name" : "删除计划",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "Remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "refreshMode" : 2,
+        "successMsg" : "已删除工作项",
+        "timeout" : 60000,
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "remove_waterfall_plan",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "remove_waterfall_plan@Work_item"
+      },
+      "tooltip" : "删除计划",
+      "uIActionTarget" : "SINGLEKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "0a34a6f6b626c24922b75f3d9f736eb8",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDETreeColumns" : [ {
@@ -665,7 +665,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "8722D7DE-BAAF-406F-BA90-70D31AB92438",
+      "modelid" : "0a34a6f6b626c24922b75f3d9f736eb8",
       "modeltype" : "PSDETOOLBAR"
     },
     "getPSDETreeNodeColumns" : [ {
@@ -841,7 +841,7 @@
         "maxLength" : 500,
         "name" : "title"
       },
-      "allowEmpty" : true
+      "allowEmpty" : false
     } ],
     "getPSDETreeNodeRVs" : [ {
       "name" : "editdata",
@@ -865,6 +865,7 @@
     "enableQuickCreate" : false,
     "enableQuickSearch" : false,
     "enableRemoveData" : true,
+    "enableRowEdit" : true,
     "enableViewData" : true,
     "expandFirstOnly" : false,
     "expanded" : false,
@@ -1009,7 +1010,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "8722D7DE-BAAF-406F-BA90-70D31AB92438",
+      "modelid" : "0a34a6f6b626c24922b75f3d9f736eb8",
       "modeltype" : "PSDETOOLBAR"
     },
     "getPSDETreeNodeColumns" : [ {
@@ -1185,7 +1186,7 @@
         "maxLength" : 500,
         "name" : "title"
       },
-      "allowEmpty" : true
+      "allowEmpty" : false
     } ],
     "getPSDETreeNodeRVs" : [ {
       "name" : "editdata",
@@ -1209,6 +1210,7 @@
     "enableQuickCreate" : false,
     "enableQuickSearch" : false,
     "enableRemoveData" : true,
+    "enableRowEdit" : true,
     "enableViewData" : true,
     "expandFirstOnly" : false,
     "expanded" : false,
@@ -1225,6 +1227,6 @@
   "enableRootSelect" : false,
   "outputIconDefault" : true,
   "rootVisible" : false,
-  "modelid" : "0D94DC90-015D-46DD-8096-02F570050595",
+  "modelid" : "0ad5cc4f3355516ed48881487ad47ba5",
   "modeltype" : "PSDEGANTT"
 }

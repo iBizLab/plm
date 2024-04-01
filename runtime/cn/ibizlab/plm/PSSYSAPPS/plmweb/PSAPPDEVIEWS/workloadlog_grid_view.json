@@ -28,7 +28,7 @@
     "name" : "OPENDATA",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "open_view"
+      "id" : "open_main_view"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -245,7 +245,7 @@
         "name" : "SHOW_IDENTIFIER",
         "codeName" : "Show_identifier"
       },
-      "width" : 200,
+      "width" : 150,
       "widthUnit" : "PX",
       "enableSort" : true
     }, {
@@ -282,6 +282,7 @@
         "name" : "DURATION",
         "codeName" : "Duration"
       },
+      "valueFormat" : "#.0",
       "width" : 200,
       "widthUnit" : "PX",
       "enableSort" : true
@@ -324,6 +325,9 @@
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
       "caption" : "工作说明",
+      "getCellPSSysCss" : {
+        "cssName" : "normal-rich-text"
+      },
       "codeName" : "description",
       "columnType" : "DEFGRIDCOLUMN",
       "dataItemName" : "description",
@@ -377,6 +381,7 @@
         "codeName" : "Name"
       }
     }, {
+      "format" : "#.0",
       "dataType" : 6,
       "name" : "duration",
       "getPSAppDEField" : {
@@ -404,7 +409,9 @@
       "getPSAppDEField" : {
         "name" : "DESCRIPTION",
         "codeName" : "Description"
-      }
+      },
+      "scriptCode" : "data.description",
+      "customCode" : true
     }, {
       "dataType" : 25,
       "name" : "recent_parent_name",
@@ -494,14 +501,14 @@
     "noSort" : false,
     "singleSelect" : true,
     "name" : "grid",
-    "modelid" : "CFE48D25-4023-4EAE-90EE-02B70B3AF663",
+    "modelid" : "9c8feaea1c8f82f29217251a16c21542",
     "modeltype" : "PSDEGRID"
   }, {
-    "codeName" : "Default",
+    "codeName" : "Log_management_search_form",
     "controlType" : "SEARCHFORM",
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload/PSSEARCHFORMS/Default.json",
-    "logicName" : "默认搜索表单",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload/PSSEARCHFORMS/Log_management_search_form.json",
+    "logicName" : "工时日志_搜索表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
@@ -648,8 +655,8 @@
           "placeHolder" : "编号"
         },
         "getPSLayoutPos" : {
-          "colLG" : 4,
-          "colMD" : 4,
+          "colLG" : 3,
+          "colMD" : 3,
           "colSM" : 8,
           "colXS" : 8,
           "layout" : "TABLE_24COL"
@@ -680,8 +687,8 @@
           "placeHolder" : "事项"
         },
         "getPSLayoutPos" : {
-          "colLG" : 4,
-          "colMD" : 4,
+          "colLG" : 3,
+          "colMD" : 3,
           "colSM" : 8,
           "colXS" : 8,
           "layout" : "TABLE_24COL"
@@ -768,6 +775,9 @@
       "columnCount" : 24,
       "layout" : "TABLE_24COL"
     },
+    "getPSSysCss" : {
+      "cssName" : "workloadlog-searchform-border"
+    },
     "searchButtonStyle" : "NONE",
     "tabHeaderPos" : "TOP",
     "enableAdvanceSearch" : false,
@@ -775,7 +785,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "be0a8f9d39762fd9cc223d1d56d25646",
+    "modelid" : "3D61BDCB-153F-43CF-BB16-6DD8EA8E90DB",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "controlType" : "SEARCHBAR",
@@ -809,7 +819,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "log_grid_view",
-  "getPSDEViewId" : "7CC14660-B85C-49E8-857B-E3A7EE3BB7E3",
+  "getPSDEViewId" : "7424cb3f499db1757d5a72e3a7885235",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -837,7 +847,7 @@
   "expandSearchForm" : true,
   "rowEditDefault" : false,
   "showCaptionBar" : false,
-  "modelid" : "dd794d0c303113f3868508f1c3687276",
+  "modelid" : "510b2d4c2687209fff70e98be1927a22",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

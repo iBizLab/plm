@@ -6,13 +6,13 @@
   "name" : "树状或平铺表格数据查询",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 330,
+    "leftPos" : 560,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM3"
+        "id" : "RAWSFCODE2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -20,13 +20,40 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : -150,
-    "parallelOutput" : true
+    "topPos" : -460
   }, {
-    "codeName" : "DEDATASET2",
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 200,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_is_archived_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[0] ==> Default[n_is_archived_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 30
+  }, {
+    "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
       "modelref" : true,
-      "id" : "Normal"
+      "id" : "Top_tree_grid"
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -36,7 +63,82 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
     },
-    "leftPos" : 290,
+    "leftPos" : 520,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取顶级工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "page[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 240
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Common"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "leftPos" : 280,
     "logicNodeType" : "DEDATASET",
     "name" : "平铺数据集合",
     "getPSDELogicLinks" : [ {
@@ -56,8 +158,8 @@
     },
     "topPos" : 250
   }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 290,
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 520,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
     "getPSDELogicLinks" : [ {
@@ -65,89 +167,98 @@
         "modelref" : true,
         "id" : "DEDATASET1"
       },
-      "name" : "连接名称",
+      "name" : "树状时无查询条件",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
           "condOP" : "EQ",
-          "dstFieldName" : "srfshowmode",
+          "dstFieldName" : "srfshowmode_flag",
           "getDstLogicParam" : {
             "modelref" : true,
-            "id" : "Default"
+            "id" : "flag"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[srfshowmode] 等于(=) tree",
-          "paramValue" : "tree"
+          "name" : "flag[srfshowmode_flag] 等于(=) 1",
+          "paramValue" : "1"
         }, {
-          "condOP" : "ISNULL",
-          "dstFieldName" : "query",
+          "condOP" : "EQ",
+          "dstFieldName" : "searchconds_flag",
           "getDstLogicParam" : {
             "modelref" : true,
-            "id" : "Default"
+            "id" : "flag"
           },
           "logicType" : "SINGLE",
-          "name" : "Default[query] 值为空(Nil)"
+          "name" : "flag[searchconds_flag] 等于(=) 0",
+          "paramValue" : "0"
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM3"
+        "id" : "PREPAREPARAM5"
       }
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
         "id" : "DEDATASET2"
       },
-      "name" : "连接名称",
+      "name" : "树状时带有查询条件",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
-          "groupOP" : "OR",
-          "logicType" : "GROUP",
-          "name" : "OR",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "srfshowmode",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[srfshowmode] 值为空(Nil)"
-          }, {
-            "groupOP" : "AND",
-            "logicType" : "GROUP",
-            "name" : "AND",
-            "getPSDELogicLinkConds" : [ {
-              "condOP" : "EQ",
-              "dstFieldName" : "srfshowmode",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[srfshowmode] 等于(=) tree",
-              "paramValue" : "tree"
-            }, {
-              "condOP" : "ISNOTNULL",
-              "dstFieldName" : "query",
-              "getDstLogicParam" : {
-                "modelref" : true,
-                "id" : "Default"
-              },
-              "logicType" : "SINGLE",
-              "name" : "Default[query] 值不为空(NotNil)"
-            } ]
-          } ]
+          "condOP" : "EQ",
+          "dstFieldName" : "srfshowmode_flag",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "flag"
+          },
+          "logicType" : "SINGLE",
+          "name" : "flag[srfshowmode_flag] 等于(=) 1",
+          "paramValue" : "1"
+        }, {
+          "condOP" : "EQ",
+          "dstFieldName" : "searchconds_flag",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "flag"
+          },
+          "logicType" : "SINGLE",
+          "name" : "flag[searchconds_flag] 等于(=) 1",
+          "paramValue" : "1"
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM3"
+        "id" : "PREPAREPARAM5"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "平铺",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "srfshowmode_flag",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "flag"
+          },
+          "logicType" : "SINGLE",
+          "name" : "flag[srfshowmode_flag] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
       }
     } ],
     "getPSDELogicNodeParams" : [ {
@@ -156,52 +267,38 @@
         "modelref" : true,
         "id" : "Default"
       },
-      "name" : "直接值[675a241463be032a03ed...] ==> Default[n_project_id_eq]",
+      "name" : "直接值[cc1ca882-84ed-cf02-b...] ==> Default[n_project_id_eq]",
       "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "675a241463be032a03ed564e68ac4345",
+      "srcFieldName" : "n_project_id_eq",
+      "srcValue" : "cc1ca882-84ed-cf02-b1a7-b6a2d2569a23",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : -14
+    "topPos" : -161
   }, {
-    "codeName" : "DEDATASET1",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "Tree_grid"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
-    },
-    "leftPos" : 470,
-    "logicNodeType" : "DEDATASET",
-    "name" : "获取顶级工作项",
+    "code" : "var filter = logic.getParam(\"default\");\r\nvar flag  = logic.getParam(\"flag\");\r\nflag.set(\"srfshowmode_flag\", 0);\r\nflag.set(\"searchconds_flag\", 0);\r\nvar searchParam = filter.getReal();\r\nif(searchParam){\r\n    sys.info(\"searchParam:\", searchParam);\r\n    if(searchParam.toString().indexOf(\"srfshowmode\") !== -1){\r\n        flag.set(\"srfshowmode_flag\", 1);\r\n    }\r\n    var searchconds = searchParam.getSearchConds();\r\n    if(searchconds){\r\n        for(var i = 0; i<searchconds.length; i++){\r\n            var item = searchconds[i].toString();\r\n            sys.info(\"item:\", item);\r\n            if(item.indexOf(\"searchconds\") !== -1){\r\n                flag.set(\"searchconds_flag\", 1);\r\n            }\r\n        }\r\n    }\r\n}\r\nsys.info(\"查询参数标记\", flag.get(\"searchconds_flag\"));\r\nsys.info(\"表格类型标记\", flag.get(\"srfshowmode_flag\"));\r\n",
+    "codeName" : "RAWSFCODE2",
+    "leftPos" : 520,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "LOOPSUBCALL1"
+        "id" : "PREPAREPARAM5"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEDATASET1"
+        "id" : "RAWSFCODE2"
       }
     } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page"
-    },
-    "topPos" : 250
+    "topPos" : -262
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "for_temp"
     },
-    "leftPos" : 641,
+    "leftPos" : 866,
     "logicNodeType" : "LOOPSUBCALL",
     "name" : "循环子调用",
     "getPSDELogicLinks" : [ {
@@ -235,7 +332,7 @@
     "code" : "var temp = logic.getParam(\"for_temp\");\r\nvar work_item = logic.getParam(\"work_item\");\r\nvar top_ids = work_item.get(\"top_ids\");\r\nif(top_ids == null){\r\n    top_ids = temp.get(\"id\");\r\n} else {\r\n    top_ids = top_ids + \";\" + temp.get(\"id\");\r\n}\r\nwork_item.set(\"top_ids\", top_ids);",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
-    "leftPos" : 842,
+    "leftPos" : 1072,
     "logicNodeType" : "RAWSFCODE",
     "name" : "拼接top_ids",
     "getPSDELogicLinks" : [ {
@@ -256,7 +353,7 @@
       "modelref" : true,
       "id" : "result_list"
     },
-    "leftPos" : 1042,
+    "leftPos" : 1290,
     "logicNodeType" : "APPENDPARAM",
     "name" : "附加到数组参数",
     "srcIndex" : 0,
@@ -267,7 +364,7 @@
     "topPos" : 250
   }, {
     "codeName" : "PREPAREPARAM1",
-    "leftPos" : 641,
+    "leftPos" : 866,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "top_ids放入过滤器",
     "getPSDELogicLinks" : [ {
@@ -287,7 +384,7 @@
         "modelref" : true,
         "id" : "top_fiter"
       },
-      "name" : "work_item[top_ids] ==> fiter[n_top_id_in]",
+      "name" : "work_item[top_ids] ==> top_fiter[n_top_id_in]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "top_ids",
       "getSrcPSDELogicParam" : {
@@ -296,7 +393,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 408
+    "topPos" : 400
   }, {
     "codeName" : "DEDATASET3",
     "getDstPSDEDataSet" : {
@@ -311,7 +408,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
     },
-    "leftPos" : 641,
+    "leftPos" : 866,
     "logicNodeType" : "DEDATASET",
     "name" : "顶级工作项下的所有子工作项",
     "getPSDELogicLinks" : [ {
@@ -329,14 +426,14 @@
       "modelref" : true,
       "id" : "top_page"
     },
-    "topPos" : 517
+    "topPos" : 500
   }, {
     "codeName" : "LOOPSUBCALL2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "top_temp"
     },
-    "leftPos" : 842,
+    "leftPos" : 1082,
     "logicNodeType" : "LOOPSUBCALL",
     "name" : "循环子调用",
     "getPSDELogicLinks" : [ {
@@ -365,14 +462,14 @@
       "modelref" : true,
       "id" : "top_page"
     },
-    "topPos" : 517
+    "topPos" : 500
   }, {
     "codeName" : "APPENDPARAM2",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "result_list"
     },
-    "leftPos" : 1060,
+    "leftPos" : 1290,
     "logicNodeType" : "APPENDPARAM",
     "name" : "附加到数组参数",
     "srcIndex" : 0,
@@ -380,14 +477,14 @@
       "modelref" : true,
       "id" : "top_temp"
     },
-    "topPos" : 517
+    "topPos" : 500
   }, {
     "codeName" : "BINDPARAM1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "result_page"
     },
-    "leftPos" : 842,
+    "leftPos" : 1082,
     "logicNodeType" : "BINDPARAM",
     "name" : "绑定参数",
     "getPSDELogicLinks" : [ {
@@ -405,7 +502,7 @@
       "modelref" : true,
       "id" : "result_list"
     },
-    "topPos" : 690
+    "topPos" : 700
   }, {
     "codeName" : "END1",
     "leftPos" : 320,
@@ -419,7 +516,7 @@
     "topPos" : 820
   }, {
     "codeName" : "PREPAREPARAM2",
-    "leftPos" : 842,
+    "leftPos" : 1082,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "复制分页参数",
     "getPSDELogicLinks" : [ {
@@ -434,19 +531,16 @@
       }
     } ],
     "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "total",
+      "dstFieldName" : "totalElements",
       "getDstPSDELogicParam" : {
         "modelref" : true,
         "id" : "result_page"
       },
-      "name" : "page[total] ==> result_page[total]",
+      "name" : "直接值[14] ==> result_page[totalElements]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "total",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "page"
-      },
-      "srcValueType" : "SRCDLPARAM"
+      "srcValue" : "14",
+      "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : 828
   } ],
@@ -460,6 +554,15 @@
     },
     "default" : true,
     "filterParam" : true
+  }, {
+    "codeName" : "flag",
+    "logicName" : "标记",
+    "name" : "标记",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "entityParam" : true
   }, {
     "codeName" : "for_temp",
     "logicName" : "循环临时变量",

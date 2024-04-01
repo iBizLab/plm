@@ -455,6 +455,15 @@
               "editorType" : "TEXTBOX",
               "maxLength" : 15,
               "name" : "identifier",
+              "getPSSysValueRule" : {
+                "codeName" : "UsrValueRule0312488358",
+                "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPVALUERULES/UsrValueRule0312488358.json",
+                "name" : "大写字母和数字",
+                "regExCode" : "^[A-Z0-9]{1,15}$",
+                "ruleInfo" : "请填写大写字母和数字",
+                "ruleType" : "REG",
+                "enableFront" : true
+              },
               "placeHolder" : "大写字母和数字，15个字符范围内"
             },
             "getPSLayoutPos" : {
@@ -591,7 +600,7 @@
       },
       "noTabHeader" : true,
       "name" : "wizardpanel_form_fill_info",
-      "modelid" : "922EB363-5439-4511-B1EA-57B930721CFB",
+      "modelid" : "8a732d30f0926cbbd872c5f2d7d4fa75",
       "modeltype" : "PSDEFORM_EDITFORM"
     }, {
       "codeName" : "Wizard_member_bind",
@@ -984,17 +993,6 @@
                 "value" : "display_name:name"
               } ],
               "getPSAppViewRefs" : [ {
-                "name" : "EDITDATA",
-                "realTitle" : "测试库成员数据重定向视图",
-                "getRealTitlePSLanguageRes" : {
-                  "lanResTag" : "PAGE.TITLE.LIBRARY_MEMBER.REDIRECTVIEW"
-                },
-                "getRefPSAppView" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_memberRedirectView.json",
-                  "viewType" : "DEREDIRECTVIEW"
-                }
-              }, {
                 "name" : "NEWDATA",
                 "realTitle" : "测试库成员编辑视图",
                 "getRealTitlePSLanguageRes" : {
@@ -1004,6 +1002,17 @@
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_memberEditView.json",
                   "viewType" : "DEEDITVIEW"
+                }
+              }, {
+                "name" : "EDITDATA",
+                "realTitle" : "测试库成员数据重定向视图",
+                "getRealTitlePSLanguageRes" : {
+                  "lanResTag" : "PAGE.TITLE.LIBRARY_MEMBER.REDIRECTVIEW"
+                },
+                "getRefPSAppView" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_memberRedirectView.json",
+                  "viewType" : "DEREDIRECTVIEW"
                 }
               }, {
                 "name" : "MPICKUPVIEW:LIBRARY"
@@ -1075,7 +1084,7 @@
                   "showIcon" : true
                 } ],
                 "xDataControlName" : "grid",
-                "modelid" : "710F7DDD-459E-43BC-B37E-9387C4DCC573",
+                "modelid" : "1c9a0339342259c9a4e65f8c77b0dbbd",
                 "modeltype" : "PSDETOOLBAR"
               }, {
                 "aggMode" : "NONE",
@@ -1191,68 +1200,6 @@
                   "showBusyIndicator" : true,
                   "id" : "GRID"
                 },
-                "getPSControls" : [ {
-                  "codeName" : "grid_view_assignedgrid_batchtoolbar",
-                  "controlType" : "TOOLBAR",
-                  "logicName" : "工具栏模板（表格批量操作）",
-                  "name" : "grid_batchtoolbar",
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Library_member.json"
-                  },
-                  "getPSControlParam" : {
-                    "id" : "grid_batchtoolbar"
-                  },
-                  "getPSDEToolbarItems" : [ {
-                    "getCapPSLanguageRes" : {
-                      "lanResTag" : "TBB.TEXT.*.REMOVE"
-                    },
-                    "caption" : "删除",
-                    "groupExtractMode" : "ITEM",
-                    "itemType" : "DEUIACTION",
-                    "name" : "deuiaction2",
-                    "noPrivDisplayMode" : 2,
-                    "getPSAppViewUIAction" : {
-                      "modelref" : true,
-                      "id" : "grid_batchtoolbar_deuiaction2"
-                    },
-                    "getPSSysImage" : {
-                      "glyph" : "xf00d@FontAwesome",
-                      "cssClass" : "fa fa-remove"
-                    },
-                    "getPSUIAction" : {
-                      "actionTarget" : "MULTIKEY",
-                      "getCapPSLanguageRes" : {
-                        "lanResTag" : "TBB.TEXT.*.REMOVE"
-                      },
-                      "caption" : "删除",
-                      "codeName" : "Remove",
-                      "fullCodeName" : "Remove",
-                      "name" : "表格界面_删除操作",
-                      "getPSSysImage" : {
-                        "glyph" : "xf00d@FontAwesome",
-                        "cssClass" : "fa fa-remove"
-                      },
-                      "predefinedType" : "GRIDVIEW_REMOVEACTION",
-                      "timeout" : 60000,
-                      "getTooltipPSLanguageRes" : {
-                        "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-                      },
-                      "uIActionMode" : "SYS",
-                      "uIActionTag" : "Remove",
-                      "uIActionType" : "DEUIACTION"
-                    },
-                    "tooltip" : "删除",
-                    "getTooltipPSLanguageRes" : {
-                      "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
-                    },
-                    "uIActionTarget" : "MULTIKEY",
-                    "showCaption" : true,
-                    "showIcon" : true
-                  } ],
-                  "modelid" : "74CCFEF5-0654-4145-852A-227C53342218",
-                  "modeltype" : "PSDETOOLBAR"
-                } ],
                 "getPSDEGridColumns" : [ {
                   "align" : "LEFT",
                   "cLConvertMode" : "NONE",
@@ -1289,7 +1236,7 @@
                     },
                     "getPSUIActionGroupDetails" : [ {
                       "detailType" : "DEUIACTION",
-                      "name" : "u2225ef5",
+                      "name" : "ud1b4964",
                       "getPSSysImage" : {
                         "glyph" : "xf1f8@FontAwesome",
                         "cssClass" : "fa fa-trash"
@@ -1416,7 +1363,7 @@
                 "forceFit" : false,
                 "hideHeader" : false,
                 "noSort" : false,
-                "singleSelect" : false,
+                "singleSelect" : true,
                 "name" : "grid",
                 "modelid" : "b996342f57e766982f256ddd32e641a2",
                 "modeltype" : "PSDEGRID"
@@ -1870,7 +1817,7 @@
       },
       "noTabHeader" : true,
       "name" : "wizardpanel_form_bind_member",
-      "modelid" : "C93644E7-8B4C-4767-A838-0D7A30C2E1F3",
+      "modelid" : "a9efc274752d0028e4fbbcdb63fd2e2e",
       "modeltype" : "PSDEFORM_EDITFORM"
     } ],
     "getPSDEWizard" : {
@@ -1921,7 +1868,7 @@
     "showActionBar" : true,
     "showStepBar" : true,
     "name" : "wizardpanel",
-    "modelid" : "DFA04E25-170D-488E-89F0-CC45187AC7BF",
+    "modelid" : "df303ea2922b1ec56dfe69721868edba",
     "modeltype" : "PSDEWIZARDPANEL"
   }, {
     "getCapPSLanguageRes" : {
@@ -1938,7 +1885,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "create_wizard_view",
-  "getPSDEViewId" : "4FC140FE-3DAB-4866-9CFF-40A3A497CAAB",
+  "getPSDEViewId" : "74ddb13ae93e683f3b250b636951c8ba",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEWIZARDVIEW",
@@ -1958,6 +1905,6 @@
   "viewType" : "DEWIZARDVIEW",
   "width" : 1024,
   "enableDP" : true,
-  "modelid" : "bc1e1f02fb70a4c56e599de10351d3f5",
+  "modelid" : "a75cfab577ec52ba3bebfe77dd3334b7",
   "modeltype" : "PSAPPDEVIEW"
 }

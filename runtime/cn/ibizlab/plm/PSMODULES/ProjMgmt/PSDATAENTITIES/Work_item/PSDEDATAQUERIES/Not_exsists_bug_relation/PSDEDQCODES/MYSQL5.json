@@ -3,7 +3,7 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "NOT(EXISTS(SELECT * FROM `RELATION` t101 \n WHERE \n t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_TYPE` = #{ctx.webcontext.principal_type}  AND  t101.`TARGET_TYPE` = #{ctx.webcontext.target_type}  AND  t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ))",
+    "customCond" : "NOT(EXISTS(SELECT * FROM `RELATION` t91 \n WHERE \n t1.`ID` = t91.`TARGET_ID`  AND  ( t91.`PRINCIPAL_TYPE` = #{ctx.webcontext.principal_type}  AND  t91.`TARGET_TYPE` = #{ctx.webcontext.target_type}  AND  t91.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ))",
     "name" : "查询条件"
   }, {
     "condType" : "CUSTOM",
@@ -116,7 +116,7 @@
     "expression" : "t1.`SPRINT_ID`",
     "name" : "SPRINT_ID"
   }, {
-    "expression" : "t91.`NAME`",
+    "expression" : "t81.`NAME`",
     "name" : "SPRINT_NAME"
   }, {
     "expression" : "t1.`START_AT`",
@@ -149,12 +149,6 @@
     "expression" : "t1.`UPDATE_TIME`",
     "name" : "UPDATE_TIME"
   }, {
-    "expression" : "t1.`VERSION_ID`",
-    "name" : "VERSION_ID"
-  }, {
-    "expression" : "t81.`NAME`",
-    "name" : "VERSION_NAME"
-  }, {
     "expression" : "t21.`GROUP`",
     "name" : "WORK_ITEM_TYPE_GROUP"
   }, {
@@ -167,6 +161,6 @@
     "expression" : "t21.`SEQUENCE`",
     "name" : "WORK_ITEM_TYPE_SEQUENCE"
   } ],
-  "queryCode" : "SELECT\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`BACKLOG_FROM`,\nt1.`BACKLOG_TYPE`,\nt1.`BOARD_ID`,\nt61.`NAME` AS `BOARD_NAME`,\nt1.`COMPLETED_AT`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`END_AT`,\nt1.`ENTRY_ID`,\nt51.`NAME` AS `ENTRY_NAME`,\nt1.`ENTRY_POSITION`,\nt1.`ENTRY_STATUS`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\nt1.`IS_LEAF`,\nt1.`JOB_TYPE`,\nt1.`PID`,\nt1.`PRIORITY`,\nt1.`PROJECT_ID`,\nt11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,\nt11.`NAME` AS `PROJECT_NAME`,\nt11.`TYPE` AS `PROJECT_TYPE`,\nt41.`TITLE` AS `PTITLE`,\nt1.`REAPPEAR_PROBABILITY`,\nt1.`RELEASE_ID`,\n1 AS `REP_NUM`,\nt1.`RISK`,\nt1.`SEVERITY`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPRINT_ID`,\nt91.`NAME` AS `SPRINT_NAME`,\nt1.`START_AT`,\nt1.`STATE`,\nt31.`TYPE` AS `STATE_TYPE`,\nt1.`SWIMLANE_ID`,\nt1.`TAGS`,\nt1.`TITLE`,\nt1.`TOP_ID`,\nt71.`TITLE` AS `TOP_TITLE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt1.`VERSION_ID`,\nt81.`NAME` AS `VERSION_NAME`,\nt21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,\nt1.`WORK_ITEM_TYPE_ID`,\nt21.`NAME` AS `WORK_ITEM_TYPE_NAME`,\nt21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`\nFROM `WORK_ITEM` t1 \nLEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` \nLEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` \nLEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` \nLEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` \nLEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` \nLEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` \nLEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` \nLEFT JOIN `VERSION` t81 ON t1.`VERSION_ID` = t81.`ID` \nLEFT JOIN `SPRINT` t91 ON t1.`SPRINT_ID` = t91.`ID` \n",
+  "queryCode" : "SELECT\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`BACKLOG_FROM`,\nt1.`BACKLOG_TYPE`,\nt1.`BOARD_ID`,\nt61.`NAME` AS `BOARD_NAME`,\nt1.`COMPLETED_AT`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`END_AT`,\nt1.`ENTRY_ID`,\nt51.`NAME` AS `ENTRY_NAME`,\nt1.`ENTRY_POSITION`,\nt1.`ENTRY_STATUS`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\nt1.`IS_LEAF`,\nt1.`JOB_TYPE`,\nt1.`PID`,\nt1.`PRIORITY`,\nt1.`PROJECT_ID`,\nt11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,\nt11.`NAME` AS `PROJECT_NAME`,\nt11.`TYPE` AS `PROJECT_TYPE`,\nt41.`TITLE` AS `PTITLE`,\nt1.`REAPPEAR_PROBABILITY`,\nt1.`RELEASE_ID`,\n1 AS `REP_NUM`,\nt1.`RISK`,\nt1.`SEVERITY`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPRINT_ID`,\nt81.`NAME` AS `SPRINT_NAME`,\nt1.`START_AT`,\nt1.`STATE`,\nt31.`TYPE` AS `STATE_TYPE`,\nt1.`SWIMLANE_ID`,\nt1.`TAGS`,\nt1.`TITLE`,\nt1.`TOP_ID`,\nt71.`TITLE` AS `TOP_TITLE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`,\nt21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,\nt1.`WORK_ITEM_TYPE_ID`,\nt21.`NAME` AS `WORK_ITEM_TYPE_NAME`,\nt21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`\nFROM `WORK_ITEM` t1 \nLEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` \nLEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` \nLEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` \nLEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` \nLEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` \nLEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` \nLEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` \nLEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` \n",
   "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDEDATAQUERIES/Not_exsists_bug_relation/PSDEDQCODES/MYSQL5.json"
 }

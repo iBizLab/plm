@@ -12,6 +12,7 @@
                             <tns:global identifier="commentafter_create_notifydefault" type="cn.ibizlab.plm.core.base.domain.Comment" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="commentafter_create_notifydebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="commentafter_create_notifydenotify1" id="denotify1" implementation="http://www.jboss.org/drools/rule" name="评论工作项通知"/>
                         <endEvent id="denotify1_end" name="end"/>
                         <sequenceFlow id="denotify1_end_line" sourceRef="denotify1" targetRef="denotify1_end"/>
@@ -33,7 +34,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="commentafter_create_notifydenotify7" id="denotify7" implementation="http://www.jboss.org/drools/rule" name="评论页面通知"/>
                         <endEvent id="denotify7_end" name="end"/>
                         <sequenceFlow id="denotify7_end_line" sourceRef="denotify7" targetRef="denotify7_end"/>
-                    <sequenceFlow id="gateway-begin_denotify1" sourceRef="gateway-begin" targetRef="denotify1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam1_denotify1" sourceRef="gateway-debugparam1" targetRef="denotify1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
@@ -41,15 +44,15 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_denotify2" sourceRef="gateway-begin" targetRef="denotify2">
+                    <sequenceFlow id="gateway-debugparam1_denotify2" sourceRef="gateway-debugparam1" targetRef="denotify2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
-                                eval((RuleUtils.test($commentafter_create_notifydefault.get("principalType"),"EQ","TEST_CASE")))
+                                eval((RuleUtils.test($commentafter_create_notifydefault.get("principalType"),"EQ","IDEA")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_denotify3" sourceRef="gateway-begin" targetRef="denotify3">
+                    <sequenceFlow id="gateway-debugparam1_denotify3" sourceRef="gateway-debugparam1" targetRef="denotify3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
@@ -57,7 +60,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_denotify4" sourceRef="gateway-begin" targetRef="denotify4">
+                    <sequenceFlow id="gateway-debugparam1_denotify4" sourceRef="gateway-debugparam1" targetRef="denotify4">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
@@ -65,7 +68,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_denotify5" sourceRef="gateway-begin" targetRef="denotify5">
+                    <sequenceFlow id="gateway-debugparam1_denotify5" sourceRef="gateway-debugparam1" targetRef="denotify5">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
@@ -73,7 +76,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_denotify6" sourceRef="gateway-begin" targetRef="denotify6">
+                    <sequenceFlow id="gateway-debugparam1_denotify6" sourceRef="gateway-debugparam1" targetRef="denotify6">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
@@ -81,7 +84,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-begin_denotify7" sourceRef="gateway-begin" targetRef="denotify7">
+                    <sequenceFlow id="gateway-debugparam1_denotify7" sourceRef="gateway-debugparam1" targetRef="denotify7">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $commentafter_create_notifydefault:Comment();
                                     eval($commentafter_create_notifydefault==commentafter_create_notifydefault);
@@ -89,9 +92,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
-                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
-                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
-                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-debugparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam1_gateway-debugparam1_gatewayline" sourceRef="debugparam1" targetRef="gateway-debugparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam1_end_line" sourceRef="gateway-debugparam1" targetRef="gateway-debugparam1_end"/>
+                            <endEvent id="gateway-debugparam1_end" name="end"/>
         </process>
     </definitions>

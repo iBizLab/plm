@@ -28,7 +28,7 @@
     "name" : "OPENDATA",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "open_view"
+      "id" : "open_main_view"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -115,7 +115,15 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
       }
     },
-    "groupMode" : "NONE",
+    "groupMode" : "AUTO",
+    "getGroupPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "Show_identifier"
+    },
+    "getGroupPSDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "Show_identifier"
+    },
     "logicName" : "工时日历表格",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -263,6 +271,7 @@
         "name" : "DURATION",
         "codeName" : "Duration"
       },
+      "valueFormat" : "#.0",
       "width" : 130,
       "widthUnit" : "PX",
       "enableSort" : true
@@ -282,6 +291,7 @@
         "codeName" : "Name"
       }
     }, {
+      "format" : "#.0",
       "dataType" : 6,
       "name" : "duration",
       "getPSAppDEField" : {
@@ -365,7 +375,7 @@
     "hasWFDataItems" : false,
     "enableColFilter" : false,
     "enableCustomized" : false,
-    "enableGroup" : false,
+    "enableGroup" : true,
     "enablePagingBar" : false,
     "enableRowEdit" : false,
     "enableRowEditOrder" : false,
@@ -375,7 +385,7 @@
     "noSort" : false,
     "singleSelect" : true,
     "name" : "grid",
-    "modelid" : "15472ABF-B140-4974-9473-38A5CE3C7DDA",
+    "modelid" : "2d0860cea7f6c9d96431ca05e885d93f",
     "modeltype" : "PSDEGRID"
   }, {
     "codeName" : "Default",
@@ -448,6 +458,9 @@
         "codeName" : "Name"
       }
     }, {
+      "id" : "create_man",
+      "dataType" : 25
+    }, {
       "id" : "n_register_date_gtandeq",
       "hidden" : true,
       "dataType" : 5,
@@ -462,6 +475,14 @@
       "getPSAppDEField" : {
         "name" : "REGISTER_DATE",
         "codeName" : "Register_date"
+      }
+    }, {
+      "id" : "n_create_man_eq",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "Create_man"
       }
     } ],
     "getPSDEFormPages" : [ {
@@ -529,8 +550,8 @@
           "placeHolder" : "编号"
         },
         "getPSLayoutPos" : {
-          "colLG" : 4,
-          "colMD" : 4,
+          "colLG" : 3,
+          "colMD" : 3,
           "colSM" : 8,
           "colXS" : 8,
           "layout" : "TABLE_24COL"
@@ -561,12 +582,61 @@
           "placeHolder" : "事项"
         },
         "getPSLayoutPos" : {
-          "colLG" : 4,
-          "colMD" : 4,
+          "colLG" : 3,
+          "colMD" : 3,
           "colSM" : 8,
           "colXS" : 8,
           "layout" : "TABLE_24COL"
         },
+        "allowEmpty" : true
+      }, {
+        "caption" : "表单项",
+        "codeName" : "create_man",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "create_man",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorParams" : {
+            "URL" : "/users/fetchdefault",
+            "ISSHOWTAB" : "false",
+            "USERMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "AC" : "TRUE",
+            "USERMETHOD" : "get",
+            "TRIGGER" : "TRUE",
+            "PICKUPVIEW" : "FALSE"
+          },
+          "editorStyle" : "PERSONEL_SELECT_ALL",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "create_man",
+          "getPSEditorItems" : [ {
+            "name" : "n_create_man_eq"
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueItemName" : "n_create_man_eq",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 3,
+          "colMD" : 3,
+          "colSM" : 8,
+          "colXS" : 8,
+          "layout" : "TABLE_24COL"
+        },
+        "valueItemName" : "n_create_man_eq",
         "allowEmpty" : true
       }, {
         "caption" : "工作日期（大于）",
@@ -630,6 +700,35 @@
         "allowEmpty" : true,
         "hidden" : true,
         "showCaption" : true
+      }, {
+        "caption" : "建立人",
+        "codeName" : "n_create_man_eq",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "n_create_man_eq",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "CREATE_MAN",
+          "codeName" : "Create_man"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "n_create_man_eq"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 8,
+          "colMD" : 8,
+          "colSM" : 8,
+          "colXS" : 8,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColLG" : 8,
@@ -656,8 +755,68 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "be0a8f9d39762fd9cc223d1d56d25646",
+    "modelid" : "ee349d5f6bb5b56ce9de024cda919ef1",
     "modeltype" : "PSDEFORM_SEARCHFORM"
+  }, {
+    "codeName" : "calendar_management_viewtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工时日历_工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.*.EXPORT"
+      },
+      "caption" : "导出",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf1c3@FontAwesome",
+        "cssClass" : "fa fa-file-excel-o"
+      },
+      "getPSUIAction" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.EXPORT"
+        },
+        "caption" : "导出",
+        "codeName" : "ExportExcel",
+        "fullCodeName" : "ExportExcel",
+        "name" : "表格界面_导出操作（Excel）",
+        "getPSSysImage" : {
+          "glyph" : "xf1c3@FontAwesome",
+          "cssClass" : "fa fa-file-excel-o"
+        },
+        "predefinedType" : "GRIDVIEW_EXPORTACTION",
+        "timeout" : 60000,
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "ExportExcel",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "导出",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.EXPORT"
+      },
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "grid",
+    "modelid" : "1caa28e37cd29023f9d644f5b0378f0f",
+    "modeltype" : "PSDETOOLBAR"
   }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
@@ -690,7 +849,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "calendar_management_view",
-  "getPSDEViewId" : "A1B701B6-7670-4B37-81E4-65A238032374",
+  "getPSDEViewId" : "3f4ad1949c6a6f252a3a2e059e7c50ed",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -705,6 +864,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
+  "refFlag" : false,
   "title" : "工时日历表格视图（管理）",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEGRIDVIEW",
@@ -718,7 +878,7 @@
   "expandSearchForm" : true,
   "rowEditDefault" : false,
   "showCaptionBar" : false,
-  "modelid" : "dcaa511607dc8568fcde1ef6ca7ea551",
+  "modelid" : "af3c29d5b4e6114e4cb8d0d6c8e9b410",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

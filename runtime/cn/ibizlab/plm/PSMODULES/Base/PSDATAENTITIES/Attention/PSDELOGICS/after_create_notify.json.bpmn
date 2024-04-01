@@ -22,7 +22,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $attentionafter_create_notifydefault:Attention();
                                     eval($attentionafter_create_notifydefault==attentionafter_create_notifydefault);
-                                eval((RuleUtils.test($attentionafter_create_notifydefault.get("ownerType"),"NOTEQ","PAGE")))
+                                eval((RuleUtils.test($attentionafter_create_notifydefault.get("ownerType"),"NOTEQ","PAGE"))&&(RuleUtils.test($attentionafter_create_notifydefault.get("userId"),"NOTEQ","create_man")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
@@ -30,7 +30,7 @@
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $attentionafter_create_notifydefault:Attention();
                                     eval($attentionafter_create_notifydefault==attentionafter_create_notifydefault);
-                                eval((RuleUtils.test($attentionafter_create_notifydefault.get("ownerType"),"EQ","PAGE")))
+                                eval((RuleUtils.test($attentionafter_create_notifydefault.get("ownerType"),"EQ","PAGE"))&&(RuleUtils.test($attentionafter_create_notifydefault.get("userId"),"NOTEQ","create_man")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>

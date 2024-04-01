@@ -14,6 +14,48 @@
     "defaultMode" : true,
     "enablePagingBar" : false,
     "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint/PSDEACMODES/Default.json"
+  }, {
+    "codeName" : "End_time",
+    "logicName" : "结束时间",
+    "name" : "end_time",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value"
+    }, {
+      "dataType" : 25,
+      "name" : "text"
+    }, {
+      "format" : "%1$tY-%1$tm-%1$td",
+      "dataType" : 25,
+      "name" : "n_create_time_ltandeq"
+    } ],
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint/PSDEACMODES/End_time.json"
+  }, {
+    "codeName" : "Star_time",
+    "logicName" : "开始时间",
+    "name" : "star_time",
+    "getPSDEACModeDataItems" : [ {
+      "dataType" : 25,
+      "name" : "value"
+    }, {
+      "dataType" : 25,
+      "name" : "text"
+    }, {
+      "format" : "%1$tY-%1$tm-%1$td",
+      "dataType" : 25,
+      "name" : "n_create_time_gtandeq"
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "pagingSize" : 50,
+    "defaultMode" : false,
+    "enablePagingBar" : false,
+    "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint/PSDEACMODES/Star_time.json"
   } ],
   "getAllPSDEActions" : [ {
     "actionMode" : "CREATE",
@@ -332,9 +374,6 @@
     }, {
       "name" : "PID",
       "codeName" : "Pid"
-    }, {
-      "name" : "SPRINT_CATEGORY_ID",
-      "codeName" : "Sprint_category_id"
     } ],
     "codeName" : "Table",
     "name" : "SPRINT",
@@ -514,6 +553,7 @@
   "getAllPSDEDataSets" : [ {
     "codeName" : "Choose_move",
     "logicName" : "移动至",
+    "memo" : "确认迭代完成时，选择移动至其他迭代",
     "name" : "choose_move",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
@@ -608,6 +648,7 @@
         "name" : "[START_AT][开始时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -620,11 +661,46 @@
         "editorType" : "DATEPICKEREX_NOTIME",
         "name" : "[START_AT][开始时间]",
         "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td"
+        "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
+      "codeName" : "START_AT",
+      "name" : "开始时间",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "[条件组]OR",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "ISNULL",
+            "condType" : "SIMPLE",
+            "dEFName" : "END_AT",
+            "name" : "[常规条件] 值为空(Nil)"
+          }, {
+            "condOp" : "LTANDEQ",
+            "condType" : "SIMPLE",
+            "dEFName" : "START_AT",
+            "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
+            "paramType" : "ENTITYFIELD",
+            "paramValue" : "END_AT",
+            "ruleInfo" : "开始时间必须小于等于结束时间"
+          } ],
+          "ruleInfo" : "开始时间必须小于等于结束时间"
+        } ],
+        "ruleInfo" : "开始时间必须小于等于结束时间"
+      },
+      "ruleInfo" : "开始时间必须小于等于结束时间",
+      "checkDefault" : true,
+      "defaultMode" : false,
+      "enableBackend" : true,
+      "enableFront" : true
+    }, {
       "codeName" : "Default",
       "name" : "默认规则",
       "getPSDEFVRGroupCondition" : {
@@ -654,7 +730,8 @@
     },
     "serviceCodeName" : "Start_at",
     "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td"
+    "valueFormat" : "%1$tY-%1$tm-%1$td",
+    "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "END_AT",
@@ -671,7 +748,8 @@
         "editorType" : "DATEPICKEREX_NOTIME",
         "name" : "[END_AT][结束时间]",
         "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td"
+        "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
@@ -683,12 +761,47 @@
         "name" : "[END_AT][结束时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
     "getAllPSDEFValueRules" : [ {
+      "codeName" : "END_AT",
+      "name" : "结束时间",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "[条件组]OR",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "ISNULL",
+            "condType" : "SIMPLE",
+            "dEFName" : "START_AT",
+            "name" : "[常规条件] 值为空(Nil)"
+          }, {
+            "condOp" : "GTANDEQ",
+            "condType" : "SIMPLE",
+            "dEFName" : "END_AT",
+            "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
+            "paramType" : "ENTITYFIELD",
+            "paramValue" : "START_AT",
+            "ruleInfo" : "结束时间必须大于等于开始时间"
+          } ],
+          "ruleInfo" : "结束时间必须大于等于开始时间"
+        } ],
+        "ruleInfo" : "结束时间必须大于等于开始时间"
+      },
+      "ruleInfo" : "结束时间必须大于等于开始时间",
+      "checkDefault" : true,
+      "defaultMode" : false,
+      "enableBackend" : true,
+      "enableFront" : true
+    }, {
       "codeName" : "Default",
       "name" : "默认规则",
       "getPSDEFVRGroupCondition" : {
@@ -718,7 +831,8 @@
     },
     "serviceCodeName" : "End_at",
     "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td"
+    "valueFormat" : "%1$tY-%1$tm-%1$td",
+    "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "DESCRIPTION",
@@ -1148,135 +1262,6 @@
     "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "SPRINT_CATEGORY_NAME",
-      "dBType" : "MYSQL5",
-      "name" : "SPRINT_CATEGORY_NAME",
-      "queryCodeExp" : "t31.`NAME`",
-      "standardColumnName" : "`SPRINT_CATEGORY_NAME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_SPRINT_CATEGORY_NAME_EQ",
-      "name" : "N_SPRINT_CATEGORY_NAME_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    }, {
-      "codeName" : "N_SPRINT_CATEGORY_NAME_LIKE",
-      "name" : "N_SPRINT_CATEGORY_NAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SPRINT_CATEGORY_NAME][类别名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "PICKER",
-        "name" : "[SPRINT_CATEGORY_NAME][类别名称]",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[SPRINT_CATEGORY_NAME][类别名称]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBPICKER",
-        "name" : "[SPRINT_CATEGORY_NAME][类别名称]移动端默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "SPRINT_CATEGORY_NAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[200]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "Sprint_category_name",
-    "dEFType" : 3,
-    "dataType" : "PICKUPTEXT",
-    "importOrder" : 1000,
-    "length" : 200,
-    "logicName" : "类别名称",
-    "name" : "SPRINT_CATEGORY_NAME",
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint/PSDERS/DER1N_SPRINT_SPRINT_CATEGORY_SPRINT_CATEGORY_ID.json"
-    },
-    "getRealPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "Name"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "Name"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-    },
-    "serviceCodeName" : "Sprint_category_name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "getValuePSDEField" : {
-      "name" : "SPRINT_CATEGORY_ID",
-      "codeName" : "Sprint_category_id"
-    },
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
-  }, {
-    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CATEGORIES",
       "dBType" : "MYSQL5",
       "name" : "CATEGORIES",
@@ -1444,6 +1429,17 @@
       "standardColumnName" : "`ASSIGNEE_ID`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ASSIGNEE_ID][负责人标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ASSIGNEE_ID][负责人标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ASSIGNEE_ID][负责人标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1456,17 +1452,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ASSIGNEE_ID][负责人标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ASSIGNEE_ID][负责人标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1634,7 +1619,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[NAME][名称]",
         "stringLength" : 200,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
@@ -1649,6 +1635,7 @@
         "name" : "[NAME][名称]移动端默认",
         "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1701,6 +1688,7 @@
     "stdDataType" : 25,
     "stringLength" : 200,
     "valueFormat" : "%1$s",
+    "allowEmpty" : false,
     "enableQuickSearch" : true,
     "majorDEField" : true
   }, {
@@ -2076,6 +2064,7 @@
         },
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -2092,7 +2081,8 @@
           "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
         },
         "stringLength" : 100,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     } ],
@@ -2160,6 +2150,7 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
+    "allowEmpty" : false,
     "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -2269,118 +2260,6 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint.json"
     },
     "serviceCodeName" : "Pid",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "linkDEField" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "SPRINT_CATEGORY_ID",
-      "dBType" : "MYSQL5",
-      "name" : "SPRINT_CATEGORY_ID",
-      "queryCodeExp" : "t1.`SPRINT_CATEGORY_ID`",
-      "standardColumnName" : "`SPRINT_CATEGORY_ID`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_SPRINT_CATEGORY_ID_EQ",
-      "name" : "N_SPRINT_CATEGORY_ID_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SPRINT_CATEGORY_ID][迭代类别标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[SPRINT_CATEGORY_ID][迭代类别标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[SPRINT_CATEGORY_ID][迭代类别标识]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "HIDDEN",
-        "name" : "[SPRINT_CATEGORY_ID][迭代类别标识]移动端默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "SPRINT_CATEGORY_ID",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[100]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "Sprint_category_id",
-    "dEFType" : 1,
-    "dataType" : "PICKUP",
-    "importOrder" : 1000,
-    "length" : 100,
-    "logicName" : "迭代类别标识",
-    "name" : "SPRINT_CATEGORY_ID",
-    "getPSDEDBTable" : {
-      "modelref" : true,
-      "id" : "Table"
-    },
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint/PSDERS/DER1N_SPRINT_SPRINT_CATEGORY_SPRINT_CATEGORY_ID.json"
-    },
-    "getPSSysDBColumn" : {
-      "modelref" : true,
-      "id" : "SPRINT_CATEGORY_ID"
-    },
-    "getRealPSDEField" : {
-      "name" : "ID",
-      "codeName" : "Id"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "ID",
-      "codeName" : "Id"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-    },
-    "serviceCodeName" : "Sprint_category_id",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
@@ -3417,7 +3296,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "jsonFormat" : "yyyy-MM-dd",
       "logicName" : "结束时间",
@@ -3428,7 +3308,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "描述",
       "name" : "Description",
@@ -3469,17 +3350,6 @@
       "getPSDEField" : {
         "name" : "PROJECT_NAME",
         "codeName" : "Project_name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 200,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "类别名称",
-      "name" : "Sprint_category_name",
-      "getPSDEField" : {
-        "name" : "SPRINT_CATEGORY_NAME",
-        "codeName" : "Sprint_category_name"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -3566,7 +3436,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "父标识",
       "name" : "Pid",
@@ -3588,18 +3459,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "迭代类别标识",
-      "name" : "Sprint_category_id",
-      "getPSDEField" : {
-        "name" : "SPRINT_CATEGORY_ID",
-        "codeName" : "Sprint_category_id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "更新人",
       "name" : "Update_man",
@@ -3759,48 +3620,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "迭代类别标识",
-      "name" : "N_SPRINT_CATEGORY_ID_EQ",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_SPRINT_CATEGORY_ID_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "SPRINT_CATEGORY_ID",
-        "codeName" : "Sprint_category_id"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "类别名称",
-      "name" : "N_SPRINT_CATEGORY_NAME_EQ",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_SPRINT_CATEGORY_NAME_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "SPRINT_CATEGORY_NAME",
-        "codeName" : "Sprint_category_name"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "类别名称",
-      "name" : "N_SPRINT_CATEGORY_NAME_LIKE",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_SPRINT_CATEGORY_NAME_LIKE"
-      },
-      "getPSDEField" : {
-        "name" : "SPRINT_CATEGORY_NAME",
-        "codeName" : "Sprint_category_name"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "defaultValue" : "1",
       "logicName" : "状态",
       "name" : "N_STATUS_EQ",
@@ -3903,22 +3722,10 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "confirm_finish_view",
-    "logicName" : "迭代实体确认完成视图",
-    "name" : "迭代实体确认完成视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "grid_view_all",
     "logicName" : "迭代树导航表格视图",
     "name" : "迭代树导航表格视图",
     "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "update_view",
-    "logicName" : "迭代编辑视图",
-    "name" : "迭代编辑视图",
-    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "main_view",
@@ -3931,6 +3738,18 @@
     "logicName" : "迭代实体选择表格视图（部件视图）",
     "name" : "迭代实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "confirm_finish_view",
+    "logicName" : "迭代实体确认完成视图",
+    "name" : "迭代实体确认完成视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_view",
+    "logicName" : "迭代实体数据选择视图（左右关系）",
+    "name" : "迭代实体数据选择视图（左右关系）",
+    "realModelSubType" : "DEPICKUPVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "pick_up_view_PickupGridView",
@@ -3965,10 +3784,10 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "迭代实体数据选择视图（左右关系）",
-    "name" : "迭代实体数据选择视图（左右关系）",
-    "realModelSubType" : "DEPICKUPVIEW2",
+    "codeName" : "update_view",
+    "logicName" : "迭代编辑视图",
+    "name" : "迭代编辑视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "MPickupView",
@@ -3998,17 +3817,17 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "Main",
-    "logicName" : "主编辑表单",
-    "modelTag2" : "0",
-    "name" : "主编辑表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "confirm_finish_form",
     "logicName" : "迭代确认完成视图_表单",
     "modelTag2" : "0",
     "name" : "迭代确认完成视图_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "Main",
+    "logicName" : "主编辑表单",
+    "modelTag2" : "0",
+    "name" : "主编辑表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -4157,6 +3976,7 @@
     "serviceCodeName" : "Sprint",
     "enableFKey" : true
   } ],
+  "memo" : "产品开发过程中的一次迭代或冲刺，用于规划和跟踪一段时间内的开发任务。",
   "getMinorPSDERs" : [ {
     "codeName" : "Project",
     "dERType" : "DER1N",
@@ -4189,39 +4009,6 @@
     "removeActionType" : -1,
     "removeOrder" : 0,
     "serviceCodeName" : "Project",
-    "enableFKey" : true
-  }, {
-    "codeName" : "Sprint_category",
-    "dERType" : "DER1N",
-    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint/PSDERS/DER1N_SPRINT_SPRINT_CATEGORY_SPRINT_CATEGORY_ID.json",
-    "fKeyName" : "F3A7ED5B3A99DE1491",
-    "logicName" : "迭代类别",
-    "getMajorPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint_category.json"
-    },
-    "masterOrder" : -1,
-    "masterRS" : 0,
-    "minorCodeName" : "sprints",
-    "getMinorPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Sprint.json"
-    },
-    "minorServiceCodeName" : "sprints",
-    "name" : "DER1N_SPRINT_SPRINT_CATEGORY_SPRINT_CATEGORY_ID",
-    "orderValue" : 100,
-    "getPSPickupDEField" : {
-      "name" : "SPRINT_CATEGORY_ID",
-      "codeName" : "Sprint_category_id"
-    },
-    "getPSPickupTextDEField" : {
-      "name" : "SPRINT_CATEGORY_NAME",
-      "codeName" : "Sprint_category_name"
-    },
-    "pickupDEFName" : "SPRINT_CATEGORY_ID",
-    "removeActionType" : -1,
-    "removeOrder" : 0,
-    "serviceCodeName" : "Sprint_category",
     "enableFKey" : true
   }, {
     "codeName" : "Sprint",

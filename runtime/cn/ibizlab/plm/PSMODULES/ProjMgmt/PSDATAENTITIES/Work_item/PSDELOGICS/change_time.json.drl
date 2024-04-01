@@ -32,6 +32,16 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_time;
                         update(work_itemchange_timesrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemchange_timeloopsubcall1"
+            when
+            then
+                        update(work_itemchange_timedefault);//更新fact中变量值
+                        update(work_itemchange_timefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_timesrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[准备参数]
             rule "prepareparam2"
             ruleflow-group "work_itemchange_timeprepareparam2"
@@ -50,16 +60,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_time;
             when
             then
                         work_itemservice.update(work_itemchange_timedefault);
-                        update(work_itemchange_timedefault);//更新fact中变量值
-                        update(work_itemchange_timefor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_timesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "work_itemchange_timeloopsubcall1"
-            when
-            then
                         update(work_itemchange_timedefault);//更新fact中变量值
                         update(work_itemchange_timefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_timesrfactionparam);//更新fact中变量值

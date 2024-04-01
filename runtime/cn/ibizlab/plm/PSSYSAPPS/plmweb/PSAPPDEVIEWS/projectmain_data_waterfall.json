@@ -13,7 +13,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Test.json"
   },
   "getPSDEViewCodeName" : "main_data_waterfall",
-  "getPSDEViewId" : "0EDA2E62-CA6A-45DB-B6C7-9E8A3F89A739",
+  "getPSDEViewId" : "635672c7685165d96634808a472d66f1",
   "getPSViewLayoutPanel" : {
     "getAllPSPanelFields" : [ {
       "id" : "route_picker"
@@ -428,11 +428,6 @@
         "name" : "页面",
         "hidden" : false,
         "id" : "UsrDRGroup1225293659"
-      }, {
-        "caption" : "报表",
-        "name" : "报表",
-        "hidden" : false,
-        "id" : "UsrDRGroup1225815912"
       } ],
       "getPSDEDRCtrlItems" : [ {
         "caption" : "概览",
@@ -592,18 +587,6 @@
           "value" : "project",
           "rawValue" : false
         } ]
-      }, {
-        "caption" : "报表",
-        "name" : "report",
-        "getPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemtab_exp_view_test.json",
-          "viewType" : "DETABEXPVIEW"
-        },
-        "getPSDEDRBarGroup" : {
-          "modelref" : true,
-          "id" : "UsrDRGroup1225815912"
-        }
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "CUSTOM",
@@ -912,7 +895,7 @@
       "enableItemPrivilege" : true,
       "noTabHeader" : true,
       "name" : "form",
-      "modelid" : "B03F7C2B-E851-4ABB-9B5D-769809929146",
+      "modelid" : "95ec38e6b1053586f6b5a0284e3c46d4",
       "modeltype" : "PSDEFORM_EDITFORM"
     }, {
       "codeName" : "main_data_waterfalltoolbar",
@@ -1114,11 +1097,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "项目成员",
             "codeName" : "open_project_member",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-              "viewType" : "DETREEEXPVIEW"
-            },
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Project_open_project_member",
             "name" : "项目成员",
@@ -1136,7 +1114,7 @@
               "glyph" : "xf0c0@FontAwesome",
               "cssClass" : "fa fa-users"
             },
-            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:normal:member')}/project_membergrid_view_config/-`",
+            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=member/project_membergrid_view_config/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_project_member",
@@ -1165,17 +1143,17 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "编辑基本信息",
             "codeName" : "open_edit_view",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-              "viewType" : "DETREEEXPVIEW"
-            },
+            "dataAccessAction" : "UPDATE",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Project_open_edit_view",
             "name" : "编辑基本信息",
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSNavigateContexts" : [ {
               "key" : "SRFDEFAULTTOROUTEDEPTH",
@@ -1193,7 +1171,7 @@
               "glyph" : "xf044@FontAwesome",
               "cssClass" : "fa fa-edit"
             },
-            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:setting:info')}/projectedit_view_base_information/-`",
+            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=base/projectedit_view_base_information/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_edit_view",
@@ -1222,17 +1200,17 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "更多设置",
             "codeName" : "open_setting_view",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-              "viewType" : "DETREEEXPVIEW"
-            },
+            "dataAccessAction" : "UPDATE",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Project_open_setting_view",
             "name" : "更多设置",
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSNavigateContexts" : [ {
               "key" : "SRFDEFAULTTOROUTEDEPTH",
@@ -1250,7 +1228,7 @@
               "glyph" : "xf00b@FontAwesome",
               "cssClass" : "fa fa-th-list"
             },
-            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:normal:member')}/project_membergrid_view_config/-`",
+            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=member/project_membergrid_view_config/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_setting_view",
@@ -1279,17 +1257,17 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "回收站",
             "codeName" : "open_deleted_project",
-            "getFrontPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-              "viewType" : "DETREEEXPVIEW"
-            },
+            "dataAccessAction" : "UPDATE",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "Project_open_deleted_project",
             "name" : "回收站",
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSNavigateContexts" : [ {
               "key" : "SRFDEFAULTTOROUTEDEPTH",
@@ -1307,7 +1285,7 @@
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
             },
-            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectmain_data_waterfall/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:normal:recycle')}/work_itemrecycle_bin_grid_iew/-`",
+            "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=recycle/work_itemrecycle_bin_grid_iew/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "open_deleted_project",
@@ -1327,7 +1305,7 @@
         "showCaption" : false,
         "showIcon" : true
       } ],
-      "modelid" : "c2aa820751f0f4a610c123509362a739",
+      "modelid" : "9e4da30b505e7af66d6e6d30b27b9141",
       "modeltype" : "PSDETOOLBAR"
     }, {
       "caption" : "项目",
@@ -1345,6 +1323,6 @@
   "viewStyle" : "DEFAULT",
   "viewType" : "DEINDEXVIEW",
   "enableDP" : true,
-  "modelid" : "4325c91b3c07bdd86c89c39ae58a4d39",
+  "modelid" : "46647009377f68a658c39cfab9f7774c",
   "modeltype" : "PSAPPDEVIEW"
 }

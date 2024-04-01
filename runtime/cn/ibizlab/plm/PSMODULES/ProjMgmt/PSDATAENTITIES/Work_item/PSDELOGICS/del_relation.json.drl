@@ -6,8 +6,8 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.del_relation;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemdel_relationdefault;
-                global cn.ibizlab.plm.core.base.domain.Relation work_itemdel_relationrelationobj;
-                global cn.ibizlab.plm.core.base.domain.Relation work_itemdel_relationrelationobj2;
+                global cn.ibizlab.plm.core.base.domain.Relation work_itemdel_relationforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation work_itemdel_relationreverse_relation_obj;
                     global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
         global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -22,18 +22,18 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.del_relation;
             then
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[填充正反关联对象的主要关联属性]
             rule "prepareparam1"
             ruleflow-group "work_itemdel_relationprepareparam1"
             when
             then
-                            work_itemdel_relationrelationobj.set("principalid",work_itemdel_relationdefault.get("principal_id"));
-                            work_itemdel_relationrelationobj2.set("targetid",work_itemdel_relationdefault.get("principal_id"));
-                            work_itemdel_relationrelationobj2.set("principalid",work_itemdel_relationdefault.get("id"));
-                            work_itemdel_relationrelationobj.set("targetid",work_itemdel_relationdefault.get("id"));
+                            work_itemdel_relationforward_relation_obj.set("principalid",work_itemdel_relationdefault.get("principal_id"));
+                            work_itemdel_relationreverse_relation_obj.set("targetid",work_itemdel_relationdefault.get("principal_id"));
+                            work_itemdel_relationreverse_relation_obj.set("principalid",work_itemdel_relationdefault.get("id"));
+                            work_itemdel_relationforward_relation_obj.set("targetid",work_itemdel_relationdefault.get("id"));
                         update(work_itemdel_relationdefault);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj2);//更新fact中变量值
+                        update(work_itemdel_relationforward_relation_obj);//更新fact中变量值
+                        update(work_itemdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[拼接关联对象的主键]
@@ -42,8 +42,8 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.del_relation;
             when
             then
                         update(work_itemdel_relationdefault);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj2);//更新fact中变量值
+                        update(work_itemdel_relationforward_relation_obj);//更新fact中变量值
+                        update(work_itemdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除正向关联]
@@ -51,10 +51,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.del_relation;
             ruleflow-group "work_itemdel_relationdeaction2"
             when
             then
-                        relationservice.remove(work_itemdel_relationrelationobj.getId());
+                        relationservice.remove(work_itemdel_relationforward_relation_obj.getId());
                         update(work_itemdel_relationdefault);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj2);//更新fact中变量值
+                        update(work_itemdel_relationforward_relation_obj);//更新fact中变量值
+                        update(work_itemdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除反向关联]
@@ -62,10 +62,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.del_relation;
             ruleflow-group "work_itemdel_relationdeaction3"
             when
             then
-                        relationservice.remove(work_itemdel_relationrelationobj2.getId());
+                        relationservice.remove(work_itemdel_relationreverse_relation_obj.getId());
                         update(work_itemdel_relationdefault);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj2);//更新fact中变量值
+                        update(work_itemdel_relationforward_relation_obj);//更新fact中变量值
+                        update(work_itemdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -74,6 +74,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.del_relation;
             when
             then
                         update(work_itemdel_relationdefault);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj);//更新fact中变量值
-                        update(work_itemdel_relationrelationobj2);//更新fact中变量值
+                        update(work_itemdel_relationforward_relation_obj);//更新fact中变量值
+                        update(work_itemdel_relationreverse_relation_obj);//更新fact中变量值
             end

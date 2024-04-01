@@ -80,3 +80,21 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.product_ticket_re_counters;
                             }
                         update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
             end
+
+            //逻辑处理节点[客户回复]
+            rule "rawsqlcall4"
+            ruleflow-group "ticketproduct_ticket_re_countersrawsqlcall4"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticketproduct_ticket_re_countersdefault.get("id"));
+    String strSql="SELECT     count( t.id ) AS customer_comment FROM     comment t WHERE t.`OWNER_TYPE` = 'CUSTOMER_CONNECT'      AND t.`PRINCIPAL_TYPE` = 'CUSTOMER_CONNECT'      AND t.`PRINCIPAL_ID` = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysTicketDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticketproduct_ticket_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticketproduct_ticket_re_countersdefault);//更新fact中变量值
+            end

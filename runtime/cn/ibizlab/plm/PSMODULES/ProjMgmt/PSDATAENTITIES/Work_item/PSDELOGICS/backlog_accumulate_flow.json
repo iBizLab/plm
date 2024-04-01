@@ -1,0 +1,185 @@
+{
+  "codeName" : "backlog_accumulate_flow",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item/PSDELOGICS/backlog_accumulate_flow.json",
+  "logicName" : "需求累计流图",
+  "name" : "需求累计流图",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1009,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 200
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 313,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "leftPos" : 560,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "直接SQL调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[n_create_time_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[N_PROJECT_ID_EQ]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "N_PROJECT_ID_EQ",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[N_PROJECT_ID_EQ]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "N_PROJECT_ID_EQ",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[N_WORK_ITEM_TYPE_ID_EQ]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "N_WORK_ITEM_TYPE_ID_EQ",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[N_WORK_ITEM_TYPE_ID_EQ]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "N_WORK_ITEM_TYPE_ID_EQ",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[N_WORK_ITEM_TYPE_ID_EQ]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "N_WORK_ITEM_TYPE_ID_EQ",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n    date_series.date AS filter_type,\r\n    SUM(CASE WHEN wi.STATE_TYPE = 'pending' AND wi.CREATE_TIME <= date_series.date THEN 1 ELSE 0 END) AS count,\r\n    SUM(CASE WHEN wi.STATE_TYPE = 'in_progress' AND wi.CREATE_TIME <= date_series.date THEN 1 ELSE 0 END) AS count1,\r\n    SUM(CASE WHEN wi.STATE_TYPE = 'completed' AND wi.CREATE_TIME <= date_series.date THEN 1 ELSE 0 END) AS count2\r\nFROM (\r\n         SELECT DATE_ADD(?, INTERVAL seq.seq DAY) AS date\r\n         FROM (\r\n                  SELECT a.i + b.i * 10 + c.i * 100 AS seq\r\n                  FROM\r\n                      (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,\r\n                      (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) b,\r\n                      (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) c\r\n              ) seq\r\n         WHERE DATE_ADD(?, INTERVAL seq.seq DAY) BETWEEN ? AND ?\r\n     ) date_series\r\n         LEFT JOIN (\r\n    SELECT\r\n        t1.`CREATE_TIME`,\r\n        t31.`TYPE` AS `STATE_TYPE`\r\n    FROM `WORK_ITEM` t1\r\n             LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID`\r\n             LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID`\r\n    WHERE\r\n      t21.`GROUP` = 'requirement'\r\n      AND t1.`IS_DELETED` = 0\r\n      AND t1.`PROJECT_ID` = ?\r\n      AND t1.`CREATE_TIME` <= ?\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(t1.WORK_ITEM_TYPE_ID, ?))\r\n) wi ON wi.CREATE_TIME <= date_series.date\r\nGROUP BY\r\n    date_series.date\r\nORDER BY\r\n    date_series.date ASC;",
+    "topPos" : 209,
+    "fillDstLogicParam" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Work_item.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "result",
+    "logicName" : "result",
+    "name" : "result",
+    "entityListParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

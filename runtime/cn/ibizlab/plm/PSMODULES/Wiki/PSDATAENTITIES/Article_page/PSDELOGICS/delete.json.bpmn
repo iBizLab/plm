@@ -19,10 +19,10 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeletedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新删除状态"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeleteprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置删除状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeleterawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="删除最近访问"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeleteprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置过滤器参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeletededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询下级页面"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeleteprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置删除状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeleteloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagedeletedelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="递归调用"/>
                         <endEvent id="delogic1_end" name="end"/>
@@ -33,8 +33,6 @@
                     <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_prepareparam1" sourceRef="rawsqlcall1" targetRef="prepareparam1">
                     </sequenceFlow>
@@ -61,6 +59,8 @@
                                 eval((RuleUtils.test($article_pagedeleteselected_page.get("size"),"EQ","0")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_delogic1" sourceRef="loopsubcall1" targetRef="delogic1">
                     </sequenceFlow>

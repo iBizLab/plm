@@ -14,7 +14,7 @@
         "modelref" : true,
         "id" : "DENOTIFY1"
       },
-      "name" : "连接名称",
+      "name" : "发送提醒关注通知",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
@@ -27,8 +27,24 @@
             "id" : "Default"
           },
           "logicType" : "SINGLE",
+          "memo" : "页面实体的通知模板，链接路径配置不能共用，所以单独配置",
           "name" : "Default[OWNER_TYPE] 不等于(<>) PAGE",
           "paramValue" : "PAGE"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -40,7 +56,7 @@
         "modelref" : true,
         "id" : "DENOTIFY2"
       },
-      "name" : "连接名称",
+      "name" : "发送提醒关注页面通知",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
@@ -55,6 +71,21 @@
           "logicType" : "SINGLE",
           "name" : "Default[OWNER_TYPE] 等于(=) PAGE",
           "paramValue" : "PAGE"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[USER_ID] 不等于(<>) create_man",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "create_man",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
         } ]
       },
       "getSrcPSDELogicNode" : {

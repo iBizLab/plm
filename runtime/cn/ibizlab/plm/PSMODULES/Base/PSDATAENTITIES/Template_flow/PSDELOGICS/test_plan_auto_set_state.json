@@ -1,0 +1,391 @@
+{
+  "codeName" : "test_plan_auto_set_state",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/Template_flow/PSDELOGICS/test_plan_auto_set_state.json",
+  "logicName" : "自动设置测试计划的启动和完成状态",
+  "logicSubType" : "EVENTHOOK",
+  "name" : "自动设置测试计划的启动和完成状态",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 710,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 140,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 670,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备测试计划",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_plan"
+      },
+      "name" : "Default[PLAN_ID] ==> test_plan[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PLAN_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 311
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_plan"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan.json"
+    },
+    "leftPos" : 670,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取执行用例对应的测试计划",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_plan"
+    },
+    "topPos" : 441
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Normal"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "runfilter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Run.json"
+    },
+    "leftPos" : 670,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取计划下所有执行用例",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "runs"
+    },
+    "topPos" : 550,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 670,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "初始化设置结束标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "finish_flag"
+      },
+      "name" : "直接值[1] ==> finish_flag",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 658
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_run"
+    },
+    "leftPos" : 670,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环计算执行用例",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "STATUS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "temp_run"
+          },
+          "logicType" : "SINGLE",
+          "name" : "temp_run[STATUS] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "计划完成标识为1",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "finish_flag"
+          },
+          "logicType" : "SINGLE",
+          "name" : "finish_flag 等于(=) 1",
+          "paramValue" : "1"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "计划完成标识为0且计划未开始",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "finish_flag"
+          },
+          "logicType" : "SINGLE",
+          "name" : "finish_flag 等于(=) 0",
+          "paramValue" : "0"
+        }, {
+          "condOP" : "EQ",
+          "dstFieldName" : "STATUS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "test_plan"
+          },
+          "logicType" : "SINGLE",
+          "name" : "test_plan[STATUS] 等于(=) pending",
+          "paramValue" : "pending"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "runs"
+    },
+    "topPos" : 800,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 490,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "存在未执行的用例设置结束变量为0",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "出现无结果的执行用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "finish_flag"
+          },
+          "logicType" : "SINGLE",
+          "name" : "finish_flag 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "finish_flag"
+      },
+      "name" : "直接值[0] ==> finish_flag",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 990
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 690,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置计划为已完成",
+    "topPos" : 990
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 919,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设计计划为进行中",
+    "topPos" : 990
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 1200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 1000
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 530,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "returnType" : "BREAK",
+    "topPos" : 1161
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Run.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "finish_flag",
+    "logicName" : "全部完成标识",
+    "name" : "全部完成标识",
+    "stdDataType" : 9,
+    "simpleParam" : true
+  }, {
+    "codeName" : "runfilter",
+    "logicName" : "执行用例过滤器",
+    "name" : "执行用例过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Run.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "runs",
+    "logicName" : "计划下所有执行用例",
+    "name" : "计划下所有执行用例",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Run.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "temp_run",
+    "logicName" : "执行用例（循环使用）",
+    "name" : "执行用例（循环使用）",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Run.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "test_plan",
+    "logicName" : "测试计划",
+    "name" : "测试计划",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

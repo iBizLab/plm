@@ -482,22 +482,28 @@
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction3",
-          "noPrivDisplayMode" : 1,
+          "noPrivDisplayMode" : 2,
           "getPSAppViewUIAction" : {
             "modelref" : true,
             "id" : "grid_batchtoolbar_deuiaction3"
           },
+          "getPSControlLogics" : [ {
+            "itemName" : "deuiaction3",
+            "logicTag" : "grid_batchtoolbar",
+            "logicType" : "SCRIPT",
+            "name" : "deuiaction3",
+            "scriptCode" : "!data.is_archived",
+            "triggerType" : "ITEMENABLE"
+          } ],
           "getPSSysImage" : {
             "glyph" : "xf187@FontAwesome",
             "cssClass" : "fa fa-archive"
           },
           "getPSUIAction" : {
             "actionTarget" : "MULTIKEY",
-            "noPrivDisplayMode" : 1,
             "caption" : "归档",
             "codeName" : "ticket_archive",
             "confirmMsg" : "确定归档选中数据吗？",
-            "dataAccessAction" : "ARCHIVED",
             "fullCodeName" : "Ticket_ticket_archive",
             "name" : "工单归档",
             "getPSAppDEMethod" : {
@@ -507,10 +513,6 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ARCHIVED"
             },
             "getPSSysImage" : {
               "glyph" : "xf187@FontAwesome",
@@ -535,21 +537,27 @@
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
           "name" : "deuiaction5",
-          "noPrivDisplayMode" : 1,
+          "noPrivDisplayMode" : 2,
           "getPSAppViewUIAction" : {
             "modelref" : true,
             "id" : "grid_batchtoolbar_deuiaction5"
           },
+          "getPSControlLogics" : [ {
+            "itemName" : "deuiaction5",
+            "logicTag" : "grid_batchtoolbar",
+            "logicType" : "SCRIPT",
+            "name" : "deuiaction5",
+            "scriptCode" : "!!data.is_archived",
+            "triggerType" : "ITEMENABLE"
+          } ],
           "getPSSysImage" : {
             "cssClass" : "key"
           },
           "getPSUIAction" : {
             "actionTarget" : "MULTIKEY",
-            "noPrivDisplayMode" : 1,
             "caption" : "激活",
             "codeName" : "activate",
             "confirmMsg" : "确认激活吗？",
-            "dataAccessAction" : "ACTIVATE",
             "fullCodeName" : "Ticket_activate",
             "memo" : "批操作工具栏上按钮调用；",
             "name" : "激活",
@@ -560,10 +568,6 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Ticket.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ACTIVATE"
             },
             "getPSSysImage" : {
               "cssClass" : "key"
@@ -638,7 +642,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "5F8A904E-5807-4665-832C-837B64616AD8",
+      "modelid" : "6ac708f68c1ab990f6f12a92bad3d65f",
       "modeltype" : "PSDETOOLBAR"
     } ],
     "getPSDEDataImport" : {
@@ -703,7 +707,29 @@
         "name" : "STATE",
         "codeName" : "State"
       },
-      "width" : 200,
+      "width" : 150,
+      "widthUnit" : "PX",
+      "enableRowEdit" : true,
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "caption" : "类型",
+      "codeName" : "type",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "type_text",
+      "excelCaption" : "类型",
+      "name" : "type",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__Product_ticket_type.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "Type"
+      },
+      "width" : 100,
       "widthUnit" : "PX",
       "enableRowEdit" : true,
       "enableSort" : true
@@ -735,6 +761,31 @@
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
+      "caption" : "客户",
+      "codeName" : "customer_name",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "customer_name",
+      "excelCaption" : "客户",
+      "getLinkPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customerRedirectView.json",
+        "viewType" : "DEREDIRECTVIEW"
+      },
+      "linkValueItem" : "customer_id",
+      "name" : "customer_name",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "CUSTOMER_NAME",
+        "codeName" : "Customer_name"
+      },
+      "width" : 250,
+      "widthUnit" : "PX",
+      "enableLinkView" : true,
+      "enableRowEdit" : true,
+      "enableSort" : true
+    }, {
+      "align" : "LEFT",
+      "cLConvertMode" : "NONE",
       "caption" : "提交人",
       "codeName" : "submitter_name",
       "columnType" : "DEFGRIDCOLUMN",
@@ -753,65 +804,19 @@
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
-      "caption" : "客户",
-      "codeName" : "customer_name",
+      "caption" : "提交时间",
+      "codeName" : "submitted_at",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "customer_name",
-      "excelCaption" : "客户",
-      "getLinkPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customerRedirectView.json",
-        "viewType" : "DEREDIRECTVIEW"
-      },
-      "linkValueItem" : "customer_id",
-      "name" : "customer_name",
+      "dataItemName" : "submitted_at",
+      "excelCaption" : "提交时间",
+      "name" : "submitted_at",
       "noPrivDisplayMode" : 1,
       "getPSAppDEField" : {
-        "name" : "CUSTOMER_NAME",
-        "codeName" : "Customer_name"
+        "name" : "SUBMITTED_AT",
+        "codeName" : "Submitted_at"
       },
+      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
       "width" : 200,
-      "widthUnit" : "STAR",
-      "enableLinkView" : true,
-      "enableRowEdit" : true,
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
-      "cLConvertMode" : "FRONT",
-      "caption" : "类型",
-      "codeName" : "type",
-      "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "type_text",
-      "excelCaption" : "类型",
-      "name" : "type",
-      "noPrivDisplayMode" : 1,
-      "getPSAppCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__Product_ticket_type.json"
-      },
-      "getPSAppDEField" : {
-        "name" : "TYPE",
-        "codeName" : "Type"
-      },
-      "width" : 150,
-      "widthUnit" : "PX",
-      "enableRowEdit" : true,
-      "enableSort" : true
-    }, {
-      "align" : "LEFT",
-      "cLConvertMode" : "NONE",
-      "caption" : "渠道",
-      "codeName" : "channel",
-      "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "channel",
-      "excelCaption" : "渠道",
-      "name" : "channel",
-      "noPrivDisplayMode" : 1,
-      "getPSAppDEField" : {
-        "name" : "CHANNEL",
-        "codeName" : "Channel"
-      },
-      "width" : 150,
       "widthUnit" : "PX",
       "enableSort" : true
     } ],
@@ -838,27 +843,6 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "assignee_name",
-      "getPSAppDEField" : {
-        "name" : "ASSIGNEE_NAME",
-        "codeName" : "Assignee_name"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "submitter_name",
-      "getPSAppDEField" : {
-        "name" : "SUBMITTER_NAME",
-        "codeName" : "Submitter_name"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "customer_name",
-      "getPSAppDEField" : {
-        "name" : "CUSTOMER_NAME",
-        "codeName" : "Customer_name"
-      }
-    }, {
-      "dataType" : 25,
       "name" : "type_text",
       "getPSAppDEField" : {
         "name" : "TYPE",
@@ -870,6 +854,35 @@
       "getPSAppDEField" : {
         "name" : "TYPE",
         "codeName" : "Type"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "assignee_name",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_NAME",
+        "codeName" : "Assignee_name"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "customer_name",
+      "getPSAppDEField" : {
+        "name" : "CUSTOMER_NAME",
+        "codeName" : "Customer_name"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "submitter_name",
+      "getPSAppDEField" : {
+        "name" : "SUBMITTER_NAME",
+        "codeName" : "Submitter_name"
+      }
+    }, {
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "dataType" : 5,
+      "name" : "submitted_at",
+      "getPSAppDEField" : {
+        "name" : "SUBMITTED_AT",
+        "codeName" : "Submitted_at"
       }
     }, {
       "dataType" : 25,
@@ -891,6 +904,13 @@
       "getPSAppDEField" : {
         "name" : "SUBMITTER_ID",
         "codeName" : "Submitter_id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "estimated_at",
+      "getPSAppDEField" : {
+        "name" : "ESTIMATED_AT",
+        "codeName" : "Estimated_at"
       }
     }, {
       "dataType" : 25,
@@ -970,6 +990,31 @@
       "allowEmpty" : true,
       "needCodeListConfig" : true
     }, {
+      "caption" : "类型",
+      "codeName" : "type",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "type",
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "Type"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST",
+        "name" : "type",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__Product_ticket_type.json"
+        },
+        "getPSEditorItems" : [ {
+          "name" : "type"
+        } ],
+        "singleSelect" : true
+      },
+      "valueItemName" : "type",
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
+    }, {
       "caption" : "负责人",
       "codeName" : "assignee_name",
       "enableCond" : 3,
@@ -1029,7 +1074,7 @@
           "getPSUIActionGroupDetails" : [ {
             "caption" : "跳转至成员设置",
             "detailType" : "DEUIACTION",
-            "name" : "u653ff49",
+            "name" : "u4befff7",
             "getPSSysImage" : {
               "glyph" : "xf0f0@FontAwesome",
               "cssClass" : "fa fa-user-md"
@@ -1078,6 +1123,60 @@
         "singleSelect" : true
       },
       "valueItemName" : "assignee_id",
+      "allowEmpty" : true
+    }, {
+      "caption" : "客户",
+      "codeName" : "customer_name",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "customer_name",
+      "getPSAppDEField" : {
+        "name" : "CUSTOMER_NAME",
+        "codeName" : "Customer_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "PICKUPVIEW" : "FALSE"
+        },
+        "editorType" : "PICKEREX_TRIGGER",
+        "itemParamJO" : {
+          "fetchcond" : {
+            "n_product_id_eq" : "product_id"
+          }
+        },
+        "name" : "customer_name",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "FetchNormal"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Customer.json"
+        },
+        "getPSEditorItems" : [ { } ],
+        "getPSNavigateParams" : [ {
+          "key" : "n_product_id_eq",
+          "name" : "n_product_id_eq",
+          "value" : "product_id",
+          "rawValue" : false
+        } ],
+        "paramJOString" : "{\"n_product_id_eq\":\"%product_id%\"}",
+        "valueItemName" : "customer_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "resetItemName" : "product_id",
+      "resetItemNames" : [ "product_id" ],
+      "valueItemName" : "customer_id",
       "allowEmpty" : true
     }, {
       "caption" : "提交人",
@@ -1139,85 +1238,6 @@
       "valueItemName" : "submitter_id",
       "allowEmpty" : true
     }, {
-      "caption" : "客户",
-      "codeName" : "customer_name",
-      "enableCond" : 3,
-      "ignoreInput" : 0,
-      "name" : "customer_name",
-      "getPSAppDEField" : {
-        "name" : "CUSTOMER_NAME",
-        "codeName" : "Customer_name"
-      },
-      "getPSEditor" : {
-        "editorParams" : {
-          "AC" : "TRUE",
-          "TRIGGER" : "TRUE",
-          "PICKUPVIEW" : "FALSE"
-        },
-        "editorType" : "PICKEREX_TRIGGER",
-        "itemParamJO" : {
-          "fetchcond" : {
-            "n_product_id_eq" : "product_id"
-          }
-        },
-        "name" : "customer_name",
-        "getPSAppDEACMode" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "FetchNormal"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Customer.json"
-        },
-        "getPSEditorItems" : [ { } ],
-        "getPSNavigateParams" : [ {
-          "key" : "n_product_id_eq",
-          "name" : "n_product_id_eq",
-          "value" : "product_id",
-          "rawValue" : false
-        } ],
-        "paramJOString" : "{\"n_product_id_eq\":\"%product_id%\"}",
-        "valueItemName" : "customer_id",
-        "enableAC" : true,
-        "enablePickupView" : false,
-        "forceSelection" : true,
-        "showTrigger" : true,
-        "singleSelect" : true
-      },
-      "resetItemName" : "product_id",
-      "resetItemNames" : [ "product_id" ],
-      "valueItemName" : "customer_id",
-      "allowEmpty" : true
-    }, {
-      "caption" : "类型",
-      "codeName" : "type",
-      "enableCond" : 3,
-      "ignoreInput" : 0,
-      "name" : "type",
-      "getPSAppDEField" : {
-        "name" : "TYPE",
-        "codeName" : "Type"
-      },
-      "getPSEditor" : {
-        "editorType" : "DROPDOWNLIST",
-        "name" : "type",
-        "getPSAppCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__Product_ticket_type.json"
-        },
-        "getPSEditorItems" : [ {
-          "name" : "type"
-        } ],
-        "singleSelect" : true
-      },
-      "valueItemName" : "type",
-      "allowEmpty" : true,
-      "needCodeListConfig" : true
-    }, {
       "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
@@ -1247,18 +1267,6 @@
     }, {
       "enableCond" : 3,
       "ignoreInput" : 0,
-      "name" : "submitter_id",
-      "getPSAppDEField" : {
-        "name" : "SUBMITTER_ID",
-        "codeName" : "Submitter_id"
-      },
-      "getPSEditor" : {
-        "editorType" : "HIDDEN"
-      },
-      "allowEmpty" : true
-    }, {
-      "enableCond" : 3,
-      "ignoreInput" : 0,
       "name" : "customer_id",
       "getPSAppDEField" : {
         "name" : "CUSTOMER_ID",
@@ -1269,6 +1277,18 @@
       },
       "resetItemName" : "product_id",
       "resetItemNames" : [ "product_id" ],
+      "allowEmpty" : true
+    }, {
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "submitter_id",
+      "getPSAppDEField" : {
+        "name" : "SUBMITTER_ID",
+        "codeName" : "Submitter_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN"
+      },
       "allowEmpty" : true
     } ],
     "getPSSysPFPlugin" : {

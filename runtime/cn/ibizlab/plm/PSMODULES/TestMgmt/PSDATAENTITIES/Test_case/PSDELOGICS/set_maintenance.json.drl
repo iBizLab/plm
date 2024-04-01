@@ -42,17 +42,6 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_maintenance;
                         update(test_caseset_maintenancesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[变更状态]
-            rule "deaction1"
-            ruleflow-group "test_caseset_maintenancedeaction1"
-            when
-            then
-                        test_caseservice.update(test_caseset_maintenancedefault);
-                        update(test_caseset_maintenancedefault);//更新fact中变量值
-                        update(test_caseset_maintenancefor_temp_obj);//更新fact中变量值
-                        update(test_caseset_maintenancesrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[循环子调用]
             rule "loopsubcall1"
             ruleflow-group "test_caseset_maintenanceloopsubcall1"
@@ -70,6 +59,17 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_maintenance;
             then
                             test_caseset_maintenancedefault.set("maintenanceid",test_caseset_maintenancefor_temp_obj.get("maintenanceid"));
                             test_caseset_maintenancedefault.set("maintenancename",test_caseset_maintenancefor_temp_obj.get("maintenancename"));
+                        update(test_caseset_maintenancedefault);//更新fact中变量值
+                        update(test_caseset_maintenancefor_temp_obj);//更新fact中变量值
+                        update(test_caseset_maintenancesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更状态]
+            rule "deaction1"
+            ruleflow-group "test_caseset_maintenancedeaction1"
+            when
+            then
+                        test_caseservice.update(test_caseset_maintenancedefault);
                         update(test_caseset_maintenancedefault);//更新fact中变量值
                         update(test_caseset_maintenancefor_temp_obj);//更新fact中变量值
                         update(test_caseset_maintenancesrfactionparam);//更新fact中变量值

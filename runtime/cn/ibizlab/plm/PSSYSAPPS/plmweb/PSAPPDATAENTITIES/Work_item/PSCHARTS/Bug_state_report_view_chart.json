@@ -1,5 +1,6 @@
 {
   "codeName" : "Bug_state_report_view_chart",
+  "controlStyle" : "CHART_GRID",
   "controlType" : "CHART",
   "coordinateSystem" : "NONE",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item/PSCHARTS/Bug_state_report_view_chart.json",
@@ -48,7 +49,7 @@
     "name" : "pie_0-bug_state_group_grid",
     "getPSChartDataSetFields" : [ {
       "index" : 0,
-      "name" : "rep_group_value",
+      "name" : "filter_type",
       "getPSCodeList" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_state2.json"
@@ -57,12 +58,16 @@
       "id" : "0"
     }, {
       "index" : 1,
-      "name" : "rep_value_1",
+      "name" : "count",
       "groupField" : false,
       "id" : "1"
     } ],
     "id" : "0"
   } ],
+  "getPSDEChartDataGrid" : {
+    "index" : 0,
+    "id" : "0"
+  },
   "getPSDEChartLegend" : {
     "index" : 0,
     "legendPos" : "RIGHT",
@@ -71,7 +76,7 @@
   },
   "getPSDEChartSerieses" : [ {
     "caption" : "访问来源",
-    "catalogField" : "rep_group_value",
+    "catalogField" : "filter_type",
     "getCatalogPSCodeList" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_state2.json"
@@ -88,16 +93,16 @@
       "id" : "0"
     },
     "getPSChartSeriesEncode" : {
-      "category" : "rep_group_value",
+      "category" : "filter_type",
       "index" : 0,
       "name" : "坐标系编码",
       "type" : "NONE",
-      "value" : "rep_value_1",
+      "value" : "count",
       "id" : "0"
     },
     "seriesLayoutBy" : "column",
     "seriesType" : "pie",
-    "valueField" : "rep_value_1",
+    "valueField" : "count",
     "enableChartDataSet" : true,
     "getUserParam" : {
       "EC.label" : "{\"show\":1}"
@@ -106,14 +111,19 @@
   "getPSDEChartTitle" : {
     "index" : 0,
     "title" : "缺陷状态分布报表",
-    "titlePos" : "TOP",
-    "showTitle" : true,
+    "showTitle" : false,
     "id" : "0"
   },
+  "getPSSysPFPlugin" : {
+    "pluginType" : "CHART_RENDER",
+    "pluginCode" : "CHART_GRID",
+    "runtimeObject" : true
+  },
   "readOnly" : true,
-  "modelid" : "018F8047-1269-4EEA-8A65-493CB1044C5C",
+  "modelid" : "28b2b2f3b325992ffcc5db34db90df8f",
   "modeltype" : "PSDECHART",
   "getUserParam" : {
+    "EC.gridHeaders" : "[{\"id\":\"filter_type\",\"name\":\"状态\"},{\"id\":\"count\",\"name\":\"缺陷数\"},{\"id\":\"srfpercent\",\"name\":\"百分比\"}]",
     "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\"]"
   }
 }

@@ -3,6 +3,7 @@
   "codeName" : "Work_item_gird",
   "columnEnableFilter" : 2,
   "columnEnableLink" : 2,
+  "controlStyle" : "WORKLOAD_TABLE",
   "controlType" : "GRID",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload/PSGRIDS/Work_item_gird.json",
   "getFetchPSControlAction" : {
@@ -12,7 +13,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "FetchDefault"
+      "id" : "FetchWork_item_workload"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -76,7 +77,8 @@
       "name" : "DURATION",
       "codeName" : "Duration"
     },
-    "width" : 100,
+    "valueFormat" : "#.0",
+    "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : true
   } ],
@@ -95,6 +97,7 @@
       "codeName" : "Name"
     }
   }, {
+    "format" : "#.0",
     "dataType" : 6,
     "name" : "duration",
     "getPSAppDEField" : {
@@ -168,6 +171,11 @@
     },
     "allowEmpty" : true
   } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "WORKLOAD_TABLE",
+    "runtimeObject" : true
+  },
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",

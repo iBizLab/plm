@@ -200,7 +200,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "2919F240-0AE8-44BD-A53E-CB6E36F6FDED",
+    "modelid" : "bc14997a8c041bdfd3dde50593c7fa23",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -264,6 +264,18 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "NEWDATA",
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "新建需求",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.IDEA.QUICK_CREATE_VIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ideaquick_create_view.json",
+        "viewType" : "DEOPTVIEW"
+      }
+    }, {
       "name" : "EDITDATA",
       "openMode" : "INDEXVIEWTAB_POPUPMODAL",
       "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
@@ -275,18 +287,6 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ideamain_view.json",
         "viewType" : "DEEDITVIEW"
-      }
-    }, {
-      "name" : "NEWDATA",
-      "realOpenMode" : "POPUPMODAL",
-      "realTitle" : "新建需求",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.IDEA.QUICK_CREATE_VIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ideaquick_create_view.json",
-        "viewType" : "DEOPTVIEW"
       }
     } ],
     "getPSControls" : [ {
@@ -817,22 +817,28 @@
             "groupExtractMode" : "ITEM",
             "itemType" : "DEUIACTION",
             "name" : "deuiaction6",
-            "noPrivDisplayMode" : 1,
+            "noPrivDisplayMode" : 2,
             "getPSAppViewUIAction" : {
               "modelref" : true,
               "id" : "grid_batchtoolbar_deuiaction6"
             },
+            "getPSControlLogics" : [ {
+              "itemName" : "deuiaction6",
+              "logicTag" : "grid_batchtoolbar",
+              "logicType" : "SCRIPT",
+              "name" : "deuiaction6",
+              "scriptCode" : "!data.is_archived",
+              "triggerType" : "ITEMENABLE"
+            } ],
             "getPSSysImage" : {
               "glyph" : "xf07b@FontAwesome",
               "cssClass" : "fa fa-folder"
             },
             "getPSUIAction" : {
               "actionTarget" : "MULTIKEY",
-              "noPrivDisplayMode" : 1,
               "caption" : "需求归档",
               "codeName" : "idea_archive",
               "confirmMsg" : "确认归档选中需求吗？",
-              "dataAccessAction" : "ARCHIVED",
               "fullCodeName" : "Idea_idea_archive",
               "memo" : "批操作工具栏上按钮调用",
               "name" : "需求归档",
@@ -843,10 +849,6 @@
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Idea.json"
-              },
-              "getPSDEOPPriv" : {
-                "modelref" : true,
-                "id" : "ARCHIVED"
               },
               "getPSSysImage" : {
                 "glyph" : "xf187@FontAwesome",
@@ -871,21 +873,27 @@
             "groupExtractMode" : "ITEM",
             "itemType" : "DEUIACTION",
             "name" : "deuiaction2",
-            "noPrivDisplayMode" : 1,
+            "noPrivDisplayMode" : 2,
             "getPSAppViewUIAction" : {
               "modelref" : true,
               "id" : "grid_batchtoolbar_deuiaction2"
             },
+            "getPSControlLogics" : [ {
+              "itemName" : "deuiaction2",
+              "logicTag" : "grid_batchtoolbar",
+              "logicType" : "SCRIPT",
+              "name" : "deuiaction2",
+              "scriptCode" : "!!data.is_archived",
+              "triggerType" : "ITEMENABLE"
+            } ],
             "getPSSysImage" : {
               "cssClass" : "key"
             },
             "getPSUIAction" : {
               "actionTarget" : "MULTIKEY",
-              "noPrivDisplayMode" : 1,
               "caption" : "激活",
               "codeName" : "activate",
               "confirmMsg" : "确认激活吗？",
-              "dataAccessAction" : "ACTIVATE",
               "fullCodeName" : "Idea_activate",
               "memo" : "批操作工具栏上按钮调用；",
               "name" : "激活",
@@ -896,10 +904,6 @@
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Idea.json"
-              },
-              "getPSDEOPPriv" : {
-                "modelref" : true,
-                "id" : "ACTIVATE"
               },
               "getPSSysImage" : {
                 "cssClass" : "key"
@@ -975,7 +979,7 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
-        "modelid" : "1E0B4CCC-EC5C-4279-9D8E-BB048825A19E",
+        "modelid" : "f6cac434fa0ccee31881c1e97240e1be",
         "modeltype" : "PSDETOOLBAR"
       } ],
       "getPSDEDataImport" : {
@@ -1297,7 +1301,7 @@
             "getPSUIActionGroupDetails" : [ {
               "caption" : "跳转至成员设置",
               "detailType" : "DEUIACTION",
-              "name" : "u653ff49",
+              "name" : "u4befff7",
               "getPSSysImage" : {
                 "glyph" : "xf0f0@FontAwesome",
                 "cssClass" : "fa fa-user-md"
@@ -1562,6 +1566,38 @@
         "emptyCaption" : false,
         "hidden" : false,
         "showCaption" : false
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFSFITEM.IDEA.N_DESCRIPTION_LIKE"
+        },
+        "caption" : "描述(%)",
+        "dataType" : 21,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "description",
+        "getPSAppDEField" : {
+          "name" : "DESCRIPTION",
+          "codeName" : "Description"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_DESCRIPTION_LIKE",
+          "name" : "N_DESCRIPTION_LIKE",
+          "stdDataType" : 21,
+          "valueOP" : "LIKE"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "HEIGHT" : "200"
+          },
+          "editorType" : "TEXTAREA_10",
+          "name" : "description",
+          "showMaxLength" : true
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
       } ],
       "getPSSearchBarGroups" : [ {
         "caption" : "全部需求",
@@ -1602,7 +1638,7 @@
       "enableQuickSearch" : true,
       "mobileSearchBar" : false,
       "name" : "searchbar",
-      "modelid" : "B5E7378B-0086-4265-AEA8-3FD96A51D011",
+      "modelid" : "49b0d55acc450858ac21ebd18e7fd928",
       "modeltype" : "PSSYSSEARCHBAR"
     }, {
       "getCapPSLanguageRes" : {

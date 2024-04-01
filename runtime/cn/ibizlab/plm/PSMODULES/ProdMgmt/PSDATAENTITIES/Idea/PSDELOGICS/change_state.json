@@ -3,6 +3,7 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Idea/PSDELOGICS/change_state.json",
   "logicName" : "变更需求状态",
+  "memo" : "变更需求状态属性值",
   "name" : "变更需求状态",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
@@ -29,7 +30,7 @@
     },
     "leftPos" : -90,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "获取传递的参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -48,10 +49,36 @@
     },
     "topPos" : 403
   }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : -90,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环ID列表进行操作",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "topPos" : 562
+  }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 180,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "获取传递的状态",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -96,32 +123,6 @@
     "leftPos" : 396,
     "logicNodeType" : "DEACTION",
     "name" : "变更状态",
-    "topPos" : 562
-  }, {
-    "codeName" : "LOOPSUBCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "for_temp_obj"
-    },
-    "leftPos" : -90,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环子调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "srfactionparam"
-    },
     "topPos" : 562
   } ],
   "getPSDELogicParams" : [ {

@@ -286,6 +286,44 @@
       "dstFieldName" : "OWNER_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> actual[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[ACTUAL_WORKLOAD] ==> actual[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ACTUAL_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "Default[PRINCIPAL_TYPE] ==> actual[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
         "id" : "remaining"
       },
       "name" : "Default[PRINCIPAL_ID] ==> remaining[OWNER_ID]",
@@ -424,7 +462,7 @@
     },
     "topPos" : 859
   }, {
-    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar remainingObj = logic.getParam(\"remaining\"); // 剩余\r\nvar estimatedObj = logic.getParam(\"estimated\"); // 预估\r\n\r\nvar total_register = logic.getParam(\"total_register\"); // 总登记时长\r\nvar actual_workload = total_register.get(\"duration\") == null ? 0 : Number(total_register.get(\"duration\"));\r\nvar estimated_workload = estimatedObj.get(\"decimal_value\") == null ? 0 : Number(estimatedObj.get(\"decimal_value\"));\r\nvar duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\nsys.info(\"查询预估工时=\", estimated_workload);\r\nsys.info(\"查询总登记工时=\", actual_workload);\r\n// 重新计算剩余工时\r\nvar remaining = estimated_workload - (actual_workload - duration);\r\nif(remaining < 0){\r\n    remaining = 0;\r\n}\r\nremainingObj.set(\"decimal_value\", remaining);\r\n",
+    "code" : "var defaultObj = logic.getParam(\"default\");\r\nvar remainingObj = logic.getParam(\"remaining\"); // 剩余工时对象\r\nvar estimatedObj = logic.getParam(\"estimated\"); // 预估工时对象\r\nvar actualObj = logic.getParam(\"actual\"); // 实际工时对象\r\n\r\nvar total_register = logic.getParam(\"total_register\"); // 总登记时长\r\nvar actual_workload = total_register.get(\"duration\") == null ? 0 : Number(total_register.get(\"duration\"));\r\nvar estimated_workload = estimatedObj.get(\"decimal_value\") == null ? 0 : Number(estimatedObj.get(\"decimal_value\"));\r\nvar duration = defaultObj.get(\"duration\") == null ? 0 : Number(defaultObj.get(\"duration\"));\r\nsys.info(\"查询预估工时=\", estimated_workload);\r\nsys.info(\"查询总登记工时=\", actual_workload);\r\n// 重新计算剩余工时\r\nvar remaining = estimated_workload - (actual_workload - duration);\r\nif(remaining < 0){\r\n    remaining = 0;\r\n}\r\nremainingObj.set(\"decimal_value\", remaining);\r\n// 计算实际工时\r\nvar actual = (actual_workload - duration) <= 0 ? 0 : actual_workload - duration;\r\nactualObj.set(\"decimal_value\", actual);\r\n",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
     "leftPos" : 160,
@@ -462,9 +500,51 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "END1"
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "工时为0是置为NULL",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "DECIMAL_VALUE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "actual"
+          },
+          "logicType" : "SINGLE",
+          "name" : "actual[DECIMAL_VALUE] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
       },
       "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "DECIMAL_VALUE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "actual"
+          },
+          "logicType" : "SINGLE",
+          "name" : "actual[DECIMAL_VALUE] 不等于(<>) 0",
+          "paramValue" : "0"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "DEACTION2"
@@ -472,11 +552,54 @@
     } ],
     "topPos" : 1160
   }, {
-    "codeName" : "END1",
-    "leftPos" : 200,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "topPos" : 1275
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 330,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "DECIMAL_VALUE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "空值（NULL） ==> actual[DECIMAL_VALUE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    } ],
+    "topPos" : 1270
+  }, {
+    "codeName" : "DEACTION3",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_storage/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "actual"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_storage.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新实际工时",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "actual"
+    },
+    "topPos" : 1390
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -487,6 +610,15 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/Workload.json"
     },
     "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "actual",
+    "logicName" : "实际工时",
+    "name" : "实际工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_storage.json"
+    },
     "entityParam" : true
   }, {
     "codeName" : "estimated",

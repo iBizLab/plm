@@ -319,46 +319,6 @@
     "requestPath" : "/getdraft",
     "builtinMethod" : false
   }, {
-    "actionMode" : "READ",
-    "actionName" : "get_actual_workload",
-    "codeName" : "Get_actual_workload",
-    "methodType" : "DEACTION",
-    "name" : "Get_actual_workload",
-    "getPSAppDEMethodInput" : {
-      "getKeyPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "Id"
-      },
-      "name" : "输入对象",
-      "type" : "KEYFIELD"
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "Test_caseDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_case/PSDEACTIONS/Get_actual_workload.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "NONE"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "Get_actual_workload"
-    },
-    "requestField" : "ID",
-    "requestMethod" : "GET",
-    "requestParamType" : "FIELD",
-    "requestPath" : "/get_actual_workload",
-    "builtinMethod" : false,
-    "needResourceKey" : true
-  }, {
     "actionMode" : "CUSTOM",
     "actionName" : "move_case",
     "codeName" : "Move_case",
@@ -462,7 +422,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "CREATE",
+    "actionMode" : "UPDATE",
     "actionName" : "others_relation_case",
     "codeName" : "Others_relation_case",
     "methodType" : "DEACTION",
@@ -490,16 +450,17 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
       "id" : "Others_relation_case"
     },
-    "requestMethod" : "POST",
+    "requestMethod" : "PUT",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_case",
-    "builtinMethod" : false
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CUSTOM",
     "actionName" : "recover",
@@ -943,6 +904,158 @@
     "ignoreError" : false
   } ],
   "getAllPSAppDEDataSets" : [ {
+    "codeName" : "FetchAdvanced_search",
+    "dataSetName" : "advanced_search",
+    "dataSetTag" : "Advanced_search",
+    "methodType" : "FETCH",
+    "name" : "FetchAdvanced_search",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Advanced_search"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchAdvanced_search"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchadvanced_search",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchAssessmentResult",
+    "dataSetName" : "assessmentResult",
+    "dataSetTag" : "AssessmentResult",
+    "methodType" : "FETCH",
+    "name" : "FetchAssessmentResult",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "AssessmentResult"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchAssessmentResult"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchassessmentresult",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchCasePerson",
+    "dataSetName" : "casePerson",
+    "dataSetTag" : "CasePerson",
+    "methodType" : "FETCH",
+    "name" : "FetchCasePerson",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "CasePerson"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchCasePerson"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchcaseperson",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchCaseType",
+    "dataSetName" : "caseType",
+    "dataSetTag" : "CaseType",
+    "methodType" : "FETCH",
+    "name" : "FetchCaseType",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "CaseType"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchCaseType"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchcasetype",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchComment_notify_maintenance",
     "dataSetName" : "comment_notify_maintenance",
     "dataSetTag" : "Comment_notify_maintenance",
@@ -979,6 +1092,82 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchcomment_notify_maintenance",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchComparativeAnalysis",
+    "dataSetName" : "comparativeAnalysis",
+    "dataSetTag" : "ComparativeAnalysis",
+    "methodType" : "FETCH",
+    "name" : "FetchComparativeAnalysis",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ComparativeAnalysis"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchComparativeAnalysis"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchcomparativeanalysis",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchDailyTendencies",
+    "dataSetName" : "dailyTendencies",
+    "dataSetTag" : "DailyTendencies",
+    "methodType" : "FETCH",
+    "name" : "FetchDailyTendencies",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "DailyTendencies"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchDailyTendencies"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchdailytendencies",
     "builtinMethod" : false
   }, {
     "codeName" : "FetchDefault",
@@ -1019,6 +1208,44 @@
     "requestPath" : "/fetchdefault",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchDegreeImportance",
+    "dataSetName" : "degreeImportance",
+    "dataSetTag" : "DegreeImportance",
+    "methodType" : "FETCH",
+    "name" : "FetchDegreeImportance",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "DegreeImportance"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchDegreeImportance"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchdegreeimportance",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchDeleted",
     "dataSetName" : "deleted",
     "dataSetTag" : "Deleted",
@@ -1057,6 +1284,44 @@
     "requestPath" : "/fetchdeleted",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchEverydayTest",
+    "dataSetName" : "everydayTest",
+    "dataSetTag" : "EverydayTest",
+    "methodType" : "FETCH",
+    "name" : "FetchEverydayTest",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "EverydayTest"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchEverydayTest"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetcheverydaytest",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchIdea_relation_test_case",
     "dataSetName" : "idea_relation_test_case",
     "dataSetTag" : "Idea_relation_test_case",
@@ -1093,6 +1358,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchidea_relation_test_case",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchImplementationResults",
+    "dataSetName" : "ImplementationResults",
+    "dataSetTag" : "ImplementationResults",
+    "methodType" : "FETCH",
+    "name" : "FetchImplementationResults",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ImplementationResults"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchImplementationResults"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchimplementationresults",
     "builtinMethod" : false
   }, {
     "codeName" : "FetchMy_assign",
@@ -1399,6 +1702,158 @@
     "requestPath" : "/fetchnot_exsists_relation",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchNotify_assignee",
+    "dataSetName" : "notify_assignee",
+    "dataSetTag" : "Notify_assignee",
+    "methodType" : "FETCH",
+    "name" : "FetchNotify_assignee",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Notify_assignee"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchNotify_assignee"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchnotify_assignee",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchPersonDistributions",
+    "dataSetName" : "PersonDistributions",
+    "dataSetTag" : "PersonDistributions",
+    "methodType" : "FETCH",
+    "name" : "FetchPersonDistributions",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "PersonDistributions"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchPersonDistributions"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchpersondistributions",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchPriorityDistributions",
+    "dataSetName" : "priorityDistributions",
+    "dataSetTag" : "PriorityDistributions",
+    "methodType" : "FETCH",
+    "name" : "FetchPriorityDistributions",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "PriorityDistributions"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchPriorityDistributions"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchprioritydistributions",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchProgram_analyze",
+    "dataSetName" : "program_analyze",
+    "dataSetTag" : "Program_analyze",
+    "methodType" : "FETCH",
+    "name" : "FetchProgram_analyze",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Program_analyze"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchProgram_analyze"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchprogram_analyze",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchRecent_test_case",
     "dataSetName" : "recent_test_case",
     "dataSetTag" : "Recent_test_case",
@@ -1473,6 +1928,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchsuites_test_case",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTest_case_maneuver_context",
+    "dataSetName" : "test_case_maneuver_context",
+    "dataSetTag" : "Test_case_maneuver_context",
+    "methodType" : "FETCH",
+    "name" : "FetchTest_case_maneuver_context",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Test_case_maneuver_context"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchTest_case_maneuver_context"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchtest_case_maneuver_context",
     "builtinMethod" : false
   }, {
     "codeName" : "FetchWork_item_relation_test_case",
@@ -1555,6 +2048,7 @@
         "name" : "[TITLE][标题]移动端默认",
         "stringLength" : 500,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1567,7 +2061,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[TITLE][标题]",
         "stringLength" : 500,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     } ],
@@ -1865,6 +2360,21 @@
     "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[MAINTENANCE_ID][维护人标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[MAINTENANCE_ID][维护人标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/Base/PSDATAENTITIES/User.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[MAINTENANCE_ID][维护人标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1881,24 +2391,9 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[MAINTENANCE_ID][维护人标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[MAINTENANCE_ID][维护人标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/Base/PSDATAENTITIES/User.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Maintenance_id",
-    "logicName" : "维护人标识",
+    "logicName" : "维护人",
     "name" : "MAINTENANCE_ID",
     "stdDataType" : 25,
     "stringLength" : 100
@@ -1959,17 +2454,6 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[TEST_PLAN_NAME][测试计划名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[TEST_PLAN_NAME][测试计划名称]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[TEST_PLAN_NAME][测试计划名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -1982,6 +2466,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[TEST_PLAN_NAME][测试计划名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[TEST_PLAN_NAME][测试计划名称]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Test_plan_name",
     "logicName" : "测试计划名称",
@@ -1990,17 +2485,6 @@
     "stringLength" : 100
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[EXECUTED_AT][执行时间]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "DATEPICKER",
-        "name" : "[EXECUTED_AT][执行时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[EXECUTED_AT][执行时间]移动端默认",
       "getPSDEFFormItem" : {
@@ -2013,6 +2497,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[EXECUTED_AT][执行时间]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DATEPICKER",
+        "name" : "[EXECUTED_AT][执行时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Executed_at",
     "logicName" : "执行时间",
@@ -2021,6 +2516,17 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[EXECUTOR_NAME][执行人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[EXECUTOR_NAME][执行人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[EXECUTOR_NAME][执行人]移动端默认",
       "getPSDEFFormItem" : {
@@ -2033,17 +2539,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[EXECUTOR_NAME][执行人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[EXECUTOR_NAME][执行人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Executor_name",
     "logicName" : "执行人",
@@ -2116,25 +2611,6 @@
     "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[SUITES][模块路径]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[SUITES][模块路径]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_suite/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_suite.json"
-        },
-        "stringLength" : 500,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[SUITES][模块路径]移动端默认",
       "getPSDEFFormItem" : {
@@ -2155,6 +2631,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SUITES][模块路径]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[SUITES][模块路径]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_suite/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_suite.json"
+        },
+        "stringLength" : 500,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Suites",
     "logicName" : "模块路径",
@@ -2225,25 +2720,6 @@
     "stringLength" : 200
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[LIBRARY_IDENTIFIER][测试库标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[LIBRARY_IDENTIFIER][测试库标识]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Library/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Library.json"
-        },
-        "stringLength" : 15,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[LIBRARY_IDENTIFIER][测试库标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -2264,6 +2740,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[LIBRARY_IDENTIFIER][测试库标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[LIBRARY_IDENTIFIER][测试库标识]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Library/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Library.json"
+        },
+        "stringLength" : 15,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "codeName" : "Library_identifier",
     "logicName" : "测试库标识",
@@ -2272,6 +2767,17 @@
     "stringLength" : 15
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ATTENTIONS][关注]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[ATTENTIONS][关注]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ATTENTIONS][关注]移动端默认",
       "getPSDEFFormItem" : {
@@ -2284,17 +2790,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ATTENTIONS][关注]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[ATTENTIONS][关注]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Attentions",
     "logicName" : "关注",
@@ -2365,6 +2860,17 @@
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[REMAINING_WORKLOAD][剩余工时]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[REMAINING_WORKLOAD][剩余工时]",
+        "precision" : 1,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[REMAINING_WORKLOAD][剩余工时]移动端默认",
       "getPSDEFFormItem" : {
@@ -2377,17 +2883,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[REMAINING_WORKLOAD][剩余工时]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[REMAINING_WORKLOAD][剩余工时]",
-        "precision" : 1,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Remaining_workload",
     "logicName" : "剩余工时",
@@ -2396,6 +2891,18 @@
     "stdDataType" : 6
   }, {
     "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[ACTUAL_WORKLOAD][实际工时]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "RAW",
+        "name" : "[ACTUAL_WORKLOAD][实际工时]",
+        "precision" : 1,
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "#.0"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[ACTUAL_WORKLOAD][实际工时]移动端默认",
       "getPSDEFFormItem" : {
@@ -2408,17 +2915,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[ACTUAL_WORKLOAD][实际工时]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ACTUAL_WORKLOAD][实际工时]",
-        "precision" : 1,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "codeName" : "Actual_workload",
     "logicName" : "实际工时",
@@ -2711,7 +3207,7 @@
       "mobileMode" : true
     } ],
     "codeName" : "Test_library_id",
-    "logicName" : "测试库标识",
+    "logicName" : "测试库",
     "name" : "TEST_LIBRARY_ID",
     "stdDataType" : 25,
     "stringLength" : 100
@@ -2920,7 +3416,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Level",
       "logicName" : "重要程度",
@@ -3033,7 +3530,7 @@
       "type" : "DTOS"
     }, {
       "codeName" : "Maintenance_id",
-      "logicName" : "维护人标识",
+      "logicName" : "维护人",
       "name" : "Maintenance_id",
       "getPSAppDEField" : {
         "name" : "MAINTENANCE_ID",
@@ -3302,7 +3799,7 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "Test_library_id",
-      "logicName" : "测试库标识",
+      "logicName" : "测试库",
       "name" : "Test_library_id",
       "getPSAppDEField" : {
         "name" : "TEST_LIBRARY_ID",
@@ -3365,6 +3862,86 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "N_CREATE_TIME_EQ",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "N_CREATE_TIME_EQ",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "Create_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_CREATE_TIME_GTANDEQ",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "N_CREATE_TIME_GTANDEQ",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "Create_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_CREATE_TIME_LTANDEQ",
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "N_CREATE_TIME_LTANDEQ",
+      "getPSAppDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "Create_time"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_DESCRIPTION_LIKE",
+      "logicName" : "描述",
+      "name" : "N_DESCRIPTION_LIKE",
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "Description"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_EXECUTOR_NAME_EQ",
+      "logicName" : "执行人",
+      "name" : "N_EXECUTOR_NAME_EQ",
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_NAME",
+        "codeName" : "Executor_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_IDENTIFIER_EQ",
+      "logicName" : "编号",
+      "name" : "N_IDENTIFIER_EQ",
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "Identifier"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_IDENTIFIER_ISNULL",
+      "logicName" : "编号",
+      "name" : "N_IDENTIFIER_ISNULL",
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "Identifier"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "N_IDENTIFIER_LIKE",
       "logicName" : "编号",
       "name" : "N_IDENTIFIER_LIKE",
@@ -3379,6 +3956,17 @@
       "codeName" : "N_ID_EQ",
       "logicName" : "标识",
       "name" : "N_ID_EQ",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "Id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_ID_NOTEQ",
+      "logicName" : "标识",
+      "name" : "N_ID_NOTEQ",
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "Id"
@@ -3421,11 +4009,22 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "N_MAINTENANCE_ID_EQ",
-      "logicName" : "维护人标识",
+      "logicName" : "维护人",
       "name" : "N_MAINTENANCE_ID_EQ",
       "getPSAppDEField" : {
         "name" : "MAINTENANCE_ID",
         "codeName" : "Maintenance_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_MAINTENANCE_NAME_EQ",
+      "logicName" : "维护人",
+      "name" : "N_MAINTENANCE_NAME_EQ",
+      "getPSAppDEField" : {
+        "name" : "MAINTENANCE_NAME",
+        "codeName" : "Maintenance_name"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -3542,8 +4141,19 @@
       "type" : "SIMPLE"
     }, {
       "codeName" : "N_TEST_LIBRARY_ID_EQ",
-      "logicName" : "测试库标识",
+      "logicName" : "测试库",
       "name" : "N_TEST_LIBRARY_ID_EQ",
+      "getPSAppDEField" : {
+        "name" : "TEST_LIBRARY_ID",
+        "codeName" : "Test_library_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_TEST_LIBRARY_ID_ISNULL",
+      "logicName" : "测试库",
+      "name" : "N_TEST_LIBRARY_ID_ISNULL",
       "getPSAppDEField" : {
         "name" : "TEST_LIBRARY_ID",
         "codeName" : "Test_library_id"
@@ -3569,6 +4179,17 @@
       "getPSAppDEField" : {
         "name" : "TEST_LIBRARY_NAME",
         "codeName" : "Test_library_name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_TEST_PLAN_NAME_EQ",
+      "logicName" : "测试计划名称",
+      "name" : "N_TEST_PLAN_NAME_EQ",
+      "getPSAppDEField" : {
+        "name" : "TEST_PLAN_NAME",
+        "codeName" : "Test_plan_name"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -3626,7 +4247,7 @@
       "allowEmpty" : false
     }, {
       "codeName" : "Maintenance_id",
-      "logicName" : "维护人标识",
+      "logicName" : "维护人",
       "name" : "Maintenance_id",
       "getPSAppDEField" : {
         "name" : "MAINTENANCE_ID",
@@ -3939,46 +4560,6 @@
     "requestPath" : "/getdraft",
     "builtinMethod" : false
   }, {
-    "actionMode" : "READ",
-    "actionName" : "get_actual_workload",
-    "codeName" : "Get_actual_workload",
-    "methodType" : "DEACTION",
-    "name" : "Get_actual_workload",
-    "getPSAppDEMethodInput" : {
-      "getKeyPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "Id"
-      },
-      "name" : "输入对象",
-      "type" : "KEYFIELD"
-    },
-    "getPSAppDEMethodReturn" : {
-      "name" : "返回对象",
-      "getPSAppDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "Test_caseDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_case/PSDEACTIONS/Get_actual_workload.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "NONE"
-    },
-    "getPSDEServiceAPIMethod" : {
-      "modelref" : true,
-      "id" : "Get_actual_workload"
-    },
-    "requestField" : "ID",
-    "requestMethod" : "GET",
-    "requestParamType" : "FIELD",
-    "requestPath" : "/get_actual_workload",
-    "builtinMethod" : false,
-    "needResourceKey" : true
-  }, {
     "actionMode" : "CUSTOM",
     "actionName" : "move_case",
     "codeName" : "Move_case",
@@ -4082,7 +4663,7 @@
     },
     "builtinMethod" : false
   }, {
-    "actionMode" : "CREATE",
+    "actionMode" : "UPDATE",
     "actionName" : "others_relation_case",
     "codeName" : "Others_relation_case",
     "methodType" : "DEACTION",
@@ -4110,16 +4691,17 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
       "id" : "Others_relation_case"
     },
-    "requestMethod" : "POST",
+    "requestMethod" : "PUT",
     "requestParamType" : "ENTITY",
     "requestPath" : "/others_relation_case",
-    "builtinMethod" : false
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "actionMode" : "CUSTOM",
     "actionName" : "recover",
@@ -4402,6 +4984,158 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "codeName" : "FetchAdvanced_search",
+    "dataSetName" : "advanced_search",
+    "dataSetTag" : "Advanced_search",
+    "methodType" : "FETCH",
+    "name" : "FetchAdvanced_search",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Advanced_search"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchAdvanced_search"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchadvanced_search",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchAssessmentResult",
+    "dataSetName" : "assessmentResult",
+    "dataSetTag" : "AssessmentResult",
+    "methodType" : "FETCH",
+    "name" : "FetchAssessmentResult",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "AssessmentResult"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchAssessmentResult"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchassessmentresult",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchCasePerson",
+    "dataSetName" : "casePerson",
+    "dataSetTag" : "CasePerson",
+    "methodType" : "FETCH",
+    "name" : "FetchCasePerson",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "CasePerson"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchCasePerson"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchcaseperson",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchCaseType",
+    "dataSetName" : "caseType",
+    "dataSetTag" : "CaseType",
+    "methodType" : "FETCH",
+    "name" : "FetchCaseType",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "CaseType"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchCaseType"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchcasetype",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchComment_notify_maintenance",
     "dataSetName" : "comment_notify_maintenance",
     "dataSetTag" : "Comment_notify_maintenance",
@@ -4438,6 +5172,82 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchcomment_notify_maintenance",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchComparativeAnalysis",
+    "dataSetName" : "comparativeAnalysis",
+    "dataSetTag" : "ComparativeAnalysis",
+    "methodType" : "FETCH",
+    "name" : "FetchComparativeAnalysis",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ComparativeAnalysis"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchComparativeAnalysis"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchcomparativeanalysis",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchDailyTendencies",
+    "dataSetName" : "dailyTendencies",
+    "dataSetTag" : "DailyTendencies",
+    "methodType" : "FETCH",
+    "name" : "FetchDailyTendencies",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "DailyTendencies"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchDailyTendencies"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchdailytendencies",
     "builtinMethod" : false
   }, {
     "codeName" : "FetchDefault",
@@ -4478,6 +5288,44 @@
     "requestPath" : "/fetchdefault",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchDegreeImportance",
+    "dataSetName" : "degreeImportance",
+    "dataSetTag" : "DegreeImportance",
+    "methodType" : "FETCH",
+    "name" : "FetchDegreeImportance",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "DegreeImportance"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchDegreeImportance"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchdegreeimportance",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchDeleted",
     "dataSetName" : "deleted",
     "dataSetTag" : "Deleted",
@@ -4516,6 +5364,44 @@
     "requestPath" : "/fetchdeleted",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchEverydayTest",
+    "dataSetName" : "everydayTest",
+    "dataSetTag" : "EverydayTest",
+    "methodType" : "FETCH",
+    "name" : "FetchEverydayTest",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "EverydayTest"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchEverydayTest"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetcheverydaytest",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchIdea_relation_test_case",
     "dataSetName" : "idea_relation_test_case",
     "dataSetTag" : "Idea_relation_test_case",
@@ -4552,6 +5438,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchidea_relation_test_case",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchImplementationResults",
+    "dataSetName" : "ImplementationResults",
+    "dataSetTag" : "ImplementationResults",
+    "methodType" : "FETCH",
+    "name" : "FetchImplementationResults",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "ImplementationResults"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchImplementationResults"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchimplementationresults",
     "builtinMethod" : false
   }, {
     "codeName" : "FetchMy_assign",
@@ -4858,6 +5782,158 @@
     "requestPath" : "/fetchnot_exsists_relation",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchNotify_assignee",
+    "dataSetName" : "notify_assignee",
+    "dataSetTag" : "Notify_assignee",
+    "methodType" : "FETCH",
+    "name" : "FetchNotify_assignee",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Notify_assignee"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchNotify_assignee"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchnotify_assignee",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchPersonDistributions",
+    "dataSetName" : "PersonDistributions",
+    "dataSetTag" : "PersonDistributions",
+    "methodType" : "FETCH",
+    "name" : "FetchPersonDistributions",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "PersonDistributions"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchPersonDistributions"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchpersondistributions",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchPriorityDistributions",
+    "dataSetName" : "priorityDistributions",
+    "dataSetTag" : "PriorityDistributions",
+    "methodType" : "FETCH",
+    "name" : "FetchPriorityDistributions",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "PriorityDistributions"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchPriorityDistributions"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchprioritydistributions",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchProgram_analyze",
+    "dataSetName" : "program_analyze",
+    "dataSetTag" : "Program_analyze",
+    "methodType" : "FETCH",
+    "name" : "FetchProgram_analyze",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Program_analyze"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchProgram_analyze"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchprogram_analyze",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchRecent_test_case",
     "dataSetName" : "recent_test_case",
     "dataSetTag" : "Recent_test_case",
@@ -4932,6 +6008,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetchsuites_test_case",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTest_case_maneuver_context",
+    "dataSetName" : "test_case_maneuver_context",
+    "dataSetTag" : "Test_case_maneuver_context",
+    "methodType" : "FETCH",
+    "name" : "FetchTest_case_maneuver_context",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "Test_caseDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Test_case_maneuver_context"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchTest_case_maneuver_context"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchtest_case_maneuver_context",
     "builtinMethod" : false
   }, {
     "codeName" : "FetchWork_item_relation_test_case",
@@ -5517,37 +6631,51 @@
       "name" : "结束",
       "topPos" : 370
     }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 358,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "绑定表格部件",
+      "codeName" : "VIEWCTRLINVOKE2",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "addAttachMent",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "attach"
+      },
+      "leftPos" : 670,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "RAWJSCODE4"
+          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "VIEWCTRLINVOKE2"
         }
       } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
+      "topPos" : 378
+    }, {
+      "code" : "// 计算新建默认值\r\nconst defaultData = uiLogic.grid.calcDefaultValue({}, true);\r\nuiLogic.attach = uiLogic.files.map(item => \r\n    {\r\n        return {\r\n            name: item.name,\r\n            file_id: item.id,\r\n            id: item.uuid,\r\n            ...defaultData,\r\n        }\r\n    }\r\n)",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 670,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置附件参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "grid"
+          "id" : "VIEWCTRLINVOKE2"
         },
-        "name" : "form[details.attachments.mdController] ==> grid",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "details.attachments.mdController",
-        "getSrcPSDEUILogicParam" : {
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "form"
-        },
-        "srcValueType" : "SRCDLPARAM"
+          "id" : "RAWJSCODE4"
+        }
       } ],
-      "topPos" : 148
+      "topPos" : 140
     }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
@@ -5583,62 +6711,43 @@
       } ],
       "topPos" : 148
     }, {
-      "code" : "// 计算新建默认值\r\nconst defaultData = uiLogic.grid.calcDefaultValue({}, true);\r\nuiLogic.attach = uiLogic.files.map(item => \r\n    {\r\n        return {\r\n            name: item.name,\r\n            file_id: item.id,\r\n            id: item.uuid,\r\n            ...defaultData,\r\n        }\r\n    }\r\n)",
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : 670,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置附件参数",
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 358,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "RAWJSCODE4"
-        }
-      } ],
-      "topPos" : 140
-    }, {
-      "codeName" : "VIEWCTRLINVOKE2",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "addAttachMent",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "attach"
-      },
-      "leftPos" : 670,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE2"
+          "id" : "PREPAREJSPARAM1"
         }
       } ],
-      "topPos" : 378
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "form[details.attachments.mdController] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "details.attachments.mdController",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 148
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "files",
       "logicName" : "上传文件",
       "name" : "上传文件",
       "entityListParam" : true
-    }, {
-      "codeName" : "grid",
-      "logicName" : "重复器表格",
-      "name" : "重复器表格",
-      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -5651,15 +6760,20 @@
       "name" : "附件",
       "entityListParam" : true
     }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "form",
       "logicName" : "表单",
       "name" : "表单",
       "ctrlParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
+      "codeName" : "grid",
+      "logicName" : "重复器表格",
+      "name" : "重复器表格",
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -6031,43 +7145,6 @@
       "topPos" : 201,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 60,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "default",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 209
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "treeexpbar_tree"
-      },
-      "invokeMethod" : "updateTreeNode",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "node_param"
-      },
-      "leftPos" : 660,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 208
-    }, {
       "codeName" : "DEBUGPARAM3",
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
@@ -6086,6 +7163,28 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEBUGPARAM3"
+        }
+      } ],
+      "topPos" : 209
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 60,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "default",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
         }
       } ],
       "topPos" : 209
@@ -6122,13 +7221,23 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "updateTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 660,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "treeexpbar_tree",
-      "logicName" : "树部件",
-      "name" : "树部件",
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -6139,111 +7248,11 @@
       "logicName" : "节点参数",
       "name" : "节点参数",
       "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "get_actual_workload",
-    "defaultParamName" : "Default",
-    "logicName" : "获取实际工时",
-    "name" : "获取实际工时",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
     }, {
-      "code" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = uiLogic.temp.actual_workload;\r\nform_data.actual_workload = actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 之前登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 570
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "Get_actual_workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Test_case.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "temp"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "获取实际工时",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "temp"
-      },
-      "topPos" : 364
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 710
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "temp",
-      "logicName" : "临时数据对象",
-      "name" : "临时数据对象",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -6274,6 +7283,12 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 461
+    }, {
       "code" : "const total = uiLogic.ctrl.state.total;\r\nuiLogic.view.layoutPanel.state.data.total = total;\r\nif(!total){\r\n    view.layoutPanel.panelItems.grid.state.visible = false\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true\r\n}",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
@@ -6292,14 +7307,14 @@
         }
       } ],
       "topPos" : 350
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 461
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "CTRL",
+      "logicName" : "当前部件对象",
+      "name" : "当前部件对象",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -6310,22 +7325,16 @@
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
-    }, {
-      "codeName" : "CTRL",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
       "id" : "Begin"
     }
   }, {
-    "codeName" : "refresh_counter",
+    "codeName" : "get_workload_schedule",
     "defaultParamName" : "Default",
-    "logicName" : "触发计数器刷新",
-    "name" : "触发计数器刷新",
+    "logicName" : "获取工时进度",
+    "name" : "获取工时进度",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 200,
@@ -6346,17 +7355,11 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 756,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "code" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;  \r\nvar estimated = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n}\r\nvar actual = 0; // 之前登记的实际工时\r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar remaining = 0;\r\nif(remaining_workload){\r\n\tremaining = Number(remaining_workload);\r\n}\r\n// 计算工时进度\r\nif((actual + remaining) != 0){\r\n\tvar schedule = ((actual / (actual + remaining)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 434,
+      "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "计算工时进度",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -6369,7 +7372,18 @@
           "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 208
+      "topPos" : 570
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 710
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -6383,10 +7397,10 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "relation_test_case_change",
+    "codeName" : "idea_relation_test_case",
     "defaultParamName" : "Default",
-    "logicName" : "关联测试用例值变更",
-    "name" : "关联测试用例值变更",
+    "logicName" : "需求关联用例",
+    "name" : "需求关联用例",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 630,
@@ -6405,6 +7419,43 @@
         }
       } ],
       "topPos" : 20
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "Others_relation_idea"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Idea.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 820,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 410
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 752
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 590,
@@ -6498,13 +7549,6 @@
       } ],
       "topPos" : 320
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 590,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "触发计数器刷新",
-      "topPos" : 752
-    }, {
       "codeName" : "VIEWCTRLINVOKE1",
       "getInvokeCtrl" : {
         "modelref" : true,
@@ -6531,36 +7575,6 @@
         }
       } ],
       "topPos" : 670
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "Others_relation_case"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Test_case.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dto"
-      },
-      "leftPos" : 820,
-      "logicNodeType" : "DEACTION",
-      "name" : "进行关联操作",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 410
     }, {
       "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
       "codeName" : "RAWJSCODE1",
@@ -6596,12 +7610,306 @@
       "topPos" : 528
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "grid",
+      "logicName" : "表格对象",
+      "name" : "表格对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "dto",
+      "logicName" : "传入后台对象",
+      "name" : "传入后台对象",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
     }, {
+      "codeName" : "view",
+      "logicName" : "视图对象",
+      "name" : "视图对象",
+      "activeViewParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "refresh_counter",
+    "defaultParamName" : "Default",
+    "logicName" : "触发计数器刷新",
+    "name" : "触发计数器刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 756,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 434,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "relation_test_case_change",
+    "defaultParamName" : "Default",
+    "logicName" : "关联测试用例值变更",
+    "name" : "关联测试用例值变更",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 630,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 20
+    }, {
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取选中列表",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值不为空(NotNil) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 320
+    }, {
+      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "隐藏下拉框并清空下拉框内容",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 528
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 752
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 590,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 670
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 590,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "Others_relation_case"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Test_case.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 820,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 410
+    } ],
+    "getPSDEUILogicParams" : [ {
       "codeName" : "grid",
       "logicName" : "表格对象",
       "name" : "表格对象",
@@ -6615,6 +7923,12 @@
       "codeName" : "dto",
       "logicName" : "传入后台对象",
       "name" : "传入后台对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -6694,22 +8008,22 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "node_param",
-      "logicName" : "节点参数",
-      "name" : "节点参数",
-      "stdDataType" : 25,
-      "simpleParam" : true
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     }, {
       "codeName" : "treeexpbar_tree",
       "logicName" : "树部件",
       "name" : "树部件",
       "ctrlParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
+      "codeName" : "node_param",
+      "logicName" : "节点参数",
+      "name" : "节点参数",
+      "stdDataType" : 25,
+      "simpleParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -6810,23 +8124,266 @@
       "modelref" : true,
       "id" : "Begin"
     }
+  }, {
+    "codeName" : "work_item_relation_test_case",
+    "defaultParamName" : "Default",
+    "logicName" : "工作项关联用例",
+    "name" : "工作项关联用例",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 630,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 20
+    }, {
+      "code" : "const panel = view.layoutPanel.panelItems.choose_data;\r\nif (panel) {\r\n    panel.state.visible = false;\r\n}\r\nuiLogic.default.choose_data = null;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "隐藏下拉框并清空下拉框内容",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 528
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "触发计数器刷新",
+      "topPos" : 752
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 590,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表格部件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "view[layoutPanel.panelItems.grid.control] ==> grid",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.grid.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "Others_relation_work_item"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dto"
+      },
+      "leftPos" : 820,
+      "logicNodeType" : "DEACTION",
+      "name" : "进行关联操作",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 410
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "grid"
+      },
+      "invokeMethod" : "refresh",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 590,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表格刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        }
+      } ],
+      "topPos" : 670
+    }, {
+      "code" : "let choose = uiLogic.default.choose_data;\r\nif(choose != null && choose != ''){\r\n    uiLogic.dto.srfactionparam = JSON.parse(choose);\r\n    uiLogic.dto.principal_id = view.context.principal_id;\r\n    uiLogic.dto.principal_type = view.context.principal_type;\r\n    uiLogic.dto.target_type = view.context.target_type;\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 590,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取选中列表",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值不为空(NotNil) 0",
+            "paramValue" : "0",
+            "value" : "0"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfactionparam",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "dto"
+            },
+            "logicType" : "SINGLE",
+            "name" : "dto[srfactionparam] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 320
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "grid",
+      "logicName" : "表格对象",
+      "name" : "表格对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "视图对象",
+      "name" : "视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "dto",
+      "logicName" : "传入后台对象",
+      "name" : "传入后台对象",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseassessment_result.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casecopy_test_case_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casecase_move_plan_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casetest_plan_re_test_case_prickup_view.json",
+    "viewType" : "DEMPICKUPVIEW2"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casedegree_importance.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseset_state_view.json",
     "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caserecycle_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casework_item_re_case_gridview.json",
-    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casePickupGridView.json",
@@ -6837,27 +8394,19 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemy_test_case_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseothers_re_mpick_view.json",
+    "viewType" : "DEMPICKUPVIEW2"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casenot_add_pickup_grid.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casecaseType.json",
+    "viewType" : "DECHARTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemy_craeted_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemaneuver_context.json",
+    "viewType" : "DECHARTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseidea_re_test_case_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caserecycle_edit_view.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemove_test_case_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseset_level.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
@@ -6865,7 +8414,47 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseset_level.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casework_item_re_case_gridview.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemy_test_case_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseImplementation_results.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caserecycle_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caserecycle_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemove_test_case_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casepriority_Distributions.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casecase_person.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseidea_re_test_case_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseprogram_analyze.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casequick_create_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
@@ -6873,8 +8462,12 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casequick_create_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casecase_move_plan_view.json",
     "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseeverydayTest.json",
+    "viewType" : "DECHARTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseMPickupView.json",
@@ -6889,28 +8482,36 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseadvanced_search_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseothers_re_mpick_view_PickupGridView.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casenot_add_pickup_grid.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseEditView.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseset_state_view.json",
-    "viewType" : "DEOPTVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casemy_craeted_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casetest_grid_view_all.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseothers_re_mpick_view.json",
-    "viewType" : "DEMPICKUPVIEW2"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseperson_distributions.json",
+    "viewType" : "DECHARTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseset_maintenance_view.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casetest_plan_re_test_case_prickup_view.json",
-    "viewType" : "DEMPICKUPVIEW2"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casethis_suite_test_case_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casetree_exp_view.json",
@@ -6921,18 +8522,25 @@
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseothers_re_mpick_view_PickupGridView.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casethis_suite_test_case_grid_view.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_caseset_maintenance_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casePickupView.json",
     "viewType" : "DEPICKUPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casecomparativeAnalysis.json",
+    "viewType" : "DECHARTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_casedaily_Tendencies.json",
+    "viewType" : "DECHARTVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
+    "logicName" : "建立",
+    "name" : "CREATE"
+  }, {
     "logicName" : "建立",
     "mapPSDEName" : "LIBRARY",
     "mapPSDEOPPrivName" : "SUBDATA",
@@ -6947,12 +8555,6 @@
     "name" : "CREATE",
     "id" : "Library__CREATE"
   }, {
-    "logicName" : "建立",
-    "name" : "CREATE"
-  }, {
-    "logicName" : "删除",
-    "name" : "DELETE"
-  }, {
     "logicName" : "删除",
     "mapPSDEName" : "LIBRARY",
     "mapPSDEOPPrivName" : "SUBDATA",
@@ -6966,6 +8568,9 @@
     },
     "name" : "DELETE",
     "id" : "Library__DELETE"
+  }, {
+    "logicName" : "删除",
+    "name" : "DELETE"
   }, {
     "logicName" : "读取",
     "name" : "READ"
@@ -7089,7 +8694,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "添加附件",
       "detailType" : "DEUIACTION",
-      "name" : "uda885cf",
+      "name" : "u69bc7c7",
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
@@ -7117,7 +8722,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "移入计划",
       "detailType" : "DEUIACTION",
-      "name" : "uf699162",
+      "name" : "uf6b66e1",
       "getPSSysImage" : {
         "glyph" : "xf1d9@FontAwesome",
         "cssClass" : "fa fa-send-o"
@@ -7139,7 +8744,7 @@
       },
       "caption" : "复制",
       "detailType" : "DEUIACTION",
-      "name" : "u671a095",
+      "name" : "u86cee9d",
       "getPSSysImage" : {
         "glyph" : "xf0c5@FontAwesome",
         "cssClass" : "fa fa-copy"
@@ -7157,7 +8762,7 @@
     }, {
       "caption" : "移动",
       "detailType" : "DEUIACTION",
-      "name" : "u4dd6183",
+      "name" : "ue6692cd",
       "getPSSysImage" : {
         "glyph" : "xf047@FontAwesome",
         "cssClass" : "fa fa-arrows"
@@ -7176,7 +8781,7 @@
     }, {
       "caption" : "删除",
       "detailType" : "DEUIACTION",
-      "name" : "u9b0d5fe",
+      "name" : "u87a0321",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -7195,7 +8800,7 @@
     }, {
       "caption" : "界面行为支持获取编辑列",
       "detailType" : "DEUIACTION",
-      "name" : "uc0ccb32",
+      "name" : "u06706db",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,
@@ -7215,7 +8820,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "取消关联",
       "detailType" : "DEUIACTION",
-      "name" : "u7dd0b15",
+      "name" : "u08d9a95",
       "getPSSysImage" : {
         "glyph" : "xf127@FontAwesome",
         "cssClass" : "fa fa-unlink"

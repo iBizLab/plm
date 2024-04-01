@@ -457,7 +457,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : false,
     "viewProxyMode" : true,
-    "modelid" : "208953FC-73FA-415B-9903-E06EC9DF2C57",
+    "modelid" : "87aae01d928d3affc00cadb560520002",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSAppViewEngines" : [ {
       "engineCat" : "VIEW",
@@ -472,6 +472,20 @@
         "actionAfterWizard" : "DEFAULT",
         "logicType" : "PREDEFINED",
         "name" : "新建数据",
+        "getNewDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
         "viewLogicType" : "APP_NEWDATA",
         "batchAddOnly" : false,
         "enableBatchAdd" : false,
@@ -484,14 +498,46 @@
       "getPSAppUILogic" : {
         "logicType" : "PREDEFINED",
         "name" : "打开数据",
+        "getOpenDataPSAppView" : {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        },
+        "getPSAppUILogicRefViews" : [ {
+          "getRefPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+            "viewType" : "DEEDITVIEW"
+          }
+        } ],
         "viewLogicType" : "APP_OPENDATA",
         "editMode" : true
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "NEWDATA"
+      "name" : "NEWDATA",
+      "realTitle" : "评论编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.COMMENT.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+        "viewType" : "DEEDITVIEW"
+      }
     }, {
-      "name" : "EDITDATA"
+      "name" : "EDITDATA",
+      "realTitle" : "评论编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.COMMENT.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/commentEditView.json",
+        "viewType" : "DEEDITVIEW"
+      }
     } ],
     "getPSControls" : [ {
       "codeName" : "List_wiki",
@@ -845,8 +891,8 @@
                   "layout" : "FLEX"
                 },
                 "getPSSysImage" : {
-                  "glyph" : "xf1e8@FontAwesome",
-                  "cssClass" : "fa fa-twitch"
+                  "glyph" : "xf0e5@FontAwesome",
+                  "cssClass" : "fa fa-comment-o"
                 },
                 "getPSUIAction" : {
                   "actionTarget" : "SINGLEDATA",
@@ -1019,7 +1065,7 @@
         } ],
         "layoutPanel" : true,
         "name" : "list_itempanel",
-        "modelid" : "C11ACE5A-AD7D-471F-89EE-62DA777F4891",
+        "modelid" : "4725f20a53b325233aa91c848c3b2a19",
         "modeltype" : "PSSYSVIEWPANEL"
       },
       "logicName" : "list_wiki",
@@ -1108,13 +1154,6 @@
       },
       "getPSDEListDataItems" : [ {
         "dataType" : 21,
-        "name" : "pcontent",
-        "getPSAppDEField" : {
-          "name" : "PCONTENT",
-          "codeName" : "Pcontent"
-        }
-      }, {
-        "dataType" : 21,
         "name" : "content",
         "getPSAppDEField" : {
           "name" : "CONTENT",
@@ -1122,10 +1161,14 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "pid",
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "name" : "create_man",
         "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "Pid"
+          "name" : "CREATE_MAN",
+          "codeName" : "Create_man"
         }
       }, {
         "dataType" : 5,
@@ -1134,6 +1177,13 @@
         "getPSAppDEField" : {
           "name" : "CREATE_TIME",
           "codeName" : "Create_time"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "pid",
+        "getPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "Pid"
         }
       }, {
         "dataType" : 25,
@@ -1154,15 +1204,11 @@
           "codeName" : "Pcreate_man"
         }
       }, {
-        "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-        },
-        "name" : "create_man",
+        "dataType" : 21,
+        "name" : "pcontent",
         "getPSAppDEField" : {
-          "name" : "CREATE_MAN",
-          "codeName" : "Create_man"
+          "name" : "PCONTENT",
+          "codeName" : "Pcontent"
         }
       }, {
         "dataType" : 25,
@@ -1224,7 +1270,7 @@
       "noSort" : false,
       "showHeader" : true,
       "name" : "list",
-      "modelid" : "78DE8080-CA5C-4CB6-9384-37CBB1462307",
+      "modelid" : "5fbbcc339be738a6845e96c4a64a3aa9",
       "modeltype" : "PSDELIST"
     }, {
       "controlType" : "SEARCHBAR",

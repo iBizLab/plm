@@ -66,32 +66,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.shift_in_kanban;
                         update(work_itemshift_in_kanbansrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体数据集]
-            rule "dedataset1"
-            ruleflow-group "work_itemshift_in_kanbandedataset1"
-            when
-            then
-                        update(work_itemshift_in_kanbandefault);//更新fact中变量值
-                        update(work_itemshift_in_kanbanentry);//更新fact中变量值
-                        update(work_itemshift_in_kanbanentry_filter);//更新fact中变量值
-                        update(work_itemshift_in_kanbanentry_page);//更新fact中变量值
-                        update(work_itemshift_in_kanbanfor_temp_obj);//更新fact中变量值
-                        update(work_itemshift_in_kanbansrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "work_itemshift_in_kanbanloopsubcall1"
-            when
-            then
-                        update(work_itemshift_in_kanbandefault);//更新fact中变量值
-                        update(work_itemshift_in_kanbanentry);//更新fact中变量值
-                        update(work_itemshift_in_kanbanentry_filter);//更新fact中变量值
-                        update(work_itemshift_in_kanbanentry_page);//更新fact中变量值
-                        update(work_itemshift_in_kanbanfor_temp_obj);//更新fact中变量值
-                        update(work_itemshift_in_kanbansrfactionparam);//更新fact中变量值
-            end
-
             //逻辑处理节点[准备参数]
             rule "prepareparam2"
             ruleflow-group "work_itemshift_in_kanbanprepareparam2"
@@ -108,12 +82,38 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.shift_in_kanban;
                         update(work_itemshift_in_kanbansrfactionparam);//更新fact中变量值
             end
 
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "work_itemshift_in_kanbandedataset1"
+            when
+            then
+                        update(work_itemshift_in_kanbandefault);//更新fact中变量值
+                        update(work_itemshift_in_kanbanentry);//更新fact中变量值
+                        update(work_itemshift_in_kanbanentry_filter);//更新fact中变量值
+                        update(work_itemshift_in_kanbanentry_page);//更新fact中变量值
+                        update(work_itemshift_in_kanbanfor_temp_obj);//更新fact中变量值
+                        update(work_itemshift_in_kanbansrfactionparam);//更新fact中变量值
+            end
+
             //逻辑处理节点[移入看板]
             rule "deaction1"
             ruleflow-group "work_itemshift_in_kanbandeaction1"
             when
             then
                         work_itemservice.update(work_itemshift_in_kanbandefault);
+                        update(work_itemshift_in_kanbandefault);//更新fact中变量值
+                        update(work_itemshift_in_kanbanentry);//更新fact中变量值
+                        update(work_itemshift_in_kanbanentry_filter);//更新fact中变量值
+                        update(work_itemshift_in_kanbanentry_page);//更新fact中变量值
+                        update(work_itemshift_in_kanbanfor_temp_obj);//更新fact中变量值
+                        update(work_itemshift_in_kanbansrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemshift_in_kanbanloopsubcall1"
+            when
+            then
                         update(work_itemshift_in_kanbandefault);//更新fact中变量值
                         update(work_itemshift_in_kanbanentry);//更新fact中变量值
                         update(work_itemshift_in_kanbanentry_filter);//更新fact中变量值

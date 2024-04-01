@@ -1,0 +1,92 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.backlog_daily_trend;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itembacklog_daily_trenddefault;
+                global java.util.Map work_itembacklog_daily_trendresult;
+        global cn.ibizlab.plm.core.projmgmt.service.IWork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itembacklog_daily_trendbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itembacklog_daily_trendend1"
+            when
+            then
+                        update(work_itembacklog_daily_trenddefault);//更新fact中变量值
+                        update(work_itembacklog_daily_trendresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "work_itembacklog_daily_trenddebugparam1"
+            when
+            then
+                        update(work_itembacklog_daily_trenddefault);//更新fact中变量值
+                        update(work_itembacklog_daily_trendresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itembacklog_daily_trendrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itembacklog_daily_trenddefault.get("n_create_time_gtandeq"));
+        param.put("param1",work_itembacklog_daily_trenddefault.get("n_create_time_gtandeq"));
+        param.put("param2",work_itembacklog_daily_trenddefault.get("n_create_time_ltandeq"));
+        param.put("param3",work_itembacklog_daily_trenddefault.get("n_create_time_gtandeq"));
+        param.put("param4",work_itembacklog_daily_trenddefault.get("n_create_time_ltandeq"));
+        param.put("param5",work_itembacklog_daily_trenddefault.get("n_board_id_eq"));
+        param.put("param6",work_itembacklog_daily_trenddefault.get("n_board_id_eq"));
+        param.put("param7",work_itembacklog_daily_trenddefault.get("n_board_id_eq"));
+        param.put("param8",work_itembacklog_daily_trenddefault.get("n_priority_eq"));
+        param.put("param9",work_itembacklog_daily_trenddefault.get("n_priority_eq"));
+        param.put("param10",work_itembacklog_daily_trenddefault.get("n_priority_eq"));
+        param.put("param11",work_itembacklog_daily_trenddefault.get("n_work_item_type_group"));
+        param.put("param12",work_itembacklog_daily_trenddefault.get("n_work_item_type_group"));
+        param.put("param13",work_itembacklog_daily_trenddefault.get("n_work_item_type_group"));
+        param.put("param14",work_itembacklog_daily_trenddefault.get("n_backlog_type_eq"));
+        param.put("param15",work_itembacklog_daily_trenddefault.get("n_backlog_type_eq"));
+        param.put("param16",work_itembacklog_daily_trenddefault.get("n_backlog_type_eq"));
+        param.put("param17",work_itembacklog_daily_trenddefault.get("n_backlog_from_eq"));
+        param.put("param18",work_itembacklog_daily_trenddefault.get("n_backlog_from_eq"));
+        param.put("param19",work_itembacklog_daily_trenddefault.get("n_backlog_from_eq"));
+        param.put("param20",work_itembacklog_daily_trenddefault.get("n_create_time_ltandeq"));
+        param.put("param21",work_itembacklog_daily_trenddefault.get("n_create_time_gtandeq"));
+        param.put("param22",work_itembacklog_daily_trenddefault.get("n_board_id_eq"));
+        param.put("param23",work_itembacklog_daily_trenddefault.get("n_board_id_eq"));
+        param.put("param24",work_itembacklog_daily_trenddefault.get("n_board_id_eq"));
+        param.put("param25",work_itembacklog_daily_trenddefault.get("n_priority_eq"));
+        param.put("param26",work_itembacklog_daily_trenddefault.get("n_priority_eq"));
+        param.put("param27",work_itembacklog_daily_trenddefault.get("n_priority_eq"));
+        param.put("param28",work_itembacklog_daily_trenddefault.get("n_work_item_type_group"));
+        param.put("param29",work_itembacklog_daily_trenddefault.get("n_work_item_type_group"));
+        param.put("param30",work_itembacklog_daily_trenddefault.get("n_work_item_type_group"));
+        param.put("param31",work_itembacklog_daily_trenddefault.get("n_backlog_type_eq"));
+        param.put("param32",work_itembacklog_daily_trenddefault.get("n_backlog_type_eq"));
+        param.put("param33",work_itembacklog_daily_trenddefault.get("n_backlog_type_eq"));
+        param.put("param34",work_itembacklog_daily_trenddefault.get("n_backlog_from_eq"));
+        param.put("param35",work_itembacklog_daily_trenddefault.get("n_backlog_from_eq"));
+        param.put("param36",work_itembacklog_daily_trenddefault.get("n_backlog_from_eq"));
+    String strSql="SELECT     date_series.date AS filter_type,     IFNULL(b.new_bugs, 0) AS count,     IFNULL(c.completed_bugs, 0) AS count2 FROM (          SELECT DATE_ADD(#{et.param0}, INTERVAL seq.seq DAY) AS date          FROM (                   SELECT a.i+b.i*10+c.i*100 AS seq                   FROM (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,                        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) b,                        (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) c               ) seq          WHERE DATE_ADD(#{et.param1}, INTERVAL seq.seq DAY) <= #{et.param2}      ) date_series          LEFT JOIN (     SELECT         DATE(wi.CREATE_TIME) AS created_date,         COUNT(*) AS new_bugs     FROM work_item wi              JOIN work_item_type wit ON wi.WORK_ITEM_TYPE_ID = wit.ID              JOIN work_item_state wis ON wi.state = wis.ID     WHERE wi.CREATE_TIME BETWEEN #{et.param3} AND #{et.param4}       AND wit.GROUP = 'requirement'       AND ((#{et.param5} IS NULL OR #{et.param6} = '') OR wi.BOARD_ID = #{et.param7})       AND ((#{et.param8} IS NULL OR #{et.param9} = '') OR FIND_IN_SET(wi.PRIORITY, #{et.param10}))       AND ((#{et.param11} IS NULL OR #{et.param12} = '') OR FIND_IN_SET(wis.TYPE, #{et.param13}))       AND ((#{et.param14} IS NULL OR #{et.param15} = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, #{et.param16}))       AND ((#{et.param17} IS NULL OR #{et.param18} = '') OR FIND_IN_SET(wi.BACKLOG_FROM, #{et.param19}))     GROUP BY created_date ) b ON date_series.date = b.created_date          LEFT JOIN (     SELECT         DATE(wi.UPDATE_TIME) AS update_date,         COUNT(*) AS completed_bugs     FROM work_item wi              JOIN work_item_type wit ON wi.WORK_ITEM_TYPE_ID = wit.ID              JOIN work_item_state wis ON wi.state = wis.ID     WHERE wi.UPDATE_TIME BETWEEN #{et.param20} AND #{et.param21}       AND wit.GROUP = 'requirement'       AND wi.STATE = '40'       AND ((#{et.param22} IS NULL OR #{et.param23} = '') OR wi.BOARD_ID = #{et.param24})       AND ((#{et.param25} IS NULL OR #{et.param26} = '') OR FIND_IN_SET(wi.PRIORITY, #{et.param27}))       AND ((#{et.param28} IS NULL OR #{et.param29} = '') OR FIND_IN_SET(wis.TYPE, #{et.param30}))       AND ((#{et.param31} IS NULL OR #{et.param32} = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, #{et.param33}))       AND ((#{et.param34} IS NULL OR #{et.param35} = '') OR FIND_IN_SET(wi.BACKLOG_FROM, #{et.param36}))     GROUP BY update_date ) c ON date_series.date = c.update_date ORDER BY date_series.date;";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                work_itembacklog_daily_trendresult.putAll(entity);
+                            }
+                        update(work_itembacklog_daily_trenddefault);//更新fact中变量值
+                        update(work_itembacklog_daily_trendresult);//更新fact中变量值
+            end

@@ -35,6 +35,18 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.delete;
                         update(work_itemdeletework_item_page);//更新fact中变量值
             end
 
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam2"
+            ruleflow-group "work_itemdeleteprepareparam2"
+            when
+            then
+                            work_itemdeletedefault.set("isdeleted","1");
+                        update(work_itemdeletedefault);//更新fact中变量值
+                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
+                        update(work_itemdeletework_item_filter);//更新fact中变量值
+                        update(work_itemdeletework_item_page);//更新fact中变量值
+            end
+
             //逻辑处理节点[删除最近访问]
             rule "rawsqlcall1"
             ruleflow-group "work_itemdeleterawsqlcall1"
@@ -67,18 +79,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.delete;
             ruleflow-group "work_itemdeletededataset1"
             when
             then
-                        update(work_itemdeletedefault);//更新fact中变量值
-                        update(work_itemdeletefor_temp_obj);//更新fact中变量值
-                        update(work_itemdeletework_item_filter);//更新fact中变量值
-                        update(work_itemdeletework_item_page);//更新fact中变量值
-            end
-
-            //逻辑处理节点[设置删除状态]
-            rule "prepareparam2"
-            ruleflow-group "work_itemdeleteprepareparam2"
-            when
-            then
-                            work_itemdeletedefault.set("isdeleted","1");
                         update(work_itemdeletedefault);//更新fact中变量值
                         update(work_itemdeletefor_temp_obj);//更新fact中变量值
                         update(work_itemdeletework_item_filter);//更新fact中变量值

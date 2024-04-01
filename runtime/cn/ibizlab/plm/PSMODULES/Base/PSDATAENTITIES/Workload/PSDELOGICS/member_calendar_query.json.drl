@@ -1,0 +1,50 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.member_calendar_query;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.Workload workloadmember_calendar_querydefault;
+                global cn.ibizlab.plm.core.base.domain.Workload workloadmember_calendar_querypage;
+                    global cn.ibizlab.plm.core.base.service.IWorkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IWorkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadmember_calendar_querybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "workloadmember_calendar_queryprepareparam1"
+            when
+            then
+                            workloadmember_calendar_querydefault.set("size","9999");
+                        update(workloadmember_calendar_querydefault);//更新fact中变量值
+                        update(workloadmember_calendar_querypage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "workloadmember_calendar_querydedataset1"
+            when
+            then
+                        update(workloadmember_calendar_querydefault);//更新fact中变量值
+                        update(workloadmember_calendar_querypage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadmember_calendar_queryend1"
+            when
+            then
+                        update(workloadmember_calendar_querydefault);//更新fact中变量值
+                        update(workloadmember_calendar_querypage);//更新fact中变量值
+            end

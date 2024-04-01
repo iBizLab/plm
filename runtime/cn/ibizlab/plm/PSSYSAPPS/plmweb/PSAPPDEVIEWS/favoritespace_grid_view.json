@@ -74,17 +74,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "收藏编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.FAVORITE.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/favoriteEditView.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "realTitle" : "收藏数据重定向视图",
     "getRealTitlePSLanguageRes" : {
@@ -94,6 +83,17 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/favoriteRedirectView.json",
       "viewType" : "DEREDIRECTVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "收藏编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.FAVORITE.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/favoriteEditView.json",
+      "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -109,7 +109,7 @@
       "id" : "TOOLBAR"
     },
     "xDataControlName" : "grid",
-    "modelid" : "8128C93B-78E6-499B-80F6-356344BFB3D2",
+    "modelid" : "3a81fe08400c4e2ccf1ed4df01645e89",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -381,7 +381,7 @@
     "noSort" : false,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "45590017-F6BA-49E9-BC77-BA620602791B",
+    "modelid" : "d209de77196b31b57f99bafbdf4adcf2",
     "modeltype" : "PSDEGRID"
   }, {
     "codeName" : "Space_grid_view_SearchForm",
@@ -436,15 +436,57 @@
       "showBusyIndicator" : true,
       "id" : "SEARCHFORM"
     },
+    "getPSDEFormItems" : [ {
+      "id" : "n_name_like",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "Name"
+      }
+    } ],
     "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.FAVORITE.DEFAULT.FORMPAGE.FORMPAGE1"
+      },
       "caption" : "常规条件",
       "codeName" : "formpage1",
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
+      "getPSDEFormDetails" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFSFITEM.FAVORITE.N_NAME_LIKE"
+        },
+        "caption" : "名称",
+        "codeName" : "n_name_like",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "n_name_like",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "Name"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "name" : "n_name_like",
+          "placeHolder" : "请输入名称"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 8,
+          "colMD" : 8,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true
+      } ],
       "getPSLayout" : {
-        "childColLG" : -1,
-        "childColMD" : 24,
+        "childColLG" : 8,
+        "childColMD" : 8,
         "childColSM" : -1,
         "childColXS" : -1,
         "columnCount" : 24,
@@ -467,7 +509,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "3498EBBE-C92D-4C9D-848A-28B411750482",
+    "modelid" : "a50d82166f1881ee6c181b3d585aadfa",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "controlType" : "SEARCHBAR",
@@ -501,7 +543,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "space_grid_view",
-  "getPSDEViewId" : "EF8B6628-A8F9-4210-ACE4-A4A61B967BBC",
+  "getPSDEViewId" : "2c80ca05ba9858ed5f3348d796cce09f",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -529,6 +571,6 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "b108e83022e2c1410077173ae644094c",
+  "modelid" : "f548840a859db3343925bb6a1c5b2492",
   "modeltype" : "PSAPPDEVIEW"
 }

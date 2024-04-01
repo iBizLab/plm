@@ -314,7 +314,7 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
-        "modelid" : "FD043F89-B5E8-4F44-AE5C-ABBF94530B2B",
+        "modelid" : "5cafc780a3a37505559a09de9e4b756e",
         "modeltype" : "PSDETOOLBAR"
       } ],
       "getPSDETreeNodeRSs" : [ {
@@ -1095,7 +1095,7 @@
             "showCaption" : true,
             "showIcon" : true
           } ],
-          "modelid" : "FD043F89-B5E8-4F44-AE5C-ABBF94530B2B",
+          "modelid" : "5cafc780a3a37505559a09de9e4b756e",
           "modeltype" : "PSDETOOLBAR"
         },
         "getPSSysImage" : {
@@ -1539,7 +1539,7 @@
       "outputIconDefault" : true,
       "rootVisible" : false,
       "name" : "treeexpbar_tree",
-      "modelid" : "49480C39-853A-4D60-8783-62E933A8215D",
+      "modelid" : "7432bec385d110e3a8509da038a7d629",
       "modeltype" : "PSDETREEVIEW"
     }, {
       "codeName" : "product_re_tree_exp_viewtreeexpbar_toolbar",
@@ -1554,7 +1554,7 @@
         "id" : "treeexpbar_toolbar"
       },
       "getPSDEToolbarItems" : [ {
-        "caption" : "添加关联",
+        "caption" : "添加关联（产品）",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction1",
@@ -1563,6 +1563,14 @@
           "modelref" : true,
           "id" : "treeexpbar_toolbar_deuiaction1"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction1",
+          "logicTag" : "treeexpbar_toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "project",
+          "scriptCode" : "!context.project",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf0c1@FontAwesome",
           "cssClass" : "fa fa-chain"
@@ -1570,14 +1578,14 @@
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "添加关联空间",
-          "codeName" : "add_re_space",
+          "codeName" : "product_relation_space",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/spaceproduct_choose_re_space.json",
             "viewType" : "DEOPTVIEW"
           },
           "frontProcessType" : "WIZARD",
-          "fullCodeName" : "Space_add_re_space",
+          "fullCodeName" : "Space_product_relation_space",
           "name" : "产品关联空间",
           "getPSAppDEMethod" : {
             "modelref" : true,
@@ -1585,7 +1593,7 @@
           },
           "getPSAppDEUILogic" : {
             "modelref" : true,
-            "id" : "product__re_space"
+            "id" : "product_relation_space"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -1604,14 +1612,84 @@
           "refreshMode" : 1,
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
-          "uIActionTag" : "add_re_space",
+          "uIActionTag" : "product_relation_space",
           "uIActionType" : "DEUIACTION",
           "uILogicAttachMode" : "AFTER",
           "globalUIAction" : true,
           "reloadData" : true,
-          "id" : "add_re_space@Space"
+          "id" : "product_relation_space@Space"
         },
-        "tooltip" : "添加关联",
+        "tooltip" : "添加关联（产品）",
+        "uIActionTarget" : "NONE",
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "caption" : "添加关联（项目）",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treeexpbar_toolbar_deuiaction3"
+        },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction3",
+          "logicTag" : "treeexpbar_toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "product",
+          "scriptCode" : "!context.product",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0c1@FontAwesome",
+          "cssClass" : "fa fa-chain"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "添加关联空间",
+          "codeName" : "project_relation_space",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/spaceproduct_choose_re_space.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "Space_project_relation_space",
+          "name" : "项目关联空间",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "Other_re_space"
+          },
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "project_relation_space"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Space.json"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "PRINCIPAL_ID",
+            "name" : "PRINCIPAL_ID",
+            "value" : "principal_id",
+            "rawValue" : false
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf067@FontAwesome",
+            "cssClass" : "fa fa-plus"
+          },
+          "refreshMode" : 1,
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "project_relation_space",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "AFTER",
+          "globalUIAction" : true,
+          "reloadData" : true,
+          "id" : "project_relation_space@Space"
+        },
+        "tooltip" : "添加关联（项目）",
         "uIActionTarget" : "NONE",
         "showCaption" : false,
         "showIcon" : true
@@ -1648,7 +1726,7 @@
         "showCaption" : false,
         "showIcon" : true
       } ],
-      "modelid" : "BAD9BD5B-3247-4B8E-B4BC-2FDA2A46E3F9",
+      "modelid" : "10d840246fb90019a8633d265ec536d1",
       "modeltype" : "PSDETOOLBAR"
     } ],
     "title" : "空间",
@@ -1656,7 +1734,7 @@
     "enableCounter" : true,
     "enableSearch" : false,
     "showTitleBar" : true,
-    "modelid" : "a62b3642f016816a928704cbac4ec8ab_treeexpbar",
+    "modelid" : "1c3ffdebed4fc3a4bbbfe8e27709f11c_treeexpbar",
     "modeltype" : "PSEXPBAR"
   }, {
     "controlType" : "SEARCHBAR",
@@ -1690,7 +1768,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "product_re_tree_exp_view",
-  "getPSDEViewId" : "FDBCA68F-1506-43D7-8806-75CDF9A2E5AC",
+  "getPSDEViewId" : "3ea1d9b8a53f33efd048b066021d6435",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDETREEEXPVIEW",
@@ -1713,6 +1791,6 @@
   "enableQuickSearch" : true,
   "enableSearch" : true,
   "showDataInfoBar" : true,
-  "modelid" : "a62b3642f016816a928704cbac4ec8ab",
+  "modelid" : "1c3ffdebed4fc3a4bbbfe8e27709f11c",
   "modeltype" : "PSAPPDEVIEW"
 }

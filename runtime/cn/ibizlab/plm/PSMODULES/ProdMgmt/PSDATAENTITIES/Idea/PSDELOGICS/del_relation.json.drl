@@ -6,8 +6,8 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.del_relation;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.prodmgmt.domain.Idea ideadel_relationdefault;
-                global cn.ibizlab.plm.core.base.domain.Relation ideadel_relationrelationobj;
-                global cn.ibizlab.plm.core.base.domain.Relation ideadel_relationrelationobj2;
+                global cn.ibizlab.plm.core.base.domain.Relation ideadel_relationforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation ideadel_relationreverse_relation_obj;
                     global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
         global cn.ibizlab.plm.core.prodmgmt.service.IIdeaService iBzSysIdeaDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -22,18 +22,18 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.del_relation;
             then
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[填充正反关联对象的主要关联属性]
             rule "prepareparam1"
             ruleflow-group "ideadel_relationprepareparam1"
             when
             then
-                            ideadel_relationrelationobj.set("principalid",ideadel_relationdefault.get("principal_id"));
-                            ideadel_relationrelationobj2.set("targetid",ideadel_relationdefault.get("principal_id"));
-                            ideadel_relationrelationobj2.set("principalid",ideadel_relationdefault.get("id"));
-                            ideadel_relationrelationobj.set("targetid",ideadel_relationdefault.get("id"));
+                            ideadel_relationforward_relation_obj.set("principalid",ideadel_relationdefault.get("principal_id"));
+                            ideadel_relationreverse_relation_obj.set("targetid",ideadel_relationdefault.get("principal_id"));
+                            ideadel_relationreverse_relation_obj.set("principalid",ideadel_relationdefault.get("id"));
+                            ideadel_relationforward_relation_obj.set("targetid",ideadel_relationdefault.get("id"));
                         update(ideadel_relationdefault);//更新fact中变量值
-                        update(ideadel_relationrelationobj);//更新fact中变量值
-                        update(ideadel_relationrelationobj2);//更新fact中变量值
+                        update(ideadel_relationforward_relation_obj);//更新fact中变量值
+                        update(ideadel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[拼接关联对象的主键]
@@ -42,8 +42,8 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.del_relation;
             when
             then
                         update(ideadel_relationdefault);//更新fact中变量值
-                        update(ideadel_relationrelationobj);//更新fact中变量值
-                        update(ideadel_relationrelationobj2);//更新fact中变量值
+                        update(ideadel_relationforward_relation_obj);//更新fact中变量值
+                        update(ideadel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除正向关联]
@@ -51,10 +51,10 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.del_relation;
             ruleflow-group "ideadel_relationdeaction2"
             when
             then
-                        relationservice.remove(ideadel_relationrelationobj.getId());
+                        relationservice.remove(ideadel_relationforward_relation_obj.getId());
                         update(ideadel_relationdefault);//更新fact中变量值
-                        update(ideadel_relationrelationobj);//更新fact中变量值
-                        update(ideadel_relationrelationobj2);//更新fact中变量值
+                        update(ideadel_relationforward_relation_obj);//更新fact中变量值
+                        update(ideadel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除反向关联]
@@ -62,10 +62,10 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.del_relation;
             ruleflow-group "ideadel_relationdeaction3"
             when
             then
-                        relationservice.remove(ideadel_relationrelationobj2.getId());
+                        relationservice.remove(ideadel_relationreverse_relation_obj.getId());
                         update(ideadel_relationdefault);//更新fact中变量值
-                        update(ideadel_relationrelationobj);//更新fact中变量值
-                        update(ideadel_relationrelationobj2);//更新fact中变量值
+                        update(ideadel_relationforward_relation_obj);//更新fact中变量值
+                        update(ideadel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -74,6 +74,6 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.del_relation;
             when
             then
                         update(ideadel_relationdefault);//更新fact中变量值
-                        update(ideadel_relationrelationobj);//更新fact中变量值
-                        update(ideadel_relationrelationobj2);//更新fact中变量值
+                        update(ideadel_relationforward_relation_obj);//更新fact中变量值
+                        update(ideadel_relationreverse_relation_obj);//更新fact中变量值
             end

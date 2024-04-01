@@ -38,7 +38,7 @@
       "realTitle" : "工作项表格视图（发布）",
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemgrid_view_version.json",
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemgrid_view_release.json",
         "viewType" : "DEGRIDVIEW"
       }
     } ],
@@ -103,11 +103,11 @@
           "lanResTag" : "DE.LNAME.WORK_ITEM"
         },
         "caption" : "全部工作项",
-        "codeName" : "work_itemgrid_view_version",
-        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemgrid_view_version.json",
+        "codeName" : "work_itemgrid_view_release",
+        "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_itemgrid_view_release.json",
         "gridRowActiveMode" : 1,
         "memo" : "系统自动添加",
-        "name" : "work_itemgrid_view_version",
+        "name" : "work_itemgrid_view_release",
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
@@ -221,7 +221,7 @@
           }
         } ],
         "getPSControls" : [ {
-          "codeName" : "grid_view_versiontoolbar",
+          "codeName" : "grid_view_releasetoolbar",
           "controlType" : "TOOLBAR",
           "logicName" : "发布_规划工作项",
           "name" : "toolbar",
@@ -304,7 +304,7 @@
             "name" : "fetch",
             "getPSAppDEMethod" : {
               "modelref" : true,
-              "id" : "FetchNormal"
+              "id" : "FetchCommon"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -389,7 +389,7 @@
               "name" : "fetch",
               "getPSAppDEMethod" : {
                 "modelref" : true,
-                "id" : "FetchNormal"
+                "id" : "FetchCommon"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -420,7 +420,7 @@
             "id" : "GRID"
           },
           "getPSControls" : [ {
-            "codeName" : "grid_view_versiongrid_batchtoolbar",
+            "codeName" : "grid_view_releasegrid_batchtoolbar",
             "controlType" : "TOOLBAR",
             "logicName" : "批操作工具栏（工作项）",
             "name" : "grid_batchtoolbar",
@@ -728,6 +728,12 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
                   },
+                  "getPSNavigateParams" : [ {
+                    "key" : "visible",
+                    "name" : "visible",
+                    "value" : "!data.is_archived",
+                    "rawValue" : true
+                  } ],
                   "getPSSysImage" : {
                     "glyph" : "xf187@FontAwesome",
                     "cssClass" : "fa fa-archive"
@@ -736,6 +742,9 @@
                   "successMsg" : "归档成功",
                   "timeout" : 60000,
                   "uIActionMode" : "BACKEND",
+                  "uIActionParamJO" : {
+                    "VISIBLE" : "!data.is_archived"
+                  },
                   "uIActionTag" : "archive",
                   "uIActionType" : "DEUIACTION",
                   "enableConfirm" : true,
@@ -782,6 +791,12 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
                   },
+                  "getPSNavigateParams" : [ {
+                    "key" : "visible",
+                    "name" : "visible",
+                    "value" : "data.is_archived",
+                    "rawValue" : true
+                  } ],
                   "getPSSysImage" : {
                     "cssClass" : "key"
                   },
@@ -789,6 +804,9 @@
                   "successMsg" : "激活成功",
                   "timeout" : 60000,
                   "uIActionMode" : "BACKEND",
+                  "uIActionParamJO" : {
+                    "VISIBLE" : "data.is_archived"
+                  },
                   "uIActionTag" : "activate",
                   "uIActionType" : "DEUIACTION",
                   "enableConfirm" : true,
@@ -1009,6 +1027,12 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
                   },
+                  "getPSNavigateParams" : [ {
+                    "key" : "visible",
+                    "name" : "visible",
+                    "value" : "!data.is_archived",
+                    "rawValue" : true
+                  } ],
                   "getPSSysImage" : {
                     "glyph" : "xf187@FontAwesome",
                     "cssClass" : "fa fa-archive"
@@ -1017,6 +1041,9 @@
                   "successMsg" : "归档成功",
                   "timeout" : 60000,
                   "uIActionMode" : "BACKEND",
+                  "uIActionParamJO" : {
+                    "VISIBLE" : "!data.is_archived"
+                  },
                   "uIActionTag" : "archive",
                   "uIActionType" : "DEUIACTION",
                   "enableConfirm" : true,
@@ -1088,6 +1115,12 @@
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
                   },
+                  "getPSNavigateParams" : [ {
+                    "key" : "visible",
+                    "name" : "visible",
+                    "value" : "data.is_archived",
+                    "rawValue" : true
+                  } ],
                   "getPSSysImage" : {
                     "cssClass" : "key"
                   },
@@ -1095,6 +1128,9 @@
                   "successMsg" : "激活成功",
                   "timeout" : 60000,
                   "uIActionMode" : "BACKEND",
+                  "uIActionParamJO" : {
+                    "VISIBLE" : "data.is_archived"
+                  },
                   "uIActionTag" : "activate",
                   "uIActionType" : "DEUIACTION",
                   "enableConfirm" : true,
@@ -2156,7 +2192,7 @@
             "lanResTag" : "DE.LNAME.WORK_ITEM"
           },
           "caption" : "全部工作项",
-          "codeName" : "grid_view_versioncaptionbar",
+          "codeName" : "grid_view_releasecaptionbar",
           "controlType" : "CAPTIONBAR",
           "name" : "captionbar",
           "getPSAppDataEntity" : {
@@ -2165,7 +2201,7 @@
           },
           "getPSControlParam" : { }
         } ],
-        "getPSDEViewCodeName" : "grid_view_version",
+        "getPSDEViewCodeName" : "grid_view_release",
         "getPSDEViewId" : "45dc83b03464cc35682cc1be4486e6fc",
         "getPSViewLayoutPanel" : {
           "codeName" : "Layoutpanel",

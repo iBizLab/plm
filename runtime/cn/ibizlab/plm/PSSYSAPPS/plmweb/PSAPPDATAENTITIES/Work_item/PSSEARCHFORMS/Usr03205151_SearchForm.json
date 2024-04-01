@@ -1,0 +1,222 @@
+{
+  "codeName" : "Usr03205151_SearchForm",
+  "controlType" : "SEARCHFORM",
+  "defaultLabelWidth" : 130,
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item/PSSEARCHFORMS/Usr03205151_SearchForm.json",
+  "logicName" : "kanban工作项分布报表视图_搜索表单",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
+  },
+  "getPSDEFormItems" : [ {
+    "id" : "n_board_name_eq",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "BOARD_NAME",
+      "codeName" : "Board_name"
+    }
+  }, {
+    "id" : "n_board_id_eq",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "BOARD_ID",
+      "codeName" : "Board_id"
+    }
+  }, {
+    "id" : "count_type",
+    "dataType" : 25,
+    "createDV" : "按栏"
+  }, {
+    "id" : "n_work_item_type_id_eq",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "Work_item_type_id"
+    }
+  } ],
+  "getPSDEFormPages" : [ {
+    "caption" : "常规条件",
+    "codeName" : "formpage1",
+    "detailStyle" : "DEFAULT",
+    "detailType" : "FORMPAGE",
+    "name" : "formpage1",
+    "getPSDEFormDetails" : [ {
+      "caption" : "看板",
+      "codeName" : "n_board_name_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "n_board_name_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "BOARD_NAME",
+        "codeName" : "Board_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "AC" : "TRUE",
+          "PICKUPVIEW" : "TRUE"
+        },
+        "editorType" : "PICKER",
+        "handlerType" : "PickupText",
+        "name" : "n_board_name_eq",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "FetchDefault"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Board.json"
+        },
+        "getPSEditorItems" : [ {
+          "name" : "n_board_id_eq"
+        } ],
+        "getPickupPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/boardPickupView.json",
+          "viewType" : "DEPICKUPVIEW"
+        },
+        "placeHolder" : "选择看板",
+        "valueItemName" : "n_board_id_eq",
+        "enableAC" : true,
+        "enablePickupView" : true,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "n_board_id_eq",
+      "allowEmpty" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "看板",
+      "codeName" : "n_board_id_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "n_board_id_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "BOARD_ID",
+        "codeName" : "Board_id"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "n_board_id_eq"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "统计方式",
+      "codeName" : "count_type",
+      "createDV" : "按栏",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 0,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "count_type",
+      "noPrivDisplayMode" : 1,
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "count_type"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "工作项类型",
+      "codeName" : "n_work_item_type_id_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "n_work_item_type_id_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "WORK_ITEM_TYPE_ID",
+        "codeName" : "Work_item_type_id"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.N_PROJECT_TYPE_EQ" : "kanban"
+        },
+        "editorType" : "MDROPDOWNLIST",
+        "name" : "n_work_item_type_id_eq",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__Work_item_type.json"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "n_project_type_eq",
+          "name" : "n_project_type_eq",
+          "value" : "kanban",
+          "rawValue" : true
+        } ],
+        "placeHolder" : "选择工作项类型",
+        "singleSelect" : false
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true,
+      "showCaption" : true
+    } ],
+    "getPSLayout" : {
+      "childColLG" : -1,
+      "childColMD" : 24,
+      "childColSM" : -1,
+      "childColXS" : -1,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "infoGroupMode" : false
+  } ],
+  "getPSLayout" : {
+    "childColLG" : -1,
+    "childColMD" : 24,
+    "childColSM" : -1,
+    "childColXS" : -1,
+    "columnCount" : 24,
+    "layout" : "TABLE_24COL"
+  },
+  "searchButtonStyle" : "NONE",
+  "tabHeaderPos" : "TOP",
+  "enableAdvanceSearch" : false,
+  "enableAutoSearch" : true,
+  "enableFilterSave" : false,
+  "noTabHeader" : true,
+  "modelid" : "17abe00b872992d287adce13fe415fda",
+  "modeltype" : "PSDEFORM_SEARCHFORM"
+}

@@ -1,0 +1,39 @@
+package cn.ibizlab.plm.base.logic.recentlogic.recent_clean;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.Recent recentrecent_cleandefault;
+        global cn.ibizlab.plm.core.base.service.IRecentService iBzSysRecentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "recentrecent_cleanbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[定时清理最近访问数据]
+            rule "rawsqlcall1"
+            ruleflow-group "recentrecent_cleanrawsqlcall1"
+            when
+            then
+                        Map param = null;
+                        String strSql="update recent inner join  ( 	SELECT 		t1.id  	FROM 		recent t1 		JOIN ( 		SELECT 			create_man, 			owner_type, 			OWNER_SUBTYPE, 			SUBSTRING_INDEX( GROUP_CONCAT( id ORDER BY UPDATE_TIME DESC ), ',', 100 ) AS top_ids  		FROM 			recent where IS_DELETED=0 		GROUP BY 			create_man, 			owner_type, 			OWNER_SUBTYPE  		) t2 ON t1.create_man = t2.create_man  		AND t1.owner_type = t2.owner_type  		AND t1.OWNER_SUBTYPE = t2.OWNER_SUBTYPE  		AND FIND_IN_SET( t1.id, t2.top_ids ) = 0   ) as tb on recent.id=tb.id  set IS_DELETED=1";
+                        iBzSysRecentDefaultService.execute(strSql,param);//SQL调用
+                        update(recentrecent_cleandefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "recentrecent_cleanend1"
+            when
+            then
+                        update(recentrecent_cleandefault);//更新fact中变量值
+            end

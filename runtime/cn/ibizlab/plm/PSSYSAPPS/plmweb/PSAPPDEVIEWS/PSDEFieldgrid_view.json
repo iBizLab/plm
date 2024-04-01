@@ -83,15 +83,6 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "实体属性选项操作视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDEFieldquick_create_view.json",
-      "viewType" : "DEOPTVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "realOpenMode" : "DRAWER_RIGHT",
     "realTitle" : "实体属性编辑视图",
@@ -99,6 +90,15 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDEFieldquick_cfg_view.json",
       "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "实体属性选项操作视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDEFieldquick_create_view.json",
+      "viewType" : "DEOPTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -261,7 +261,7 @@
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "tbitem8",
-      "noPrivDisplayMode" : 2,
+      "noPrivDisplayMode" : 1,
       "getPSAppViewUIAction" : {
         "modelref" : true,
         "id" : "toolbar_tbitem8"
@@ -272,13 +272,19 @@
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
         "getCapPSLanguageRes" : {
           "lanResTag" : "TBB.TEXT.*.REMOVE"
         },
         "caption" : "删除",
         "codeName" : "Remove",
+        "dataAccessAction" : "DELETE",
         "fullCodeName" : "Remove",
         "name" : "表格界面_删除操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "DELETE"
+        },
         "getPSSysImage" : {
           "glyph" : "xf00d@FontAwesome",
           "cssClass" : "fa fa-remove"
@@ -955,7 +961,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "grid_view",
-  "getPSDEViewId" : "41241bdaba9e3b7c52f05085a110623d",
+  "getPSDEViewId" : "c93fcdab26329a78bbcfd254d2770a0b",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEGRIDVIEW",
@@ -982,6 +988,6 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "modelid" : "806893e4187406f64bfe24b4041462e9",
+  "modelid" : "774b0fe80dee35da526c296c529d1e8a",
   "modeltype" : "PSAPPDEVIEW"
 }

@@ -120,6 +120,34 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> actual[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "Default[PRINCIPAL_ID] ==> actual[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRINCIPAL_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "dstFieldName" : "NAME",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -317,6 +345,26 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[ACTUAL_WORKLOAD] ==> actual[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ACTUAL_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[WORK_ITEM] ==> actual[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "WORK_ITEM",
+      "srcValueType" : "SRCVALUE"
+    }, {
       "dstFieldName" : "OWNER_TYPE",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -428,6 +476,26 @@
       "dstFieldName" : "OWNER_TYPE",
       "getDstPSDELogicParam" : {
         "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[IDEA] ==> actual[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "IDEA",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[ACTUAL_WORKLOAD] ==> actual[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ACTUAL_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
         "id" : "remaining"
       },
       "name" : "直接值[IDEA] ==> remaining[OWNER_TYPE]",
@@ -532,6 +600,26 @@
         "id" : "test_case"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[TEST_CASE] ==> actual[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "TEST_CASE",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "直接值[ACTUAL_WORKLOAD] ==> actual[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "ACTUAL_WORKLOAD",
+      "srcValueType" : "SRCVALUE"
     }, {
       "dstFieldName" : "OWNER_TYPE",
       "getDstPSDELogicParam" : {
@@ -663,7 +751,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "END1"
+        "id" : "RAWSQLCALL1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -671,13 +759,140 @@
         "id" : "DEACTION6"
       }
     } ],
-    "topPos" : 780
+    "topPos" : 710
   }, {
-    "codeName" : "END1",
-    "leftPos" : 200,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "topPos" : 967
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "actual"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "合计已登记工时",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION7"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "DECIMAL_VALUE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "actual"
+          },
+          "logicType" : "SINGLE",
+          "name" : "actual[DECIMAL_VALUE] 不等于(<>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "合计已登记工时为0",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "DATETIME_VALUE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "actual"
+          },
+          "logicType" : "SINGLE",
+          "name" : "actual[DATETIME_VALUE] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "actual[OWNER_ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "OWNER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "actual[OWNER_TYPE]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "OWNER_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "select sum(DURATION) as `DECIMAL_VALUE` from `workload` where PRINCIPAL_ID = ? and PRINCIPAL_TYPE = ?",
+    "topPos" : 833,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 370,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "工时为0时置为NULL",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION7"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "DECIMAL_VALUE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "actual"
+      },
+      "name" : "空值（NULL） ==> actual[DECIMAL_VALUE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    } ],
+    "topPos" : 950
+  }, {
+    "codeName" : "DEACTION7",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_storage/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "actual"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_storage.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新实际工时",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "actual"
+    },
+    "topPos" : 1070
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -688,6 +903,15 @@
       "path" : "PSMODULES/Base/PSDATAENTITIES/Workload.json"
     },
     "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "actual",
+    "logicName" : "实际工时",
+    "name" : "实际工时",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Extend_storage.json"
+    },
     "entityParam" : true
   }, {
     "codeName" : "idea",

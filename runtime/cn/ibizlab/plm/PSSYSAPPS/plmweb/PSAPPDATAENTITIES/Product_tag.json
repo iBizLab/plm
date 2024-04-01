@@ -1163,9 +1163,11 @@
   } ],
   "getAllPSAppDEUIActions" : [ {
     "actionTarget" : "SINGLEKEY",
+    "noPrivDisplayMode" : 1,
     "caption" : "删除标签",
     "codeName" : "delete_tag",
     "confirmMsg" : "确认删除该标签？",
+    "dataAccessAction" : "DELETE",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "Product_tag_delete_tag",
     "name" : "删除标签",
@@ -1176,6 +1178,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_tag.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "DELETE"
     },
     "refreshMode" : 1,
     "successMsg" : "删除成功",
@@ -1189,8 +1195,10 @@
     "id" : "delete_tag@Product_tag"
   }, {
     "actionTarget" : "SINGLEKEY",
+    "noPrivDisplayMode" : 1,
     "caption" : "编辑标签",
     "codeName" : "edit_tag",
+    "dataAccessAction" : "UPDATE",
     "getFrontPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tagoption_view_edit.json",
@@ -1202,6 +1210,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Product_tag.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "timeout" : 60000,
     "tooltip" : "编辑标签",
@@ -1220,10 +1232,6 @@
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tagoption_view_new.json",
-    "viewType" : "DEOPTVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tagoption_view_edit.json",
     "viewType" : "DEOPTVIEW"
   }, {
@@ -1234,6 +1242,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_taggrid_view_tag.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tagoption_view_new.json",
+    "viewType" : "DEOPTVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -1254,9 +1266,6 @@
     "id" : "Product__CREATE"
   }, {
     "logicName" : "删除",
-    "name" : "DELETE"
-  }, {
-    "logicName" : "删除",
     "mapPSDEName" : "PRODUCT",
     "mapPSDEOPPrivName" : "DELETE",
     "getMapPSDER" : {
@@ -1269,6 +1278,9 @@
     },
     "name" : "DELETE",
     "id" : "Product__DELETE"
+  }, {
+    "logicName" : "删除",
+    "name" : "DELETE"
   }, {
     "logicName" : "读取",
     "name" : "READ"
@@ -1384,7 +1396,7 @@
     "uniqueTag" : "Product_tag__Usr1220692267",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u0971a9e",
+      "name" : "ud38e74b",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -1403,7 +1415,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "u0e77fe6",
+      "name" : "ub539582",
       "getPSSysImage" : {
         "glyph" : "xf1f8@FontAwesome",
         "cssClass" : "fa fa-trash"

@@ -13,7 +13,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "FetchNormal"
+      "id" : "FetchCommon"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -42,7 +42,7 @@
     }
   } ],
   "getPSControls" : [ {
-    "codeName" : "grid_view_versiongrid_batchtoolbar",
+    "codeName" : "grid_view_all_scrumgrid_batchtoolbar",
     "controlType" : "TOOLBAR",
     "logicName" : "批操作工具栏（工作项）",
     "name" : "grid_batchtoolbar",
@@ -473,7 +473,7 @@
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "modelid" : "9366DB7F-2A7F-438D-90F0-B2B936356967",
+    "modelid" : "559be635e58fa6cfe7ed880e88bf87e6",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDEDataImport" : {
@@ -513,7 +513,7 @@
     },
     "getPSDEUIActionGroup" : {
       "codeName" : "Usr1220197218",
-      "name" : "工作项操作列",
+      "name" : "敏捷项目工作项操作列",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Work_item.json"
@@ -521,7 +521,7 @@
       "getPSUIActionGroupDetails" : [ {
         "caption" : "复制",
         "detailType" : "DEUIACTION",
-        "name" : "u9c9c725",
+        "name" : "uf11d057",
         "getPSSysImage" : {
           "glyph" : "xf0c5@FontAwesome",
           "cssClass" : "fa fa-copy"
@@ -566,7 +566,7 @@
       }, {
         "caption" : "移动",
         "detailType" : "DEUIACTION",
-        "name" : "u2588787",
+        "name" : "u2cec520",
         "getPSSysImage" : {
           "glyph" : "xf047@FontAwesome",
           "cssClass" : "fa fa-arrows"
@@ -611,7 +611,7 @@
       }, {
         "caption" : "归档",
         "detailType" : "DEUIACTION",
-        "name" : "ud0137d9",
+        "name" : "u4fdad0f",
         "getPSSysImage" : {
           "glyph" : "xf187@FontAwesome",
           "cssClass" : "fa fa-archive"
@@ -651,7 +651,7 @@
       }, {
         "caption" : "删除",
         "detailType" : "DEUIACTION",
-        "name" : "ua4fae66",
+        "name" : "u774a363",
         "getPSSysImage" : {
           "glyph" : "xf014@FontAwesome",
           "cssClass" : "fa fa-trash-o"
@@ -691,7 +691,7 @@
       }, {
         "caption" : "激活",
         "detailType" : "DEUIACTION",
-        "name" : "uf4b02b1",
+        "name" : "u6aa52c1",
         "getPSSysImage" : {
           "cssClass" : "key"
         },
@@ -729,7 +729,7 @@
       }, {
         "caption" : "变更父工作项",
         "detailType" : "DEUIACTION",
-        "name" : "uda36756",
+        "name" : "ua2ab7cd",
         "getPSSysImage" : {
           "cssClass" : "git-branch"
         },
@@ -781,7 +781,7 @@
       }, {
         "caption" : "关联工作项",
         "detailType" : "DEUIACTION",
-        "name" : "uff8cd76",
+        "name" : "ud5a51ef",
         "getPSSysImage" : {
           "glyph" : "xf0c1@FontAwesome",
           "cssClass" : "fa fa-link"
@@ -848,7 +848,7 @@
       }, {
         "caption" : "移入迭代",
         "detailType" : "DEUIACTION",
-        "name" : "u177ee71",
+        "name" : "u6586895",
         "getPSSysImage" : {
           "glyph" : "xf1d9@FontAwesome",
           "cssClass" : "fa fa-send-o"
@@ -893,7 +893,7 @@
       }, {
         "caption" : "移入发布",
         "detailType" : "DEUIACTION",
-        "name" : "u55c2849",
+        "name" : "u0f2b72c",
         "getPSSysImage" : {
           "glyph" : "xf1d9@FontAwesome",
           "cssClass" : "fa fa-send-o"
@@ -938,7 +938,7 @@
       }, {
         "caption" : "界面行为支持获取编辑列",
         "detailType" : "DEUIACTION",
-        "name" : "u96e02ff",
+        "name" : "u951f751",
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "界面行为支持获取编辑列",
@@ -1100,6 +1100,11 @@
       "name" : "START_AT",
       "codeName" : "Start_at"
     },
+    "getPSControlAttributes" : [ {
+      "attrName" : "disabledDate",
+      "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+      "name" : "start_at_disabledDate"
+    } ],
     "valueFormat" : "YYYY-MM-DD",
     "width" : 150,
     "widthUnit" : "PX",
@@ -1119,6 +1124,11 @@
       "name" : "END_AT",
       "codeName" : "End_at"
     },
+    "getPSControlAttributes" : [ {
+      "attrName" : "disabledDate",
+      "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+      "name" : "end_at_disabledDate"
+    } ],
     "valueFormat" : "YYYY-MM-DD",
     "width" : 150,
     "widthUnit" : "PX",
@@ -1260,13 +1270,6 @@
     "getPSAppDEField" : {
       "name" : "SPRINT_ID",
       "codeName" : "Sprint_id"
-    }
-  }, {
-    "dataType" : 25,
-    "name" : "version_id",
-    "getPSAppDEField" : {
-      "name" : "VERSION_ID",
-      "codeName" : "Version_id"
     }
   }, {
     "dataType" : 25,
@@ -1427,7 +1430,7 @@
         "getPSUIActionGroupDetails" : [ {
           "caption" : "跳转至成员设置",
           "detailType" : "DEUIACTION",
-          "name" : "ue68004d",
+          "name" : "uc5eeb4c",
           "getPSSysImage" : {
             "glyph" : "xf0f0@FontAwesome",
             "cssClass" : "fa fa-user-md"
@@ -1589,6 +1592,7 @@
   "enableColFilter" : false,
   "enableCustomized" : true,
   "enableGroup" : false,
+  "enableItemPrivilege" : true,
   "enablePagingBar" : true,
   "enableRowEdit" : false,
   "enableRowEditOrder" : false,

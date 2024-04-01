@@ -281,23 +281,12 @@
       "hidden" : true,
       "dataType" : 25
     }, {
-      "id" : "assignee_name",
+      "id" : "name",
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "ASSIGNEE_NAME",
-        "codeName" : "Assignee_name"
+        "name" : "NAME",
+        "codeName" : "Name"
       }
-    }, {
-      "id" : "assignee_id",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "ASSIGNEE_ID",
-        "codeName" : "Assignee_id"
-      }
-    }, {
-      "id" : "formitem",
-      "dataType" : 25
     }, {
       "id" : "id",
       "hidden" : true,
@@ -327,130 +316,28 @@
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
-          "caption" : "负责人",
-          "codeName" : "assignee_name",
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.NAME"
+          },
+          "caption" : "名称",
+          "codeName" : "name",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
-          "labelPos" : "TOP",
+          "labelPos" : "LEFT",
           "labelWidth" : 130,
-          "name" : "assignee_name",
+          "name" : "name",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "ASSIGNEE_NAME",
-            "codeName" : "Assignee_name"
+            "name" : "NAME",
+            "codeName" : "Name"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "AC" : "TRUE",
-              "TRIGGER" : "TRUE",
-              "PICKUPVIEW" : "FALSE"
-            },
-            "editorType" : "PICKEREX_TRIGGER",
-            "handlerType" : "PickupText",
-            "name" : "assignee_name",
-            "getPSAppDEACMode" : {
-              "modelref" : true,
-              "id" : "Member_select"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "FetchDefault"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-            },
-            "getPSEditorItems" : [ {
-              "name" : "assignee_id"
-            } ],
-            "getPSUIActionGroup" : {
-              "codeName" : "Usr0104465165",
-              "name" : "跳转至成员配置",
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-              },
-              "getPSUIActionGroupDetails" : [ {
-                "caption" : "跳转至成员设置",
-                "detailType" : "DEUIACTION",
-                "name" : "ue68004d",
-                "getPSSysImage" : {
-                  "glyph" : "xf0f0@FontAwesome",
-                  "cssClass" : "fa fa-user-md"
-                },
-                "getPSUIAction" : {
-                  "actionTarget" : "NONE",
-                  "caption" : "跳转至成员设置",
-                  "codeName" : "jump_to_member_set",
-                  "frontProcessType" : "OTHER",
-                  "fullCodeName" : "Project_member_jump_to_member_set",
-                  "name" : "跳转至成员设置",
-                  "getPSAppDEUILogic" : {
-                    "modelref" : true,
-                    "id" : "jump_to_member_set"
-                  },
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project_member.json"
-                  },
-                  "getPSSysImage" : {
-                    "glyph" : "xf0f0@FontAwesome",
-                    "cssClass" : "fa fa-user-md"
-                  },
-                  "scriptCode" : "ibiz.openView.push(`/-/index/project=${context.project}/projectRedirectView/-/projectsetting_view/srfnavctx=%7B\"project\"%3A\"${context.project}\"%2C\"srfdefaulttoroutedepth\"%3A\"3\"%7D;srfnav=root%3Anormal%3Amember/project_membergrid_view_config/-`);",
-                  "timeout" : 60000,
-                  "tooltip" : "跳转至成员设置",
-                  "uIActionMode" : "FRONT",
-                  "uIActionTag" : "jump_to_member_set",
-                  "uIActionType" : "DEUIACTION",
-                  "uILogicAttachMode" : "REPLACE",
-                  "globalUIAction" : true,
-                  "id" : "jump_to_member_set@Project_member"
-                },
-                "tooltip" : "跳转至成员设置",
-                "addSeparator" : false,
-                "showCaption" : true,
-                "showIcon" : true
-              } ],
-              "uniqueTag" : "Project_member__Usr0104465165"
-            },
-            "valueItemName" : "assignee_id",
-            "enableAC" : true,
-            "enablePickupView" : false,
-            "forceSelection" : true,
-            "showTrigger" : true,
-            "singleSelect" : true
-          },
-          "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
-            "layout" : "TABLE_24COL"
-          },
-          "valueItemName" : "assignee_id",
-          "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "负责人标识",
-          "codeName" : "assignee_id",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "assignee_id",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "ASSIGNEE_ID",
-            "codeName" : "Assignee_id"
-          },
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "assignee_id"
+            "editorType" : "TEXTBOX",
+            "maxLength" : 200,
+            "name" : "name"
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
@@ -458,7 +345,6 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "hidden" : true,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -471,115 +357,6 @@
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : true
-      }, {
-        "actionGroupExtractMode" : "ITEM",
-        "caption" : "发布进度",
-        "codeName" : "grouppanel1",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel1",
-        "getPSLayout" : {
-          "childColLG" : -1,
-          "childColMD" : 24,
-          "childColSM" : -1,
-          "childColXS" : -1,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 12,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : true
-      }, {
-        "actionGroupExtractMode" : "ITEM",
-        "caption" : "发布日志",
-        "codeName" : "grouppanel2",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel2",
-        "getPSDEFormDetails" : [ {
-          "codeName" : "formitem",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "NONE",
-          "labelWidth" : 0,
-          "name" : "formitem",
-          "noPrivDisplayMode" : 1,
-          "getPSEditor" : {
-            "editorType" : "HTMLEDITOR",
-            "name" : "formitem"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true
-        } ],
-        "getPSLayout" : {
-          "childColLG" : -1,
-          "childColMD" : 24,
-          "childColSM" : -1,
-          "childColXS" : -1,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 12,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : true
-      }, {
-        "actionGroupExtractMode" : "ITEM",
-        "caption" : "迭代",
-        "codeName" : "grouppanel3",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel3",
-        "getPSLayout" : {
-          "childColLG" : -1,
-          "childColMD" : 24,
-          "childColSM" : -1,
-          "childColXS" : -1,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 12,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
-        "showCaption" : true
-      }, {
-        "actionGroupExtractMode" : "ITEM",
-        "caption" : "测试计划",
-        "codeName" : "grouppanel4",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "grouppanel4",
-        "getPSLayout" : {
-          "childColLG" : -1,
-          "childColMD" : 24,
-          "childColSM" : -1,
-          "childColXS" : -1,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 12,
-          "colMD" : 12,
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
@@ -725,13 +502,35 @@
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,
-    "codeName" : "versions",
+    "codeName" : "pages",
     "dataRSMode" : 0,
-    "majorDECodeName" : "Project",
-    "majorDEName" : "PROJECT",
+    "majorDECodeName" : "Space",
+    "majorDEName" : "SPACE",
     "getMajorPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Space.json"
+    },
+    "minorDECodeName" : "Article_page",
+    "minorDEName" : "PAGE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page.json"
+    },
+    "name" : "DER1N_PAGE_SPACE_SPACE_ID",
+    "getParentPSAppDEField" : {
+      "name" : "SPACE_ID",
+      "codeName" : "Space_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "Versions",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "Article_page",
+    "majorDEName" : "PAGE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page.json"
     },
     "minorDECodeName" : "Version",
     "minorDEName" : "VERSION",
@@ -739,11 +538,25 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Version.json"
     },
-    "name" : "DER1N_VERSION_PROJECT_PROJECT_ID",
-    "getParentPSAppDEField" : {
-      "name" : "PROJECT_ID",
-      "codeName" : "Project_id"
+    "name" : "页面-版本",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "Versions",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "Article_page",
+    "majorDEName" : "PAGE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page.json"
     },
+    "minorDECodeName" : "Version",
+    "minorDEName" : "VERSION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Version.json"
+    },
+    "name" : "页面-版本",
     "rSMode" : 2
   } ] ]
 }

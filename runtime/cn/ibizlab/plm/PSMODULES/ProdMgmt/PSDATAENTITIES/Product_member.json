@@ -813,6 +813,25 @@
       "standardColumnName" : "`PRODUCT_IDENTIFIER`"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PRODUCT_IDENTIFIER][产品编号]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PRODUCT_IDENTIFIER][产品编号]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Product/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Product.json"
+        },
+        "stringLength" : 15,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PRODUCT_IDENTIFIER][产品编号]移动端默认",
       "getPSDEFFormItem" : {
@@ -833,25 +852,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PRODUCT_IDENTIFIER][产品编号]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[PRODUCT_IDENTIFIER][产品编号]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Product/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/Product.json"
-        },
-        "stringLength" : 15,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2335,9 +2335,6 @@
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
-    "name" : "CREATE"
-  }, {
-    "logicName" : "建立",
     "mapPSDEName" : "PRODUCT",
     "mapPSDEOPPrivName" : "UPDATE",
     "getMapPSDER" : {
@@ -2350,6 +2347,9 @@
     },
     "name" : "CREATE",
     "id" : "Product__CREATE"
+  }, {
+    "logicName" : "建立",
+    "name" : "CREATE"
   }, {
     "logicName" : "删除",
     "mapPSDEName" : "PRODUCT",
@@ -2369,6 +2369,9 @@
     "name" : "DELETE"
   }, {
     "logicName" : "读取",
+    "name" : "READ"
+  }, {
+    "logicName" : "读取",
     "mapPSDEName" : "PRODUCT",
     "mapPSDEOPPrivName" : "READ",
     "getMapPSDER" : {
@@ -2381,9 +2384,6 @@
     },
     "name" : "READ",
     "id" : "Product__READ"
-  }, {
-    "logicName" : "读取",
-    "name" : "READ"
   }, {
     "logicName" : "更新",
     "name" : "UPDATE"
@@ -2433,6 +2433,12 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "grid_view_config",
+    "logicName" : "产品成员配置",
+    "name" : "产品成员配置",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "PickupGridView",
     "logicName" : "产品成员实体选择表格视图（部件视图）",
     "name" : "产品成员实体选择表格视图（部件视图）",
@@ -2443,12 +2449,6 @@
     "logicName" : "产品成员实体表格视图",
     "modelTag" : "MDATAVIEW",
     "name" : "产品成员实体表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "grid_view_config",
-    "logicName" : "产品成员配置",
-    "name" : "产品成员配置",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -2527,6 +2527,7 @@
     "name" : "NAME",
     "codeName" : "Name"
   },
+  "memo" : "记录产品团队中各个成员的角色·，方便管理和协作。",
   "getMinorPSDERs" : [ {
     "codeName" : "Product",
     "dERType" : "DER1N",

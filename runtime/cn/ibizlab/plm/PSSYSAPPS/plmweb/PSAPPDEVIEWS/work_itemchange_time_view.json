@@ -205,20 +205,20 @@
               "dEFName" : "END_AT",
               "name" : "[常规条件] 值为空(Nil)"
             }, {
-              "condOp" : "LT",
+              "condOp" : "LTANDEQ",
               "condType" : "SIMPLE",
               "dEFName" : "START_AT",
-              "name" : "[常规条件] 小于(<) 数据对象属性 (END_AT)",
+              "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
               "paramType" : "ENTITYFIELD",
               "paramValue" : "END_AT",
-              "ruleInfo" : "开始时间必须小于结束时间"
+              "ruleInfo" : "开始时间必须小于等于结束时间"
             } ],
-            "ruleInfo" : "开始时间必须小于结束时间"
+            "ruleInfo" : "开始时间必须小于等于结束时间"
           } ],
-          "ruleInfo" : "开始时间必须小于结束时间"
+          "ruleInfo" : "开始时间必须小于等于结束时间"
         },
-        "ruleInfo" : "开始时间必须小于结束时间",
-        "checkDefault" : false,
+        "ruleInfo" : "开始时间必须小于等于结束时间",
+        "checkDefault" : true,
         "defaultMode" : false,
         "enableBackend" : true,
         "enableFront" : true
@@ -245,20 +245,20 @@
               "dEFName" : "START_AT",
               "name" : "[常规条件] 值为空(Nil)"
             }, {
-              "condOp" : "GT",
+              "condOp" : "GTANDEQ",
               "condType" : "SIMPLE",
               "dEFName" : "END_AT",
-              "name" : "[常规条件] 大于(>) 数据对象属性 (START_AT)",
+              "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
               "paramType" : "ENTITYFIELD",
               "paramValue" : "START_AT",
-              "ruleInfo" : "结束时间必须大于开始时间"
+              "ruleInfo" : "结束时间必须大于等于开始时间"
             } ],
-            "ruleInfo" : "结束时间必须大于开始时间"
+            "ruleInfo" : "结束时间必须大于等于开始时间"
           } ],
-          "ruleInfo" : "结束时间必须大于开始时间"
+          "ruleInfo" : "结束时间必须大于等于开始时间"
         },
-        "ruleInfo" : "结束时间必须大于开始时间",
-        "checkDefault" : false,
+        "ruleInfo" : "结束时间必须大于等于开始时间",
+        "checkDefault" : true,
         "defaultMode" : false,
         "enableBackend" : true,
         "enableFront" : true
@@ -363,6 +363,11 @@
             "name" : "START_AT",
             "codeName" : "Start_at"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "disabledDate",
+            "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+            "name" : "start_at_disabledDate"
+          } ],
           "getPSEditor" : {
             "dateTimeFormat" : "YYYY-MM-DD",
             "editorParams" : {
@@ -398,6 +403,11 @@
             "name" : "END_AT",
             "codeName" : "End_at"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "disabledDate",
+            "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+            "name" : "end_at_disabledDate"
+          } ],
           "getPSEditor" : {
             "dateTimeFormat" : "YYYY-MM-DD",
             "editorParams" : {
@@ -515,7 +525,7 @@
     },
     "noTabHeader" : true,
     "name" : "form",
-    "modelid" : "766D308D-A9F0-474C-A3AA-BCCB444A2D14",
+    "modelid" : "9a7ecfc1e61318ed01dfbda35ed12373",
     "modeltype" : "PSDEFORM_EDITFORM"
   }, {
     "codeName" : "change_time_viewdatainfobar",
@@ -543,7 +553,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "change_time_view",
-  "getPSDEViewId" : "F0AC7020-C419-4BDD-AD62-55185F236D36",
+  "getPSDEViewId" : "bcd26c57cfc7a846793cc2c5dff10779",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDEOPTVIEW",
@@ -567,7 +577,7 @@
   "enableDirtyChecking" : false,
   "showCaptionBar" : false,
   "showDataInfoBar" : true,
-  "modelid" : "9629ed052a743b2acb8ad53e5c6cceb2",
+  "modelid" : "8d36b7b7f193c5dbbe199276586f081f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

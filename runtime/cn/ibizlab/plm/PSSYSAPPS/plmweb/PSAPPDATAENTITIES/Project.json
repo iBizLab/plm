@@ -29,7 +29,7 @@
       "getPSUIActionGroupDetails" : [ {
         "caption" : "项目配置",
         "detailType" : "DEUIACTION",
-        "name" : "u25405e6",
+        "name" : "u3fee786",
         "getPSUIAction" : {
           "actionTarget" : "NONE",
           "caption" : "项目配置",
@@ -89,17 +89,17 @@
       }
     }, {
       "dataType" : 25,
-      "name" : "name",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "Name"
-      }
-    }, {
-      "dataType" : 25,
       "name" : "id",
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "Id"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "name",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "Name"
       }
     } ],
     "pagingSize" : 50,
@@ -638,6 +638,46 @@
     "requestMethod" : "GET",
     "requestParamType" : "FIELD",
     "requestPath" : "/get_major_data",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UPDATE",
+    "actionName" : "other_re_space",
+    "codeName" : "Other_re_space",
+    "methodType" : "DEACTION",
+    "name" : "Other_re_space",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDEACTIONS/Other_re_space.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "Project__UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "Other_re_space"
+    },
+    "requestMethod" : "PUT",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/other_re_space",
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
@@ -1287,6 +1327,44 @@
     "requestPath" : "/fetchnormal",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchReader",
+    "dataSetName" : "reader",
+    "dataSetTag" : "Reader",
+    "methodType" : "FETCH",
+    "name" : "FetchReader",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Reader"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchReader"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchreader",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchSame_type",
     "dataSetName" : "same_type",
     "dataSetTag" : "Same_type",
@@ -1449,6 +1527,7 @@
         "name" : "[VISIBILITY][可见范围]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
@@ -1463,6 +1542,7 @@
         "name" : "[VISIBILITY][可见范围]",
         "stringLength" : 60,
         "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
@@ -1653,6 +1733,7 @@
         "name" : "[IDENTIFIER][项目标识]移动端默认",
         "stringLength" : 15,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1668,7 +1749,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[IDENTIFIER][项目标识]",
         "stringLength" : 15,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     } ],
@@ -1991,6 +2073,7 @@
         "name" : "[NAME][名称]移动端默认",
         "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -2006,7 +2089,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[NAME][名称]",
         "stringLength" : 200,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     } ],
@@ -2202,7 +2286,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "State",
       "logicName" : "状态",
@@ -2270,7 +2355,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Is_archived",
       "logicName" : "是否已归档",
@@ -2417,7 +2503,8 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Update_man",
       "logicName" : "更新人",
@@ -2450,6 +2537,17 @@
     "codeName" : "ProjectFilterDTO",
     "name" : "ProjectFilterDTO",
     "getPSAppDEMethodDTOFields" : [ {
+      "codeName" : "N_IDENTIFIER_EQ",
+      "logicName" : "项目标识",
+      "name" : "N_IDENTIFIER_EQ",
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "Identifier"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "N_IDENTIFIER_LIKE",
       "logicName" : "项目标识",
       "name" : "N_IDENTIFIER_LIKE",
@@ -2464,6 +2562,17 @@
       "codeName" : "N_ID_EQ",
       "logicName" : "标识",
       "name" : "N_ID_EQ",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "Id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_ID_NOTEQ",
+      "logicName" : "标识",
+      "name" : "N_ID_NOTEQ",
       "getPSAppDEField" : {
         "name" : "ID",
         "codeName" : "Id"
@@ -2598,7 +2707,8 @@
       },
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Name",
       "logicName" : "项目名称",
@@ -2609,7 +2719,8 @@
       },
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Identifier",
       "logicName" : "项目标识",
@@ -2620,7 +2731,8 @@
       },
       "sourceType" : "DEFGROUPDETAIL",
       "stdDataType" : 25,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "codeName" : "Color",
       "logicName" : "主题色",
@@ -3314,6 +3426,46 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "UPDATE",
+    "actionName" : "other_re_space",
+    "codeName" : "Other_re_space",
+    "methodType" : "DEACTION",
+    "name" : "Other_re_space",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDEACTIONS/Other_re_space.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "Project__UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "Other_re_space"
+    },
+    "requestMethod" : "PUT",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/other_re_space",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CUSTOM",
     "actionName" : "recover",
     "codeName" : "Recover",
@@ -3959,6 +4111,44 @@
     "requestPath" : "/fetchnormal",
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchReader",
+    "dataSetName" : "reader",
+    "dataSetTag" : "Reader",
+    "methodType" : "FETCH",
+    "name" : "FetchReader",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Reader"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "FetchReader"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetchreader",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchSame_type",
     "dataSetName" : "same_type",
     "dataSetTag" : "Same_type",
@@ -4459,6 +4649,48 @@
     "tempDataMode" : 2,
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchTempReader",
+    "dataSetTag" : "Reader",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "reader",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "ReaderInput",
+      "name" : "ReaderInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "ReaderResult",
+      "name" : "ReaderResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "ProjectDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "public",
+        "fieldName" : "VISIBILITY",
+        "name" : "(VISIBILITY) 等于(=) public"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Reader"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchTempSame_type",
     "dataSetTag" : "Same_type",
     "dataSetType" : "DATAQUERY",
@@ -4761,7 +4993,6 @@
     "caption" : "归档",
     "codeName" : "archive",
     "confirmMsg" : "是否确认将该项目归档？",
-    "dataAccessAction" : "UPDATE",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "Project_archive",
     "name" : "进行中_归档",
@@ -4772,10 +5003,6 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "UPDATE"
     },
     "refreshMode" : 1,
     "successMsg" : "归档成功",
@@ -4861,7 +5088,6 @@
     "caption" : "删除",
     "codeName" : "in_progress_into_deleted",
     "confirmMsg" : "确认删除该项目？",
-    "dataAccessAction" : "UPDATE",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "Project_in_progress_into_deleted",
     "name" : "进行中_删除",
@@ -4872,10 +5098,6 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "UPDATE"
     },
     "refreshMode" : 1,
     "successMsg" : "删除成功",
@@ -4891,17 +5113,17 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "回收站",
     "codeName" : "open_deleted_project",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-      "viewType" : "DETREEEXPVIEW"
-    },
+    "dataAccessAction" : "UPDATE",
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Project_open_deleted_project",
     "name" : "回收站",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSNavigateContexts" : [ {
       "key" : "SRFDEFAULTTOROUTEDEPTH",
@@ -4919,7 +5141,7 @@
       "glyph" : "xf014@FontAwesome",
       "cssClass" : "fa fa-trash-o"
     },
-    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectmain_data_waterfall/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:normal:recycle')}/work_itemrecycle_bin_grid_iew/-`",
+    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=recycle/work_itemrecycle_bin_grid_iew/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_deleted_project",
@@ -4929,17 +5151,17 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "编辑基本信息",
     "codeName" : "open_edit_view",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-      "viewType" : "DETREEEXPVIEW"
-    },
+    "dataAccessAction" : "UPDATE",
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Project_open_edit_view",
     "name" : "编辑基本信息",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSNavigateContexts" : [ {
       "key" : "SRFDEFAULTTOROUTEDEPTH",
@@ -4957,7 +5179,7 @@
       "glyph" : "xf044@FontAwesome",
       "cssClass" : "fa fa-edit"
     },
-    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:setting:info')}/projectedit_view_base_information/-`",
+    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=base/projectedit_view_base_information/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_edit_view",
@@ -5117,11 +5339,6 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "项目成员",
     "codeName" : "open_project_member",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-      "viewType" : "DETREEEXPVIEW"
-    },
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Project_open_project_member",
     "name" : "项目成员",
@@ -5139,7 +5356,7 @@
       "glyph" : "xf0c0@FontAwesome",
       "cssClass" : "fa fa-users"
     },
-    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:normal:member')}/project_membergrid_view_config/-`",
+    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=member/project_membergrid_view_config/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_project_member",
@@ -5149,17 +5366,17 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "更多设置",
     "codeName" : "open_setting_view",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-      "viewType" : "DETREEEXPVIEW"
-    },
+    "dataAccessAction" : "UPDATE",
     "frontProcessType" : "OTHER",
     "fullCodeName" : "Project_open_setting_view",
     "name" : "更多设置",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSNavigateContexts" : [ {
       "key" : "SRFDEFAULTTOROUTEDEPTH",
@@ -5177,7 +5394,7 @@
       "glyph" : "xf00b@FontAwesome",
       "cssClass" : "fa fa-th-list"
     },
-    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/projectsetting_view/srfnavctx=%7B%22project%22%3A%22${srfkey}%22%2C%22srfdefaulttoroutedepth%22%3A%223%22%7D;srfnav=${encodeURIComponent('root:normal:member')}/project_membergrid_view_config/-`",
+    "scriptCode" : "const srfkey = context.project ? context.project : data[0].id;\r\nwindow.location.hash=`/-/index/project=${srfkey}/projectRedirectView/srfnav=usrdrgroup1225572368/project_setting_view/srfnav=member/project_membergrid_view_config/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_setting_view",
@@ -5369,6 +5586,28 @@
       "topPos" : 20,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+        },
+        "modelref" : true,
+        "id" : "open_project_main_view_kanban@Project"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 530,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "打开kanban视图",
+      "topPos" : 330
+    }, {
       "codeName" : "DEUIACTION3",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -5411,28 +5650,6 @@
       "leftPos" : 300,
       "logicNodeType" : "DEUIACTION",
       "name" : "打开SCRUM主视图",
-      "topPos" : 330
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
-        },
-        "modelref" : true,
-        "id" : "open_project_main_view_kanban@Project"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Project.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 530,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开kanban视图",
       "topPos" : 330
     } ],
     "getPSDEUILogicParams" : [ {
@@ -5536,15 +5753,15 @@
       "topPos" : 40
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "grid",
-      "logicName" : "当前表格",
-      "name" : "当前表格",
-      "ctrlParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前工具栏",
       "name" : "当前工具栏",
       "activeViewParam" : true
+    }, {
+      "codeName" : "grid",
+      "logicName" : "当前表格",
+      "name" : "当前表格",
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -5630,24 +5847,44 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projecttab_exp_view_management.json",
-    "viewType" : "DETABEXPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmove_choose_pickup_view.json",
+    "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectoverview_view.json",
-    "viewType" : "DEPORTALVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectedit_view_advanced_setting.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmove_choose_pickup_view_PickupGridView.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_data_scrum.json",
+    "viewType" : "DEINDEXVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectPickupView.json",
     "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_view_waterfall.json",
-    "viewType" : "DETABEXPVIEW"
-  }, {
-    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectquick_create_view.json",
     "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectshow_edit_view.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectEditView.json",
+    "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectoverview_view.json",
+    "viewType" : "DEPORTALVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_org.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_tab_view_scrum_flow.json",
@@ -5655,22 +5892,6 @@
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_view_scrum.json",
-    "viewType" : "DETABEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectEditView.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_management_deleted.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_org.json",
-    "viewType" : "DEGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_view_kanban.json",
     "viewType" : "DETABEXPVIEW"
   }, {
     "modelref" : true,
@@ -5682,35 +5903,39 @@
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_data_scrum.json",
-    "viewType" : "DEINDEXVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectshow_edit_view.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projecttree_exp_view.json",
-    "viewType" : "DETREEEXPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_management_deleted.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_management_archived.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_data_grid.json",
-    "viewType" : "DEGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view3.json",
+    "viewType" : "DETREEEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projecttree_exp_view.json",
+    "viewType" : "DETREEEXPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectcreate_wizard_view.json",
     "viewType" : "DEWIZARDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projecttree_exp_view_config.json",
+    "viewType" : "DETREEEXPVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_all.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_management_in_progress.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_view_waterfall.json",
+    "viewType" : "DETABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_data_grid.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -5718,48 +5943,44 @@
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectedit_view_base_information.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectedit_view_advanced_setting.json",
-    "viewType" : "DEEDITVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_data_kanban.json",
+    "viewType" : "DEINDEXVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectGridView.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_data_kanban.json",
-    "viewType" : "DEINDEXVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectedit_view_base_information.json",
+    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectsetting_view.json",
-    "viewType" : "DETREEEXPVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_setting_view.json",
+    "viewType" : "DEEDITVIEW2"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectPickupGridView.json",
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmain_view_kanban.json",
+    "viewType" : "DETABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projecttab_exp_view_management.json",
+    "viewType" : "DETABEXPVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_team.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmove_choose_pickup_view_PickupGridView.json",
-    "viewType" : "DEPICKUPGRIDVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectgrid_view_management_in_progress.json",
+    "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectMPickupView.json",
     "viewType" : "DEMPICKUPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projecttree_exp_view_config.json",
-    "viewType" : "DETREEEXPVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/projectmove_choose_pickup_view.json",
-    "viewType" : "DEPICKUPVIEW"
   } ],
   "getAllPSDEMainStates" : [ {
     "codeName" : "star",
@@ -5893,7 +6114,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "uba518c0",
+      "name" : "u33e263f",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -5921,7 +6142,7 @@
     "uniqueTag" : "Project__Usr1219101638",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "u772e03a",
+      "name" : "u1084d2a",
       "getPSSysImage" : {
         "glyph" : "xf0eb@FontAwesome",
         "cssClass" : "fa fa-lightbulb-o"
@@ -5940,7 +6161,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "ufcf3a6f",
+      "name" : "ue08bbc0",
       "getPSSysImage" : {
         "glyph" : "xf1f8@FontAwesome",
         "cssClass" : "fa fa-trash"
@@ -5968,7 +6189,7 @@
     "uniqueTag" : "Project__Usr1219112932",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "ub58dfc5",
+      "name" : "u93f345b",
       "getPSSysImage" : {
         "glyph" : "xf187@FontAwesome",
         "cssClass" : "fa fa-archive"
@@ -5987,7 +6208,7 @@
       }
     }, {
       "detailType" : "DEUIACTION",
-      "name" : "ue1b1268",
+      "name" : "uc046f49",
       "getPSSysImage" : {
         "glyph" : "xf1f8@FontAwesome",
         "cssClass" : "fa fa-trash"
@@ -6015,7 +6236,7 @@
     "uniqueTag" : "Project__Usr1219752220",
     "getPSUIActionGroupDetails" : [ {
       "detailType" : "DEUIACTION",
-      "name" : "uc1639a9",
+      "name" : "u5b3a614",
       "getPSSysImage" : {
         "glyph" : "xf079@FontAwesome",
         "cssClass" : "fa fa-retweet"
@@ -6044,7 +6265,7 @@
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u65f9745",
+      "name" : "u3695842",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M9.54013,6.48742551 L8,3.36677551 L6.45987,6.48742551 L3.01604,6.98784551 L5.50802,9.41692551 L4.91975,12.8468255 L8,11.2274255 L11.08025,12.8468255 L10.49195,9.41692551 L12.98395,6.98784551 L9.54013,6.48742551 Z M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -6063,7 +6284,7 @@
     }, {
       "actionLevel" : 250,
       "detailType" : "DEUIACTION",
-      "name" : "u7a828e7",
+      "name" : "u1f10be1",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -6082,7 +6303,7 @@
     }, {
       "actionLevel" : 200,
       "detailType" : "DEUIACTION",
-      "name" : "u1c7b8bf",
+      "name" : "u1c54e14",
       "getPSSysImage" : {
         "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M7.875,1.75 C7.94375,1.75 8,1.80625 8,1.875 L8,2.75 C8,2.81875 7.94375,2.875 7.875,2.875 L2.875,2.875 L2.875,13.125 L13.125,13.125 L13.125,8.125 C13.125,8.05625 13.18125,8 13.25,8 L14.125,8 C14.19375,8 14.25,8.05625 14.25,8.125 L14.25,13.75 C14.25,14.0265625 14.0265625,14.25 13.75,14.25 L2.25,14.25 C1.9734375,14.25 1.75,14.0265625 1.75,13.75 L1.75,2.25 C1.75,1.9734375 1.9734375,1.75 2.25,1.75 Z M12.7666777,2.4349185 C12.7666777,2.333356 12.8838652,2.277106 12.9635527,2.339606 L14.9635527,3.917731 C15.0260527,3.9661685 15.0260527,4.0599185 14.9635527,4.1099185 L12.9619902,5.689606 C12.8823027,5.752106 12.7651152,5.695856 12.7651152,5.5942935 L12.7651152,4.595856 C12.5635527,4.5974185 12.3619902,4.6099185 12.1588652,4.6349185 C11.4994902,4.7161685 10.8760527,4.9192935 10.2979277,5.2411685 C9.70261522,5.570856 9.18542772,6.0161685 8.76042772,6.558356 C8.33699022,7.1005435 8.03074022,7.708356 7.85261522,8.367731 C7.68074022,9.0036685 7.63386522,9.6599185 7.71355272,10.317731 C7.72449022,10.402106 7.73699022,10.486481 7.75105272,10.5692935 L6.58074022,10.5692935 C6.35261522,8.9474185 6.76042772,7.2380435 7.84792772,5.8442935 C9.07917772,4.2692935 10.9104277,3.442731 12.7635527,3.4349185 Z\" fill=\"#557DA5\" fill-rule=\"nonzero\"></path>\n</svg>"
       },
@@ -6101,7 +6322,7 @@
     }, {
       "caption" : "项目信息",
       "detailType" : "DEUIACTION",
-      "name" : "u5e20d8a",
+      "name" : "u186f340",
       "getPSSysImage" : {
         "glyph" : "xf05a@FontAwesome",
         "cssClass" : "fa fa-info-circle"
@@ -6120,7 +6341,7 @@
     }, {
       "caption" : "项目成员",
       "detailType" : "DEUIACTION",
-      "name" : "uea9550a",
+      "name" : "ub4fa962",
       "getPSSysImage" : {
         "glyph" : "xf0c0@FontAwesome",
         "cssClass" : "fa fa-users"
@@ -6139,7 +6360,7 @@
     }, {
       "caption" : "编辑基本信息",
       "detailType" : "DEUIACTION",
-      "name" : "u70ca0aa",
+      "name" : "uef96384",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -6158,7 +6379,7 @@
     }, {
       "caption" : "更多设置",
       "detailType" : "DEUIACTION",
-      "name" : "ubca303c",
+      "name" : "u769958e",
       "getPSSysImage" : {
         "glyph" : "xf00b@FontAwesome",
         "cssClass" : "fa fa-th-list"
@@ -6177,7 +6398,7 @@
     }, {
       "caption" : "回收站",
       "detailType" : "DEUIACTION",
-      "name" : "uf9a8c03",
+      "name" : "u2fc4c44",
       "getPSSysImage" : {
         "glyph" : "xf014@FontAwesome",
         "cssClass" : "fa fa-trash-o"
@@ -6205,7 +6426,7 @@
     "getPSUIActionGroupDetails" : [ {
       "caption" : "项目配置",
       "detailType" : "DEUIACTION",
-      "name" : "u25405e6",
+      "name" : "u3fee786",
       "addSeparator" : false,
       "showCaption" : true,
       "showIcon" : true,

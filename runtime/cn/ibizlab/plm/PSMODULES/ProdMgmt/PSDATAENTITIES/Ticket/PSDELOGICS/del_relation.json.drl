@@ -6,8 +6,8 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.del_relation;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.prodmgmt.domain.Ticket ticketdel_relationdefault;
-                global cn.ibizlab.plm.core.base.domain.Relation ticketdel_relationrelationobj;
-                global cn.ibizlab.plm.core.base.domain.Relation ticketdel_relationrelationobj2;
+                global cn.ibizlab.plm.core.base.domain.Relation ticketdel_relationforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.Relation ticketdel_relationreverse_relation_obj;
                     global cn.ibizlab.plm.core.base.service.IRelationService relationservice;
         global cn.ibizlab.plm.core.prodmgmt.service.ITicketService iBzSysTicketDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -22,18 +22,18 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.del_relation;
             then
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[填充正反关联对象的主要关联属性]
             rule "prepareparam1"
             ruleflow-group "ticketdel_relationprepareparam1"
             when
             then
-                            ticketdel_relationrelationobj.set("principalid",ticketdel_relationdefault.get("principal_id"));
-                            ticketdel_relationrelationobj2.set("targetid",ticketdel_relationdefault.get("principal_id"));
-                            ticketdel_relationrelationobj2.set("principalid",ticketdel_relationdefault.get("id"));
-                            ticketdel_relationrelationobj.set("targetid",ticketdel_relationdefault.get("id"));
+                            ticketdel_relationforward_relation_obj.set("principalid",ticketdel_relationdefault.get("principal_id"));
+                            ticketdel_relationreverse_relation_obj.set("targetid",ticketdel_relationdefault.get("principal_id"));
+                            ticketdel_relationreverse_relation_obj.set("principalid",ticketdel_relationdefault.get("id"));
+                            ticketdel_relationforward_relation_obj.set("targetid",ticketdel_relationdefault.get("id"));
                         update(ticketdel_relationdefault);//更新fact中变量值
-                        update(ticketdel_relationrelationobj);//更新fact中变量值
-                        update(ticketdel_relationrelationobj2);//更新fact中变量值
+                        update(ticketdel_relationforward_relation_obj);//更新fact中变量值
+                        update(ticketdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[拼接关联对象的主键]
@@ -42,8 +42,8 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.del_relation;
             when
             then
                         update(ticketdel_relationdefault);//更新fact中变量值
-                        update(ticketdel_relationrelationobj);//更新fact中变量值
-                        update(ticketdel_relationrelationobj2);//更新fact中变量值
+                        update(ticketdel_relationforward_relation_obj);//更新fact中变量值
+                        update(ticketdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除正向关联]
@@ -51,10 +51,10 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.del_relation;
             ruleflow-group "ticketdel_relationdeaction2"
             when
             then
-                        relationservice.remove(ticketdel_relationrelationobj.getId());
+                        relationservice.remove(ticketdel_relationforward_relation_obj.getId());
                         update(ticketdel_relationdefault);//更新fact中变量值
-                        update(ticketdel_relationrelationobj);//更新fact中变量值
-                        update(ticketdel_relationrelationobj2);//更新fact中变量值
+                        update(ticketdel_relationforward_relation_obj);//更新fact中变量值
+                        update(ticketdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[删除反向关联]
@@ -62,10 +62,10 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.del_relation;
             ruleflow-group "ticketdel_relationdeaction3"
             when
             then
-                        relationservice.remove(ticketdel_relationrelationobj2.getId());
+                        relationservice.remove(ticketdel_relationreverse_relation_obj.getId());
                         update(ticketdel_relationdefault);//更新fact中变量值
-                        update(ticketdel_relationrelationobj);//更新fact中变量值
-                        update(ticketdel_relationrelationobj2);//更新fact中变量值
+                        update(ticketdel_relationforward_relation_obj);//更新fact中变量值
+                        update(ticketdel_relationreverse_relation_obj);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -74,6 +74,6 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.del_relation;
             when
             then
                         update(ticketdel_relationdefault);//更新fact中变量值
-                        update(ticketdel_relationrelationobj);//更新fact中变量值
-                        update(ticketdel_relationrelationobj2);//更新fact中变量值
+                        update(ticketdel_relationforward_relation_obj);//更新fact中变量值
+                        update(ticketdel_relationreverse_relation_obj);//更新fact中变量值
             end

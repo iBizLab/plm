@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.article_pageget_by_version" isClosed="false" isExecutable="true" name="wiki_article_page_get_by_version_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.article_pageget_by_version">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="article_pageget_by_versiondefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.Version()" name="article_pageget_by_versionversion" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IVersionService))" name="versionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.IArticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="article_pageget_by_versiondefault" type="cn.ibizlab.plm.core.wiki.domain.Article_page" />
+                            <tns:global identifier="article_pageget_by_versionversion" type="cn.ibizlab.plm.core.projmgmt.domain.Version" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_by_versionthrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="版本不存在"/>
+                        <endEvent id="throwexception1_end" name="end"/>
+                        <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_by_versionrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拆分id"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_by_versiondeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取版本数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_by_versionthrowexception2" id="throwexception2" implementation="http://www.jboss.org/drools/rule" name="版本不匹配"/>
+                        <endEvent id="throwexception2_end" name="end"/>
+                        <sequenceFlow id="throwexception2_end_line" sourceRef="throwexception2" targetRef="throwexception2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_by_versionprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="提取数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_by_versionend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_rawsfcode1" sourceRef="begin" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction1" sourceRef="rawsfcode1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_throwexception1" sourceRef="deaction1" targetRef="throwexception1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_throwexception2" sourceRef="gateway-deaction1" targetRef="throwexception2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pageget_by_versiondefault:Article_page();
+                                            $article_pageget_by_versionversion:Version();
+                                    eval($article_pageget_by_versiondefault==article_pageget_by_versiondefault && $article_pageget_by_versionversion==article_pageget_by_versionversion);
+                                eval((RuleUtils.test($article_pageget_by_versiondefault.get("id"),"EQ","id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
+                            <endEvent id="gateway-deaction1_end" name="end"/>
+        </process>
+    </definitions>

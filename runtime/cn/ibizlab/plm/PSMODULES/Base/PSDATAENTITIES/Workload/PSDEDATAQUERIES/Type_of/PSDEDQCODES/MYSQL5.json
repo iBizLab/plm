@@ -1,0 +1,69 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeConds" : [ {
+    "condType" : "CUSTOM",
+    "customCond" : "( <choose><when test=\"ctx.webcontext.type_id !=null \">  t1.`TYPE_ID` = #{ctx.webcontext.type_id}  </when><otherwise>t1.`TYPE_ID` is null</otherwise></choose> )",
+    "name" : "查询条件"
+  } ],
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`CREATE_MAN`",
+    "name" : "CREATE_MAN"
+  }, {
+    "expression" : "t1.`CREATE_TIME`",
+    "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t1.`DESCRIPTION`",
+    "name" : "DESCRIPTION"
+  }, {
+    "expression" : "t1.`DURATION`",
+    "name" : "DURATION"
+  }, {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t1.`IDENTIFIER`",
+    "name" : "IDENTIFIER"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`OWNER_TYPE`",
+    "name" : "OWNER_TYPE"
+  }, {
+    "expression" : "t1.`PRINCIPAL_ID`",
+    "name" : "PRINCIPAL_ID"
+  }, {
+    "expression" : "t1.`PRINCIPAL_TYPE`",
+    "name" : "PRINCIPAL_TYPE"
+  }, {
+    "expression" : "t1.`RECENT_PARENT`",
+    "name" : "RECENT_PARENT"
+  }, {
+    "expression" : "t1.`RECENT_PARENT_IDENTIFIER`",
+    "name" : "RECENT_PARENT_IDENTIFIER"
+  }, {
+    "expression" : "t1.`RECENT_PARENT_NAME`",
+    "name" : "RECENT_PARENT_NAME"
+  }, {
+    "expression" : "t1.`REGISTER_DATE`",
+    "name" : "REGISTER_DATE"
+  }, {
+    "expression" : "concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`)",
+    "name" : "SHOW_IDENTIFIER"
+  }, {
+    "expression" : "t1.`TYPE_ID`",
+    "name" : "TYPE_ID"
+  }, {
+    "expression" : "t11.`NAME`",
+    "name" : "TYPE_NAME"
+  }, {
+    "expression" : "t1.`UPDATE_MAN`",
+    "name" : "UPDATE_MAN"
+  }, {
+    "expression" : "t1.`UPDATE_TIME`",
+    "name" : "UPDATE_TIME"
+  } ],
+  "queryCode" : "SELECT\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`DESCRIPTION`,\nt1.`DURATION`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`NAME`,\nt1.`OWNER_TYPE`,\nt1.`PRINCIPAL_ID`,\nt1.`PRINCIPAL_TYPE`,\nt1.`RECENT_PARENT`,\nt1.`RECENT_PARENT_IDENTIFIER`,\nt1.`RECENT_PARENT_NAME`,\nt1.`REGISTER_DATE`,\nconcat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`TYPE_ID`,\nt11.`NAME` AS `TYPE_NAME`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `WORKLOAD` t1 \nLEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` \n",
+  "id" : "PSMODULES/Base/PSDATAENTITIES/Workload/PSDEDATAQUERIES/Type_of/PSDEDQCODES/MYSQL5.json"
+}

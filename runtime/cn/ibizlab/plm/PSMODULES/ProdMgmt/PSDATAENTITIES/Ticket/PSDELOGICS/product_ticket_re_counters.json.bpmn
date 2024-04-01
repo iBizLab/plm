@@ -17,13 +17,16 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketproduct_ticket_re_countersrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="工单关联需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketproduct_ticket_re_countersrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="工单关联工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketproduct_ticket_re_countersrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="工单关联工单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketproduct_ticket_re_countersrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="客户回复"/>
                     <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall3_end1" sourceRef="rawsqlcall3" targetRef="end1">
+                    <sequenceFlow id="rawsqlcall3_rawsqlcall4" sourceRef="rawsqlcall3" targetRef="rawsqlcall4">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall4_end1" sourceRef="rawsqlcall4" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

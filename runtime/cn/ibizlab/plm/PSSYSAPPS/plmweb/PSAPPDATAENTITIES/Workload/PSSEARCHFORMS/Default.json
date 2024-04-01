@@ -26,6 +26,9 @@
       "codeName" : "Name"
     }
   }, {
+    "id" : "create_man",
+    "dataType" : 25
+  }, {
     "id" : "n_register_date_gtandeq",
     "hidden" : true,
     "dataType" : 5,
@@ -40,6 +43,14 @@
     "getPSAppDEField" : {
       "name" : "REGISTER_DATE",
       "codeName" : "Register_date"
+    }
+  }, {
+    "id" : "n_create_man_eq",
+    "hidden" : true,
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "Create_man"
     }
   } ],
   "getPSDEFormPages" : [ {
@@ -107,8 +118,8 @@
         "placeHolder" : "编号"
       },
       "getPSLayoutPos" : {
-        "colLG" : 4,
-        "colMD" : 4,
+        "colLG" : 3,
+        "colMD" : 3,
         "colSM" : 8,
         "colXS" : 8,
         "layout" : "TABLE_24COL"
@@ -139,12 +150,61 @@
         "placeHolder" : "事项"
       },
       "getPSLayoutPos" : {
-        "colLG" : 4,
-        "colMD" : 4,
+        "colLG" : 3,
+        "colMD" : 3,
         "colSM" : 8,
         "colXS" : 8,
         "layout" : "TABLE_24COL"
       },
+      "allowEmpty" : true
+    }, {
+      "caption" : "表单项",
+      "codeName" : "create_man",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man",
+      "noPrivDisplayMode" : 1,
+      "getPSEditor" : {
+        "editorParams" : {
+          "URL" : "/users/fetchdefault",
+          "ISSHOWTAB" : "false",
+          "USERMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "AC" : "TRUE",
+          "USERMETHOD" : "get",
+          "TRIGGER" : "TRUE",
+          "PICKUPVIEW" : "FALSE"
+        },
+        "editorStyle" : "PERSONEL_SELECT_ALL",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man",
+        "getPSEditorItems" : [ {
+          "name" : "n_create_man_eq"
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "n_create_man_eq",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 3,
+        "colMD" : 3,
+        "colSM" : 8,
+        "colXS" : 8,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "n_create_man_eq",
       "allowEmpty" : true
     }, {
       "caption" : "工作日期（大于）",
@@ -208,6 +268,35 @@
       "allowEmpty" : true,
       "hidden" : true,
       "showCaption" : true
+    }, {
+      "caption" : "建立人",
+      "codeName" : "n_create_man_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "n_create_man_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "Create_man"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "n_create_man_eq"
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 8,
+        "colMD" : 8,
+        "colSM" : 8,
+        "colXS" : 8,
+        "layout" : "TABLE_24COL"
+      },
+      "allowEmpty" : true,
+      "hidden" : true
     } ],
     "getPSLayout" : {
       "childColLG" : 8,
@@ -227,12 +316,15 @@
     "columnCount" : 24,
     "layout" : "TABLE_24COL"
   },
+  "getPSSysCss" : {
+    "cssName" : "workloadlog-searchform-border"
+  },
   "searchButtonStyle" : "NONE",
   "tabHeaderPos" : "TOP",
   "enableAdvanceSearch" : false,
   "enableAutoSearch" : true,
   "enableFilterSave" : false,
   "noTabHeader" : true,
-  "modelid" : "be0a8f9d39762fd9cc223d1d56d25646",
+  "modelid" : "ee349d5f6bb5b56ce9de024cda919ef1",
   "modeltype" : "PSDEFORM_SEARCHFORM"
 }

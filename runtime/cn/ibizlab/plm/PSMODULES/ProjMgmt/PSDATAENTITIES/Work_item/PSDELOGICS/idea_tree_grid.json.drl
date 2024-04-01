@@ -6,6 +6,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_griddefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridflag;
                 global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridfor_temp;
                 global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridpage;
                 global cn.ibizlab.plm.core.projmgmt.domain.Work_item work_itemidea_tree_gridresult_list;
@@ -28,45 +29,13 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             then
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam4"
-            ruleflow-group "work_itemidea_tree_gridprepareparam4"
-            when
-            then
-                            work_itemidea_tree_griddefault.set("n_is_archived_eq","0");
-                        update(work_itemidea_tree_griddefault);//更新fact中变量值
-                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
-                        update(work_itemidea_tree_gridpage);//更新fact中变量值
-                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
-                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
-                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "work_itemidea_tree_griddebugparam1"
+            //逻辑处理节点[获取查询参数决定查询方式]
+            rule "rawsfcode2"
+            ruleflow-group "work_itemidea_tree_gridrawsfcode2"
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
-                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
-                        update(work_itemidea_tree_gridpage);//更新fact中变量值
-                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
-                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
-                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
-            end
-
-            //逻辑处理节点[平铺数据集合]
-            rule "dedataset2"
-            ruleflow-group "work_itemidea_tree_griddedataset2"
-            when
-            then
-                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -84,6 +53,24 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             then
                             work_itemidea_tree_griddefault.set("n_work_item_type_group_eq","requirement");
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
+                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridpage);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
+                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
+                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
+                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[平铺数据集合]
+            rule "dedataset2"
+            ruleflow-group "work_itemidea_tree_griddedataset2"
+            when
+            then
+                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -100,6 +87,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -116,6 +104,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -132,6 +121,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -148,6 +138,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -166,6 +157,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
                             work_itemidea_tree_gridtop_fiter.set("n_top_id_in",work_itemidea_tree_gridwork_item.get("top_ids"));
                             work_itemidea_tree_gridtop_fiter.set("n_work_item_type_group_eq","requirement");
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -182,6 +174,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -198,6 +191,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -214,6 +208,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -230,6 +225,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值
@@ -246,23 +242,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.idea_tree_grid;
             when
             then
                         update(work_itemidea_tree_griddefault);//更新fact中变量值
-                        update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
-                        update(work_itemidea_tree_gridpage);//更新fact中变量值
-                        update(work_itemidea_tree_gridresult_list);//更新fact中变量值
-                        update(work_itemidea_tree_gridresult_page);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_fiter);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_page);//更新fact中变量值
-                        update(work_itemidea_tree_gridtop_temp);//更新fact中变量值
-                        update(work_itemidea_tree_gridwork_item);//更新fact中变量值
-            end
-
-            //逻辑处理节点[复制分页参数]
-            rule "prepareparam2"
-            ruleflow-group "work_itemidea_tree_gridprepareparam2"
-            when
-            then
-                            work_itemidea_tree_gridresult_page.set("total",work_itemidea_tree_gridpage.get("total"));
-                        update(work_itemidea_tree_griddefault);//更新fact中变量值
+                        update(work_itemidea_tree_gridflag);//更新fact中变量值
                         update(work_itemidea_tree_gridfor_temp);//更新fact中变量值
                         update(work_itemidea_tree_gridpage);//更新fact中变量值
                         update(work_itemidea_tree_gridresult_list);//更新fact中变量值

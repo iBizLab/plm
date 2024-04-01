@@ -3,7 +3,7 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.PAGE"
   },
-  "caption" : "日志列表视图",
+  "caption" : "PLM系统更新日志",
   "codeName" : "article_pageLogListView",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pageLogListView.json",
   "mDCtrlActiveMode" : 1,
@@ -58,14 +58,14 @@
       "getOpenDataPSAppView" : {
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pageEditView.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pagere_show_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pageEditView.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pagere_show_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -96,18 +96,15 @@
     "rawValue" : true
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "页面编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.PAGE.EDITVIEW"
-    },
+    "name" : "EDITDATA",
+    "realTitle" : "页面",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pageEditView.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_pagere_show_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
-    "name" : "EDITDATA",
+    "name" : "NEWDATA",
     "realTitle" : "页面编辑视图",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.PAGE.EDITVIEW"
@@ -170,6 +167,10 @@
     },
     "groupMode" : "NONE",
     "getItemPSLayoutPanel" : {
+      "getAllPSPanelFields" : [ {
+        "id" : "field_text_dynamic",
+        "viewFieldName" : "NAME"
+      } ],
       "codeName" : "Usr0314805172",
       "controlType" : "PANEL",
       "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Article_page/PSPANELS/Usr0314805172.json",
@@ -199,10 +200,30 @@
         "getPSLayoutPos" : {
           "colMD" : 24,
           "layout" : "TABLE_24COL"
-        }
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "field_text_dynamic",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "field_text_dynamic",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "NAME",
+          "hidden" : false,
+          "showCaption" : false
+        } ]
       } ],
       "name" : "list_itempanel",
-      "modelid" : "25B66B9E-1428-4ACF-A611-881A55DD266A",
+      "modelid" : "3d32fca2960d72127afd45849503b2d2",
       "modeltype" : "PSSYSVIEWPANEL"
     },
     "logicName" : "log_list",
@@ -291,6 +312,20 @@
     },
     "getPSDEListDataItems" : [ {
       "dataType" : 25,
+      "name" : "name",
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "Name"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "space_name",
+      "getPSAppDEField" : {
+        "name" : "SPACE_NAME",
+        "codeName" : "Space_name"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "srfkey",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -363,7 +398,7 @@
     "noSort" : false,
     "showHeader" : true,
     "name" : "list",
-    "modelid" : "1D0CC7EB-C81D-471B-8656-FF1C7082389B",
+    "modelid" : "8b9b797ee78ae961f09512f55fb0d6c0",
     "modeltype" : "PSDELIST"
   }, {
     "controlType" : "SEARCHBAR",
@@ -386,7 +421,7 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.PAGE"
     },
-    "caption" : "日志列表视图",
+    "caption" : "PLM系统更新日志",
     "codeName" : "LogListViewcaptionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
@@ -397,7 +432,7 @@
     "getPSControlParam" : { }
   } ],
   "getPSDEViewCodeName" : "LogListView",
-  "getPSDEViewId" : "AD5CF017-484D-4BE5-A580-FF0BE148A6AD",
+  "getPSDEViewId" : "e0d2dd80ee2abd064284c821556c05fb",
   "getPSViewLayoutPanel" : {
     "codeName" : "Layoutpanel",
     "controlStyle" : "APPDELISTVIEW",
@@ -420,7 +455,7 @@
   "enableFilter" : true,
   "enableQuickSearch" : true,
   "enableSearch" : true,
-  "modelid" : "149437f8c1e9a153bb05e5ddeb595ce5",
+  "modelid" : "55bb4c29fb7ff5d17cbd84253892c53f",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
     "actionRSMode" : 1,

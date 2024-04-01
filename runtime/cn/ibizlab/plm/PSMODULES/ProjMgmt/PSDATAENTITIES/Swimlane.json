@@ -983,6 +983,21 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PROJECT_ID][项目标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PROJECT_ID][项目标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[PROJECT_ID][项目标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -999,21 +1014,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PROJECT_ID][项目标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[PROJECT_ID][项目标识]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1249,6 +1249,9 @@
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
+    "name" : "CREATE"
+  }, {
+    "logicName" : "建立",
     "mapPSDEName" : "PROJECT",
     "mapPSDEOPPrivName" : "SUBDATA",
     "getMapPSDER" : {
@@ -1261,12 +1264,6 @@
     },
     "name" : "CREATE",
     "id" : "Project__CREATE"
-  }, {
-    "logicName" : "建立",
-    "name" : "CREATE"
-  }, {
-    "logicName" : "删除",
-    "name" : "DELETE"
   }, {
     "logicName" : "删除",
     "mapPSDEName" : "PROJECT",
@@ -1281,6 +1278,9 @@
     },
     "name" : "DELETE",
     "id" : "Project__DELETE"
+  }, {
+    "logicName" : "删除",
+    "name" : "DELETE"
   }, {
     "logicName" : "读取",
     "name" : "READ"
@@ -1442,6 +1442,7 @@
     "serviceCodeName" : "Swimlane",
     "enableFKey" : true
   } ],
+  "memo" : "在项目开发工作中使用，用于区分不同流程阶段。",
   "getMinorPSDERs" : [ {
     "codeName" : "Board",
     "dERType" : "DER1N",

@@ -22,6 +22,27 @@
     "name" : "engine"
   } ],
   "getPSAppViewLogics" : [ {
+    "eventNames" : "onBeforeLoadDraft",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "SCRIPT",
+    "name" : "LOGICUPDATE",
+    "getPSViewCtrlName" : "searchform",
+    "scriptCode" : "const time = new Date();\r\nconst preTime = new Date(time.getTime() - 604800000);\r\nconst n_register_date_gtandeq = preTime.getFullYear() +'-' +(preTime.getMonth() + 1 < 10 ? '0' + (preTime.getMonth() + 1): preTime.getMonth() + 1) +'-' +(preTime.getDate() < 10 ? '0' + preTime.getDate() : preTime.getDate()) \r\nconst n_register_date_ltandeq = time.getFullYear() +'-' +(time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1): time.getMonth() + 1) +'-' +(time.getDate() < 10 ? '0' + time.getDate() : time.getDate())\r\nconst date_range = n_register_date_gtandeq + ',' + n_register_date_ltandeq;\r\nObject.assign(viewParam, { n_register_date_gtandeq, n_register_date_ltandeq, date_range });"
+  }, {
+    "eventNames" : "onActive",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "OPENDATA",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "open_main_view"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
+    },
+    "getPSViewCtrlName" : "grid"
+  }, {
     "logicTrigger" : "CUSTOM",
     "logicType" : "APPUILOGIC",
     "name" : "newdata",
@@ -47,30 +68,6 @@
       "batchAddOnly" : false,
       "enableBatchAdd" : false,
       "enableWizardAdd" : false
-    }
-  }, {
-    "logicTrigger" : "CUSTOM",
-    "logicType" : "APPUILOGIC",
-    "name" : "opendata",
-    "getPSAppUILogic" : {
-      "logicType" : "PREDEFINED",
-      "name" : "打开数据",
-      "getOpenDataPSAppView" : {
-        "getRefPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workloadRedirectView.json",
-          "viewType" : "DEREDIRECTVIEW"
-        }
-      },
-      "getPSAppUILogicRefViews" : [ {
-        "getRefPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workloadRedirectView.json",
-          "viewType" : "DEREDIRECTVIEW"
-        }
-      } ],
-      "viewLogicType" : "APP_OPENDATA",
-      "editMode" : true
     }
   } ],
   "getPSAppViewRefs" : [ {
@@ -101,6 +98,7 @@
     "codeName" : "Work_item_gird",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
+    "controlStyle" : "WORKLOAD_TABLE",
     "controlType" : "GRID",
     "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload/PSGRIDS/Work_item_gird.json",
     "getFetchPSControlAction" : {
@@ -110,7 +108,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "FetchDefault"
+        "id" : "FetchMy_work_item_workload"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -194,7 +192,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "FetchDefault"
+          "id" : "FetchMy_work_item_workload"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -208,6 +206,9 @@
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "DATERANGE" : "date_range"
+      },
       "id" : "GRID"
     },
     "getPSDEGridColumns" : [ {
@@ -261,7 +262,8 @@
         "name" : "DURATION",
         "codeName" : "Duration"
       },
-      "width" : 100,
+      "valueFormat" : "#.0",
+      "width" : 150,
       "widthUnit" : "PX",
       "enableSort" : true
     } ],
@@ -280,6 +282,7 @@
         "codeName" : "Name"
       }
     }, {
+      "format" : "#.0",
       "dataType" : 6,
       "name" : "duration",
       "getPSAppDEField" : {
@@ -353,6 +356,11 @@
       },
       "allowEmpty" : true
     } ],
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_RENDER",
+      "pluginCode" : "WORKLOAD_TABLE",
+      "runtimeObject" : true
+    },
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -666,22 +674,53 @@
     "modelid" : "be0a8f9d39762fd9cc223d1d56d25646",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
+    "codeName" : "test",
     "controlType" : "SEARCHBAR",
-    "name" : "searchbar",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload/PSSEARCHBARS/test.json",
+    "logicName" : "测试",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
     },
     "getPSControlParam" : {
-      "id" : "searchbar"
+      "id" : "SEARCHBAR"
     },
+    "getPSSearchBarFilters" : [ {
+      "caption" : "编号",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "identifier_like",
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "Identifier"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_IDENTIFIER_LIKE",
+        "name" : "N_IDENTIFIER_LIKE",
+        "stdDataType" : 25,
+        "valueOP" : "LIKE"
+      },
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "identifier_like"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    } ],
     "quickGroupCount" : -1,
     "quickSearchMode" : 1,
     "quickSearchWidth" : 0,
-    "enableFilter" : false,
+    "enableFilter" : true,
     "enableGroup" : false,
     "enableQuickSearch" : true,
-    "mobileSearchBar" : false
+    "mobileSearchBar" : false,
+    "name" : "searchbar",
+    "modelid" : "8A17CC64-F7D0-4171-BAEE-9397083F4DBE",
+    "modeltype" : "PSSYSSEARCHBAR"
   }, {
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.WORKLOAD"
@@ -712,6 +751,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
+  "refFlag" : false,
   "title" : "工时日历工作项维度表格视图",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEGRIDVIEW",
@@ -720,10 +760,11 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
+  "expandSearchForm" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "5ce5a6166deded05296b5cb8d96385f0",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {

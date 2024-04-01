@@ -3,6 +3,7 @@
   "codeName" : "Project_grid",
   "columnEnableFilter" : 2,
   "columnEnableLink" : 2,
+  "controlStyle" : "WORKLOAD_TABLE",
   "controlType" : "GRID",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload/PSGRIDS/Project_grid.json",
   "getFetchPSControlAction" : {
@@ -12,14 +13,22 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "FetchDefault"
+      "id" : "FetchMy_work_item_workload"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
     }
   },
-  "groupMode" : "NONE",
+  "groupMode" : "AUTO",
+  "getGroupPSAppDEField" : {
+    "name" : "RECENT_PARENT",
+    "codeName" : "Recent_parent"
+  },
+  "getGroupPSDEField" : {
+    "name" : "RECENT_PARENT",
+    "codeName" : "Recent_parent"
+  },
   "logicName" : "工时日历_项目表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -28,18 +37,18 @@
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
-    "caption" : "项目标识",
+    "caption" : "标识",
     "codeName" : "recent_parent_identifier",
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "recent_parent_identifier",
-    "excelCaption" : "项目标识",
+    "excelCaption" : "标识",
     "name" : "recent_parent_identifier",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
       "name" : "RECENT_PARENT_IDENTIFIER",
       "codeName" : "Recent_parent_identifier"
     },
-    "width" : 100,
+    "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : true
   }, {
@@ -56,7 +65,7 @@
       "name" : "RECENT_PARENT_NAME",
       "codeName" : "Recent_parent_name"
     },
-    "width" : 100,
+    "width" : 200,
     "widthUnit" : "STAR",
     "enableSort" : true
   }, {
@@ -73,6 +82,29 @@
       "name" : "DURATION",
       "codeName" : "Duration"
     },
+    "getPSDEUIAction" : {
+      "actionTarget" : "SINGLEKEY",
+      "caption" : "项目总登记时长链接跳转",
+      "codeName" : "project_duration_link",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "Workload_project_duration_link",
+      "name" : "项目总登记时长链接跳转",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "open_project_workload_detail"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Workload.json"
+      },
+      "timeout" : 60000,
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "project_duration_link",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "id" : "project_duration_link@Workload"
+    },
+    "valueFormat" : "#.0",
     "width" : 150,
     "widthUnit" : "PX",
     "enableSort" : true
@@ -92,11 +124,19 @@
       "codeName" : "Recent_parent_name"
     }
   }, {
+    "format" : "#.0",
     "dataType" : 6,
     "name" : "duration",
     "getPSAppDEField" : {
       "name" : "DURATION",
       "codeName" : "Duration"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "recent_parent",
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT",
+      "codeName" : "Recent_parent"
     }
   }, {
     "dataType" : 25,
@@ -144,6 +184,11 @@
     },
     "allowEmpty" : true
   } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "WORKLOAD_TABLE",
+    "runtimeObject" : true
+  },
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -162,8 +207,8 @@
   "sortMode" : "REMOTE",
   "hasWFDataItems" : false,
   "enableColFilter" : false,
-  "enableCustomized" : true,
-  "enableGroup" : false,
+  "enableCustomized" : false,
+  "enableGroup" : true,
   "enablePagingBar" : false,
   "enableRowEdit" : false,
   "enableRowEditOrder" : false,
@@ -172,6 +217,6 @@
   "hideHeader" : false,
   "noSort" : false,
   "singleSelect" : true,
-  "modelid" : "7CBF807B-395B-4A8D-BA63-34CE6773CA46",
+  "modelid" : "4c33d82bd0de90f98f7783fec958d52a",
   "modeltype" : "PSDEGRID"
 }

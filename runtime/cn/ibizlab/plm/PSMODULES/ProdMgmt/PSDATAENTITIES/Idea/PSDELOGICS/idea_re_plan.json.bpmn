@@ -22,23 +22,23 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_plandebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_planbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_planprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_plandeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="生成正向关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_planloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_planprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_plandeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
                         <endEvent id="deaction2_end" name="end"/>
                         <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_re_planloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_bindparam1" sourceRef="debugparam1" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
-                    </sequenceFlow>
                     <sequenceFlow id="deaction1_deaction2" sourceRef="deaction1" targetRef="deaction2">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_prepareparam1" sourceRef="loopsubcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
         </process>
     </definitions>

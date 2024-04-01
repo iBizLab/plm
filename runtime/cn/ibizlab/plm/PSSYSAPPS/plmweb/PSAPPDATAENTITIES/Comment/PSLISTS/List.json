@@ -77,12 +77,21 @@
     "codeName" : "Usr0103471499",
     "controlType" : "PANEL",
     "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Comment/PSPANELS/Usr0103471499.json",
+    "hookEventNames" : [ "ONCLICK" ],
     "layoutMode" : "TABLE_24COL",
     "logicName" : "list_列表项面板",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Comment.json"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "BUTTON_CALLUILOGIC2",
+      "logicTag" : "list_itempanel",
+      "logicType" : "SCRIPT",
+      "name" : "logic",
+      "scriptCode" : "const panelItems = view.layoutPanel.panelItems;\r\n panelItems.container_comment.state.visible = true;"
+    } ],
     "getPSControlParam" : { },
     "getPSLayout" : {
       "childColLG" : -1,
@@ -264,8 +273,8 @@
               "layout" : "FLEX"
             },
             "getPSSysImage" : {
-              "glyph" : "xf1e8@FontAwesome",
-              "cssClass" : "fa fa-twitch"
+              "glyph" : "xf0e5@FontAwesome",
+              "cssClass" : "fa fa-comment-o"
             },
             "getPSUIAction" : {
               "actionTarget" : "SINGLEDATA",
@@ -303,6 +312,14 @@
               "modelref" : true,
               "id" : "list_itempanel_button_calluilogic1"
             },
+            "getPSControlLogics" : [ {
+              "itemName" : "BUTTON_CALLUILOGIC1",
+              "logicTag" : "list_itempanel",
+              "logicType" : "SCRIPT",
+              "name" : "logic_edit",
+              "scriptCode" : "data?.create_man === context?.srfuserid",
+              "triggerType" : "ITEMVISIBLE"
+            } ],
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
@@ -347,6 +364,14 @@
               "modelref" : true,
               "id" : "list_itempanel_button_calluilogic"
             },
+            "getPSControlLogics" : [ {
+              "itemName" : "BUTTON_CALLUILOGIC",
+              "logicTag" : "list_itempanel",
+              "logicType" : "SCRIPT",
+              "name" : "logic_dele",
+              "scriptCode" : "data?.create_man === context?.srfuserid",
+              "triggerType" : "ITEMVISIBLE"
+            } ],
             "getPSLayoutPos" : {
               "grow" : -1,
               "layout" : "FLEX"
@@ -533,7 +558,7 @@
       } ]
     } ],
     "name" : "list_itempanel",
-    "modelid" : "42AC4D7C-0311-4B52-8AFB-500470D66A00",
+    "modelid" : "ee886f58af63fee0ca6e9603df7aaa8e",
     "modeltype" : "PSSYSVIEWPANEL"
   },
   "logicName" : "list",
@@ -547,23 +572,11 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/Comment.json"
   },
   "getPSDEListDataItems" : [ {
-    "dataType" : 25,
-    "getFrontPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-    },
-    "name" : "pcreate_man",
+    "dataType" : 21,
+    "name" : "pcontent",
     "getPSAppDEField" : {
-      "name" : "PCREATE_MAN",
-      "codeName" : "Pcreate_man"
-    }
-  }, {
-    "dataType" : 5,
-    "format" : "YYYY-MM-DD HH:mm:ss",
-    "name" : "create_time",
-    "getPSAppDEField" : {
-      "name" : "CREATE_TIME",
-      "codeName" : "Create_time"
+      "name" : "PCONTENT",
+      "codeName" : "Pcontent"
     }
   }, {
     "dataType" : 25,
@@ -574,17 +587,22 @@
     }
   }, {
     "dataType" : 25,
-    "name" : "pid",
+    "getFrontPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "name" : "create_man",
     "getPSAppDEField" : {
-      "name" : "PID",
-      "codeName" : "Pid"
+      "name" : "CREATE_MAN",
+      "codeName" : "Create_man"
     }
   }, {
-    "dataType" : 21,
-    "name" : "pcontent",
+    "dataType" : 5,
+    "format" : "YYYY-MM-DD HH:mm:ss",
+    "name" : "create_time",
     "getPSAppDEField" : {
-      "name" : "PCONTENT",
-      "codeName" : "Pcontent"
+      "name" : "CREATE_TIME",
+      "codeName" : "Create_time"
     }
   }, {
     "dataType" : 21,
@@ -599,10 +617,17 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
     },
-    "name" : "create_man",
+    "name" : "pcreate_man",
     "getPSAppDEField" : {
-      "name" : "CREATE_MAN",
-      "codeName" : "Create_man"
+      "name" : "PCREATE_MAN",
+      "codeName" : "Pcreate_man"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "pid",
+    "getPSAppDEField" : {
+      "name" : "PID",
+      "codeName" : "Pid"
     }
   }, {
     "dataType" : 25,
@@ -663,6 +688,6 @@
   "enableRowNew" : false,
   "noSort" : false,
   "showHeader" : true,
-  "modelid" : "D2480E29-78F4-47E2-8523-9E8819F79D0A",
+  "modelid" : "9b4452e60e1fe2c3e394cd0199c78969",
   "modeltype" : "PSDELIST"
 }

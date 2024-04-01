@@ -282,9 +282,6 @@
       "name" : "PROJECT_ID",
       "codeName" : "Project_id"
     }, {
-      "name" : "VERSION_ID",
-      "codeName" : "Version_id"
-    }, {
       "name" : "SPRINT_ID",
       "codeName" : "Sprint_id"
     }, {
@@ -1008,6 +1005,7 @@
         "name" : "[TYPE][测试分类]",
         "stringLength" : 60,
         "uIMode" : "DEFAULT",
+        "allowEmpty" : false,
         "needCodeListConfig" : true
       },
       "type" : "DEFAULT"
@@ -1020,6 +1018,7 @@
         "name" : "[TYPE][测试分类]移动端默认",
         "stringLength" : 60,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true,
         "needCodeListConfig" : true
       },
@@ -1073,7 +1072,8 @@
     "serviceCodeName" : "Type",
     "stdDataType" : 25,
     "stringLength" : 60,
-    "valueFormat" : "%1$s"
+    "valueFormat" : "%1$s",
+    "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "START_AT",
@@ -1294,6 +1294,17 @@
       "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CATEGORYS][类别]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTAREA_10",
+        "name" : "[CATEGORYS][类别]",
+        "stringLength" : 2000,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
       "codeName" : "MobileDefault",
       "name" : "[CATEGORYS][类别]移动端默认",
       "getPSDEFFormItem" : {
@@ -1306,17 +1317,6 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CATEGORYS][类别]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTAREA_10",
-        "name" : "[CATEGORYS][类别]",
-        "stringLength" : 2000,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1364,17 +1364,6 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[WORK_ITEM_RELATIONS][关联缺陷]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[WORK_ITEM_RELATIONS][关联缺陷]",
-        "stringLength" : 1048576,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[WORK_ITEM_RELATIONS][关联缺陷]移动端默认",
       "getPSDEFFormItem" : {
@@ -1387,6 +1376,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[WORK_ITEM_RELATIONS][关联缺陷]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[WORK_ITEM_RELATIONS][关联缺陷]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1447,17 +1447,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ASSIGNEE_NAME][负责人]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ASSIGNEE_NAME][负责人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ASSIGNEE_NAME][负责人]移动端默认",
       "getPSDEFFormItem" : {
@@ -1470,6 +1459,17 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ASSIGNEE_NAME][负责人]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ASSIGNEE_NAME][负责人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1530,17 +1530,6 @@
       "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[ASSIGNEE_ID][负责人标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[ASSIGNEE_ID][负责人标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[ASSIGNEE_ID][负责人标识]移动端默认",
       "getPSDEFFormItem" : {
@@ -1549,10 +1538,23 @@
         "name" : "[ASSIGNEE_ID][负责人标识]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ASSIGNEE_ID][负责人标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[ASSIGNEE_ID][负责人标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1601,7 +1603,8 @@
     "serviceCodeName" : "Assignee_id",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s"
+    "valueFormat" : "%1$s",
+    "allowEmpty" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PROJECT_TYPE",
@@ -1611,25 +1614,6 @@
       "standardColumnName" : "`PROJECT_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[PROJECT_TYPE][产品类型]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[PROJECT_TYPE][产品类型]",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
-        },
-        "stringLength" : 60,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[PROJECT_TYPE][产品类型]移动端默认",
       "getPSDEFFormItem" : {
@@ -1650,6 +1634,25 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PROJECT_TYPE][产品类型]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PROJECT_TYPE][产品类型]",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
+        },
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2021,6 +2024,7 @@
         "name" : "[NAME][名称]移动端默认",
         "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -2036,7 +2040,8 @@
         "editorType" : "TEXTBOX",
         "name" : "[NAME][名称]",
         "stringLength" : 200,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     } ],
@@ -2087,6 +2092,7 @@
     "stdDataType" : 25,
     "stringLength" : 200,
     "valueFormat" : "%1$s",
+    "allowEmpty" : false,
     "enableQuickSearch" : true,
     "majorDEField" : true
   }, {
@@ -2391,7 +2397,8 @@
           "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Library.json"
         },
         "stringLength" : 100,
-        "uIMode" : "DEFAULT"
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
@@ -2407,6 +2414,7 @@
         },
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -2476,6 +2484,7 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
+    "allowEmpty" : false,
     "linkDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
@@ -2585,118 +2594,6 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Project.json"
     },
     "serviceCodeName" : "Project_id",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "linkDEField" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "VERSION_ID",
-      "dBType" : "MYSQL5",
-      "name" : "VERSION_ID",
-      "queryCodeExp" : "t1.`VERSION_ID`",
-      "standardColumnName" : "`VERSION_ID`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_VERSION_ID_EQ",
-      "name" : "N_VERSION_ID_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[VERSION_ID][关联发布]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "HIDDEN",
-        "name" : "[VERSION_ID][关联发布]",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[VERSION_ID][关联发布]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "HIDDEN",
-        "name" : "[VERSION_ID][关联发布]移动端默认",
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-        },
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "VERSION_ID",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[100]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "Version_id",
-    "dEFType" : 1,
-    "dataType" : "PICKUP",
-    "importOrder" : 1000,
-    "length" : 100,
-    "logicName" : "关联发布",
-    "name" : "VERSION_ID",
-    "getPSDEDBTable" : {
-      "modelref" : true,
-      "id" : "Table"
-    },
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan/PSDERS/DER1N_TEST_PLAN_VERSION_VERSION_ID.json"
-    },
-    "getPSSysDBColumn" : {
-      "modelref" : true,
-      "id" : "VERSION_ID"
-    },
-    "getRealPSDEField" : {
-      "name" : "ID",
-      "codeName" : "Id"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "ID",
-      "codeName" : "Id"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-    },
-    "serviceCodeName" : "Version_id",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
@@ -2944,139 +2841,10 @@
     "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "VERSION_NAME",
-      "dBType" : "MYSQL5",
-      "name" : "VERSION_NAME",
-      "queryCodeExp" : "t31.`NAME`",
-      "standardColumnName" : "`VERSION_NAME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_VERSION_NAME_EQ",
-      "name" : "N_VERSION_NAME_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    }, {
-      "codeName" : "N_VERSION_NAME_LIKE",
-      "name" : "N_VERSION_NAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[VERSION_NAME][名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "PICKER",
-        "name" : "[VERSION_NAME][名称]",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[VERSION_NAME][名称]移动端默认",
-      "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBPICKER",
-        "name" : "[VERSION_NAME][名称]移动端默认",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "VERSION_NAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[200]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "Version_name",
-    "dEFType" : 3,
-    "dataType" : "PICKUPTEXT",
-    "importOrder" : 1000,
-    "length" : 200,
-    "logicName" : "关联发布",
-    "name" : "VERSION_NAME",
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan/PSDERS/DER1N_TEST_PLAN_VERSION_VERSION_ID.json"
-    },
-    "getRealPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "Name"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "Name"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
-    },
-    "serviceCodeName" : "Version_name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "getValuePSDEField" : {
-      "name" : "VERSION_ID",
-      "codeName" : "Version_id"
-    },
-    "viewLevel" : 0,
-    "linkDEField" : true,
-    "phisicalDEField" : false
-  }, {
-    "getAllPSDEFDTColumns" : [ {
       "columnName" : "SPRINT_NAME",
       "dBType" : "MYSQL5",
       "name" : "SPRINT_NAME",
-      "queryCodeExp" : "t41.`NAME`",
+      "queryCodeExp" : "t31.`NAME`",
       "standardColumnName" : "`SPRINT_NAME`"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -3446,7 +3214,7 @@
       "columnName" : "RELEASE_NAME",
       "dBType" : "MYSQL5",
       "name" : "RELEASE_NAME",
-      "queryCodeExp" : "t51.`NAME`",
+      "queryCodeExp" : "t41.`NAME`",
       "standardColumnName" : "`RELEASE_NAME`"
     } ],
     "getAllPSDEFSearchModes" : [ {
@@ -3461,28 +3229,6 @@
       "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[RELEASE_NAME][名称]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "PICKER",
-        "name" : "[RELEASE_NAME][名称]",
-        "refLinkPSDEViewCodeName" : "RedirectView",
-        "refMPickupPSDEViewCodeName" : "MPickupView",
-        "getRefPSDEACMode" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Release/PSDEACMODES/Default.json"
-        },
-        "getRefPSDataEntity" : {
-          "modelref" : true,
-          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Release.json"
-        },
-        "refPickupPSDEViewCodeName" : "PickupView",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
       "name" : "[RELEASE_NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
@@ -3506,6 +3252,28 @@
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[RELEASE_NAME][名称]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "PICKER",
+        "name" : "[RELEASE_NAME][名称]",
+        "refLinkPSDEViewCodeName" : "RedirectView",
+        "refMPickupPSDEViewCodeName" : "MPickupView",
+        "getRefPSDEACMode" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Release/PSDEACMODES/Default.json"
+        },
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Release.json"
+        },
+        "refPickupPSDEViewCodeName" : "PickupView",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -3602,6 +3370,21 @@
             },
             "logicType" : "SINGLE",
             "name" : "Default[ASSIGNEE_ID] 值不为空(NotNil)"
+          }, {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "ASSIGNEE_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[ASSIGNEE_ID] 不等于(<>) update_man",
+            "paramType" : "SRCENTITYFIELD",
+            "paramValue" : "update_man",
+            "getSrcLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            }
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -3627,6 +3410,21 @@
             },
             "logicType" : "SINGLE",
             "name" : "Last[ASSIGNEE_ID] 值不为空(NotNil)"
+          }, {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "ASSIGNEE_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Last"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Last[ASSIGNEE_ID] 不等于(<>) update_man",
+            "paramType" : "SRCENTITYFIELD",
+            "paramValue" : "update_man",
+            "getSrcLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            }
           } ]
         },
         "getSrcPSDELogicNode" : {
@@ -3661,6 +3459,20 @@
         "name" : "Default[UPDATE_MAN] ==> Last[UPDATE_MAN]",
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "UPDATE_MAN",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "UPDATE_TIME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Last"
+        },
+        "name" : "Default[UPDATE_TIME] ==> Last[UPDATE_TIME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "UPDATE_TIME",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
@@ -3952,16 +3764,16 @@
     "mSTag" : "completed",
     "name" : "completed",
     "getPSDEMainStateOPPrivs" : [ {
-      "name" : "IN_PROGRESS",
-      "getPSDEOPPriv" : {
-        "logicName" : "in_progress",
-        "name" : "IN_PROGRESS"
-      }
-    }, {
       "name" : "COMPLETED",
       "getPSDEOPPriv" : {
         "logicName" : "completed",
         "name" : "COMPLETED"
+      }
+    }, {
+      "name" : "IN_PROGRESS",
+      "getPSDEOPPriv" : {
+        "logicName" : "in_progress",
+        "name" : "IN_PROGRESS"
       }
     } ],
     "stateValue" : "completed",
@@ -4042,7 +3854,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 60,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "jsonFormat" : "yyyy-MM-dd",
       "logicName" : "计划开始",
@@ -4130,7 +3943,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "项目类型",
       "name" : "Project_type",
@@ -4201,7 +4015,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "所属测试库",
       "name" : "Library_name",
@@ -4223,7 +4038,8 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
-      "type" : "SIMPLE"
+      "type" : "SIMPLE",
+      "allowEmpty" : false
     }, {
       "logicName" : "关联项目",
       "name" : "Project_id",
@@ -4316,28 +4132,6 @@
       "type" : "SIMPLE",
       "allowEmpty" : false,
       "readOnly" : true
-    }, {
-      "logicName" : "关联发布",
-      "name" : "Version_id",
-      "getPSDEField" : {
-        "name" : "VERSION_ID",
-        "codeName" : "Version_id"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "关联发布",
-      "name" : "Version_name",
-      "getPSDEField" : {
-        "name" : "VERSION_NAME",
-        "codeName" : "Version_name"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 200,
-      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFAULT",
@@ -4625,48 +4419,6 @@
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
-    }, {
-      "logicName" : "关联发布",
-      "name" : "N_VERSION_ID_EQ",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_VERSION_ID_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "VERSION_ID",
-        "codeName" : "Version_id"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "关联发布",
-      "name" : "N_VERSION_NAME_EQ",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_VERSION_NAME_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "VERSION_NAME",
-        "codeName" : "Version_name"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "logicName" : "关联发布",
-      "name" : "N_VERSION_NAME_LIKE",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_VERSION_NAME_LIKE"
-      },
-      "getPSDEField" : {
-        "name" : "VERSION_NAME",
-        "codeName" : "Version_name"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
     } ],
     "sourceType" : "DE",
     "type" : "DEFILTER",
@@ -4739,9 +4491,6 @@
     "id" : "Library__CREATE"
   }, {
     "logicName" : "删除",
-    "name" : "DELETE"
-  }, {
-    "logicName" : "删除",
     "mapPSDEName" : "LIBRARY",
     "mapPSDEOPPrivName" : "SUBDATA",
     "getMapPSDER" : {
@@ -4754,6 +4503,9 @@
     },
     "name" : "DELETE",
     "id" : "Library__DELETE"
+  }, {
+    "logicName" : "删除",
+    "name" : "DELETE"
   }, {
     "logicName" : "in_progress",
     "name" : "IN_PROGRESS"
@@ -4811,29 +4563,16 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "pick_up_view",
-    "logicName" : "测试计划实体数据选择视图（左右关系）",
-    "name" : "测试计划实体数据选择视图（左右关系）",
-    "realModelSubType" : "DEPICKUPVIEW2",
+    "codeName" : "grid_view_in_progress",
+    "logicName" : "进行中的测试计划",
+    "name" : "进行中的测试计划",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
     "logicName" : "测试计划实体编辑视图（左右关系）",
     "name" : "测试计划实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "update_view",
-    "logicName" : "测试计划编辑视图",
-    "modelTag" : "EDITVIEW",
-    "name" : "测试计划编辑视图",
-    "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "grid_view_in_progress",
-    "logicName" : "进行中的测试计划",
-    "name" : "进行中的测试计划",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "grid_view_project",
@@ -4848,9 +4587,22 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "tree_exp_view_project",
+    "logicName" : "测试计划树导航视图（项目）",
+    "name" : "测试计划树导航视图（项目）",
+    "realModelSubType" : "DETREEEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "quick_create_view",
     "logicName" : "测试计划快速建立视图",
     "name" : "测试计划快速建立视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "update_view",
+    "logicName" : "测试计划编辑视图",
+    "modelTag" : "EDITVIEW",
+    "name" : "测试计划编辑视图",
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -4861,6 +4613,12 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "pick_up_view",
+    "logicName" : "测试计划实体数据选择视图（左右关系）",
+    "name" : "测试计划实体数据选择视图（左右关系）",
+    "realModelSubType" : "DEPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "MPickupView",
     "logicName" : "测试计划实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
@@ -4868,9 +4626,9 @@
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "grid_view_my_assignee",
-    "logicName" : "我负责的测试计划表格视图",
-    "name" : "我负责的测试计划表格视图",
+    "codeName" : "grid_view_my_part",
+    "logicName" : "我参与的测试计划表格视图",
+    "name" : "我参与的测试计划表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -4878,12 +4636,6 @@
     "logicName" : "测试计划实体数据选择视图（左右关系）_选择数据视图",
     "name" : "测试计划实体数据选择视图（左右关系）_选择数据视图",
     "realModelSubType" : "DEPICKUPGRIDVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "grid_view_my_part",
-    "logicName" : "我参与的测试计划表格视图",
-    "name" : "我参与的测试计划表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tree_exp_view",
@@ -4906,10 +4658,10 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "tree_exp_view_project",
-    "logicName" : "测试计划树导航视图（项目）",
-    "name" : "测试计划树导航视图（项目）",
-    "realModelSubType" : "DETREEEXPVIEW",
+    "codeName" : "grid_view_my_assignee",
+    "logicName" : "我负责的测试计划表格视图",
+    "name" : "我负责的测试计划表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -4982,7 +4734,7 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 7,
+    "masterRS" : 39,
     "minorCodeName" : "runs",
     "getMinorPSDataEntity" : {
       "modelref" : true,
@@ -5035,6 +4787,7 @@
     "serviceCodeName" : "test_plan",
     "typeValue" : "test_plan"
   } ],
+  "memo" : "定义测试的范围、方法和资源分配，可在测试计划内添加多个执行用例。",
   "getMinorPSDERs" : [ {
     "codeName" : "Library",
     "dERType" : "DER1N",
@@ -5168,38 +4921,25 @@
     "serviceCodeName" : "Sprint",
     "enableFKey" : true
   }, {
-    "codeName" : "Version",
-    "dERType" : "DER1N",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan/PSDERS/DER1N_TEST_PLAN_VERSION_VERSION_ID.json",
-    "fKeyName" : "F4DE9495F8CBA31066",
-    "logicName" : "发布",
+    "codeName" : "TEST_PLAN",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan/PSDERS/DERCUSTOM_TEST_PLAN_COMMON_FLOW.json",
+    "logicName" : "通用自动规则监听",
     "getMajorPSDataEntity" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/Version.json"
+      "path" : "PSMODULES/Base/PSDATAENTITIES/Common_flow.json"
     },
-    "masterOrder" : -1,
-    "masterRS" : 0,
-    "minorCodeName" : "test_plans",
+    "masterRS" : 32,
     "getMinorPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/Test_plan.json"
     },
-    "minorServiceCodeName" : "test_plans",
-    "name" : "DER1N_TEST_PLAN_VERSION_VERSION_ID",
+    "name" : "DERCUSTOM_TEST_PLAN_COMMON_FLOW",
     "orderValue" : 100,
-    "getPSPickupDEField" : {
-      "name" : "VERSION_ID",
-      "codeName" : "Version_id"
-    },
-    "getPSPickupTextDEField" : {
-      "name" : "VERSION_NAME",
-      "codeName" : "Version_name"
-    },
-    "pickupDEFName" : "VERSION_ID",
-    "removeActionType" : -1,
-    "removeOrder" : 0,
-    "serviceCodeName" : "Version",
-    "enableFKey" : true
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "TEST_PLAN"
   } ],
   "name" : "TEST_PLAN",
   "getPSSysDBScheme" : {

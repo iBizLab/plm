@@ -243,6 +243,87 @@
             },
             "id" : "FORM"
           },
+          "getPSDEFormItemVRs" : [ {
+            "checkMode" : 1,
+            "name" : "表单项值规则",
+            "getPSDEFValueRule" : {
+              "codeName" : "START_AT",
+              "name" : "开始时间",
+              "getPSDEFVRGroupCondition" : {
+                "condOp" : "AND",
+                "condType" : "GROUP",
+                "name" : "默认组",
+                "getPSDEFVRConditions" : [ {
+                  "condOp" : "OR",
+                  "condType" : "GROUP",
+                  "name" : "[条件组]OR",
+                  "getPSDEFVRConditions" : [ {
+                    "condOp" : "ISNULL",
+                    "condType" : "SIMPLE",
+                    "dEFName" : "END_AT",
+                    "name" : "[常规条件] 值为空(Nil)"
+                  }, {
+                    "condOp" : "LTANDEQ",
+                    "condType" : "SIMPLE",
+                    "dEFName" : "START_AT",
+                    "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
+                    "paramType" : "ENTITYFIELD",
+                    "paramValue" : "END_AT",
+                    "ruleInfo" : "开始时间必须小于等于结束时间"
+                  } ],
+                  "ruleInfo" : "开始时间必须小于等于结束时间"
+                } ],
+                "ruleInfo" : "开始时间必须小于等于结束时间"
+              },
+              "ruleInfo" : "开始时间必须小于等于结束时间",
+              "checkDefault" : true,
+              "defaultMode" : false,
+              "enableBackend" : true,
+              "enableFront" : true
+            },
+            "getPSDEFormItemName" : "start_at",
+            "valueRuleType" : "DEFVALUERULE"
+          }, {
+            "checkMode" : 1,
+            "name" : "表单项值规则",
+            "getPSDEFValueRule" : {
+              "codeName" : "END_AT",
+              "name" : "结束时间",
+              "getPSDEFVRGroupCondition" : {
+                "condOp" : "AND",
+                "condType" : "GROUP",
+                "name" : "默认组",
+                "getPSDEFVRConditions" : [ {
+                  "condOp" : "OR",
+                  "condType" : "GROUP",
+                  "name" : "[条件组]OR",
+                  "getPSDEFVRConditions" : [ {
+                    "condOp" : "ISNULL",
+                    "condType" : "SIMPLE",
+                    "dEFName" : "START_AT",
+                    "name" : "[常规条件] 值为空(Nil)"
+                  }, {
+                    "condOp" : "GTANDEQ",
+                    "condType" : "SIMPLE",
+                    "dEFName" : "END_AT",
+                    "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
+                    "paramType" : "ENTITYFIELD",
+                    "paramValue" : "START_AT",
+                    "ruleInfo" : "结束时间必须大于等于开始时间"
+                  } ],
+                  "ruleInfo" : "结束时间必须大于等于开始时间"
+                } ],
+                "ruleInfo" : "结束时间必须大于等于开始时间"
+              },
+              "ruleInfo" : "结束时间必须大于等于开始时间",
+              "checkDefault" : true,
+              "defaultMode" : false,
+              "enableBackend" : true,
+              "enableFront" : true
+            },
+            "getPSDEFormItemName" : "end_at",
+            "valueRuleType" : "DEFVALUERULE"
+          } ],
           "getPSDEFormItems" : [ {
             "id" : "srfupdatedate",
             "hidden" : true,
@@ -666,7 +747,7 @@
           "enableAutoSave" : true,
           "noTabHeader" : true,
           "name" : "form",
-          "modelid" : "64BB3014-9FB9-4535-A27F-B45344F635BD",
+          "modelid" : "378f580cb54b38e338b0e5b50b991b6a",
           "modeltype" : "PSDEFORM_EDITFORM"
         }, {
           "codeName" : "overview_view_baseinfodatainfobar",
@@ -691,7 +772,7 @@
           "getPSControlParam" : { }
         } ],
         "getPSDEViewCodeName" : "overview_view_baseinfo",
-        "getPSDEViewId" : "22BC7B1B-D774-466B-999F-D06F4945DB36",
+        "getPSDEViewId" : "4ba965ddb9f91759f3d0eb136af32d38",
         "getPSSysCss" : {
           "cssName" : "main-info-common-view"
         },
@@ -716,13 +797,13 @@
         "enableDP" : true,
         "showCaptionBar" : false,
         "showDataInfoBar" : true,
-        "modelid" : "5038b5f9d2843a4ebf040b2cf4593ad6",
+        "modelid" : "5ab6fce1664afeb584b31eb379f3b045",
         "modeltype" : "PSAPPDEVIEW"
       },
       "portletType" : "VIEW",
       "title" : "基本信息",
       "showTitleBar" : false,
-      "modelid" : "E3E76A97-A590-4FEC-9A35-CBA13B08D85F",
+      "modelid" : "2f517b7f2a541ae3899559372c91cb9f",
       "modeltype" : "PSSYSDBPART"
     } ],
     "portletType" : "CONTAINER",
@@ -977,6 +1058,10 @@
           "autoLoad" : true,
           "showBusyIndicator" : true
         },
+        "getPSDEChartDataGrid" : {
+          "index" : 0,
+          "id" : "0"
+        },
         "getPSDEChartLegend" : {
           "index" : 0,
           "legendPos" : "TOP",
@@ -1042,7 +1127,7 @@
         },
         "readOnly" : true,
         "name" : "dashboard_sysportlet2_chart",
-        "modelid" : "9910420A-7557-4461-A47F-D202024FDC64",
+        "modelid" : "be0ae9c806315e7568db7d9d31644427",
         "modeltype" : "PSDECHART",
         "getUserParam" : {
           "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\"]"
@@ -1057,7 +1142,7 @@
       "portletType" : "CHART",
       "title" : "工作项统计",
       "showTitleBar" : false,
-      "modelid" : "FDC295DD-2040-42B1-B327-50C1A84D7B88",
+      "modelid" : "ca4654235e18919fa36d6be5eec5a2f7",
       "modeltype" : "PSSYSDBPART"
     } ],
     "portletType" : "CONTAINER",
@@ -1065,6 +1150,6 @@
     "showTitleBar" : true
   } ],
   "enableCustomized" : false,
-  "modelid" : "0f0aa185d4b99991036398b68b5d5a83",
+  "modelid" : "20788196eb75cfb9bbdedc21b7660f98",
   "modeltype" : "PSSYSDASHBOARD"
 }
