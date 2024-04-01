@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-empty-function */
@@ -15,6 +16,8 @@ export class PaintFormatMenu implements IButtonMenu {
   public format: IData = {};
 
   public editor: IDomEditor | null = null;
+
+  public excting: boolean = false;
 
   readonly iconSvg =
     '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fit="" height="1em" width="1em" preserveAspectRatio="xMidYMid meet" focusable="false"><g id="aqseditor/paintformat" stroke-width="1" fill-rule="evenodd"><path d="M3 5.24h10V2H3v3.24zM13.299 1H2.701A.701.701 0 0 0 2 1.701v3.838c0 .387.314.701.701.701h6.236L7.621 7.438h-.002v2.233h-.768v5.184L9.404 13.1V9.671h-.585V7.97l1.9-1.73h2.58A.701.701 0 0 0 14 5.539V1.701A.701.701 0 0 0 13.299 1z" id="aqsFill-1"></path></g></svg>';
@@ -48,6 +51,14 @@ export class PaintFormatMenu implements IButtonMenu {
     }
   }
 
+  clearFormat() {
+    this.format = {};
+    const container = this.editor!.getEditableContainer();
+    if (container) {
+      container.classList.remove('is-paint-format');
+    }
+  }
+
   setPaintFormat = () => {
     if (!this.editor) {
       return;
@@ -60,18 +71,31 @@ export class PaintFormatMenu implements IButtonMenu {
     if (Object.keys(this.format).length > 0) {
       const node = { ...this.format, text: select };
       this.editor.insertNode(node);
-      this.format = {};
-      const container = this.editor.getEditableContainer();
-      if (container) {
-        container.classList.remove('is-paint-format');
+      if (!this.excting) {
+        this.clearFormat();
       }
     }
   };
 
   onPaintFormat = debounce(this.setPaintFormat, 500, false);
 
-  // 点击菜单时触发的函数
-  exec(editor: IDomEditor) {
+  throttle(
+    fn: (...args: any[]) => void | Promise<void>,
+    wait: number,
+  ): (...args: any[]) => void {
+    let timer: unknown = null;
+    return function (this: any, ...args: any[]): void {
+      if (!timer) {
+        timer = setTimeout(() => {
+          fn.apply(this, args);
+          timer = null;
+          this.excting = true;
+        }, wait);
+      }
+    };
+  }
+
+  handle(editor: IDomEditor) {
     const fragment = editor.getFragment();
     this.calcFormat(fragment);
     this.editor = editor;
@@ -81,6 +105,17 @@ export class PaintFormatMenu implements IButtonMenu {
     }
     editor.deselect();
     editor.on('change', this.onPaintFormat);
+    editor.on('clickOutside', () => {
+      this.clearFormat();
+      this.excting = false;
+    });
+  }
+
+  throttleHandle = this.throttle(this.handle, 300);
+
+  // 点击菜单时触发的函数
+  exec(editor: IDomEditor) {
+    this.throttleHandle(editor);
   }
 }
 

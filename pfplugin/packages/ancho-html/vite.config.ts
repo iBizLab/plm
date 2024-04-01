@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import libLegacy from '@qx-chitanda/vite-plugin-lib-legacy';
 import dts from 'vite-plugin-dts';
 import libCss from 'vite-plugin-libcss';
+import { prismjsPlugin } from 'vite-plugin-prismjs';
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
@@ -46,6 +47,35 @@ export default defineConfig({
     //   include: 'src/**/*.{ts,tsx,js,jsx}',
     // }),
     vue(),
+    prismjsPlugin({
+      languages: [
+        'css',
+        'html',
+        'xml',
+        'javascript',
+        'typescript',
+        'jsx',
+        'go',
+        'php',
+        'c',
+        'cpp',
+        'csharp',
+        'python',
+        'java',
+        'c#',
+        'visual-basic',
+        'sql',
+        'ruby',
+        'swift',
+        'bash',
+        'lua',
+        'groovy',
+        'markdown',
+        'markup',
+        'markup-templating',
+      ], // 语言
+      css: true,
+    }),
     vueJsx(),
     libLegacy(),
     libCss(),

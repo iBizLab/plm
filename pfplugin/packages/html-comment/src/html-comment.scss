@@ -27,6 +27,12 @@
 
   .ibiz-html {
     width: calc(100% - 36px);
+
+    .table-container {
+      table {
+        width: 100%;
+      }
+    }
   }
 
   @include e(avatar) {
@@ -172,6 +178,28 @@
 
   .w-e-text-container .w-e-scroll > div {
     overflow: hidden;
+  }
+
+  // 插入表格样式
+  .rich-html-table {
+    width: 100% !important;
+    border-collapse: collapse;
+
+    th {
+      height: 49px;
+      min-height: 49px;
+      padding: 8px;
+      background-color: #F3F3F3;
+      border: 1px solid lightgray;
+    }
+
+    td {
+      height: 49px;
+      min-height: 49px;
+      padding: 8px;
+      empty-cells: show;
+      border: 1px solid lightgray;
+    }
   }
 
   // 回复样式
@@ -334,4 +362,54 @@ mention-elem::part(identifier) {
 
 mention-elem::part(name) {
   margin: 0 4px;
+}
+
+// 文字颜色配置弹框
+@include b('html') {
+  .w-e-drop-panel {
+    z-index: 100;
+    width: 252px;
+    height: 242px;
+  }
+  @include b('html-editor') {
+    .w-e-drop-panel {
+      margin: 0;
+    }
+  }
+}
+
+//编辑人员标记样式
+personnel-marker-elem {
+  height: 100%;
+  position: relative;
+  display: inline;
+  width: auto;
+}
+
+personnel-marker-elem::part(box) {
+display: inline;
+width: 1px;
+z-index: 9999;
+color: #FFF;
+}
+
+personnel-marker-elem::part(name) {
+width: auto;
+display: inline-block;
+padding: 2px 5px;
+font-size: 12px;
+line-height: normal;
+position: absolute;
+white-space: nowrap;
+top: -100%;
+left: -2px;
+border-radius: 2px;
+}
+
+personnel-marker-elem::part(line) {
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+  position: absolute;
+  top: -4px;
 }

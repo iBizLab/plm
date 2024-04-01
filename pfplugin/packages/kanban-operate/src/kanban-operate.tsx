@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { useNamespace } from '@ibiz-template/vue3-util';
 import {
   IAppDEUIActionGroupDetail,
@@ -6,8 +5,8 @@ import {
   IUIActionGroupDetail,
 } from '@ibiz/model-core';
 import { defineComponent, PropType, computed, ref } from 'vue';
-import { IUILogicParams, UIActionUtil } from '@ibiz-template/runtime';
 import { KanbanOperateController } from './kanban-operate.controller';
+import { UIActionUtil } from '@ibiz-template/runtime';
 import './kanban-operate.scss';
 
 export const KanbanOperate = defineComponent({
@@ -36,9 +35,14 @@ export const KanbanOperate = defineComponent({
     const popoverRef = ref();
 
     /**
-     * 界面行为组popover
+     * 一般行为级别popover
      */
     const actionRef = ref();
+
+    /**
+     * 常用级别行为popover
+     */
+    const useactionRef = ref();
 
     /**
      * popover是否显示
@@ -65,7 +69,7 @@ export const KanbanOperate = defineComponent({
       buttonCssStyle,
     } = props.modelData;
 
-    const { panel, state } = props.controller;
+    const { panel } = props.controller;
 
     /**
      * 设置按钮直接样式
@@ -119,13 +123,26 @@ export const KanbanOperate = defineComponent({
       }
     });
 
+    const handleActionVisible = (item: IData): boolean => {
+      const actionconfig = c.uaState[item.id];
+      if (
+        actionconfig &&
+        actionconfig.disabled === false &&
+        actionconfig.visible === true
+      ) {
+        return true;
+      }
+      return false;
+    };
+
     /**
-     * 处理行为级别,分为关键行为组和一般行为组
+     * 处理行为级别,分为关键行为组,常用行为组和一般行为组，常用行为组都为打开编辑表单的界面行为
      * @returns {keyActions,deActions}
      */
-    const handleActionLevel = (): IParams => {
+    const handleActionLevel = () => {
       const { actionModel } = c;
       const keyActions: IUIActionGroupDetail[] = [];
+      const useActions: IUIActionGroupDetail[] = [];
       const deActions: IUIActionGroupDetail[] = [];
 
       if (actionModel && actionModel.deuiactionGroup) {
@@ -133,22 +150,25 @@ export const KanbanOperate = defineComponent({
         uiactionGroupDetails.forEach((detail: IUIActionGroupDetail) => {
           if (detail.actionLevel === 250) {
             keyActions.push(detail);
+          } else if (detail.actionLevel === 200) {
+            useActions.push(detail);
           } else {
             deActions.push(detail);
           }
         });
       }
 
-      return { deActions, keyActions };
+      return { deActions, useActions, keyActions };
     };
 
     const handleEvent = (
       detail: IUIActionGroupDetail,
-      event: IParams,
-    ): IParams => {
+      event: any,
+      element?: Element | null,
+    ) => {
       const e = { ...event };
-      if (actionRef.value) {
-        const actionEl = actionRef.value.querySelector(`.${detail.id!}`);
+      if (element) {
+        const actionEl = element.querySelector(`.${detail.id!}`);
         if (actionEl) {
           e.target = actionEl;
         }
@@ -164,19 +184,20 @@ export const KanbanOperate = defineComponent({
     const onActionClick = async (
       detail: IUIActionGroupDetail,
       event: MouseEvent,
+      element?: Element | null,
     ): Promise<void> => {
       event.stopPropagation();
       processing.value = true;
-      const params: IParams = {
+      const params: any = {
         context: panel.context,
         params: panel.params,
         data: [panel.inputData],
         view: panel.view,
-        event: handleEvent(detail, event),
+        event: handleEvent(detail, event, element),
       };
       await UIActionUtil.execAndResolved(
         detail.uiactionId!,
-        params as IUILogicParams,
+        params,
         detail.appId,
       );
       processing.value = false;
@@ -187,22 +208,16 @@ export const KanbanOperate = defineComponent({
      * @param event
      */
     const handleButtonClick = async (event: MouseEvent): Promise<void> => {
-      try {
-        state.loading = true;
-        await props.controller.onActionClick(event);
-        props.controller.onClick();
-      } finally {
-        state.loading = false;
-      }
+      props.controller.onClick();
     };
 
     /**
      * 计算行为按钮样式类
      */
-    const calcActionItemClass = (item: IAppDEUIActionGroupDetail): string[] => {
+    const calcActionItemClass = (item: IAppDEUIActionGroupDetail) => {
       const { actionLevel } = item;
       return [
-        item.id as string,
+        item.id,
         ns.e('item'),
         ns.is('disabled', false),
         ns.em('item', `level-${actionLevel}`),
@@ -226,14 +241,14 @@ export const KanbanOperate = defineComponent({
                 class={[
                   ns.bem('poper-content', 'keyaction', 'action'),
                   ...calcActionItemClass(action),
+                  { 'no-access': !handleActionVisible(action) },
                 ]}
                 text
                 size='small'
-                onClick={(e: MouseEvent) => onActionClick(action, e)}
-                title={action.tooltip || action.caption}
-              >
-                {action.showIcon && (action as IParams).sysImage ? (
-                  <iBizIcon icon={(action as IParams).sysImage}></iBizIcon>
+                onClick={(e: MouseEvent) => onActionClick(action, e, null)}
+                title={action.tooltip || action.caption}>
+                {action.showIcon && (action as any).sysImage ? (
+                  <iBizIcon icon={(action as any).sysImage}></iBizIcon>
                 ) : (
                   <iBizIcon icon='fa fa-save'></iBizIcon>
                 )}
@@ -256,27 +271,75 @@ export const KanbanOperate = defineComponent({
       return (
         <div class={ns.be('poper-content', 'deaction')} ref={actionRef}>
           {deActions.map((action: IUIActionGroupDetail) => {
+            if (handleActionVisible(action)) {
+              return (
+                <div
+                  class={[
+                    ns.bem('poper-content', 'deaction', 'action'),
+                    ...calcActionItemClass(action),
+                    { 'no-access': !handleActionVisible(action) },
+                  ]}
+                  onClick={(e: MouseEvent) =>
+                    onActionClick(action, e, actionRef.value)
+                  }
+                  title={action.tooltip || action.caption}>
+                  {action.showIcon && (action as any).sysImage ? (
+                    <iBizIcon icon={(action as any).sysImage}></iBizIcon>
+                  ) : (
+                    <i class='ibiz-icon fa fa-ravelry' aria-hidden='true'></i>
+                  )}
+                  <span
+                    class={ns.bem('poper-content', 'deaction', 'action-text')}>
+                    {action.showCaption
+                      ? (action as any).capLanguageRes
+                        ? ibiz.i18n.t(
+                            (action as any).capLanguageRes.lanResTag,
+                            action.caption,
+                          )
+                        : action.caption
+                      : ''}
+                  </span>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      );
+    };
+
+    /**
+     * @description 绘制常用操作，这里的界面行为都是用来打开编辑表单的
+     * @author 姜林君
+     * @date 2024/03/13 16:03:44
+     */
+    const renderUseAvtions = (deActions: IUIActionGroupDetail[]) => {
+      if (deActions.length === 0) return null;
+      return (
+        <div class={ns.be('poper-content', 'useaction')} ref={useactionRef}>
+          {deActions.map((action: IUIActionGroupDetail) => {
             return (
               <div
                 class={[
-                  ns.bem('poper-content', 'deaction', 'action'),
+                  ns.bem('poper-content', 'useaction', 'action'),
                   ...calcActionItemClass(action),
+                  { 'no-access': !handleActionVisible(action) },
                 ]}
-                onClick={(e: MouseEvent) => onActionClick(action, e)}
-                title={action.tooltip || action.caption}
-              >
-                {action.showIcon && (action as IParams).sysImage ? (
-                  <iBizIcon icon={(action as IParams).sysImage}></iBizIcon>
+                onClick={(e: MouseEvent) =>
+                  onActionClick(action, e, useactionRef.value)
+                }
+                title={action.tooltip || action.caption}>
+                {action.showIcon && (action as any).sysImage ? (
+                  <iBizIcon icon={(action as any).sysImage}></iBizIcon>
                 ) : (
                   <i class='ibiz-icon fa fa-ravelry' aria-hidden='true'></i>
                 )}
                 <span
-                  class={ns.bem('poper-content', 'deaction', 'action-text')}
-                >
+                  class={ns.bem('poper-content', 'useaction', 'action-text')}>
                   {action.showCaption
-                    ? (action as IParams).capLanguageRes
+                    ? (action as any).capLanguageRes
                       ? ibiz.i18n.t(
-                          (action as IParams).capLanguageRes.lanResTag,
+                          (action as any).capLanguageRes.lanResTag,
                           action.caption,
                         )
                       : action.caption
@@ -293,11 +356,12 @@ export const KanbanOperate = defineComponent({
      *  绘制poper弹窗内容
      * @returns
      */
-    const renderPoperContent = (): JSX.Element => {
-      const { keyActions, deActions } = handleActionLevel();
+    const renderPoperContent = () => {
+      const { keyActions, useActions, deActions } = handleActionLevel();
       return (
         <div class={ns.b('poper-content')}>
           {renderKeyActions(keyActions)}
+          {renderUseAvtions(useActions)}
           {renderDefaultActions(deActions)}
         </div>
       );
@@ -307,7 +371,7 @@ export const KanbanOperate = defineComponent({
      * 绘制快捷按钮
      * @returns
      */
-    const renderBtn = (): IParams => {
+    const renderBtn = () => {
       return (
         <div>
           <el-tooltip
@@ -315,16 +379,12 @@ export const KanbanOperate = defineComponent({
             effect='dark'
             content={tooltip}
             placement='top'
-            show-arrow
-          >
+            show-arrow>
             <el-button
               ref='buttonRef'
               type={buttonType.value}
               text={isText}
-              disabled={state.disabled}
-              loading={state.loading}
-              onClick={handleButtonClick}
-            >
+              onClick={handleButtonClick}>
               <div class={ns.b('content')}>
                 <iBizIcon class={ns.bm('content', 'icon')} icon={sysImage} />
                 {showCaption ? (
@@ -343,7 +403,7 @@ export const KanbanOperate = defineComponent({
      * 阻止默认和冒泡事件
      * @param event
      */
-    const stopEvent = (event: Event): void => {
+    const stopEvent = (event: Event) => {
       event.stopPropagation();
       event.preventDefault();
     };
@@ -368,7 +428,6 @@ export const KanbanOperate = defineComponent({
       showCaption,
       sysImage,
       codeName,
-      state,
       tooltip,
       handleButtonClick,
       buttonCssStyle,
@@ -385,41 +444,35 @@ export const KanbanOperate = defineComponent({
     };
   },
   render() {
-    if (this.state.visible) {
-      return (
-        <div
-          class={[
-            this.ns.b(),
-            this.ns.m(this.codeName),
-            this.ns.is('loading', this.state.loading),
-            this.itemStyle && this.ns.m(this.itemStyle.toLowerCase()),
-            this.ns.is('show-popover', this.isVisible),
-            ...this.controller.containerClass,
-          ]}
-          onClick={this.stopEvent}
-          style={this.tempStyle}
-        >
-          <el-popover
-            ref='popoverRef'
-            v-model:visible={this.isVisible}
-            popperClass={[this.ns.b('one-popover')]}
-            width={278}
-            placement='right-start'
-            trigger='click'
-          >
-            {{
-              reference: () => {
-                return this.renderBtn();
-              },
-              default: () => {
-                return this.renderPoperContent();
-              },
-            }}
-          </el-popover>
-        </div>
-      );
-    }
-    return null;
+    return (
+      <div
+        class={[
+          this.ns.b(),
+          this.ns.m(this.codeName),
+          this.itemStyle && this.ns.m(this.itemStyle.toLowerCase()),
+          this.ns.is('show-popover', this.isVisible),
+          ...this.controller.containerClass,
+        ]}
+        onClick={this.stopEvent}
+        style={this.tempStyle}>
+        <el-popover
+          ref='popoverRef'
+          v-model:visible={this.isVisible}
+          popperClass={[this.ns.b('one-popover')]}
+          width={278}
+          placement='right-start'
+          trigger='click'>
+          {{
+            reference: () => {
+              return this.renderBtn();
+            },
+            default: () => {
+              return this.renderPoperContent();
+            },
+          }}
+        </el-popover>
+      </div>
+    );
   },
 });
 export default KanbanOperate;

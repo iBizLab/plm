@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-lonely-if */
 import { useNamespace } from '@ibiz-template/vue3-util';
 import { defineComponent, PropType, Ref, ref, nextTick, watch } from 'vue';
@@ -8,6 +10,7 @@ import {
   IRawItemContainer,
   ITextItem,
 } from '@ibiz/model-core';
+import Prism from 'prismjs';
 import './rawitem.scss';
 
 export const AnchoHtmlNavBar = defineComponent({
@@ -97,7 +100,7 @@ export const AnchoHtmlNavBar = defineComponent({
     const isCollapse = ref(false);
 
     // html文本内容，按照标题级别（h1~h6）分组
-    const htmlContent: Ref<IData[]> = ref([]);
+    const htmlContent: Ref<any[]> = ref([]);
 
     // 当前选中锚点
     const selectAncho = ref('');
@@ -423,7 +426,7 @@ export const AnchoHtmlNavBar = defineComponent({
         await nextTick();
         const imgEl = document.querySelector('.el-image-viewer__wrapper');
         if (imgEl) {
-          (imgEl as IParams).addEventListener('keydown', listenEsc);
+          (imgEl as any).addEventListener('keydown', listenEsc);
         }
       }
     };
@@ -451,6 +454,11 @@ export const AnchoHtmlNavBar = defineComponent({
       });
     };
 
+    const parseCodeBlock = async () => {
+      await nextTick();
+      Prism.highlightAll();
+    };
+
     convertValue();
     parseHtml();
 
@@ -462,6 +470,7 @@ export const AnchoHtmlNavBar = defineComponent({
           convertValue();
           parseHtml();
           observerTitle();
+          parseCodeBlock();
         }
       },
       {

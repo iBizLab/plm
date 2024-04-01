@@ -87,6 +87,10 @@
 
 暂未支持
 
+### 协同编辑
+
+- 配置编辑器参数ENABLEREALTIME为true时，启用协同编辑，在多人共同编辑同一数据时，会实时同步他人的编辑数据，并显示该编辑人
+
 ## 输入参数
 
 | 属性名      | 描述                                               | 类型            | 默认值  |
@@ -95,7 +99,10 @@
 | MAXHEIGHT   | 展开时的富文本高度                                 | number          | 315     |
 | MODE        | 模式，default 时为富文本样式，comment 时为评论模式 | comment/default | comment |
 | REPLYSCRIPT | 回复脚本，回复的项绘制器脚本代码                   | string          |         |
-
+| RENDERMODE  | 支持段落化json，绘制模式                            | HTML/JSON       | HTML     |
+| SAVEINTERVAL| 支持段落化json，保存间隔                            | number          | 3000        |
+| EMITMODE    | 支持段落化json，抛值模式                            | BUTTON/AUTOMATIC| BUTTON    |
+| ENABLEREALTIME   | 实时编辑（协同编辑）                           | boolean          | false      |
 ## 基本使用
 
 在具体项目中，先通过模型导入前端界面插件和编辑器插件，然后在具体的视图配置动态文本，然后将其编辑器类型改为 HTML 编辑框，编辑器类型选择“HTML（评论）”

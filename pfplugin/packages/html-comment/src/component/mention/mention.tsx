@@ -17,6 +17,7 @@ import { EventBase, IModal, IModalData } from '@ibiz-template/runtime';
 import { debounce } from 'lodash-es';
 import { NOOP, listenJSEvent } from '@ibiz-template/core';
 import { MenTionController } from '../../mention';
+import { HtmlUtil } from '../../utils';
 import './mention.scss';
 
 export const MenTion = defineComponent({
@@ -147,8 +148,8 @@ export const MenTion = defineComponent({
 
     const renderItem = (user: IData) => {
       const usertext: string = user.name;
-      const avatarBg = c.stringToHexColor(usertext);
-      const avatarName = c.avatarName(usertext);
+      const avatarBg = HtmlUtil.stringToHexColor(usertext);
+      const avatarName = HtmlUtil.avatarName(usertext);
       return (
         <div
           class={[ns.e('item'), ns.is('active', user.id === curUser.value.id)]}

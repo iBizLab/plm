@@ -1,0 +1,84 @@
+/* stylelint-disable selector-class-pattern */
+$control-chart: ();
+
+@include b(control-chart) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100% !important;
+
+  @include b('chart-grid') {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @include e('chart') {
+      flex: 1;
+      width: 100%;
+      height: 50%;
+      min-height: 50%;
+
+      @include when('no-data') {
+        display: none;
+      }
+    }
+
+    @include e('empty') {
+      display: none;
+      flex: 1;
+
+      @include when('no-data') {
+        display: flex;
+        height: 50%;
+        min-height: 50%;
+      }
+    }
+
+    @include e('grid') {
+      flex: 1;
+      height: 50%;
+      max-height: 50%;
+      padding: 10px;
+    }
+
+    @include e('is-colllapse') {
+      flex: 0;
+      height: auto;
+    }
+
+    @include e('grid-header') {
+      .cell {
+        font-weight: 400;
+      }
+    }
+
+    .el-table__empty-block {
+      border-bottom: 1px solid lightgray;
+    }
+
+    .el-table__body-wrapper {
+      border-bottom: 1px solid lightgray;
+    }
+
+    @include e('caption') {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 16px 10px 16px 0;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #e9e9e9;
+
+      @include m('collapse-icon') {
+        cursor: pointer;
+      }
+    }
+
+    @include e('table') {
+      height: 100%;
+
+      @include when('show-grid-caption') {
+        height: calc(100% - 64px);
+      }
+    }
+  }
+}

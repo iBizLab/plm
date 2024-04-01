@@ -64,6 +64,4 @@ export const defaultToolbars = [
   '|',
   'undo',
   'redo',
-  '|',
-  'fullScreen',
 ];

@@ -1,18 +1,118 @@
+/* stylelint-disable selector-class-pattern */
 @include b('tab-exp-select') {
-    padding: 8px 20px;
+    position: relative;
+    height: var(--el-component-size);
 
-    @include e('tabexp') {
-        display: flex;
-        flex-flow: column nowrap;
+    .el-cascader {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
 
-        @include m('caption') {
-            flex-shrink: 0;
-            margin-bottom: var(--ibiz-spacing-extra-tight);
-            overflow: hidden;
-            font-size: var(--ibiz-font-size-regular);
-            color: #41464c;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        .el-input {
+            width: 100%;
+            height: 100%;
+        }
+
+        .el-input__wrapper {
+            box-shadow: none;
+        }
+
+        .el-input__suffix {
+            display: none;
+        }
+
+        .el-input__suffix,.el-input__inner {
+            opacity: 0;
+        }
+    }
+
+    .el-cascader:not(.is-disabled):hover .el-input__wrapper.el-input__wrapper,.el-cascader .el-input.is-focus  .el-input__wrapper.el-input__wrapper {
+        background-color: transparent;
+        box-shadow: none;
+
+        .el-input__inner {
+            color: var(--ibiz-color-primary);
         }
     }
 }
+
+@include b('tab-exp-select-popper') {
+  .el-cascader-node__prefix {
+      display: none;
+  }
+
+  .el-cascader-node {
+      border-bottom: 1px solid var(--ibiz-color-border);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      &.is-active,&:hover {
+          background-color: var(--ibiz-color-primary-light-default);
+      }
+  }
+
+  .el-cascader-menu__wrap.el-scrollbar__wrap {
+      height: auto;
+  }
+
+  // 强制滚动条显示
+  .el-scrollbar__bar.is-vertical {
+    display: inline-block !important;
+  }
+
+  // 级联项对齐垂直对齐
+  .el-cascader-node__label {
+    .#{bem(tab-exp-select-popper__item)}{
+      display: flex;
+      align-items: center;
+
+      // 图标样式调整
+      .#{bem(icon)} {
+        display: flex;
+        align-items: center;
+        margin-right: var(--ibiz-spacing-tight);
+      }
+    }
+  }
+}
+
+
+@include b('tab-exp-select-caption') {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  font-size: 14px;
+  line-height: calc(var(--el-component-size) - 2px);
+  border: 1px solid var(--ibiz-color-border);
+  border-radius: var(--el-border-radius-base);
+
+  &>span:nth-child(2) {
+    color: var(--ibiz-color-text-2);
+  }
+  @include e('hashtag') {
+    margin-right: 4px;
+    font-size: 18px;
+    color: var(--ibiz-color-text-3);
+  }
+  }
+
+  // 适配固定显示弹框按钮值
+  @include b('tab-exp-select') {
+  .el-cascader:hover + .#{bem(tab-exp-select-caption)} {
+    background-color: var(--ibiz-color-primary-light-default);
+    border-color: var(--ibiz-color-primary-light-default);
+
+    &>span {
+      color: var(--ibiz-color-primary);
+    }
+  }
+  }

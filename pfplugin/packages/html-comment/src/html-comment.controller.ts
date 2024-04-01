@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
   downloadFileFromBlob,
+  IMarkOpenData,
   RuntimeError,
-  // RuntimeModelError,
 } from '@ibiz-template/core';
 import {
   ControllerEvent,
@@ -11,13 +11,24 @@ import {
   EventBase,
 } from '@ibiz-template/runtime';
 import { IHtml } from '@ibiz/model-core';
-import { Boot, IDomEditor } from '@wangeditor/editor';
+import {
+  Boot,
+  IDomEditor,
+  createEditor,
+  SlateTransforms,
+} from '@wangeditor/editor';
 import { nextTick, Ref, ref } from 'vue';
 import { createUUID } from 'qx-util';
+import { toNumber } from 'lodash-es';
 import { CustomNodeFactory } from './factory/custom-node-factory';
 import { commentEvent } from './html-comment.event';
-import { MentionElem } from './custom-elem';
+import { MentionElem, PersonnelMarkerElem } from './custom-elem';
 import { paintFormatMenu } from './paint-format/paint-format-menu';
+import {
+  personnelMarkerModule,
+  personnelMarkerPlugin,
+} from './personnel-marker/personnel-marker-node-module';
+import { IPersMarkerData, Message } from './interface';
 
 /**
  * html框编辑器控制器
@@ -102,12 +113,61 @@ export class HtmlCommentController extends EditorController<IHtml> {
   public insertKeys: IData[] = [];
 
   /**
+   * 绘制模式
+   *
+   * @type {IData[]}
+   * @memberof HtmlCommentController
+   */
+  public renderMode: 'HTML' | 'JSON' = 'HTML';
+
+  /**
+   * 保存间隔
+   *
+   * @type {IData[]}
+   * @memberof HtmlCommentController
+   */
+  public saveInterval: number = 3000;
+
+  /**
+   * 抛值模式
+   *
+   * @type {IData[]}
+   * @memberof HtmlCommentController
+   */
+  public emitMode: 'BUTTON' | 'AUTOMATIC' = 'BUTTON';
+
+  /**
    * 唯一标识
    *
    * @type {string}
    * @memberof HtmlCommentController
    */
   public uuid: string = createUUID();
+
+  /**
+   * 实时编辑（协同编辑）
+   */
+  public enableRealtime: boolean = false;
+
+  /**
+   * 编辑器实例
+   */
+  public editor!: IDomEditor;
+
+  /**
+   * 编辑器实例原本的 apply（重要）
+   */
+  public apply!: Function;
+
+  /**
+   * 消息信息
+   */
+  private msg!: Message;
+
+  /**
+   * 是否在处理中
+   */
+  private processing = ref(false);
 
   evt: ControllerEvent<commentEvent> = new ControllerEvent<commentEvent>(
     this.getEventArgs.bind(this),
@@ -137,6 +197,11 @@ export class HtmlCommentController extends EditorController<IHtml> {
         REPLYSCRIPT,
         MODE,
         INSERTKEYS,
+        RENDERMODE,
+        SAVEINTERVAL,
+        EMITMODE,
+        DEFAULTCOLLAPSE,
+        ENABLEREALTIME,
       } = this.editorParams;
 
       if (uploadParams) {
@@ -176,9 +241,38 @@ export class HtmlCommentController extends EditorController<IHtml> {
       if (INSERTKEYS) {
         this.insertKeys = JSON.parse(INSERTKEYS);
       }
+      if (RENDERMODE) {
+        this.renderMode = RENDERMODE;
+      }
+      if (SAVEINTERVAL) {
+        this.saveInterval = toNumber(SAVEINTERVAL);
+      }
+      if (EMITMODE) {
+        this.emitMode = EMITMODE;
+      }
+      if (DEFAULTCOLLAPSE) {
+        this.collapsed.value =
+          !Object.is(DEFAULTCOLLAPSE, 'TRUE') &&
+          !Object.is(DEFAULTCOLLAPSE, 'true');
+      }
+      if (ENABLEREALTIME) {
+        this.enableRealtime =
+          Object.is(ENABLEREALTIME, 'TRUE') ||
+          Object.is(ENABLEREALTIME, 'true');
+      }
     }
 
     CustomNodeFactory.init(this.uuid);
+    this.evt.on('onChange', () => {
+      // 当前执行界面域
+      if ((this.parent as any).form) {
+        return;
+      }
+      const uiDomain = ibiz.uiDomainManager.get(this.context.srfsessionid);
+      if (uiDomain) {
+        uiDomain.dataChange();
+      }
+    });
   }
 
   /**
@@ -191,10 +285,22 @@ export class HtmlCommentController extends EditorController<IHtml> {
     if (!window.customElements.get('mention-elem')) {
       window.customElements.define('mention-elem', MentionElem);
     }
+    if (!window.customElements.get('personnel-marker-elem')) {
+      window.customElements.define(
+        'personnel-marker-elem',
+        PersonnelMarkerElem,
+      );
+    }
     if (!(window as IData).paintFormatIsRegiter) {
       Boot.registerMenu(paintFormatMenu);
       (window as IData).paintFormatIsRegiter = true;
     }
+    if (!(window as IData).personnelMarkerIsRegiter) {
+      Boot.registerModule(personnelMarkerModule);
+      (window as IData).personnelMarkerIsRegiter = true;
+    }
+
+    Boot.registerPlugin(personnelMarkerPlugin);
   }
 
   /**
@@ -204,6 +310,8 @@ export class HtmlCommentController extends EditorController<IHtml> {
    * @memberof HtmlCommentController
    */
   public onCreated(editor: IDomEditor, data: IData, toolbarConfig: IData) {
+    this.editor = editor;
+    this.initMarkOpenData(editor, data);
     const controllers = CustomNodeFactory.getPluginsById(this.uuid);
     controllers.forEach(controller => {
       controller.init(editor, {
@@ -218,6 +326,53 @@ export class HtmlCommentController extends EditorController<IHtml> {
   }
 
   /**
+   * 标记打开数据回调
+   * @param msg
+   */
+  private markOpenDataCallback(item: IMarkOpenData) {
+    const { action, data } = item;
+    if (this.enableRealtime && action === 'EDIT' && data) {
+      if (data.type === 'set_selection') {
+        this.processing.value = true;
+        this.drawPersonnelMarker(item);
+        this.processing.value = false;
+      } else {
+        this.apply(data as any);
+      }
+    }
+  }
+
+  /**
+   * 处理标记打开数据相关逻辑
+   * @param editor
+   * @param item
+   */
+  private initMarkOpenData(editor: IDomEditor, item: IData) {
+    const { apply } = editor;
+    this.apply = apply;
+    this.msg = { deName: item.srfdecodename, srfkey: item.srfkey };
+    this.markOpenDataCallback = this.markOpenDataCallback.bind(this);
+    
+    // 协同编辑
+    editor.apply = operation => {
+      if (!this.processing.value && this.enableRealtime) {
+        ibiz.markOpenData.send(
+          this.msg.deName,
+          this.msg.srfkey,
+          'EDIT',
+          operation,
+        );
+      }
+      apply(operation);
+    };
+    ibiz.markOpenData.subscribe(
+      this.msg.deName,
+      this.msg.srfkey,
+      this.markOpenDataCallback,
+    );
+  }
+
+  /**
    * 组件销毁
    *
    * @memberof HtmlCollapseController
@@ -228,6 +383,11 @@ export class HtmlCommentController extends EditorController<IHtml> {
       controller.onDestroyed();
     });
     CustomNodeFactory.destroy(this.uuid);
+    ibiz.markOpenData.unsubscribe(
+      this.msg.deName,
+      this.msg.srfkey,
+      this.markOpenDataCallback,
+    );
   }
 
   /**
@@ -263,8 +423,6 @@ export class HtmlCommentController extends EditorController<IHtml> {
     this.evt.emit('setHtml', {
       eventArg: html,
     });
-    // this.editor.enable();
-    // this.editor.focus();
   }
 
   /**
@@ -348,107 +506,71 @@ export class HtmlCommentController extends EditorController<IHtml> {
     this.collapsed.value = !open && !this.collapsed.value;
   }
 
-  // 获取主题色
-  public getThemeVar() {
-    const root = document.documentElement;
-    if (!root) {
-      return null;
+  /**
+   * 绘制模式为json时，需要将返回数据的json内容转html
+   *
+   * @author ljx
+   * @date 2024-03-09 15:11:09
+   * @param {string} url
+   * @param {IData} file
+   */
+  public jsonToHtml(value: string): string {
+    let html = '';
+    try {
+      const content = JSON.parse(value);
+      // 创建编辑器实例
+      const editor = createEditor({
+        content,
+      });
+      html = editor.getHtml();
+    } catch (error) {
+      html = value;
+      ibiz.log.error('JSON字符串转换错误', error);
     }
-    const style = getComputedStyle(root);
-
-    const primary = style.getPropertyValue('--ibiz-color-primary');
-    return primary;
+    return html;
   }
 
-  // 是否包含中文字符
-  public isChineseCharacter(inputString: string): boolean {
-    const chinesePattern = /[\u4e00-\u9fa5]/;
-    return chinesePattern.test(inputString);
+  /**
+   * 绘制模式为json时，处理抛值数据
+   *
+   * @author ljx
+   * @date 2024-03-09 15:11:09
+   * @param {string} url
+   * @param {IData} file
+   */
+  public toJson(value: IData[] = []): string {
+    let json = '';
+    try {
+      json = JSON.stringify(value);
+    } catch (error) {
+      ibiz.log.error('JSON字符串转换错误');
+    }
+    return json;
   }
 
-  // 判断字符串是否同时存在英文和中文
-  public hasChineseAndEnglish(str: string) {
-    const regex = /[\u4e00-\u9fa5]+.*[a-zA-Z]+|[a-zA-Z]+.*[\u4e00-\u9fa5]+/;
-    return regex.test(str);
-  }
-
-  // 字符串转16进制颜色
-  public stringToHexColor(text: string): string {
-    if (!text) return '';
-    // 计算字符串的哈希值
-    let hash = 0;
-    for (let i = 0; i < text.length; i++) {
-      if (this.isChineseCharacter(text)) {
-        // eslint-disable-next-line no-bitwise
-        hash = text.charCodeAt(i) + ((hash << 5) - hash);
-        // eslint-disable-next-line operator-assignment, no-bitwise
-        hash = hash & hash;
-      } else {
-        const charCode = text.charCodeAt(i);
-        hash += charCode.toString(16) as unknown as number;
-      }
+  /**
+   * 绘制正在编辑人员标记
+   * @param item 消息
+   */
+  public drawPersonnelMarker(item: IMarkOpenData): void {
+    const { username, data } = item;
+    const { properties, newProperties } = data as IPersMarkerData;
+    const node = {
+      type: 'personnel-marker',
+      data: { name: username },
+      children: [{ text: '' }],
+    };
+    if (properties) {
+      const { focus } = properties;
+      SlateTransforms.removeNodes(this.editor, {
+        at: [focus.path[0], focus.path[1] + 1],
+      });
     }
-
-    // 将哈希值转换为16进制颜色代码
-    const trimmedHash = String(hash).substring(0, 6);
-
-    const r = parseInt(trimmedHash.substring(0, 2), 16);
-    const g = parseInt(trimmedHash.substring(2, 4), 16);
-    const b = parseInt(trimmedHash.substring(4, 6), 16);
-
-    const colorCode = `#${r.toString(16).padStart(2, '0')}${g
-      .toString(16)
-      .padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
-    if (colorCode === '#FFFFFF') {
-      return this.getThemeVar() || colorCode;
-    }
-    return colorCode;
-  }
-
-  // 缩写名字
-  public avatarName(text: string) {
-    if (text && text.toString().length < 2) {
-      return text;
-    }
-    if (text && text.toString().length >= 2) {
-      // 大于两个字符
-      const tag = this.hasChineseAndEnglish(text);
-      // 存在中英文混合情况，按顺序取第一个英文与第一个中文
-      if (tag) {
-        const engChar: string =
-          text.split('').find((char: string) => {
-            return /[a-zA-Z]/.test(char);
-          }) || '';
-        const chineseStr: string =
-          text.split('').find((char: string) => {
-            return /[\u4E00-\u9FA5]/.test(char);
-          }) || '';
-        return `${engChar}${chineseStr}`.toLowerCase();
-      }
-      // 只存在英文，取前两个
-      const engTag = /[a-zA-Z]/.test(text);
-      if (engTag) {
-        return text
-          .split('')
-          .filter((char: string) => {
-            return /[a-zA-Z]/.test(char);
-          })
-          .slice(0, 2)
-          .join('')
-          .toUpperCase();
-      }
-      // 只存在中文，取最后两个
-      const chineseTag = /[\u4E00-\u9FA5]/.test(text);
-      if (chineseTag) {
-        return text
-          .split('')
-          .filter((char: string) => {
-            return /[\u4E00-\u9FA5]/.test(char);
-          })
-          .slice(-2)
-          .join('');
-      }
-      return text.replaceAll(' ', '').substring(0, 2);
+    if (newProperties) {
+      const { focus } = newProperties;
+      SlateTransforms.insertNodes(this.editor, [node], {
+        at: focus,
+      });
     }
   }
 }

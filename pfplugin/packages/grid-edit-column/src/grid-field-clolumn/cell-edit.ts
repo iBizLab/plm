@@ -1,17 +1,14 @@
 import { OnClickOutsideResult } from '@ibiz-template/core';
-import {
-  GridRowState,
-  GridFieldEditColumnController,
-  Srfuf,
-} from '@ibiz-template/runtime';
+import { GridRowState, Srfuf } from '@ibiz-template/runtime';
 import { useClickOutside } from '@ibiz-template/vue3-util';
 import { computed, reactive, ref, Ref } from 'vue';
+import { GridEditColumnController } from './grid-edit-column.controller';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
 export function useCellEdit(
   props: {
     readonly row: GridRowState;
-    readonly controller: GridFieldEditColumnController;
+    readonly controller: GridEditColumnController;
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   componentRef: Ref<any>,
@@ -97,7 +94,7 @@ export function useCellEdit(
 
   const onBlur = (): void => {
     ibiz.log.debug(`${c.fieldName}属性编辑器blur事件`);
-    if (saveProcessing.value) {
+    if (saveProcessing.value || c.hasDropdown) {
       return;
     }
     setEditable(false);
@@ -117,6 +114,7 @@ export function useCellEdit(
   };
 
   const onEnter = async (): Promise<void> => {
+    c.setPickerValue(props.row);
     saveProcessing.value = true;
     ibiz.log.debug(`${c.fieldName}属性编辑器enter事件`);
     await c.grid.save(props.row.data);

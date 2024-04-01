@@ -5,10 +5,14 @@ import {
   useUIStore,
 } from '@ibiz-template/vue3-util';
 import {
+  computed,
   defineComponent,
   h,
+  onMounted,
   onUnmounted,
   PropType,
+  Ref,
+  ref,
   resolveComponent,
   VNode,
   VNodeArrayChildren,
@@ -138,6 +142,8 @@ export const WorkloadTableControl = defineComponent({
     const { zIndex } = useUIStore();
     c.state.zIndex = zIndex.increment();
 
+    const ganttRef: Ref<IData | undefined> = ref(undefined);
+
     const {
       tableRef,
       onRowClick,
@@ -147,6 +153,7 @@ export const WorkloadTableControl = defineComponent({
       handleRowClassName,
       handleHeaderCellClassName,
     } = useITableEvent(c);
+
     const { onPageChange, onPageRefresh, onPageSizeChange } = usePagination(c);
 
     const { headerCssVars } = useGridHeaderStyle(tableRef, ns);
@@ -183,10 +190,64 @@ export const WorkloadTableControl = defineComponent({
       renderColumns,
       defaultSort,
       summaryMethod,
-      ganttColumns,
+      ganttSummaryMethod,
     } = useAppGridBase(c, props as IGridProps);
 
     const { renderPopover } = useRowEditPopover(tableRef, c);
+
+    const ganttWrapRef = computed(() => {
+      return ganttRef.value?.scrollBarRef.wrapRef;
+    });
+
+    const tableWrapRef = computed(() => {
+      return tableRef.value?.scrollBarRef.wrapRef;
+    });
+
+    const getLeftWidth = (init: boolean = false): number => {
+      let width: number = 0;
+      if (init) {
+        renderColumns.value.forEach(c => (width += c.width || 0));
+      } else {
+        const columns: IData[] = tableRef.value?.store.states.columns.value;
+        if (columns?.length > 0) {
+          columns.forEach(c => (width += c.realWidth || c.width));
+        }
+      }
+      return width;
+    };
+
+    const calcTableWidth = (init: boolean = false) => {
+      setTimeout(() => {
+        const tableEl = tableRef.value?.$el as HTMLElement;
+        if (tableEl) {
+          tableEl.style.width = `${getLeftWidth(init)}px`;
+        }
+        const ganttEl = ganttRef.value?.$el as HTMLElement;
+        if (ganttEl) {
+          ganttEl.style.width = `calc(100% - ${getLeftWidth(init)}px)`;
+        }
+      }, 300);
+    };
+
+    const handleScroll = (name: 'gantt' | 'table') => {
+      if (name === 'gantt') {
+        tableRef.value!.setScrollTop(ganttWrapRef.value!.scrollTop);
+      } else {
+        ganttRef.value!.setScrollTop(tableWrapRef.value!.scrollTop);
+      }
+    };
+
+    const handleGanttScroll = () => {
+      handleScroll('gantt');
+    };
+
+    const handleTableScroll = () => {
+      handleScroll('table');
+    };
+
+    const onHeaderDragend = () => {
+      calcTableWidth();
+    };
 
     // 绘制批操作工具栏
     const renderBatchToolBar = (): VNode | undefined => {
@@ -219,8 +280,26 @@ export const WorkloadTableControl = defineComponent({
       );
     };
 
+    onMounted(() => {
+      calcTableWidth(true);
+      setTimeout(() => {
+        if (ganttWrapRef.value) {
+          ganttWrapRef.value.addEventListener('scroll', handleGanttScroll);
+        }
+        if (tableWrapRef.value) {
+          tableWrapRef.value.addEventListener('scroll', handleTableScroll);
+        }
+      }, 300);
+    });
+
     onUnmounted(() => {
       zIndex.decrement();
+      if (ganttWrapRef.value) {
+        ganttWrapRef.value.removeEventListener('scroll', handleGanttScroll);
+      }
+      if (tableWrapRef.value) {
+        tableWrapRef.value.removeEventListener('scroll', handleTableScroll);
+      }
     });
 
     return {
@@ -228,8 +307,8 @@ export const WorkloadTableControl = defineComponent({
       ns,
       ns2,
       tableRef,
+      ganttRef,
       tableData,
-      ganttColumns,
       renderColumns,
       onDbRowClick,
       onRowClick,
@@ -242,10 +321,12 @@ export const WorkloadTableControl = defineComponent({
       handleHeaderCellClassName,
       renderNoData,
       summaryMethod,
+      ganttSummaryMethod,
       renderPopover,
       defaultSort,
       renderBatchToolBar,
       headerCssVars,
+      onHeaderDragend,
     };
   },
   render() {
@@ -253,27 +334,29 @@ export const WorkloadTableControl = defineComponent({
       return;
     }
     const { state } = this.c;
-    const { hideHeader, enablePagingBar } = this.c.model;
+    const { hideHeader, enablePagingBar, enableCustomized, enableGroup } =
+      this.c.model;
     return (
       <iBizControlBase
         class={[
           this.ns2.b(),
           this.ns.is('show-header', !hideHeader),
           this.ns.is('enable-page', enablePagingBar),
-          this.ns.is('enable-group', this.c.model.enableGroup),
+          this.ns.is('enable-group', enableGroup),
           this.ns.is('single-select', state.singleSelect),
           this.ns.is('empty', state.items.length === 0),
-          this.ns.is('enable-customized', this.c.model.enableCustomized),
+          this.ns.is('enable-customized', enableCustomized),
         ]}
         controller={this.c}
         style={this.headerCssVars}
       >
-        {
+        <div class={this.ns2.e('container')}>
           <el-table
             ref={'tableRef'}
-            class={this.ns.e('table')}
+            class={[this.ns.e('table'), this.ns2.e('left')]}
             default-sort={this.defaultSort}
             border
+            onHeaderDragend={this.onHeaderDragend}
             show-header={!hideHeader}
             show-summary={this.c.enableAgg}
             summary-method={this.summaryMethod}
@@ -307,10 +390,6 @@ export const WorkloadTableControl = defineComponent({
                       index,
                     );
                   }),
-                  <GanttColumns
-                    controller={this.c}
-                    columns={this.ganttColumns}
-                  ></GanttColumns>,
                 ];
               },
               append: () => {
@@ -318,7 +397,40 @@ export const WorkloadTableControl = defineComponent({
               },
             }}
           </el-table>
-        }
+          <el-table
+            ref={'ganttRef'}
+            class={[this.ns.e('table'), this.ns2.e('right')]}
+            default-sort={this.defaultSort}
+            border
+            show-header={!hideHeader}
+            show-summary={this.c.enableAgg}
+            summary-method={this.ganttSummaryMethod}
+            highlight-current-row={state.singleSelect}
+            row-class-name={this.handleRowClassName}
+            header-cell-class-name={this.handleHeaderCellClassName}
+            row-key={'tempsrfkey'}
+            data={this.tableData}
+            onRowClick={this.onRowClick}
+            onRowDblclick={this.onDbRowClick}
+            onSelectionChange={this.onSelectionChange}
+            onSortChange={this.onSortChange}
+            tooltip-effect={'light'}
+          >
+            {{
+              empty: () => {
+                return <div></div>;
+              },
+              default: () => {
+                return [
+                  <GanttColumns
+                    controller={this.c}
+                    columns={this.c.state.ganttColumns}
+                  ></GanttColumns>,
+                ];
+              },
+            }}
+          </el-table>
+        </div>
         {enablePagingBar && (
           <iBizPagination
             total={state.total}
@@ -329,7 +441,7 @@ export const WorkloadTableControl = defineComponent({
             onPageRefresh={this.onPageRefresh}
           ></iBizPagination>
         )}
-        {this.c.model.enableCustomized && !hideHeader && (
+        {enableCustomized && !hideHeader && (
           <div class={this.ns.b('setting-box')}>
             <iBizGridSetting
               columnStates={state.columnStates}

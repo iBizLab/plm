@@ -24,12 +24,19 @@ import { isNil } from 'ramda';
 import {
   getEditorEmits,
   getHtmlProps,
+  useClickOutside,
   useNamespace,
 } from '@ibiz-template/vue3-util';
-import { CoreConst, awaitTimeout } from '@ibiz-template/core';
+import {
+  CoreConst,
+  OnClickOutsideResult,
+  awaitTimeout,
+  debounce,
+} from '@ibiz-template/core';
 import { ElMessageBox } from 'element-plus';
 import { defaultToolbars } from '../html-comment-toolbars';
 import { HtmlCommentController } from '../html-comment.controller';
+import { ModalUtil } from '../utils/modal-utils';
 
 type InsertFnType = (_url: string, _alt: string, _href: string) => void;
 
@@ -65,6 +72,8 @@ const IBizHtmlCollapse = defineComponent({
 
     // 图片预览ref
     const previewRef = ref();
+
+    const containerRef = ref();
 
     // 内容 HTML
     const valueHtml = ref('');
@@ -103,6 +112,9 @@ const IBizHtmlCollapse = defineComponent({
     // 预览图片地址
     const previewUrl = ref('');
 
+    // 点击外部
+    let funcs: OnClickOutsideResult;
+
     // 预览图片集合,此变量用于控制图片模态的显示隐藏,为空时会关闭模态,element图片组件未支持控制是否显示的属性
     const previewUrlList: Ref<string[] | []> = ref([]);
 
@@ -121,6 +133,11 @@ const IBizHtmlCollapse = defineComponent({
           editorModel.editorParams.enableFullScreen,
         );
       }
+    }
+
+    if (props.readonly) {
+      hasEnableEdit.value = false;
+      readonlyState.value = true;
     }
 
     // data响应式变更基础路径
@@ -386,13 +403,48 @@ const IBizHtmlCollapse = defineComponent({
       handleEventListener('addEventListener');
     };
 
+    /**
+     * 绘制模式为json时，处理抛值逻辑
+     */
+    const handleEmit = (): void => {
+      let emitValue = valueHtml.value;
+      emitValue = emitValue
+        .replaceAll('class="rich-html-table"', '')
+        .replace(/<table/g, '<table class="rich-html-table"');
+      // 绘制模式为JSON
+      if (c.renderMode === 'JSON') {
+        const editor = editorRef.value;
+        emitValue = c.toJson(editor.children);
+      }
+      if (props.value !== emitValue) {
+        emit('change', emitValue);
+      }
+    };
+
+    /**
+     * 抛值事件支持防抖
+     */
+    const debounceEmit = debounce(handleEmit, c.saveInterval);
+
     // 编辑器回调函数
     // 编辑器创建完毕时的回调函数
     const handleCreated = (editor: IDomEditor) => {
       editorRef.value = editor; // 记录 editor 实例，重要！
-      c.onCreated(editorRef.value, props.data, toolbarConfig);
       const html = c.parseNode(valueHtml.value);
       editor.setHtml(html);
+      c.onCreated(editorRef.value, props.data, toolbarConfig);
+
+      let modalUtil: ModalUtil;
+      // 模态打开
+      editor.on('modalOrPanelShow', modalOrPanel => {
+        modalUtil = new ModalUtil(modalOrPanel, htmlRef.value);
+      });
+      // 模态关闭
+      editor.on('modalOrPanelHide', () => {
+        if (modalUtil) {
+          modalUtil.destroy();
+        }
+      });
     };
     // 编辑器内容、选区变化时的回调函数
     const handleChange = (editor: IDomEditor) => {
@@ -401,7 +453,7 @@ const IBizHtmlCollapse = defineComponent({
       handleExpand(editor);
       setImageHook(editor);
       // wangEditor初始值抛空字符串给后台
-      const emitValue = html === '<p><br></p>' ? '' : html;
+      let emitValue = html === '<p><br></p>' ? '' : html;
       if (
         emitValue === props.value ||
         (emitValue === '' && isNil(props.value))
@@ -409,8 +461,15 @@ const IBizHtmlCollapse = defineComponent({
         return;
       }
       // 修复初始化有值编辑器也会抛值导致表单脏值检查异常问题
+      emitValue = emitValue
+        .replaceAll('class="rich-html-table"', '')
+        .replace(/<table/g, '<table class="rich-html-table"');
       if (!hasEnableEdit.value && editor.isFocused()) {
-        emit('change', emitValue);
+        if (c.emitMode === 'AUTOMATIC') {
+          debounceEmit();
+        } else {
+          handleEmit();
+        }
       }
       c.evt.emit('onChange', {
         eventArg: emitValue,
@@ -479,41 +538,6 @@ const IBizHtmlCollapse = defineComponent({
       if (editor == null) return;
       editor.enable();
     };
-
-    onMounted(() => {
-      // 监听值变化赋值
-      watch(
-        () => props.value,
-        (newVal, oldVal) => {
-          if (
-            newVal !== oldVal &&
-            (typeof props.value === 'string' || newVal == null)
-          ) {
-            if (newVal == null) {
-              valueHtml.value = '';
-            } else {
-              valueHtml.value = newVal as string;
-            }
-          }
-        },
-        { immediate: true },
-      );
-
-      // 监听disabled禁用
-      watch(
-        () => props.disabled,
-        (newVal, oldVal) => {
-          if (newVal !== oldVal) {
-            if (newVal === true) {
-              disable();
-            } else {
-              enable();
-            }
-          }
-        },
-        { immediate: true },
-      );
-    });
 
     const calcHtmlStyle = () => {
       awaitTimeout(0, () => {
@@ -617,7 +641,12 @@ const IBizHtmlCollapse = defineComponent({
     const save = () => {
       readonlyState.value = true;
       editorRef.value.disable();
-      emit('change', valueHtml.value);
+      const value = valueHtml.value
+        .replaceAll('class="rich-html-table"', '')
+        .replace(/<table/g, '<table class="rich-html-table"');
+      if (c.renderMode !== 'JSON') {
+        emit('change', value);
+      }
       if (isFullScreen.value) {
         isFullScreen.value = false;
       }
@@ -625,7 +654,7 @@ const IBizHtmlCollapse = defineComponent({
 
     // 绘制底部取消确认按钮
     const renderFooter = () => {
-      if (hasEnableEdit.value) {
+      if (hasEnableEdit.value && c.emitMode !== 'AUTOMATIC') {
         return (
           <div
             class={[
@@ -781,12 +810,56 @@ const IBizHtmlCollapse = defineComponent({
     };
 
     onMounted(() => {
+      if (containerRef.value) {
+        funcs = useClickOutside(containerRef, async () => {
+          if (editorRef.value) {
+            editorRef.value.emit('clickOutside');
+          }
+        });
+      }
       calcHtmlStyle();
+      // 监听值变化赋值
+      watch(
+        () => props.value,
+        (newVal, oldVal) => {
+          if (
+            newVal !== oldVal &&
+            (typeof props.value === 'string' || newVal == null)
+          ) {
+            if (newVal == null) {
+              valueHtml.value = '';
+            } else if (c.renderMode === 'JSON') {
+              valueHtml.value = c.jsonToHtml(newVal) as string;
+            } else {
+              valueHtml.value = newVal as string;
+            }
+          }
+        },
+        { immediate: true },
+      );
+
+      // 监听disabled禁用
+      watch(
+        () => props.disabled,
+        (newVal, oldVal) => {
+          if (newVal !== oldVal) {
+            if (newVal === true) {
+              disable();
+            } else {
+              enable();
+            }
+          }
+        },
+        { immediate: true },
+      );
     });
 
     onUnmounted(() => {
       if (resizeObserver) {
         resizeObserver.disconnect();
+      }
+      if (funcs && funcs.stop) {
+        funcs.stop();
       }
     });
 
@@ -794,6 +867,7 @@ const IBizHtmlCollapse = defineComponent({
       ns,
       editorRef,
       previewRef,
+      containerRef,
       htmlRef,
       mode: 'default',
       valueHtml,
@@ -828,6 +902,7 @@ const IBizHtmlCollapse = defineComponent({
   render() {
     return !this.isFullScreen ? (
       <div
+        ref='containerRef'
         class={[
           this.ns.b(),
           this.ns.is('allow-collapse', true),
@@ -849,6 +924,7 @@ const IBizHtmlCollapse = defineComponent({
         onClose={() => this.changeFullScreenState()}
       >
         <div
+          ref='containerRef'
           class={[
             this.ns.b(),
             this.ns.b('collapse'),

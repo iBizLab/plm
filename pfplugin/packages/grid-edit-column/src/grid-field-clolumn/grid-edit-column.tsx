@@ -8,10 +8,12 @@ import {
   ref,
   resolveComponent,
   onMounted,
+  Ref,
+  onUnmounted,
 } from 'vue';
 import {
+  CodeListItem,
   GridColumnController,
-  GridFieldEditColumnController,
   GridRowState,
   IUILogicParams,
   Srfuf,
@@ -29,12 +31,13 @@ import { useCellEdit } from './cell-edit';
 import { useRowEdit } from './row-edit';
 import { useAllEdit } from './all-edit';
 import './grid-edit-column.scss';
+import { GridEditColumnController } from './grid-edit-column.controller';
 
 export const GridEditColumn = defineComponent({
   name: 'GridEditColumn',
   props: {
     controller: {
-      type: GridFieldEditColumnController,
+      type: GridEditColumnController,
       required: true,
     },
     row: {
@@ -46,6 +49,8 @@ export const GridEditColumn = defineComponent({
     const ns = useNamespace('grid-edit-column');
 
     const componentRef = ref();
+
+    const containerRef = ref();
 
     const c = props.controller;
 
@@ -74,6 +79,23 @@ export const GridEditColumn = defineComponent({
     const processing = ref(false);
 
     const { zIndex } = props.controller.grid.state;
+
+    const pickerData: Ref<readonly CodeListItem[]> = ref([]);
+    const pickerValue = ref('');
+    let picking = false;
+
+    // 点击外部
+    let funcs: OnClickOutsideResult;
+
+    const userData = props.row.data.srfUserData;
+    const getPickerData = async () => {
+      if (userData) {
+        pickerData.value = await c.loadUserCodeList(userData);
+        pickerValue.value = userData.defaultValue;
+        c.curPickerId = userData.defaultValue;
+      }
+    };
+    getPickerData();
 
     // 平铺行为
     const expandDetails = computed(() => {
@@ -145,6 +167,20 @@ export const GridEditColumn = defineComponent({
       const isCreate = props.row.data.srfuf === Srfuf.CREATE;
       if (isCreate) {
         setEditable(true);
+      }
+      if (containerRef.value) {
+        funcs = useClickOutside(containerRef, async () => {
+          if (!picking) {
+            c.hasDropdown = false;
+            editorProps.onBlur();
+          }
+        });
+      }
+    });
+
+    onUnmounted(() => {
+      if (funcs && funcs.stop) {
+        funcs.stop();
       }
     });
 
@@ -276,7 +312,7 @@ export const GridEditColumn = defineComponent({
 
     // 编辑器值变更事件
     const onDataChange = async (
-      editController: GridFieldEditColumnController,
+      editController: GridEditColumnController,
       val: unknown,
       name?: string,
     ): Promise<void> => {
@@ -310,33 +346,30 @@ export const GridEditColumn = defineComponent({
 
     // 绘制编辑器
     const renderEditor = (editController: GridColumnController) => {
-      const tempFieldName = (editController as GridFieldEditColumnController)
+      const tempFieldName = (editController as GridEditColumnController)
         .editItem.codeName!;
       const val = props.row.data[tempFieldName];
       const readonly = props.row.editColStates[tempFieldName]?.readonly;
       const disabled = props.row.editColStates[tempFieldName]?.disabled;
       return (
-        (editController as GridFieldEditColumnController).editorProvider &&
+        (editController as GridEditColumnController).editorProvider &&
         h(
           resolveComponent(
-            (editController as GridFieldEditColumnController).editorProvider!
+            (editController as GridEditColumnController).editorProvider!
               .gridEditor,
           ),
           {
             class: ns.e('editor'),
             value: readonly
-              ? (editController as GridFieldEditColumnController).formatValue(
-                  val,
-                )
+              ? (editController as GridEditColumnController).formatValue(val)
               : val,
             data: props.row.data,
-            controller: (editController as GridFieldEditColumnController)
-              .editor,
+            controller: (editController as GridEditColumnController).editor,
             overflowMode: c.grid.overflowMode,
             // eslint-disable-next-line no-shadow
             onChange: (val: unknown, name?: string) =>
               onDataChange(
-                editController as GridFieldEditColumnController,
+                editController as GridEditColumnController,
                 val,
                 name,
               ),
@@ -654,9 +687,57 @@ export const GridEditColumn = defineComponent({
       }
     };
 
+    const handleSelect = (item: IData) => {
+      pickerValue.value = item.id;
+      c.curPickerId = item.id;
+    };
+
+    const onVisibleChange = async (dropVisible: boolean) => {
+      picking = dropVisible;
+    };
+
+    const renderPicker = () => {
+      if (pickerData.value.length > 0) {
+        return (
+          <el-dropdown
+            onVisibleChange={onVisibleChange}
+            onCommand={(command: IData) => handleSelect(command)}
+          >
+            {{
+              default: (): VNode => (
+                <iBizCodeList
+                  class={ns.e('text')}
+                  codeListItems={pickerData.value}
+                  codeList={c.userCodeList}
+                  value={pickerValue.value}
+                ></iBizCodeList>
+              ),
+              dropdown: (): VNode => (
+                <el-dropdown-menu>
+                  {pickerData.value.map(item => {
+                    return (
+                      <el-dropdown-item title={item.tooltip} command={item}>
+                        <iBizCodeList
+                          class={ns.e('text')}
+                          codeListItems={pickerData.value}
+                          codeList={c.userCodeList}
+                          value={item.id}
+                        ></iBizCodeList>
+                      </el-dropdown-item>
+                    );
+                  })}
+                </el-dropdown-menu>
+              ),
+            }}
+          </el-dropdown>
+        );
+      }
+    };
+
     return {
       ns,
       componentRef,
+      containerRef,
       fieldName,
       gridEditItemProps,
       rowDataChange,
@@ -670,6 +751,7 @@ export const GridEditColumn = defineComponent({
       fieldValue,
       formatValue,
       tooltip,
+      renderPicker,
     };
   },
   render() {
@@ -703,8 +785,34 @@ export const GridEditColumn = defineComponent({
         </span>
       );
     }
+    const editContent = (
+      <iBizGridEditItem
+        {...{
+          ref: 'componentRef',
+          required: !c.editItem.allowEmpty,
+          error: this.row.errors[this.fieldName],
+          overflowMode: this.controller.grid.overflowMode,
+          class: this.ns.m('edit-item'),
+          ...this.gridEditItemProps,
+        }}
+      >
+        {c.editorProvider &&
+          h(resolveComponent(c.editorProvider.gridEditor), {
+            class: this.ns.e('editor'),
+            value: this.row.data[this.fieldName],
+            data: this.row.data,
+            controller: c.editor,
+            overflowMode: c.grid.overflowMode,
+            onChange: this.rowDataChange,
+            onInfoTextChange: this.onInfoTextChange,
+            title: this.tooltip,
+            ...this.editorProps,
+          })}
+      </iBizGridEditItem>
+    );
     return (
       <div
+        ref='containerRef'
         class={[
           this.ns.b(),
           c.clickable(this.row) && this.ns.m('clickable'),
@@ -715,29 +823,10 @@ export const GridEditColumn = defineComponent({
         onClick={this.onCellClick}
       >
         {c.model.enableRowEdit ? (
-          <iBizGridEditItem
-            {...{
-              ref: 'componentRef',
-              required: !c.editItem.allowEmpty,
-              error: this.row.errors[this.fieldName],
-              overflowMode: this.controller.grid.overflowMode,
-              class: this.ns.m('edit-item'),
-              ...this.gridEditItemProps,
-            }}
-          >
-            {c.editorProvider &&
-              h(resolveComponent(c.editorProvider.gridEditor), {
-                class: this.ns.e('editor'),
-                value: this.row.data[this.fieldName],
-                data: this.row.data,
-                controller: c.editor,
-                overflowMode: c.grid.overflowMode,
-                onChange: this.rowDataChange,
-                onInfoTextChange: this.onInfoTextChange,
-                title: this.tooltip,
-                ...this.editorProps,
-              })}
-          </iBizGridEditItem>
+          <div class={this.ns.b('edit-container')}>
+            {editContent}
+            {this.renderPicker()}
+          </div>
         ) : (
           <div class={this.ns.b('text-container')}>{content}</div>
         )}

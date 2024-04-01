@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { IHttpResponse, RuntimeModelError } from '@ibiz-template/core';
 import {
   EditorController,
@@ -9,6 +11,8 @@ import {
   IButtonContainerState,
   UIActionButtonState,
   UIActionUtil,
+  ControllerEvent,
+  EventBase,
 } from '@ibiz-template/runtime';
 import { PanelFieldController } from '@ibiz-template/vue3-util';
 import {
@@ -19,6 +23,7 @@ import {
   IUIActionGroupDetail,
 } from '@ibiz/model-core';
 import { clone, mergeDeepLeft } from 'ramda';
+import { pickerEvent } from './manage-mpicker.event';
 
 /**
  * 数据选择编辑器控制器
@@ -104,6 +109,21 @@ export class ManageMPickerController extends EditorController<IPicker> {
    */
   public groupActionState: IButtonContainerState = new ButtonContainerState();
 
+  evt: ControllerEvent<pickerEvent> = new ControllerEvent<pickerEvent>(
+    this.getEventArgs.bind(this),
+  );
+
+  protected getEventArgs(): Omit<EventBase, 'eventName'> {
+    return {
+      context: this.context,
+      params: this.params,
+      data: [],
+      eventArg: '',
+      targetName: this.model.name!,
+      view: this.getView(),
+    };
+  }
+
   protected async onInit(): Promise<void> {
     super.onInit();
     this.initParams();
@@ -178,6 +198,16 @@ export class ManageMPickerController extends EditorController<IPicker> {
         });
       }
     }
+
+    // 默认展开
+    const view = this.getView();
+    if (view) {
+      view.evt.on('onDataChange', (event: IData) => {
+        if (event.eventName === 'onLoadSuccess' && this.context.srfshowchoose) {
+          this.toggleMenu(true);
+        }
+      });
+    }
   }
 
   /**
@@ -230,11 +260,9 @@ export class ManageMPickerController extends EditorController<IPicker> {
     query: string,
     data: IData,
   ): Promise<IHttpResponse<IData[]>> {
-    const { context, params } = this.handlePublicParams(
-      data,
-      this.context,
-      this.params,
-    );
+    const { context, params } = this.handlePublicParams(data, this.context, {
+      ...this.params,
+    });
     // 固定参数
     const fixedParams = {};
     if (this.sort && !Object.is(this.sort, '')) {
@@ -272,11 +300,9 @@ export class ManageMPickerController extends EditorController<IPicker> {
     selectedData?: string,
   ): Promise<IData[] | undefined> {
     await this.initPickupViewParams();
-    const { context, params } = this.handlePublicParams(
-      data,
-      this.context,
-      this.params,
-    );
+    const { context, params } = this.handlePublicParams(data, this.context, {
+      ...this.params,
+    });
     if (selectedData) {
       params.selectedData = selectedData;
     }
@@ -305,11 +331,9 @@ export class ManageMPickerController extends EditorController<IPicker> {
     if (data[this.valueItem]) {
       tempContext.srfkey = data[this.valueItem];
     }
-    const { context, params } = this.handlePublicParams(
-      data,
-      tempContext,
-      this.params,
-    );
+    const { context, params } = this.handlePublicParams(data, tempContext, {
+      ...this.params,
+    });
 
     const { linkAppViewId } = this.model;
     if (!linkAppViewId) {
@@ -403,10 +427,35 @@ export class ManageMPickerController extends EditorController<IPicker> {
         context: this.context,
         params: this.params,
         data: [],
-        view: (this.parent as PanelFieldController).panel.view,
+        view: this.getView(),
         event,
       },
       detail.appId,
     );
+  }
+
+  /**
+   * 获取当前视图
+   *
+   * @return {*}
+   * @memberof ManageMPickerController
+   */
+  getView() {
+    if ((this.parent as IData).view) {
+      return (this.parent as IData).view;
+    }
+    if ((this.parent as PanelFieldController).panel.view) {
+      return (this.parent as PanelFieldController).panel.view;
+    }
+  }
+
+  /**
+   * 收缩菜单
+   *
+   * @param {boolean} visible
+   * @memberof ManageMPickerController
+   */
+  toggleMenu(visible: boolean) {
+    this.evt.emit('toggleMenu', { visible });
   }
 }

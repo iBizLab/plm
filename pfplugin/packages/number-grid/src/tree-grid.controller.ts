@@ -353,6 +353,9 @@ export class NumberTreeGridController extends TreeGridController<
     if (parent) {
       draftData[this.treeGridParentField] = parent[this.treeGridValueField];
     }
+    if (parent.srfUserData) {
+      draftData.srfUserData = parent.srfUserData;
+    }
 
     // 加载完后续处理 新建行在最后
     this.state.items.push(draftData);

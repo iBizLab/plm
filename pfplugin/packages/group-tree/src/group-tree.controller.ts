@@ -13,7 +13,11 @@ import {
   getChildNodeRSs,
 } from '@ibiz-template/runtime';
 import { IDETree, IDETreeDataSetNode, IDETreeNode } from '@ibiz/model-core';
-import { RuntimeError, RuntimeModelError } from '@ibiz-template/core';
+import {
+  IPortalMessage,
+  RuntimeError,
+  RuntimeModelError,
+} from '@ibiz-template/core';
 import { isNil } from 'ramda';
 import { findNodeData } from './el-tree-util';
 
@@ -279,19 +283,23 @@ export class GroupTreeController<
     if (nodeData._nodeType !== 'DE') {
       throw new RuntimeError('不是实体树节点数据');
     }
-    nodeData._text = _text;
-    if (this.state.editingNodeDefault) {
-      const keys = Object.keys(this.state.editingNodeDefault);
-      if (keys && keys.length > 0) {
-        keys.forEach((key: string) => {
-          if (isNil(nodeData._deData[key]))
-            nodeData._deData[key] = (this.state.editingNodeDefault as IParams)[
-              key
-            ];
-        });
+    if (nodeData._text !== _text) {
+      nodeData._text = _text;
+      if (this.state.editingNodeDefault) {
+        const keys = Object.keys(this.state.editingNodeDefault);
+        if (keys && keys.length > 0) {
+          keys.forEach((key: string) => {
+            if (isNil(nodeData._deData[key]))
+              nodeData._deData[key] = (
+                this.state.editingNodeDefault as IParams
+              )[key];
+          });
+        }
       }
+      await this.updateDeNodeData([nodeData as ITreeNodeData]);
     }
-    await this.updateDeNodeData([nodeData as ITreeNodeData]);
+    // 通知实体数据变更
+    this.emitDEDataChange('update', nodeData._deData!);
     this.state.editingNodeKey = null;
     this.state.editingNodeText = null;
     this.state.editingNodeDefault = null;
@@ -626,5 +634,43 @@ export class GroupTreeController<
     this.refreshNodeChildren(dropNode, refreshParent);
     // 刷新后清空选中 修复选中值闪烁
     this.setSelection([]);
+  }
+
+  /**
+   * 检测实体数据变更
+   *
+   * @author tony001
+   * @date 2024-03-29 11:03:30
+   * @protected
+   * @param {IPortalMessage} msg
+   * @return {*}  {void}
+   */
+  protected onDEDataChange(msg: IPortalMessage): void {
+    // msg.triggerKey 不为空，且与当前控制器的triggerKey一致时，则不处理
+    if (!isNil(msg.triggerKey) && msg.triggerKey === this.triggerKey) {
+      return;
+    }
+
+    // 新增数据不刷新
+    if (msg.subtype === 'OBJECTCREATED') {
+      return;
+    }
+
+    const data = msg.data as IData;
+    const findNode = this.state.items.find(
+      item =>
+        item._nodeType === 'DE' &&
+        item._deData &&
+        item._deData.srfdecodename === data.srfdecodename &&
+        item._deData.srfkey === data.srfkey,
+    );
+
+    if (!findNode) {
+      return;
+    }
+
+    this.doNextActive(() => this.refreshNodeChildren(findNode, true), {
+      key: `refresh${findNode._id}`,
+    });
   }
 }

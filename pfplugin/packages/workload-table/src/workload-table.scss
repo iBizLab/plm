@@ -7,4 +7,37 @@
       }
     }
   }
+  @include when(enable-page) {
+    @include e(container) {
+      height: calc(100% - var(--ibiz-control-grid-page-height));
+      > .el-table {
+        height: 100%;
+      }
+    }
+  }
+  @include e(container) {
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+  @include e(left) {
+    .el-scrollbar__bar {
+      &.is-vertical,
+      &.is-horizontal {
+        display: none;
+      }
+    }
+  }
+  @include e(right) {
+    .el-scrollbar__bar.is-horizontal {
+      height: 8px;
+    }
+    .el-scrollbar__bar.is-vertical {
+      width: 8px;
+    }
+    .el-table__header-wrapper .cell {
+      padding-top: 4px !important;
+      padding-bottom: 4px !important;
+    }
+  }
 }

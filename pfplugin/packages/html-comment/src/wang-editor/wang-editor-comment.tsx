@@ -29,6 +29,7 @@ import { CoreConst } from '@ibiz-template/core';
 import { ElMessageBox } from 'element-plus';
 import { EventBase, ScriptFactory } from '@ibiz-template/runtime';
 import { HtmlCommentController } from '../html-comment.controller';
+import { ModalUtil } from '../utils/modal-utils';
 
 type InsertFnType = (_url: string, _alt: string, _href: string) => void;
 
@@ -421,6 +422,17 @@ const IBizHtmlContent = defineComponent({
     // 编辑器创建完毕时的回调函数
     const handleCreated = (editor: IDomEditor) => {
       editorRef.value = editor; // 记录 editor 实例，重要！
+      let modalUtil: ModalUtil;
+      // 模态打开
+      editor.on('modalOrPanelShow', modalOrPanel => {
+        modalUtil = new ModalUtil(modalOrPanel, htmlRef.value);
+      });
+      // 模态关闭
+      editor.on('modalOrPanelHide', () => {
+        if (modalUtil) {
+          modalUtil.destroy();
+        }
+      });
       editor.setHtml(valueHtml.value);
       c.onCreated(editorRef.value, props.data, toolbarConfig);
     };
@@ -430,7 +442,7 @@ const IBizHtmlContent = defineComponent({
       const html = editor.getHtml();
       setImageHook(editor);
       // wangEditor初始值抛空字符串给后台
-      const emitValue = html === '<p><br></p>' ? '' : html;
+      let emitValue = html === '<p><br></p>' ? '' : html;
       if (
         emitValue === props.value ||
         (emitValue === '' && isNil(props.value))
@@ -439,6 +451,9 @@ const IBizHtmlContent = defineComponent({
       }
       // 修复初始化有值编辑器也会抛值导致表单脏值检查异常问题
       if (!hasEnableEdit.value) {
+        emitValue = emitValue
+          .replaceAll('class="rich-html-table"', '')
+          .replace(/<table/g, '<table class="rich-html-table"');
         emit('change', emitValue);
         c.evt.emit('onChange', {
           eventArg: emitValue,
@@ -603,7 +618,10 @@ const IBizHtmlContent = defineComponent({
     const save = () => {
       readonlyState.value = true;
       editorRef.value.disable();
-      emit('change', valueHtml.value);
+      const value = valueHtml.value
+        .replaceAll('class="rich-html-table"', '')
+        .replace(/<table/g, '<table class="rich-html-table"');
+      emit('change', value);
       if (isFullScreen.value) {
         isFullScreen.value = false;
       }

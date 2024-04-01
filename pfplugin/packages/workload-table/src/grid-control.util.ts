@@ -18,7 +18,6 @@ import {
   watch,
   watchEffect,
 } from 'vue';
-import { IDate, Util } from './util';
 
 /**
  * 表格部件props接口
@@ -310,7 +309,12 @@ export function useAppGridBase(
     columns: TableColumnCtx<IData>[];
     data: IData[];
   }) => string[];
-  ganttColumns: Ref<IDate[]>;
+  ganttSummaryMethod: ({
+    columns,
+  }: {
+    columns: TableColumnCtx<IData>[];
+    data: IData[];
+  }) => string[];
 } {
   const initSimpleData = (): void => {
     if (!props.data) {
@@ -362,24 +366,6 @@ export function useAppGridBase(
     return state.rows.map(row => row.data);
   });
 
-  const ganttColumns: Ref<IDate[]> = ref([]);
-  const searchForm = c.view.getController('searchform');
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  c.evt.on('onLoadSuccess', evt => {
-    const paramName = c.model.controlParam?.ctrlParams?.DATERANGE;
-    ganttColumns.value = [];
-    if (searchForm && paramName) {
-      const dateRange = (searchForm.state as IData).data?.[paramName];
-      if (dateRange) {
-        const _date = dateRange.split(',');
-        if (_date.length === 2) {
-          ganttColumns.value = Util.calcDate(_date[0], _date[1]);
-        }
-      }
-    }
-  });
-
   // 实际绘制的表格列
   const renderColumns = computed(() => {
     if (c.isMultistageHeader) {
@@ -415,15 +401,29 @@ export function useAppGridBase(
       if (index === 0) {
         return c.aggTitle;
       }
-      if (item.type === 'gantt') {
-        return c.state.rows
-          .map(v => v.data[item.property] || 0)
-          .reduce((a, b) => plus(a, b), 0);
-      }
       return c.state.aggResult[item.property];
     });
   };
-  return { tableData, renderColumns, defaultSort, summaryMethod, ganttColumns };
+
+  const ganttSummaryMethod = ({
+    columns,
+  }: {
+    columns: TableColumnCtx<IData>[];
+    data: IData[];
+  }): string[] => {
+    return columns.map((item, index) => {
+      return c.state.rows
+        .map(v => v.data[item.property] || 0)
+        .reduce((a, b) => plus(a, b), 0);
+    });
+  };
+  return {
+    tableData,
+    renderColumns,
+    defaultSort,
+    summaryMethod,
+    ganttSummaryMethod,
+  };
 }
 
 /**

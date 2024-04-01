@@ -203,6 +203,7 @@ export class DRBarExController
       }
     }
     this.state.selectedItem = key;
+    this.state.defaultItem = key;
   }
 
   /**

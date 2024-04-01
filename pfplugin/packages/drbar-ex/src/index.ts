@@ -1,4 +1,4 @@
-import { registerControlProvider, ControlType } from '@ibiz-template/runtime';
+import { registerControlProvider } from '@ibiz-template/runtime';
 import { withInstall } from '@ibiz-template/vue3-util';
 import { App } from 'vue';
 import { DRBarExControl } from './drbar-ex';
@@ -10,7 +10,7 @@ export const IBizDRBarExControl = withInstall(
   DRBarExControl,
   function (v: App) {
     v.component(DRBarExControl.name, DRBarExControl);
-    registerControlProvider(ControlType.DRBAR, () => new DRBarExProvider());
+    registerControlProvider('CUSTOM_DRBAR_EX', () => new DRBarExProvider());
   },
 );
 

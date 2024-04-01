@@ -21,7 +21,11 @@ import {
   IDEGridGroupColumn,
   IDETreeGrid,
 } from '@ibiz/model-core';
-import { GridController, IControlProvider } from '@ibiz-template/runtime';
+import {
+  GridController,
+  IControlProvider,
+  ScriptFactory,
+} from '@ibiz-template/runtime';
 import { toNumber, isArray } from 'lodash-es';
 import {
   IGridProps,
@@ -33,6 +37,18 @@ import { useRowEditPopover } from './use-row-edit-popover';
 import { NumberTreeGridController } from './tree-grid.controller';
 import { NumberGridController } from './grid.controller';
 import './grid.scss';
+
+function renderAttrs(model: IDEGridColumn, params: IParams): IParams {
+  const attrs: IParams = {};
+  model.controlAttributes?.forEach(item => {
+    if (item.attrName && item.attrValue) {
+      attrs[item.attrName!] = ScriptFactory.execSingleLine(item.attrValue!, {
+        ...params,
+      });
+    }
+  });
+  return attrs;
+}
 
 // 绘制除分组列之外的表格列
 export function renderColumn(
@@ -64,7 +80,7 @@ export function renderColumn(
     (c as IParams)?.expandColumnIndex &&
     index < toNumber((c as IParams)?.expandColumnIndex)
   ) {
-    type = 'index';
+    type = '';
   }
   // 表格列自定义
   return (
@@ -98,6 +114,10 @@ export function renderColumn(
               controller: columnC,
               row: rowState,
               key: elRow.tempsrfkey + columnName,
+              attrs: renderAttrs(model, {
+                ...c.getEventArgs(),
+                data: rowState.data,
+              }),
             });
           }
           return null;

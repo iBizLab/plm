@@ -8,6 +8,7 @@ import {
 import { HtmlCommentController } from './html-comment.controller';
 import IBizHtmlContent from './wang-editor/wang-editor-comment';
 import IBizHtmlCollapse from './wang-editor/wang-editor-collapse';
+import { HtmlUtil } from './utils';
 import './html-comment.scss';
 
 export const HtmlComment = defineComponent({
@@ -44,8 +45,8 @@ export const HtmlComment = defineComponent({
     };
 
     const renderAvatar = () => {
-      const avatarBg = c.stringToHexColor(c.context.srfusername);
-      const avatarName = c.avatarName(c.context.srfusername);
+      const avatarBg = HtmlUtil.stringToHexColor(c.context.srfusername);
+      const avatarName = HtmlUtil.avatarName(c.context.srfusername);
       if (c.context.srfusername) {
         return (
           <div class={ns.e('avatar-name')} style={`background: ${avatarBg};`}>
@@ -79,6 +80,7 @@ export const HtmlComment = defineComponent({
           controller={this.c}
           data={this.data}
           value={this.value}
+          readonly={this.readonly}
           onChange={this.onChange}
           onFocus={this.onFocus}
           onBlur={this.onBlur}

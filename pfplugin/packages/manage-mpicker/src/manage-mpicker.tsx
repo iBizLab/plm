@@ -353,6 +353,11 @@ export const ManageMPicker = defineComponent({
       if (c.objectNameField) {
         onSearch('');
       }
+      c.evt.on('toggleMenu', () => {
+        if (selectRef.value) {
+          selectRef.value.selectOption();
+        }
+      });
     });
 
     const renderGroupAction = (): JSX.Element | void => {

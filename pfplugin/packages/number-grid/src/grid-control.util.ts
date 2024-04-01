@@ -7,6 +7,7 @@ import {
   IControlProvider,
   IGridRowState,
   IMDControlController,
+  Srfuf,
   TreeGridController,
 } from '@ibiz-template/runtime';
 import { IDEGrid, IDEGridColumn } from '@ibiz/model-core';
@@ -96,10 +97,21 @@ export function useITableEvent(c: GridController): {
   });
 
   const treeGirdData = computed(() => {
-    const noParentData = treeGirdItems.value.filter(
-      item => !item[(c as TreeGridController).treeGridParentField],
-    );
-    return noParentData;
+    const rootNodes: IData[] = [];
+    const ids: string[] = [];
+    treeGirdItems.value.forEach(item => {
+      const id = item[(c as TreeGridController).treeGridValueField];
+      if (id) {
+        ids.push(id);
+      }
+    });
+    treeGirdItems.value.forEach(item => {
+      if (!ids.includes(item[(c as TreeGridController).treeGridParentField])) {
+        rootNodes.push(item);
+      }
+    });
+
+    return rootNodes;
   });
 
   async function onRowClick(
@@ -109,6 +121,10 @@ export function useITableEvent(c: GridController): {
   ): Promise<void> {
     // 排除虚拟的分组数据
     if (c.model.enableGroup && data.isGroupData) {
+      return;
+    }
+    // 新建行拦截行点击事件
+    if (data.srfuf === Srfuf.CREATE) {
       return;
     }
     // 单行编辑模式下，行点击会触发
@@ -125,6 +141,10 @@ export function useITableEvent(c: GridController): {
 
   function onDbRowClick(data: ControlVO): void {
     if (c.model.enableGroup && data.isGroupData) {
+      return;
+    }
+    // 新建行拦截行双击事件
+    if (data.srfuf === Srfuf.CREATE) {
       return;
     }
     c.onDbRowClick(data);

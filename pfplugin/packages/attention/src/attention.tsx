@@ -88,6 +88,11 @@ export const Attention = defineComponent({
     // 为关注时，界面需要绘制的个数
     let selRenderNum: number = 0;
 
+    // 只读状态
+    const readonlyState = computed(() => {
+      return props?.readonly || c.context.srfreadonly;
+    });
+
     // 是否显示表单默认内容
     const showFormDefaultContent = computed(() => {
       if (
@@ -1057,6 +1062,17 @@ export const Attention = defineComponent({
     };
 
     /**
+     * 只读态选中集合无值时显示
+     */
+    const renderReadonlyNoSelVal = (): JSX.Element => {
+      return (
+        <div class={ns.b('no-select-value')}>
+          <span>未设置</span>
+        </div>
+      );
+    };
+
+    /**
      * 绘制选中值
      */
     const renderSelects = (): JSX.Element | void => {
@@ -1119,9 +1135,16 @@ export const Attention = defineComponent({
               );
             })}
             {isEquality ? (
-              <span class={ns.be('select-value-multiple', 'ellipsis')}>
-                ...
-              </span>
+              <el-tooltip
+                class={ns.b('multiple-ellipsis')}
+                popper-class={ns.be('multiple-ellipsis', 'popper')}
+                effect='dark'
+                content={valueText.value}
+                placement='top'
+                offset={12}
+              >
+                <span class={ns.be('multiple-ellipsis', 'default')}>...</span>
+              </el-tooltip>
             ) : null}
           </div>
         );
@@ -1219,9 +1242,9 @@ export const Attention = defineComponent({
      */
     const renderReadonlyContent = (): JSX.Element | IData => {
       if (valueText.value) {
-        return [renderSelects(), renderSelectInput()];
+        return [renderSelects()];
       }
-      return renderNoSelectValue();
+      return renderReadonlyNoSelVal();
     };
 
     /**
@@ -1294,6 +1317,7 @@ export const Attention = defineComponent({
       modelVisible,
       curAttentionValue,
       attentionRef,
+      readonlyState,
       onClear,
       load,
       setEditable,
@@ -1315,16 +1339,16 @@ export const Attention = defineComponent({
           this.ns.b(),
           this.ns.b('person-value'),
           this.disabled ? this.ns.m('disabled') : '',
-          this.readonly ? this.ns.m('readonly') : '',
+          this.readonlyState ? this.ns.m('readonly') : '',
           this.ns.is('editable', this.isEditable),
           this.ns.is('show-default', this.showFormDefaultContent),
         ]}
       >
-        {this.readonly
+        {this.readonlyState
           ? this.renderReadonlyContent()
           : this.renderEditContent()}
         <Follow
-          readonly={this.readonly}
+          readonly={this.readonlyState}
           disabled={this.disabled}
           value={this.curAttentionValue}
           codeListId={this.c.codeListId}
