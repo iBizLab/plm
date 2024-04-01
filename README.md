@@ -41,6 +41,7 @@ iBizPLM划分为5大模块：
 - 演示普通用户账号/密码：demo_user/123456
 - 欢迎加入iBizPLM交流QQ群：1067434627
 - 系统详细设计文档：[http://plmdoc.ibizlab.cn](http://plmdoc.ibizlab.cn) 特别鸣谢：[doc-generator](https://github.com/iBizLab/doc-generator) 提供模型发布"系统详细设计文档"扩展
+- 基于 Spring Boot 和 Vue 的轻量级应用程序源码[plm-code](https://github.com/iBizLab/plm-code)
 
 ### 安装部署
 
