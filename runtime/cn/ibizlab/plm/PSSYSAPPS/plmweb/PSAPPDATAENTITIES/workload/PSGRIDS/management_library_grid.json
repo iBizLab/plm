@@ -1,0 +1,222 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "management_library_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlStyle" : "WORKLOAD_TABLE",
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload/PSGRIDS/management_library_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_test_case_workload"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    }
+  },
+  "groupMode" : "AUTO",
+  "getGroupPSAppDEField" : {
+    "name" : "RECENT_PARENT",
+    "codeName" : "recent_parent"
+  },
+  "getGroupPSDEField" : {
+    "name" : "RECENT_PARENT",
+    "codeName" : "recent_parent"
+  },
+  "logicName" : "工时日历_测试库管理表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "标识",
+    "codeName" : "recent_parent_identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "recent_parent_identifier",
+    "excelCaption" : "标识",
+    "name" : "recent_parent_identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT_IDENTIFIER",
+      "codeName" : "recent_parent_identifier"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "测试库",
+    "codeName" : "recent_parent_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "recent_parent_name",
+    "excelCaption" : "测试库",
+    "name" : "recent_parent_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT_NAME",
+      "codeName" : "recent_parent_name"
+    },
+    "width" : 100,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "RIGHT",
+    "cLConvertMode" : "NONE",
+    "caption" : "总登记工时",
+    "codeName" : "duration",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "duration",
+    "excelCaption" : "总登记工时",
+    "name" : "duration",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "DURATION",
+      "codeName" : "duration"
+    },
+    "getPSDEUIAction" : {
+      "actionTarget" : "SINGLEKEY",
+      "caption" : "测试库总登记时长链接跳转（管理）",
+      "codeName" : "management_library_duration_link",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "workload_management_library_duration_link",
+      "name" : "测试库总登记时长链接跳转（管理）",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "open_management_library_detail"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "timeout" : 60000,
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "management_library_duration_link",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "id" : "management_library_duration_link@workload"
+    },
+    "valueFormat" : "#0.0",
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 25,
+    "name" : "recent_parent_identifier",
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT_IDENTIFIER",
+      "codeName" : "recent_parent_identifier"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "recent_parent_name",
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT_NAME",
+      "codeName" : "recent_parent_name"
+    }
+  }, {
+    "format" : "#0.0",
+    "dataType" : 6,
+    "name" : "duration",
+    "getPSAppDEField" : {
+      "name" : "DURATION",
+      "codeName" : "duration"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "recent_parent",
+    "getPSAppDEField" : {
+      "name" : "RECENT_PARENT",
+      "codeName" : "recent_parent"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "type_id",
+    "getPSAppDEField" : {
+      "name" : "TYPE_ID",
+      "codeName" : "type_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "GRID_RENDER",
+    "pluginCode" : "WORKLOAD_TABLE",
+    "runtimeObject" : true
+  },
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : true,
+  "enablePagingBar" : false,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "478791273cf1977b3a681add5ab3799f",
+  "modeltype" : "PSDEGRID"
+}

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.recentrecent_access" isClosed="false" isExecutable="true" name="base_recent_recent_access_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.recentrecent_access">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="recentrecent_accessdefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="recentrecent_accessowner_id" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.recent()" name="recentrecent_accessrecent_access" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="recentrecent_accessreturn_data" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.recent()" name="recentrecent_accesssq_access_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.recent()" name="recentrecent_accesstemp_access_data" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="recentrecent_accesstemp_idea_data" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="recentrecent_accesstemp_ticket_data" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrecentService))" name="recentservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrecentService))" name="iBzSysRecentDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="recentrecent_accessdefault" type="cn.ibizlab.plm.core.base.domain.recent" />
+                            <tns:global identifier="recentrecent_accessrecent_access" type="cn.ibizlab.plm.core.base.domain.recent" />
+                            <tns:global identifier="recentrecent_accesssq_access_page" type="cn.ibizlab.plm.core.base.domain.recent" />
+                            <tns:global identifier="recentrecent_accesstemp_access_data" type="cn.ibizlab.plm.core.base.domain.recent" />
+                            <tns:global identifier="recentrecent_accesstemp_idea_data" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="recentrecent_accesstemp_ticket_data" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询20条最近访问数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取所属对象ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取IDEA类数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取ticket类数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="获取测试用例类数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取工作项类数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取所属产品"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="获取工单所属产品"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="获取测试用例所属测试库"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="获取工作项所属项目"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="recentrecent_accessappendparam1" id="appendparam1" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam1_end" name="end"/>
+                        <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_end1" sourceRef="gateway-dedataset1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $recentrecent_accessdefault:recent();
+                                            $recentrecent_accessowner_id:Map();
+                                            $recentrecent_accessrecent_access:recent();
+                                            $recentrecent_accessreturn_data:Map();
+                                            $recentrecent_accesssq_access_page:recent();
+                                            $recentrecent_accesstemp_access_data:recent();
+                                            $recentrecent_accesstemp_idea_data:idea();
+                                            $recentrecent_accesstemp_ticket_data:ticket();
+                                    eval($recentrecent_accessdefault==recentrecent_accessdefault && $recentrecent_accessrecent_access==recentrecent_accessrecent_access && $recentrecent_accesssq_access_page==recentrecent_accesssq_access_page && $recentrecent_accesstemp_access_data==recentrecent_accesstemp_access_data && $recentrecent_accesstemp_idea_data==recentrecent_accesstemp_idea_data && $recentrecent_accesstemp_ticket_data==recentrecent_accesstemp_ticket_data);
+                                eval((RuleUtils.test($recentrecent_accesssq_access_page.get(""),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $recentrecent_accessdefault:recent();
+                                            $recentrecent_accessowner_id:Map();
+                                            $recentrecent_accessrecent_access:recent();
+                                            $recentrecent_accessreturn_data:Map();
+                                            $recentrecent_accesssq_access_page:recent();
+                                            $recentrecent_accesstemp_access_data:recent();
+                                            $recentrecent_accesstemp_idea_data:idea();
+                                            $recentrecent_accesstemp_ticket_data:ticket();
+                                    eval($recentrecent_accessdefault==recentrecent_accessdefault && $recentrecent_accessrecent_access==recentrecent_accessrecent_access && $recentrecent_accesssq_access_page==recentrecent_accesssq_access_page && $recentrecent_accesstemp_access_data==recentrecent_accesstemp_access_data && $recentrecent_accesstemp_idea_data==recentrecent_accesstemp_idea_data && $recentrecent_accesstemp_ticket_data==recentrecent_accesstemp_ticket_data);
+                                eval((RuleUtils.test($recentrecent_accesssq_access_page.get(""),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam1" sourceRef="loopsubcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_bindparam1" sourceRef="loopsubcall1" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $recentrecent_accessdefault:recent();
+                                            $recentrecent_accessowner_id:Map();
+                                            $recentrecent_accessrecent_access:recent();
+                                            $recentrecent_accessreturn_data:Map();
+                                            $recentrecent_accesssq_access_page:recent();
+                                            $recentrecent_accesstemp_access_data:recent();
+                                            $recentrecent_accesstemp_idea_data:idea();
+                                            $recentrecent_accesstemp_ticket_data:ticket();
+                                    eval($recentrecent_accessdefault==recentrecent_accessdefault && $recentrecent_accessrecent_access==recentrecent_accessrecent_access && $recentrecent_accesssq_access_page==recentrecent_accesssq_access_page && $recentrecent_accesstemp_access_data==recentrecent_accesstemp_access_data && $recentrecent_accesstemp_idea_data==recentrecent_accesstemp_idea_data && $recentrecent_accesstemp_ticket_data==recentrecent_accesstemp_ticket_data);
+                                eval((RuleUtils.test($recentrecent_accesstemp_access_data.get("ownerSubtype"),"EQ","idea")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction2" sourceRef="gateway-prepareparam1" targetRef="deaction2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $recentrecent_accessdefault:recent();
+                                            $recentrecent_accessowner_id:Map();
+                                            $recentrecent_accessrecent_access:recent();
+                                            $recentrecent_accessreturn_data:Map();
+                                            $recentrecent_accesssq_access_page:recent();
+                                            $recentrecent_accesstemp_access_data:recent();
+                                            $recentrecent_accesstemp_idea_data:idea();
+                                            $recentrecent_accesstemp_ticket_data:ticket();
+                                    eval($recentrecent_accessdefault==recentrecent_accessdefault && $recentrecent_accessrecent_access==recentrecent_accessrecent_access && $recentrecent_accesssq_access_page==recentrecent_accesssq_access_page && $recentrecent_accesstemp_access_data==recentrecent_accesstemp_access_data && $recentrecent_accesstemp_idea_data==recentrecent_accesstemp_idea_data && $recentrecent_accesstemp_ticket_data==recentrecent_accesstemp_ticket_data);
+                                eval((RuleUtils.test($recentrecent_accesstemp_access_data.get("ownerSubtype"),"EQ","ticket")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction3" sourceRef="gateway-prepareparam1" targetRef="deaction3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $recentrecent_accessdefault:recent();
+                                            $recentrecent_accessowner_id:Map();
+                                            $recentrecent_accessrecent_access:recent();
+                                            $recentrecent_accessreturn_data:Map();
+                                            $recentrecent_accesssq_access_page:recent();
+                                            $recentrecent_accesstemp_access_data:recent();
+                                            $recentrecent_accesstemp_idea_data:idea();
+                                            $recentrecent_accesstemp_ticket_data:ticket();
+                                    eval($recentrecent_accessdefault==recentrecent_accessdefault && $recentrecent_accessrecent_access==recentrecent_accessrecent_access && $recentrecent_accesssq_access_page==recentrecent_accesssq_access_page && $recentrecent_accesstemp_access_data==recentrecent_accesstemp_access_data && $recentrecent_accesstemp_idea_data==recentrecent_accesstemp_idea_data && $recentrecent_accesstemp_ticket_data==recentrecent_accesstemp_ticket_data);
+                                eval((RuleUtils.test($recentrecent_accesstemp_access_data.get("ownerSubtype"),"EQ","test_case")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction4" sourceRef="gateway-prepareparam1" targetRef="deaction4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $recentrecent_accessdefault:recent();
+                                            $recentrecent_accessowner_id:Map();
+                                            $recentrecent_accessrecent_access:recent();
+                                            $recentrecent_accessreturn_data:Map();
+                                            $recentrecent_accesssq_access_page:recent();
+                                            $recentrecent_accesstemp_access_data:recent();
+                                            $recentrecent_accesstemp_idea_data:idea();
+                                            $recentrecent_accesstemp_ticket_data:ticket();
+                                    eval($recentrecent_accessdefault==recentrecent_accessdefault && $recentrecent_accessrecent_access==recentrecent_accessrecent_access && $recentrecent_accesssq_access_page==recentrecent_accesssq_access_page && $recentrecent_accesstemp_access_data==recentrecent_accesstemp_access_data && $recentrecent_accesstemp_idea_data==recentrecent_accesstemp_idea_data && $recentrecent_accesstemp_ticket_data==recentrecent_accesstemp_ticket_data);
+                                eval((RuleUtils.test($recentrecent_accesstemp_access_data.get("ownerSubtype"),"EQ","work_item")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_end2" sourceRef="bindparam1" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam3" sourceRef="deaction2" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction3_prepareparam4" sourceRef="deaction3" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction4_prepareparam5" sourceRef="deaction4" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_appendparam1" sourceRef="prepareparam2" targetRef="appendparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_appendparam1" sourceRef="prepareparam3" targetRef="appendparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_appendparam1" sourceRef="prepareparam4" targetRef="appendparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_appendparam1" sourceRef="prepareparam5" targetRef="appendparam1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>

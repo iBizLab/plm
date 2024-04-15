@@ -1,0 +1,1174 @@
+{
+  "codeName" : "exp",
+  "controlStyle" : "LIST_TREE",
+  "controlType" : "TREEVIEW",
+  "getCreatePSControlAction" : {
+    "modelref" : true,
+    "id" : "create",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    }
+  },
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSTREEVIEWS/exp.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "modelref" : true,
+    "id" : "load",
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    }
+  },
+  "hookEventNames" : [ "ONCLICK", "SELECTIONCHANGE", "LOAD" ],
+  "logicName" : "项目导航视图_树视图",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+  },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onClick",
+    "itemName" : "星标_项目",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "star",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "refresh_current_grid"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    }
+  }, {
+    "eventNames" : "SELECTIONCHANGE",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "CUSTOM",
+    "name" : "treeexpbar_selectionchange"
+  }, {
+    "eventNames" : "LOAD",
+    "logicTag" : "treeexpbar_tree",
+    "logicType" : "CUSTOM",
+    "name" : "treeexpbar_load"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "tree_exp_view_node1_cm",
+    "controlType" : "CONTEXTMENU",
+    "logicName" : "星标项目集树节点菜单",
+    "name" : "node_1_cm",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+    },
+    "getPSControlParam" : {
+      "id" : "node_1_cm"
+    },
+    "getPSDEToolbarItems" : [ {
+      "actionLevel" : 200,
+      "caption" : "打开项目集主视图",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_1_cm_deuiaction1"
+      },
+      "getPSSysImage" : { },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "打开项目集主视图",
+        "codeName" : "open_project_set_index_view",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_index_view.json",
+          "viewType" : "DEINDEXVIEW"
+        },
+        "frontProcessType" : "TOP",
+        "fullCodeName" : "portfolio_open_project_set_index_view",
+        "name" : "打开项目集主视图",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+        },
+        "getPSSysImage" : { },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_project_set_index_view",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_project_set_index_view@portfolio"
+      },
+      "tooltip" : "打开项目集主视图",
+      "uIActionTarget" : "SINGLEKEY",
+      "width" : 1.0,
+      "showCaption" : false,
+      "showIcon" : true
+    }, {
+      "actionLevel" : 250,
+      "caption" : "取消星标",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_1_cm_deuiaction2"
+      },
+      "getPSSysImage" : {
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "取消星标",
+        "codeName" : "cancel_favorite",
+        "dataAccessAction" : "CANCEL_FAVORITE",
+        "fullCodeName" : "portfolio_cancel_favorite",
+        "name" : "取消星标",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "un_favorite"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "refresh_current_grid"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "CANCEL_FAVORITE"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "owner_id",
+          "name" : "owner_id",
+          "value" : "portfolio",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "refreshMode" : 2,
+        "timeout" : 60000,
+        "tooltip" : "取消星标",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "cancel_favorite",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "cancel_favorite@portfolio"
+      },
+      "tooltip" : "取消星标",
+      "uIActionTarget" : "SINGLEKEY",
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "modelid" : "4aaab1340b4ab2a100a2e9b81ad17dc1",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "codeName" : "tree_exp_view_node_favorite_cm",
+    "controlType" : "CONTEXTMENU",
+    "logicName" : "星标项目树节点菜单",
+    "name" : "node_favorite_cm",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : {
+      "id" : "node_favorite_cm"
+    },
+    "getPSDEToolbarItems" : [ {
+      "actionLevel" : 200,
+      "caption" : "打开星标项目",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_favorite_cm_deuiaction1"
+      },
+      "getPSSysImage" : { },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "caption" : "打开项目主视图",
+        "codeName" : "open_project_main_view",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+          "viewType" : "DEREDIRECTVIEW"
+        },
+        "frontProcessType" : "TOP",
+        "fullCodeName" : "project_open_project_main_view",
+        "name" : "根据类型打开项目主视图",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "getPSSysImage" : { },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_project_main_view",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_project_main_view@project"
+      },
+      "tooltip" : "打开星标项目",
+      "uIActionTarget" : "SINGLEKEY",
+      "width" : 1.0,
+      "showCaption" : false,
+      "showIcon" : true
+    }, {
+      "actionLevel" : 250,
+      "caption" : "取消星标",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 6,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_favorite_cm_deuiaction2"
+      },
+      "getPSSysImage" : {
+        "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "SINGLEKEY",
+        "noPrivDisplayMode" : 6,
+        "caption" : "取消星标",
+        "codeName" : "cancel_favorite",
+        "dataAccessAction" : "CANCEL_FAVORITE",
+        "fullCodeName" : "project_cancel_favorite",
+        "name" : "取消星标",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "un_favorite"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "refresh_current_grid"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "CANCEL_FAVORITE"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "owner_id",
+          "name" : "owner_id",
+          "value" : "project",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "refreshMode" : 2,
+        "timeout" : 60000,
+        "tooltip" : "取消星标",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "cancel_favorite",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "cancel_favorite@project"
+      },
+      "tooltip" : "取消星标",
+      "uIActionTarget" : "SINGLEKEY",
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "modelid" : "16eafadcc16323a2cbeaf6bb3444a9ab",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "codeName" : "tree_exp_view_config_cm",
+    "controlType" : "CONTEXTMENU",
+    "logicName" : "项目配置树节点菜单",
+    "name" : "config_cm",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : {
+      "id" : "config_cm"
+    },
+    "getPSDEToolbarItems" : [ {
+      "actionLevel" : 200,
+      "caption" : "项目配置",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "config_cm_deuiaction1"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "项目配置",
+        "codeName" : "open_global_setting",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
+          "viewType" : "DETREEEXPVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "project_open_global_setting",
+        "name" : "打开项目配置(全局)",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_global_setting",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_global_setting@project"
+      },
+      "tooltip" : "项目配置",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "590863a827c09a3001aa5b5b29929bbb",
+    "modeltype" : "PSDETOOLBAR"
+  } ],
+  "getPSDETreeNodeRSs" : [ {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "all"
+    },
+    "name" : "项目 - 全部项目",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_favorite"
+    },
+    "name" : "星标 - 星标_项目",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "star"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "默认根节点 - 项目",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "project_set"
+    },
+    "name" : "工作 - 项目集",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "work"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "org"
+    },
+    "name" : "项目 - 组织项目",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "work"
+    },
+    "name" : "默认根节点 - 工作",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "name" : "工作 - 筛选器",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "work"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "team"
+    },
+    "name" : "项目 - 团队项目",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "star"
+    },
+    "name" : "默认根节点 - 星标",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "config"
+    },
+    "name" : "默认根节点 - 配置中心",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "ROOT"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node_1"
+    },
+    "name" : "星标 - 星标项目集",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "star"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  } ],
+  "getPSDETreeNodes" : [ {
+    "counterMode" : 0,
+    "name" : "默认根节点",
+    "nodeType" : "ROOT",
+    "nodeValue" : "root",
+    "text" : "默认根节点",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : true,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "ROOT"
+  }, {
+    "counterMode" : 0,
+    "name" : "全部项目",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_all_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "nodeType" : "all",
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"zfaoqr8zf__design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8.25,4.75 C8.25,6.40685415 9.59314585,7.75 11.25,7.75 C12.9068546,7.75 14.25,6.40685415 14.25,4.75 C14.25,3.09314585 12.9068546,1.75 11.25,1.75 C9.59314585,1.75 8.25,3.09314585 8.25,4.75 Z M11.25,6.75 C12.3545694,6.75 13.25,5.85456944 13.25,4.75 C13.25,3.64543068 12.3545694,2.75 11.25,2.75 C10.1454306,2.75 9.25,3.64543068 9.25,4.75 C9.25,5.85456944 10.1454306,6.75 11.25,6.75 Z M3,2 L6.5,2 C7.05228472,2 7.5,2.44771528 7.5,3 L7.5,6.5 C7.5,7.05228472 7.05228472,7.5 6.5,7.5 L3,7.5 C2.44771528,7.5 2,7.05228472 2,6.5 L2,3 C2,2.44771528 2.44771528,2 3,2 Z M6.5,3 L6.5,6.5 L3,6.5 L3,3 L6.5,3 Z M3,8.5 L6.5,8.5 C7.05228472,8.5 7.5,8.94771528 7.5,9.5 L7.5,13 C7.5,13.5522842 7.05228472,14 6.5,14 L3,14 C2.44771528,14 2,13.5522842 2,13 L2,9.5 C2,8.94771528 2.44771528,8.5 3,8.5 Z M6.5,9.5 L6.5,13 L3,13 L3,9.5 L6.5,9.5 Z M9.5,8.5 L13,8.5 C13.5522842,8.5 14,8.94771528 14,9.5 L14,13 C14,13.5522842 13.5522842,14 13,14 L9.5,14 C8.94771528,14 8.5,13.5522842 8.5,13 L8.5,9.5 C8.5,8.94771528 8.94771528,8.5 9.5,8.5 Z M9.5,9.5 L13,9.5 L13,13 L9.5,13 L9.5,9.5 Z\" fill-opacity=\".89999998\" fill-rule=\"evenodd\" fill=\"#56AAFC\"></path>\n</svg>",
+      "height" : 20,
+      "width" : 20
+    },
+    "text" : "全部项目",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "all"
+  }, {
+    "accUserMode" : 4,
+    "accessKey" : "BASE",
+    "counterMode" : 0,
+    "name" : "配置中心",
+    "nodeType" : "config",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSDEContextMenu" : {
+      "codeName" : "tree_exp_view_config_cm",
+      "controlType" : "CONTEXTMENU",
+      "logicName" : "项目配置树节点菜单",
+      "name" : "config_cm",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSControlParam" : {
+        "id" : "config_cm"
+      },
+      "getPSDEToolbarItems" : [ {
+        "actionLevel" : 200,
+        "caption" : "项目配置",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "config_cm_deuiaction1"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "项目配置",
+          "codeName" : "open_global_setting",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
+            "viewType" : "DETREEEXPVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "project_open_global_setting",
+          "name" : "打开项目配置(全局)",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_global_setting",
+          "uIActionType" : "DEUIACTION",
+          "id" : "open_global_setting@project"
+        },
+        "tooltip" : "项目配置",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "modelid" : "590863a827c09a3001aa5b5b29929bbb",
+      "modeltype" : "PSDETOOLBAR"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" fill-opacity=\".9\" fill-rule=\"evenodd\" fill=\"#56AAFC\"></path>\n</svg>"
+    },
+    "text" : "配置中心",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "config"
+  }, {
+    "counterMode" : 0,
+    "name" : "筛选器",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_filter_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "nodeType" : "filter",
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M5.70161537,6.83314599 C5.63755287,6.83314599 5.58442787,6.88158349 5.58442787,6.94252099 L5.58442787,7.59877099 C5.58442787,7.65814599 5.63755287,7.70814599 5.70161537,7.70814599 L10.0793816,7.70814599 C10.1434441,7.70814599 10.1965691,7.65814599 10.1965691,7.59877099 L10.1965691,6.94252099 C10.1965691,6.88158349 10.1434441,6.83314599 10.0793816,6.83314599 L5.70161537,6.83314599 Z M6.14124547,8.46714621 C6.07718297,8.46714621 6.02405797,8.51558371 6.02405797,8.57652121 L6.02405797,9.23277121 C6.02405797,9.29214621 6.07718297,9.34214621 6.14124547,9.34214621 L9.60335754,9.34214621 C9.66742004,9.34214621 9.72054504,9.29214621 9.72054504,9.23277121 L9.72054504,8.57652121 C9.72054504,8.51558371 9.66742004,8.46714621 9.60335754,8.46714621 L6.14124547,8.46714621 Z M6.61654715,10.1181998 C6.55248465,10.1181998 6.49935965,10.1666373 6.49935965,10.2275748 L6.49935965,10.8838248 C6.49935965,10.9431998 6.55248465,10.9931998 6.61654715,10.9931998 L9.12782868,10.9931998 C9.19189118,10.9931998 9.24501618,10.9431998 9.24501618,10.8838248 L9.24501618,10.2275748 C9.24501618,10.1666373 9.19189118,10.1181998 9.12782868,10.1181998 L6.61654715,10.1181998 Z M13.75,4.6625 L8.140625,4.6625 L6.3078125,2.909375 C6.284375,2.8875 6.253125,2.875 6.221875,2.875 L2.25,2.875 C1.9734375,2.875 1.75,3.0984375 1.75,3.375 L1.75,12.625 C1.75,12.9015625 1.9734375,13.125 2.25,13.125 L13.75,13.125 C14.0265625,13.125 14.25,12.9015625 14.25,12.625 L14.25,5.1625 C14.25,4.8859375 14.0265625,4.6625 13.75,4.6625 Z M13.125,12 L2.875,12 L2.875,4 L5.8203125,4 L7.6890625,5.7875 L13.125,5.7875 L13.125,12 Z\" fill=\"#F6C659\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "text" : "筛选器",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "filter"
+  }, {
+    "counterMode" : 0,
+    "name" : "项目",
+    "nodeType" : "node",
+    "text" : "项目",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : true,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node"
+  }, {
+    "counterMode" : 0,
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "name" : "星标项目集",
+    "nodeType" : "node_1",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_favorite"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+    },
+    "getPSDEContextMenu" : {
+      "codeName" : "tree_exp_view_node1_cm",
+      "controlType" : "CONTEXTMENU",
+      "logicName" : "星标项目集树节点菜单",
+      "name" : "node_1_cm",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+      },
+      "getPSControlParam" : {
+        "id" : "node_1_cm"
+      },
+      "getPSDEToolbarItems" : [ {
+        "actionLevel" : 200,
+        "caption" : "打开项目集主视图",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_1_cm_deuiaction1"
+        },
+        "getPSSysImage" : { },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "打开项目集主视图",
+          "codeName" : "open_project_set_index_view",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_index_view.json",
+            "viewType" : "DEINDEXVIEW"
+          },
+          "frontProcessType" : "TOP",
+          "fullCodeName" : "portfolio_open_project_set_index_view",
+          "name" : "打开项目集主视图",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+          },
+          "getPSSysImage" : { },
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_project_set_index_view",
+          "uIActionType" : "DEUIACTION",
+          "id" : "open_project_set_index_view@portfolio"
+        },
+        "tooltip" : "打开项目集主视图",
+        "uIActionTarget" : "SINGLEKEY",
+        "width" : 1.0,
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "actionLevel" : 250,
+        "caption" : "取消星标",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_1_cm_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "取消星标",
+          "codeName" : "cancel_favorite",
+          "dataAccessAction" : "CANCEL_FAVORITE",
+          "fullCodeName" : "portfolio_cancel_favorite",
+          "name" : "取消星标",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "un_favorite"
+          },
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "refresh_current_grid"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "CANCEL_FAVORITE"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "owner_id",
+            "name" : "owner_id",
+            "value" : "portfolio",
+            "rawValue" : false
+          } ],
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+          },
+          "refreshMode" : 2,
+          "timeout" : 60000,
+          "tooltip" : "取消星标",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "cancel_favorite",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "AFTER",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "cancel_favorite@portfolio"
+        },
+        "tooltip" : "取消星标",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "modelid" : "4aaab1340b4ab2a100a2e9b81ad17dc1",
+      "modeltype" : "PSDETOOLBAR"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M9.01651185,3.27273154 C9.31543831,3.27189848 9.60227033,3.39300127 9.81307558,3.60905148 L12.1206744,5.96139483 C12.1627802,6.00466067 12.2201457,6.02891007 12.2799308,6.02871536 L21.2371542,6.02871536 C21.8590036,6.02942731 22.362938,6.54313302 22.3636364,7.17704017 L22.3636364,19.5789479 C22.362938,20.2128551 21.8590036,20.7265608 21.2371542,20.7272727 L2.76284584,20.7272727 C2.14099642,20.7265608 1.63706204,20.2128551 1.63636364,19.5789479 L1.63636364,4.42106066 C1.63706203,3.78715352 2.14099641,3.2734478 2.76284584,3.27273154 L9.01651185,3.27273154 Z M13,9 L11,9 L11,17 L13,17 L13,9 Z M17,12 L15,12 L15,17 L17,17 L17,12 Z M9,14 L7,14 L7,17 L9,17 L9,14 Z\" fill=\"#56AAFC\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : true,
+    "enableNewData" : true,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : true,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_1"
+  }, {
+    "counterMode" : 0,
+    "getIdPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "maxSize" : -1,
+    "name" : "星标_项目",
+    "nodeType" : "node_favorite",
+    "getPSAppDEDataSet" : {
+      "modelref" : true,
+      "id" : "fetch_favorite"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSDEContextMenu" : {
+      "codeName" : "tree_exp_view_node_favorite_cm",
+      "controlType" : "CONTEXTMENU",
+      "logicName" : "星标项目树节点菜单",
+      "name" : "node_favorite_cm",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSControlParam" : {
+        "id" : "node_favorite_cm"
+      },
+      "getPSDEToolbarItems" : [ {
+        "actionLevel" : 200,
+        "caption" : "打开星标项目",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_favorite_cm_deuiaction1"
+        },
+        "getPSSysImage" : { },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "打开项目主视图",
+          "codeName" : "open_project_main_view",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+            "viewType" : "DEREDIRECTVIEW"
+          },
+          "frontProcessType" : "TOP",
+          "fullCodeName" : "project_open_project_main_view",
+          "name" : "根据类型打开项目主视图",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSSysImage" : { },
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "open_project_main_view",
+          "uIActionType" : "DEUIACTION",
+          "id" : "open_project_main_view@project"
+        },
+        "tooltip" : "打开星标项目",
+        "uIActionTarget" : "SINGLEKEY",
+        "width" : 1.0,
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "actionLevel" : 250,
+        "caption" : "取消星标",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 6,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "node_favorite_cm_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "noPrivDisplayMode" : 6,
+          "caption" : "取消星标",
+          "codeName" : "cancel_favorite",
+          "dataAccessAction" : "CANCEL_FAVORITE",
+          "fullCodeName" : "project_cancel_favorite",
+          "name" : "取消星标",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "un_favorite"
+          },
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "refresh_current_grid"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "CANCEL_FAVORITE"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "owner_id",
+            "name" : "owner_id",
+            "value" : "project",
+            "rawValue" : false
+          } ],
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+          },
+          "refreshMode" : 2,
+          "timeout" : 60000,
+          "tooltip" : "取消星标",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "cancel_favorite",
+          "uIActionType" : "DEUIACTION",
+          "uILogicAttachMode" : "AFTER",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "cancel_favorite@project"
+        },
+        "tooltip" : "取消星标",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "modelid" : "16eafadcc16323a2cbeaf6bb3444a9ab",
+      "modeltype" : "PSDETOOLBAR"
+    },
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M9.01651185,3.27273154 C9.31543831,3.27189848 9.60227033,3.39300127 9.81307558,3.60905148 L12.1206744,5.96139483 C12.1627802,6.00466067 12.2201457,6.02891007 12.2799308,6.02871536 L21.2371542,6.02871536 C21.8590036,6.02942731 22.362938,6.54313302 22.3636364,7.17704017 L22.3636364,19.5789479 C22.362938,20.2128551 21.8590036,20.7265608 21.2371542,20.7272727 L2.76284584,20.7272727 C2.14099642,20.7265608 1.63706204,20.2128551 1.63636364,19.5789479 L1.63636364,4.42106066 C1.63706203,3.78715352 2.14099641,3.2734478 2.76284584,3.27273154 L9.01651185,3.27273154 Z M15.9204545,9.375 L8.07954545,9.375 C7.89098011,9.375 7.73863636,9.52734375 7.73863636,9.71590909 L7.73863636,17.5568182 C7.73863636,17.7453835 7.89098011,17.8977273 8.07954545,17.8977273 L15.9204545,17.8977273 C16.1090199,17.8977273 16.2613636,17.7453835 16.2613636,17.5568182 L16.2613636,9.71590909 C16.2613636,9.52734375 16.1090199,9.375 15.9204545,9.375 Z M15.4943182,10.1420455 L15.4943182,17.1306818 L8.50568182,17.1306818 L8.50568182,10.1420455 L15.4943182,10.1420455 Z M14.2073864,13.5095881 L13.6672585,13.5095881 C13.6278409,13.5095881 13.5948153,13.5415483 13.5948153,13.5820313 L13.5948153,14.4225852 C13.5948153,14.6324574 13.4254261,14.8018466 13.2166193,14.8018466 L11.0262784,14.8018466 L11.0262784,14.2329545 C11.0262784,14.1722301 10.9570313,14.1392045 10.9101563,14.1764915 L9.74786932,15.0894886 C9.71058239,15.1161222 9.71058239,15.1725852 9.74786932,15.2013494 L10.9101563,16.1143466 C10.9570313,16.1516335 11.0262784,16.1175426 11.0262784,16.0578835 L11.0262784,15.4889915 L13.2176847,15.4889915 C13.8046875,15.4889915 14.2798295,15.0117188 14.2798295,14.4225852 L14.2798295,13.5820313 C14.2798295,13.5426136 14.2478693,13.5095881 14.2073864,13.5095881 Z M12.9747869,11.2137784 L12.9747869,11.7826705 L10.7823153,11.7826705 C10.1953125,11.7826705 9.72017045,12.2599432 9.72017045,12.8490767 L9.72017045,13.6896307 C9.72017045,13.7322443 9.75213068,13.7642045 9.79261364,13.7642045 L10.3327415,13.7642045 C10.3721591,13.7642045 10.4051847,13.7322443 10.4051847,13.6917614 L10.4051847,12.8512074 C10.4051847,12.6413352 10.5745739,12.471946 10.7833807,12.471946 L12.9747869,12.471946 L12.9747869,13.0408381 C12.9747869,13.1015625 13.0440341,13.1345881 13.0909091,13.0973011 L14.253196,12.184304 C14.290483,12.1555398 14.290483,12.0990767 14.253196,12.0703125 L13.0909091,11.1573153 C13.0440341,11.1200284 12.9747869,11.1541193 12.9747869,11.2137784 Z\" fill=\"#56AAFC\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "getTextPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "treeNodeType" : "DE",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : true,
+    "enableNewData" : true,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : true,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node_favorite"
+  }, {
+    "counterMode" : 0,
+    "name" : "组织项目",
+    "nodeType" : "org",
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M14.1875,10 L12.5625,10 L12.5625,7.625 C12.5625,7.55625 12.50625,7.5 12.4375,7.5 L8.5625,7.5 L8.5625,6 L10.25,6 C10.3875,6 10.5,5.8875 10.5,5.75 L10.5,1.25 C10.5,1.1125 10.3875,1 10.25,1 L5.75,1 C5.6125,1 5.5,1.1125 5.5,1.25 L5.5,5.75 C5.5,5.8875 5.6125,6 5.75,6 L7.4375,6 L7.4375,7.5 L3.5625,7.5 C3.49375,7.5 3.4375,7.55625 3.4375,7.625 L3.4375,10 L1.8125,10 C1.675,10 1.5625,10.1125 1.5625,10.25 L1.5625,14.75 C1.5625,14.8875 1.675,15 1.8125,15 L6.3125,15 C6.45,15 6.5625,14.8875 6.5625,14.75 L6.5625,10.25 C6.5625,10.1125 6.45,10 6.3125,10 L4.5625,10 L4.5625,8.625 L11.4375,8.625 L11.4375,10 L9.6875,10 C9.55,10 9.4375,10.1125 9.4375,10.25 L9.4375,14.75 C9.4375,14.8875 9.55,15 9.6875,15 L14.1875,15 C14.325,15 14.4375,14.8875 14.4375,14.75 L14.4375,10.25 C14.4375,10.1125 14.325,10 14.1875,10 Z M5.375,11.1875 L5.375,13.8125 L2.75,13.8125 L2.75,11.1875 L5.375,11.1875 Z M6.6875,4.8125 L6.6875,2.1875 L9.3125,2.1875 L9.3125,4.8125 L6.6875,4.8125 Z M13.25,13.8125 L10.625,13.8125 L10.625,11.1875 L13.25,11.1875 L13.25,13.8125 Z\" fill=\"#FCC430\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "text" : "组织项目",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "org"
+  }, {
+    "counterMode" : 0,
+    "name" : "项目集",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "nodeType" : "project_set",
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M4.90539437,6.9234375 L4.90539437,10.4515625 C4.90539437,10.5125 4.95539437,10.5625 5.01476937,10.5625 L5.67101937,10.5625 C5.73195687,10.5625 5.78039437,10.5125 5.78039437,10.4515625 L5.78039437,6.9234375 C5.78039437,6.8625 5.73195687,6.8125 5.67101937,6.8125 L5.01476937,6.8125 C4.95539437,6.8125 4.90539437,6.8625 4.90539437,6.9234375 Z M7.55779666,8.69178847 L7.55779666,10.4515625 C7.55779666,10.5125 7.60779666,10.5625 7.66717166,10.5625 L8.32342166,10.5625 C8.38435916,10.5625 8.43279666,10.5125 8.43279666,10.4515625 L8.43279666,8.69178847 C8.43279666,8.63085097 8.38435916,8.58085097 8.32342166,8.58085097 L7.66717166,8.58085097 C7.60779666,8.58085097 7.55779666,8.63085097 7.55779666,8.69178847 Z M10.1384933,8.20352254 L10.1384933,10.4515625 C10.1384933,10.5125 10.1884933,10.5625 10.2478683,10.5625 L10.9041183,10.5625 C10.9650558,10.5625 11.0134933,10.5125 11.0134933,10.4515625 L11.0134933,8.20352254 C11.0134933,8.14258504 10.9650558,8.09258504 10.9041183,8.09258504 L10.2478683,8.09258504 C10.1884933,8.09258504 10.1384933,8.14258504 10.1384933,8.20352254 Z M13.75,4.6625 L8.140625,4.6625 L6.3078125,2.909375 C6.284375,2.8875 6.253125,2.875 6.221875,2.875 L2.25,2.875 C1.9734375,2.875 1.75,3.0984375 1.75,3.375 L1.75,12.625 C1.75,12.9015625 1.9734375,13.125 2.25,13.125 L13.75,13.125 C14.0265625,13.125 14.25,12.9015625 14.25,12.625 L14.25,5.1625 C14.25,4.8859375 14.0265625,4.6625 13.75,4.6625 Z M13.125,12 L2.875,12 L2.875,4 L5.8203125,4 L7.6890625,5.7875 L13.125,5.7875 L13.125,12 Z\" fill=\"#FF877B\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "text" : "项目集",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "project_set"
+  }, {
+    "counterMode" : 0,
+    "name" : "星标",
+    "nodeType" : "star",
+    "text" : "星标",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : true,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "star"
+  }, {
+    "counterMode" : 0,
+    "name" : "团队项目",
+    "nodeType" : "team",
+    "getPSSysImage" : {
+      "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M12.878125,10.9359375 C12.48125,10.5390625 12.0234375,10.221875 11.528125,9.9921875 C12.2359375,9.41875 12.6875,8.54375 12.6875,7.5625 C12.6875,5.83125 11.24375,4.4109375 9.5125,4.4375 C7.8078125,4.4640625 6.434375,5.853125 6.434375,7.5625 C6.434375,8.54375 6.8875,9.41875 7.59375,9.9921875 C7.0984375,10.221875 6.6421875,10.5375 6.24375,10.9359375 C5.390625,11.790625 4.90625,12.91875 4.87496822,14.121875 C4.8734375,14.1921875 4.9296875,14.25 5,14.25 L5.875,14.25 C5.9421875,14.25 5.9984375,14.196875 6,14.1296875 C6.0296875,13.2234375 6.396875,12.375 7.0421875,11.73125 C7.715625,11.0578125 8.6109375,10.6875 9.5625,10.6875 C10.5140625,10.6875 11.409375,11.0578125 12.0828125,11.73125 C12.7265625,12.375 13.09375,13.2234375 13.125,14.1296875 C13.1265625,14.196875 13.1828125,14.25 13.25,14.25 L14.125,14.25 C14.1953125,14.25 14.2515625,14.1921875 14.2500318,14.121875 C14.21875,12.91875 13.734375,11.790625 12.878125,10.9359375 Z M9.5625,9.5625 C9.028125,9.5625 8.525,9.3546875 8.1484375,8.9765625 C7.765625,8.59375 7.55625,8.084375 7.5625,7.5421875 C7.5671875,7.0296875 7.771875,6.534375 8.1296875,6.1671875 C8.5046875,5.7828125 9.00625,5.56875 9.5421875,5.5625 C10.071875,5.5578125 10.5859375,5.7640625 10.9640625,6.134375 C11.3515625,6.5140625 11.5640625,7.021875 11.5640625,7.5625 C11.5640625,8.096875 11.35625,8.5984375 10.978125,8.9765625 C10.6,9.3546875 10.096875,9.5625 9.5625,9.5625 L9.5625,9.5625 Z M5.6484375,7.975 C5.634375,7.8390625 5.6265625,7.7015625 5.6265625,7.5625 C5.6265625,7.3140625 5.65,7.071875 5.69375,6.8359375 C5.7046875,6.7796875 5.675,6.721875 5.6234375,6.6984375 C5.4109375,6.603125 5.215625,6.471875 5.046875,6.30625 C4.64375,5.9125 4.4265625,5.3796875 4.4421875,4.815625 C4.45625,4.3140625 4.6578125,3.8375 5.009375,3.478125 C5.3953125,3.0828125 5.9140625,2.8671875 6.465625,2.8734375 C6.9640625,2.878125 7.4453125,3.0703125 7.809375,3.4109375 C7.9328125,3.5265625 8.0390625,3.6546875 8.128125,3.7921875 C8.159375,3.840625 8.2203125,3.8609375 8.2734375,3.8421875 C8.5484375,3.746875 8.8390625,3.6796875 9.1375,3.6484375 C9.225,3.6390625 9.275,3.5453125 9.2359375,3.4671875 C8.728125,2.4625 7.690625,1.76875 6.490625,1.75 C4.7578125,1.7234375 3.3140625,3.14375 3.3140625,4.8734375 C3.3140625,5.8546875 3.765625,6.7296875 4.4734375,7.303125 C3.9765625,7.5328125 3.51875,7.85 3.121875,8.246875 C2.265625,9.1015625 1.78125,10.2296875 1.74996822,11.434375 C1.7484375,11.5046875 1.8046875,11.5625 1.875,11.5625 L2.7515625,11.5625 C2.81875,11.5625 2.875,11.509375 2.8765625,11.4421875 C2.90625,10.5359375 3.2734375,9.6875 3.91875,9.04375 C4.378125,8.584375 4.940625,8.265625 5.5546875,8.1109375 C5.615625,8.0953125 5.65625,8.0375 5.6484375,7.975 L5.6484375,7.975 Z\" fill=\"#42D175\" fill-rule=\"nonzero\"></path>\n</svg>"
+    },
+    "text" : "团队项目",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : false,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : false,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "team"
+  }, {
+    "counterMode" : 0,
+    "name" : "工作",
+    "nodeType" : "work",
+    "text" : "工作",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : true,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "work"
+  } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "TREE_RENDER",
+    "pluginCode" : "LIST_TREE",
+    "runtimeObject" : true
+  },
+  "getRemovePSControlAction" : {
+    "modelref" : true,
+    "id" : "remove",
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    }
+  },
+  "treeGridMode" : 0,
+  "getUpdatePSControlAction" : {
+    "modelref" : true,
+    "id" : "update",
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    }
+  },
+  "enableRootSelect" : false,
+  "outputIconDefault" : true,
+  "rootVisible" : false,
+  "modelid" : "c1803ed5bdfaa819ec841cc76e43c972",
+  "modeltype" : "PSDETREEVIEW"
+}

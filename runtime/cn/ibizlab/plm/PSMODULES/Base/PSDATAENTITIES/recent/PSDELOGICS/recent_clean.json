@@ -1,0 +1,68 @@
+{
+  "codeName" : "recent_clean",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDELOGICS/recent_clean.json",
+  "logicName" : "定时清理最近访问数据",
+  "memo" : "每天定时清理最近访问数据，每人每个访问类型数据只保留100条",
+  "name" : "定时清理最近访问数据",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 460,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 170,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "leftPos" : 420,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "定时清理最近访问数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "sql" : "update recent inner join \r\n(\r\n\tSELECT\r\n\t\tt1.id \r\n\tFROM\r\n\t\trecent t1\r\n\t\tJOIN (\r\n\t\tSELECT\r\n\t\t\tcreate_man,\r\n\t\t\towner_type,\r\n\t\t\tOWNER_SUBTYPE,\r\n\t\t\tSUBSTRING_INDEX( GROUP_CONCAT( id ORDER BY UPDATE_TIME DESC ), ',', 100 ) AS top_ids \r\n\t\tFROM\r\n\t\t\trecent where IS_DELETED=0\r\n\t\tGROUP BY\r\n\t\t\tcreate_man,\r\n\t\t\towner_type,\r\n\t\t\tOWNER_SUBTYPE \r\n\t\t) t2 ON t1.create_man = t2.create_man \r\n\t\tAND t1.owner_type = t2.owner_type \r\n\t\tAND t1.OWNER_SUBTYPE = t2.OWNER_SUBTYPE \r\n\t\tAND FIND_IN_SET( t1.id, t2.top_ids ) = 0 \r\n ) as tb on recent.id=tb.id\r\n set IS_DELETED=1",
+    "topPos" : 395
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 460,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 578
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

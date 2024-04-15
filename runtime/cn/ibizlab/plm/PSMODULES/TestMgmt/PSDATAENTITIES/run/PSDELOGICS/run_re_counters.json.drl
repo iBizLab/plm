@@ -1,0 +1,118 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.run_re_counters;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runrun_re_countersdefault;
+        global cn.ibizlab.plm.core.testmgmt.service.IrunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runrun_re_countersbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[执行用例结果附件]
+            rule "rawsqlcall5"
+            ruleflow-group "runrun_re_countersrawsqlcall5"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runrun_re_countersdefault.get("id"));
+    String strSql="SELECT 	count( t.id ) AS run_re_attachment FROM 	attachment t  WHERE     t.owner_id = #{et.param0} and t.owner_type = 'RUN'";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "runrun_re_countersend1"
+            when
+            then
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例关联产品需求]
+            rule "rawsqlcall1"
+            ruleflow-group "runrun_re_countersrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runrun_re_countersdefault.get("caseid"));
+    String strSql="SELECT 	count( t.id ) AS run_re_idea  FROM 	idea t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'idea'  			AND t11.`PRINCIPAL_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				t.`IS_DELETED` = 0  			)";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例关联工作项]
+            rule "rawsqlcall2"
+            ruleflow-group "runrun_re_countersrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runrun_re_countersdefault.get("caseid"));
+    String strSql="SELECT 	count( t.id ) AS run_re_work_item  FROM 	work_item t  WHERE t.WORK_ITEM_TYPE_ID not like '%bug%' AND	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				t.`IS_DELETED` = 0  			)";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例/执行用例关联缺陷]
+            rule "rawsqlcall3"
+            ruleflow-group "runrun_re_countersrawsqlcall3"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runrun_re_countersdefault.get("id"));
+    String strSql="SELECT 	count( t.id ) AS run_re_bug  FROM 	work_item t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'bug'  			AND (t11.`PRINCIPAL_TYPE` = 'run' or t11.`PRINCIPAL_TYPE` = 'test_case') 			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				t.`IS_DELETED` = 0  			)";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例执行历史]
+            rule "rawsqlcall4"
+            ruleflow-group "runrun_re_countersrawsqlcall4"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runrun_re_countersdefault.get("id"));
+    String strSql="SELECT 	count( t.id ) AS run_re_run_history FROM 	run_history t  WHERE     t.run_id = #{et.param0}";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end

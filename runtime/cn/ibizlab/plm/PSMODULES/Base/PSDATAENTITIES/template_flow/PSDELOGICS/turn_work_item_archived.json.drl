@@ -1,0 +1,95 @@
+package cn.ibizlab.plm.base.logic.template_flowlogic.turn_work_item_archived;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.template_flow template_flowturn_work_item_archiveddefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item template_flowturn_work_item_archivedwork_item_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item template_flowturn_work_item_archivedwork_item_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item template_flowturn_work_item_archivedwork_items;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.base.service.Itemplate_flowService iBzSysTemplate_flowDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "template_flowturn_work_item_archivedbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置工作项过滤条件]
+            rule "prepareparam1"
+            ruleflow-group "template_flowturn_work_item_archivedprepareparam1"
+            when
+            then
+                            template_flowturn_work_item_archivedwork_item_filter.set("n_work_item_type_id_eq","scrum_task");
+                            template_flowturn_work_item_archivedwork_item_filter.set("f_end_at_datediffnow_gtandeq","3");
+                            template_flowturn_work_item_archivedwork_item_filter.set("n_state_eq","40");
+                            template_flowturn_work_item_archivedwork_item_filter.set("size","1000");
+                        update(template_flowturn_work_item_archiveddefault);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_filter);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_temp);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取符合条件的工作项]
+            rule "dedataset1"
+            ruleflow-group "template_flowturn_work_item_archiveddedataset1"
+            when
+            then
+                        update(template_flowturn_work_item_archiveddefault);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_filter);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_temp);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "template_flowturn_work_item_archivedend2"
+            when
+            then
+                        update(template_flowturn_work_item_archiveddefault);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_filter);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_temp);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[逐工作项执行]
+            rule "loopsubcall1"
+            ruleflow-group "template_flowturn_work_item_archivedloopsubcall1"
+            when
+            then
+                        update(template_flowturn_work_item_archiveddefault);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_filter);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_temp);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[归档工作项]
+            rule "deaction1"
+            ruleflow-group "template_flowturn_work_item_archiveddeaction1"
+            when
+            then
+                        work_itemservice.archive(template_flowturn_work_item_archivedwork_item_temp);
+                        update(template_flowturn_work_item_archiveddefault);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_filter);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_temp);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_items);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "template_flowturn_work_item_archivedend1"
+            when
+            then
+                        update(template_flowturn_work_item_archiveddefault);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_filter);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_item_temp);//更新fact中变量值
+                        update(template_flowturn_work_item_archivedwork_items);//更新fact中变量值
+            end

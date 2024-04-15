@@ -224,7 +224,7 @@
       "id" : "InitPwd"
     }
   }, {
-    "actionMode" : "UNKNOWN",
+    "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/Save.json",
@@ -236,7 +236,8 @@
         "modelref" : true,
         "id" : "SysEmployeeDTO"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSDEActionReturn" : {
       "name" : "SaveResult",
@@ -324,6 +325,55 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEDATAQUERIES/user/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "user",
+    "logicName" : "当前用户",
+    "name" : "user",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "SYS_EMP",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "USERID",
+          "name" : "(USERID) 等于(=) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "USERID",
+            "codeName" : "UserId"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "UserInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "SysEmployeeFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "UserResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "SysEmployeeDTO"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -358,6 +408,36 @@
       "id" : "FetchDefault"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "user",
+    "logicName" : "当前用户",
+    "name" : "user",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "user"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "UserInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "SysEmployeeFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "UserResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "SysEmployeeDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSSubSysServiceAPIDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchUser"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1238,7 +1318,6 @@
         "name" : "[ORGID][单位]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1251,8 +1330,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[ORGID][单位]",
         "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     } ],
@@ -1292,8 +1370,7 @@
     "serviceCodeName" : "OrgId",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "allowEmpty" : false
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ORGNAME",
@@ -1699,6 +1776,7 @@
     "dEFType" : 1,
     "dataType" : "DATE",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd",
     "logicName" : "出生日期",
     "name" : "BIRTHDAY",
     "serviceCodeName" : "Birthday",
@@ -3360,6 +3438,7 @@
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "logicName" : "保留19",
     "name" : "RESERVER19",
     "serviceCodeName" : "Reserver19",
@@ -3416,6 +3495,7 @@
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "logicName" : "保留20",
     "name" : "RESERVER20",
     "serviceCodeName" : "Reserver20",
@@ -3784,6 +3864,7 @@
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "logicName" : "创建时间",
     "name" : "CREATEDATE",
     "predefinedType" : "CREATEDATE",
@@ -3842,6 +3923,7 @@
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "logicName" : "最后修改时间",
     "name" : "UPDATEDATE",
     "predefinedType" : "UPDATEDATE",
@@ -4480,8 +4562,7 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
+      "type" : "SIMPLE"
     }, {
       "logicName" : "单位名称",
       "name" : "OrgName",
@@ -5063,6 +5144,64 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUserRoles" : [ {
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/ALL_RW.json",
+    "name" : "全部数据（读写）",
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    }, {
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "CREATE"
+      }
+    } ],
+    "roleTag" : "ALL_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "allData" : true,
+    "systemReserved" : true
+  }, {
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/USER_RW.json",
+    "name" : "普通用户（读写）",
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "user"
+    },
+    "getPSDEUserRoleOPPrivs" : [ {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
+      }
+    } ],
+    "roleTag" : "USER_RW",
+    "userCat" : "CAT1",
+    "userDRAction" : "READ",
+    "enableUserDR" : true,
+    "systemReserved" : true
+  } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "GridView",
     "logicName" : "人员实体表格视图",
@@ -5071,7 +5210,7 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "MPickupView",
+    "codeName" : "mpick_up_view",
     "logicName" : "人员实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
     "name" : "人员实体数据多项选择视图",
@@ -5091,7 +5230,7 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupView",
+    "codeName" : "pick_up_view",
     "logicName" : "人员实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
     "name" : "人员实体数据选择视图",
@@ -5105,7 +5244,7 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupGridView",
+    "codeName" : "pick_up_grid_view",
     "logicName" : "人员实体选择表格视图（部件视图）",
     "name" : "人员实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",

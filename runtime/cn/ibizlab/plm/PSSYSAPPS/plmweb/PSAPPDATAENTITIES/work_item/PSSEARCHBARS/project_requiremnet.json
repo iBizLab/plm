@@ -1,0 +1,300 @@
+{
+  "codeName" : "project_requiremnet",
+  "controlType" : "SEARCHBAR",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSSEARCHBARS/project_requiremnet.json",
+  "groupMoreText" : "更多",
+  "logicName" : "项目-需求搜索栏",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+  },
+  "getPSSearchBarFilters" : [ {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "state",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "state",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "priority",
+    "getPSAppDEField" : {
+      "name" : "PRIORITY",
+      "codeName" : "priority"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "priority",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "dataType" : 9,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "is_archived",
+    "getPSAppDEField" : {
+      "name" : "IS_ARCHIVED",
+      "codeName" : "is_archived"
+    },
+    "getPSEditor" : {
+      "editorType" : "DROPDOWNLIST",
+      "name" : "is_archived",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+      },
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  }, {
+    "caption" : "负责人",
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "assignee_id",
+    "getPSAppDEField" : {
+      "name" : "ASSIGNEE_ID",
+      "codeName" : "assignee_id"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "ISADDSYMBOL" : "true",
+        "MULTIPLE" : "true",
+        "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "URL" : "projects/${context.project}/project_members/fetch_default",
+        "PICKUPVIEW" : "FALSE",
+        "USERMETHOD" : "post",
+        "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+        "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+        "DEPTMETHOD" : "get",
+        "DEPTURL" : "/users/fetch_default"
+      },
+      "editorStyle" : "PERSONEL_SELECT_PROJECT",
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "assignee_id",
+      "getPSNavigateParams" : [ {
+        "key" : "n_department_id_eq",
+        "name" : "n_department_id_eq",
+        "value" : "srforgsectorid",
+        "rawValue" : false
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "EDITOR_CUSTOMSTYLE",
+        "pluginCode" : "PERSON_SELECT",
+        "runtimeObject" : true
+      },
+      "valueItemName" : "assignee_id",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "assignee_id",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "dataType" : 21,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "description",
+    "getPSAppDEField" : {
+      "name" : "DESCRIPTION",
+      "codeName" : "description"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "name" : "description"
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "创建人",
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "create_man",
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "MULTIPLE" : "false",
+        "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "URL" : "projects/${context.project}/project_members/fetch_default",
+        "PICKUPVIEW" : "FALSE",
+        "USERMETHOD" : "post",
+        "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+        "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+        "DEPTMETHOD" : "get",
+        "DEPTURL" : "/users/fetch_default"
+      },
+      "editorStyle" : "PERSONEL_SELECT_PROJECT",
+      "editorType" : "PICKEREX_TRIGGER",
+      "name" : "create_man",
+      "getPSNavigateParams" : [ {
+        "key" : "n_department_id_eq",
+        "name" : "n_department_id_eq",
+        "value" : "srforgsectorid",
+        "rawValue" : false
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "EDITOR_CUSTOMSTYLE",
+        "pluginCode" : "PERSON_SELECT",
+        "runtimeObject" : true
+      },
+      "valueItemName" : "create_man",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "valueItemName" : "create_man",
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "showCaption" : false
+  }, {
+    "caption" : "工作项类型",
+    "dataType" : 25,
+    "itemType" : "FILTER",
+    "labelPos" : "NONE",
+    "labelWidth" : 0,
+    "name" : "work_item_type_id",
+    "getPSAppDEField" : {
+      "name" : "WORK_ITEM_TYPE_ID",
+      "codeName" : "work_item_type_id"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "SRFNAVPARAM.n_project_type_eq" : "scrum"
+      },
+      "editorType" : "DROPDOWNLIST",
+      "name" : "work_item_type_id",
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_type.json"
+      },
+      "getPSNavigateParams" : [ {
+        "key" : "n_project_type_eq",
+        "name" : "n_project_type_eq",
+        "value" : "scrum",
+        "rawValue" : true
+      } ],
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "emptyCaption" : false,
+    "hidden" : false,
+    "needCodeListConfig" : true,
+    "showCaption" : false
+  } ],
+  "getPSSearchBarGroups" : [ {
+    "caption" : "全部需求",
+    "data" : "{\"theme_model\":{}}",
+    "itemType" : "GROUP",
+    "name" : "all",
+    "width" : 0.0,
+    "addSeparator" : false,
+    "defaultGroup" : true
+  }, {
+    "caption" : "全部特性",
+    "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"work_item_type_id\",\"condop\":\"EQ\",\"value\":\"scrum_feature\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "all_feature",
+    "width" : 0.0,
+    "addSeparator" : false
+  }, {
+    "caption" : "全部用户故事",
+    "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"work_item_type_id\",\"condop\":\"EQ\",\"value\":\"scrum_story\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "all_story",
+    "width" : 0.0,
+    "addSeparator" : false
+  }, {
+    "caption" : "进行中的需求",
+    "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"state\",\"condop\":\"EQ\",\"value\":\"20\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "ongoing",
+    "width" : 0.0,
+    "addSeparator" : false
+  }, {
+    "caption" : "我负责的需求",
+    "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"assignee_id\",\"condop\":\"EQ\",\"value\":\"${context.srfpersonid}\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "my_assignee",
+    "width" : 0.0,
+    "addSeparator" : false
+  }, {
+    "caption" : "我提交的需求",
+    "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"create_man\",\"condop\":\"EQ\",\"value\":\"${context.srfpersonid}\"},{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"0\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "my_create",
+    "width" : 0.0,
+    "addSeparator" : false
+  }, {
+    "caption" : "已归档的需求",
+    "data" : "{\"theme_model\": {\"searchconds\": [{\"condtype\":\"GROUP\", \"condop\":\"AND\", \"bnotmode\":false, \"searchconds\": [{\"condtype\":\"DEFIELD\",\"fieldname\":\"is_archived\",\"condop\":\"EQ\",\"value\":\"1\"}]}]}}",
+    "itemType" : "GROUP",
+    "name" : "archived",
+    "width" : 0.0,
+    "addSeparator" : false
+  } ],
+  "quickGroupCount" : 5,
+  "quickSearchMode" : 1,
+  "quickSearchWidth" : 0,
+  "searchBarStyle" : "SEARCHBAR2",
+  "enableFilter" : true,
+  "enableGroup" : true,
+  "enableQuickSearch" : true,
+  "mobileSearchBar" : false,
+  "modelid" : "74b339dd51581f80bda6f5f7afa2f953",
+  "modeltype" : "PSSYSSEARCHBAR"
+}

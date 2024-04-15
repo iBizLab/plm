@@ -8,24 +8,24 @@
       "name" : "value",
       "getPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       }
     }, {
       "dataType" : 25,
       "name" : "text",
       "getPSAppDEField" : {
         "name" : "PSDENOTIFYNAME",
-        "codeName" : "PSDENotifyName"
+        "codeName" : "PsdeNotifyName"
       }
     } ],
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "PSDENOTIFYNAME",
-      "codeName" : "PSDENotifyName"
+      "codeName" : "PsdeNotifyName"
     },
     "getValuePSAppDEField" : {
       "name" : "PSDENOTIFYID",
-      "codeName" : "PSDENotifyId"
+      "codeName" : "PsdeNotifyId"
     },
     "defaultMode" : true,
     "enablePagingBar" : false
@@ -33,14 +33,15 @@
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
     "actionName" : "APPLY",
+    "actionTag" : "apply",
     "codeName" : "Apply",
     "methodType" : "DEACTION",
-    "name" : "Apply",
+    "name" : "apply",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -50,7 +51,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/Apply.json"
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/apply.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -74,7 +75,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -108,7 +109,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO",
       "output" : true
@@ -117,7 +118,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -145,7 +146,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELD"
@@ -154,7 +155,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -185,7 +186,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -193,7 +194,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -222,7 +223,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELDS"
@@ -251,7 +252,7 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UNKNOWN",
+    "actionMode" : "SAVE",
     "codeName" : "Save",
     "methodType" : "DEACTION",
     "name" : "Save",
@@ -259,17 +260,26 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "type" : "VOID"
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "PsdeNotifyDto"
+      },
+      "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/Save.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -278,8 +288,7 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "codeName" : "Update",
@@ -289,7 +298,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO",
       "output" : true
@@ -298,7 +307,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -330,7 +339,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyFilterDTO"
+        "id" : "PsdeNotifyFilterDto"
       },
       "type" : "DTO"
     },
@@ -338,7 +347,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "PAGE"
     },
@@ -393,7 +402,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Update_man",
+    "codeName" : "UpdateMan",
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.UPDATE_MAN"
     },
@@ -435,7 +444,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Create_time",
+    "codeName" : "CreateTime",
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
@@ -477,7 +486,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Create_man",
+    "codeName" : "CreateMan",
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.CREATE_MAN"
     },
@@ -519,7 +528,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Update_time",
+    "codeName" : "UpdateTime",
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
@@ -553,7 +562,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "EndPSDEFName",
+    "codeName" : "EndPsdefName",
     "logicName" : "结束时间属性",
     "name" : "ENDPSDEFNAME",
     "stdDataType" : 25,
@@ -584,7 +593,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "BeginPSDEFId",
+    "codeName" : "BeginPsdefId",
     "logicName" : "开始时间属性",
     "name" : "BEGINPSDEFID",
     "stdDataType" : 25,
@@ -615,7 +624,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "BeginPSDEFName",
+    "codeName" : "BeginPsdefName",
     "logicName" : "开始时间属性",
     "name" : "BEGINPSDEFNAME",
     "stdDataType" : 25,
@@ -646,7 +655,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDEName",
+    "codeName" : "PsdeName",
     "logicName" : "实体",
     "name" : "PSDENAME",
     "stdDataType" : 25,
@@ -677,7 +686,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "EndPSDEFId",
+    "codeName" : "EndPsdefId",
     "logicName" : "结束时间属性",
     "name" : "ENDPSDEFID",
     "stdDataType" : 25,
@@ -738,7 +747,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDEDSId",
+    "codeName" : "PsdedsId",
     "logicName" : "实体数据集",
     "name" : "PSDEDSID",
     "stdDataType" : 25,
@@ -769,7 +778,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDEDSName",
+    "codeName" : "PsdedsName",
     "logicName" : "实体数据集",
     "name" : "PSDEDSNAME",
     "stdDataType" : 25,
@@ -802,7 +811,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDEId",
+    "codeName" : "PsdeId",
     "logicName" : "实体",
     "name" : "PSDEID",
     "stdDataType" : 25,
@@ -1279,7 +1288,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDENotifyName",
+    "codeName" : "PsdeNotifyName",
     "logicName" : "实体通知名称",
     "name" : "PSDENOTIFYNAME",
     "stdDataType" : 25,
@@ -1314,7 +1323,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "PSDENotifyId",
+    "codeName" : "PsdeNotifyId",
     "logicName" : "实体通知标识",
     "name" : "PSDENOTIFYID",
     "stdDataType" : 25,
@@ -1381,7 +1390,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSSysMsgTemplId",
+    "codeName" : "PsSysMsgTemplId",
     "logicName" : "系统消息模板",
     "name" : "PSSYSMSGTEMPLID",
     "stdDataType" : 25,
@@ -1412,7 +1421,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSSysMsgTemplName",
+    "codeName" : "PsSysMsgTemplName",
     "logicName" : "系统消息模板",
     "name" : "PSSYSMSGTEMPLNAME",
     "stdDataType" : 25,
@@ -1445,7 +1454,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "PSSysMsgQueueId",
+    "codeName" : "PsSysMsgQueueId",
     "logicName" : "系统消息队列",
     "name" : "PSSYSMSGQUEUEID",
     "stdDataType" : 25,
@@ -1476,7 +1485,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSSysMsgQueueName",
+    "codeName" : "PsSysMsgQueueName",
     "logicName" : "系统消息队列",
     "name" : "PSSYSMSGQUEUENAME",
     "stdDataType" : 25,
@@ -1545,26 +1554,26 @@
     "stringLength" : 1048576
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
-    "codeName" : "PSDENotifyDTO",
-    "name" : "PSDENotifyDTO",
+    "codeName" : "PsdeNotifyDto",
+    "name" : "PsdeNotifyDto",
     "getPSAppDEMethodDTOFields" : [ {
-      "codeName" : "BeginPSDEFId",
+      "codeName" : "BeginPsdefId",
       "logicName" : "开始时间属性",
-      "name" : "BeginPSDEFId",
+      "name" : "BeginPsdefId",
       "getPSAppDEField" : {
         "name" : "BEGINPSDEFID",
-        "codeName" : "BeginPSDEFId"
+        "codeName" : "BeginPsdefId"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "BeginPSDEFName",
+      "codeName" : "BeginPsdefName",
       "logicName" : "开始时间属性",
-      "name" : "BeginPSDEFName",
+      "name" : "BeginPsdefName",
       "getPSAppDEField" : {
         "name" : "BEGINPSDEFNAME",
-        "codeName" : "BeginPSDEFName"
+        "codeName" : "BeginPsdefName"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1592,25 +1601,25 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "Create_man",
+      "codeName" : "CreateMan",
       "logicName" : "建立人",
-      "name" : "Create_man",
+      "name" : "CreateMan",
       "getPSAppDEField" : {
         "name" : "CREATE_MAN",
-        "codeName" : "Create_man"
+        "codeName" : "CreateMan"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "Create_time",
+      "codeName" : "CreateTime",
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
       "logicName" : "建立时间",
-      "name" : "Create_time",
+      "name" : "CreateTime",
       "getPSAppDEField" : {
         "name" : "CREATE_TIME",
-        "codeName" : "Create_time"
+        "codeName" : "CreateTime"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
@@ -1628,23 +1637,23 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "EndPSDEFId",
+      "codeName" : "EndPsdefId",
       "logicName" : "结束时间属性",
-      "name" : "EndPSDEFId",
+      "name" : "EndPsdefId",
       "getPSAppDEField" : {
         "name" : "ENDPSDEFID",
-        "codeName" : "EndPSDEFId"
+        "codeName" : "EndPsdefId"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "EndPSDEFName",
+      "codeName" : "EndPsdefName",
       "logicName" : "结束时间属性",
-      "name" : "EndPSDEFName",
+      "name" : "EndPsdefName",
       "getPSAppDEField" : {
         "name" : "ENDPSDEFNAME",
-        "codeName" : "EndPSDEFName"
+        "codeName" : "EndPsdefName"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1739,115 +1748,115 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "PSDEDSId",
-      "logicName" : "实体数据集",
-      "name" : "PSDEDSId",
-      "getPSAppDEField" : {
-        "name" : "PSDEDSID",
-        "codeName" : "PSDEDSId"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "PSDEDSName",
-      "logicName" : "实体数据集",
-      "name" : "PSDEDSName",
-      "getPSAppDEField" : {
-        "name" : "PSDEDSNAME",
-        "codeName" : "PSDEDSName"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "PSDEId",
-      "logicName" : "实体",
-      "name" : "PSDEId",
-      "getPSAppDEField" : {
-        "name" : "PSDEID",
-        "codeName" : "PSDEId"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "PSDEName",
-      "logicName" : "实体",
-      "name" : "PSDEName",
-      "getPSAppDEField" : {
-        "name" : "PSDENAME",
-        "codeName" : "PSDEName"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "PSDENotifyId",
-      "logicName" : "实体通知标识",
-      "name" : "PSDENotifyId",
-      "getPSAppDEField" : {
-        "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
-    }, {
-      "codeName" : "PSDENotifyName",
-      "logicName" : "实体通知名称",
-      "name" : "PSDENotifyName",
-      "getPSAppDEField" : {
-        "name" : "PSDENOTIFYNAME",
-        "codeName" : "PSDENotifyName"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
-      "codeName" : "PSSysMsgQueueId",
+      "codeName" : "PsSysMsgQueueId",
       "logicName" : "系统消息队列",
-      "name" : "PSSysMsgQueueId",
+      "name" : "PsSysMsgQueueId",
       "getPSAppDEField" : {
         "name" : "PSSYSMSGQUEUEID",
-        "codeName" : "PSSysMsgQueueId"
+        "codeName" : "PsSysMsgQueueId"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "PSSysMsgQueueName",
+      "codeName" : "PsSysMsgQueueName",
       "logicName" : "系统消息队列",
-      "name" : "PSSysMsgQueueName",
+      "name" : "PsSysMsgQueueName",
       "getPSAppDEField" : {
         "name" : "PSSYSMSGQUEUENAME",
-        "codeName" : "PSSysMsgQueueName"
+        "codeName" : "PsSysMsgQueueName"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "PSSysMsgTemplId",
+      "codeName" : "PsSysMsgTemplId",
       "logicName" : "系统消息模板",
-      "name" : "PSSysMsgTemplId",
+      "name" : "PsSysMsgTemplId",
       "getPSAppDEField" : {
         "name" : "PSSYSMSGTEMPLID",
-        "codeName" : "PSSysMsgTemplId"
+        "codeName" : "PsSysMsgTemplId"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "PSSysMsgTemplName",
+      "codeName" : "PsSysMsgTemplName",
       "logicName" : "系统消息模板",
-      "name" : "PSSysMsgTemplName",
+      "name" : "PsSysMsgTemplName",
       "getPSAppDEField" : {
         "name" : "PSSYSMSGTEMPLNAME",
-        "codeName" : "PSSysMsgTemplName"
+        "codeName" : "PsSysMsgTemplName"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "PsdeId",
+      "logicName" : "实体",
+      "name" : "PsdeId",
+      "getPSAppDEField" : {
+        "name" : "PSDEID",
+        "codeName" : "PsdeId"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "PsdeName",
+      "logicName" : "实体",
+      "name" : "PsdeName",
+      "getPSAppDEField" : {
+        "name" : "PSDENAME",
+        "codeName" : "PsdeName"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "PsdeNotifyId",
+      "logicName" : "实体通知标识",
+      "name" : "PsdeNotifyId",
+      "getPSAppDEField" : {
+        "name" : "PSDENOTIFYID",
+        "codeName" : "PsdeNotifyId"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "PsdeNotifyName",
+      "logicName" : "实体通知名称",
+      "name" : "PsdeNotifyName",
+      "getPSAppDEField" : {
+        "name" : "PSDENOTIFYNAME",
+        "codeName" : "PsdeNotifyName"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "PsdedsId",
+      "logicName" : "实体数据集",
+      "name" : "PsdedsId",
+      "getPSAppDEField" : {
+        "name" : "PSDEDSID",
+        "codeName" : "PsdedsId"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "PsdedsName",
+      "logicName" : "实体数据集",
+      "name" : "PsdedsName",
+      "getPSAppDEField" : {
+        "name" : "PSDEDSNAME",
+        "codeName" : "PsdedsName"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1876,25 +1885,25 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "Update_man",
+      "codeName" : "UpdateMan",
       "logicName" : "更新人",
-      "name" : "Update_man",
+      "name" : "UpdateMan",
       "getPSAppDEField" : {
         "name" : "UPDATE_MAN",
-        "codeName" : "Update_man"
+        "codeName" : "UpdateMan"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "Update_time",
+      "codeName" : "UpdateTime",
       "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
       "logicName" : "更新时间",
-      "name" : "Update_time",
+      "name" : "UpdateTime",
       "getPSAppDEField" : {
         "name" : "UPDATE_TIME",
-        "codeName" : "Update_time"
+        "codeName" : "UpdateTime"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
@@ -1957,19 +1966,19 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "PSDENotifyTargets",
-      "name" : "PSDENotifyTargets",
+      "codeName" : "PsdeNotifyTargets",
+      "name" : "PsdeNotifyTargets",
       "getRefPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyTargetDTO"
+        "id" : "PsdeNotifyTargetDto"
       },
       "getRefPSAppDataEntity" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDENotifyTarget.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeNotifyTarget.json"
       },
       "getRefPickupPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       },
       "sourceType" : "DER",
       "type" : "DTOS"
@@ -1977,12 +1986,12 @@
     "sourceType" : "DE",
     "type" : "DEFAULT"
   }, {
-    "codeName" : "PSDENotifyFilterDTO",
-    "name" : "PSDENotifyFilterDTO",
+    "codeName" : "PsdeNotifyFilterDto",
+    "name" : "PsdeNotifyFilterDto",
     "getPSAppDEMethodDTOFields" : [ {
-      "codeName" : "N_NOTIFYSUBTYPE_EQ",
+      "codeName" : "NNotifysubtypeEq",
       "logicName" : "通知子类",
-      "name" : "N_NOTIFYSUBTYPE_EQ",
+      "name" : "NNotifysubtypeEq",
       "getPSAppDEField" : {
         "name" : "NOTIFYSUBTYPE",
         "codeName" : "NotifySubType"
@@ -1991,42 +2000,42 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDEID_EQ",
+      "codeName" : "NPsdeidEq",
       "logicName" : "实体",
-      "name" : "N_PSDEID_EQ",
+      "name" : "NPsdeidEq",
       "getPSAppDEField" : {
         "name" : "PSDEID",
-        "codeName" : "PSDEId"
+        "codeName" : "PsdeId"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDENOTIFYID_EQ",
+      "codeName" : "NPsdenotifyidEq",
       "logicName" : "实体通知标识",
-      "name" : "N_PSDENOTIFYID_EQ",
+      "name" : "NPsdenotifyidEq",
       "getPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDENOTIFYNAME_LIKE",
+      "codeName" : "NPsdenotifynameLike",
       "logicName" : "实体通知名称",
-      "name" : "N_PSDENOTIFYNAME_LIKE",
+      "name" : "NPsdenotifynameLike",
       "getPSAppDEField" : {
         "name" : "PSDENOTIFYNAME",
-        "codeName" : "PSDENotifyName"
+        "codeName" : "PsdeNotifyName"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_TASKMODE_EQ",
+      "codeName" : "NTaskmodeEq",
       "logicName" : "附加任务模式",
-      "name" : "N_TASKMODE_EQ",
+      "name" : "NTaskmodeEq",
       "getPSAppDEField" : {
         "name" : "TASKMODE",
         "codeName" : "TaskMode"
@@ -2041,14 +2050,15 @@
   "getAllPSAppDEMethods" : [ {
     "actionMode" : "CUSTOM",
     "actionName" : "APPLY",
+    "actionTag" : "apply",
     "codeName" : "Apply",
     "methodType" : "DEACTION",
-    "name" : "Apply",
+    "name" : "apply",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2058,7 +2068,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/Apply.json"
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/apply.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -2082,7 +2092,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2116,7 +2126,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO",
       "output" : true
@@ -2125,7 +2135,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2153,7 +2163,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELD"
@@ -2162,7 +2172,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2193,7 +2203,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2201,7 +2211,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2230,7 +2240,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDENOTIFYID",
-        "codeName" : "PSDENotifyId"
+        "codeName" : "PsdeNotifyId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELDS"
@@ -2259,7 +2269,7 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UNKNOWN",
+    "actionMode" : "SAVE",
     "codeName" : "Save",
     "methodType" : "DEACTION",
     "name" : "Save",
@@ -2267,17 +2277,26 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "type" : "VOID"
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "PsdeNotifyDto"
+      },
+      "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/Save.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2286,8 +2305,7 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "codeName" : "Update",
@@ -2297,7 +2315,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO",
       "output" : true
@@ -2306,7 +2324,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "DTO"
     },
@@ -2337,7 +2355,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyFilterDTO"
+        "id" : "PsdeNotifyFilterDto"
       },
       "type" : "DTO"
     },
@@ -2345,7 +2363,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDENotifyDTO"
+        "id" : "PsdeNotifyDto"
       },
       "type" : "PAGE"
     },
@@ -2406,7 +2424,7 @@
     "caption" : "应用",
     "codeName" : "apply",
     "confirmMsg" : "是否应用扩展模型",
-    "fullCodeName" : "PSDENotify_apply",
+    "fullCodeName" : "PsdeNotify_apply",
     "name" : "应用扩展模型",
     "getPSAppDEMethod" : {
       "modelref" : true,
@@ -2414,7 +2432,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDENotify.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeNotify.json"
     },
     "refreshMode" : 1,
     "successMsg" : "应用成功！",
@@ -2424,39 +2442,39 @@
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
     "reloadData" : true,
-    "id" : "apply@PSDENotify"
+    "id" : "apply@PsdeNotify"
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifyRedirectView.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_redirect_view.json",
     "viewType" : "DEREDIRECTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifyfield_change_hook_edit_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_field_change_hook_edit_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifytab_exp_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_tab_exp_view.json",
     "viewType" : "DETABEXPVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifyEditView.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_edit_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifyevent_hook_edit_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_event_hook_edit_view.json",
     "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifylist_view_setting.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_list_view_setting.json",
     "viewType" : "DELISTVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifyfield_change_hook_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_field_change_hook_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDENotifyevent_hook_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_notify_event_hook_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
@@ -2472,17 +2490,17 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
-  "codeName" : "PSDENotify",
+  "codeName" : "PsdeNotify",
   "dEAPICodeName" : "psdenotify",
   "dEAPICodeName2" : "psdenotifies",
   "dEAPITag" : "PSDENOTIFY",
   "dataAccCtrlArch" : 1,
   "dataAccCtrlMode" : 1,
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDENotify.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeNotify.json",
   "enableUIActions" : 15,
   "getKeyPSAppDEField" : {
     "name" : "PSDENOTIFYID",
-    "codeName" : "PSDENotifyId"
+    "codeName" : "PsdeNotifyId"
   },
   "getLNPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.PSDENOTIFY"
@@ -2490,13 +2508,13 @@
   "logicName" : "实体通知",
   "getMajorPSAppDEField" : {
     "name" : "PSDENOTIFYNAME",
-    "codeName" : "PSDENotifyName"
+    "codeName" : "PsdeNotifyName"
   },
   "name" : "PSDENOTIFY",
   "getPSDEName" : "PSDENOTIFY",
   "getPSDEServiceAPI" : {
     "modelref" : true,
-    "id" : "PSDENotify"
+    "id" : "PsdeNotify"
   },
   "getPSDataEntity" : {
     "modelref" : true,
@@ -2508,7 +2526,7 @@
   },
   "getQuickSearchPSAppDEFields" : [ {
     "name" : "PSDENOTIFYNAME",
-    "codeName" : "PSDENotifyName"
+    "codeName" : "PsdeNotifyName"
   } ],
   "storageMode" : 0,
   "sysAPITag" : "ServiceAPI",
@@ -2524,9 +2542,9 @@
     "name" : "表格操作栏界面行为组",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDENotify.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeNotify.json"
     },
-    "uniqueTag" : "PSDENotify__Usr0123619189",
+    "uniqueTag" : "PsdeNotify__Usr0123619189",
     "getPSUIActionGroupDetails" : [ {
       "caption" : "应用",
       "detailType" : "DEUIACTION",
@@ -2537,10 +2555,10 @@
       "getPSUIAction" : {
         "getPSAppDataEntity" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDENotify.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeNotify.json"
         },
         "modelref" : true,
-        "id" : "apply@PSDENotify"
+        "id" : "apply@PsdeNotify"
       }
     }, {
       "getCapPSLanguageRes" : {
@@ -2565,9 +2583,9 @@
     "name" : "表格默认界面行为组",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDENotify.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeNotify.json"
     },
-    "uniqueTag" : "PSDENotify__Usr0123651156",
+    "uniqueTag" : "PsdeNotify__Usr0123651156",
     "getPSUIActionGroupDetails" : [ {
       "getCapPSLanguageRes" : {
         "lanResTag" : "TBB.TEXT.*.NEW"

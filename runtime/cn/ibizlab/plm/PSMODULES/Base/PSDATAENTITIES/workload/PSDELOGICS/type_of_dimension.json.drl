@@ -1,0 +1,75 @@
+package cn.ibizlab.plm.base.logic.workloadlogic.type_of_dimension;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.workload workloadtype_of_dimensiondefault;
+                global cn.ibizlab.plm.core.base.domain.workload workloadtype_of_dimensionfor_temp;
+                global cn.ibizlab.plm.core.base.domain.workload workloadtype_of_dimensionpage;
+                    global cn.ibizlab.plm.core.base.service.IworkloadService workloadservice;
+        global cn.ibizlab.plm.core.base.service.IworkloadService iBzSysWorkloadDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "workloadtype_of_dimensionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[重置分页参数]
+            rule "prepareparam1"
+            ruleflow-group "workloadtype_of_dimensionprepareparam1"
+            when
+            then
+                            workloadtype_of_dimensiondefault.set("size","1000");
+                        update(workloadtype_of_dimensiondefault);//更新fact中变量值
+                        update(workloadtype_of_dimensionfor_temp);//更新fact中变量值
+                        update(workloadtype_of_dimensionpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询我登记的工作类别工时]
+            rule "dedataset1"
+            ruleflow-group "workloadtype_of_dimensiondedataset1"
+            when
+            then
+                        update(workloadtype_of_dimensiondefault);//更新fact中变量值
+                        update(workloadtype_of_dimensionfor_temp);//更新fact中变量值
+                        update(workloadtype_of_dimensionpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "workloadtype_of_dimensionloopsubcall1"
+            when
+            then
+                        update(workloadtype_of_dimensiondefault);//更新fact中变量值
+                        update(workloadtype_of_dimensionfor_temp);//更新fact中变量值
+                        update(workloadtype_of_dimensionpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充工作类别为无]
+            rule "prepareparam2"
+            ruleflow-group "workloadtype_of_dimensionprepareparam2"
+            when
+            then
+                            workloadtype_of_dimensionfor_temp.set("typename","无");
+                        update(workloadtype_of_dimensiondefault);//更新fact中变量值
+                        update(workloadtype_of_dimensionfor_temp);//更新fact中变量值
+                        update(workloadtype_of_dimensionpage);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "workloadtype_of_dimensionend1"
+            when
+            then
+                        update(workloadtype_of_dimensiondefault);//更新fact中变量值
+                        update(workloadtype_of_dimensionfor_temp);//更新fact中变量值
+                        update(workloadtype_of_dimensionpage);//更新fact中变量值
+            end

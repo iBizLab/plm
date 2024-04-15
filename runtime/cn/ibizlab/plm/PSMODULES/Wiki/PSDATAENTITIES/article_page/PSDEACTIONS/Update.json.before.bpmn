@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.extensions.service.logic.before" isClosed="false" isExecutable="true" name="wiki_article_page_update_beforeLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.extensions.service.logic.before">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.wiki.domain.article_page"/>
+                            <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="articlePageService" type="service"/>
+                    <tns:metaData express="" name="et" type="entity"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+
+                            <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="B02E36F7-F8EA-4553-9F88-86CDE05D44FC" id="B02E36F7-F8EA-4553-9F88-86CDE05D44FC" implementation="http://www.jboss.org/drools/rule" name="article_pagecommit_version"/>
+                        <sequenceFlow id="begin_B02E36F7-F8EA-4553-9F88-86CDE05D44FC" sourceRef="begin" targetRef="B02E36F7-F8EA-4553-9F88-86CDE05D44FC"/>
+                            <sequenceFlow id="B02E36F7-F8EA-4553-9F88-86CDE05D44FC_prepareparam1_end" sourceRef="B02E36F7-F8EA-4553-9F88-86CDE05D44FC" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

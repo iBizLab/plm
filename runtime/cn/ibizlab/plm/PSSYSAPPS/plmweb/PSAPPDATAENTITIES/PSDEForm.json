@@ -8,24 +8,24 @@
       "name" : "value",
       "getPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       }
     }, {
       "dataType" : 25,
       "name" : "text",
       "getPSAppDEField" : {
         "name" : "PSDEFORMNAME",
-        "codeName" : "PSDEFormName"
+        "codeName" : "PsdeFormName"
       }
     } ],
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
       "name" : "PSDEFORMNAME",
-      "codeName" : "PSDEFormName"
+      "codeName" : "PsdeFormName"
     },
     "getValuePSAppDEField" : {
       "name" : "PSDEFORMID",
-      "codeName" : "PSDEFormId"
+      "codeName" : "PsdeFormId"
     },
     "defaultMode" : true,
     "enablePagingBar" : false
@@ -33,14 +33,15 @@
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
     "actionName" : "APPLY",
+    "actionTag" : "apply",
     "codeName" : "Apply",
     "methodType" : "DEACTION",
-    "name" : "Apply",
+    "name" : "apply",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -50,7 +51,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Apply.json"
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/apply.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -74,7 +75,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -108,7 +109,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO",
       "output" : true
@@ -117,7 +118,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -145,7 +146,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELD"
@@ -154,7 +155,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -185,7 +186,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -193,7 +194,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -222,7 +223,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELDS"
@@ -251,7 +252,7 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UNKNOWN",
+    "actionMode" : "SAVE",
     "codeName" : "Save",
     "methodType" : "DEACTION",
     "name" : "Save",
@@ -259,17 +260,26 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "type" : "VOID"
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "PsdeFormDto"
+      },
+      "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Save.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -278,8 +288,7 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "codeName" : "Update",
@@ -289,7 +298,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO",
       "output" : true
@@ -298,7 +307,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -330,7 +339,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormFilterDTO"
+        "id" : "PsdeFormFilterDto"
       },
       "type" : "DTO"
     },
@@ -338,7 +347,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "PAGE"
     },
@@ -415,7 +424,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "PSDEFormName",
+    "codeName" : "PsdeFormName",
     "logicName" : "实体表单名称",
     "name" : "PSDEFORMNAME",
     "stdDataType" : 25,
@@ -492,7 +501,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDEFormId",
+    "codeName" : "PsdeFormId",
     "logicName" : "实体表单标识",
     "name" : "PSDEFORMID",
     "stdDataType" : 25,
@@ -722,7 +731,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "PSDEId",
+    "codeName" : "PsdeId",
     "logicName" : "实体",
     "name" : "PSDEID",
     "stdDataType" : 25,
@@ -755,7 +764,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "PSDEName",
+    "codeName" : "PsdeName",
     "logicName" : "实体",
     "name" : "PSDENAME",
     "stdDataType" : 25,
@@ -786,7 +795,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Extension_tag",
+    "codeName" : "ExtensionTag",
     "logicName" : "扩展标记",
     "name" : "EXTENSION_TAG",
     "stdDataType" : 25,
@@ -817,7 +826,7 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Extension_tag2",
+    "codeName" : "ExtensionTag2",
     "logicName" : "扩展标记2",
     "name" : "EXTENSION_TAG2",
     "stdDataType" : 25,
@@ -848,7 +857,7 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "Extension_tag3",
+    "codeName" : "ExtensionTag3",
     "logicName" : "扩展标记3",
     "name" : "EXTENSION_TAG3",
     "stdDataType" : 25,
@@ -879,15 +888,15 @@
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "Extension_tag4",
+    "codeName" : "ExtensionTag4",
     "logicName" : "扩展标记4",
     "name" : "EXTENSION_TAG4",
     "stdDataType" : 25,
     "stringLength" : 200
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
-    "codeName" : "PSDEFormDTO",
-    "name" : "PSDEFormDTO",
+    "codeName" : "PsdeFormDto",
+    "name" : "PsdeFormDto",
     "getPSAppDEMethodDTOFields" : [ {
       "codeName" : "DynaModelFlag",
       "logicName" : "扩展模型",
@@ -949,47 +958,47 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "PSDEFormId",
+      "codeName" : "PsdeFormId",
       "logicName" : "实体表单标识",
-      "name" : "PSDEFormId",
+      "name" : "PsdeFormId",
       "getPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "PSDEFormName",
+      "codeName" : "PsdeFormName",
       "logicName" : "实体表单名称",
-      "name" : "PSDEFormName",
+      "name" : "PsdeFormName",
       "getPSAppDEField" : {
         "name" : "PSDEFORMNAME",
-        "codeName" : "PSDEFormName"
+        "codeName" : "PsdeFormName"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "PSDEId",
+      "codeName" : "PsdeId",
       "logicName" : "实体",
-      "name" : "PSDEId",
+      "name" : "PsdeId",
       "getPSAppDEField" : {
         "name" : "PSDEID",
-        "codeName" : "PSDEId"
+        "codeName" : "PsdeId"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "PSDEName",
+      "codeName" : "PsdeName",
       "logicName" : "实体",
-      "name" : "PSDEName",
+      "name" : "PsdeName",
       "getPSAppDEField" : {
         "name" : "PSDENAME",
-        "codeName" : "PSDEName"
+        "codeName" : "PsdeName"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1021,45 +1030,45 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "codeName" : "Extension_tag",
+      "codeName" : "ExtensionTag",
       "logicName" : "扩展标记",
-      "name" : "Extension_tag",
+      "name" : "ExtensionTag",
       "getPSAppDEField" : {
         "name" : "EXTENSION_TAG",
-        "codeName" : "Extension_tag"
+        "codeName" : "ExtensionTag"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "Extension_tag2",
+      "codeName" : "ExtensionTag2",
       "logicName" : "扩展标记2",
-      "name" : "Extension_tag2",
+      "name" : "ExtensionTag2",
       "getPSAppDEField" : {
         "name" : "EXTENSION_TAG2",
-        "codeName" : "Extension_tag2"
+        "codeName" : "ExtensionTag2"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "Extension_tag3",
+      "codeName" : "ExtensionTag3",
       "logicName" : "扩展标记3",
-      "name" : "Extension_tag3",
+      "name" : "ExtensionTag3",
       "getPSAppDEField" : {
         "name" : "EXTENSION_TAG3",
-        "codeName" : "Extension_tag3"
+        "codeName" : "ExtensionTag3"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "Extension_tag4",
+      "codeName" : "ExtensionTag4",
       "logicName" : "扩展标记4",
-      "name" : "Extension_tag4",
+      "name" : "ExtensionTag4",
       "getPSAppDEField" : {
         "name" : "EXTENSION_TAG4",
-        "codeName" : "Extension_tag4"
+        "codeName" : "ExtensionTag4"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1068,12 +1077,12 @@
     "sourceType" : "DE",
     "type" : "DEFAULT"
   }, {
-    "codeName" : "PSDEFormFilterDTO",
-    "name" : "PSDEFormFilterDTO",
+    "codeName" : "PsdeFormFilterDto",
+    "name" : "PsdeFormFilterDto",
     "getPSAppDEMethodDTOFields" : [ {
-      "codeName" : "N_FORMTYPE_EQ",
+      "codeName" : "NFormtypeEq",
       "logicName" : "表单类型",
-      "name" : "N_FORMTYPE_EQ",
+      "name" : "NFormtypeEq",
       "getPSAppDEField" : {
         "name" : "FORMTYPE",
         "codeName" : "FormType"
@@ -1082,56 +1091,56 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDEFORMID_EQ",
+      "codeName" : "NPsdeformidEq",
       "logicName" : "实体表单标识",
-      "name" : "N_PSDEFORMID_EQ",
+      "name" : "NPsdeformidEq",
       "getPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDEFORMNAME_LIKE",
+      "codeName" : "NPsdeformnameLike",
       "logicName" : "实体表单名称",
-      "name" : "N_PSDEFORMNAME_LIKE",
+      "name" : "NPsdeformnameLike",
       "getPSAppDEField" : {
         "name" : "PSDEFORMNAME",
-        "codeName" : "PSDEFormName"
+        "codeName" : "PsdeFormName"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDEID_EQ",
+      "codeName" : "NPsdeidEq",
       "logicName" : "实体",
-      "name" : "N_PSDEID_EQ",
+      "name" : "NPsdeidEq",
       "getPSAppDEField" : {
         "name" : "PSDEID",
-        "codeName" : "PSDEId"
+        "codeName" : "PsdeId"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDENAME_EQ",
+      "codeName" : "NPsdenameEq",
       "logicName" : "实体",
-      "name" : "N_PSDENAME_EQ",
+      "name" : "NPsdenameEq",
       "getPSAppDEField" : {
         "name" : "PSDENAME",
-        "codeName" : "PSDEName"
+        "codeName" : "PsdeName"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "N_PSDENAME_LIKE",
+      "codeName" : "NPsdenameLike",
       "logicName" : "实体",
-      "name" : "N_PSDENAME_LIKE",
+      "name" : "NPsdenameLike",
       "getPSAppDEField" : {
         "name" : "PSDENAME",
-        "codeName" : "PSDEName"
+        "codeName" : "PsdeName"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -1143,14 +1152,15 @@
   "getAllPSAppDEMethods" : [ {
     "actionMode" : "CUSTOM",
     "actionName" : "APPLY",
+    "actionTag" : "apply",
     "codeName" : "Apply",
     "methodType" : "DEACTION",
-    "name" : "Apply",
+    "name" : "apply",
     "getPSAppDEMethodInput" : {
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1160,7 +1170,7 @@
     },
     "getPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Apply.json"
+      "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/apply.json"
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
@@ -1184,7 +1194,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1218,7 +1228,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO",
       "output" : true
@@ -1227,7 +1237,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1255,7 +1265,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELD"
@@ -1264,7 +1274,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1295,7 +1305,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1303,7 +1313,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1332,7 +1342,7 @@
     "getPSAppDEMethodInput" : {
       "getKeyPSAppDEField" : {
         "name" : "PSDEFORMID",
-        "codeName" : "PSDEFormId"
+        "codeName" : "PsdeFormId"
       },
       "name" : "输入对象",
       "type" : "KEYFIELDS"
@@ -1361,7 +1371,7 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
-    "actionMode" : "UNKNOWN",
+    "actionMode" : "SAVE",
     "codeName" : "Save",
     "methodType" : "DEACTION",
     "name" : "Save",
@@ -1369,17 +1379,26 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSAppDEMethodReturn" : {
       "name" : "返回对象",
-      "type" : "VOID"
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "PsdeFormDto"
+      },
+      "type" : "DTO"
     },
     "getPSDEAction" : {
       "modelref" : true,
       "path" : "PSMODULES/extension/PSDATAENTITIES/PSDEForm/PSDEACTIONS/Save.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "CREATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -1388,8 +1407,7 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/save",
-    "builtinMethod" : false,
-    "needResourceKey" : true
+    "builtinMethod" : false
   }, {
     "actionMode" : "UPDATE",
     "codeName" : "Update",
@@ -1399,7 +1417,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO",
       "output" : true
@@ -1408,7 +1426,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "DTO"
     },
@@ -1439,7 +1457,7 @@
       "name" : "输入对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormFilterDTO"
+        "id" : "PsdeFormFilterDto"
       },
       "type" : "DTO"
     },
@@ -1447,7 +1465,7 @@
       "name" : "返回对象",
       "getPSAppDEMethodDTO" : {
         "modelref" : true,
-        "id" : "PSDEFormDTO"
+        "id" : "PsdeFormDto"
       },
       "type" : "PAGE"
     },
@@ -1505,11 +1523,11 @@
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDEFormdesign.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdeformdesign.json",
     "viewType" : "DESUBAPPREFVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/PSDEFormdesign_Modal.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psdeformdesign_modal.json",
     "viewType" : "DESUBAPPREFVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
@@ -1525,7 +1543,7 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
-  "codeName" : "PSDEForm",
+  "codeName" : "PsdeForm",
   "dEAPICodeName" : "psdeform",
   "dEAPICodeName2" : "psdeforms",
   "dEAPITag" : "PSDEFORM",
@@ -1535,7 +1553,7 @@
     "name" : "FORMTYPE",
     "codeName" : "FormType"
   },
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDEForm.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeForm.json",
   "enableUIActions" : 15,
   "getFormTypePSAppDEField" : {
     "name" : "FORMTYPE",
@@ -1543,18 +1561,18 @@
   },
   "getKeyPSAppDEField" : {
     "name" : "PSDEFORMID",
-    "codeName" : "PSDEFormId"
+    "codeName" : "PsdeFormId"
   },
   "logicName" : "实体表单",
   "getMajorPSAppDEField" : {
     "name" : "PSDEFORMNAME",
-    "codeName" : "PSDEFormName"
+    "codeName" : "PsdeFormName"
   },
   "name" : "PSDEFORM",
   "getPSDEName" : "PSDEFORM",
   "getPSDEServiceAPI" : {
     "modelref" : true,
-    "id" : "PSDEForm"
+    "id" : "PsdeForm"
   },
   "getPSDataEntity" : {
     "modelref" : true,
@@ -1566,7 +1584,7 @@
   },
   "getQuickSearchPSAppDEFields" : [ {
     "name" : "PSDEFORMNAME",
-    "codeName" : "PSDEFormName"
+    "codeName" : "PsdeFormName"
   }, {
     "name" : "CODENAME",
     "codeName" : "CodeName"

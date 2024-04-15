@@ -1,0 +1,215 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.get_product_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketget_product_memberdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member ticketget_product_memberfilter;
+                global java.util.Map ticketget_product_memberfor_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member ticketget_product_membermembers;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketget_product_memberticket;
+                global java.util.Map ticketget_product_memberuser;
+                global java.util.Map ticketget_product_memberviewctx;
+                    global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService product_memberservice;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IticketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketget_product_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "ticketget_product_memberdebugparam2"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品id]
+            rule "prepareparam2"
+            ruleflow-group "ticketget_product_memberprepareparam2"
+            when
+            then
+                            ticketget_product_memberfilter.set("n_product_id_eq",ticketget_product_memberdefault.get("product"));
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[根据产品id获取产品成员]
+            rule "dedataset2"
+            ruleflow-group "ticketget_product_memberdedataset2"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取工单详情]
+            rule "deaction1"
+            ruleflow-group "ticketget_product_memberdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ticketservice.get(ticketget_product_memberdefault.getId()),ticketget_product_memberdefault);
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品id]
+            rule "prepareparam1"
+            ruleflow-group "ticketget_product_memberprepareparam1"
+            when
+            then
+                            ticketget_product_memberfilter.set("n_product_id_eq",ticketget_product_memberticket.get("productid"));
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[根据产品id获取产品成员]
+            rule "dedataset1"
+            ruleflow-group "ticketget_product_memberdedataset1"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "ticketget_product_memberprepareparam3"
+            when
+            then
+                                ticketget_product_memberuser.set("id",curuser.getSessionParams().get("srfpersonid"));
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end3"
+            ruleflow-group "ticketget_product_memberend3"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ticketget_product_memberloopsubcall1"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环for_obj]
+            rule "debugparam5"
+            ruleflow-group "ticketget_product_memberdebugparam5"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "ticketget_product_memberprepareparam4"
+            when
+            then
+                            ticketget_product_memberuser.set("readonly","true");
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "ticketget_product_memberend2"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[跳出循环]
+            rule "end1"
+            ruleflow-group "ticketget_product_memberend1"
+            when
+            then
+                        update(ticketget_product_memberdefault);//更新fact中变量值
+                        update(ticketget_product_memberfilter);//更新fact中变量值
+                        update(ticketget_product_memberfor_obj);//更新fact中变量值
+                        update(ticketget_product_membermembers);//更新fact中变量值
+                        update(ticketget_product_memberticket);//更新fact中变量值
+                        update(ticketget_product_memberuser);//更新fact中变量值
+                        update(ticketget_product_memberviewctx);//更新fact中变量值
+            end

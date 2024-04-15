@@ -133,25 +133,6 @@
     },
     "builtinAction" : true
   }, {
-    "actionMode" : "CUSTOM",
-    "actionType" : "USERCUSTOM",
-    "codeName" : "Apply",
-    "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/Apply.json",
-    "logicName" : "应用",
-    "name" : "APPLY",
-    "getPSDEActionInput" : {
-      "name" : "ApplyInput",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "PSDENotifyDTO"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEActionReturn" : {
-      "name" : "ApplyResult",
-      "type" : "VOID"
-    }
-  }, {
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
@@ -173,7 +154,7 @@
     },
     "builtinAction" : true
   }, {
-    "actionMode" : "UNKNOWN",
+    "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/Save.json",
@@ -185,13 +166,33 @@
         "modelref" : true,
         "id" : "PSDENotifyDTO"
       },
-      "type" : "DTO"
+      "type" : "DTO",
+      "output" : true
     },
     "getPSDEActionReturn" : {
       "name" : "SaveResult",
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "USERCUSTOM",
+    "codeName" : "apply",
+    "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotify/PSDEACTIONS/apply.json",
+    "logicName" : "应用",
+    "name" : "APPLY",
+    "getPSDEActionInput" : {
+      "name" : "ApplyInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "PSDENotifyDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "ApplyResult",
+      "type" : "VOID"
+    }
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -375,7 +376,7 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "Update_man",
+    "codeName" : "update_man",
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
@@ -390,7 +391,7 @@
       "path" : "PSCODELISTS/SysOperator.json"
     },
     "predefinedType" : "UPDATEMAN",
-    "serviceCodeName" : "Update_man",
+    "serviceCodeName" : "update_man",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
@@ -451,17 +452,18 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "Create_time",
+    "codeName" : "create_time",
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
     "predefinedType" : "CREATEDATE",
-    "serviceCodeName" : "Create_time",
+    "serviceCodeName" : "create_time",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
@@ -532,7 +534,7 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "Create_man",
+    "codeName" : "create_man",
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
@@ -547,7 +549,7 @@
       "path" : "PSCODELISTS/SysOperator.json"
     },
     "predefinedType" : "CREATEMAN",
-    "serviceCodeName" : "Create_man",
+    "serviceCodeName" : "create_man",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
@@ -608,17 +610,18 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "Update_time",
+    "codeName" : "update_time",
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
     "logicName" : "更新时间",
     "name" : "UPDATE_TIME",
     "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "Update_time",
+    "serviceCodeName" : "update_time",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
@@ -2922,32 +2925,6 @@
       "stringLength" : 50,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "建立人",
-      "name" : "Create_man",
-      "getPSDEField" : {
-        "name" : "CREATE_MAN",
-        "codeName" : "Create_man"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
-      "type" : "SIMPLE",
-      "allowEmpty" : false,
-      "readOnly" : true
-    }, {
-      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-      "logicName" : "建立时间",
-      "name" : "Create_time",
-      "getPSDEField" : {
-        "name" : "CREATE_TIME",
-        "codeName" : "Create_time"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 5,
-      "type" : "SIMPLE",
-      "allowEmpty" : false,
-      "readOnly" : true
-    }, {
       "logicName" : "自定义条件",
       "name" : "CustomCond",
       "getPSDEField" : {
@@ -3207,32 +3184,6 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
-      "logicName" : "更新人",
-      "name" : "Update_man",
-      "getPSDEField" : {
-        "name" : "UPDATE_MAN",
-        "codeName" : "Update_man"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 25,
-      "stringLength" : 100,
-      "type" : "SIMPLE",
-      "allowEmpty" : false,
-      "readOnly" : true
-    }, {
-      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-      "logicName" : "更新时间",
-      "name" : "Update_time",
-      "getPSDEField" : {
-        "name" : "UPDATE_TIME",
-        "codeName" : "Update_time"
-      },
-      "sourceType" : "DEFIELD",
-      "stdDataType" : 5,
-      "type" : "SIMPLE",
-      "allowEmpty" : false,
-      "readOnly" : true
-    }, {
       "logicName" : "用户标识",
       "name" : "UserTag",
       "getPSDEField" : {
@@ -3288,6 +3239,58 @@
       "stdDataType" : 9,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "logicName" : "建立人",
+      "name" : "create_man",
+      "getPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "建立时间",
+      "name" : "create_time",
+      "getPSDEField" : {
+        "name" : "CREATE_TIME",
+        "codeName" : "create_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "logicName" : "更新人",
+      "name" : "update_man",
+      "getPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
+    }, {
+      "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+      "logicName" : "更新时间",
+      "name" : "update_time",
+      "getPSDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE",
+      "allowEmpty" : false,
+      "readOnly" : true
     }, {
       "name" : "PSDENotifyTargets",
       "getPSDER" : {
@@ -3399,7 +3402,7 @@
     "name" : "UPDATE"
   } ],
   "getAllPSModelDatas" : [ {
-    "codeName" : "MPickupView",
+    "codeName" : "mpick_up_view",
     "logicName" : "实体通知实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
     "name" : "实体通知实体数据多项选择视图",
@@ -3425,7 +3428,7 @@
     "realModelSubType" : "DETABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupView",
+    "codeName" : "pick_up_view",
     "logicName" : "实体通知实体数据选择视图",
     "modelTag" : "PICKUPVIEW",
     "name" : "实体通知实体数据选择视图",
@@ -3451,7 +3454,7 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "PickupGridView",
+    "codeName" : "pick_up_grid_view",
     "logicName" : "实体通知实体选择表格视图（部件视图）",
     "name" : "实体通知实体选择表格视图（部件视图）",
     "realModelSubType" : "DEPICKUPGRIDVIEW",

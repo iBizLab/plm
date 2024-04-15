@@ -1,0 +1,2233 @@
+{
+  "accUserMode" : 2,
+  "caption" : "新建项目",
+  "codeName" : "project_create_wizard_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_create_wizard_view.json",
+  "height" : 650,
+  "name" : "projectcreate_wizard_view",
+  "openMode" : "POPUPMODAL",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "WizardView",
+    "name" : "engine"
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "project_wizard",
+    "controlType" : "WIZARDPANEL",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSWIZARDPANELS/project_wizard.json",
+    "getFinishPSControlAction" : {
+      "modelref" : true,
+      "id" : "finish",
+      "actionName" : "Create",
+      "actionType" : "DEACTION",
+      "name" : "finish",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "create"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      }
+    },
+    "getInitPSControlAction" : {
+      "modelref" : true,
+      "id" : "init",
+      "actionName" : "CreateTemp",
+      "actionType" : "DEACTION",
+      "name" : "init",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "CreateTemp"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      }
+    },
+    "logicName" : "项目建立向导",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "CreateTemp",
+        "actionType" : "DEACTION",
+        "name" : "init",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "CreateTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      }, {
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "name" : "finish",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "wizardpanel"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "WIZARDPANEL"
+    },
+    "getPSDEEditForms" : [ {
+      "codeName" : "wizard_create",
+      "controlType" : "FORM",
+      "defaultLabelWidth" : 130,
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/wizard_create.json",
+      "formFuncMode" : "WIZARDFORM",
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "GetTemp",
+        "actionType" : "DEACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "GetTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      },
+      "hookEventNames" : [ "ONLOADSUCCESS", "SAVE", "LOAD" ],
+      "logicName" : "新建表单",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "GetTemp",
+          "actionType" : "DEACTION",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "GetTemp"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          }
+        }, {
+          "actionName" : "UpdateTemp",
+          "actionType" : "DEACTION",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "UpdateTemp"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          }
+        } ],
+        "enableDEFieldPrivilege" : false,
+        "id" : "wizardpanel_form_fill_info"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "onLoadSuccess",
+        "logicTag" : "wizardpanel_form_fill_info",
+        "logicType" : "APPDEUILOGIC",
+        "name" : "logic",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "remove_batch_temp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      }, {
+        "eventNames" : "SAVE",
+        "logicTag" : "wizardpanel_form_fill_info",
+        "logicType" : "CUSTOM",
+        "name" : "wizardpanel_formsave"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "wizardpanel_form_fill_info",
+        "logicType" : "CUSTOM",
+        "name" : "wizardpanel_formload"
+      } ],
+      "getPSControlParam" : {
+        "getPSDEWizardForm" : {
+          "modelref" : true,
+          "id" : "fill_info"
+        },
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "wizardpanel_form_fill_info"
+      },
+      "getPSDEFormItemVRs" : [ {
+        "checkMode" : 1,
+        "name" : "表单项值规则",
+        "getPSDEFormItemName" : "identifier",
+        "getPSSysValueRule" : {
+          "codeName" : "UsrValueRule0312488358",
+          "dynaModelFilePath" : "PSSYSVALUERULES/UsrValueRule0312488358.json",
+          "name" : "大写字母和数字",
+          "regExCode" : "^[A-Z0-9]{1,15}$",
+          "ruleInfo" : "请填写大写字母和数字",
+          "ruleType" : "REGEX",
+          "enableBackend" : true,
+          "enableFront" : true
+        },
+        "valueRuleType" : "SYSVALUERULE"
+      } ],
+      "getPSDEFormItems" : [ {
+        "id" : "srfupdatedate",
+        "hidden" : true,
+        "dataType" : 5,
+        "getPSAppDEField" : {
+          "name" : "UPDATE_TIME",
+          "codeName" : "update_time"
+        }
+      }, {
+        "id" : "srforikey",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfkey",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      }, {
+        "id" : "srfmajortext",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
+      }, {
+        "id" : "srftempmode",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfuf",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfdeid",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfsourcekey",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "name",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
+      }, {
+        "id" : "type",
+        "dataType" : 25,
+        "createDV" : "scrum",
+        "updateDV" : "scrum",
+        "getPSAppDEField" : {
+          "name" : "TYPE",
+          "codeName" : "type"
+        }
+      }, {
+        "id" : "visibility",
+        "dataType" : 25,
+        "createDV" : "private",
+        "updateDV" : "private",
+        "getPSAppDEField" : {
+          "name" : "VISIBILITY",
+          "codeName" : "visibility"
+        }
+      }, {
+        "id" : "identifier",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        }
+      }, {
+        "id" : "description",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "DESCRIPTION",
+          "codeName" : "description"
+        }
+      }, {
+        "id" : "id",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      } ],
+      "getPSDEFormPages" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.PROJECT.WIZARD_CREATE.FORMPAGE.FORMPAGE1"
+        },
+        "caption" : "基本信息",
+        "codeName" : "formpage1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMPAGE",
+        "name" : "formpage1",
+        "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "CONTROL.DEFORM.PROJECT.WIZARD_CREATE.GROUPPANEL.GROUP1"
+          },
+          "caption" : "项目基本信息",
+          "codeName" : "group1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "group1",
+          "getPSDEFormDetails" : [ {
+            "codeName" : "grouppanel1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel1",
+            "getPSDEFormDetails" : [ {
+              "codeName" : "rawitem4",
+              "contentType" : "IMAGE",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "name" : "rawitem4",
+              "getPSLayoutPos" : {
+                "colLG" : 14,
+                "colLGOffset" : 5,
+                "colMD" : 14,
+                "colMDOffset" : 5,
+                "colSM" : 14,
+                "colSMOffset" : 5,
+                "colXS" : 14,
+                "colXSOffset" : 5,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "contentType" : "IMAGE",
+                "name" : "rawitem4",
+                "getPSSysImage" : {
+                  "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"275px\" height=\"205px\" viewBox=\"0 0 275 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>动态实体编辑视图（左右关系）</title>\n    <g id=\"动态实体编辑视图（左右关系）\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"新建视图部件/表格\" transform=\"translate(-11, 0)\">\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"0\" y=\"0\" width=\"286\" height=\"206\"></rect>\n            <g id=\"编组-2\" transform=\"translate(18, 32)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"261\" height=\"164\"></rect>\n                <g id=\"新建视图/表单窄\" transform=\"translate(84, 3.835)\">\n                    <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"176\" height=\"152\"></rect>\n                    <g id=\"新建视图部件/表单\" transform=\"translate(12, 24.1351)\" fill=\"#F3F3F3\">\n                        <g id=\"编组-5\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份\" transform=\"translate(0, 19.6216)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-2.22044605e-16,1 C-2.8967998e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份-2\" transform=\"translate(0, 39.2432)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-1.11022302e-16,1 C-1.78657678e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                    </g>\n                    <g id=\"编组-5\" transform=\"translate(12, 19)\">\n                        <rect id=\"矩形备份-10\" fill=\"#F3F3F3\" x=\"0\" y=\"63.1351351\" width=\"148\" height=\"48\" rx=\"1\"></rect>\n                        <polygon id=\"路径\" fill=\"#F1FBF4\" fill-rule=\"nonzero\" points=\"89 0 147 0 147 58 89 58\"></polygon>\n                        <polygon id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\" points=\"94 52 142 52 129.960866 33.7037148 122.134005 39.3053856 111.233323 24 94 52\"></polygon>\n                        <path d=\"M127.998122,22 C129.78445,22.0007378 131.435443,20.9531258 132.329188,19.2517891 C133.222933,17.5504524 133.223649,15.4538644 132.331066,13.7517895 C131.438483,12.0497146 129.788206,11.0007385 128.001878,11 C125.240455,10.9988593 123.001038,13.460368 123,16.4979339 C122.998963,19.5354998 125.236698,21.9988585 127.998122,22 L127.998122,22 Z\" id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\"></path>\n                    </g>\n                </g>\n                <g id=\"新建视图部件/树形控件\" transform=\"translate(13, 3.835)\">\n                    <rect id=\"矩形备份-4\" stroke=\"#F3F3F3\" fill=\"#FFFFFF\" x=\"65.5\" y=\"0.5\" width=\"1\" height=\"151\"></rect>\n                    <g id=\"编组-4\" transform=\"translate(0, 13)\">\n                        <rect id=\"矩形备份-11\" fill=\"#56ABFB\" x=\"3\" y=\"1\" width=\"2\" height=\"120\" rx=\"1\"></rect>\n                        <g id=\"编组-3\" transform=\"translate(3, 16)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-3\" transform=\"translate(3, 80)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份\" transform=\"translate(3, 32)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-4\" transform=\"translate(3, 96)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-2\" transform=\"translate(3, 48)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-5\" transform=\"translate(3, 112)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组备份\" transform=\"translate(0, 64)\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                    </g>\n                </g>\n            </g>\n            <g id=\"新建视图部件/按钮\" transform=\"translate(217, 12.065)\">\n                <rect id=\"矩形备份-2\" fill=\"#EDF1FC\" x=\"0\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n                <rect id=\"矩形备份-3\" fill=\"#F3F3F3\" x=\"35.1512579\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n            </g>\n            <rect id=\"矩形\" fill=\"#F3F3F3\" x=\"21\" y=\"13.07\" width=\"41\" height=\"8.04\" rx=\"4\"></rect>\n        </g>\n    </g>\n</svg>"
+                },
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "getPSSysImage" : {
+                "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"275px\" height=\"205px\" viewBox=\"0 0 275 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>动态实体编辑视图（左右关系）</title>\n    <g id=\"动态实体编辑视图（左右关系）\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"新建视图部件/表格\" transform=\"translate(-11, 0)\">\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"0\" y=\"0\" width=\"286\" height=\"206\"></rect>\n            <g id=\"编组-2\" transform=\"translate(18, 32)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"261\" height=\"164\"></rect>\n                <g id=\"新建视图/表单窄\" transform=\"translate(84, 3.835)\">\n                    <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"176\" height=\"152\"></rect>\n                    <g id=\"新建视图部件/表单\" transform=\"translate(12, 24.1351)\" fill=\"#F3F3F3\">\n                        <g id=\"编组-5\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份\" transform=\"translate(0, 19.6216)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-2.22044605e-16,1 C-2.8967998e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份-2\" transform=\"translate(0, 39.2432)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-1.11022302e-16,1 C-1.78657678e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                    </g>\n                    <g id=\"编组-5\" transform=\"translate(12, 19)\">\n                        <rect id=\"矩形备份-10\" fill=\"#F3F3F3\" x=\"0\" y=\"63.1351351\" width=\"148\" height=\"48\" rx=\"1\"></rect>\n                        <polygon id=\"路径\" fill=\"#F1FBF4\" fill-rule=\"nonzero\" points=\"89 0 147 0 147 58 89 58\"></polygon>\n                        <polygon id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\" points=\"94 52 142 52 129.960866 33.7037148 122.134005 39.3053856 111.233323 24 94 52\"></polygon>\n                        <path d=\"M127.998122,22 C129.78445,22.0007378 131.435443,20.9531258 132.329188,19.2517891 C133.222933,17.5504524 133.223649,15.4538644 132.331066,13.7517895 C131.438483,12.0497146 129.788206,11.0007385 128.001878,11 C125.240455,10.9988593 123.001038,13.460368 123,16.4979339 C122.998963,19.5354998 125.236698,21.9988585 127.998122,22 L127.998122,22 Z\" id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\"></path>\n                    </g>\n                </g>\n                <g id=\"新建视图部件/树形控件\" transform=\"translate(13, 3.835)\">\n                    <rect id=\"矩形备份-4\" stroke=\"#F3F3F3\" fill=\"#FFFFFF\" x=\"65.5\" y=\"0.5\" width=\"1\" height=\"151\"></rect>\n                    <g id=\"编组-4\" transform=\"translate(0, 13)\">\n                        <rect id=\"矩形备份-11\" fill=\"#56ABFB\" x=\"3\" y=\"1\" width=\"2\" height=\"120\" rx=\"1\"></rect>\n                        <g id=\"编组-3\" transform=\"translate(3, 16)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-3\" transform=\"translate(3, 80)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份\" transform=\"translate(3, 32)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-4\" transform=\"translate(3, 96)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-2\" transform=\"translate(3, 48)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-5\" transform=\"translate(3, 112)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组备份\" transform=\"translate(0, 64)\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                    </g>\n                </g>\n            </g>\n            <g id=\"新建视图部件/按钮\" transform=\"translate(217, 12.065)\">\n                <rect id=\"矩形备份-2\" fill=\"#EDF1FC\" x=\"0\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n                <rect id=\"矩形备份-3\" fill=\"#F3F3F3\" x=\"35.1512579\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n            </g>\n            <rect id=\"矩形\" fill=\"#F3F3F3\" x=\"21\" y=\"13.07\" width=\"41\" height=\"8.04\" rx=\"4\"></rect>\n        </g>\n    </g>\n</svg>"
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            }, {
+              "codeName" : "rawitem1",
+              "contentType" : "HTML",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "htmlContent" : "<p></p>\n<h1>Scrum 项目</h1>\n<p>Scrum 是一种敏捷开发方法，强调团队合作、迭代开发和及时反馈。</p>\n<ul>\n<li>迭代开发</li>\n<li>团队合作</li>\n<li>灵活性和可适应性</li>\n</ul>",
+              "name" : "rawitem1",
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "表单成员[rawitem1][面板显示]逻辑",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "type",
+                  "logicType" : "SINGLE",
+                  "value" : "scrum"
+                } ],
+                "relatedDetailNames" : [ "type" ],
+                "notMode" : false
+              } ],
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "content" : "<p></p>\n<h1>Scrum 项目</h1>\n<p>Scrum 是一种敏捷开发方法，强调团队合作、迭代开发和及时反馈。</p>\n<ul>\n<li>迭代开发</li>\n<li>团队合作</li>\n<li>灵活性和可适应性</li>\n</ul>",
+                "contentType" : "HTML",
+                "name" : "rawitem1",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            }, {
+              "codeName" : "rawitem2",
+              "contentType" : "HTML",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "htmlContent" : "<p>&nbsp;</p>\n<h1>Kanban 项目</h1>\n<p>Kanban 是一种项目管理方法，注重于可视化工作流程和限制在工作中的工作量。</p>\n<ul>\n<li>可视化工作流程</li>\n<li>任务卡片</li>\n<li>实时监控</li>\n</ul>",
+              "name" : "rawitem2",
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "表单成员[rawitem2][面板显示]逻辑",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "type",
+                  "logicType" : "SINGLE",
+                  "value" : "kanban"
+                } ],
+                "relatedDetailNames" : [ "type" ],
+                "notMode" : false
+              } ],
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "content" : "<p>&nbsp;</p>\n<h1>Kanban 项目</h1>\n<p>Kanban 是一种项目管理方法，注重于可视化工作流程和限制在工作中的工作量。</p>\n<ul>\n<li>可视化工作流程</li>\n<li>任务卡片</li>\n<li>实时监控</li>\n</ul>",
+                "contentType" : "HTML",
+                "name" : "rawitem2",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            }, {
+              "codeName" : "rawitem3",
+              "contentType" : "HTML",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "htmlContent" : "<p>&nbsp;</p>\n<h1>瀑布 项目</h1>\n<p>瀑布模型是一种传统的项目管理方法，将项目划分为一系列线性的阶段，每个阶段依赖于上一个阶段的完成。</p>\n<ul>\n<li>线性阶段</li>\n<li>详细规划</li>\n<li>阶段依赖</li>\n</ul>",
+              "name" : "rawitem3",
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "表单成员[rawitem3][面板显示]逻辑",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "type",
+                  "logicType" : "SINGLE",
+                  "value" : "waterfall"
+                } ],
+                "relatedDetailNames" : [ "type" ],
+                "notMode" : false
+              } ],
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "content" : "<p>&nbsp;</p>\n<h1>瀑布 项目</h1>\n<p>瀑布模型是一种传统的项目管理方法，将项目划分为一系列线性的阶段，每个阶段依赖于上一个阶段的完成。</p>\n<ul>\n<li>线性阶段</li>\n<li>详细规划</li>\n<li>阶段依赖</li>\n</ul>",
+                "contentType" : "HTML",
+                "name" : "rawitem3",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColLG" : -1,
+              "childColMD" : 24,
+              "childColSM" : -1,
+              "childColXS" : -1,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "showCaption" : false
+          }, {
+            "codeName" : "grouppanel2",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel2",
+            "getPSDEFormDetails" : [ {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.NAME"
+              },
+              "caption" : "项目名称",
+              "codeName" : "name",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "name",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "NAME",
+                "codeName" : "name"
+              },
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "maxLength" : 200,
+                "name" : "name"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : false,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.TYPE"
+              },
+              "caption" : "项目类型",
+              "codeName" : "type",
+              "createDV" : "scrum",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "type",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "TYPE",
+                "codeName" : "type"
+              },
+              "getPSEditor" : {
+                "editorType" : "RADIOBUTTONLIST",
+                "name" : "type",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_type.json"
+                }
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "updateDV" : "scrum",
+              "allowEmpty" : true,
+              "needCodeListConfig" : true,
+              "showCaption" : true
+            }, {
+              "caption" : "可见范围",
+              "codeName" : "visibility",
+              "createDV" : "private",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "visibility",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "VISIBILITY",
+                "codeName" : "visibility"
+              },
+              "getPSEditor" : {
+                "editorType" : "DROPDOWNLIST",
+                "name" : "visibility",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/visibility.json"
+                },
+                "singleSelect" : true
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "updateDV" : "private",
+              "allowEmpty" : false,
+              "needCodeListConfig" : true,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.IDENTIFIER"
+              },
+              "caption" : "项目标识",
+              "codeName" : "identifier",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "identifier",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "IDENTIFIER",
+                "codeName" : "identifier"
+              },
+              "getPSEditor" : {
+                "editorType" : "TEXTBOX",
+                "maxLength" : 15,
+                "name" : "identifier",
+                "getPSSysValueRule" : {
+                  "codeName" : "UsrValueRule0312488358",
+                  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPVALUERULES/UsrValueRule0312488358.json",
+                  "name" : "大写字母和数字",
+                  "regExCode" : "^[A-Z0-9]{1,15}$",
+                  "ruleInfo" : "请填写大写字母和数字",
+                  "ruleType" : "REGEX",
+                  "enableFront" : true
+                },
+                "placeHolder" : "大写字母和数字，15个字符范围内"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : false,
+              "showCaption" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.DESCRIPTION"
+              },
+              "caption" : "描述",
+              "codeName" : "description",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "itemHeight" : 220.0,
+              "labelPos" : "TOP",
+              "labelWidth" : 130,
+              "name" : "description",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "DESCRIPTION",
+                "codeName" : "description"
+              },
+              "getPSEditor" : {
+                "editorHeight" : 200.0,
+                "editorParams" : {
+                  "HEIGHT" : "200"
+                },
+                "editorType" : "TEXTAREA_10",
+                "maxLength" : 2000,
+                "name" : "description",
+                "showMaxLength" : true
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColLG" : -1,
+              "childColMD" : 24,
+              "childColSM" : -1,
+              "childColXS" : -1,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "showCaption" : false
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 12,
+            "childColMD" : 12,
+            "childColSM" : -1,
+            "childColXS" : -1,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : false
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.ID"
+          },
+          "caption" : "标识",
+          "codeName" : "id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColLG" : -1,
+          "childColMD" : 24,
+          "childColSM" : -1,
+          "childColXS" : -1,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false
+      } ],
+      "getPSDEWizardForm" : {
+        "formTag" : "fill_info",
+        "name" : "fill_info",
+        "getPSDEFormName" : "新建表单",
+        "getPSDEWizardStep" : {
+          "modelref" : true,
+          "id" : "项目信息"
+        },
+        "stepActions" : [ "NEXT" ],
+        "firstForm" : true
+      },
+      "getPSLayout" : {
+        "childColLG" : -1,
+        "childColMD" : 24,
+        "childColSM" : -1,
+        "childColXS" : -1,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "tabHeaderPos" : "TOP",
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "UpdateTemp",
+        "actionType" : "DEACTION",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "UpdateTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      },
+      "noTabHeader" : true,
+      "name" : "wizardpanel_form_fill_info",
+      "modelid" : "1d636e0b6f41b56b7b5e6bd3ea6dd452",
+      "modeltype" : "PSDEFORM_EDITFORM"
+    }, {
+      "codeName" : "wizard_member_bind",
+      "controlType" : "FORM",
+      "defaultLabelWidth" : 130,
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSFORMS/wizard_member_bind.json",
+      "formFuncMode" : "WIZARDFORM",
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "GetTemp",
+        "actionType" : "DEACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "GetTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      },
+      "hookEventNames" : [ "SAVE", "LOAD" ],
+      "logicName" : "成员绑定",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "GetTemp",
+          "actionType" : "DEACTION",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "GetTemp"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          }
+        }, {
+          "actionName" : "UpdateTemp",
+          "actionType" : "DEACTION",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "UpdateTemp"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          }
+        } ],
+        "enableDEFieldPrivilege" : false,
+        "id" : "wizardpanel_form_bind_member"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "SAVE",
+        "logicTag" : "wizardpanel_form_bind_member",
+        "logicType" : "CUSTOM",
+        "name" : "wizardpanel_formsave"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "wizardpanel_form_bind_member",
+        "logicType" : "CUSTOM",
+        "name" : "wizardpanel_formload"
+      } ],
+      "getPSControlParam" : {
+        "getPSDEWizardForm" : {
+          "modelref" : true,
+          "id" : "bind_member"
+        },
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "wizardpanel_form_bind_member"
+      },
+      "getPSDEFormItems" : [ {
+        "id" : "srfupdatedate",
+        "hidden" : true,
+        "dataType" : 5,
+        "getPSAppDEField" : {
+          "name" : "UPDATE_TIME",
+          "codeName" : "update_time"
+        }
+      }, {
+        "id" : "srforikey",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfkey",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      }, {
+        "id" : "srfmajortext",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
+      }, {
+        "id" : "srftempmode",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfuf",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfdeid",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "srfsourcekey",
+        "hidden" : true,
+        "dataType" : 25
+      }, {
+        "id" : "belong",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "SESSION",
+        "createDV" : "srforgname",
+        "updateDVT" : "SESSION",
+        "updateDV" : "srforgname"
+      }, {
+        "id" : "name",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
+      }, {
+        "id" : "type",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "TYPE",
+          "codeName" : "type"
+        }
+      }, {
+        "id" : "identifier",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        }
+      }, {
+        "id" : "description",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "DESCRIPTION",
+          "codeName" : "description"
+        }
+      }, {
+        "id" : "visibility",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "VISIBILITY",
+          "codeName" : "visibility"
+        }
+      }, {
+        "id" : "id",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        }
+      } ],
+      "getPSDEFormPages" : [ {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.PROJECT.WIZARD_CREATE.FORMPAGE.FORMPAGE1"
+        },
+        "caption" : "基本信息",
+        "codeName" : "formpage1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMPAGE",
+        "name" : "formpage1",
+        "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "CONTROL.DEFORM.PROJECT.WIZARD_CREATE.GROUPPANEL.GROUP1"
+          },
+          "caption" : "项目基本信息",
+          "codeName" : "group1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "group1",
+          "getPSDEFormDetails" : [ {
+            "codeName" : "grouppanel1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel1",
+            "getPSDEFormDetails" : [ {
+              "codeName" : "rawitem4",
+              "contentType" : "IMAGE",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "name" : "rawitem4",
+              "getPSLayoutPos" : {
+                "colLG" : 14,
+                "colLGOffset" : 5,
+                "colMD" : 14,
+                "colMDOffset" : 5,
+                "colSM" : 14,
+                "colSMOffset" : 5,
+                "colXS" : 14,
+                "colXSOffset" : 5,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "contentType" : "IMAGE",
+                "name" : "rawitem4",
+                "getPSSysImage" : {
+                  "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"275px\" height=\"205px\" viewBox=\"0 0 275 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>动态实体编辑视图（左右关系）</title>\n    <g id=\"动态实体编辑视图（左右关系）\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"新建视图部件/表格\" transform=\"translate(-11, 0)\">\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"0\" y=\"0\" width=\"286\" height=\"206\"></rect>\n            <g id=\"编组-2\" transform=\"translate(18, 32)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"261\" height=\"164\"></rect>\n                <g id=\"新建视图/表单窄\" transform=\"translate(84, 3.835)\">\n                    <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"176\" height=\"152\"></rect>\n                    <g id=\"新建视图部件/表单\" transform=\"translate(12, 24.1351)\" fill=\"#F3F3F3\">\n                        <g id=\"编组-5\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份\" transform=\"translate(0, 19.6216)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-2.22044605e-16,1 C-2.8967998e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份-2\" transform=\"translate(0, 39.2432)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-1.11022302e-16,1 C-1.78657678e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                    </g>\n                    <g id=\"编组-5\" transform=\"translate(12, 19)\">\n                        <rect id=\"矩形备份-10\" fill=\"#F3F3F3\" x=\"0\" y=\"63.1351351\" width=\"148\" height=\"48\" rx=\"1\"></rect>\n                        <polygon id=\"路径\" fill=\"#F1FBF4\" fill-rule=\"nonzero\" points=\"89 0 147 0 147 58 89 58\"></polygon>\n                        <polygon id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\" points=\"94 52 142 52 129.960866 33.7037148 122.134005 39.3053856 111.233323 24 94 52\"></polygon>\n                        <path d=\"M127.998122,22 C129.78445,22.0007378 131.435443,20.9531258 132.329188,19.2517891 C133.222933,17.5504524 133.223649,15.4538644 132.331066,13.7517895 C131.438483,12.0497146 129.788206,11.0007385 128.001878,11 C125.240455,10.9988593 123.001038,13.460368 123,16.4979339 C122.998963,19.5354998 125.236698,21.9988585 127.998122,22 L127.998122,22 Z\" id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\"></path>\n                    </g>\n                </g>\n                <g id=\"新建视图部件/树形控件\" transform=\"translate(13, 3.835)\">\n                    <rect id=\"矩形备份-4\" stroke=\"#F3F3F3\" fill=\"#FFFFFF\" x=\"65.5\" y=\"0.5\" width=\"1\" height=\"151\"></rect>\n                    <g id=\"编组-4\" transform=\"translate(0, 13)\">\n                        <rect id=\"矩形备份-11\" fill=\"#56ABFB\" x=\"3\" y=\"1\" width=\"2\" height=\"120\" rx=\"1\"></rect>\n                        <g id=\"编组-3\" transform=\"translate(3, 16)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-3\" transform=\"translate(3, 80)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份\" transform=\"translate(3, 32)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-4\" transform=\"translate(3, 96)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-2\" transform=\"translate(3, 48)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-5\" transform=\"translate(3, 112)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组备份\" transform=\"translate(0, 64)\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                    </g>\n                </g>\n            </g>\n            <g id=\"新建视图部件/按钮\" transform=\"translate(217, 12.065)\">\n                <rect id=\"矩形备份-2\" fill=\"#EDF1FC\" x=\"0\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n                <rect id=\"矩形备份-3\" fill=\"#F3F3F3\" x=\"35.1512579\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n            </g>\n            <rect id=\"矩形\" fill=\"#F3F3F3\" x=\"21\" y=\"13.07\" width=\"41\" height=\"8.04\" rx=\"4\"></rect>\n        </g>\n    </g>\n</svg>"
+                },
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "getPSSysImage" : {
+                "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"275px\" height=\"205px\" viewBox=\"0 0 275 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>动态实体编辑视图（左右关系）</title>\n    <g id=\"动态实体编辑视图（左右关系）\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"新建视图部件/表格\" transform=\"translate(-11, 0)\">\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"0\" y=\"0\" width=\"286\" height=\"206\"></rect>\n            <g id=\"编组-2\" transform=\"translate(18, 32)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"261\" height=\"164\"></rect>\n                <g id=\"新建视图/表单窄\" transform=\"translate(84, 3.835)\">\n                    <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"176\" height=\"152\"></rect>\n                    <g id=\"新建视图部件/表单\" transform=\"translate(12, 24.1351)\" fill=\"#F3F3F3\">\n                        <g id=\"编组-5\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份\" transform=\"translate(0, 19.6216)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-2.22044605e-16,1 C-2.8967998e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                        <g id=\"编组-5备份-2\" transform=\"translate(0, 39.2432)\">\n                            <path d=\"M1,0 L65.8221217,0 C66.3744065,-1.01453063e-16 66.8221217,0.44771525 66.8221217,1 L66.8221217,7.91891892 C66.8221217,8.47120367 66.3744065,8.91891892 65.8221217,8.91891892 L1,8.91891892 C0.44771525,8.91891892 6.76353751e-17,8.47120367 0,7.91891892 L-1.11022302e-16,1 C-1.78657678e-16,0.44771525 0.44771525,1.01453063e-16 1,0 Z\" id=\"矩形备份-10\"></path>\n                        </g>\n                    </g>\n                    <g id=\"编组-5\" transform=\"translate(12, 19)\">\n                        <rect id=\"矩形备份-10\" fill=\"#F3F3F3\" x=\"0\" y=\"63.1351351\" width=\"148\" height=\"48\" rx=\"1\"></rect>\n                        <polygon id=\"路径\" fill=\"#F1FBF4\" fill-rule=\"nonzero\" points=\"89 0 147 0 147 58 89 58\"></polygon>\n                        <polygon id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\" points=\"94 52 142 52 129.960866 33.7037148 122.134005 39.3053856 111.233323 24 94 52\"></polygon>\n                        <path d=\"M127.998122,22 C129.78445,22.0007378 131.435443,20.9531258 132.329188,19.2517891 C133.222933,17.5504524 133.223649,15.4538644 132.331066,13.7517895 C131.438483,12.0497146 129.788206,11.0007385 128.001878,11 C125.240455,10.9988593 123.001038,13.460368 123,16.4979339 C122.998963,19.5354998 125.236698,21.9988585 127.998122,22 L127.998122,22 Z\" id=\"路径\" fill=\"#73D897\" fill-rule=\"nonzero\"></path>\n                    </g>\n                </g>\n                <g id=\"新建视图部件/树形控件\" transform=\"translate(13, 3.835)\">\n                    <rect id=\"矩形备份-4\" stroke=\"#F3F3F3\" fill=\"#FFFFFF\" x=\"65.5\" y=\"0.5\" width=\"1\" height=\"151\"></rect>\n                    <g id=\"编组-4\" transform=\"translate(0, 13)\">\n                        <rect id=\"矩形备份-11\" fill=\"#56ABFB\" x=\"3\" y=\"1\" width=\"2\" height=\"120\" rx=\"1\"></rect>\n                        <g id=\"编组-3\" transform=\"translate(3, 16)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-3\" transform=\"translate(3, 80)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份\" transform=\"translate(3, 32)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-4\" transform=\"translate(3, 96)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-2\" transform=\"translate(3, 48)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组-3备份-5\" transform=\"translate(3, 112)\">\n                            <rect id=\"矩形备份-16\" fill=\"#56ABFB\" x=\"0\" y=\"2\" width=\"28\" height=\"2\" rx=\"1\"></rect>\n                            <rect id=\"矩形备份-8\" fill=\"#F3F3F3\" x=\"8\" y=\"0\" width=\"45\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                        <g id=\"编组备份\" transform=\"translate(0, 64)\" fill=\"#F3F3F3\">\n                            <rect id=\"矩形备份-6\" x=\"0\" y=\"0\" width=\"46\" height=\"6\" rx=\"3\"></rect>\n                        </g>\n                    </g>\n                </g>\n            </g>\n            <g id=\"新建视图部件/按钮\" transform=\"translate(217, 12.065)\">\n                <rect id=\"矩形备份-2\" fill=\"#EDF1FC\" x=\"0\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n                <rect id=\"矩形备份-3\" fill=\"#F3F3F3\" x=\"35.1512579\" y=\"0\" width=\"26.8487421\" height=\"11.055\" rx=\"1\"></rect>\n            </g>\n            <rect id=\"矩形\" fill=\"#F3F3F3\" x=\"21\" y=\"13.07\" width=\"41\" height=\"8.04\" rx=\"4\"></rect>\n        </g>\n    </g>\n</svg>"
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            }, {
+              "codeName" : "rawitem1",
+              "contentType" : "HTML",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "htmlContent" : "<p></p>\n<h1>Scrum 项目</h1>\n<p>Scrum 是一种敏捷开发方法，强调团队合作、迭代开发和及时反馈。</p>\n<ul>\n<li>迭代开发</li>\n<li>团队合作</li>\n<li>灵活性和可适应性</li>\n</ul>",
+              "name" : "rawitem1",
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "表单成员[rawitem1][面板显示]逻辑",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "type",
+                  "logicType" : "SINGLE",
+                  "value" : "scrum"
+                } ],
+                "relatedDetailNames" : [ "type" ],
+                "notMode" : false
+              } ],
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "content" : "<p></p>\n<h1>Scrum 项目</h1>\n<p>Scrum 是一种敏捷开发方法，强调团队合作、迭代开发和及时反馈。</p>\n<ul>\n<li>迭代开发</li>\n<li>团队合作</li>\n<li>灵活性和可适应性</li>\n</ul>",
+                "contentType" : "HTML",
+                "name" : "rawitem1",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            }, {
+              "codeName" : "rawitem2",
+              "contentType" : "HTML",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "htmlContent" : "<p>&nbsp;</p>\n<h1>Kanban 项目</h1>\n<p>Kanban 是一种项目管理方法，注重于可视化工作流程和限制在工作中的工作量。</p>\n<ul>\n<li>可视化工作流程</li>\n<li>任务卡片</li>\n<li>实时监控</li>\n</ul>",
+              "name" : "rawitem2",
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "表单成员[rawitem2][面板显示]逻辑",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "type",
+                  "logicType" : "SINGLE",
+                  "value" : "kanban"
+                } ],
+                "relatedDetailNames" : [ "type" ],
+                "notMode" : false
+              } ],
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "content" : "<p>&nbsp;</p>\n<h1>Kanban 项目</h1>\n<p>Kanban 是一种项目管理方法，注重于可视化工作流程和限制在工作中的工作量。</p>\n<ul>\n<li>可视化工作流程</li>\n<li>任务卡片</li>\n<li>实时监控</li>\n</ul>",
+                "contentType" : "HTML",
+                "name" : "rawitem2",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            }, {
+              "codeName" : "rawitem3",
+              "contentType" : "HTML",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "RAWITEM",
+              "htmlContent" : "<p>&nbsp;</p>\n<h1>瀑布 项目</h1>\n<p>瀑布模型是一种传统的项目管理方法，将项目划分为一系列线性的阶段，每个阶段依赖于上一个阶段的完成。</p>\n<ul>\n<li>线性阶段</li>\n<li>详细规划</li>\n<li>阶段依赖</li>\n</ul>",
+              "name" : "rawitem3",
+              "getPSDEFDGroupLogics" : [ {
+                "groupOP" : "AND",
+                "logicCat" : "PANELVISIBLE",
+                "logicType" : "GROUP",
+                "name" : "表单成员[rawitem3][面板显示]逻辑",
+                "getPSDEFDLogics" : [ {
+                  "condOP" : "EQ",
+                  "dEFDName" : "type",
+                  "logicType" : "SINGLE",
+                  "value" : "waterfall"
+                } ],
+                "relatedDetailNames" : [ "type" ],
+                "notMode" : false
+              } ],
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "getPSRawItem" : {
+                "content" : "<p>&nbsp;</p>\n<h1>瀑布 项目</h1>\n<p>瀑布模型是一种传统的项目管理方法，将项目划分为一系列线性的阶段，每个阶段依赖于上一个阶段的完成。</p>\n<ul>\n<li>线性阶段</li>\n<li>详细规划</li>\n<li>阶段依赖</li>\n</ul>",
+                "contentType" : "HTML",
+                "name" : "rawitem3",
+                "rawItemHeight" : -1.0,
+                "rawItemWidth" : -1.0
+              },
+              "rawItemHeight" : -1.0,
+              "rawItemWidth" : -1.0,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColLG" : -1,
+              "childColMD" : 24,
+              "childColSM" : -1,
+              "childColXS" : -1,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "showCaption" : false
+          }, {
+            "codeName" : "grouppanel2",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel2",
+            "getPSDEFormDetails" : [ {
+              "codeName" : "druipart1",
+              "contentHeight" : 500.0,
+              "dRItemTag" : "UsrDRItem1208400957",
+              "detailStyle" : "DEFAULT",
+              "detailType" : "DRUIPART",
+              "height" : 500.0,
+              "name" : "druipart1",
+              "getPSAppView" : {
+                "accUserMode" : 2,
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "DE.LNAME.PROJECT_MEMBER"
+                },
+                "caption" : "项目成员",
+                "codeName" : "project_member_assigned_grid_view",
+                "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_assigned_grid_view.json",
+                "gridRowActiveMode" : 0,
+                "name" : "project_memberassigned_grid_view",
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                },
+                "getPSAppModule" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
+                },
+                "getPSAppViewEngines" : [ {
+                  "engineCat" : "VIEW",
+                  "engineType" : "GridView",
+                  "name" : "engine"
+                } ],
+                "getPSAppViewLogics" : [ {
+                  "eventNames" : "onCreated",
+                  "logicTrigger" : "VIEWEVENT",
+                  "logicType" : "APPDEUILOGIC",
+                  "name" : "LOGIC",
+                  "getPSAppDEUILogic" : {
+                    "modelref" : true,
+                    "id" : "create_default_temp_members"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  }
+                }, {
+                  "logicTrigger" : "CUSTOM",
+                  "logicType" : "APPUILOGIC",
+                  "name" : "newdata",
+                  "getPSAppUILogic" : {
+                    "actionAfterWizard" : "DEFAULT",
+                    "getBatchAddPSAppViews" : [ {
+                      "openMode" : "POPUPMODAL",
+                      "refMode" : "PROJECT",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_mpick_up_view.json",
+                        "viewType" : "DEMPICKUPVIEW"
+                      }
+                    }, {
+                      "openMode" : "POPUPMODAL",
+                      "refMode" : "USER",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+                        "viewType" : "DEMPICKUPVIEW2"
+                      }
+                    } ],
+                    "logicType" : "PREDEFINED",
+                    "name" : "新建数据",
+                    "getNewDataPSAppView" : {
+                      "openMode" : "POPUPMODAL",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_edit_view.json",
+                        "viewType" : "DEEDITVIEW"
+                      }
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                    },
+                    "getPSAppUILogicRefViews" : [ {
+                      "openMode" : "POPUPMODAL",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_edit_view.json",
+                        "viewType" : "DEEDITVIEW"
+                      }
+                    }, {
+                      "openMode" : "POPUPMODAL",
+                      "refMode" : "PROJECT",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_mpick_up_view.json",
+                        "viewType" : "DEMPICKUPVIEW"
+                      }
+                    }, {
+                      "openMode" : "POPUPMODAL",
+                      "refMode" : "USER",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+                        "viewType" : "DEMPICKUPVIEW2"
+                      }
+                    } ],
+                    "viewLogicType" : "APP_NEWDATA",
+                    "batchAddOnly" : false,
+                    "enableBatchAdd" : true,
+                    "enableWizardAdd" : false
+                  }
+                }, {
+                  "logicTrigger" : "CUSTOM",
+                  "logicType" : "APPUILOGIC",
+                  "name" : "opendata",
+                  "getPSAppUILogic" : {
+                    "logicType" : "PREDEFINED",
+                    "name" : "打开数据",
+                    "getOpenDataPSAppView" : {
+                      "openMode" : "POPUPMODAL",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_edit_view.json",
+                        "viewType" : "DEEDITVIEW"
+                      }
+                    },
+                    "getPSAppUILogicRefViews" : [ {
+                      "openMode" : "POPUPMODAL",
+                      "getRefPSAppView" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_edit_view.json",
+                        "viewType" : "DEEDITVIEW"
+                      }
+                    } ],
+                    "viewLogicType" : "APP_OPENDATA",
+                    "editMode" : true
+                  }
+                } ],
+                "getPSAppViewParams" : [ {
+                  "key" : "PROPERTYMAP",
+                  "name" : "PROPERTYMAP",
+                  "value" : "display_name:name"
+                } ],
+                "getPSAppViewRefs" : [ {
+                  "name" : "NEWDATA",
+                  "realOpenMode" : "POPUPMODAL",
+                  "realTitle" : "项目成员编辑视图",
+                  "getRealTitlePSLanguageRes" : {
+                    "lanResTag" : "PAGE.TITLE.PROJECT_MEMBER.EDITVIEW"
+                  },
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_edit_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                }, {
+                  "name" : "EDITDATA",
+                  "realOpenMode" : "POPUPMODAL",
+                  "realTitle" : "项目成员编辑视图",
+                  "getRealTitlePSLanguageRes" : {
+                    "lanResTag" : "PAGE.TITLE.PROJECT_MEMBER.EDITVIEW"
+                  },
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_member_edit_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                }, {
+                  "name" : "MPICKUPVIEW:PROJECT",
+                  "realOpenMode" : "POPUPMODAL",
+                  "realTitle" : "项目数据多项选择视图",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_mpick_up_view.json",
+                    "viewType" : "DEMPICKUPVIEW"
+                  }
+                }, {
+                  "name" : "MPICKUPVIEW:USER",
+                  "realOpenMode" : "POPUPMODAL",
+                  "realTitle" : "选择成员",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+                    "viewType" : "DEMPICKUPVIEW2"
+                  }
+                } ],
+                "getPSControls" : [ {
+                  "codeName" : "assigned_grid_view_toolbar",
+                  "controlType" : "TOOLBAR",
+                  "logicName" : "添加成员",
+                  "name" : "toolbar",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "getPSControlParam" : {
+                    "id" : "TOOLBAR"
+                  },
+                  "getPSDEToolbarItems" : [ {
+                    "getCapPSLanguageRes" : {
+                      "lanResTag" : "TBB.TEXT.*.NEW"
+                    },
+                    "caption" : "添加成员",
+                    "groupExtractMode" : "ITEM",
+                    "itemType" : "DEUIACTION",
+                    "name" : "deuiaction1",
+                    "noPrivDisplayMode" : 2,
+                    "getPSAppViewUIAction" : {
+                      "modelref" : true,
+                      "id" : "toolbar_deuiaction1"
+                    },
+                    "getPSSysImage" : {
+                      "glyph" : "xf067@FontAwesome",
+                      "cssClass" : "fa fa-plus"
+                    },
+                    "getPSUIAction" : {
+                      "getCapPSLanguageRes" : {
+                        "lanResTag" : "TBB.TEXT.*.NEW"
+                      },
+                      "caption" : "新建",
+                      "codeName" : "New",
+                      "fullCodeName" : "New",
+                      "name" : "表格界面_新建操作",
+                      "getPSSysImage" : {
+                        "glyph" : "xf0f6@FontAwesome",
+                        "cssClass" : "fa fa-file-text-o"
+                      },
+                      "predefinedType" : "GRIDVIEW_NEWACTION",
+                      "timeout" : 60000,
+                      "getTooltipPSLanguageRes" : {
+                        "lanResTag" : "TBB.TOOLTIP.*.NEW"
+                      },
+                      "uIActionMode" : "SYS",
+                      "uIActionTag" : "New",
+                      "uIActionType" : "DEUIACTION"
+                    },
+                    "tooltip" : "添加成员",
+                    "getTooltipPSLanguageRes" : {
+                      "lanResTag" : "TBB.TOOLTIP.*.NEW"
+                    },
+                    "showCaption" : true,
+                    "showIcon" : true
+                  } ],
+                  "xDataControlName" : "grid",
+                  "modelid" : "75def7fce022fde4f494ca1d7f5ceb22",
+                  "modeltype" : "PSDETOOLBAR"
+                }, {
+                  "aggMode" : "NONE",
+                  "codeName" : "binding",
+                  "columnEnableFilter" : 2,
+                  "columnEnableLink" : 2,
+                  "controlType" : "GRID",
+                  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member/PSGRIDS/binding.json",
+                  "getFetchPSControlAction" : {
+                    "modelref" : true,
+                    "id" : "fetch",
+                    "actionType" : "DEDATASET",
+                    "name" : "fetch",
+                    "getPSAppDEMethod" : {
+                      "modelref" : true,
+                      "id" : "fetch_default"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                    }
+                  },
+                  "groupMode" : "NONE",
+                  "logicName" : "项目成员绑定表格",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "getPSControlHandler" : {
+                    "getPSHandlerActions" : [ {
+                      "actionName" : "Get",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "READ",
+                      "name" : "load",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "get"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionName" : "Create",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "CREATE",
+                      "name" : "create",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "create"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionName" : "Update",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "UPDATE",
+                      "name" : "update",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "update"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionName" : "Remove",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "DELETE",
+                      "name" : "remove",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "remove"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionName" : "GetDraft",
+                      "actionType" : "DEACTION",
+                      "dataAccessAction" : "CREATE",
+                      "name" : "loaddraft",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "get_draft"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionType" : "DEDATASET",
+                      "name" : "fetch",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "fetch_default"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    } ],
+                    "userDRAction" : "READ",
+                    "enableDEFieldPrivilege" : false,
+                    "id" : "数据表格处理器"
+                  },
+                  "getPSControlParam" : {
+                    "autoLoad" : true,
+                    "showBusyIndicator" : true,
+                    "id" : "GRID"
+                  },
+                  "getPSDEGridColumns" : [ {
+                    "align" : "LEFT",
+                    "cLConvertMode" : "NONE",
+                    "getCapPSLanguageRes" : {
+                      "lanResTag" : "DEF.LNAME.NAME"
+                    },
+                    "caption" : "姓名",
+                    "codeName" : "name",
+                    "columnType" : "DEFGRIDCOLUMN",
+                    "dataItemName" : "name",
+                    "excelCaption" : "姓名",
+                    "name" : "name",
+                    "noPrivDisplayMode" : 1,
+                    "getPSAppDEField" : {
+                      "name" : "NAME",
+                      "codeName" : "name"
+                    },
+                    "width" : 200,
+                    "widthUnit" : "STAR",
+                    "enableSort" : true
+                  }, {
+                    "align" : "CENTER",
+                    "caption" : "操作",
+                    "codeName" : "uagridcolumn1",
+                    "columnType" : "UAGRIDCOLUMN",
+                    "name" : "uagridcolumn1",
+                    "noPrivDisplayMode" : 1,
+                    "getPSDEUIActionGroup" : {
+                      "codeName" : "Usr1220055289",
+                      "name" : "项目成员配置",
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      },
+                      "getPSUIActionGroupDetails" : [ {
+                        "detailType" : "DEUIACTION",
+                        "name" : "u76763f7",
+                        "getPSSysImage" : {
+                          "glyph" : "xf1f8@FontAwesome",
+                          "cssClass" : "fa fa-trash"
+                        },
+                        "getPSUIAction" : {
+                          "actionTarget" : "SINGLEKEY",
+                          "caption" : "移除成员",
+                          "codeName" : "remove_member",
+                          "confirmMsg" : "确认删除该成员？",
+                          "fullCodeName" : "project_member_remove_member",
+                          "name" : "移除成员",
+                          "getPSAppDEMethod" : {
+                            "modelref" : true,
+                            "id" : "remove"
+                          },
+                          "getPSAppDataEntity" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                          },
+                          "refreshMode" : 1,
+                          "successMsg" : "删除成功",
+                          "timeout" : 60000,
+                          "uIActionMode" : "BACKEND",
+                          "uIActionTag" : "remove_member",
+                          "uIActionType" : "DEUIACTION",
+                          "enableConfirm" : true,
+                          "reloadData" : true,
+                          "id" : "remove_member@project_member"
+                        },
+                        "addSeparator" : false,
+                        "showCaption" : false,
+                        "showIcon" : true
+                      } ],
+                      "uniqueTag" : "project_member__Usr1220055289"
+                    },
+                    "width" : 100,
+                    "widthUnit" : "PX",
+                    "enableSort" : false
+                  } ],
+                  "getPSDEGridDataItems" : [ {
+                    "dataType" : 25,
+                    "name" : "name",
+                    "getPSAppDEField" : {
+                      "name" : "NAME",
+                      "codeName" : "name"
+                    }
+                  }, {
+                    "dataType" : 25,
+                    "name" : "srfkey",
+                    "getPSAppDEField" : {
+                      "name" : "ID",
+                      "codeName" : "id"
+                    }
+                  }, {
+                    "dataType" : 25,
+                    "name" : "srfdataaccaction",
+                    "getPSAppDEField" : {
+                      "name" : "ID",
+                      "codeName" : "id"
+                    },
+                    "dataAccessAction" : true
+                  }, {
+                    "dataType" : 25,
+                    "name" : "user_id",
+                    "getPSAppDEField" : {
+                      "name" : "USER_ID",
+                      "codeName" : "user_id"
+                    }
+                  }, {
+                    "dataType" : 25,
+                    "name" : "project_id",
+                    "getPSAppDEField" : {
+                      "name" : "PROJECT_ID",
+                      "codeName" : "project_id"
+                    }
+                  }, {
+                    "dataType" : 25,
+                    "name" : "srfmajortext",
+                    "getPSAppDEField" : {
+                      "name" : "NAME",
+                      "codeName" : "name"
+                    }
+                  } ],
+                  "getPSDEGridEditItems" : [ {
+                    "caption" : "标识",
+                    "codeName" : "srfkey",
+                    "enableCond" : 0,
+                    "ignoreInput" : 0,
+                    "name" : "srfkey",
+                    "getPSAppDEField" : {
+                      "name" : "ID",
+                      "codeName" : "id"
+                    },
+                    "getPSEditor" : {
+                      "editorType" : "HIDDEN",
+                      "name" : "srfkey"
+                    },
+                    "allowEmpty" : true
+                  } ],
+                  "pagingSize" : 20,
+                  "getRemovePSControlAction" : {
+                    "actionName" : "Remove",
+                    "actionType" : "DEACTION",
+                    "dataAccessAction" : "DELETE",
+                    "name" : "remove",
+                    "getPSAppDEMethod" : {
+                      "modelref" : true,
+                      "id" : "remove"
+                    },
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                    }
+                  },
+                  "sortMode" : "REMOTE",
+                  "hasWFDataItems" : false,
+                  "enableColFilter" : false,
+                  "enableCustomized" : true,
+                  "enableGroup" : false,
+                  "enablePagingBar" : false,
+                  "enableRowEdit" : false,
+                  "enableRowEditOrder" : false,
+                  "enableRowNew" : false,
+                  "forceFit" : false,
+                  "hideHeader" : false,
+                  "noSort" : false,
+                  "singleSelect" : true,
+                  "name" : "grid",
+                  "modelid" : "2e1cabf9afb9e4e6705ef8d831814a61",
+                  "modeltype" : "PSDEGRID"
+                }, {
+                  "codeName" : "default",
+                  "controlType" : "SEARCHFORM",
+                  "defaultLabelWidth" : 130,
+                  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member/PSSEARCHFORMS/default.json",
+                  "logicName" : "默认搜索表单",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "getPSControlHandler" : {
+                    "getPSHandlerActions" : [ {
+                      "actionType" : "FILTERACTION",
+                      "name" : "load",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "FilterGet"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionType" : "FILTERACTION",
+                      "name" : "loaddraft",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "FilterGetDraft"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    }, {
+                      "actionType" : "FILTERACTION",
+                      "name" : "search",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "FilterSearch"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                      }
+                    } ],
+                    "enableDEFieldPrivilege" : false,
+                    "id" : "搜索表单处理器"
+                  },
+                  "getPSControlParam" : {
+                    "autoLoad" : true,
+                    "showBusyIndicator" : true,
+                    "id" : "SEARCHFORM"
+                  },
+                  "getPSDEFormPages" : [ {
+                    "getCapPSLanguageRes" : {
+                      "lanResTag" : "CONTROL.DEFORM.PROJECT_MEMBER.DEFAULT.FORMPAGE.FORMPAGE1"
+                    },
+                    "caption" : "常规条件",
+                    "codeName" : "formpage1",
+                    "detailStyle" : "DEFAULT",
+                    "detailType" : "FORMPAGE",
+                    "name" : "formpage1",
+                    "getPSLayout" : {
+                      "childColLG" : -1,
+                      "childColMD" : 24,
+                      "childColSM" : -1,
+                      "childColXS" : -1,
+                      "columnCount" : 24,
+                      "layout" : "TABLE_24COL"
+                    },
+                    "infoGroupMode" : false
+                  } ],
+                  "getPSLayout" : {
+                    "childColLG" : -1,
+                    "childColMD" : 24,
+                    "childColSM" : -1,
+                    "childColXS" : -1,
+                    "columnCount" : 24,
+                    "layout" : "TABLE_24COL"
+                  },
+                  "searchButtonStyle" : "DEFAULT",
+                  "tabHeaderPos" : "TOP",
+                  "enableAdvanceSearch" : false,
+                  "enableAutoSearch" : false,
+                  "enableFilterSave" : false,
+                  "noTabHeader" : true,
+                  "name" : "searchform",
+                  "modelid" : "0355ba2b12962aa6d2ba2ab4b4f76be6",
+                  "modeltype" : "PSDEFORM_SEARCHFORM"
+                }, {
+                  "controlType" : "SEARCHBAR",
+                  "name" : "searchbar",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "getPSControlParam" : {
+                    "id" : "searchbar"
+                  },
+                  "quickGroupCount" : -1,
+                  "quickSearchMode" : 0,
+                  "quickSearchWidth" : 0,
+                  "enableFilter" : false,
+                  "enableGroup" : false,
+                  "enableQuickSearch" : false,
+                  "mobileSearchBar" : false
+                }, {
+                  "getCapPSLanguageRes" : {
+                    "lanResTag" : "DE.LNAME.PROJECT_MEMBER"
+                  },
+                  "caption" : "项目成员",
+                  "codeName" : "assigned_grid_view_captionbar",
+                  "controlType" : "CAPTIONBAR",
+                  "name" : "captionbar",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "getPSControlParam" : { }
+                } ],
+                "getPSDEViewCodeName" : "assigned_grid_view",
+                "getPSDEViewId" : "ab63fa0490f08968a16e8eecd33c0b41",
+                "getPSViewLayoutPanel" : {
+                  "codeName" : "layoutpanel",
+                  "controlStyle" : "APPDEGRIDVIEW",
+                  "controlType" : "VIEWLAYOUTPANEL",
+                  "name" : "layoutpanel",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "getPSControlParam" : { },
+                  "layoutBodyOnly" : true,
+                  "layoutPanel" : true,
+                  "useDefaultLayout" : true
+                },
+                "title" : "项目成员绑定表格视图",
+                "viewStyle" : "DEFAULT",
+                "viewType" : "DEGRIDVIEW",
+                "xDataControlName" : "grid",
+                "enableDP" : true,
+                "enableExport" : true,
+                "enableFilter" : true,
+                "enableImport" : true,
+                "enableRowEdit" : false,
+                "enableSearch" : true,
+                "rowEditDefault" : false,
+                "showCaptionBar" : false,
+                "modelid" : "10a7b0c9b8c30a6bf4b3466d0b10d0c7",
+                "modeltype" : "PSAPPDEVIEW",
+                "getPSAppDERSPaths" : [ [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "project_members",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "user",
+                  "majorDEName" : "USER",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+                  },
+                  "minorDECodeName" : "project_member",
+                  "minorDEName" : "PROJECT_MEMBER",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "name" : "DER1N_PROJECT_MEMBER_USER_USER_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "USER_ID",
+                    "codeName" : "user_id"
+                  },
+                  "rSMode" : 2
+                } ], [ {
+                  "actionRSMode" : 1,
+                  "codeName" : "project_members",
+                  "dataRSMode" : 0,
+                  "majorDECodeName" : "project",
+                  "majorDEName" : "PROJECT",
+                  "getMajorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+                  },
+                  "minorDECodeName" : "project_member",
+                  "minorDEName" : "PROJECT_MEMBER",
+                  "getMinorPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project_member.json"
+                  },
+                  "name" : "DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID",
+                  "getParentPSAppDEField" : {
+                    "name" : "PROJECT_ID",
+                    "codeName" : "project_id"
+                  },
+                  "rSMode" : 2
+                } ] ]
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "height" : 500,
+                "heightMode" : "PX",
+                "layout" : "TABLE_24COL"
+              },
+              "parentDataJO" : {
+                "SRFPARENTTYPE" : "DER1N",
+                "srfparentdename" : "PROJECT",
+                "srfparentmode" : "DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID",
+                "srfparentdefname" : "PROJECT_ID",
+                "SRFDER1NID" : "DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID"
+              },
+              "needSave" : false,
+              "refreshItemsSetParamOnly" : false,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColLG" : -1,
+              "childColMD" : 24,
+              "childColSM" : -1,
+              "childColXS" : -1,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false,
+            "showCaption" : false
+          }, {
+            "caption" : "所属",
+            "codeName" : "belong",
+            "createDV" : "srforgname",
+            "createDVT" : "SESSION",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 0,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "belong",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "belong"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "srforgname",
+            "updateDVT" : "SESSION",
+            "allowEmpty" : false,
+            "hidden" : true,
+            "showCaption" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.NAME"
+            },
+            "caption" : "名称",
+            "codeName" : "name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "name",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "name"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true,
+            "showCaption" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.TYPE"
+            },
+            "caption" : "项目类型",
+            "codeName" : "type",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "type",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "TYPE",
+              "codeName" : "type"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "type"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true,
+            "showCaption" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.IDENTIFIER"
+            },
+            "caption" : "项目标识",
+            "codeName" : "identifier",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "identifier",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "IDENTIFIER",
+              "codeName" : "identifier"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "identifier",
+              "placeHolder" : "大写字母和数字，15个字符范围内"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true,
+            "showCaption" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.DESCRIPTION"
+            },
+            "caption" : "描述",
+            "codeName" : "description",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "description",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "DESCRIPTION",
+              "codeName" : "description"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "description"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true,
+            "showCaption" : true
+          }, {
+            "caption" : "可见范围",
+            "codeName" : "visibility",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "visibility",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VISIBILITY",
+              "codeName" : "visibility"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "visibility"
+            },
+            "getPSLayoutPos" : {
+              "colLG" : 12,
+              "colMD" : 12,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true,
+            "showCaption" : true
+          } ],
+          "getPSLayout" : {
+            "childColLG" : 12,
+            "childColMD" : 12,
+            "childColSM" : -1,
+            "childColXS" : -1,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : false
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.ID"
+          },
+          "caption" : "标识",
+          "codeName" : "id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "ID",
+            "codeName" : "id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColLG" : -1,
+          "childColMD" : 24,
+          "childColSM" : -1,
+          "childColXS" : -1,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false
+      } ],
+      "getPSDEWizardForm" : {
+        "formTag" : "bind_member",
+        "name" : "bind_member",
+        "getPSDEFormName" : "成员绑定",
+        "getPSDEWizardStep" : {
+          "modelref" : true,
+          "id" : "项目成员"
+        },
+        "stepActions" : [ "PREV", "FINISH" ],
+        "firstForm" : false
+      },
+      "getPSLayout" : {
+        "childColLG" : -1,
+        "childColMD" : 24,
+        "childColSM" : -1,
+        "childColXS" : -1,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "tabHeaderPos" : "TOP",
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "UpdateTemp",
+        "actionType" : "DEACTION",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "UpdateTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        }
+      },
+      "noTabHeader" : true,
+      "name" : "wizardpanel_form_bind_member",
+      "modelid" : "fb42af033c08c3b2dbd56e1dfb54509d",
+      "modeltype" : "PSDEFORM_EDITFORM"
+    } ],
+    "getPSDEWizard" : {
+      "codeName" : "project_wizard",
+      "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEWIZARDS/project_wizard.json",
+      "getFirstPSDEWizardForm" : {
+        "modelref" : true,
+        "id" : "fill_info"
+      },
+      "name" : "项目建立向导",
+      "nextCaption" : "下一步",
+      "getPSDEWizardForms" : [ {
+        "formTag" : "fill_info",
+        "name" : "fill_info",
+        "getPSDEFormName" : "新建表单",
+        "getPSDEWizardStep" : {
+          "modelref" : true,
+          "id" : "项目信息"
+        },
+        "stepActions" : [ "NEXT" ],
+        "firstForm" : true
+      }, {
+        "formTag" : "bind_member",
+        "name" : "bind_member",
+        "getPSDEFormName" : "成员绑定",
+        "getPSDEWizardStep" : {
+          "modelref" : true,
+          "id" : "项目成员"
+        },
+        "stepActions" : [ "PREV", "FINISH" ],
+        "firstForm" : false
+      } ],
+      "getPSDEWizardSteps" : [ {
+        "name" : "项目信息",
+        "stepTag" : "fill_info",
+        "title" : "项目信息",
+        "enableLink" : false
+      }, {
+        "name" : "项目成员",
+        "stepTag" : "bind_member",
+        "title" : "项目成员",
+        "enableLink" : false
+      } ],
+      "wizardStyle" : "DEFAULT",
+      "stateWizard" : false
+    },
+    "wizardStyle" : "DEFAULT",
+    "showActionBar" : true,
+    "showStepBar" : true,
+    "name" : "wizardpanel",
+    "modelid" : "950a58bf96f76e531e417406c6c153c4",
+    "modeltype" : "PSDEWIZARDPANEL"
+  }, {
+    "caption" : "新建项目",
+    "codeName" : "create_wizard_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "create_wizard_view",
+  "getPSDEViewId" : "f4f14ad62e8e00cead6b625feaf20634",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDEWIZARDVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "新建项目",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DEWIZARDVIEW",
+  "width" : 1024,
+  "enableDP" : true,
+  "modelid" : "9e1ef6ce3801e0943ddb0a8c83e9a9f8",
+  "modeltype" : "PSAPPDEVIEW"
+}

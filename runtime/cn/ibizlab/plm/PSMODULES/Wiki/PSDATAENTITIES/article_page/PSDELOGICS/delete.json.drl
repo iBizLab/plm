@@ -1,0 +1,119 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.delete;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagedeletedefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagedeletefor_temp_obj;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagedeleteselected_filter;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagedeleteselected_page;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagedeletebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[更新删除状态]
+            rule "deaction1"
+            ruleflow-group "article_pagedeletedeaction1"
+            when
+            then
+                        article_pageservice.update(article_pagedeletedefault);
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除最近访问]
+            rule "rawsqlcall1"
+            ruleflow-group "article_pagedeleterawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",article_pagedeletedefault.get("id"));
+    String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_subtype='page'";
+                        iBzSysArticle_pageDefaultService.execute(strSql,param);//SQL调用
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "article_pagedeleteprepareparam1"
+            when
+            then
+                            article_pagedeleteselected_filter.set("n_parent_id_eq",article_pagedeletedefault.get("id"));
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询下级页面]
+            rule "dedataset1"
+            ruleflow-group "article_pagedeletededataset1"
+            when
+            then
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam2"
+            ruleflow-group "article_pagedeleteprepareparam2"
+            when
+            then
+                            article_pagedeletedefault.set("isdeleted","1");
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "article_pagedeleteloopsubcall1"
+            when
+            then
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[递归调用]
+            rule "delogic1"
+            ruleflow-group "article_pagedeletedelogic1"
+            when
+            then
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pagedeleteend1"
+            when
+            then
+                        update(article_pagedeletedefault);//更新fact中变量值
+                        update(article_pagedeletefor_temp_obj);//更新fact中变量值
+                        update(article_pagedeleteselected_filter);//更新fact中变量值
+                        update(article_pagedeleteselected_page);//更新fact中变量值
+            end

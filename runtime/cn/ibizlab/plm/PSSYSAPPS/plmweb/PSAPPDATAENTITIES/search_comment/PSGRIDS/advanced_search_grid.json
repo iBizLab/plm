@@ -1,0 +1,236 @@
+{
+  "aggMode" : "NONE",
+  "codeName" : "advanced_search_grid",
+  "columnEnableFilter" : 2,
+  "columnEnableLink" : 2,
+  "controlType" : "GRID",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment/PSGRIDS/advanced_search_grid.json",
+  "getFetchPSControlAction" : {
+    "modelref" : true,
+    "id" : "fetch",
+    "actionType" : "DEDATASET",
+    "name" : "fetch",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fetch_advanced_search"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+    }
+  },
+  "groupMode" : "NONE",
+  "logicName" : "高级搜索_表格",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+  },
+  "getPSDEGridColumns" : [ {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "内容",
+    "getCellPSSysCss" : {
+      "cssName" : "normal-rich-text"
+    },
+    "codeName" : "content",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "content",
+    "excelCaption" : "内容",
+    "name" : "content",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "CONTENT",
+      "codeName" : "content"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "编号",
+    "codeName" : "principal_identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "principal_identifier",
+    "excelCaption" : "编号",
+    "name" : "principal_identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_IDENTIFIER",
+      "codeName" : "principal_identifier"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "事项",
+    "codeName" : "principal_title",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "principal_title",
+    "excelCaption" : "事项",
+    "name" : "principal_title",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_TITLE",
+      "codeName" : "principal_title"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "caption" : "所属",
+    "codeName" : "principal_parent_name",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "principal_parent_name",
+    "excelCaption" : "所属",
+    "name" : "principal_parent_name",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_PARENT_NAME",
+      "codeName" : "principal_parent_name"
+    },
+    "getPSDEUIAction" : {
+      "actionTarget" : "SINGLEDATA",
+      "caption" : "打开所属主页视图",
+      "codeName" : "open_parent_index_view",
+      "frontProcessType" : "OTHER",
+      "fullCodeName" : "search_comment_open_parent_index_view",
+      "memo" : "跳转至项目/产品/测试库/空间首页视图",
+      "name" : "打开所属主页视图",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "open_parent_index_view"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+      },
+      "timeout" : 60000,
+      "uIActionMode" : "FRONT",
+      "uIActionTag" : "open_parent_index_view",
+      "uIActionType" : "DEUIACTION",
+      "uILogicAttachMode" : "REPLACE",
+      "id" : "open_parent_index_view@search_comment"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : false
+  } ],
+  "getPSDEGridDataItems" : [ {
+    "dataType" : 21,
+    "name" : "content",
+    "getPSAppDEField" : {
+      "name" : "CONTENT",
+      "codeName" : "content"
+    },
+    "scriptCode" : "data.content",
+    "customCode" : true
+  }, {
+    "dataType" : 25,
+    "name" : "principal_identifier",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_IDENTIFIER",
+      "codeName" : "principal_identifier"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_title",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_TITLE",
+      "codeName" : "principal_title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_parent_name",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_PARENT_NAME",
+      "codeName" : "principal_parent_name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_id",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "principal_parent_id",
+    "getPSAppDEField" : {
+      "name" : "PRINCIPAL_PARENT_ID",
+      "codeName" : "principal_parent_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "srfdataaccaction",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "dataAccessAction" : true
+  }, {
+    "dataType" : 25,
+    "name" : "srfmajortext",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    }
+  } ],
+  "getPSDEGridEditItems" : [ {
+    "caption" : "标识",
+    "codeName" : "srfkey",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "srfkey",
+    "getPSAppDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getPSEditor" : {
+      "editorType" : "HIDDEN",
+      "name" : "srfkey"
+    },
+    "allowEmpty" : true
+  } ],
+  "pagingSize" : 20,
+  "getRemovePSControlAction" : {
+    "actionName" : "Remove",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "DELETE",
+    "name" : "remove",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "Remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/search_comment.json"
+    }
+  },
+  "sortMode" : "REMOTE",
+  "hasWFDataItems" : false,
+  "enableColFilter" : false,
+  "enableCustomized" : false,
+  "enableGroup" : false,
+  "enablePagingBar" : true,
+  "enableRowEdit" : false,
+  "enableRowEditOrder" : false,
+  "enableRowNew" : false,
+  "forceFit" : false,
+  "hideHeader" : false,
+  "noSort" : false,
+  "singleSelect" : true,
+  "modelid" : "d5adfbbea66bb32e6de146c70758424c",
+  "modeltype" : "PSDEGRID"
+}

@@ -404,6 +404,11 @@ font-size: 16px;
 .big-icon .el-button .ibiz-panel-button-content--caption {
   display: none;
 }
+    .average-toolbar {
+    position: relative;
+    justify-content: space-evenly;
+    height: 48px;
+}
     .vertical-divider .ibiz-rawitem {
   border-left: 1px solid var(--ibiz-color-border);
   height: 1em;
@@ -417,6 +422,43 @@ font-size: 16px;
 
     .recentdata-custom>div>div>div:nth-child(2) {
 flex: 1;
+}
+    .ibiz-control-toolbar__item--primary .el-button.el-button--primary {
+  color: var(--ibiz-color-primary);
+  background-color: var(--ibiz-color-primary-light-default);
+}
+.ibiz-control-toolbar__item--primary .el-button.el-button--primary:hover {
+  color: var(--ibiz-color-primary-hover);
+  background-color: var(--ibiz-color-primary-light-hover);
+}
+
+    .ibiz-control-toolbar--user .el-button {
+  padding: 8px;
+  color: var(--ibiz-color-text-2);
+  background-color: transparent;
+}
+.ibiz-control-toolbar--user .el-button:hover {
+  color: var(--ibiz-color-primary);
+  background-color: var(--ibiz-color-primary-light-default);
+}
+.ibiz-control-toolbar--user .ibiz-control-toolbar-submenu.is-active .el-sub-menu__title {
+    border-bottom: none;
+}
+.ibiz-control-toolbar--user .ibiz-control-toolbar-submenu .el-sub-menu__title {
+  color: var(--ibiz-color-text-3);
+  background-color: transparent;
+}
+.ibiz-control-toolbar--user .ibiz-control-toolbar__menu button.el-button:focus-visible{
+  outline: none;
+}
+.ibiz-control-toolbar-submenu-popper--user {
+  background: transparent;
+}
+.ibiz-control-toolbar-submenu-popper--user .el-button {
+  color: var(--ibiz-color-text-3);
+}
+.ibiz-control-toolbar-submenu-popper--user .el-menu .el-menu-item:hover {
+  background-color: var(--ibiz-color-bg-0);
 }
     /* 面板分页样式 */
 .workload-tab-head .ibiz-panel-container--view_tabexppanel {
@@ -459,7 +501,7 @@ width: 100%;
 }
 /* 搜索表单宽度 继承父元素宽度，当分页部件定位后窗口缩放实现自适应效果 */
 .workload-tab-head .ibiz-nav-pos .ibiz-panel-container--view_searchform:nth-of-type(1) {
-width: 16.65%;
+width: 16.66%;
 }
     /* 关系分页部件定位样式 */
 .workload-tab-head .ibiz-panel-container--view_tabexppanel {
@@ -489,12 +531,53 @@ left: 0;
 width: auto;
 position: absolute;
 top: 0;
-left: calc(16.65% + 68px);
+left: calc(16.65% + 81px);
 }
-    .workloadlog-searchform-border {
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid var(--ibiz-color-border);
-  padding-bottom: 7px;
+    
+/* 快捷搜索部件样式 */
+.workload-tab-head .ibiz-nav-pos .ibiz-panel-container--view_header_right .ibiz-panel-ctrl-pos--searchbar:nth-of-type(1){
+display: flex;
+align-items: center;
+}
+.workload-tab-head .ibiz-nav-pos .ibiz-panel-container--view_header_right .ibiz-control-searchbar {
+height: auto;
+}
+/* 边距调整 */
+.workload-tab-head .ibiz-nav-pos .ibiz-panel-container--view_header_right .ibiz-control-searchbar-quick-search {
+margin-left: 0;
+}
+.workload-tab-head .ibiz-nav-pos .ibiz-panel-container--view_header_right .ibiz-search-groups ~ .ibiz-control-searchbar-quick-search {
+margin-left: var(--ibiz-spacing-base-tight);
+}
+    /* 视图头部自适应宽度 将自定义布局后丢失的继承宽度补上 */
+.workload_log_head .ibiz-panel-view-header--view_header>div>div:nth-child(1),
+.workload_log_head .ibiz-panel-container--view_header_right>div>div:nth-child(1),
+.workload_log_head .ibiz-panel-container--view_searchform:nth-of-type(1) .ibiz-row,
+.workload_log_head .ibiz-panel-container--view_searchform:nth-of-type(1) .ibiz-row>.ibiz-col {
+width: 100%;
+}
+/* 视图头部样式 */
+.workload_log_head .ibiz-panel-view-header--view_header {
+position: relative;
+margin-top: 1px;
+}
+.workload_log_head .ibiz-panel-container--view_header_left:nth-of-type(1){
+position: absolute;
+top: 0;
+right: 0;
+}
+.workload_log_head .ibiz-panel-container--view_header_right:nth-of-type(1) {
+position: absolute;
+left: 0;
+}
+.workload_log_head .ibiz-control-searchform {
+padding: 0;
+}
+/* 分页搜索子视图左侧样式 */
+.workload_log_head .ibiz-panel-container--view_header_left:nth-of-type(1){
+padding-right: 16px;
+width: auto;
+height: 63px;
 }
     .todo-tips{
     height: 80px;
@@ -513,6 +596,7 @@ left: calc(16.65% + 68px);
 }
     /* 移入移出效果 */
 .ibiz-form-button--style2 .el-button,
+.ibiz-control-toolbar__item--style2 .el-button,
 .ibiz-panel-button--style2 .el-button {
 min-height: var(--ibiz-height-control-default);
 min-width: var(--ibiz-height-control-default);
@@ -523,6 +607,7 @@ font-size: var(--ibiz-font-size-header-6);
 padding: 8px;
 }
 .ibiz-form-button--style2 .el-button:hover,
+.ibiz-control-toolbar__item--style2 .el-button:hover,
 .ibiz-panel-button--style2 .el-button:hover {
 background-color: var(--ibiz-color-primary-light-default);
 color: var(--ibiz-color-primary);
@@ -534,6 +619,7 @@ width: var(--ibiz-height-control-default) ;
 
 /* 按钮间隔 */
 .ibiz-form-button--style2.ibiz-form-button--style2,
+.ibiz-control-toolbar__item--style2 .el-button,
 .ibiz-panel-button--style2.ibiz-panel-button--style2 {
 padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-super-tight);
 }
@@ -675,6 +761,28 @@ overflow: initial;
     top: -32px;
     right: -50px;
 }
+    .stencil_center_title{
+    
+}
+    /* 视图标题及分割线样式 */
+.stencil-center-view .ibiz-split-pane--right .ibiz-panel-rawitem--page_title {
+height: 64px;
+line-height: 64px;
+text-align: center;
+border-bottom: 1px solid var(--ibiz-color-border);
+}
+.stencil-center-view .ibiz-split-pane--right .ibiz-panel-rawitem--page_title .ibiz-rawitem .ibiz-rawitem__text {
+font-size: 20px;
+font-weight: 600;
+}
+/* 搜索栏自适应 */
+.stencil-center-view .ibiz-split-pane--right .ibiz-control-listexpbar {
+min-width: 100%;
+}
+.stencil-center-view .ibiz-split-pane--right .ibiz-panel-container--control_header_right>.ibiz-row>.ibiz-col,
+.stencil-center-view .ibiz-split-pane--right .ibiz-panel-exp-header--control_header .ibiz-control-searchbar {
+width: 100%;
+}
     .orange-span{
     width: 58px;
     height: 24px;
@@ -760,7 +868,8 @@ background: #ccf;
 .user-info-view-content .ibiz-panel-container--user_info_header .ibiz-single-data-container--user_info_avatar {
 position: relative;
 }
-.user-info-view-content .ibiz-panel-container--user_info_header .ibiz-single-data-container--user_info_avatar .ibiz-panel-field--user_name {
+.user-info-view-content .ibiz-panel-container--user_info_header .ibiz-single-data-container--user_info_avatar .ibiz-panel-field--user_name,
+.user-info-view-content .ibiz-panel-container--user_info_header .ibiz-single-data-container--user_info_avatar .ibiz-panel-field--user_avatar {
 width: auto;
 height: auto;
 position: absolute;
@@ -903,23 +1012,6 @@ content-visibility: hidden;
 }
 .space-page-view .ibiz-control-form img {
     max-width: 100%;
-}
-    .space-page-view .ibiz-control-toolbar .ibiz-control-toolbar__item:not(:first-child) button {
-	color: var(--ibiz-color-text-3);
-	background-color: transparent;
-    padding: 8px;
-}
-.space-page-view .ibiz-control-toolbar .ibiz-control-toolbar__item:not(:first-child) button:hover {
-	color: var(--ibiz-color-primary);
-	background-color: var(--ibiz-color-primary-light-default);
-}
-.space-page-view .ibiz-control-toolbar .ibiz-control-toolbar__item:first-child button {
-	color: var(--ibiz-color-primary);
-	background-color: var(--ibiz-color-primary-light-default);
-}
-.space-page-view .ibiz-control-toolbar .ibiz-control-toolbar__item:first-child button:hover {
-	color: var(--ibiz-color-primary-hover);
-	background-color: var(--ibiz-color-primary-light-hover);
 }
     .purple-span{
 width: 58px;
@@ -1117,6 +1209,9 @@ color: var(--ibiz-color-black);
     .index-recentdata-custom .recentdata-screen-auto-item .ibiz-panel-container--container1 > div > div:nth-child(3) .ibiz-span {
 color: var(--ibiz-color-text-3);
 }
+.index-recentdata-custom .recentdata-screen-auto-item .ibiz-panel-container--container1 > div > div:nth-child(1) .ibiz-span .ibiz-code-list__item {
+font-size: 0;
+}
 /* 设置边距 */
 .index-recentdata-custom .recentdata-screen-auto-item .ibiz-panel-container--container1 > div > div:nth-child(2)  {
 margin-top: var(--ibiz-spacing-base);
@@ -1125,4 +1220,38 @@ margin-top: var(--ibiz-spacing-base);
 padding-top: 22px;
 padding-bottom: 0px;
 }
+    .advancedSearch .ibiz-form-group-header {
+    border-bottom: none;
+  }
+.advancedSearch .ibiz-teleport-placeholder {
+    height: 100%;
+    background-color: #fbfbfb;
+    border-left: 1px solid #eee;
+}
+.advancedSearch .ibiz-control-searchbar-quick-search{
+    width: 100%;
+    margin:0 32px;
+}
+.advancedSearch .ibiz-panel-view-header {
+    border-bottom:none;
+}
+.advancedSearch .ibiz-control-captionbar-caption::before{
+    display:none;
+}
+.advancedSearch .ibiz-control-tabexppanel .el-tabs.el-tabs--top {
+    padding: 0 32px;
+}
+.advancedSearch .ibiz-panel-view-content {
+    padding: 8px 32px 0px 32px;
+}
+.advancedSearch .el-input.el-input-group.el-input-group--prepend.el-input--suffix.ibiz-control-searchbar-quick-search{
+    --el-input-height:46px;
+}
+.advancedSearch .ibiz-control-searchbar-quick-search .el-input__wrapper {
+    border-radius: 4px;
+}
+.advancedSearch .ibiz-control-searchbar-quick-search .el-input__inner {
+     font-size:18px;
+ }
+
 /***    END:系统样式表    ***/

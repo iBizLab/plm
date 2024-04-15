@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.testmgmt.logic.librarylogic.delete;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarydeletedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarydeleteupdate_obj;
+                    global cn.ibizlab.plm.core.testmgmt.service.IlibraryService libraryservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IlibraryService iBzSysLibraryDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "librarydeletebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置删除状态]
+            rule "prepareparam1"
+            ruleflow-group "librarydeleteprepareparam1"
+            when
+            then
+                            librarydeleteupdate_obj.set("isdeleted","1");
+                            librarydeleteupdate_obj.set("id",librarydeletedefault.get("id"));
+                        update(librarydeletedefault);//更新fact中变量值
+                        update(librarydeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除]
+            rule "deaction1"
+            ruleflow-group "librarydeletedeaction1"
+            when
+            then
+                        libraryservice.update(librarydeleteupdate_obj);
+                        update(librarydeletedefault);//更新fact中变量值
+                        update(librarydeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除最近访问]
+            rule "rawsqlcall1"
+            ruleflow-group "librarydeleterawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",librarydeletedefault.get("id"));
+    String strSql="update recent set IS_DELETED=1 where owner_id=#{et.param0} and owner_subtype='library'";
+                        iBzSysLibraryDefaultService.execute(strSql,param);//SQL调用
+                        update(librarydeletedefault);//更新fact中变量值
+                        update(librarydeleteupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "librarydeleteend1"
+            when
+            then
+                        update(librarydeletedefault);//更新fact中变量值
+                        update(librarydeleteupdate_obj);//更新fact中变量值
+            end

@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_state;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchange_statedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchange_statefor_temp_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemchange_statesrfactionparam;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemchange_statebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "work_itemchange_statebindparam1"
+            when
+            then
+                        update(work_itemchange_statedefault);//更新fact中变量值
+                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemchange_stateloopsubcall1"
+            when
+            then
+                        update(work_itemchange_statedefault);//更新fact中变量值
+                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "work_itemchange_stateprepareparam2"
+            when
+            then
+                            work_itemchange_statedefault.set("state",work_itemchange_statefor_temp_obj.get("state"));
+                        update(work_itemchange_statedefault);//更新fact中变量值
+                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更状态]
+            rule "deaction1"
+            ruleflow-group "work_itemchange_statedeaction1"
+            when
+            then
+                        work_itemservice.update(work_itemchange_statedefault);
+                        update(work_itemchange_statedefault);//更新fact中变量值
+                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
+            end

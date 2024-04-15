@@ -3,6 +3,324 @@
   "aPIType" : "RESTFUL",
   "getAllPSSubSysServiceAPIDEs" : [ {
     "aPIMode" : 1,
+    "codeName" : "AuthLog",
+    "logicName" : "认证日志",
+    "name" : "SYS_AUTHLOG",
+    "getPSSubSysServiceAPIDEFields" : [ {
+      "codeName" : "LogId",
+      "length" : 100,
+      "logicName" : "标识",
+      "name" : "LOGID",
+      "stdDataType" : 25,
+      "allowEmpty" : false,
+      "keyDEField" : true
+    }, {
+      "codeName" : "UserName",
+      "length" : 100,
+      "logicName" : "用户全局名",
+      "name" : "USERNAME",
+      "stdDataType" : 25,
+      "majorDEField" : true
+    }, {
+      "codeName" : "PersonName",
+      "length" : 100,
+      "logicName" : "用户名称",
+      "name" : "PERSONNAME",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "Domain",
+      "length" : 100,
+      "logicName" : "域",
+      "name" : "DOMAINS",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "AuthTime",
+      "logicName" : "认证时间",
+      "name" : "AUTHTIME",
+      "stdDataType" : 5
+    }, {
+      "codeName" : "IPAddr",
+      "length" : 100,
+      "logicName" : "IP地址",
+      "name" : "IPADDR",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "MacAddr",
+      "length" : 100,
+      "logicName" : "MAC地址",
+      "name" : "MACADDR",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "UserAgent",
+      "length" : 100,
+      "logicName" : "客户端",
+      "name" : "USERAGENT",
+      "stdDataType" : 25
+    }, {
+      "codeName" : "AuthCode",
+      "length" : 15,
+      "logicName" : "认证结果",
+      "name" : "AUTHCODE",
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSCODELISTS/AuthCode.json"
+      },
+      "stdDataType" : 25
+    } ],
+    "getPSSubSysServiceAPIDEMethods" : [ {
+      "actionType" : "DEACTION",
+      "codeName" : "CheckKey",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "CheckKey",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "SIMPLE"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__CHECKKEY"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Create",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "Create",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__CREATE",
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Get",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "Get",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "LogId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELD"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "GET",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__GET",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "GetDraft",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "GetDraft",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "GET",
+      "requestParamType" : "NONE",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__GETDRAFT"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Remove",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "Remove",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "getKeyPSSubSysServiceAPIField" : {
+          "modelref" : true,
+          "id" : "LogId"
+        },
+        "name" : "输入对象",
+        "type" : "KEYFIELDS"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "DELETE",
+      "requestParamType" : "FIELD",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__REMOVE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Save",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "Save",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "POST",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__SAVE"
+    }, {
+      "actionType" : "DEACTION",
+      "codeName" : "Update",
+      "keyField" : "LOGID",
+      "methodType" : "DEACTION",
+      "name" : "Update",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "type" : "VOID"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "PUT",
+      "requestParamType" : "ENTITY",
+      "uniqueTag" : "SYS_AUTHLOG__DEACTION__UPDATE",
+      "needResourceKey" : true,
+      "noServiceCodeName" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchDefault",
+      "keyField" : "LOGID",
+      "methodType" : "FETCH",
+      "name" : "DEFAULT",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_AUTHLOG__FETCH__DEFAULT"
+    } ],
+    "major" : true
+  }, {
+    "aPIMode" : 1,
     "codeName" : "SysDepartment",
     "logicName" : "部门",
     "name" : "SYS_DEPT",
@@ -445,8 +763,7 @@
       "requestField" : "DEPTID",
       "requestMethod" : "POST",
       "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_DEPT__DEACTION__SAVE",
-      "needResourceKey" : true
+      "uniqueTag" : "SYS_DEPT__DEACTION__SAVE"
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -600,8 +917,7 @@
       "length" : 100,
       "logicName" : "单位",
       "name" : "ORGID",
-      "stdDataType" : 25,
-      "allowEmpty" : false
+      "stdDataType" : 25
     }, {
       "codeName" : "OrgName",
       "length" : 100,
@@ -1118,8 +1434,7 @@
       "requestField" : "USERID",
       "requestMethod" : "POST",
       "requestParamType" : "ENTITY",
-      "uniqueTag" : "SYS_EMP__DEACTION__SAVE",
-      "needResourceKey" : true
+      "uniqueTag" : "SYS_EMP__DEACTION__SAVE"
     }, {
       "actionType" : "DEACTION",
       "codeName" : "Update",
@@ -1183,10 +1498,134 @@
       "requestField" : "USERID",
       "requestMethod" : "POST",
       "uniqueTag" : "SYS_EMP__FETCH__DEFAULT"
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchUser",
+      "keyField" : "USERID",
+      "methodType" : "FETCH",
+      "name" : "user",
+      "getPSDECodeName" : "SysEmployee",
+      "getPSDELogicName" : "人员",
+      "getPSDEName" : "SYS_EMP",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "SysEmployee"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysEmployeeFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "SysEmployeeDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "USERID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_EMP__FETCH__USER"
     } ],
     "major" : true
   } ],
   "getAllPSSubSysServiceAPIDTOs" : [ {
+    "codeName" : "AuthLogDTO",
+    "name" : "AuthLogDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "LogId",
+      "name" : "LogId",
+      "orderValue" : 1,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "UserName",
+      "name" : "UserName",
+      "orderValue" : 2,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "PersonName",
+      "name" : "PersonName",
+      "orderValue" : 3,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "Domain",
+      "name" : "Domain",
+      "orderValue" : 4,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "AuthTime",
+      "name" : "AuthTime",
+      "orderValue" : 5,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "IPAddr",
+      "name" : "IPAddr",
+      "orderValue" : 6,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "MacAddr",
+      "name" : "MacAddr",
+      "orderValue" : 7,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "UserAgent",
+      "name" : "UserAgent",
+      "orderValue" : 9,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "AuthCode",
+      "name" : "AuthCode",
+      "orderValue" : 10,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
+    "codeName" : "AuthLogFilterDTO",
+    "name" : "AuthLogFilterDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "N_AUTHCODE_EQ",
+      "name" : "N_AUTHCODE_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_LOGID_EQ",
+      "name" : "N_LOGID_EQ",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "N_USERNAME_LIKE",
+      "name" : "N_USERNAME_LIKE",
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
     "codeName" : "SysDepartmentDTO",
     "name" : "SysDepartmentDTO",
     "getPSSubSysServiceAPIDTOFields" : [ {
@@ -1603,8 +2042,7 @@
       "orderValue" : 15,
       "sourceType" : "DEMETHODDTOFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
+      "type" : "SIMPLE"
     }, {
       "codeName" : "OrgName",
       "name" : "OrgName",

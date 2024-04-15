@@ -1,0 +1,145 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.others_relation_work_item;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemothers_relation_work_itemdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemothers_relation_work_itemfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation work_itemothers_relation_work_itemforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.relation work_itemothers_relation_work_itemreverse_relation_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemothers_relation_work_itemselectdata;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemothers_relation_work_itembegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "work_itemothers_relation_work_itembindparam1"
+            when
+            then
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemothers_relation_work_itemloopsubcall1"
+            when
+            then
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "work_itemothers_relation_work_itemrenewparam1"
+            when
+            then
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam2"
+            ruleflow-group "work_itemothers_relation_work_itemrenewparam2"
+            when
+            then
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam1"
+            when
+            then
+                            work_itemothers_relation_work_itemforward_relation_obj.set("principalid",work_itemothers_relation_work_itemdefault.get("principal_id"));
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("principalid",work_itemothers_relation_work_itemfor_temp_obj.get("id"));
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("targetid",work_itemothers_relation_work_itemdefault.get("principal_id"));
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("principaltype",work_itemothers_relation_work_itemdefault.get("target_type"));
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("targettype",work_itemothers_relation_work_itemdefault.get("principal_type"));
+                            work_itemothers_relation_work_itemforward_relation_obj.set("principaltype",work_itemothers_relation_work_itemdefault.get("principal_type"));
+                            work_itemothers_relation_work_itemforward_relation_obj.set("targettype",work_itemothers_relation_work_itemdefault.get("target_type"));
+                            work_itemothers_relation_work_itemforward_relation_obj.set("targetid",work_itemothers_relation_work_itemfor_temp_obj.get("id"));
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[存在owner_id]
+            rule "prepareparam2"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam2"
+            when
+            then
+                            work_itemothers_relation_work_itemforward_relation_obj.set("targetid",work_itemothers_relation_work_itemfor_temp_obj.get("owner_id"));
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("principalid",work_itemothers_relation_work_itemfor_temp_obj.get("owner_id"));
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemothers_relation_work_itemend1"
+            when
+            then
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "work_itemothers_relation_work_itemdeaction1"
+            when
+            then
+                        relationservice.save(work_itemothers_relation_work_itemforward_relation_obj);
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "work_itemothers_relation_work_itemdeaction2"
+            when
+            then
+                        relationservice.save(work_itemothers_relation_work_itemreverse_relation_obj);
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end

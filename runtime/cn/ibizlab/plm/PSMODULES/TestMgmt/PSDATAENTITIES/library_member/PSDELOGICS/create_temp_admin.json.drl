@@ -1,0 +1,41 @@
+package cn.ibizlab.plm.testmgmt.logic.library_memberlogic.create_temp_admin;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member library_membercreate_temp_admindefault;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService library_memberservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService iBzSysLibrary_memberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "library_membercreate_temp_adminbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "library_membercreate_temp_adminprepareparam1"
+            when
+            then
+                            library_membercreate_temp_admindefault.set("roleid","admin");
+                                library_membercreate_temp_admindefault.set("userid",curuser.getSessionParams().get("srfpersonid"));
+                                library_membercreate_temp_admindefault.set("name",curuser.getSessionParams().get("srfpersonname"));
+                        update(library_membercreate_temp_admindefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建测试库临时管理员]
+            rule "deaction1"
+            ruleflow-group "library_membercreate_temp_admindeaction1"
+            when
+            then
+                        library_memberservice.createTemp(library_membercreate_temp_admindefault);
+                        update(library_membercreate_temp_admindefault);//更新fact中变量值
+            end

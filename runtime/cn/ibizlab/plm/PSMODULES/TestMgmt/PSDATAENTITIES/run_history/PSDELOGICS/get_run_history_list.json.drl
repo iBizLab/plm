@@ -1,0 +1,42 @@
+package cn.ibizlab.plm.testmgmt.logic.run_historylogic.get_run_history_list;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run_history run_historyget_run_history_listdefault;
+                global java.util.Map run_historyget_run_history_listrun;
+                global cn.ibizlab.plm.core.testmgmt.domain.run_history run_historyget_run_history_listrun_history_page;
+        global cn.ibizlab.plm.core.testmgmt.service.Irun_historyService iBzSysRun_historyDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "run_historyget_run_history_listbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "run_historyget_run_history_listend1"
+            when
+            then
+                        update(run_historyget_run_history_listdefault);//更新fact中变量值
+                        update(run_historyget_run_history_listrun);//更新fact中变量值
+                        update(run_historyget_run_history_listrun_history_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "run_historyget_run_history_listdebugparam1"
+            when
+            then
+                        update(run_historyget_run_history_listdefault);//更新fact中变量值
+                        update(run_historyget_run_history_listrun);//更新fact中变量值
+                        update(run_historyget_run_history_listrun_history_page);//更新fact中变量值
+            end

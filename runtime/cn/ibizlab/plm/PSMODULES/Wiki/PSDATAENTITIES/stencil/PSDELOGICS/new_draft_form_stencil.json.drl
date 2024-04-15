@@ -1,0 +1,102 @@
+package cn.ibizlab.plm.wiki.logic.stencillogic.new_draft_form_stencil;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.stencil stencilnew_draft_form_stencildefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page stencilnew_draft_form_stencilpage_info;
+                global cn.ibizlab.plm.core.wiki.domain.stencil stencilnew_draft_form_stencilstencil_info;
+                    global cn.ibizlab.plm.core.wiki.service.IstencilService stencilservice;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.IstencilService iBzSysStencilDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "stencilnew_draft_form_stencilbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "stencilnew_draft_form_stencilend1"
+            when
+            then
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "stencilnew_draft_form_stencildebugparam2"
+            when
+            then
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取模板id]
+            rule "prepareparam2"
+            ruleflow-group "stencilnew_draft_form_stencilprepareparam2"
+            when
+            then
+                            stencilnew_draft_form_stencilstencil_info.set("id",stencilnew_draft_form_stencildefault.get("id"));
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[根据模板id获取模板信息]
+            rule "deaction1"
+            ruleflow-group "stencilnew_draft_form_stencildeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(stencilservice.get(stencilnew_draft_form_stencilstencil_info.getId()),stencilnew_draft_form_stencilstencil_info);
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置返回数据]
+            rule "prepareparam1"
+            ruleflow-group "stencilnew_draft_form_stencilprepareparam1"
+            when
+            then
+                            stencilnew_draft_form_stencilpage_info.set("content",stencilnew_draft_form_stencilstencil_info.get("content"));
+                            stencilnew_draft_form_stencilpage_info.set("spaceid",stencilnew_draft_form_stencildefault.get("spaceid"));
+                            stencilnew_draft_form_stencilpage_info.set("name",stencilnew_draft_form_stencilstencil_info.get("name"));
+                            stencilnew_draft_form_stencilpage_info.set("type","1");
+                            stencilnew_draft_form_stencilpage_info.set("name",stencilnew_draft_form_stencilstencil_info.get("name"));
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建草稿页面]
+            rule "deaction2"
+            ruleflow-group "stencilnew_draft_form_stencildeaction2"
+            when
+            then
+                        article_pageservice.create(stencilnew_draft_form_stencilpage_info);
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "stencilnew_draft_form_stencildebugparam1"
+            when
+            then
+                        update(stencilnew_draft_form_stencildefault);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilpage_info);//更新fact中变量值
+                        update(stencilnew_draft_form_stencilstencil_info);//更新fact中变量值
+            end

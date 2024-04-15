@@ -1,0 +1,53 @@
+package cn.ibizlab.plm.prodmgmt.logic.productlogic.favorite;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product productfavoritedefault;
+                global cn.ibizlab.plm.core.base.domain.favorite productfavoritefavorite;
+                    global cn.ibizlab.plm.core.base.service.IfavoriteService favoriteservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IproductService iBzSysProductDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "productfavoritebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充用户标识和收藏业务对象标识]
+            rule "prepareparam1"
+            ruleflow-group "productfavoriteprepareparam1"
+            when
+            then
+                                productfavoritefavorite.set("createman",curuser.getSessionParams().get("srfuserid"));
+                            productfavoritefavorite.set("ownertype","product");
+                            productfavoritefavorite.set("ownerid",productfavoritedefault.get("owner_id"));
+                        update(productfavoritedefault);//更新fact中变量值
+                        update(productfavoritefavorite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成收藏数据]
+            rule "deaction1"
+            ruleflow-group "productfavoritedeaction1"
+            when
+            then
+                        favoriteservice.save(productfavoritefavorite);
+                        update(productfavoritedefault);//更新fact中变量值
+                        update(productfavoritefavorite);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "productfavoriteend1"
+            when
+            then
+                        update(productfavoritedefault);//更新fact中变量值
+                        update(productfavoritefavorite);//更新fact中变量值
+            end

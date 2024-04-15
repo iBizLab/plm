@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemmove_work_item" isClosed="false" isExecutable="true" name="projmgmt_work_item_move_work_item_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_itemmove_work_item">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_itemmove_work_itemdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemmove_work_itemfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemmove_work_itemparent_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemmove_work_itemsrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_itemmove_work_itemdefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemmove_work_itemfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemmove_work_itemparent_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemmove_work_itemsrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="填充父工作项的标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取选中父工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itembindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="Update"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemmove_work_itemdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="移动时子工作项的处理"/>
+                        <endEvent id="delogic1_end" name="end"/>
+                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction2" sourceRef="prepareparam5" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_prepareparam2" sourceRef="gateway-deaction2" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemmove_work_itemdefault:work_item();
+                                            $work_itemmove_work_itemfor_temp_obj:work_item();
+                                            $work_itemmove_work_itemparent_work_item:work_item();
+                                            $work_itemmove_work_itemsrfactionparam:work_item();
+                                    eval($work_itemmove_work_itemdefault==work_itemmove_work_itemdefault && $work_itemmove_work_itemfor_temp_obj==work_itemmove_work_itemfor_temp_obj && $work_itemmove_work_itemparent_work_item==work_itemmove_work_itemparent_work_item && $work_itemmove_work_itemsrfactionparam==work_itemmove_work_itemsrfactionparam);
+                                eval((RuleUtils.test($work_itemmove_work_itemparent_work_item.get("topId"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_prepareparam4" sourceRef="gateway-deaction2" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemmove_work_itemdefault:work_item();
+                                            $work_itemmove_work_itemfor_temp_obj:work_item();
+                                            $work_itemmove_work_itemparent_work_item:work_item();
+                                            $work_itemmove_work_itemsrfactionparam:work_item();
+                                    eval($work_itemmove_work_itemdefault==work_itemmove_work_itemdefault && $work_itemmove_work_itemfor_temp_obj==work_itemmove_work_itemfor_temp_obj && $work_itemmove_work_itemparent_work_item==work_itemmove_work_itemparent_work_item && $work_itemmove_work_itemsrfactionparam==work_itemmove_work_itemsrfactionparam);
+                                eval((RuleUtils.test($work_itemmove_work_itemparent_work_item.get("topId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam3" sourceRef="loopsubcall1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam3_deaction1" sourceRef="gateway-prepareparam3" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemmove_work_itemdefault:work_item();
+                                            $work_itemmove_work_itemfor_temp_obj:work_item();
+                                            $work_itemmove_work_itemparent_work_item:work_item();
+                                            $work_itemmove_work_itemsrfactionparam:work_item();
+                                    eval($work_itemmove_work_itemdefault==work_itemmove_work_itemdefault && $work_itemmove_work_itemfor_temp_obj==work_itemmove_work_itemfor_temp_obj && $work_itemmove_work_itemparent_work_item==work_itemmove_work_itemparent_work_item && $work_itemmove_work_itemsrfactionparam==work_itemmove_work_itemsrfactionparam);
+                                eval((RuleUtils.test($work_itemmove_work_itemfor_temp_obj.get("pid"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam3_prepareparam5" sourceRef="gateway-prepareparam3" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemmove_work_itemdefault:work_item();
+                                            $work_itemmove_work_itemfor_temp_obj:work_item();
+                                            $work_itemmove_work_itemparent_work_item:work_item();
+                                            $work_itemmove_work_itemsrfactionparam:work_item();
+                                    eval($work_itemmove_work_itemdefault==work_itemmove_work_itemdefault && $work_itemmove_work_itemfor_temp_obj==work_itemmove_work_itemfor_temp_obj && $work_itemmove_work_itemparent_work_item==work_itemmove_work_itemparent_work_item && $work_itemmove_work_itemsrfactionparam==work_itemmove_work_itemsrfactionparam);
+                                eval((RuleUtils.test($work_itemmove_work_itemfor_temp_obj.get("pid"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction1" sourceRef="prepareparam4" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_delogic1" sourceRef="deaction1" targetRef="delogic1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction2" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction2_gateway-deaction2_gatewayline" sourceRef="deaction2" targetRef="gateway-deaction2"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction2_end_line" sourceRef="gateway-deaction2" targetRef="gateway-deaction2_end"/>
+                            <endEvent id="gateway-deaction2_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam3" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam3_gateway-prepareparam3_gatewayline" sourceRef="prepareparam3" targetRef="gateway-prepareparam3"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam3_end_line" sourceRef="gateway-prepareparam3" targetRef="gateway-prepareparam3_end"/>
+                            <endEvent id="gateway-prepareparam3_end" name="end"/>
+        </process>
+    </definitions>

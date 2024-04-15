@@ -1,0 +1,56 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.commit_version;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagecommit_versiondefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pagecommit_versionlast;
+                global cn.ibizlab.plm.core.base.domain.version article_pagecommit_versionversion;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pagecommit_versionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "article_pagecommit_versionend1"
+            when
+            then
+                        update(article_pagecommit_versiondefault);//更新fact中变量值
+                        update(article_pagecommit_versionlast);//更新fact中变量值
+                        update(article_pagecommit_versionversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备版本信息]
+            rule "prepare_param1"
+            ruleflow-group "article_pagecommit_versionprepare_param1"
+            when
+            then
+                            article_pagecommit_versionversion.set("ownerid",article_pagecommit_versiondefault.get("id"));
+                            article_pagecommit_versionversion.set("ownertype","PAGE");
+                        update(article_pagecommit_versiondefault);//更新fact中变量值
+                        update(article_pagecommit_versionlast);//更新fact中变量值
+                        update(article_pagecommit_versionversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立版本]
+            rule "commit_version"
+            ruleflow-group "article_pagecommit_versioncommit_version"
+            when
+            then
+                        versionservice.commit(article_pagecommit_versionversion);
+                        update(article_pagecommit_versiondefault);//更新fact中变量值
+                        update(article_pagecommit_versionlast);//更新fact中变量值
+                        update(article_pagecommit_versionversion);//更新fact中变量值
+            end
