@@ -1,8 +1,6 @@
 # 自动化(flow_tree_exp_view)  <!-- {docsify-ignore-all} -->
 
 
-
-
 <el-skeleton style="width:60%">
 	<template #template>
 		<div style="padding-bottom: 5px;display: flex;">
@@ -23,9 +21,12 @@
 
 
 ## 控件
-  * 树视图导航栏(treeexpbar)
-  * CAPTIONBAR(captionbar)
-  * 搜索栏(searchbar)
+#### CAPTIONBAR(captionbar)
+
+#### 搜索栏(searchbar)
+
+#### 树视图导航栏(treeexpbar)
+
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -33,14 +34,14 @@
 
 
 ### 关联视图
-  * [自动化规则(PSDELogicglobal_flow_grid_view)](app/view/PSDELogicglobal_flow_grid_view)
+  * [自动化规则(psdelogicglobal_flow_grid_view)](app/view/psdelogicglobal_flow_grid_view)
 
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
-        message: '!'
+
       }
     }
   }).use(ElementPlus).mount('#app')

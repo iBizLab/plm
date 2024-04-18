@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [工作项(WORK_ITEM)](module/ProjMgmt/Work_item)
+* [工作项(WORK_ITEM)](module/ProjMgmt/work_item)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [流转记录(TRANSITION_HISTORY)](module/ProjMgmt/Transition_history)
+* [流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)
 
 <p class="panel-title"><b>关系类型</b></p>
 

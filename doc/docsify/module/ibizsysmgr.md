@@ -1,9 +1,11 @@
-# ibizsysmgr(ibizsysmgr) <!-- {docsify-ignore-all} -->
+# 系统管理(ibizsysmgr) <!-- {docsify-ignore-all} -->
 
+部门及人员业务实体的映射。
 
+### 实体
 
-|    名称   | 代码名      |  实体类型   |  存储模式 |  表名称  |  逻辑有效   |  联合主键   |  主状态   |  权限控制  |  启用审计    |  备注  |
-| --------  |------------| -----   |  --------|  --------|  --------|  -------- |  -------- | -------- | -------- |-------- |
-|[部门(SYS_DEPARTMENT)](module/ibizsysmgr/Sys_department)|Sys_department|主实体|ServiceAPI||是|否|否|自控制|否||
-|[人员(SYS_PERSON)](module/ibizsysmgr/Sys_person)|Sys_person|主实体|ServiceAPI||是|是|否|自控制|否||
+|    名称col200   | 代码名col150      |  实体类型col150   | 存储模式col100 | 表名称col200   |    联合主键col100   |  主状态col100   |  权限控制col150  |  启用审计col100    |  备注col500  |
+| --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
+|[部门(SYS_DEPARTMENT)](module/ibizsysmgr/sys_department)|sys_department|主实体|ServiceAPI||否|否|自控制|否|部门映射实体|
+|[人员(SYS_PERSON)](module/ibizsysmgr/sys_person)|sys_person|主实体|ServiceAPI||是|否|自控制|否|人员映射实体|
 

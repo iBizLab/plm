@@ -1,8 +1,14 @@
 # 服务插件 <!-- {docsify-ignore-all} -->
 
-|  对象      |  实体  |  类型  | 插件  |
-|  --------  | ----- | -----    |-----    |
-|@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)|
+|  对象      |  实体  |  类型  | 插件  |备注|
+|  --------  | ----- | -----    |-----    |----    |
+|@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)||
+|结束时间边界值||PSSysTranslatorImpl|[SysEndOfDayTranslatorRuntime](#UsrSFPlugin0401275996)||
+|工作项通知模板(运行时)||PSSysMsgTemplImpl|[[消息模板]工作项通知模板(运行时)](#UsrSFPlugin0204714710)||
+|提交版本(COMMIT)|[版本（temp）(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[CommitVersionDEActionRuntime](#UsrSFPlugin0324806543)||
+|恢复指定版本(RESTORE)|[版本（temp）(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[RestoreVersionDEActionRuntime](#UsrSFPlugin0324899435)||
+|需求树表查询(requirement_tree)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)||
+|树状或平铺表格数据查询(tree_tile_grid_query)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)||
 
 ### SysAtContentTranslatorRuntime :id=UsrSFPlugin0201416283
 
@@ -50,6 +56,38 @@ class WorkItemNotifyMsgTemplRuntime extends net.ibizsys.central.msg.SysMsgTemplR
 
 }
 
+```
+### CommitVersionDEActionRuntime :id=UsrSFPlugin0324806543
+
+
+```net.ibizsys.central.plugin.version.dataentity.action.CommitVersionDEActionRuntime```
+
+```groovy
+null
+```
+### RestoreVersionDEActionRuntime :id=UsrSFPlugin0324899435
+
+
+```net.ibizsys.central.plugin.version.dataentity.action.RestoreVersionDEActionRuntime```
+
+```groovy
+null
+```
+### SysEndOfDayTranslatorRuntime :id=UsrSFPlugin0401275996
+
+
+```net.ibizsys.central.plugin.util.res.SysEndOfDayTranslatorRuntime```
+
+```groovy
+null
+```
+### TreeGridDEDataSetRuntime :id=UsrSFPlugin0407757309
+
+
+```net.ibizsys.central.plugin.util.dataentity.ds.TreeGridDEDataSetRuntime```
+
+```groovy
+null
 ```
 
 

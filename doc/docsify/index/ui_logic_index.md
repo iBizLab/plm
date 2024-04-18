@@ -1,244 +1,468 @@
 # 界面逻辑 <!-- {docsify-ignore-all} -->
 
-## [页面(PAGE)](module/Wiki/Article_page.md) :id=Article_page
 
-* [新建分组(create_section)](module/Wiki/Article_page/uilogic/create_section.md)<br>新建分组逻辑
-* [关闭评论区(close_comment)](module/Wiki/Article_page/uilogic/close_comment.md)<br>隐藏评论区，同时显示评论按钮
-* [添加附件数据(add_attachment)](module/Wiki/Article_page/uilogic/add_attachment.md)
-* [删除页面(delete_page)](module/Wiki/Article_page/uilogic/delete_page.md)
-* [显示模板(show_stencil)](module/Wiki/Article_page/uilogic/show_stencil.md)
-* [编辑节点(edit_section_or_category)](module/Wiki/Article_page/uilogic/edit_section_or_category.md)<br>编辑树节点
-* [显示评论区(show_commnet)](module/Wiki/Article_page/uilogic/show_commnet.md)<br>打开评论区，同时隐藏评论按钮
-* [刷新当前表格(refresh_current_grid)](module/Wiki/Article_page/uilogic/refresh_current_grid.md)
+## [附件(ATTACHMENT)](module/Base/attachment.md) :id=attachment
 
-## [附件(ATTACHMENT)](module/Base/Attachment.md) :id=Attachment
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[添加附件数据](module/Base/attachment/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[添加附件数据(表格)](module/Base/attachment/uilogic/add_attachment_grid)|add_attachment_grid|调用附件上传行为，添加附件数据|
+|[计算附件是否隐藏逻辑](module/Base/attachment/uilogic/calc_attachment_hidden)|calc_attachment_hidden|根据表格数据判断附件表格的显示或隐藏|
+|[附件删除](module/Base/attachment/uilogic/remove_attachment)|remove_attachment|自动判断为表格或表单附件，按类别删除|
+|[附件删除（表格）](module/Base/attachment/uilogic/remove_attachment_grid)|remove_attachment_grid|调用表格的行删除方法，删除指定行附件|
 
-* [添加附件数据(表格)(add_attachment_grid)](module/Base/Attachment/uilogic/add_attachment_grid.md)
-* [添加附件数据(add_attachment)](module/Base/Attachment/uilogic/add_attachment.md)
-* [附件删除(remove_attachment)](module/Base/Attachment/uilogic/remove_attachment.md)
-* [附件删除（表格）(remove_attachment_grid)](module/Base/Attachment/uilogic/remove_attachment_grid.md)
-* [计算附件是否隐藏逻辑(calc_attachment_hidden)](module/Base/Attachment/uilogic/calc_attachment_hidden.md)
 
-## [类别(CATEGORY)](module/Base/Category.md) :id=Category
 
-* [删除类别或分组(remove_section_or_category)](module/Base/Category/uilogic/remove_section_or_category.md)
 
-## [评论(COMMENT)](module/Base/Comment.md) :id=Comment
 
-* [控制评论按钮显示(comment_icon_show)](module/Base/Comment/uilogic/comment_icon_show.md)
-* [发送评论(知识库)(send_comment_wiki)](module/Base/Comment/uilogic/send_comment_wiki.md)
-* [清空评论(clear_comment)](module/Base/Comment/uilogic/clear_comment.md)
-* [编辑评论(edit_comment)](module/Base/Comment/uilogic/edit_comment.md)
-* [回复评论（知识库）(reply_comment_wiki)](module/Base/Comment/uilogic/reply_comment_wiki.md)
-* [控制评论按钮隐藏(comment_icon_hidden)](module/Base/Comment/uilogic/comment_icon_hidden.md)
-* [回复评论(reply_comment)](module/Base/Comment/uilogic/reply_comment.md)
-* [编辑评论（知识库）(测试)(edit_comment_wiki_test)](module/Base/Comment/uilogic/edit_comment_wiki_test.md)
-* [发送评论测试(test_send_comment)](module/Base/Comment/uilogic/test_send_comment.md)
-* [编辑评论（知识库）(edit_comment_wiki)](module/Base/Comment/uilogic/edit_comment_wiki.md)
-* [发送评论(send_comment)](module/Base/Comment/uilogic/send_comment.md)
 
-## [客户(CUSTOMER)](module/ProdMgmt/Customer.md) :id=Customer
+## [类别(CATEGORY)](module/Base/category.md) :id=category
 
-* [新建类别(create_category)](module/ProdMgmt/Customer/uilogic/create_category.md)
-* [新建分组(create_section)](module/ProdMgmt/Customer/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/ProdMgmt/Customer/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/ProdMgmt/Customer/uilogic/edit_section_or_category.md)
-* [设置树选择为多选(set_tree_multiple)](module/ProdMgmt/Customer/uilogic/set_tree_multiple.md)
-* [关联客户值变更(relation_customer_change)](module/ProdMgmt/Customer/uilogic/relation_customer_change.md)
-* [触发计数器刷新(refresh_counter)](module/ProdMgmt/Customer/uilogic/refresh_counter.md)
-* [选择下拉框区域展示(show_choose_area)](module/ProdMgmt/Customer/uilogic/show_choose_area.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/Base/category/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 
-## [交付物(DELIVERABLE)](module/Base/Deliverable.md) :id=Deliverable
 
-* [提交（表单中）(submit_form)](module/Base/Deliverable/uilogic/submit_form.md)<br>瀑布项目 → 工作项详情 → 交付物分页 → 表格行操作
-* [提交(submit)](module/Base/Deliverable/uilogic/submit.md)<br>瀑布项目主视图 → 交付物分页表格 → 表格行操作
-* [输入框区域隐藏(hidden_input_area)](module/Base/Deliverable/uilogic/hidden_input_area.md)<br>工作项 添加交付目标
-* [获取交付目标总条数(get_deliverable_total)](module/Base/Deliverable/uilogic/get_deliverable_total.md)
-* [删除（表单中）(del)](module/Base/Deliverable/uilogic/del.md)
-* [新建交付目标(create_deliverable)](module/Base/Deliverable/uilogic/create_deliverable.md)<br>瀑布项目 → 工作项详情 → 交付物分页 → 新建交付目标按钮
-* [输入框区域展示(show_input_area)](module/Base/Deliverable/uilogic/show_input_area.md)<br>工作项 添加交付目标
 
-## [需求(IDEA)](module/ProdMgmt/Idea.md) :id=Idea
+## [评论(COMMENT)](module/Base/comment.md) :id=comment
 
-* [新建模块(create_category)](module/ProdMgmt/Idea/uilogic/create_category.md)<br>产品需求页左侧树的新建模块逻辑
-* [新建子产品(create_section)](module/ProdMgmt/Idea/uilogic/create_section.md)<br>产品需求页左侧树的新建子产品逻辑
-* [删除类别或分组(remove_section_or_category)](module/ProdMgmt/Idea/uilogic/remove_section_or_category.md)<br>产品需求页左侧树的删除逻辑
-* [添加附件数据(add_attachment)](module/ProdMgmt/Idea/uilogic/add_attachment.md)
-* [编辑类别或分组(edit_section_or_category)](module/ProdMgmt/Idea/uilogic/edit_section_or_category.md)<br>产品需求页左侧树的编辑逻辑
-* [关联需求值变更(relation_idea_change)](module/ProdMgmt/Idea/uilogic/relation_idea_change.md)<br>关联操作时触发，内部调用关联逻辑进行关联操作
-* [x](module/ProdMgmt/Idea/uilogic/x.md)<br>不确定干嘛的，慎删
-* [获取需求总条数(get_idea_total)](module/ProdMgmt/Idea/uilogic/get_idea_total.md)<br>获取条数有一个就够了，可删
-* [触发计数器刷新(refresh_counter)](module/ProdMgmt/Idea/uilogic/refresh_counter.md)
-* [选择下拉框区域展示(show_choose_area)](module/ProdMgmt/Idea/uilogic/show_choose_area.md)<br>逻辑控制关联表格下方选项区域动态显示
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[发送评论](module/Base/comment/uilogic/send_comment)|send_comment|发送评论，并关闭评论输入框|
+|[发送评论(客户沟通)](module/Base/comment/uilogic/send_comment_customer_comment)|send_comment_customer_comment|发送评论，并关闭评论输入框，刷新评论列表|
+|[发送评论(知识库)](module/Base/comment/uilogic/send_comment_wiki)|send_comment_wiki|发送评论，并关闭评论输入框，刷新评论列表|
+|[回复评论](module/Base/comment/uilogic/reply_comment)|reply_comment|获取回复对象评论信息，并展开评论输入框，显示回复组件|
+|[回复评论（知识库）](module/Base/comment/uilogic/reply_comment_wiki)|reply_comment_wiki|获取回复对象评论信息，并展开评论输入框，显示回复组件|
+|[回复评论（知识库）(客户沟通)](module/Base/comment/uilogic/reply_comment_wiki_client)|reply_comment_wiki_client|获取回复对象评论信息，并展开评论输入框，显示回复组件|
+|[控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)|comment_icon_show|显示评论按钮|
+|[控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)|comment_icon_hidden|获取部件状态信息，通过直接赋值，控制指定部件显示隐藏|
+|[添加回复](module/Base/comment/uilogic/add_comment)|add_comment|添加回复按钮触发，显示评论区域|
+|[添加回复(客户沟通)](module/Base/comment/uilogic/add_comment_client)|add_comment_client|获取指定评论数据，并展开评论输入框|
+|[清空评论](module/Base/comment/uilogic/clear_comment)|clear_comment|清空当前输入框内已输入内容|
+|[清空评论(客户沟通)](module/Base/comment/uilogic/clear_comment_client)|clear_comment_client|清空评论输入框内容，并隐藏输入框|
+|[编辑评论](module/Base/comment/uilogic/edit_comment)|edit_comment|编辑评论，获取评论数据，展开评论输入框并赋值|
+|[编辑评论（知识库）](module/Base/comment/uilogic/edit_comment_wiki)|edit_comment_wiki|编辑评论，获取评论数据，展开评论输入框并赋值|
+|[编辑评论（知识库）(客户沟通)](module/Base/comment/uilogic/edit_comment_wiki_client)|edit_comment_wiki_client|编辑评论，获取评论数据，展开评论输入框并赋值|
+|[获取客户沟通总条数](module/Base/comment/uilogic/get_customer_comment_total)|get_customer_comment_total|获取客户沟通的总条数信息|
 
-## [测试库(LIBRARY)](module/TestMgmt/Library.md) :id=Library
 
-* [批量删除测试库成员临时数据(remove_batch_temp)](module/TestMgmt/Library/uilogic/remove_batch_temp.md)
-* [刷新当前表格(refresh_current_grid)](module/TestMgmt/Library/uilogic/refresh_current_grid.md)
 
-## [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/Library_member.md) :id=Library_member
+## [客户(CUSTOMER)](module/ProdMgmt/customer.md) :id=customer
 
-* [新建测试库默认临时成员(create_default_temp_members)](module/TestMgmt/Library_member/uilogic/create_default_temp_members.md)
-* [跳转至成员设置(jump_to_member_set)](module/TestMgmt/Library_member/uilogic/jump_to_member_set.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[关联客户值变更](module/ProdMgmt/customer/uilogic/relation_customer_change)|relation_customer_change|关联客户值变更时，调用处理逻辑，生成正反向关联数据|
+|[删除类别或分组](module/ProdMgmt/customer/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建分组](module/ProdMgmt/customer/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/ProdMgmt/customer/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[编辑类别或分组](module/ProdMgmt/customer/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[触发计数器刷新](module/ProdMgmt/customer/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[选择下拉框区域展示](module/ProdMgmt/customer/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)|idea_relation_customer|值变更时触发，需求关联客户，调用处理逻辑生成正反向数据|
 
-## [文件夹(PORTFOLIO)](module/Base/Portfolio.md) :id=Portfolio
 
-* [批量删除项目集成员临时数据(remove_batch_temp)](module/Base/Portfolio/uilogic/remove_batch_temp.md)
-* [刷新当前表格(refresh_current_grid)](module/Base/Portfolio/uilogic/refresh_current_grid.md)
 
-## [文件夹成员(PORTFOLIO_MEMBER)](module/Base/Portfolio_member.md) :id=Portfolio_member
+## [交付物(DELIVERABLE)](module/Base/deliverable.md) :id=deliverable
 
-* [新建项目集默认临时成员(default_project_member)](module/Base/Portfolio_member/uilogic/default_project_member.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除（表单中）](module/Base/deliverable/uilogic/del)|del|执行删除方法，并根据条件隐藏表格（数据为空）|
+|[提交](module/Base/deliverable/uilogic/submit)|submit|瀑布项目主视图 → 交付物分页表格 → 表格行操作|
+|[提交（表单中）](module/Base/deliverable/uilogic/submit_form)|submit_form|瀑布项目 → 工作项详情 → 交付物分页 → 表格行操作|
+|[新建交付目标](module/Base/deliverable/uilogic/create_deliverable)|create_deliverable|瀑布项目 → 工作项详情 → 交付物分页 → 新建交付目标按钮|
+|[获取交付目标总条数](module/Base/deliverable/uilogic/get_deliverable_total)|get_deliverable_total|获取交付物的总条数信息|
+|[输入框区域展示](module/Base/deliverable/uilogic/show_input_area)|show_input_area|工作项 添加交付目标|
+|[输入框区域隐藏](module/Base/deliverable/uilogic/hidden_input_area)|hidden_input_area|工作项 添加交付目标|
 
-## [产品(PRODUCT)](module/ProdMgmt/Product.md) :id=Product
 
-* [批量删除产品成员临时数据(remove_batch_temp)](module/ProdMgmt/Product/uilogic/remove_batch_temp.md)
-* [刷新当前表格(refresh_current_grid)](module/ProdMgmt/Product/uilogic/refresh_current_grid.md)
 
-## [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/Product_member.md) :id=Product_member
 
-* [建立产品成员(create_product_member)](module/ProdMgmt/Product_member/uilogic/create_product_member.md)
-* [新建产品默认临时成员(create_default_temp_members)](module/ProdMgmt/Product_member/uilogic/create_default_temp_members.md)
-* [跳转至成员设置(jump_to_member_set)](module/ProdMgmt/Product_member/uilogic/jump_to_member_set.md)
 
-## [排期(PRODUCT_PLAN)](module/ProdMgmt/Product_plan.md) :id=Product_plan
 
-* [新建类别(create_category)](module/ProdMgmt/Product_plan/uilogic/create_category.md)
-* [新建分组(create_section)](module/ProdMgmt/Product_plan/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/ProdMgmt/Product_plan/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/ProdMgmt/Product_plan/uilogic/edit_section_or_category.md)
 
-## [项目(PROJECT)](module/ProjMgmt/Project.md) :id=Project
 
-* [批量删除项目成员临时数据(remove_batch_temp)](module/ProjMgmt/Project/uilogic/remove_batch_temp.md)
-* [根据类型跳转项目主视图(open_project_main_view)](module/ProjMgmt/Project/uilogic/open_project_main_view.md)
-* [刷新当前表格(refresh_current_grid)](module/ProjMgmt/Project/uilogic/refresh_current_grid.md)
 
-## [项目成员(PROJECT_MEMBER)](module/ProjMgmt/Project_member.md) :id=Project_member
+## [需求(IDEA)](module/ProdMgmt/idea.md) :id=idea
 
-* [新建项目默认临时成员(create_default_temp_members)](module/ProjMgmt/Project_member/uilogic/create_default_temp_members.md)
-* [跳转至成员设置(jump_to_member_set)](module/ProjMgmt/Project_member/uilogic/jump_to_member_set.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[关联需求值变更](module/ProdMgmt/idea/uilogic/relation_idea_change)|relation_idea_change|关联操作时触发，内部调用关联逻辑进行关联操作|
+|[删除类别或分组](module/ProdMgmt/idea/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[工作项关联需求](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
+|[工单关联需求](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
+|[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
+|[新建模块](module/ProdMgmt/idea/uilogic/create_category)|create_category|产品需求页左侧树的新建模块逻辑|
+|[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/show_dorpdown_data)|show_dorpdown_data|显示下拉区域并展开选项|
+|[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
+|[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[获取工时进度](module/ProdMgmt/idea/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
+|[获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)|get_idea_total|获取需求的总条数信息|
+|[触发计数器刷新](module/ProdMgmt/idea/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[选择下拉框区域展示](module/ProdMgmt/idea/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
 
-## [最近访问(RECENT)](module/Base/Recent.md) :id=Recent
 
-* [最近访问跳转其他视图(recent_jump_other_view)](module/Base/Recent/uilogic/recent_jump_other_view.md)<br>首页最近访问点击后跳转其他视图
-* [建立双向关联数据(create_double_relation)](module/Base/Recent/uilogic/create_double_relation.md)<br>工作项关联工作项（新建）
 
-## [关联(RELATION)](module/Base/Relation.md) :id=Relation
 
-* [建立关联数据(create_relation)](module/Base/Relation/uilogic/create_relation.md)
+## [测试库(LIBRARY)](module/TestMgmt/library.md) :id=library
 
-## [项目发布(RELEASE)](module/ProjMgmt/Release.md) :id=Release
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[刷新当前表格](module/TestMgmt/library/uilogic/refresh_current_grid)|refresh_current_grid|按钮触发，通过脚本切换显示组件|
+|[批量删除测试库成员临时数据](module/TestMgmt/library/uilogic/remove_batch_temp)|remove_batch_temp|获取测试库内所有临时成员数据并删除|
 
-* [新建类别(create_category)](module/ProjMgmt/Release/uilogic/create_category.md)
-* [新建分组(create_section)](module/ProjMgmt/Release/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/ProjMgmt/Release/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/ProjMgmt/Release/uilogic/edit_section_or_category.md)
 
-## [执行用例(RUN)](module/TestMgmt/Run.md) :id=Run
+## [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member.md) :id=library_member
 
-* [添加附件数据(add_attachment)](module/TestMgmt/Run/uilogic/add_attachment.md)
-* [打开关联用例(open_re_run)](module/TestMgmt/Run/uilogic/open_re_run.md)
-* [刷新用例表格(refresh_run_grid)](module/TestMgmt/Run/uilogic/refresh_run_grid.md)
-* [触发计数器刷新(run)(refresh_counter_run)](module/TestMgmt/Run/uilogic/refresh_counter_run.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[新建测试库默认临时成员](module/TestMgmt/library_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到测试库临时成员内|
+|[跳转至成员设置](module/TestMgmt/library_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至测试库成员设置|
 
-## [空间(SPACE)](module/Wiki/Space.md) :id=Space
 
-* [新建目录(create_category)](module/Wiki/Space/uilogic/create_category.md)<br>新建空间目录
-* [产品关联空间(product__re_space)](module/Wiki/Space/uilogic/product__re_space.md)
-* [批量删除空间成员临时数据(remove_batch_temp)](module/Wiki/Space/uilogic/remove_batch_temp.md)
-* [刷新当前表格(refresh_current_grid)](module/Wiki/Space/uilogic/refresh_current_grid.md)
 
-## [空间成员(SPACE_MEMBER)](module/Wiki/Space_member.md) :id=Space_member
 
-* [新建空间默认临时成员(create_default_temp_members)](module/Wiki/Space_member/uilogic/create_default_temp_members.md)
 
-## [迭代(SPRINT)](module/ProjMgmt/Sprint.md) :id=Sprint
 
-* [新建类别(create_category)](module/ProjMgmt/Sprint/uilogic/create_category.md)
-* [新建分组(create_section)](module/ProjMgmt/Sprint/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/ProjMgmt/Sprint/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/ProjMgmt/Sprint/uilogic/edit_section_or_category.md)
 
-## [页面模板(STENCIL)](module/Wiki/Stencil.md) :id=Stencil
+## [页面(PAGE)](module/Wiki/article_page.md) :id=article_page
 
-* [打开新建页面并关闭模板中心(open_new_page)](module/Wiki/Stencil/uilogic/open_new_page.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[关闭模板中心](module/Wiki/article_page/uilogic/close_stencil)|close_stencil|关闭模板中心|
+|[关闭评论区](module/Wiki/article_page/uilogic/close_comment)|close_comment|隐藏评论区，同时显示评论按钮|
+|[切换显示草稿数据](module/Wiki/article_page/uilogic/switch_show_draft)|switch_show_draft||
+|[删除页面](module/Wiki/article_page/uilogic/delete_page)|delete_page|调用树节点的删除方法，删除指定页面|
+|[刷新当前表格](module/Wiki/article_page/uilogic/refresh_current_grid)|refresh_current_grid|刷新表格|
+|[恢复历史版本并通知刷新](module/Wiki/article_page/uilogic/page_refresh)|page_refresh|恢复到指定版本，并调用刷新方法|
+|[新建分组](module/Wiki/article_page/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建发布并通知刷新](module/Wiki/article_page/uilogic/save_notify_refresh)|save_notify_refresh|保存当前页面内容并刷新页面，点击发布按钮，触发保存非草稿页面|
+|[显示模板](module/Wiki/article_page/uilogic/show_stencil)|show_stencil|通过按钮触发，显示或隐藏模板信息|
+|[显示评论区](module/Wiki/article_page/uilogic/show_commnet)|show_commnet|打开评论区，同时隐藏评论按钮|
+|[添加附件数据](module/Wiki/article_page/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[编辑节点](module/Wiki/article_page/uilogic/edit_section_or_category)|edit_section_or_category|编辑树节点|
+|[获取模板](module/Wiki/article_page/uilogic/get_stencil_info)|get_stencil_info|测试。新建时获取模板信息|
+|[获取草稿数据](module/Wiki/article_page/uilogic/get_draft_data)|get_draft_data||
 
-## [用例(TEST_CASE)](module/TestMgmt/Test_case.md) :id=Test_case
 
-* [新建类别(create_category)](module/TestMgmt/Test_case/uilogic/create_category.md)
-* [新建分组(create_section)](module/TestMgmt/Test_case/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/TestMgmt/Test_case/uilogic/remove_section_or_category.md)
-* [添加附件数据（通用）(add_attachment)](module/TestMgmt/Test_case/uilogic/add_attachment.md)
-* [编辑类别或分组(edit_section_or_category)](module/TestMgmt/Test_case/uilogic/edit_section_or_category.md)
-* [获取测试用例总条数(get_test_case_total)](module/TestMgmt/Test_case/uilogic/get_test_case_total.md)
-* [触发计数器刷新(refresh_counter)](module/TestMgmt/Test_case/uilogic/refresh_counter.md)
-* [关联测试用例值变更(relation_test_case_change)](module/TestMgmt/Test_case/uilogic/relation_test_case_change.md)
-* [选择下拉框区域展示(show_choose_area)](module/TestMgmt/Test_case/uilogic/show_choose_area.md)
+## [文件夹(PORTFOLIO)](module/Base/portfolio.md) :id=portfolio
 
-## [测试计划(TEST_PLAN)](module/TestMgmt/Test_plan.md) :id=Test_plan
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[刷新当前表格](module/Base/portfolio/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
+|[批量删除项目集成员临时数据](module/Base/portfolio/uilogic/remove_batch_temp)|remove_batch_temp|获取项目集内所有临时成员数据并删除|
 
-* [新建类别(create_category)](module/TestMgmt/Test_plan/uilogic/create_category.md)
-* [新建分组(create_section)](module/TestMgmt/Test_plan/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/TestMgmt/Test_plan/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/TestMgmt/Test_plan/uilogic/edit_section_or_category.md)
-* [移入计划(shift_in_test_plan)](module/TestMgmt/Test_plan/uilogic/shift_in_test_plan.md)
 
-## [用例模块(TEST_SUITE)](module/TestMgmt/Test_suite.md) :id=Test_suite
+## [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member.md) :id=portfolio_member
 
-* [新建类别(create_category)](module/TestMgmt/Test_suite/uilogic/create_category.md)
-* [新建分组(create_section)](module/TestMgmt/Test_suite/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/TestMgmt/Test_suite/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/TestMgmt/Test_suite/uilogic/edit_section_or_category.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[新建项目集默认临时成员](module/Base/portfolio_member/uilogic/default_project_member)|default_project_member|创建临时数据，并将当前用户加入到项目集临时成员内|
 
-## [工单(TICKET)](module/ProdMgmt/Ticket.md) :id=Ticket
 
-* [获取工单总条数(get_ticket_total)](module/ProdMgmt/Ticket/uilogic/get_ticket_total.md)
-* [添加附件数据(add_attachment)](module/ProdMgmt/Ticket/uilogic/add_attachment.md)
-* [关联工单值变更(relation_ticket_change)](module/ProdMgmt/Ticket/uilogic/relation_ticket_change.md)
-* [新建工单并生成关联数据(create_and_relation)](module/ProdMgmt/Ticket/uilogic/create_and_relation.md)
-* [建立双向关联数据(create_double_relation)](module/ProdMgmt/Ticket/uilogic/create_double_relation.md)
-* [触发计数器刷新(refresh_counter)](module/ProdMgmt/Ticket/uilogic/refresh_counter.md)
-* [建立关联数据(create_relation)](module/ProdMgmt/Ticket/uilogic/create_relation.md)
-* [客户添加工单值变更(customer_add_change)](module/ProdMgmt/Ticket/uilogic/customer_add_change.md)
-* [选择下拉框区域展示(show_choose_area)](module/ProdMgmt/Ticket/uilogic/show_choose_area.md)
+## [产品(PRODUCT)](module/ProdMgmt/product.md) :id=product
 
-## [版本（temp）(VERSION)](module/ProjMgmt/Version.md) :id=Version
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[刷新当前表格](module/ProdMgmt/product/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
+|[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
 
-* [新建类别(create_category)](module/ProjMgmt/Version/uilogic/create_category.md)
-* [新建分组(create_section)](module/ProjMgmt/Version/uilogic/create_section.md)
-* [删除类别或分组(remove_section_or_category)](module/ProjMgmt/Version/uilogic/remove_section_or_category.md)
-* [编辑类别或分组(edit_section_or_category)](module/ProjMgmt/Version/uilogic/edit_section_or_category.md)
 
-## [工作项(WORK_ITEM)](module/ProjMgmt/Work_item.md) :id=Work_item
+## [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member.md) :id=product_member
 
-* [计算表格列行为状态(calc_column_action_state)](module/ProjMgmt/Work_item/uilogic/calc_column_action_state.md)<br>用于动态控制归档和激活行为的禁用状态
-* [添加子工作项值变更(add_child_change)](module/ProjMgmt/Work_item/uilogic/add_child_change.md)
-* [关注人员更新(attention_personnel_update)](module/ProjMgmt/Work_item/uilogic/attention_personnel_update.md)
-* [甘特新建行测试(newrow_gantt)](module/ProjMgmt/Work_item/uilogic/newrow_gantt.md)
-* [切换表格模式(change_grid_mode)](module/ProjMgmt/Work_item/uilogic/change_grid_mode.md)
-* [建立关联数据(create_relation)](module/ProjMgmt/Work_item/uilogic/create_relation.md)
-* [获取工作项总条数(get_work_item_total)](module/ProjMgmt/Work_item/uilogic/get_work_item_total.md)
-* [切换显示模式(switch_show_mode)](module/ProjMgmt/Work_item/uilogic/switch_show_mode.md)
-* [新建任务（kanban）（工具栏）(new_kanban_task_toolbar)](module/ProjMgmt/Work_item/uilogic/new_kanban_task_toolbar.md)
-* [新建行测试(newrow_test)](module/ProjMgmt/Work_item/uilogic/newrow_test.md)
-* [查看工时明细(check_workload_detail)](module/ProjMgmt/Work_item/uilogic/check_workload_detail.md)
-* [选择下拉框区域展示(show_choose_area)](module/ProjMgmt/Work_item/uilogic/show_choose_area.md)
-* [切换树模式(change_tree_mode)](module/ProjMgmt/Work_item/uilogic/change_tree_mode.md)
-* [建立双向关联数据(create_double_relation)](module/ProjMgmt/Work_item/uilogic/create_double_relation.md)<br>1.工作项表格「 关联工作项 」按钮 后附加
-2.测试计划, 新建缺陷后附加
-* [设置表单状态(set_form_readonly)](module/ProjMgmt/Work_item/uilogic/set_form_readonly.md)<br>控制回收站表单只读
-* [触发计数器刷新(refresh_counter)](module/ProjMgmt/Work_item/uilogic/refresh_counter.md)
-* [甘特删除行测试(removerow_gantt)](module/ProjMgmt/Work_item/uilogic/removerow_gantt.md)
-* [控制评论按钮隐藏(comment_icon_hidden)](module/ProjMgmt/Work_item/uilogic/comment_icon_hidden.md)
-* [新建缺陷（kanban）（工具栏）(new_kanban_bug_toolbar)](module/ProjMgmt/Work_item/uilogic/new_kanban_bug_toolbar.md)
-* [关联工作项值变更(relation_work_item_change)](module/ProjMgmt/Work_item/uilogic/relation_work_item_change.md)
-* [控制评论按钮显示(comment_icon_show)](module/ProjMgmt/Work_item/uilogic/comment_icon_show.md)
-* [新建用户故事（kanban）（工具栏）(new_kanban_story_toolbar)](module/ProjMgmt/Work_item/uilogic/new_kanban_story_toolbar.md)
-* [添加附件数据(add_attachment)](module/ProjMgmt/Work_item/uilogic/add_attachment.md)
-* [子工作项刷新计数器(child_refresh_counter)](module/ProjMgmt/Work_item/uilogic/child_refresh_counter.md)
-* [计算父工作项类型(calc_parent_work_item_type)](module/ProjMgmt/Work_item/uilogic/calc_parent_work_item_type.md)
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[建立产品成员](module/ProdMgmt/product_member/uilogic/create_product_member)|create_product_member|根据表格选中数据，生成产品成员|
+|[新建产品默认临时成员](module/ProdMgmt/product_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到产品临时成员内|
+|[跳转至成员设置](module/ProdMgmt/product_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至产品成员设置|
 
-## [工时(WORKLOAD)](module/Base/Workload.md) :id=Workload
 
-* [返回(back)](module/Base/Workload/uilogic/back.md)
+## [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan.md) :id=product_plan
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/ProdMgmt/product_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建分组](module/ProdMgmt/product_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/ProdMgmt/product_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[编辑类别或分组](module/ProdMgmt/product_plan/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+
+
+
+
+
+## [项目(PROJECT)](module/ProjMgmt/project.md) :id=project
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
+|[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
+|[根据类型跳转项目主视图](module/ProjMgmt/project/uilogic/open_project_main_view)|open_project_main_view|判断类型跳转不同的项目主视图|
+
+
+## [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md) :id=project_member
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[新建项目默认临时成员](module/ProjMgmt/project_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到项目临时成员内|
+|[跳转至成员设置](module/ProjMgmt/project_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至项目成员设置|
+
+
+
+
+
+
+
+
+
+
+
+
+
+## [最近访问(RECENT)](module/Base/recent.md) :id=recent
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[建立双向关联数据](module/Base/recent/uilogic/create_double_relation)|create_double_relation|工作项关联工作项（新建）|
+|[最近访问跳转其他视图](module/Base/recent/uilogic/recent_jump_other_view)|recent_jump_other_view|首页最近访问点击后跳转其他视图|
+
+
+
+
+## [项目发布(RELEASE)](module/ProjMgmt/release.md) :id=release
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/ProjMgmt/release/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建分组](module/ProjMgmt/release/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/ProjMgmt/release/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[编辑类别或分组](module/ProjMgmt/release/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+
+
+
+
+## [执行用例(RUN)](module/TestMgmt/run.md) :id=run
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[刷新用例表格](module/TestMgmt/run/uilogic/refresh_run_grid)|refresh_run_grid|内置脚本，刷新用例表格|
+|[打开关联用例](module/TestMgmt/run/uilogic/open_re_run)|open_re_run|调用界面行为，打开关联用例|
+|[查看工时明细](module/TestMgmt/run/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
+|[触发计数器刷新(run)](module/TestMgmt/run/uilogic/refresh_counter_run)|refresh_counter_run|关联数据变更后，触发计数器刷新|
+
+
+## [执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md) :id=run_attachment
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除](module/TestMgmt/run_attachment/uilogic/del)|del|执行删除方法，并根据条件隐藏表格（数据为空）|
+|[添加附件数据](module/TestMgmt/run_attachment/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[获取结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_run_attachment_total)|get_run_attachment_total|获取结果附件总条数|
+
+
+
+## [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment.md) :id=search_attachment
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[打开详情视图](module/Base/search_attachment/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例/工单/客户/页面详情主视图|
+
+
+## [评论搜索(SEARCH_COMMENT)](module/Base/search_comment.md) :id=search_comment
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[打开详情视图](module/Base/search_comment/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例/工单/客户/页面详情主视图|
+
+
+
+
+
+## [空间(SPACE)](module/Wiki/space.md) :id=space
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[产品关联空间](module/Wiki/space/uilogic/product_relation_space)|product_relation_space|调用后台关联逻辑，产品关联空间并生成正反关联数据|
+|[刷新当前表格](module/Wiki/space/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
+|[批量删除空间成员临时数据](module/Wiki/space/uilogic/remove_batch_temp)|remove_batch_temp|获取空间内所有临时成员数据并删除|
+|[新建目录](module/Wiki/space/uilogic/create_category)|create_category|新建空间目录|
+|[计算表格列行为状态](module/Wiki/space/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[项目关联空间](module/Wiki/space/uilogic/project_relation_space)|project_relation_space|调用后台关联逻辑，项目关联空间并生成正反关联数据|
+
+
+## [空间成员(SPACE_MEMBER)](module/Wiki/space_member.md) :id=space_member
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[新建空间默认临时成员](module/Wiki/space_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到空间临时成员内|
+
+
+## [迭代(SPRINT)](module/ProjMgmt/sprint.md) :id=sprint
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/ProjMgmt/sprint/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除，删除类别或分组数据|
+|[新建分组](module/ProjMgmt/sprint/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/ProjMgmt/sprint/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[编辑类别或分组](module/ProjMgmt/sprint/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+
+
+
+## [页面模板(STENCIL)](module/Wiki/stencil.md) :id=stencil
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[打开新建页面并关闭模板中心](module/Wiki/stencil/uilogic/open_new_page)|open_new_page|打开新建页并关闭模板中心|
+
+
+
+
+
+
+
+
+
+
+
+
+## [用例(TEST_CASE)](module/TestMgmt/test_case.md) :id=test_case
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[关联测试用例值变更](module/TestMgmt/test_case/uilogic/relation_test_case_change)|relation_test_case_change|关联测试用例值变更时，调用处理逻辑，生成正反向关联数据|
+|[删除类别或分组](module/TestMgmt/test_case/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
+|[新建分组](module/TestMgmt/test_case/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/TestMgmt/test_case/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[编辑类别或分组](module/TestMgmt/test_case/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[获取工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
+|[获取测试用例总条数](module/TestMgmt/test_case/uilogic/get_test_case_total)|get_test_case_total|获取测试用例的总条数信息|
+|[触发计数器刷新](module/TestMgmt/test_case/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[选择下拉框区域展示](module/TestMgmt/test_case/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[需求关联用例](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
+
+
+## [测试计划(TEST_PLAN)](module/TestMgmt/test_plan.md) :id=test_plan
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/TestMgmt/test_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建分组](module/TestMgmt/test_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/TestMgmt/test_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[移入计划](module/TestMgmt/test_plan/uilogic/shift_in_test_plan)|shift_in_test_plan|获取选中数据，通过后台处理，完成测试用例移入计划操作|
+|[编辑类别或分组](module/TestMgmt/test_plan/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+
+
+## [用例模块(TEST_SUITE)](module/TestMgmt/test_suite.md) :id=test_suite
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[删除类别或分组](module/TestMgmt/test_suite/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[新建分组](module/TestMgmt/test_suite/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
+|[新建类别](module/TestMgmt/test_suite/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[编辑类别或分组](module/TestMgmt/test_suite/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+
+
+## [工单(TICKET)](module/ProdMgmt/ticket.md) :id=ticket
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[关联产品需求](module/ProdMgmt/ticket/uilogic/link_product)|link_product|关联产品需求，生成正反向关联数据|
+|[关联工单值变更](module/ProdMgmt/ticket/uilogic/relation_ticket_change)|relation_ticket_change|关联工单值变更时，调用处理逻辑，生成正反向关联数据|
+|[客户添加工单值变更](module/ProdMgmt/ticket/uilogic/customer_add_change)|customer_add_change|客户添加工单值变更，触发工单的客户属性变更|
+|[工作项关联工单](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
+|[工具栏上传附件](module/ProdMgmt/ticket/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
+|[建立关联数据](module/ProdMgmt/ticket/uilogic/create_relation)|create_relation|新建执行后，建立关联数据|
+|[建立双向关联数据](module/ProdMgmt/ticket/uilogic/create_double_relation)|create_double_relation|建立双向关联数据|
+|[新建工单并生成关联数据](module/ProdMgmt/ticket/uilogic/create_and_relation)|create_and_relation|新建工单并生成关联数据|
+|[测试判断只读用户](module/ProdMgmt/ticket/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
+|[添加附件数据](module/ProdMgmt/ticket/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[获取工单总条数](module/ProdMgmt/ticket/uilogic/get_ticket_total)|get_ticket_total|获取工单的总条数信息|
+|[触发计数器刷新](module/ProdMgmt/ticket/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[计算表格列行为状态](module/ProdMgmt/ticket/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
+|[选择下拉框区域展示](module/ProdMgmt/ticket/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[需求关联工单](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)|idea_relation_ticket|值变更时触发，需求关联工单，调用处理逻辑生成正反向数据|
+
+
+
+
+## [企业用户(USER)](module/Base/user.md) :id=user
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[修改密码（表单）](module/Base/user/uilogic/change_pas)|change_pas|修改密码|
+
+
+
+
+## [工时(WORKLOAD)](module/Base/workload.md) :id=workload
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[工时日历打开工时日志视图](module/Base/workload/uilogic/calendar_link_log_view)|calendar_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
+|[工时日历打开工时日志视图（管理）](module/Base/workload/uilogic/calendar_management_link_log_view)|calendar_management_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
+|[打开产品主视图](module/Base/workload/uilogic/open_product_main_view)|open_product_main_view|调用实体行为，打开产品主视图|
+|[打开产品工时记录列表视图](module/Base/workload/uilogic/open_product_workload_detail)|open_product_workload_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开产品管理工时记录列表视图](module/Base/workload/uilogic/open_management_product_detail)|open_management_product_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开工作类别工时记录列表视图](module/Base/workload/uilogic/open_type_detail)|open_type_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开工作类别管理工时记录列表视图](module/Base/workload/uilogic/open_management_type_detail)|open_management_type_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开成员工时记录列表视图](module/Base/workload/uilogic/open_member_detail)|open_member_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开测试库主视图](module/Base/workload/uilogic/open_library_main_view)|open_library_main_view|打开测试库主视图|
+|[打开测试库工时记录列表视图](module/Base/workload/uilogic/open_library_workload_detail)|open_library_workload_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开测试库管理工时记录列表视图](module/Base/workload/uilogic/open_management_library_detail)|open_management_library_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开详情视图](module/Base/workload/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例详情主视图|
+|[打开项目主视图](module/Base/workload/uilogic/open_project_main_view)|open_project_main_view|打开项目主视图|
+|[打开项目工时记录列表视图](module/Base/workload/uilogic/open_project_workload_detail)|open_project_workload_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开项目管理工时记录列表视图](module/Base/workload/uilogic/open_management_project_detail)|open_management_project_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[返回](module/Base/workload/uilogic/back)|back|查看工时明细后，返回主表单按钮使用|
+|[返回（执行用例表单）](module/Base/workload/uilogic/back_run_main_view)|back_run_main_view|切换显示组件|
+
+
+
+## [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) :id=work_item
+
+|  中文名col200 | 代码名col200 | 备注col500 |
+| --------|--------|------|
+|[关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)|attention_personnel_update|获取关注人员信息，并根据类别更新|
+|[关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_work_item_change)|relation_work_item_change|关联工作项值变更时，调用处理逻辑，生成正反向关联数据|
+|[切换显示模式](module/ProjMgmt/work_item/uilogic/switch_show_mode)|switch_show_mode|切换表格的显示模式|
+|[切换树模式](module/ProjMgmt/work_item/uilogic/change_tree_mode)|change_tree_mode|切换树模式|
+|[切换表格模式](module/ProjMgmt/work_item/uilogic/change_grid_mode)|change_grid_mode|调用树表方法，切换表格的显示模式|
+|[图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)|chart_show_count|仪表盘图表显示总数<br>|
+|[子工作项刷新计数器](module/ProjMgmt/work_item/uilogic/child_refresh_counter)|child_refresh_counter|关联数据变更后，触发计数器刷新|
+|[工单关联工作项](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|ticket_relation_work_item|值变更时触发，工单关联工作项，调用处理逻辑生成正反向数据|
+|[建立关联数据](module/ProjMgmt/work_item/uilogic/create_relation)|create_relation|新建执行后触发，建立关联数据|
+|[建立双向关联数据](module/ProjMgmt/work_item/uilogic/create_double_relation)|create_double_relation|1.工作项表格「 关联工作项 」按钮 后附加<br>2.测试计划, 新建缺陷后附加|
+|[执行用例关联工作项(缺陷)](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
+|[控制表单成功关注列表readonly](module/ProjMgmt/work_item/uilogic/control_readonly)|control_readonly|通过识别上下文中的归档属性，判断工作项表单中关注列表的操作能力|
+|[新建任务（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_task_toolbar)|new_kanban_task_toolbar|看板项目工作项分页新建任务类型工作项|
+|[新建用户故事（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_story_toolbar)|new_kanban_story_toolbar|获取首个代码表标识，并新建看板用户故事|
+|[新建缺陷（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_bug_toolbar)|new_kanban_bug_toolbar|看板项目中新建缺陷类型的工作项|
+|[新建行测试](module/ProjMgmt/work_item/uilogic/newrow_test)|newrow_test|测试使用|
+|[查看工时明细](module/ProjMgmt/work_item/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
+|[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[甘特删除行测试](module/ProjMgmt/work_item/uilogic/removerow_gantt)|removerow_gantt|甘特删除行测试|
+|[甘特新建行测试](module/ProjMgmt/work_item/uilogic/newrow_gantt)|newrow_gantt|甘特新建行测试|
+|[用例关联工作项](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[获取工作项总条数](module/ProjMgmt/work_item/uilogic/get_work_item_total)|get_work_item_total|获取工作项的总条数信息|
+|[获取工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
+|[触发计数器刷新](module/ProjMgmt/work_item/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[计算子工作项类型](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type)|calc_children_work_item_type|获取项目类型，并根据类型计算当前工作项子类型|
+|[计算子工作项类型(上下文)](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type_context)|calc_children_work_item_type_context|根据工作项类型，判断此工作项可变更的父工作项/子工作项类型|
+|[计算父工作项类型](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type)|calc_parent_work_item_type|获取当前工作项类型，并计算父工作项类型|
+|[计算父工作项类型（表单）](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type_form)|calc_parent_work_item_type_form|获取工作项类型，并计算父工作项类型|
+|[计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
+|[计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)|calc_kanban_item_action_state|看板中工作项的归档或激活按钮的禁用判定|
+|[设置时间范围](module/ProjMgmt/work_item/uilogic/set_date_range)|set_date_range|自动获取指定指定时间范围时间，并返回至搜索表单|
+|[设置表单状态](module/ProjMgmt/work_item/uilogic/set_form_readonly)|set_form_readonly|控制回收站表单只读|
+|[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|
+|[选择下拉框区域展示](module/ProjMgmt/work_item/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[需求关联工作项](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
+
+
+

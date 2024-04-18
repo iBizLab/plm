@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [项目(PROJECT)](module/ProjMgmt/Project)
+* [项目(PROJECT)](module/ProjMgmt/project)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [泳道(SWIMLANE)](module/ProjMgmt/Swimlane)
+* [泳道(SWIMLANE)](module/ProjMgmt/swimlane)
 
 <p class="panel-title"><b>关系类型</b></p>
 

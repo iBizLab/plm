@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [评论(COMMENT)](module/Base/Comment)
+* [评论(COMMENT)](module/Base/comment)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [评论(COMMENT)](module/Base/Comment)
+* [评论(COMMENT)](module/Base/comment)
 
 <p class="panel-title"><b>关系类型</b></p>
 

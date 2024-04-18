@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [产品(PRODUCT)](module/ProdMgmt/Product)
+* [产品(PRODUCT)](module/ProdMgmt/product)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工单渠道(CHANNEL)](module/ProdMgmt/Channel)
+* [工单渠道(CHANNEL)](module/ProdMgmt/channel)
 
 <p class="panel-title"><b>关系类型</b></p>
 

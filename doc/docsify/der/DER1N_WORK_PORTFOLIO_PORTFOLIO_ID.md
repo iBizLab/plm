@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [文件夹(PORTFOLIO)](module/Base/Portfolio)
+* [文件夹(PORTFOLIO)](module/Base/portfolio)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工作(WORK)](module/Base/Work)
+* [工作(WORK)](module/Base/work)
 
 <p class="panel-title"><b>关系类型</b></p>
 

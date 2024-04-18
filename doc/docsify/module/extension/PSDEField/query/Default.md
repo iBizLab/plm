@@ -2,6 +2,13 @@
 
 
 
+<p class="panel-title"><b>查看SQL语句</b></p>
+<br>
+
+<el-row>
+&nbsp;<el-tag @click="MYSQL5 = true">MYSQL5</el-tag>
+</el-row>
+
 <br>
 <p class="panel-title"><b>是否默认查询</b></p>
 
@@ -22,9 +29,9 @@
 
 
 
-### 数据库SQL语句
 
-#### MYSQL5
+
+<el-dialog v-model="MYSQL5" title="MYSQL5">
 
 ```sql
 SELECT
@@ -52,3 +59,19 @@ FROM `` t1
 
 
 ```
+
+</el-dialog>
+
+<script>
+ const { createApp } = Vue
+  createApp({
+    data() {
+      return {
+                MYSQL5 : false
+        
+      }
+    },
+    methods: {
+    }
+  }).use(ElementPlus).mount('#app')
+</script>

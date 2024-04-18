@@ -1,7 +1,6 @@
 # 产品管理 <!-- {docsify-ignore-all} -->
 
 
-
 ```plantuml
 @startuml
 <style>
@@ -11,64 +10,64 @@ root {
 </style>
 left to right direction
 
-entity "CATEGORY\n类别" as CATEGORY [[$../module/Base/Category {类别}]] {
+entity "CATEGORY\n类别" as CATEGORY [[$../module/Base/category {类别}]] {
         <&key> ID - 标识
         --
         <&link-intact> SECTION_ID - 分组标识
         <&link-intact> PID - 父标识
 }
-entity "CHANNEL\n工单渠道" as CHANNEL [[$../module/ProdMgmt/Channel {工单渠道}]] {
+entity "CHANNEL\n工单渠道" as CHANNEL [[$../module/ProdMgmt/channel {工单渠道}]] {
         <&key> ID - 标识
         --
         <&link-intact> PRODUCT_ID - 产品标识
 }
-entity "CUSTOMER\n客户" as CUSTOMER [[$../module/ProdMgmt/Customer {客户}]] {
+entity "CUSTOMER\n客户" as CUSTOMER [[$../module/ProdMgmt/customer {客户}]] {
         <&key> ID - 标识
         --
         <&link-intact> ASSIGNEE_ID - 负责人标识
         <&link-intact> PRODUCT_ID - 产品标识
 }
-entity "IDEA\n需求" as IDEA [[$../module/ProdMgmt/Idea {需求}]] {
+entity "IDEA\n需求" as IDEA [[$../module/ProdMgmt/idea {需求}]] {
         <&key> ID - 标识
         --
-        <&link-intact> ASSIGNEE_ID - 负责人标识
-        <&link-intact> PRODUCT_ID - 产品标识
+        <&link-intact> ASSIGNEE_ID - 负责人
+        <&link-intact> PRODUCT_ID - 产品
         <&link-intact> CATEGORY_ID - 类别标识
 }
-entity "PRODUCT\n产品" as PRODUCT [[$../module/ProdMgmt/Product {产品}]] {
+entity "PRODUCT\n产品" as PRODUCT [[$../module/ProdMgmt/product {产品}]] {
         <&key> ID - 标识
         --
 }
-entity "PRODUCT_MEMBER\n产品成员" as PRODUCT_MEMBER [[$../module/ProdMgmt/Product_member {产品成员}]] {
+entity "PRODUCT_MEMBER\n产品成员" as PRODUCT_MEMBER [[$../module/ProdMgmt/product_member {产品成员}]] {
         <&key> ID - 标识
         --
         <&link-intact> USER_ID - 登录名
         <&link-intact> PRODUCT_ID - 产品标识
 }
-entity "PRODUCT_PLAN\n排期" as PRODUCT_PLAN [[$../module/ProdMgmt/Product_plan {排期}]] {
+entity "PRODUCT_PLAN\n排期" as PRODUCT_PLAN [[$../module/ProdMgmt/product_plan {排期}]] {
         <&key> ID - 标识
         --
         <&link-intact> PRODUCT_ID - 产品标识
 }
-entity "PRODUCT_TAG\n产品标签" as PRODUCT_TAG [[$../module/ProdMgmt/Product_tag {产品标签}]] {
+entity "PRODUCT_TAG\n产品标签" as PRODUCT_TAG [[$../module/ProdMgmt/product_tag {产品标签}]] {
         <&key> ID - 标识
         --
         <&link-intact> PRODUCT_ID - 产品标识
 }
-entity "PRODUCT_TICKET_TYPE\n产品工单类型" as PRODUCT_TICKET_TYPE [[$../module/ProdMgmt/Product_ticket_type {产品工单类型}]] {
+entity "PRODUCT_TICKET_TYPE\n产品工单类型" as PRODUCT_TICKET_TYPE [[$../module/ProdMgmt/product_ticket_type {产品工单类型}]] {
         <&key> ID - 标识
         --
         <&link-intact> TICKET_TYPE_ID - 工单类型标识
         <&link-intact> PRODUCT_ID - 产品标识
 }
-entity "TICKET\n工单" as TICKET [[$../module/ProdMgmt/Ticket {工单}]] {
+entity "TICKET\n工单" as TICKET [[$../module/ProdMgmt/ticket {工单}]] {
         <&key> ID - 标识
         --
         <&link-intact> ASSIGNEE_ID - 负责人标识
         <&link-intact> PRODUCT_ID - 产品标识
         <&link-intact> CUSTOMER_ID - 客户标识
 }
-entity "TICKET_TYPE\n工单类型" as TICKET_TYPE [[$../module/ProdMgmt/Ticket_type {工单类型}]] {
+entity "TICKET_TYPE\n工单类型" as TICKET_TYPE [[$../module/ProdMgmt/ticket_type {工单类型}]] {
         <&key> ID - 标识
         --
 }

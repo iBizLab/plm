@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [页面模板(STENCIL)](module/Wiki/Stencil)
+* [页面模板(STENCIL)](module/Wiki/stencil)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [附件(ATTACHMENT)](module/Base/Attachment)
+* [附件(ATTACHMENT)](module/Base/attachment)
 
 <p class="panel-title"><b>关系类型</b></p>
 

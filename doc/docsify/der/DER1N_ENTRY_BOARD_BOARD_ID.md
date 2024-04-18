@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [看板(BOARD)](module/ProjMgmt/Board)
+* [看板(BOARD)](module/ProjMgmt/board)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [看板栏(ENTRY)](module/ProjMgmt/Entry)
+* [看板栏(ENTRY)](module/ProjMgmt/entry)
 
 <p class="panel-title"><b>关系类型</b></p>
 

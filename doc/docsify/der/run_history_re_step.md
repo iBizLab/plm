@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [执行结果(RUN_HISTORY)](module/TestMgmt/Run_history)
+* [执行结果(RUN_HISTORY)](module/TestMgmt/run_history)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [用例步骤(STEP)](module/TestMgmt/Step)
+* [用例步骤(STEP)](module/TestMgmt/step)
 
 <p class="panel-title"><b>关系类型</b></p>
 

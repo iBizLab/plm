@@ -1,4 +1,4 @@
-## null(DEMap) <!-- {docsify-ignore-all} -->
+## 实体映射(DEMap) <!-- {docsify-ignore-all} -->
 
 
 
@@ -16,13 +16,13 @@
 <p class="panel-title"><b>属性映射</b></p>
 
 * `属性等价`
+`BKCOLOR(背景颜色)` <i class="fa fa-angle-double-right"/></i> `COLOR(颜色)`
+* `属性等价`
 `MSVALUEPROXYNAME(主状态值代理名称)` <i class="fa fa-angle-double-right"/></i> `NAME(名称)`
-* `直接值到源属性`
-`'rgba(255, 255, 255, 1)'` <i class="fa fa-angle-double-right"/></i> `COLOR(颜色)`
 * `属性等价`
 `MSVALUEPROXYID(主状态值代理标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
-* `属性等价`
-`BKCOLOR(背景颜色)` <i class="fa fa-angle-double-right"/></i> `COLOR(颜色)`
+* `直接值到源属性`
+`'rgba(255, 255, 255, 1)'` <i class="fa fa-angle-double-right"/></i> `COLOR(颜色)`
 
 <p class="panel-title"><b>行为映射</b></p>
 

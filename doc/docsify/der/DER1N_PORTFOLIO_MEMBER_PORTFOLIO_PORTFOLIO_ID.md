@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [文件夹(PORTFOLIO)](module/Base/Portfolio)
+* [文件夹(PORTFOLIO)](module/Base/portfolio)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [文件夹成员(PORTFOLIO_MEMBER)](module/Base/Portfolio_member)
+* [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)
 
 <p class="panel-title"><b>关系类型</b></p>
 

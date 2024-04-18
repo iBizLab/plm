@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [项目发布(RELEASE)](module/ProjMgmt/Release)
+* [项目发布(RELEASE)](module/ProjMgmt/release)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工作项(WORK_ITEM)](module/ProjMgmt/Work_item)
+* [工作项(WORK_ITEM)](module/ProjMgmt/work_item)
 
 <p class="panel-title"><b>关系类型</b></p>
 

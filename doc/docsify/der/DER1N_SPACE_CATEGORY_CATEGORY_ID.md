@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [类别(CATEGORY)](module/Base/Category)
+* [类别(CATEGORY)](module/Base/category)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [空间(SPACE)](module/Wiki/Space)
+* [空间(SPACE)](module/Wiki/space)
 
 <p class="panel-title"><b>关系类型</b></p>
 

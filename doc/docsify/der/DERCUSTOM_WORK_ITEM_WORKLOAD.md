@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [工作项(WORK_ITEM)](module/ProjMgmt/Work_item)
+* [工作项(WORK_ITEM)](module/ProjMgmt/work_item)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工时(WORKLOAD)](module/Base/Workload)
+* [工时(WORKLOAD)](module/Base/workload)
 
 <p class="panel-title"><b>关系类型</b></p>
 
@@ -21,7 +21,7 @@
 
 <p class="panel-title"><b>关系识别值</b></p>
 
-* `work_item`
+* `WORK_ITEM`
 
 <p class="panel-title"><b>外键属性</b></p>
 

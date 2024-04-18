@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [空间(SPACE)](module/Wiki/Space)
+* [空间(SPACE)](module/Wiki/space)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [空间成员(SPACE_MEMBER)](module/Wiki/Space_member)
+* [空间成员(SPACE_MEMBER)](module/Wiki/space_member)
 
 <p class="panel-title"><b>关系类型</b></p>
 

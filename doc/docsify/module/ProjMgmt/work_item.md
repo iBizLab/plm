@@ -1,0 +1,796 @@
+# 工作项(work_item)  <!-- {docsify-ignore-all} -->
+
+
+项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。
+
+
+## 属性
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|负责人|ASSIGNEE_ID|外键值|100|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
+|关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|需求来源|BACKLOG_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
+|需求类型|BACKLOG_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
+|看板标识|BOARD_ID|外键值|100|是||
+|看板名称|BOARD_NAME|外键值文本|200|是||
+|完成时间|COMPLETED_AT|日期时间型||是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|交付物|DELIVERABLE|一对多关系数据集合|1048576|是||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
+|结束时间|END_AT|日期型||是||
+|看板栏标识|ENTRY_ID|外键值|100|是||
+|看板栏名称|ENTRY_NAME|外键值文本|200|是||
+|所在看板栏位置|ENTRY_POSITION|整型||是||
+|看板栏状态|ENTRY_STATUS|文本，可指定长度|100|是||
+|预估工时|ESTIMATED_WORKLOAD|数值||是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
+|任务类别|JOB_TYPE|[单项选择(文本值)](index/dictionary_index#task_category "任务类别")|60|是||
+|父标识|PID|外键值|100|是||
+|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|100|是||
+|项目|PROJECT_ID|外键值|100|否||
+|项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
+|所属项目|PROJECT_NAME|外键值文本|200|是||
+|项目类型|PROJECT_TYPE|[外键值附加数据](index/dictionary_index#project_type "项目类型")|60|是||
+|父工作项|PTITLE|外键值文本|500|是||
+|复现概率|REAPPEAR_PROBABILITY|[单项选择(文本值)](index/dictionary_index#reproduction_probability "复现概率")|60|是||
+|项目发布标识|RELEASE_ID|外键值|100|是||
+|剩余工时|REMAINING_WORKLOAD|数值||是||
+|报表分组属性|REP_GROUP_VALUE|文本，可指定长度|100|是||
+|统计数|REP_NUM|数值||是||
+|报表百分值|REP_PERCENT_VALUE|浮点||是||
+|报表值1|REP_VALUE_1|整型||是||
+|报表值2|REP_VALUE_2|整型||是||
+|风险|RISK|[单项选择(文本值)](index/dictionary_index#risk "风险")|60|是||
+|严重程度|SEVERITY|[单项选择(文本值)](index/dictionary_index#severity "严重程度")|60|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|迭代标识|SPRINT_ID|外键值|100|是||
+|迭代名称|SPRINT_NAME|外键值文本|200|是||
+|开始时间|START_AT|日期型||是||
+|状态|STATE|外键值|100|是||
+|工作项状态类型|STATE_TYPE|[外键值附加数据](index/dictionary_index#state_type "工作项状态类型")|60|是||
+|泳道标识|SWIMLANE_ID|外键值|100|是||
+|标签|TAGS|长文本，长度1000|2000|是||
+|测试计划ID|TEST_PLAN_ID|文本，可指定长度|100|是||
+|标题|TITLE|文本，可指定长度|500|否||
+|顶级工作项标识|TOP_ID|外键值|100|是||
+|顶级工作项标题|TOP_TITLE|外键值文本|500|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|工时进度|WORKLOAD_SCHEDULE|数值||是||
+|工作项类型分组|WORK_ITEM_TYPE_GROUP|[外键值附加数据](index/dictionary_index#work_item_type_group "工作项类型分组")|60|是||
+|工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
+|工作项类型|WORK_ITEM_TYPE_NAME|外键值文本|200|是||
+|工作项类型序号|WORK_ITEM_TYPE_SEQUENCE|外键值附加数据||是||
+
+
+###### 索引
+
+<el-row>
+<el-tabs v-model="show_index">
+
+<el-tab-pane label="WORK_ITEM" name="index_WORK_ITEM">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|是否已归档|IS_ARCHIVED|false|升序|-1||
+|是否已删除|IS_DELETED|false|升序|-1||
+|项目|PROJECT_ID|false|升序|-1||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
+###### 属性组
+
+<el-row>
+<el-tabs v-model="show_field_group">
+
+<el-tab-pane label="长文本" name="field_group_DEFGroup">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|标题|TITLE|文本，可指定长度|500|否||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
+
+</el-tab-pane>
+<el-tab-pane label="高级搜索" name="field_group_advanced_search">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|所属项目|PROJECT_NAME|外键值文本|200|是||
+|状态|STATE|外键值|100|是||
+|标题|TITLE|文本，可指定长度|500|否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|项目|PROJECT_ID|外键值|100|否||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|项目标识|PROJECT_IDENTIFIER|外键值附加数据|15|是||
+
+</el-tab-pane>
+<el-tab-pane label="负责人" name="field_group_assignee">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|负责人|ASSIGNEE_ID|外键值|100|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+
+</el-tab-pane>
+<el-tab-pane label="子工作项" name="field_group_child">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|顶级工作项标识|TOP_ID|外键值|100|是||
+|父标识|PID|外键值|100|是||
+|项目|PROJECT_ID|外键值|100|否||
+
+</el-tab-pane>
+<el-tab-pane label="日期检查" name="field_group_date_check">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|开始时间|START_AT|日期型||是||
+|结束时间|END_AT|日期型||是||
+
+</el-tab-pane>
+<el-tab-pane label="通常属性组" name="field_group_usually">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|标题|TITLE|文本，可指定长度|500|否||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|状态|STATE|外键值|100|是||
+|工作项类型|WORK_ITEM_TYPE_ID|外键值|100|否||
+|负责人|ASSIGNEE_ID|外键值|100|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|100|是||
+|结束时间|END_AT|日期型||是||
+|父标识|PID|外键值|100|是||
+|开始时间|START_AT|日期型||是||
+|顶级工作项标识|TOP_ID|外键值|100|是||
+|项目|PROJECT_ID|外键值|100|否||
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|父工作项|PTITLE|外键值文本|500|是||
+|复现概率|REAPPEAR_PROBABILITY|[单项选择(文本值)](index/dictionary_index#reproduction_probability "复现概率")|60|是||
+|严重程度|SEVERITY|[单项选择(文本值)](index/dictionary_index#severity "严重程度")|60|是||
+|建立时间|CREATE_TIME|日期时间型||否||
+
+</el-tab-pane>
+<el-tab-pane label="工时日历" name="field_group_workload_calendar">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|项目|PROJECT_ID|外键值|100|否||
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|标题|TITLE|文本，可指定长度|500|否||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
+## 关系
+
+<el-row>
+<el-tabs v-model="show_der">
+<el-tab-pane label="主关系" name="major">
+
+| 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
+| -------- |---------- |------------|----- |
+|[DER1N_WORK_ITEM_WORK_ITEM_PID](der/DER1N_WORK_ITEM_WORK_ITEM_PID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DER1N_WORK_ITEM_WORK_ITEM_TOP_ID](der/DER1N_WORK_ITEM_WORK_ITEM_TOP_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID](der/DERCUSTOM_ATTENTION_WORK_ITEM_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
+|[DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
+|[DERCUSTOM_RECENT_WORK_ITEM](der/DERCUSTOM_RECENT_WORK_ITEM)|[最近访问(RECENT)](module/Base/recent)|自定义关系||
+|[DERCUSTOM_RELATION_WORK_ITEM](der/DERCUSTOM_RELATION_WORK_ITEM)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_TRANSITION_HISTORY_WORK_ITEM](der/DERCUSTOM_TRANSITION_HISTORY_WORK_ITEM)|[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)|自定义关系||
+|[DERCUSTOM_VERSION_WORK_ITEM](der/DERCUSTOM_VERSION_WORK_ITEM)|[版本（temp）(VERSION)](module/Base/version)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_ATTACHMENT](der/DERCUSTOM_WORK_ITEM_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_DELIVERABLE](der/DERCUSTOM_WORK_ITEM_DELIVERABLE)|[交付物(DELIVERABLE)](module/Base/deliverable)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_SEARCH_ATTACHMENT](der/DERCUSTOM_WORK_ITEM_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_SEARCH_COMMENT](der/DERCUSTOM_WORK_ITEM_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_WORKLOAD](der/DERCUSTOM_WORK_ITEM_WORKLOAD)|[工时(WORKLOAD)](module/Base/workload)|自定义关系||
+
+
+</el-tab-pane>
+<el-tab-pane label="从关系" name="minor">
+
+|  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
+| -------- |---------- |-----------|----- |
+|[DER1N_WORK_ITEM_BOARD_BOARD_ID](der/DER1N_WORK_ITEM_BOARD_BOARD_ID)|[看板(BOARD)](module/ProjMgmt/board)|1:N关系||
+|[DER1N_WORK_ITEM_ENTRY_ENTRY_ID](der/DER1N_WORK_ITEM_ENTRY_ENTRY_ID)|[看板栏(ENTRY)](module/ProjMgmt/entry)|1:N关系||
+|[DER1N_WORK_ITEM_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID)|[项目(PROJECT)](module/ProjMgmt/project)|1:N关系||
+|[DER1N_WORK_ITEM_RELEASE_RELEASE_ID](der/DER1N_WORK_ITEM_RELEASE_RELEASE_ID)|[项目发布(RELEASE)](module/ProjMgmt/release)|1:N关系||
+|[DER1N_WORK_ITEM_SPRINT_SPRINT_ID](der/DER1N_WORK_ITEM_SPRINT_SPRINT_ID)|[迭代(SPRINT)](module/ProjMgmt/sprint)|1:N关系||
+|[DER1N_WORK_ITEM_SWIMLANE_SWIMLANE_ID](der/DER1N_WORK_ITEM_SWIMLANE_SWIMLANE_ID)|[泳道(SWIMLANE)](module/ProjMgmt/swimlane)|1:N关系||
+|[DER1N_WORK_ITEM_USER_ASSIGNEE_ID](der/DER1N_WORK_ITEM_USER_ASSIGNEE_ID)|[企业用户(USER)](module/Base/user)|1:N关系||
+|[DER1N_WORK_ITEM_WORK_ITEM_PID](der/DER1N_WORK_ITEM_WORK_ITEM_PID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DER1N_WORK_ITEM_WORK_ITEM_STATE_STATE](der/DER1N_WORK_ITEM_WORK_ITEM_STATE_STATE)|[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)|1:N关系||
+|[DER1N_WORK_ITEM_WORK_ITEM_TOP_ID](der/DER1N_WORK_ITEM_WORK_ITEM_TOP_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID](der/DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID)|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|1:N关系||
+
+</el-tab-pane>
+</el-tabs>
+</el-row>
+
+## 行为
+| 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
+| -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
+|CheckKey|CheckKey|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Create)|||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Get)|||
+|GetDraft|GetDraft|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_GetDraft)|||
+|Remove|Remove|内置方法|默认|支持||||
+|Save|Save|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#work_item_Update)|||
+|激活|activate|[实体处理逻辑](module/ProjMgmt/work_item/logic/activate "激活")|默认|不支持||||
+|归档|archive|[实体处理逻辑](module/ProjMgmt/work_item/logic/archive "归档")|默认|不支持|||归档归档|
+|分配负责人|change_assignee|[实体处理逻辑](module/ProjMgmt/work_item/logic/change_assignee "分配负责人")|默认|不支持||||
+|变更父工作项|change_parent|[实体处理逻辑](module/ProjMgmt/work_item/logic/change_parent "变更父工作项")|默认|不支持||||
+|变更状态|change_state|[实体处理逻辑](module/ProjMgmt/work_item/logic/change_state "变更状态")|默认|不支持||||
+|修改时间|change_time|[实体处理逻辑](module/ProjMgmt/work_item/logic/change_time "修改时间")|默认|不支持||||
+|子工作项取消关联|child_del_relation|[实体处理逻辑](module/ProjMgmt/work_item/logic/child_del_relation "子工作项取消关联")|默认|不支持||||
+|选择子工作项|choose_child|[实体处理逻辑](module/ProjMgmt/work_item/logic/choose_child "选择子工作项")|默认|不支持||||
+|复制|copy|[实体处理逻辑](module/ProjMgmt/work_item/logic/copy_work_item "复制工作项")|默认|不支持||||
+|取消关联|del_relation|[实体处理逻辑](module/ProjMgmt/work_item/logic/del_relation "取消关联")|默认|不支持||||
+|删除|delete|[实体处理逻辑](module/ProjMgmt/work_item/logic/delete "删除")|默认|不支持||||
+|获取关注人|get_attention|内置方法|默认|不支持||||
+|移动工作项|move_work_item|[实体处理逻辑](module/ProjMgmt/work_item/logic/move_work_item "移动工作项")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/ProjMgmt/work_item/logic/nothing "无操作")|默认|不支持||||
+|其他实体关联工作项|others_relation_work_item|[实体处理逻辑](module/ProjMgmt/work_item/logic/others_relation_work_item "其他实体关联工作项")|默认|不支持||||
+|规划工作项|plan_work_item|[实体处理逻辑](module/ProjMgmt/work_item/logic/plan_work_item "规划工作项")|默认|不支持||||
+|恢复|recover|[实体处理逻辑](module/ProjMgmt/work_item/logic/recover "恢复")|默认|不支持||||
+|恢复到历史版本|restore_version|[实体处理逻辑](module/ProjMgmt/work_item/logic/restore_version "恢复历史版本")|默认|不支持||||
+|选择看板后填充默认看板栏|set_default_entry|[实体处理逻辑](module/ProjMgmt/work_item/logic/set_default_entry "设置默认看板栏")|默认|不支持||||
+|设置缺陷类型|set_type_bug|[实体处理逻辑](module/ProjMgmt/work_item/logic/set_type_bug "设置缺陷类型")|默认|不支持||||
+|移入看板|shift_in_kanban|[实体处理逻辑](module/ProjMgmt/work_item/logic/shift_in_kanban "移入看板")|默认|不支持||||
+|移入迭代|shift_in_sprint|[实体处理逻辑](module/ProjMgmt/work_item/logic/shift_in_sprint "移入迭代")|默认|不支持||||
+|移入发布|shift_in_version|[实体处理逻辑](module/ProjMgmt/work_item/logic/shift_in_version "移入发布")|默认|不支持||||
+|工作项关联分页计数器|work_item_re_counters|[实体处理逻辑](module/ProjMgmt/work_item/logic/work_item_re_counters "工作项关联分页计数器")|默认|不支持||||
+|获取测试计划对应项目|work_item_test_plan_project|[实体处理逻辑](module/ProjMgmt/work_item/logic/work_item_test_plan_project "获取测试计划对应项目")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[修改时间](module/ProjMgmt/work_item/logic/change_time)|change_time|无||修改工作项的开始、结束时间|
+|[其他实体关联工作项](module/ProjMgmt/work_item/logic/others_relation_work_item)|others_relation_work_item|无||工作项实体的关联操作，生成正向，反向关联数据|
+|[分配负责人](module/ProjMgmt/work_item/logic/change_assignee)|change_assignee|无||工作项分配负责人|
+|[删除](module/ProjMgmt/work_item/logic/delete)|delete|无||工作项数据的逻辑删除，修改产品的是否删除属性值；并递归删除所有下级工作项|
+|[取消关联](module/ProjMgmt/work_item/logic/del_relation)|del_relation|无||工作项取消关联数据（正反向关联数据同时删除）|
+|[变更父工作项](module/ProjMgmt/work_item/logic/change_parent)|change_parent|无||变更父工作项|
+|[变更状态](module/ProjMgmt/work_item/logic/change_state)|change_state|无||变更工作项状态|
+|[变更顶级工作项](module/ProjMgmt/work_item/logic/change_top)|change_top|无||变更父工作项时，同时继承父工作项的顶级标识|
+|[复制子工作项](module/ProjMgmt/work_item/logic/copy_child_work_item)|copy_child_work_item|无||复制工作项时，同时复制子工作项|
+|[复制工作项](module/ProjMgmt/work_item/logic/copy_work_item)|copy_work_item|无||复制工作项到其他的同类型项目|
+|[子工作项取消关联](module/ProjMgmt/work_item/logic/child_del_relation)|child_del_relation|无||工作项取消关联子工作项|
+|[工作项关联分页计数器](module/ProjMgmt/work_item/logic/work_item_re_counters)|work_item_re_counters|无||计算分页下关联事项的条数|
+|[工作项删除变更附加逻辑](module/ProjMgmt/work_item/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||工作项删除或恢复时触发相应的通知消息|
+|[工作项归档变更附加逻辑](module/ProjMgmt/work_item/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||工作项归档或激活时触发相应的通知消息|
+|[工作项状态变更附加逻辑](module/ProjMgmt/work_item/logic/state_onchange)|state_onchange|属性逻辑||工作项状态变更时触发相应的通知消息，同时生成流转记录|
+|[工作项负责人变更附加逻辑](module/ProjMgmt/work_item/logic/assignee_onchange)|assignee_onchange|属性逻辑||工作项负责人变更时触发相应的通知消息|
+|[归档](module/ProjMgmt/work_item/logic/archive)|archive|无||未归档工作项数据的归档处理，修改工作项的归档状态为已归档，递归所有下级工作项|
+|[恢复](module/ProjMgmt/work_item/logic/recover)|recover|无||递归所有下级工作项，恢复已删除状态工作项数据，修改工作项的是否删除属性值，并恢复访问记录|
+|[恢复历史版本](module/ProjMgmt/work_item/logic/restore_version)|restore_version|无||恢复工作项版本至某一指定历史版本|
+|[无操作](module/ProjMgmt/work_item/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[树状或平铺表格数据查询（测试）](module/ProjMgmt/work_item/logic/tree_tile_grid_query)|tree_tile_grid_query|无||过程中测试调式逻辑|
+|[激活](module/ProjMgmt/work_item/logic/activate)|activate|无||激活已归档状态工作项，工作项存在子工作项，递归激活所有下级工作项|
+|[生成最近访问](module/ProjMgmt/work_item/logic/create_recent)|create_recent|无||在用户对工作项数据进行了get或update操作时生成相应的访问记录|
+|[移入发布](module/ProjMgmt/work_item/logic/shift_in_version)|shift_in_version|无||将工作项移入对应发布|
+|[移入看板](module/ProjMgmt/work_item/logic/shift_in_kanban)|shift_in_kanban|无||将工作项移入对应看板|
+|[移入迭代](module/ProjMgmt/work_item/logic/shift_in_sprint)|shift_in_sprint|无||将工作项移入对应迭代|
+|[移动工作项](module/ProjMgmt/work_item/logic/move_work_item)|move_work_item|无||工作项移动至其他的同类型项目|
+|[移动时子工作项的处理](module/ProjMgmt/work_item/logic/move_child_work_item)|move_child_work_item|无||父工作项移动; 子工作项也移动;并对Top_id进行更新|
+|[缺陷年龄报告](module/ProjMgmt/work_item/logic/defect_age_report)|defect_age_report|无||报表缺陷年龄报告数据源<br>|
+|[缺陷每日趋势](module/ProjMgmt/work_item/logic/defect_daily_trend)|defect_daily_trend|无||报表缺陷每日趋势数据源|
+|[缺陷累计趋势查询](module/ProjMgmt/work_item/logic/defect_total_trend)|defect_total_trend|无||报表缺陷累计趋势报表数据源|
+|[获取测试计划对应项目](module/ProjMgmt/work_item/logic/work_item_test_plan_project)|work_item_test_plan_project|无||获取测试计划对应项目|
+|[规划工作项](module/ProjMgmt/work_item/logic/plan_work_item)|plan_work_item|无||规划选中工作项至指定发布|
+|[设置缺陷类型](module/ProjMgmt/work_item/logic/set_type_bug)|set_type_bug|无||设置当前工作项为缺陷类型|
+|[设置默认看板栏](module/ProjMgmt/work_item/logic/set_default_entry)|set_default_entry|无||选择看板后，自动填充所属看板下的的首个看板栏|
+|[选择子工作项](module/ProjMgmt/work_item/logic/choose_child)|choose_child|无||选择子工作项|
+|[需求年龄报告](module/ProjMgmt/work_item/logic/backlog_age_report)|backlog_age_report|无||报表需求年龄报告数据源|
+|[需求树状或平铺表格查询](module/ProjMgmt/work_item/logic/requirement_tree_or_tile_query)|requirement_tree_or_tile_query|无||需求树状或平铺表格查询|
+|[需求每日趋势](module/ProjMgmt/work_item/logic/backlog_daily_trend)|backlog_daily_trend|无||报表需求每日趋势数据源|
+|[需求累计流图](module/ProjMgmt/work_item/logic/backlog_accumulate_flow)|backlog_accumulate_flow|无||报表需求累计流图数据源|
+|[顶级工作项](module/ProjMgmt/work_item/logic/top_work_item)|top_work_item|无||创建时继承父工作项的顶级工作项|
+
+## 主状态控制
+
+<p class="panel-title"><b>控制属性</b></p>
+
+* `工作项类型(WORK_ITEM_TYPE_ID)` 
+* `状态(STATE)` 
+
+
+
+> 控制属性未配置代码表，或者代码表未配置代码项
+
+## 主状态迁移
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[Scrum项目-任务-状态迁移](module/ProjMgmt/work_item/mslogic/scrum_task)|scrum_task||||
+|[Scrum项目-史诗-状态迁移](module/ProjMgmt/work_item/mslogic/scrum_epic)|scrum_epic||||
+|[Scrum项目-特性-状态迁移](module/ProjMgmt/work_item/mslogic/scrum_feature)|scrum_feature||||
+|[Scrum项目-用户故事-状态迁移](module/ProjMgmt/work_item/mslogic/scrum_story)|scrum_story||||
+|[Scrum项目-缺陷-状态迁移](module/ProjMgmt/work_item/mslogic/scrum_bug)|scrum_bug||||
+
+## 数据查询
+| 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
+| --------  | --------   | :----:  |:----:  | :----:  |----- |
+|[数据查询(DEFAULT)](module/ProjMgmt/work_item/query/Default)|DEFAULT|是|否 |否 ||
+|[默认（全部数据）(VIEW)](module/ProjMgmt/work_item/query/View)|VIEW|否|否 |否 ||
+|[高级搜索(advanced_search)](module/ProjMgmt/work_item/query/advanced_search)|advanced_search|否|否 |否 ||
+|[已归档(archived)](module/ProjMgmt/work_item/query/archived)|archived|否|否 |否 ||
+|[缺陷工作项(bug)](module/ProjMgmt/work_item/query/bug)|bug|否|否 |否 ||
+|[缺陷工作项(bug_work_item)](module/ProjMgmt/work_item/query/bug_work_item)|bug_work_item|否|否 |否 ||
+|[变更父工作项(change_parent)](module/ProjMgmt/work_item/query/change_parent)|change_parent|否|否 |否 ||
+|[查询子工作项(child)](module/ProjMgmt/work_item/query/child)|child|否|否 |否 ||
+|[选择子工作项(choose_child)](module/ProjMgmt/work_item/query/choose_child)|choose_child|否|否 |否 ||
+|[评论通知负责人(comment_notify_assignee)](module/ProjMgmt/work_item/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 ||
+|[普通工作项(common)](module/ProjMgmt/work_item/query/common)|common|否|否 |否 |未删除|
+|[普通状态缺陷(common_bug)](module/ProjMgmt/work_item/query/common_bug)|common_bug|否|否 |否 ||
+|[已删除(deleted)](module/ProjMgmt/work_item/query/deleted)|deleted|否|否 |否 ||
+|[需求关联工作项(idea_relation_work_item)](module/ProjMgmt/work_item/query/idea_relation_work_item)|idea_relation_work_item|否|否 |否 ||
+|[看板工作项(kanban_work_item)](module/ProjMgmt/work_item/query/kanban_work_item)|kanban_work_item|否|否 |否 ||
+|[里程碑(milestone)](module/ProjMgmt/work_item/query/milestone)|milestone|否|否 |否 ||
+|[我负责的(my_assignee)](module/ProjMgmt/work_item/query/my_assignee)|my_assignee|否|否 |否 ||
+|[我关注的(my_attention)](module/ProjMgmt/work_item/query/my_attention)|my_attention|否|否 |否 ||
+|[我创建的(my_created)](module/ProjMgmt/work_item/query/my_created)|my_created|否|否 |否 ||
+|[过滤器默认查询(my_filter)](module/ProjMgmt/work_item/query/my_filter)|my_filter|否|否 |否 ||
+|[我待完成的(my_todo)](module/ProjMgmt/work_item/query/my_todo)|my_todo|否|否 |否 ||
+|[排除缺陷类型的工作项(no_bug_work_item)](module/ProjMgmt/work_item/query/no_bug_work_item)|no_bug_work_item|否|否 |否 ||
+|[正常状态(normal)](module/ProjMgmt/work_item/query/normal)|normal|否|否 |否 ||
+|[未关联的缺陷(not_exsists_bug_relation)](module/ProjMgmt/work_item/query/not_exsists_bug_relation)|not_exsists_bug_relation|否|否 |否 |仅缺陷|
+|[未关联的工作项(not_exsists_relation)](module/ProjMgmt/work_item/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
+|[未关联且不为缺陷工作项(notbug_exsists_relation)](module/ProjMgmt/work_item/query/notbug_exsists_relation)|notbug_exsists_relation|否|否 |否 |未关联且不为缺陷工作项|
+|[工作项通知负责人(notify_assignee)](module/ProjMgmt/work_item/query/notify_assignee)|notify_assignee|否|否 |否 ||
+|[项目概览-工作项统计(overview_chart)](module/ProjMgmt/work_item/query/overview_chart)|overview_chart|否|否 |否 ||
+|[规划工作项(plan)](module/ProjMgmt/work_item/query/plan)|plan|否|否 |否 ||
+|[最近浏览(recent_work_item)](module/ProjMgmt/work_item/query/recent_work_item)|recent_work_item|否|否 |否 ||
+|[需求工作项(requirement)](module/ProjMgmt/work_item/query/requirement)|requirement|否|否 |否 ||
+|[需求树表查询(requirement_tree)](module/ProjMgmt/work_item/query/requirement_tree)|requirement_tree|否|否 |否 ||
+|[资源分配(resource_assignment)](module/ProjMgmt/work_item/query/resource_assignment)|resource_assignment|否|否 |否 ||
+|[执行用例关联缺陷(run_relation_bug)](module/ProjMgmt/work_item/query/run_relation_bug)|run_relation_bug|否|否 |否 ||
+|[用户故事（normal）(scrum_story_normal)](module/ProjMgmt/work_item/query/scrum_story_normal)|scrum_story_normal|否|否 |否 ||
+|[测试用例关联缺陷(test_case_relation_bug)](module/ProjMgmt/work_item/query/test_case_relation_bug)|test_case_relation_bug|否|否 |否 ||
+|[测试用例关联工作项(test_case_relation_work_item)](module/ProjMgmt/work_item/query/test_case_relation_work_item)|test_case_relation_work_item|否|否 |否 ||
+|[测试计划关联缺陷(test_plan_relation_bug)](module/ProjMgmt/work_item/query/test_plan_relation_bug)|test_plan_relation_bug|否|否 |否 ||
+|[工单关联工作项(ticket_relation_work_item)](module/ProjMgmt/work_item/query/ticket_relation_work_item)|ticket_relation_work_item|否|否 |否 ||
+|[顶层数据查询(top)](module/ProjMgmt/work_item/query/top)|top|否|否 |否 ||
+|[树表格顶层工作项查询(top_tree_grid)](module/ProjMgmt/work_item/query/top_tree_grid)|top_tree_grid|否|否 |否 ||
+|[未删除的(un_deletd)](module/ProjMgmt/work_item/query/un_deletd)|un_deletd|否|否 |否 ||
+|[项目集工作下的工作项(under_work)](module/ProjMgmt/work_item/query/under_work)|under_work|否|否 |否 ||
+|[工作项关联工作项(work_item_relation_work_item)](module/ProjMgmt/work_item/query/work_item_relation_work_item)|work_item_relation_work_item|否|否 |否 ||
+
+## 数据集合
+| 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
+| --------  | --------   | :----:   | :----:   | ----- |----- |
+|[数据集(DEFAULT)](module/ProjMgmt/work_item/dataset/Default)|DEFAULT|数据查询|是|||
+|[高级搜索(advanced_search)](module/ProjMgmt/work_item/dataset/advanced_search)|advanced_search|数据查询|否|||
+|[已归档(archived)](module/ProjMgmt/work_item/dataset/archived)|archived|数据查询|否|||
+|[需求累计流图(backlog_accumulate_flow)](module/ProjMgmt/work_item/dataset/backlog_accumulate_flow)|backlog_accumulate_flow|[实体逻辑](module/ProjMgmt/work_item/logic/backlog_accumulate_flow)|否|||
+|[需求年龄报告(backlog_age_report)](module/ProjMgmt/work_item/dataset/backlog_age_report)|backlog_age_report|[实体逻辑](module/ProjMgmt/work_item/logic/backlog_age_report)|否|||
+|[需求每日趋势(backlog_daily_trend)](module/ProjMgmt/work_item/dataset/backlog_daily_trend)|backlog_daily_trend|[实体逻辑](module/ProjMgmt/work_item/logic/backlog_daily_trend)|否|||
+|[需求属性分布(backlog_property_distribution)](module/ProjMgmt/work_item/dataset/backlog_property_distribution)|backlog_property_distribution|数据查询|否|||
+|[需求状态分布(backlog_state_distribution)](module/ProjMgmt/work_item/dataset/backlog_state_distribution)|backlog_state_distribution|数据查询|否|||
+|[缺陷工作项(bug)](module/ProjMgmt/work_item/dataset/bug)|bug|数据查询|否|||
+|[缺陷每日趋势(bug_daily_tide)](module/ProjMgmt/work_item/dataset/bug_daily_tide)|bug_daily_tide|[实体逻辑](module/ProjMgmt/work_item/logic/defect_daily_trend)|否|||
+|[缺陷状态分布表格(bug_state_group_grid)](module/ProjMgmt/work_item/dataset/bug_state_group_grid)|bug_state_group_grid|数据查询|否|||
+|[变更父工作项(change_parent)](module/ProjMgmt/work_item/dataset/change_parent)|change_parent|数据查询|否|||
+|[查询子工作项(child)](module/ProjMgmt/work_item/dataset/child)|child|数据查询|否|||
+|[选择子工作项(choose_child)](module/ProjMgmt/work_item/dataset/choose_child)|choose_child|数据查询|否|||
+|[评论通知负责人(comment_notify_assignee)](module/ProjMgmt/work_item/dataset/comment_notify_assignee)|comment_notify_assignee|数据查询|否|||
+|[普通工作项(common)](module/ProjMgmt/work_item/dataset/common)|common|数据查询|否||未删除|
+|[普通状态缺陷(common_bug)](module/ProjMgmt/work_item/dataset/common_bug)|common_bug|数据查询|否|||
+|[缺陷年龄报告(defect_age_report)](module/ProjMgmt/work_item/dataset/defect_age_report)|defect_age_report|[实体逻辑](module/ProjMgmt/work_item/logic/defect_age_report)|否|||
+|[缺陷属性分布(defect_property_distribution)](module/ProjMgmt/work_item/dataset/defect_property_distribution)|defect_property_distribution|数据查询|否|||
+|[缺陷累计趋势(defect_total_trend)](module/ProjMgmt/work_item/dataset/defect_total_trend)|defect_total_trend|[实体逻辑](module/ProjMgmt/work_item/logic/defect_total_trend)|否|||
+|[已删除(deleted)](module/ProjMgmt/work_item/dataset/deleted)|deleted|数据查询|否|||
+|[需求关联工作项(idea_relation_work_item)](module/ProjMgmt/work_item/dataset/idea_relation_work_item)|idea_relation_work_item|数据查询|否|||
+|[kanban成员负荷报告(kanban_user_stat)](module/ProjMgmt/work_item/dataset/kanban_user_stat)|kanban_user_stat|数据查询|否|||
+|[里程碑(milestone)](module/ProjMgmt/work_item/dataset/milestone)|milestone|数据查询|否|||
+|[我负责的(my_assignee)](module/ProjMgmt/work_item/dataset/my_assignee)|my_assignee|数据查询|否|||
+|[我负责的（统计）(my_assignee_count)](module/ProjMgmt/work_item/dataset/my_assignee_count)|my_assignee_count|数据查询|否|||
+|[我关注的(my_attention)](module/ProjMgmt/work_item/dataset/my_attention)|my_attention|数据查询|否|||
+|[我创建的(my_created)](module/ProjMgmt/work_item/dataset/my_created)|my_created|数据查询|否|||
+|[过滤器默认查询(my_filter)](module/ProjMgmt/work_item/dataset/my_filter)|my_filter|数据查询|否|||
+|[我待完成的(my_todo)](module/ProjMgmt/work_item/dataset/my_todo)|my_todo|数据查询|否|||
+|[排除缺陷类型的工作项(no_bug_work_item)](module/ProjMgmt/work_item/dataset/no_bug_work_item)|no_bug_work_item|数据查询|否|||
+|[正常状态(normal)](module/ProjMgmt/work_item/dataset/normal)|normal|数据查询|否|||
+|[未关联的缺陷(not_exsists_bug_relation)](module/ProjMgmt/work_item/dataset/not_exsists_bug_relation)|not_exsists_bug_relation|数据查询|否||仅缺陷|
+|[未关联的工作项(not_exsists_relation)](module/ProjMgmt/work_item/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
+|[未关联工作项且不为缺陷(notbug_exsists_relation)](module/ProjMgmt/work_item/dataset/notbug_exsists_relation)|notbug_exsists_relation|数据查询|否||未关联且不为缺陷工作项|
+|[工作项通知负责人(notify_assignee)](module/ProjMgmt/work_item/dataset/notify_assignee)|notify_assignee|数据查询|否|||
+|[项目概览-工作项统计(overview_chart)](module/ProjMgmt/work_item/dataset/overview_chart)|overview_chart|数据查询|否|||
+|[规划工作项(plan)](module/ProjMgmt/work_item/dataset/plan)|plan|数据查询|否|||
+|[需求分组过滤(property_distribution)](module/ProjMgmt/work_item/dataset/property_distribution)|property_distribution|数据查询|否|||
+|[最近浏览(recent_work_item)](module/ProjMgmt/work_item/dataset/recent_work_item)|recent_work_item|数据查询|否|||
+|[需求工作项(requirement)](module/ProjMgmt/work_item/dataset/requirement)|requirement|数据查询|否|||
+|[需求树表查询(requirement_tree)](module/ProjMgmt/work_item/dataset/requirement_tree)|requirement_tree|数据查询|否|[TreeGridDEDataSetRuntime](index/plugin_index#UsrSFPlugin0407757309)||
+|[需求工作项树状或平铺(requirement_tree_or_tile)](module/ProjMgmt/work_item/dataset/requirement_tree_or_tile)|requirement_tree_or_tile|[实体逻辑](module/ProjMgmt/work_item/logic/requirement_tree_or_tile_query)|否|||
+|[资源分配(resource_assignment)](module/ProjMgmt/work_item/dataset/resource_assignment)|resource_assignment|数据查询|否|||
+|[执行用例关联缺陷(run_relation_work_item)](module/ProjMgmt/work_item/dataset/run_relation_work_item)|run_relation_work_item|数据查询|否|||
+|[成员负荷报告（Scrum）(sprint_user_stat)](module/ProjMgmt/work_item/dataset/sprint_user_stat)|sprint_user_stat|数据查询|否|||
+|[团队速度(temp_speed_report)](module/ProjMgmt/work_item/dataset/temp_speed_report)|temp_speed_report|数据查询|否|||
+|[测试用例关联缺陷(test_case_relation_bug)](module/ProjMgmt/work_item/dataset/test_case_relation_bug)|test_case_relation_bug|数据查询|否|||
+|[测试用例关联工作项(test_case_relation_work_item)](module/ProjMgmt/work_item/dataset/test_case_relation_work_item)|test_case_relation_work_item|数据查询|否|||
+|[测试计划关联缺陷(test_plan_relation_bug)](module/ProjMgmt/work_item/dataset/test_plan_relation_bug)|test_plan_relation_bug|数据查询|否|||
+|[工单关联工作项(ticket_relation_work_item)](module/ProjMgmt/work_item/dataset/ticket_relation_work_item)|ticket_relation_work_item|数据查询|否|||
+|[顶层工作项(top)](module/ProjMgmt/work_item/dataset/top)|top|数据查询|否|||
+|[树表查询(top_tree_grid)](module/ProjMgmt/work_item/dataset/top_tree_grid)|top_tree_grid|数据查询|否||查询表格树顶层工作项|
+|[树状或平铺表格数据查询(tree_tile_grid_query)](module/ProjMgmt/work_item/dataset/tree_tile_grid_query)|tree_tile_grid_query|数据查询|否|[TreeGridDEDataSetRuntime](index/plugin_index#UsrSFPlugin0407757309)|未删除|
+|[项目集工作下的工作项(under_work)](module/ProjMgmt/work_item/dataset/under_work)|under_work|数据查询|否|||
+|[工作项分布(work_item_distribution)](module/ProjMgmt/work_item/dataset/work_item_distribution)|work_item_distribution|数据查询|否|||
+|[工作项关联工作项(work_item_relation_work_item)](module/ProjMgmt/work_item/dataset/work_item_relation_work_item)|work_item_relation_work_item|数据查询|否|||
+
+## 数据权限
+
+##### 操作用户(写) :id=work_item-USER_W
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `无`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+
+
+
+## 消息通知
+
+|    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
+|------------| -----   |  -------- | -------- |-------- |-------- |
+|[工作项分配负责人通知](module/ProjMgmt/work_item/notify/allocation_notify)|allocation_notify|[默认消息队列](index/notify_index)|[工作项通知模板(分配负责人)](index/notify_index#work_item_assignee)|负责人 ||
+|[工作项负责人变更通知](module/ProjMgmt/work_item/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[工作项通知模板(变更负责人)](index/notify_index#work_item_assignee_onchange)|关注人员 ||
+|[工作项取消负责人通知](module/ProjMgmt/work_item/notify/cancel_assignee_notify)|cancel_assignee_notify|[默认消息队列](index/notify_index)|[工作项通知模板(取消分配负责人)](index/notify_index#work_item_assignee_cancel)|负责人 ||
+|[工作项创建时分配通知](module/ProjMgmt/work_item/notify/create_notify)|create_notify|[默认消息队列](index/notify_index)|[工作项通知模板(分配负责人)](index/notify_index#work_item_assignee)|负责人 ||
+|[工作项归档/激活通知](module/ProjMgmt/work_item/notify/is_archived_notify)|is_archived_notify|[默认消息队列](index/notify_index)|[工作项通知模板(归档/激活工作项)](index/notify_index#work_item_archive)|负责人 关注对象 ||
+|[工作项删除/恢复通知](module/ProjMgmt/work_item/notify/is_deleted_notify)|is_deleted_notify|[默认消息队列](index/notify_index)|[工作项通知模板(删除/恢复工作项)](index/notify_index#work_item_remove)|负责人 关注人员 ||
+|[工作项状态变换通知](module/ProjMgmt/work_item/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[工作项通知模板（状态变更）](index/notify_index#work_item_state_onchange)|负责人 关注人员 ||
+
+## 搜索模式
+|   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
+| -------- |------------|------------|------|
+|N_ASSIGNEE_ID_EQ|负责人|EQ||
+|N_ATTENTIONS_EXISTS__N_OWNER_ID_EQ|关注|EXISTS||
+|N_ATTENTIONS_EXISTS__N_TYPE_EQ|关注|EXISTS||
+|N_ATTENTIONS_EXISTS__N_USER_ID_EQ|关注|EXISTS||
+|N_ATTENTIONS_NOTEXISTS__N_TYPE_EQ|关注|NOTEXISTS||
+|N_ATTENTIONS_NOTEXISTS__N_USER_ID_EQ|关注|NOTEXISTS||
+|N_BACKLOG_FROM_EQ|需求来源|EQ||
+|N_BACKLOG_TYPE_EQ|需求类型|EQ||
+|N_BOARD_ID_EQ|看板标识|EQ||
+|N_BOARD_NAME_EQ|看板名称|EQ||
+|N_BOARD_NAME_LIKE|看板名称|LIKE||
+|N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_TIME_EQ|建立时间|EQ||
+|N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
+|N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
+|N_DESCRIPTION_LIKE|描述|LIKE||
+|F_END_AT_DATEDIFFNOW_GTANDEQ|结束时间|GTANDEQ||
+|N_ENTRY_ID_EQ|看板栏标识|EQ||
+|N_ENTRY_NAME_EQ|看板栏名称|EQ||
+|N_ENTRY_NAME_LIKE|看板栏名称|LIKE||
+|N_ID_EQ|标识|EQ||
+|N_ID_EXISTS__N_ID_EQ|标识|EXISTS||
+|N_ID_IN|标识|IN||
+|N_ID_NOTEQ|标识|NOTEQ||
+|N_IDENTIFIER_LIKE|编号|LIKE||
+|N_IS_ARCHIVED_EQ|是否已归档|EQ||
+|N_IS_DELETED_EQ|是否已删除|EQ||
+|N_JOB_TYPE_EQ|任务类别|EQ||
+|N_PID_EQ|父标识|EQ||
+|N_PRIORITY_EQ|优先级|EQ||
+|N_PROJECT_ID_EQ|项目|EQ||
+|N_PROJECT_NAME_EQ|所属项目|EQ||
+|N_PROJECT_NAME_LIKE|所属项目|LIKE||
+|N_PTITLE_EQ|父工作项|EQ||
+|N_PTITLE_LIKE|父工作项|LIKE||
+|N_REAPPEAR_PROBABILITY_EQ|复现概率|EQ||
+|N_RELEASE_ID_EQ|项目发布标识|EQ||
+|N_RISK_EQ|风险|EQ||
+|N_SEVERITY_EQ|严重程度|EQ||
+|N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
+|N_SPRINT_ID_EQ|迭代标识|EQ||
+|N_SPRINT_ID_ISNULL|迭代标识|ISNULL||
+|N_SPRINT_NAME_EQ|迭代名称|EQ||
+|N_SPRINT_NAME_LIKE|迭代名称|LIKE||
+|N_STATE_EQ|状态|EQ||
+|N_STATE_NOTEQ|状态|NOTEQ||
+|N_STATE_NOTIN|状态|NOTIN||
+|N_SWIMLANE_ID_EQ|泳道标识|EQ||
+|N_TITLE_LIKE|标题|LIKE||
+|N_TOP_ID_EQ|顶级工作项标识|EQ||
+|N_TOP_ID_IN|顶级工作项标识|IN||
+|N_TOP_TITLE_EQ|顶级工作项标题|EQ||
+|N_TOP_TITLE_LIKE|顶级工作项标题|LIKE||
+|N_WORK_ITEM_TYPE_GROUP_EQ|工作项类型分组|EQ||
+|N_WORK_ITEM_TYPE_ID_EQ|工作项类型|EQ||
+|N_WORK_ITEM_TYPE_ID_IN|工作项类型|IN||
+|N_WORK_ITEM_TYPE_ID_LIKE|工作项类型|LIKE||
+|N_WORK_ITEM_TYPE_NAME_EQ|工作项类型|EQ||
+|N_WORK_ITEM_TYPE_NAME_LIKE|工作项类型|LIKE||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 复制编号 | copy_identifier | 复制编号 |单项数据|用户自定义||
+| 移入迭代 | shift_in_sprint | 移入迭代 |多项数据（主键）|<details><summary>后台调用</summary>[shift_in_sprint](#行为)||
+| 分配负责人(单项) | change_work_item_assignee | 分配负责人 |单项数据（主键）|<details><summary>打开编辑表单</summary></details>||
+| 表格 | change_grid_mode | 表格 |无数据|用户自定义||
+| 计算子工作项类型 | clac_children_work_item_type | 计算子工作项类型 |单项数据|用户自定义||
+| 新建缺陷（scrum） | new_scrum_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 工作项需求导入 | import_work_item_backlog | 工作项需求导入 |无数据|<details><summary>打开数据导入视图</summary>[工作项需求导入]()</details>|需求类工作项导入|
+| 关联工作项 | relation_work_item | 关联工作项 |单项数据（主键）|<details><summary>后台调用</summary>[others_relation_work_item](#行为)||
+| 新建史诗（kanban） | new_kanban_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建缺陷（测试计划关联） | new_test_plan_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>|测试计划分页导航 → 缺陷分页 → 表格工具栏 「 新建缺陷 」|
+| 切换显示模式 | switch_show_mode | 切换模式 |无数据|用户自定义||
+| 新建任务（waterfall） | new_waterfall_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 变更父工作项 | change_parent | 变更父工作项 |单项数据（主键）|<details><summary>后台调用</summary>[change_parent](#行为)||
+| 修改时间 | change_time | 修改时间 |多项数据（主键）|<details><summary>后台调用</summary>[change_time](#行为)||
+| 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
+| 瀑布工作项导入 | productgrid_view_all | 瀑布工作项导入 |无数据|<details><summary>打开数据导入视图</summary>[瀑布工作项导入]()</details>|瀑布类型项目的工作项导入|
+| 移入发布 | shift_in_version | 移入发布 |多项数据（主键）|<details><summary>后台调用</summary>[shift_in_version](#行为)||
+| 新建工作项（测试） | new_work_item_test | 新建工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_test_follow_edit_view)</details>||
+| 新建史诗（scrum） | new_scrum_epic | 新建史诗 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 归档 | archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 新建用户故事（kanban） | new_kanban_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 甘特删除行测试 | removerow_gantt | 删除 |单项数据|用户自定义||
+| 变更状态 | change_state | 变更状态 |多项数据（主键）|<details><summary>后台调用</summary>[change_state](#行为)||
+| 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
+| 新建特性（scrum） | new_scrum_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建执行后（建立关联数据) | after_new_test_plan_bug | 新建缺陷执行后（测试计划关联) |单项数据（主键）|用户自定义||
+| 添加控件显示 | show_add_input | 添加工作项 |无数据|用户自定义||
+| 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
+| 新建需求（waterfall） | new_waterfall_requirement | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建计划（waterfall） | new_waterfall_plan | 新建计划 |单项数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 分配负责人 | change_assignee | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[change_assignee](#行为)||
+| 工作项缺陷导入 | import_work_item_bug | 工作项缺陷导入 |无数据|<details><summary>打开数据导入视图</summary>[工作项缺陷导入]()</details>|缺陷类工作项导入|
+| 新建任务（scrum） | new_scrum_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 复制链接 | copy_link | 复制链接 |单项数据|用户自定义||
+| 新建用户故事（scrum） | new_scrum_story | 新建用户故事 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建里程碑（waterfall） | new_waterfall_milestone | 新建里程碑 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 看板工作项导入 | import_work_item_kanban | 看板工作项导入 |无数据|<details><summary>打开数据导入视图</summary>[看板工作项导入]()</details>|看板类型项目的工作项导入|
+| 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
+| 更改工作项状态 | change_work_item_state | 更改状态 |单项数据（主键）|<details><summary>打开编辑表单</summary></details>||
+| 甘特新建行测试 | newrow_gantt | 新建 |单项数据|用户自定义||
+| 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
+| 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
+| 新建工作项（无参数） | new_work_item | 新建工作项 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| null | toolbar_grid_view_toolbar_deuiaction1_click | 工作项 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_test_follow_edit_view)</details>||
+| 新建阶段（waterfall） | new_waterfall_stage | 新建阶段 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 复制工作项 | copy | 复制 |多项数据（主键）|<details><summary>后台调用</summary>[copy](#行为)||
+| 新建任务（kanban）（工具栏） | new_kanban_task_toolbar | 新建工作项 |无数据|用户自定义||
+| 新建缺陷（kanban） | new_kanban_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建行测试 | newrow_test | 新建行测试 |单项数据|用户自定义||
+| 移入看板 | shift_in_kanban | 移入看板 |单项数据（主键）|<details><summary>打开编辑表单</summary></details>||
+| 移动 | move | 移动 |多项数据（主键）|<details><summary>后台调用</summary>[move_work_item](#行为)||
+| 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 打开项目集下父工作项的链接视图 | open_under_project_set_pview | 打开项目集下父工作项的链接视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_main_view)</details>||
+| 新建事务（kanban） | new_kanban_issue | 新建事务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建缺陷（waterfall） | new_waterfall_bug | 新建缺陷 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 树状 | change_tree_mode | 树状 |无数据|用户自定义||
+| 新建任务（kanban） | new_kanban_task | 新建任务 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建缺陷（kanban）（工具栏） | new_kanban_bug_toolbar | 新建工作项 |无数据|用户自定义||
+| 新建用户故事（kanban）（工具栏） | new_kanban_story_toolbar | 新建工作项 |无数据|用户自定义||
+| 取消关联（子工作项） | child_del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[child_del_relation](#行为)||
+| 删除计划 | remove_waterfall_plan | 删除计划 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 新建特性（kanban） | new_kanban_feature | 新建特性 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)|attention_personnel_update|获取关注人员信息，并根据类别更新|
+|[关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_work_item_change)|relation_work_item_change|关联工作项值变更时，调用处理逻辑，生成正反向关联数据|
+|[切换显示模式](module/ProjMgmt/work_item/uilogic/switch_show_mode)|switch_show_mode|切换表格的显示模式|
+|[切换树模式](module/ProjMgmt/work_item/uilogic/change_tree_mode)|change_tree_mode|切换树模式|
+|[切换表格模式](module/ProjMgmt/work_item/uilogic/change_grid_mode)|change_grid_mode|调用树表方法，切换表格的显示模式|
+|[图表显示总数](module/ProjMgmt/work_item/uilogic/chart_show_count)|chart_show_count|仪表盘图表显示总数<br>|
+|[子工作项刷新计数器](module/ProjMgmt/work_item/uilogic/child_refresh_counter)|child_refresh_counter|关联数据变更后，触发计数器刷新|
+|[工单关联工作项](module/ProjMgmt/work_item/uilogic/ticket_relation_work_item)|ticket_relation_work_item|值变更时触发，工单关联工作项，调用处理逻辑生成正反向数据|
+|[建立关联数据](module/ProjMgmt/work_item/uilogic/create_relation)|create_relation|新建执行后触发，建立关联数据|
+|[建立双向关联数据](module/ProjMgmt/work_item/uilogic/create_double_relation)|create_double_relation|1.工作项表格「 关联工作项 」按钮 后附加<br>2.测试计划, 新建缺陷后附加|
+|[执行用例关联工作项(缺陷)](module/ProjMgmt/work_item/uilogic/run_relation_work_item_bug)|run_relation_work_item_bug|值变更时触发，执行用例关联缺陷类工作项，调用处理逻辑生成正反向数据，同时为测试用例生成正反向数据（特殊业务）|
+|[控制表单成功关注列表readonly](module/ProjMgmt/work_item/uilogic/control_readonly)|control_readonly|通过识别上下文中的归档属性，判断工作项表单中关注列表的操作能力|
+|[新建任务（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_task_toolbar)|new_kanban_task_toolbar|看板项目工作项分页新建任务类型工作项|
+|[新建用户故事（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_story_toolbar)|new_kanban_story_toolbar|获取首个代码表标识，并新建看板用户故事|
+|[新建缺陷（kanban）（工具栏）](module/ProjMgmt/work_item/uilogic/new_kanban_bug_toolbar)|new_kanban_bug_toolbar|看板项目中新建缺陷类型的工作项|
+|[新建行测试](module/ProjMgmt/work_item/uilogic/newrow_test)|newrow_test|测试使用|
+|[查看工时明细](module/ProjMgmt/work_item/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
+|[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[甘特删除行测试](module/ProjMgmt/work_item/uilogic/removerow_gantt)|removerow_gantt|甘特删除行测试|
+|[甘特新建行测试](module/ProjMgmt/work_item/uilogic/newrow_gantt)|newrow_gantt|甘特新建行测试|
+|[用例关联工作项](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
+|[获取工作项总条数](module/ProjMgmt/work_item/uilogic/get_work_item_total)|get_work_item_total|获取工作项的总条数信息|
+|[获取工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
+|[触发计数器刷新](module/ProjMgmt/work_item/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[计算子工作项类型](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type)|calc_children_work_item_type|获取项目类型，并根据类型计算当前工作项子类型|
+|[计算子工作项类型(上下文)](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type_context)|calc_children_work_item_type_context|根据工作项类型，判断此工作项可变更的父工作项/子工作项类型|
+|[计算父工作项类型](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type)|calc_parent_work_item_type|获取当前工作项类型，并计算父工作项类型|
+|[计算父工作项类型（表单）](module/ProjMgmt/work_item/uilogic/calc_parent_work_item_type_form)|calc_parent_work_item_type_form|获取工作项类型，并计算父工作项类型|
+|[计算表格列行为状态](module/ProjMgmt/work_item/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
+|[计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)|calc_kanban_item_action_state|看板中工作项的归档或激活按钮的禁用判定|
+|[设置时间范围](module/ProjMgmt/work_item/uilogic/set_date_range)|set_date_range|自动获取指定指定时间范围时间，并返回至搜索表单|
+|[设置表单状态](module/ProjMgmt/work_item/uilogic/set_form_readonly)|set_form_readonly|控制回收站表单只读|
+|[设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)|set_default_attention|新建工作项时，默认将创建人添加到此工作项的关注列表|
+|[选择下拉框区域展示](module/ProjMgmt/work_item/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[需求关联工作项](module/ProjMgmt/work_item/uilogic/idea_relation_work_item)|idea_relation_work_item|需求关联工作项，生成关联数据|
+
+## 导入模式
+
+* **工作项需求导入**
+
+
+项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。
+
+
+<el-descriptions direction="vertical" :column="15" :size="size" border>
+<el-descriptions-item label="标题">-</el-descriptions-item>
+<el-descriptions-item label="工作项类型">-</el-descriptions-item>
+<el-descriptions-item label="状态">-</el-descriptions-item>
+<el-descriptions-item label="负责人">-</el-descriptions-item>
+<el-descriptions-item label="开始时间">-</el-descriptions-item>
+<el-descriptions-item label="结束时间">-</el-descriptions-item>
+<el-descriptions-item label="关注">-</el-descriptions-item>
+<el-descriptions-item label="优先级">-</el-descriptions-item>
+<el-descriptions-item label="风险">-</el-descriptions-item>
+<el-descriptions-item label="需求类型">-</el-descriptions-item>
+<el-descriptions-item label="需求来源">-</el-descriptions-item>
+<el-descriptions-item label="标签">-</el-descriptions-item>
+<el-descriptions-item label="描述">-</el-descriptions-item>
+<el-descriptions-item label="迭代">-</el-descriptions-item>
+<el-descriptions-item label="项目">-</el-descriptions-item>
+</el-descriptions>
+
+* **工作项缺陷导入**
+
+
+项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。
+
+
+<el-descriptions direction="vertical" :column="13" :size="size" border>
+<el-descriptions-item label="标题">-</el-descriptions-item>
+<el-descriptions-item label="状态">-</el-descriptions-item>
+<el-descriptions-item label="负责人">-</el-descriptions-item>
+<el-descriptions-item label="开始时间">-</el-descriptions-item>
+<el-descriptions-item label="结束时间">-</el-descriptions-item>
+<el-descriptions-item label="关注">-</el-descriptions-item>
+<el-descriptions-item label="优先级">-</el-descriptions-item>
+<el-descriptions-item label="严重程度">-</el-descriptions-item>
+<el-descriptions-item label="迭代标识">-</el-descriptions-item>
+<el-descriptions-item label="复现概率">-</el-descriptions-item>
+<el-descriptions-item label="描述">-</el-descriptions-item>
+<el-descriptions-item label="标签">-</el-descriptions-item>
+<el-descriptions-item label="项目">-</el-descriptions-item>
+</el-descriptions>
+
+* **看板工作项导入**
+
+
+项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。
+
+
+<el-descriptions direction="vertical" :column="17" :size="size" border>
+<el-descriptions-item label="工作项类型">-</el-descriptions-item>
+<el-descriptions-item label="标题">-</el-descriptions-item>
+<el-descriptions-item label="状态">-</el-descriptions-item>
+<el-descriptions-item label="负责人">-</el-descriptions-item>
+<el-descriptions-item label="开始时间">-</el-descriptions-item>
+<el-descriptions-item label="结束时间">-</el-descriptions-item>
+<el-descriptions-item label="描述">-</el-descriptions-item>
+<el-descriptions-item label="关注">-</el-descriptions-item>
+<el-descriptions-item label="优先级">-</el-descriptions-item>
+<el-descriptions-item label="标签">-</el-descriptions-item>
+<el-descriptions-item label="看板栏名称">-</el-descriptions-item>
+<el-descriptions-item label="需求来源">-</el-descriptions-item>
+<el-descriptions-item label="需求类型">-</el-descriptions-item>
+<el-descriptions-item label="风险">-</el-descriptions-item>
+<el-descriptions-item label="严重程度">-</el-descriptions-item>
+<el-descriptions-item label="复现概率">-</el-descriptions-item>
+<el-descriptions-item label="任务类别">-</el-descriptions-item>
+</el-descriptions>
+
+* **瀑布工作项导入**
+
+
+项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。
+
+
+<el-descriptions direction="vertical" :column="13" :size="size" border>
+<el-descriptions-item label="工作项类型">-</el-descriptions-item>
+<el-descriptions-item label="标题">-</el-descriptions-item>
+<el-descriptions-item label="状态">-</el-descriptions-item>
+<el-descriptions-item label="负责人">-</el-descriptions-item>
+<el-descriptions-item label="开始时间">-</el-descriptions-item>
+<el-descriptions-item label="结束时间">-</el-descriptions-item>
+<el-descriptions-item label="描述">-</el-descriptions-item>
+<el-descriptions-item label="优先级">-</el-descriptions-item>
+<el-descriptions-item label="标签">-</el-descriptions-item>
+<el-descriptions-item label="需求来源">-</el-descriptions-item>
+<el-descriptions-item label="需求类型">-</el-descriptions-item>
+<el-descriptions-item label="严重程度">-</el-descriptions-item>
+<el-descriptions-item label="复现概率">-</el-descriptions-item>
+</el-descriptions>
+
+<div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
+
+##### 导航
+<el-anchor >
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=属性`">
+  属性
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=关系`">
+  关系
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=行为`">
+  行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=处理逻辑`">
+  处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=主状态控制`">
+  主状态控制
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=主状态迁移`">
+  主状态迁移
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=数据查询`">
+  数据查询
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=数据集合`">
+  数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=数据权限`">
+  数据权限
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=消息通知`">
+  消息通知
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=搜索模式`">
+  搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=界面行为`">
+  界面行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=界面逻辑`">
+  界面逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item?id=导入模式`">
+  导入模式
+</el-anchor-link>
+</el-anchor>
+</div>
+
+<script>
+ const { createApp } = Vue
+  createApp({
+    data() {
+      return {
+show_der:'major',
+show_field_group:'field_group_DEFGroup',
+show_index:'index_WORK_ITEM',
+      }
+    },
+    methods: {
+    }
+  }).use(ElementPlus).mount('#app')
+</script>

@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [工单类型(TICKET_TYPE)](module/ProdMgmt/Ticket_type)
+* [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/Product_ticket_type)
+* [产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)
 
 <p class="panel-title"><b>关系类型</b></p>
 

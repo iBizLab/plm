@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [分组(SECTION)](module/Base/Section)
+* [分组(SECTION)](module/Base/section)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [类别(CATEGORY)](module/Base/Category)
+* [类别(CATEGORY)](module/Base/category)
 
 <p class="panel-title"><b>关系类型</b></p>
 
@@ -25,7 +25,7 @@
 
 <p class="panel-title"><b>删除方式</b></p>
 
-* `-1`
+* `同时删除`
 
 <p class="panel-title"><b>删除顺序</b></p>
 

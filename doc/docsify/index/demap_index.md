@@ -1,15 +1,23 @@
 # 实体映射 <!-- {docsify-ignore-all} -->
 
-## [部门(DEPARTMENT)](module/Base/Department.md) :id=Department
-
-* [ebsx部门映射(ebsx_mapping)](module/Base/Department/demap/ebsx_mapping.md)
-* [ibizsysmgr部门映射](module/Base/Department/demap/ibizsysmgr.md)
-
 ## [主状态值代理(MSVALUEPROXY)](module/Base/MSValueProxy.md) :id=MSValueProxy
 
 * [实体映射](module/Base/MSValueProxy/demap/DEMap.md)
 
-## [企业用户(USER)](module/Base/User.md) :id=User
+## [部门(DEPARTMENT)](module/Base/department.md) :id=department
 
-* [ebsx映射(ebsx_mapping)](module/Base/User/demap/ebsx_mapping.md)
-* [ibizsysmgr人员映射](module/Base/User/demap/ibizsysmgr.md)
+* [ebsx部门映射(ebsx_mapping)](module/Base/department/demap/ebsx_mapping.md)
+* [ibizsysmgr部门映射](module/Base/department/demap/ibizsysmgr.md)
+
+## [登陆日志(LOGIN_LOG)](module/Base/login_log.md) :id=login_log
+
+* [ebsx认证日志映射(ebsx_mapping)](module/Base/login_log/demap/ebsx_mapping.md)
+
+## [通知设置(NOTIFY_SETTING)](module/Base/notify_setting.md) :id=notify_setting
+
+* [实体映射](module/Base/notify_setting/demap/DEMap.md)
+
+## [企业用户(USER)](module/Base/user.md) :id=user
+
+* [ebsx映射(ebsx_mapping)](module/Base/user/demap/ebsx_mapping.md)
+* [ibizsysmgr人员映射](module/Base/user/demap/ibizsysmgr.md)

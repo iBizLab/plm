@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [企业用户(USER)](module/Base/User)
+* [企业用户(USER)](module/Base/user)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [部门(DEPARTMENT)](module/Base/Department)
+* [部门(DEPARTMENT)](module/Base/department)
 
 <p class="panel-title"><b>关系类型</b></p>
 

@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [工时类别(WORKLOAD_TYPE)](module/Base/Workload_type)
+* [工时类别(WORKLOAD_TYPE)](module/Base/workload_type)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工时(WORKLOAD)](module/Base/Workload)
+* [工时(WORKLOAD)](module/Base/workload)
 
 <p class="panel-title"><b>关系类型</b></p>
 

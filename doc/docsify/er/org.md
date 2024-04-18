@@ -1,7 +1,6 @@
 # 组织管理 <!-- {docsify-ignore-all} -->
 
 
-
 ```plantuml
 @startuml
 <style>
@@ -11,29 +10,30 @@ root {
 </style>
 left to right direction
 
-entity "DEPARTMENT\n部门" as DEPARTMENT [[$../module/Base/Department {部门}]] {
+entity "DEPARTMENT\n部门" as DEPARTMENT [[$../module/Base/department {部门}]] {
         <&key> ID - 标识
         --
         <&link-intact> HEAD_ID - 部门负责人标识
         <&link-intact> PARENT_ID - 父部门标识
 }
-entity "GROUP\n团队" as GROUP [[$../module/Base/Group {团队}]] {
+entity "GROUP\n团队" as GROUP [[$../module/Base/group {团队}]] {
+        <&key> ID - 标识
+        --
+        <&link-intact> SECTION_ID - 分组标识
+}
+entity "JOB\n岗位" as JOB [[$../module/Base/job {岗位}]] {
         <&key> ID - 标识
         --
 }
-entity "JOB\n岗位" as JOB [[$../module/Base/Job {岗位}]] {
+entity "ROLE\n角色" as ROLE [[$../module/Base/role {角色}]] {
         <&key> ID - 标识
         --
 }
-entity "ROLE\n角色" as ROLE [[$../module/Base/Role {角色}]] {
+entity "TEAM\n企业" as TEAM [[$../module/Base/team {企业}]] {
         <&key> ID - 标识
         --
 }
-entity "TEAM\n企业" as TEAM [[$../module/Base/Team {企业}]] {
-        <&key> ID - 标识
-        --
-}
-entity "USER\n企业用户" as USER [[$../module/Base/User {企业用户}]] {
+entity "USER\n企业用户" as USER [[$../module/Base/user {企业用户}]] {
         <&key> ID - 标识
         --
         <&link-intact> DEPARTMENT_ID - 部门标识

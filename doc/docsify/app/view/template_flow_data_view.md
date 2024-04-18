@@ -3,19 +3,25 @@
 
 
 
-
-
 ## 控件
-  * 数据视图(dataview)
-  * CAPTIONBAR(captionbar)
+#### CAPTIONBAR(captionbar)
 
+#### 数据视图(dataview)
+
+#### 搜索栏(searchbar)
+
+
+
+### 关联视图
+  * [实体处理逻辑(psdelogiceditview)](app/view/psdelogiceditview)
+  * [自动规则模板信息(psdelogictemplate_info_view)](app/view/psdelogictemplate_info_view)
 
 <script>
  const { createApp } = Vue
   createApp({
     data() {
       return {
-        message: '!'
+
       }
     }
   }).use(ElementPlus).mount('#app')

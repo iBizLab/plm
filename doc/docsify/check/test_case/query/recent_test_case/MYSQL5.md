@@ -1,0 +1,33 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PRECONDITION`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   )  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} ) )
+```

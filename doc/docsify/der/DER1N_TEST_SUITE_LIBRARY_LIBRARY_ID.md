@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [测试库(LIBRARY)](module/TestMgmt/Library)
+* [测试库(LIBRARY)](module/TestMgmt/library)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [用例模块(TEST_SUITE)](module/TestMgmt/Test_suite)
+* [用例模块(TEST_SUITE)](module/TestMgmt/test_suite)
 
 <p class="panel-title"><b>关系类型</b></p>
 

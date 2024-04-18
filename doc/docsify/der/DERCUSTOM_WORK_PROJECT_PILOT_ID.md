@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [项目(PROJECT)](module/ProjMgmt/Project)
+* [项目(PROJECT)](module/ProjMgmt/project)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工作(WORK)](module/Base/Work)
+* [工作(WORK)](module/Base/work)
 
 <p class="panel-title"><b>关系类型</b></p>
 

@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [用例(TEST_CASE)](module/TestMgmt/Test_case)
+* [用例(TEST_CASE)](module/TestMgmt/test_case)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [关联(RELATION)](module/Base/Relation)
+* [关联(RELATION)](module/Base/relation)
 
 <p class="panel-title"><b>关系类型</b></p>
 

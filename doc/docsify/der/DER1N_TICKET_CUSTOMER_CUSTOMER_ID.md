@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [客户(CUSTOMER)](module/ProdMgmt/Customer)
+* [客户(CUSTOMER)](module/ProdMgmt/customer)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工单(TICKET)](module/ProdMgmt/Ticket)
+* [工单(TICKET)](module/ProdMgmt/ticket)
 
 <p class="panel-title"><b>关系类型</b></p>
 

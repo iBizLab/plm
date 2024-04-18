@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/Work_item_type)
+* [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/Work_item_state)
+* [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)
 
 <p class="panel-title"><b>关系类型</b></p>
 

@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [引用索引(REFERENCES_INDEX)](module/Base/References_index)
+* [引用索引(REFERENCES_INDEX)](module/Base/references_index)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [产品(PRODUCT)](module/ProdMgmt/Product)
+* [产品(PRODUCT)](module/ProdMgmt/product)
 
 <p class="panel-title"><b>关系类型</b></p>
 

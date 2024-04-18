@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [迭代(SPRINT)](module/ProjMgmt/Sprint)
+* [迭代(SPRINT)](module/ProjMgmt/sprint)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [迭代(SPRINT)](module/ProjMgmt/Sprint)
+* [迭代(SPRINT)](module/ProjMgmt/sprint)
 
 <p class="panel-title"><b>关系类型</b></p>
 
