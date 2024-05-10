@@ -2013,17 +2013,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "n_is_favorite_eq",
-      "logicName" : "是否星标",
-      "name" : "n_is_favorite_eq",
-      "getPSAppDEField" : {
-        "name" : "IS_FAVORITE",
-        "codeName" : "is_favorite"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "codeName" : "n_name_like",
       "logicName" : "项目集名称",
       "name" : "n_name_like",
@@ -3553,7 +3542,6 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "设置星标",
     "codeName" : "add_favorite",
-    "dataAccessAction" : "ADD_FAVORITE",
     "fullCodeName" : "portfolio_add_favorite",
     "name" : "设置星标",
     "getPSAppDEMethod" : {
@@ -3562,15 +3550,11 @@
     },
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "refresh_current_grid"
+      "id" : "notify_refresh"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "ADD_FAVORITE"
     },
     "getPSNavigateParams" : [ {
       "key" : "owner_id",
@@ -3595,7 +3579,6 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "取消星标",
     "codeName" : "cancel_favorite",
-    "dataAccessAction" : "CANCEL_FAVORITE",
     "fullCodeName" : "portfolio_cancel_favorite",
     "name" : "取消星标",
     "getPSAppDEMethod" : {
@@ -3604,15 +3587,11 @@
     },
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "refresh_current_grid"
+      "id" : "notify_refresh"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
-    },
-    "getPSDEOPPriv" : {
-      "modelref" : true,
-      "id" : "CANCEL_FAVORITE"
     },
     "getPSNavigateParams" : [ {
       "key" : "owner_id",
@@ -3633,6 +3612,40 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "cancel_favorite@portfolio"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建项目集",
+    "codeName" : "create_project_set",
+    "dataAccessAction" : "SRFUR__PORTFOLIO_M",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_create_wizard_view.json",
+      "viewType" : "DEWIZARDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "portfolio_create_project_set",
+    "name" : "新建项目集",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+      },
+      "modelref" : true,
+      "id" : "open_new_project_set@portfolio"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "SRFUR__PORTFOLIO_M"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_project_set",
+    "uIActionType" : "DEUIACTION",
+    "id" : "create_project_set@portfolio"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "删除项目集",
@@ -3675,6 +3688,34 @@
     "uIActionTag" : "open_new_project",
     "uIActionType" : "DEUIACTION",
     "id" : "open_new_project@portfolio"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打开新建项目集",
+    "codeName" : "open_new_project_set",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_index_view.json",
+      "viewType" : "DEINDEXVIEW"
+    },
+    "frontProcessType" : "TOP",
+    "fullCodeName" : "portfolio_open_new_project_set",
+    "name" : "打开新建项目集",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "PORTFOLIO",
+      "name" : "PORTFOLIO",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_new_project_set",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_new_project_set@portfolio"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "编辑基本信息",
@@ -3854,6 +3895,135 @@
     "id" : "remove_from_project_set@portfolio"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "calc_column_action_state",
+    "defaultParamName" : "Default",
+    "logicName" : "计算表格列行为状态(portfolio)",
+    "memo" : "用于动态控制收藏和取消收藏的禁用状态",
+    "name" : "计算表格列行为状态(portfolio)",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst is_favorite = row.data.is_favorite;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n\t\t\t\t\t// 收藏\r\n\t\t\t\t\tif (action.uiActionId === 'add_favorite@portfolio') {\r\n\t\t\t\t\t\taction.visible = is_favorite == 0;\r\n\t\t\t\t\t} else if (action.uiActionId === 'cancel_favorite@portfolio') {\r\n\t\t\t\t\t\t// 取消收藏\r\n\t\t\t\t\t\taction.visible = is_favorite != 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 420
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "notify_refresh",
+    "defaultParamName" : "Default",
+    "logicName" : "通知刷新",
+    "name" : "通知刷新",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'portfolio', srfkey: params.owner_id})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 383,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 680,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "refresh_current_grid",
     "defaultParamName" : "Default",
     "logicName" : "刷新当前表格",
@@ -4088,58 +4258,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_set_advanced_view.json",
     "viewType" : "DEEDITVIEW"
   } ],
-  "getAllPSDEMainStates" : [ {
-    "codeName" : "star",
-    "enterStateMode" : "ANY",
-    "logicName" : "已星标",
-    "mSTag" : "1",
-    "name" : "已星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "ADD_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "设置星标",
-        "name" : "ADD_FAVORITE"
-      }
-    } ],
-    "stateValue" : "1",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  }, {
-    "codeName" : "un_star",
-    "enterStateMode" : "ANY",
-    "logicName" : "未星标",
-    "mSTag" : "0",
-    "name" : "未星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "CANCEL_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "取消星标",
-        "name" : "CANCEL_FAVORITE"
-      }
-    } ],
-    "stateValue" : "0",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  } ],
   "getAllPSDEOPPrivs" : [ {
-    "logicName" : "设置星标",
-    "name" : "ADD_FAVORITE"
-  }, {
-    "logicName" : "取消星标",
-    "name" : "CANCEL_FAVORITE"
-  }, {
     "logicName" : "建立",
     "name" : "CREATE"
   }, {
@@ -4171,10 +4290,6 @@
     "lanResTag" : "DE.LNAME.PORTFOLIO"
   },
   "logicName" : "文件夹",
-  "getMainStatePSAppDEFields" : [ {
-    "name" : "IS_FAVORITE",
-    "codeName" : "is_favorite"
-  } ],
   "getMajorPSAppDEField" : {
     "name" : "NAME",
     "codeName" : "name"
@@ -4203,7 +4318,6 @@
   "storageMode" : 0,
   "sysAPITag" : "ServiceAPI",
   "defaultMode" : true,
-  "enableDEMainState" : true,
   "enableFilterActions" : true,
   "enableTempData" : true,
   "enableUICreate" : true,
@@ -4239,7 +4353,7 @@
         "id" : "add_favorite@portfolio"
       }
     }, {
-      "actionLevel" : 200,
+      "actionLevel" : 250,
       "detailType" : "DEUIACTION",
       "name" : "u1e9e5c0",
       "getPSSysImage" : {
@@ -4393,8 +4507,8 @@
       "detailType" : "DEUIACTION",
       "name" : "u1975dc7",
       "getPSSysImage" : {
-        "glyph" : "xf1f8@FontAwesome",
-        "cssClass" : "fa fa-trash"
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
       },
       "addSeparator" : false,
       "showCaption" : false,

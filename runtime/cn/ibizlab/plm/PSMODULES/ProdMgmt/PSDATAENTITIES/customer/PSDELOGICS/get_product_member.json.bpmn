@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.customerget_product_member" isClosed="false" isExecutable="true" name="prodmgmt_customer_get_product_member_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.customerget_product_member">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="customerget_product_memberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_member()" name="customerget_product_memberfilter" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="customerget_product_memberfor_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_member()" name="customerget_product_membermembers" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product()" name="customerget_product_memberproduct_info" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="customerget_product_memberticket" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="customerget_product_memberuser" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="customerget_product_memberviewctx" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="customerget_product_memberwebctx" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService))" name="product_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IcustomerService))" name="iBzSysCustomerDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="customerget_product_memberdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
+                            <tns:global identifier="customerget_product_memberfilter" type="cn.ibizlab.plm.core.prodmgmt.domain.product_member" />
+                            <tns:global identifier="customerget_product_membermembers" type="cn.ibizlab.plm.core.prodmgmt.domain.product_member" />
+                            <tns:global identifier="customerget_product_memberproduct_info" type="cn.ibizlab.plm.core.prodmgmt.domain.product" />
+                            <tns:global identifier="customerget_product_memberticket" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取产品ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberdebugparam6" id="debugparam6" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="只读"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="只读"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="非只读"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customerget_product_memberend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end6_end" name="end"/>
+                        <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
+                    <sequenceFlow id="begin_debugparam3" sourceRef="begin" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_prepareparam2" sourceRef="debugparam3" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam6_prepareparam9" sourceRef="gateway-debugparam6" targetRef="prepareparam9">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $customerget_product_memberdefault:customer();
+                                            $customerget_product_memberfilter:product_member();
+                                            $customerget_product_memberfor_obj:Map();
+                                            $customerget_product_membermembers:product_member();
+                                            $customerget_product_memberproduct_info:product();
+                                            $customerget_product_memberticket:customer();
+                                            $customerget_product_memberuser:Map();
+                                            $customerget_product_memberviewctx:Map();
+                                            $customerget_product_memberwebctx:Map();
+                                    eval($customerget_product_memberdefault==customerget_product_memberdefault && $customerget_product_memberfilter==customerget_product_memberfilter && $customerget_product_membermembers==customerget_product_membermembers && $customerget_product_memberproduct_info==customerget_product_memberproduct_info && $customerget_product_memberticket==customerget_product_memberticket && );
+                                eval((RuleUtils.test($customerget_product_memberfor_obj.get("role_id"),"EQ","user")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam6_prepareparam10" sourceRef="gateway-debugparam6" targetRef="prepareparam10">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $customerget_product_memberdefault:customer();
+                                            $customerget_product_memberfilter:product_member();
+                                            $customerget_product_memberfor_obj:Map();
+                                            $customerget_product_membermembers:product_member();
+                                            $customerget_product_memberproduct_info:product();
+                                            $customerget_product_memberticket:customer();
+                                            $customerget_product_memberuser:Map();
+                                            $customerget_product_memberviewctx:Map();
+                                            $customerget_product_memberwebctx:Map();
+                                    eval($customerget_product_memberdefault==customerget_product_memberdefault && $customerget_product_memberfilter==customerget_product_memberfilter && $customerget_product_membermembers==customerget_product_membermembers && $customerget_product_memberproduct_info==customerget_product_memberproduct_info && $customerget_product_memberticket==customerget_product_memberticket && );
+                                eval((RuleUtils.test($customerget_product_memberfor_obj.get("role_id"),"EQ","reader")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall3" sourceRef="dedataset3" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset3_prepareparam8" sourceRef="gateway-dedataset3" targetRef="prepareparam8">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $customerget_product_memberdefault:customer();
+                                            $customerget_product_memberfilter:product_member();
+                                            $customerget_product_memberfor_obj:Map();
+                                            $customerget_product_membermembers:product_member();
+                                            $customerget_product_memberproduct_info:product();
+                                            $customerget_product_memberticket:customer();
+                                            $customerget_product_memberuser:Map();
+                                            $customerget_product_memberviewctx:Map();
+                                            $customerget_product_memberwebctx:Map();
+                                    eval($customerget_product_memberdefault==customerget_product_memberdefault && $customerget_product_memberfilter==customerget_product_memberfilter && $customerget_product_membermembers==customerget_product_membermembers && $customerget_product_memberproduct_info==customerget_product_memberproduct_info && $customerget_product_memberticket==customerget_product_memberticket && );
+                                eval((RuleUtils.test($customerget_product_membermembers.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_debugparam6" sourceRef="loopsubcall3" targetRef="debugparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam10_end6" sourceRef="prepareparam10" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam8_end6" sourceRef="prepareparam8" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_end6" sourceRef="prepareparam9" targetRef="end6">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam6" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam6_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam6_gateway-debugparam6_gatewayline" sourceRef="debugparam6" targetRef="gateway-debugparam6"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam6_end_line" sourceRef="gateway-debugparam6" targetRef="gateway-debugparam6_end"/>
+                            <endEvent id="gateway-debugparam6_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset3" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>
+                            <endEvent id="gateway-dedataset3_end" name="end"/>
+        </process>
+    </definitions>

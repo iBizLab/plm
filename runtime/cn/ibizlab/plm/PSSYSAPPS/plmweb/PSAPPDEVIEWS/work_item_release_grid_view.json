@@ -90,26 +90,12 @@
     }
   } ],
   "getPSAppViewNavParams" : [ {
-    "key" : "n_release_id_eq",
-    "name" : "n_release_id_eq",
+    "key" : "release_id",
+    "name" : "release_id",
     "value" : "release",
-    "rawValue" : false
-  }, {
-    "key" : "n_version_id_eq",
-    "name" : "n_version_id_eq",
-    "value" : "version",
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "工作项",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realTitle" : "工作项编辑视图",
     "getRealTitlePSLanguageRes" : {
@@ -118,6 +104,15 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "工作项",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -206,7 +201,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_common"
+        "id" : "fetch_release"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -291,7 +286,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_common"
+          "id" : "fetch_release"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -749,6 +744,10 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0ca@FontAwesome",
+          "cssClass" : "fa fa-list-ul"
+        },
         "tooltip" : "更多",
         "showCaption" : true,
         "showIcon" : true

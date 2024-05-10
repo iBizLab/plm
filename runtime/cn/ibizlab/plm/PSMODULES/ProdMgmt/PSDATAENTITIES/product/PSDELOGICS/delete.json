@@ -101,7 +101,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "END1"
+        "id" : "RAWSQLCALL2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -122,11 +122,39 @@
     "sql" : "update recent set IS_DELETED=1 where owner_id=? and owner_subtype='product'",
     "topPos" : 564
   }, {
+    "codeName" : "RAWSQLCALL2",
+    "leftPos" : 160,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "删除产品工单类型",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "delete from product_ticket_type where PRODUCT_ID = ?",
+    "topPos" : 705
+  }, {
     "codeName" : "END1",
     "leftPos" : 200,
     "logicNodeType" : "END",
     "name" : "结束",
-    "topPos" : 725
+    "topPos" : 845
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

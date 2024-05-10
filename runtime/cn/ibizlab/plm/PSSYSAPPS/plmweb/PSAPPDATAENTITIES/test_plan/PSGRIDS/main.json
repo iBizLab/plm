@@ -20,11 +20,26 @@
     }
   },
   "groupMode" : "NONE",
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "主表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "grid",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "calc_button_state",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "calc_column_action_state"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
+    }
+  } ],
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
@@ -62,7 +77,6 @@
           "caption" : "开始测试",
           "codeName" : "start_test_plan",
           "confirmMsg" : "确认开始该测试？",
-          "dataAccessAction" : "IN_PROGRESS",
           "fullCodeName" : "test_plan_start_test_plan",
           "name" : "开始测试",
           "getPSAppDEMethod" : {
@@ -72,10 +86,6 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-          },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "IN_PROGRESS"
           },
           "getPSSysImage" : {
             "glyph" : "xf01d@FontAwesome",
@@ -109,7 +119,6 @@
           "caption" : "结束测试",
           "codeName" : "end_test_plan",
           "confirmMsg" : "确认结束该测试？",
-          "dataAccessAction" : "COMPLETED",
           "fullCodeName" : "test_plan_end_test_plan",
           "name" : "结束测试",
           "getPSAppDEMethod" : {
@@ -119,10 +128,6 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
-          },
-          "getPSDEOPPriv" : {
-            "modelref" : true,
-            "id" : "COMPLETED"
           },
           "getPSSysImage" : {
             "glyph" : "xf192@FontAwesome",

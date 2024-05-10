@@ -239,6 +239,9 @@
   } ],
   "getAllPSDEDBTables" : [ {
     "getAllPSDEFields" : [ {
+      "name" : "FORMAT_TYPE",
+      "codeName" : "format_type"
+    }, {
       "name" : "CONTENT",
       "codeName" : "content"
     }, {
@@ -640,6 +643,95 @@
     "enableFront" : true
   } ],
   "getAllPSDEFields" : [ {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "FORMAT_TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "FORMAT_TYPE",
+      "queryCodeExp" : "t1.`FORMAT_TYPE`",
+      "standardColumnName" : "`FORMAT_TYPE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_FORMAT_TYPE_EQ",
+      "name" : "N_FORMAT_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[FORMAT_TYPE][正文格式]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[FORMAT_TYPE][正文格式]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[FORMAT_TYPE][正文格式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[FORMAT_TYPE][正文格式]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "FORMAT_TYPE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "format_type",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "正文格式",
+    "name" : "FORMAT_TYPE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/CodeList54.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "FORMAT_TYPE"
+    },
+    "serviceCodeName" : "format_type",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CONTENT",
       "dBType" : "MYSQL5",
@@ -1793,6 +1885,20 @@
         "srcValue" : "这是正文",
         "srcValueType" : "SRCDLPARAM"
       }, {
+        "dstFieldName" : "format_type",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "name" : "stencil_info[format_type] ==> page_info[format_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "format_type",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "stencil_info"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
         "dstFieldName" : "SPACE_ID",
         "getDstPSDELogicParam" : {
           "modelref" : true,
@@ -1969,6 +2075,17 @@
   "getAllPSDEMethodDTOs" : [ {
     "name" : "stencil_dto",
     "getPSDEMethodDTOFields" : [ {
+      "logicName" : "正文格式",
+      "name" : "format_type",
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "正文",
       "name" : "content",
       "getPSDEField" : {
@@ -2115,6 +2232,20 @@
   }, {
     "name" : "stencil_filter_dto",
     "getPSDEFilterDTOFields" : [ {
+      "logicName" : "正文格式",
+      "name" : "n_format_type_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_FORMAT_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "FORMAT_TYPE",
+        "codeName" : "format_type"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "标识",
       "name" : "n_id_eq",
       "getPSDEFSearchMode" : {

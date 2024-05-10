@@ -123,6 +123,7 @@
       }
     },
     "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "项目集表格",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -210,6 +211,20 @@
       "enableDEFieldPrivilege" : false,
       "id" : "数据表格处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "calc_column_action_state",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calc_column_action_state"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -250,7 +265,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "设置星标",
             "codeName" : "add_favorite",
-            "dataAccessAction" : "ADD_FAVORITE",
             "fullCodeName" : "portfolio_add_favorite",
             "name" : "设置星标",
             "getPSAppDEMethod" : {
@@ -259,15 +273,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ADD_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -294,7 +304,7 @@
           "showCaption" : false,
           "showIcon" : true
         }, {
-          "actionLevel" : 200,
+          "actionLevel" : 250,
           "detailType" : "DEUIACTION",
           "name" : "u1e9e5c0",
           "getPSSysImage" : {
@@ -304,7 +314,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "取消星标",
             "codeName" : "cancel_favorite",
-            "dataAccessAction" : "CANCEL_FAVORITE",
             "fullCodeName" : "portfolio_cancel_favorite",
             "name" : "取消星标",
             "getPSAppDEMethod" : {
@@ -313,15 +322,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "CANCEL_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -685,9 +690,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",
@@ -926,25 +928,42 @@
         "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
+        "actionTarget" : "NONE",
         "caption" : "新建项目集",
-        "codeName" : "new_item_set",
-        "dataAccessAction" : "SRFUR__PROJECT_M",
-        "fullCodeName" : "new_item_set",
-        "name" : "表格界面_新建项目集",
+        "codeName" : "create_project_set",
+        "dataAccessAction" : "SRFUR__PORTFOLIO_M",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "portfolio_create_project_set",
+        "name" : "新建项目集",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+          },
+          "modelref" : true,
+          "id" : "open_new_project_set@portfolio"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+        },
         "getPSDEOPPriv" : {
           "modelref" : true,
-          "id" : "SRFUR__PROJECT_M"
+          "id" : "SRFUR__PORTFOLIO_M"
         },
-        "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "new_item_set",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "create_project_set",
         "uIActionType" : "DEUIACTION",
-        "globalUIAction" : true,
-        "reloadData" : true
+        "id" : "create_project_set@portfolio"
       },
       "tooltip" : "新建项目集",
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],

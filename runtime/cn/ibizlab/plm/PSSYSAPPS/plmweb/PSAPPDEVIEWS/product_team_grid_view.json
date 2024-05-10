@@ -72,15 +72,13 @@
       "editMode" : true
     }
   } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_scope_type_eq",
+    "name" : "n_scope_type_eq",
+    "value" : "scope_type",
+    "rawValue" : false
+  } ],
   "getPSAppViewRefs" : [ {
-    "name" : "OPENDATA",
-    "realTitle" : "产品主视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_main_view.json",
-      "viewType" : "DETABEXPVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "新建产品",
@@ -96,6 +94,14 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_index_view.json",
       "viewType" : "DEINDEXVIEW"
+    }
+  }, {
+    "name" : "OPENDATA",
+    "realTitle" : "产品主视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_main_view.json",
+      "viewType" : "DETABEXPVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -125,25 +131,42 @@
         "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
+        "actionTarget" : "NONE",
         "caption" : "新建产品",
-        "codeName" : "new_product",
+        "codeName" : "create_product",
         "dataAccessAction" : "SRFUR__PRODUCT_M",
-        "fullCodeName" : "new_product",
-        "name" : "表格界面_新建产品",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "product_create_product",
+        "name" : "新建产品",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          },
+          "modelref" : true,
+          "id" : "open_new_product@product"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+        },
         "getPSDEOPPriv" : {
           "modelref" : true,
           "id" : "SRFUR__PRODUCT_M"
         },
-        "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "new_product",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "create_product",
         "uIActionType" : "DEUIACTION",
-        "globalUIAction" : true,
-        "reloadData" : true
+        "id" : "create_product@product"
       },
       "tooltip" : "新建产品",
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -172,6 +195,7 @@
       }
     },
     "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
     "minorSortDir" : "DESC",
     "getMinorSortPSAppDEField" : {
@@ -264,6 +288,20 @@
       "enableDEFieldPrivilege" : false,
       "id" : "数据表格处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "calc_column_action_state",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calc_column_action_state"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -304,7 +342,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "设置星标",
             "codeName" : "add_favorite",
-            "dataAccessAction" : "ADD_FAVORITE",
             "fullCodeName" : "product_add_favorite",
             "name" : "设置星标",
             "getPSAppDEMethod" : {
@@ -313,15 +350,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ADD_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -358,7 +391,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "取消星标",
             "codeName" : "cancel_favorite",
-            "dataAccessAction" : "CANCEL_FAVORITE",
             "fullCodeName" : "product_cancel_favorite",
             "name" : "取消星标",
             "getPSAppDEMethod" : {
@@ -367,15 +399,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "CANCEL_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -724,9 +752,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",
@@ -905,7 +930,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "团队产品",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEGRIDVIEW",

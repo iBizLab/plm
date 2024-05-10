@@ -1,0 +1,185 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.baseline_plan_idea;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideabaseline_plan_ideadefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideabaseline_plan_ideafor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.version ideabaseline_plan_ideafor_temp_version_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideabaseline_plan_ideaidea_versions;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideabaseline_plan_ideapage;
+                global cn.ibizlab.plm.core.base.domain.version ideabaseline_plan_ideaversion_filter;
+                global cn.ibizlab.plm.core.base.domain.version ideabaseline_plan_ideaversion_page;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideabaseline_plan_ideabegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[选择需求列表]
+            rule "dedataset1"
+            ruleflow-group "ideabaseline_plan_ideadedataset1"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ideabaseline_plan_idealoopsubcall1"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "ideabaseline_plan_idearawsfcode1"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备版本过滤器]
+            rule "prepareparam1"
+            ruleflow-group "ideabaseline_plan_ideaprepareparam1"
+            when
+            then
+                            ideabaseline_plan_ideaversion_filter.set("n_id_in",ideabaseline_plan_ideaidea_versions.get("version_id_in"));
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取版本数据]
+            rule "dedataset2"
+            ruleflow-group "ideabaseline_plan_ideadedataset2"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "ideabaseline_plan_idealoopsubcall2"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "ideabaseline_plan_idealoopsubcall3"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充当前版本名称]
+            rule "prepareparam2"
+            ruleflow-group "ideabaseline_plan_ideaprepareparam2"
+            when
+            then
+                            ideabaseline_plan_ideafor_temp_obj.set("curversionname",ideabaseline_plan_ideafor_temp_version_obj.get("name"));
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall4"
+            ruleflow-group "ideabaseline_plan_idealoopsubcall4"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "ideabaseline_plan_ideaprepareparam3"
+            when
+            then
+                            ideabaseline_plan_ideafor_temp_obj.set("curversionname","v1");
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ideabaseline_plan_ideaend1"
+            when
+            then
+                        update(ideabaseline_plan_ideadefault);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideafor_temp_version_obj);//更新fact中变量值
+                        update(ideabaseline_plan_ideaidea_versions);//更新fact中变量值
+                        update(ideabaseline_plan_ideapage);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_filter);//更新fact中变量值
+                        update(ideabaseline_plan_ideaversion_page);//更新fact中变量值
+            end

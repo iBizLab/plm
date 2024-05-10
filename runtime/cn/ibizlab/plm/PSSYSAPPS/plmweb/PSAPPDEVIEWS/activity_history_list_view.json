@@ -7,7 +7,7 @@
   "codeName" : "activity_history_list_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/activity_history_list_view.json",
   "mDCtrlActiveMode" : 0,
-  "name" : "activitiyhistory_list_view",
+  "name" : "activityhistory_list_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/activity.json"
@@ -115,7 +115,7 @@
     "getItemPSLayoutPanel" : {
       "getAllPSPanelFields" : [ {
         "id" : "user_name",
-        "viewFieldName" : "OPPERSONNAME"
+        "viewFieldName" : "OPPERSONID"
       }, {
         "id" : "time",
         "viewFieldName" : "UPDATE_TIME"
@@ -184,6 +184,10 @@
               "editorStyle" : "PERSONNEL_INFO",
               "editorType" : "SPAN",
               "name" : "user_name",
+              "getPSAppCodeList" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+              },
               "getPSSysPFPlugin" : {
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
                 "pluginCode" : "PERSONNEL_INFO",
@@ -197,7 +201,8 @@
               "grow" : -1,
               "layout" : "FLEX"
             },
-            "viewFieldName" : "OPPERSONNAME",
+            "viewFieldName" : "OPPERSONID",
+            "convertToCodeItemText" : true,
             "hidden" : false,
             "showCaption" : false
           }, {
@@ -282,7 +287,7 @@
               "contentType" : "HTML",
               "editorParams" : {
                 "contenttype" : "HTML",
-                "template" : "{{#each this as | item |}}<div class='activity-item'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
+                "template" : "{{#each this as | item |}}<div class='object_type'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
               },
               "editorStyle" : "RAW_ACTIVITY",
               "editorType" : "RAW",
@@ -292,7 +297,7 @@
                 "pluginCode" : "RAW_ACTIVITY",
                 "runtimeObject" : true
               },
-              "template" : "{{#each this as | item |}}<div class='activity-item'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
+              "template" : "{{#each this as | item |}}<div class='object_type'><div class='activity-item--caption'>修改了{{#if item.logicname}}{{item.logicname}}{{else}}{{item.dataauditdetailname}}{{/if}} {{#or (eq item.dataauditdetailname 'STEPS') (eq item.dataauditdetailname 'PRECONDITION') (eq item.dataauditdetailname 'DESCRIPTION')}}<span class='activity-item--contrast' click='onContrast(`{{item.dataauditdetailname}}`)'>对比</span>{{/or}}</div>{{#and (neq item.dataauditdetailname 'STEPS') (neq item.dataauditdetailname 'PRECONDITION') (neq item.dataauditdetailname 'DESCRIPTION')}}<div class='activity-item--description'><span class='activity-item--oldvalue'>{{#if item.oldtext}}{{item.oldtext}}{{else}}{{#if item.oldvalue}}{{item.oldvalue}}{{else}}无{{/if}}{{/if}}</span><ion-icon name='arrow-forward-outline'></ion-icon><span class='activity-item--newvalue'>{{#if item.newtext}}{{item.newtext}}{{else}}{{#if item.newvalue}}{{item.newvalue}}{{else}}无{{/if}}{{/if}}</span></div>{{/and}}</div>{{/each}}"
             },
             "getPSLayoutPos" : {
               "grow" : -1,
@@ -585,11 +590,18 @@
       "id" : "LIST"
     },
     "getPSDEListDataItems" : [ {
-      "dataType" : 25,
-      "name" : "audittype",
+      "dataType" : 21,
+      "name" : "auditinfo",
       "getPSAppDEField" : {
-        "name" : "AUDITTYPE",
-        "codeName" : "audit_type"
+        "name" : "AUDITINFO",
+        "codeName" : "audit_info"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "oppersonid",
+      "getPSAppDEField" : {
+        "name" : "OPPERSONID",
+        "codeName" : "op_person_id"
       }
     }, {
       "dataType" : 5,
@@ -600,11 +612,11 @@
         "codeName" : "update_time"
       }
     }, {
-      "dataType" : 21,
-      "name" : "auditinfo",
+      "dataType" : 25,
+      "name" : "audittype",
       "getPSAppDEField" : {
-        "name" : "AUDITINFO",
-        "codeName" : "audit_info"
+        "name" : "AUDITTYPE",
+        "codeName" : "audit_type"
       }
     }, {
       "dataType" : 25,
@@ -729,6 +741,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
+  "priority" : 10,
   "title" : "活动历史列表",
   "viewStyle" : "DEFAULT",
   "viewType" : "DELISTVIEW",

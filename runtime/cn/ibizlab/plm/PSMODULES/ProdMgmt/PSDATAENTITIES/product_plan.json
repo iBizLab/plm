@@ -201,6 +201,31 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "delete_categories",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan/PSDEACTIONS/delete_categories.json",
+    "logicName" : "删除类别",
+    "name" : "delete_categories",
+    "getPSDEActionInput" : {
+      "name" : "Delete_categoriesInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "product_plan_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Delete_categoriesResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan/PSDELOGICS/delete_categories.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "UPDATE",
     "actionType" : "DELOGIC",
     "codeName" : "product_plan_relation_idea",
@@ -1949,6 +1974,136 @@
       },
       "default" : true,
       "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "delete_categories",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan/PSDELOGICS/delete_categories.json",
+    "logicName" : "删除类别",
+    "memo" : "删除对应类别时对对应排期的类别属性进行处理",
+    "name" : "删除类别",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1029,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 309,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 575,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "UPDATE product_plan\r\nSET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))\r\nWHERE FIND_IN_SET(?, categories) > 0 ;",
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "filter",
+      "logicName" : "过滤器",
+      "name" : "过滤器",
+      "filterParam" : true
+    }, {
+      "codeName" : "plan_filter",
+      "logicName" : "排期过滤器",
+      "name" : "排期过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "product_plan_pages",
+      "logicName" : "排期计划分页数据",
+      "name" : "排期计划分页数据",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_plan.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,

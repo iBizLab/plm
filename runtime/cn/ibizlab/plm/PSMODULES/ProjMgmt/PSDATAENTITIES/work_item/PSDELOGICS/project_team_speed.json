@@ -1,0 +1,146 @@
+{
+  "codeName" : "project_team_speed",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/project_team_speed.json",
+  "logicName" : "团队速度",
+  "name" : "团队速度",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 644,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 200
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "leftPos" : 370,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "直接SQL调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[n_project_id_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_project_id_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_create_time_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_create_time_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n  SUM(CASE WHEN t31.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count2,\r\n  COUNT(*) AS count,\r\n  COALESCE(t1.`ASSIGNEE_ID`, '未分组') AS filter_type\r\nFROM\r\n  `WORK_ITEM` t1\r\n  LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID`\r\nWHERE\r\n  t1.`PROJECT_ID` = ?\r\n  AND t1.`WORK_ITEM_TYPE_ID` LIKE '%story%'\r\n  AND t1.`IS_DELETED` = 0\r\n\tAND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR t1.CREATE_TIME BETWEEN ? and ? )\r\nGROUP BY\r\n  filter_type;\r\n",
+    "topPos" : 208,
+    "fillDstLogicParam" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "result",
+    "logicName" : "结果",
+    "name" : "结果",
+    "entityListParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

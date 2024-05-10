@@ -6,7 +6,11 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.create_recent;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.prodmgmt.domain.product productcreate_recentdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_ticket_type productcreate_recentproduct_ticket_param;
                 global cn.ibizlab.plm.core.base.domain.recent productcreate_recentrecent;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type productcreate_recentticket_type_filter;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type productcreate_recentticket_type_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type productcreate_recentticket_type_page;
                     global cn.ibizlab.plm.core.base.service.IrecentService recentservice;
         global cn.ibizlab.plm.core.prodmgmt.service.IproductService iBzSysProductDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -36,7 +40,11 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.create_recent;
                             productcreate_recentrecent.set("ownertype","product");
                             productcreate_recentrecent.set("ownersubtype","product");
                         update(productcreate_recentdefault);//更新fact中变量值
+                        update(productcreate_recentproduct_ticket_param);//更新fact中变量值
                         update(productcreate_recentrecent);//更新fact中变量值
+                        update(productcreate_recentticket_type_filter);//更新fact中变量值
+                        update(productcreate_recentticket_type_obj);//更新fact中变量值
+                        update(productcreate_recentticket_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[保存最近访问]
@@ -46,7 +54,11 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.create_recent;
             then
                         recentservice.save(productcreate_recentrecent);
                         update(productcreate_recentdefault);//更新fact中变量值
+                        update(productcreate_recentproduct_ticket_param);//更新fact中变量值
                         update(productcreate_recentrecent);//更新fact中变量值
+                        update(productcreate_recentticket_type_filter);//更新fact中变量值
+                        update(productcreate_recentticket_type_obj);//更新fact中变量值
+                        update(productcreate_recentticket_type_page);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -55,5 +67,9 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.create_recent;
             when
             then
                         update(productcreate_recentdefault);//更新fact中变量值
+                        update(productcreate_recentproduct_ticket_param);//更新fact中变量值
                         update(productcreate_recentrecent);//更新fact中变量值
+                        update(productcreate_recentticket_type_filter);//更新fact中变量值
+                        update(productcreate_recentticket_type_obj);//更新fact中变量值
+                        update(productcreate_recentticket_type_page);//更新fact中变量值
             end

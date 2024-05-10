@@ -316,14 +316,14 @@
           "caption" : "阶段",
           "codeName" : "status",
           "columnType" : "DEFGRIDCOLUMN",
-          "dataItemName" : "status",
+          "dataItemName" : "status_text",
           "excelCaption" : "阶段",
           "memo" : "允许值: pending, in_progress, completed",
           "name" : "status",
           "noPrivDisplayMode" : 1,
           "getPSAppCodeList" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__version_status.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__release_stage.json"
           },
           "getPSAppDEField" : {
             "name" : "STATUS",
@@ -417,6 +417,13 @@
           }
         }, {
           "dataType" : 25,
+          "name" : "status_text",
+          "getPSAppDEField" : {
+            "name" : "STATUS",
+            "codeName" : "status"
+          }
+        }, {
+          "dataType" : 25,
           "name" : "status",
           "getPSAppDEField" : {
             "name" : "STATUS",
@@ -505,10 +512,14 @@
             "name" : "status",
             "getPSAppCodeList" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__version_status.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__release_stage.json"
             },
+            "getPSEditorItems" : [ {
+              "name" : "status"
+            } ],
             "singleSelect" : true
           },
+          "valueItemName" : "status",
           "allowEmpty" : true,
           "needCodeListConfig" : true
         }, {

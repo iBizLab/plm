@@ -102,6 +102,17 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realTitle" : "工作项编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -117,22 +128,11 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
-  }, {
-    "name" : "NEWDATA",
-    "realTitle" : "工作项编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
   } ],
   "getPSControls" : [ {
     "codeName" : "all_scrum_grid_view_toolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "新建工作项（看板）",
+    "logicName" : "新建工作项（scrum）",
     "name" : "toolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -142,6 +142,7 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
+      "buttonStyle" : "STYLE3",
       "caption" : "新建工作项",
       "itemType" : "ITEMS",
       "name" : "items1",
@@ -369,49 +370,52 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1",
+      "spanMode" : false
+    }, {
+      "buttonStyle" : "STYLE2",
       "itemType" : "ITEMS",
       "name" : "items2",
       "getPSDEToolbarItems" : [ {
         "caption" : "导入工作项",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
+        "name" : "deuiaction4",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction2"
+          "id" : "toolbar_deuiaction4"
         },
         "getPSSysImage" : {
-          "glyph" : "xf093@FontAwesome",
-          "cssClass" : "fa fa-upload"
+          "glyph" : "xf0ee@FontAwesome",
+          "cssClass" : "fa fa-cloud-upload"
         },
         "getPSUIAction" : {
           "actionTarget" : "NONE",
-          "caption" : "看板工作项导入",
-          "codeName" : "import_work_item_kanban",
+          "caption" : "导入工作项",
+          "codeName" : "waterfall_work_item_import_data",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/waterfall_work_item_app_data_upload_view.json",
+            "viewType" : "APPDATAUPLOADVIEW"
+          },
           "frontProcessType" : "DATAIMP",
-          "fullCodeName" : "work_item_import_work_item_kanban",
-          "memo" : "看板类型项目的工作项导入",
-          "name" : "看板工作项导入",
+          "fullCodeName" : "work_item_waterfall_work_item_import_data",
+          "name" : "waterfall工作项导入",
           "getPSAppDEDataImport" : {
             "modelref" : true,
-            "id" : "import_work_item_kanban"
+            "id" : "import_work_item_waterfall"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
           },
-          "getPSSysImage" : {
-            "glyph" : "xf093@FontAwesome",
-            "cssClass" : "fa fa-upload"
-          },
-          "refreshMode" : 1,
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
-          "uIActionTag" : "import_work_item_kanban",
+          "uIActionTag" : "waterfall_work_item_import_data",
           "uIActionType" : "DEUIACTION",
-          "reloadData" : true,
-          "id" : "import_work_item_kanban@work_item"
+          "id" : "waterfall_work_item_import_data@work_item"
         },
         "tooltip" : "导入工作项",
         "uIActionTarget" : "NONE",
@@ -470,7 +474,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "fe45239d889da6c9e29cc6c6b2409005",
+    "modelid" : "661B8348-1FBE-4226-8154-1E363F1D1D6C",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -1033,6 +1037,10 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0ca@FontAwesome",
+          "cssClass" : "fa fa-list-ul"
+        },
         "tooltip" : "更多",
         "showCaption" : true,
         "showIcon" : true

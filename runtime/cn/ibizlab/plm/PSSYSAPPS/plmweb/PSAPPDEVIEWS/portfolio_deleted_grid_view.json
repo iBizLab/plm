@@ -76,6 +76,17 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA",
+    "realTitle" : "文件夹数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.PORTFOLIO.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
+    }
+  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "项目集信息展示视图",
@@ -86,17 +97,6 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_project_show_view.json",
       "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "EDITDATA",
-    "realTitle" : "文件夹数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.PORTFOLIO.REDIRECTVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/portfolio_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -377,9 +377,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",
@@ -591,6 +588,31 @@
     "modelid" : "d1d9405410ab8d049a65f07e85457883",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
+    "codeName" : "query_search_bar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio/PSSEARCHBARS/query_search_bar.json",
+    "logicName" : "快速搜索栏",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABSEARCHBAR"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "2C8D1281-DFEB-4568-A0B9-4D1FA3E2BBAE",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -601,11 +623,11 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
@@ -645,10 +667,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "69b0a5e800029c0a49685a0903d7ce69",
   "modeltype" : "PSAPPDEVIEW"
 }

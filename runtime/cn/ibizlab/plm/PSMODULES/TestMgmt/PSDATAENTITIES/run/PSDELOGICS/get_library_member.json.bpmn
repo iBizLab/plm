@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.runget_library_member" isClosed="false" isExecutable="true" name="testmgmt_run_get_library_member_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.runget_library_member">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="runget_library_memberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_case()" name="runget_library_membercase" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.library_member()" name="runget_library_memberfilter" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runget_library_memberfor_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.library()" name="runget_library_memberlibrary_info" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.library_member()" name="runget_library_membermembers" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runget_library_memberuser" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runget_library_memberviewctx" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="runget_library_memberwebctx" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="test_caseservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService))" name="library_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="iBzSysRunDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="runget_library_memberdefault" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+                            <tns:global identifier="runget_library_membercase" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="runget_library_memberfilter" type="cn.ibizlab.plm.core.testmgmt.domain.library_member" />
+                            <tns:global identifier="runget_library_memberlibrary_info" type="cn.ibizlab.plm.core.testmgmt.domain.library" />
+                            <tns:global identifier="runget_library_membermembers" type="cn.ibizlab.plm.core.testmgmt.domain.library_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取产品ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberdebugparam6" id="debugparam6" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberprepareparam10" id="prepareparam10" implementation="http://www.jboss.org/drools/rule" name="只读"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberprepareparam9" id="prepareparam9" implementation="http://www.jboss.org/drools/rule" name="非只读"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberend6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end6_end" name="end"/>
+                        <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runget_library_memberprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="只读"/>
+                    <sequenceFlow id="begin_debugparam3" sourceRef="begin" targetRef="debugparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam3_prepareparam5" sourceRef="debugparam3" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam6_prepareparam9" sourceRef="gateway-debugparam6" targetRef="prepareparam9">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runget_library_memberdefault:run();
+                                            $runget_library_membercase:test_case();
+                                            $runget_library_memberfilter:library_member();
+                                            $runget_library_memberfor_obj:Map();
+                                            $runget_library_memberlibrary_info:library();
+                                            $runget_library_membermembers:library_member();
+                                            $runget_library_memberuser:Map();
+                                            $runget_library_memberviewctx:Map();
+                                            $runget_library_memberwebctx:Map();
+                                    eval($runget_library_memberdefault==runget_library_memberdefault && $runget_library_membercase==runget_library_membercase && $runget_library_memberfilter==runget_library_memberfilter && $runget_library_memberlibrary_info==runget_library_memberlibrary_info && $runget_library_membermembers==runget_library_membermembers && );
+                                eval((RuleUtils.test($runget_library_memberfor_obj.get("role_id"),"EQ","user")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-debugparam6_prepareparam10" sourceRef="gateway-debugparam6" targetRef="prepareparam10">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runget_library_memberdefault:run();
+                                            $runget_library_membercase:test_case();
+                                            $runget_library_memberfilter:library_member();
+                                            $runget_library_memberfor_obj:Map();
+                                            $runget_library_memberlibrary_info:library();
+                                            $runget_library_membermembers:library_member();
+                                            $runget_library_memberuser:Map();
+                                            $runget_library_memberviewctx:Map();
+                                            $runget_library_memberwebctx:Map();
+                                    eval($runget_library_memberdefault==runget_library_memberdefault && $runget_library_membercase==runget_library_membercase && $runget_library_memberfilter==runget_library_memberfilter && $runget_library_memberlibrary_info==runget_library_memberlibrary_info && $runget_library_membermembers==runget_library_membermembers && );
+                                eval((RuleUtils.test($runget_library_memberfor_obj.get("role_id"),"EQ","reader")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall3" sourceRef="dedataset3" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset3_prepareparam8" sourceRef="gateway-dedataset3" targetRef="prepareparam8">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $runget_library_memberdefault:run();
+                                            $runget_library_membercase:test_case();
+                                            $runget_library_memberfilter:library_member();
+                                            $runget_library_memberfor_obj:Map();
+                                            $runget_library_memberlibrary_info:library();
+                                            $runget_library_membermembers:library_member();
+                                            $runget_library_memberuser:Map();
+                                            $runget_library_memberviewctx:Map();
+                                            $runget_library_memberwebctx:Map();
+                                    eval($runget_library_memberdefault==runget_library_memberdefault && $runget_library_membercase==runget_library_membercase && $runget_library_memberfilter==runget_library_memberfilter && $runget_library_memberlibrary_info==runget_library_memberlibrary_info && $runget_library_membermembers==runget_library_membermembers && );
+                                eval((RuleUtils.test($runget_library_membermembers.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_debugparam6" sourceRef="loopsubcall3" targetRef="debugparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam10_end6" sourceRef="prepareparam10" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam9_end6" sourceRef="prepareparam9" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction1" sourceRef="prepareparam5" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam8_end6" sourceRef="prepareparam8" targetRef="end6">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-debugparam6" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam6_end_line"></exclusiveGateway>
+                            <sequenceFlow id="debugparam6_gateway-debugparam6_gatewayline" sourceRef="debugparam6" targetRef="gateway-debugparam6"></sequenceFlow>
+                            <sequenceFlow id="gateway-debugparam6_end_line" sourceRef="gateway-debugparam6" targetRef="gateway-debugparam6_end"/>
+                            <endEvent id="gateway-debugparam6_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset3" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>
+                            <endEvent id="gateway-dedataset3_end" name="end"/>
+        </process>
+    </definitions>

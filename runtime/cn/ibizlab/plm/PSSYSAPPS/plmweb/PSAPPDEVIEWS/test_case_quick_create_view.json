@@ -22,6 +22,21 @@
     "engineType" : "OptionView",
     "name" : "engine"
   } ],
+  "getPSAppViewLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTrigger" : "CTRLEVENT",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "CLEAN_ATTENTIONS",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "clean_attentions"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSViewCtrlName" : "form"
+  } ],
   "getPSAppViewNavParams" : [ {
     "key" : "suite_id",
     "name" : "suite_id",
@@ -1458,7 +1473,7 @@
           },
           "getPSEditor" : {
             "editorParams" : {
-              "URL" : "`/libraries/${data.test_library_id}/test_suites/fetchdefault`",
+              "URL" : "`/libraries/${data.test_library_id}/test_suites/fetch_default`",
               "srfnavcxt.test_library" : "%test_library_id%",
               "PVALUE" : "pid",
               "AC" : "TRUE",
@@ -2041,6 +2056,413 @@
     "name" : "form",
     "modelid" : "aa1d723e673a23a3fd479ef945a9213b",
     "modeltype" : "PSDEFORM_EDITFORM"
+  }, {
+    "codeName" : "quick_create_view_toolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "新建用例工具栏",
+    "name" : "toolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "getPSControlParam" : {
+      "id" : "TOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "buttonStyle" : "PRIMARY",
+      "caption" : "选择模板",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "toolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "rawContent" : "<?xml version=\"1.0\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg t=\"1713508300087\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"4303\" width=\"16\" height=\"16\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><path d=\"M140.8 140.8h313.6c6.4 0 12.8 6.4 12.8 12.8v313.6c0 6.4-6.4 12.8-12.8 12.8H140.8c-6.4 0-12.8-6.4-12.8-12.8V153.6c0-6.4 6.4-12.8 12.8-12.8z m0 403.2h313.6c6.4 0 12.8 6.4 12.8 12.8v313.6c0 6.4-6.4 12.8-12.8 12.8H140.8c-6.4 0-12.8-6.4-12.8-12.8V556.8c0-6.4 6.4-12.8 12.8-12.8z m428.8-403.2h313.6c6.4 0 12.8 6.4 12.8 12.8v313.6c0 6.4-6.4 12.8-12.8 12.8H569.6c-6.4 0-12.8-6.4-12.8-12.8V153.6c0-6.4 6.4-12.8 12.8-12.8z m115.2 531.2v-128H768v128h128v83.2h-128v128h-83.2v-128h-128v-83.2h128z\" fill=\"#2c2c2c\" p-id=\"4304\"></path></svg>"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "选择模板",
+        "codeName" : "choose_case_template",
+        "frontProcessType" : "EDITFORM",
+        "fullCodeName" : "test_case_choose_case_template",
+        "name" : "选择模板",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "choose_case_template"
+        },
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "choose_case_template"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+        },
+        "getPSDEEditForm" : {
+          "autoSaveMode" : 3,
+          "codeName" : "usr04156366_form",
+          "controlType" : "FORM",
+          "getCreatePSControlAction" : {
+            "modelref" : true,
+            "id" : "create",
+            "actionName" : "choose_case_template",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "create",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "choose_case_template"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            }
+          },
+          "defaultLabelWidth" : 130,
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case/PSFORMS/usr04156366_form.json",
+          "getGetDraftFromPSControlAction" : {
+            "modelref" : true,
+            "id" : "loaddraftfrom",
+            "actionName" : "GETDRAFTFROM",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "loaddraftfrom",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            }
+          },
+          "getGetDraftPSControlAction" : {
+            "modelref" : true,
+            "id" : "loaddraft",
+            "actionName" : "nothing",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "CREATE",
+            "name" : "loaddraft",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "nothing"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            }
+          },
+          "getGetPSControlAction" : {
+            "modelref" : true,
+            "id" : "load",
+            "actionName" : "nothing",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "READ",
+            "name" : "load",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "nothing"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            }
+          },
+          "logicName" : "选择模板选择操作视图_表单",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+          },
+          "getPSControlHandler" : {
+            "getPSHandlerActions" : [ {
+              "actionName" : "nothing",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "loaddraft",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "nothing"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+              }
+            }, {
+              "actionName" : "GETDRAFTFROM",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "loaddraftfrom",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+              }
+            }, {
+              "actionName" : "nothing",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "READ",
+              "name" : "load",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "nothing"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+              }
+            }, {
+              "actionName" : "choose_case_template",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "CREATE",
+              "name" : "create",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "choose_case_template"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+              }
+            }, {
+              "actionName" : "choose_case_template",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "UPDATE",
+              "name" : "update",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "choose_case_template"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+              }
+            }, {
+              "actionName" : "Remove",
+              "actionType" : "DEACTION",
+              "dataAccessAction" : "DELETE",
+              "name" : "remove",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "remove"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+              }
+            } ],
+            "enableDEFieldPrivilege" : false,
+            "id" : "编辑表单处理器"
+          },
+          "getPSControlParam" : {
+            "autoLoad" : true,
+            "showBusyIndicator" : true,
+            "id" : "form"
+          },
+          "getPSDEFormItems" : [ {
+            "id" : "srfupdatedate",
+            "hidden" : true,
+            "dataType" : 5,
+            "getPSAppDEField" : {
+              "name" : "UPDATE_TIME",
+              "codeName" : "update_time"
+            }
+          }, {
+            "id" : "srforikey",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfkey",
+            "hidden" : true,
+            "dataType" : 25,
+            "getPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            }
+          }, {
+            "id" : "srfmajortext",
+            "hidden" : true,
+            "dataType" : 25,
+            "getPSAppDEField" : {
+              "name" : "TITLE",
+              "codeName" : "title"
+            }
+          }, {
+            "id" : "srftempmode",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfuf",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfdeid",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "srfsourcekey",
+            "hidden" : true,
+            "dataType" : 25
+          }, {
+            "id" : "choosed_data",
+            "dataType" : 25
+          }, {
+            "id" : "id",
+            "hidden" : true,
+            "dataType" : 25,
+            "getPSAppDEField" : {
+              "name" : "ID",
+              "codeName" : "id"
+            }
+          } ],
+          "getPSDEFormPages" : [ {
+            "caption" : "基本信息",
+            "codeName" : "formpage1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMPAGE",
+            "name" : "formpage1",
+            "getPSDEFormDetails" : [ {
+              "caption" : "用例模板",
+              "codeName" : "choosed_data",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "fieldName" : "choosed_data",
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "choosed_data",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "DROPDOWNLIST",
+                "name" : "choosed_data",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__case_template.json"
+                },
+                "placeHolder" : "选择用例模板",
+                "singleSelect" : true
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : false,
+              "needCodeListConfig" : true
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "DEF.LNAME.ID"
+              },
+              "caption" : "标识",
+              "codeName" : "id",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "LEFT",
+              "labelWidth" : 130,
+              "name" : "id",
+              "noPrivDisplayMode" : 1,
+              "getPSAppDEField" : {
+                "name" : "ID",
+                "codeName" : "id"
+              },
+              "getPSEditor" : {
+                "editorType" : "HIDDEN",
+                "name" : "id"
+              },
+              "getPSLayoutPos" : {
+                "colMD" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "hidden" : true,
+              "showCaption" : true
+            } ],
+            "getPSLayout" : {
+              "childColLG" : -1,
+              "childColMD" : 24,
+              "childColSM" : -1,
+              "childColXS" : -1,
+              "columnCount" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "infoGroupMode" : false
+          } ],
+          "getPSLayout" : {
+            "childColLG" : -1,
+            "childColMD" : 24,
+            "childColSM" : -1,
+            "childColXS" : -1,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getRemovePSControlAction" : {
+            "modelref" : true,
+            "id" : "remove",
+            "actionName" : "Remove",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "DELETE",
+            "name" : "remove",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            }
+          },
+          "tabHeaderPos" : "TOP",
+          "getUpdatePSControlAction" : {
+            "modelref" : true,
+            "id" : "update",
+            "actionName" : "choose_case_template",
+            "actionType" : "DEACTION",
+            "dataAccessAction" : "UPDATE",
+            "name" : "update",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "choose_case_template"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            }
+          },
+          "enableAutoSave" : true,
+          "noTabHeader" : true,
+          "name" : "form",
+          "modelid" : "538C28A6-64EB-4080-9435-1D994B54E5E7",
+          "modeltype" : "PSDEFORM_EDITFORM"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "modaloption",
+          "name" : "modaloption",
+          "value" : "{\"placement\":\"right\",\"width\":300}",
+          "rawValue" : true
+        } ],
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionParamJO" : {
+          "modalOption" : {
+            "width" : 300,
+            "placement" : "right"
+          }
+        },
+        "uIActionTag" : "choose_case_template",
+        "uIActionType" : "DEUIACTION",
+        "uILogicAttachMode" : "AFTER",
+        "id" : "choose_case_template@test_case"
+      },
+      "tooltip" : "选择模板",
+      "uIActionTarget" : "NONE",
+      "showCaption" : false,
+      "showIcon" : true
+    } ],
+    "toolbarStyle" : "USER",
+    "xDataControlName" : "form",
+    "modelid" : "5222B803-3ACD-4261-A735-9CF966116AAA",
+    "modeltype" : "PSDETOOLBAR"
   }, {
     "codeName" : "quick_create_view_datainfobar",
     "controlType" : "DATAINFOBAR",

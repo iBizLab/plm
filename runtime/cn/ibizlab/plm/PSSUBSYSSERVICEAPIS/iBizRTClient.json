@@ -22,6 +22,12 @@
       "stdDataType" : 25,
       "majorDEField" : true
     }, {
+      "codeName" : "UserId",
+      "length" : 100,
+      "logicName" : "用户全局标识",
+      "name" : "USERID",
+      "stdDataType" : 25
+    }, {
       "codeName" : "PersonName",
       "length" : 100,
       "logicName" : "用户名称",
@@ -63,8 +69,14 @@
       "name" : "AUTHCODE",
       "getPSCodeList" : {
         "modelref" : true,
-        "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSCODELISTS/AuthCode.json"
+        "path" : "PSMODULES/Base/PSCODELISTS/AuthCode.json"
       },
+      "stdDataType" : 25
+    }, {
+      "codeName" : "AuthAgent",
+      "length" : 100,
+      "logicName" : "认证方式",
+      "name" : "AUTHAGENT",
       "stdDataType" : 25
     } ],
     "getPSSubSysServiceAPIDEMethods" : [ {
@@ -285,6 +297,38 @@
       "uniqueTag" : "SYS_AUTHLOG__DEACTION__UPDATE",
       "needResourceKey" : true,
       "noServiceCodeName" : true
+    }, {
+      "actionType" : "FETCH",
+      "codeName" : "FetchCurUser",
+      "keyField" : "LOGID",
+      "methodType" : "FETCH",
+      "name" : "CurUser",
+      "getPSDECodeName" : "AuthLog",
+      "getPSDELogicName" : "认证日志",
+      "getPSDEName" : "SYS_AUTHLOG",
+      "getPSSubSysServiceAPIDE" : {
+        "modelref" : true,
+        "id" : "AuthLog"
+      },
+      "getPSSubSysServiceAPIMethodInput" : {
+        "name" : "输入对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogFilterDTO"
+        },
+        "type" : "DTO"
+      },
+      "getPSSubSysServiceAPIMethodReturn" : {
+        "name" : "返回对象",
+        "getPSSubSysServiceAPIDTO" : {
+          "modelref" : true,
+          "id" : "AuthLogDTO"
+        },
+        "type" : "PAGE"
+      },
+      "requestField" : "LOGID",
+      "requestMethod" : "POST",
+      "uniqueTag" : "SYS_AUTHLOG__FETCH__CURUSER"
     }, {
       "actionType" : "FETCH",
       "codeName" : "FetchDefault",
@@ -1545,6 +1589,13 @@
       "type" : "SIMPLE",
       "allowEmpty" : false
     }, {
+      "codeName" : "UserId",
+      "name" : "UserId",
+      "orderValue" : 2,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "UserName",
       "name" : "UserName",
       "orderValue" : 2,
@@ -1590,6 +1641,13 @@
       "codeName" : "UserAgent",
       "name" : "UserAgent",
       "orderValue" : 9,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "AuthAgent",
+      "name" : "AuthAgent",
+      "orderValue" : 10,
       "sourceType" : "DEMETHODDTOFIELD",
       "stdDataType" : 25,
       "type" : "SIMPLE"

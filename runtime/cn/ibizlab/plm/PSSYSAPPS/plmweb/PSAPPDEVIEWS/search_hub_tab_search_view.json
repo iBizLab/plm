@@ -672,7 +672,7 @@
               "caption" : "状态",
               "codeName" : "state",
               "columnType" : "DEFGRIDCOLUMN",
-              "dataItemName" : "state_text",
+              "dataItemName" : "state",
               "excelCaption" : "状态",
               "name" : "state",
               "noPrivDisplayMode" : 1,
@@ -686,7 +686,6 @@
               },
               "width" : 150,
               "widthUnit" : "PX",
-              "enableRowEdit" : true,
               "enableSort" : true
             }, {
               "align" : "LEFT",
@@ -726,13 +725,6 @@
               "getPSAppDEField" : {
                 "name" : "TITLE",
                 "codeName" : "title"
-              }
-            }, {
-              "dataType" : 25,
-              "name" : "state_text",
-              "getPSAppDEField" : {
-                "name" : "STATE",
-                "codeName" : "state"
               }
             }, {
               "dataType" : 25,
@@ -859,43 +851,6 @@
               "name" : "srfmstag"
             } ],
             "getPSDEGridEditItems" : [ {
-              "caption" : "状态",
-              "codeName" : "state",
-              "enableCond" : 3,
-              "ignoreInput" : 0,
-              "name" : "state",
-              "getPSAppDEField" : {
-                "name" : "STATE",
-                "codeName" : "state"
-              },
-              "getPSEditor" : {
-                "editorType" : "DROPDOWNLIST",
-                "name" : "state",
-                "getPSAppCodeList" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
-                },
-                "getPSEditorItems" : [ {
-                  "name" : "state",
-                  "getPSAppDEACMode" : {
-                    "modelref" : true,
-                    "id" : "Default"
-                  },
-                  "getPSAppDEDataSet" : {
-                    "modelref" : true,
-                    "id" : "fetch_default"
-                  },
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
-                  }
-                } ],
-                "singleSelect" : true
-              },
-              "valueItemName" : "state",
-              "allowEmpty" : true,
-              "needCodeListConfig" : true
-            }, {
               "caption" : "标识",
               "codeName" : "srfkey",
               "enableCond" : 3,
@@ -1161,6 +1116,9 @@
                     "codeName" : "project_id"
                   },
                   "getPSEditor" : {
+                    "editorParams" : {
+                      "overflowMode" : "ellipsis"
+                    },
                     "editorType" : "DROPDOWNLIST",
                     "name" : "n_project_id_eq",
                     "getPSAppCodeList" : {

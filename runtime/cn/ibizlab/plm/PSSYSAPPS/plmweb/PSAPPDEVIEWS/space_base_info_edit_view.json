@@ -278,6 +278,14 @@
         "codeName" : "category_id"
       }
     }, {
+      "id" : "scope_type",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
+      }
+    }, {
       "id" : "id",
       "hidden" : true,
       "dataType" : 25,
@@ -392,6 +400,20 @@
               "name" : "VISIBILITY",
               "codeName" : "visibility"
             },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMENABLE",
+              "logicType" : "GROUP",
+              "name" : "表单成员[visibility][表单项启用]逻辑",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "NOTEQ",
+                "dEFDName" : "scope_type",
+                "logicType" : "SINGLE",
+                "value" : "user"
+              } ],
+              "relatedDetailNames" : [ "scope_type" ],
+              "notMode" : false
+            } ],
             "getPSEditor" : {
               "editorType" : "DROPDOWNLIST",
               "name" : "visibility",
@@ -562,6 +584,33 @@
           "getPSEditor" : {
             "editorType" : "HIDDEN",
             "name" : "category_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "所属",
+          "codeName" : "scope_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_TYPE",
+            "codeName" : "scope_type"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "scope_type"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,

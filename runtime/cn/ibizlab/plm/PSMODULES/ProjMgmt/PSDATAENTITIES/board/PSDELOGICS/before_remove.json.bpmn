@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.boardbefore_remove" isClosed="false" isExecutable="true" name="projmgmt_board_before_remove_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.boardbefore_remove">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="boardbefore_removedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.project()" name="boardbefore_removeproject" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IboardService))" name="boardservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.IboardService))" name="iBzSysBoardDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="boardbefore_removedefault" type="cn.ibizlab.plm.core.projmgmt.domain.board" />
+                            <tns:global identifier="boardbefore_removeproject" type="cn.ibizlab.plm.core.projmgmt.domain.project" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="boardbefore_removedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取看板"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="boardbefore_removerawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="boardbefore_removethrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
+                        <endEvent id="throwexception1_end" name="end"/>
+                        <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="boardbefore_removeend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsqlcall1_throwexception1" sourceRef="gateway-rawsqlcall1" targetRef="throwexception1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $boardbefore_removedefault:board();
+                                            $boardbefore_removeproject:project();
+                                    eval($boardbefore_removedefault==boardbefore_removedefault && $boardbefore_removeproject==boardbefore_removeproject);
+                                eval((RuleUtils.test($boardbefore_removeproject.get("project_with_board_num"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsqlcall1_end1" sourceRef="gateway-rawsqlcall1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $boardbefore_removedefault:board();
+                                            $boardbefore_removeproject:project();
+                                    eval($boardbefore_removedefault==boardbefore_removedefault && $boardbefore_removeproject==boardbefore_removeproject);
+                                eval((RuleUtils.test($boardbefore_removeproject.get("project_with_board_num"),"GT","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-rawsqlcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsqlcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsqlcall1_gateway-rawsqlcall1_gatewayline" sourceRef="rawsqlcall1" targetRef="gateway-rawsqlcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsqlcall1_end_line" sourceRef="gateway-rawsqlcall1" targetRef="gateway-rawsqlcall1_end"/>
+                            <endEvent id="gateway-rawsqlcall1_end" name="end"/>
+        </process>
+    </definitions>

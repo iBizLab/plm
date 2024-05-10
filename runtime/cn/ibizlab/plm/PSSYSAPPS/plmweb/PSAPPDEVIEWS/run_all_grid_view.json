@@ -123,6 +123,30 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "OPENDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "执行用例主视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "执行用例主视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -149,30 +173,6 @@
     },
     "viewParamJO" : {
       "test_case" : "%case_id%"
-    }
-  }, {
-    "name" : "OPENDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "执行用例主视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "执行用例主视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
-      "viewType" : "DEEDITVIEW"
     }
   }, {
     "name" : "MPICKUPVIEW:TEST_CASE",
@@ -263,6 +263,11 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1",
+      "spanMode" : false
+    }, {
+      "buttonStyle" : "STYLE2",
       "itemType" : "ITEMS",
       "name" : "items1",
       "getPSDEToolbarItems" : [ {
@@ -698,28 +703,31 @@
           "id" : "grid_batchtoolbar_deuiaction5"
         },
         "getPSSysImage" : {
-          "glyph" : "xf122@FontAwesome",
-          "cssClass" : "fa fa-mail-reply-all"
+          "glyph" : "xf112@FontAwesome",
+          "cssClass" : "fa fa-reply"
         },
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
           "caption" : "移出",
           "codeName" : "delete_run",
           "confirmMsg" : "确认移出该执行用例？",
-          "dialogResult" : "OK",
           "fullCodeName" : "run_delete_run",
           "name" : "移出",
           "getPSAppDEMethod" : {
             "modelref" : true,
             "id" : "remove"
           },
+          "getPSAppDEUILogic" : {
+            "modelref" : true,
+            "id" : "refresh_run_grid"
+          },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
           },
           "getPSSysImage" : {
-            "glyph" : "xf122@FontAwesome",
-            "cssClass" : "fa fa-mail-reply-all"
+            "glyph" : "xf112@FontAwesome",
+            "cssClass" : "fa fa-reply"
           },
           "refreshMode" : 1,
           "successMsg" : "移出成功",
@@ -727,8 +735,7 @@
           "uIActionMode" : "BACKEND",
           "uIActionTag" : "delete_run",
           "uIActionType" : "DEUIACTION",
-          "closeEditView" : true,
-          "closePopupView" : true,
+          "uILogicAttachMode" : "AFTER",
           "enableConfirm" : true,
           "reloadData" : true,
           "id" : "delete_run@run"
@@ -833,20 +840,23 @@
             "caption" : "移出",
             "codeName" : "delete_run",
             "confirmMsg" : "确认移出该执行用例？",
-            "dialogResult" : "OK",
             "fullCodeName" : "run_delete_run",
             "name" : "移出",
             "getPSAppDEMethod" : {
               "modelref" : true,
               "id" : "remove"
             },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "refresh_run_grid"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
             },
             "getPSSysImage" : {
-              "glyph" : "xf122@FontAwesome",
-              "cssClass" : "fa fa-mail-reply-all"
+              "glyph" : "xf112@FontAwesome",
+              "cssClass" : "fa fa-reply"
             },
             "refreshMode" : 1,
             "successMsg" : "移出成功",
@@ -854,8 +864,7 @@
             "uIActionMode" : "BACKEND",
             "uIActionTag" : "delete_run",
             "uIActionType" : "DEUIACTION",
-            "closeEditView" : true,
-            "closePopupView" : true,
+            "uILogicAttachMode" : "AFTER",
             "enableConfirm" : true,
             "reloadData" : true,
             "id" : "delete_run@run"

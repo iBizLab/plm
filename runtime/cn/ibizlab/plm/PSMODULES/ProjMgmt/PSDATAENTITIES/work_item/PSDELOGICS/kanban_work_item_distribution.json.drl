@@ -1,0 +1,53 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.kanban_work_item_distribution;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemkanban_work_item_distributiondefault;
+                global java.util.Map work_itemkanban_work_item_distributionresult;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemkanban_work_item_distributionbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemkanban_work_item_distributionend1"
+            when
+            then
+                        update(work_itemkanban_work_item_distributiondefault);//更新fact中变量值
+                        update(work_itemkanban_work_item_distributionresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemkanban_work_item_distributionrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemkanban_work_item_distributiondefault.get("n_project_id_eq"));
+        param.put("param1",work_itemkanban_work_item_distributiondefault.get("n_board_id_eq"));
+        param.put("param2",work_itemkanban_work_item_distributiondefault.get("n_board_id_eq"));
+        param.put("param3",work_itemkanban_work_item_distributiondefault.get("n_board_id_eq"));
+        param.put("param4",work_itemkanban_work_item_distributiondefault.get("n_work_item_type_id_eq"));
+        param.put("param5",work_itemkanban_work_item_distributiondefault.get("n_work_item_type_id_eq"));
+        param.put("param6",work_itemkanban_work_item_distributiondefault.get("n_work_item_type_id_eq"));
+    String strSql="SELECT   SUM(CASE WHEN s.`TYPE` != 'completed' THEN 1 ELSE 0 END) AS count2,   SUM(CASE WHEN s.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count,   wi.`ENTRY_ID` AS filter_type FROM   `WORK_ITEM` wi   JOIN `WORK_ITEM_STATE` s ON wi.`STATE` = s.`ID` WHERE   wi.`PROJECT_ID` = #{et.param0}   AND wi.`IS_DELETED` = 0   AND wi.`BOARD_ID` IS NOT NULL   AND wi.`ENTRY_ID` IS NOT NULL 	AND ((#{et.param1} IS NULL OR #{et.param2} = '') OR FIND_IN_SET(wi.BOARD_ID, #{et.param3})) 	AND ((#{et.param4} IS NULL OR #{et.param5} = '') OR FIND_IN_SET(wi.WORK_ITEM_TYPE_ID, #{et.param6})) GROUP BY   wi.`ENTRY_ID`;";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                work_itemkanban_work_item_distributionresult.putAll(entity);
+                            }
+                        update(work_itemkanban_work_item_distributiondefault);//更新fact中变量值
+                        update(work_itemkanban_work_item_distributionresult);//更新fact中变量值
+            end

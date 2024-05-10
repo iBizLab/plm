@@ -490,6 +490,14 @@
           "modelref" : true,
           "id" : "toolbar_deuiaction1"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction1",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "logic",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf067@FontAwesome",
           "cssClass" : "fa fa-plus"
@@ -547,6 +555,7 @@
         }
       },
       "groupMode" : "NONE",
+      "hookEventNames" : [ "ONLOADSUCCESS" ],
       "logicName" : "交付目标_表格",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -634,6 +643,20 @@
         "enableDEFieldPrivilege" : false,
         "id" : "数据表格处理器"
       },
+      "getPSControlLogics" : [ {
+        "eventNames" : "onLoadSuccess",
+        "logicTag" : "grid",
+        "logicType" : "APPDEUILOGIC",
+        "name" : "logic",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "calc_column_action_state"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+        }
+      } ],
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
@@ -905,8 +928,8 @@
         "dataType" : 25,
         "name" : "srfmajortext",
         "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
+          "name" : "TITLE",
+          "codeName" : "title"
         }
       }, {
         "dataType" : 25,

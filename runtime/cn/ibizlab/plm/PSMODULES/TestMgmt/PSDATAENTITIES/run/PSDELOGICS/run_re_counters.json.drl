@@ -19,24 +19,6 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.run_re_counters;
             then
             end
 
-            //逻辑处理节点[执行用例结果附件]
-            rule "rawsqlcall5"
-            ruleflow-group "runrun_re_countersrawsqlcall5"
-            when
-            then
-    Map param =new HashMap();
-        param.put("param0",runrun_re_countersdefault.get("id"));
-    String strSql="SELECT 	count( t.id ) AS run_re_attachment FROM 	attachment t  WHERE     t.owner_id = #{et.param0} and t.owner_type = 'RUN'";
-                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
-                            if(entities.size()>0){
-                            JSONObject entity=entities.get(0);
-                                    for (Map.Entry entry : entity.entrySet()) {
-                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
-                                    }
-                            }
-                        update(runrun_re_countersdefault);//更新fact中变量值
-            end
-
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "runrun_re_countersend1"
@@ -70,7 +52,7 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.run_re_counters;
             then
     Map param =new HashMap();
         param.put("param0",runrun_re_countersdefault.get("caseid"));
-    String strSql="SELECT 	count( t.id ) AS run_re_work_item  FROM 	work_item t  WHERE t.WORK_ITEM_TYPE_ID not like '%bug%' AND	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				t.`IS_DELETED` = 0  			)";
+    String strSql="SELECT 	count( t.id ) AS run_re_work_item  FROM 	work_item t, work_item_type t1  WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug' AND	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				t.`IS_DELETED` = 0  			)";
                         java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -81,14 +63,32 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.run_re_counters;
                         update(runrun_re_countersdefault);//更新fact中变量值
             end
 
-            //逻辑处理节点[测试用例/执行用例关联缺陷]
+            //逻辑处理节点[执行用例关联缺陷]
             rule "rawsqlcall3"
             ruleflow-group "runrun_re_countersrawsqlcall3"
             when
             then
     Map param =new HashMap();
         param.put("param0",runrun_re_countersdefault.get("id"));
-    String strSql="SELECT 	count( t.id ) AS run_re_bug  FROM 	work_item t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'bug'  			AND (t11.`PRINCIPAL_TYPE` = 'run' or t11.`PRINCIPAL_TYPE` = 'test_case') 			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND ( 				t.`IS_DELETED` = 0  			)";
+    String strSql="select count( t.id ) AS run_re_bug from work_item t, work_item_type t1 where  t.`IS_DELETED` = 0 and t.work_item_type_id = t1.id  and t1.`group` = 'bug' and EXISTS ( select 1 from `RELATION` t2  where t.`ID` = t2.`TARGET_ID`  and  t2.`TARGET_TYPE` = 'work_item' and t2.`PRINCIPAL_TYPE` = 'run' and t2.`PRINCIPAL_ID` = #{et.param0})  			";
+                        java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    runrun_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(runrun_re_countersdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行用例结果附件]
+            rule "rawsqlcall5"
+            ruleflow-group "runrun_re_countersrawsqlcall5"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",runrun_re_countersdefault.get("id"));
+    String strSql="SELECT 	count( t.id ) AS run_re_attachment FROM 	attachment t  WHERE     t.owner_id = #{et.param0} and t.owner_type = 'RUN'";
                         java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);

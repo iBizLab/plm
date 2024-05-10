@@ -1,0 +1,56 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.case_latest_result;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casecase_latest_resultdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.run test_casecase_latest_resultrun_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.run test_casecase_latest_resultrun_page;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_casecase_latest_resultbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "test_casecase_latest_resultprepareparam1"
+            when
+            then
+                            test_casecase_latest_resultrun_filter.set("size","1");
+                            test_casecase_latest_resultrun_filter.set("n_status_isnotnull","1");
+                            test_casecase_latest_resultrun_filter.set("sort","executed_at,desc");
+                        update(test_casecase_latest_resultdefault);//更新fact中变量值
+                        update(test_casecase_latest_resultrun_filter);//更新fact中变量值
+                        update(test_casecase_latest_resultrun_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset1"
+            ruleflow-group "test_casecase_latest_resultdedataset1"
+            when
+            then
+                        update(test_casecase_latest_resultdefault);//更新fact中变量值
+                        update(test_casecase_latest_resultrun_filter);//更新fact中变量值
+                        update(test_casecase_latest_resultrun_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "test_casecase_latest_resultdebugparam1"
+            when
+            then
+                        update(test_casecase_latest_resultdefault);//更新fact中变量值
+                        update(test_casecase_latest_resultrun_filter);//更新fact中变量值
+                        update(test_casecase_latest_resultrun_page);//更新fact中变量值
+            end

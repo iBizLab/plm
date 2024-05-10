@@ -328,6 +328,9 @@
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
+      "ctrlParams" : {
+        "EDITMODE" : "hover"
+      },
       "id" : "GRID"
     },
     "getPSDEGridColumns" : [ {
@@ -553,6 +556,13 @@
       }
     }, {
       "dataType" : 25,
+      "name" : "assignee_id",
+      "getPSAppDEField" : {
+        "name" : "ASSIGNEE_ID",
+        "codeName" : "assignee_id"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "srfkey",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -620,37 +630,23 @@
         "editorParams" : {
           "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
           "AC" : "TRUE",
-          "readonly" : "true",
           "TRIGGER" : "TRUE",
-          "SRFNAVCTX.product" : "%product%",
-          "URL" : "product_members/fetchdefault",
+          "URL" : "products/${context.product}/product_members/fetch_default",
           "PICKUPVIEW" : "FALSE",
           "USERMETHOD" : "post",
-          "SRFNAVPARAM.n_product_id_eq" : "%product%",
           "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
-          "DEPTMETHOD" : "get",
           "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
-          "DEPTURL" : "/users/fetchdefault"
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
         },
-        "editorStyle" : "PERSONEL_SELECT",
+        "editorStyle" : "PERSONEL_SELECT_PRODUCT",
         "editorType" : "PICKEREX_TRIGGER",
         "handlerType" : "PickupText",
         "name" : "assignee_name",
-        "getPSNavigateContexts" : [ {
-          "key" : "PRODUCT",
-          "name" : "PRODUCT",
-          "value" : "product",
-          "rawValue" : false
-        } ],
         "getPSNavigateParams" : [ {
           "key" : "n_department_id_eq",
           "name" : "n_department_id_eq",
           "value" : "srforgsectorid",
-          "rawValue" : false
-        }, {
-          "key" : "n_product_id_eq",
-          "name" : "n_product_id_eq",
-          "value" : "product",
           "rawValue" : false
         } ],
         "getPSSysPFPlugin" : {
@@ -661,7 +657,6 @@
         "enableAC" : true,
         "enablePickupView" : false,
         "forceSelection" : true,
-        "readOnly" : true,
         "showTrigger" : true,
         "singleSelect" : true
       },

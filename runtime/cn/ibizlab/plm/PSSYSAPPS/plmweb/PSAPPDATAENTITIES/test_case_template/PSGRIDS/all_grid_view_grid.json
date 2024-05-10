@@ -28,16 +28,19 @@
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
     "caption" : "模板名称",
     "codeName" : "name",
     "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "title",
+    "dataItemName" : "name",
     "excelCaption" : "模板名称",
     "name" : "name",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
+      "name" : "NAME",
+      "codeName" : "name"
     },
     "width" : 200,
     "widthUnit" : "STAR",
@@ -87,13 +90,114 @@
     "width" : 200,
     "widthUnit" : "PX",
     "enableSort" : true
+  }, {
+    "align" : "CENTER",
+    "caption" : "操作",
+    "codeName" : "uagridcolumn1",
+    "columnType" : "UAGRIDCOLUMN",
+    "name" : "uagridcolumn1",
+    "noPrivDisplayMode" : 1,
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr0415103295",
+      "name" : "表格界面行为组（删除、编辑）",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "actionLevel" : 200,
+        "detailType" : "DEUIACTION",
+        "name" : "u7e70a79",
+        "getPSSysImage" : {
+          "glyph" : "xf040@FontAwesome",
+          "cssClass" : "fa fa-pencil"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "编辑",
+          "codeName" : "template_edit",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_model_edit_view.json",
+            "viewType" : "DEEDITVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "test_case_template_template_edit",
+          "name" : "编辑模板",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf040@FontAwesome",
+            "cssClass" : "fa fa-pencil"
+          },
+          "timeout" : 60000,
+          "tooltip" : "编辑模板",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "template_edit",
+          "uIActionType" : "DEUIACTION",
+          "id" : "template_edit@test_case_template"
+        },
+        "tooltip" : "编辑模板",
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "actionLevel" : 200,
+        "detailType" : "DEUIACTION",
+        "name" : "u6d1c7bc",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "删除",
+          "codeName" : "template_delete",
+          "confirmMsg" : "确认删除选中模板吗？（无法恢复）",
+          "fullCodeName" : "test_case_template_template_delete",
+          "name" : "删除模板",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "tooltip" : "删除模板",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "template_delete",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "template_delete@test_case_template"
+        },
+        "tooltip" : "删除模板",
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "test_case_template__Usr0415103295"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
+    "enableSort" : false
   } ],
   "getPSDEGridDataItems" : [ {
     "dataType" : 25,
-    "name" : "title",
+    "name" : "name",
     "getPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
+      "name" : "NAME",
+      "codeName" : "name"
     }
   }, {
     "dataType" : 25,
@@ -190,7 +294,7 @@
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : false,
-  "singleSelect" : false,
+  "singleSelect" : true,
   "modelid" : "229FCCC4-1CCB-4B6D-B2C3-52CF40FE32AB",
   "modeltype" : "PSDEGRID"
 }

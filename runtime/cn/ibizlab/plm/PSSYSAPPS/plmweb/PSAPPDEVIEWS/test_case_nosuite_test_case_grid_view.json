@@ -30,17 +30,19 @@
       "logicType" : "PREDEFINED",
       "name" : "新建数据",
       "getNewDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_edit_view.json",
-          "viewType" : "DEEDITVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_quick_create_view.json",
+          "viewType" : "DEOPTVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_edit_view.json",
-          "viewType" : "DEEDITVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_quick_create_view.json",
+          "viewType" : "DEOPTVIEW"
         }
       } ],
       "viewLogicType" : "APP_NEWDATA",
@@ -56,17 +58,19 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -75,25 +79,23 @@
   } ],
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
-    "realTitle" : "用例数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.TEST_CASE.REDIRECTVIEW"
-    },
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "用例",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_main_view.json",
+      "viewType" : "DEEDITVIEW"
     }
   }, {
     "name" : "NEWDATA",
-    "realTitle" : "用例编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.TEST_CASE.EDITVIEW"
-    },
+    "openMode" : "POPUPMODAL",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "新建用例",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_edit_view.json",
-      "viewType" : "DEEDITVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -153,38 +155,55 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1",
+      "spanMode" : false
+    }, {
+      "buttonStyle" : "STYLE2",
       "itemType" : "ITEMS",
       "name" : "items1",
       "getPSDEToolbarItems" : [ {
         "caption" : "导入用例",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
+        "name" : "deuiaction4",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction2"
+          "id" : "toolbar_deuiaction4"
         },
         "getPSSysImage" : {
-          "glyph" : "xf093@FontAwesome",
-          "cssClass" : "fa fa-upload"
+          "glyph" : "xf0ee@FontAwesome",
+          "cssClass" : "fa fa-cloud-upload"
         },
         "getPSUIAction" : {
-          "caption" : "数据导入",
-          "codeName" : "Import",
-          "fullCodeName" : "Import",
-          "name" : "表格界面_数据导入栏",
-          "getPSSysImage" : {
-            "glyph" : "xf093@FontAwesome",
-            "cssClass" : "fa fa-upload"
+          "actionTarget" : "NONE",
+          "caption" : "导入测试用例",
+          "codeName" : "test_case_import_data",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/test_case_app_data_upload_view.json",
+            "viewType" : "APPDATAUPLOADVIEW"
           },
-          "predefinedType" : "GRIDVIEW_IMPORTBAR",
+          "frontProcessType" : "DATAIMP",
+          "fullCodeName" : "test_case_test_case_import_data",
+          "name" : "自定义测试用例导入",
+          "getPSAppDEDataImport" : {
+            "modelref" : true,
+            "id" : "import_test_case"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+          },
           "timeout" : 60000,
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "Import",
-          "uIActionType" : "DEUIACTION"
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "test_case_import_data",
+          "uIActionType" : "DEUIACTION",
+          "id" : "test_case_import_data@test_case"
         },
         "tooltip" : "导入用例",
+        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       }, {
@@ -845,40 +864,46 @@
           "showCaption" : true,
           "showIcon" : true
         }, {
-          "getCapPSLanguageRes" : {
-            "lanResTag" : "TBB.TEXT.*.COPY"
-          },
-          "caption" : "复制",
+          "caption" : "复制用例",
           "detailType" : "DEUIACTION",
-          "name" : "u86cee9d",
+          "name" : "uc5b9282",
           "getPSSysImage" : {
             "glyph" : "xf0c5@FontAwesome",
             "cssClass" : "fa fa-copy"
           },
           "getPSUIAction" : {
-            "actionTarget" : "SINGLEKEY",
-            "getCapPSLanguageRes" : {
-              "lanResTag" : "TBB.TEXT.*.COPY"
+            "actionTarget" : "MULTIKEY",
+            "caption" : "复制用例",
+            "codeName" : "copy_test_case",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_copy_test_case_option_view.json",
+              "viewType" : "DEOPTVIEW"
             },
-            "caption" : "复制",
-            "codeName" : "Copy",
-            "fullCodeName" : "Copy",
-            "name" : "表格界面_拷贝操作",
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "test_case_copy_test_case",
+            "name" : "复制用例",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "copy_case"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+            },
             "getPSSysImage" : {
               "glyph" : "xf0c5@FontAwesome",
               "cssClass" : "fa fa-copy"
             },
-            "predefinedType" : "GRIDVIEW_COPYACTION",
+            "refreshMode" : 1,
+            "successMsg" : "复制成功",
             "timeout" : 60000,
-            "getTooltipPSLanguageRes" : {
-              "lanResTag" : "TBB.TOOLTIP.*.COPY"
-            },
-            "uIActionMode" : "SYS",
-            "uIActionTag" : "Copy",
-            "uIActionType" : "DEUIACTION"
-          },
-          "getTooltipPSLanguageRes" : {
-            "lanResTag" : "TBB.TOOLTIP.*.COPY"
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "copy_test_case",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "copy_test_case@test_case"
           },
           "addSeparator" : false,
           "showCaption" : true,
@@ -1002,16 +1027,16 @@
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "FRONT",
-      "caption" : "评审状态",
+      "caption" : "状态",
       "codeName" : "state",
       "columnType" : "DEFGRIDCOLUMN",
       "dataItemName" : "state",
-      "excelCaption" : "评审状态",
+      "excelCaption" : "状态",
       "name" : "state",
       "noPrivDisplayMode" : 1,
       "getPSAppCodeList" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_state.json"
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__case_state.json"
       },
       "getPSAppDEField" : {
         "name" : "STATE",
@@ -1349,7 +1374,7 @@
       },
       "allowEmpty" : true
     }, {
-      "caption" : "评审状态",
+      "caption" : "状态",
       "codeName" : "state",
       "enableCond" : 3,
       "ignoreInput" : 0,
@@ -1363,7 +1388,7 @@
         "name" : "state",
         "getPSAppCodeList" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_state.json"
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__case_state.json"
         },
         "singleSelect" : true
       },

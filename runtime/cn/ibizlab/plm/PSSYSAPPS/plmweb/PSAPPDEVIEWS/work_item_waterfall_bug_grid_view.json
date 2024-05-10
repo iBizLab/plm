@@ -94,15 +94,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "新建缺陷",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_bug_view.json",
-      "viewType" : "DEOPTVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
@@ -111,6 +102,15 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
       "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "新建缺陷",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_bug_view.json",
+      "viewType" : "DEOPTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -177,9 +177,58 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1",
+      "spanMode" : false
+    }, {
+      "buttonStyle" : "STYLE2",
       "itemType" : "ITEMS",
       "name" : "items1",
       "getPSDEToolbarItems" : [ {
+        "caption" : "导入缺陷",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "toolbar_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0ee@FontAwesome",
+          "cssClass" : "fa fa-cloud-upload"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "导入工作项",
+          "codeName" : "waterfall_work_item_import_data",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/waterfall_work_item_app_data_upload_view.json",
+            "viewType" : "APPDATAUPLOADVIEW"
+          },
+          "frontProcessType" : "DATAIMP",
+          "fullCodeName" : "work_item_waterfall_work_item_import_data",
+          "name" : "waterfall工作项导入",
+          "getPSAppDEDataImport" : {
+            "modelref" : true,
+            "id" : "import_work_item_waterfall"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+          },
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "waterfall_work_item_import_data",
+          "uIActionType" : "DEUIACTION",
+          "id" : "waterfall_work_item_import_data@work_item"
+        },
+        "tooltip" : "导入缺陷",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "TBB.TEXT.*.EXPORT"
         },
@@ -834,6 +883,10 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0ca@FontAwesome",
+          "cssClass" : "fa fa-list-ul"
+        },
         "tooltip" : "更多",
         "showCaption" : true,
         "showIcon" : true

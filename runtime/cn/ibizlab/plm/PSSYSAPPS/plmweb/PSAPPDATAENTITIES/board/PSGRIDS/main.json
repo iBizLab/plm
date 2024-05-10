@@ -31,20 +31,110 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.NAME"
     },
-    "caption" : "名称",
+    "caption" : "看板名称",
     "codeName" : "name",
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "name",
-    "excelCaption" : "名称",
+    "excelCaption" : "看板名称",
     "name" : "name",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "name"
     },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableRowEdit" : true,
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_MAN"
+    },
+    "caption" : "创建人",
+    "codeName" : "create_man",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "create_man",
+    "excelCaption" : "创建人",
+    "name" : "create_man",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
+    },
+    "width" : 200,
+    "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "CENTER",
+    "caption" : "操作",
+    "codeName" : "uagridcolumn1",
+    "columnType" : "UAGRIDCOLUMN",
+    "name" : "uagridcolumn1",
+    "noPrivDisplayMode" : 1,
+    "getPSDEUIActionGroup" : {
+      "codeName" : "Usr0429187007",
+      "name" : "看板表格_操作列",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+      },
+      "getPSUIActionGroupDetails" : [ {
+        "detailType" : "DEUIACTION",
+        "name" : "u199d781",
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "删除",
+          "codeName" : "remove",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_confirm_remove_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "fullCodeName" : "board_remove",
+          "name" : "删除",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "删除成功",
+          "timeout" : 60000,
+          "tooltip" : "删除",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "remove",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "remove@board"
+        },
+        "tooltip" : "删除",
+        "addSeparator" : false,
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "uniqueTag" : "board__Usr0429187007"
+    },
     "width" : 150,
     "widthUnit" : "PX",
-    "enableSort" : true
+    "enableSort" : false
   } ],
   "getPSDEGridDataItems" : [ {
     "dataType" : 25,
@@ -52,6 +142,13 @@
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "create_man",
+    "getPSAppDEField" : {
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
     }
   }, {
     "dataType" : 25,
@@ -84,6 +181,22 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
+    "caption" : "看板名称",
+    "codeName" : "name",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "name",
+    "getPSAppDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
+    "getPSEditor" : {
+      "editorType" : "TEXTBOX",
+      "maxLength" : 200,
+      "name" : "name"
+    },
+    "allowEmpty" : true
+  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
     "enableCond" : 3,
@@ -117,16 +230,16 @@
   "sortMode" : "REMOTE",
   "hasWFDataItems" : false,
   "enableColFilter" : false,
-  "enableCustomized" : true,
+  "enableCustomized" : false,
   "enableGroup" : false,
-  "enablePagingBar" : true,
+  "enablePagingBar" : false,
   "enableRowEdit" : false,
   "enableRowEditOrder" : false,
   "enableRowNew" : false,
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : false,
-  "singleSelect" : false,
+  "singleSelect" : true,
   "modelid" : "52da7b2062791db08343ec0c18a80d58",
   "modeltype" : "PSDEGRID"
 }

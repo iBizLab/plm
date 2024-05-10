@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+<changeSet author="jackwang" id="UsrContent0506001"  failOnError="false">
+<sql>
+ALTER TABLE page  MODIFY COLUMN `CONTENT` mediumtext;
+ALTER TABLE test_plan  MODIFY COLUMN `SUMMARY` mediumtext;
+ALTER TABLE version MODIFY COLUMN IDENTIFIER DECIMAL(10,0);
+update product set scope_type='organization' where scope_type is null;
+update project set scope_type='organization' where scope_type is null;
+update library set scope_type='organization' where scope_type is null;
+update space set scope_type='organization' where scope_type is null;
+update relation set target_type = 'work_item' where target_type = 'bug';
+update relation set PRINCIPAL_TYPE = 'work_item' where PRINCIPAL_TYPE = 'bug';
+UPDATE project_release set status='10' where status='pending';
+update page set IS_PUBLISHED=1,PUBLISH_TIME=CREATE_TIME,publish_man=CREATE_MAN,publish_name=name,publish_content=content where IS_PUBLISHED is null;
+UPDATE page SET FORMAT_TYPE = 'HTML' where FORMAT_TYPE is null;
+UPDATE stencil SET FORMAT_TYPE = 'HTML'  where FORMAT_TYPE is null;
+delete   from product_ticket_type where TICKET_TYPE_ID is null;
+INSERT INTO  `product_ticket_type`(`CREATE_MAN`, `CREATE_TIME`, `ID`, `PRODUCT_ID`, `TICKET_TYPE_ID`, `UPDATE_MAN`, `UPDATE_TIME`) 
+select t.CREATE_MAN,t.CREATE_TIME,CONCAT(t.id,'-',t1.id),t.id,t1.id,t.CREATE_MAN,t.CREATE_TIME 
+from product t left outer join ticket_type  t1 on 1=1 where t1.IS_SYSTEM=1 and not exists(select 1 from product_ticket_type t2 where t2.product_id=t.id);  
+</sql>
+</changeSet>
+</databaseChangeLog>

@@ -6,6 +6,8 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
         import org.springframework.util.ObjectUtils;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casetest_case_re_countersdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casetest_case_re_counterstest_case;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
         global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
 
@@ -17,14 +19,6 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
             ruleflow-group "test_casetest_case_re_countersbegin"
             when
             then
-            end
-
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "test_casetest_case_re_countersend1"
-            when
-            then
-                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
             end
 
             //逻辑处理节点[测试用例关联产品需求]
@@ -43,6 +37,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
                                     }
                             }
                         update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
             end
 
             //逻辑处理节点[测试用例关联工作项]
@@ -52,7 +47,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
             then
     Map param =new HashMap();
         param.put("param0",test_casetest_case_re_countersdefault.get("id"));
-    String strSql="SELECT 	count( t.id ) AS test_case_re_work_item  FROM 	work_item t  WHERE t.WORK_ITEM_TYPE_ID not like '%bug%' AND EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND  t.`IS_DELETED` = 0 			";
+    String strSql="SELECT 	count( t.id ) AS test_case_re_work_item  FROM 	work_item t, work_item_type t1  WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'  AND EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_TYPE` = 'test_case'  			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND  t.`IS_DELETED` = 0 			";
                         java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -61,6 +56,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
                                     }
                             }
                         update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
             end
 
             //逻辑处理节点[测试用例关联缺陷]
@@ -70,7 +66,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
             then
     Map param =new HashMap();
         param.put("param0",test_casetest_case_re_countersdefault.get("id"));
-    String strSql="SELECT 	count( t.id ) AS test_case_re_bug  FROM 	work_item t  WHERE 	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'bug'  			AND t11.`PRINCIPAL_TYPE` = 'test_case' 			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND t.`IS_DELETED` = 0 			";
+    String strSql="SELECT 	count( t.id ) AS test_case_re_bug  FROM 	work_item t, work_item_type t1  WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug' and	EXISTS ( 	SELECT 		*  	FROM 		`RELATION` t11  	WHERE 		t.`ID` = t11.`TARGET_ID`  		AND ( 			t11.`TARGET_TYPE` = 'work_item'  			AND t11.`PRINCIPAL_TYPE` = 'test_case' 			AND t11.`PRINCIPAL_ID` = #{et.param0} ) ) 			AND t.`IS_DELETED` = 0 			";
                         java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);
@@ -79,6 +75,16 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
                                     }
                             }
                         update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_casetest_case_re_countersend1"
+            when
+            then
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
             end
 
             //逻辑处理节点[测试用例执行历史]
@@ -97,4 +103,104 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.test_case_re_counters;
                                     }
                             }
                         update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例版本]
+            rule "rawsqlcall5"
+            ruleflow-group "test_casetest_case_re_countersrawsqlcall5"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_casetest_case_re_countersdefault.get("id"));
+    String strSql="SELECT 	count( t.id ) AS test_case_version FROM 	`version` t  WHERE     t.owner_id = #{et.param0} and t.owner_type = 'TEST_CASE'";
+                        java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    test_casetest_case_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "test_casetest_case_re_countersprepareparam1"
+            when
+            then
+                            test_casetest_case_re_counterstest_case.set("id",test_casetest_case_re_countersdefault.get("id"));
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取测试用例当前版本]
+            rule "deaction1"
+            ruleflow-group "test_casetest_case_re_countersdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(test_casetest_case_re_counterstest_case.getId()),test_casetest_case_re_counterstest_case);
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例关联产品需求]
+            rule "rawsqlcall6"
+            ruleflow-group "test_casetest_case_re_countersrawsqlcall6"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_casetest_case_re_countersdefault.get("id"));
+        param.put("param1",test_casetest_case_re_countersdefault.get("srfversionid"));
+    String strSql="SELECT 	count( t.id ) AS test_case_re_idea FROM 	idea t  WHERE t.is_deleted = 0 AND EXISTS ( 	SELECT 			* 	FROM 		version_data t12 	WHERE 		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = #{et.param0} )  		AND t12.PARENT_VERSION_ID = #{et.param1} 		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id')  	)";
+                        java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    test_casetest_case_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例关联工作项]
+            rule "rawsqlcall7"
+            ruleflow-group "test_casetest_case_re_countersrawsqlcall7"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_casetest_case_re_countersdefault.get("id"));
+        param.put("param1",test_casetest_case_re_countersdefault.get("srfversionid"));
+    String strSql="SELECT 	count( t.id ) AS test_case_re_work_item FROM 	work_item t, work_item_type t1 WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug' and t.is_deleted = 0 AND EXISTS ( 	SELECT 			* 	FROM 		version_data t12 	WHERE 		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = #{et.param0} )  		AND t12.PARENT_VERSION_ID = #{et.param1} 		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id')  	)";
+                        java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    test_casetest_case_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[测试用例关联缺陷]
+            rule "rawsqlcall8"
+            ruleflow-group "test_casetest_case_re_countersrawsqlcall8"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_casetest_case_re_countersdefault.get("id"));
+        param.put("param1",test_casetest_case_re_countersdefault.get("srfversionid"));
+    String strSql="SELECT 	count( t.id ) AS test_case_re_bug FROM 	work_item t, work_item_type t1 WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug' and t.is_deleted = 0 AND EXISTS ( 	SELECT 			* 	FROM 		version_data t12 	WHERE 		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = #{et.param0} )  		AND t12.PARENT_VERSION_ID = #{et.param1} 		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id')  	)";
+                        java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    test_casetest_case_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(test_casetest_case_re_countersdefault);//更新fact中变量值
+                        update(test_casetest_case_re_counterstest_case);//更新fact中变量值
             end

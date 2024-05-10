@@ -80,8 +80,10 @@
       "name" : "RemoveResult",
       "type" : "VOID"
     },
+    "prepareLastMode" : 1,
     "batchAction" : true,
-    "builtinAction" : true
+    "builtinAction" : true,
+    "prepareLast" : true
   }, {
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
@@ -1166,7 +1168,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEDATASET1"
+          "id" : "PREPAREPARAM5"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -1174,8 +1176,46 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 290,
+      "topPos" : 150,
       "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM5",
+      "leftPos" : 331,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置过滤分页",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "notify_setting_filter"
+        },
+        "name" : "直接值[1000] ==> notify_setting_filter[size]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1000",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "notify_filter"
+        },
+        "name" : "直接值[1000] ==> notify_filter[size]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1000",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 273
     }, {
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
@@ -1322,7 +1362,7 @@
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 820,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "将通知事件集填充",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1422,6 +1462,20 @@
         "name" : "notify[PSDENOTIFYNAME] ==> notify_event[NAME]",
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "PSDENOTIFYNAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "notify"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "GROUP",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "notify_event"
+        },
+        "name" : "notify[NOTIFYTAG2] ==> notify_event[GROUP]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "NOTIFYTAG2",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "notify"
@@ -2490,16 +2544,19 @@
   }, {
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEUSERROLES/USER_RW.json",
     "name" : "当前用户（读写）",
-    "getPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "cur_user"
-    },
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
+      "dataAccessAction" : "DELETE",
+      "name" : "DELETE",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "CREATE"
+        "id" : "DELETE"
+      }
+    }, {
+      "dataAccessAction" : "READ",
+      "name" : "READ",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "READ"
       }
     }, {
       "dataAccessAction" : "UPDATE",
@@ -2509,16 +2566,17 @@
         "id" : "UPDATE"
       }
     }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
+      "dataAccessAction" : "CREATE",
+      "name" : "CREATE",
       "getPSDEOPPriv" : {
         "modelref" : true,
-        "id" : "READ"
+        "id" : "CREATE"
       }
     } ],
     "roleTag" : "USER_RW",
     "userCat" : "CAT1",
     "userDRAction" : "READ",
+    "allData" : true,
     "enableUserDR" : true,
     "systemReserved" : true
   } ],
@@ -2540,6 +2598,12 @@
     "logicName" : "通知设置实体编辑视图（左右关系）",
     "name" : "通知设置实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "config_view_test",
+    "logicName" : "config_view",
+    "name" : "config_view",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "mpick_up_view",
@@ -2575,6 +2639,13 @@
     "name" : "通知设置实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "config_view_test_Form",
+    "logicName" : "config_view_表单(测试)",
+    "modelTag2" : "0",
+    "name" : "config_view_表单(测试)",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "config_view_Form",
     "logicName" : "config_view_表单",

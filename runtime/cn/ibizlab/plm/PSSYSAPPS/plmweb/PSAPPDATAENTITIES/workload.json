@@ -2490,6 +2490,18 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "n_register_date_eq",
+      "jsonFormat" : "yyyy-MM-dd",
+      "logicName" : "工作日期",
+      "name" : "n_register_date_eq",
+      "getPSAppDEField" : {
+        "name" : "REGISTER_DATE",
+        "codeName" : "register_date"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "n_register_date_gtandeq",
       "jsonFormat" : "yyyy-MM-dd",
       "logicName" : "工作日期",
@@ -2523,6 +2535,17 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "n_show_identifier_like",
+      "logicName" : "编号",
+      "name" : "n_show_identifier_like",
+      "getPSAppDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "codeName" : "n_test_case_exists_n_create_man_eq",
@@ -4133,6 +4156,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "workload_calendar_link_log_view",
+    "memo" : "工作台->工时日志->工作项/产品需求/测试用例维度->工时时长链接",
     "name" : "工时日历链接日志表格视图",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -4142,6 +4166,11 @@
       "key" : "n_register_date_gtandeq",
       "name" : "n_register_date_gtandeq",
       "value" : "n_register_date_gtandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_eq",
+      "name" : "n_register_date_eq",
+      "value" : "date",
       "rawValue" : false
     }, {
       "key" : "n_register_date_ltandeq",
@@ -4184,27 +4213,6 @@
     "id" : "delere@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "测试库总登记时长链接跳转",
-    "codeName" : "library_duration_link",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "workload_library_duration_link",
-    "name" : "测试库总登记时长链接跳转",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "open_library_workload_detail"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "library_duration_link",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "id" : "library_duration_link@workload"
-  }, {
-    "actionTarget" : "SINGLEKEY",
     "caption" : "工时日历链接日志表格视图（管理）",
     "codeName" : "management_calendar_duration_link",
     "getFrontPSAppView" : {
@@ -4214,6 +4222,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "workload_management_calendar_duration_link",
+    "memo" : "工时管理->工时日历->工作项/产品需求/测试用例维度->工时时长链接",
     "name" : "工时日历链接日志表格视图（管理）",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -4223,6 +4232,11 @@
       "key" : "n_register_date_gtandeq",
       "name" : "n_register_date_gtandeq",
       "value" : "n_register_date_gtandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_eq",
+      "name" : "n_register_date_eq",
+      "value" : "date",
       "rawValue" : false
     }, {
       "key" : "n_register_date_ltandeq",
@@ -4242,14 +4256,15 @@
     "id" : "management_calendar_duration_link@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "测试库总登记时长链接跳转（管理）",
-    "codeName" : "management_library_duration_link",
+    "caption" : "项目/产品/测试库工时时长链接跳转（管理）",
+    "codeName" : "management_parent_dimension",
     "frontProcessType" : "OTHER",
-    "fullCodeName" : "workload_management_library_duration_link",
-    "name" : "测试库总登记时长链接跳转（管理）",
+    "fullCodeName" : "workload_management_parent_dimension",
+    "memo" : "工时管理->工时日历->项目/产品/测试库维度->时长表格列->绑定行为",
+    "name" : "所属维度表格列行为（管理）",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "open_management_library_detail"
+      "id" : "open_parent_with_log_grid"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -4257,52 +4272,10 @@
     },
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "management_library_duration_link",
+    "uIActionTag" : "management_parent_dimension",
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
-    "id" : "management_library_duration_link@workload"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "产品总登记时长链接跳转（管理）",
-    "codeName" : "management_product_duration_link",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "workload_management_product_duration_link",
-    "name" : "产品总登记时长链接跳转（管理）",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "open_management_product_detail"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "management_product_duration_link",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "id" : "management_product_duration_link@workload"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "项目总登记时长链接跳转（管理）",
-    "codeName" : "management_project_duration_link",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "workload_management_project_duration_link",
-    "name" : "项目总登记时长链接跳转（管理）",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "open_management_project_detail"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "management_project_duration_link",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "id" : "management_project_duration_link@workload"
+    "id" : "management_parent_dimension@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "工作类别总登记时长链接跳转（管理）",
@@ -4405,58 +4378,40 @@
     "uIActionType" : "DEUIACTION",
     "id" : "open_library_main_view@workload"
   }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开测试库工时记录",
-    "codeName" : "open_library_workload_detail",
-    "getFrontPSAppView" : {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "工时打开对应事项详情视图",
+    "codeName" : "open_main_view",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "workload_open_main_view",
+    "memo" : "工时日志->事项列链接->打开对应工作项/产品需求/测试用例详情视图",
+    "name" : "工时打开对应事项详情视图",
+    "getPSAppDEUILogic" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_calendar_duration_link_grid_view.json",
-      "viewType" : "DEGRIDVIEW"
+      "id" : "open_main_view"
     },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "workload_open_library_workload_detail",
-    "memo" : "工作台->工时日历->测试库维度->总登记时长链接",
-    "name" : "打开测试库工时记录",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
     },
-    "getPSNavigateParams" : [ {
-      "key" : "n_register_date_gtandeq",
-      "name" : "n_register_date_gtandeq",
-      "value" : "n_register_date_gtandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_register_date_ltandeq",
-      "name" : "n_register_date_ltandeq",
-      "value" : "n_register_date_ltandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_recent_parent_eq",
-      "name" : "n_recent_parent_eq",
-      "value" : "recent_parent",
-      "rawValue" : false
-    } ],
-    "refreshMode" : 1,
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_library_workload_detail",
+    "uIActionTag" : "open_main_view",
     "uIActionType" : "DEUIACTION",
-    "reloadData" : true,
-    "id" : "open_library_workload_detail@workload"
+    "uILogicAttachMode" : "REPLACE",
+    "id" : "open_main_view@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "打开测试库管理工时记录",
-    "codeName" : "open_management_library_link",
+    "caption" : "打开所属下的工时日志（管理）",
+    "codeName" : "open_management_parent_link",
     "getFrontPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_duration_link_grid_view.json",
       "viewType" : "DEGRIDVIEW"
     },
     "frontProcessType" : "WIZARD",
-    "fullCodeName" : "workload_open_management_library_link",
-    "memo" : "工时管理->测试库维度->总登记时长链接",
-    "name" : "打开测试库管理工时记录",
+    "fullCodeName" : "workload_open_management_parent_link",
+    "memo" : "工时管理->工时日历->项目/产品/测试用例维度->工时时长链接",
+    "name" : "打开所属下的工时日志（管理）",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
@@ -4465,6 +4420,11 @@
       "key" : "n_register_date_gtandeq",
       "name" : "n_register_date_gtandeq",
       "value" : "n_register_date_gtandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_eq",
+      "name" : "n_register_date_eq",
+      "value" : "date",
       "rawValue" : false
     }, {
       "key" : "n_register_date_ltandeq",
@@ -4480,101 +4440,22 @@
     "refreshMode" : 1,
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_management_library_link",
+    "uIActionTag" : "open_management_parent_link",
     "uIActionType" : "DEUIACTION",
     "reloadData" : true,
-    "id" : "open_management_library_link@workload"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开产品管理工时记录",
-    "codeName" : "open_management_product_link",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_duration_link_grid_view.json",
-      "viewType" : "DEGRIDVIEW"
-    },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "workload_open_management_product_link",
-    "memo" : "工时管理->产品维度->总登记时长链接",
-    "name" : "打开产品管理工时记录",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_register_date_gtandeq",
-      "name" : "n_register_date_gtandeq",
-      "value" : "n_register_date_gtandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_register_date_ltandeq",
-      "name" : "n_register_date_ltandeq",
-      "value" : "n_register_date_ltandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_recent_parent_eq",
-      "name" : "n_recent_parent_eq",
-      "value" : "recent_parent",
-      "rawValue" : false
-    } ],
-    "refreshMode" : 1,
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_management_product_link",
-    "uIActionType" : "DEUIACTION",
-    "reloadData" : true,
-    "id" : "open_management_product_link@workload"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开项目管理工时记录",
-    "codeName" : "open_management_project_link",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_duration_link_grid_view.json",
-      "viewType" : "DEGRIDVIEW"
-    },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "workload_open_management_project_link",
-    "memo" : "工时管理->项目维度->总登记时长链接",
-    "name" : "打开项目管理工时记录",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_register_date_gtandeq",
-      "name" : "n_register_date_gtandeq",
-      "value" : "n_register_date_gtandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_register_date_ltandeq",
-      "name" : "n_register_date_ltandeq",
-      "value" : "n_register_date_ltandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_recent_parent_eq",
-      "name" : "n_recent_parent_eq",
-      "value" : "recent_parent",
-      "rawValue" : false
-    } ],
-    "refreshMode" : 1,
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_management_project_link",
-    "uIActionType" : "DEUIACTION",
-    "reloadData" : true,
-    "id" : "open_management_project_link@workload"
+    "id" : "open_management_parent_link@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "打开工作类别管理工时记录",
     "codeName" : "open_management_type_link",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_duration_link_grid_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_of_link_management_grid_view.json",
       "viewType" : "DEGRIDVIEW"
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "workload_open_management_type_link",
+    "memo" : "工时管理->工时日历->工作类别维度->工时时长链接",
     "name" : "打开工作类别管理工时记录",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -4584,6 +4465,11 @@
       "key" : "n_register_date_gtandeq",
       "name" : "n_register_date_gtandeq",
       "value" : "n_register_date_gtandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_eq",
+      "name" : "n_register_date_eq",
+      "value" : "date",
       "rawValue" : false
     }, {
       "key" : "n_register_date_ltandeq",
@@ -4612,6 +4498,7 @@
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "workload_open_member_workload_detail",
+    "memo" : "工时管理->工时日历->人员维度->工时时长链接",
     "name" : "打开成员工时记录",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -4666,46 +4553,6 @@
     "uIActionType" : "DEUIACTION",
     "id" : "open_product_main_view@workload"
   }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开产品工时记录",
-    "codeName" : "open_product_workload_detail",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_calendar_duration_link_grid_view.json",
-      "viewType" : "DEGRIDVIEW"
-    },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "workload_open_product_workload_detail",
-    "memo" : "工作台->工时日历->产品维度->总登记时长链接",
-    "name" : "打开产品工时记录",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_register_date_gtandeq",
-      "name" : "n_register_date_gtandeq",
-      "value" : "n_register_date_gtandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_register_date_ltandeq",
-      "name" : "n_register_date_ltandeq",
-      "value" : "n_register_date_ltandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_recent_parent_eq",
-      "name" : "n_recent_parent_eq",
-      "value" : "recent_parent",
-      "rawValue" : false
-    } ],
-    "refreshMode" : 1,
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_product_workload_detail",
-    "uIActionType" : "DEUIACTION",
-    "reloadData" : true,
-    "id" : "open_product_workload_detail@workload"
-  }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "打开项目主视图",
     "codeName" : "open_project_main_view",
@@ -4732,46 +4579,6 @@
     "uIActionTag" : "open_project_main_view",
     "uIActionType" : "DEUIACTION",
     "id" : "open_project_main_view@workload"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开项目工时记录",
-    "codeName" : "open_project_workload_detail",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_calendar_duration_link_grid_view.json",
-      "viewType" : "DEGRIDVIEW"
-    },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "workload_open_project_workload_detail",
-    "memo" : "工作台->工时日历->项目维度->总登记时长链接",
-    "name" : "打开项目工时记录",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-    },
-    "getPSNavigateParams" : [ {
-      "key" : "n_register_date_gtandeq",
-      "name" : "n_register_date_gtandeq",
-      "value" : "n_register_date_gtandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_register_date_ltandeq",
-      "name" : "n_register_date_ltandeq",
-      "value" : "n_register_date_ltandeq",
-      "rawValue" : false
-    }, {
-      "key" : "n_recent_parent_eq",
-      "name" : "n_recent_parent_eq",
-      "value" : "recent_parent",
-      "rawValue" : false
-    } ],
-    "refreshMode" : 1,
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_project_workload_detail",
-    "uIActionType" : "DEUIACTION",
-    "reloadData" : true,
-    "id" : "open_project_workload_detail@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "打开测试用例主视图",
@@ -4810,11 +4617,12 @@
     "codeName" : "open_type_workload_detail",
     "getFrontPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_calendar_duration_link_grid_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_of_link_grid_view.json",
       "viewType" : "DEGRIDVIEW"
     },
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "workload_open_type_workload_detail",
+    "memo" : "工作台->工时日历->工作类别维度->工时时长链接",
     "name" : "打开工作类别工时记录",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -4824,6 +4632,11 @@
       "key" : "n_register_date_gtandeq",
       "name" : "n_register_date_gtandeq",
       "value" : "n_register_date_gtandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_eq",
+      "name" : "n_register_date_eq",
+      "value" : "date",
       "rawValue" : false
     }, {
       "key" : "n_register_date_ltandeq",
@@ -4875,32 +4688,57 @@
     "id" : "open_work_item_main_view@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "产品总登记时长链接跳转",
-    "codeName" : "product_duration_link",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "workload_product_duration_link",
-    "name" : "产品总登记时长链接跳转",
-    "getPSAppDEUILogic" : {
+    "caption" : "打开所属下的工时日志",
+    "codeName" : "opent_parent_link",
+    "getFrontPSAppView" : {
       "modelref" : true,
-      "id" : "open_product_workload_detail"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_calendar_duration_link_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
     },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "workload_opent_parent_link",
+    "memo" : "工作台->工时日历->项目/产品/测试库维度->工时时长链接",
+    "name" : "打开所属下的工时日志",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
     },
+    "getPSNavigateParams" : [ {
+      "key" : "n_register_date_gtandeq",
+      "name" : "n_register_date_gtandeq",
+      "value" : "n_register_date_gtandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_eq",
+      "name" : "n_register_date_eq",
+      "value" : "date",
+      "rawValue" : false
+    }, {
+      "key" : "n_register_date_ltandeq",
+      "name" : "n_register_date_ltandeq",
+      "value" : "n_register_date_ltandeq",
+      "rawValue" : false
+    }, {
+      "key" : "n_recent_parent_eq",
+      "name" : "n_recent_parent_eq",
+      "value" : "recent_parent",
+      "rawValue" : false
+    } ],
+    "refreshMode" : 1,
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "product_duration_link",
+    "uIActionTag" : "opent_parent_link",
     "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "id" : "product_duration_link@workload"
+    "reloadData" : true,
+    "id" : "opent_parent_link@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "项目总登记时长链接跳转",
-    "codeName" : "project_duration_link",
+    "caption" : "所属维度表格列行为",
+    "codeName" : "parent_dimension",
     "frontProcessType" : "OTHER",
-    "fullCodeName" : "workload_project_duration_link",
-    "name" : "项目总登记时长链接跳转",
+    "fullCodeName" : "workload_parent_dimension",
+    "memo" : "工作台->工时日历->项目/产品/测试库维度->时长表格列->绑定行为",
+    "name" : "所属维度表格列行为",
     "getPSAppDEUILogic" : {
       "modelref" : true,
       "id" : "open_project_workload_detail"
@@ -4911,10 +4749,10 @@
     },
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
-    "uIActionTag" : "project_duration_link",
+    "uIActionTag" : "parent_dimension",
     "uIActionType" : "DEUIACTION",
     "uILogicAttachMode" : "REPLACE",
-    "id" : "project_duration_link@workload"
+    "id" : "parent_dimension@workload"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "工作类别总登记时长链接跳转",
@@ -5482,89 +5320,11 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "open_library_workload_detail",
-    "defaultParamName" : "Default",
-    "logicName" : "打开测试库工时记录列表视图",
-    "memo" : "获取搜索表单时间范围条件，并打开工时记录列表",
-    "name" : "打开测试库工时记录列表视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 190,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_library_workload_detail@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 150,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开测试库工时记录列表视图",
-      "topPos" : 454
-    }, {
-      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 150,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取搜索表单的日期范围条件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 330
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "open_main_view",
     "defaultParamName" : "Default",
-    "logicName" : "打开详情视图",
+    "logicName" : "工时打开对应事项详情视图",
     "memo" : "链接跳转工作项/产品需求/测试用例详情主视图",
-    "name" : "打开详情视图",
+    "name" : "工时打开对应事项详情视图",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 200,
@@ -5655,6 +5415,28 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+        },
+        "modelref" : true,
+        "id" : "open_work_item_main_view@workload"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 34,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "打开工作项主视图",
+      "topPos" : 374
+    }, {
       "codeName" : "DEUIACTION3",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -5698,274 +5480,18 @@
       "logicNodeType" : "DEUIACTION",
       "name" : "打开测试用例主视图",
       "topPos" : 374
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_work_item_main_view@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 34,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开工作项主视图",
-      "topPos" : 374
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    }, {
       "codeName" : "work_item",
       "logicName" : "工作项",
       "name" : "工作项",
       "entityParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "open_management_library_detail",
-    "defaultParamName" : "Default",
-    "logicName" : "打开测试库管理工时记录列表视图",
-    "memo" : "获取搜索表单时间范围条件，并打开工时记录列表",
-    "name" : "打开测试库管理工时记录列表视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 190,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
     }, {
-      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 150,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取搜索表单的日期范围条件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 340
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_management_library_link@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 150,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开测试库管理工时记录列表视图",
-      "topPos" : 454
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "open_management_product_detail",
-    "defaultParamName" : "Default",
-    "logicName" : "打开产品管理工时记录列表视图",
-    "memo" : "获取搜索表单时间范围条件，并打开工时记录列表",
-    "name" : "打开产品管理工时记录列表视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 190,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取搜索表单的日期范围条件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 340
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_management_product_link@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开产品工时记录列表视图",
-      "topPos" : 454
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "open_management_project_detail",
-    "defaultParamName" : "Default",
-    "logicName" : "打开项目管理工时记录列表视图",
-    "memo" : "获取搜索表单时间范围条件，并打开工时记录列表",
-    "name" : "打开项目管理工时记录列表视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 190,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 150,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取搜索表单的日期范围条件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 340
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_management_project_link@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 150,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开项目管理工时记录列表视图",
-      "topPos" : 444
-    } ],
-    "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -6080,25 +5606,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 170,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取搜索表单的日期范围条件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 337
-    }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -6120,6 +5627,103 @@
       "logicNodeType" : "DEUIACTION",
       "name" : "打开成员工时记录列表视图",
       "topPos" : 433
+    }, {
+      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取搜索表单的日期范围条件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 337
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
+    "codeName" : "open_parent_with_log_grid",
+    "defaultParamName" : "Default",
+    "logicName" : "打开所属工时记录列表视图(管理)",
+    "memo" : "工时管理，获取搜索表单时间范围条件，并打开项目/产品/测试用例下的工时记录列表",
+    "name" : "打开所属工时记录列表视图(管理)",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 190,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 210,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+        },
+        "modelref" : true,
+        "id" : "open_management_parent_link@workload"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 150,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "打开所属下的工时日志（管理）",
+      "topPos" : 444
+    }, {
+      "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 150,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取搜索表单的日期范围条件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 340
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -6179,84 +5783,6 @@
       "logicNodeType" : "DEUIACTION",
       "name" : "界面行为",
       "topPos" : 349
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "open_product_workload_detail",
-    "defaultParamName" : "Default",
-    "logicName" : "打开产品工时记录列表视图",
-    "memo" : "获取搜索表单时间范围条件，并打开工时记录列表",
-    "name" : "打开产品工时记录列表视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 190,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_product_workload_detail@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开产品工时记录列表视图",
-      "topPos" : 454
-    }, {
-      "code" : "console.log(\"工时\", view);\r\nvar n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "获取搜索表单的日期范围条件",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 340
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -6331,9 +5857,9 @@
   }, {
     "codeName" : "open_project_workload_detail",
     "defaultParamName" : "Default",
-    "logicName" : "打开项目工时记录列表视图",
-    "memo" : "获取搜索表单时间范围条件，并打开工时记录列表",
-    "name" : "打开项目工时记录列表视图",
+    "logicName" : "打开所属工时记录列表视图",
+    "memo" : "工作台，获取搜索表单时间范围条件，并打开项目/产品/测试用例下的工时记录列表",
+    "name" : "打开所属工时记录列表视图",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
       "leftPos" : 190,
@@ -6354,6 +5880,28 @@
       "topPos" : 210,
       "parallelOutput" : true
     }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+        },
+        "modelref" : true,
+        "id" : "opent_parent_link@workload"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 150,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "打开所属下的工时日志",
+      "topPos" : 454
+    }, {
       "code" : "var n_register_date_gtandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_gtandeq;\r\nvar n_register_date_ltandeq = view.layoutPanel.panelItems.searchform.control.data.n_register_date_ltandeq;\r\nuiLogic.default.n_register_date_gtandeq=n_register_date_gtandeq;\r\nuiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 150,
@@ -6372,28 +5920,6 @@
         }
       } ],
       "topPos" : 330
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-        },
-        "modelref" : true,
-        "id" : "open_project_workload_detail@workload"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/workload.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 150,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开项目工时记录列表视图",
-      "topPos" : 454
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -6555,7 +6081,15 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_day_type_link_management_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_log_management_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_day_type_link_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -6595,6 +6129,18 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_of_link_management_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_day_link_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_of_link_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_edit_view.json",
     "viewType" : "DEEDITVIEW"
   }, {
@@ -6613,6 +6159,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_management_view.json",
     "viewType" : "DETABEXPVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_day_link_management_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",

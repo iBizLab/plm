@@ -6,16 +6,28 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="baselineset_completedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselineset_completefor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselineset_completerelation_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselineset_completerelation_page" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IbaselineService))" name="baselineservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IbaselineService))" name="iBzSysBaselineDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="baselineset_completedefault" type="cn.ibizlab.plm.core.base.domain.baseline" />
+                            <tns:global identifier="baselineset_completefor_temp_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="baselineset_completerelation_filter" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="baselineset_completerelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_completeprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设立完成状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_completedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="设立完成"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_completeprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备过滤器参数"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_completededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <endEvent id="dedataset1_end" name="end"/>
+                        <sequenceFlow id="dedataset1_end_line" sourceRef="dedataset1" targetRef="dedataset1_end"/>
                     <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">

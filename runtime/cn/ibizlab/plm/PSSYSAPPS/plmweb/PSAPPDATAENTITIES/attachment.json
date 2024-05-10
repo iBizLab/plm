@@ -2019,45 +2019,6 @@
       "topPos" : 50,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 200,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置表格隐藏",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "state.keepAlive",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[true] ==> grid[state.keepAlive]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "state.visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "grid"
-        },
-        "name" : "直接值[false] ==> grid[state.visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 440
-    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 350,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2136,7 +2097,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2174,13 +2135,66 @@
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 650
+    }, {
+      "codeName" : "PREPAREJSPARAM3",
+      "leftPos" : 200,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置表格隐藏",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM3"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "state.keepAlive",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "直接值[true] ==> grid[state.keepAlive]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "true",
+        "srcValueType" : "SRCVALUE"
+      }, {
+        "dstFieldName" : "state.visible",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "grid"
+        },
+        "name" : "直接值[false] ==> grid[state.visible]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "false",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 440
+    }, {
+      "code" : "const rows = uiLogic.grid.mdController.state.rows;\r\nconst srfreadonly = context.srfreadonly;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n        // 删除附件行为禁用\r\n\t\tconst uiActionId = row.uaColStates.uagridcolumn1.u44d00e2;\r\n        if(srfreadonly == true){\r\n            uiActionId.disabled = true;\r\n        }    \r\n\t})\r\n}\t\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 460,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "上下文中srfreadonly禁用删除附件行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 550
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "grid",
-      "logicName" : "重复器表格",
-      "name" : "重复器表格",
-      "ctrlParam" : true
-    }, {
       "codeName" : "form",
       "logicName" : "表单",
       "name" : "表单",
@@ -2191,6 +2205,11 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "grid",
+      "logicName" : "重复器表格",
+      "name" : "重复器表格",
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2715,6 +2734,33 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "array" : false
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "REVIEW",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "review",
+    "majorDEName" : "REVIEW",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+    },
+    "minorDECodeName" : "attachment",
+    "minorDEName" : "ATTACHMENT",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/attachment.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_ATTACHMENT",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 1,
+    "rSType" : "DER1N",
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "array" : false,
+    "majorDEMajor" : false
   }, {
     "actionRSMode" : 1,
     "codeName" : "STENCIL",

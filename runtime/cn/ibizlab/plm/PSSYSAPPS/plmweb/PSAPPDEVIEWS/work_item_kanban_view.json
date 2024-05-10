@@ -7,7 +7,6 @@
   "codeName" : "work_item_kanban_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_kanban_view.json",
   "mDCtrlActiveMode" : 1,
-  "memo" : "SRFNAVCTX.BOARD=fdbc1f55-cd26-6bc6-1163-51a0683402ed",
   "name" : "work_itemkanban_view",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -145,6 +144,14 @@
                     "frontProcessType" : "WIZARD",
                     "fullCodeName" : "board_New",
                     "name" : "新建看板",
+                    "getNextPSUIAction" : {
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+                      },
+                      "modelref" : true,
+                      "id" : "open_new_board@board"
+                    },
                     "getPSAppDataEntity" : {
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
@@ -164,6 +171,50 @@
                     "uIActionType" : "DEUIACTION",
                     "id" : "New@board"
                   },
+                  "addSeparator" : false,
+                  "showCaption" : true,
+                  "showIcon" : true
+                }, {
+                  "caption" : "看板管理",
+                  "detailType" : "DEUIACTION",
+                  "name" : "u8a50616",
+                  "getPSSysImage" : {
+                    "glyph" : "xf185@FontAwesome",
+                    "cssClass" : "fa fa-sun-o"
+                  },
+                  "getPSUIAction" : {
+                    "actionTarget" : "NONE",
+                    "caption" : "看板管理",
+                    "codeName" : "board_management",
+                    "getFrontPSAppView" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_grid_view.json",
+                      "viewType" : "DEGRIDVIEW"
+                    },
+                    "frontProcessType" : "WIZARD",
+                    "fullCodeName" : "board_board_management",
+                    "name" : "看板管理",
+                    "getPSAppDataEntity" : {
+                      "modelref" : true,
+                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+                    },
+                    "getPSNavigateContexts" : [ {
+                      "key" : "BOARD",
+                      "name" : "BOARD",
+                      "rawValue" : true
+                    } ],
+                    "getPSSysImage" : {
+                      "glyph" : "xf185@FontAwesome",
+                      "cssClass" : "fa fa-sun-o"
+                    },
+                    "timeout" : 60000,
+                    "tooltip" : "看板管理",
+                    "uIActionMode" : "FRONT",
+                    "uIActionTag" : "board_management",
+                    "uIActionType" : "DEUIACTION",
+                    "id" : "board_management@board"
+                  },
+                  "tooltip" : "看板管理",
                   "addSeparator" : false,
                   "showCaption" : true,
                   "showIcon" : true
@@ -402,6 +453,7 @@
         "id" : "TOOLBAR"
       },
       "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "STYLE3",
         "caption" : "新建",
         "itemType" : "ITEMS",
         "name" : "items1",
@@ -514,6 +566,10 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
         "tooltip" : "新建",
         "showCaption" : true,
         "showIcon" : true
@@ -890,7 +946,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_default"
+          "id" : "fetch_normal"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -1611,7 +1667,7 @@
                   "itemType" : "FIELD",
                   "name" : "start_at",
                   "getPSControlRenders" : [ {
-                    "layoutPanelModel" : "data.start_at.startsWith(new Date().getFullYear()) ? data.start_at.slice(5, -9) : data.start_at.slice(0, -9)\r\n\r\n",
+                    "layoutPanelModel" : "data.start_at.startsWith(new Date().getFullYear()) ? data.start_at.slice(5) : data.start_at.slice(0)\r\n\r\n",
                     "name" : "logic",
                     "renderType" : "LAYOUTPANEL_MODEL"
                   } ],
@@ -1710,7 +1766,7 @@
                   "itemType" : "FIELD",
                   "name" : "end_at",
                   "getPSControlRenders" : [ {
-                    "layoutPanelModel" : "data.end_at.startsWith(new Date().getFullYear()) ? data.end_at.slice(5, -9) : data.end_at.slice(0, -9)",
+                    "layoutPanelModel" : "data.end_at.startsWith(new Date().getFullYear()) ? data.end_at.slice(5) : data.end_at.slice(0)",
                     "name" : "logic2",
                     "renderType" : "LAYOUTPANEL_MODEL"
                   } ],
@@ -1823,7 +1879,7 @@
           "name" : "fetch",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "fetch_default"
+            "id" : "fetch_normal"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -1872,17 +1928,17 @@
       },
       "getPSDEDataViewDataItems" : [ {
         "dataType" : 25,
-        "name" : "title",
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
-        }
-      }, {
-        "dataType" : 25,
         "name" : "identifier",
         "getPSAppDEField" : {
           "name" : "IDENTIFIER",
           "codeName" : "identifier"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "title",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
         }
       }, {
         "dataType" : 25,
@@ -1995,26 +2051,6 @@
         "name" : "srfmstag"
       } ],
       "getPSDEDataViewItems" : [ {
-        "caption" : "标题",
-        "dataItemName" : "title",
-        "itemType" : "DATAITEM",
-        "name" : "TITLE",
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
-        },
-        "enableSort" : true
-      }, {
-        "caption" : "编号",
-        "dataItemName" : "identifier",
-        "itemType" : "DATAITEM",
-        "name" : "IDENTIFIER",
-        "getPSAppDEField" : {
-          "name" : "IDENTIFIER",
-          "codeName" : "identifier"
-        },
-        "enableSort" : true
-      }, {
         "dataItemName" : "operate",
         "itemType" : "ACTIONITEM",
         "name" : "OPERATE",
@@ -3947,6 +3983,26 @@
           "uniqueTag" : "work_item__Usr0226224309"
         },
         "enableSort" : false
+      }, {
+        "caption" : "编号",
+        "dataItemName" : "identifier",
+        "itemType" : "DATAITEM",
+        "name" : "IDENTIFIER",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        },
+        "enableSort" : true
+      }, {
+        "caption" : "标题",
+        "dataItemName" : "title",
+        "itemType" : "DATAITEM",
+        "name" : "TITLE",
+        "getPSAppDEField" : {
+          "name" : "TITLE",
+          "codeName" : "title"
+        },
+        "enableSort" : true
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "CUSTOM",

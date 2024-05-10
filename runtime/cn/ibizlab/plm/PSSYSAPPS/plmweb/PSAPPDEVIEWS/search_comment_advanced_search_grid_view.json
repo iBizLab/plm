@@ -302,7 +302,7 @@
         "name" : "CONTENT",
         "codeName" : "content"
       },
-      "scriptCode" : "data.content",
+      "scriptCode" : "data.content.replaceAll(/<img(.+?)>/g,'[图片]').replaceAll(/@{(.+?)name\":\"(.+?)\"}/g,'@$2').replaceAll(/#{(.+?)name\":\"(.+?)\"((.|[\\t\\r\\f\\n\\s])+?)}/g,'#$2')",
       "customCode" : true
     }, {
       "dataType" : 25,
@@ -611,6 +611,9 @@
             "notMode" : false
           } ],
           "getPSEditor" : {
+            "editorParams" : {
+              "overflowMode" : "ellipsis"
+            },
             "editorType" : "DROPDOWNLIST",
             "name" : "product_id",
             "getPSAppCodeList" : {
@@ -656,6 +659,9 @@
             "notMode" : false
           } ],
           "getPSEditor" : {
+            "editorParams" : {
+              "overflowMode" : "ellipsis"
+            },
             "editorType" : "DROPDOWNLIST",
             "name" : "library_id",
             "getPSAppCodeList" : {
@@ -702,6 +708,7 @@
           } ],
           "getPSEditor" : {
             "editorParams" : {
+              "overflowMode" : "ellipsis",
               "AC" : "TRUE",
               "TRIGGER" : "TRUE",
               "PICKUPVIEW" : "FALSE"
@@ -762,6 +769,9 @@
             "notMode" : false
           } ],
           "getPSEditor" : {
+            "editorParams" : {
+              "overflowMode" : "ellipsis"
+            },
             "editorType" : "DROPDOWNLIST",
             "name" : "project_id",
             "getPSAppCodeList" : {

@@ -410,7 +410,7 @@
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
       "name" : "viewmounted",
-      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
     }, {
       "eventNames" : "onLoadSuccess",
       "logicTrigger" : "VIEWEVENT",
@@ -553,6 +553,14 @@
           "modelref" : true,
           "id" : "toolbar_deuiaction1"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction1",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "logic",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf067@FontAwesome",
           "cssClass" : "fa fa-plus"
@@ -610,6 +618,7 @@
         }
       },
       "groupMode" : "NONE",
+      "hookEventNames" : [ "ONLOADSUCCESS" ],
       "logicName" : "子工作项表格",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -697,6 +706,20 @@
         "enableDEFieldPrivilege" : false,
         "id" : "数据表格处理器"
       },
+      "getPSControlLogics" : [ {
+        "eventNames" : "onLoadSuccess",
+        "logicTag" : "grid",
+        "logicType" : "APPDEUILOGIC",
+        "name" : "logic",
+        "getPSAppDEUILogic" : {
+          "modelref" : true,
+          "id" : "relation_child_grid_action"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        }
+      } ],
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,

@@ -1,0 +1,419 @@
+{
+  "codeName" : "get_project_member",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/get_project_member.json",
+  "logicName" : "获取项目成员",
+  "name" : "获取项目成员",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : -150,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -80,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEBUGPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -17,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      }
+    } ],
+    "topPos" : -72
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 184,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "获取项目ID",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project_info"
+      },
+      "name" : "Default[project_id] ==> project_info[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "project_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_PROJECT_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[project_id] ==> filter[N_PROJECT_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "project_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_USER_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    } ],
+    "topPos" : -72
+  }, {
+    "codeName" : "DEBUGPARAM6",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_obj"
+    },
+    "leftPos" : 492,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM9"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "role_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_obj[role_id] 等于(=) user",
+          "paramValue" : "user"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM6"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM10"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "role_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_obj[role_id] 等于(=) reader",
+          "paramValue" : "reader"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM6"
+      }
+    } ],
+    "topPos" : -346
+  }, {
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+    },
+    "leftPos" : 492,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      },
+      "name" : "不在项目中的成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "members"
+          },
+          "logicType" : "SINGLE",
+          "name" : "members[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "members"
+    },
+    "topPos" : -72
+  }, {
+    "codeName" : "LOOPSUBCALL3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_obj"
+    },
+    "leftPos" : 492,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "members"
+    },
+    "topPos" : -217
+  }, {
+    "codeName" : "PREPAREPARAM10",
+    "leftPos" : 750,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "只读",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM10"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "readonly",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user"
+      },
+      "name" : "直接值[true] ==> user[readonly]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -210
+  }, {
+    "codeName" : "PREPAREPARAM8",
+    "leftPos" : 756,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "只读",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "readonly",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user"
+      },
+      "name" : "直接值[true] ==> user[readonly]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -72
+  }, {
+    "codeName" : "PREPAREPARAM9",
+    "leftPos" : 756,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "非只读",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM9"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "readonly",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user"
+      },
+      "name" : "直接值[false] ==> user[readonly]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "false",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -336
+  }, {
+    "codeName" : "END6",
+    "leftPos" : 1020,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "user"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : -217
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "for_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "entityParam" : true
+  }, {
+    "codeName" : "members",
+    "logicName" : "成员",
+    "name" : "成员",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project_member.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "project_info",
+    "logicName" : "项目信息",
+    "name" : "项目信息",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "ticket",
+    "logicName" : "工单",
+    "name" : "工单",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "user",
+    "logicName" : "当前登录人",
+    "name" : "当前登录人",
+    "entityParam" : true
+  }, {
+    "codeName" : "viewctx",
+    "logicName" : "viewctx",
+    "name" : "viewctx",
+    "appContextParam" : true
+  }, {
+    "codeName" : "webctx",
+    "logicName" : "webctx",
+    "name" : "webctx",
+    "webContextParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

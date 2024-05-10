@@ -14,14 +14,14 @@
       "dataType" : 25,
       "name" : "text",
       "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     } ],
     "pagingSize" : 50,
     "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
+      "name" : "TITLE",
+      "codeName" : "title"
     },
     "getValuePSAppDEField" : {
       "name" : "ID",
@@ -593,7 +593,9 @@
     "logicName" : "标题",
     "name" : "TITLE",
     "stdDataType" : 25,
-    "stringLength" : 100
+    "stringLength" : 100,
+    "enableQuickSearch" : true,
+    "majorField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -760,9 +762,7 @@
     "logicName" : "名称",
     "name" : "NAME",
     "stdDataType" : 25,
-    "stringLength" : 200,
-    "enableQuickSearch" : true,
-    "majorField" : true
+    "stringLength" : 200
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1553,6 +1553,31 @@
     "uIActionType" : "DEUIACTION",
     "id" : "download@deliverable"
   }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "edit",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_target_edit_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "deliverable_edit",
+    "name" : "编辑",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
+    },
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "edit",
+    "uIActionType" : "DEUIACTION",
+    "id" : "edit@deliverable"
+  }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "确定",
     "codeName" : "panel_usr0118680010_button_calluilogic1_click",
@@ -1699,6 +1724,74 @@
     "id" : "upload_attachment@deliverable"
   } ],
   "getAllPSAppDEUILogics" : [ {
+    "codeName" : "calc_column_action_state",
+    "defaultParamName" : "Default",
+    "logicName" : "计算表格列行为状态",
+    "memo" : "用于动态控制提交和删除行为的禁用状态",
+    "name" : "计算表格列行为状态",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "setTimeout(() => {\r\n\tconst rows = uiLogic.grid.state.rows;\r\n\tconst srfreadonly = context.srfreadonly;\r\n    console.log(srfreadonly);\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst actionColumn = row.uiActionGroupStates.create_time;\r\n\t\t\tif (actionColumn && Object.values(actionColumn).length > 0) {\r\n\t\t\t\tObject.values(actionColumn).forEach(action => {\r\n                    if(srfreadonly == true){\r\n\t\t\t\t\t    // 提交\r\n\t\t\t\t\t    if (action.uiActionId === 'submit_form@deliverable') {\r\n                            action.disabled = true;\r\n                        }\r\n                        // 删除\r\n\t\t\t\t\t    if (action.uiActionId === 'del_form@deliverable') {\r\n                            action.disabled = true;\r\n                        }\r\n\t\t\t\t\t}\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n}, 1000);",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 420
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "Grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
+  }, {
     "codeName" : "create_deliverable",
     "defaultParamName" : "Default",
     "logicName" : "新建交付目标",
@@ -2757,8 +2850,12 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_project_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_target_edit_view.json",
+    "viewType" : "DEOPTVIEW"
   } ],
   "getAllPSDEMainStates" : [ {
     "codeName" : "no_file",
@@ -2809,8 +2906,8 @@
     "codeName" : "name"
   } ],
   "getMajorPSAppDEField" : {
-    "name" : "NAME",
-    "codeName" : "name"
+    "name" : "TITLE",
+    "codeName" : "title"
   },
   "name" : "DELIVERABLE",
   "getPSDEName" : "DELIVERABLE",
@@ -2827,8 +2924,8 @@
     "path" : "PSSYSSERVICEAPIS/ServiceAPI.json"
   },
   "getQuickSearchPSAppDEFields" : [ {
-    "name" : "NAME",
-    "codeName" : "name"
+    "name" : "TITLE",
+    "codeName" : "title"
   } ],
   "storageMode" : 0,
   "sysAPITag" : "ServiceAPI",
@@ -2867,6 +2964,25 @@
         },
         "modelref" : true,
         "id" : "submit@deliverable"
+      }
+    }, {
+      "caption" : "编辑",
+      "detailType" : "DEUIACTION",
+      "name" : "u238a6c5",
+      "getPSSysImage" : {
+        "glyph" : "xf044@FontAwesome",
+        "cssClass" : "fa fa-edit"
+      },
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+        },
+        "modelref" : true,
+        "id" : "edit@deliverable"
       }
     }, {
       "caption" : "删除",

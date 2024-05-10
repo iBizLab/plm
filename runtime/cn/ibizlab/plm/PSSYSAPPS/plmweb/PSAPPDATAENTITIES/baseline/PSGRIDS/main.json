@@ -44,7 +44,7 @@
     },
     "getPSDEUIActionGroup" : {
       "codeName" : "Usr0411057769",
-      "name" : "基线表格操作列",
+      "name" : "项目基线表格操作列",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
@@ -58,15 +58,16 @@
           "cssClass" : "fa fa-dot-circle-o"
         },
         "getPSUIAction" : {
+          "actionLevel" : 200,
           "actionTarget" : "SINGLEKEY",
           "caption" : "设立完成",
-          "codeName" : "set_complete",
+          "codeName" : "set_complete_project",
           "confirmMsg" : "确认设立基线吗？",
-          "fullCodeName" : "baseline_set_complete",
-          "name" : "设立完成",
+          "fullCodeName" : "baseline_set_complete_project",
+          "name" : "设立完成（项目）",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "set_complete"
+            "id" : "set_complete_project"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -79,13 +80,15 @@
           "refreshMode" : 1,
           "successMsg" : "设立完成！",
           "timeout" : 60000,
+          "tooltip" : "设立完成",
           "uIActionMode" : "BACKEND",
-          "uIActionTag" : "set_complete",
+          "uIActionTag" : "set_complete_project",
           "uIActionType" : "DEUIACTION",
           "enableConfirm" : true,
           "reloadData" : true,
-          "id" : "set_complete@baseline"
+          "id" : "set_complete_project@baseline"
         },
+        "tooltip" : "设立完成",
         "addSeparator" : false,
         "showCaption" : false,
         "showIcon" : true
@@ -100,15 +103,15 @@
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
           "caption" : "编辑",
-          "codeName" : "open_edit_view",
+          "codeName" : "open_project_update_view",
           "getFrontPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_update_view.json",
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_project_update_view.json",
             "viewType" : "DEOPTVIEW"
           },
           "frontProcessType" : "WIZARD",
-          "fullCodeName" : "baseline_open_edit_view",
-          "name" : "编辑",
+          "fullCodeName" : "baseline_open_project_update_view",
+          "name" : "编辑基线（项目）",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
@@ -119,9 +122,9 @@
           },
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
-          "uIActionTag" : "open_edit_view",
+          "uIActionTag" : "open_project_update_view",
           "uIActionType" : "DEUIACTION",
-          "id" : "open_edit_view@baseline"
+          "id" : "open_project_update_view@baseline"
         },
         "addSeparator" : false,
         "showCaption" : true,
@@ -392,7 +395,7 @@
   "sortMode" : "REMOTE",
   "hasWFDataItems" : false,
   "enableColFilter" : false,
-  "enableCustomized" : true,
+  "enableCustomized" : false,
   "enableGroup" : false,
   "enablePagingBar" : true,
   "enableRowEdit" : false,

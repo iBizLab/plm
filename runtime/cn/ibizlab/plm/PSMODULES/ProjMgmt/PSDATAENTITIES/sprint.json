@@ -220,6 +220,31 @@
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
+    "codeName" : "delete_categories",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEACTIONS/delete_categories.json",
+    "logicName" : "删除类别",
+    "name" : "delete_categories",
+    "getPSDEActionInput" : {
+      "name" : "Delete_categoriesInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sprint_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Delete_categoriesResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/delete_categories.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
     "codeName" : "end_sprint",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEACTIONS/end_sprint.json",
     "logicName" : "结束迭代",
@@ -2306,6 +2331,112 @@
     "serviceCodeName" : "pid"
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "delete_categories",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/delete_categories.json",
+    "logicName" : "删除类别",
+    "name" : "删除类别",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1029,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 309,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 575,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "UPDATE sprint\r\nSET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))\r\nWHERE FIND_IN_SET(?, categories) > 0 ;",
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "end_sprint",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDELOGICS/end_sprint.json",
@@ -4032,11 +4163,11 @@
     "orderValue" : 100,
     "getPSPickupDEField" : {
       "name" : "SPRINT_ID",
-      "codeName" : "Sprint_id"
+      "codeName" : "sprint_id"
     },
     "getPSPickupTextDEField" : {
       "name" : "SPRINT_NAME",
-      "codeName" : "Sprint_name"
+      "codeName" : "sprint_name"
     },
     "pickupDEFName" : "SPRINT_ID",
     "removeActionType" : 2,

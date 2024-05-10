@@ -174,6 +174,31 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEACTIONS/nothing.json",
+    "logicName" : "无操作",
+    "name" : "nothing",
+    "getPSDEActionInput" : {
+      "name" : "NothingInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_state_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDELOGICS/nothing.json"
+    },
+    "enableBackend" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -1289,6 +1314,39 @@
     "linkDEField" : true,
     "serviceCodeName" : "work_item_type_id"
   } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDELOGICS/nothing.json",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "work_item_state_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -1556,6 +1614,12 @@
     "systemReserved" : true
   } ],
   "getAllPSModelDatas" : [ {
+    "codeName" : "quick_create_view",
+    "logicName" : "工作项状态快速新建视图",
+    "name" : "工作项状态快速新建视图",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "mpick_up_view",
     "logicName" : "工作项状态实体数据多项选择视图",
     "modelTag" : "MPICKUPVIEW",
@@ -1575,6 +1639,12 @@
     "modelTag" : "MDATAVIEW",
     "name" : "工作项状态实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "update_view",
+    "logicName" : "工作项状态编辑视图",
+    "name" : "工作项状态编辑视图",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView",
@@ -1597,22 +1667,10 @@
     "realModelSubType" : "DEPICKUPGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "quick_edit_view",
-    "logicName" : "工作项状态快速建立视图",
-    "name" : "工作项状态快速建立视图",
-    "realModelSubType" : "DEEDITVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
     "codeName" : "EditView2",
     "logicName" : "工作项状态实体编辑视图（左右关系）",
     "name" : "工作项状态实体编辑视图（左右关系）",
     "realModelSubType" : "DEEDITVIEW2",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "edit_view",
-    "logicName" : "工作项状态编辑视图",
-    "name" : "工作项状态编辑视图",
-    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "Main",
@@ -1622,17 +1680,10 @@
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {
-    "codeName" : "quick_edit_view_Form",
-    "logicName" : "工作项状态快速建立视图_表单",
-    "modelTag2" : "0",
-    "name" : "工作项状态快速建立视图_表单",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "edit_view_Form",
-    "logicName" : "工作项状态编辑视图_表单",
+    "logicName" : "工作项编辑_表单",
     "modelTag2" : "0",
-    "name" : "工作项状态编辑视图_表单",
+    "name" : "工作项编辑_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

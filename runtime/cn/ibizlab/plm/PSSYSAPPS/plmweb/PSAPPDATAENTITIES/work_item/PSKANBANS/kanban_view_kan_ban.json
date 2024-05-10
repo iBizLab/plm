@@ -26,7 +26,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_default"
+      "id" : "fetch_normal"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -747,7 +747,7 @@
               "itemType" : "FIELD",
               "name" : "start_at",
               "getPSControlRenders" : [ {
-                "layoutPanelModel" : "data.start_at.startsWith(new Date().getFullYear()) ? data.start_at.slice(5, -9) : data.start_at.slice(0, -9)\r\n\r\n",
+                "layoutPanelModel" : "data.start_at.startsWith(new Date().getFullYear()) ? data.start_at.slice(5) : data.start_at.slice(0)\r\n\r\n",
                 "name" : "logic",
                 "renderType" : "LAYOUTPANEL_MODEL"
               } ],
@@ -846,7 +846,7 @@
               "itemType" : "FIELD",
               "name" : "end_at",
               "getPSControlRenders" : [ {
-                "layoutPanelModel" : "data.end_at.startsWith(new Date().getFullYear()) ? data.end_at.slice(5, -9) : data.end_at.slice(0, -9)",
+                "layoutPanelModel" : "data.end_at.startsWith(new Date().getFullYear()) ? data.end_at.slice(5) : data.end_at.slice(0)",
                 "name" : "logic2",
                 "renderType" : "LAYOUTPANEL_MODEL"
               } ],
@@ -921,17 +921,17 @@
   },
   "getPSDEDataViewDataItems" : [ {
     "dataType" : 25,
-    "name" : "title",
-    "getPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
-    }
-  }, {
-    "dataType" : 25,
     "name" : "identifier",
     "getPSAppDEField" : {
       "name" : "IDENTIFIER",
       "codeName" : "identifier"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "title",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
     }
   }, {
     "dataType" : 25,
@@ -1044,26 +1044,6 @@
     "name" : "srfmstag"
   } ],
   "getPSDEDataViewItems" : [ {
-    "caption" : "标题",
-    "dataItemName" : "title",
-    "itemType" : "DATAITEM",
-    "name" : "TITLE",
-    "getPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
-    },
-    "enableSort" : true
-  }, {
-    "caption" : "编号",
-    "dataItemName" : "identifier",
-    "itemType" : "DATAITEM",
-    "name" : "IDENTIFIER",
-    "getPSAppDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
-    },
-    "enableSort" : true
-  }, {
     "dataItemName" : "operate",
     "itemType" : "ACTIONITEM",
     "name" : "OPERATE",
@@ -2996,6 +2976,26 @@
       "uniqueTag" : "work_item__Usr0226224309"
     },
     "enableSort" : false
+  }, {
+    "caption" : "编号",
+    "dataItemName" : "identifier",
+    "itemType" : "DATAITEM",
+    "name" : "IDENTIFIER",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    },
+    "enableSort" : true
+  }, {
+    "caption" : "标题",
+    "dataItemName" : "title",
+    "itemType" : "DATAITEM",
+    "name" : "TITLE",
+    "getPSAppDEField" : {
+      "name" : "TITLE",
+      "codeName" : "title"
+    },
+    "enableSort" : true
   } ],
   "getPSSysPFPlugin" : {
     "pluginType" : "CUSTOM",

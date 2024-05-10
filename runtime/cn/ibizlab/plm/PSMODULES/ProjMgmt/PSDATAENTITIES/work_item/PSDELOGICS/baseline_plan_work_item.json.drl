@@ -1,0 +1,185 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.baseline_plan_work_item;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itembaseline_plan_work_itemdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itembaseline_plan_work_itemfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.version work_itembaseline_plan_work_itemfor_temp_version_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itembaseline_plan_work_itempage;
+                global cn.ibizlab.plm.core.base.domain.version work_itembaseline_plan_work_itemversion_filter;
+                global cn.ibizlab.plm.core.base.domain.version work_itembaseline_plan_work_itemversion_page;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itembaseline_plan_work_itemwork_item_versions;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itembaseline_plan_work_itembegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[选择工作项列表]
+            rule "dedataset1"
+            ruleflow-group "work_itembaseline_plan_work_itemdedataset1"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itembaseline_plan_work_itemloopsubcall1"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "work_itembaseline_plan_work_itemrawsfcode1"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备版本过滤器]
+            rule "prepareparam1"
+            ruleflow-group "work_itembaseline_plan_work_itemprepareparam1"
+            when
+            then
+                            work_itembaseline_plan_work_itemversion_filter.set("n_id_in",work_itembaseline_plan_work_itemwork_item_versions.get("version_id_in"));
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取版本数据]
+            rule "dedataset2"
+            ruleflow-group "work_itembaseline_plan_work_itemdedataset2"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "work_itembaseline_plan_work_itemloopsubcall2"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "work_itembaseline_plan_work_itemloopsubcall3"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充当前版本名称]
+            rule "prepareparam2"
+            ruleflow-group "work_itembaseline_plan_work_itemprepareparam2"
+            when
+            then
+                            work_itembaseline_plan_work_itemfor_temp_obj.set("curversionname",work_itembaseline_plan_work_itemfor_temp_version_obj.get("name"));
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall4"
+            ruleflow-group "work_itembaseline_plan_work_itemloopsubcall4"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "work_itembaseline_plan_work_itemprepareparam3"
+            when
+            then
+                            work_itembaseline_plan_work_itemfor_temp_obj.set("curversionname","v1");
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itembaseline_plan_work_itemend1"
+            when
+            then
+                        update(work_itembaseline_plan_work_itemdefault);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemfor_temp_version_obj);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itempage);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_filter);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemversion_page);//更新fact中变量值
+                        update(work_itembaseline_plan_work_itemwork_item_versions);//更新fact中变量值
+            end

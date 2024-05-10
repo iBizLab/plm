@@ -1,0 +1,56 @@
+package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.sprint_user_stat;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemsprint_user_statdefault;
+                global java.util.Map work_itemsprint_user_statresult;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_itemsprint_user_statbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "work_itemsprint_user_statend1"
+            when
+            then
+                        update(work_itemsprint_user_statdefault);//更新fact中变量值
+                        update(work_itemsprint_user_statresult);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "work_itemsprint_user_statrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",work_itemsprint_user_statdefault.get("n_project_id_eq"));
+        param.put("param1",work_itemsprint_user_statdefault.get("n_sprint_id_eq"));
+        param.put("param2",work_itemsprint_user_statdefault.get("n_sprint_id_eq"));
+        param.put("param3",work_itemsprint_user_statdefault.get("n_sprint_id_eq"));
+        param.put("param4",work_itemsprint_user_statdefault.get("n_release_id_eq"));
+        param.put("param5",work_itemsprint_user_statdefault.get("n_release_id_eq"));
+        param.put("param6",work_itemsprint_user_statdefault.get("n_release_id_eq"));
+        param.put("param7",work_itemsprint_user_statdefault.get("n_work_item_type_id_eq"));
+        param.put("param8",work_itemsprint_user_statdefault.get("n_work_item_type_id_eq"));
+        param.put("param9",work_itemsprint_user_statdefault.get("n_work_item_type_id_eq"));
+    String strSql="SELECT   SUM(CASE WHEN t3.`TYPE` != 'completed' THEN 1 ELSE 0 END) AS count2,   SUM(CASE WHEN t3.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count,   COUNT(*) AS sum_count,   IF(TRIM(t1.`ASSIGNEE_ID`) IS NULL, '未分组', t1.`ASSIGNEE_ID`) AS filter_type FROM   `WORK_ITEM` t1 LEFT JOIN   `WORK_ITEM_STATE` t3 ON t1.`STATE` = t3.`ID` WHERE   t1.`PROJECT_ID` = #{et.param0}   AND t1.`IS_DELETED` = 0 	AND ((#{et.param1} IS NULL OR #{et.param2} = '') OR FIND_IN_SET(t1.sprint_id, #{et.param3})) 	AND ((#{et.param4} IS NULL OR #{et.param5} = '') OR FIND_IN_SET(t1.release_id, #{et.param6})) 	AND ((#{et.param7} IS NULL OR #{et.param8} = '') OR FIND_IN_SET(t1.WORK_ITEM_TYPE_ID, #{et.param9})) GROUP BY   filter_type; ";
+                        java.util.List<JSONObject> entities=iBzSysWork_itemDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                work_itemsprint_user_statresult.putAll(entity);
+                            }
+                        update(work_itemsprint_user_statdefault);//更新fact中变量值
+                        update(work_itemsprint_user_statresult);//更新fact中变量值
+            end

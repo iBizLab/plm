@@ -224,6 +224,35 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDELOGICS/start_test_plan.json"
     },
     "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "READ",
+    "actionType" : "DELOGIC",
+    "codeName" : "test_plan_report_survey",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/test_plan_report_survey.json",
+    "logicName" : "测试报告概览数据源",
+    "name" : "test_plan_report_survey",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "Test_plan_report_surveyInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Test_plan_report_surveyResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDELOGICS/test_plan_report_survey.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -302,6 +331,12 @@
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDRGROUPS/DRGroup.json"
   } ],
   "getAllPSDEDRItems" : [ {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDRITEMS/UsrDRItem0416370943.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDRITEMS/UsrDRItem0423454471.json"
+  }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEDRITEMS/UsrDRItem1212769626.json"
   }, {
@@ -856,6 +891,28 @@
     },
     "getPSDEDataSetReturn" : {
       "name" : "Query_no_shift_inResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "test_plan_report_survey",
+    "logicName" : "测试报告概览",
+    "name" : "test_plan_report_survey",
+    "getPSDEDataSetInput" : {
+      "name" : "Test_plan_report_surveyInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_plan_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Test_plan_report_surveyResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "test_plan_dto"
@@ -3765,6 +3822,274 @@
     },
     "enableBackend" : true,
     "enableFront" : false
+  }, {
+    "codeName" : "test_plan_report_survey",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDELOGICS/test_plan_report_survey.json",
+    "logicName" : "测试报告概览数据源",
+    "name" : "测试报告概览数据源",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1810,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 200
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 463,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "测试计划内用例数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "select count(1) as case_count from test_plan tp left join run r on tp.ID = r.PLAN_ID where tp.ID = ?;",
+      "topPos" : 208,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "RAWSQLCALL2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 643,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "测试计划用例覆盖率",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\n    ROUND((COUNT(DISTINCT r.CASE_ID) * 100.0 / COUNT(DISTINCT tc.ID)), 1) AS Coverage_Percentage\r\nFROM\r\n    test_plan tp\r\n        LEFT JOIN\r\n    test_case tc ON tp.LIBRARY_ID = tc.TEST_LIBRARY_ID and tc.IS_DELETED = 0\r\n        LEFT JOIN\r\n    run r ON tp.ID = r.PLAN_ID AND tc.ID = r.CASE_ID\r\nWHERE\r\n        tp.ID = ?;",
+      "topPos" : 208,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "RAWSQLCALL3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 813,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "测试计划用例通过率",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\n    CASE\r\n        WHEN COUNT(DISTINCT r.CASE_ID) > 0 THEN ROUND((COUNT(DISTINCT CASE WHEN r.STATUS = '10' THEN r.CASE_ID END) * 100.0 / COUNT(DISTINCT r.CASE_ID)), 1)\r\n        ELSE 0\r\n        END AS Pass_Percentage\r\nFROM\r\n    test_plan tp\r\n        LEFT JOIN\r\n    run r ON tp.ID = r.PLAN_ID\r\nWHERE\r\n        tp.ID = ?;",
+      "topPos" : 208,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "RAWSQLCALL4",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result"
+      },
+      "leftPos" : 993,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "测试计划内缺陷数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[ID]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT\r\ncount(1) as bug_count\r\nFROM `WORK_ITEM` t1\r\n         LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID`\r\nWHERE\r\n    ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (\r\n            EXISTS (\r\n                -- 与计划ID关联的RUN的WORK_ITEM\r\n                    SELECT 1\r\n                    FROM `relation` rel\r\n                             INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`\r\n                    WHERE\r\n                            rel.`TARGET_ID` = t1.`ID`\r\n                      AND ru.`PLAN_ID` = ?\r\n                      AND rel.`TARGET_TYPE` = 'work_item'\r\n                      AND rel.`PRINCIPAL_TYPE` = 'run'\r\n                )\r\n            OR EXISTS (\r\n                -- 直接与计划ID关联的WORK_ITEM\r\n                    SELECT 1\r\n                    FROM `relation` r\r\n                    WHERE\r\n                            r.`TARGET_ID` = t1.`ID`\r\n                      AND r.`PRINCIPAL_ID` = ?\r\n                      AND r.`TARGET_TYPE` = 'work_item'\r\n                      AND r.`PRINCIPAL_TYPE` = 'test_plan'\r\n                )\r\n        ) )",
+      "topPos" : 208,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEACTIONS/Get.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      },
+      "leftPos" : 1170,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "plan_info"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 1400,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "plan_info",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "result"
+        },
+        "name" : "plan_info ==> result[plan_info]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "plan_info"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "plan_info",
+      "logicName" : "计划信息",
+      "name" : "计划信息",
+      "entityParam" : true
+    }, {
+      "codeName" : "result",
+      "logicName" : "结果",
+      "name" : "结果",
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMainStates" : [ {
     "codeName" : "completed",
@@ -3775,13 +4100,13 @@
     "getPSDEMainStateOPPrivs" : [ {
       "name" : "COMPLETED",
       "getPSDEOPPriv" : {
-        "logicName" : "completed",
+        "logicName" : "结束",
         "name" : "COMPLETED"
       }
     }, {
       "name" : "IN_PROGRESS",
       "getPSDEOPPriv" : {
-        "logicName" : "in_progress",
+        "logicName" : "开始",
         "name" : "IN_PROGRESS"
       }
     } ],
@@ -3803,7 +4128,7 @@
     "getPSDEMainStateOPPrivs" : [ {
       "name" : "IN_PROGRESS",
       "getPSDEOPPriv" : {
-        "logicName" : "in_progress",
+        "logicName" : "开始",
         "name" : "IN_PROGRESS"
       }
     } ],
@@ -3825,7 +4150,7 @@
     "getPSDEMainStateOPPrivs" : [ {
       "name" : "COMPLETED",
       "getPSDEOPPriv" : {
-        "logicName" : "completed",
+        "logicName" : "结束",
         "name" : "COMPLETED"
       }
     } ],
@@ -4437,7 +4762,7 @@
     "codeName" : "assignee_cancel_notify",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDENOTIFIES/assignee_cancel_notify.json",
     "msgType" : 65,
-    "name" : "取消分配负责人通知",
+    "name" : "测试计划取消分配负责人通知",
     "getPSDENotifyTargets" : [ {
       "name" : "负责人",
       "getTargetPSDEField" : {
@@ -4459,7 +4784,7 @@
     "codeName" : "assignee_notify",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDENOTIFIES/assignee_notify.json",
     "msgType" : 65,
-    "name" : "分配负责人通知",
+    "name" : "测试计划分配负责人通知",
     "getPSDENotifyTargets" : [ {
       "name" : "负责人",
       "getTargetPSDEField" : {
@@ -4479,8 +4804,22 @@
     "taskMode" : 0
   } ],
   "getAllPSDEOPPrivs" : [ {
-    "logicName" : "completed",
+    "logicName" : "结束",
     "name" : "COMPLETED"
+  }, {
+    "logicName" : "结束",
+    "mapPSDEName" : "LIBRARY",
+    "mapPSDEOPPrivName" : "SUBDATA",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "name" : "COMPLETED",
+    "id" : "library__COMPLETED"
   }, {
     "logicName" : "建立",
     "name" : "CREATE"
@@ -4516,8 +4855,22 @@
     "logicName" : "删除",
     "name" : "DELETE"
   }, {
-    "logicName" : "in_progress",
+    "logicName" : "开始",
     "name" : "IN_PROGRESS"
+  }, {
+    "logicName" : "开始",
+    "mapPSDEName" : "LIBRARY",
+    "mapPSDEOPPrivName" : "SUBDATA",
+    "getMapPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDERS/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID.json"
+    },
+    "getMapPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "name" : "IN_PROGRESS",
+    "id" : "library__IN_PROGRESS"
   }, {
     "logicName" : "读取",
     "mapPSDEName" : "LIBRARY",
@@ -4552,6 +4905,17 @@
     },
     "name" : "UPDATE",
     "id" : "library__UPDATE"
+  } ],
+  "getAllPSDEUtils" : [ {
+    "codeName" : "Usr0417764210",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_plan/PSDEUTILDES/Usr0417764210.json",
+    "name" : "实体通知设置",
+    "getUtilPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting.json"
+    },
+    "utilPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+    "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "all_grid_view",
@@ -4615,6 +4979,12 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "report_dashboard_view",
+    "logicName" : "测试报告实体数据看板视图",
+    "name" : "测试报告实体数据看板视图",
+    "realModelSubType" : "DEPORTALVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "RedirectView",
     "logicName" : "测试计划实体数据重定向视图",
     "modelTag" : "REDIRECTVIEW",
@@ -4645,6 +5015,12 @@
     "modelTag" : "MPICKUPVIEW",
     "name" : "测试计划实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "conclude_edit_view",
+    "logicName" : "报告总结",
+    "name" : "报告总结",
+    "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "my_part_grid_view",
@@ -4696,6 +5072,20 @@
     "logicName" : "测试计划快速建立_表单",
     "modelTag2" : "0",
     "name" : "测试计划快速建立_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "report_form",
+    "logicName" : "概览表单",
+    "modelTag2" : "0",
+    "name" : "概览表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "report_conclude",
+    "logicName" : "报告总结",
+    "modelTag2" : "0",
+    "name" : "报告总结",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],
@@ -4778,7 +5168,7 @@
     "serviceCodeName" : "test_plan",
     "enableFKey" : true
   }, {
-    "codeName" : "test_plan",
+    "codeName" : "principal_test_plan",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDERS/DERCUSTOM_RELATION_TEST_PLAN.json",
@@ -4805,7 +5195,7 @@
     },
     "removeActionType" : 0,
     "removeOrder" : -1,
-    "serviceCodeName" : "test_plan",
+    "serviceCodeName" : "principal_test_plan",
     "typeValue" : "test_plan"
   } ],
   "memo" : "定义测试的范围、方法和资源分配，可在测试计划内添加多个执行用例。",

@@ -28,7 +28,7 @@
   "getPSControls" : [ {
     "codeName" : "config_grid_view_grid_batchtoolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（表格批量操作）",
+    "logicName" : "删除&&设置角色",
     "name" : "grid_batchtoolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -38,6 +38,65 @@
       "id" : "grid_batchtoolbar"
     },
     "getPSDEToolbarItems" : [ {
+      "caption" : "设置",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 1,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "grid_batchtoolbar_deuiaction1"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf185@FontAwesome",
+        "cssClass" : "fa fa-sun-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
+        "caption" : "设置角色",
+        "codeName" : "setting_role",
+        "dataAccessAction" : "UPDATE",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_member_role_edit_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "library_member_setting_role",
+        "name" : "设置角色",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "change_role"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library_member.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf185@FontAwesome",
+          "cssClass" : "fa fa-sun-o"
+        },
+        "refreshMode" : 1,
+        "successMsg" : "变更角色成功",
+        "timeout" : 60000,
+        "tooltip" : "设置角色",
+        "uIActionMode" : "BACKEND",
+        "uIActionTag" : "setting_role",
+        "uIActionType" : "DEUIACTION",
+        "enableConfirm" : true,
+        "reloadData" : true,
+        "id" : "setting_role@library_member"
+      },
+      "tooltip" : "设置角色",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "TBB.TEXT.*.REMOVE"
       },
@@ -51,8 +110,8 @@
         "id" : "grid_batchtoolbar_deuiaction2"
       },
       "getPSSysImage" : {
-        "glyph" : "xf00d@FontAwesome",
-        "cssClass" : "fa fa-remove"
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
@@ -70,11 +129,12 @@
           "id" : "DELETE"
         },
         "getPSSysImage" : {
-          "glyph" : "xf00d@FontAwesome",
-          "cssClass" : "fa fa-remove"
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "predefinedType" : "GRIDVIEW_REMOVEACTION",
         "timeout" : 60000,
+        "tooltip" : "删除",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
         },
@@ -90,7 +150,7 @@
       "showCaption" : true,
       "showIcon" : true
     } ],
-    "modelid" : "824333fc6aa069bfea300fcc0b94336d",
+    "modelid" : "8fb2a7f103df7646ff1b275c6af7c8dc",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDEGridColumns" : [ {
@@ -133,7 +193,6 @@
     },
     "width" : 150,
     "widthUnit" : "PX",
-    "enableRowEdit" : true,
     "enableSort" : true
   }, {
     "align" : "LEFT",
@@ -248,27 +307,6 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
-    "caption" : "角色",
-    "codeName" : "role_id",
-    "enableCond" : 3,
-    "ignoreInput" : 0,
-    "name" : "role_id",
-    "getPSAppDEField" : {
-      "name" : "ROLE_ID",
-      "codeName" : "role_id"
-    },
-    "getPSEditor" : {
-      "editorType" : "DROPDOWNLIST",
-      "name" : "role_id",
-      "getPSAppCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__role_type.json"
-      },
-      "singleSelect" : true
-    },
-    "allowEmpty" : true,
-    "needCodeListConfig" : true
-  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
     "enableCond" : 0,

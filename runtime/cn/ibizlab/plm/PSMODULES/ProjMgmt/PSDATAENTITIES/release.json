@@ -176,6 +176,31 @@
     "builtinAction" : true
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "delete_categories",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDEACTIONS/delete_categories.json",
+    "logicName" : "删除类别",
+    "name" : "delete_categories",
+    "getPSDEActionInput" : {
+      "name" : "Delete_categoriesInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "release_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Delete_categoriesResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/delete_categories.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "UPDATE",
     "actionType" : "DELOGIC",
     "codeName" : "plan_work_item",
@@ -803,14 +828,14 @@
     "codeName" : "status",
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
-    "defaultValue" : "pending",
+    "defaultValue" : "10",
     "importOrder" : 1000,
     "length" : 60,
     "logicName" : "状态",
     "name" : "STATUS",
     "getPSCodeList" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/version_status.json"
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/release_stage.json"
     },
     "getPSDEDBTable" : {
       "modelref" : true,
@@ -1865,6 +1890,112 @@
     "phisicalDEField" : false
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "delete_categories",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/delete_categories.json",
+    "logicName" : "删除类别",
+    "name" : "删除类别",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1029,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 309,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "leftPos" : 575,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[id]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "id",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "UPDATE sprint\r\nSET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))\r\nWHERE FIND_IN_SET(?, categories) > 0 ;",
+      "topPos" : 208
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "plan_work_item",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/release/PSDELOGICS/plan_work_item.json",
@@ -2117,7 +2248,7 @@
       "stdDataType" : 6,
       "type" : "SIMPLE"
     }, {
-      "defaultValue" : "pending",
+      "defaultValue" : "10",
       "logicName" : "状态",
       "name" : "status",
       "getPSDEField" : {
@@ -2352,7 +2483,7 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "defaultValue" : "pending",
+      "defaultValue" : "10",
       "logicName" : "状态",
       "name" : "n_status_eq",
       "getPSDEFSearchMode" : {
@@ -2669,7 +2800,11 @@
     "orderValue" : 100,
     "getPSPickupDEField" : {
       "name" : "RELEASE_ID",
-      "codeName" : "Release_id"
+      "codeName" : "release_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "RELEASE_NAME",
+      "codeName" : "release_name"
     },
     "pickupDEFName" : "RELEASE_ID",
     "removeActionType" : 2,

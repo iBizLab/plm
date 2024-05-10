@@ -1,0 +1,416 @@
+{
+  "codeName" : "baseline_plan_work_item",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDELOGICS/baseline_plan_work_item.json",
+  "logicName" : "基线规划工作项数据查询",
+  "memo" : "基线规划工作项时，填充工作项当前版本名称",
+  "name" : "基线规划工作项数据查询",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_choose_idea"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "选择工作项列表",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "存在可选择的工作项",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 298
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "工作项存在当前版本",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "version_id_in",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "work_item_versions"
+          },
+          "logicType" : "SINGLE",
+          "name" : "work_item_versions[version_id_in] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "工作项都不存在当前版本标识",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "version_id_in",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "work_item_versions"
+          },
+          "logicType" : "SINGLE",
+          "name" : "work_item_versions[version_id_in] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 468
+  }, {
+    "code" : "var work_item_versions = logic.getParam(\"work_item_versions\");\r\nvar for_temp_obj = logic.getParam(\"for_temp_obj\");\r\nif(for_temp_obj.get(\"cur_version_id\")){\r\n    var version_id_in = work_item_versions.get(\"version_id_in\");\r\n    if(version_id_in){\r\n        version_id_in = version_id_in + \",\" + for_temp_obj.get(\"cur_version_id\");\r\n    } else {\r\n        version_id_in = for_temp_obj.get(\"cur_version_id\");\r\n    }\r\n    work_item_versions.set(\"version_id_in\", version_id_in);\r\n}",
+    "codeName" : "RAWSFCODE1",
+    "leftPos" : 417,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "topPos" : 468
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 320,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备版本过滤器",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_id_in",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version_filter"
+      },
+      "name" : "work_item_versions[version_id_in] ==> version_filter[n_id_in]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "version_id_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_versions"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 600
+  }, {
+    "codeName" : "DEDATASET2",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "version_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+    },
+    "leftPos" : 320,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取版本数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "version_page"
+    },
+    "topPos" : 700
+  }, {
+    "codeName" : "LOOPSUBCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_version_obj"
+    },
+    "leftPos" : 553,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "version_page"
+    },
+    "topPos" : 710
+  }, {
+    "codeName" : "LOOPSUBCALL3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 870,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "若版本标识与工作项的当前版本一致",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_version_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_version_obj[ID] 等于(=) cur_version_id",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "cur_version_id",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 720
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 1460,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充当前版本名称",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "CUR_VERSION_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "for_temp_version_obj[NAME] ==> for_temp_obj[CUR_VERSION_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_version_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 720
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 943
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "for_temp_version_obj",
+    "logicName" : "版本循环临时变量",
+    "name" : "版本循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "page",
+    "logicName" : "分页查询结果变量",
+    "name" : "分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "version_filter",
+    "logicName" : "版本过滤器",
+    "name" : "版本过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "version_page",
+    "logicName" : "分页查询结果变量",
+    "name" : "分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "versions",
+    "logicName" : "版本标识",
+    "name" : "版本标识",
+    "stdDataType" : 25,
+    "simpleParam" : true
+  }, {
+    "codeName" : "work_item_versions",
+    "logicName" : "临时存放版本标识",
+    "name" : "临时存放版本标识",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

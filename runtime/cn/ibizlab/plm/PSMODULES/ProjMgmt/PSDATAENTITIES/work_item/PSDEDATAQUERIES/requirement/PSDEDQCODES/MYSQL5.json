@@ -3,16 +3,10 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
-    "customCond" : "( t31.`GROUP` = 'requirement'  AND  t1.`IS_DELETED` = 0 )",
+    "customCond" : "( t41.`GROUP` = 'requirement'  AND  t1.`IS_DELETED` = 0 )",
     "name" : "查询条件"
   } ],
   "getPSDEDataQueryCodeExps" : [ {
-    "expression" : "t1.`BACKLOG_FROM`",
-    "name" : "BACKLOG_FROM"
-  }, {
-    "expression" : "t1.`BACKLOG_TYPE`",
-    "name" : "BACKLOG_TYPE"
-  }, {
     "expression" : "t1.`BOARD_ID`",
     "name" : "BOARD_ID"
   }, {
@@ -46,12 +40,6 @@
     "expression" : "t1.`RELEASE_ID`",
     "name" : "RELEASE_ID"
   }, {
-    "expression" : "t1.`RISK`",
-    "name" : "RISK"
-  }, {
-    "expression" : "t1.`SPRINT_ID`",
-    "name" : "SPRINT_ID"
-  }, {
     "expression" : "t1.`SWIMLANE_ID`",
     "name" : "SWIMLANE_ID"
   }, {
@@ -69,6 +57,12 @@
   }, {
     "expression" : "t1.`ASSIGNEE_NAME`",
     "name" : "ASSIGNEE_NAME"
+  }, {
+    "expression" : "t1.`BACKLOG_FROM`",
+    "name" : "BACKLOG_FROM"
+  }, {
+    "expression" : "t1.`BACKLOG_TYPE`",
+    "name" : "BACKLOG_TYPE"
   }, {
     "expression" : "t1.`CREATE_TIME`",
     "name" : "CREATE_TIME"
@@ -106,11 +100,20 @@
     "expression" : "t1.`REAPPEAR_PROBABILITY`",
     "name" : "REAPPEAR_PROBABILITY"
   }, {
+    "expression" : "t1.`RISK`",
+    "name" : "RISK"
+  }, {
     "expression" : "t1.`SEVERITY`",
     "name" : "SEVERITY"
   }, {
     "expression" : "concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`)",
     "name" : "SHOW_IDENTIFIER"
+  }, {
+    "expression" : "t1.`SPRINT_ID`",
+    "name" : "SPRINT_ID"
+  }, {
+    "expression" : "t31.`NAME`",
+    "name" : "SPRINT_NAME"
   }, {
     "expression" : "t1.`START_AT`",
     "name" : "START_AT"
@@ -127,6 +130,6 @@
     "expression" : "t1.`WORK_ITEM_TYPE_ID`",
     "name" : "WORK_ITEM_TYPE_ID"
   } ],
-  "queryCode" : "SELECT\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`CREATE_TIME`,\nt1.`END_AT`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\nt1.`PID`,\nt1.`PRIORITY`,\nt1.`PROJECT_ID`,\nt11.`NAME` AS `PROJECT_NAME`,\nt21.`TITLE` AS `PTITLE`,\nt1.`REAPPEAR_PROBABILITY`,\nt1.`SEVERITY`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`START_AT`,\nt1.`STATE`,\nt1.`TITLE`,\nt1.`TOP_ID`,\nt1.`WORK_ITEM_TYPE_ID`\nFROM `WORK_ITEM` t1 \nLEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` \nLEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` \nLEFT JOIN `WORK_ITEM_TYPE` t31 ON t1.`WORK_ITEM_TYPE_ID` = t31.`ID` \n",
+  "queryCode" : "SELECT\nt1.`ASSIGNEE_ID`,\nt1.`ASSIGNEE_NAME`,\nt1.`BACKLOG_FROM`,\nt1.`BACKLOG_TYPE`,\nt1.`CREATE_TIME`,\nt1.`END_AT`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\nt1.`PID`,\nt1.`PRIORITY`,\nt1.`PROJECT_ID`,\nt11.`NAME` AS `PROJECT_NAME`,\nt21.`TITLE` AS `PTITLE`,\nt1.`REAPPEAR_PROBABILITY`,\nt1.`RISK`,\nt1.`SEVERITY`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPRINT_ID`,\nt31.`NAME` AS `SPRINT_NAME`,\nt1.`START_AT`,\nt1.`STATE`,\nt1.`TITLE`,\nt1.`TOP_ID`,\nt1.`WORK_ITEM_TYPE_ID`\nFROM `WORK_ITEM` t1 \nLEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` \nLEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` \nLEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` \nLEFT JOIN `WORK_ITEM_TYPE` t41 ON t1.`WORK_ITEM_TYPE_ID` = t41.`ID` \n",
   "id" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEDATAQUERIES/requirement/PSDEDQCODES/MYSQL5.json"
 }

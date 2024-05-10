@@ -34,13 +34,14 @@
                             <tns:global identifier="notify_settingget_by_useruser_setting" type="cn.ibizlab.plm.core.base.domain.notify_setting" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置过滤分页"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取用户通知"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取通知列表"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环构建通知事件"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="将通知事件集填充"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定用户配置"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新初始化事件"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="构建事件"/>
@@ -58,7 +59,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
-                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    <sequenceFlow id="begin_prepareparam5" sourceRef="begin" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_dedataset1" sourceRef="prepareparam5" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset1_bindparam1" sourceRef="gateway-dedataset1" targetRef="bindparam1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

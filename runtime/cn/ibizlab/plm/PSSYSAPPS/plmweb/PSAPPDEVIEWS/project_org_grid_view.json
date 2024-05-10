@@ -167,6 +167,7 @@
       }
     },
     "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
     "minorSortDir" : "DESC",
     "getMinorSortPSAppDEField" : {
@@ -259,6 +260,20 @@
       "enableDEFieldPrivilege" : false,
       "id" : "数据表格处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "calc_column_action_state",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calc_column_action_state"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -298,10 +313,8 @@
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
-            "noPrivDisplayMode" : 6,
             "caption" : "设置星标",
             "codeName" : "add_favorite",
-            "dataAccessAction" : "ADD_FAVORITE",
             "fullCodeName" : "project_add_favorite",
             "name" : "设置星标",
             "getPSAppDEMethod" : {
@@ -310,15 +323,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ADD_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -353,10 +362,8 @@
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
-            "noPrivDisplayMode" : 6,
             "caption" : "取消星标",
             "codeName" : "cancel_favorite",
-            "dataAccessAction" : "CANCEL_FAVORITE",
             "fullCodeName" : "project_cancel_favorite",
             "name" : "取消星标",
             "getPSAppDEMethod" : {
@@ -365,15 +372,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "CANCEL_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -806,9 +809,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",

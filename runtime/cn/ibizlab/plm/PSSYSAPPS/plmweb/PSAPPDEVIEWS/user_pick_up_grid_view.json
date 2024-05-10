@@ -3,11 +3,12 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.USER"
   },
-  "caption" : "用户选择",
+  "caption" : "企业用户",
   "codeName" : "user_pick_up_grid_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_pick_up_grid_view.json",
   "gridRowActiveMode" : 1,
-  "name" : "user_pick_up_grid_view",
+  "memo" : "系统自动添加",
+  "name" : "userPickupGridView",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
@@ -23,12 +24,11 @@
   } ],
   "getPSControls" : [ {
     "aggMode" : "NONE",
-    "codeName" : "pickupgridview_user_grid",
+    "codeName" : "main",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
-    "controlStyle" : "CHECKBOX_GRID",
     "controlType" : "GRID",
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user/PSGRIDS/pickupgridview_user_grid.json",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user/PSGRIDS/main.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
       "id" : "fetch",
@@ -44,7 +44,7 @@
       }
     },
     "groupMode" : "NONE",
-    "logicName" : "用户多项数据选择表格视图_表格",
+    "logicName" : "主表格",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
@@ -139,16 +139,19 @@
     "getPSDEGridColumns" : [ {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
-      "caption" : "姓名",
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "DEF.LNAME.NAME"
+      },
+      "caption" : "登录名",
       "codeName" : "name",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "display_name",
-      "excelCaption" : "姓名",
+      "dataItemName" : "name",
+      "excelCaption" : "登录名",
       "name" : "name",
       "noPrivDisplayMode" : 1,
       "getPSAppDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
+        "name" : "NAME",
+        "codeName" : "name"
       },
       "width" : 150,
       "widthUnit" : "PX",
@@ -156,17 +159,10 @@
     } ],
     "getPSDEGridDataItems" : [ {
       "dataType" : 25,
-      "name" : "display_name",
+      "name" : "name",
       "getPSAppDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "id",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
+        "name" : "NAME",
+        "codeName" : "name"
       }
     }, {
       "dataType" : 25,
@@ -221,12 +217,7 @@
       },
       "allowEmpty" : true
     } ],
-    "getPSSysPFPlugin" : {
-      "pluginType" : "GRID_RENDER",
-      "pluginCode" : "CHECKBOX_GRID",
-      "runtimeObject" : true
-    },
-    "pagingSize" : 100,
+    "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
       "actionType" : "DEACTION",
@@ -255,14 +246,14 @@
     "noSort" : false,
     "singleSelect" : false,
     "name" : "grid",
-    "modelid" : "a5c7bb79524390e28eb16a88c8a39e84",
+    "modelid" : "5b1481c903d43d72b1dace80963a3bd3",
     "modeltype" : "PSDEGRID"
   }, {
-    "codeName" : "pickupgridview_user_search_form",
+    "codeName" : "default",
     "controlType" : "SEARCHFORM",
     "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user/PSSEARCHFORMS/pickupgridview_user_search_form.json",
-    "logicName" : "用户多项数据选择表格视图_搜索表单",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user/PSSEARCHFORMS/default.json",
+    "logicName" : "默认搜索表单",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
@@ -310,85 +301,15 @@
       "showBusyIndicator" : true,
       "id" : "SEARCHFORM"
     },
-    "getPSDEFormItems" : [ {
-      "id" : "n_display_name_like",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "DISPLAY_NAME",
-        "codeName" : "display_name"
-      }
-    }, {
-      "id" : "n_name_like",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
     "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.USER.DEFAULT.FORMPAGE.FORMPAGE1"
+      },
       "caption" : "常规条件",
       "codeName" : "formpage1",
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMPAGE",
       "name" : "formpage1",
-      "getPSDEFormDetails" : [ {
-        "caption" : "姓名",
-        "codeName" : "n_display_name_like",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "n_display_name_like",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "DISPLAY_NAME",
-          "codeName" : "display_name"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "n_display_name_like",
-          "placeHolder" : "请输入查询姓名"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 8,
-          "colMD" : 8,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true
-      }, {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFSFITEM.USER.N_NAME_LIKE"
-        },
-        "caption" : "登录名",
-        "codeName" : "n_name_like",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "n_name_like",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "n_name_like",
-          "placeHolder" : "请输入查询登录名"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 8,
-          "colMD" : 8,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true
-      } ],
       "getPSLayout" : {
         "childColLG" : -1,
         "childColMD" : 24,
@@ -414,7 +335,7 @@
     "enableFilterSave" : false,
     "noTabHeader" : true,
     "name" : "searchform",
-    "modelid" : "578a2593262bb35771091d76d34f6354",
+    "modelid" : "0bf229c18610d8cae990f245f03c2140",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
     "controlType" : "SEARCHBAR",
@@ -437,8 +358,8 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.USER"
     },
-    "caption" : "用户选择",
-    "codeName" : "user_pick_up_grid_view_captionbar",
+    "caption" : "企业用户",
+    "codeName" : "pick_up_grid_view_captionbar",
     "controlType" : "CAPTIONBAR",
     "name" : "captionbar",
     "getPSAppDataEntity" : {
@@ -447,8 +368,8 @@
     },
     "getPSControlParam" : { }
   } ],
-  "getPSDEViewCodeName" : "user_pick_up_grid_view",
-  "getPSDEViewId" : "fcb9a3f32276577e1a14e24817dd21f3",
+  "getPSDEViewCodeName" : "pick_up_grid_view",
+  "getPSDEViewId" : "cd1f145eb062addeb1f36a1ddfd97615",
   "getPSViewLayoutPanel" : {
     "codeName" : "layoutpanel",
     "controlStyle" : "APPDEPICKUPGRIDVIEW",
@@ -463,7 +384,10 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "title" : "用户选择",
+  "title" : "企业用户选择表格视图",
+  "getTitlePSLanguageRes" : {
+    "lanResTag" : "PAGE.TITLE.USER.PICKUPGRIDVIEW"
+  },
   "viewStyle" : "DEFAULT",
   "viewType" : "DEPICKUPGRIDVIEW",
   "xDataControlName" : "grid",
@@ -476,6 +400,6 @@
   "expandSearchForm" : true,
   "pickupMode" : true,
   "rowEditDefault" : false,
-  "modelid" : "dbd7f24a1f3a771ca2bf5b2c834aa41f",
+  "modelid" : "6a873a33cf3f4d16129ba2e53e133e9d",
   "modeltype" : "PSAPPDEVIEW"
 }

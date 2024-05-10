@@ -7,13 +7,13 @@
   "name" : "获取产品成员",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 158,
+    "leftPos" : -130,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "DEBUGPARAM3"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -21,410 +21,247 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 62,
+    "topPos" : -80,
     "parallelOutput" : true
   }, {
-    "codeName" : "DEBUGPARAM2",
+    "codeName" : "DEBUGPARAM3",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 340,
+    "leftPos" : -27,
     "logicNodeType" : "DEBUGPARAM",
     "name" : "调试逻辑参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
-      },
-      "name" : "上下文中无product",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNULL",
-          "dstFieldName" : "product",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[product] 值为空(Nil)"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
         "id" : "PREPAREPARAM2"
       },
-      "name" : "上下文携带了product",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "product",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[product] 值不为空(NotNil)"
-        } ]
-      },
+      "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "DEBUGPARAM3"
       }
     } ],
-    "topPos" : 50
+    "topPos" : -72
   }, {
     "codeName" : "PREPAREPARAM2",
-    "leftPos" : 490,
+    "leftPos" : 184,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "获取产品ID",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEDATASET2"
+        "id" : "DEDATASET3"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "N_PRODUCT_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "Default[PRODUCT] ==> filter[N_PRODUCT_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "PRODUCT",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 210
-  }, {
-    "codeName" : "DEDATASET2",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
-    },
-    "leftPos" : 1004,
-    "logicNodeType" : "DEDATASET",
-    "name" : "根据产品ID获取产品成员",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET2"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "members"
-    },
-    "topPos" : 210
-  }, {
-    "codeName" : "DEACTION1",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket/PSDEACTIONS/Get.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
-    },
-    "leftPos" : 118,
-    "logicNodeType" : "DEACTION",
-    "name" : "获取工单详情",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "ticket"
-    },
-    "topPos" : 400
-  }, {
-    "codeName" : "PREPAREPARAM1",
-    "leftPos" : 354,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "获取产品ID",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "N_PRODUCT_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "ticket[PRODUCT_ID] ==> filter[N_PRODUCT_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "PRODUCT_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "ticket"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 400
-  }, {
-    "codeName" : "DEDATASET1",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
-    },
-    "leftPos" : 586,
-    "logicNodeType" : "DEDATASET",
-    "name" : "根据产品ID获取产品成员",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "members"
-    },
-    "topPos" : 400
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 1004,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
       }
     } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "user"
+        "id" : "product_info"
       },
-      "name" : "用户全局对象[srfpersonid] ==> user[ID]",
+      "name" : "Default[product_id] ==> product_info[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "product_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_PRODUCT_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[product_id] ==> filter[N_PRODUCT_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "product_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "N_USER_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> filter[N_USER_ID_EQ]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "srfpersonid",
       "srcValueType" : "SESSION"
     } ],
-    "topPos" : 400
+    "topPos" : -72
   }, {
-    "codeName" : "END3",
-    "leftPos" : 1779,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "returnType" : "BREAK",
-    "topPos" : 633
-  }, {
-    "codeName" : "LOOPSUBCALL1",
+    "codeName" : "DEBUGPARAM6",
     "getDstPSDELogicParam" : {
       "modelref" : true,
       "id" : "for_obj"
     },
-    "leftPos" : 1004,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环子调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM5"
-      },
-      "name" : "进入循环",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END2"
-      },
-      "name" : "循环结束",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      }
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "members"
-    },
-    "topPos" : 641
-  }, {
-    "codeName" : "DEBUGPARAM5",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "for_obj"
-    },
-    "leftPos" : 1320,
+    "leftPos" : 492,
     "logicNodeType" : "DEBUGPARAM",
-    "name" : "循环for_obj",
+    "name" : "调试逻辑参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM4"
+        "id" : "PREPAREPARAM9"
       },
-      "name" : "当前用户为只读权限",
+      "name" : "连接名称",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
           "condOP" : "EQ",
-          "dstFieldName" : "ROLE_ID",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "for_obj"
-          },
-          "logicType" : "SINGLE",
-          "name" : "for_obj[ROLE_ID] 等于(=) reader",
-          "paramValue" : "reader"
-        }, {
-          "condOP" : "EQ",
-          "dstFieldName" : "USER_ID",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "for_obj"
-          },
-          "logicType" : "SINGLE",
-          "name" : "for_obj[USER_ID] 等于(=) ID",
-          "paramType" : "SRCENTITYFIELD",
-          "paramValue" : "ID",
-          "getSrcLogicParam" : {
-            "modelref" : true,
-            "id" : "user"
-          }
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM5"
-      }
-    }, {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END3"
-      },
-      "name" : "当前用户非只读权限",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "EQ",
-          "dstFieldName" : "user_id",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "for_obj"
-          },
-          "logicType" : "SINGLE",
-          "name" : "for_obj[user_id] 等于(=) ID",
-          "paramType" : "SRCENTITYFIELD",
-          "paramValue" : "ID",
-          "getSrcLogicParam" : {
-            "modelref" : true,
-            "id" : "user"
-          }
-        }, {
-          "condOP" : "NOTEQ",
           "dstFieldName" : "role_id",
           "getDstLogicParam" : {
             "modelref" : true,
             "id" : "for_obj"
           },
           "logicType" : "SINGLE",
-          "name" : "for_obj[role_id] 不等于(<>) reader",
+          "name" : "for_obj[role_id] 等于(=) user",
+          "paramValue" : "user"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM6"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM10"
+      },
+      "name" : "连接名称",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "role_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_obj[role_id] 等于(=) reader",
           "paramValue" : "reader"
         } ]
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM5"
+        "id" : "DEBUGPARAM6"
       }
     } ],
-    "topPos" : 641
+    "topPos" : -346
   }, {
-    "codeName" : "PREPAREPARAM4",
-    "leftPos" : 1320,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "codeName" : "DEDATASET3",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_member.json"
+    },
+    "leftPos" : 492,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "END1"
+        "id" : "LOOPSUBCALL3"
       },
-      "name" : "结束循环",
+      "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM4"
+        "id" : "DEDATASET3"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      },
+      "name" : "不在产品中的成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "members"
+          },
+          "logicType" : "SINGLE",
+          "name" : "members[size] 等于(=) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET3"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "members"
+    },
+    "topPos" : -72
+  }, {
+    "codeName" : "LOOPSUBCALL3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_obj"
+    },
+    "leftPos" : 492,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "members"
+    },
+    "topPos" : -217
+  }, {
+    "codeName" : "PREPAREPARAM10",
+    "leftPos" : 750,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "只读",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM10"
       }
     } ],
     "getPSDELogicNodeParams" : [ {
@@ -438,10 +275,66 @@
       "srcValue" : "true",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 864
+    "topPos" : -210
   }, {
-    "codeName" : "END2",
-    "leftPos" : 1044,
+    "codeName" : "PREPAREPARAM8",
+    "leftPos" : 756,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "只读",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM8"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "readonly",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user"
+      },
+      "name" : "直接值[true] ==> user[readonly]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "true",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -72
+  }, {
+    "codeName" : "PREPAREPARAM9",
+    "leftPos" : 756,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "非只读",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM9"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "readonly",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user"
+      },
+      "name" : "直接值[false] ==> user[readonly]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "false",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -336
+  }, {
+    "codeName" : "END6",
+    "leftPos" : 1020,
     "logicNodeType" : "END",
     "name" : "结束",
     "getReturnParam" : {
@@ -449,14 +342,7 @@
       "id" : "user"
     },
     "returnType" : "LOGICPARAM",
-    "topPos" : 1010
-  }, {
-    "codeName" : "END1",
-    "leftPos" : 1360,
-    "logicNodeType" : "END",
-    "name" : "跳出循环",
-    "returnType" : "BREAK",
-    "topPos" : 1010
+    "topPos" : -217
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",
@@ -492,6 +378,15 @@
     },
     "entityPageParam" : true
   }, {
+    "codeName" : "product_info",
+    "logicName" : "产品信息",
+    "name" : "产品信息",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "entityParam" : true
+  }, {
     "codeName" : "ticket",
     "logicName" : "工单",
     "name" : "工单",
@@ -510,6 +405,11 @@
     "logicName" : "viewctx",
     "name" : "viewctx",
     "appContextParam" : true
+  }, {
+    "codeName" : "webctx",
+    "logicName" : "webctx",
+    "name" : "webctx",
+    "webContextParam" : true
   } ],
   "getStartPSDELogicNode" : {
     "modelref" : true,

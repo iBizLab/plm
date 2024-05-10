@@ -1,0 +1,214 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.get_library_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runget_library_memberdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case runget_library_membercase;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member runget_library_memberfilter;
+                global java.util.Map runget_library_memberfor_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.library runget_library_memberlibrary_info;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member runget_library_membermembers;
+                global java.util.Map runget_library_memberuser;
+                global java.util.Map runget_library_memberviewctx;
+                global java.util.Map runget_library_memberwebctx;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService library_memberservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IrunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runget_library_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction1"
+            ruleflow-group "runget_library_memberdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(runget_library_membercase.getId()),runget_library_membercase);
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam3"
+            ruleflow-group "runget_library_memberdebugparam3"
+            when
+            then
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品id]
+            rule "prepareparam2"
+            ruleflow-group "runget_library_memberprepareparam2"
+            when
+            then
+                            runget_library_memberlibrary_info.set("id",runget_library_membercase.get("testlibraryid"));
+                            runget_library_memberfilter.set("n_library_id_eq",runget_library_membercase.get("testlibraryid"));
+                                runget_library_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam6"
+            ruleflow-group "runget_library_memberdebugparam6"
+            when
+            then
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[实体数据集]
+            rule "dedataset3"
+            ruleflow-group "runget_library_memberdedataset3"
+            when
+            then
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "runget_library_memberloopsubcall3"
+            when
+            then
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读]
+            rule "prepareparam10"
+            ruleflow-group "runget_library_memberprepareparam10"
+            when
+            then
+                            runget_library_memberuser.set("readonly","true");
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[非只读]
+            rule "prepareparam9"
+            ruleflow-group "runget_library_memberprepareparam9"
+            when
+            then
+                            runget_library_memberuser.set("readonly","false");
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "runget_library_memberend6"
+            when
+            then
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam5"
+            ruleflow-group "runget_library_memberprepareparam5"
+            when
+            then
+                            runget_library_membercase.set("id",runget_library_memberdefault.get("caseid"));
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读]
+            rule "prepareparam8"
+            ruleflow-group "runget_library_memberprepareparam8"
+            when
+            then
+                            runget_library_memberuser.set("readonly","true");
+                        update(runget_library_memberdefault);//更新fact中变量值
+                        update(runget_library_membercase);//更新fact中变量值
+                        update(runget_library_memberfilter);//更新fact中变量值
+                        update(runget_library_memberfor_obj);//更新fact中变量值
+                        update(runget_library_memberlibrary_info);//更新fact中变量值
+                        update(runget_library_membermembers);//更新fact中变量值
+                        update(runget_library_memberuser);//更新fact中变量值
+                        update(runget_library_memberviewctx);//更新fact中变量值
+                        update(runget_library_memberwebctx);//更新fact中变量值
+            end

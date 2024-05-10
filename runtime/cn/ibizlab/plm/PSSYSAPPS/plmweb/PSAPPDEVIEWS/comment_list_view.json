@@ -510,6 +510,14 @@
               "itemStyle" : "DEFAULT",
               "itemType" : "CONTAINER",
               "name" : "container2",
+              "getPSControlLogics" : [ {
+                "itemName" : "CONTAINER2",
+                "logicTag" : "list_itempanel",
+                "logicType" : "SCRIPT",
+                "name" : "show_logic",
+                "scriptCode" : "context.srfreadonly != true",
+                "triggerType" : "ITEMVISIBLE"
+              } ],
               "getPSLayout" : {
                 "dir" : "row",
                 "layout" : "FLEX"
@@ -922,18 +930,11 @@
         "id" : "LIST"
       },
       "getPSDEListDataItems" : [ {
-        "dataType" : 21,
-        "name" : "pcontent",
-        "getPSAppDEField" : {
-          "name" : "PCONTENT",
-          "codeName" : "pcontent"
-        }
-      }, {
         "dataType" : 25,
-        "name" : "pid",
+        "name" : "id",
         "getPSAppDEField" : {
-          "name" : "PID",
-          "codeName" : "pid"
+          "name" : "ID",
+          "codeName" : "id"
         }
       }, {
         "dataType" : 21,
@@ -944,10 +945,29 @@
         }
       }, {
         "dataType" : 25,
-        "name" : "id",
+        "getFrontPSCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "name" : "create_man",
         "getPSAppDEField" : {
-          "name" : "ID",
-          "codeName" : "id"
+          "name" : "CREATE_MAN",
+          "codeName" : "create_man"
+        }
+      }, {
+        "dataType" : 21,
+        "name" : "pcontent",
+        "getPSAppDEField" : {
+          "name" : "PCONTENT",
+          "codeName" : "pcontent"
+        }
+      }, {
+        "dataType" : 5,
+        "format" : "YYYY-MM-DD HH:mm:ss",
+        "name" : "create_time",
+        "getPSAppDEField" : {
+          "name" : "CREATE_TIME",
+          "codeName" : "create_time"
         }
       }, {
         "dataType" : 25,
@@ -962,22 +982,10 @@
         }
       }, {
         "dataType" : 25,
-        "getFrontPSCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-        },
-        "name" : "create_man",
+        "name" : "pid",
         "getPSAppDEField" : {
-          "name" : "CREATE_MAN",
-          "codeName" : "create_man"
-        }
-      }, {
-        "dataType" : 5,
-        "format" : "YYYY-MM-DD HH:mm:ss",
-        "name" : "create_time",
-        "getPSAppDEField" : {
-          "name" : "CREATE_TIME",
-          "codeName" : "create_time"
+          "name" : "PID",
+          "codeName" : "pid"
         }
       }, {
         "dataType" : 25,

@@ -100,17 +100,6 @@
     "value" : "display_name:name"
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "空间成员数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.SPACE_MEMBER.REDIRECTVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_member_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realTitle" : "空间成员编辑视图",
     "getRealTitlePSLanguageRes" : {
@@ -120,6 +109,17 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_member_edit_view.json",
       "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "空间成员数据重定向视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.SPACE_MEMBER.REDIRECTVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_member_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
     }
   }, {
     "name" : "MPICKUPVIEW:USER",
@@ -204,20 +204,6 @@
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
     "controlType" : "GRID",
-    "getCreatePSControlAction" : {
-      "actionName" : "Create",
-      "actionType" : "DEACTION",
-      "dataAccessAction" : "CREATE",
-      "name" : "create",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "create"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space_member.json"
-      }
-    },
     "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space_member/PSGRIDS/grid_view_config_grid.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
@@ -227,34 +213,6 @@
       "getPSAppDEMethod" : {
         "modelref" : true,
         "id" : "fetch_default"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space_member.json"
-      }
-    },
-    "getGetDraftPSControlAction" : {
-      "actionName" : "GetDraft",
-      "actionType" : "DEACTION",
-      "dataAccessAction" : "CREATE",
-      "name" : "loaddraft",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "get_draft"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space_member.json"
-      }
-    },
-    "getGetPSControlAction" : {
-      "actionName" : "Get",
-      "actionType" : "DEACTION",
-      "dataAccessAction" : "READ",
-      "name" : "load",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "get"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -357,7 +315,7 @@
     "getPSControls" : [ {
       "codeName" : "config_grid_view_grid_batchtoolbar",
       "controlType" : "TOOLBAR",
-      "logicName" : "工具栏模板（表格批量操作）",
+      "logicName" : "删除&&设置角色",
       "name" : "grid_batchtoolbar",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -367,6 +325,65 @@
         "id" : "grid_batchtoolbar"
       },
       "getPSDEToolbarItems" : [ {
+        "caption" : "设置",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 1,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "grid_batchtoolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf185@FontAwesome",
+          "cssClass" : "fa fa-sun-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
+          "caption" : "设置",
+          "codeName" : "setting_role",
+          "dataAccessAction" : "UPDATE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_member_role_edit_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "space_member_setting_role",
+          "name" : "设置角色",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "change_role"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space_member.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf185@FontAwesome",
+            "cssClass" : "fa fa-sun-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "变更角色成功",
+          "timeout" : 60000,
+          "tooltip" : "设置角色",
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "setting_role",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "setting_role@space_member"
+        },
+        "tooltip" : "设置角色",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "TBB.TEXT.*.REMOVE"
         },
@@ -380,8 +397,8 @@
           "id" : "grid_batchtoolbar_deuiaction2"
         },
         "getPSSysImage" : {
-          "glyph" : "xf00d@FontAwesome",
-          "cssClass" : "fa fa-remove"
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
@@ -399,11 +416,12 @@
             "id" : "DELETE"
           },
           "getPSSysImage" : {
-            "glyph" : "xf00d@FontAwesome",
-            "cssClass" : "fa fa-remove"
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
           },
           "predefinedType" : "GRIDVIEW_REMOVEACTION",
           "timeout" : 60000,
+          "tooltip" : "删除",
           "getTooltipPSLanguageRes" : {
             "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
           },
@@ -419,7 +437,7 @@
         "showCaption" : true,
         "showIcon" : true
       } ],
-      "modelid" : "824333fc6aa069bfea300fcc0b94336d",
+      "modelid" : "0bbf297218becfdab360ac95ff32de96",
       "modeltype" : "PSDETOOLBAR"
     } ],
     "getPSDEGridColumns" : [ {
@@ -462,7 +480,6 @@
       },
       "width" : 150,
       "widthUnit" : "PX",
-      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -541,6 +558,13 @@
       }
     }, {
       "dataType" : 25,
+      "name" : "id",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "srfkey",
       "getPSAppDEField" : {
         "name" : "ID",
@@ -577,27 +601,6 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
-      "caption" : "角色",
-      "codeName" : "role_id",
-      "enableCond" : 3,
-      "ignoreInput" : 0,
-      "name" : "role_id",
-      "getPSAppDEField" : {
-        "name" : "ROLE_ID",
-        "codeName" : "role_id"
-      },
-      "getPSEditor" : {
-        "editorType" : "DROPDOWNLIST",
-        "name" : "role_id",
-        "getPSAppCodeList" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__role_type.json"
-        },
-        "singleSelect" : true
-      },
-      "allowEmpty" : true,
-      "needCodeListConfig" : true
-    }, {
       "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
@@ -629,28 +632,14 @@
       }
     },
     "sortMode" : "REMOTE",
-    "getUpdatePSControlAction" : {
-      "actionName" : "Update",
-      "actionType" : "DEACTION",
-      "dataAccessAction" : "UPDATE",
-      "name" : "update",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "update"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space_member.json"
-      }
-    },
     "hasWFDataItems" : false,
     "enableColFilter" : false,
     "enableCustomized" : true,
     "enableGroup" : false,
     "enablePagingBar" : true,
-    "enableRowEdit" : true,
+    "enableRowEdit" : false,
     "enableRowEditOrder" : false,
-    "enableRowNew" : true,
+    "enableRowNew" : false,
     "forceFit" : false,
     "hideHeader" : false,
     "noSort" : false,
@@ -714,7 +703,7 @@
   "enableFilter" : true,
   "enableImport" : true,
   "enableQuickSearch" : true,
-  "enableRowEdit" : true,
+  "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
   "modelid" : "85130571d7b835e9206c9b31705b683c",

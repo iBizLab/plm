@@ -24,39 +24,6 @@
     "topPos" : 200,
     "parallelOutput" : true
   }, {
-    "codeName" : "RAWSQLCALL5",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 780,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "执行用例结果附件",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL4"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL5"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS run_re_attachment\r\nFROM\r\n\tattachment t \r\nWHERE\r\n    t.owner_id = ? and t.owner_type = 'RUN'",
-    "topPos" : 130,
-    "fillDstLogicParam" : true
-  }, {
     "codeName" : "END1",
     "leftPos" : 1208,
     "logicNodeType" : "END",
@@ -130,7 +97,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS run_re_work_item \r\nFROM\r\n\twork_item t \r\nWHERE\r\nt.WORK_ITEM_TYPE_ID not like '%bug%'\r\nAND\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'test_case' \r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND (\r\n\t\t\t\tt.`IS_DELETED` = 0 \r\n\t\t\t)",
+    "sql" : "SELECT\r\n\tcount( t.id ) AS run_re_work_item \r\nFROM\r\n\twork_item t, work_item_type t1 \r\nWHERE t.work_item_type_id = t1.id\r\nand t1.`group` <> 'bug'\r\nAND\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'test_case' \r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND (\r\n\t\t\t\tt.`IS_DELETED` = 0 \r\n\t\t\t)",
     "topPos" : 208,
     "fillDstLogicParam" : true
   }, {
@@ -141,7 +108,7 @@
     },
     "leftPos" : 569,
     "logicNodeType" : "RAWSQLCALL",
-    "name" : "测试用例/执行用例关联缺陷",
+    "name" : "执行用例关联缺陷",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -163,7 +130,40 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS run_re_bug \r\nFROM\r\n\twork_item t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'bug' \r\n\t\t\tAND (t11.`PRINCIPAL_TYPE` = 'run' or t11.`PRINCIPAL_TYPE` = 'test_case')\r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND (\r\n\t\t\t\tt.`IS_DELETED` = 0 \r\n\t\t\t)",
+    "sql" : "select count( t.id ) AS run_re_bug from work_item t, work_item_type t1\r\nwhere  t.`IS_DELETED` = 0 and t.work_item_type_id = t1.id \r\nand t1.`group` = 'bug'\r\nand EXISTS ( select 1 from `RELATION` t2 \r\nwhere t.`ID` = t2.`TARGET_ID` \r\nand  t2.`TARGET_TYPE` = 'work_item' and t2.`PRINCIPAL_TYPE` = 'run'\r\nand t2.`PRINCIPAL_ID` = ?) \r\n\t\t\t",
+    "topPos" : 208,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL5",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 780,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "执行用例结果附件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS run_re_attachment\r\nFROM\r\n\tattachment t \r\nWHERE\r\n    t.owner_id = ? and t.owner_type = 'RUN'",
     "topPos" : 208,
     "fillDstLogicParam" : true
   }, {

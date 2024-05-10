@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.baseline_work_itembaseline_comparison" isClosed="false" isExecutable="true" name="projmgmt_baseline_work_item_baseline_comparison_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.baseline_work_itembaseline_comparison">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="baseline_work_itembaseline_comparisondefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item()" name="baseline_work_itembaseline_comparisoncomparison_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item()" name="baseline_work_itembaseline_comparisoncomparison_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item()" name="baseline_work_itembaseline_comparisoncontent" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item()" name="baseline_work_itembaseline_comparisonfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item()" name="baseline_work_itembaseline_comparisonpage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="baseline_work_itembaseline_comparisonversion_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="baseline_work_itembaseline_comparisonversion_for_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="baseline_work_itembaseline_comparisonversion_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baseline_work_itembaseline_comparisonwork_item_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baseline_work_itembaseline_comparisonwork_item_for_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baseline_work_itembaseline_comparisonwork_item_ids" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baseline_work_itembaseline_comparisonwork_item_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baseline_work_itembaseline_comparisonwork_item_versions" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Ibaseline_work_itemService))" name="baseline_work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IversionService))" name="versionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Ibaseline_work_itemService))" name="iBzSysBaseline_work_itemDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="baseline_work_itembaseline_comparisondefault" type="cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisoncomparison_filter" type="cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisoncomparison_page" type="cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisoncontent" type="cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonpage" type="cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonversion_filter" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonversion_for_temp" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonversion_page" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonwork_item_filter" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonwork_item_for_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonwork_item_ids" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonwork_item_page" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="baseline_work_itembaseline_comparisonwork_item_versions" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取当前基线下工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonappendparam2" id="appendparam2" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <endEvent id="rawsfcode1_end" name="end"/>
+                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取对比基线下的工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取最新版本工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonappendparam3" id="appendparam3" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam3_end" name="end"/>
+                        <sequenceFlow id="appendparam3_end_line" sourceRef="appendparam3" targetRef="appendparam3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <endEvent id="prepareparam7_end" name="end"/>
+                        <sequenceFlow id="prepareparam7_end_line" sourceRef="prepareparam7" targetRef="prepareparam7_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="工作项cur_version_ids"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取版本结果集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall4" id="loopsubcall4" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall5" id="loopsubcall5" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonappendparam4" id="appendparam4" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam4_end" name="end"/>
+                        <sequenceFlow id="appendparam4_end_line" sourceRef="appendparam4" targetRef="appendparam4_end"/>
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam1" sourceRef="gateway-loopsubcall1" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baseline_work_itembaseline_comparisondefault:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_filter:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_page:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncontent:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonfor_temp_obj:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonpage:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonversion_filter:version();
+                                            $baseline_work_itembaseline_comparisonversion_for_temp:version();
+                                            $baseline_work_itembaseline_comparisonversion_page:version();
+                                            $baseline_work_itembaseline_comparisonwork_item_filter:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_for_temp:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_ids:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_page:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_versions:work_item();
+                                    eval($baseline_work_itembaseline_comparisondefault==baseline_work_itembaseline_comparisondefault && $baseline_work_itembaseline_comparisoncomparison_filter==baseline_work_itembaseline_comparisoncomparison_filter && $baseline_work_itembaseline_comparisoncomparison_page==baseline_work_itembaseline_comparisoncomparison_page && $baseline_work_itembaseline_comparisoncontent==baseline_work_itembaseline_comparisoncontent && $baseline_work_itembaseline_comparisonfor_temp_obj==baseline_work_itembaseline_comparisonfor_temp_obj && $baseline_work_itembaseline_comparisonpage==baseline_work_itembaseline_comparisonpage && $baseline_work_itembaseline_comparisonversion_filter==baseline_work_itembaseline_comparisonversion_filter && $baseline_work_itembaseline_comparisonversion_for_temp==baseline_work_itembaseline_comparisonversion_for_temp && $baseline_work_itembaseline_comparisonversion_page==baseline_work_itembaseline_comparisonversion_page && $baseline_work_itembaseline_comparisonwork_item_filter==baseline_work_itembaseline_comparisonwork_item_filter && $baseline_work_itembaseline_comparisonwork_item_for_temp==baseline_work_itembaseline_comparisonwork_item_for_temp && $baseline_work_itembaseline_comparisonwork_item_ids==baseline_work_itembaseline_comparisonwork_item_ids && $baseline_work_itembaseline_comparisonwork_item_page==baseline_work_itembaseline_comparisonwork_item_page && $baseline_work_itembaseline_comparisonwork_item_versions==baseline_work_itembaseline_comparisonwork_item_versions);
+                                eval((RuleUtils.test($baseline_work_itembaseline_comparisondefault.get("baseline"),"NOTEQ","comparison_baseline")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_appendparam2" sourceRef="loopsubcall1" targetRef="appendparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam3" sourceRef="gateway-loopsubcall1" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baseline_work_itembaseline_comparisondefault:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_filter:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_page:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncontent:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonfor_temp_obj:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonpage:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonversion_filter:version();
+                                            $baseline_work_itembaseline_comparisonversion_for_temp:version();
+                                            $baseline_work_itembaseline_comparisonversion_page:version();
+                                            $baseline_work_itembaseline_comparisonwork_item_filter:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_for_temp:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_ids:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_page:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_versions:work_item();
+                                    eval($baseline_work_itembaseline_comparisondefault==baseline_work_itembaseline_comparisondefault && $baseline_work_itembaseline_comparisoncomparison_filter==baseline_work_itembaseline_comparisoncomparison_filter && $baseline_work_itembaseline_comparisoncomparison_page==baseline_work_itembaseline_comparisoncomparison_page && $baseline_work_itembaseline_comparisoncontent==baseline_work_itembaseline_comparisoncontent && $baseline_work_itembaseline_comparisonfor_temp_obj==baseline_work_itembaseline_comparisonfor_temp_obj && $baseline_work_itembaseline_comparisonpage==baseline_work_itembaseline_comparisonpage && $baseline_work_itembaseline_comparisonversion_filter==baseline_work_itembaseline_comparisonversion_filter && $baseline_work_itembaseline_comparisonversion_for_temp==baseline_work_itembaseline_comparisonversion_for_temp && $baseline_work_itembaseline_comparisonversion_page==baseline_work_itembaseline_comparisonversion_page && $baseline_work_itembaseline_comparisonwork_item_filter==baseline_work_itembaseline_comparisonwork_item_filter && $baseline_work_itembaseline_comparisonwork_item_for_temp==baseline_work_itembaseline_comparisonwork_item_for_temp && $baseline_work_itembaseline_comparisonwork_item_ids==baseline_work_itembaseline_comparisonwork_item_ids && $baseline_work_itembaseline_comparisonwork_item_page==baseline_work_itembaseline_comparisonwork_item_page && $baseline_work_itembaseline_comparisonwork_item_versions==baseline_work_itembaseline_comparisonwork_item_versions);
+                                eval((RuleUtils.test($baseline_work_itembaseline_comparisondefault.get("baseline"),"EQ","comparison_baseline"))&&(RuleUtils.test($baseline_work_itembaseline_comparisonpage.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-appendparam2_rawsfcode1" sourceRef="gateway-appendparam2" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baseline_work_itembaseline_comparisondefault:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_filter:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_page:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncontent:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonfor_temp_obj:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonpage:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonversion_filter:version();
+                                            $baseline_work_itembaseline_comparisonversion_for_temp:version();
+                                            $baseline_work_itembaseline_comparisonversion_page:version();
+                                            $baseline_work_itembaseline_comparisonwork_item_filter:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_for_temp:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_ids:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_page:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_versions:work_item();
+                                    eval($baseline_work_itembaseline_comparisondefault==baseline_work_itembaseline_comparisondefault && $baseline_work_itembaseline_comparisoncomparison_filter==baseline_work_itembaseline_comparisoncomparison_filter && $baseline_work_itembaseline_comparisoncomparison_page==baseline_work_itembaseline_comparisoncomparison_page && $baseline_work_itembaseline_comparisoncontent==baseline_work_itembaseline_comparisoncontent && $baseline_work_itembaseline_comparisonfor_temp_obj==baseline_work_itembaseline_comparisonfor_temp_obj && $baseline_work_itembaseline_comparisonpage==baseline_work_itembaseline_comparisonpage && $baseline_work_itembaseline_comparisonversion_filter==baseline_work_itembaseline_comparisonversion_filter && $baseline_work_itembaseline_comparisonversion_for_temp==baseline_work_itembaseline_comparisonversion_for_temp && $baseline_work_itembaseline_comparisonversion_page==baseline_work_itembaseline_comparisonversion_page && $baseline_work_itembaseline_comparisonwork_item_filter==baseline_work_itembaseline_comparisonwork_item_filter && $baseline_work_itembaseline_comparisonwork_item_for_temp==baseline_work_itembaseline_comparisonwork_item_for_temp && $baseline_work_itembaseline_comparisonwork_item_ids==baseline_work_itembaseline_comparisonwork_item_ids && $baseline_work_itembaseline_comparisonwork_item_page==baseline_work_itembaseline_comparisonwork_item_page && $baseline_work_itembaseline_comparisonwork_item_versions==baseline_work_itembaseline_comparisonwork_item_versions);
+                                eval((RuleUtils.test($baseline_work_itembaseline_comparisondefault.get("baseline"),"EQ","comparison_baseline")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset3" sourceRef="prepareparam3" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset2" sourceRef="prepareparam1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall2" sourceRef="dedataset2" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall3" sourceRef="dedataset3" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_bindparam1" sourceRef="loopsubcall2" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_appendparam3" sourceRef="loopsubcall2" targetRef="appendparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_rawsfcode2" sourceRef="loopsubcall3" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_prepareparam5" sourceRef="loopsubcall3" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_prepareparam7" sourceRef="rawsfcode2" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_dedataset4" sourceRef="prepareparam5" targetRef="dedataset4">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_end1" sourceRef="bindparam1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset4_loopsubcall4" sourceRef="dedataset4" targetRef="loopsubcall4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall4_loopsubcall5" sourceRef="loopsubcall4" targetRef="loopsubcall5">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall4_bindparam1" sourceRef="loopsubcall4" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall5_prepareparam6" sourceRef="gateway-loopsubcall5" targetRef="prepareparam6">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baseline_work_itembaseline_comparisondefault:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_filter:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncomparison_page:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisoncontent:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonfor_temp_obj:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonpage:baseline_work_item();
+                                            $baseline_work_itembaseline_comparisonversion_filter:version();
+                                            $baseline_work_itembaseline_comparisonversion_for_temp:version();
+                                            $baseline_work_itembaseline_comparisonversion_page:version();
+                                            $baseline_work_itembaseline_comparisonwork_item_filter:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_for_temp:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_ids:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_page:work_item();
+                                            $baseline_work_itembaseline_comparisonwork_item_versions:work_item();
+                                    eval($baseline_work_itembaseline_comparisondefault==baseline_work_itembaseline_comparisondefault && $baseline_work_itembaseline_comparisoncomparison_filter==baseline_work_itembaseline_comparisoncomparison_filter && $baseline_work_itembaseline_comparisoncomparison_page==baseline_work_itembaseline_comparisoncomparison_page && $baseline_work_itembaseline_comparisoncontent==baseline_work_itembaseline_comparisoncontent && $baseline_work_itembaseline_comparisonfor_temp_obj==baseline_work_itembaseline_comparisonfor_temp_obj && $baseline_work_itembaseline_comparisonpage==baseline_work_itembaseline_comparisonpage && $baseline_work_itembaseline_comparisonversion_filter==baseline_work_itembaseline_comparisonversion_filter && $baseline_work_itembaseline_comparisonversion_for_temp==baseline_work_itembaseline_comparisonversion_for_temp && $baseline_work_itembaseline_comparisonversion_page==baseline_work_itembaseline_comparisonversion_page && $baseline_work_itembaseline_comparisonwork_item_filter==baseline_work_itembaseline_comparisonwork_item_filter && $baseline_work_itembaseline_comparisonwork_item_for_temp==baseline_work_itembaseline_comparisonwork_item_for_temp && $baseline_work_itembaseline_comparisonwork_item_ids==baseline_work_itembaseline_comparisonwork_item_ids && $baseline_work_itembaseline_comparisonwork_item_page==baseline_work_itembaseline_comparisonwork_item_page && $baseline_work_itembaseline_comparisonwork_item_versions==baseline_work_itembaseline_comparisonwork_item_versions);
+                                eval((RuleUtils.test($baseline_work_itembaseline_comparisonversion_for_temp.get("id"),"EQ","cur_version_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_appendparam4" sourceRef="prepareparam6" targetRef="appendparam4">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+                            <exclusiveGateway id="gateway-appendparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-appendparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="appendparam2_gateway-appendparam2_gatewayline" sourceRef="appendparam2" targetRef="gateway-appendparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-appendparam2_end_line" sourceRef="gateway-appendparam2" targetRef="gateway-appendparam2_end"/>
+                            <endEvent id="gateway-appendparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall5" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall5_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall5_gateway-loopsubcall5_gatewayline" sourceRef="loopsubcall5" targetRef="gateway-loopsubcall5"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall5_end_line" sourceRef="gateway-loopsubcall5" targetRef="gateway-loopsubcall5_end"/>
+                            <endEvent id="gateway-loopsubcall5_end" name="end"/>
+        </process>
+    </definitions>

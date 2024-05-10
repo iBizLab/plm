@@ -226,7 +226,6 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
           },
-          "refreshMode" : 1,
           "successMsg" : "复制成功",
           "timeout" : 60000,
           "uIActionMode" : "BACKEND",
@@ -235,7 +234,6 @@
           "closeEditView" : true,
           "closePopupView" : true,
           "enableConfirm" : true,
-          "reloadData" : true,
           "id" : "idea_copy@idea"
         },
         "tooltip" : "复制",
@@ -260,7 +258,6 @@
           "actionTarget" : "MULTIKEY",
           "caption" : "需求移动",
           "codeName" : "idea_move",
-          "dialogResult" : "OK",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_move_option_view.json",
@@ -284,8 +281,6 @@
           "uIActionMode" : "BACKEND",
           "uIActionTag" : "idea_move",
           "uIActionType" : "DEUIACTION",
-          "closeEditView" : true,
-          "closePopupView" : true,
           "enableConfirm" : true,
           "reloadData" : true,
           "id" : "idea_move@idea"
@@ -313,8 +308,8 @@
           "triggerType" : "ITEMENABLE"
         } ],
         "getPSSysImage" : {
-          "glyph" : "xf07b@FontAwesome",
-          "cssClass" : "fa fa-folder"
+          "glyph" : "xf187@FontAwesome",
+          "cssClass" : "fa fa-archive"
         },
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
@@ -526,7 +521,7 @@
     "caption" : "状态",
     "codeName" : "state",
     "columnType" : "DEFGRIDCOLUMN",
-    "dataItemName" : "state",
+    "dataItemName" : "state_text",
     "excelCaption" : "状态",
     "name" : "state",
     "noPrivDisplayMode" : 1,
@@ -605,6 +600,13 @@
     "getPSAppDEField" : {
       "name" : "TITLE",
       "codeName" : "title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "state_text",
+    "getPSAppDEField" : {
+      "name" : "STATE",
+      "codeName" : "state"
     }
   }, {
     "dataType" : 25,
@@ -718,8 +720,12 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__idea_state.json"
       },
+      "getPSEditorItems" : [ {
+        "name" : "state"
+      } ],
       "singleSelect" : true
     },
+    "valueItemName" : "state",
     "allowEmpty" : true,
     "needCodeListConfig" : true
   }, {

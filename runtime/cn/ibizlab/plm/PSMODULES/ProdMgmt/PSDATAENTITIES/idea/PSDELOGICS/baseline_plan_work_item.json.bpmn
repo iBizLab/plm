@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.ideabaseline_plan_work_item" isClosed="false" isExecutable="true" name="prodmgmt_idea_baseline_plan_work_item_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.ideabaseline_plan_work_item">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ideabaseline_plan_work_itemdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideabaseline_plan_work_itemfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="ideabaseline_plan_work_itemfor_temp_version_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideabaseline_plan_work_itempage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="ideabaseline_plan_work_itemversion_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="ideabaseline_plan_work_itemversion_page" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="ideabaseline_plan_work_itemversions" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideabaseline_plan_work_itemwork_item_versions" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IversionService))" name="versionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ideabaseline_plan_work_itemdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideabaseline_plan_work_itemfor_temp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideabaseline_plan_work_itemfor_temp_version_obj" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="ideabaseline_plan_work_itempage" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideabaseline_plan_work_itemversion_filter" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="ideabaseline_plan_work_itemversion_page" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="ideabaseline_plan_work_itemwork_item_versions" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="选择工作项列表"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <endEvent id="rawsfcode1_end" name="end"/>
+                        <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备版本过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取版本数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充当前版本名称"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideabaseline_plan_work_itemend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_dedataset1" sourceRef="begin" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideabaseline_plan_work_itemdefault:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_obj:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_version_obj:version();
+                                            $ideabaseline_plan_work_itempage:idea();
+                                            $ideabaseline_plan_work_itemversion_filter:version();
+                                            $ideabaseline_plan_work_itemversion_page:version();
+                                            $ideabaseline_plan_work_itemversions:Map();
+                                            $ideabaseline_plan_work_itemwork_item_versions:idea();
+                                    eval($ideabaseline_plan_work_itemdefault==ideabaseline_plan_work_itemdefault && $ideabaseline_plan_work_itemfor_temp_obj==ideabaseline_plan_work_itemfor_temp_obj && $ideabaseline_plan_work_itemfor_temp_version_obj==ideabaseline_plan_work_itemfor_temp_version_obj && $ideabaseline_plan_work_itempage==ideabaseline_plan_work_itempage && $ideabaseline_plan_work_itemversion_filter==ideabaseline_plan_work_itemversion_filter && $ideabaseline_plan_work_itemversion_page==ideabaseline_plan_work_itemversion_page && $ideabaseline_plan_work_itemwork_item_versions==ideabaseline_plan_work_itemwork_item_versions);
+                                eval((RuleUtils.test($ideabaseline_plan_work_itempage.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode1" sourceRef="loopsubcall1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_prepareparam1" sourceRef="gateway-loopsubcall1" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideabaseline_plan_work_itemdefault:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_obj:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_version_obj:version();
+                                            $ideabaseline_plan_work_itempage:idea();
+                                            $ideabaseline_plan_work_itemversion_filter:version();
+                                            $ideabaseline_plan_work_itemversion_page:version();
+                                            $ideabaseline_plan_work_itemversions:Map();
+                                            $ideabaseline_plan_work_itemwork_item_versions:idea();
+                                    eval($ideabaseline_plan_work_itemdefault==ideabaseline_plan_work_itemdefault && $ideabaseline_plan_work_itemfor_temp_obj==ideabaseline_plan_work_itemfor_temp_obj && $ideabaseline_plan_work_itemfor_temp_version_obj==ideabaseline_plan_work_itemfor_temp_version_obj && $ideabaseline_plan_work_itempage==ideabaseline_plan_work_itempage && $ideabaseline_plan_work_itemversion_filter==ideabaseline_plan_work_itemversion_filter && $ideabaseline_plan_work_itemversion_page==ideabaseline_plan_work_itemversion_page && $ideabaseline_plan_work_itemwork_item_versions==ideabaseline_plan_work_itemwork_item_versions);
+                                eval((RuleUtils.test($ideabaseline_plan_work_itemwork_item_versions.get("version_id_in"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall1_end1" sourceRef="gateway-loopsubcall1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideabaseline_plan_work_itemdefault:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_obj:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_version_obj:version();
+                                            $ideabaseline_plan_work_itempage:idea();
+                                            $ideabaseline_plan_work_itemversion_filter:version();
+                                            $ideabaseline_plan_work_itemversion_page:version();
+                                            $ideabaseline_plan_work_itemversions:Map();
+                                            $ideabaseline_plan_work_itemwork_item_versions:idea();
+                                    eval($ideabaseline_plan_work_itemdefault==ideabaseline_plan_work_itemdefault && $ideabaseline_plan_work_itemfor_temp_obj==ideabaseline_plan_work_itemfor_temp_obj && $ideabaseline_plan_work_itemfor_temp_version_obj==ideabaseline_plan_work_itemfor_temp_version_obj && $ideabaseline_plan_work_itempage==ideabaseline_plan_work_itempage && $ideabaseline_plan_work_itemversion_filter==ideabaseline_plan_work_itemversion_filter && $ideabaseline_plan_work_itemversion_page==ideabaseline_plan_work_itemversion_page && $ideabaseline_plan_work_itemwork_item_versions==ideabaseline_plan_work_itemwork_item_versions);
+                                eval((RuleUtils.test($ideabaseline_plan_work_itemwork_item_versions.get("version_id_in"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset2" sourceRef="prepareparam1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall2" sourceRef="dedataset2" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_loopsubcall3" sourceRef="loopsubcall2" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_end1" sourceRef="loopsubcall2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall3_prepareparam2" sourceRef="gateway-loopsubcall3" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideabaseline_plan_work_itemdefault:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_obj:idea();
+                                            $ideabaseline_plan_work_itemfor_temp_version_obj:version();
+                                            $ideabaseline_plan_work_itempage:idea();
+                                            $ideabaseline_plan_work_itemversion_filter:version();
+                                            $ideabaseline_plan_work_itemversion_page:version();
+                                            $ideabaseline_plan_work_itemversions:Map();
+                                            $ideabaseline_plan_work_itemwork_item_versions:idea();
+                                    eval($ideabaseline_plan_work_itemdefault==ideabaseline_plan_work_itemdefault && $ideabaseline_plan_work_itemfor_temp_obj==ideabaseline_plan_work_itemfor_temp_obj && $ideabaseline_plan_work_itemfor_temp_version_obj==ideabaseline_plan_work_itemfor_temp_version_obj && $ideabaseline_plan_work_itempage==ideabaseline_plan_work_itempage && $ideabaseline_plan_work_itemversion_filter==ideabaseline_plan_work_itemversion_filter && $ideabaseline_plan_work_itemversion_page==ideabaseline_plan_work_itemversion_page && $ideabaseline_plan_work_itemwork_item_versions==ideabaseline_plan_work_itemwork_item_versions);
+                                eval((RuleUtils.test($ideabaseline_plan_work_itemfor_temp_version_obj.get("id"),"EQ","cur_version_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall1" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall1_gateway-loopsubcall1_gatewayline" sourceRef="loopsubcall1" targetRef="gateway-loopsubcall1"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall1_end_line" sourceRef="gateway-loopsubcall1" targetRef="gateway-loopsubcall1_end"/>
+                            <endEvent id="gateway-loopsubcall1_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall3" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall3_gateway-loopsubcall3_gatewayline" sourceRef="loopsubcall3" targetRef="gateway-loopsubcall3"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall3_end_line" sourceRef="gateway-loopsubcall3" targetRef="gateway-loopsubcall3_end"/>
+                            <endEvent id="gateway-loopsubcall3_end" name="end"/>
+        </process>
+    </definitions>

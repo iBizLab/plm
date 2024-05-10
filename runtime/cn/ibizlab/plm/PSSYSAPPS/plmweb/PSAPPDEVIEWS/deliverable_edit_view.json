@@ -48,7 +48,8 @@
         "id" : "toolbar_deuiaction1"
       },
       "getPSSysImage" : {
-        "cssClass" : "sx-tb-saveandclose"
+        "glyph" : "xf0c7@FontAwesome",
+        "cssClass" : "fa fa-save"
       },
       "getPSUIAction" : {
         "getCapPSLanguageRes" : {
@@ -259,8 +260,8 @@
       "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
+        "name" : "TITLE",
+        "codeName" : "title"
       }
     }, {
       "id" : "srftempmode",
@@ -278,6 +279,13 @@
       "id" : "srfsourcekey",
       "hidden" : true,
       "dataType" : 25
+    }, {
+      "id" : "title",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "TITLE",
+        "codeName" : "title"
+      }
     }, {
       "id" : "id",
       "hidden" : true,
@@ -305,6 +313,34 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "group1",
+        "getPSDEFormDetails" : [ {
+          "caption" : "交付目标",
+          "codeName" : "title",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "title",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "TITLE",
+            "codeName" : "title"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 100,
+            "name" : "title"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        } ],
         "getPSLayout" : {
           "childColLG" : -1,
           "childColMD" : 24,
@@ -318,7 +354,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : true
+        "showCaption" : false
       }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.ID"
@@ -348,48 +384,6 @@
         },
         "allowEmpty" : true,
         "hidden" : true,
-        "showCaption" : true
-      } ],
-      "getPSLayout" : {
-        "childColLG" : -1,
-        "childColMD" : 24,
-        "childColSM" : -1,
-        "childColXS" : -1,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
-    }, {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.DELIVERABLE.MAIN.FORMPAGE.FORMPAGE2"
-      },
-      "caption" : "其它",
-      "codeName" : "formpage2",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage2",
-      "getPSDEFormDetails" : [ {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFORM.DELIVERABLE.MAIN.GROUPPANEL.GROUP2"
-        },
-        "caption" : "操作信息",
-        "codeName" : "group2",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "GROUPPANEL",
-        "name" : "group2",
-        "getPSLayout" : {
-          "childColLG" : -1,
-          "childColMD" : 24,
-          "childColSM" : -1,
-          "childColXS" : -1,
-          "columnCount" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "infoGroupMode" : false,
         "showCaption" : true
       } ],
       "getPSLayout" : {
@@ -443,7 +437,7 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
       }
     },
-    "noTabHeader" : false,
+    "noTabHeader" : true,
     "name" : "form",
     "modelid" : "4952da869667195786c81c03cf980008",
     "modeltype" : "PSDEFORM_EDITFORM"

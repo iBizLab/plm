@@ -1,0 +1,74 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticket_typelogic.get_not_finish;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket_type ticket_typeget_not_finishdefault;
+                    global cn.ibizlab.plm.core.prodmgmt.service.Iticket_typeService ticket_typeservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.Iticket_typeService iBzSysTicket_typeDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticket_typeget_not_finishbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取迭代]
+            rule "deaction1"
+            ruleflow-group "ticket_typeget_not_finishdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ticket_typeservice.get(ticket_typeget_not_finishdefault.getId()),ticket_typeget_not_finishdefault);
+                        update(ticket_typeget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询该迭代下未完成的工作项]
+            rule "rawsqlcall1"
+            ruleflow-group "ticket_typeget_not_finishrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ticket_typeget_not_finishdefault.get("id"));
+        param.put("param1",ticket_typeget_not_finishdefault.get("project_id"));
+    String strSql="select count(1) as not_finish_num from work_item where `state` <> '40' and sprint_id = #{et.param0} and project_id = #{et.param1}";
+                        java.util.List<JSONObject> entities=iBzSysTicket_typeDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ticket_typeget_not_finishdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(ticket_typeget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "ticket_typeget_not_finishprepareparam1"
+            when
+            then
+                            ticket_typeget_not_finishdefault.set("remind","该迭代下工作项已全部完成");
+                        update(ticket_typeget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[添加未完成提醒内容]
+            rule "rawsfcode1"
+            ruleflow-group "ticket_typeget_not_finishrawsfcode1"
+            when
+            then
+                        update(ticket_typeget_not_finishdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ticket_typeget_not_finishend1"
+            when
+            then
+                        update(ticket_typeget_not_finishdefault);//更新fact中变量值
+            end

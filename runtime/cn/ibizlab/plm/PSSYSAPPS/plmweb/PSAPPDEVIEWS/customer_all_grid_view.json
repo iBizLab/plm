@@ -332,38 +332,55 @@
         "showCaption" : true,
         "showIcon" : true
       }, {
+        "itemType" : "SEPERATOR",
+        "name" : "seperator1",
+        "spanMode" : false
+      }, {
+        "buttonStyle" : "STYLE2",
         "itemType" : "ITEMS",
         "name" : "items1",
         "getPSDEToolbarItems" : [ {
           "caption" : "导入客户",
           "groupExtractMode" : "ITEM",
           "itemType" : "DEUIACTION",
-          "name" : "deuiaction2",
+          "name" : "deuiaction1",
           "noPrivDisplayMode" : 2,
           "getPSAppViewUIAction" : {
             "modelref" : true,
-            "id" : "toolbar_deuiaction2"
+            "id" : "toolbar_deuiaction1"
           },
           "getPSSysImage" : {
-            "glyph" : "xf093@FontAwesome",
-            "cssClass" : "fa fa-upload"
+            "glyph" : "xf0ee@FontAwesome",
+            "cssClass" : "fa fa-cloud-upload"
           },
           "getPSUIAction" : {
-            "caption" : "数据导入",
-            "codeName" : "Import",
-            "fullCodeName" : "Import",
-            "name" : "表格界面_数据导入栏",
-            "getPSSysImage" : {
-              "glyph" : "xf093@FontAwesome",
-              "cssClass" : "fa fa-upload"
+            "actionTarget" : "NONE",
+            "caption" : "客户导入",
+            "codeName" : "customer_import_data",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/customer_app_data_upload_view.json",
+              "viewType" : "APPDATAUPLOADVIEW"
             },
-            "predefinedType" : "GRIDVIEW_IMPORTBAR",
+            "frontProcessType" : "DATAIMP",
+            "fullCodeName" : "customer_customer_import_data",
+            "name" : "客户自定义导入",
+            "getPSAppDEDataImport" : {
+              "modelref" : true,
+              "id" : "import_customer"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+            },
             "timeout" : 60000,
-            "uIActionMode" : "SYS",
-            "uIActionTag" : "Import",
-            "uIActionType" : "DEUIACTION"
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "customer_import_data",
+            "uIActionType" : "DEUIACTION",
+            "id" : "customer_import_data@customer"
           },
           "tooltip" : "导入客户",
+          "uIActionTarget" : "NONE",
           "showCaption" : true,
           "showIcon" : true
         }, {
@@ -675,11 +692,12 @@
               "id" : "DELETE"
             },
             "getPSSysImage" : {
-              "glyph" : "xf00d@FontAwesome",
-              "cssClass" : "fa fa-remove"
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
             },
             "predefinedType" : "GRIDVIEW_REMOVEACTION",
             "timeout" : 60000,
+            "tooltip" : "删除",
             "getTooltipPSLanguageRes" : {
               "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
             },

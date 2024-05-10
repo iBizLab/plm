@@ -50,16 +50,6 @@
   }, {
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
-    "getAfterPSDEActionLogics" : [ {
-      "actionLogicType" : 1,
-      "attachMode" : "AFTER",
-      "name" : "附加逻辑",
-      "getPSDELogic" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/create_recent.json"
-      },
-      "internalLogic" : true
-    } ],
     "getBeforePSDEActionLogics" : [ {
       "actionLogicType" : 0,
       "attachMode" : "BEFORE",
@@ -2067,12 +2057,6 @@
       "queryCodeExp" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` )",
       "standardColumnName" : "`IS_FAVORITE`"
     } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_IS_FAVORITE_EQ",
-      "name" : "N_IS_FAVORITE_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[IS_FAVORITE][是否星标]移动端默认",
@@ -2131,7 +2115,6 @@
     } ],
     "codeName" : "is_favorite",
     "dEFType" : 2,
-    "dEMSFieldMode" : "STATE1",
     "dataType" : "TEXT",
     "formulaColumns" : "id",
     "formulaFormat" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=%1$s )",
@@ -6221,6 +6204,15 @@
               "logicType" : "SINGLE",
               "name" : "Default[PUBLISHED] 等于(=) 0",
               "paramValue" : "0"
+            }, {
+              "condOP" : "ISNULL",
+              "dstFieldName" : "PUBLISHED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[PUBLISHED] 值为空(Nil)"
             } ]
           } ]
         },
@@ -6867,7 +6859,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "sql" : "update recent set IS_DELETED=0 where owner_id=? and owner_subtype='idea'",
+      "sql" : "update recent set IS_DELETED=0 where owner_id=? and owner_subtype='page'",
       "topPos" : 287
     }, {
       "codeName" : "END1",
@@ -7482,51 +7474,6 @@
     "enableBackend" : true,
     "enableFront" : false
   } ],
-  "getAllPSDEMainStates" : [ {
-    "codeName" : "star",
-    "enterStateMode" : "ANY",
-    "logicName" : "已星标",
-    "mSTag" : "1",
-    "name" : "已星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "ADD_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "设置星标",
-        "name" : "ADD_FAVORITE"
-      }
-    } ],
-    "stateValue" : "1",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  }, {
-    "codeName" : "un_star",
-    "enterStateMode" : "ANY",
-    "logicName" : "未星标",
-    "mSTag" : "0",
-    "name" : "未星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "CANCEL_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "取消星标",
-        "name" : "CANCEL_FAVORITE"
-      }
-    } ],
-    "stateValue" : "0",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "article_page_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -8028,20 +7975,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "是否星标",
-      "name" : "n_is_favorite_eq",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_IS_FAVORITE_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "IS_FAVORITE",
-        "codeName" : "is_favorite"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "logicName" : "主题",
       "name" : "n_name_like",
       "getPSDEFSearchMode" : {
@@ -8189,12 +8122,6 @@
     "defaultMode" : true
   } ],
   "getAllPSDEOPPrivs" : [ {
-    "logicName" : "设置星标",
-    "name" : "ADD_FAVORITE"
-  }, {
-    "logicName" : "取消星标",
-    "name" : "CANCEL_FAVORITE"
-  }, {
     "logicName" : "建立",
     "mapPSDEName" : "SPACE",
     "mapPSDEOPPrivName" : "SUBDATA",
@@ -8305,6 +8232,12 @@
     "modelTag" : "EDITVIEW",
     "name" : "页面实体编辑视图",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "help_tree_exp_view",
+    "logicName" : "帮助页面实体树导航视图",
+    "name" : "帮助页面实体树导航视图",
+    "realModelSubType" : "DETREEEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "show_view",
@@ -8536,10 +8469,6 @@
     "lanResTag" : "DE.LNAME.PAGE"
   },
   "logicName" : "页面",
-  "getMainStatePSDEFields" : [ {
-    "name" : "IS_FAVORITE",
-    "codeName" : "is_favorite"
-  } ],
   "getMajorPSDEField" : {
     "name" : "NAME",
     "codeName" : "name"
@@ -8672,7 +8601,7 @@
     "removeOrder" : -1,
     "serviceCodeName" : "page"
   }, {
-    "codeName" : "PAGE",
+    "codeName" : "DER_PAGE",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/search_attachment/PSDERS/DERCUSTOM_PAGE_SEARCH_ATTACHMENT.json",
@@ -8695,9 +8624,9 @@
     },
     "removeActionType" : 0,
     "removeOrder" : -1,
-    "serviceCodeName" : "page"
+    "serviceCodeName" : "der_page"
   }, {
-    "codeName" : "PAGE",
+    "codeName" : "DER_PAGE",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/search_comment/PSDERS/DERCUSTOM_PAGE_SEARCH_COMMENT.json",
@@ -8720,7 +8649,7 @@
     },
     "removeActionType" : 0,
     "removeOrder" : -1,
-    "serviceCodeName" : "page"
+    "serviceCodeName" : "der_page"
   }, {
     "codeName" : "PAGE",
     "dERSubType" : "DER1N",

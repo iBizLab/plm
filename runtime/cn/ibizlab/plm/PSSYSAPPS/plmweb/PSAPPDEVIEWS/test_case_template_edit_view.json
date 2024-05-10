@@ -283,6 +283,13 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "name1",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
       "id" : "title",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -380,6 +387,36 @@
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel1",
         "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.NAME"
+          },
+          "caption" : "名称",
+          "codeName" : "name1",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "name1",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 200,
+            "name" : "name1"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
           "caption" : "标题",
           "codeName" : "title",
           "dataType" : 25,
@@ -409,7 +446,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : false,
+          "allowEmpty" : true,
           "showCaption" : true
         }, {
           "caption" : "前置条件",
@@ -1205,7 +1242,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "用例模板编辑视图",
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.TEST_CASE_TEMPLATE.EDITVIEW"
@@ -1217,5 +1253,28 @@
   "enableDP" : true,
   "showDataInfoBar" : true,
   "modelid" : "31ca4a750ba49bb75addd172ff48fac8",
-  "modeltype" : "PSAPPDEVIEW"
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_case_templates",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "test_case_template",
+    "minorDEName" : "TEST_CASE_TEMPLATE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+    },
+    "name" : "DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID",
+    "getParentPSAppDEField" : {
+      "name" : "TEST_LIBRARY_ID",
+      "codeName" : "test_library_id"
+    },
+    "rSMode" : 2
+  } ] ]
 }

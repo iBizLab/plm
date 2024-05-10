@@ -6,20 +6,31 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="ideaproduct_idea_re_countersdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaproduct_idea_re_countersidea" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="ideaproduct_idea_re_countersdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaproduct_idea_re_countersidea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
-                        <endEvent id="end1_end" name="end"/>
-                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="需求关联客户"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="需求关联需求"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="需求关联工单"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="需求关联工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall5" id="rawsqlcall5" implementation="http://www.jboss.org/drools/rule" name="需求关联测试用例"/>
-                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取产品需求当前版本"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall6" id="rawsqlcall6" implementation="http://www.jboss.org/drools/rule" name="产品需求版本"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall7" id="rawsqlcall7" implementation="http://www.jboss.org/drools/rule" name="需求关联客户"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall8" id="rawsqlcall8" implementation="http://www.jboss.org/drools/rule" name="需求关联需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall9" id="rawsqlcall9" implementation="http://www.jboss.org/drools/rule" name="需求关联工单"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall10" id="rawsqlcall10" implementation="http://www.jboss.org/drools/rule" name="需求关联工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall11" id="rawsqlcall11" implementation="http://www.jboss.org/drools/rule" name="需求关联测试用例"/>
+                    <sequenceFlow id="begin_rawsqlcall6" sourceRef="begin" targetRef="rawsqlcall6">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
                     </sequenceFlow>
@@ -31,5 +42,41 @@
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall5_end1" sourceRef="rawsqlcall5" targetRef="end1">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_rawsqlcall1" sourceRef="gateway-deaction1" targetRef="rawsqlcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaproduct_idea_re_countersdefault:idea();
+                                            $ideaproduct_idea_re_countersidea:idea();
+                                    eval($ideaproduct_idea_re_countersdefault==ideaproduct_idea_re_countersdefault && $ideaproduct_idea_re_countersidea==ideaproduct_idea_re_countersidea);
+                                eval(((RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"ISNULL",""))||((RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"ISNOTNULL",""))&&(RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"EQ","cur_version_id")))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_rawsqlcall7" sourceRef="gateway-deaction1" targetRef="rawsqlcall7">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaproduct_idea_re_countersdefault:idea();
+                                            $ideaproduct_idea_re_countersidea:idea();
+                                    eval($ideaproduct_idea_re_countersdefault==ideaproduct_idea_re_countersdefault && $ideaproduct_idea_re_countersidea==ideaproduct_idea_re_countersidea);
+                                eval((RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"ISNOTNULL",""))&&(RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"NOTEQ","cur_version_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall6_prepareparam1" sourceRef="rawsqlcall6" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall7_rawsqlcall8" sourceRef="rawsqlcall7" targetRef="rawsqlcall8">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall8_rawsqlcall9" sourceRef="rawsqlcall8" targetRef="rawsqlcall9">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall9_rawsqlcall10" sourceRef="rawsqlcall9" targetRef="rawsqlcall10">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall10_rawsqlcall11" sourceRef="rawsqlcall10" targetRef="rawsqlcall11">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall11_end1" sourceRef="rawsqlcall11" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
+                            <endEvent id="gateway-deaction1_end" name="end"/>
         </process>
     </definitions>

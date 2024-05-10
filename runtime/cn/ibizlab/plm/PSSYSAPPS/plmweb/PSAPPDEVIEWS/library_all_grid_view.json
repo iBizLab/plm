@@ -75,6 +75,12 @@
       "editMode" : true
     }
   } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_scope_type_eq",
+    "name" : "n_scope_type_eq",
+    "value" : "scope_type",
+    "rawValue" : false
+  } ],
   "getPSAppViewRefs" : [ {
     "name" : "EDITDATA",
     "realTitle" : "测试库",
@@ -120,25 +126,42 @@
         "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
+        "actionTarget" : "NONE",
         "caption" : "新建测试库",
-        "codeName" : "new_library",
+        "codeName" : "create_library",
         "dataAccessAction" : "SRFUR__LIBRARY_M",
-        "fullCodeName" : "new_library",
-        "name" : "表格界面_新建测试库",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "library_create_library",
+        "name" : "新建测试库",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+          },
+          "modelref" : true,
+          "id" : "open_new_library@library"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+        },
         "getPSDEOPPriv" : {
           "modelref" : true,
           "id" : "SRFUR__LIBRARY_M"
         },
-        "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "new_library",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "create_library",
         "uIActionType" : "DEUIACTION",
-        "globalUIAction" : true,
-        "reloadData" : true
+        "id" : "create_library@library"
       },
       "tooltip" : "新建测试库",
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -167,6 +190,7 @@
       }
     },
     "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
     "minorSortDir" : "DESC",
     "getMinorSortPSAppDEField" : {
@@ -259,6 +283,20 @@
       "enableDEFieldPrivilege" : false,
       "id" : "数据表格处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "calc_button_state",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calc_column_action_state"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -299,7 +337,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "取消星标",
             "codeName" : "unstar",
-            "dataAccessAction" : "CANCEL_FAVORITE",
             "fullCodeName" : "library_unstar",
             "name" : "取消星标",
             "getPSAppDEMethod" : {
@@ -308,15 +345,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "CANCEL_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -356,7 +389,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "设置星标",
             "codeName" : "star",
-            "dataAccessAction" : "ADD_FAVORITE",
             "fullCodeName" : "library_star",
             "name" : "设置星标",
             "getPSAppDEMethod" : {
@@ -365,15 +397,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ADD_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -729,9 +757,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",

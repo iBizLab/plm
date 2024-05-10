@@ -76,17 +76,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "空间编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.SPACE.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "EDITDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "空间信息",
@@ -96,6 +85,17 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_info_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "realTitle" : "空间编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.SPACE.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -311,8 +311,8 @@
           "detailType" : "DEUIACTION",
           "name" : "ub9bb800",
           "getPSSysImage" : {
-            "glyph" : "xf079@FontAwesome",
-            "cssClass" : "fa fa-retweet"
+            "glyph" : "xf021@FontAwesome",
+            "cssClass" : "fa fa-refresh"
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
@@ -407,9 +407,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",
@@ -459,6 +456,31 @@
     "modelid" : "d523d6e45daa3d25f1603f8fe4eaaf15",
     "modeltype" : "PSDEGRID"
   }, {
+    "codeName" : "query_search_bar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space/PSSEARCHBARS/query_search_bar.json",
+    "logicName" : "快速搜索栏",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABSEARCHBAR"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "B8BE30FB-56A4-4143-B85A-8D320AB4CEAC",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -469,11 +491,11 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
@@ -513,10 +535,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "2817d88d093e3e048dfd54eb83851d2c",
   "modeltype" : "PSAPPDEVIEW"
 }

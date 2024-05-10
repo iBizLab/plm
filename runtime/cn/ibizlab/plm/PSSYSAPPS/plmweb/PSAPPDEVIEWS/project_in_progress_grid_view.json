@@ -71,20 +71,20 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "项目数据重定向视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realTitle" : "项目编辑视图",
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
       "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "项目数据重定向视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -284,8 +284,8 @@
           "detailType" : "DEUIACTION",
           "name" : "u93f345b",
           "getPSSysImage" : {
-            "glyph" : "xf187@FontAwesome",
-            "cssClass" : "fa fa-archive"
+            "glyph" : "xf1c6@FontAwesome",
+            "cssClass" : "fa fa-file-archive-o"
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
@@ -322,8 +322,8 @@
           "detailType" : "DEUIACTION",
           "name" : "uc046f49",
           "getPSSysImage" : {
-            "glyph" : "xf1f8@FontAwesome",
-            "cssClass" : "fa fa-trash"
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
@@ -407,9 +407,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",
@@ -545,6 +542,31 @@
     "modelid" : "8f7ede1ae997bb2f8e25eab49b91c89b",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
+    "codeName" : "query_search_bar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project/PSSEARCHBARS/query_search_bar.json",
+    "logicName" : "快速搜索栏",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABSEARCHBAR"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "4A0157AD-FCC4-4615-AD9E-55E6746048D0",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -555,11 +577,11 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "caption" : "项目管理",
@@ -596,10 +618,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "de6e43bc3ce639a865ad827b274a6ac0",
   "modeltype" : "PSAPPDEVIEW"
 }

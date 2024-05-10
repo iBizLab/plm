@@ -866,6 +866,14 @@
                             "itemStyle" : "DEFAULT",
                             "itemType" : "CONTAINER",
                             "name" : "container2",
+                            "getPSControlLogics" : [ {
+                              "itemName" : "CONTAINER2",
+                              "logicTag" : "list_itempanel",
+                              "logicType" : "SCRIPT",
+                              "name" : "show_logic",
+                              "scriptCode" : "context.srfreadonly != true",
+                              "triggerType" : "ITEMVISIBLE"
+                            } ],
                             "getPSLayout" : {
                               "dir" : "row",
                               "layout" : "FLEX"
@@ -1278,18 +1286,11 @@
                       "id" : "LIST"
                     },
                     "getPSDEListDataItems" : [ {
-                      "dataType" : 21,
-                      "name" : "pcontent",
-                      "getPSAppDEField" : {
-                        "name" : "PCONTENT",
-                        "codeName" : "pcontent"
-                      }
-                    }, {
                       "dataType" : 25,
-                      "name" : "pid",
+                      "name" : "id",
                       "getPSAppDEField" : {
-                        "name" : "PID",
-                        "codeName" : "pid"
+                        "name" : "ID",
+                        "codeName" : "id"
                       }
                     }, {
                       "dataType" : 21,
@@ -1300,10 +1301,29 @@
                       }
                     }, {
                       "dataType" : 25,
-                      "name" : "id",
+                      "getFrontPSCodeList" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                      },
+                      "name" : "create_man",
                       "getPSAppDEField" : {
-                        "name" : "ID",
-                        "codeName" : "id"
+                        "name" : "CREATE_MAN",
+                        "codeName" : "create_man"
+                      }
+                    }, {
+                      "dataType" : 21,
+                      "name" : "pcontent",
+                      "getPSAppDEField" : {
+                        "name" : "PCONTENT",
+                        "codeName" : "pcontent"
+                      }
+                    }, {
+                      "dataType" : 5,
+                      "format" : "YYYY-MM-DD HH:mm:ss",
+                      "name" : "create_time",
+                      "getPSAppDEField" : {
+                        "name" : "CREATE_TIME",
+                        "codeName" : "create_time"
                       }
                     }, {
                       "dataType" : 25,
@@ -1318,22 +1338,10 @@
                       }
                     }, {
                       "dataType" : 25,
-                      "getFrontPSCodeList" : {
-                        "modelref" : true,
-                        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                      },
-                      "name" : "create_man",
+                      "name" : "pid",
                       "getPSAppDEField" : {
-                        "name" : "CREATE_MAN",
-                        "codeName" : "create_man"
-                      }
-                    }, {
-                      "dataType" : 5,
-                      "format" : "YYYY-MM-DD HH:mm:ss",
-                      "name" : "create_time",
-                      "getPSAppDEField" : {
-                        "name" : "CREATE_TIME",
-                        "codeName" : "create_time"
+                        "name" : "PID",
+                        "codeName" : "pid"
                       }
                     }, {
                       "dataType" : 25,
@@ -2523,7 +2531,7 @@
                   "logicTrigger" : "VIEWEVENT",
                   "logicType" : "SCRIPT",
                   "name" : "viewmounted",
-                  "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                  "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
                 }, {
                   "eventNames" : "onLoadSuccess",
                   "logicTrigger" : "VIEWEVENT",
@@ -2653,6 +2661,14 @@
                       "modelref" : true,
                       "id" : "toolbar_deuiaction2"
                     },
+                    "getPSControlLogics" : [ {
+                      "itemName" : "deuiaction2",
+                      "logicTag" : "toolbar",
+                      "logicType" : "SCRIPT",
+                      "name" : "deuiaction2",
+                      "scriptCode" : "context.srfreadonly != true",
+                      "triggerType" : "ITEMVISIBLE"
+                    } ],
                     "getPSSysImage" : {
                       "glyph" : "xf067@FontAwesome",
                       "cssClass" : "fa fa-plus"

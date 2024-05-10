@@ -238,6 +238,31 @@
     "builtinAction" : true
   }, {
     "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "change_role",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/change_role.json",
+    "logicName" : "变更角色",
+    "name" : "change_role",
+    "getPSDEActionInput" : {
+      "name" : "Change_roleInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Change_roleResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDELOGICS/change_role.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
     "actionMode" : "CREATE",
     "actionType" : "DELOGIC",
     "codeName" : "create_library_member",
@@ -262,6 +287,31 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDELOGICS/create_library_member.json"
     },
     "enableFront" : false
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/nothing.json",
+    "logicName" : "无操作",
+    "name" : "nothing",
+    "getPSDEActionInput" : {
+      "name" : "NothingInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "library_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDELOGICS/nothing.json"
+    },
+    "enableBackend" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -1643,6 +1693,168 @@
     "serviceCodeName" : "library_id"
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "change_role",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDELOGICS/change_role.json",
+    "logicName" : "变更角色",
+    "memo" : "批量设置角色身份（role_id）",
+    "name" : "变更角色",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -50,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 230
+    }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "获取传递的参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "srfactionparam",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 403
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环ID列表进行操作",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "topPos" : 562
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 180,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "获取传递的状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ROLE_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "for_temp_obj[ROLE_ID] ==> Default[ROLE_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ROLE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 562
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "leftPos" : 396,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更状态",
+      "topPos" : 562
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "for_temp_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "srfactionparam",
+      "logicName" : "选择数据对象",
+      "name" : "选择数据对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "entityListParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "create_library_member",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDELOGICS/create_library_member.json",
@@ -1921,6 +2133,38 @@
     },
     "enableBackend" : true,
     "enableFront" : false
+  }, {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDELOGICS/nothing.json",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
   }, {
     "codeName" : "remove_library_member_notify",
     "defaultParamName" : "Default",
@@ -2327,7 +2571,7 @@
     "codeName" : "library_member_create",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDENOTIFIES/library_member_create.json",
     "msgType" : 65,
-    "name" : "加入测试库成员通知",
+    "name" : "测试库成员加入通知",
     "getPSDENotifyTargets" : [ {
       "name" : "勾选对象",
       "getTargetPSDEField" : {
@@ -2349,7 +2593,7 @@
     "codeName" : "library_member_remove",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDENOTIFIES/library_member_remove.json",
     "msgType" : 65,
-    "name" : "移除测试库成员通知",
+    "name" : "测试库成员移除通知",
     "getPSDENotifyTargets" : [ {
       "name" : "勾选对象",
       "getTargetPSDEField" : {
@@ -2454,6 +2698,17 @@
     "allData" : true,
     "systemReserved" : true
   } ],
+  "getAllPSDEUtils" : [ {
+    "codeName" : "Usr0417764210",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEUTILDES/Usr0417764210.json",
+    "name" : "实体通知设置",
+    "getUtilPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting.json"
+    },
+    "utilPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+    "utilType" : "NOTIFYSETTING"
+  } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "mpick_up_view",
     "logicName" : "测试库成员实体数据多项选择视图",
@@ -2494,6 +2749,12 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "role_edit_view",
+    "logicName" : "测试库成员实体选项操作视图（设置角色）",
+    "name" : "测试库成员实体选项操作视图（设置角色）",
+    "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "pick_up_grid_view",
     "logicName" : "测试库成员实体选择表格视图（部件视图）",
     "name" : "测试库成员实体选择表格视图（部件视图）",
@@ -2513,6 +2774,13 @@
     "name" : "测试库成员实体数据重定向视图",
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "role_edit_view_Form",
+    "logicName" : "测试库成员实体选项操作视图（设置角色）_表单",
+    "modelTag2" : "0",
+    "name" : "测试库成员实体选项操作视图（设置角色）_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
   }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",

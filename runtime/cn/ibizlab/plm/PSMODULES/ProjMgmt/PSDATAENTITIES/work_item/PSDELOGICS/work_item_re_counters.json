@@ -7,13 +7,13 @@
   "name" : "工作项关联分页计数器",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 200,
+    "leftPos" : -810,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL1"
+        "id" : "RAWSQLCALL2"
       },
       "name" : "开始获取数据",
       "getSrcPSDELogicNode" : {
@@ -21,11 +21,11 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 200,
+    "topPos" : 276,
     "parallelOutput" : true
   }, {
     "codeName" : "END1",
-    "leftPos" : 1588,
+    "leftPos" : 1888,
     "logicNodeType" : "END",
     "name" : "结束",
     "getReturnParam" : {
@@ -40,13 +40,13 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 403,
+    "leftPos" : 493,
     "logicNodeType" : "RAWSQLCALL",
     "name" : "工作项关联产品需求",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL2"
+        "id" : "RAWSQLCALL3"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -65,40 +65,7 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_idea\r\nFROM\r\n\tidea t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'idea' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND t.`IS_DELETED` = 0 \r\n\t\t\t",
-    "topPos" : 208,
-    "fillDstLogicParam" : true
-  }, {
-    "codeName" : "RAWSQLCALL2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 590,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "工作项关联子工作项",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_children\r\nFROM\r\n\twork_item t \r\nWHERE\r\n\tt.pid = ? and t.is_deleted = 0",
-    "topPos" : 208,
+    "topPos" : 216,
     "fillDstLogicParam" : true
   }, {
     "codeName" : "RAWSQLCALL3",
@@ -106,7 +73,7 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 769,
+    "leftPos" : 719,
     "logicNodeType" : "RAWSQLCALL",
     "name" : "工作项关联工作项",
     "getPSDELogicLinks" : [ {
@@ -131,7 +98,7 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_work_item\r\nFROM\r\n\twork_item t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND t.`IS_DELETED` = 0 \r\n\t\t\t",
-    "topPos" : 208,
+    "topPos" : 216,
     "fillDstLogicParam" : true
   }, {
     "codeName" : "RAWSQLCALL4",
@@ -139,7 +106,7 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 937,
+    "leftPos" : 917,
     "logicNodeType" : "RAWSQLCALL",
     "name" : "工作项关联测试用例",
     "getPSDELogicLinks" : [ {
@@ -164,7 +131,7 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_test_case\r\nFROM\r\n\ttest_case t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'test_case' \r\n\t\t\tAND (t11.`PRINCIPAL_TYPE` = 'work_item' OR t11.`PRINCIPAL_TYPE` = 'bug')\r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND t.`IS_DELETED` = 0",
-    "topPos" : 208,
+    "topPos" : 216,
     "fillDstLogicParam" : true
   }, {
     "codeName" : "RAWSQLCALL5",
@@ -178,7 +145,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSQLCALL6"
+        "id" : "END2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -197,7 +164,205 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_ticket\r\nFROM\r\n\tticket t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'ticket' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND t.`IS_DELETED` = 0 \r\n\t\t\t",
-    "topPos" : 208,
+    "topPos" : 216,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 1370,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 276
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "leftPos" : 150,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取工作项当前版本",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "当前版本",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "name" : "OR",
+          "getPSDELogicLinkConds" : [ {
+            "groupOP" : "AND",
+            "logicType" : "GROUP",
+            "name" : "AND",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "ISNOTNULL",
+              "dstFieldName" : "srfversionid",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[srfversionid] 值不为空(NotNil)"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "srfversionid",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[srfversionid] 等于(=) cur_version_id",
+              "paramType" : "SRCENTITYFIELD",
+              "paramValue" : "cur_version_id",
+              "getSrcLogicParam" : {
+                "modelref" : true,
+                "id" : "work_item"
+              }
+            } ]
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfversionid",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfversionid] 值为空(Nil)"
+          } ]
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL8"
+      },
+      "name" : "历史版本",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "srfversionid",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[srfversionid] 值不为空(NotNil)"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "srfversionid",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[srfversionid] 不等于(<>) cur_version_id",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "cur_version_id",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "work_item"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "topPos" : 284
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : -50,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "name" : "Default[ID] ==> work_item[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 284
+  }, {
+    "codeName" : "RAWSQLCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -590,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "工作项关联子工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_children\r\nFROM\r\n\twork_item t \r\nWHERE\r\n\tt.pid = ? and t.is_deleted = 0",
+    "topPos" : 284,
     "fillDstLogicParam" : true
   }, {
     "codeName" : "RAWSQLCALL6",
@@ -205,13 +370,13 @@
       "modelref" : true,
       "id" : "Default"
     },
-    "leftPos" : 1293,
+    "leftPos" : -407,
     "logicNodeType" : "RAWSQLCALL",
     "name" : "工作项内交付物",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "END1"
+        "id" : "RAWSQLCALL7"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -230,7 +395,208 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "\tSELECT\r\n\tcount( t.id ) AS work_item_deliverable\r\nFROM\r\n\tattachment t \r\nWHERE\r\n    t.owner_id = ? and t.owner_subtype='DELIVERABLE' and t.owner_type = 'WORK_ITEM'",
-    "topPos" : 208,
+    "topPos" : 284,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL7",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -220,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "工作项版本",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL7"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "\tSELECT\r\n\tcount( t.id ) AS work_item_version\r\nFROM\r\n\t`version` t \r\nWHERE\r\n    t.owner_id = ? and  t.owner_type = 'WORK_ITEM'",
+    "topPos" : 284,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL8",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 493,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "工作项关联产品需求",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL9"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL8"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[srfversionid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfversionid",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_idea \r\nFROM\r\n\tidea t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+    "topPos" : 344,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL9",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 719,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "工作项关联工作项",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL10"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL9"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[srfversionid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfversionid",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_work_item \r\nFROM\r\n\twork_item t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+    "topPos" : 344,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL10",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 917,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "工作项关联测试用例",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL11"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL10"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[srfversionid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfversionid",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_test_case\r\nFROM\r\n\ttest_case t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+    "topPos" : 344,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL11",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 1102,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "工作项关联工单",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL11"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[srfversionid]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "srfversionid",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS work_item_re_ticket \r\nFROM\r\n\tticket t \r\nWHERE\r\n\tEXISTS (\r\n\tSELECT\r\n\t\t\t*\r\n\tFROM\r\n\t\tversion_data t12\r\n\tWHERE\r\n\t\t ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) \r\n\t\tAND t12.PARENT_VERSION_ID = ?\r\n\t\tAND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') \r\n\t) \r\n\tAND t.`IS_DELETED` = 0",
+    "topPos" : 344,
     "fillDstLogicParam" : true
   } ],
   "getPSDELogicParams" : [ {
@@ -242,6 +608,15 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
     },
     "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item",
+    "logicName" : "工作项",
+    "name" : "工作项",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
     "entityParam" : true
   } ],
   "getStartPSDELogicNode" : {

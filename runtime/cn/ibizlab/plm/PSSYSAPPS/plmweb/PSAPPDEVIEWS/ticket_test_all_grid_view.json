@@ -128,6 +128,7 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
+      "buttonStyle" : "STYLE3",
       "getCapPSLanguageRes" : {
         "lanResTag" : "TBB.TEXT.*.NEW"
       },
@@ -172,38 +173,58 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1",
+      "spanMode" : false
+    }, {
+      "buttonStyle" : "STYLE2",
       "itemType" : "ITEMS",
       "name" : "items1",
       "getPSDEToolbarItems" : [ {
         "caption" : "导入工单",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
+        "name" : "deuiaction4",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction2"
+          "id" : "toolbar_deuiaction4"
+        },
+        "getPSSysCss" : {
+          "cssName" : "kanban-title"
         },
         "getPSSysImage" : {
-          "glyph" : "xf093@FontAwesome",
-          "cssClass" : "fa fa-upload"
+          "glyph" : "xf0ee@FontAwesome",
+          "cssClass" : "fa fa-cloud-upload"
         },
         "getPSUIAction" : {
-          "caption" : "数据导入",
-          "codeName" : "Import",
-          "fullCodeName" : "Import",
-          "name" : "表格界面_数据导入栏",
-          "getPSSysImage" : {
-            "glyph" : "xf093@FontAwesome",
-            "cssClass" : "fa fa-upload"
+          "actionTarget" : "NONE",
+          "caption" : "导入",
+          "codeName" : "ticket_custom_import_data",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/ticket_app_data_upload_view.json",
+            "viewType" : "APPDATAUPLOADVIEW"
           },
-          "predefinedType" : "GRIDVIEW_IMPORTBAR",
+          "frontProcessType" : "DATAIMP",
+          "fullCodeName" : "ticket_ticket_custom_import_data",
+          "name" : "工单自定义导入",
+          "getPSAppDEDataImport" : {
+            "modelref" : true,
+            "id" : "import_ticket"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
+          },
           "timeout" : 60000,
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "Import",
-          "uIActionType" : "DEUIACTION"
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "ticket_custom_import_data",
+          "uIActionType" : "DEUIACTION",
+          "id" : "ticket_custom_import_data@ticket"
         },
         "tooltip" : "导入工单",
+        "uIActionTarget" : "NONE",
         "showCaption" : true,
         "showIcon" : true
       }, {
@@ -718,7 +739,7 @@
       "caption" : "状态",
       "codeName" : "state",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "state",
+      "dataItemName" : "state_text",
       "excelCaption" : "状态",
       "name" : "state",
       "noPrivDisplayMode" : 1,
@@ -855,6 +876,13 @@
       "getPSAppDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "state_text",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
       }
     }, {
       "dataType" : 25,
@@ -1007,8 +1035,12 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__ticket_state.json"
         },
+        "getPSEditorItems" : [ {
+          "name" : "state"
+        } ],
         "singleSelect" : true
       },
+      "valueItemName" : "state",
       "allowEmpty" : true,
       "needCodeListConfig" : true
     }, {

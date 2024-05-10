@@ -486,6 +486,7 @@
         },
         "predefinedType" : "GRIDVIEW_EDITACTION",
         "timeout" : 60000,
+        "tooltip" : "编辑",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.EDIT"
         },
@@ -564,8 +565,8 @@
         "id" : "toolbar_tbitem8"
       },
       "getPSSysImage" : {
-        "glyph" : "xf00d@FontAwesome",
-        "cssClass" : "fa fa-remove"
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
@@ -583,11 +584,12 @@
           "id" : "DELETE"
         },
         "getPSSysImage" : {
-          "glyph" : "xf00d@FontAwesome",
-          "cssClass" : "fa fa-remove"
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "predefinedType" : "GRIDVIEW_REMOVEACTION",
         "timeout" : 60000,
+        "tooltip" : "删除",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
         },
@@ -894,5 +896,64 @@
   "enableSearch" : true,
   "rowEditDefault" : false,
   "modelid" : "2afcd2ac75682122df84d64b4b46b795",
-  "modeltype" : "PSAPPDEVIEW"
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "work_items",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "work_item",
+    "minorDEName" : "WORK_ITEM",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "name" : "DER1N_WORK_ITEM_PROJECT_PROJECT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "work_item",
+    "majorDEName" : "WORK_ITEM",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "工作项-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "work_item",
+    "majorDEName" : "WORK_ITEM",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "工作项-关联",
+    "rSMode" : 2
+  } ] ]
 }

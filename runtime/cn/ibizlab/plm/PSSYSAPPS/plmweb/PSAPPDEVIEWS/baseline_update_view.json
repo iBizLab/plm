@@ -6,7 +6,7 @@
   "caption" : "编辑基线",
   "codeName" : "baseline_update_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_update_view.json",
-  "height" : 520,
+  "height" : 580,
   "name" : "baselineupdate_view",
   "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
@@ -228,8 +228,12 @@
         "codeName" : "name"
       }
     }, {
-      "id" : "owner_parent_name",
-      "dataType" : 25
+      "id" : "owner_id",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "OWNER_ID",
+        "codeName" : "owner_id"
+      }
     }, {
       "id" : "assignee_name",
       "dataType" : 25,
@@ -258,14 +262,6 @@
       "getPSAppDEField" : {
         "name" : "ASSIGNEE_ID",
         "codeName" : "assignee_id"
-      }
-    }, {
-      "id" : "owner_id",
-      "hidden" : true,
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "OWNER_ID",
-        "codeName" : "owner_id"
       }
     }, {
       "id" : "owner_type",
@@ -325,25 +321,29 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
+          "allowEmpty" : false,
           "showCaption" : true
         }, {
           "caption" : "所属项目",
-          "codeName" : "owner_parent_name",
+          "codeName" : "owner_id",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
-          "enableCond" : 3,
+          "enableCond" : 0,
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "owner_parent_name",
+          "name" : "owner_id",
           "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "OWNER_ID",
+            "codeName" : "owner_id"
+          },
           "getPSDEFDGroupLogics" : [ {
             "groupOP" : "AND",
             "logicCat" : "ITEMENABLE",
             "logicType" : "GROUP",
-            "name" : "表单成员[owner_parent_name][表单项启用]逻辑",
+            "name" : "表单成员[owner_id][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "ISNULL",
               "dEFDName" : "id",
@@ -353,72 +353,12 @@
             "notMode" : false
           } ],
           "getPSEditor" : {
-            "editorParams" : {
-              "AC" : "TRUE",
-              "TRIGGER" : "TRUE",
-              "PICKUPVIEW" : "FALSE"
-            },
-            "editorType" : "PICKEREX_TRIGGER",
-            "name" : "owner_parent_name",
-            "getPSAppDEACMode" : {
+            "editorType" : "DROPDOWNLIST",
+            "name" : "owner_id",
+            "getPSAppCodeList" : {
               "modelref" : true,
-              "id" : "Default"
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__UsrCodeList0122047845.json"
             },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_normal"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-            },
-            "getPSEditorItems" : [ {
-              "name" : "owner_id"
-            } ],
-            "getPSUIActionGroup" : {
-              "codeName" : "Usr1221520658",
-              "name" : "自填模式行为组",
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-              },
-              "getPSUIActionGroupDetails" : [ {
-                "caption" : "项目配置",
-                "detailType" : "DEUIACTION",
-                "name" : "u3fee786",
-                "getPSUIAction" : {
-                  "actionTarget" : "NONE",
-                  "caption" : "项目配置",
-                  "codeName" : "open_global_setting",
-                  "getFrontPSAppView" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
-                    "viewType" : "DETREEEXPVIEW"
-                  },
-                  "frontProcessType" : "WIZARD",
-                  "fullCodeName" : "project_open_global_setting",
-                  "name" : "打开项目配置(全局)",
-                  "getPSAppDataEntity" : {
-                    "modelref" : true,
-                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-                  },
-                  "timeout" : 60000,
-                  "uIActionMode" : "FRONT",
-                  "uIActionTag" : "open_global_setting",
-                  "uIActionType" : "DEUIACTION",
-                  "id" : "open_global_setting@project"
-                },
-                "addSeparator" : false,
-                "showCaption" : true,
-                "showIcon" : true
-              } ],
-              "uniqueTag" : "project__Usr1221520658"
-            },
-            "valueItemName" : "owner_id",
-            "enableAC" : true,
-            "enablePickupView" : false,
-            "forceSelection" : true,
-            "showTrigger" : true,
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
@@ -426,8 +366,8 @@
             "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
-          "valueItemName" : "owner_id",
-          "allowEmpty" : true,
+          "allowEmpty" : false,
+          "needCodeListConfig" : true,
           "showCaption" : true
         }, {
           "caption" : "负责人",
@@ -595,33 +535,6 @@
           "getPSEditor" : {
             "editorType" : "HIDDEN",
             "name" : "assignee_id"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "hidden" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "所属数据标识",
-          "codeName" : "owner_id",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "owner_id",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "OWNER_ID",
-            "codeName" : "owner_id"
-          },
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "owner_id"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -799,7 +712,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "基线编辑视图",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEOPTVIEW",
@@ -808,5 +720,28 @@
   "enableDP" : true,
   "showDataInfoBar" : true,
   "modelid" : "338030e1d749f0ea95e5e809dcd98c4e",
-  "modeltype" : "PSAPPDEVIEW"
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PROJECT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ] ]
 }

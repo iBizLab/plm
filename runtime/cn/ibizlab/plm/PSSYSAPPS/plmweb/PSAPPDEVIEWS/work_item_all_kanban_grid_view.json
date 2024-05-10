@@ -140,6 +140,7 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
+      "buttonStyle" : "STYLE3",
       "caption" : "新建工作项",
       "itemType" : "ITEMS",
       "name" : "items1",
@@ -458,30 +459,39 @@
       "showCaption" : true,
       "showIcon" : true
     }, {
+      "itemType" : "SEPERATOR",
+      "name" : "seperator1",
+      "spanMode" : false
+    }, {
+      "buttonStyle" : "STYLE2",
       "itemType" : "ITEMS",
       "name" : "items2",
       "getPSDEToolbarItems" : [ {
         "caption" : "导入工作项",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
+        "name" : "deuiaction4",
         "noPrivDisplayMode" : 2,
         "getPSAppViewUIAction" : {
           "modelref" : true,
-          "id" : "toolbar_deuiaction2"
+          "id" : "toolbar_deuiaction4"
         },
         "getPSSysImage" : {
-          "glyph" : "xf093@FontAwesome",
-          "cssClass" : "fa fa-upload"
+          "glyph" : "xf0ee@FontAwesome",
+          "cssClass" : "fa fa-cloud-upload"
         },
         "getPSUIAction" : {
           "actionTarget" : "NONE",
-          "caption" : "看板工作项导入",
-          "codeName" : "import_work_item_kanban",
+          "caption" : "导入工作项",
+          "codeName" : "kanban_work_item_import_data",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/kan_ban_work_item_app_data_upload_view.json",
+            "viewType" : "APPDATAUPLOADVIEW"
+          },
           "frontProcessType" : "DATAIMP",
-          "fullCodeName" : "work_item_import_work_item_kanban",
-          "memo" : "看板类型项目的工作项导入",
-          "name" : "看板工作项导入",
+          "fullCodeName" : "work_item_kanban_work_item_import_data",
+          "name" : "kanban工作项导入",
           "getPSAppDEDataImport" : {
             "modelref" : true,
             "id" : "import_work_item_kanban"
@@ -490,17 +500,11 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
           },
-          "getPSSysImage" : {
-            "glyph" : "xf093@FontAwesome",
-            "cssClass" : "fa fa-upload"
-          },
-          "refreshMode" : 1,
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
-          "uIActionTag" : "import_work_item_kanban",
+          "uIActionTag" : "kanban_work_item_import_data",
           "uIActionType" : "DEUIACTION",
-          "reloadData" : true,
-          "id" : "import_work_item_kanban@work_item"
+          "id" : "kanban_work_item_import_data@work_item"
         },
         "tooltip" : "导入工作项",
         "uIActionTarget" : "NONE",
@@ -911,6 +915,10 @@
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction4"
         },
+        "getPSSysImage" : {
+          "glyph" : "xf073@FontAwesome",
+          "cssClass" : "fa fa-calendar"
+        },
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
           "caption" : "修改时间",
@@ -1089,6 +1097,10 @@
           "showCaption" : true,
           "showIcon" : true
         } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0ca@FontAwesome",
+          "cssClass" : "fa fa-list-ul"
+        },
         "tooltip" : "更多",
         "showCaption" : true,
         "showIcon" : true

@@ -2071,6 +2071,10 @@
     "importOrder" : 1000,
     "logicName" : "是否已删除",
     "name" : "IS_DELETED",
+    "getOnChangePSDEFLogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEFLOGICS/is_deleted_onchange.json"
+    },
     "getPSCodeList" : {
       "modelref" : true,
       "path" : "PSCODELISTS/YesNo.json"
@@ -2093,12 +2097,6 @@
       "name" : "IS_FAVORITE",
       "queryCodeExp" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` )",
       "standardColumnName" : "`IS_FAVORITE`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_IS_FAVORITE_EQ",
-      "name" : "N_IS_FAVORITE_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2158,7 +2156,6 @@
     } ],
     "codeName" : "is_favorite",
     "dEFType" : 2,
-    "dEMSFieldMode" : "STATE1",
     "dataType" : "TEXT",
     "formulaColumns" : "id",
     "formulaFormat" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=%1$s )",
@@ -3203,6 +3200,68 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "is_deleted_onchange",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEFLOGICS/is_deleted_onchange.json",
+    "logicName" : "是否删除变更附加逻辑",
+    "logicSubType" : "DEFIELD",
+    "memo" : "项目集删除或恢复时触发相应的通知消息",
+    "name" : "是否删除变更附加逻辑",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DENOTIFY1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DENOTIFY1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDENotify" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDENOTIFIES/project_set_remove_recover_notify.json"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DENOTIFY",
+      "name" : "项目集归档/恢复通知",
+      "topPos" : 340
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "recover_project_set",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDELOGICS/recover_project_set.json",
@@ -3472,51 +3531,6 @@
     "enableBackend" : true,
     "enableFront" : false
   } ],
-  "getAllPSDEMainStates" : [ {
-    "codeName" : "star",
-    "enterStateMode" : "ANY",
-    "logicName" : "已星标",
-    "mSTag" : "1",
-    "name" : "已星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "ADD_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "设置星标",
-        "name" : "ADD_FAVORITE"
-      }
-    } ],
-    "stateValue" : "1",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  }, {
-    "codeName" : "un_star",
-    "enterStateMode" : "ANY",
-    "logicName" : "未星标",
-    "mSTag" : "0",
-    "name" : "未星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "CANCEL_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "取消星标",
-        "name" : "CANCEL_FAVORITE"
-      }
-    } ],
-    "stateValue" : "0",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "portfolio_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -3752,20 +3766,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "是否星标",
-      "name" : "n_is_favorite_eq",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_IS_FAVORITE_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "IS_FAVORITE",
-        "codeName" : "is_favorite"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "logicName" : "项目集名称",
       "name" : "n_name_like",
       "getPSDEFSearchMode" : {
@@ -3798,13 +3798,30 @@
     "type" : "DEFILTER",
     "defaultMode" : true
   } ],
+  "getAllPSDENotifies" : [ {
+    "codeName" : "project_set_remove_recover_notify",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDENOTIFIES/project_set_remove_recover_notify.json",
+    "msgType" : 65,
+    "name" : "项目集归档/恢复通知",
+    "getPSDENotifyTargets" : [ {
+      "name" : "当前项目集成员",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/cur_projecct_set_member.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    } ],
+    "getPSSysMsgQueue" : {
+      "modelref" : true,
+      "path" : "PSSYSMSGQUEUES/Default.json"
+    },
+    "getPSSysMsgTempl" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSSYSMSGTEMPLS/project_set_remove_recover.json"
+    },
+    "taskMode" : 0
+  } ],
   "getAllPSDEOPPrivs" : [ {
-    "logicName" : "设置星标",
-    "name" : "ADD_FAVORITE"
-  }, {
-    "logicName" : "取消星标",
-    "name" : "CANCEL_FAVORITE"
-  }, {
     "logicName" : "建立",
     "name" : "CREATE"
   }, {
@@ -3982,6 +3999,17 @@
     "userDRAction" : "READ",
     "enableUserDR" : true,
     "systemReserved" : true
+  } ],
+  "getAllPSDEUtils" : [ {
+    "codeName" : "Usr0417764210",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio/PSDEUTILDES/Usr0417764210.json",
+    "name" : "实体通知设置",
+    "getUtilPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting.json"
+    },
+    "utilPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+    "utilType" : "NOTIFYSETTING"
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "mpick_up_view",
@@ -4172,10 +4200,6 @@
     "lanResTag" : "DE.LNAME.PORTFOLIO"
   },
   "logicName" : "文件夹",
-  "getMainStatePSDEFields" : [ {
-    "name" : "IS_FAVORITE",
-    "codeName" : "is_favorite"
-  } ],
   "getMajorPSDEField" : {
     "name" : "NAME",
     "codeName" : "name"

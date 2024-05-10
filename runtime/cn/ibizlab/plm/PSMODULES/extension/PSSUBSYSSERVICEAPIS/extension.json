@@ -302,26 +302,6 @@
     }, {
       "actionType" : "FETCH",
       "codeName" : "fetch_cur_user",
-      "methodType" : "FETCH",
-      "name" : "fetch_cur_user",
-      "getPSSubSysServiceAPIDE" : {
-        "modelref" : true,
-        "id" : "system_extension_notify_setting"
-      },
-      "getPSSubSysServiceAPIMethodInput" : {
-        "name" : "输入对象",
-        "type" : "UNKNOWN"
-      },
-      "getPSSubSysServiceAPIMethodReturn" : {
-        "name" : "返回对象",
-        "type" : "UNKNOWN"
-      },
-      "requestMethod" : "POST",
-      "requestParamType" : "ENTITY",
-      "returnValueType" : "PAGE"
-    }, {
-      "actionType" : "FETCH",
-      "codeName" : "fetch_cur_user",
       "keyField" : "ID",
       "methodType" : "FETCH",
       "name" : "CUR_USER",
@@ -419,6 +399,40 @@
     "major" : true
   } ],
   "getAllPSSubSysServiceAPIDTOs" : [ {
+    "codeName" : "notify_eventDTO",
+    "name" : "notify_eventDTO",
+    "getPSSubSysServiceAPIDTOFields" : [ {
+      "codeName" : "msg_type",
+      "name" : "msg_type",
+      "orderValue" : 120,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "group",
+      "name" : "group",
+      "orderValue" : 130,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "codeName" : "id",
+      "name" : "id",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE",
+      "allowEmpty" : false
+    }, {
+      "codeName" : "name",
+      "name" : "name",
+      "orderValue" : 1000,
+      "sourceType" : "DEMETHODDTOFIELD",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    } ],
+    "type" : "DEMETHODDTO"
+  }, {
     "codeName" : "system_extension_notify_settingDTO",
     "name" : "system_extension_notify_settingDTO",
     "getPSSubSysServiceAPIDTOFields" : [ {
@@ -494,6 +508,10 @@
       "codeName" : "setting_model",
       "name" : "setting_model",
       "orderValue" : 2900,
+      "getRefPSSubSysServiceAPIDTO" : {
+        "modelref" : true,
+        "id" : "notify_eventDTO"
+      },
       "sourceType" : "DEMETHODDTOFIELD",
       "type" : "DTOS"
     } ],
@@ -534,7 +552,9 @@
     } ],
     "type" : "DEMETHODDTO"
   } ],
-  "authMode" : "NONE",
+  "authClientId" : "aibizhi",
+  "authClientSecret" : "123456",
+  "authMode" : "PASSWORD",
   "codeName" : "extension",
   "dynaModelFilePath" : "PSMODULES/extension/PSSUBSYSSERVICEAPIS/extension.json",
   "name" : "extension",

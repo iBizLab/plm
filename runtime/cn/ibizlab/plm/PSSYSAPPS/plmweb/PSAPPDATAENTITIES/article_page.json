@@ -475,7 +475,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -509,7 +509,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -2646,17 +2646,6 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
-      "codeName" : "n_is_favorite_eq",
-      "logicName" : "是否星标",
-      "name" : "n_is_favorite_eq",
-      "getPSAppDEField" : {
-        "name" : "IS_FAVORITE",
-        "codeName" : "is_favorite"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "codeName" : "n_name_like",
       "logicName" : "主题",
       "name" : "n_name_like",
@@ -3217,7 +3206,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -3251,7 +3240,7 @@
     },
     "getPSDEOPPriv" : {
       "modelref" : true,
-      "id" : "NONE"
+      "id" : "UPDATE"
     },
     "getPSDEServiceAPIMethod" : {
       "modelref" : true,
@@ -4274,27 +4263,6 @@
     "reloadData" : true,
     "id" : "save_to_stencil@article_page"
   }, {
-    "actionTarget" : "NONE",
-    "caption" : "显示模板",
-    "codeName" : "show_stencil",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "article_page_show_stencil",
-    "name" : "显示模板",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "show_stencil"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "show_stencil",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "id" : "show_stencil@article_page"
-  }, {
     "actionTarget" : "SINGLEDATA",
     "caption" : "评论",
     "codeName" : "toolbar_model_show_view_toolbar_deuiaction2_click",
@@ -4736,50 +4704,6 @@
     "id" : "toolbar_tree_exp_view_node5_cm_deuiaction2_click@article_page"
   }, {
     "actionTarget" : "SINGLEDATA",
-    "caption" : "删除",
-    "codeName" : "toolbar_tree_exp_view_node6_cm_deuiaction1_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "article_page_toolbar_tree_exp_view_node6_cm_deuiaction1_click",
-    "name" : "删除",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "delete_page"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "toolbar_tree_exp_view_node6_cm_deuiaction1_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "toolbar_tree_exp_view_node6_cm_deuiaction1_click@article_page"
-  }, {
-    "actionTarget" : "SINGLEDATA",
-    "caption" : "重命名",
-    "codeName" : "toolbar_tree_exp_view_node6_cm_deuiaction2_click",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "article_page_toolbar_tree_exp_view_node6_cm_deuiaction2_click",
-    "name" : "重命名",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "edit_section_or_category"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "toolbar_tree_exp_view_node6_cm_deuiaction2_click",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "uILogicType" : "DELOGIC",
-    "id" : "toolbar_tree_exp_view_node6_cm_deuiaction2_click@article_page"
-  }, {
-    "actionTarget" : "SINGLEDATA",
     "caption" : "新建分组",
     "codeName" : "toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click",
     "frontProcessType" : "OTHER",
@@ -5030,13 +4954,13 @@
     "name" : "自动保存",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 380,
+      "leftPos" : 100,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "DEBUGPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -5047,6 +4971,28 @@
       } ],
       "topPos" : 330,
       "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 181,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 338
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 518,
@@ -5109,6 +5055,11 @@
       "topPos" : 338
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "param",
+      "logicName" : "参数",
+      "name" : "参数",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
@@ -5119,11 +5070,6 @@
       "logicName" : "表单",
       "name" : "表单",
       "ctrlParam" : true
-    }, {
-      "codeName" : "param",
-      "logicName" : "参数",
-      "name" : "参数",
-      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -6986,58 +6932,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_show_version_view.json",
     "viewType" : "DEEDITVIEW"
   } ],
-  "getAllPSDEMainStates" : [ {
-    "codeName" : "star",
-    "enterStateMode" : "ANY",
-    "logicName" : "已星标",
-    "mSTag" : "1",
-    "name" : "已星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "ADD_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "设置星标",
-        "name" : "ADD_FAVORITE"
-      }
-    } ],
-    "stateValue" : "1",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  }, {
-    "codeName" : "un_star",
-    "enterStateMode" : "ANY",
-    "logicName" : "未星标",
-    "mSTag" : "0",
-    "name" : "未星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "CANCEL_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "取消星标",
-        "name" : "CANCEL_FAVORITE"
-      }
-    } ],
-    "stateValue" : "0",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  } ],
   "getAllPSDEOPPrivs" : [ {
-    "logicName" : "设置星标",
-    "name" : "ADD_FAVORITE"
-  }, {
-    "logicName" : "取消星标",
-    "name" : "CANCEL_FAVORITE"
-  }, {
     "logicName" : "建立",
     "mapPSDEName" : "SPACE",
     "mapPSDEOPPrivName" : "SUBDATA",
@@ -7122,10 +7017,6 @@
     "lanResTag" : "DE.LNAME.PAGE"
   },
   "logicName" : "页面",
-  "getMainStatePSAppDEFields" : [ {
-    "name" : "IS_FAVORITE",
-    "codeName" : "is_favorite"
-  } ],
   "getMajorPSAppDEField" : {
     "name" : "NAME",
     "codeName" : "name"
@@ -7177,7 +7068,6 @@
   "storageMode" : 0,
   "sysAPITag" : "ServiceAPI",
   "defaultMode" : true,
-  "enableDEMainState" : true,
   "enableFilterActions" : true,
   "enableUICreate" : true,
   "enableUIModify" : true,
@@ -7193,6 +7083,7 @@
     },
     "uniqueTag" : "article_page__Usr0227832449",
     "getPSUIActionGroupDetails" : [ {
+      "caption" : "恢复",
       "detailType" : "DEUIACTION",
       "name" : "ue29c4e3",
       "getPSSysImage" : {
@@ -7200,7 +7091,7 @@
         "cssClass" : "fa fa-refresh"
       },
       "addSeparator" : false,
-      "showCaption" : false,
+      "showCaption" : true,
       "showIcon" : true,
       "getPSUIAction" : {
         "getPSAppDataEntity" : {

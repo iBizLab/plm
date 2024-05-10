@@ -186,6 +186,40 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "CUSTOM",
+    "codeName" : "delete_categories",
+    "methodType" : "DEACTION",
+    "name" : "delete_categories",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sprint_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEACTIONS/delete_categories.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "NONE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "delete_categories"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/delete_categories",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
     "codeName" : "end_sprint",
     "methodType" : "DEACTION",
     "name" : "end_sprint",
@@ -1744,6 +1778,40 @@
     "noServiceCodeName" : true
   }, {
     "actionMode" : "CUSTOM",
+    "codeName" : "delete_categories",
+    "methodType" : "DEACTION",
+    "name" : "delete_categories",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "sprint_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/sprint/PSDEACTIONS/delete_categories.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "NONE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "delete_categories"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/delete_categories",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
     "codeName" : "end_sprint",
     "methodType" : "DEACTION",
     "name" : "end_sprint",
@@ -2827,7 +2895,7 @@
     "name" : "编辑类别或分组",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 140,
+      "leftPos" : 220,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDEUILogicLinks" : [ {
@@ -2842,13 +2910,28 @@
           "id" : "Begin"
         }
       } ],
-      "topPos" : 200,
+      "topPos" : 201,
       "parallelOutput" : true
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "updateTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 660,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "树节点更新",
+      "topPos" : 209
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 404,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
+      "name" : "获取类别ID",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2877,32 +2960,17 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "treeexpbar_tree"
-      },
-      "invokeMethod" : "updateTreeNode",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "node_param"
-      },
-      "leftPos" : 660,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "treeexpbar_tree",
-      "logicName" : "树部件",
-      "name" : "树部件",
-      "ctrlParam" : true
-    }, {
       "codeName" : "node_param",
       "logicName" : "节点参数",
       "name" : "节点参数",
       "entityParam" : true
+    }, {
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2940,6 +3008,21 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "invokeMethod" : "removeTreeNode",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "node_param"
+      },
+      "leftPos" : 990,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "树节点删除方法",
+      "topPos" : 540
+    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 390,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -2947,7 +3030,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
+          "id" : "DEBUGPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2969,29 +3052,122 @@
           "id" : "Default"
         },
         "srcValueType" : "SRCDLPARAM"
+      }, {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "node_data"
+        },
+        "name" : "Default[_deData] ==> node_data",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "_deData",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
         "modelref" : true,
         "id" : "treeexpbar_tree"
       },
-      "invokeMethod" : "removeTreeNode",
-      "getInvokeParam" : {
+      "leftPos" : 390,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "删除类别",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_nodeId",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_nodeId] 等于(=) node_2",
+            "paramValue" : "node_2",
+            "value" : "node_2"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      }, {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getPSDEUILogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "getPSDEUILogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "_nodeId",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[_nodeId] 等于(=) node_1",
+            "paramValue" : "node_1",
+            "value" : "node_1"
+          } ]
+        },
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 438
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
         "modelref" : true,
-        "id" : "node_param"
+        "id" : "delete_categories"
       },
-      "leftPos" : 640,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 208
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "node_data"
+      },
+      "leftPos" : 390,
+      "logicNodeType" : "DEACTION",
+      "name" : "删除计划的相应类别",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "topPos" : 630
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "treeexpbar_tree",
-      "logicName" : "树部件",
-      "name" : "树部件",
-      "ctrlParam" : true
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -3004,6 +3180,16 @@
       "name" : "节点参数",
       "stdDataType" : 25,
       "simpleParam" : true
+    }, {
+      "codeName" : "treeexpbar_tree",
+      "logicName" : "树部件",
+      "name" : "树部件",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "node_data",
+      "logicName" : "节点数据",
+      "name" : "节点数据",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

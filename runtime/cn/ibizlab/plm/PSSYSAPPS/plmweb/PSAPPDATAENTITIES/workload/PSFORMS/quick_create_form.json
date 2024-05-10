@@ -80,9 +80,9 @@
     "codeName" : "duration_updateform",
     "name" : "时长表单项更新",
     "getPSDEFIUpdateDetails" : [ {
-      "name" : "remaining_workload"
-    }, {
       "name" : "workload_schedule"
+    }, {
+      "name" : "remaining_workload"
     } ],
     "scriptCode" : "var form_data = view.layoutPanel.panelItems.form.control.data;\r\nvar remaining_workload = form_data.remaining_workload;\r\nvar actual_workload = form_data.actual_workload;\r\nvar estimated_workload = form_data.estimated_workload;\r\nvar duration_workload = form_data.duration;\r\nvar duration = 0;\r\nif(duration_workload){\r\n\tduration = Number(duration_workload);\r\n}\r\n// 已登记的实际工时\r\nvar actual = 0; \r\nif(actual_workload){\r\n\tactual = Number(actual_workload);\r\n}\r\nvar estimated = 0; // 预估工时\r\nvar remaining = 0; // 预估工时\r\nif(estimated_workload){\r\n\testimated = Number(estimated_workload);\r\n\t// 重置剩余工时\r\n\tremaining = estimated - duration - actual;\r\n\tif(remaining <= 0){\r\n\t\tremaining = 0;\r\n\t}\r\n\tform_data.remaining_workload = remaining;\r\n}\r\n \r\n// 重置工时进度\r\nif((actual + duration + remaining) != 0){\r\n\tvar schedule = (((actual + duration) / (actual + remaining + duration)) * 100).toFixed(1);\r\n\tform_data.workload_schedule = schedule;\r\n}",
     "customCode" : true
@@ -480,9 +480,10 @@
         "getPSEditor" : {
           "editorParams" : {
             "AC" : "TRUE",
-            "PICKUPVIEW" : "TRUE"
+            "TRIGGER" : "TRUE",
+            "PICKUPVIEW" : "FALSE"
           },
-          "editorType" : "PICKER",
+          "editorType" : "PICKEREX_TRIGGER",
           "handlerType" : "PickupText",
           "name" : "type_name",
           "getPSAppDEACMode" : {
@@ -500,14 +501,9 @@
           "getPSEditorItems" : [ {
             "name" : "type_id"
           } ],
-          "getPickupPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_pick_up_view.json",
-            "viewType" : "DEPICKUPVIEW"
-          },
           "valueItemName" : "type_id",
           "enableAC" : true,
-          "enablePickupView" : true,
+          "enablePickupView" : false,
           "forceSelection" : true,
           "showTrigger" : true,
           "singleSelect" : true

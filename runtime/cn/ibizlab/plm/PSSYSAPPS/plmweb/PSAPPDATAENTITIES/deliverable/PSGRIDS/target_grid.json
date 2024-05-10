@@ -20,11 +20,26 @@
     }
   },
   "groupMode" : "NONE",
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "交付目标_表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "grid",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "logic",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "calc_column_action_state"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+    }
+  } ],
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
@@ -291,8 +306,8 @@
     "dataType" : 25,
     "name" : "srfmajortext",
     "getPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
+      "name" : "TITLE",
+      "codeName" : "title"
     }
   }, {
     "dataType" : 25,

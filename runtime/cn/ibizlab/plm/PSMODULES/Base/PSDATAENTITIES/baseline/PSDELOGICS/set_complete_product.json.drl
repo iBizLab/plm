@@ -1,0 +1,184 @@
+package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.baseline baselineset_complete_productdefault;
+                global cn.ibizlab.plm.core.base.domain.relation baselineset_complete_productfor_temp_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea baselineset_complete_productidea;
+                global cn.ibizlab.plm.core.base.domain.relation baselineset_complete_productrelation_filter;
+                global cn.ibizlab.plm.core.base.domain.relation baselineset_complete_productrelation_page;
+                global cn.ibizlab.plm.core.base.domain.version baselineset_complete_productversion;
+                    global cn.ibizlab.plm.core.base.service.IbaselineService baselineservice;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.base.service.IbaselineService iBzSysBaselineDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "baselineset_complete_productbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设立完成状态]
+            rule "prepareparam1"
+            ruleflow-group "baselineset_complete_productprepareparam1"
+            when
+            then
+                            baselineset_complete_productdefault.set("status","2");
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设立完成]
+            rule "deaction1"
+            ruleflow-group "baselineset_complete_productdeaction1"
+            when
+            then
+                        baselineservice.update(baselineset_complete_productdefault);
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备过滤器参数]
+            rule "prepareparam2"
+            ruleflow-group "baselineset_complete_productprepareparam2"
+            when
+            then
+                            baselineset_complete_productrelation_filter.set("n_principal_id_eq",baselineset_complete_productdefault.get("id"));
+                            baselineset_complete_productrelation_filter.set("size","10000");
+                            baselineset_complete_productrelation_filter.set("n_principal_type_eq","baseline");
+                            baselineset_complete_productrelation_filter.set("n_target_type_eq","idea");
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取基线下关联的产品需求]
+            rule "dedataset1"
+            ruleflow-group "baselineset_complete_productdedataset1"
+            when
+            then
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "baselineset_complete_productloopsubcall1"
+            when
+            then
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam1"
+            ruleflow-group "baselineset_complete_productresetparam1"
+            when
+            then
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam2"
+            ruleflow-group "baselineset_complete_productresetparam2"
+            when
+            then
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "baselineset_complete_productprepareparam3"
+            when
+            then
+                            baselineset_complete_productidea.set("id",baselineset_complete_productfor_temp_obj.get("targetid"));
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品需求]
+            rule "deaction2"
+            ruleflow-group "baselineset_complete_productdeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(baselineset_complete_productidea.getId()),baselineset_complete_productidea);
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充版本属性]
+            rule "prepareparam4"
+            ruleflow-group "baselineset_complete_productprepareparam4"
+            when
+            then
+                            baselineset_complete_productversion.set("ownerid",baselineset_complete_productfor_temp_obj.get("targetid"));
+                            baselineset_complete_productversion.set("ownertype","WORK_ITEM");
+                            baselineset_complete_productversion.set("name","设立基线创建版本");
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建新版本]
+            rule "deaction3"
+            ruleflow-group "baselineset_complete_productdeaction3"
+            when
+            then
+                        versionservice.commit(baselineset_complete_productversion);
+                        update(baselineset_complete_productdefault);//更新fact中变量值
+                        update(baselineset_complete_productfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_productidea);//更新fact中变量值
+                        update(baselineset_complete_productrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_productrelation_page);//更新fact中变量值
+                        update(baselineset_complete_productversion);//更新fact中变量值
+            end

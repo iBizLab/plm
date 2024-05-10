@@ -184,6 +184,7 @@
         },
         "predefinedType" : "GRIDVIEW_EDITACTION",
         "timeout" : 60000,
+        "tooltip" : "编辑",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.EDIT"
         },
@@ -262,8 +263,8 @@
         "id" : "toolbar_tbitem8"
       },
       "getPSSysImage" : {
-        "glyph" : "xf00d@FontAwesome",
-        "cssClass" : "fa fa-remove"
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
@@ -281,11 +282,12 @@
           "id" : "DELETE"
         },
         "getPSSysImage" : {
-          "glyph" : "xf00d@FontAwesome",
-          "cssClass" : "fa fa-remove"
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "predefinedType" : "GRIDVIEW_REMOVEACTION",
         "timeout" : 60000,
+        "tooltip" : "删除",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
         },
@@ -550,6 +552,7 @@
       }
     },
     "groupMode" : "NONE",
+    "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "项目集表格",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -637,6 +640,20 @@
       "enableDEFieldPrivilege" : false,
       "id" : "数据表格处理器"
     },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "grid",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "calc_column_action_state",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "calc_column_action_state"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+      }
+    } ],
     "getPSControlParam" : {
       "autoLoad" : true,
       "showBusyIndicator" : true,
@@ -677,7 +694,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "设置星标",
             "codeName" : "add_favorite",
-            "dataAccessAction" : "ADD_FAVORITE",
             "fullCodeName" : "portfolio_add_favorite",
             "name" : "设置星标",
             "getPSAppDEMethod" : {
@@ -686,15 +702,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "ADD_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -721,7 +733,7 @@
           "showCaption" : false,
           "showIcon" : true
         }, {
-          "actionLevel" : 200,
+          "actionLevel" : 250,
           "detailType" : "DEUIACTION",
           "name" : "u1e9e5c0",
           "getPSSysImage" : {
@@ -731,7 +743,6 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "取消星标",
             "codeName" : "cancel_favorite",
-            "dataAccessAction" : "CANCEL_FAVORITE",
             "fullCodeName" : "portfolio_cancel_favorite",
             "name" : "取消星标",
             "getPSAppDEMethod" : {
@@ -740,15 +751,11 @@
             },
             "getPSAppDEUILogic" : {
               "modelref" : true,
-              "id" : "refresh_current_grid"
+              "id" : "notify_refresh"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
-            },
-            "getPSDEOPPriv" : {
-              "modelref" : true,
-              "id" : "CANCEL_FAVORITE"
             },
             "getPSNavigateParams" : [ {
               "key" : "owner_id",
@@ -1112,9 +1119,6 @@
         "name" : "NAME",
         "codeName" : "name"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",

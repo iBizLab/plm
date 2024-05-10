@@ -20,11 +20,26 @@
     }
   },
   "groupMode" : "NONE",
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "子工作项表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "grid",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "logic",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "relation_child_grid_action"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+    }
+  } ],
   "getPSDEDataImport" : {
     "modelref" : true,
     "id" : "import_work_item_waterfall"

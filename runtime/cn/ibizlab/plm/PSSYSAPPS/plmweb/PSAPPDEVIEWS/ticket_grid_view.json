@@ -551,7 +551,7 @@
       "caption" : "状态",
       "codeName" : "state",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "state",
+      "dataItemName" : "state_text",
       "excelCaption" : "状态",
       "name" : "state",
       "noPrivDisplayMode" : 1,
@@ -688,6 +688,13 @@
       "getPSAppDEField" : {
         "name" : "TITLE",
         "codeName" : "title"
+      }
+    }, {
+      "dataType" : 25,
+      "name" : "state_text",
+      "getPSAppDEField" : {
+        "name" : "STATE",
+        "codeName" : "state"
       }
     }, {
       "dataType" : 25,
@@ -840,8 +847,12 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__ticket_state.json"
         },
+        "getPSEditorItems" : [ {
+          "name" : "state"
+        } ],
         "singleSelect" : true
       },
+      "valueItemName" : "state",
       "allowEmpty" : true,
       "needCodeListConfig" : true
     }, {
@@ -1487,6 +1498,7 @@
         },
         "predefinedType" : "GRIDVIEW_EDITACTION",
         "timeout" : 60000,
+        "tooltip" : "编辑",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.EDIT"
         },
@@ -1565,8 +1577,8 @@
         "id" : "toolbar_tbitem8"
       },
       "getPSSysImage" : {
-        "glyph" : "xf00d@FontAwesome",
-        "cssClass" : "fa fa-remove"
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
@@ -1584,11 +1596,12 @@
           "id" : "DELETE"
         },
         "getPSSysImage" : {
-          "glyph" : "xf00d@FontAwesome",
-          "cssClass" : "fa fa-remove"
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "predefinedType" : "GRIDVIEW_REMOVEACTION",
         "timeout" : 60000,
+        "tooltip" : "删除",
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
         },

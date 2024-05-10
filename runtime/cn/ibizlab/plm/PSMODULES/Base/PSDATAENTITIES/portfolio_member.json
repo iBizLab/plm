@@ -194,6 +194,56 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "change_role",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDEACTIONS/change_role.json",
+    "logicName" : "变更角色",
+    "name" : "change_role",
+    "getPSDEActionInput" : {
+      "name" : "Change_roleInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "portfolio_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Change_roleResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDELOGICS/change_role.json"
+    },
+    "enableFront" : false
+  }, {
+    "actionHolder" : 2,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDEACTIONS/nothing.json",
+    "logicName" : "无操作",
+    "name" : "nothing",
+    "getPSDEActionInput" : {
+      "name" : "NothingInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "portfolio_member_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDELOGICS/nothing.json"
+    },
+    "enableBackend" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -310,6 +360,66 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDEDATAQUERIES/cur_project_set/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_project_set",
+    "logicName" : "当前项目集下成员",
+    "name" : "cur_project_set",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "PORTFOLIO_MEMBER",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "NOTEQ",
+          "condType" : "SINGLE",
+          "condValue" : "srfpersonid",
+          "fieldName" : "USER_ID",
+          "name" : "(USER_ID) 不等于(<>) 用户上下文 srfpersonid",
+          "getPSDEField" : {
+            "name" : "USER_ID",
+            "codeName" : "user_id"
+          },
+          "getPSVARTypeId" : "SESSIONCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "id",
+          "fieldName" : "PORTFOLIO_ID",
+          "name" : "(PORTFOLIO_ID) 等于(=) 数据上下文 id",
+          "getPSDEField" : {
+            "name" : "PORTFOLIO_ID",
+            "codeName" : "portfolio_id"
+          },
+          "getPSVARTypeId" : "DATACONTEXT"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_project_setInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "portfolio_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_project_setResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "portfolio_member_dto"
+      },
+      "type" : "DTOS"
+    }
   } ],
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
@@ -340,6 +450,32 @@
       "type" : "PAGE"
     },
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_project_set",
+    "logicName" : "当前项目集下成员",
+    "name" : "cur_project_set",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_project_set"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_project_setInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "portfolio_member_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_project_setResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "portfolio_member_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   } ],
@@ -1486,6 +1622,200 @@
     "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "change_role",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDELOGICS/change_role.json",
+    "logicName" : "变更角色",
+    "memo" : "批量设置角色身份（role_id）",
+    "name" : "变更角色",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : -50,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 230
+    }, {
+      "codeName" : "BINDPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "BINDPARAM",
+      "name" : "获取传递的参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "BINDPARAM1"
+        }
+      } ],
+      "srcFieldName" : "srfactionparam",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 403
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 180,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "获取传递的状态",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ROLE_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "for_temp_obj[ROLE_ID] ==> Default[ROLE_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ROLE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_temp_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 562
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member.json"
+      },
+      "leftPos" : 396,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更状态",
+      "topPos" : 562
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "leftPos" : -90,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环ID列表进行操作",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "srfactionparam"
+      },
+      "topPos" : 562
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "for_temp_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "srfactionparam",
+      "logicName" : "选择数据对象",
+      "name" : "选择数据对象",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member.json"
+      },
+      "entityListParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDELOGICS/nothing.json",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  }, {
     "codeName" : "remove_project_set_member_notify",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDELOGICS/remove_project_set_member_notify.json",
@@ -1891,7 +2221,7 @@
     "codeName" : "create_member_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDENOTIFIES/create_member_notify.json",
     "msgType" : 65,
-    "name" : "加入成员通知",
+    "name" : "项目集加入成员通知",
     "getPSDENotifyTargets" : [ {
       "name" : "选择对象",
       "getTargetPSDEField" : {
@@ -1913,7 +2243,7 @@
     "codeName" : "remove_member_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDENOTIFIES/remove_member_notify.json",
     "msgType" : 65,
-    "name" : "移除成员通知",
+    "name" : "项目集移除成员通知",
     "getPSDENotifyTargets" : [ {
       "name" : "选择对象",
       "getTargetPSDEField" : {
@@ -2001,6 +2331,17 @@
     "logicName" : "更新",
     "name" : "UPDATE"
   } ],
+  "getAllPSDEUtils" : [ {
+    "codeName" : "Usr0417764210",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/portfolio_member/PSDEUTILDES/Usr0417764210.json",
+    "name" : "实体通知设置",
+    "getUtilPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting.json"
+    },
+    "utilPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+    "utilType" : "NOTIFYSETTING"
+  } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "EditView",
     "logicName" : "文件夹成员实体编辑视图",
@@ -2027,6 +2368,12 @@
     "modelTag" : "MDATAVIEW",
     "name" : "文件夹成员实体表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "role_edit_view",
+    "logicName" : "项目集成员实体选项操作视图（设置角色）",
+    "name" : "项目集成员实体选项操作视图（设置角色）",
+    "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "EditView2",
@@ -2059,6 +2406,13 @@
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "role_edit_view_Form",
+    "logicName" : "项目集成员实体选项操作视图（设置角色）_表单",
+    "modelTag2" : "0",
+    "name" : "项目集成员实体选项操作视图（设置角色）_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   } ],

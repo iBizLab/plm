@@ -12,7 +12,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEDATASET1"
+        "id" : "PREPAREPARAM5"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -20,8 +20,46 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 290,
+    "topPos" : 150,
     "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 331,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置过滤分页",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "notify_setting_filter"
+      },
+      "name" : "直接值[1000] ==> notify_setting_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1000",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "size",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "notify_filter"
+      },
+      "name" : "直接值[1000] ==> notify_filter[size]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1000",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 273
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -168,7 +206,7 @@
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 820,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "将通知事件集填充",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -268,6 +306,20 @@
       "name" : "notify[PSDENOTIFYNAME] ==> notify_event[NAME]",
       "paramAction" : "SETPARAMVALUE",
       "srcFieldName" : "PSDENOTIFYNAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "notify"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "GROUP",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "notify_event"
+      },
+      "name" : "notify[NOTIFYTAG2] ==> notify_event[GROUP]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NOTIFYTAG2",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "notify"

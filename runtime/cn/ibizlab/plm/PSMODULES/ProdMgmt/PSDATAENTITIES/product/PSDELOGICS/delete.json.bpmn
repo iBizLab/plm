@@ -17,6 +17,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productdeleteprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置删除状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productdeletedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新产品的删除标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productdeleterawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="删除最近访问"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productdeleterawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="删除产品工单类型"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productdeleteend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -26,7 +27,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_rawsqlcall1" sourceRef="deaction1" targetRef="rawsqlcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_end1" sourceRef="rawsqlcall2" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

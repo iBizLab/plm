@@ -197,6 +197,14 @@
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "board_New",
           "name" : "新建看板",
+          "getNextPSUIAction" : {
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+            },
+            "modelref" : true,
+            "id" : "open_new_board@board"
+          },
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
@@ -216,6 +224,50 @@
           "uIActionType" : "DEUIACTION",
           "id" : "New@board"
         },
+        "addSeparator" : false,
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "看板管理",
+        "detailType" : "DEUIACTION",
+        "name" : "u8a50616",
+        "getPSSysImage" : {
+          "glyph" : "xf185@FontAwesome",
+          "cssClass" : "fa fa-sun-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "看板管理",
+          "codeName" : "board_management",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_grid_view.json",
+            "viewType" : "DEGRIDVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "board_board_management",
+          "name" : "看板管理",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+          },
+          "getPSNavigateContexts" : [ {
+            "key" : "BOARD",
+            "name" : "BOARD",
+            "rawValue" : true
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf185@FontAwesome",
+            "cssClass" : "fa fa-sun-o"
+          },
+          "timeout" : 60000,
+          "tooltip" : "看板管理",
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "board_management",
+          "uIActionType" : "DEUIACTION",
+          "id" : "board_management@board"
+        },
+        "tooltip" : "看板管理",
         "addSeparator" : false,
         "showCaption" : true,
         "showIcon" : true
@@ -505,6 +557,44 @@
     "noServiceCodeName" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
+    "codeName" : "fetch_cur_project_board",
+    "dataSetName" : "cur_project_board",
+    "dataSetTag" : "cur_project_board",
+    "methodType" : "FETCH",
+    "name" : "fetch_cur_project_board",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "board_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "board_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_project_board"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_cur_project_board"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_cur_project_board",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -1236,6 +1326,44 @@
     "needResourceKey" : true,
     "noServiceCodeName" : true
   }, {
+    "codeName" : "fetch_cur_project_board",
+    "dataSetName" : "cur_project_board",
+    "dataSetTag" : "cur_project_board",
+    "methodType" : "FETCH",
+    "name" : "fetch_cur_project_board",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "board_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "board_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "cur_project_board"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_cur_project_board"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_cur_project_board",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -1321,6 +1449,14 @@
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "board_New",
     "name" : "新建看板",
+    "getNextPSUIAction" : {
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+      },
+      "modelref" : true,
+      "id" : "open_new_board@board"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
@@ -1339,6 +1475,161 @@
     "uIActionTag" : "New",
     "uIActionType" : "DEUIACTION",
     "id" : "New@board"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "看板管理",
+    "codeName" : "board_management",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "board_board_management",
+    "name" : "看板管理",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "BOARD",
+      "name" : "BOARD",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf185@FontAwesome",
+      "cssClass" : "fa fa-sun-o"
+    },
+    "timeout" : 60000,
+    "tooltip" : "看板管理",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "board_management",
+    "uIActionType" : "DEUIACTION",
+    "id" : "board_management@board"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "新建看板",
+    "codeName" : "create_board",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "board_create_board",
+    "name" : "新建看板（看板表格）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "BOARD",
+      "name" : "BOARD",
+      "rawValue" : true
+    } ],
+    "getPSSysImage" : {
+      "glyph" : "xf067@FontAwesome",
+      "cssClass" : "fa fa-plus"
+    },
+    "refreshMode" : 1,
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "create_board",
+    "uIActionType" : "DEUIACTION",
+    "reloadData" : true,
+    "id" : "create_board@board"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "打开新建看板",
+    "codeName" : "open_new_board",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_kanban_view.json",
+      "viewType" : "DEKANBANVIEW"
+    },
+    "frontProcessType" : "TOP",
+    "fullCodeName" : "board_open_new_board",
+    "name" : "打开新建看板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+    },
+    "getPSNavigateContexts" : [ {
+      "key" : "BOARD",
+      "name" : "BOARD",
+      "value" : "id",
+      "rawValue" : false
+    } ],
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "open_new_board",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true,
+    "id" : "open_new_board@board"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "删除",
+    "codeName" : "remove",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_confirm_remove_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "fullCodeName" : "board_remove",
+    "name" : "删除",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "tooltip" : "删除",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "remove",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "remove@board"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "after_board_remove",
+    "defaultParamName" : "Default",
+    "logicName" : "看板删除后附加逻辑",
+    "memo" : "看板删除后附加逻辑：是否当前看板正在预览；删除后需切换",
+    "name" : "看板删除后附加逻辑",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
@@ -1356,6 +1647,14 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_quick_create_view.json",
     "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_confirm_remove_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_grid_view.json",
+    "viewType" : "DEGRIDVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
     "logicName" : "建立",
@@ -1497,6 +1796,34 @@
   "enableWFActions" : false,
   "major" : true,
   "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr0429187007",
+    "name" : "看板表格_操作列",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+    },
+    "uniqueTag" : "board__Usr0429187007",
+    "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "u199d781",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "tooltip" : "删除",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+        },
+        "modelref" : true,
+        "id" : "remove@board"
+      }
+    } ]
+  }, {
     "codeName" : "Usr1225361038",
     "name" : "自填模式_界面行为组",
     "getPSAppDataEntity" : {
@@ -1522,6 +1849,26 @@
         },
         "modelref" : true,
         "id" : "New@board"
+      }
+    }, {
+      "caption" : "看板管理",
+      "detailType" : "DEUIACTION",
+      "name" : "u8a50616",
+      "getPSSysImage" : {
+        "glyph" : "xf185@FontAwesome",
+        "cssClass" : "fa fa-sun-o"
+      },
+      "tooltip" : "看板管理",
+      "addSeparator" : false,
+      "showCaption" : true,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+        },
+        "modelref" : true,
+        "id" : "board_management@board"
       }
     } ]
   } ]

@@ -183,6 +183,35 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "methodType" : "DEACTION",
+    "name" : "nothing",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "nothing"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NothingInput",
+      "name" : "NothingInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_template_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NothingResult",
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case_template/PSDEACTIONS/nothing.json"
+    },
+    "builtinMethod" : false
+  }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
     "batchActionMode" : 1,
@@ -348,8 +377,7 @@
         "editorType" : "TEXTBOX",
         "name" : "[TITLE][标题]",
         "stringLength" : 500,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
@@ -361,7 +389,6 @@
         "name" : "[TITLE][标题]移动端默认",
         "stringLength" : 500,
         "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -1423,6 +1450,42 @@
     "stdDataType" : 25,
     "stringLength" : 200
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case_template.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "test_case_template_dto",
     "name" : "test_case_template_dto",
@@ -1436,8 +1499,7 @@
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
-      "type" : "SIMPLE",
-      "allowEmpty" : false
+      "type" : "SIMPLE"
     }, {
       "codeName" : "level",
       "logicName" : "重要程度",
@@ -2082,6 +2144,35 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "methodType" : "DEACTION",
+    "name" : "nothing",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "nothing"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NothingInput",
+      "name" : "NothingInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_template_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NothingResult",
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case_template/PSDEACTIONS/nothing.json"
+    },
+    "builtinMethod" : false
+  }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
     "batchActionMode" : 1,
@@ -2272,7 +2363,71 @@
     "name" : "FILTERUPDATE",
     "builtinMethod" : true
   } ],
+  "getAllPSAppDEUIActions" : [ {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "删除",
+    "codeName" : "template_delete",
+    "confirmMsg" : "确认删除选中模板吗？（无法恢复）",
+    "fullCodeName" : "test_case_template_template_delete",
+    "name" : "删除模板",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "remove"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf014@FontAwesome",
+      "cssClass" : "fa fa-trash-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "删除成功",
+    "timeout" : 60000,
+    "tooltip" : "删除模板",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "template_delete",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "template_delete@test_case_template"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "编辑",
+    "codeName" : "template_edit",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/stencil_model_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "test_case_template_template_edit",
+    "name" : "编辑模板",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf040@FontAwesome",
+      "cssClass" : "fa fa-pencil"
+    },
+    "timeout" : 60000,
+    "tooltip" : "编辑模板",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "template_edit",
+    "uIActionType" : "DEUIACTION",
+    "id" : "template_edit@test_case_template"
+  } ],
   "getAllPSAppViews" : [ {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_template_pickup_grid_view.json",
+    "viewType" : "DEPICKUPGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_template_choose_template_option_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_template_edit_view.json",
     "viewType" : "DEEDITVIEW"
@@ -2284,6 +2439,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_template_show_edit_view.json",
     "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_template_pickup_view.json",
+    "viewType" : "DEPICKUPVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_template_new_edit_view.json",
@@ -2378,6 +2537,29 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "getMinorPSAppDERSs" : [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_case_templates",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "test_case_template",
+    "minorDEName" : "TEST_CASE_TEMPLATE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+    },
+    "name" : "DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID",
+    "getParentPSAppDEField" : {
+      "name" : "TEST_LIBRARY_ID",
+      "codeName" : "test_library_id"
+    },
+    "rSMode" : 2
+  } ],
   "name" : "TEST_CASE_TEMPLATE",
   "getPSDEName" : "TEST_CASE_TEMPLATE",
   "getPSDEServiceAPI" : {
@@ -2404,5 +2586,55 @@
   "enableUIModify" : true,
   "enableUIRemove" : true,
   "enableWFActions" : false,
-  "major" : false
+  "major" : false,
+  "getAllPSAppDEUIActionGroups" : [ {
+    "codeName" : "Usr0415103295",
+    "name" : "表格界面行为组（删除、编辑）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+    },
+    "uniqueTag" : "test_case_template__Usr0415103295",
+    "getPSUIActionGroupDetails" : [ {
+      "actionLevel" : 200,
+      "detailType" : "DEUIACTION",
+      "name" : "u7e70a79",
+      "getPSSysImage" : {
+        "glyph" : "xf040@FontAwesome",
+        "cssClass" : "fa fa-pencil"
+      },
+      "tooltip" : "编辑模板",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+        },
+        "modelref" : true,
+        "id" : "template_edit@test_case_template"
+      }
+    }, {
+      "actionLevel" : 200,
+      "detailType" : "DEUIACTION",
+      "name" : "u6d1c7bc",
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "tooltip" : "删除模板",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case_template.json"
+        },
+        "modelref" : true,
+        "id" : "template_delete@test_case_template"
+      }
+    } ]
+  } ]
 }

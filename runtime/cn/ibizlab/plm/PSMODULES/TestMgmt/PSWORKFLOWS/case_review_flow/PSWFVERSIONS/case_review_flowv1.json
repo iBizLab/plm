@@ -1,0 +1,305 @@
+{
+  "codeName" : "case_review_flowv1",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSWORKFLOWS/case_review_flow/PSWFVERSIONS/case_review_flowv1.json",
+  "name" : "用例评审 v1",
+  "getPSWFLinks" : [ {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "START_01"
+    },
+    "name" : "route",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_01"
+    },
+    "wFLinkType" : "ROUTE"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_02"
+    },
+    "name" : "ROUTE1",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "END_01"
+    },
+    "wFLinkType" : "ROUTE"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_01"
+    },
+    "name" : "ROUTE",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "INTERACTIVE_01"
+    },
+    "wFLinkType" : "ROUTE"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "INTERACTIVE_01"
+    },
+    "logicName" : "废弃",
+    "name" : "IAACTION1",
+    "nextCondition" : "ANY",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_04"
+    },
+    "wFLinkType" : "IAACTION"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "INTERACTIVE_01"
+    },
+    "logicName" : "通过",
+    "name" : "通过",
+    "nextCondition" : "ANY",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_02"
+    },
+    "wFLinkType" : "IAACTION"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "INTERACTIVE_01"
+    },
+    "logicName" : "不通过",
+    "name" : "IAACTION",
+    "nextCondition" : "ANY",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_03"
+    },
+    "wFLinkType" : "IAACTION"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_04"
+    },
+    "name" : "ROUTE3",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "END_01"
+    },
+    "wFLinkType" : "ROUTE"
+  }, {
+    "getFromPSWFProcess" : {
+      "modelref" : true,
+      "id" : "PROCESS_03"
+    },
+    "name" : "ROUTE2",
+    "getToPSWFProcess" : {
+      "modelref" : true,
+      "id" : "END_01"
+    },
+    "wFLinkType" : "ROUTE"
+  } ],
+  "getPSWFProcesses" : [ {
+    "codeName" : "START_01",
+    "height" : 30,
+    "leftPos" : 460,
+    "logicName" : "开始事件",
+    "name" : "开始事件",
+    "getPSWFLinks" : [ {
+      "modelref" : true,
+      "id" : "route"
+    } ],
+    "timeout" : -1,
+    "topPos" : 140,
+    "wFProcessType" : "START",
+    "width" : 30,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false,
+    "startProcess" : true
+  }, {
+    "codeName" : "PROCESS_02",
+    "dEActionName" : "Update",
+    "height" : 80,
+    "leftPos" : 270,
+    "logicName" : "通过",
+    "name" : "通过",
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "getPSWFLinks" : [ {
+      "modelref" : true,
+      "id" : "ROUTE1"
+    } ],
+    "getPSWFProcessParams" : [ {
+      "dstField" : "state",
+      "name" : "[state] ===> [30]",
+      "srcValue" : "30"
+    } ],
+    "timeout" : -1,
+    "topPos" : 620,
+    "wFProcessType" : "PROCESS",
+    "width" : 100,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false
+  }, {
+    "codeName" : "PROCESS_01",
+    "dEActionName" : "Update",
+    "height" : 80,
+    "leftPos" : 430,
+    "logicName" : "进入评审中",
+    "name" : "进入评审中",
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "getPSWFLinks" : [ {
+      "modelref" : true,
+      "id" : "ROUTE"
+    } ],
+    "getPSWFProcessParams" : [ {
+      "dstField" : "SUBMITTED_AT",
+      "name" : "[SUBMITTED_AT] ===> [当前时间]()",
+      "srcValueType" : "CURTIME"
+    }, {
+      "dstField" : "SUBMITTER_ID",
+      "name" : "[SUBMITTER_ID] ===> [当前操作用户(编号)]()",
+      "srcValueType" : "OPERATOR"
+    }, {
+      "dstField" : "STATE",
+      "name" : "[STATE] ===> [20]",
+      "srcValue" : "20"
+    } ],
+    "timeout" : -1,
+    "topPos" : 260,
+    "wFProcessType" : "PROCESS",
+    "width" : 100,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false
+  }, {
+    "codeName" : "INTERACTIVE_01",
+    "formCodeName" : "main_view_form",
+    "formName" : "评审主视图_表单",
+    "height" : 80,
+    "leftPos" : 430,
+    "logicName" : "上级审批",
+    "msgType" : 0,
+    "multiInstMode" : "NONE",
+    "name" : "上级审批",
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "getPSWFLinks" : [ {
+      "modelref" : true,
+      "id" : "IAACTION1"
+    }, {
+      "modelref" : true,
+      "id" : "通过"
+    }, {
+      "modelref" : true,
+      "id" : "IAACTION"
+    } ],
+    "getPSWFProcessRoles" : [ {
+      "name" : "[当前数据属性]",
+      "uDField" : "CREATE_MAN",
+      "wFProcessRoleType" : "UDACTOR"
+    } ],
+    "timeout" : -1,
+    "topPos" : 380,
+    "wFProcessType" : "INTERACTIVE",
+    "wFStepValue" : "20",
+    "width" : 100,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false,
+    "sendInform" : false
+  }, {
+    "codeName" : "PROCESS_04",
+    "dEActionName" : "Update",
+    "height" : 80,
+    "leftPos" : 430,
+    "logicName" : "废弃",
+    "name" : "废弃",
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "getPSWFLinks" : [ {
+      "modelref" : true,
+      "id" : "ROUTE3"
+    } ],
+    "getPSWFProcessParams" : [ {
+      "dstField" : "state",
+      "name" : "[state] ===> [50]",
+      "srcValue" : "50"
+    } ],
+    "timeout" : -1,
+    "topPos" : 620,
+    "wFProcessType" : "PROCESS",
+    "width" : 100,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false
+  }, {
+    "codeName" : "END_01",
+    "height" : 30,
+    "leftPos" : 460,
+    "logicName" : "结束事件",
+    "name" : "结束事件",
+    "timeout" : -1,
+    "topPos" : 830,
+    "wFProcessType" : "END",
+    "width" : 30,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false,
+    "terminalProcess" : true
+  }, {
+    "codeName" : "PROCESS_03",
+    "dEActionName" : "Update",
+    "height" : 80,
+    "leftPos" : 590,
+    "logicName" : "不通过",
+    "name" : "不通过",
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Update.json"
+    },
+    "getPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "getPSWFLinks" : [ {
+      "modelref" : true,
+      "id" : "ROUTE2"
+    } ],
+    "getPSWFProcessParams" : [ {
+      "dstField" : "STATE",
+      "name" : "[STATE] ===> [40]",
+      "srcValue" : "40"
+    } ],
+    "timeout" : -1,
+    "topPos" : 620,
+    "wFProcessType" : "PROCESS",
+    "width" : 100,
+    "asynchronousProcess" : false,
+    "enableTimeout" : false
+  } ],
+  "getStartPSWFProcess" : {
+    "modelref" : true,
+    "id" : "START_01"
+  },
+  "wFCodeName" : "case_review_flow",
+  "wFVersion" : 1,
+  "hasMobStartView" : false,
+  "hasStartView" : false,
+  "valid" : true
+}

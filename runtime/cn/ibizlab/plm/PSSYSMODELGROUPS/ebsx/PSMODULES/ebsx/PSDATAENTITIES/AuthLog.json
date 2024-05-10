@@ -285,6 +285,32 @@
     "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/AuthLog/PSDEDATARELATIONS/Default.json"
   } ],
   "getAllPSDEDataSets" : [ {
+    "codeName" : "CurUser",
+    "logicName" : "当前用户",
+    "name" : "CurUser",
+    "getPSDEDataSetInput" : {
+      "name" : "CurUserInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "AuthLogFilterDTO"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "CurUserResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "AuthLogDTO"
+      },
+      "type" : "PAGE"
+    },
+    "getPSSubSysServiceAPIDEMethod" : {
+      "modelref" : true,
+      "id" : "FetchCurUser"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "Default",
     "logicName" : "数据集",
     "name" : "DEFAULT",
@@ -473,6 +499,75 @@
     "valueFormat" : "%1$s",
     "enableQuickSearch" : true,
     "majorDEField" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "USERID",
+      "dBType" : "MYSQL5",
+      "name" : "USERID",
+      "queryCodeExp" : "t1.`USERID`",
+      "standardColumnName" : "`USERID`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[USERID][用户全局标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[USERID][用户全局标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[USERID][用户全局标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[USERID][用户全局标识]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "USERID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "UserId",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "用户全局标识",
+    "name" : "USERID",
+    "serviceCodeName" : "UserId",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "PERSONNAME",
@@ -952,11 +1047,80 @@
     "name" : "AUTHCODE",
     "getPSCodeList" : {
       "modelref" : true,
-      "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSCODELISTS/AuthCode.json"
+      "path" : "PSMODULES/Base/PSCODELISTS/AuthCode.json"
     },
     "serviceCodeName" : "AuthCode",
     "stdDataType" : 25,
     "stringLength" : 15,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "AUTHAGENT",
+      "dBType" : "MYSQL5",
+      "name" : "AUTHAGENT",
+      "queryCodeExp" : "t1.`AUTHAGENT`",
+      "standardColumnName" : "`AUTHAGENT`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[AUTHAGENT][认证方式]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[AUTHAGENT][认证方式]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[AUTHAGENT][认证方式]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[AUTHAGENT][认证方式]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "AUTHAGENT",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "AuthAgent",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "认证方式",
+    "name" : "AUTHAGENT",
+    "serviceCodeName" : "AuthAgent",
+    "stdDataType" : 25,
+    "stringLength" : 100,
     "valueFormat" : "%1$s"
   } ],
   "getAllPSDEMethodDTOs" : [ {
@@ -973,6 +1137,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE",
       "allowEmpty" : false
+    }, {
+      "logicName" : "用户全局标识",
+      "name" : "UserId",
+      "getPSDEField" : {
+        "name" : "USERID",
+        "codeName" : "UserId"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
     }, {
       "logicName" : "用户全局名",
       "name" : "UserName",
@@ -1046,6 +1221,17 @@
       "getPSDEField" : {
         "name" : "USERAGENT",
         "codeName" : "UserAgent"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "认证方式",
+      "name" : "AuthAgent",
+      "getPSDEField" : {
+        "name" : "AUTHAGENT",
+        "codeName" : "AuthAgent"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1227,7 +1413,7 @@
   "name" : "SYS_AUTHLOG",
   "getPSSubSysServiceAPI" : {
     "modelref" : true,
-    "path" : "PSSUBSYSSERVICEAPIS/iBizRTClient.json"
+    "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSSUBSYSSERVICEAPIS/iBizRTClient.json"
   },
   "getPSSubSysServiceAPIDE" : {
     "modelref" : true,

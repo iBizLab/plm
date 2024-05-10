@@ -1,0 +1,54 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewsubmit_reviewdefault;
+        global cn.ibizlab.plm.util.client.IBZWFFeignClient wfClient;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewsubmit_reviewbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewsubmit_reviewend1"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "reviewsubmit_reviewdebugparam1"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[启动流程]
+            rule "startwf1"
+            ruleflow-group "reviewsubmit_reviewstartwf1"
+            when
+            then
+                    JSONObject activeData=(JSONObject) JSONObject.toJSON(reviewsubmit_reviewdefault);
+                    Object businessKey=reviewsubmit_reviewdefault.get("id");
+                    String appName="plmweb";
+                    if(StringUtils.isEmpty(appName))
+                    throw new BadRequestAlertException("无法获取流程应用名称，请检查[评审]实体是否已经添加到应用","StartWF","");
+                    if(ObjectUtils.isEmpty(businessKey))
+                    throw new BadRequestAlertException("启动流程失败，逻辑参数[default]中未包含实体业务主键","StartWF","");
+                    wfClient.wfstart("iBizPLM",appName,"reviews",String.valueOf(businessKey),activeData);
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+            end

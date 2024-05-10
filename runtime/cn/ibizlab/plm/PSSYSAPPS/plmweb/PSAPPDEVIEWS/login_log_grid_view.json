@@ -201,7 +201,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_default"
+        "id" : "fetch_cur_user"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -212,8 +212,8 @@
     "logicName" : "主表格",
     "minorSortDir" : "DESC",
     "getMinorSortPSAppDEField" : {
-      "name" : "CREATE_TIME",
-      "codeName" : "create_time"
+      "name" : "AUTHTIME",
+      "codeName" : "auth_time"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -290,7 +290,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_default"
+          "id" : "fetch_cur_user"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -309,17 +309,18 @@
     "getPSDEGridColumns" : [ {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
-      "caption" : "登录方式",
-      "codeName" : "login_method",
+      "caption" : "登录时间",
+      "codeName" : "authtime",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "login_method",
-      "excelCaption" : "登录方式",
-      "name" : "login_method",
+      "dataItemName" : "authtime",
+      "excelCaption" : "登录时间",
+      "name" : "authtime",
       "noPrivDisplayMode" : 1,
       "getPSAppDEField" : {
-        "name" : "LOGIN_METHOD",
-        "codeName" : "login_method"
+        "name" : "AUTHTIME",
+        "codeName" : "auth_time"
       },
+      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
       "width" : 200,
       "widthUnit" : "PX",
       "enableSort" : true
@@ -337,7 +338,7 @@
         "name" : "IP",
         "codeName" : "ip"
       },
-      "width" : 300,
+      "width" : 200,
       "widthUnit" : "PX",
       "enableSort" : true
     }, {
@@ -359,32 +360,33 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "NONE",
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "DEF.LNAME.CREATE_TIME"
-      },
-      "caption" : "登录时间",
-      "codeName" : "create_time",
+      "cLConvertMode" : "FRONT",
+      "caption" : "认证结果",
+      "codeName" : "authcode",
       "columnType" : "DEFGRIDCOLUMN",
-      "dataItemName" : "create_time",
-      "excelCaption" : "登录时间",
-      "name" : "create_time",
+      "dataItemName" : "authcode",
+      "excelCaption" : "认证结果",
+      "name" : "authcode",
       "noPrivDisplayMode" : 1,
-      "getPSAppDEField" : {
-        "name" : "CREATE_TIME",
-        "codeName" : "create_time"
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__AuthCode.json"
       },
-      "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+      "getPSAppDEField" : {
+        "name" : "AUTHCODE",
+        "codeName" : "auth_code"
+      },
       "width" : 200,
       "widthUnit" : "PX",
       "enableSort" : true
     } ],
     "getPSDEGridDataItems" : [ {
-      "dataType" : 25,
-      "name" : "login_method",
+      "format" : "YYYY-MM-DD HH:mm:ss",
+      "dataType" : 5,
+      "name" : "authtime",
       "getPSAppDEField" : {
-        "name" : "LOGIN_METHOD",
-        "codeName" : "login_method"
+        "name" : "AUTHTIME",
+        "codeName" : "auth_time"
       }
     }, {
       "dataType" : 25,
@@ -401,12 +403,11 @@
         "codeName" : "user_agent"
       }
     }, {
-      "format" : "YYYY-MM-DD HH:mm:ss",
-      "dataType" : 5,
-      "name" : "create_time",
+      "dataType" : 25,
+      "name" : "authcode",
       "getPSAppDEField" : {
-        "name" : "CREATE_TIME",
-        "codeName" : "create_time"
+        "name" : "AUTHCODE",
+        "codeName" : "auth_code"
       }
     }, {
       "dataType" : 25,
@@ -525,7 +526,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "登录日志表格视图",
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.LOGIN_LOG.GRIDVIEW"

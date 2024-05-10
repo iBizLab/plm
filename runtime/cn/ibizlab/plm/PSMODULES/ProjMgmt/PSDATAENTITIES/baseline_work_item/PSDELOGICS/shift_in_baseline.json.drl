@@ -1,0 +1,157 @@
+package cn.ibizlab.plm.projmgmt.logic.baseline_work_itemlogic.shift_in_baseline;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.baseline_work_item baseline_work_itemshift_in_baselinedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item baseline_work_itemshift_in_baselinefor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation baseline_work_itemshift_in_baselinerelation;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item baseline_work_itemshift_in_baselinesrfactionparam;
+                global cn.ibizlab.plm.core.base.domain.version baseline_work_itemshift_in_baselineversion;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Ibaseline_work_itemService iBzSysBaseline_work_itemDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "baseline_work_itemshift_in_baselinebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "baseline_work_itemshift_in_baselineprepareparam2"
+            when
+            then
+                            baseline_work_itemshift_in_baselineversion.set("ownerid",baseline_work_itemshift_in_baselinefor_temp_obj.get("id"));
+                            baseline_work_itemshift_in_baselineversion.set("description","初始化创建");
+                            baseline_work_itemshift_in_baselineversion.set("ownertype","WORK_ITEM");
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修复v1版本]
+            rule "deaction2"
+            ruleflow-group "baseline_work_itemshift_in_baselinedeaction2"
+            when
+            then
+                        versionservice.fix_commit(baseline_work_itemshift_in_baselineversion);
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充关联目标版本标识]
+            rule "prepareparam3"
+            ruleflow-group "baseline_work_itemshift_in_baselineprepareparam3"
+            when
+            then
+                            baseline_work_itemshift_in_baselinerelation.set("targetversionid",baseline_work_itemshift_in_baselineversion.get("id"));
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "baseline_work_itemshift_in_baselinebindparam1"
+            when
+            then
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "baseline_work_itemshift_in_baselineloopsubcall1"
+            when
+            then
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam1"
+            ruleflow-group "baseline_work_itemshift_in_baselineresetparam1"
+            when
+            then
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam2"
+            ruleflow-group "baseline_work_itemshift_in_baselineresetparam2"
+            when
+            then
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充关联属性]
+            rule "prepareparam1"
+            ruleflow-group "baseline_work_itemshift_in_baselineprepareparam1"
+            when
+            then
+                            baseline_work_itemshift_in_baselinerelation.set("principalid",baseline_work_itemshift_in_baselinedefault.get("baseline_id"));
+                            baseline_work_itemshift_in_baselinerelation.set("targetversionid",baseline_work_itemshift_in_baselinefor_temp_obj.get("chooseversionid"));
+                            baseline_work_itemshift_in_baselinerelation.set("targetid",baseline_work_itemshift_in_baselinefor_temp_obj.get("id"));
+                            baseline_work_itemshift_in_baselinerelation.set("targettype","work_item");
+                            baseline_work_itemshift_in_baselinerelation.set("principaltype","baseline");
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立基线-工作项关联数据]
+            rule "deaction1"
+            ruleflow-group "baseline_work_itemshift_in_baselinedeaction1"
+            when
+            then
+                        relationservice.save(baseline_work_itemshift_in_baselinerelation);
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "baseline_work_itemshift_in_baselineend1"
+            when
+            then
+                        update(baseline_work_itemshift_in_baselinedefault);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinefor_temp_obj);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinerelation);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselinesrfactionparam);//更新fact中变量值
+                        update(baseline_work_itemshift_in_baselineversion);//更新fact中变量值
+            end

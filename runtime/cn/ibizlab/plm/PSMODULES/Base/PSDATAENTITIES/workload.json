@@ -2222,6 +2222,11 @@
       "standardColumnName" : "`REGISTER_DATE`"
     } ],
     "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_REGISTER_DATE_EQ",
+      "name" : "N_REGISTER_DATE_EQ",
+      "stdDataType" : 5,
+      "valueOP" : "EQ"
+    }, {
       "codeName" : "N_REGISTER_DATE_GTANDEQ",
       "name" : "N_REGISTER_DATE_GTANDEQ",
       "stdDataType" : 5,
@@ -2465,6 +2470,12 @@
       "name" : "SHOW_IDENTIFIER",
       "queryCodeExp" : "concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`)",
       "standardColumnName" : "`SHOW_IDENTIFIER`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_SHOW_IDENTIFIER_LIKE",
+      "name" : "N_SHOW_IDENTIFIER_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -6665,7 +6676,7 @@
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
         "modelref" : true,
-        "id" : "my_type_of"
+        "id" : "my_calendar"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -6884,7 +6895,7 @@
       "codeName" : "DEDATASET1",
       "getDstPSDEDataSet" : {
         "modelref" : true,
-        "id" : "type_of"
+        "id" : "calendar"
       },
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -7756,6 +7767,21 @@
     }, {
       "jsonFormat" : "yyyy-MM-dd",
       "logicName" : "工作日期",
+      "name" : "n_register_date_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_REGISTER_DATE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "REGISTER_DATE",
+        "codeName" : "register_date"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "jsonFormat" : "yyyy-MM-dd",
+      "logicName" : "工作日期",
       "name" : "n_register_date_gtandeq",
       "getPSDEFSearchMode" : {
         "modelref" : true,
@@ -7796,6 +7822,20 @@
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 5,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "编号",
+      "name" : "n_show_identifier_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_SHOW_IDENTIFIER_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "SHOW_IDENTIFIER",
+        "codeName" : "show_identifier"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
       "logicName" : "用例",
@@ -8280,6 +8320,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "day_type_link_management_grid_view",
+    "logicName" : "日工时工作类别链接表格视图（管理）",
+    "name" : "日工时工作类别链接表格视图（管理）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "management_project_grid_view",
     "logicName" : "工时日历项目维度表格视图（管理）",
     "name" : "工时日历项目维度表格视图（管理）",
@@ -8329,6 +8375,12 @@
     "realModelSubType" : "DEREDIRECTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "day_link_grid_view",
+    "logicName" : "日工时链接表格视图",
+    "name" : "日工时链接表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "run_list_view",
     "logicName" : "工时明细列表视图（执行用例）",
     "name" : "工时明细列表视图（执行用例）",
@@ -8344,6 +8396,12 @@
     "codeName" : "management_member_calendar_grid_view",
     "logicName" : "工时日历人员维度表格视图（管理）",
     "name" : "工时日历人员维度表格视图（管理）",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "type_of_link_management_grid_view",
+    "logicName" : "工时日历工作类别管理链接表格视图",
+    "name" : "工时日历工作类别管理链接表格视图",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -8371,10 +8429,28 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "type_of_link_grid_view",
+    "logicName" : "工时日历工作类别链接表格视图",
+    "name" : "工时日历工作类别链接表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "day_type_link_grid_view",
+    "logicName" : "日工时工作类别链接表格视图",
+    "name" : "日工时工作类别链接表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "GridView",
     "logicName" : "工时实体表格视图",
     "modelTag" : "MDATAVIEW",
     "name" : "工时实体表格视图",
+    "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "day_link_management_grid_view",
+    "logicName" : "日工时链接表格视图（管理）",
+    "name" : "日工时链接表格视图（管理）",
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {

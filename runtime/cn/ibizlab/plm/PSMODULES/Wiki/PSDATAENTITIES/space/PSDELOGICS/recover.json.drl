@@ -42,6 +42,19 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.recover;
                         update(spacerecoverupdate_obj);//更新fact中变量值
             end
 
+            //逻辑处理节点[恢复最近访问]
+            rule "rawsqlcall1"
+            ruleflow-group "spacerecoverrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",spacerecoverdefault.get("id"));
+    String strSql="update recent set IS_DELETED=0 where owner_id=#{et.param0} and owner_subtype='space'";
+                        iBzSysSpaceDefaultService.execute(strSql,param);//SQL调用
+                        update(spacerecoverdefault);//更新fact中变量值
+                        update(spacerecoverupdate_obj);//更新fact中变量值
+            end
+
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "spacerecoverend1"

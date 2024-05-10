@@ -1,0 +1,510 @@
+package cn.ibizlab.plm.testmgmt.logic.baseline_test_caselogic.baseline_comparison;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.baseline_test_case baseline_test_casebaseline_comparisondefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.baseline_test_case baseline_test_casebaseline_comparisoncomparison_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.baseline_test_case baseline_test_casebaseline_comparisoncomparison_page;
+                global cn.ibizlab.plm.core.testmgmt.domain.baseline_test_case baseline_test_casebaseline_comparisoncontent;
+                global cn.ibizlab.plm.core.testmgmt.domain.baseline_test_case baseline_test_casebaseline_comparisonfor_temp_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.baseline_test_case baseline_test_casebaseline_comparisonpage;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case baseline_test_casebaseline_comparisontest_case_filter;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case baseline_test_casebaseline_comparisontest_case_for_temp;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case baseline_test_casebaseline_comparisontest_case_ids;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case baseline_test_casebaseline_comparisontest_case_page;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case baseline_test_casebaseline_comparisontest_case_versions;
+                global cn.ibizlab.plm.core.base.domain.version baseline_test_casebaseline_comparisonversion_filter;
+                global cn.ibizlab.plm.core.base.domain.version baseline_test_casebaseline_comparisonversion_for_temp;
+                global cn.ibizlab.plm.core.base.domain.version baseline_test_casebaseline_comparisonversion_page;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ibaseline_test_caseService baseline_test_caseservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Ibaseline_test_caseService iBzSysBaseline_test_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "baseline_test_casebaseline_comparisonbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "baseline_test_casebaseline_comparisonprepareparam2"
+            when
+            then
+                            baseline_test_casebaseline_comparisondefault.set("size","500");
+                            baseline_test_casebaseline_comparisoncomparison_filter.set("size","500");
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取当前基线下用例]
+            rule "dedataset1"
+            ruleflow-group "baseline_test_casebaseline_comparisondedataset1"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "baseline_test_casebaseline_comparisonloopsubcall1"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam2"
+            ruleflow-group "baseline_test_casebaseline_comparisonappendparam2"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "baseline_test_casebaseline_comparisonrawsfcode1"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "baseline_test_casebaseline_comparisonprepareparam3"
+            when
+            then
+                            baseline_test_casebaseline_comparisontest_case_filter.set("n_id_in",baseline_test_casebaseline_comparisontest_case_ids.get("ids"));
+                            baseline_test_casebaseline_comparisontest_case_filter.set("size","500");
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "baseline_test_casebaseline_comparisonprepareparam1"
+            when
+            then
+                            baseline_test_casebaseline_comparisoncomparison_filter.set("baseline",baseline_test_casebaseline_comparisondefault.get("comparison_baseline"));
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取对比基线下的用例]
+            rule "dedataset2"
+            ruleflow-group "baseline_test_casebaseline_comparisondedataset2"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取最新版本用例]
+            rule "dedataset3"
+            ruleflow-group "baseline_test_casebaseline_comparisondedataset3"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall2"
+            ruleflow-group "baseline_test_casebaseline_comparisonloopsubcall2"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam3"
+            ruleflow-group "baseline_test_casebaseline_comparisonappendparam3"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall3"
+            ruleflow-group "baseline_test_casebaseline_comparisonloopsubcall3"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam7"
+            ruleflow-group "baseline_test_casebaseline_comparisonprepareparam7"
+            when
+            then
+                            baseline_test_casebaseline_comparisontest_case_for_temp.set("target_version_id",baseline_test_casebaseline_comparisontest_case_for_temp.get("curversionid"));
+                            baseline_test_casebaseline_comparisontest_case_for_temp.set("target_id",baseline_test_casebaseline_comparisontest_case_for_temp.get("id"));
+                            baseline_test_casebaseline_comparisontest_case_for_temp.set("principal_id",baseline_test_casebaseline_comparisondefault.get("comparison_baseline"));
+                            baseline_test_casebaseline_comparisontest_case_for_temp.set("is_latest","1");
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[用例cur_version_ids]
+            rule "rawsfcode2"
+            ruleflow-group "baseline_test_casebaseline_comparisonrawsfcode2"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam5"
+            ruleflow-group "baseline_test_casebaseline_comparisonprepareparam5"
+            when
+            then
+                            baseline_test_casebaseline_comparisonversion_filter.set("n_id_in",baseline_test_casebaseline_comparisontest_case_versions.get("version_id_in"));
+                            baseline_test_casebaseline_comparisonversion_filter.set("size","500");
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "baseline_test_casebaseline_comparisonbindparam1"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取版本结果集]
+            rule "dedataset4"
+            ruleflow-group "baseline_test_casebaseline_comparisondedataset4"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "baseline_test_casebaseline_comparisonend1"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall4"
+            ruleflow-group "baseline_test_casebaseline_comparisonloopsubcall4"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall5"
+            ruleflow-group "baseline_test_casebaseline_comparisonloopsubcall5"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam6"
+            ruleflow-group "baseline_test_casebaseline_comparisonprepareparam6"
+            when
+            then
+                            baseline_test_casebaseline_comparisontest_case_for_temp.set("target_version",baseline_test_casebaseline_comparisonversion_for_temp.get(""));
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam4"
+            ruleflow-group "baseline_test_casebaseline_comparisonappendparam4"
+            when
+            then
+                        update(baseline_test_casebaseline_comparisondefault);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncomparison_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisoncontent);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonfor_temp_obj);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonpage);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_ids);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_page);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisontest_case_versions);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_filter);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_for_temp);//更新fact中变量值
+                        update(baseline_test_casebaseline_comparisonversion_page);//更新fact中变量值
+            end

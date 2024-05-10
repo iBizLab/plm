@@ -241,7 +241,7 @@
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
       "name" : "viewmounted",
-      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
     }, {
       "eventNames" : "onLoadSuccess",
       "logicTrigger" : "VIEWEVENT",
@@ -333,6 +333,18 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "NEWDATA",
+      "realOpenMode" : "POPUPMODAL",
+      "realTitle" : "执行用例主视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    }, {
       "name" : "EDITDATA",
       "openMode" : "POPUPMODAL",
       "realOpenMode" : "POPUPMODAL",
@@ -344,18 +356,6 @@
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_redirect_view.json",
         "viewType" : "DEREDIRECTVIEW"
-      }
-    }, {
-      "name" : "NEWDATA",
-      "realOpenMode" : "POPUPMODAL",
-      "realTitle" : "执行用例主视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.RUN.EDITVIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_main_view.json",
-        "viewType" : "DEEDITVIEW"
       }
     }, {
       "name" : "MPICKUPVIEW:TEST_CASE",
@@ -680,7 +680,7 @@
       "sortMode" : "REMOTE",
       "hasWFDataItems" : false,
       "enableColFilter" : false,
-      "enableCustomized" : true,
+      "enableCustomized" : false,
       "enableGroup" : false,
       "enablePagingBar" : false,
       "enableRowEdit" : false,
@@ -689,7 +689,7 @@
       "forceFit" : false,
       "hideHeader" : false,
       "noSort" : false,
-      "singleSelect" : false,
+      "singleSelect" : true,
       "name" : "grid",
       "modelid" : "90183f3e0c689f7a1a26c9f6886724d4",
       "modeltype" : "PSDEGRID"

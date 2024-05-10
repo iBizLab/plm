@@ -63,58 +63,6 @@
     "name" : "treeexpbar_load"
   } ],
   "getPSControls" : [ {
-    "codeName" : "tree_exp_view_node2_cm",
-    "controlType" : "CONTEXTMENU",
-    "logicName" : "空间配置树节点菜单",
-    "name" : "node_2_cm",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
-    },
-    "getPSControlParam" : {
-      "id" : "node_2_cm"
-    },
-    "getPSDEToolbarItems" : [ {
-      "actionLevel" : 200,
-      "caption" : "空间配置",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "node_2_cm_deuiaction1"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "NONE",
-        "caption" : "空间配置",
-        "codeName" : "open_space_setting",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_config_tree_exp_view.json",
-          "viewType" : "DETREEEXPVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "space_open_space_setting",
-        "name" : "打开空间配置",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
-        },
-        "timeout" : 60000,
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "open_space_setting",
-        "uIActionType" : "DEUIACTION",
-        "id" : "open_space_setting@space"
-      },
-      "tooltip" : "空间配置",
-      "uIActionTarget" : "NONE",
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "modelid" : "e333e8ea09cf1253bbd904d3299d5651",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
     "codeName" : "tree_exp_view_node11_cm",
     "controlType" : "CONTEXTMENU",
     "logicName" : "收藏的空间工具栏",
@@ -223,6 +171,58 @@
       "showIcon" : true
     } ],
     "modelid" : "89eb12b3ff4ab287ff42773049b2dc0c",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
+    "codeName" : "tree_exp_view_node2_cm",
+    "controlType" : "CONTEXTMENU",
+    "logicName" : "空间配置树节点菜单",
+    "name" : "node_2_cm",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSControlParam" : {
+      "id" : "node_2_cm"
+    },
+    "getPSDEToolbarItems" : [ {
+      "actionLevel" : 200,
+      "caption" : "空间配置",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "node_2_cm_deuiaction1"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "空间配置",
+        "codeName" : "open_space_setting",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_config_tree_exp_view.json",
+          "viewType" : "DETREEEXPVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "space_open_space_setting",
+        "name" : "打开空间配置",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        },
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "open_space_setting",
+        "uIActionType" : "DEUIACTION",
+        "id" : "open_space_setting@space"
+      },
+      "tooltip" : "空间配置",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "modelid" : "e333e8ea09cf1253bbd904d3299d5651",
     "modeltype" : "PSDETOOLBAR"
   } ],
   "getPSDETreeNodeRSs" : [ {
@@ -1002,7 +1002,18 @@
   }, {
     "counterMode" : 0,
     "name" : "组织空间",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_group_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
     "nodeType" : "node_4",
+    "getPSNavigateContexts" : [ {
+      "key" : "SCOPE_TYPE",
+      "name" : "SCOPE_TYPE",
+      "value" : "organization",
+      "rawValue" : true
+    } ],
     "getPSSysImage" : {
       "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M14.1875,10 L12.5625,10 L12.5625,7.625 C12.5625,7.55625 12.50625,7.5 12.4375,7.5 L8.5625,7.5 L8.5625,6 L10.25,6 C10.3875,6 10.5,5.8875 10.5,5.75 L10.5,1.25 C10.5,1.1125 10.3875,1 10.25,1 L5.75,1 C5.6125,1 5.5,1.1125 5.5,1.25 L5.5,5.75 C5.5,5.8875 5.6125,6 5.75,6 L7.4375,6 L7.4375,7.5 L3.5625,7.5 C3.49375,7.5 3.4375,7.55625 3.4375,7.625 L3.4375,10 L1.8125,10 C1.675,10 1.5625,10.1125 1.5625,10.25 L1.5625,14.75 C1.5625,14.8875 1.675,15 1.8125,15 L6.3125,15 C6.45,15 6.5625,14.8875 6.5625,14.75 L6.5625,10.25 C6.5625,10.1125 6.45,10 6.3125,10 L4.5625,10 L4.5625,8.625 L11.4375,8.625 L11.4375,10 L9.6875,10 C9.55,10 9.4375,10.1125 9.4375,10.25 L9.4375,14.75 C9.4375,14.8875 9.55,15 9.6875,15 L14.1875,15 C14.325,15 14.4375,14.8875 14.4375,14.75 L14.4375,10.25 C14.4375,10.1125 14.325,10 14.1875,10 Z M5.375,11.1875 L5.375,13.8125 L2.75,13.8125 L2.75,11.1875 L5.375,11.1875 Z M6.6875,4.8125 L6.6875,2.1875 L9.3125,2.1875 L9.3125,4.8125 L6.6875,4.8125 Z M13.25,13.8125 L10.625,13.8125 L10.625,11.1875 L13.25,11.1875 L13.25,13.8125 Z\" fill=\"#FCC430\" fill-rule=\"nonzero\"></path>\n</svg>"
     },
@@ -1027,7 +1038,18 @@
   }, {
     "counterMode" : 0,
     "name" : "团队空间",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_team_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
     "nodeType" : "node_5",
+    "getPSNavigateContexts" : [ {
+      "key" : "SCOPE_TYPE",
+      "name" : "SCOPE_TYPE",
+      "value" : "user_group",
+      "rawValue" : true
+    } ],
     "getPSSysImage" : {
       "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M12.878125,10.9359375 C12.48125,10.5390625 12.0234375,10.221875 11.528125,9.9921875 C12.2359375,9.41875 12.6875,8.54375 12.6875,7.5625 C12.6875,5.83125 11.24375,4.4109375 9.5125,4.4375 C7.8078125,4.4640625 6.434375,5.853125 6.434375,7.5625 C6.434375,8.54375 6.8875,9.41875 7.59375,9.9921875 C7.0984375,10.221875 6.6421875,10.5375 6.24375,10.9359375 C5.390625,11.790625 4.90625,12.91875 4.87496822,14.121875 C4.8734375,14.1921875 4.9296875,14.25 5,14.25 L5.875,14.25 C5.9421875,14.25 5.9984375,14.196875 6,14.1296875 C6.0296875,13.2234375 6.396875,12.375 7.0421875,11.73125 C7.715625,11.0578125 8.6109375,10.6875 9.5625,10.6875 C10.5140625,10.6875 11.409375,11.0578125 12.0828125,11.73125 C12.7265625,12.375 13.09375,13.2234375 13.125,14.1296875 C13.1265625,14.196875 13.1828125,14.25 13.25,14.25 L14.125,14.25 C14.1953125,14.25 14.2515625,14.1921875 14.2500318,14.121875 C14.21875,12.91875 13.734375,11.790625 12.878125,10.9359375 Z M9.5625,9.5625 C9.028125,9.5625 8.525,9.3546875 8.1484375,8.9765625 C7.765625,8.59375 7.55625,8.084375 7.5625,7.5421875 C7.5671875,7.0296875 7.771875,6.534375 8.1296875,6.1671875 C8.5046875,5.7828125 9.00625,5.56875 9.5421875,5.5625 C10.071875,5.5578125 10.5859375,5.7640625 10.9640625,6.134375 C11.3515625,6.5140625 11.5640625,7.021875 11.5640625,7.5625 C11.5640625,8.096875 11.35625,8.5984375 10.978125,8.9765625 C10.6,9.3546875 10.096875,9.5625 9.5625,9.5625 L9.5625,9.5625 Z M5.6484375,7.975 C5.634375,7.8390625 5.6265625,7.7015625 5.6265625,7.5625 C5.6265625,7.3140625 5.65,7.071875 5.69375,6.8359375 C5.7046875,6.7796875 5.675,6.721875 5.6234375,6.6984375 C5.4109375,6.603125 5.215625,6.471875 5.046875,6.30625 C4.64375,5.9125 4.4265625,5.3796875 4.4421875,4.815625 C4.45625,4.3140625 4.6578125,3.8375 5.009375,3.478125 C5.3953125,3.0828125 5.9140625,2.8671875 6.465625,2.8734375 C6.9640625,2.878125 7.4453125,3.0703125 7.809375,3.4109375 C7.9328125,3.5265625 8.0390625,3.6546875 8.128125,3.7921875 C8.159375,3.840625 8.2203125,3.8609375 8.2734375,3.8421875 C8.5484375,3.746875 8.8390625,3.6796875 9.1375,3.6484375 C9.225,3.6390625 9.275,3.5453125 9.2359375,3.4671875 C8.728125,2.4625 7.690625,1.76875 6.490625,1.75 C4.7578125,1.7234375 3.3140625,3.14375 3.3140625,4.8734375 C3.3140625,5.8546875 3.765625,6.7296875 4.4734375,7.303125 C3.9765625,7.5328125 3.51875,7.85 3.121875,8.246875 C2.265625,9.1015625 1.78125,10.2296875 1.74996822,11.434375 C1.7484375,11.5046875 1.8046875,11.5625 1.875,11.5625 L2.7515625,11.5625 C2.81875,11.5625 2.875,11.509375 2.8765625,11.4421875 C2.90625,10.5359375 3.2734375,9.6875 3.91875,9.04375 C4.378125,8.584375 4.940625,8.265625 5.5546875,8.1109375 C5.615625,8.0953125 5.65625,8.0375 5.6484375,7.975 L5.6484375,7.975 Z\" fill=\"#42D175\" fill-rule=\"nonzero\"></path>\n</svg>"
     },
@@ -1052,7 +1074,18 @@
   }, {
     "counterMode" : 0,
     "name" : "个人空间",
+    "getNavPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_oneself_grid_view.json",
+      "viewType" : "DEGRIDVIEW"
+    },
     "nodeType" : "node_6",
+    "getPSNavigateContexts" : [ {
+      "key" : "SCOPE_TYPE",
+      "name" : "SCOPE_TYPE",
+      "value" : "user",
+      "rawValue" : true
+    } ],
     "getPSSysImage" : {
       "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M13.4140625,11.93125 C13.11875,11.23125 12.69375,10.603125 12.1546875,10.0640625 C11.615625,9.525 10.9875,9.1015625 10.2875,8.8046875 C10.28125,8.8015625 10.275,8.8 10.26875,8.796875 C11.2421875,8.09375 11.875,6.9484375 11.875,5.65625 C11.875,3.515625 10.140625,1.78125 8,1.78125 C5.859375,1.78125 4.125,3.515625 4.125,5.65625 C4.125,6.9484375 4.7578125,8.09375 5.73125,8.7984375 C5.725,8.8015625 5.71875,8.803125 5.7125,8.80625 C5.0125,9.1015625 4.384375,9.525 3.8453125,10.065625 C3.30625,10.6046875 2.8828125,11.2328125 2.5859375,11.9328125 C2.2953125,12.6171875 2.140625,13.34375 2.12496822,14.090625 C2.1234375,14.1609375 2.1796875,14.21875 2.25,14.21875 L3.1875,14.21875 C3.25625,14.21875 3.3109375,14.1640625 3.3125,14.096875 C3.34375,12.890625 3.828125,11.7609375 4.684375,10.9046875 C5.5703125,10.01875 6.746875,9.53125 8,9.53125 C9.253125,9.53125 10.4296875,10.01875 11.315625,10.9046875 C12.171875,11.7609375 12.65625,12.890625 12.6875,14.096875 C12.6890625,14.165625 12.74375,14.21875 12.8125,14.21875 L13.75,14.21875 C13.8203125,14.21875 13.8765625,14.1609375 13.8750318,14.090625 C13.859375,13.34375 13.7046875,12.6171875 13.4140625,11.93125 Z M8,8.34375 C7.2828125,8.34375 6.6078125,8.0640625 6.1,7.55625 C5.5921875,7.0484375 5.3125,6.3734375 5.3125,5.65625 C5.3125,4.9390625 5.5921875,4.2640625 6.1,3.75625 C6.6078125,3.2484375 7.2828125,2.96875 8,2.96875 C8.7171875,2.96875 9.3921875,3.2484375 9.9,3.75625 C10.4078125,4.2640625 10.6875,4.9390625 10.6875,5.65625 C10.6875,6.3734375 10.4078125,7.0484375 9.9,7.55625 C9.3921875,8.0640625 8.7171875,8.34375 8,8.34375 Z\" fill=\"#FF877B\" fill-rule=\"nonzero\"></path>\n</svg>"
     },

@@ -50,6 +50,15 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDELOGICS/create_recent.json"
       },
       "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDELOGICS/auto_create_members.json"
+      },
+      "internalLogic" : true
     } ],
     "getBeforePSDEActionLogics" : [ {
       "actionLogicType" : 1,
@@ -690,6 +699,12 @@
       "name" : "IS_DELETED",
       "codeName" : "is_deleted"
     }, {
+      "name" : "SCOPE_TYPE",
+      "codeName" : "scope_type"
+    }, {
+      "name" : "SCOPE_ID",
+      "codeName" : "scope_id"
+    }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
@@ -733,6 +748,12 @@
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRGROUPS/UsrDRGroup0319461775.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRGROUPS/UsrDRGroup0416402881.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRGROUPS/UsrDRGroup0424036679.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRGROUPS/DRGroup.json"
   } ],
   "getAllPSDEDRItems" : [ {
@@ -756,6 +777,12 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0412206567.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0416991564.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem0424310810.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEDRITEMS/UsrDRItem1212205451.json"
@@ -2208,12 +2235,6 @@
       "queryCodeExp" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` )",
       "standardColumnName" : "`IS_FAVORITE`"
     } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_IS_FAVORITE_EQ",
-      "name" : "N_IS_FAVORITE_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
       "name" : "[IS_FAVORITE][是否星标]移动端默认",
@@ -2266,7 +2287,6 @@
     } ],
     "codeName" : "is_favorite",
     "dEFType" : 2,
-    "dEMSFieldMode" : "STATE1",
     "dataType" : "TEXT",
     "formulaColumns" : "id",
     "formulaFormat" : "(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=%1$s )",
@@ -2285,6 +2305,172 @@
     "viewLevel" : 0,
     "formulaDEField" : true,
     "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SCOPE_TYPE",
+      "dBType" : "MYSQL5",
+      "name" : "SCOPE_TYPE",
+      "queryCodeExp" : "t1.`SCOPE_TYPE`",
+      "standardColumnName" : "`SCOPE_TYPE`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_SCOPE_TYPE_EQ",
+      "name" : "N_SCOPE_TYPE_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SCOPE_TYPE][所属]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBDROPDOWNLIST",
+        "name" : "[SCOPE_TYPE][所属]移动端默认",
+        "stringLength" : 60,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCOPE_TYPE][所属]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST",
+        "name" : "[SCOPE_TYPE][所属]",
+        "stringLength" : 60,
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SCOPE_TYPE",
+          "maxValue" : 60,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[60]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[60]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[60]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "scope_type",
+    "dEFType" : 1,
+    "dataType" : "SSCODELIST",
+    "importOrder" : 1000,
+    "length" : 60,
+    "logicName" : "所属",
+    "name" : "SCOPE_TYPE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSCODELISTS/scope_type.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SCOPE_TYPE"
+    },
+    "serviceCodeName" : "scope_type",
+    "stdDataType" : 25,
+    "stringLength" : 60,
+    "valueFormat" : "%1$s"
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "SCOPE_ID",
+      "dBType" : "MYSQL5",
+      "name" : "SCOPE_ID",
+      "queryCodeExp" : "t1.`SCOPE_ID`",
+      "standardColumnName" : "`SCOPE_ID`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[SCOPE_ID][所属对象]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[SCOPE_ID][所属对象]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[SCOPE_ID][所属对象]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SCOPE_ID][所属对象]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "SCOPE_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "scope_id",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "所属对象",
+    "name" : "SCOPE_ID",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "SCOPE_ID"
+    },
+    "serviceCodeName" : "scope_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -3156,6 +3342,331 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
       },
       "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "auto_create_members",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDELOGICS/auto_create_members.json",
+    "logicName" : "自动创建人员",
+    "memo" : "当所属选择\"团队\"时，点击完成后自动添加团队下的所有成员。",
+    "name" : "自动创建人员",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 500,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "\"所属\"为团队时",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "SCOPE_TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[SCOPE_TYPE] 等于(=) user_group",
+            "paramValue" : "user_group"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 150,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 460,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备查询参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_owner_id_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member"
+        },
+        "name" : "Default[SCOPE_ID] ==> member[n_owner_id_eq]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "SCOPE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "n_owner_type_eq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member"
+        },
+        "name" : "直接值[GROUP] ==> member[n_owner_type_eq]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "GROUP",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 338
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+      },
+      "leftPos" : 460,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询用户数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_page"
+      },
+      "topPos" : 443
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_obj"
+      },
+      "leftPos" : 460,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RESETPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "member_page"
+      },
+      "topPos" : 560
+    }, {
+      "codeName" : "RESETPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "library_member"
+      },
+      "leftPos" : 710,
+      "logicNodeType" : "RESETPARAM",
+      "name" : "重置参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RESETPARAM1"
+        }
+      } ],
+      "topPos" : 560
+    }, {
+      "codeName" : "PREPAREPARAM4",
+      "leftPos" : 894,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM4"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "LIBRARY_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "library_member"
+        },
+        "name" : "Default[ID] ==> library_member[LIBRARY_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "library_member"
+        },
+        "name" : "member_obj[NAME] ==> library_member[NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "NAME",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "USER_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "library_member"
+        },
+        "name" : "member_obj[USER_ID] ==> library_member[USER_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "USER_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "ROLE_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "library_member"
+        },
+        "name" : "member_obj[ROLE_ID] ==> library_member[ROLE_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ROLE_ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "member_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 560
+    }, {
+      "codeName" : "DEACTION3",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "library_member"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "leftPos" : 1070,
+      "logicNodeType" : "DEACTION",
+      "name" : "生成用户数据",
+      "topPos" : 560
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 500,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 740
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "library_member",
+      "logicName" : "成员参数",
+      "name" : "成员参数",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "member",
+      "logicName" : "用户信息",
+      "name" : "用户信息",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "member_obj",
+      "logicName" : "用户结果变量",
+      "name" : "用户结果变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "member_page",
+      "logicName" : "用户分页结果数据",
+      "name" : "用户分页结果数据",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
@@ -4350,51 +4861,6 @@
     "enableBackend" : true,
     "enableFront" : false
   } ],
-  "getAllPSDEMainStates" : [ {
-    "codeName" : "star",
-    "enterStateMode" : "ANY",
-    "logicName" : "已星标",
-    "mSTag" : "1",
-    "name" : "已星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "ADD_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "设置星标",
-        "name" : "ADD_FAVORITE"
-      }
-    } ],
-    "stateValue" : "1",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  }, {
-    "codeName" : "un_star",
-    "enterStateMode" : "ANY",
-    "logicName" : "未星标",
-    "mSTag" : "0",
-    "name" : "未星标",
-    "getPSDEMainStateOPPrivs" : [ {
-      "name" : "CANCEL_FAVORITE",
-      "getPSDEOPPriv" : {
-        "logicName" : "取消星标",
-        "name" : "CANCEL_FAVORITE"
-      }
-    } ],
-    "stateValue" : "0",
-    "viewActions" : 0,
-    "wFStateMode" : 0,
-    "actionAllowMode" : false,
-    "allowMode" : false,
-    "default" : false,
-    "enableViewActions" : false,
-    "fieldAllowMode" : false,
-    "oPPrivAllowMode" : false
-  } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "library_dto",
     "getPSDEMethodDTOFields" : [ {
@@ -4475,6 +4941,28 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属",
+      "name" : "scope_type",
+      "getPSDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 60,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属对象",
+      "name" : "scope_id",
+      "getPSDEField" : {
+        "name" : "SCOPE_ID",
+        "codeName" : "scope_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "成员",
@@ -4653,20 +5141,6 @@
       "stdDataType" : 9,
       "type" : "SIMPLE"
     }, {
-      "logicName" : "是否星标",
-      "name" : "n_is_favorite_eq",
-      "getPSDEFSearchMode" : {
-        "modelref" : true,
-        "id" : "N_IS_FAVORITE_EQ"
-      },
-      "getPSDEField" : {
-        "name" : "IS_FAVORITE",
-        "codeName" : "is_favorite"
-      },
-      "sourceType" : "DEFSEARCHMODE",
-      "stdDataType" : 25,
-      "type" : "SIMPLE"
-    }, {
       "logicName" : "测试库名称",
       "name" : "n_name_like",
       "getPSDEFSearchMode" : {
@@ -4676,6 +5150,20 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "所属",
+      "name" : "n_scope_type_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_SCOPE_TYPE_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -4718,7 +5206,7 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSSYSMSGTEMPLS/library_archive.json"
+      "path" : "PSMODULES/TestMgmt/PSSYSMSGTEMPLS/library_archived_or_activate.json"
     },
     "taskMode" : 0
   }, {
@@ -4740,17 +5228,11 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSSYSMSGTEMPLS/library_remove.json"
+      "path" : "PSMODULES/TestMgmt/PSSYSMSGTEMPLS/library_remove_or_recover.json"
     },
     "taskMode" : 0
   } ],
   "getAllPSDEOPPrivs" : [ {
-    "logicName" : "设置星标",
-    "name" : "ADD_FAVORITE"
-  }, {
-    "logicName" : "取消星标",
-    "name" : "CANCEL_FAVORITE"
-  }, {
     "logicName" : "建立",
     "name" : "CREATE"
   }, {
@@ -4929,6 +5411,17 @@
     "enableUserDR" : true,
     "systemReserved" : true
   } ],
+  "getAllPSDEUtils" : [ {
+    "codeName" : "Usr0417764210",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDEUTILDES/Usr0417764210.json",
+    "name" : "实体通知设置",
+    "getUtilPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/extension/PSDATAENTITIES/system_extension_notify_setting.json"
+    },
+    "utilPSDEName" : "SYSTEM_EXTENSION_NOTIFY_SETTING",
+    "utilType" : "NOTIFYSETTING"
+  } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "config_tab_exp_view",
     "logicName" : "测试库管理导航视图",
@@ -4956,7 +5449,7 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "org_grid_view",
+    "codeName" : "group_grid_view",
     "logicName" : "测试库表格视图（组织测试库）",
     "name" : "测试库表格视图（组织测试库）",
     "realModelSubType" : "DEGRIDVIEW",
@@ -5194,10 +5687,6 @@
     "lanResTag" : "DE.LNAME.LIBRARY"
   },
   "logicName" : "测试库",
-  "getMainStatePSDEFields" : [ {
-    "name" : "IS_FAVORITE",
-    "codeName" : "is_favorite"
-  } ],
   "getMajorPSDEField" : {
     "name" : "NAME",
     "codeName" : "name"
@@ -5249,8 +5738,8 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
     },
-    "masterOrder" : -1,
-    "masterRS" : 0,
+    "masterOrder" : 100,
+    "masterRS" : 5,
     "minorCodeName" : "reviews",
     "getMinorPSDataEntity" : {
       "modelref" : true,
@@ -5262,6 +5751,10 @@
     "getPSPickupDEField" : {
       "name" : "LIBRARY_ID",
       "codeName" : "library_id"
+    },
+    "getPSPickupTextDEField" : {
+      "name" : "LIBRARY_NAME",
+      "codeName" : "Library_name"
     },
     "pickupDEFName" : "LIBRARY_ID",
     "removeActionType" : -1,
@@ -5400,6 +5893,33 @@
     "removeOrder" : 0,
     "serviceCodeName" : "library",
     "enableFKey" : true
+  }, {
+    "codeName" : "LIBRARY",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/baseline/PSDERS/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID.json",
+    "logicName" : "测试库-基线",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_LIBRARY_OWNER_ID",
+    "orderValue" : 100,
+    "pickupDEFName" : "OWNER_ID",
+    "getPickupPSDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "library",
+    "typeValue" : "LIBRARY"
   } ],
   "memo" : "测试管理核心实体，包含测试的基本信息、生命周期状态等。",
   "getMinorPSDERs" : [ {

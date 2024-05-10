@@ -1,0 +1,1498 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "DE.LNAME.BASELINE"
+  },
+  "caption" : "基线",
+  "codeName" : "baseline_library_tree_exp_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_tree_exp_view.json",
+  "name" : "baselinelibrary_tree_exp_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Base.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeExpView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_owner_id_eq",
+    "name" : "n_owner_id_eq",
+    "value" : "library",
+    "rawValue" : false
+  }, {
+    "key" : "n_owner_subtype_eq",
+    "name" : "n_owner_subtype_eq",
+    "value" : "baseline",
+    "rawValue" : true
+  }, {
+    "key" : "n_owner_type_eq",
+    "name" : "n_owner_type_eq",
+    "value" : "library",
+    "rawValue" : true
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "library_tree_exp_view_treeexpbar",
+    "controlType" : "TREEEXPBAR",
+    "name" : "treeexpbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:node",
+      "realTitle" : "测试库基线树导航表格视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_2",
+      "realTitle" : "测试库基线树导航表格视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_3",
+      "realTitle" : "测试库基线树导航表格视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "treeexpbar"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TREEEXPBAR"
+    },
+    "getPSControls" : [ {
+      "codeName" : "library_baseline_tree_view",
+      "controlStyle" : "GROUP_TREE",
+      "controlType" : "TREEVIEW",
+      "getCreatePSControlAction" : {
+        "modelref" : true,
+        "id" : "create",
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        }
+      },
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline/PSTREEVIEWS/library_baseline_tree_view.json",
+      "getFetchPSControlAction" : {
+        "modelref" : true,
+        "id" : "fetch",
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        }
+      },
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        }
+      },
+      "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+      "logicName" : "测试库基线树导航视图_树视图",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          }
+        }, {
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          }
+        }, {
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          }
+        }, {
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          }
+        }, {
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          }
+        } ],
+        "userDRAction" : "READ",
+        "enableDEFieldPrivilege" : false,
+        "id" : "树视图处理器"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "SELECTIONCHANGE",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_selectionchange"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_load"
+      } ],
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "getPSControls" : [ {
+        "codeName" : "library_tree_exp_view_node1_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "树节点上下文菜单",
+        "name" : "node_1_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_1_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "caption" : "编辑",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_1_cm_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "编辑",
+            "codeName" : "toolbar_library_tree_exp_view_node1_cm_deuiaction1_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node1_cm_deuiaction1_click",
+            "name" : "编辑",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "edit_section_or_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_node1_cm_deuiaction1_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_node1_cm_deuiaction1_click@baseline"
+          },
+          "tooltip" : "编辑",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "删除",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_1_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "删除",
+            "codeName" : "toolbar_library_tree_exp_view_node1_cm_deuiaction2_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node1_cm_deuiaction2_click",
+            "name" : "删除",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "remove_section_or_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_node1_cm_deuiaction2_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_node1_cm_deuiaction2_click@baseline"
+          },
+          "tooltip" : "删除",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "toolbarStyle" : "CONTEXTMENU",
+        "modelid" : "90ce9a30940cfaa299547e13a27b8161",
+        "modeltype" : "PSDETOOLBAR"
+      }, {
+        "codeName" : "library_tree_exp_view_node3_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "树节点上下文菜单",
+        "name" : "node_3_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_3_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "caption" : "编辑",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_3_cm_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "编辑",
+            "codeName" : "toolbar_library_tree_exp_view_node3_cm_deuiaction1_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node3_cm_deuiaction1_click",
+            "name" : "编辑",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "edit_section_or_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_node3_cm_deuiaction1_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_node3_cm_deuiaction1_click@baseline"
+          },
+          "tooltip" : "编辑",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "删除",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_3_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "删除",
+            "codeName" : "toolbar_library_tree_exp_view_node3_cm_deuiaction2_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node3_cm_deuiaction2_click",
+            "name" : "删除",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "remove_section_or_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_node3_cm_deuiaction2_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_node3_cm_deuiaction2_click@baseline"
+          },
+          "tooltip" : "删除",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "toolbarStyle" : "CONTEXTMENU",
+        "modelid" : "90ce9a30940cfaa299547e13a27b8161",
+        "modeltype" : "PSDETOOLBAR"
+      }, {
+        "codeName" : "library_tree_exp_view_node2_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "树节点上下文菜单",
+        "name" : "node_2_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_2_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "caption" : "编辑",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_2_cm_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "编辑",
+            "codeName" : "toolbar_library_tree_exp_view_node2_cm_deuiaction1_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node2_cm_deuiaction1_click",
+            "name" : "编辑",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "edit_section_or_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_node2_cm_deuiaction1_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_node2_cm_deuiaction1_click@baseline"
+          },
+          "tooltip" : "编辑",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "删除",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_2_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "删除",
+            "codeName" : "toolbar_library_tree_exp_view_node2_cm_deuiaction2_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node2_cm_deuiaction2_click",
+            "name" : "删除",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "remove_section_or_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_node2_cm_deuiaction2_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_node2_cm_deuiaction2_click@baseline"
+          },
+          "tooltip" : "删除",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "toolbarStyle" : "CONTEXTMENU",
+        "modelid" : "90ce9a30940cfaa299547e13a27b8161",
+        "modeltype" : "PSDETOOLBAR"
+      } ],
+      "getPSDETreeNodeRSs" : [ {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "name" : "默认根节点 - 全部基线",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_2"
+        },
+        "name" : "基线分组 - 基线类型",
+        "getParentPSAppDEField" : {
+          "name" : "SECTION_ID",
+          "codeName" : "section_id"
+        },
+        "getParentPSDER1N" : {
+          "codeName" : "section",
+          "dERType" : "DER1N",
+          "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/category/PSDERS/DER1N_CATEGORY_SECTION_SECTION_ID.json",
+          "fKeyName" : "FB9B5B68802E10A225",
+          "logicName" : "分组-类别",
+          "getMajorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/section.json"
+          },
+          "masterOrder" : -1,
+          "masterRS" : 32,
+          "minorCodeName" : "section_categories",
+          "getMinorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+          },
+          "minorServiceCodeName" : "section_categories",
+          "name" : "DER1N_CATEGORY_SECTION_SECTION_ID",
+          "orderValue" : 100,
+          "getPSDER1NDEFieldMaps" : [ {
+            "codeName" : "Usr0219356015",
+            "getMajorPSDEField" : {
+              "name" : "IS_LEAF",
+              "codeName" : "is_leaf"
+            },
+            "mapType" : "NOTEXISTS",
+            "name" : "是否叶子节点"
+          } ],
+          "getPSPickupDEField" : {
+            "name" : "SECTION_ID",
+            "codeName" : "Section_id"
+          },
+          "getPSPickupTextDEField" : {
+            "name" : "SECTION_NAME",
+            "codeName" : "section_name"
+          },
+          "pickupDEFName" : "SECTION_ID",
+          "removeActionType" : 1,
+          "removeOrder" : 0,
+          "serviceCodeName" : "section",
+          "enableFKey" : true
+        },
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "name" : "默认根节点 - 基线分组",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_3"
+        },
+        "name" : "默认根节点 - 无分组",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      } ],
+      "getPSDETreeNodes" : [ {
+        "counterMode" : 0,
+        "name" : "默认根节点",
+        "nodeType" : "ROOT",
+        "nodeValue" : "root",
+        "text" : "默认根节点",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : true,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "ROOT"
+      }, {
+        "counterMode" : 0,
+        "name" : "全部基线",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node",
+        "getPSNavigateParams" : [ {
+          "key" : "n_owner_id_eq",
+          "name" : "n_owner_id_eq",
+          "value" : "library",
+          "rawValue" : false
+        }, {
+          "key" : "n_owner_type_eq",
+          "name" : "n_owner_type_eq",
+          "value" : "LIBRARY",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf009@FontAwesome",
+          "cssClass" : "fa fa-th-large"
+        },
+        "text" : "全部基线",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getLeafFlagPSAppDEField" : {
+          "name" : "IS_LEAF",
+          "codeName" : "is_leaf"
+        },
+        "maxSize" : -1,
+        "name" : "基线分组",
+        "nodeType" : "node_1",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/section.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "library_tree_exp_view_node1_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "树节点上下文菜单",
+          "name" : "node_1_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_1_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "caption" : "编辑",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_1_cm_deuiaction1"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "编辑",
+              "codeName" : "toolbar_library_tree_exp_view_node1_cm_deuiaction1_click",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node1_cm_deuiaction1_click",
+              "name" : "编辑",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "edit_section_or_category"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+              },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "toolbar_library_tree_exp_view_node1_cm_deuiaction1_click",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "uILogicType" : "DELOGIC",
+              "id" : "toolbar_library_tree_exp_view_node1_cm_deuiaction1_click@baseline"
+            },
+            "tooltip" : "编辑",
+            "uIActionTarget" : "SINGLEDATA",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "删除",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_1_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "删除",
+              "codeName" : "toolbar_library_tree_exp_view_node1_cm_deuiaction2_click",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node1_cm_deuiaction2_click",
+              "name" : "删除",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "remove_section_or_category"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+              },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "toolbar_library_tree_exp_view_node1_cm_deuiaction2_click",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "uILogicType" : "DELOGIC",
+              "id" : "toolbar_library_tree_exp_view_node1_cm_deuiaction2_click@baseline"
+            },
+            "tooltip" : "删除",
+            "uIActionTarget" : "SINGLEDATA",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "toolbarStyle" : "CONTEXTMENU",
+          "modelid" : "90ce9a30940cfaa299547e13a27b8161",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf0ce@FontAwesome",
+          "cssClass" : "fa fa-table"
+        },
+        "sortDir" : "ASC",
+        "getSortPSAppDEField" : {
+          "name" : "SEQUENCE",
+          "codeName" : "sequence"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : true,
+        "allowDrag" : true,
+        "allowDrop" : true,
+        "allowEditText" : true,
+        "allowOrder" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_1"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getLeafFlagPSAppDEField" : {
+          "name" : "IS_LEAF",
+          "codeName" : "is_leaf"
+        },
+        "maxSize" : -1,
+        "name" : "基线类型",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_2",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "library_tree_exp_view_node2_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "树节点上下文菜单",
+          "name" : "node_2_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_2_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "caption" : "编辑",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_2_cm_deuiaction1"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "编辑",
+              "codeName" : "toolbar_library_tree_exp_view_node2_cm_deuiaction1_click",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node2_cm_deuiaction1_click",
+              "name" : "编辑",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "edit_section_or_category"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+              },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "toolbar_library_tree_exp_view_node2_cm_deuiaction1_click",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "uILogicType" : "DELOGIC",
+              "id" : "toolbar_library_tree_exp_view_node2_cm_deuiaction1_click@baseline"
+            },
+            "tooltip" : "编辑",
+            "uIActionTarget" : "SINGLEDATA",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "删除",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_2_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "删除",
+              "codeName" : "toolbar_library_tree_exp_view_node2_cm_deuiaction2_click",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node2_cm_deuiaction2_click",
+              "name" : "删除",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "remove_section_or_category"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+              },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "toolbar_library_tree_exp_view_node2_cm_deuiaction2_click",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "uILogicType" : "DELOGIC",
+              "id" : "toolbar_library_tree_exp_view_node2_cm_deuiaction2_click@baseline"
+            },
+            "tooltip" : "删除",
+            "uIActionTarget" : "SINGLEDATA",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "toolbarStyle" : "CONTEXTMENU",
+          "modelid" : "90ce9a30940cfaa299547e13a27b8161",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "n_categories_like",
+          "name" : "n_categories_like",
+          "value" : "id",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0c9@FontAwesome",
+          "cssClass" : "fa fa-reorder"
+        },
+        "sortDir" : "ASC",
+        "getSortPSAppDEField" : {
+          "name" : "SEQUENCE",
+          "codeName" : "sequence"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : false,
+        "allowDrag" : true,
+        "allowDrop" : true,
+        "allowEditText" : true,
+        "allowOrder" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_2"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getLeafFlagPSAppDEField" : {
+          "name" : "IS_LEAF",
+          "codeName" : "is_leaf"
+        },
+        "maxSize" : -1,
+        "name" : "无分组",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_3",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_no_section"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "library_tree_exp_view_node3_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "树节点上下文菜单",
+          "name" : "node_3_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_3_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "caption" : "编辑",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction1"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "编辑",
+              "codeName" : "toolbar_library_tree_exp_view_node3_cm_deuiaction1_click",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node3_cm_deuiaction1_click",
+              "name" : "编辑",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "edit_section_or_category"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+              },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "toolbar_library_tree_exp_view_node3_cm_deuiaction1_click",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "uILogicType" : "DELOGIC",
+              "id" : "toolbar_library_tree_exp_view_node3_cm_deuiaction1_click@baseline"
+            },
+            "tooltip" : "编辑",
+            "uIActionTarget" : "SINGLEDATA",
+            "showCaption" : true,
+            "showIcon" : true
+          }, {
+            "caption" : "删除",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_3_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEDATA",
+              "caption" : "删除",
+              "codeName" : "toolbar_library_tree_exp_view_node3_cm_deuiaction2_click",
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "baseline_toolbar_library_tree_exp_view_node3_cm_deuiaction2_click",
+              "name" : "删除",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "remove_section_or_category"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+              },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "toolbar_library_tree_exp_view_node3_cm_deuiaction2_click",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "REPLACE",
+              "uILogicType" : "DELOGIC",
+              "id" : "toolbar_library_tree_exp_view_node3_cm_deuiaction2_click@baseline"
+            },
+            "tooltip" : "删除",
+            "uIActionTarget" : "SINGLEDATA",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "toolbarStyle" : "CONTEXTMENU",
+          "modelid" : "90ce9a30940cfaa299547e13a27b8161",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSNavigateParams" : [ {
+          "key" : "n_categories_like",
+          "name" : "n_categories_like",
+          "value" : "id",
+          "rawValue" : false
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf0c9@FontAwesome",
+          "cssClass" : "fa fa-reorder"
+        },
+        "sortDir" : "ASC",
+        "getSortPSAppDEField" : {
+          "name" : "SEQUENCE",
+          "codeName" : "sequence"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : false,
+        "allowDrag" : true,
+        "allowDrop" : true,
+        "allowEditText" : true,
+        "allowOrder" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_3"
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "TREE_RENDER",
+        "pluginCode" : "GROUP_TREE",
+        "runtimeObject" : true
+      },
+      "getRemovePSControlAction" : {
+        "modelref" : true,
+        "id" : "remove",
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        }
+      },
+      "treeGridMode" : 0,
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+        }
+      },
+      "enableRootSelect" : false,
+      "outputIconDefault" : true,
+      "rootVisible" : false,
+      "name" : "treeexpbar_tree",
+      "modelid" : "BC0B1194-BE1A-4B16-ABCB-F1F3CB7B2059",
+      "modeltype" : "PSDETREEVIEW"
+    }, {
+      "codeName" : "library_tree_exp_view_treeexpbar_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "测试库基线新建类别或分组",
+      "name" : "treeexpbar_toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+      },
+      "getPSControlParam" : {
+        "id" : "treeexpbar_toolbar"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "新建",
+        "itemType" : "ITEMS",
+        "name" : "items1",
+        "getPSDEToolbarItems" : [ {
+          "caption" : "新建分组",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "treeexpbar_toolbar_deuiaction1"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c9@FontAwesome",
+            "cssClass" : "fa fa-navicon"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "新建分组",
+            "codeName" : "toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction1_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction1_click",
+            "name" : "新建分组",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "library_create_section"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction1_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction1_click@baseline"
+          },
+          "tooltip" : "新建分组",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "新建类别",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "treeexpbar_toolbar_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c9@FontAwesome",
+            "cssClass" : "fa fa-navicon"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "新建类别",
+            "codeName" : "toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "baseline_toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click",
+            "name" : "新建类别",
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "library_create_category"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+            },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "REPLACE",
+            "uILogicType" : "DELOGIC",
+            "id" : "toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click@baseline"
+          },
+          "tooltip" : "新建类别",
+          "uIActionTarget" : "SINGLEDATA",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "tooltip" : "新建",
+        "showCaption" : false,
+        "showIcon" : true
+      }, {
+        "caption" : "刷新",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction3",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treeexpbar_toolbar_deuiaction3"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf021@FontAwesome",
+          "cssClass" : "fa fa-refresh"
+        },
+        "getPSUIAction" : {
+          "caption" : "刷新",
+          "codeName" : "RefreshAll",
+          "fullCodeName" : "RefreshAll",
+          "name" : "树界面_刷新全部操作",
+          "getPSSysImage" : {
+            "glyph" : "xf021@FontAwesome",
+            "cssClass" : "fa fa-refresh"
+          },
+          "predefinedType" : "TREEVIEW_REFRESHALLACTION",
+          "timeout" : 60000,
+          "uIActionMode" : "SYS",
+          "uIActionTag" : "RefreshAll",
+          "uIActionType" : "DEUIACTION"
+        },
+        "tooltip" : "刷新",
+        "showCaption" : false,
+        "showIcon" : true
+      } ],
+      "toolbarStyle" : "USER",
+      "modelid" : "1b4e034fbcd69b1f8bd747d303bfea57",
+      "modeltype" : "PSDETOOLBAR"
+    } ],
+    "title" : "基线",
+    "xDataControlName" : "treeexpbar_tree",
+    "enableCounter" : true,
+    "enableSearch" : false,
+    "showTitleBar" : true,
+    "modelid" : "a741493d4fb1eb5066d2f61a4b36e421_treeexpbar",
+    "modeltype" : "PSEXPBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DE.LNAME.BASELINE"
+    },
+    "caption" : "基线",
+    "codeName" : "library_tree_exp_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "library_tree_exp_view",
+  "getPSDEViewId" : "E2CBDFA4-4E03-4676-A92F-1884A3CB00E2",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDETREEEXPVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "测试库基线树导航视图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEEXPVIEW",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "showDataInfoBar" : true,
+  "modelid" : "a741493d4fb1eb5066d2f61a4b36e421",
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PROJECT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PRODUCT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_LIBRARY_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ] ]
+}

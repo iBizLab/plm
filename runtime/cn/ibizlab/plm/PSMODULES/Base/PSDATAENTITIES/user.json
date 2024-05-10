@@ -244,6 +244,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem0412715173.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEDRITEMS/UsrDRItem0416910175.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -1563,6 +1566,11 @@
       "name" : "N_DEPARTMENT_ID_EQ",
       "stdDataType" : 25,
       "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_DEPARTMENT_ID_ISNULL",
+      "name" : "N_DEPARTMENT_ID_ISNULL",
+      "stdDataType" : 25,
+      "valueOP" : "ISNULL"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -2874,6 +2882,20 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "部门标识",
+      "name" : "n_department_id_isnull",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_DEPARTMENT_ID_ISNULL"
+      },
+      "getPSDEField" : {
+        "name" : "DEPARTMENT_ID",
+        "codeName" : "Department_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "部门名称",
       "name" : "n_department_name_eq",
       "getPSDEFSearchMode" : {
@@ -3057,116 +3079,6 @@
     "allData" : true,
     "systemReserved" : true
   }, {
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/CURDEPT_R.json",
-    "name" : "当前部门（读）",
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    } ],
-    "roleTag" : "CURDEPT_R",
-    "secDR" : 1,
-    "userCat" : "CAT1",
-    "userDRAction" : "READ",
-    "enableSecDR" : true,
-    "systemReserved" : true
-  }, {
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/CURDEPT_RW.json",
-    "name" : "当前部门（读写）",
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "DELETE",
-      "name" : "DELETE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "DELETE"
-      }
-    }, {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "UPDATE"
-      }
-    }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    }, {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "CREATE"
-      }
-    } ],
-    "roleTag" : "CURDEPT_RW",
-    "secDR" : 1,
-    "userCat" : "CAT1",
-    "userDRAction" : "READ",
-    "enableSecDR" : true,
-    "systemReserved" : true
-  }, {
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/CURORG_R.json",
-    "name" : "当前组织（读）",
-    "orgDR" : 1,
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    } ],
-    "roleTag" : "CURORG_R",
-    "userCat" : "CAT1",
-    "userDRAction" : "READ",
-    "enableOrgDR" : true,
-    "systemReserved" : true
-  }, {
-    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/CURORG_RW.json",
-    "name" : "当前组织（读写）",
-    "orgDR" : 1,
-    "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "CREATE",
-      "name" : "CREATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "CREATE"
-      }
-    }, {
-      "dataAccessAction" : "READ",
-      "name" : "READ",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "READ"
-      }
-    }, {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "UPDATE"
-      }
-    }, {
-      "dataAccessAction" : "DELETE",
-      "name" : "DELETE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "DELETE"
-      }
-    } ],
-    "roleTag" : "CURORG_RW",
-    "userCat" : "CAT1",
-    "userDRAction" : "READ",
-    "enableOrgDR" : true,
-    "systemReserved" : true
-  }, {
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEUSERROLES/USER_RW.json",
     "name" : "当前用户（读写）",
     "getPSDEDataSet" : {
@@ -3289,7 +3201,7 @@
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "user_pick_up_grid_view",
+    "codeName" : "choose_pick_up_grid_view",
     "logicName" : "用户多项数据选择表格视图",
     "name" : "用户多项数据选择表格视图",
     "realModelSubType" : "DEPICKUPGRIDVIEW",

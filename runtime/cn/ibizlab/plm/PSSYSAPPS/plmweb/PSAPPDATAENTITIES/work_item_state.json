@@ -183,6 +183,35 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "methodType" : "DEACTION",
+    "name" : "nothing",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "nothing"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NothingInput",
+      "name" : "NothingInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_state_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NothingResult",
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEACTIONS/nothing.json"
+    },
+    "builtinMethod" : false
+  }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
     "batchActionMode" : 1,
@@ -757,6 +786,42 @@
     "stdDataType" : 25,
     "stringLength" : 100
   } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
+  } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "work_item_state_dto",
     "name" : "work_item_state_dto",
@@ -1096,6 +1161,35 @@
     "requestPath" : "/get_draft",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "methodType" : "DEACTION",
+    "name" : "nothing",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "nothing"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NothingInput",
+      "name" : "NothingInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_state_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NothingResult",
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_state/PSDEACTIONS/nothing.json"
+    },
+    "builtinMethod" : false
+  }, {
     "actionMode" : "DELETE",
     "actionTag" : "Remove",
     "batchActionMode" : 1,
@@ -1292,15 +1386,15 @@
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_edit_view.json",
-    "viewType" : "DEEDITVIEW"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_quick_create_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_update_view.json",
+    "viewType" : "DEOPTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_edit_view.json",
-    "viewType" : "DEEDITVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_quick_edit_view.json",
     "viewType" : "DEEDITVIEW"
   } ],
   "getAllPSDEOPPrivs" : [ {
@@ -1373,21 +1467,18 @@
     "uniqueTag" : "work_item_state__Usr0306874265",
     "getPSUIActionGroupDetails" : [ {
       "actionLevel" : 200,
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.*.EDIT"
-      },
-      "caption" : "编辑",
       "detailType" : "DEUIACTION",
       "name" : "u767bbd2",
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
       },
+      "tooltip" : "编辑",
       "getTooltipPSLanguageRes" : {
         "lanResTag" : "TBB.TOOLTIP.*.EDIT"
       },
       "addSeparator" : false,
-      "showCaption" : true,
+      "showCaption" : false,
       "showIcon" : true,
       "getPSUIAction" : {
         "modelref" : true,
@@ -1395,21 +1486,18 @@
       }
     }, {
       "actionLevel" : 200,
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "TBB.TEXT.*.REMOVE"
-      },
-      "caption" : "删除",
       "detailType" : "DEUIACTION",
       "name" : "u2c2fd3c",
       "getPSSysImage" : {
-        "glyph" : "xf00d@FontAwesome",
-        "cssClass" : "fa fa-remove"
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
       },
+      "tooltip" : "删除",
       "getTooltipPSLanguageRes" : {
         "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
       },
       "addSeparator" : false,
-      "showCaption" : true,
+      "showCaption" : false,
       "showIcon" : true,
       "getPSUIAction" : {
         "modelref" : true,

@@ -611,6 +611,19 @@
       "logicType" : "SCRIPT",
       "name" : "LOGIC",
       "scriptCode" : "const form = view.getController('form');\r\nif (form) {\r\n    form.evt.on('onFormDetailEvent', event =>{\r\n        const panelItems = view.layoutPanel.panelItems;\r\n        if (!panelItems.container_comment) {\r\n            return;\r\n        }\r\n        if (form.details.tabpanel1) {\r\n            const activeTab = form.details.tabpanel1.state.activeTab;\r\n            panelItems.container_comment.state.visible = activeTab === 'tabpage1';\r\n        }\r\n    });\r\n}"
+    }, {
+      "eventNames" : "onCreated",
+      "logicTrigger" : "VIEWEVENT",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "READONLY",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "test_get_only_read"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+      }
     } ],
     "getPSControls" : [ {
       "codeName" : "main_view_toolbar",
@@ -628,6 +641,14 @@
         "caption" : "更多",
         "itemType" : "ITEMS",
         "name" : "items1",
+        "getPSControlLogics" : [ {
+          "itemName" : "items1",
+          "logicTag" : "toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "items1",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSDEToolbarItems" : [ {
           "caption" : "删除",
           "groupExtractMode" : "ITEM",
@@ -662,7 +683,6 @@
               "glyph" : "xf014@FontAwesome",
               "cssClass" : "fa fa-trash-o"
             },
-            "refreshMode" : 2,
             "successMsg" : "删除成功",
             "timeout" : 60000,
             "uIActionMode" : "BACKEND",
@@ -671,7 +691,6 @@
             "closeEditView" : true,
             "closePopupView" : true,
             "enableConfirm" : true,
-            "reloadData" : true,
             "id" : "toolbar_delete_customer@customer"
           },
           "tooltip" : "删除",
@@ -1647,6 +1666,14 @@
                                 "itemStyle" : "DEFAULT",
                                 "itemType" : "CONTAINER",
                                 "name" : "container2",
+                                "getPSControlLogics" : [ {
+                                  "itemName" : "CONTAINER2",
+                                  "logicTag" : "list_itempanel",
+                                  "logicType" : "SCRIPT",
+                                  "name" : "show_logic",
+                                  "scriptCode" : "context.srfreadonly != true",
+                                  "triggerType" : "ITEMVISIBLE"
+                                } ],
                                 "getPSLayout" : {
                                   "dir" : "row",
                                   "layout" : "FLEX"
@@ -2059,18 +2086,11 @@
                           "id" : "LIST"
                         },
                         "getPSDEListDataItems" : [ {
-                          "dataType" : 21,
-                          "name" : "pcontent",
-                          "getPSAppDEField" : {
-                            "name" : "PCONTENT",
-                            "codeName" : "pcontent"
-                          }
-                        }, {
                           "dataType" : 25,
-                          "name" : "pid",
+                          "name" : "id",
                           "getPSAppDEField" : {
-                            "name" : "PID",
-                            "codeName" : "pid"
+                            "name" : "ID",
+                            "codeName" : "id"
                           }
                         }, {
                           "dataType" : 21,
@@ -2081,10 +2101,29 @@
                           }
                         }, {
                           "dataType" : 25,
-                          "name" : "id",
+                          "getFrontPSCodeList" : {
+                            "modelref" : true,
+                            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+                          },
+                          "name" : "create_man",
                           "getPSAppDEField" : {
-                            "name" : "ID",
-                            "codeName" : "id"
+                            "name" : "CREATE_MAN",
+                            "codeName" : "create_man"
+                          }
+                        }, {
+                          "dataType" : 21,
+                          "name" : "pcontent",
+                          "getPSAppDEField" : {
+                            "name" : "PCONTENT",
+                            "codeName" : "pcontent"
+                          }
+                        }, {
+                          "dataType" : 5,
+                          "format" : "YYYY-MM-DD HH:mm:ss",
+                          "name" : "create_time",
+                          "getPSAppDEField" : {
+                            "name" : "CREATE_TIME",
+                            "codeName" : "create_time"
                           }
                         }, {
                           "dataType" : 25,
@@ -2099,22 +2138,10 @@
                           }
                         }, {
                           "dataType" : 25,
-                          "getFrontPSCodeList" : {
-                            "modelref" : true,
-                            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
-                          },
-                          "name" : "create_man",
+                          "name" : "pid",
                           "getPSAppDEField" : {
-                            "name" : "CREATE_MAN",
-                            "codeName" : "create_man"
-                          }
-                        }, {
-                          "dataType" : 5,
-                          "format" : "YYYY-MM-DD HH:mm:ss",
-                          "name" : "create_time",
-                          "getPSAppDEField" : {
-                            "name" : "CREATE_TIME",
-                            "codeName" : "create_time"
+                            "name" : "PID",
+                            "codeName" : "pid"
                           }
                         }, {
                           "dataType" : 25,
@@ -3304,7 +3331,7 @@
                       "logicTrigger" : "VIEWEVENT",
                       "logicType" : "SCRIPT",
                       "name" : "viewmounted",
-                      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nconsole.log('项显示逻辑执行了');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
+                      "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
                     }, {
                       "eventNames" : "onLoadSuccess",
                       "logicTrigger" : "VIEWEVENT",
@@ -3434,6 +3461,14 @@
                           "modelref" : true,
                           "id" : "toolbar_deuiaction2"
                         },
+                        "getPSControlLogics" : [ {
+                          "itemName" : "deuiaction2",
+                          "logicTag" : "toolbar",
+                          "logicType" : "SCRIPT",
+                          "name" : "deuiaction2",
+                          "scriptCode" : "context.srfreadonly != true",
+                          "triggerType" : "ITEMVISIBLE"
+                        } ],
                         "getPSSysImage" : {
                           "glyph" : "xf067@FontAwesome",
                           "cssClass" : "fa fa-plus"

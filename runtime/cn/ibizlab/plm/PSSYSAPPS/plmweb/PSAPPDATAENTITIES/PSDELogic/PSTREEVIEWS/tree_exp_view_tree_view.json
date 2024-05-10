@@ -1,5 +1,6 @@
 {
   "codeName" : "tree_exp_view_tree_view",
+  "controlStyle" : "LIST_TREE",
   "controlType" : "TREEVIEW",
   "getCreatePSControlAction" : {
     "modelref" : true,
@@ -14,10 +15,10 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
     }
   },
-  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic/PSTREEVIEWS/tree_exp_view_tree_view.json",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic/PSTREEVIEWS/tree_exp_view_tree_view.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
     "id" : "fetch",
@@ -25,7 +26,7 @@
     "name" : "fetch",
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
     }
   },
   "getGetPSControlAction" : {
@@ -41,14 +42,14 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
     }
   },
   "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
   "logicName" : "自动化规则树导航视图_树视图",
   "getPSAppDataEntity" : {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic.json"
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
   },
   "getPSControlLogics" : [ {
     "eventNames" : "SELECTIONCHANGE",
@@ -66,7 +67,19 @@
       "modelref" : true,
       "id" : "all"
     },
-    "name" : "默认根节点 - 全部规则",
+    "name" : "规则 - 全部规则",
+    "getParentPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "parentValueLevel" : 1,
+    "searchMode" : 3
+  }, {
+    "getChildPSDETreeNode" : {
+      "modelref" : true,
+      "id" : "node"
+    },
+    "name" : "默认根节点 - 规则",
     "getParentPSDETreeNode" : {
       "modelref" : true,
       "id" : "ROOT"
@@ -78,10 +91,10 @@
       "modelref" : true,
       "id" : "auto"
     },
-    "name" : "默认根节点 - 自动化规则",
+    "name" : "规则 - 自动化规则",
     "getParentPSDETreeNode" : {
       "modelref" : true,
-      "id" : "ROOT"
+      "id" : "node"
     },
     "parentValueLevel" : 1,
     "searchMode" : 3
@@ -90,10 +103,10 @@
       "modelref" : true,
       "id" : "schedule"
     },
-    "name" : "默认根节点 - 计划规则",
+    "name" : "规则 - 计划规则",
     "getParentPSDETreeNode" : {
       "modelref" : true,
-      "id" : "ROOT"
+      "id" : "node"
     },
     "parentValueLevel" : 1,
     "searchMode" : 3
@@ -102,10 +115,10 @@
       "modelref" : true,
       "id" : "immediately"
     },
-    "name" : "默认根节点 - 即时规则",
+    "name" : "规则 - 即时规则",
     "getParentPSDETreeNode" : {
       "modelref" : true,
-      "id" : "ROOT"
+      "id" : "node"
     },
     "parentValueLevel" : 1,
     "searchMode" : 3
@@ -148,6 +161,10 @@
       "value" : "1",
       "rawValue" : true
     } ],
+    "getPSSysImage" : {
+      "glyph" : "xf0ca@FontAwesome",
+      "cssClass" : "fa fa-list-ul"
+    },
     "text" : "全部规则",
     "treeNodeType" : "STATIC",
     "hasPSDETreeNodeRSs" : false,
@@ -186,6 +203,10 @@
       "value" : "1",
       "rawValue" : true
     } ],
+    "getPSSysImage" : {
+      "glyph" : "xf031@FontAwesome",
+      "cssClass" : "fa fa-font"
+    },
     "text" : "自动化规则",
     "treeNodeType" : "STATIC",
     "hasPSDETreeNodeRSs" : false,
@@ -208,6 +229,10 @@
     "counterMode" : 0,
     "name" : "即时规则",
     "nodeType" : "immediately",
+    "getPSSysImage" : {
+      "glyph" : "xf1d9@FontAwesome",
+      "cssClass" : "fa fa-paper-plane-o"
+    },
     "text" : "即时规则",
     "treeNodeType" : "STATIC",
     "hasPSDETreeNodeRSs" : false,
@@ -226,6 +251,28 @@
     "selectFirstOnly" : false,
     "selected" : false,
     "id" : "immediately"
+  }, {
+    "counterMode" : 0,
+    "name" : "规则",
+    "nodeType" : "node",
+    "text" : "规则",
+    "treeNodeType" : "STATIC",
+    "hasPSDETreeNodeRSs" : true,
+    "appendPNodeId" : false,
+    "disableSelect" : false,
+    "enableCheck" : false,
+    "enableEditData" : false,
+    "enableNewData" : false,
+    "enableQuickCreate" : false,
+    "enableQuickSearch" : false,
+    "enableRemoveData" : false,
+    "enableViewData" : false,
+    "expandFirstOnly" : false,
+    "expanded" : true,
+    "rootNode" : false,
+    "selectFirstOnly" : false,
+    "selected" : false,
+    "id" : "node"
   }, {
     "counterMode" : 0,
     "name" : "组织模板",
@@ -268,6 +315,10 @@
       "value" : "1",
       "rawValue" : true
     } ],
+    "getPSSysImage" : {
+      "glyph" : "xf017@FontAwesome",
+      "cssClass" : "fa fa-clock-o"
+    },
     "text" : "计划规则",
     "treeNodeType" : "STATIC",
     "hasPSDETreeNodeRSs" : false,
@@ -287,6 +338,11 @@
     "selected" : false,
     "id" : "schedule"
   } ],
+  "getPSSysPFPlugin" : {
+    "pluginType" : "TREE_RENDER",
+    "pluginCode" : "LIST_TREE",
+    "runtimeObject" : true
+  },
   "getRemovePSControlAction" : {
     "modelref" : true,
     "id" : "remove",
@@ -300,7 +356,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
     }
   },
   "treeGridMode" : 0,
@@ -317,7 +373,7 @@
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PsdeLogic.json"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDELogic.json"
     }
   },
   "enableRootSelect" : false,

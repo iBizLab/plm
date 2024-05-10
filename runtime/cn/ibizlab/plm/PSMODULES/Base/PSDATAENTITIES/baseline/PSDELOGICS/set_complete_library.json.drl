@@ -1,0 +1,184 @@
+package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_library;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.baseline baselineset_complete_librarydefault;
+                global cn.ibizlab.plm.core.base.domain.relation baselineset_complete_libraryfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation baselineset_complete_libraryrelation_filter;
+                global cn.ibizlab.plm.core.base.domain.relation baselineset_complete_libraryrelation_page;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case baselineset_complete_librarytest_case;
+                global cn.ibizlab.plm.core.base.domain.version baselineset_complete_libraryversion;
+                    global cn.ibizlab.plm.core.base.service.IbaselineService baselineservice;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.base.service.IbaselineService iBzSysBaselineDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "baselineset_complete_librarybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设立完成状态]
+            rule "prepareparam1"
+            ruleflow-group "baselineset_complete_libraryprepareparam1"
+            when
+            then
+                            baselineset_complete_librarydefault.set("status","2");
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设立完成]
+            rule "deaction1"
+            ruleflow-group "baselineset_complete_librarydeaction1"
+            when
+            then
+                        baselineservice.update(baselineset_complete_librarydefault);
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备过滤器参数]
+            rule "prepareparam2"
+            ruleflow-group "baselineset_complete_libraryprepareparam2"
+            when
+            then
+                            baselineset_complete_libraryrelation_filter.set("n_principal_id_eq",baselineset_complete_librarydefault.get("id"));
+                            baselineset_complete_libraryrelation_filter.set("size","10000");
+                            baselineset_complete_libraryrelation_filter.set("n_principal_type_eq","baseline");
+                            baselineset_complete_libraryrelation_filter.set("n_target_type_eq","test_case");
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取基线下关联的用例]
+            rule "dedataset1"
+            ruleflow-group "baselineset_complete_librarydedataset1"
+            when
+            then
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "baselineset_complete_libraryloopsubcall1"
+            when
+            then
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam1"
+            ruleflow-group "baselineset_complete_libraryresetparam1"
+            when
+            then
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置参数]
+            rule "resetparam2"
+            ruleflow-group "baselineset_complete_libraryresetparam2"
+            when
+            then
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "baselineset_complete_libraryprepareparam3"
+            when
+            then
+                            baselineset_complete_librarytest_case.set("id",baselineset_complete_libraryfor_temp_obj.get("targetid"));
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取用例]
+            rule "deaction2"
+            ruleflow-group "baselineset_complete_librarydeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_caseservice.get(baselineset_complete_librarytest_case.getId()),baselineset_complete_librarytest_case);
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充版本属性]
+            rule "prepareparam4"
+            ruleflow-group "baselineset_complete_libraryprepareparam4"
+            when
+            then
+                            baselineset_complete_libraryversion.set("ownerid",baselineset_complete_libraryfor_temp_obj.get("targetid"));
+                            baselineset_complete_libraryversion.set("ownertype","TEST_CASE");
+                            baselineset_complete_libraryversion.set("name","设立基线创建版本");
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建新版本]
+            rule "deaction3"
+            ruleflow-group "baselineset_complete_librarydeaction3"
+            when
+            then
+                        versionservice.commit(baselineset_complete_libraryversion);
+                        update(baselineset_complete_librarydefault);//更新fact中变量值
+                        update(baselineset_complete_libraryfor_temp_obj);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_filter);//更新fact中变量值
+                        update(baselineset_complete_libraryrelation_page);//更新fact中变量值
+                        update(baselineset_complete_librarytest_case);//更新fact中变量值
+                        update(baselineset_complete_libraryversion);//更新fact中变量值
+            end
