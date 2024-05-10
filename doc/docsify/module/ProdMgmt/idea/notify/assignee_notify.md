@@ -1,4 +1,4 @@
-## 分配负责人通知(assignee_notify) <!-- {docsify-ignore-all} -->
+## 产品需求分配负责人通知(assignee_notify) <!-- {docsify-ignore-all} -->
 
 
 

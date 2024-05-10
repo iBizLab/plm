@@ -2,36 +2,34 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 编辑表单(form)
-
 #### 列表(list)
-
 #### 工具栏(toolbar)
 
+## 视图界面逻辑
+  * [关闭评论区](module/Wiki/article_page/uilogic/close_comment)
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [发送评论（知识库）](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [关闭](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [编辑](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [清空评论](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [评论](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [打开历史版本视图](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [另存为模板](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [回复](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [发送评论（知识库）](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [清空评论](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [编辑](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [打开历史版本视图](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [打开界面编辑页](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [收藏](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [关闭](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [取消收藏](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [另存为模板](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [评论](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [删除评论](module/Wiki/article_page#界面行为)
 
 ### 关联界面逻辑
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
-  * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
   * [评论(COMMENT)](module/Base/comment) : [控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)
+  * [评论(COMMENT)](module/Base/comment) : [控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)
 
 ### 关联视图
   * [页面(article_page_document_edit_view)](app/view/article_page_document_edit_view)

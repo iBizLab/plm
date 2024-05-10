@@ -2,16 +2,11 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### DATAINFOBAR(datainfobar)
-
 #### 数据关系栏(drbar)
-
 #### 编辑表单(form)
-
 
 
 ### 关联视图

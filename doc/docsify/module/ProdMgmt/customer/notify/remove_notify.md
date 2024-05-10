@@ -1,4 +1,4 @@
-## 删除客户通知(remove_notify) <!-- {docsify-ignore-all} -->
+## 客户删除通知(remove_notify) <!-- {docsify-ignore-all} -->
 
 
 

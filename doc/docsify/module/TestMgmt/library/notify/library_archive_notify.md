@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [测试库通知模板(归档/激活测试库)](index/notify_index?id=library_archive)
+* [测试库通知模板(归档/激活测试库)](index/notify_index?id=library_archived_or_activate)
 
 <p class="panel-title"><b>通知类型</b></p>
 

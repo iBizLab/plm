@@ -36,7 +36,7 @@
 
 ### 查询连接
 * **RELATION不存在1:N（NOT EXISTS (SELECT)）DERCUSTOM_RELATION_SPACE**<br>
-连接关系：[DERCUSTOM_RELATION_SPACE](der/DERCUSTOM_RELATION_SPACE)<br>
+连接关系：[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)<br>
 连接实体：[空间](module/Wiki/space)<br>
 连接条件：(`PRINCIPAL_TYPE(关联主体类型)` EQ `数据上下文.principal_type` AND `TARGET_TYPE(关联目标类型)` EQ `数据上下文.target_type` AND `PRINCIPAL_ID(关联主体标识)` EQ `数据上下文.principal_id`)<br>
 
@@ -59,6 +59,8 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
 t1.`VISIBILITY`

@@ -30,11 +30,11 @@
 * `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `USERID(用户标识)`
 * `属性等价`
-`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `LOGINNAME(登录名)`
+`NAME(登录名)` <i class="fa fa-angle-double-right"/></i> `LOGINNAME(登录名)`
 * `属性等价`
 `DEPARTMENT_NAME(部门名称)` <i class="fa fa-angle-double-right"/></i> `MDEPTNAME(主部门名称)`
 * `属性等价`
-`DISPLAY_NAME(显示名称)` <i class="fa fa-angle-double-right"/></i> `PERSONNAME(姓名)`
+`DISPLAY_NAME(姓名)` <i class="fa fa-angle-double-right"/></i> `PERSONNAME(姓名)`
 * `属性等价`
 `JOB_NAME(职位名称)` <i class="fa fa-angle-double-right"/></i> `POSTNAME(岗位名称)`
 * `属性等价`

@@ -1,9 +1,13 @@
 
-### 分组数据集合<sup class="footnote-symbol"> <font color=orange>[28]</font></sup>   <!-- {docsify-ignore-all} -->
+### 分组数据集合<sup class="footnote-symbol"> <font color=orange>[29]</font></sup>   <!-- {docsify-ignore-all} -->
 | 实体   | 数据集合  |
 | --------   |------------|
+|[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|[排重用户(distinct_userid)](module/ebsx/auth_log_admin/dataset/distinct_userid)|
+|[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|[日期分组集合(group_by_data)](module/ebsx/auth_log_admin/dataset/group_by_data)|
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|[执行情况统计(execution_statistics)](module/Base/extend_log/dataset/execution_statistics)|
 |[需求(IDEA)](module/ProdMgmt/idea)|[我负责的需求(my_assignee_count)](module/ProdMgmt/idea/dataset/my_assignee_count)|
+|[登录日志(LOGIN_LOG)](module/Base/login_log)|[排重用户(DISTINCT_USERID)](module/Base/login_log/dataset/distinct_userid)|
+|[登录日志(LOGIN_LOG)](module/Base/login_log)|[获取活跃人员图表数据(ECHARTS_DATAS)](module/Base/login_log/dataset/echarts_datas)|
 |[执行用例(RUN)](module/TestMgmt/run)|[执行结果分布(ImplementationResults)](module/TestMgmt/run/dataset/ImplementationResults)|
 |[执行用例(RUN)](module/TestMgmt/run)|[用例成员分布(casePerson)](module/TestMgmt/run/dataset/casePerson)|
 |[执行用例(RUN)](module/TestMgmt/run)|[每日测试次数统计(everydayTest)](module/TestMgmt/run/dataset/everydayTest)|
@@ -27,6 +31,3 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[kanban成员负荷报告(kanban_user_stat)](module/ProjMgmt/work_item/dataset/kanban_user_stat)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[我负责的（统计）(my_assignee_count)](module/ProjMgmt/work_item/dataset/my_assignee_count)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[需求分组过滤(property_distribution)](module/ProjMgmt/work_item/dataset/property_distribution)|
-|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[成员负荷报告（Scrum）(sprint_user_stat)](module/ProjMgmt/work_item/dataset/sprint_user_stat)|
-|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[团队速度(temp_speed_report)](module/ProjMgmt/work_item/dataset/temp_speed_report)|
-|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项分布(work_item_distribution)](module/ProjMgmt/work_item/dataset/work_item_distribution)|

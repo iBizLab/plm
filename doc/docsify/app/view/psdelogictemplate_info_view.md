@@ -2,12 +2,9 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据关系分页部件(drtab)
-
 
 
 ### 关联界面行为

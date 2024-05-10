@@ -816,9 +816,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -834,6 +836,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -851,6 +854,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -865,9 +869,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -883,6 +889,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -955,9 +962,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -973,6 +982,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -990,6 +1000,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1004,9 +1015,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1022,6 +1035,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1094,9 +1108,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1112,6 +1128,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1129,6 +1146,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1143,9 +1161,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1161,6 +1181,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1233,9 +1254,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1251,6 +1274,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1268,6 +1292,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1282,9 +1307,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1300,6 +1327,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1372,9 +1400,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1390,6 +1420,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1407,6 +1438,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1421,9 +1453,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1439,6 +1473,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1511,9 +1546,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1529,6 +1566,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1546,6 +1584,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1560,9 +1599,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1578,6 +1619,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1650,9 +1692,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1668,6 +1712,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1685,6 +1730,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1699,9 +1745,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1717,6 +1765,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1789,9 +1838,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1807,6 +1858,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1824,6 +1876,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1838,9 +1891,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1856,6 +1911,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -1928,9 +1984,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -1946,6 +2004,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -1963,6 +2022,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -1977,9 +2037,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -1995,6 +2057,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2067,9 +2130,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2085,6 +2150,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2102,6 +2168,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2116,9 +2183,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2134,6 +2203,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2206,9 +2276,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2224,6 +2296,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2241,6 +2314,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2255,9 +2329,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2273,6 +2349,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2345,9 +2422,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2363,6 +2442,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2380,6 +2460,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2394,9 +2475,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2412,6 +2495,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2484,9 +2568,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2502,6 +2588,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2519,6 +2606,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2533,9 +2621,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2551,6 +2641,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2623,9 +2714,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2641,6 +2734,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2658,6 +2752,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2672,9 +2767,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2690,6 +2787,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2762,9 +2860,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2780,6 +2880,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2797,6 +2898,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2811,9 +2913,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2829,6 +2933,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -2901,9 +3006,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -2919,6 +3026,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -2936,6 +3044,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -2950,9 +3059,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -2968,6 +3079,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -3040,9 +3152,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -3058,6 +3172,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -3075,6 +3190,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3089,9 +3205,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -3107,6 +3225,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -3179,9 +3298,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -3197,6 +3318,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -3214,6 +3336,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3228,9 +3351,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -3246,6 +3371,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -3318,9 +3444,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -3336,6 +3464,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -3353,6 +3482,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3367,9 +3497,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -3385,6 +3517,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -3457,9 +3590,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -3475,6 +3610,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -3492,6 +3628,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3506,9 +3643,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -3524,6 +3663,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -3596,9 +3736,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -3614,6 +3756,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -3631,6 +3774,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3645,9 +3789,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -3663,6 +3809,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -3735,9 +3882,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -3753,6 +3902,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -3770,6 +3920,7 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_create_man_eq" : null,
+  "n_create_man_in" : null,
   "n_id_eq" : null,
   "n_idea_exists_n_assignee_id_eq" : null,
   "n_idea_exists_n_create_man_eq" : null,
@@ -3784,9 +3935,11 @@ Integer
   "n_name_like" : null,
   "n_principal_id_eq" : null,
   "n_recent_parent_eq" : null,
+  "n_register_date_eq" : null,
   "n_register_date_gtandeq" : null,
   "n_register_date_in" : null,
   "n_register_date_ltandeq" : null,
+  "n_show_identifier_like" : null,
   "n_test_case_exists_n_create_man_eq" : null,
   "n_test_case_exists_n_description_like" : null,
   "n_test_case_exists_n_identifier_eq" : null,
@@ -3802,6 +3955,7 @@ Integer
   "n_work_item_exists_n_assignee_id_eq" : null,
   "n_work_item_exists_n_create_man_eq" : null,
   "n_work_item_exists_n_description_like" : null,
+  "n_work_item_exists_n_identifier_like" : null,
   "n_work_item_exists_n_is_archived_eq" : null,
   "n_work_item_exists_n_priority_eq" : null,
   "n_work_item_exists_n_project_id_eq" : null,
@@ -4415,9 +4569,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4433,6 +4589,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4480,9 +4637,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4498,6 +4657,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4545,9 +4705,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4563,6 +4725,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4610,9 +4773,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4628,6 +4793,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4675,9 +4841,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4693,6 +4861,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4740,9 +4909,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4758,6 +4929,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4805,9 +4977,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4823,6 +4997,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4870,9 +5045,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4888,6 +5065,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -4935,9 +5113,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -4953,6 +5133,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5000,9 +5181,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5018,6 +5201,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5065,9 +5249,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5083,6 +5269,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5130,9 +5317,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5148,6 +5337,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5195,9 +5385,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5213,6 +5405,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5260,9 +5453,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5278,6 +5473,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5325,9 +5521,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5343,6 +5541,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5390,9 +5589,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5408,6 +5609,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5455,9 +5657,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5473,6 +5677,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5520,9 +5725,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5538,6 +5745,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5585,9 +5793,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5603,6 +5813,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5650,9 +5861,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5668,6 +5881,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5715,9 +5929,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5733,6 +5949,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
@@ -5780,9 +5997,11 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事项|
 |<el-row justify="space-between"><el-col :span="20">n_principal_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工时主体标识|
 |<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_register_date_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_gtandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
 |<el-row justify="space-between"><el-col :span="20">n_register_date_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|工作日期|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
 |<el-row justify="space-between"><el-col :span="20">n_test_case_exists_n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例|
@@ -5798,6 +6017,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_create_man_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
+|<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
 |<el-row justify="space-between"><el-col :span="20">n_work_item_exists_n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|

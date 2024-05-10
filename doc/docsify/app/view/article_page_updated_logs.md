@@ -2,12 +2,12 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据视图(dataview)
 
+## 视图界面逻辑
+  * 打开更新日志
 
 
 ### 关联界面行为

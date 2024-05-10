@@ -16,5 +16,5 @@ t1.`WEEKDAY`
 FROM `PROJECT_MEMBER` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 
-WHERE ( <choose><when test="ctx.datacontext.project_id !=null ">  t1.`PROJECT_ID` = #{ctx.datacontext.project_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`PROJECT_ID` = #{ctx.datacontext.id} )
+WHERE ( <choose><when test="ctx.datacontext.project_id !=null ">  t1.`PROJECT_ID` = #{ctx.datacontext.project_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`PROJECT_ID` = #{ctx.datacontext.id}  AND  t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid} )
 ```

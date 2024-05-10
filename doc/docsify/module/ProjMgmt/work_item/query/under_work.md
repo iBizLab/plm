@@ -72,6 +72,7 @@ t11.`TYPE` AS `PROJECT_TYPE`,
 t41.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RELEASE_ID`,
+t91.`NAME` AS `RELEASE_NAME`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEVERITY`,
@@ -101,6 +102,7 @@ LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID`
 LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
 LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
 LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  ( exists (select 1 from `work` t2, project t3 where t1.PROJECT_ID = t3.id and t2.PRINCIPAL_ID = t3.id 
 and t2.PRINCIPAL_TYPE = 'project' and t2.PORTFOLIO_ID =#{ctx.webcontext.portfolio_id})  OR  exists (select 1 from project t2 where t1.PROJECT_ID = t2.id and t2.IS_ARCHIVED = 0 and t2.IS_DELETED  = 0)

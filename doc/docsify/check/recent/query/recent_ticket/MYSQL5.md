@@ -18,6 +18,5 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`OWNER_TYPE` = 'product'  AND  t1.`OWNER_SUBTYPE` = 'ticket'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id} )  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id}  AND  exists(SELECT 1 FROM ticket t3 where t3.id = t1.owner_id and 
- t3.is_archived = 0 and t3.is_deleted =0) )
+WHERE ( t1.`OWNER_TYPE` = 'product'  AND  t1.`OWNER_SUBTYPE` = 'ticket'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id} )  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id}  AND  exists(SELECT 1 FROM ticket t3 where t3.id = t1.owner_id and t3.is_deleted =0) )
 ```

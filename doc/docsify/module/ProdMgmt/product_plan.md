@@ -32,7 +32,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
-|[DERCUSTOM_RELATION_PRODUCT_PLAN](der/DERCUSTOM_RELATION_PRODUCT_PLAN)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN](der/DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
 </el-tab-pane>
@@ -57,12 +57,14 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProdMgmt/product_plan/logic/delete "删除")|默认|不支持||||
+|删除类别|delete_categories|[实体处理逻辑](module/ProdMgmt/product_plan/logic/delete_categories "删除类别")|默认|不支持||||
 |排期关联需求|product_plan_relation_idea|[实体处理逻辑](module/ProdMgmt/product_plan/logic/product_plan_relation_idea "排期关联需求")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[删除](module/ProdMgmt/product_plan/logic/delete)|delete|无||产品排期数据的逻辑删除，修改产品排期的是否删除属性|
+|[删除类别](module/ProdMgmt/product_plan/logic/delete_categories)|delete_categories|无||删除对应类别时对对应排期的类别属性进行处理|
 |[排期关联需求](module/ProdMgmt/product_plan/logic/product_plan_relation_idea)|product_plan_relation_idea|无||排期计划关联需求，生成正反向关联数据|
 
 ## 数据查询

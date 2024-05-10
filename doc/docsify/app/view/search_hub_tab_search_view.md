@@ -2,12 +2,27 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
+#### 搜索栏(searchbar)
 #### 分页导航面板(tabexppanel)
 
+## 视图界面逻辑
+* `onViewMounted`
+```javascript
+const searchBar = view.getController('searchbar');
+if (searchBar) {
+searchBar.state.query = view.params.srfquery ? view.params.srfquery : '';
+}
+```
+* `onCreated`
+```javascript
+view.ctx.evt.on('onRegister', (name, c) => {
+    if(name==='tabexppanel'){
+        c.state.expViewParams={query: viewParam.srfquery}
+    }
+});
+```
 
 
 ### 关联视图

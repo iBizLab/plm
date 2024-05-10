@@ -16,10 +16,12 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./run_daily_tendencies#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./run_daily_tendencies#end1 {"结束"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./run_daily_tendencies#debugparam1 {"调试逻辑参数"}]]
 state "直接SQL调用" as RAWSQLCALL1  [[$./run_daily_tendencies#rawsqlcall1 {"直接SQL调用"}]]
 
 
-Begin --> RAWSQLCALL1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> RAWSQLCALL1
 RAWSQLCALL1 --> END1
 
 
@@ -29,17 +31,25 @@ RAWSQLCALL1 --> END1
 
 ### 处理步骤说明
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
 返回 `result(结果)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
 
 
 
-*- N/A*
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
+
 #### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 

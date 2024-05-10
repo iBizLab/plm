@@ -15,10 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_by_user#begin {"开始"}]]
+state "设置过滤分页" as PREPAREPARAM5  [[$./get_by_user#prepareparam5 {"设置过滤分页"}]]
 state "获取用户通知" as DEDATASET1  [[$./get_by_user#dedataset1 {"获取用户通知"}]]
 state "获取通知列表" as DEDATASET2  [[$./get_by_user#dedataset2 {"获取通知列表"}]]
 state "结束" as END1 <<end>> [[$./get_by_user#end1 {"结束"}]]
-state "准备参数" as PREPAREPARAM2  [[$./get_by_user#prepareparam2 {"准备参数"}]]
+state "排序数组参数" as SORTPARAM1  [[$./get_by_user#sortparam1 {"排序数组参数"}]]
+state "将通知事件集填充" as PREPAREPARAM2  [[$./get_by_user#prepareparam2 {"将通知事件集填充"}]]
 state "绑定用户配置" as BINDPARAM1  [[$./get_by_user#bindparam1 {"绑定用户配置"}]]
 state "获取完整用户配置" as DEACTION1  [[$./get_by_user#deaction1 {"获取完整用户配置"}]]
 state "提取原事件数组" as BINDPARAM3  [[$./get_by_user#bindparam3 {"提取原事件数组"}]]
@@ -35,7 +37,8 @@ state "设置存在标识" as PREPAREPARAM3  [[$./get_by_user#prepareparam3 {"�
 }
 
 
-Begin --> DEDATASET1
+Begin --> PREPAREPARAM5
+PREPAREPARAM5 --> DEDATASET1
 DEDATASET1 --> BINDPARAM1 : [[$./get_by_user#dedataset1-bindparam1{获取配置} 获取配置]]
 BINDPARAM1 --> DEACTION1
 DEACTION1 --> BINDPARAM3
@@ -49,7 +52,8 @@ PREPAREPARAM4 --> LOOPSUBCALL2
 LOOPSUBCALL2 --> PREPAREPARAM3
 PREPAREPARAM3 --> END2
 LOOPSUBCALL2 --> APPENDPARAM1 : [[$./get_by_user#loopsubcall2-appendparam1{连接名称} 连接名称]]
-LOOPSUBCALL1 --> PREPAREPARAM2
+LOOPSUBCALL1 --> SORTPARAM1
+SORTPARAM1 --> PREPAREPARAM2
 PREPAREPARAM2 --> END1
 
 
@@ -64,6 +68,13 @@ PREPAREPARAM2 --> END1
 
 
 *- N/A*
+#### 设置过滤分页 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`1000` 设置给  `notify_setting_filter(用户配置过滤项).size`
+2. 将`1000` 设置给  `notify_filter(通知过滤器).size`
+
 #### 获取用户通知 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
@@ -91,7 +102,12 @@ PREPAREPARAM2 --> END1
 
 
 循环参数`notifys(通知标识)`，子循环参数使用`notify(通知循环变量)`
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 排序数组参数 :id=SORTPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[排序数组参数]</font></sup>
+
+
+
+
+#### 将通知事件集填充 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -112,8 +128,9 @@ PREPAREPARAM2 --> END1
 
 
 1. 将`notify(通知循环变量).PSDENOTIFYNAME(实体通知名称)` 设置给  `notify_event(通知事件).NAME(名称)`
-2. 将`notify(通知循环变量).MSGTYPE(通知消息类型)` 设置给  `notify_event(通知事件).MSG_TYPE(消息类型)`
-3. 将`notify(通知循环变量).PSDENOTIFYID(实体通知标识)` 设置给  `notify_event(通知事件).ID(标识)`
+2. 将`notify(通知循环变量).NOTIFYTAG2(通知标记2)` 设置给  `notify_event(通知事件).GROUP(事件分类)`
+3. 将`notify(通知循环变量).MSGTYPE(通知消息类型)` 设置给  `notify_event(通知事件).MSG_TYPE(消息类型)`
+4. 将`notify(通知循环变量).PSDENOTIFYID(实体通知标识)` 设置给  `notify_event(通知事件).ID(标识)`
 
 #### 获取完整用户配置 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

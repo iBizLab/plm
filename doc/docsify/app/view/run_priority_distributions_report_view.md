@@ -2,16 +2,11 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据图表(chart)
-
 #### 搜索栏(searchbar)
-
 #### 搜索表单(searchform)
-
 
 
 <script>

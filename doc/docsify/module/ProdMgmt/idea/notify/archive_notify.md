@@ -1,4 +1,4 @@
-## 归档/激活通知(archive_notify) <!-- {docsify-ignore-all} -->
+## 产品需求归档/激活通知(archive_notify) <!-- {docsify-ignore-all} -->
 
 
 
@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [需求通知模板(归档/激活需求)](index/notify_index?id=idea_archive)
+* [需求通知模板(归档/激活需求)](index/notify_index?id=idea_archived_or_activate)
 
 <p class="panel-title"><b>通知类型</b></p>
 

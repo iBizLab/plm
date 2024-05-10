@@ -9,4 +9,6 @@
 |[认证日志(SYS_AUTHLOG)](module/ebsx/AuthLog)|AuthLog|主实体|ServiceAPI||否|否|自控制|否||
 |[部门(SYS_DEPT)](module/ebsx/SysDepartment)|SysDepartment|主实体|ServiceAPI||否|否|自控制|否|部门映射实体|
 |[人员(SYS_EMP)](module/ebsx/SysEmployee)|SysEmployee|主实体|ServiceAPI||否|否|自控制|否|人员映射实体|
+|[待办(SYS_TODO)](module/ebsx/SysTodo)|SysTodo|主实体|ServiceAPI||否|否|自控制|否||
+|[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|auth_log_admin|主实体|SQL|IBZAUTHLOG|否|否|自控制|否||
 

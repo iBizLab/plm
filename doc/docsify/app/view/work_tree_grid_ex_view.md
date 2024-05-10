@@ -2,16 +2,11 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 搜索栏(searchbar)
-
 #### 工具栏(toolbar)
-
 #### 树表格（增强）(treegridex)
-
 
 
 ### 关联界面行为

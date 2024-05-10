@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [测试库通知模板(删除/恢复测试库)](index/notify_index?id=library_remove)
+* [测试库通知模板(删除/恢复测试库)](index/notify_index?id=library_remove_or_recover)
 
 <p class="panel-title"><b>通知类型</b></p>
 

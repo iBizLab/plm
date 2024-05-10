@@ -52,6 +52,12 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/ProjMgmt/work_item_state/logic/nothing "无操作")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProjMgmt/work_item_state/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -114,6 +120,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_state?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item_state?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_state?id=数据查询`">
   数据查询

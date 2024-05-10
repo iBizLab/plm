@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_batch_temp#begin {开始}]]
-state "批量删除临时数据（临时）" as RAWJSCODE1  [[$./remove_batch_temp#rawjscode1 {批量删除临时数据（临时）}]]
 state "结束" as END1 <<end>> [[$./remove_batch_temp#end1 {结束}]]
+state "批量删除临时数据（临时）" as RAWJSCODE1  [[$./remove_batch_temp#rawjscode1 {批量删除临时数据（临时）}]]
 
 
 Begin --> RAWJSCODE1
@@ -68,3 +68,4 @@ return (async function() {
 | --------| --------| --------  | --------   |
 |临时数据列表|list|数据对象列表||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|view|view|当前视图对象||

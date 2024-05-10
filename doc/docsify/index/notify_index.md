@@ -11,63 +11,71 @@
 
 |    实体col200|    通知名称col200          |  消息模板col300   |  使用场景col250    |  备注col300  |
 | --------|------------ |   -------- | -------- | -------- |
-|[关注(ATTENTION)](module/Base/attention)|[提醒关注页面通知(attention_page_notify)](module/Base/attention/notify/attention_page_notify)|[提醒关注通知模板(页面)](#page_notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
-|[关注(ATTENTION)](module/Base/attention)|[提醒关注通知(notice_attention_notify)](module/Base/attention/notify/notice_attention_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论客户通知(customer_notify)](module/Base/comment/notify/customer_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论需求通知(idea_notify)](module/Base/comment/notify/idea_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论页面通知(page_notify)](module/Base/comment/notify/page_notify)|[评论页面通知模板](#comment_page)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论执行用例通知(run_notify)](module/Base/comment/notify/run_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论测试用例通知(test_case_notify)](module/Base/comment/notify/test_case_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论工单通知(ticket_notify)](module/Base/comment/notify/ticket_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[评论(COMMENT)](module/Base/comment)|[评论工作项通知(work_item_notify)](module/Base/comment/notify/work_item_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
-|[客户(CUSTOMER)](module/ProdMgmt/customer)|[取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/customer/notify/assignee_cancel_notify)|[客户通知模板(取消分配负责人)](#customer_assignee_cancel)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
-|[客户(CUSTOMER)](module/ProdMgmt/customer)|[分配负责人通知(assignee_notify)](module/ProdMgmt/customer/notify/assignee_notify)|[客户通知模板(分配负责人)](#customer_assignee)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
-|[客户(CUSTOMER)](module/ProdMgmt/customer)|[变更负责人通知(assignee_onchage_notify)](module/ProdMgmt/customer/notify/assignee_onchage_notify)|[客户通知模板(变更负责人)](#customer_assignee_onchange)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
-|[客户(CUSTOMER)](module/ProdMgmt/customer)|[删除客户通知(remove_notify)](module/ProdMgmt/customer/notify/remove_notify)|[客户通知模板(删除客户)](#customer_remove)|[删除客户发送通知(remove_customer_notify)](module/ProdMgmt/customer/logic/remove_customer_notify)||
-|[需求(IDEA)](module/ProdMgmt/idea)|[归档/激活通知(archive_notify)](module/ProdMgmt/idea/notify/archive_notify)|[需求通知模板(归档/激活需求)](#idea_archive)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProdMgmt/idea/logic/is_archived_onchange)||
-|[需求(IDEA)](module/ProdMgmt/idea)|[取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/idea/notify/assignee_cancel_notify)|[需求通知模板(取消分配负责人)](#idea_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
-|[需求(IDEA)](module/ProdMgmt/idea)|[分配负责人通知(assignee_notify)](module/ProdMgmt/idea/notify/assignee_notify)|[需求通知模板(分配负责人)](#idea_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
-|[需求(IDEA)](module/ProdMgmt/idea)|[负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/idea/notify/assignee_onchange_notify)|[需求通知模板(负责人变更通知)](#idea_assignee_onchange)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
-|[需求(IDEA)](module/ProdMgmt/idea)|[删除/恢复需求通知(remove_notify)](module/ProdMgmt/idea/notify/remove_notify)|[需求通知模板(删除/恢复需求)](#idea_remove)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProdMgmt/idea/logic/is_deleted_onchange)||
-|[需求(IDEA)](module/ProdMgmt/idea)|[状态变更通知(state_onchage_notify)](module/ProdMgmt/idea/notify/state_onchage_notify)|[需求通知模板(状态变更)](#idea_state_onchange)|[状态变更附加逻辑(state_onchange)](module/ProdMgmt/idea/logic/state_onchange)||
-|[测试库(LIBRARY)](module/TestMgmt/library)|[测试库归档/激活通知(library_archive_notify)](module/TestMgmt/library/notify/library_archive_notify)|[测试库通知模板(归档/激活测试库)](#library_archive)|[是否归档变更附加逻辑(is_archived_onchange)](module/TestMgmt/library/logic/is_archived_onchange)||
-|[测试库(LIBRARY)](module/TestMgmt/library)|[测试库删除/恢复通知(library_remove_notify)](module/TestMgmt/library/notify/library_remove_notify)|[测试库通知模板(删除/恢复测试库)](#library_remove)|[是否删除变更附加逻辑(is_deleted_onchange)](module/TestMgmt/library/logic/is_deleted_onchange)||
-|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[加入测试库成员通知(library_member_create)](module/TestMgmt/library_member/notify/library_member_create)|[测试库通知模板(加入测试库成员)](#library_member_create)|[Create 执行之后](index/action_logic_index#library_member_Create)||
-|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[移除测试库成员通知(library_member_remove)](module/TestMgmt/library_member/notify/library_member_remove)|[测试库通知模板(移除测试库成员)](#library_member_remove)|[移除测试库成员通知(remove_library_member_notify)](module/TestMgmt/library_member/logic/remove_library_member_notify)||
-|[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|[加入成员通知(create_member_notify)](module/Base/portfolio_member/notify/create_member_notify)|[项目集通知模板(加入成员)](#project_set_member_create)|[Create 执行之后](index/action_logic_index#portfolio_member_Create)||
-|[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|[移除成员通知(remove_member_notify)](module/Base/portfolio_member/notify/remove_member_notify)|[项目集通知模板(移除成员)](#project_set_member_remove)|[移除项目集成员通知(remove_project_set_member_notify)](module/Base/portfolio_member/logic/remove_project_set_member_notify)||
-|[产品(PRODUCT)](module/ProdMgmt/product)|[产品归档/激活通知(archived_nofity)](module/ProdMgmt/product/notify/archived_nofity)|[产品通知模板(归档/激活产品)](#product_archive)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProdMgmt/product/logic/is_archived_onchange)||
-|[产品(PRODUCT)](module/ProdMgmt/product)|[产品删除/恢复通知(delete_notify)](module/ProdMgmt/product/notify/delete_notify)|[产品通知模板(删除/恢复产品)](#product_remove)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProdMgmt/product/logic/is_deleted_onchange)||
-|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[加入产品成员通知(create_member_notify)](module/ProdMgmt/product_member/notify/create_member_notify)|[产品通知模板(加入产品成员)](#product_member_create)|[Create 执行之后](index/action_logic_index#product_member_Create)||
-|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[移除产品成员通知(remove_member_notify)](module/ProdMgmt/product_member/notify/remove_member_notify)|[产品通知模板(移除产品成员)](#product_member_remove)|[移除产品成员通知(remove_product_member_notify)](module/ProdMgmt/product_member/logic/remove_product_member_notify)||
-|[项目(PROJECT)](module/ProjMgmt/project)|[项目归档/激活通知(archived_notify)](module/ProjMgmt/project/notify/archived_notify)|[项目通知模板(归档/激活项目)](#project_archive)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProjMgmt/project/logic/is_archived_onchange)||
+|[关注(ATTENTION)](module/Base/attention)|[客户提醒关注通知(attention_customer_notify)](module/Base/attention/notify/attention_customer_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[关注(ATTENTION)](module/Base/attention)|[产品需求提醒关注通知(attention_idea_notify)](module/Base/attention/notify/attention_idea_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[关注(ATTENTION)](module/Base/attention)|[页面提醒关注通知(attention_page_notify)](module/Base/attention/notify/attention_page_notify)|[提醒关注通知模板(页面)](#page_notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[关注(ATTENTION)](module/Base/attention)|[执行用例提醒关注通知(attention_run_notify)](module/Base/attention/notify/attention_run_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[关注(ATTENTION)](module/Base/attention)|[测试用例提醒关注通知(attention_test_case_notify)](module/Base/attention/notify/attention_test_case_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[关注(ATTENTION)](module/Base/attention)|[工单提醒关注通知(attention_ticket_notify)](module/Base/attention/notify/attention_ticket_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[关注(ATTENTION)](module/Base/attention)|[工作项提醒关注通知(attention_work_item_notify)](module/Base/attention/notify/attention_work_item_notify)|[提醒关注通知模板](#notice_attention)|[添加关注后发送通知(after_create_notify)](module/Base/attention/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[客户评论通知(customer_notify)](module/Base/comment/notify/customer_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[产品需求评论通知(idea_notify)](module/Base/comment/notify/idea_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[页面评论通知(page_notify)](module/Base/comment/notify/page_notify)|[评论页面通知模板](#comment_page)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[执行用例评论通知(run_notify)](module/Base/comment/notify/run_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[测试用例评论通知(test_case_notify)](module/Base/comment/notify/test_case_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[工单评论通知(ticket_notify)](module/Base/comment/notify/ticket_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[评论(COMMENT)](module/Base/comment)|[工作项评论通知(work_item_notify)](module/Base/comment/notify/work_item_notify)|[评论通知模板](#comment)|[新建评论后通知(after_create_notify)](module/Base/comment/logic/after_create_notify)||
+|[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/customer/notify/assignee_cancel_notify)|[客户通知模板(取消分配负责人)](#customer_assignee_cancel)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
+|[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户分配负责人通知(assignee_notify)](module/ProdMgmt/customer/notify/assignee_notify)|[客户通知模板(分配负责人)](#customer_assignee)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
+|[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户变更负责人通知(assignee_onchange_notify)](module/ProdMgmt/customer/notify/assignee_onchange_notify)|[客户通知模板(变更负责人)](#customer_assignee_onchange)|[变更负责人附加逻辑(assignee_onchage)](module/ProdMgmt/customer/logic/assignee_onchage)||
+|[客户(CUSTOMER)](module/ProdMgmt/customer)|[客户删除通知(remove_notify)](module/ProdMgmt/customer/notify/remove_notify)|[客户通知模板(删除客户)](#customer_remove)|[删除客户发送通知(remove_customer_notify)](module/ProdMgmt/customer/logic/remove_customer_notify)||
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求归档/激活通知(archive_notify)](module/ProdMgmt/idea/notify/archive_notify)|[需求通知模板(归档/激活需求)](#idea_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProdMgmt/idea/logic/is_archived_onchange)||
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/idea/notify/assignee_cancel_notify)|[需求通知模板(取消分配负责人)](#idea_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求分配负责人通知(assignee_notify)](module/ProdMgmt/idea/notify/assignee_notify)|[需求通知模板(分配负责人)](#idea_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/idea/notify/assignee_onchange_notify)|[需求通知模板(负责人变更通知)](#idea_assignee_onchange)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/idea/logic/assignee_onchange)||
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求删除/恢复通知(remove_notify)](module/ProdMgmt/idea/notify/remove_notify)|[需求通知模板(删除/恢复需求)](#idea_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProdMgmt/idea/logic/is_deleted_onchange)||
+|[需求(IDEA)](module/ProdMgmt/idea)|[产品需求状态变更通知(state_onchage_notify)](module/ProdMgmt/idea/notify/state_onchage_notify)|[需求通知模板(状态变更)](#idea_state_onchange)|[状态变更附加逻辑(state_onchange)](module/ProdMgmt/idea/logic/state_onchange)||
+|[测试库(LIBRARY)](module/TestMgmt/library)|[测试库归档/激活通知(library_archive_notify)](module/TestMgmt/library/notify/library_archive_notify)|[测试库通知模板(归档/激活测试库)](#library_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/TestMgmt/library/logic/is_archived_onchange)||
+|[测试库(LIBRARY)](module/TestMgmt/library)|[测试库删除/恢复通知(library_remove_notify)](module/TestMgmt/library/notify/library_remove_notify)|[测试库通知模板(删除/恢复测试库)](#library_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/TestMgmt/library/logic/is_deleted_onchange)||
+|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[测试库成员加入通知(library_member_create)](module/TestMgmt/library_member/notify/library_member_create)|[测试库通知模板(加入测试库成员)](#library_member_create)|[Create 执行之后](index/action_logic_index#library_member_Create)||
+|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|[测试库成员移除通知(library_member_remove)](module/TestMgmt/library_member/notify/library_member_remove)|[测试库通知模板(移除测试库成员)](#library_member_remove)|[移除测试库成员通知(remove_library_member_notify)](module/TestMgmt/library_member/logic/remove_library_member_notify)||
+|[文件夹(PORTFOLIO)](module/Base/portfolio)|[项目集归档/恢复通知(project_set_remove_recover_notify)](module/Base/portfolio/notify/project_set_remove_recover_notify)|[项目集删除/恢复通知模板](#project_set_remove_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/Base/portfolio/logic/is_deleted_onchange)||
+|[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|[项目集加入成员通知(create_member_notify)](module/Base/portfolio_member/notify/create_member_notify)|[项目集通知模板(加入成员)](#project_set_member_create)|[Create 执行之后](index/action_logic_index#portfolio_member_Create)||
+|[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|[项目集移除成员通知(remove_member_notify)](module/Base/portfolio_member/notify/remove_member_notify)|[项目集通知模板(移除成员)](#project_set_member_remove)|[移除项目集成员通知(remove_project_set_member_notify)](module/Base/portfolio_member/logic/remove_project_set_member_notify)||
+|[产品(PRODUCT)](module/ProdMgmt/product)|[产品归档/激活通知(archived_nofity)](module/ProdMgmt/product/notify/archived_nofity)|[产品通知模板(归档/激活产品)](#product_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProdMgmt/product/logic/is_archived_onchange)||
+|[产品(PRODUCT)](module/ProdMgmt/product)|[产品删除/恢复通知(delete_notify)](module/ProdMgmt/product/notify/delete_notify)|[产品通知模板(删除/恢复产品)](#product_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProdMgmt/product/logic/is_deleted_onchange)||
+|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[产品成员加入通知(create_member_notify)](module/ProdMgmt/product_member/notify/create_member_notify)|[产品通知模板(加入产品成员)](#product_member_create)|[Create 执行之后](index/action_logic_index#product_member_Create)||
+|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|[产品成员移除通知(remove_member_notify)](module/ProdMgmt/product_member/notify/remove_member_notify)|[产品通知模板(移除产品成员)](#product_member_remove)|[移除产品成员通知(remove_product_member_notify)](module/ProdMgmt/product_member/logic/remove_product_member_notify)||
+|[项目(PROJECT)](module/ProjMgmt/project)|[项目归档/激活通知(archived_notify)](module/ProjMgmt/project/notify/archived_notify)|[项目通知模板(归档/激活项目)](#project_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/ProjMgmt/project/logic/is_archived_onchange)||
 |[项目(PROJECT)](module/ProjMgmt/project)|[项目分配负责人通知(assignee_notify)](module/ProjMgmt/project/notify/assignee_notify)|[项目通知模板(分配负责人)](#project_assignee)|[负责人变更附加逻辑(assignee_id_onchange)](module/ProjMgmt/project/logic/assignee_id_onchange)||
 |[项目(PROJECT)](module/ProjMgmt/project)|[项目变更负责人通知(change_assignee_notify)](module/ProjMgmt/project/notify/change_assignee_notify)|[项目通知模板(变更负责人)](#project_change_assignee)|[负责人变更附加逻辑(assignee_id_onchange)](module/ProjMgmt/project/logic/assignee_id_onchange)||
-|[项目(PROJECT)](module/ProjMgmt/project)|[项目删除/恢复通知(remove_notify)](module/ProjMgmt/project/notify/remove_notify)|[项目通知模板(删除/恢复项目)](#project_remove)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProjMgmt/project/logic/is_deleted_onchange)||
-|[项目(PROJECT)](module/ProjMgmt/project)|[项目状态状态变更通知(state_notify)](module/ProjMgmt/project/notify/state_notify)|[项目通知模板(项目状态变更)](#project_state_change)|[项目状态变更通知(state_notify)](module/ProjMgmt/project/logic/state_notify)||
-|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[加入项目成员通知(create_member_notify)](module/ProjMgmt/project_member/notify/create_member_notify)|[项目通知模板(加入项目成员)](#project_member_create)|[Create 执行之后](index/action_logic_index#project_member_Create)||
-|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[移除项目成员通知(remove_member_nofity)](module/ProjMgmt/project_member/notify/remove_member_nofity)|[项目通知模板(移除项目成员)](#project_member_remove)|[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify)||
-|[执行用例(RUN)](module/TestMgmt/run)|[设置执行人通知(executor_notify)](module/TestMgmt/run/notify/executor_notify)|[执行用例通知模板(设置执行人)](#run_executor)|[执行人变更附加逻辑(executor_onchange)](module/TestMgmt/run/logic/executor_onchange)||
-|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|[加入知识库成员通知(create_member_notify)](module/Wiki/space_member/notify/create_member_notify)|[知识库通知模板(加入空间成员)](#space_member_create)|[Create 执行之后](index/action_logic_index#space_member_Create)||
-|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|[移除空间成员通知(remover_member_notify)](module/Wiki/space_member/notify/remover_member_notify)|[知识库通知模板(移除空间成员)](#space_member_remove)|[移除空间成员发送通知(remove_space_member_notify)](module/Wiki/space_member/logic/remove_space_member_notify)||
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|[取消分配维护人通知(maintainer_cancel_notify)](module/TestMgmt/test_case/notify/maintainer_cancel_notify)|[测试用例通知模板(取消分配维护人)](#test_case_maintainer_cancel)|[维护人变更附加逻辑(maintenance_onchange)](module/TestMgmt/test_case/logic/maintenance_onchange)||
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|[分配维护人通知(maintainer_notify)](module/TestMgmt/test_case/notify/maintainer_notify)|[测试用例通知模板(分配维护人)](#test_case_maintainer)|[维护人变更附加逻辑(maintenance_onchange)](module/TestMgmt/test_case/logic/maintenance_onchange)||
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|[维护人变更通知(maintainer_onchange_notify)](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|[测试用例通知模板(维护人变更)](#test_case_maintainer_onchange)|[维护人变更附加逻辑(maintenance_onchange)](module/TestMgmt/test_case/logic/maintenance_onchange)||
-|[用例(TEST_CASE)](module/TestMgmt/test_case)|[删除/恢复测试用例通知(remove_notify)](module/TestMgmt/test_case/notify/remove_notify)|[测试用例通知模板(删除/恢复测试用例)](#test_case_remove)|[是否删除变更附加逻辑(is_deleted_onchange)](module/TestMgmt/test_case/logic/is_deleted_onchange)||
-|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|[取消分配负责人通知(assignee_cancel_notify)](module/TestMgmt/test_plan/notify/assignee_cancel_notify)|[测试计划通知模板(取消分配负责人)](#test_plan_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/TestMgmt/test_plan/logic/assignee_onchange)||
-|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|[分配负责人通知(assignee_notify)](module/TestMgmt/test_plan/notify/assignee_notify)|[测试计划通知模板(分配负责人)](#test_plan_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/TestMgmt/test_plan/logic/assignee_onchange)||
-|[工单(TICKET)](module/ProdMgmt/ticket)|[归档/激活通知(archive_notify)](module/ProdMgmt/ticket/notify/archive_notify)|[工单通知模板(归档/激活工单)](#ticket_archive)|[是否归档变更附加逻辑(is_archived_onchage)](module/ProdMgmt/ticket/logic/is_archived_onchage)||
-|[工单(TICKET)](module/ProdMgmt/ticket)|[取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/ticket/notify/assignee_cancel_notify)|[工单通知模板(取消分配负责人)](#ticket_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/ticket/logic/assignee_onchange)||
-|[工单(TICKET)](module/ProdMgmt/ticket)|[分配负责人通知(assignee_notify)](module/ProdMgmt/ticket/notify/assignee_notify)|[工单通知模板(分配负责人)](#ticket_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/ticket/logic/assignee_onchange)||
-|[工单(TICKET)](module/ProdMgmt/ticket)|[负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|[工单通知模板(负责人变更)](#ticket_assignee_onchange)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/ticket/logic/assignee_onchange)||
-|[工单(TICKET)](module/ProdMgmt/ticket)|[删除/恢复工单通知(remove_notify)](module/ProdMgmt/ticket/notify/remove_notify)|[工单通知模板(删除/恢复工单)](#ticket_remove)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProdMgmt/ticket/logic/is_deleted_onchange)||
-|[工单(TICKET)](module/ProdMgmt/ticket)|[状态变更通知(state_onchage_notify)](module/ProdMgmt/ticket/notify/state_onchage_notify)|[工单通知模板(状态变更)](#ticket_state_onchange)|[状态变更附加逻辑(state_onchange)](module/ProdMgmt/ticket/logic/state_onchange)||
+|[项目(PROJECT)](module/ProjMgmt/project)|[项目删除/恢复通知(remove_notify)](module/ProjMgmt/project/notify/remove_notify)|[项目通知模板(删除/恢复项目)](#project_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProjMgmt/project/logic/is_deleted_onchange)||
+|[项目(PROJECT)](module/ProjMgmt/project)|[项目状态变更通知(state_notify)](module/ProjMgmt/project/notify/state_notify)|[项目通知模板(项目状态变更)](#project_state_change)|[项目状态变更通知(state_notify)](module/ProjMgmt/project/logic/state_notify)||
+|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[项目成员加入通知(create_member_notify)](module/ProjMgmt/project_member/notify/create_member_notify)|[项目通知模板(加入项目成员)](#project_member_create)|[Create 执行之后](index/action_logic_index#project_member_Create)||
+|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|[项目成员移除通知(remove_member_nofity)](module/ProjMgmt/project_member/notify/remove_member_nofity)|[项目通知模板(移除项目成员)](#project_member_remove)|[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify)||
+|[执行用例(RUN)](module/TestMgmt/run)|[执行用例设置执行人通知(executor_notify)](module/TestMgmt/run/notify/executor_notify)|[执行用例通知模板(设置执行人)](#run_executor)|[执行人变更附加逻辑(executor_onchange)](module/TestMgmt/run/logic/executor_onchange)||
+|[空间(SPACE)](module/Wiki/space)|[空间归档/激活通知(archived_or_activate_notify)](module/Wiki/space/notify/archived_or_activate_notify)|[空间通知模板(归档/激活空间)](#space_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchange)](module/Wiki/space/logic/is_archived_onchange)||
+|[空间(SPACE)](module/Wiki/space)|[空间删除/恢复通知(remove_or_recover_notify)](module/Wiki/space/notify/remove_or_recover_notify)|[空间通知模板(删除/恢复空间)](#space_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/Wiki/space/logic/is_deleted_onchange)||
+|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|[空间成员加入通知(create_member_notify)](module/Wiki/space_member/notify/create_member_notify)|[知识库通知模板(加入空间成员)](#space_member_create)|[Create 执行之后](index/action_logic_index#space_member_Create)||
+|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|[空间成员移除通知(remover_member_notify)](module/Wiki/space_member/notify/remover_member_notify)|[知识库通知模板(移除空间成员)](#space_member_remove)|[移除空间成员发送通知(remove_space_member_notify)](module/Wiki/space_member/logic/remove_space_member_notify)||
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|[测试用例取消分配维护人通知(maintainer_cancel_notify)](module/TestMgmt/test_case/notify/maintainer_cancel_notify)|[测试用例通知模板(取消分配维护人)](#test_case_maintainer_cancel)|[维护人变更附加逻辑(maintenance_onchange)](module/TestMgmt/test_case/logic/maintenance_onchange)||
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|[测试用例分配维护人通知(maintainer_notify)](module/TestMgmt/test_case/notify/maintainer_notify)|[测试用例通知模板(分配维护人)](#test_case_maintainer)|[维护人变更附加逻辑(maintenance_onchange)](module/TestMgmt/test_case/logic/maintenance_onchange)||
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|[测试用例维护人变更通知(maintainer_onchange_notify)](module/TestMgmt/test_case/notify/maintainer_onchange_notify)|[测试用例通知模板(维护人变更)](#test_case_maintainer_onchange)|[维护人变更附加逻辑(maintenance_onchange)](module/TestMgmt/test_case/logic/maintenance_onchange)||
+|[用例(TEST_CASE)](module/TestMgmt/test_case)|[测试用例删除/恢复通知(remove_notify)](module/TestMgmt/test_case/notify/remove_notify)|[测试用例通知模板(删除/恢复测试用例)](#test_case_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/TestMgmt/test_case/logic/is_deleted_onchange)||
+|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|[测试计划取消分配负责人通知(assignee_cancel_notify)](module/TestMgmt/test_plan/notify/assignee_cancel_notify)|[测试计划通知模板(取消分配负责人)](#test_plan_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/TestMgmt/test_plan/logic/assignee_onchange)||
+|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|[测试计划分配负责人通知(assignee_notify)](module/TestMgmt/test_plan/notify/assignee_notify)|[测试计划通知模板(分配负责人)](#test_plan_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/TestMgmt/test_plan/logic/assignee_onchange)||
+|[工单(TICKET)](module/ProdMgmt/ticket)|[工单归档/激活通知(archive_notify)](module/ProdMgmt/ticket/notify/archive_notify)|[工单通知模板(归档/激活工单)](#ticket_archived_or_activate)|[是否归档变更附加逻辑(is_archived_onchage)](module/ProdMgmt/ticket/logic/is_archived_onchage)||
+|[工单(TICKET)](module/ProdMgmt/ticket)|[工单取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/ticket/notify/assignee_cancel_notify)|[工单通知模板(取消分配负责人)](#ticket_assignee_cancel)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/ticket/logic/assignee_onchange)||
+|[工单(TICKET)](module/ProdMgmt/ticket)|[工单分配负责人通知(assignee_notify)](module/ProdMgmt/ticket/notify/assignee_notify)|[工单通知模板(分配负责人)](#ticket_assignee)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/ticket/logic/assignee_onchange)||
+|[工单(TICKET)](module/ProdMgmt/ticket)|[工单负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|[工单通知模板(负责人变更)](#ticket_assignee_onchange)|[负责人变更附加逻辑(assignee_onchange)](module/ProdMgmt/ticket/logic/assignee_onchange)||
+|[工单(TICKET)](module/ProdMgmt/ticket)|[工单删除/恢复工单通知(remove_notify)](module/ProdMgmt/ticket/notify/remove_notify)|[工单通知模板(删除/恢复工单)](#ticket_remove_or_recover)|[是否删除变更附加逻辑(is_deleted_onchange)](module/ProdMgmt/ticket/logic/is_deleted_onchange)||
+|[工单(TICKET)](module/ProdMgmt/ticket)|[工单状态变更通知(state_onchage_notify)](module/ProdMgmt/ticket/notify/state_onchage_notify)|[工单通知模板(状态变更)](#ticket_state_onchange)|[状态变更附加逻辑(state_onchange)](module/ProdMgmt/ticket/logic/state_onchange)||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项分配负责人通知(allocation_notify)](module/ProjMgmt/work_item/notify/allocation_notify)|[工作项通知模板(分配负责人)](#work_item_assignee)|[工作项负责人变更附加逻辑(assignee_onchange)](module/ProjMgmt/work_item/logic/assignee_onchange)||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项负责人变更通知(assignee_onchange_notify)](module/ProjMgmt/work_item/notify/assignee_onchange_notify)|[工作项通知模板(变更负责人)](#work_item_assignee_onchange)|[工作项负责人变更附加逻辑(assignee_onchange)](module/ProjMgmt/work_item/logic/assignee_onchange)||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项取消负责人通知(cancel_assignee_notify)](module/ProjMgmt/work_item/notify/cancel_assignee_notify)|[工作项通知模板(取消分配负责人)](#work_item_assignee_cancel)|[工作项负责人变更附加逻辑(assignee_onchange)](module/ProjMgmt/work_item/logic/assignee_onchange)||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项创建时分配通知(create_notify)](module/ProjMgmt/work_item/notify/create_notify)|[工作项通知模板(分配负责人)](#work_item_assignee)|[Create 执行之后](index/action_logic_index#work_item_Create)||
-|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项归档/激活通知(is_archived_notify)](module/ProjMgmt/work_item/notify/is_archived_notify)|[工作项通知模板(归档/激活工作项)](#work_item_archive)|[工作项归档变更附加逻辑(is_archived_onchange)](module/ProjMgmt/work_item/logic/is_archived_onchange)||
-|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项删除/恢复通知(is_deleted_notify)](module/ProjMgmt/work_item/notify/is_deleted_notify)|[工作项通知模板(删除/恢复工作项)](#work_item_remove)|[工作项删除变更附加逻辑(is_deleted_onchange)](module/ProjMgmt/work_item/logic/is_deleted_onchange)||
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项归档/激活通知(is_archived_notify)](module/ProjMgmt/work_item/notify/is_archived_notify)|[工作项通知模板(归档/激活工作项)](#work_item_archived_or_activate)|[工作项归档变更附加逻辑(is_archived_onchange)](module/ProjMgmt/work_item/logic/is_archived_onchange)||
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项删除/恢复通知(is_deleted_notify)](module/ProjMgmt/work_item/notify/is_deleted_notify)|[工作项通知模板(删除/恢复工作项)](#work_item_remove_or_recover)|[工作项删除变更附加逻辑(is_deleted_onchange)](module/ProjMgmt/work_item/logic/is_deleted_onchange)||
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[工作项状态变换通知(state_notify)](module/ProjMgmt/work_item/notify/state_notify)|[工作项通知模板（状态变更）](#work_item_state_onchange)|[工作项状态变更附加逻辑(state_onchange)](module/ProjMgmt/work_item/logic/state_onchange)||
 
 ## 通知目标
@@ -81,6 +89,7 @@
 |当前项目成员|cur_project_member|实体数据集|[当前项目成员(CUR_PROJECT)](module/ProjMgmt/project_member/dataset/cur_project)||
 |当前产品成员|cur_product_member|实体数据集|[当前产品成员(cur_product)](module/ProdMgmt/product_member/dataset/cur_product)||
 |评论通知测试用例维护人|comment_test_case_maintenance|实体数据集|[评论通知维护人(comment_notify_maintenance)](module/TestMgmt/test_case/dataset/comment_notify_maintenance)||
+|当前项目集成员|cur_projecct_set_member|实体数据集|[当前项目集下成员(cur_project_set)](module/Base/portfolio_member/dataset/cur_project_set)||
 |评论通知执行用例执行人|comment_run_executor|实体数据集|[评论通知执行人(comment_notify_executor)](module/TestMgmt/run/dataset/comment_notify_executor)||
 |关注对象(通过主数据标识)|attention_by_ownerid|实体数据集|[通过主数据标识查询通知对象(attention_by_ownerid)](module/Base/attention/dataset/attention_by_ownerid)|关注type in (30,40)|
 |工单通知负责人|ticket_notify_assignee|实体数据集|[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/dataset/notify_assignee)||
@@ -88,6 +97,7 @@
 |当前测试库成员|cur_library_member|实体数据集|[当前测试库成员(cur_library_member)](module/TestMgmt/library_member/dataset/cur_library_member)||
 |评论通知工作项负责人|comment_work_item_assignee|实体数据集|[评论通知负责人(comment_notify_assignee)](module/ProjMgmt/work_item/dataset/comment_notify_assignee)||
 |评论通知客户负责人|comment_customer_assignee|实体数据集|[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/customer/dataset/comment_notify_assignee)||
+|当前空间成员|cur_space_member|实体数据集|[当前空间下成员(cur_space)](module/Wiki/space_member/dataset/cur_space)||
 |评论通知关注人|comment_attention|实体数据集|[评论提醒(comment_attention)](module/Base/attention/dataset/comment_attention)||
 |工作项通知负责人|work_item_notify_assignee|实体数据集|[工作项通知负责人(notify_assignee)](module/ProjMgmt/work_item/dataset/notify_assignee)||
 
@@ -323,7 +333,7 @@ ${data.update_mantext}把你移除了产品：${data.product_name}
 
 内容类型：`HTML网页`
 
-超链接：`view://${data.principal_type?lower_case}_main_view?srfnavctx={"${data.principal_type?lower_case}":"${data.principal_id}" <#if data.parent("principal_id")??><#assign parent= data.parent("principal_id")><#if parent.parent("project_id")??>,"project":"${parent.parent('project_id').id,"work_item_type_id":"${parent.work_item_type_id}"<#elseif parent.parent("product_id")??>,"product":"${parent.parent('product_id').id}"<#elseif parent.parent("test_library_id")??>,"library":"${parent.parent('test_library_id').id}"<#elseif parent.parent("case_id")??>,"test_case":"${parent.parent('case_id').id}","library":"${parent.parent('case_id').test_library_id}"</#if></#if>}`
+超链接：`view://${data.principal_type?lower_case}_main_view?srfnavctx={"${data.principal_type?lower_case}":"${data.principal_id}" <#if data.parent("principal_id")??><#assign parent= data.parent("principal_id")><#if parent.parent("project_id")??>,"project":"${parent.parent('project_id').id}"<#elseif parent.parent("product_id")??>,"product":"${parent.parent('product_id').id}"<#elseif parent.parent("test_library_id")??>,"library":"${parent.parent('test_library_id').id}"<#elseif parent.parent("case_id")??>,"test_case":"${parent.parent('case_id').id}","library":"${parent.parent('case_id').test_library_id}"</#if></#if>}`
 
 标题：
 ```
@@ -619,7 +629,7 @@ ${data.update_mantext}变更了测试用例：${data.title}的维护人
 
 内容类型：`HTML网页`
 
-超链接：`view://${data.owner_type?lower_case}_main_view?srfnavctx={"${data.owner_type?lower_case}":"${data.owner_id}" <#if data.parent("owner_id")??><#assign parent= data.parent("owner_id")><#if parent.parent("project_id")??>,"project":"${parent.parent('project_id').id,"work_item_type_id":"${parent.work_item_type_id}"<#elseif parent.parent("product_id")??>,"product":"${parent.parent('product_id').id}"<#elseif parent.parent("test_library_id")??>,"library":"${parent.parent('test_library_id').id}"<#elseif parent.parent("case_id")??>,"test_case":"${parent.parent('case_id').id}","library":"${parent.parent('case_id').test_library_id}"</#if></#if>}`
+超链接：`view://${data.owner_type?lower_case}_main_view?srfnavctx={"${data.owner_type?lower_case}":"${data.owner_id}" <#if data.parent("owner_id")??><#assign parent= data.parent("owner_id")><#if parent.parent("project_id")??>,"project":"${parent.parent('project_id').id}"<#elseif parent.parent("product_id")??>,"product":"${parent.parent('product_id').id}"<#elseif parent.parent("test_library_id")??>,"library":"${parent.parent('test_library_id').id}"<#elseif parent.parent("case_id")??>,"test_case":"${parent.parent('case_id').id}","library":"${parent.parent('case_id').test_library_id}"</#if></#if>}`
 
 内容：
 ```
@@ -746,7 +756,7 @@ ${data.create_mantext}把你移除了项目集：${data.portfolio_name}
 ```
 ${data.update_mantext}取消分配了客户：${data.name}
 ```
-#### 测试库通知模板(删除/恢复测试库)(library_remove) :id=library_remove
+#### 测试库通知模板(删除/恢复测试库)(library_remove_or_recover) :id=library_remove_or_recover
 
 
 模板类型：`静态`
@@ -793,7 +803,7 @@ ${data.update_mantext}取消分配了客户：${data.name}
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试库：${data.name}
 ```
-#### 工作项通知模板(删除/恢复工作项)(work_item_remove) :id=work_item_remove
+#### 工作项通知模板(删除/恢复工作项)(work_item_remove_or_recover) :id=work_item_remove_or_recover
 
 
 模板类型：`静态`
@@ -802,7 +812,7 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 内容：
 ```
@@ -926,7 +936,7 @@ ${data.update_mantext}给你分配了客户：${data.name}
 
 内容类型：`HTML网页`
 
-超链接：`<#if data.parent("principal_id")??><#if data.principal_type == 'PAGE'>view://article_page_model_show_view?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}<#else>view://${data.principal_type?lower_case}_main_view?srfnavctx={"${data.principal_type?lower_case}":"${data.principal_id}"<#assign p = data.parent("principal_id")><#if p.parent("project_id")??>,"project":"${p.parent('project_id').id,"work_item_type_id":"${p.work_item_type_id}"<#elseif p.parent("product_id")??>,"product":"${p.parent('product_id').id}"<#elseif p.parent("test_library_id")??>,"library":"${p.parent('test_library_id').id}"<#elseif p.parent("case_id")??>,"test_case":"${p.parent('case_id').id}","library":"${p.parent('case_id').test_library_id}"</#if>}</#if></#if>`
+超链接：`<#if data.parent("principal_id")??><#if data.principal_type == 'PAGE'>view://article_page_model_show_view?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}<#else>view://${data.principal_type?lower_case}_main_view?srfnavctx={"${data.principal_type?lower_case}":"${data.principal_id}"<#assign p = data.parent("principal_id")><#if p.parent("project_id")??>,"project":"${p.parent('project_id').id}"<#elseif p.parent("product_id")??>,"product":"${p.parent('product_id').id}"<#elseif p.parent("test_library_id")??>,"library":"${p.parent('test_library_id').id}"<#elseif p.parent("case_id")??>,"test_case":"${p.parent('case_id').id}","library":"${p.parent('case_id').test_library_id}"</#if>}</#if></#if>`
 
 标题：
 ```
@@ -1099,7 +1109,7 @@ ${data.update_mantext}}更改了工单 ${data.title}状态：<#if last.codeitem(
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 内容：
 ```
@@ -1183,7 +1193,7 @@ ${data.update_mantext}给你分配了需求：${data.title}
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 标题：
 ```
@@ -1216,7 +1226,7 @@ ${data.update_mantext}给你分配了需求：${data.title}
 			    </div>
 			</div>
 ```
-#### 工作项通知模板(归档/激活工作项)(work_item_archive) :id=work_item_archive
+#### 工作项通知模板(归档/激活工作项)(work_item_archived_or_activate) :id=work_item_archived_or_activate
 
 
 模板类型：`静态`
@@ -1225,7 +1235,7 @@ ${data.update_mantext}给你分配了需求：${data.title}
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 内容：
 ```
@@ -1257,6 +1267,48 @@ ${data.update_mantext}给你分配了需求：${data.title}
 钉钉内容：
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了${data.work_item_type_name}：${data.title}
+```
+#### 空间通知模板(删除/恢复空间)(space_remove_or_recover) :id=space_remove_or_recover
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`<#if data.is_deleted==0>route://-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node@${data.id}/article_page_show_view/srfnavctx={"article_page":"${data.id}"}</#if>`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.update_mantext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><#if data.is_deleted==1>删除<#else>恢复</#if>了空间</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 知识管理 · ${data.name}</span>
+        </div>
+    </div>
+</div>
+```
+
+钉钉内容：
+```
+${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间：${data.name}
 ```
 #### 项目通知模板(分配负责人)(project_assignee) :id=project_assignee
 
@@ -1371,7 +1423,7 @@ ${data.update_mantext}给你分配了项目：${data.name}
 		</#if>
 		<#if parent.parent("space_id")??>
         <#assign space= parent.parent("space_id")>
-			<div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 知识库管理 · ${space.name}</span></div>
+			<div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 知识管理 · ${space.name}</span></div>
 		</#if>
     </div>
 </div>
@@ -1474,7 +1526,7 @@ ${data.create_mantext}把你加入了项目集：${data.portfolio_name}
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 内容：
 ```
@@ -1516,7 +1568,7 @@ ${data.update_mantext}给你分配了${data.work_item_type_name}：${data.title}
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 标题：
 ```
@@ -1577,7 +1629,7 @@ ${data.update_mantext}给你分配了${data.work_item_type_name}：${data.title}
 ```
 ${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
 ```
-#### 项目通知模板(归档/激活项目)(project_archive) :id=project_archive
+#### 项目通知模板(归档/激活项目)(project_archived_or_activate) :id=project_archived_or_activate
 
 
 模板类型：`静态`
@@ -1662,7 +1714,49 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项�
 ```
 ${data.update_mantext}给你分配了测试用例：${data.title}
 ```
-#### 产品通知模板(归档/激活产品)(product_archive) :id=product_archive
+#### 空间通知模板(归档/激活空间)(space_archived_or_activate) :id=space_archived_or_activate
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`<#if data.is_archived==0>route://-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node@${data.id}/article_page_show_view/srfnavctx={"article_page":"${data.id}"}</#if>`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.update_mantext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><#if data.is_archived==1>归档<#else>激活</#if>了空间</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 知识管理 · ${data.name}</span>
+        </div>
+    </div>
+</div>
+```
+
+钉钉内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了空间：${data.name}
+```
+#### 产品通知模板(归档/激活产品)(product_archived_or_activate) :id=product_archived_or_activate
 
 
 模板类型：`静态`
@@ -1751,7 +1845,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了产�
 ```
 ${data.create_mantext}把你加入了测试库：${data.library_name}
 ```
-#### 产品通知模板(删除/恢复产品)(product_remove) :id=product_remove
+#### 产品通知模板(删除/恢复产品)(product_remove_or_recover) :id=product_remove_or_recover
 
 
 模板类型：`静态`
@@ -1793,7 +1887,7 @@ ${data.create_mantext}把你加入了测试库：${data.library_name}
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品：${data.name}
 ```
-#### 工单通知模板(归档/激活工单)(ticket_archive) :id=ticket_archive
+#### 工单通知模板(归档/激活工单)(ticket_archived_or_activate) :id=ticket_archived_or_activate
 
 
 模板类型：`静态`
@@ -1880,7 +1974,7 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了工�
 ```
 ${data.update_mantext}变更了客户：${data.name}的负责人
 ```
-#### 工单通知模板(删除/恢复工单)(ticket_remove) :id=ticket_remove
+#### 工单通知模板(删除/恢复工单)(ticket_remove_or_recover) :id=ticket_remove_or_recover
 
 
 模板类型：`静态`
@@ -1922,7 +2016,7 @@ ${data.update_mantext}变更了客户：${data.name}的负责人
 ```
 ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测工单：${data.title}
 ```
-#### 需求通知模板(删除/恢复需求)(idea_remove) :id=idea_remove
+#### 需求通知模板(删除/恢复需求)(idea_remove_or_recover) :id=idea_remove_or_recover
 
 
 模板类型：`静态`
@@ -2006,7 +2100,7 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了需求
 ```
 ${data.update_mantext}变更了项目${data.name}的负责人
 ```
-#### 需求通知模板(归档/激活需求)(idea_archive) :id=idea_archive
+#### 需求通知模板(归档/激活需求)(idea_archived_or_activate) :id=idea_archived_or_activate
 
 
 模板类型：`静态`
@@ -2048,7 +2142,7 @@ ${data.update_mantext}变更了项目${data.name}的负责人
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了需求：${data.title}
 ```
-#### 项目通知模板(删除/恢复项目)(project_remove) :id=project_remove
+#### 项目通知模板(删除/恢复项目)(project_remove_or_recover) :id=project_remove_or_recover
 
 
 模板类型：`静态`
@@ -2133,7 +2227,7 @@ ${data.update_mantext}删除了客户：${data.name}
 ```
 ${data.update_mantext}删除了客户：${data.name}
 ```
-#### 测试库通知模板(归档/激活测试库)(library_archive) :id=library_archive
+#### 测试库通知模板(归档/激活测试库)(library_archived_or_activate) :id=library_archived_or_activate
 
 
 模板类型：`静态`
@@ -2180,7 +2274,7 @@ ${data.update_mantext}删除了客户：${data.name}
 ```
 ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了测试库：${data.name}
 ```
-#### 测试用例通知模板(删除/恢复测试用例)(test_case_remove) :id=test_case_remove
+#### 测试用例通知模板(删除/恢复测试用例)(test_case_remove_or_recover) :id=test_case_remove_or_recover
 
 
 模板类型：`静态`
@@ -2601,7 +2695,7 @@ ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("S
 </div>
 <#if parent.parent("space_id")??>
         <#assign space= parent.parent("space_id")>
-  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 知识库管理 · ${space.name}</span></div>
+  <div class="notice-card-pilot" style="font-size: 12px;color: #999;text-transform: lowercase;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><span class="notice-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span><span class="notice-pilot-info">· 知识管理 · ${space.name}</span></div>
     </#if>
     </div>
     </#if>
@@ -2612,6 +2706,49 @@ ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("S
 ```
 <#if data.parent("owner_id")??>${data.update_mantext}提醒你关注页面：${data.parent("owner_id").name}</#if>
 ```
+#### 项目集删除/恢复通知模板(project_set_remove_recover) :id=project_set_remove_recover
+
+
+模板类型：`静态`
+
+模板引擎：`FreeMarker`
+
+内容类型：`HTML网页`
+
+超链接：`<#if data.is_deleted==0>route://-/index/portfolio=${data.id}/portfolio_project_index_view/srfnavctx=%257B%2522srfpaginationviewid%2522%253A%2522a345db9e-bebb-4751-f490-2eb5f1294585%2522%257D;srfnav=drgroup/work_tree_grid_ex_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D
+</#if>`
+
+内容：
+```
+<div class="notice-card" style="display: flex; align-items: flex-start;">
+    <div class="notice-card__avatar" style="flex-shrink: 0;">
+        <span class="notice-card__avatar-icon" style="background-color: skyblue; border-radius: 50%; margin-right: 10px; width: 36px; height: 36px; display: flex; justify-content: center; align-items: center; font-size: 10px;">${data.update_mantext?substring(0,2)!}</span>
+    </div>
+    <div class="notice-card__content" style="flex-grow: 1;width: calc(100% - 46px);">
+        <div class="notice-card__event">
+            <div class="notice-card__event-title" style="font-size: 14px; color: #000;">
+                <span class="notice-card__event-name" style="color: #999; font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${data.update_mantext}</span> 
+                <span class="notice-card__event-desc" style="font-size: 14px; text-transform: lowercase; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><#if data.is_deleted==1>删除<#else>恢复</#if>了项目集</span>
+            </div>
+        </div>
+        <div class="notice-card-object" style="display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
+            <#if data.identifier??>
+                <span class="notice-card__object-id" style="color: #999; font-size:14px;">${data.identifier}</span>
+            </#if>
+            <span class="notice-card__object-name" title="${data.name}">${data.name}</span>
+        </div>
+        <div class="notice-card-pilot" style="font-size: 12px; color: #999; text-transform: lowercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="notice-pilot-time">${data.update_time?string("yyyy-MM-dd HH:mm:ss")}</span>
+            <span class="notice-pilot-info"> · 项目管理 · ${data.name}</span>
+        </div>
+    </div>
+</div>
+```
+
+钉钉内容：
+```
+${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项目集：${data.name}
+```
 #### 工作项通知模板(变更负责人)(work_item_assignee_onchange) :id=work_item_assignee_onchange
 
 
@@ -2621,7 +2758,7 @@ ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("S
 
 内容类型：`HTML网页`
 
-超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}","work_item_type_id":"${data.work_item_type_id}"}`
+超链接：`view://work_item_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}"}`
 
 内容：
 ```

@@ -1,6 +1,114 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[31]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[53]</font></sup>
 
+#### [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProdMgmt/baseline_idea/logic/baseline_comparison)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var idea_ids = logic.getParam("idea_ids");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("target_id")){
+    var ids = idea_ids.get("ids");
+    if(ids){
+        ids = ids + "," + for_temp_obj.get("target_id");
+    } else {
+        ids = for_temp_obj.get("target_id");
+    }
+    idea_ids.set("ids", ids);
+}
+```
+#### [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProdMgmt/baseline_idea/logic/baseline_comparison)
+
+节点：产品需求cur_version_ids
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var idea_versions = logic.getParam("idea_versions");
+var idea_for_temp = logic.getParam("idea_for_temp");
+if(idea_for_temp.get("cur_version_id")){
+    var version_id_in = idea_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + idea_for_temp.get("cur_version_id");
+    } else {
+        version_id_in = idea_for_temp.get("cur_version_id");
+    }
+    idea_versions.set("version_id_in", version_id_in);
+}
+```
+#### [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)的处理逻辑[基线对比数据查询(baseline_comparison)](module/TestMgmt/baseline_test_case/logic/baseline_comparison)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var test_case_ids = logic.getParam("test_case_ids");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("target_id")){
+    var ids = test_case_ids.get("ids");
+    if(ids){
+        ids = ids + "," + for_temp_obj.get("target_id");
+    } else {
+        ids = for_temp_obj.get("target_id");
+    }
+    test_case_ids.set("ids", ids);
+}
+```
+#### [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)的处理逻辑[基线对比数据查询(baseline_comparison)](module/TestMgmt/baseline_test_case/logic/baseline_comparison)
+
+节点：用例cur_version_ids
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var test_case_versions = logic.getParam("test_case_versions");
+var test_case_for_temp = logic.getParam("test_case_for_temp");
+if(test_case_for_temp.get("cur_version_id")){
+    var version_id_in = test_case_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + test_case_for_temp.get("cur_version_id");
+    } else {
+        version_id_in = test_case_for_temp.get("cur_version_id");
+    }
+    test_case_versions.set("version_id_in", version_id_in);
+}
+```
+#### [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProjMgmt/baseline_work_item/logic/baseline_comparison)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_ids = logic.getParam("work_item_ids");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("target_id")){
+    var ids = work_item_ids.get("ids");
+    if(ids){
+        ids = ids + "," + for_temp_obj.get("target_id");
+    } else {
+        ids = for_temp_obj.get("target_id");
+    }
+    work_item_ids.set("ids", ids);
+}
+```
+#### [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProjMgmt/baseline_work_item/logic/baseline_comparison)
+
+节点：工作项cur_version_ids
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item_versions = logic.getParam("work_item_versions");
+var work_item_for_temp = logic.getParam("work_item_for_temp");
+if(work_item_for_temp.get("cur_version_id")){
+    var version_id_in = work_item_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + work_item_for_temp.get("cur_version_id");
+    } else {
+        version_id_in = work_item_for_temp.get("cur_version_id");
+    }
+    work_item_versions.set("version_id_in", version_id_in);
+}
+```
 #### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[删除客户发送通知(remove_customer_notify)](module/ProdMgmt/customer/logic/remove_customer_notify)
 
 节点：获取操作时间
@@ -45,6 +153,24 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
     reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
 }
 ```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var idea_versions = logic.getParam("idea_versions");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("cur_version_id")){
+    var version_id_in = idea_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + for_temp_obj.get("cur_version_id");
+    } else {
+        version_id_in = for_temp_obj.get("cur_version_id");
+    }
+    idea_versions.set("version_id_in", version_id_in);
+}
+```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[计划内需求批删除(plan_delete_idea)](module/ProdMgmt/idea/logic/plan_delete_idea)
 
 节点：拼接正反关联对象的主键
@@ -71,6 +197,175 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
+```
+#### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员图表数据(calc_active_chart_datas)](module/Base/login_log/logic/calc_active_chart_datas)
+
+节点：计算前15天和今天的日期
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 创建一个新的 Date 对象，获取前15天的日期 
+var fifty = new Date();  
+// 获取前15天的日期  
+fifty.setDate(fifty.getDate() - 15);  
+// 获取年、月、日信息  
+var year = fifty.getFullYear();  
+var month = fifty.getMonth() + 1;  
+var day = fifty.getDate();  
+if (month < 10) {
+    month = '0' + month;
+}
+if (day < 10) {
+    day = '0' + day;
+}
+// 创建一个新的 Date 对象，获取今天的日期 
+var today = new Date();  
+// 获取年、月、日信息  
+var todayYear = today.getFullYear();  
+var todayMonth = today.getMonth() + 1;  
+var todayDay = today.getDate();  
+if (todayMonth < 10) {
+    todayMonth = '0' + todayMonth;
+}
+if (todayDay < 10) {
+    todayDay = '0' + todayDay;
+}
+// 生成日期字符串，格式为 YYYY-MM-DD
+var dateStr = year + '-' + month + '-' + day;
+var todayDateStr = todayYear + '-' + todayMonth + '-' + todayDay;
+
+var beforefiftyday = dateStr + ' 00:00:00';
+var todays =  todayDateStr + ' 23:59:59';
+
+
+logic.setParam('starttime',beforefiftyday);
+logic.setParam('endtime',todays)
+```
+#### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员图表数据(calc_active_chart_datas)](module/Base/login_log/logic/calc_active_chart_datas)
+
+节点：计算图表所需数据
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var echart_obj = logic.getParam('echart_obj');
+//活跃总人数
+var user_total = logic.getParam('user_total');
+var total = user_total.get('total');
+//活跃人数
+var active_members = echart_obj.get('active_members');
+//计算活跃率
+var active_rate = ((active_members / total) * 100).toFixed(2); 
+//补充活跃率
+echart_obj.set("active_rate",active_rate);
+
+//处理authtime
+var newdate = String(echart_obj.get('auth_time')).split(' ')[0]; 
+echart_obj.set("auth_time",newdate);
+```
+#### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员数据信息(calc_active_member_info)](module/Base/login_log/logic/calc_active_member_info)
+
+节点： 准备昨日开始结束时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 创建一个新的 Date 对象，包含当前的日期和时间  
+var lastday = new Date();  
+// 获取昨天的日期  
+lastday.setDate(lastday.getDate() - 1);  
+// 获取年、月、日信息  
+var year = lastday.getFullYear();  
+var month = lastday.getMonth() + 1;  
+var day = lastday.getDate();  
+if (month < 10) {
+    month = '0' + month;
+}
+if (day < 10) {
+    day = '0' + day;
+}
+
+// 生成日期字符串，格式为 YYYY-MM-DD
+var dateStr = year + '-' + month + '-' + day;
+var lastdayFirst = dateStr + ' 00:00:00';
+var lastdayLast =  dateStr + ' 23:59:59';
+
+logic.setParam('last_day_starttime',lastdayFirst);
+logic.setParam('last_day_endtime',lastdayLast)
+
+
+```
+#### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员数据信息(calc_active_member_info)](module/Base/login_log/logic/calc_active_member_info)
+
+节点：准备近七日开始结束时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 创建一个新的 Date 对象，包含当前的日期和时间  
+var sevenday = new Date();  
+// 获取前6天的日期  
+sevenday.setDate(sevenday.getDate() - 6);  
+// 获取年、月、日信息  
+var year = sevenday.getFullYear();  
+var month = sevenday.getMonth() + 1;  
+var day = sevenday.getDate();  
+if (month < 10) {
+    month = '0' + month;
+}
+if (day < 10) {
+    day = '0' + day;
+}
+// 生成日期字符串，格式为 YYYY-MM-DD
+var dateStr = year + '-' + month + '-' + day;
+var sevendayFirst = dateStr + ' 00:00:00';
+
+
+
+
+// 创建一个新的 Date 对象，包含当前的日期和时间  
+var today = new Date();  
+// 获取年、月、日信息  
+var todayyear = today.getFullYear();  
+var todaymonth = today.getMonth() + 1;  
+var todayday = today.getDate();  
+if (todaymonth < 10) {
+    todaymonth = '0' + todaymonth;
+}
+if (todayday < 10) {
+    todayday = '0' + todayday;
+}
+// 生成日期字符串，格式为 YYYY-MM-DD
+var enddate = todayyear + '-' + todaymonth + '-' + todayday + ' 23:59:59';
+
+logic.setParam('seven_day_starttime',sevendayFirst);
+logic.setParam('seven_day_endtime',enddate)
+
+
+```
+#### [登录日志(LOGIN_LOG)](module/Base/login_log)的处理逻辑[计算活跃成员数据信息(calc_active_member_info)](module/Base/login_log/logic/calc_active_member_info)
+
+节点：赋值昨日和近七日活跃人数、活跃率
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var datas = logic.getParam('datas');
+var last_active_members = logic.getParam('last_active_members');
+var seven_active_members = logic.getParam('seven_active_members');
+//活跃总人数
+var active_count = datas.get('active_count');
+//昨日活跃人数
+var lastday_count = last_active_members.get('ACTIVE_MEMBERS');
+//昨日活跃率
+var lastday_rate = ((lastday_count / active_count) * 100).toFixed(2);
+//设置昨日活跃人数和活跃率
+datas.set("lastday_active_count",lastday_count);
+datas.set("lastday_active_rate",lastday_rate);
+//近七日活跃人数
+var sevenday_count = seven_active_members.get('ACTIVE_MEMBERS');
+//近七日活跃率
+var sevenday_rate = ((sevenday_count / active_count) * 100).toFixed(2);
+//设置近七日活跃人数和活跃率
+datas.set("sevenday_active_count",sevenday_count);
+datas.set("sevenday_active_rate",sevenday_rate);
+
 ```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[发布页面(publish_page)](module/Wiki/article_page/logic/publish_page)
 
@@ -174,6 +469,122 @@ defvar.set("success_count",success_count);
 defvar.set("failure_count",failure_count);
 defvar.set("success_per",success_per);
 defvar.set("total",total);
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[取消关联(del_relation)](module/Base/relation/logic/del_relation)
+
+节点：拼接关联对象的主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 获取正向关联对象的主键
+var forward_relation_obj = logic.getParam("forward_relation_obj");
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+}
+// 获取反向关联对象的主键
+var reverse_relation_obj = logic.getParam("reverse_relation_obj");
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+}
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[工作项取消关联测试用例(work_item_del_relation_test_case)](module/Base/relation/logic/work_item_del_relation_test_case)
+
+节点：拼接关联对象的主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 获取正向关联对象的主键
+var forward_relation_obj = logic.getParam("forward_relation_obj");
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+}
+// 获取反向关联对象的主键
+var reverse_relation_obj = logic.getParam("reverse_relation_obj");
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+}
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[工作项取消关联测试用例(work_item_del_relation_test_case)](module/Base/relation/logic/work_item_del_relation_test_case)
+
+节点：获取执行用例关联缺陷对象主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var relation_for_temp_obj = logic.getParam("relation_for_temp_obj");
+var run_relation_bug = logic.getParam("run_relation_bug");
+var bug_relation_run = logic.getParam("bug_relation_run");
+if(relation_for_temp_obj.get("id") != null && relation_for_temp_obj.get("target_id") != null){
+    // 获取执行用例关联缺陷对象的主键
+    run_relation_bug.set("id", relation_for_temp_obj.get("principal_id") + "_" + relation_for_temp_obj.get("target_id"));
+    // 获取缺陷关联执行用例对象的主键
+    bug_relation_run.set("id", relation_for_temp_obj.get("target_id") + "_" + relation_for_temp_obj.get("principal_id"));
+}
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[执行用例取消关联缺陷(run_del_relation_bug)](module/Base/relation/logic/run_del_relation_bug)
+
+节点：拼接关联对象的主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 获取正向关联对象的主键
+var forward_relation_obj = logic.getParam("forward_relation_obj");
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+}
+// 获取反向关联对象的主键
+var reverse_relation_obj = logic.getParam("reverse_relation_obj");
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+}
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[执行用例取消关联缺陷(run_del_relation_bug)](module/Base/relation/logic/run_del_relation_bug)
+
+节点：填充主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var for_temp_obj = logic.getParam("for_temp_obj");
+var test_case_relation_bug = logic.getParam("test_case_relation_bug");
+var bug_relation_test_case = logic.getParam("bug_relation_test_case");
+if(for_temp_obj.get("principal_id") != null && for_temp_obj.get("target_id") != null){
+    // 获取测试用例关联缺陷对象的主键
+    test_case_relation_bug.set("id", for_temp_obj.get("principal_id") + "_" + for_temp_obj.get("target_id"));
+    // 获取缺陷关联测试用例对象的主键
+    bug_relation_test_case.set("id", for_temp_obj.get("target_id") + "_" + for_temp_obj.get("principal_id"));
+}
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[测试用例取消关联缺陷(test_case_del_relation_bug)](module/Base/relation/logic/test_case_del_relation_bug)
+
+节点：拼接关联对象的主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 获取正向关联对象的主键
+var forward_relation_obj = logic.getParam("forward_relation_obj");
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+}
+// 获取反向关联对象的主键
+var reverse_relation_obj = logic.getParam("reverse_relation_obj");
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+}
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[测试用例取消关联缺陷(test_case_del_relation_bug)](module/Base/relation/logic/test_case_del_relation_bug)
+
+节点：获取执行用例关联缺陷对象主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var relation_for_temp_obj = logic.getParam("relation_for_temp_obj");
+var run_relation_bug = logic.getParam("run_relation_bug");
+var bug_relation_run = logic.getParam("bug_relation_run");
+if(relation_for_temp_obj.get("id") != null && relation_for_temp_obj.get("target_id") != null){
+    // 获取执行用例关联缺陷对象的主键
+    run_relation_bug.set("id", relation_for_temp_obj.get("principal_id") + "_" + relation_for_temp_obj.get("target_id"));
+    // 获取缺陷关联执行用例对象的主键
+    bug_relation_run.set("id", relation_for_temp_obj.get("target_id") + "_" + relation_for_temp_obj.get("principal_id"));
+}
 ```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[重置为未测(reset_not_test)](module/TestMgmt/run/logic/reset_not_test)
 
@@ -292,6 +703,24 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
     reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
 }
 ```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[基线规划用例数据查询(baseline_plan_case)](module/TestMgmt/test_case/logic/baseline_plan_case)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var case_versions = logic.getParam("case_versions");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("cur_version_id")){
+    var version_id_in = case_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + for_temp_obj.get("cur_version_id");
+    } else {
+        version_id_in = for_temp_obj.get("cur_version_id");
+    }
+    case_versions.set("version_id_in", version_id_in);
+}
+```
 #### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[取消关联(del_relation)](module/ProdMgmt/ticket/logic/del_relation)
 
 节点：拼接关联对象的主键
@@ -324,6 +753,37 @@ var create_man = activity_infos.get("oppersonname");
 var print_info = create_man + '于' + create_time + '归档了工作项';
 
 get_infos.set("archived_info",print_info);
+
+
+```
+#### [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)的处理逻辑[获取关联的工单(get_con_ticket)](module/ProdMgmt/ticket_type/logic/get_con_ticket)
+
+节点：添加工单数量提醒内容
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var ticket = logic.getParam("Default");
+var ticket_num = ticket.get("ticket_num");
+ticket.set("remind", "该工单类型关联了" + ticket_num + "个工单，请先将对应的工单变更为其他工单类型再删除。");
+ticket.set("disabled",1)
+```
+#### [版本(VERSION)](module/Base/version)的处理逻辑[新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name)
+
+节点：填充默认版本名称
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def default_obj = logic.param('default').getReal()
+def cur_version = logic.param('cur_version').getReal()
+def cur_version_identifier = cur_version.get('identifier') // 当前版本编号
+if(cur_version_identifier){
+    def new_version_name = 'v' + (cur_version_identifier + 1)
+    default_obj.set('name', new_version_name) // 新版本名称
+    default_obj.set('cur_version_name', cur_version.get('name')) // 当前版本名称
+} else {
+    default_obj.set('name', 'v2') // 新版本名称
+    default_obj.set('cur_version_name', 'v1') // 当前版本名称
+}
 
 
 ```
@@ -406,30 +866,34 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
     reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
 }
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[树状或平铺表格数据查询（测试）(tree_tile_grid_query)](module/ProjMgmt/work_item/logic/tree_tile_grid_query)
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[基线规划工作项数据查询(baseline_plan_work_item)](module/ProjMgmt/work_item/logic/baseline_plan_work_item)
 
-节点：获取查询条件Conds
-<p class="panel-title"><b>执行代码[Groovy]</b></p>
-
-```groovy
-def _default = logic.param('default').getReal()
-logic.param('list_searchconds').bind(_default.getSearchConds())
-```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[树状或平铺表格数据查询（测试）(tree_tile_grid_query)](module/ProjMgmt/work_item/logic/tree_tile_grid_query)
-
-节点：拼接top_ids
+节点：执行脚本代码
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
-var temp = logic.getParam("for_temp");
-var work_item = logic.getParam("work_item");
-var top_ids = work_item.get("top_ids");
-if(top_ids == null){
-    top_ids = temp.get("id");
-} else {
-    top_ids = top_ids + ";" + temp.get("id");
+var work_item_versions = logic.getParam("work_item_versions");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("cur_version_id")){
+    var version_id_in = work_item_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + for_temp_obj.get("cur_version_id");
+    } else {
+        version_id_in = for_temp_obj.get("cur_version_id");
+    }
+    work_item_versions.set("version_id_in", version_id_in);
 }
-work_item.set("top_ids", top_ids);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[移出基线(shift_out_baseline)](module/ProjMgmt/work_item/logic/shift_out_baseline)
+
+节点：获取关联对象主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var relation = logic.getParam("relation");
+if(relation.get("principal_id") != null && relation.get("target_id") != null){
+    relation.set("id", relation.get("principal_id") + "_" + relation.get("target_id"));
+}
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取测试计划对应项目(work_item_test_plan_project)](module/ProjMgmt/work_item/logic/work_item_test_plan_project)
 

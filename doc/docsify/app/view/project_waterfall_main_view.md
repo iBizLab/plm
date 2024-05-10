@@ -1,46 +1,20 @@
 # 项目(project_waterfall_main_view)  <!-- {docsify-ignore-all} -->
 
 
-<el-skeleton style="width:60%">
-	<template #template>
-		<div style="padding-bottom: 5px;">
-			<div style="height:40px;display: flex;align-items: center;justify-content: space-between;">
-				<el-skeleton style="width:250px;">
-					<template #template>
-						<el-tooltip content="分页栏">
-							<div style="display: flex;align-items: center;justify-content:end">
-								<el-skeleton-item variant="text" style="height:40px;width:80px"></el-skeleton-item>
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-							</div>
-						</el-tooltip>
-					</template>
-				</el-skeleton>
-			</div>
-		</div>
-		<el-tooltip content="导航区占位">
-			<el-skeleton-item variant="p" style="height:300px"></el-skeleton-item>
-		</el-tooltip>
-	</template>
-</el-skeleton>
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 分页导航面板(tabexppanel)
-
 #### 工具栏(toolbar)
-
 
 
 ### 关联界面行为
   * [项目(PROJECT)](module/ProjMgmt/project) : [项目成员](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [取消星标](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [设置星标](module/ProjMgmt/project#界面行为)
-  * [项目(PROJECT)](module/ProjMgmt/project) : [编辑基本信息](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [更多设置](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [项目信息](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [设置星标](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [编辑基本信息](module/ProjMgmt/project#界面行为)
+  * [项目(PROJECT)](module/ProjMgmt/project) : [取消星标](module/ProjMgmt/project#界面行为)
   * [项目(PROJECT)](module/ProjMgmt/project) : [回收站](module/ProjMgmt/project#界面行为)
 
 ### 关联视图

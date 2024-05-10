@@ -24,6 +24,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -40,6 +42,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -62,6 +66,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -104,6 +110,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -165,6 +173,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -181,6 +191,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -203,6 +215,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -243,6 +257,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -259,6 +275,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -300,6 +318,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -316,6 +336,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -352,6 +374,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -368,6 +392,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -413,6 +439,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -429,6 +457,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -470,6 +500,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -486,6 +518,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -522,6 +556,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -538,6 +574,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -560,6 +598,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -600,6 +640,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -616,6 +658,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -638,6 +682,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -678,6 +724,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -694,6 +742,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -735,6 +785,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -751,6 +803,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -787,6 +841,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -803,6 +859,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -825,6 +883,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -865,6 +925,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|产品成员|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品名称|
 
@@ -881,6 +943,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "members" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -914,8 +978,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -931,8 +995,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -950,6 +1014,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -982,8 +1048,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -999,8 +1065,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1018,6 +1084,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1050,8 +1118,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1067,8 +1135,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1086,6 +1154,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1118,8 +1188,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1135,8 +1205,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1154,6 +1224,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1186,8 +1258,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1203,8 +1275,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1222,6 +1294,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1254,8 +1328,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1271,8 +1345,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1290,6 +1364,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1322,8 +1398,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1339,8 +1415,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1358,6 +1434,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -1390,8 +1468,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1407,8 +1485,8 @@ Integer
   "n_identifier_eq" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1426,6 +1504,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "members" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,

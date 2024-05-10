@@ -14,7 +14,7 @@
 |组别|GROUP|[单项选择(文本值)](index/dictionary_index#insight_group "报表组别")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
-|报表类型|TYPE|单项选择(文本值)|60|是||
+|报表类型|TYPE|[单项选择(文本值)](index/dictionary_index#report_type "报表类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |报表呈现视图|VIEW_URL|长文本，没有长度限制|1048576|是||

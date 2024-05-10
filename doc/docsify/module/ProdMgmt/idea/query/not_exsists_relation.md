@@ -36,7 +36,7 @@
 
 ### 查询连接
 * **RELATION不存在1:N（NOT EXISTS (SELECT)）DERCUSTOM_RELATION_IDEA**<br>
-连接关系：[DERCUSTOM_RELATION_IDEA](der/DERCUSTOM_RELATION_IDEA)<br>
+连接关系：[DERCUSTOM_RELATION_TARGET_IDEA](der/DERCUSTOM_RELATION_TARGET_IDEA)<br>
 连接实体：[需求](module/ProdMgmt/idea)<br>
 连接条件：(`TARGET_TYPE(关联目标类型)` EQ `网页请求上下文.target_type` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `网页请求上下文.principal_type` AND `PRINCIPAL_ID(关联主体标识)` EQ `网页请求上下文.principal_id`)<br>
 
@@ -54,7 +54,10 @@ t1.`CATEGORY_ID`,
 t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,

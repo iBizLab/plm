@@ -37,7 +37,6 @@
 
 ##### 序列使用清单
 
-> [最近访问(RECENT)](module/Base/recent.md) `编号(IDENTIFIER)` <br>
 > [工时(WORKLOAD)](module/Base/workload.md) `编号(IDENTIFIER)` <br>
 > [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) `编号(IDENTIFIER)` <br>
 
@@ -122,6 +121,47 @@
 ##### 序列使用清单
 
 > [用例(TEST_CASE)](module/TestMgmt/test_case.md) `编号(IDENTIFIER)` <br>
+
+
+
+### 评审编号 :id=seq_review_id
+
+
+<br>
+<p class="panel-title"><b>序列标记</b></p>
+
+* `seq_review_id`
+
+
+<p class="panel-title"><b>序列格式化</b></p>
+
+* `%1$04d`
+
+<p class="panel-title"><b>序列实体</b></p>
+
+* [序列(SEQUENCE_GENERATOR)](module/Base/sequence_generator.md)
+
+<p class="panel-title"><b>值存储属性</b></p>
+
+* `当前值(CURRENT_VALUE)` 值区间为`[1 , 9999]`
+
+<p class="panel-title"><b>标记存储属性</b></p>
+
+* `名称(NAME)`
+
+<p class="panel-title"><b>类型存储属性</b></p>
+
+* `分组标记(GROUP_TAG)`
+
+
+<p class="panel-title"><b>序列格式化时使用属性</b></p>
+
+* `LIBRARY_ID`
+
+
+##### 序列使用清单
+
+> [评审(REVIEW)](module/TestMgmt/review.md) `编号(IDENTIFIER)` <br>
 
 
 

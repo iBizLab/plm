@@ -41,6 +41,7 @@
 
 ```sql
 SELECT
+t1.`CATEGORIES`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,

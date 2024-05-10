@@ -43,7 +43,10 @@
 |[DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_PAGE_PRINCIPAL_ID)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID](der/DERCOSTOM_COMMENT_RUN_PRINCIPAL_ID)|[执行用例(RUN)](module/TestMgmt/run)|自定义关系||
 |[DERCUSTOM_COMMENT_CUSTOMER_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_CUSTOMER_PRINCIPAL_ID)|[客户(CUSTOMER)](module/ProdMgmt/customer)|自定义关系||
+|[DERCUSTOM_COMMENT_DISCUSS_POST](der/DERCUSTOM_COMMENT_DISCUSS_POST)|[讨论(DISCUSS_POST)](module/team/discuss_post)|自定义关系||
+|[DERCUSTOM_COMMENT_DISCUSS_REPLY](der/DERCUSTOM_COMMENT_DISCUSS_REPLY)|[讨论回复(DISCUSS_REPLY)](module/team/discuss_reply)|自定义关系||
 |[DERCUSTOM_COMMENT_IDEA_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_IDEA_PRINCIPAL_ID)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
+|[DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_REVIEW_PRINCIPAL_ID)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 |[DERCUSTOM_COMMENT_TEST_CASE_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_TEST_CASE_PRINCIPAL_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
 |[DERCUSTOM_COMMENT_TICKET_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_TICKET_PRINCIPAL_ID)|[工单(TICKET)](module/ProdMgmt/ticket)|自定义关系||
 |[DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_WORK_ITEM_PRINCIPAL_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|自定义关系||
@@ -69,6 +72,11 @@
 | -------- |---------- |----------- |------------|----------|
 |[删除评论](module/Base/comment/logic/delete)|delete|无||评论数据的删除，将评论内容重置为：该评论已删除|
 |[新建评论后通知](module/Base/comment/logic/after_create_notify)|after_create_notify|无||发表评论后，发送通知消息至相应负责人员、关注人员|
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -102,13 +110,13 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[评论客户通知](module/Base/comment/notify/customer_notify)|customer_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|关注人员 负责人 ||
-|[评论需求通知](module/Base/comment/notify/idea_notify)|idea_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|关注人员 负责人 ||
-|[评论页面通知](module/Base/comment/notify/page_notify)|page_notify|[默认消息队列](index/notify_index)|[评论页面通知模板](index/notify_index#comment_page)|关注人员 ||
-|[评论执行用例通知](module/Base/comment/notify/run_notify)|run_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|执行人 关注人员 ||
-|[评论测试用例通知](module/Base/comment/notify/test_case_notify)|test_case_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|关注人员 维护人 ||
-|[评论工单通知](module/Base/comment/notify/ticket_notify)|ticket_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|负责人 关注人员 ||
-|[评论工作项通知](module/Base/comment/notify/work_item_notify)|work_item_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|负责人 关注人 ||
+|[客户评论通知](module/Base/comment/notify/customer_notify)|customer_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|关注人员 负责人 ||
+|[产品需求评论通知](module/Base/comment/notify/idea_notify)|idea_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|关注人员 负责人 ||
+|[页面评论通知](module/Base/comment/notify/page_notify)|page_notify|[默认消息队列](index/notify_index)|[评论页面通知模板](index/notify_index#comment_page)|关注人员 ||
+|[执行用例评论通知](module/Base/comment/notify/run_notify)|run_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|关注人员 执行人 ||
+|[测试用例评论通知](module/Base/comment/notify/test_case_notify)|test_case_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|维护人 关注人员 ||
+|[工单评论通知](module/Base/comment/notify/ticket_notify)|ticket_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|负责人 关注人员 ||
+|[工作项评论通知](module/Base/comment/notify/work_item_notify)|work_item_notify|[默认消息队列](index/notify_index)|[评论通知模板](index/notify_index#comment)|负责人 关注人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -175,6 +183,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/comment?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/comment?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/comment?id=数据查询`">
   数据查询

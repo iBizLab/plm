@@ -61,6 +61,7 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|删除类别|delete_categories|[实体处理逻辑](module/ProjMgmt/sprint/logic/delete_categories "删除类别")|默认|不支持||||
 |结束迭代|end_sprint|[实体处理逻辑](module/ProjMgmt/sprint/logic/end_sprint "结束迭代")|默认|不支持||||
 |行为|get_not_finish|[实体处理逻辑](module/ProjMgmt/sprint/logic/get_not_finish "获取未完成的工作项数量")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/sprint/logic/nothing "无操作")|默认|不支持||||
@@ -69,6 +70,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[删除类别](module/ProjMgmt/sprint/logic/delete_categories)|delete_categories|无||当类别删除时修改迭代的类别属性|
 |[开始迭代](module/ProjMgmt/sprint/logic/start_sprint)|start_sprint|无||开始迭代|
 |[无操作](module/ProjMgmt/sprint/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[结束迭代](module/ProjMgmt/sprint/logic/end_sprint)|end_sprint|无||结束迭代，根据用户选择，将未完成的工作项 移动至其他迭代会待分配|

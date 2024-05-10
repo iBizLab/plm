@@ -48,7 +48,7 @@ DEACTION --> END1
 
 
 
-调用实体 [版本（temp）(VERSION)](module/Base/version.md) 行为 [恢复指定版本(RESTORE)](module/Base/version#行为) ，行为参数为`version(版本)`
+调用实体 [版本(VERSION)](module/Base/version.md) 行为 [恢复指定版本(RESTORE)](module/Base/version#行为) ，行为参数为`version(版本)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -63,4 +63,4 @@ DEACTION --> END1
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
-|版本|version|数据对象|[版本（temp）(VERSION)](module/Base/version.md)||
+|版本|version|数据对象|[版本(VERSION)](module/Base/version.md)||

@@ -14,6 +14,9 @@
 |动态数据看板名称|DYNADASHBOARDNAME|文本，可指定长度|200|是||
 |模型|MODEL|长文本，没有长度限制|1048576|是||
 |模型标识|MODELID|文本，可指定长度|100|是||
+|所属数据标识|OWNER_ID|文本，可指定长度|100|是||
+|所属数据类型|OWNER_TYPE|文本，可指定长度|100|是||
+|看板类型|TYPE|单项选择(文本值)|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |用户标识|USERID|文本，可指定长度|100|是||
@@ -41,6 +44,24 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/dyna_dashboard/dataset/Default)|DEFAULT|数据查询|是|||
 
+## 数据权限
+
+##### 全部数据（读写） :id=dyna_dashboard-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `READ`
+* `DELETE`
+* `CREATE`
+
+
+
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
@@ -61,6 +82,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/dyna_dashboard?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/dyna_dashboard?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/dyna_dashboard?id=搜索模式`">
   搜索模式

@@ -8,7 +8,7 @@ setTimeout(() => {
 			const titleColumn = row.uiActionGroupStates.title;
 			const is_archived = row.data.is_archived;
             const type = row.data.work_item_type_id;
-            const newRowHiddenList = ['kanban_bug', 'kanban_issue', 'waterfall_bug', 'scrum_story'];
+            const newRowHiddenList = ['kanban_bug', 'kanban_issue', 'waterfall_bug', 'scrum_task', 'scrum_bug'];
             const changeParentHiddenList = ['scrum_epic', 'kanban_epic', 'kanban_issue'];
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {

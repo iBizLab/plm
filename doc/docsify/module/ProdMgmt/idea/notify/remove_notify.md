@@ -1,4 +1,4 @@
-## 删除/恢复需求通知(remove_notify) <!-- {docsify-ignore-all} -->
+## 产品需求删除/恢复通知(remove_notify) <!-- {docsify-ignore-all} -->
 
 
 
@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [需求通知模板(删除/恢复需求)](index/notify_index?id=idea_remove)
+* [需求通知模板(删除/恢复需求)](index/notify_index?id=idea_remove_or_recover)
 
 <p class="panel-title"><b>通知类型</b></p>
 
@@ -21,9 +21,9 @@
 
 #### 通知目标
 
-* **关注人员**<br>
-  目标类型：`系统消息目标`<br>
-  系统目标：`关注对象(通过主数据标识)`
 * **负责人**<br>
   目标类型：`系统消息目标`<br>
   系统目标：`需求通知负责人`
+* **关注人员**<br>
+  目标类型：`系统消息目标`<br>
+  系统目标：`关注对象(通过主数据标识)`

@@ -18,6 +18,8 @@
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |产品成员|MEMBERS|一对多关系数据集合|1048576|是||
 |产品名称|NAME|文本，可指定长度|200|否||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
@@ -39,6 +41,7 @@
 |[DER1N_PRODUCT_TAG_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_TAG_PRODUCT_PRODUCT_ID)|[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|1:N关系||
 |[DER1N_PRODUCT_TICKET_TYPE_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_TICKET_TYPE_PRODUCT_PRODUCT_ID)|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|1:N关系||
 |[DER1N_TICKET_PRODUCT_PRODUCT_ID](der/DER1N_TICKET_PRODUCT_PRODUCT_ID)|[工单(TICKET)](module/ProdMgmt/ticket)|1:N关系||
+|[DERCUSTOM_BASELINE_PRODUCT_OWNER_ID](der/DERCUSTOM_BASELINE_PRODUCT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_FAVORITE_PRODUCT](der/DERCUSTOM_FAVORITE_PRODUCT)|[收藏(FAVORITE)](module/Base/favorite)|自定义关系||
 
 
@@ -97,72 +100,15 @@
 |[是否删除变更附加逻辑](module/ProdMgmt/product/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品删除或恢复时时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/product/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品归档或激活数据时触发相应的通知消息|
 |[激活](module/ProdMgmt/product/logic/activate)|activate|无||激活已归档状态产品，修改产品的归档属性|
+|[生成产品工单类型](module/ProdMgmt/product/logic/create_product_ticket)|create_product_ticket|无||产品建立时将工单类型中is_system=1的数据同步至产品工单类型中|
 |[生成最近访问](module/ProdMgmt/product/logic/create_recent)|create_recent|无||在用户对产品数据进行了get或update操作时生成相应的访问记录|
+|[自动创建人员](module/ProdMgmt/product/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[设置星标](module/ProdMgmt/product/logic/favorite)|favorite|无||设置为星标产品|
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `是否星标(IS_FAVORITE)` 
-
-
-
-
-<p class="panel-title"><b>操作标识分布</b></p>
-<br>
-<table>
-  <tr>
-    <th>操作标识col350</th>
-    <th>是col150</th>
-    <th>否col150</th>
-    <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>删除(DELETE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>取消星标(CANCEL_FAVORITE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>子数据权限(SUBDATA)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>设置星标(ADD_FAVORITE)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-
-</table>
-
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -237,28 +183,6 @@
 
 
 
-##### 当前部门（读写） :id=product-CURDEPT_RW
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `部门范围` ： <i class="fa fa-check-square"/></i> 当前部门
-
-<p class="panel-title"><b>数据能力</b></p>
-
-
-
-
-##### 当前机构（读写） :id=product-CURORG_RW
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `组织范围` ： <i class="fa fa-check-square"/></i> 当前组织
-
-<p class="panel-title"><b>数据能力</b></p>
-
-
-
-
 ##### 只读用户（读） :id=product-USER_R
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -288,8 +212,8 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[产品归档/激活通知](module/ProdMgmt/product/notify/archived_nofity)|archived_nofity|[默认消息队列](index/notify_index)|[产品通知模板(归档/激活产品)](index/notify_index#product_archive)|当前产品成员 ||
-|[产品删除/恢复通知](module/ProdMgmt/product/notify/delete_notify)|delete_notify|[默认消息队列](index/notify_index)|[产品通知模板(删除/恢复产品)](index/notify_index#product_remove)|当前产品成员 ||
+|[产品归档/激活通知](module/ProdMgmt/product/notify/archived_nofity)|archived_nofity|[默认消息队列](index/notify_index)|[产品通知模板(归档/激活产品)](index/notify_index#product_archived_or_activate)|当前产品成员 ||
+|[产品删除/恢复通知](module/ProdMgmt/product/notify/delete_notify)|delete_notify|[默认消息队列](index/notify_index)|[产品通知模板(删除/恢复产品)](index/notify_index#product_remove_or_recover)|当前产品成员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -299,8 +223,8 @@
 |N_IDENTIFIER_EQ|产品标识|EQ||
 |N_IS_ARCHIVED_EQ|是否已归档|EQ||
 |N_IS_DELETED_EQ|是否已删除|EQ||
-|N_IS_FAVORITE_EQ|是否星标|EQ||
 |N_NAME_LIKE|产品名称|LIKE||
+|N_SCOPE_TYPE_EQ|所属|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
 ## 界面行为
@@ -314,12 +238,14 @@
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 新建产品 | create_product | 新建产品 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建产品](app/view/product_create_wizard_view)</details>||
 | 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 产品成员 | open_product_member | 产品成员 |单项数据（主键）|用户自定义||
 | 更多设置 | opne_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 产品信息 | open_show_view | 产品信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品信息](app/view/product_show_eidt_view)</details>||
 | 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
+| 打开新建产品 | open_new_product | 打开新建产品 |单项数据|<details><summary>打开顶级视图</summary>[产品](app/view/product_index_view)</details>||
 | 打开产品导航页 | open_product_exp_page | 打开产品导航页 |无数据|<details><summary>打开顶级视图</summary>[产品管理](app/view/product_tree_exp_view)</details>||
 | 新开窗口（产品） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/product=${data.id}/product_index_view/srfnav=usrdrgroup1228809432/idea_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode/idea_all_grid_view/-*</details>||
 | 打开产品首页视图 | open_index_view | 打开产品首页视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_index_view)</details>||
@@ -329,6 +255,8 @@
 | --------|--------|--------|
 |[刷新当前表格](module/ProdMgmt/product/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
+|[计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -346,8 +274,8 @@
 <el-anchor-link :href="`#/module/ProdMgmt/product?id=处理逻辑`">
   处理逻辑
 </el-anchor-link>
-<el-anchor-link :href="`#/module/ProdMgmt/product?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/ProdMgmt/product?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/product?id=数据查询`">
   数据查询

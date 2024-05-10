@@ -30,6 +30,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DER1N_TEST_CASE_TEMPLATE_TEST_SUITE_SUITE_ID](der/DER1N_TEST_CASE_TEMPLATE_TEST_SUITE_SUITE_ID)|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|1:N关系||
 |[DER1N_TEST_CASE_TEST_SUITE_SUITE_ID](der/DER1N_TEST_CASE_TEST_SUITE_SUITE_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
 |[DER1N_TEST_SUITE_TEST_SUITE_PID](der/DER1N_TEST_SUITE_TEST_SUITE_PID)|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|1:N关系||
 

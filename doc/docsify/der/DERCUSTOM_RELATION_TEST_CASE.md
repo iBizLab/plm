@@ -1,4 +1,4 @@
-## 用例-关联目标(DERCUSTOM_RELATION_TEST_CASE) <!-- {docsify-ignore-all} -->
+## 测试用例-关联源(DERCUSTOM_RELATION_TEST_CASE) <!-- {docsify-ignore-all} -->
 
 
 
@@ -17,7 +17,7 @@
 
 <p class="panel-title"><b>关系子类型</b></p>
 
-* `用户自定义`
+* `自定义1:N关系`
 
 <p class="panel-title"><b>关系识别值</b></p>
 
@@ -25,7 +25,7 @@
 
 <p class="panel-title"><b>外键属性</b></p>
 
-* `TARGET_ID(null)`
+* `PRINCIPAL_ID(null)`
 
 <p class="panel-title"><b>主从关系类型</b></p>
 

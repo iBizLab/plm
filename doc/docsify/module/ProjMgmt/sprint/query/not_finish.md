@@ -34,6 +34,13 @@
 
 
 
+### 查询连接
+* **WORK_ITEM不存在1:N（NOT EXISTS (SELECT)）DER1N_WORK_ITEM_SPRINT_SPRINT_ID**<br>
+连接关系：[DER1N_WORK_ITEM_SPRINT_SPRINT_ID](der/DER1N_WORK_ITEM_SPRINT_SPRINT_ID)<br>
+连接实体：[迭代](module/ProjMgmt/sprint)<br>
+连接条件：(`ID(标识)` EQ `网页请求上下文.work_item`)<br>
+
+
 
 
 <el-dialog v-model="MYSQL5" title="MYSQL5">
@@ -61,7 +68,9 @@ FROM `SPRINT` t1
 LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
 LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
 
-WHERE ( t1.`STATUS` <> '3' )
+WHERE NOT(EXISTS(SELECT * FROM `WORK_ITEM` t31 
+ WHERE 
+ t1.`ID` = t31.`SPRINT_ID`  AND  ( t31.`ID` = #{ctx.webcontext.work_item} ) )) AND ( t1.`STATUS` <> '3' )
 ```
 
 </el-dialog>

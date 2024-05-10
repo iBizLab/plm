@@ -49,28 +49,39 @@
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#portfolio_member_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|变更角色|change_role|[实体处理逻辑](module/Base/portfolio_member/logic/change_role "变更角色")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/Base/portfolio_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/Base/portfolio_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[无操作](module/Base/portfolio_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除项目集成员通知](module/Base/portfolio_member/logic/remove_project_set_member_notify)|remove_project_set_member_notify|无||移除项目集成员时向对应用户发送通知消息|
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/portfolio_member/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/portfolio_member/query/View)|VIEW|否|否 |否 ||
+|[当前项目集下成员(cur_project_set)](module/Base/portfolio_member/query/cur_project_set)|cur_project_set|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/portfolio_member/dataset/Default)|DEFAULT|数据查询|是|||
+|[当前项目集下成员(cur_project_set)](module/Base/portfolio_member/dataset/cur_project_set)|cur_project_set|数据查询|否|||
 ## 消息通知
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[加入成员通知](module/Base/portfolio_member/notify/create_member_notify)|create_member_notify|[默认消息队列](index/notify_index)|[项目集通知模板(加入成员)](index/notify_index#project_set_member_create)|选择对象 ||
-|[移除成员通知](module/Base/portfolio_member/notify/remove_member_notify)|remove_member_notify|[默认消息队列](index/notify_index)|[项目集通知模板(移除成员)](index/notify_index#project_set_member_remove)|选择对象 ||
+|[项目集加入成员通知](module/Base/portfolio_member/notify/create_member_notify)|create_member_notify|[默认消息队列](index/notify_index)|[项目集通知模板(加入成员)](index/notify_index#project_set_member_create)|选择对象 ||
+|[项目集移除成员通知](module/Base/portfolio_member/notify/remove_member_notify)|remove_member_notify|[默认消息队列](index/notify_index)|[项目集通知模板(移除成员)](index/notify_index#project_set_member_remove)|选择对象 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -86,6 +97,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑
@@ -108,6 +120,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/portfolio_member?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/portfolio_member?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/portfolio_member?id=数据查询`">
   数据查询

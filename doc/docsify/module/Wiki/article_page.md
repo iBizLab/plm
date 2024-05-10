@@ -9,6 +9,7 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|类别路径|CATEGORIES|长文本，长度1000|2000|是||
 |正文|CONTENT|长文本，没有长度限制|1048576|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
@@ -126,90 +127,13 @@
 |[生成版本](module/Wiki/article_page/logic/commit_version)|commit_version|无|||
 |[获取历史版本](module/Wiki/article_page/logic/get_by_version)|get_by_version|无||获取当前页面的历史版本记录|
 |[获取模板数据](module/Wiki/article_page/logic/get_form_stencil)|get_form_stencil|无||获取页面的模板数据，并返回|
-|[获取草稿页面](module/Wiki/article_page/logic/get_draft_pages)|get_draft_pages|无|||
+|[获取草稿页面](module/Wiki/article_page/logic/get_draft_pages)|get_draft_pages|无||查询并返回草稿数据|
 |[设置星标](module/Wiki/article_page/logic/favorite)|favorite|无||加入到我的收藏页面|
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `是否星标(IS_FAVORITE)` 
-
-
-
-
-<p class="panel-title"><b>操作标识分布</b></p>
-<br>
-<table>
-  <tr>
-    <th>操作标识col350</th>
-    <th>是col150</th>
-    <th>否col150</th>
-    <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>删除(DELETE)<br><a href ="#/der/DER1N_PAGE_SPACE_SPACE_ID">DER1N_PAGE_SPACE_SPACE_ID</a></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>删除(DELETE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>取消星标(CANCEL_FAVORITE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)<br><a href ="#/der/DER1N_PAGE_SPACE_SPACE_ID">DER1N_PAGE_SPACE_SPACE_ID</a></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)<br><a href ="#/der/DER1N_PAGE_SPACE_SPACE_ID">DER1N_PAGE_SPACE_SPACE_ID</a></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>设置星标(ADD_FAVORITE)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)<br><a href ="#/der/DER1N_PAGE_SPACE_SPACE_ID">DER1N_PAGE_SPACE_SPACE_ID</a></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-
-</table>
-
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|version|版本控制|[版本(VERSION)](module/Base/version)|//autocommit=true|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -242,6 +166,7 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_CATEGORIES_LIKE|类别路径|LIKE||
 |N_CONTENT_LIKE|正文|LIKE||
 |N_CREATE_MAN_EQ|建立人|EQ||
 |N_CREATE_TIME_EQ|建立时间|EQ||
@@ -251,7 +176,6 @@
 |N_ID_NOTEQ|标识|NOTEQ||
 |N_ID_EQ|标识|EQ||
 |N_IDENTIFIER_EQ|编号|EQ||
-|N_IS_FAVORITE_EQ|是否星标|EQ||
 |N_NAME_LIKE|主题|LIKE||
 |N_PARENT_ID_EQ|父页面标识|EQ||
 |N_PARENT_ID_ISNULL|父页面标识|ISNULL||
@@ -277,7 +201,6 @@
 | 关闭 | toolbar_model_show_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node5_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node6_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 切换草稿 | draft | 草稿 |无数据|用户自定义||
 | 打开历史版本视图 | open_version_view | 历史版本 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[历史版本](app/view/version_list_exp_view)</details>||
 | 关闭 | toolbar_show_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
@@ -299,12 +222,10 @@
 | 快速新建文档 | quick_create_page_document | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_qucik_create_view)</details>||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 打开更新日志 | open_show_update_logs | 打开更新日志 |单项数据|<details><summary>打开视图或向导（模态）</summary>[更新](app/view/article_page_show_update_log_view)</details>||
-| 显示模板 | show_stencil | 显示模板 |无数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建分组 |单项数据|用户自定义||
 | 恢复历史版本 | recover_version | 恢复此版本 |单项数据（主键）|<details><summary>后台调用</summary>[recover_version](#行为)||
 | 评论 | toolbar_show_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
-| 重命名 | toolbar_tree_exp_view_node6_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 评论 | toolbar_model_show_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 恢复历史版本并通知刷新 | recover_version_refresh | 恢复历史版本并通知刷新 |单项数据（主键）|用户自定义||
@@ -344,8 +265,8 @@
 <el-anchor-link :href="`#/module/Wiki/article_page?id=处理逻辑`">
   处理逻辑
 </el-anchor-link>
-<el-anchor-link :href="`#/module/Wiki/article_page?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/Wiki/article_page?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Wiki/article_page?id=数据查询`">
   数据查询

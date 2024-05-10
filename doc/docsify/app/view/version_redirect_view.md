@@ -1,14 +1,12 @@
-# 版本（temp）(version_redirect_view)  <!-- {docsify-ignore-all} -->
+# 版本(version_redirect_view)  <!-- {docsify-ignore-all} -->
 
 
 系统自动添加
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 
 
 <script>

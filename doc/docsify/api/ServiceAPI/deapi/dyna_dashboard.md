@@ -16,6 +16,9 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板类型|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据类型|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">app_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|动态数据看板标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板名称|
@@ -28,6 +31,9 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -46,6 +52,9 @@
 ```json
 
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -84,6 +93,9 @@
 ```json
 
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -141,6 +153,9 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板类型|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据类型|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">app_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|动态数据看板标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板名称|
@@ -153,6 +168,9 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -171,6 +189,9 @@
 ```json
 
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -202,6 +223,9 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板类型|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据类型|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">app_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|动态数据看板标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板名称|
@@ -214,6 +238,9 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -250,6 +277,9 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板类型|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据类型|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">app_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|动态数据看板标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板名称|
@@ -262,6 +292,9 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -280,6 +313,9 @@ Integer
 ```json
 
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -311,6 +347,9 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|看板类型|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据类型|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 |<el-row justify="space-between"><el-col :span="20">app_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|应用标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|动态数据看板标识|
 |<el-row justify="space-between"><el-col :span="20">dyna_dashboard_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|动态数据看板名称|
@@ -323,6 +362,9 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -341,6 +383,9 @@ Integer
 ```json
 
 {
+  "type" : null,
+  "owner_type" : null,
+  "owner_id" : null,
   "app_id" : null,
   "create_date" : null,
   "create_man" : null,
@@ -391,6 +436,9 @@ Integer
 ```json
 [
   {
+    "type" : null,
+    "owner_type" : null,
+    "owner_id" : null,
     "app_id" : null,
     "create_date" : null,
     "create_man" : null,

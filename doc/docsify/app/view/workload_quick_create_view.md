@@ -1,47 +1,38 @@
 # 登记工时(workload_quick_create_view)  <!-- {docsify-ignore-all} -->
 
 
-<el-skeleton style="width:60%">
-	<template #template>
-		<div style="padding-bottom: 5px;">
-			<div style="height:40px;display: flex;align-items: center;justify-content: space-between;">
-				<el-tooltip content="页面标题">
-					<el-skeleton-item variant="text" style="height:40px;"></el-skeleton-item>
-				</el-tooltip>
-			</div>
-		</div>
-		<el-tooltip content="编辑表单">
-			<el-skeleton-item variant="p" style="height:300px"></el-skeleton-item>
-		</el-tooltip>
-		<el-skeleton style="display: flex;align-items: center;justify-content:end">
-			<template #template>
-				<div style="">
-					<el-tooltip content="确认">
-						<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-					</el-tooltip>
-					<el-tooltip content="取消">
-						<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-					</el-tooltip>
-				</div>
-			</template>
-		</el-skeleton>
-	</template>
-</el-skeleton>
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### DATAINFOBAR(datainfobar)
-
 #### 编辑表单(form)
 
 ##### 部件逻辑
+* `onLoadDraftSuccess`
+```
+var form_data = view.layoutPanel.panelItems.form.control.data;
+var remaining_workload = form_data.remaining_workload;
+var actual_workload = form_data.actual_workload;
+var estimated_workload = form_data.estimated_workload;  
+var estimated = 0; // 预估工时
+if(estimated_workload){
+	estimated = Number(estimated_workload);
+}
+var actual = 0; // 之前登记的实际工时
+if(actual_workload){
+	actual = Number(actual_workload);
+}
+var remaining = 0;
+if(remaining_workload){
+	remaining = Number(remaining_workload);
+}
+// 计算工时进度
+if((actual + remaining) != 0){
+	var schedule = ((actual / (actual + remaining)) * 100).toFixed(1);
+	form_data.workload_schedule = schedule;
+}
+```
 
-
-
-### 关联视图
-  * [工时类别(workload_type_pick_up_view)](app/view/workload_type_pick_up_view)
 
 <script>
  const { createApp } = Vue

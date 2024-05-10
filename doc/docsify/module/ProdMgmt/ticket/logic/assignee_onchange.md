@@ -42,7 +42,7 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 
-调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/ticket/notify/assignee_onchange_notify) ，参数为`Default(传入变量)`
+调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [工单负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/ticket/notify/assignee_onchange_notify) ，参数为`Default(传入变量)`
 #### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -54,12 +54,12 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 
-调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [分配负责人通知(assignee_notify)](module/ProdMgmt/ticket/notify/assignee_notify) ，参数为`Default(传入变量)`
+调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [工单分配负责人通知(assignee_notify)](module/ProdMgmt/ticket/notify/assignee_notify) ，参数为`Default(传入变量)`
 #### 取消分配负责人通知 :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/ticket/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
+调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [工单取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/ticket/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
 
 ### 连接条件说明
 #### 重新分配负责人 :id=DENOTIFY2-DENOTIFY1

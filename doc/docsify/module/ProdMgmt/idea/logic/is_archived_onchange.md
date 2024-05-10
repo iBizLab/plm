@@ -36,7 +36,7 @@ Begin --> DENOTIFY1
 
 
 
-调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 通知 [归档/激活通知(archive_notify)](module/ProdMgmt/idea/notify/archive_notify) ，参数为`Default(传入变量)`
+调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 通知 [产品需求归档/激活通知(archive_notify)](module/ProdMgmt/idea/notify/archive_notify) ，参数为`Default(传入变量)`
 
 
 ### 实体逻辑参数

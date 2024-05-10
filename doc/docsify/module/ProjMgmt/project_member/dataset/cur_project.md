@@ -19,4 +19,4 @@
 
 
 ### 数据查询
-  * [当前项目成员(CUR_PROJECT)](module/ProjMgmt/project_member/query/cur_project)
+  * [当前项目成员(cur_project)](module/ProjMgmt/project_member/query/cur_project)

@@ -64,7 +64,7 @@ BINDPARAM1 --> END1 : [[$./create_product_member#bindparam1-end1{未勾选添加
 
 
 1. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `member_obj(关系对象).USER_ID(登录名)`
-2. 将`for_temp_obj(循环临时变量).DISPLAY_NAME(显示名称)` 设置给  `member_obj(关系对象).NAME(姓名)`
+2. 将`for_temp_obj(循环临时变量).DISPLAY_NAME(姓名)` 设置给  `member_obj(关系对象).NAME(姓名)`
 3. 将`Default(传入变量).PRODUCT_ID(产品标识)` 设置给  `member_obj(关系对象).PRODUCT_ID(产品标识)`
 
 #### 建立产品成员 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>

@@ -51,15 +51,18 @@
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
-|[当前用户(CUR_USER)](module/extension/system_extension_notify_setting/dataset/Cur_user)|CUR_USER|数据查询|否|||
 |[数据集(DEFAULT)](module/extension/system_extension_notify_setting/dataset/Default)|DEFAULT|数据查询|是|||
+|[默认（全部数据）(VIEW)](module/extension/system_extension_notify_setting/dataset/View)|VIEW|数据查询|否|||
+|[当前用户(CUR_USER)](module/extension/system_extension_notify_setting/dataset/cur_user)|CUR_USER|数据查询|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_OWNER_ID_EQ|所有者标识|EQ||
 |N_OWNER_TYPE_EQ|所有者类型|EQ||
+|N_SYSTEM_TAG_EQ|系统标记|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

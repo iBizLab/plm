@@ -7,7 +7,16 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-dev.59`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-dev.129`
+
+### LuckySheet编辑 :id=LUCKYSHEET
+
+
+插件标识：`LUCKYSHEET`
+
+运行对象：`IBizLuckySheet`
+
+远程仓库：`@ibiz-template-plm/lucky-sheet-editor@0.0.3-dev.125`
 
 ### cron表达式编辑器 :id=CronEditor
 
@@ -23,9 +32,18 @@
 
 插件标识：`PERSONNEL_INFO`
 
-运行对象：`IBizPersonnelInfo`
+运行对象：`IBizPersonalInfo`
 
-远程仓库：`@ibiz-template-plm/personnel-info@0.0.3-dev.64`
+远程仓库：`@ibiz-template-plm/personal-info@0.0.3-dev.119`
+
+### 人员头像上传 :id=AVATAR_UPLOAD
+
+
+插件标识：`AVATAR_UPLOAD`
+
+运行对象：`AvatarUpload`
+
+远程仓库：`@ibiz-template-plm/avatar-upload@0.0.3-dev.73`
 
 ### 人员选择 :id=PERSON_SELECT
 
@@ -34,7 +52,7 @@
 
 运行对象：`IBizPersonelSelect`
 
-远程仓库：`@ibiz-template-plm/person-select@0.0.3-dev.2`
+远程仓库：`@ibiz-template-plm/person-select@0.0.3-dev.124`
 
 ### 修改密码 :id=CHANGE_PASSWORD
 
@@ -52,7 +70,7 @@
 
 运行对象：`IBizAttention`
 
-远程仓库：`@ibiz-template-plm/attention@0.0.3-dev.11`
+远程仓库：`@ibiz-template-plm/attention@0.0.3-dev.96`
 
 ### 分组树 :id=GROUP_TREE
 
@@ -61,7 +79,7 @@
 
 运行对象：`IBizGroupTreeControl`
 
-远程仓库：`@ibiz-template-plm/group-tree@0.0.3-dev.67`
+远程仓库：`@ibiz-template-plm/group-tree@0.0.3-dev.84`
 
 ### 分页导航下拉 :id=TAB_EXP_SELECT
 
@@ -88,7 +106,16 @@
 
 运行对象：`IBizListTreeControl`
 
-远程仓库：`@ibiz-template-plm/list-tree@0.0.2-dev.145`
+远程仓库：`@ibiz-template-plm/list-tree@0.0.3-dev.82`
+
+### 团队选择 :id=TEAM_PICKER
+
+
+插件标识：`TEAM_PICKER`
+
+运行对象：`TeamPicker`
+
+远程仓库：`@ibiz-template-plm/team-picker@0.0.3-dev.95`
 
 ### 图标（表格列） :id=ICON_GRIDCOLUMN
 
@@ -106,7 +133,16 @@
 
 运行对象：`ChartGrid`
 
-远程仓库：`@ibiz-template-plm/chart-grid@0.0.3-dev.59`
+远程仓库：`@ibiz-template-plm/chart-grid@0.0.3-dev.101`
+
+### 基线比对表格插件 :id=BASELINECOMPARE
+
+
+插件标识：`BASELINECOMPARE`
+
+运行对象：`BaselineCompare`
+
+远程仓库：`@ibiz-template-plm/baseline-compare@0.0.3-dev.116`
 
 ### 增强导航栏 :id=DRBAR_EX
 
@@ -142,7 +178,7 @@
 
 运行对象：`IBizWorkloadTableControl`
 
-远程仓库：`@ibiz-template-plm/workload-table@0.0.3-dev.42`
+远程仓库：`@ibiz-template-plm/workload-table@0.0.3-dev.85`
 
 ### 序号表格 :id=NUMBER_GRID
 
@@ -151,7 +187,7 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-dev.46`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-dev.95`
 
 ### 数据选择（管理） :id=MANAGE
 
@@ -160,7 +196,7 @@
 
 运行对象：`IBizManageMPicker`
 
-远程仓库：`@ibiz-template-plugin/manage-mpicker@0.0.3-dev.33`
+远程仓库：`@ibiz-template-plugin/manage-mpicker@0.0.3-dev.71`
 
 ### 数据选择（路由） :id=ROUTE
 
@@ -187,7 +223,7 @@
 
 运行对象：`registerFileDownloadProvider`
 
-远程仓库：`@ibiz-template-plugin/file-download@0.1.3-alpha.17`
+远程仓库：`@ibiz-template-plugin/file-download@0.0.3-dev.122`
 
 ### 树导航栏（默认展开指定节点） :id=TREEEXPBAR_DEFAULT_EXPAND
 
@@ -214,7 +250,7 @@
 
 运行对象：`IBizStepsKanbanControl`
 
-远程仓库：`@ibiz-template-plm/steps-kanban@0.0.3-dev.2`
+远程仓库：`@ibiz-template-plm/steps-kanban@0.0.3-dev.110`
 
 ### 用例步骤 :id=CASE_STEPS
 
@@ -224,6 +260,15 @@
 运行对象：`IBizRepeaterGridCaseSteps`
 
 远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.2-dev.69`
+
+### 直接内容表格列 :id=JSCODE_GRID_COLUMN
+
+
+插件标识：`JSCODE_GRID_COLUMN`
+
+运行对象：`IBizGridJsCodeColumn`
+
+远程仓库：`@ibiz-template-plm/grid-jscode-column@0.0.3-dev.100`
 
 ### 直接内容（活动） :id=RAW_ACTIVITY
 
@@ -252,6 +297,15 @@
 
 远程仓库：`@ibiz-template-plm/identifier-title@0.0.2-dev.120`
 
+### 编辑表单数据对比 :id=FORM_DATA_COMPARISON
+
+
+插件标识：`FORM_DATA_COMPARISON`
+
+运行对象：`IBizFormDataComparison`
+
+远程仓库：`@ibiz-template-plm/form-data-comparison@0.0.3-dev.123`
+
 ### 自定义图表（标签） :id=CUSTOM_LABEL
 
 
@@ -268,7 +322,7 @@
 
 运行对象：`IBizCustomUserInfo`
 
-远程仓库：`@ibiz-template-plm/custom-user-info@0.0.3-dev.64`
+远程仓库：`@ibiz-template-plm/custom-user-info@0.0.3-dev.98`
 
 ### 表格列（支持获取编辑列） :id=COLUMN_ACTION_EDIT
 
@@ -313,7 +367,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-dev.30`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-dev.112`
 
 ### 附件表格 :id=ATTACHMENT_GRID
 

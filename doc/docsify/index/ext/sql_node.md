@@ -1,6 +1,33 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[111]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[143]</font></sup>
 
+#### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
+
+节点：删除基线关联数据
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+delete from `relation` where principal_id = ? and principal_type = 'baseline'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+#### [看板(BOARD)](module/ProjMgmt/board)的处理逻辑[删除看板之前判断(before_remove)](module/ProjMgmt/board/logic/before_remove)
+
+节点：查询项目下看板数量
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count(1) as project_with_board_num from `board` where project_id = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).PROJECT_ID(产品标识)`
+
+重置参数`project(项目)`，并将执行sql结果赋值给参数`project(项目)`
 #### [类别(CATEGORY)](module/Base/category)的处理逻辑[删除类别及子类别(delete_child_category)](module/Base/category/logic/delete_child_category)
 
 节点：修改需求信息
@@ -55,6 +82,22 @@ WHERE
 1. `Default(传入变量).ID(标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[删除类别(delete_categories)](module/ProdMgmt/customer/logic/delete_categories)
+
+节点：当删除类别时，修改客户的类别属性
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE customer
+SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))
+WHERE FIND_IN_SET(?, categories) > 0 ;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).id(标识)`
+2. `Default(传入变量).id(标识)`
+
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
 
 节点：需求关联客户
@@ -78,7 +121,6 @@ WHERE
 			t11.`TARGET_TYPE` = 'customer' 
 			AND t11.`PRINCIPAL_TYPE` = 'idea' 
 			AND t11.`PRINCIPAL_ID` = ? ) )
-			AND t.`is_archived` = 0
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -200,6 +242,174 @@ WHERE
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
+
+节点：产品需求版本
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+	SELECT
+	count( t.id ) AS idea_version
+FROM
+	`version` t 
+WHERE
+    t.owner_id = ? and  t.owner_type = 'IDEA'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
+
+节点：需求关联客户
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_customer
+FROM
+	customer t 
+WHERE
+	EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
+
+节点：需求关联需求
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_idea
+FROM
+	idea t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
+
+节点：需求关联工单
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_ticket
+FROM
+	ticket t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
+
+节点：需求关联工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_work_item
+FROM
+	work_item t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[产品需求关联分页计数器(product_idea_re_counters)](module/ProdMgmt/idea/logic/product_idea_re_counters)
+
+节点：需求关联测试用例
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_test_case
+FROM
+	test_case t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[删除(delete)](module/ProdMgmt/idea/logic/delete)
@@ -376,7 +586,7 @@ delete from `favorite` where create_man = ? and owner_id = ?
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-update recent set IS_DELETED=0 where owner_id=? and owner_subtype='idea'
+update recent set IS_DELETED=0 where owner_id=? and owner_subtype='page'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -385,7 +595,7 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='idea'
 
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取草稿页面(get_draft_pages)](module/Wiki/article_page/logic/get_draft_pages)
 
-节点：直接SQL调用
+节点：查询草稿数据
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -600,6 +810,22 @@ update recent set RECENT_PARENT_IDENTIFIER = ? where RECENT_PARENT=?
 
 1. `Default(传入变量).IDENTIFIER(产品标识)`
 2. `Default(传入变量).ID(标识)`
+
+#### [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)的处理逻辑[删除类别(delete_categories)](module/ProdMgmt/product_plan/logic/delete_categories)
+
+节点：直接SQL调用
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE product_plan
+SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))
+WHERE FIND_IN_SET(?, categories) > 0 ;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).id(标识)`
+2. `Default(传入变量).id(标识)`
 
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[从项目集中移除(remove_from_project_set)](module/ProjMgmt/project/logic/remove_from_project_set)
 
@@ -906,25 +1132,51 @@ SELECT (
 4. `用户全局对象.srfpersonid`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
-#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[执行用例关联分页计数器(run_re_counters)](module/TestMgmt/run/logic/run_re_counters)
+#### [项目发布(RELEASE)](module/ProjMgmt/release)的处理逻辑[删除类别(delete_categories)](module/ProjMgmt/release/logic/delete_categories)
 
-节点：执行用例结果附件
+节点：当类别删除时修改发布的类别属性
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE release
+SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))
+WHERE FIND_IN_SET(?, categories) > 0 ;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).id(标识)`
+2. `Default(传入变量).id(标识)`
+
+#### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[评审结果条数(review_content_total)](module/TestMgmt/review_content/logic/review_content_total)
+
+节点：查询评审结果总条数与已评审条数
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
 SELECT
-	count( t.id ) AS run_re_attachment
+    query1.count1 AS total,
+    query2.count2 AS total_already,
+    (CONVERT(query2.count2, DECIMAL) / query1.count1 * 100) AS schedule
 FROM
-	attachment t 
-WHERE
-    t.owner_id = ? and t.owner_type = 'RUN'
+    (SELECT COUNT(1) AS count1
+     FROM review rv
+              LEFT JOIN relation re ON re.PRINCIPAL_ID = rv.ID AND re.PRINCIPAL_TYPE = 'REVIEW'
+     WHERE rv.ID = ?) AS query1,
+
+    (SELECT COUNT(*) AS count2
+     FROM review rv
+              INNER JOIN relation re ON re.PRINCIPAL_ID = rv.ID AND re.PRINCIPAL_TYPE = 'REVIEW'
+              INNER JOIN review_content_extend rc ON re.ID = rc.ID AND rc.review_result = 'pass'
+     WHERE rv.ID = ?) AS query2;
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).ID(标识)`
 
-重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[执行用例关联分页计数器(run_re_counters)](module/TestMgmt/run/logic/run_re_counters)
 
 节点：测试用例关联产品需求
@@ -966,9 +1218,9 @@ WHERE
 SELECT
 	count( t.id ) AS run_re_work_item 
 FROM
-	work_item t 
-WHERE
-t.WORK_ITEM_TYPE_ID not like '%bug%'
+	work_item t, work_item_type t1 
+WHERE t.work_item_type_id = t1.id
+and t1.`group` <> 'bug'
 AND	EXISTS (
 	SELECT
 		* 
@@ -992,29 +1244,37 @@ AND	EXISTS (
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[执行用例关联分页计数器(run_re_counters)](module/TestMgmt/run/logic/run_re_counters)
 
-节点：测试用例/执行用例关联缺陷
+节点：执行用例关联缺陷
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count( t.id ) AS run_re_bug from work_item t, work_item_type t1
+where  t.`IS_DELETED` = 0 and t.work_item_type_id = t1.id 
+and t1.`group` = 'bug'
+and EXISTS ( select 1 from `RELATION` t2 
+where t.`ID` = t2.`TARGET_ID` 
+and  t2.`TARGET_TYPE` = 'work_item' and t2.`PRINCIPAL_TYPE` = 'run'
+and t2.`PRINCIPAL_ID` = ?) 
+			
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[执行用例关联分页计数器(run_re_counters)](module/TestMgmt/run/logic/run_re_counters)
+
+节点：执行用例结果附件
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
 SELECT
-	count( t.id ) AS run_re_bug 
+	count( t.id ) AS run_re_attachment
 FROM
-	work_item t 
+	attachment t 
 WHERE
-	EXISTS (
-	SELECT
-		* 
-	FROM
-		`RELATION` t11 
-	WHERE
-		t.`ID` = t11.`TARGET_ID` 
-		AND (
-			t11.`TARGET_TYPE` = 'bug' 
-			AND (t11.`PRINCIPAL_TYPE` = 'run' or t11.`PRINCIPAL_TYPE` = 'test_case')
-			AND t11.`PRINCIPAL_ID` = ? ) )
-			AND (
-				t.`IS_DELETED` = 0 
-			)
+    t.owner_id = ? and t.owner_type = 'RUN'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -1029,11 +1289,12 @@ WHERE
 
 ```sql
 SELECT
-	count( t.id ) AS run_re_run_history
+    COUNT(t.id) AS run_re_run_history
 FROM
-	run_history t 
+    run_history t
 WHERE
-    t.run_id = ?
+    t.run_id = ? 
+
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -1397,6 +1658,35 @@ delete from `favorite` where create_man = ? and owner_id = ?
 1. `用户全局对象.srfuserid`
 2. `Default(传入变量).owner_id`
 
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[恢复(recover)](module/Wiki/space/logic/recover)
+
+节点：恢复最近访问
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+update recent set IS_DELETED=0 where owner_id=? and owner_subtype='space'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+#### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[删除类别(delete_categories)](module/ProjMgmt/sprint/logic/delete_categories)
+
+节点：当类别删除时，修改迭代的类别属性
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+UPDATE sprint
+SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))
+WHERE FIND_IN_SET(?, categories) > 0 ;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).id(标识)`
+2. `Default(传入变量).id(标识)`
+
 #### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[获取未完成的工作项数量(get_not_finish)](module/ProjMgmt/sprint/logic/get_not_finish)
 
 节点：查询该迭代下未完成的工作项
@@ -1478,9 +1768,11 @@ WHERE
 SELECT
 	count( t.id ) AS test_case_re_work_item 
 FROM
-	work_item t 
+	work_item t, work_item_type t1 
 WHERE
-t.WORK_ITEM_TYPE_ID not like '%bug%' AND EXISTS (
+t.work_item_type_id = t1.id
+and t1.`group` <> 'bug' 
+AND EXISTS (
 	SELECT
 		* 
 	FROM
@@ -1509,9 +1801,9 @@ t.WORK_ITEM_TYPE_ID not like '%bug%' AND EXISTS (
 SELECT
 	count( t.id ) AS test_case_re_bug 
 FROM
-	work_item t 
-WHERE
-	EXISTS (
+	work_item t, work_item_type t1 
+WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'
+and	EXISTS (
 	SELECT
 		* 
 	FROM
@@ -1519,7 +1811,7 @@ WHERE
 	WHERE
 		t.`ID` = t11.`TARGET_ID` 
 		AND (
-			t11.`TARGET_TYPE` = 'bug' 
+			t11.`TARGET_TYPE` = 'work_item' 
 			AND t11.`PRINCIPAL_TYPE` = 'test_case'
 			AND t11.`PRINCIPAL_ID` = ? ) )
 			AND t.`IS_DELETED` = 0
@@ -1548,6 +1840,115 @@ WHERE
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例关联分页计数器(test_case_re_counters)](module/TestMgmt/test_case/logic/test_case_re_counters)
+
+节点：测试用例版本
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS test_case_version
+FROM
+	`version` t 
+WHERE
+    t.owner_id = ? and t.owner_type = 'TEST_CASE'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例关联分页计数器(test_case_re_counters)](module/TestMgmt/test_case/logic/test_case_re_counters)
+
+节点：测试用例关联产品需求
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS test_case_re_idea
+FROM
+	idea t 
+WHERE
+t.is_deleted = 0
+AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例关联分页计数器(test_case_re_counters)](module/TestMgmt/test_case/logic/test_case_re_counters)
+
+节点：测试用例关联工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS test_case_re_work_item
+FROM
+	work_item t, work_item_type t1
+WHERE t.work_item_type_id = t1.id and t1.`group` <> 'bug'
+and t.is_deleted = 0
+AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例关联分页计数器(test_case_re_counters)](module/TestMgmt/test_case/logic/test_case_re_counters)
+
+节点：测试用例关联缺陷
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS test_case_re_bug
+FROM
+	work_item t, work_item_type t1
+WHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'
+and t.is_deleted = 0
+AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/logic/test_case_maneuver_context)
@@ -1762,6 +2163,109 @@ select t2.name as test_plan_name,t.EXECUTOR_NAME,t.EXECUTED_AT,t.`STATUS` as run
 1. `Default(传入变量).ID(标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [测试计划(TEST_PLAN)](module/TestMgmt/test_plan)的处理逻辑[测试报告概览数据源(test_plan_report_survey)](module/TestMgmt/test_plan/logic/test_plan_report_survey)
+
+节点：测试计划内用例数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count(1) as case_count from test_plan tp left join run r on tp.ID = r.PLAN_ID where tp.ID = ?;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [测试计划(TEST_PLAN)](module/TestMgmt/test_plan)的处理逻辑[测试报告概览数据源(test_plan_report_survey)](module/TestMgmt/test_plan/logic/test_plan_report_survey)
+
+节点：测试计划用例覆盖率
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    ROUND((COUNT(DISTINCT r.CASE_ID) * 100.0 / COUNT(DISTINCT tc.ID)), 1) AS Coverage_Percentage
+FROM
+    test_plan tp
+        LEFT JOIN
+    test_case tc ON tp.LIBRARY_ID = tc.TEST_LIBRARY_ID and tc.IS_DELETED = 0
+        LEFT JOIN
+    run r ON tp.ID = r.PLAN_ID AND tc.ID = r.CASE_ID
+WHERE
+        tp.ID = ?;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [测试计划(TEST_PLAN)](module/TestMgmt/test_plan)的处理逻辑[测试报告概览数据源(test_plan_report_survey)](module/TestMgmt/test_plan/logic/test_plan_report_survey)
+
+节点：测试计划用例通过率
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    CASE
+        WHEN COUNT(DISTINCT r.CASE_ID) > 0 THEN ROUND((COUNT(DISTINCT CASE WHEN r.STATUS = '10' THEN r.CASE_ID END) * 100.0 / COUNT(DISTINCT r.CASE_ID)), 1)
+        ELSE 0
+        END AS Pass_Percentage
+FROM
+    test_plan tp
+        LEFT JOIN
+    run r ON tp.ID = r.PLAN_ID
+WHERE
+        tp.ID = ?;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [测试计划(TEST_PLAN)](module/TestMgmt/test_plan)的处理逻辑[测试报告概览数据源(test_plan_report_survey)](module/TestMgmt/test_plan/logic/test_plan_report_survey)
+
+节点：测试计划内缺陷数
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+count(1) as bug_count
+FROM `WORK_ITEM` t1
+         LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID`
+WHERE
+    ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
+            EXISTS (
+                -- 与计划ID关联的RUN的WORK_ITEM
+                    SELECT 1
+                    FROM `relation` rel
+                             INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`
+                    WHERE
+                            rel.`TARGET_ID` = t1.`ID`
+                      AND ru.`PLAN_ID` = ?
+                      AND rel.`TARGET_TYPE` = 'work_item'
+                      AND rel.`PRINCIPAL_TYPE` = 'run'
+                )
+            OR EXISTS (
+                -- 直接与计划ID关联的WORK_ITEM
+                    SELECT 1
+                    FROM `relation` r
+                    WHERE
+                            r.`TARGET_ID` = t1.`ID`
+                      AND r.`PRINCIPAL_ID` = ?
+                      AND r.`TARGET_TYPE` = 'work_item'
+                      AND r.`PRINCIPAL_TYPE` = 'test_plan'
+                )
+        ) )
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).ID(标识)`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[产品工单关联分页计数器(product_ticket_re_counters)](module/ProdMgmt/ticket/logic/product_ticket_re_counters)
 
 节点：工单关联需求
@@ -1920,6 +2424,39 @@ LIMIT 1;
 1. `Default(传入变量).ID(标识)`
 
 重置参数`activity_info(活动信息)`，并将执行sql结果赋值给参数`activity_info(活动信息)`
+#### [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)的处理逻辑[获取关联的工单(get_con_ticket)](module/ProdMgmt/ticket_type/logic/get_con_ticket)
+
+节点：查询所关联的工单数量
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select count(1) as ticket_num from ticket  where  type = ?
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [版本(VERSION)](module/Base/version)的处理逻辑[新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name)
+
+节点：获取当前版本
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+select IDENTIFIER, `NAME` from `version`
+where owner_id = ? and owner_type = ?
+order by IDENTIFIER desc
+limit 1
+
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).OWNER_ID(所属数据标识)`
+2. `Default(传入变量).OWNER_TYPE(所属数据对象)`
+
+重置参数`cur_version(当前版本)`，并将执行sql结果赋值给参数`cur_version(当前版本)`
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove)
 
 节点：获取已登记工时
@@ -2008,6 +2545,40 @@ update recent set IS_DELETED=1 where owner_id=? and owner_subtype='work_item'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[团队速度(project_team_speed)](module/ProjMgmt/work_item/logic/project_team_speed)
+
+节点：查询团队速度
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+  SUM(CASE WHEN t31.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count2,
+  COUNT(*) AS count,
+  COALESCE(t1.`SPRINT_ID`, '未分组') AS filter_type
+FROM
+  `WORK_ITEM` t1
+  LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID`
+WHERE
+  t1.`PROJECT_ID` = ?
+  AND t1.`WORK_ITEM_TYPE_ID` LIKE '%story%'
+  AND t1.`IS_DELETED` = 0
+	AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR t1.CREATE_TIME BETWEEN ? and ? )
+GROUP BY
+  filter_type;
+
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).n_project_id_eq`
+2. `Default(传入变量).n_create_time_gtandeq`
+3. `Default(传入变量).n_create_time_gtandeq`
+4. `Default(传入变量).n_create_time_ltandeq`
+5. `Default(传入变量).n_create_time_ltandeq`
+6. `Default(传入变量).n_create_time_gtandeq`
+7. `Default(传入变量).n_create_time_ltandeq`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
 
 节点：工作项关联产品需求
@@ -2032,25 +2603,6 @@ WHERE
 			AND t11.`PRINCIPAL_ID` = ? ) )
 			AND t.`IS_DELETED` = 0 
 			
-```
-
-<p class="panel-title"><b>执行sql参数</b></p>
-
-1. `Default(传入变量).ID(标识)`
-
-重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
-
-节点：工作项关联子工作项
-<p class="panel-title"><b>执行sql语句</b></p>
-
-```sql
-SELECT
-	count( t.id ) AS work_item_re_children
-FROM
-	work_item t 
-WHERE
-	t.pid = ? and t.is_deleted = 0
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -2152,6 +2704,25 @@ WHERE
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
 
+节点：工作项关联子工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS work_item_re_children
+FROM
+	work_item t 
+WHERE
+	t.pid = ? and t.is_deleted = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
+
 节点：工作项内交付物
 <p class="panel-title"><b>执行sql语句</b></p>
 
@@ -2169,6 +2740,180 @@ WHERE
 1. `Default(传入变量).ID(标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
+
+节点：工作项版本
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+	SELECT
+	count( t.id ) AS work_item_version
+FROM
+	`version` t 
+WHERE
+    t.owner_id = ? and  t.owner_type = 'WORK_ITEM'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
+
+节点：工作项关联产品需求
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS work_item_re_idea 
+FROM
+	idea t 
+WHERE
+	EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	) 
+	AND t.`IS_DELETED` = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
+
+节点：工作项关联工作项
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS work_item_re_work_item 
+FROM
+	work_item t 
+WHERE
+	EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	) 
+	AND t.`IS_DELETED` = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
+
+节点：工作项关联测试用例
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS work_item_re_test_case
+FROM
+	test_case t 
+WHERE
+	EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	) 
+	AND t.`IS_DELETED` = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
+
+节点：工作项关联工单
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS work_item_re_ticket 
+FROM
+	ticket t 
+WHERE
+	EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	) 
+	AND t.`IS_DELETED` = 0
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项分布(kanban_work_item_distribution)](module/ProjMgmt/work_item/logic/kanban_work_item_distribution)
+
+节点：查询工作项分布
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+  SUM(CASE WHEN s.`TYPE` != 'completed' THEN 1 ELSE 0 END) AS count2,
+  SUM(CASE WHEN s.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count,
+  wi.`ENTRY_ID` AS filter_type
+FROM
+  `WORK_ITEM` wi
+  JOIN `WORK_ITEM_STATE` s ON wi.`STATE` = s.`ID`
+WHERE
+  wi.`PROJECT_ID` = ?
+  AND wi.`IS_DELETED` = 0
+  AND wi.`BOARD_ID` IS NOT NULL
+  AND wi.`ENTRY_ID` IS NOT NULL
+	AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BOARD_ID, ?))
+	AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.WORK_ITEM_TYPE_ID, ?))
+GROUP BY
+  wi.`ENTRY_ID`;
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).n_project_id_eq`
+2. `Default(传入变量).n_board_id_eq`
+3. `Default(传入变量).n_board_id_eq`
+4. `Default(传入变量).n_board_id_eq`
+5. `Default(传入变量).n_work_item_type_id_eq`
+6. `Default(传入变量).n_work_item_type_id_eq`
+7. `Default(传入变量).n_work_item_type_id_eq`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[恢复(recover)](module/ProjMgmt/work_item/logic/recover)
 
 节点：恢复最近访问
@@ -2182,6 +2927,46 @@ update recent set IS_DELETED=0 where owner_id=? and owner_subtype='work_item'
 
 1. `Default(传入变量).ID(标识)`
 
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[成员负荷报告(sprint_user_stat)](module/ProjMgmt/work_item/logic/sprint_user_stat)
+
+节点：查询成员负荷报告
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+  SUM(CASE WHEN t3.`TYPE` != 'completed' THEN 1 ELSE 0 END) AS count2,
+  SUM(CASE WHEN t3.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count,
+  COUNT(*) AS sum_count,
+  IF(TRIM(t1.`ASSIGNEE_ID`) IS NULL, '未分组', t1.`ASSIGNEE_ID`) AS filter_type
+FROM
+  `WORK_ITEM` t1
+LEFT JOIN
+  `WORK_ITEM_STATE` t3 ON t1.`STATE` = t3.`ID`
+WHERE
+  t1.`PROJECT_ID` = ?
+  AND t1.`IS_DELETED` = 0
+	AND ((? IS NULL OR ? = '') OR FIND_IN_SET(t1.sprint_id, ?))
+	AND ((? IS NULL OR ? = '') OR FIND_IN_SET(t1.release_id, ?))
+	AND ((? IS NULL OR ? = '') OR FIND_IN_SET(t1.WORK_ITEM_TYPE_ID, ?))
+GROUP BY
+  filter_type;
+
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).n_project_id_eq`
+2. `Default(传入变量).n_sprint_id_eq`
+3. `Default(传入变量).n_sprint_id_eq`
+4. `Default(传入变量).n_sprint_id_eq`
+5. `Default(传入变量).n_release_id_eq`
+6. `Default(传入变量).n_release_id_eq`
+7. `Default(传入变量).n_release_id_eq`
+8. `Default(传入变量).n_work_item_type_id_eq`
+9. `Default(传入变量).n_work_item_type_id_eq`
+10. `Default(传入变量).n_work_item_type_id_eq`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[生成最近访问(create_recent)](module/ProjMgmt/work_item/logic/create_recent)
 
 节点：更新登记工时中的业务信息

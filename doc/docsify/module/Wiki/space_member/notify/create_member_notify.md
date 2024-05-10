@@ -1,4 +1,4 @@
-## 加入知识库成员通知(create_member_notify) <!-- {docsify-ignore-all} -->
+## 空间成员加入通知(create_member_notify) <!-- {docsify-ignore-all} -->
 
 
 

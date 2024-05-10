@@ -9,7 +9,7 @@
 <el-alert title="/search_attachments/fetch_advanced_search" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`READ`
+权限标识：`NONE`
 
 
 

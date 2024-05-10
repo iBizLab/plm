@@ -2,18 +2,16 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 编辑表单(form)
-
 #### 列表(list)
-
 #### 搜索栏(searchbar)
-
 #### 搜索表单(searchform)
 
+## 视图界面逻辑
+  * newdata(预置新建数据逻辑)
+  * opendata(预置打开数据逻辑)
 
 
 ### 关联视图

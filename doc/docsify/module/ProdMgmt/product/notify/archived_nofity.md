@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [产品通知模板(归档/激活产品)](index/notify_index?id=product_archive)
+* [产品通知模板(归档/激活产品)](index/notify_index?id=product_archived_or_activate)
 
 <p class="panel-title"><b>通知类型</b></p>
 

@@ -69,7 +69,7 @@ defaultObj.set("update_time", new Date());
 
 
 
-调用实体 [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member.md) 通知 [移除成员通知(remove_member_notify)](module/Base/portfolio_member/notify/remove_member_notify) ，参数为`Default(传入变量)`
+调用实体 [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member.md) 通知 [项目集移除成员通知(remove_member_notify)](module/Base/portfolio_member/notify/remove_member_notify) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 

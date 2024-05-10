@@ -53,7 +53,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 
-1. 将`for_temp_obj(循环临时变量).STATE(评审状态)` 设置给  `Default(传入变量).STATE(评审状态)`
+1. 将`for_temp_obj(循环临时变量).STATE(状态)` 设置给  `Default(传入变量).STATE(状态)`
 
 #### 变更状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

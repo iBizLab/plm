@@ -76,5 +76,5 @@ LOOPSUBCALL1 --> END1
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
-|循环临时变量|for_temp_obj|数据对象|[版本（temp）(VERSION)](module/Base/version.md)||
-|选择数据列表|srfactionparam|数据对象列表|[版本（temp）(VERSION)](module/Base/version.md)||
+|循环临时变量|for_temp_obj|数据对象|[项目发布(RELEASE)](module/ProjMgmt/release.md)||
+|选择数据列表|srfactionparam|数据对象列表|[项目发布(RELEASE)](module/ProjMgmt/release.md)||

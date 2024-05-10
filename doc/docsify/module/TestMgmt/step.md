@@ -9,6 +9,7 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |实际|ACTUAL_VALUE|长文本，长度1000|2000|是||
 |用例标识|CASE_ID|外键值|100|是||
+|用例模板标识|CASE_TEMPLATE_ID|外键值|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |步骤描述|DESCRIPTION|长文本，长度1000|2000|是||
@@ -33,6 +34,7 @@
 | -------- |---------- |-----------|----- |
 |[DER1N_STEP_RUN_RUN_ID](der/DER1N_STEP_RUN_RUN_ID)|[执行用例(RUN)](module/TestMgmt/run)|1:N关系||
 |[DER1N_STEP_TEST_CASE_CASE_ID](der/DER1N_STEP_TEST_CASE_CASE_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
+|[DER1N_STEP_TEST_CASE_TEMPLATE_CASE_TEMPLATE_ID](der/DER1N_STEP_TEST_CASE_TEMPLATE_CASE_TEMPLATE_ID)|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|1:N关系||
 |[run_history_re_step](der/run_history_re_step)|[执行结果(RUN_HISTORY)](module/TestMgmt/run_history)|自定义关系||
 
 </el-tab-pane>
@@ -65,6 +67,7 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_CASE_ID_EQ|用例标识|EQ||
+|N_CASE_TEMPLATE_ID_EQ|用例模板标识|EQ||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_RUN_ID_EQ|执行用例标识|EQ||

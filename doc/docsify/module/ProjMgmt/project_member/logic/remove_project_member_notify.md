@@ -67,7 +67,7 @@ defaultObj.set("update_time", new Date());
 
 
 
-调用实体 [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md) 通知 [移除项目成员通知(remove_member_nofity)](module/ProjMgmt/project_member/notify/remove_member_nofity) ，参数为`Default(传入变量)`
+调用实体 [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member.md) 通知 [项目成员移除通知(remove_member_nofity)](module/ProjMgmt/project_member/notify/remove_member_nofity) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 

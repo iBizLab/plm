@@ -1,4 +1,4 @@
-## 加入产品成员通知(create_member_notify) <!-- {docsify-ignore-all} -->
+## 产品成员加入通知(create_member_notify) <!-- {docsify-ignore-all} -->
 
 
 

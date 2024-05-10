@@ -15,20 +15,37 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./product_idea_re_counters#begin {"开始"}]]
-state "结束" as END1 <<end>> [[$./product_idea_re_counters#end1 {"结束"}]]
 state "需求关联客户" as RAWSQLCALL1  [[$./product_idea_re_counters#rawsqlcall1 {"需求关联客户"}]]
 state "需求关联需求" as RAWSQLCALL2  [[$./product_idea_re_counters#rawsqlcall2 {"需求关联需求"}]]
 state "需求关联工单" as RAWSQLCALL3  [[$./product_idea_re_counters#rawsqlcall3 {"需求关联工单"}]]
 state "需求关联工作项" as RAWSQLCALL4  [[$./product_idea_re_counters#rawsqlcall4 {"需求关联工作项"}]]
 state "需求关联测试用例" as RAWSQLCALL5  [[$./product_idea_re_counters#rawsqlcall5 {"需求关联测试用例"}]]
+state "结束" as END1 <<end>> [[$./product_idea_re_counters#end1 {"结束"}]]
+state "准备参数" as PREPAREPARAM1  [[$./product_idea_re_counters#prepareparam1 {"准备参数"}]]
+state "获取产品需求当前版本" as DEACTION1  [[$./product_idea_re_counters#deaction1 {"获取产品需求当前版本"}]]
+state "产品需求版本" as RAWSQLCALL6  [[$./product_idea_re_counters#rawsqlcall6 {"产品需求版本"}]]
+state "需求关联客户" as RAWSQLCALL7  [[$./product_idea_re_counters#rawsqlcall7 {"需求关联客户"}]]
+state "需求关联需求" as RAWSQLCALL8  [[$./product_idea_re_counters#rawsqlcall8 {"需求关联需求"}]]
+state "需求关联工单" as RAWSQLCALL9  [[$./product_idea_re_counters#rawsqlcall9 {"需求关联工单"}]]
+state "需求关联工作项" as RAWSQLCALL10  [[$./product_idea_re_counters#rawsqlcall10 {"需求关联工作项"}]]
+state "需求关联测试用例" as RAWSQLCALL11  [[$./product_idea_re_counters#rawsqlcall11 {"需求关联测试用例"}]]
 
 
-Begin --> RAWSQLCALL1
+Begin --> RAWSQLCALL6
+RAWSQLCALL6 --> PREPAREPARAM1
+PREPAREPARAM1 --> DEACTION1
+DEACTION1 --> RAWSQLCALL1 : [[$./product_idea_re_counters#deaction1-rawsqlcall1{当前版本} 当前版本]]
 RAWSQLCALL1 --> RAWSQLCALL2
 RAWSQLCALL2 --> RAWSQLCALL3
 RAWSQLCALL3 --> RAWSQLCALL4
 RAWSQLCALL4 --> RAWSQLCALL5
 RAWSQLCALL5 --> END1
+DEACTION1 --> RAWSQLCALL7 : [[$./product_idea_re_counters#deaction1-rawsqlcall7{历史版本} 历史版本]]
+RAWSQLCALL7 --> RAWSQLCALL8
+RAWSQLCALL8 --> RAWSQLCALL9
+RAWSQLCALL9 --> RAWSQLCALL10
+RAWSQLCALL10 --> RAWSQLCALL11
+RAWSQLCALL11 --> END1
 
 
 @enduml
@@ -36,17 +53,6 @@ RAWSQLCALL5 --> END1
 
 
 ### 处理步骤说明
-
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-返回 `Default(传入变量)`
 
 #### 需求关联客户 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -72,7 +78,6 @@ WHERE
 			t11.`TARGET_TYPE` = 'customer' 
 			AND t11.`PRINCIPAL_TYPE` = 'idea' 
 			AND t11.`PRINCIPAL_ID` = ? ) )
-			AND t.`is_archived` = 0
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -205,6 +210,219 @@ WHERE
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
+
+#### 产品需求版本 :id=RAWSQLCALL6<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+	SELECT
+	count( t.id ) AS idea_version
+FROM
+	`version` t 
+WHERE
+    t.owner_id = ? and  t.owner_type = 'IDEA'
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`Default(传入变量).ID(标识)` 设置给  `idea(产品需求).ID(标识)`
+
+#### 获取产品需求当前版本 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 行为 [Get](module/ProdMgmt/idea#行为) ，行为参数为`idea(产品需求)`
+
+将执行结果返回给参数`idea(产品需求)`
+
+#### 需求关联客户 :id=RAWSQLCALL7<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_customer
+FROM
+	customer t 
+WHERE
+	EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 需求关联需求 :id=RAWSQLCALL8<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_idea
+FROM
+	idea t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 需求关联工单 :id=RAWSQLCALL9<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_ticket
+FROM
+	ticket t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 需求关联工作项 :id=RAWSQLCALL10<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_work_item
+FROM
+	work_item t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 需求关联测试用例 :id=RAWSQLCALL11<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+	count( t.id ) AS idea_re_test_case
+FROM
+	test_case t 
+WHERE
+    t.is_deleted = 0 
+	AND EXISTS (
+	SELECT
+			*
+	FROM
+		version_data t12
+	WHERE
+		 ( t12.`OWNER_TYPE` = 'RELATION' AND t12.`PARENT_ID` = ? ) 
+		AND t12.PARENT_VERSION_ID = ?
+		AND t.`ID` =  JSON_UNQUOTE(t12.`DATA`-> '$.target_id') 
+	)
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+2. `Default(传入变量).srfversionid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+
+### 连接条件说明
+#### 当前版本 :id=DEACTION1-RAWSQLCALL1
+
+(`Default(传入变量).srfversionid` ISNULL OR (`Default(传入变量).srfversionid` ISNOTNULL AND ))
+#### 历史版本 :id=DEACTION1-RAWSQLCALL7
+
+`Default(传入变量).srfversionid` ISNOTNULL AND 
 
 
 ### 实体逻辑参数
@@ -212,3 +430,4 @@ WHERE
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[需求(IDEA)](module/ProdMgmt/idea.md)||
+|产品需求|idea|数据对象|[需求(IDEA)](module/ProdMgmt/idea.md)||

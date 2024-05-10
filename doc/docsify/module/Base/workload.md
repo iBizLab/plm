@@ -130,7 +130,7 @@
 |[产品需求管理维度(idea_management_dimension)](module/Base/workload/dataset/idea_management_dimension)|idea_management_dimension|[实体逻辑](module/Base/workload/logic/idea_management_dimension)|否|||
 |[产品需求工时(idea_workload)](module/Base/workload/dataset/idea_workload)|idea_workload|数据查询|否|||
 |[工时日志(log)](module/Base/workload/dataset/log)|log|数据查询|否|||
-|[人员维度(member_dimension)](module/Base/workload/dataset/member_dimension)|member_dimension|[实体逻辑](module/Base/workload/logic/member_dimension)|否|||
+|[人员维度(member_dimension)](module/Base/workload/dataset/member_dimension)|member_dimension|数据查询|否|[MemberWorklaodDEDataSetRuntime](index/plugin_index#UsrSFPlugin0508758798)||
 |[我的工时日历(my_calendar)](module/Base/workload/dataset/my_calendar)|my_calendar|数据查询|否|||
 |[我的产品需求工时(my_idea_workload)](module/Base/workload/dataset/my_idea_workload)|my_idea_workload|数据查询|否|||
 |[我登记的工时日志(my_log)](module/Base/workload/dataset/my_log)|my_log|数据查询|否|||
@@ -169,6 +169,7 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
 |N_ID_EQ|标识|EQ||
 |N_IDEA_EXISTS__N_ASSIGNEE_ID_EQ|需求|EXISTS||
 |N_IDEA_EXISTS__N_CREATE_MAN_EQ|需求|EXISTS||
@@ -183,9 +184,11 @@
 |N_NAME_LIKE|事项|LIKE||
 |N_PRINCIPAL_ID_EQ|工时主体标识|EQ||
 |N_RECENT_PARENT_EQ|访问父类|EQ||
+|N_REGISTER_DATE_EQ|工作日期|EQ||
 |N_REGISTER_DATE_GTANDEQ|工作日期|GTANDEQ||
 |N_REGISTER_DATE_IN|工作日期|IN||
 |N_REGISTER_DATE_LTANDEQ|工作日期|LTANDEQ||
+|N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_TEST_CASE_EXISTS__N_CREATE_MAN_EQ|用例|EXISTS||
 |N_TEST_CASE_EXISTS__N_DESCRIPTION_LIKE|用例|EXISTS||
 |N_TEST_CASE_EXISTS__N_IDENTIFIER_EQ|用例|EXISTS||
@@ -201,6 +204,7 @@
 |N_WORK_ITEM_EXISTS__N_ASSIGNEE_ID_EQ|工作项|EXISTS||
 |N_WORK_ITEM_EXISTS__N_CREATE_MAN_EQ|工作项|EXISTS||
 |N_WORK_ITEM_EXISTS__N_DESCRIPTION_LIKE|工作项|EXISTS||
+|N_WORK_ITEM_EXISTS__N_IDENTIFIER_LIKE|工作项|EXISTS||
 |N_WORK_ITEM_EXISTS__N_IS_ARCHIVED_EQ|工作项|EXISTS||
 |N_WORK_ITEM_EXISTS__N_PRIORITY_EQ|工作项|EXISTS||
 |N_WORK_ITEM_EXISTS__N_PROJECT_ID_EQ|工作项|EXISTS||
@@ -212,56 +216,45 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开工作类别管理工时记录 | open_management_type_link | 打开工作类别管理工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>||
+| 工时日历链接日志表格视图 | calendar_link_log_view | 工时日历链接日志表格视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日志->工作项/产品需求/测试用例维度->工时时长链接|
+| 打开工作类别管理工时记录 | open_management_type_link | 打开工作类别管理工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_type_of_link_management_grid_view)</details>|工时管理->工时日历->工作类别维度->工时时长链接|
 | 打开产品主视图 | open_product_main_view | 打开产品主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_main_view)</details>||
-| 打开项目管理工时记录 | open_management_project_link | 打开项目管理工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>|工时管理->项目维度->总登记时长链接|
-| 打开产品管理工时记录 | open_management_product_link | 打开产品管理工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>|工时管理->产品维度->总登记时长链接|
-| 产品总登记时长链接跳转 | product_duration_link | 产品总登记时长链接跳转 |单项数据（主键）|用户自定义||
+| 工时明细返回执行用例主表单 | back_run_main_view | 返回 |无数据|用户自定义||
+| 打开成员工时记录 | open_member_workload_detail | 打开成员工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->人员维度->工时时长链接|
 | 工时明细返回主表单 | back | 返回 |无数据|用户自定义||
 | 工时日历时长链接（管理） | calendar_duration_management_link | 工时日历时长链接（管理） |单项数据（主键）|用户自定义||
 | 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
 | 删除工时 | delere | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
-| 测试库总登记时长链接跳转 | library_duration_link | 测试库总登记时长链接跳转 |单项数据（主键）|用户自定义||
 | 打开测试库主视图 | open_library_main_view | 打开测试库主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_main_view)</details>||
-| 项目总登记时长链接跳转（管理） | management_project_duration_link | 项目总登记时长链接跳转（管理） |单项数据（主键）|用户自定义||
-| 成员总登记时长链接跳转 | member_duration_link | 成员总登记时长链接跳转 |单项数据（主键）|用户自定义||
-| 项目总登记时长链接跳转 | project_duration_link | 项目总登记时长链接跳转 |单项数据（主键）|用户自定义||
-| 产品总登记时长链接跳转（管理） | management_product_duration_link | 产品总登记时长链接跳转（管理） |单项数据（主键）|用户自定义||
-| 工作类别总登记时长链接跳转 | workload_type_duration_link | 工作类别总登记时长链接跳转 |单项数据（主键）|用户自定义||
-| 工时日历时长链接 | calendar_duration_link | 工时日历时长链接 |单项数据（主键）|用户自定义||
-| 工时日历链接日志表格视图 | calendar_link_log_view | 工时日历链接日志表格视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>||
-| 工时明细返回执行用例主表单 | back_run_main_view | 返回 |无数据|用户自定义||
-| 打开成员工时记录 | open_member_workload_detail | 打开成员工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>||
-| 工时日历链接日志表格视图（管理） | management_calendar_duration_link | 工时日历链接日志表格视图（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>||
-| 打开项目工时记录 | open_project_workload_detail | 打开项目工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日历->项目维度->总登记时长链接|
+| 所属维度表格列行为 | parent_dimension | 所属维度表格列行为 |单项数据（主键）|用户自定义|工作台->工时日历->项目/产品/测试库维度->时长表格列->绑定行为|
+| 工时日历链接日志表格视图（管理） | management_calendar_duration_link | 工时日历链接日志表格视图（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->工作项/产品需求/测试用例维度->工时时长链接|
+| 所属维度表格列行为（管理） | management_parent_dimension | 项目/产品/测试库工时时长链接跳转（管理） |单项数据（主键）|用户自定义|工时管理->工时日历->项目/产品/测试库维度->时长表格列->绑定行为|
 | 工作类别总登记时长链接跳转（管理） | management_type_duration_link | 工作类别总登记时长链接跳转（管理） |单项数据（主键）|用户自定义||
-| 测试库总登记时长链接跳转（管理） | management_library_duration_link | 测试库总登记时长链接跳转（管理） |单项数据（主键）|用户自定义||
-| 打开测试库工时记录 | open_library_workload_detail | 打开测试库工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日历->测试库维度->总登记时长链接|
-| 打开产品工时记录 | open_product_workload_detail | 打开产品工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日历->产品维度->总登记时长链接|
+| 成员总登记时长链接跳转 | member_duration_link | 成员总登记时长链接跳转 |单项数据（主键）|用户自定义||
+| 工时打开对应事项详情视图 | open_main_view | 工时打开对应事项详情视图 |单项数据|用户自定义|工时日志->事项列链接->打开对应工作项/产品需求/测试用例详情视图|
 | 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_main_view)</details>||
 | 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
 | 打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_redirect_view)</details>||
-| 打开工作类别工时记录 | open_type_workload_detail | 打开工作类别工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>||
-| 打开测试库管理工时记录 | open_management_library_link | 打开测试库管理工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>|工时管理->测试库维度->总登记时长链接|
+| 打开工作类别工时记录 | open_type_workload_detail | 打开工作类别工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_type_of_link_grid_view)</details>|工作台->工时日历->工作类别维度->工时时长链接|
+| 打开所属下的工时日志 | opent_parent_link | 打开所属下的工时日志 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日历->项目/产品/测试库维度->工时时长链接|
+| 打开所属下的工时日志（管理） | open_management_parent_link | 打开所属下的工时日志（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->项目/产品/测试用例维度->工时时长链接|
+| 工作类别总登记时长链接跳转 | workload_type_duration_link | 工作类别总登记时长链接跳转 |单项数据（主键）|用户自定义||
+| 工时日历时长链接 | calendar_duration_link | 工时日历时长链接 |单项数据（主键）|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[工时打开对应事项详情视图](module/Base/workload/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例详情主视图|
 |[工时日历打开工时日志视图](module/Base/workload/uilogic/calendar_link_log_view)|calendar_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
 |[工时日历打开工时日志视图（管理）](module/Base/workload/uilogic/calendar_management_link_log_view)|calendar_management_link_log_view|获取搜索表单时间范围条件，并打开工时日志表格|
 |[打开产品主视图](module/Base/workload/uilogic/open_product_main_view)|open_product_main_view|调用实体行为，打开产品主视图|
-|[打开产品工时记录列表视图](module/Base/workload/uilogic/open_product_workload_detail)|open_product_workload_detail|获取搜索表单时间范围条件，并打开工时记录列表|
-|[打开产品管理工时记录列表视图](module/Base/workload/uilogic/open_management_product_detail)|open_management_product_detail|获取搜索表单时间范围条件，并打开工时记录列表|
 |[打开工作类别工时记录列表视图](module/Base/workload/uilogic/open_type_detail)|open_type_detail|获取搜索表单时间范围条件，并打开工时记录列表|
 |[打开工作类别管理工时记录列表视图](module/Base/workload/uilogic/open_management_type_detail)|open_management_type_detail|获取搜索表单时间范围条件，并打开工时记录列表|
 |[打开成员工时记录列表视图](module/Base/workload/uilogic/open_member_detail)|open_member_detail|获取搜索表单时间范围条件，并打开工时记录列表|
+|[打开所属工时记录列表视图](module/Base/workload/uilogic/open_project_workload_detail)|open_project_workload_detail|工作台，获取搜索表单时间范围条件，并打开项目/产品/测试用例下的工时记录列表|
+|[打开所属工时记录列表视图(管理)](module/Base/workload/uilogic/open_parent_with_log_grid)|open_parent_with_log_grid|工时管理，获取搜索表单时间范围条件，并打开项目/产品/测试用例下的工时记录列表|
 |[打开测试库主视图](module/Base/workload/uilogic/open_library_main_view)|open_library_main_view|打开测试库主视图|
-|[打开测试库工时记录列表视图](module/Base/workload/uilogic/open_library_workload_detail)|open_library_workload_detail|获取搜索表单时间范围条件，并打开工时记录列表|
-|[打开测试库管理工时记录列表视图](module/Base/workload/uilogic/open_management_library_detail)|open_management_library_detail|获取搜索表单时间范围条件，并打开工时记录列表|
-|[打开详情视图](module/Base/workload/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例详情主视图|
 |[打开项目主视图](module/Base/workload/uilogic/open_project_main_view)|open_project_main_view|打开项目主视图|
-|[打开项目工时记录列表视图](module/Base/workload/uilogic/open_project_workload_detail)|open_project_workload_detail|获取搜索表单时间范围条件，并打开工时记录列表|
-|[打开项目管理工时记录列表视图](module/Base/workload/uilogic/open_management_project_detail)|open_management_project_detail|获取搜索表单时间范围条件，并打开工时记录列表|
 |[返回](module/Base/workload/uilogic/back)|back|查看工时明细后，返回主表单按钮使用|
 |[返回（执行用例表单）](module/Base/workload/uilogic/back_run_main_view)|back_run_main_view|切换显示组件|
 

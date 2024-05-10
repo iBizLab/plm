@@ -14,11 +14,11 @@
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
 |结束时间|END_AT|日期型||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|文件夹标识|IDENTIFIER|文本，可指定长度|100|否||
+|项目集标识|IDENTIFIER|文本，可指定长度|100|否||
 |是否已删除|IS_DELETED|是否逻辑||是||
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |项目集成员|MEMBERS|一对多关系数据集合|1048576|是||
-|名称|NAME|文本，可指定长度|200|否||
+|项目集名称|NAME|文本，可指定长度|200|否||
 |开始时间|START_AT|日期型||是||
 |状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -74,71 +74,13 @@
 |[删除项目集](module/Base/portfolio/logic/delete_project_set)|delete_project_set|无||项目集数据的逻辑删除，修改项目集的是否删除属性值|
 |[取消星标](module/Base/portfolio/logic/un_favorite)|un_favorite|无||项目集取消星标|
 |[恢复项目集](module/Base/portfolio/logic/recover_project_set)|recover_project_set|无||恢复已删除状态项目集数据，修改项目集的是否删除属性值|
+|[是否删除变更附加逻辑](module/Base/portfolio/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||项目集删除或恢复时触发相应的通知消息|
 |[设置星标](module/Base/portfolio/logic/favorite)|favorite|无||设置为星标项目集|
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `是否星标(IS_FAVORITE)` 
-
-
-
-
-<p class="panel-title"><b>操作标识分布</b></p>
-<br>
-<table>
-  <tr>
-    <th>操作标识col350</th>
-    <th>是col150</th>
-    <th>否col150</th>
-    <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>删除(DELETE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>取消星标(CANCEL_FAVORITE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>子数据权限(SUBDATA)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>设置星标(ADD_FAVORITE)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-
-</table>
-
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -239,36 +181,44 @@
 
 
 
+## 消息通知
+
+|    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
+|------------| -----   |  -------- | -------- |-------- |-------- |
+|[项目集归档/恢复通知](module/Base/portfolio/notify/project_set_remove_recover_notify)|project_set_remove_recover_notify|[默认消息队列](index/notify_index)|[项目集删除/恢复通知模板](index/notify_index#project_set_remove_recover)|当前项目集成员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ID_EQ|标识|EQ||
-|N_IDENTIFIER_LIKE|文件夹标识|LIKE||
-|N_IS_FAVORITE_EQ|是否星标|EQ||
-|N_NAME_LIKE|名称|LIKE||
+|N_IDENTIFIER_LIKE|项目集标识|LIKE||
+|N_NAME_LIKE|项目集名称|LIKE||
 |N_STATE_EQ|状态|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 删除项目集 | delete_project_set | 删除项目集 |单项数据（主键）|<details><summary>后台调用</summary>[delete_project_set](#行为)||
 | 新开窗口（项目集） | open_new_project | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/portfolio=${data.id}/portfolio_project_index_view/srfnav=drgroup/work_tree_grid_ex_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D*</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 项目集成员 | open_project_member | 项目集成员 |单项数据（主键）|用户自定义||
 | 更多设置（项目集） | open_project_setting | 更多设置 |单项数据（主键）|用户自定义||
+| 新建项目集 | create_project_set | 新建项目集 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目集](app/view/portfolio_project_create_wizard_view)</details>||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 恢复项目集 | recover_project_set | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover_project_set](#行为)||
+| 打开新建项目集 | open_new_project_set | 打开新建项目集 |单项数据|<details><summary>打开顶级视图</summary>[文件夹](app/view/portfolio_project_index_view)</details>||
+| 项目集信息 | project_info | 项目集信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[文件夹](app/view/portfolio_project_show_view)</details>||
+| 删除项目集 | delete_project_set | 删除项目集 |单项数据（主键）|<details><summary>后台调用</summary>[delete_project_set](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
 | 编辑基本信息（项目集） | open_project_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 打开项目集主视图 | open_project_set_index_view | 打开项目集主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[文件夹](app/view/portfolio_project_index_view)</details>||
-| 项目集信息 | project_info | 项目集信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[文件夹](app/view/portfolio_project_show_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[刷新当前表格](module/Base/portfolio/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[批量删除项目集成员临时数据](module/Base/portfolio/uilogic/remove_batch_temp)|remove_batch_temp|获取项目集内所有临时成员数据并删除|
+|[计算表格列行为状态(portfolio)](module/Base/portfolio/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[通知刷新](module/Base/portfolio/uilogic/notify_refresh)|notify_refresh||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -286,8 +236,8 @@
 <el-anchor-link :href="`#/module/Base/portfolio?id=处理逻辑`">
   处理逻辑
 </el-anchor-link>
-<el-anchor-link :href="`#/module/Base/portfolio?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/Base/portfolio?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/portfolio?id=数据查询`">
   数据查询
@@ -297,6 +247,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/portfolio?id=数据权限`">
   数据权限
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/portfolio?id=消息通知`">
+  消息通知
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/portfolio?id=搜索模式`">
   搜索模式

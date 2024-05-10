@@ -10,6 +10,7 @@
 |负责人标识|ASSIGNEE_ID|外键值|100|是||
 |负责人|ASSIGNEE_NAME|外键值文本|100|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |类别|CATEGORIES|长文本，长度1000|2000|是||
 |类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
@@ -62,7 +63,7 @@
 |[DERCUSTOM_COMMENT_CUSTOMER_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_CUSTOMER_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
 |[DERCUSTOM_CUSTOMER_SEARCH_ATTACHMENT](der/DERCUSTOM_CUSTOMER_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
 |[DERCUSTOM_CUSTOMER_SEARCH_COMMENT](der/DERCUSTOM_CUSTOMER_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
-|[DERCUSTOM_RELATION_CUSTOMER](der/DERCUSTOM_RELATION_CUSTOMER)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_CUSTOMER](der/DERCUSTOM_RELATION_TARGET_CUSTOMER)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
 </el-tab-pane>
@@ -90,6 +91,8 @@
 |添加至类别|add_categories|[实体处理逻辑](module/ProdMgmt/customer/logic/add_categories "添加至类别")|默认|不支持||||
 |客户选择工单|customer_choose_ticket|[实体处理逻辑](module/ProdMgmt/customer/logic/customer_choose_ticket "客户选择工单")|默认|不支持||||
 |取消关联|del_relation|[实体处理逻辑](module/ProdMgmt/customer/logic/del_relation "取消关联")|默认|不支持||||
+|删除类别|delete_categories|[实体处理逻辑](module/ProdMgmt/customer/logic/delete_categories "删除类别")|默认|不支持||||
+|获取产品成员|fill_product_member|[实体处理逻辑](module/ProdMgmt/customer/logic/get_product_member "获取产品成员")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/customer/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联客户|others_relation_customer|[实体处理逻辑](module/ProdMgmt/customer/logic/others_relation_customer "其他实体关联客户")|默认|不支持||||
@@ -101,11 +104,19 @@
 |[产品客户关联分页计数器](module/ProdMgmt/customer/logic/product_customer_re_counters)|product_customer_re_counters|无||产品下的客户主视图的分页计数器数据来源|
 |[其他实体关联客户](module/ProdMgmt/customer/logic/others_relation_customer)|others_relation_customer|无||客户实体的关联操作，生成正向，反向关联数据|
 |[删除客户发送通知](module/ProdMgmt/customer/logic/remove_customer_notify)|remove_customer_notify|无||根据客户标识触发删除客户发送通知|
+|[删除类别](module/ProdMgmt/customer/logic/delete_categories)|delete_categories|无||当类别删除时修改客户的类别属性|
 |[取消关联](module/ProdMgmt/customer/logic/del_relation)|del_relation|无||客户取消关联数据（正反向关联数据同时删除）|
 |[变更负责人附加逻辑](module/ProdMgmt/customer/logic/assignee_onchage)|assignee_onchage|属性逻辑||客户负责人变更时触发相应的通知消息|
 |[客户选择工单](module/ProdMgmt/customer/logic/customer_choose_ticket)|customer_choose_ticket|无||客户选择工单操作，更新工单的客户属性|
 |[无操作](module/ProdMgmt/customer/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加至类别](module/ProdMgmt/customer/logic/add_categories)|add_categories|无||添加客户类别操作|
+|[获取产品成员](module/ProdMgmt/customer/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|审计|数据审计|[活动(ACTIVITY)](module/Base/activity)||
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -146,10 +157,10 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[取消分配负责人通知](module/ProdMgmt/customer/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[客户通知模板(取消分配负责人)](index/notify_index#customer_assignee_cancel)|负责人 ||
-|[分配负责人通知](module/ProdMgmt/customer/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[客户通知模板(分配负责人)](index/notify_index#customer_assignee)|负责人 ||
-|[变更负责人通知](module/ProdMgmt/customer/notify/assignee_onchage_notify)|assignee_onchage_notify|[默认消息队列](index/notify_index)|[客户通知模板(变更负责人)](index/notify_index#customer_assignee_onchange)|负责人 关注人 ||
-|[删除客户通知](module/ProdMgmt/customer/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[客户通知模板(删除客户)](index/notify_index#customer_remove)|关注人 负责人 ||
+|[客户取消分配负责人通知](module/ProdMgmt/customer/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[客户通知模板(取消分配负责人)](index/notify_index#customer_assignee_cancel)|负责人 ||
+|[客户分配负责人通知](module/ProdMgmt/customer/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[客户通知模板(分配负责人)](index/notify_index#customer_assignee)|负责人 ||
+|[客户变更负责人通知](module/ProdMgmt/customer/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[客户通知模板(变更负责人)](index/notify_index#customer_assignee_onchange)|负责人 关注人 ||
+|[客户删除通知](module/ProdMgmt/customer/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[客户通知模板(删除客户)](index/notify_index#customer_remove)|关注人 负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -170,11 +181,13 @@
 | --------| --------| -------- |------------|------------|------------|
 | 测试界面行为权限 | test_aciton | 测试 |无数据|用户自定义||
 | 添加客户（其他实体关联） | other_add_relation_customer | 添加客户 |无数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
-| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 删除 | delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 删除（工具栏） | toolbar_delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 客户自定义导入 | customer_import_data | 客户导入 |无数据|<details><summary>打开数据导入视图</summary>[产品客户导入]()</details>||
+| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 添加至类别（多选） | add_categories | 设置类别 |多项数据（主键）|<details><summary>后台调用</summary>[add_categories](#行为)||
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
@@ -185,8 +198,10 @@
 | --------|--------|--------|
 |[关联客户值变更](module/ProdMgmt/customer/uilogic/relation_customer_change)|relation_customer_change|关联客户值变更时，调用处理逻辑，生成正反向关联数据|
 |[删除类别或分组](module/ProdMgmt/customer/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[刷新客户表格](module/ProdMgmt/customer/uilogic/refresh_customer_grid)|refresh_customer_grid||
 |[新建分组](module/ProdMgmt/customer/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/ProdMgmt/customer/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[测试判断只读用户](module/ProdMgmt/customer/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[编辑类别或分组](module/ProdMgmt/customer/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[触发计数器刷新](module/ProdMgmt/customer/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
 |[选择下拉框区域展示](module/ProdMgmt/customer/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
@@ -200,13 +215,14 @@
 记录客户信息基本信息。
 
 
-<el-descriptions direction="vertical" :column="6" :size="size" border>
+<el-descriptions direction="vertical" :column="7" :size="size" border>
 <el-descriptions-item label="客户名称">-</el-descriptions-item>
 <el-descriptions-item label="负责人">-</el-descriptions-item>
 <el-descriptions-item label="等级">-</el-descriptions-item>
 <el-descriptions-item label="规模">-</el-descriptions-item>
 <el-descriptions-item label="行业">-</el-descriptions-item>
 <el-descriptions-item label="描述">-</el-descriptions-item>
+<el-descriptions-item label="关注人">-</el-descriptions-item>
 </el-descriptions>
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -224,6 +240,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/customer?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProdMgmt/customer?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/customer?id=数据查询`">
   数据查询

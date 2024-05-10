@@ -27,7 +27,7 @@
 |关联迭代|SPRINT_NAME|外键值文本|200|是||
 |计划开始|START_AT|日期型||是||
 |状态|STATUS|[单项选择(文本值)](index/dictionary_index#test_plan_status "测试计划状态")|60|是||
-|测试报告概要|SUMMARY|长文本，长度1000|2000|是||
+|测试报告概要|SUMMARY|长文本，没有长度限制|1048576|是||
 |测试分类|TYPE|[单项选择(文本值)](index/dictionary_index#test_plan_type "测试分类")|60|否||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -73,11 +73,13 @@
 |Update|Update|内置方法|默认|不支持||||
 |结束测试|end_test_plan|[实体处理逻辑](module/TestMgmt/test_plan/logic/end_test_plan "结束测试")|默认|不支持||||
 |开始测试|start_test_plan|[实体处理逻辑](module/TestMgmt/test_plan/logic/start_test_plan "开始测试")|默认|不支持||||
+|测试报告概览数据源|test_plan_report_survey|[实体处理逻辑](module/TestMgmt/test_plan/logic/test_plan_report_survey "测试报告概览数据源")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[开始测试](module/TestMgmt/test_plan/logic/start_test_plan)|start_test_plan|无||测试计划开始测试|
+|[测试报告概览数据源](module/TestMgmt/test_plan/logic/test_plan_report_survey)|test_plan_report_survey|无||测试报告概览的数据源|
 |[结束测试](module/TestMgmt/test_plan/logic/end_test_plan)|end_test_plan|无||设置测试计划状态为结束|
 |[负责人变更附加逻辑](module/TestMgmt/test_plan/logic/assignee_onchange)|assignee_onchange|属性逻辑||测试计划负责人变更时触发相应的通知消息|
 
@@ -99,20 +101,6 @@
     <th>进行中col150</th>
     <th>已完成col150</th>
     <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>completed(COMPLETED)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>in_progress(IN_PROGRESS)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td></td>
   </tr>
   <tr>
     <td>删除(DELETE)<br><a href ="#/der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID">DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID</a></td>
@@ -143,6 +131,20 @@
     <td></td>
   </tr>
   <tr>
+    <td>开始(IN_PROGRESS)</td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>开始(IN_PROGRESS)<br><a href ="#/der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID">DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID</a></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td></td>
+  </tr>
+  <tr>
     <td>更新(UPDATE)</td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -154,6 +156,20 @@
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>结束(COMPLETED)</td>
+    <td align="center"></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>结束(COMPLETED)<br><a href ="#/der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID">DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID</a></td>
+    <td align="center"></td>
+    <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"></td>
     <td></td>
   </tr>
   <tr>
@@ -173,6 +189,11 @@
 
 </table>
 
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -195,13 +216,14 @@
 |[我参与的(my_participate)](module/TestMgmt/test_plan/dataset/my_participate)|my_participate|数据查询|否|||
 |[未开始和进行中的计划(pending_and_in_progress)](module/TestMgmt/test_plan/dataset/pending_and_in_progress)|pending_and_in_progress|数据查询|否|||
 |[查询未移入过的计划(query_no_shift_in)](module/TestMgmt/test_plan/dataset/query_no_shift_in)|query_no_shift_in|数据查询|否|||
+|[测试报告概览(test_plan_report_survey)](module/TestMgmt/test_plan/dataset/test_plan_report_survey)|test_plan_report_survey|数据查询|否|||
 |[未加入计划(un_join_plan)](module/TestMgmt/test_plan/dataset/un_join_plan)|un_join_plan|数据查询|否|||
 ## 消息通知
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[取消分配负责人通知](module/TestMgmt/test_plan/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[测试计划通知模板(取消分配负责人)](index/notify_index#test_plan_assignee_cancel)|负责人 ||
-|[分配负责人通知](module/TestMgmt/test_plan/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[测试计划通知模板(分配负责人)](index/notify_index#test_plan_assignee)|负责人 ||
+|[测试计划取消分配负责人通知](module/TestMgmt/test_plan/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[测试计划通知模板(取消分配负责人)](index/notify_index#test_plan_assignee_cancel)|负责人 ||
+|[测试计划分配负责人通知](module/TestMgmt/test_plan/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[测试计划通知模板(分配负责人)](index/notify_index#test_plan_assignee)|负责人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -253,6 +275,8 @@
 |[新建类别](module/TestMgmt/test_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[移入计划](module/TestMgmt/test_plan/uilogic/shift_in_test_plan)|shift_in_test_plan|获取选中数据，通过后台处理，完成测试用例移入计划操作|
 |[编辑类别或分组](module/TestMgmt/test_plan/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[计算表格列行为状态(library)](module/TestMgmt/test_plan/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[设置门户默认搜索时间](module/TestMgmt/test_plan/uilogic/set_portlet_search_date)|set_portlet_search_date|在门户部件上配置视图逻辑，设置门户默认搜索时间|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -272,6 +296,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/test_plan?id=主状态控制`">
   主状态控制
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/test_plan?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/test_plan?id=数据查询`">
   数据查询

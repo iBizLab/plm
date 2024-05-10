@@ -35,6 +35,8 @@
 
 ```sql
 SELECT
+t1.`AUTHCODE`,
+t1.`AUTHTIME`,
 t1.`CITY`,
 t1.`COUNTRY`,
 t1.`COUNTY`,

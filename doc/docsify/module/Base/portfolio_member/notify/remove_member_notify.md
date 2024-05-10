@@ -1,4 +1,4 @@
-## 移除成员通知(remove_member_notify) <!-- {docsify-ignore-all} -->
+## 项目集移除成员通知(remove_member_notify) <!-- {docsify-ignore-all} -->
 
 
 

@@ -16,8 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./auto_create_home_page#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./auto_create_home_page#end1 {"结束"}]]
-state "准备参数" as PREPAREPARAM1  [[$./auto_create_home_page#prepareparam1 {"准备参数"}]]
-state "实体行为" as DEACTION1  [[$./auto_create_home_page#deaction1 {"实体行为"}]]
+state "设置主页相关参数" as PREPAREPARAM1  [[$./auto_create_home_page#prepareparam1 {"设置主页相关参数"}]]
+state "创建主页" as DEACTION1  [[$./auto_create_home_page#deaction1 {"创建主页"}]]
 state "设置发布时间" as RAWSFCODE3  [[$./auto_create_home_page#rawsfcode3 {"设置发布时间"}]]
 state "设置主页内容（content）" as RAWSFCODE1  [[$./auto_create_home_page#rawsfcode1 {"设置主页内容（content）"}]]
 state "设置主页发布内容（publish_content）" as RAWSFCODE2  [[$./auto_create_home_page#rawsfcode2 {"设置主页发布内容（publish_content）"}]]
@@ -48,19 +48,20 @@ DEACTION1 --> END1
 
 *- N/A*
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置主页相关参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`主页` 设置给  `home_page(主页).NAME(主题)`
-2. 将`用户全局对象.srfpersonid` 设置给  `home_page(主页).PUBLISH_MAN(发布人)`
-3. 将`主页` 设置给  `home_page(主页).PUBLISH_NAME(发布主题)`
-4. 将`1` 设置给  `home_page(主页).IS_PUBLISHED(是否发布)`
-5. 将`Default(传入变量).ID(标识)` 设置给  `home_page(主页).ID(标识)`
-6. 将`Default(传入变量).ID(标识)` 设置给  `home_page(主页).SPACE_ID(空间标识)`
-7. 将`1` 设置给  `home_page(主页).TYPE(类型)`
+2. 将`HTML` 设置给  `home_page(主页).FORMAT_TYPE(正文格式)`
+3. 将`用户全局对象.srfpersonid` 设置给  `home_page(主页).PUBLISH_MAN(发布人)`
+4. 将`主页` 设置给  `home_page(主页).PUBLISH_NAME(发布主题)`
+5. 将`1` 设置给  `home_page(主页).IS_PUBLISHED(是否发布)`
+6. 将`Default(传入变量).ID(标识)` 设置给  `home_page(主页).ID(标识)`
+7. 将`Default(传入变量).ID(标识)` 设置给  `home_page(主页).SPACE_ID(空间标识)`
+8. 将`1` 设置给  `home_page(主页).TYPE(类型)`
 
-#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 创建主页 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

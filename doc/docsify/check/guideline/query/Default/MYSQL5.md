@@ -1,0 +1,15 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OBJECT_TYPE`,
+t1.`SCOPE_ID`,
+t1.`SUBJECT_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `GUIDELINE` t1 
+
+
+```

@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`PROJECT_ID(项目标识)` EQ `数据上下文.project_id` AND `PROJECT_ID(项目标识)` EQ `数据上下文.id`)
+(`PROJECT_ID(项目标识)` EQ `数据上下文.project_id` AND `PROJECT_ID(项目标识)` EQ `数据上下文.id` AND `USER_ID(登录名)` NOTEQ `用户上下文.srfpersonid`)
 
 
 
@@ -56,7 +56,7 @@ t1.`WEEKDAY`
 FROM `PROJECT_MEMBER` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 
-WHERE ( <choose><when test="ctx.datacontext.project_id !=null ">  t1.`PROJECT_ID` = #{ctx.datacontext.project_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`PROJECT_ID` = #{ctx.datacontext.id} )
+WHERE ( <choose><when test="ctx.datacontext.project_id !=null ">  t1.`PROJECT_ID` = #{ctx.datacontext.project_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`PROJECT_ID` = #{ctx.datacontext.id}  AND  t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid} )
 ```
 
 </el-dialog>

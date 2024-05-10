@@ -36,7 +36,7 @@ Begin --> DENOTIFY1
 
 
 
-调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 通知 [删除/恢复需求通知(remove_notify)](module/ProdMgmt/idea/notify/remove_notify) ，参数为`Default(传入变量)`
+调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 通知 [产品需求删除/恢复通知(remove_notify)](module/ProdMgmt/idea/notify/remove_notify) ，参数为`Default(传入变量)`
 
 
 ### 实体逻辑参数

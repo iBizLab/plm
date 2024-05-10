@@ -69,7 +69,7 @@ defaultObj.set("update_time", new Date());
 
 
 
-调用实体 [空间成员(SPACE_MEMBER)](module/Wiki/space_member.md) 通知 [移除空间成员通知(remover_member_notify)](module/Wiki/space_member/notify/remover_member_notify) ，参数为`Default(传入变量)`
+调用实体 [空间成员(SPACE_MEMBER)](module/Wiki/space_member.md) 通知 [空间成员移除通知(remover_member_notify)](module/Wiki/space_member/notify/remover_member_notify) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 

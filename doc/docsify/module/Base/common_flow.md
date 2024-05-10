@@ -23,6 +23,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DERCUSTOM_MEMBER_COMMON_FLOW](der/DERCUSTOM_MEMBER_COMMON_FLOW)|[成员(MEMBER)](module/Base/member)|自定义关系||
 |[DERCUSTOM_PROJECT_COMMON_FLOW](der/DERCUSTOM_PROJECT_COMMON_FLOW)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 |[DERCUSTOM_TEST_PLAN_COMMON_FLOW](der/DERCUSTOM_TEST_PLAN_COMMON_FLOW)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|自定义关系||
 
@@ -41,6 +42,11 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体扩展|实体扩展|[扩展日志(EXTEND_LOG)](module/Base/extend_log)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -71,6 +77,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/common_flow?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/common_flow?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/common_flow?id=数据查询`">
   数据查询

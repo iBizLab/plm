@@ -16,9 +16,8 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./publish_page#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./publish_page#end1 {"结束"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./publish_page#debugparam1 {"调试逻辑参数"}]]
 state "设置发布信息" as PREPAREPARAM1  [[$./publish_page#prepareparam1 {"设置发布信息"}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./publish_page#debugparam2 {"调试逻辑参数"}]]
+state "准备参数" as PREPAREPARAM5  [[$./publish_page#prepareparam5 {"准备参数"}]]
 state "保存发布页面信息" as DEACTION1  [[$./publish_page#deaction1 {"保存发布页面信息"}]]
 state "设置发布时间" as RAWSFCODE1  [[$./publish_page#rawsfcode1 {"设置发布时间"}]]
 state "重置ID" as PREPAREPARAM4  [[$./publish_page#prepareparam4 {"重置ID"}]]
@@ -33,16 +32,15 @@ state "删除版本" as DEACTION3  [[$./publish_page#deaction3 {"删除版本"}]
 }
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWSFCODE1
+Begin --> RAWSFCODE1
 RAWSFCODE1 --> PREPAREPARAM1
 PREPAREPARAM1 --> PREPAREPARAM4 : [[$./publish_page#prepareparam1-prepareparam4{第一次保存} 第一次保存]]
 PREPAREPARAM4 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION2
 DEACTION2 --> END2
-PREPAREPARAM1 --> DEBUGPARAM2 : [[$./publish_page#prepareparam1-debugparam2{非第一次保存} 非第一次保存]]
-DEBUGPARAM2 --> DEACTION2 : [[$./publish_page#debugparam2-deaction2{已发布} 已发布]]
-DEBUGPARAM2 --> PREPAREPARAM2 : [[$./publish_page#debugparam2-prepareparam2{未发布} 未发布]]
+PREPAREPARAM1 --> PREPAREPARAM5 : [[$./publish_page#prepareparam1-prepareparam5{非第一次保存} 非第一次保存]]
+PREPAREPARAM5 --> DEACTION2 : [[$./publish_page#prepareparam5-deaction2{已发布} 已发布]]
+PREPAREPARAM5 --> PREPAREPARAM2 : [[$./publish_page#prepareparam5-prepareparam2{未发布} 未发布]]
 
 
 @enduml
@@ -61,14 +59,6 @@ DEBUGPARAM2 --> PREPAREPARAM2 : [[$./publish_page#debugparam2-prepareparam2{未�
 
 
 返回 `Default(传入变量)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
 
 #### 设置发布时间 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -89,13 +79,12 @@ defaultObj.set("publish_time", new Date());
 2. 将`Default(传入变量).NAME(主题)` 设置给  `Default(传入变量).PUBLISH_NAME(发布主题)`
 3. 将`用户全局对象.srfpersonid` 设置给  `Default(传入变量).PUBLISH_MAN(发布人)`
 
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
 
+    无
 
 #### 保存发布页面信息 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -177,13 +166,13 @@ FROM version  where OWNER_ID = ?  and JSON_EXTRACT(data, '$.is_published') = 0  
 #### 第一次保存 :id=PREPAREPARAM1-PREPAREPARAM4
 
 (`Default(传入变量).ID(标识)` EQ `undefined` OR `Default(传入变量).ID(标识)` ISNULL)
-#### 非第一次保存 :id=PREPAREPARAM1-DEBUGPARAM2
+#### 非第一次保存 :id=PREPAREPARAM1-PREPAREPARAM5
 
 `Default(传入变量).ID(标识)` ISNOTNULL AND `Default(传入变量).ID(标识)` NOTEQ `undefined`
-#### 已发布 :id=DEBUGPARAM2-DEACTION2
+#### 已发布 :id=PREPAREPARAM5-DEACTION2
 
 `Default(传入变量).IS_PUBLISHED(是否发布)` EQ `1` AND `Default(传入变量).published(发布状态)` EQ `1`
-#### 未发布 :id=DEBUGPARAM2-PREPAREPARAM2
+#### 未发布 :id=PREPAREPARAM5-PREPAREPARAM2
 
 (`Default(传入变量).IS_PUBLISHED(是否发布)` EQ `0` OR `Default(传入变量).PUBLISHED(发布状态)` EQ `0` OR `Default(传入变量).PUBLISHED(发布状态)` ISNULL)
 

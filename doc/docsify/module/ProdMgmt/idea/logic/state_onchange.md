@@ -42,7 +42,7 @@ DEACTION1 --> END1
 
 
 
-调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 通知 [状态变更通知(state_onchage_notify)](module/ProdMgmt/idea/notify/state_onchage_notify) ，参数为`Default(传入变量)`
+调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 通知 [产品需求状态变更通知(state_onchage_notify)](module/ProdMgmt/idea/notify/state_onchage_notify) ，参数为`Default(传入变量)`
 #### 填充流程记录属性 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 

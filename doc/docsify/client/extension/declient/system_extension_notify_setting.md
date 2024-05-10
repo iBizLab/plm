@@ -272,20 +272,6 @@
 ```
 
 
-## fetch_cur_user
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/system_extension_notify_settings" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-
-
-
-
 ## CUR_USER
 
 <el-row>
@@ -304,7 +290,9 @@
 |---|---|----|
 |n_id_eq|String|N_ID_EQ|
 |n_name_like|String|N_NAME_LIKE|
+|n_owner_id_eq|String|N_OWNER_ID_EQ|
 |n_owner_type_eq|String|N_OWNER_TYPE_EQ|
+|n_system_tag_eq|String|N_SYSTEM_TAG_EQ|
 
 
 
@@ -316,7 +304,9 @@
   "sort" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_owner_id_eq" : null,
   "n_owner_type_eq" : null,
+  "n_system_tag_eq" : null,
 }
 ```
 
@@ -339,7 +329,9 @@
 |---|---|----|
 |n_id_eq|String|N_ID_EQ|
 |n_name_like|String|N_NAME_LIKE|
+|n_owner_id_eq|String|N_OWNER_ID_EQ|
 |n_owner_type_eq|String|N_OWNER_TYPE_EQ|
+|n_system_tag_eq|String|N_SYSTEM_TAG_EQ|
 
 
 
@@ -351,7 +343,48 @@
   "sort" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_owner_id_eq" : null,
   "n_owner_type_eq" : null,
+  "n_system_tag_eq" : null,
+}
+```
+
+
+## VIEW
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/system_extension_notify_settings" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|n_id_eq|String|N_ID_EQ|
+|n_name_like|String|N_NAME_LIKE|
+|n_owner_id_eq|String|N_OWNER_ID_EQ|
+|n_owner_type_eq|String|N_OWNER_TYPE_EQ|
+|n_system_tag_eq|String|N_SYSTEM_TAG_EQ|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_owner_id_eq" : null,
+  "n_owner_type_eq" : null,
+  "n_system_tag_eq" : null,
 }
 ```
 

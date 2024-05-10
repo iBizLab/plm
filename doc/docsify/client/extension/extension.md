@@ -18,7 +18,11 @@
 
 <p class="panel-title"><b>认证模式</b></p>
 
-* `无认证`
+* `密码模式`
+
+<p class="panel-title"><b>认证客户端标识</b></p>
+
+* `aibizhi`
 
 
 ## 鉴权

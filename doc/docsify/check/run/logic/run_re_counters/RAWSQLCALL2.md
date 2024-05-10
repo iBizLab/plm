@@ -4,9 +4,9 @@
 SELECT
 	count( t.id ) AS run_re_work_item 
 FROM
-	work_item t 
-WHERE
-t.WORK_ITEM_TYPE_ID not like '%bug%'
+	work_item t, work_item_type t1 
+WHERE t.work_item_type_id = t1.id
+and t1.`group` <> 'bug'
 AND	EXISTS (
 	SELECT
 		* 

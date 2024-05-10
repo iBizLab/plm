@@ -1,4 +1,4 @@
-## 移除空间成员通知(remover_member_notify) <!-- {docsify-ignore-all} -->
+## 空间成员移除通知(remover_member_notify) <!-- {docsify-ignore-all} -->
 
 
 

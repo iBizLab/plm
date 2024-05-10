@@ -2,16 +2,11 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 列表(list)
-
 #### 搜索栏(searchbar)
-
 #### 搜索表单(searchform)
-
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -27,8 +22,8 @@
   * [事件通知(psde_notify_event_hook_grid_view)](app/view/psde_notify_event_hook_grid_view)
   * [属性变更(psde_notify_field_change_hook_grid_view)](app/view/psde_notify_field_change_hook_grid_view)
   * [通知配置(psde_notify_tab_exp_view)](app/view/psde_notify_tab_exp_view)
-  * [表单设计(psdeformdesign)](app/view/psdeformdesign)
-  * [设计(psdelogicmslogicdesign)](app/view/psdelogicmslogicdesign)
+  * [表单设计(psdeformdesign_modal)](app/view/psdeformdesign_modal)
+  * [设计(psdelogicmslogicdesign_modal)](app/view/psdelogicmslogicdesign_modal)
   * [工作项类型(work_item_type_edit_view)](app/view/work_item_type_edit_view)
 
 <script>

@@ -36,7 +36,7 @@ Begin --> DENOTIFY1 : [[$./executor_onchange#begin-denotify1{存在执行人且�
 
 
 
-调用实体 [执行用例(RUN)](module/TestMgmt/run.md) 通知 [设置执行人通知(executor_notify)](module/TestMgmt/run/notify/executor_notify) ，参数为`Default(传入变量)`
+调用实体 [执行用例(RUN)](module/TestMgmt/run.md) 通知 [执行用例设置执行人通知(executor_notify)](module/TestMgmt/run/notify/executor_notify) ，参数为`Default(传入变量)`
 
 ### 连接条件说明
 #### 存在执行人且执行人不等于当前操作人 :id=Begin-DENOTIFY1

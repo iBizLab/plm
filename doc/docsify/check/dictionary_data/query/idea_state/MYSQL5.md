@@ -1,0 +1,18 @@
+```sql
+SELECT
+t1.`CATALOG`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VAL`
+FROM `DICTIONARY` t1 
+
+WHERE ( t1.`CATALOG` = 'idea_state' )
+```

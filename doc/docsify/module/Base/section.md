@@ -29,6 +29,7 @@
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
 |[DER1N_CATEGORY_SECTION_SECTION_ID](der/DER1N_CATEGORY_SECTION_SECTION_ID)|[类别(CATEGORY)](module/Base/category)|1:N关系||
+|[DER1N_GROUP_SECTION_SECTION_ID](der/DER1N_GROUP_SECTION_SECTION_ID)|[团队(GROUP)](module/Base/group)|1:N关系||
 
 
 </el-tab-pane>

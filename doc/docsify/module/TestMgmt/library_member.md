@@ -50,13 +50,22 @@
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#library_member_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|变更角色|change_role|[实体处理逻辑](module/TestMgmt/library_member/logic/change_role "变更角色")|默认|不支持||||
 |新建测试库成员|create_library_member|[实体处理逻辑](module/TestMgmt/library_member/logic/create_library_member "新建测试库成员")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/TestMgmt/library_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/TestMgmt/library_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建测试库成员](module/TestMgmt/library_member/logic/create_library_member)|create_library_member|无||新建测试库成员|
+|[无操作](module/TestMgmt/library_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除测试库成员通知](module/TestMgmt/library_member/logic/remove_library_member_notify)|remove_library_member_notify|无||移除测试库成员时向对应用户发送通知消息|
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -89,8 +98,8 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[加入测试库成员通知](module/TestMgmt/library_member/notify/library_member_create)|library_member_create|[默认消息队列](index/notify_index)|[测试库通知模板(加入测试库成员)](index/notify_index#library_member_create)|勾选对象 ||
-|[移除测试库成员通知](module/TestMgmt/library_member/notify/library_member_remove)|library_member_remove|[默认消息队列](index/notify_index)|[测试库通知模板(移除测试库成员)](index/notify_index#library_member_remove)|勾选对象 ||
+|[测试库成员加入通知](module/TestMgmt/library_member/notify/library_member_create)|library_member_create|[默认消息队列](index/notify_index)|[测试库通知模板(加入测试库成员)](index/notify_index#library_member_create)|勾选对象 ||
+|[测试库成员移除通知](module/TestMgmt/library_member/notify/library_member_remove)|library_member_remove|[默认消息队列](index/notify_index)|[测试库通知模板(移除测试库成员)](index/notify_index#library_member_remove)|勾选对象 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -106,6 +115,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
 | 删除成员 | delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
@@ -130,6 +140,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/library_member?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/library_member?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/library_member?id=数据查询`">
   数据查询

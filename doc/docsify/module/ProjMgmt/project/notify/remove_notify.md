@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [项目通知模板(删除/恢复项目)](index/notify_index?id=project_remove)
+* [项目通知模板(删除/恢复项目)](index/notify_index?id=project_remove_or_recover)
 
 <p class="panel-title"><b>通知类型</b></p>
 

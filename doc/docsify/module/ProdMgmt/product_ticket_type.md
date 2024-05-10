@@ -9,13 +9,19 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|描述|DESCRIPTION|外键值附加数据|2000|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |产品标识|PRODUCT_ID|外键值|100|是||
 |工单类型标识|TICKET_TYPE_ID|外键值|100|是||
+|名称|TICKET_TYPE_NAME|外键值文本|200|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
+<p class="panel-title"><b>联合主键</b></p>
+
+  * `产品标识(PRODUCT_ID)`
+  * `工单类型标识(TICKET_TYPE_ID)`
 
 ## 关系
 
@@ -68,6 +74,21 @@
 
 
 
+##### 全部数据（读写） :id=product_ticket_type-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `UPDATE`
+* `CREATE`
+* `DELETE`
+* `READ`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -76,6 +97,13 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_PRODUCT_ID_EQ|产品标识|EQ||
 |N_TICKET_TYPE_ID_EQ|工单类型标识|EQ||
+|N_TICKET_TYPE_NAME_EQ|名称|EQ||
+|N_TICKET_TYPE_NAME_LIKE|名称|LIKE||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 新建工单类型 | create_ticket_type | 新建工单类型 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单类型](app/view/product_ticket_type_quick_create_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -101,6 +129,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/product_ticket_type?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProdMgmt/product_ticket_type?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

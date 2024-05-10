@@ -1,4 +1,4 @@
-## 加入项目成员通知(create_member_notify) <!-- {docsify-ignore-all} -->
+## 项目成员加入通知(create_member_notify) <!-- {docsify-ignore-all} -->
 
 
 

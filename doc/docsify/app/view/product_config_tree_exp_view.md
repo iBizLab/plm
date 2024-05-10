@@ -1,32 +1,11 @@
 # 产品中心配置(product_config_tree_exp_view)  <!-- {docsify-ignore-all} -->
 
 
-<el-skeleton style="width:60%">
-	<template #template>
-		<div style="padding-bottom: 5px;display: flex;">
-			<div style="display: flex;align-items: center;justify-content: space-between;flex-direction: column;">
-				<el-tooltip content="页面标题">
-					<el-skeleton-item variant="text" style="width:180px;height:40px;"></el-skeleton-item>
-				</el-tooltip>
-				<el-tooltip content="树视图">
-					<el-skeleton-item variant="text" style="margin-top: 10px;width:180px;height:300px;"></el-skeleton-item>
-				</el-tooltip>
-			</div>
-			<el-tooltip content="导航区域">
-				<el-skeleton-item variant="p" style="margin-left: 10px;height:350px"></el-skeleton-item>
-			</el-tooltip>
-		</div>
-	</template>
-</el-skeleton>
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 搜索栏(searchbar)
-
 #### 树视图导航栏(treeexpbar)
-
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -34,10 +13,15 @@
 
 
 ### 关联视图
-  * [产品管理(product_management_archived_grid_view)](app/view/product_management_archived_grid_view)
-  * [产品管理(product_management_deleted_grid_view)](app/view/product_management_deleted_grid_view)
-  * [产品管理(product_management_in_progress_grid_view)](app/view/product_management_in_progress_grid_view)
+  * [状态管理(dictionary_data_idea_state_grid_view)](app/view/dictionary_data_idea_state_grid_view)
+  * [状态管理(dictionary_data_ticket_state_grid_view)](app/view/dictionary_data_ticket_state_grid_view)
+  * [需求配置(idea_config_tab_exp_view)](app/view/idea_config_tab_exp_view)
+  * [产品管理(product_archived_grid_view)](app/view/product_archived_grid_view)
+  * [产品管理(product_deleted_grid_view)](app/view/product_deleted_grid_view)
+  * [产品管理(product_in_progress_grid_view)](app/view/product_in_progress_grid_view)
   * [产品管理(product_management_tab_exp_view)](app/view/product_management_tab_exp_view)
+  * [工单配置(ticket_type_config_tab_exp_view)](app/view/ticket_type_config_tab_exp_view)
+  * [工单类型(ticket_type_global_setting_view)](app/view/ticket_type_global_setting_view)
 
 <script>
  const { createApp } = Vue

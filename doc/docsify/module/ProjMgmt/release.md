@@ -20,7 +20,7 @@
 |项目标识|PROJECT_ID|外键值|100|否||
 |项目名称|PROJECT_NAME|外键值文本|200|是||
 |开始时间|START_AT|日期型||是||
-|状态|STATUS|[单项选择(文本值)](index/dictionary_index#version_status "发布状态")|60|是||
+|状态|STATUS|单项选择(文本值)|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
@@ -59,11 +59,13 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|删除类别|delete_categories|[实体处理逻辑](module/ProjMgmt/release/logic/delete_categories "删除类别")|默认|不支持||||
 |规划工作项|plan_work_item|[实体处理逻辑](module/ProjMgmt/release/logic/plan_work_item "规划工作项")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[删除类别](module/ProjMgmt/release/logic/delete_categories)|delete_categories|无||当类别删除时修改发布的类别属性|
 |[规划工作项](module/ProjMgmt/release/logic/plan_work_item)|plan_work_item|无||规划工作项至指定发布|
 
 ## 数据查询
@@ -71,11 +73,13 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProjMgmt/release/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/release/query/View)|VIEW|否|否 |否 ||
+|[未完成的发布(not_finish)](module/ProjMgmt/release/query/not_finish)|not_finish|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/release/dataset/Default)|DEFAULT|数据查询|是|||
+|[未完成的发布(not_finish)](module/ProjMgmt/release/dataset/not_finish)|not_finish|数据查询|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

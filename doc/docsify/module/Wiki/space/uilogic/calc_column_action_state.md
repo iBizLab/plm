@@ -1,4 +1,4 @@
-## 计算表格列行为状态 <!-- {docsify-ignore-all} -->
+## 计算表格列行为状态(space) <!-- {docsify-ignore-all} -->
 
    用于动态控制收藏和取消收藏的禁用状态
 
@@ -41,26 +41,25 @@ RAWJSCODE1 --> END1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-setTimeout(() => {
 	const rows = uiLogic.grid.state.rows;
 	if (rows && rows.length > 0) {
 		rows.forEach(row => {
-			const titleColumn = row.uiActionGroupStates.title;
+			const titleColumn = row.uiActionGroupStates.name;
 			const is_favorite = row.data.is_favorite;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
 					// 收藏
 					if (action.uiActionId === 'add_favorite@space') {
-						action.disabled = is_favorite !== 0;
+						action.visible = is_favorite == 0;
 					} else if (action.uiActionId === 'cancel_favorite@space') {
 						// 取消收藏
-						action.disabled = is_favorite === 0;
-					} 
+						action.visible = is_favorite != 0;
+					}
 				})
 			}
 		})
 	}
-}, 1000);
+
 ```
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>

@@ -5,14 +5,10 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据视图(dataview)
-
 #### 搜索栏(searchbar)
-
 
 
 <script>

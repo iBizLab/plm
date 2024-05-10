@@ -21,5 +21,7 @@ FROM `SPRINT` t1
 LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
 LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
 
-WHERE ( t1.`STATUS` <> '3' )
+WHERE NOT(EXISTS(SELECT * FROM `WORK_ITEM` t31 
+ WHERE 
+ t1.`ID` = t31.`SPRINT_ID`  AND  ( t31.`ID` = #{ctx.webcontext.work_item} ) )) AND ( t1.`STATUS` <> '3' )
 ```

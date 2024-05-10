@@ -1,47 +1,13 @@
 # 全部空间(space_category_grid_view)  <!-- {docsify-ignore-all} -->
 
 
-<el-skeleton style="width:60%">
-	<template #template>
-		<div style="padding-bottom: 5px;">
-			<div style="height:40px;display: flex;align-items: center;justify-content: space-between;">
-				<el-tooltip content="页面标题">
-					<el-skeleton-item variant="text" style="height:40px;"></el-skeleton-item>
-				</el-tooltip>
-				<el-tooltip content="搜索栏">
-				    <el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:300px;"></el-skeleton-item>
-				</el-tooltip>
-				<el-skeleton style="width:250px;">
-					<template #template>
-						<el-tooltip content="工具栏">
-							<div style="display: flex;align-items: center;justify-content:end">
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-							</div>
-						</el-tooltip>
-					</template>
-				</el-skeleton>
-			</div>
-		</div>
-		<el-tooltip content="数据表格">
-			<el-skeleton-item variant="p" style="height:300px"></el-skeleton-item>
-		</el-tooltip>
-	</template>
-</el-skeleton>
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据表格(grid)
-
 #### 搜索栏(searchbar)
-
 #### 搜索表单(searchform)
-
 #### 工具栏(toolbar)
-
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -49,43 +15,44 @@
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [回收站](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [编辑空间基本信息](module/Wiki/space#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [打开空间配置](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [打开空间主页面](module/Wiki/space#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [快速新建文档](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [回收站](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [打开空间导航页](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [移出分类](module/Wiki/space#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [更多设置](module/Wiki/space#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [新建分组](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [打开空间主页面](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [查看空间成员](module/Wiki/space#界面行为)
+  * [页面模板(STENCIL)](module/Wiki/stencil) : [使用此模板](module/Wiki/stencil#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [树界面_刷新全部操作](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [查看空间信息](module/Wiki/space#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [查看空间成员](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [编辑空间基本信息](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [打开空间配置](module/Wiki/space#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [回收站](module/Wiki/article_page#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [新开窗口（空间）](module/Wiki/space#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [查看空间成员](module/Wiki/space#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [查看空间信息](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [设置星标](module/Wiki/space#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [页面模板(STENCIL)](module/Wiki/stencil) : [使用此模板](module/Wiki/stencil#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [新建分组](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
-  * [页面(PAGE)](module/Wiki/article_page) : [树界面_刷新全部操作](module/Wiki/article_page#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [回收站](module/Wiki/space#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [从模板新建](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [设置星标](module/Wiki/space#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [查看空间信息](module/Wiki/space#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [切换草稿](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [快速新建文档](module/Wiki/article_page#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [回收站](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [移出分类](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [查看空间成员](module/Wiki/space#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [更多设置](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [设置星标](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [打开空间导航页](module/Wiki/space#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
-  * [空间(SPACE)](module/Wiki/space) : [更多设置](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [取消星标](module/Wiki/space#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [删除](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [重命名](module/Wiki/article_page#界面行为)
 
 ### 关联视图
   * [草稿(article_page_draft_show_edit_view)](app/view/article_page_draft_show_edit_view)
@@ -97,9 +64,12 @@
   * [全部空间(space_all_grid_view)](app/view/space_all_grid_view)
   * [配置中心(space_config_tree_exp_view)](app/view/space_config_tree_exp_view)
   * [新建空间(space_create_wizard_view)](app/view/space_create_wizard_view)
+  * [组织空间(space_group_grid_view)](app/view/space_group_grid_view)
   * [空间(space_index_view)](app/view/space_index_view)
   * [空间信息(space_info_view)](app/view/space_info_view)
+  * [个人空间(space_oneself_grid_view)](app/view/space_oneself_grid_view)
   * [空间配置(space_setting_view)](app/view/space_setting_view)
+  * [团队空间(space_team_grid_view)](app/view/space_team_grid_view)
   * [知识管理(space_tree_exp_view)](app/view/space_tree_exp_view)
   * [模板中心(stencil_list_exp_view)](app/view/stencil_list_exp_view)
   * [页面模板(stencil_show_edit_view)](app/view/stencil_show_edit_view)

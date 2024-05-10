@@ -260,6 +260,81 @@
 Integer
 ```
 
+## 获取活动对象详情
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="PUT" type="warning" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/activities/{key}/get_activity_obj_detail" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">audit_info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|审计信息|
+|<el-row justify="space-between"><el-col :span="20">audit_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|审计类型|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">ip_address</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问地址|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">object_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|对象标识|
+|<el-row justify="space-between"><el-col :span="20">object_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|对象类型|
+|<el-row justify="space-between"><el-col :span="20">op_person_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|操作人|
+|<el-row justify="space-between"><el-col :span="20">op_person_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|操作人|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "audit_info" : null,
+  "audit_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "ip_address" : null,
+  "name" : null,
+  "object_id" : null,
+  "object_type" : null,
+  "op_person_id" : null,
+  "op_person_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "audit_info" : null,
+  "audit_type" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "ip_address" : null,
+  "name" : null,
+  "object_id" : null,
+  "object_type" : null,
+  "op_person_id" : null,
+  "op_person_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
+
 ## 获取活动草稿
 
 <el-row>

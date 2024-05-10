@@ -20,6 +20,8 @@
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |空间名称|NAME|文本，可指定长度|200|否||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#space_scope_type "所属类型（空间）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
@@ -36,7 +38,7 @@
 |[DER1N_PAGE_SPACE_SPACE_ID](der/DER1N_PAGE_SPACE_SPACE_ID)|[页面(PAGE)](module/Wiki/article_page)|1:N关系||
 |[DER1N_SPACE_MEMBER_SPACE_SPACE_ID](der/DER1N_SPACE_MEMBER_SPACE_SPACE_ID)|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|1:N关系||
 |[DER1N_STENCIL_SPACE_SPACE_ID](der/DER1N_STENCIL_SPACE_SPACE_ID)|[页面模板(STENCIL)](module/Wiki/stencil)|1:N关系||
-|[DERCUSTOM_RELATION_SPACE](der/DERCUSTOM_RELATION_SPACE)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
 </el-tab-pane>
@@ -92,75 +94,19 @@
 |[归档](module/Wiki/space/logic/archive)|archive|无||未归档空间数据的归档处理，修改空间的归档状态为已归档|
 |[恢复](module/Wiki/space/logic/recover)|recover|无||已删除状态空间数据的恢复，修改空间的是否删除属性值，并恢复访问记录|
 |[无操作](module/Wiki/space/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[是否删除变更附加逻辑](module/Wiki/space/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||空间删除或恢复时触发相应的通知消息|
+|[是否归档变更附加逻辑](module/Wiki/space/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||空间归档或激活时触发相应的通知消息|
 |[激活](module/Wiki/space/logic/activate)|activate|无||激活已归档状态空间，修改空间的归档属性|
 |[生成最近访问](module/Wiki/space/logic/create_recent)|create_recent|无||在用户对空间数据进行了get或update操作时生成相应的访问记录|
 |[移出分类](module/Wiki/space/logic/move_out_category)|move_out_category|无||将空间移除分类|
 |[自动创建主页](module/Wiki/space/logic/auto_create_home_page)|auto_create_home_page|无||附加在实体的CREATE行为后，自动生成模板化的主页|
+|[自动创建人员](module/Wiki/space/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员，若选择个人，则添加个人为所属成员。|
 |[设置星标](module/Wiki/space/logic/favorite)|favorite|无||设置为星标产品|
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `是否星标(IS_FAVORITE)` 
-
-
-
-
-<p class="panel-title"><b>操作标识分布</b></p>
-<br>
-<table>
-  <tr>
-    <th>操作标识col350</th>
-    <th>是col150</th>
-    <th>否col150</th>
-    <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>删除(DELETE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>取消星标(CANCEL_FAVORITE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>子数据权限(SUBDATA)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>设置星标(ADD_FAVORITE)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-
-</table>
-
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -268,6 +214,12 @@
 
 
 
+## 消息通知
+
+|    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
+|------------| -----   |  -------- | -------- |-------- |-------- |
+|[空间归档/激活通知](module/Wiki/space/notify/archived_or_activate_notify)|archived_or_activate_notify|[默认消息队列](index/notify_index)|[空间通知模板(归档/激活空间)](index/notify_index#space_archived_or_activate)|当前空间成员 ||
+|[空间删除/恢复通知](module/Wiki/space/notify/remove_or_recover_notify)|remove_or_recover_notify|[默认消息队列](index/notify_index)|[空间通知模板(删除/恢复空间)](index/notify_index#space_remove_or_recover)|当前空间成员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -276,8 +228,8 @@
 |N_CATEGORY_NAME_EQ|分类|EQ||
 |N_CATEGORY_NAME_LIKE|分类|LIKE||
 |N_ID_EQ|标识|EQ||
-|N_IS_FAVORITE_EQ|是否星标|EQ||
 |N_NAME_LIKE|空间名称|LIKE||
+|N_SCOPE_TYPE_EQ|所属|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
 ## 界面行为
@@ -300,7 +252,9 @@
 | 移出分类 | move_out_category | 移出分类 |多项数据（主键）|<details><summary>后台调用</summary>[move_out_category](#行为)||
 | 查看空间成员 | open_space_member | 空间成员 |单项数据（主键）|用户自定义||
 | 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 打开新建空间 | open_new_space | 打开新建空间 |单项数据|<details><summary>打开顶级视图</summary>[空间](app/view/space_index_view)</details>||
 | 项目关联空间 | project_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_product_re_space_choose_option_view)</details>||
+| 新建空间 | create_space | 新建空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建空间](app/view/space_create_wizard_view)</details>||
 | 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 新开窗口（空间） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;*</details>||
@@ -312,7 +266,7 @@
 |[刷新当前表格](module/Wiki/space/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[批量删除空间成员临时数据](module/Wiki/space/uilogic/remove_batch_temp)|remove_batch_temp|获取空间内所有临时成员数据并删除|
 |[新建目录](module/Wiki/space/uilogic/create_category)|create_category|新建空间目录|
-|[计算表格列行为状态](module/Wiki/space/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[计算表格列行为状态(space)](module/Wiki/space/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[项目关联空间](module/Wiki/space/uilogic/project_relation_space)|project_relation_space|调用后台关联逻辑，项目关联空间并生成正反关联数据|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -331,8 +285,8 @@
 <el-anchor-link :href="`#/module/Wiki/space?id=处理逻辑`">
   处理逻辑
 </el-anchor-link>
-<el-anchor-link :href="`#/module/Wiki/space?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/Wiki/space?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Wiki/space?id=数据查询`">
   数据查询
@@ -342,6 +296,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Wiki/space?id=数据权限`">
   数据权限
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Wiki/space?id=消息通知`">
+  消息通知
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Wiki/space?id=搜索模式`">
   搜索模式

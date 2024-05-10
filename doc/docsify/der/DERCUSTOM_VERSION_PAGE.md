@@ -9,7 +9,7 @@
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [版本（temp）(VERSION)](module/Base/version)
+* [版本(VERSION)](module/Base/version)
 
 <p class="panel-title"><b>关系类型</b></p>
 

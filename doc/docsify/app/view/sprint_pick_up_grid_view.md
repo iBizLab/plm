@@ -5,23 +5,18 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据表格(grid)
-
 #### 搜索栏(searchbar)
-
 #### 搜索表单(searchform)
 
 
-
 ### 关联界面行为
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [编辑](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [删除](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [开始迭代](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [结束迭代](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [编辑](module/ProjMgmt/sprint#界面行为)
 
 ### 关联视图
   * [确认完成(sprint_confirm_finish_view)](app/view/sprint_confirm_finish_view)

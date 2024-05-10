@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_column_action_state#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -48,7 +48,7 @@ setTimeout(() => {
 			const titleColumn = row.uiActionGroupStates.title;
 			const is_archived = row.data.is_archived;
             const type = row.data.work_item_type_id;
-            const newRowHiddenList = ['kanban_bug', 'kanban_issue', 'waterfall_bug', 'scrum_story'];
+            const newRowHiddenList = ['kanban_bug', 'kanban_issue', 'waterfall_bug', 'scrum_task', 'scrum_bug'];
             const changeParentHiddenList = ['scrum_epic', 'kanban_epic', 'kanban_issue'];
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {

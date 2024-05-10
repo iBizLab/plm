@@ -36,7 +36,7 @@
 
 ### 查询连接
 * **RELATION不存在1:N（NOT EXISTS (SELECT)）DERCUSTOM_RELATION_WORK_ITEM**<br>
-连接关系：[DERCUSTOM_RELATION_WORK_ITEM](der/DERCUSTOM_RELATION_WORK_ITEM)<br>
+连接关系：[DERCUSTOM_RELATION_TARGET_WORK_ITEM](der/DERCUSTOM_RELATION_TARGET_WORK_ITEM)<br>
 连接实体：[工作项](module/ProjMgmt/work_item)<br>
 连接条件：(`PRINCIPAL_TYPE(关联主体类型)` EQ `网页请求上下文.principal_type` AND `TARGET_TYPE(关联目标类型)` EQ `网页请求上下文.target_type` AND `PRINCIPAL_ID(关联主体标识)` EQ `网页请求上下文.principal_id`)<br>
 
@@ -77,6 +77,7 @@ t11.`TYPE` AS `PROJECT_TYPE`,
 t41.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RELEASE_ID`,
+t91.`NAME` AS `RELEASE_NAME`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEVERITY`,
@@ -106,10 +107,11 @@ LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID`
 LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
 LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
 LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
 
-WHERE NOT(EXISTS(SELECT * FROM `RELATION` t91 
+WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101 
  WHERE 
- t1.`ID` = t91.`TARGET_ID`  AND  ( <choose><when test="ctx.webcontext.principal_type !=null ">  t91.`PRINCIPAL_TYPE` = #{ctx.webcontext.principal_type}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.webcontext.target_type !=null ">  t91.`TARGET_TYPE` = #{ctx.webcontext.target_type}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.webcontext.principal_id !=null ">  t91.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  </when><otherwise>1=1</otherwise></choose> ) )) AND ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  <choose><when test="ctx.webcontext.principal_id !=null ">  t1.`ID` <> #{ctx.webcontext.principal_id}  </when><otherwise>1=1</otherwise></choose> )
+ t1.`ID` = t101.`TARGET_ID`  AND  ( <choose><when test="ctx.webcontext.principal_type !=null ">  t101.`PRINCIPAL_TYPE` = #{ctx.webcontext.principal_type}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.webcontext.target_type !=null ">  t101.`TARGET_TYPE` = #{ctx.webcontext.target_type}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.webcontext.principal_id !=null ">  t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  </when><otherwise>1=1</otherwise></choose> ) )) AND ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  <choose><when test="ctx.webcontext.principal_id !=null ">  t1.`ID` <> #{ctx.webcontext.principal_id}  </when><otherwise>1=1</otherwise></choose> )
 ```
 
 </el-dialog>

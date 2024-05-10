@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./member_dimension#begin {"开始"}]]
-state "重置分页参数" as PREPAREPARAM1  [[$./member_dimension#prepareparam1 {"重置分页参数"}]]
+state "设置查询大小" as PREPAREPARAM2  [[$./member_dimension#prepareparam2 {"设置查询大小"}]]
 state "查询工时日历" as DEDATASET1  [[$./member_dimension#dedataset1 {"查询工时日历"}]]
 state "结束" as END1 <<end>> [[$./member_dimension#end1 {"结束"}]]
 
 
-Begin --> PREPAREPARAM1
-PREPAREPARAM1 --> DEDATASET1
+Begin --> PREPAREPARAM2
+PREPAREPARAM2 --> DEDATASET1
 DEDATASET1 --> END1
 
 
@@ -36,7 +36,7 @@ DEDATASET1 --> END1
 
 
 *- N/A*
-#### 重置分页参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置查询大小 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

@@ -48,37 +48,37 @@ Begin --> DENOTIFY7 : [[$./after_create_notify#begin-denotify7{评论页面} 评
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论工作项通知(work_item_notify)](module/Base/comment/notify/work_item_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [工作项评论通知(work_item_notify)](module/Base/comment/notify/work_item_notify) ，参数为`Default(传入变量)`
 #### 评论产品需求通知 :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论需求通知(idea_notify)](module/Base/comment/notify/idea_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [产品需求评论通知(idea_notify)](module/Base/comment/notify/idea_notify) ，参数为`Default(传入变量)`
 #### 评论工单通知 :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论工单通知(ticket_notify)](module/Base/comment/notify/ticket_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [工单评论通知(ticket_notify)](module/Base/comment/notify/ticket_notify) ，参数为`Default(传入变量)`
 #### 评论客户通知 :id=DENOTIFY4<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论客户通知(customer_notify)](module/Base/comment/notify/customer_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [客户评论通知(customer_notify)](module/Base/comment/notify/customer_notify) ，参数为`Default(传入变量)`
 #### 评论测试用例通知 :id=DENOTIFY5<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论测试用例通知(test_case_notify)](module/Base/comment/notify/test_case_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [测试用例评论通知(test_case_notify)](module/Base/comment/notify/test_case_notify) ，参数为`Default(传入变量)`
 #### 评论执行用例通知 :id=DENOTIFY6<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论执行用例通知(run_notify)](module/Base/comment/notify/run_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [执行用例评论通知(run_notify)](module/Base/comment/notify/run_notify) ，参数为`Default(传入变量)`
 #### 评论页面通知 :id=DENOTIFY7<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [评论页面通知(page_notify)](module/Base/comment/notify/page_notify) ，参数为`Default(传入变量)`
+调用实体 [评论(COMMENT)](module/Base/comment.md) 通知 [页面评论通知(page_notify)](module/Base/comment/notify/page_notify) ，参数为`Default(传入变量)`
 
 ### 连接条件说明
 #### 评论工作项 :id=Begin-DENOTIFY1

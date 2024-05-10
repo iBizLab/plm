@@ -69,4 +69,8 @@ DEACTION1 --> END1
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[产品(PRODUCT)](module/ProdMgmt/product.md)||
+|产品工单类型变量|product_ticket_param|数据对象|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type.md)||
 |最近访问数据|recent|数据对象|[最近访问(RECENT)](module/Base/recent.md)||
+|工单类型过滤器|ticket_type_filter|过滤器|||
+|工单类型变量|ticket_type_obj|数据对象|[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type.md)||
+|工单类型分页结果|ticket_type_page|分页查询|||

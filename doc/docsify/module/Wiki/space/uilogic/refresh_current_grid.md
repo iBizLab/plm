@@ -17,10 +17,12 @@ hide empty description
 state "开始" as Begin <<start>> [[$./refresh_current_grid#begin {开始}]]
 state "刷新视图" as RAWJSCODE1  [[$./refresh_current_grid#rawjscode1 {刷新视图}]]
 state "视图部件调用" as VIEWCTRLINVOKE1  [[$./refresh_current_grid#viewctrlinvoke1 {视图部件调用}]]
+state "结束" as END1 <<end>> [[$./refresh_current_grid#end1 {结束}]]
+state "通过实体刷新表格、树" as RAWJSCODE2  [[$./refresh_current_grid#rawjscode2 {通过实体刷新表格、树}]]
 
 
-Begin --> VIEWCTRLINVOKE1 : [[$./refresh_current_grid#begin-viewctrlinvoke1{刷新表格} 刷新表格]]
-Begin --> RAWJSCODE1 : [[$./refresh_current_grid#begin-rawjscode1{刷新视图} 刷新视图]]
+Begin --> RAWJSCODE2
+RAWJSCODE2 --> END1
 
 
 @enduml
@@ -33,6 +35,21 @@ Begin --> RAWJSCODE1 : [[$./refresh_current_grid#begin-rawjscode1{刷新视图} 
 
 
 
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+
+#### 通过实体刷新表格、树 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+ibiz.mc.command.update.send({ srfdecodename: 'space', srfkey: params.owner_id})
+```
 
 #### 刷新视图 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -62,13 +79,6 @@ setTimeout(() => {
 
 
 调用`grid(当前表格)`的方法`refresh`，参数为`Default(传入变量)`
-### 连接条件说明
-#### 刷新表格 :id=Begin-VIEWCTRLINVOKE1
-
-```grid(当前表格)``` ISNOTNULL
-#### 刷新视图 :id=Begin-RAWJSCODE1
-
-```grid(当前表格)``` ISNULL
 
 
 ### 实体逻辑参数
@@ -76,5 +86,5 @@ setTimeout(() => {
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |当前表格|grid|部件对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前工具栏|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

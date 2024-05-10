@@ -47,13 +47,14 @@
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#board_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
-|Remove|Remove|内置方法|默认|支持||||
+|Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#board_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[删除看板之前判断](module/ProjMgmt/board/logic/before_remove)|before_remove|无||删除看板之前，判断项目下看板数量。必须保留一个看板|
 |[生成默认看板栏和泳道](module/ProjMgmt/board/logic/create_default_entry)|create_default_entry|无||新建看板项目后，会附加生成出默认看板栏和泳道|
 
 ## 数据查询
@@ -61,11 +62,13 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProjMgmt/board/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/board/query/View)|VIEW|否|否 |否 ||
+|[当前项目下看板(cur_project_board)](module/ProjMgmt/board/query/cur_project_board)|cur_project_board|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/board/dataset/Default)|DEFAULT|数据查询|是|||
+|[当前项目下看板(cur_project_board)](module/ProjMgmt/board/dataset/cur_project_board)|cur_project_board|数据查询|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -77,7 +80,17 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 打开新建看板 | open_new_board | 打开新建看板 |单项数据|<details><summary>打开顶级视图</summary>[工作项看板](app/view/work_item_kanban_view)</details>||
 | 新建看板 | New | 新建看板 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建看板](app/view/board_quick_create_view)</details>||
+| 新建看板（看板表格） | create_board | 新建看板 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建看板](app/view/board_quick_create_view)</details>||
+| 看板管理 | board_management | 看板管理 |无数据|<details><summary>打开视图或向导（模态）</summary>[看板管理](app/view/board_grid_view)</details>||
+| 打开默认看板 | open_default_board | 打开默认看板 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工作项看板](app/view/work_item_kanban_view)</details>||
+| 删除 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[看板删除后附加逻辑](module/ProjMgmt/board/uilogic/after_board_remove)|after_board_remove|看板删除后附加逻辑：是否当前看板正在预览；删除后需切换|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -106,6 +119,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/board?id=界面行为`">
   界面行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/board?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

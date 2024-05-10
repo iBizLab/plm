@@ -1,0 +1,22 @@
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+LEFT JOIN `TICKET` t11 ON t1.`TARGET_ID` = t11.`ID` 
+
+
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t1.`TARGET_TYPE` = 'ticket'  AND  t1.`PRINCIPAL_TYPE` = 'ticket' )
+```

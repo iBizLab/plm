@@ -30,6 +30,7 @@ t11.`TYPE` AS `PROJECT_TYPE`,
 t41.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RELEASE_ID`,
+t91.`NAME` AS `RELEASE_NAME`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEVERITY`,
@@ -59,6 +60,7 @@ LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID`
 LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
 LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
 LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
 
 WHERE ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> ) )
 ```

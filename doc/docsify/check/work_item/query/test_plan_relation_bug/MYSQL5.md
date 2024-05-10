@@ -30,6 +30,7 @@ t11.`TYPE` AS `PROJECT_TYPE`,
 t41.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RELEASE_ID`,
+t91.`NAME` AS `RELEASE_NAME`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEVERITY`,
@@ -59,28 +60,29 @@ LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID`
 LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
 LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
 LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
-    EXISTS (
-      -- 与计划ID关联的RUN的WORK_ITEM
-      SELECT 1
-      FROM `relation` rel
-      INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`
-      WHERE
-        rel.`TARGET_ID` = t1.`ID`
-        AND ru.`PLAN_ID` = #{ctx.webcontext.principal_id}
-        AND rel.`TARGET_TYPE` = 'bug'
-        AND rel.`PRINCIPAL_TYPE` = 'run'
-    )
-    OR EXISTS (
-      -- 直接与计划ID关联的WORK_ITEM
-      SELECT 1
-      FROM `relation` r
-      WHERE
-        r.`TARGET_ID` = t1.`ID`
-        AND r.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}
-        AND r.`TARGET_TYPE` = 'work_item'
-        AND r.`PRINCIPAL_TYPE` = 'test_plan'
-    )
-		) )
+            EXISTS (
+                -- 与计划ID关联的RUN的WORK_ITEM
+                    SELECT 1
+                    FROM `relation` rel
+                             INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`
+                    WHERE
+                            rel.`TARGET_ID` = t1.`ID`
+                      AND ru.`PLAN_ID` = #{ctx.webcontext.principal_id}
+                      AND rel.`TARGET_TYPE` = 'work_item'
+                      AND rel.`PRINCIPAL_TYPE` = 'run'
+                )
+            OR EXISTS (
+                -- 直接与计划ID关联的WORK_ITEM
+                    SELECT 1
+                    FROM `relation` r
+                    WHERE
+                            r.`TARGET_ID` = t1.`ID`
+                      AND r.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}
+                      AND r.`TARGET_TYPE` = 'work_item'
+                      AND r.`PRINCIPAL_TYPE` = 'test_plan'
+                )
+        ) )
 ```

@@ -9,6 +9,7 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |实际工时|ACTUAL_WORKLOAD|数值||是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |测试用例标识|CASE_ID|外键值|100|是||
 |名称|CASE_NAME|外键值文本|200|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
@@ -30,7 +31,7 @@
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |备注|REMARK|长文本，长度1000|2000|是||
 |结果附件|RUN_ATTACHMENT|一对多关系数据集合|1048576|是||
-|评审状态|STATE|[外键值附加数据](index/dictionary_index#test_case_state "用例评审状态")|60|是||
+|评审状态|STATE|[外键值附加数据](index/dictionary_index#case_state "用例状态")|60|是||
 |执行结果|STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|60|是||
 |步骤|STEPS|一对多关系数据集合|1048576|是||
 |模块路径|SUITES|外键值附加数据|500|是||
@@ -89,6 +90,7 @@
 | -------- |---------- |-----------|----- |
 |[DER1N_RUN_TEST_CASE_CASE_ID](der/DER1N_RUN_TEST_CASE_CASE_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
 |[DER1N_RUN_TEST_PLAN_PLAN_ID](der/DER1N_RUN_TEST_PLAN_PLAN_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
+|[DERCUSTOM_TEST_CASE_RUN](der/DERCUSTOM_TEST_CASE_RUN)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -106,6 +108,7 @@
 |Update|Update|内置方法|默认|不支持||||
 |添加计划执行用例|add_plan_run|[实体处理逻辑](module/TestMgmt/run/logic/create_plan_run "添加计划执行用例")|默认|不支持||||
 |批设置执行结果|batch_save_run_history|[实体处理逻辑](module/TestMgmt/run/logic/batch_save_run_history "批设置执行结果")|默认|不支持||||
+|获取测试库成员|fill_library_member|[实体处理逻辑](module/TestMgmt/run/logic/get_library_member "获取测试库成员")|默认|不支持||||
 |获取实际工时|get_actual_workload|[实体处理逻辑](module/TestMgmt/run/logic/get_actual_workload "获取实际工时")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/run/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联执行用例|other_relation_run|[实体处理逻辑](module/TestMgmt/run/logic/others_relation_run "其他实体关联执行用例")|默认|不支持||||
@@ -128,16 +131,24 @@
 |[无操作](module/TestMgmt/run/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[每日执行用例趋势](module/TestMgmt/run/logic/run_daily_tendencies)|run_daily_tendencies|无||报表每日执行用例趋势数据源|
 |[每日测试次数统计](module/TestMgmt/run/logic/run_everyday_test)|run_everyday_test|无||报表每日测试次数统计数据源|
+|[测试用例最新执行结果](module/TestMgmt/run/logic/case_latest_executed)|case_latest_executed|无||测试用例最新执行结果|
 |[测试计划对比分析](module/TestMgmt/run/logic/plan_compar_ative_analysis)|plan_compar_ative_analysis|无||报表测试计划对比分析数据源|
 |[添加计划执行用例](module/TestMgmt/run/logic/create_plan_run)|create_plan_run|无||将测试计划主键置空并生成执行用例|
 |[移除用例相关信息](module/TestMgmt/run/logic/delete_run_info)|delete_run_info|无||在执行remove操作之前，移除相关的执行用例信息|
 |[获取实际工时](module/TestMgmt/run/logic/get_actual_workload)|get_actual_workload|无||获取用例的实际工时|
 |[获取当前用例详情](module/TestMgmt/run/logic/this_run_details)|this_run_details|无||获取当前执行用例详情信息|
+|[获取测试库成员](module/TestMgmt/run/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前登陆者权限|
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
 |[重置为未测](module/TestMgmt/run/logic/reset_not_test)|reset_not_test|无||重置当前执行用例的执行状态为初始未测状态|
 |[附加用例步骤](module/TestMgmt/run/logic/add_steps)|add_steps|无||获取用例步骤，并返回|
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
+|审计|数据审计|[活动(ACTIVITY)](module/Base/activity)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -150,6 +161,7 @@
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/run/query/dailyTendencies)|dailyTendencies|否|否 |否 ||
 |[每日测试次数统计(everydayTest)](module/TestMgmt/run/query/everydayTest)|everydayTest|否|否 |否 ||
 |[当前模块下用例(normal)](module/TestMgmt/run/query/normal)|normal|否|否 |否 ||
+|[测试计划内执行历史(plan_run_history)](module/TestMgmt/run/query/plan_run_history)|plan_run_history|否|否 |否 ||
 |[优先级分布(priorityDistributions)](module/TestMgmt/run/query/priorityDistributions)|priorityDistributions|否|否 |否 ||
 
 ## 数据集合
@@ -158,11 +170,13 @@
 |[数据集(DEFAULT)](module/TestMgmt/run/dataset/Default)|DEFAULT|数据查询|是|||
 |[执行结果分布(ImplementationResults)](module/TestMgmt/run/dataset/ImplementationResults)|ImplementationResults|数据查询|否|||
 |[用例成员分布(casePerson)](module/TestMgmt/run/dataset/casePerson)|casePerson|数据查询|否|||
+|[测试用例获取最新执行结果(case_latest_executed)](module/TestMgmt/run/dataset/case_latest_executed)|case_latest_executed|[实体逻辑](module/TestMgmt/run/logic/case_latest_executed)|否|||
 |[评论通知执行人(comment_notify_executor)](module/TestMgmt/run/dataset/comment_notify_executor)|comment_notify_executor|数据查询|否|||
 |[测试用例计划对比分析(comparativeAnalysis)](module/TestMgmt/run/dataset/comparativeAnalysis)|comparativeAnalysis|[实体逻辑](module/TestMgmt/run/logic/plan_compar_ative_analysis)|否|||
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/run/dataset/dailyTendencies)|dailyTendencies|[实体逻辑](module/TestMgmt/run/logic/run_daily_tendencies)|否|||
 |[每日测试次数统计(everydayTest)](module/TestMgmt/run/dataset/everydayTest)|everydayTest|[实体逻辑](module/TestMgmt/run/logic/run_everyday_test)|否|||
 |[当前模块下用例(normal)](module/TestMgmt/run/dataset/normal)|normal|数据查询|否|||
+|[测试计划内执行历史(plan_run_history)](module/TestMgmt/run/dataset/plan_run_history)|plan_run_history|数据查询|否|||
 |[优先级分布(priorityDistributions)](module/TestMgmt/run/dataset/priorityDistributions)|priorityDistributions|数据查询|否|||
 
 ## 数据权限
@@ -186,7 +200,7 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[设置执行人通知](module/TestMgmt/run/notify/executor_notify)|executor_notify|[默认消息队列](index/notify_index)|[执行用例通知模板(设置执行人)](index/notify_index#run_executor)|执行人 ||
+|[执行用例设置执行人通知](module/TestMgmt/run/notify/executor_notify)|executor_notify|[默认消息队列](index/notify_index)|[执行用例通知模板(设置执行人)](index/notify_index#run_executor)|执行人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -216,21 +230,28 @@
 | --------| --------| -------- |------------|------------|------------|
 | 记录执行结果 | add_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 全部通过 | all_pass | 全部通过 |无数据|用户自定义||
-| 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
 | 移出 | delete_run | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
-| 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
+| 打开选项操作视图（门户）（测试） | open_optview_portlet | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_test_option_view)</details>||
 | 设置执行人 | open_setting_actual_executor | 设置执行人 |多项数据（主键）|<details><summary>后台调用</summary>[set_executor](#行为)||
+| 打开选项操作视图（门户）（执行结果） | open_optview_Implementationresults | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_implementationresults_option_view)</details>||
+| 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
+| 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
+| 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
+| 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
+| 打开选项操作视图（门户）（成员执行） | open_optview_members_distribution | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_members_distribution_option_view)</details>||
 | 设置执行结果 | update_run_status | 设置执行结果 |多项数据（主键）|<details><summary>后台调用</summary>[batch_save_run_history](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
-| 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[刷新用例表格](module/TestMgmt/run/uilogic/refresh_run_grid)|refresh_run_grid|内置脚本，刷新用例表格|
+|[填充并刷新门户数据（测试）](module/TestMgmt/run/uilogic/fill_and_refresh_portlet)|fill_and_refresh_portlet|门户界面行为打开选项操作视图后，计算需要填充到视图上的数据|
 |[打开关联用例](module/TestMgmt/run/uilogic/open_re_run)|open_re_run|调用界面行为，打开关联用例|
 |[查看工时明细](module/TestMgmt/run/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[测试判断只读用户](module/TestMgmt/run/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
+|[获取执行结果总条数](module/TestMgmt/run/uilogic/get_run_result_total)|get_run_result_total|获取执行结果的总条数信息|
 |[触发计数器刷新(run)](module/TestMgmt/run/uilogic/refresh_counter_run)|refresh_counter_run|关联数据变更后，触发计数器刷新|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -248,6 +269,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/run?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/run?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/run?id=数据查询`">
   数据查询

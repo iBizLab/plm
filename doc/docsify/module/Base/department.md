@@ -100,60 +100,6 @@
 
 
 
-##### 当前部门（读） :id=department-CURDEPT_R
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `部门范围` ： <i class="fa fa-check-square"/></i> 当前部门
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `READ`
-
-
-
-##### 当前部门（读写） :id=department-CURDEPT_RW
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `部门范围` ： <i class="fa fa-check-square"/></i> 当前部门
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `DELETE`
-* `UPDATE`
-* `READ`
-* `CREATE`
-
-
-
-##### 当前组织（读） :id=department-CURORG_R
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `组织范围` ： <i class="fa fa-check-square"/></i> 当前组织
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `READ`
-
-
-
-##### 当前组织（读写） :id=department-CURORG_RW
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `组织范围` ： <i class="fa fa-check-square"/></i> 当前组织
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `DELETE`
-* `READ`
-* `CREATE`
-* `UPDATE`
-
-
-
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

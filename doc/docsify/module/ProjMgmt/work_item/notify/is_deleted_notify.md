@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [工作项通知模板(删除/恢复工作项)](index/notify_index?id=work_item_remove)
+* [工作项通知模板(删除/恢复工作项)](index/notify_index?id=work_item_remove_or_recover)
 
 <p class="panel-title"><b>通知类型</b></p>
 

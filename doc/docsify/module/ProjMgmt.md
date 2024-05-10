@@ -6,6 +6,7 @@
 
 |    名称col200   | 代码名col150      |  实体类型col150   | 存储模式col100 | 表名称col200   |    联合主键col100   |  主状态col100   |  权限控制col150  |  启用审计col100    |  备注col500  |
 | --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
+|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|baseline_work_item|主实体|无存储||是|否|自控制|否||
 |[看板(BOARD)](module/ProjMgmt/board)|board|主实体|SQL|BOARD|否|否|附属主实体控制（未映射自控）|否|用于可视化项目和任务进度的工具。|
 |[日容量(DAY_CAPACITY)](module/ProjMgmt/day_capacity)|day_capacity|主实体|无存储||否|否|自控制|否|定义团队或个人在单日内可承担的工作量。|
 |[看板栏(ENTRY)](module/ProjMgmt/entry)|entry|主实体|SQL|ENTRY|否|否|附属主实体控制（未映射自控）|否|看板管理的一个单元，代表看板中的一个列，用于看板中工作项状态管理。|

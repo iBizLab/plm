@@ -4,9 +4,11 @@
 SELECT
 	count( t.id ) AS test_case_re_work_item 
 FROM
-	work_item t 
+	work_item t, work_item_type t1 
 WHERE
-t.WORK_ITEM_TYPE_ID not like '%bug%' AND EXISTS (
+t.work_item_type_id = t1.id
+and t1.`group` <> 'bug' 
+AND EXISTS (
 	SELECT
 		* 
 	FROM

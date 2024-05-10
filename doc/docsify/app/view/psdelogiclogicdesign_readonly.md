@@ -2,10 +2,8 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 
 
 <script>

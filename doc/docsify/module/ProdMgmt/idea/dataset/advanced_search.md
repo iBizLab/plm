@@ -16,6 +16,10 @@
 * `指定属性组`
 
 
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `SHOW_IDENTIFIER(编号)` `ASC`
+
 
 
 ### 数据查询

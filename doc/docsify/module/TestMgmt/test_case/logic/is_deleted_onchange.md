@@ -36,7 +36,7 @@ Begin --> DENOTIFY1
 
 
 
-调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [删除/恢复测试用例通知(remove_notify)](module/TestMgmt/test_case/notify/remove_notify) ，参数为`Default(传入变量)`
+调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [测试用例删除/恢复通知(remove_notify)](module/TestMgmt/test_case/notify/remove_notify) ，参数为`Default(传入变量)`
 
 
 ### 实体逻辑参数

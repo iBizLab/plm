@@ -11,6 +11,16 @@
 |30|一般|item_30||
 |40|建议|item_40||
 
+##### 产品需求高级搜索属性 :id=idea_advanced_search_field
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|n_title_like|标题|n_title_like||
+|n_identifier_like|编号|n_identifier_like||
+|n_description_like|描述|n_description_like||
+
 ##### 任务类别 :id=task_category
 
 
@@ -57,17 +67,6 @@
 |30|重要通知|item_30||
 |40|关注|item_40||
 
-##### 发布状态 :id=version_status
-
-
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|pending|未开始|pending||
-|in_progress|进行中|in_progress||
-|completed|已发布|completed||
-|closed|已关闭|closed||
-
 ##### 可供选择的触发器 :id=enable_action
 
 
@@ -76,7 +75,27 @@
 | --------   |------------|------------|------------|
 |ProjMgmt.work_item.create:AFTER|创建工作项|projmgmt_work_item_create_after||
 |ProjMgmt.project.update:AFTER|更新项目信息|projmgmt_project_update_after||
-|TestMgmt.run.update.AFTER|更新执行用例|testmgmt_run_update_after||
+|TestMgmt.run.save_run_history.AFTER|更新执行用例|testmgmt_run_save_run_history_after||
+|Base.member.create:AFTER|创建团队成员|base_member_create_after||
+
+##### 团队角色类型 :id=user_group_role_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|admin|团队管理员|admin||
+|user|团队成员|user||
+
+##### 基线状态 :id=baseline_status
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|打开|item_1||
+|2|设立完成|item_2||
+|3|规划快照|item_3||
 
 ##### 复现概率 :id=reproduction_probability
 
@@ -88,6 +107,27 @@
 |20|大概率复现|item_20||
 |30|小概率复现|item_30||
 |40|仅出现一次|item_40||
+
+##### 字典目录 :id=dictionary_catalog
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|idea_state|需求状态|idea_state||
+|ticket_state|工单状态|ticket_state||
+|release_stage|发布阶段|release_stage||
+
+##### 字典项类型 :id=dictionary_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|pending|未开始|pending||
+|in_progress|进行中|in_progress||
+|completed|已完成|completed||
+|closed|已关闭|closed||
 
 ##### 实体通知目标类型 :id=DENotifyTargetType
 
@@ -150,6 +190,16 @@
 |issue|事务|issue||
 |plan|计划|plan||
 
+##### 工作项高级搜索属性 :id=work_item_advanced_search_field
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|n_title_like|标题|n_title_like||
+|n_identifier_like|编号|n_identifier_like||
+|n_description_like|描述|n_description_like||
+
 ##### 工单优先级 :id=ticket_priority
 
 
@@ -161,18 +211,6 @@
 |P2|P2|p2||
 |P3|P3|p3||
 |P4|P4|p4||
-
-##### 工单状态 :id=ticket_state
-
-
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|待处理|item_10||
-|20|处理中|item_20||
-|30|已计划|item_30||
-|40|已完成|item_40||
-|50|已关闭|item_50||
 
 ##### 工单解决方案 :id=solutions
 
@@ -187,6 +225,16 @@
 |50|暂时搁置|item_50||
 |60|功能已支持|item_60||
 |70|不予采纳|item_70||
+
+##### 工单高级搜索属性 :id=ticket_advanced_search_field
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|n_title_like|标题|n_title_like||
+|n_identifier_like|编号|n_identifier_like||
+|n_description_like|描述|n_description_like||
 
 ##### 所属类型（空间） :id=space_scope_type
 
@@ -227,6 +275,17 @@
 |0|未应用|item_0||
 |1|已应用|item_1||
 
+##### 报表类型 :id=report_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|柱状图|item_10||
+|20|饼状图|item_20||
+|30|折线图|item_30||
+|40|区域图|item_40||
+
 ##### 报表组别 :id=insight_group
 
 
@@ -236,7 +295,7 @@
 |board|看板报表|board||
 |backlog|需求报表|backlog||
 |defect|缺陷报表|defect||
-|sprint|迭代|sprint||
+|sprint|迭代报表|sprint||
 |project|项目报表|project||
 |test_case|测试用例|test_case||
 |run_case|执行情况|run_case||
@@ -287,10 +346,10 @@
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|1|产品管理|item_1||
-|2|项目管理|item_2||
-|3|测试管理|item_3||
-|4|知识管理|item_4||
+|product|产品管理|product||
+|project|项目管理|project||
+|library|测试管理|library||
+|space|知识管理|space||
 
 ##### 日志状态 :id=log_state
 
@@ -370,6 +429,19 @@
 |space_stencil|空间模板|space_stencil||
 |org_stencil|组织模板|org_stencil||
 
+##### 活动对象类型 :id=activity_obj_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|work_item|工作项|work_item||
+|idea|需求|idea||
+|ticket|工单|ticket||
+|test_case|用例|test_case||
+|run|执行用例|run||
+|customer|客户|customer||
+
 ##### 测试分类 :id=test_plan_type
 
 
@@ -379,6 +451,16 @@
 |10|普通测试|item_10||
 |20|迭代测试|item_20||
 |30|发布测试|item_30||
+
+##### 测试用例高级搜索属性 :id=test_case_advanced_search_field
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|n_title_like|标题|n_title_like||
+|n_identifier_like|编号|n_identifier_like||
+|n_description_like|描述|n_description_like||
 
 ##### 测试类型 :id=test_case_test_type
 
@@ -398,6 +480,16 @@
 |pending|未开始|pending||
 |in_progress|进行中|in_progress||
 |completed|已完成|completed||
+
+##### 用例状态 :id=case_state
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|设计|item_10||
+|20|就绪|item_20||
+|30|废弃|item_30||
 
 ##### 用例类型 :id=test_case_type
 
@@ -425,7 +517,7 @@
 |20|评审中|item_20||
 |30|通过|item_30||
 |40|不通过|item_40||
-|50|废弃|item_50||
+|50|已撤回|item_50||
 
 ##### 用例重要程度 :id=test_case_level
 
@@ -447,8 +539,8 @@
 | --------   |------------|------------|------------|
 |200|成功|item_200||
 |400|用户不存在|item_400||
-|401.1|密码错误|item_3||
-|401.2|配置错误|item_4||
+|401.2|配置错误|item_3||
+|401.1|密码错误|item_4||
 |403.6|地址被拒绝|item_5||
 
 ##### 监听通知事件 :id=notify_event
@@ -493,6 +585,35 @@
 |user|普通成员|user||
 |reader|只读成员|reader||
 
+##### 评审内容变更类型 :id=review_change_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|0|新增|item_0||
+|1|修改|item_1||
+|2|删除|item_2||
+
+##### 评审类型 :id=review_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|用例评审|item_10||
+|20|基线评审|item_20||
+
+##### 评审结果 :id=review_result
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|2|未评审|item_2||
+|3|通过|item_3||
+|4|拒绝|item_4||
+
 ##### 评论主体类型 :id=principal_type
 
 
@@ -521,6 +642,17 @@
 | --------   |------------|------------|------------|
 |ProjMgmt.work_item.assignee_id|负责人|projmgmt_work_item_assignee_id||
 |ProjMgmt.work_item.create_man|建立人|projmgmt_work_item_create_man||
+
+##### 通知分组 :id=group
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|product|产品管理|product||
+|project|项目管理|project||
+|test|测试管理|test||
+|wiki|知识管理|wiki||
 
 ##### 通知子类 :id=DENotifySubType
 
@@ -563,6 +695,16 @@
 |USER3|用户自定义3|user3||
 |USER4|用户自定义4|user4||
 
+##### 阶段类型 :id=stage_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|pending|未开始|pending||
+|in_progress|进行中|in_progress||
+|published|已发布|published||
+
 ##### 需求优先级 :id=idea_priority
 
 
@@ -600,18 +742,6 @@
 |40|竞品调研|item_40||
 |50|其他|item_50||
 
-##### 需求状态 :id=idea_state
-
-
-
-| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
-| --------   |------------|------------|------------|
-|10|待评审|item_10||
-|20|已计划|item_20||
-|30|进行中|item_30||
-|40|已完成|item_40||
-|50|已关闭|item_50||
-
 ##### 需求类型 :id=requirement_type
 
 
@@ -632,6 +762,15 @@
 |1|文档|item_1||
 |2|分组|item_2||
 |3|画板|item_3||
+
+##### 页面高级搜索属性 :id=page_advanced_search_field
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|n_name_like|主题|n_name_like||
+|n_content_like|页面内容|n_content_like||
 
 ##### 项目状态 :id=project_state
 

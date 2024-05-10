@@ -15,6 +15,22 @@
 
 
 
+## [基线(BASELINE)](module/Base/baseline.md)  :id=baseline
+
+#### [Remove](module/Base/baseline#行为) :id=baseline_Remove
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove.md)
+
+
+
+
+
 ## [看板(BOARD)](module/ProjMgmt/board.md)  :id=board
 
 #### [Create](module/ProjMgmt/board#行为) :id=board_Create
@@ -27,6 +43,19 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成默认看板栏和泳道(create_default_entry)](module/ProjMgmt/board/logic/create_default_entry.md)
+
+
+#### [Remove](module/ProjMgmt/board#行为) :id=board_Remove
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [删除看板之前判断(before_remove)](module/ProjMgmt/board/logic/before_remove.md)
+
+
 
 
 
@@ -120,6 +149,9 @@
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/TestMgmt/library/logic/create_recent.md)
 
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [自动创建人员(auto_create_members)](module/TestMgmt/library/logic/auto_create_members.md)
+
 
 #### [Get](module/TestMgmt/library#行为) :id=library_Get
 
@@ -157,7 +189,7 @@
 <br>
 
 > [!NOTE|label:实体通知]
-> 实体通知 [加入测试库成员通知(library_member_create)]()
+> 实体通知 [测试库成员加入通知(library_member_create)]()
 
 
 #### [Remove](module/TestMgmt/library_member#行为) :id=library_member_Remove
@@ -204,12 +236,14 @@
 
 
 
-
-<p class="panel-title"><b>操作之后</b></p>
+<p class="panel-title"><b>操作之前</b></p>
 <br>
 
-> [!NOTE|label:内部逻辑]
-> 执行处理逻辑 [生成最近访问(create_recent)](module/Wiki/article_page/logic/create_recent.md)
+> [!NOTE|label:外部逻辑]
+> 执行处理逻辑 [生成版本(commit_version)](module/Wiki/article_page/logic/commit_version.md)
+> 执行实体 [页面(PAGE)](module/Wiki/article_page.md) 的 [生成版本(commit_version)](module/Wiki/article_page#行为) 行为
+
+
 
 
 
@@ -224,7 +258,7 @@
 <br>
 
 > [!NOTE|label:实体通知]
-> 实体通知 [加入成员通知(create_member_notify)]()
+> 实体通知 [项目集加入成员通知(create_member_notify)]()
 
 
 #### [Remove](module/Base/portfolio_member#行为) :id=portfolio_member_Remove
@@ -260,6 +294,12 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/product/logic/create_recent.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [自动创建人员(auto_create_members)](module/ProdMgmt/product/logic/auto_create_members.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [生成产品工单类型(create_product_ticket)](module/ProdMgmt/product/logic/create_product_ticket.md)
 
 
 #### [Get](module/ProdMgmt/product#行为) :id=product_Get
@@ -298,7 +338,7 @@
 <br>
 
 > [!NOTE|label:实体通知]
-> 实体通知 [加入产品成员通知(create_member_notify)]()
+> 实体通知 [产品成员加入通知(create_member_notify)]()
 
 
 #### [Remove](module/ProdMgmt/product_member#行为) :id=product_member_Remove
@@ -334,6 +374,9 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProjMgmt/project/logic/create_recent.md)
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [自动创建人员(auto_create_members)](module/ProjMgmt/project/logic/auto_create_members.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成默认看板(create_default_board)](module/ProjMgmt/project/logic/create_default_board.md)
@@ -387,7 +430,7 @@
 <br>
 
 > [!NOTE|label:实体通知]
-> 实体通知 [加入项目成员通知(create_member_notify)]()
+> 实体通知 [项目成员加入通知(create_member_notify)]()
 
 
 #### [Remove](module/ProjMgmt/project_member#行为) :id=project_member_Remove
@@ -458,6 +501,9 @@
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [自动创建主页(auto_create_home_page)](module/Wiki/space/logic/auto_create_home_page.md)
 
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [自动创建人员(auto_create_members)](module/Wiki/space/logic/auto_create_members.md)
+
 
 #### [Get](module/Wiki/space#行为) :id=space_Get
 
@@ -483,7 +529,7 @@
 <br>
 
 > [!NOTE|label:实体通知]
-> 实体通知 [加入知识库成员通知(create_member_notify)]()
+> 实体通知 [空间成员加入通知(create_member_notify)]()
 
 
 #### [Remove](module/Wiki/space_member#行为) :id=space_member_Remove
@@ -575,6 +621,22 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/ticket/logic/create_recent.md)
+
+
+
+## [版本(VERSION)](module/Base/version.md)  :id=version
+
+#### [GetDraft](module/Base/version#行为) :id=version_GetDraft
+
+
+
+<p class="panel-title"><b>操作之前</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name.md)
+
+
 
 
 

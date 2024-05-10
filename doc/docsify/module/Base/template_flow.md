@@ -30,8 +30,10 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[同步父子工作项的完成状态](module/Base/template_flow/logic/sync_work_item_finish)|sync_work_item_finish|事件处理（运行时支持）|||
-|[定时将已完成工作项归档](module/Base/template_flow/logic/turn_work_item_archived)|turn_work_item_archived|定时作业（运行时支持）||通过定时任务，将已完成的工作项归档，结束时间超过三天|
+|[定时将已完成工作项归档](module/Base/template_flow/logic/turn_work_item_archived)|turn_work_item_archived|定时作业（运行时支持）||通过定时任务，将已完成的工作项归档，结束时间超过三天。|
 |[自动创建子任务](module/Base/template_flow/logic/auto_create_sub_work_item)|auto_create_sub_work_item|事件处理（运行时支持）|||
+|[自动将新成员加入指定空间](module/Base/template_flow/logic/auto_add_member_to_space)|auto_add_member_to_space|事件处理（运行时支持）||新成员加入团队后，自动加入到指定的空间。|
+|[自动将新成员加入指定项目](module/Base/template_flow/logic/auto_add_member_to_project)|auto_add_member_to_project|事件处理（运行时支持）||新成员加入团队后，自动加入到指定的项目。|
 |[自动设置工作项负责人](module/Base/template_flow/logic/auto_fill_assign_man)|auto_fill_assign_man|事件处理（运行时支持）|||
 |[自动设置测试计划的启动和完成状态](module/Base/template_flow/logic/test_plan_auto_set_state)|test_plan_auto_set_state|事件处理（运行时支持）|||
 

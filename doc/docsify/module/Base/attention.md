@@ -93,6 +93,11 @@
 | -------- |---------- |----------- |------------|----------|
 |[添加关注后发送通知](module/Base/attention/logic/after_create_notify)|after_create_notify|无||添加关注人员后，触发提醒关注通知消息给关注人员|
 
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
+
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
@@ -131,8 +136,13 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[提醒关注页面通知](module/Base/attention/notify/attention_page_notify)|attention_page_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板(页面)](index/notify_index#page_notice_attention)|关注人 ||
-|[提醒关注通知](module/Base/attention/notify/notice_attention_notify)|notice_attention_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[客户提醒关注通知](module/Base/attention/notify/attention_customer_notify)|attention_customer_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[产品需求提醒关注通知](module/Base/attention/notify/attention_idea_notify)|attention_idea_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[页面提醒关注通知](module/Base/attention/notify/attention_page_notify)|attention_page_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板(页面)](index/notify_index#page_notice_attention)|关注人 ||
+|[执行用例提醒关注通知](module/Base/attention/notify/attention_run_notify)|attention_run_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[测试用例提醒关注通知](module/Base/attention/notify/attention_test_case_notify)|attention_test_case_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[工单提醒关注通知](module/Base/attention/notify/attention_ticket_notify)|attention_ticket_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[工作项提醒关注通知](module/Base/attention/notify/attention_work_item_notify)|attention_work_item_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -161,6 +171,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/attention?id=处理逻辑`">
   处理逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/attention?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/attention?id=数据查询`">
   数据查询

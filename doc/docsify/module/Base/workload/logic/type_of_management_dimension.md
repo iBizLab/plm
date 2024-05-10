@@ -57,7 +57,7 @@ LOOPSUBCALL1 --> END1
 
 
 
-调用实体 [工时(WORKLOAD)](module/Base/workload.md) 数据集合 [工作类别记录(type_of)](module/Base/workload#数据集合) ，查询参数为`Default(传入变量)`
+调用实体 [工时(WORKLOAD)](module/Base/workload.md) 数据集合 [工时日历(calendar)](module/Base/workload#数据集合) ，查询参数为`Default(传入变量)`
 
 将执行结果返回给参数`page(分页查询结果变量)`
 

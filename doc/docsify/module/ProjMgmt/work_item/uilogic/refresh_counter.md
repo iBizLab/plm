@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_counter#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./refresh_counter#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./refresh_counter#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./refresh_counter#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1

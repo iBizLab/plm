@@ -70,12 +70,63 @@
 |[数据集(DEFAULT)](module/Base/notify_setting/dataset/Default)|DEFAULT|数据查询|是|||
 |[当前用户(CUR_USER)](module/Base/notify_setting/dataset/cur_user)|CUR_USER|数据查询|否|||
 
+## 数据权限
+
+##### 全部数据（读） :id=notify_setting-ALL_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
+##### 全部数据（读写） :id=notify_setting-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `CREATE`
+* `UPDATE`
+* `READ`
+
+
+
+##### 当前用户（读写） :id=notify_setting-USER_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `READ`
+* `UPDATE`
+* `CREATE`
+
+
+
+
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_OWNER_TYPE_EQ|所有者类型|EQ||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 还原默认配置并重新加载 | reset | 还原默认设置 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 通知设置 | config | 通知设置 |无数据|用户自定义||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -99,8 +150,14 @@
 <el-anchor-link :href="`#/module/Base/notify_setting?id=数据集合`">
   数据集合
 </el-anchor-link>
+<el-anchor-link :href="`#/module/Base/notify_setting?id=数据权限`">
+  数据权限
+</el-anchor-link>
 <el-anchor-link :href="`#/module/Base/notify_setting?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/notify_setting?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

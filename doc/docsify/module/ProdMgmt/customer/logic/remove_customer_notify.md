@@ -67,7 +67,7 @@ defaultObj.set("update_time", new Date());
 
 
 
-调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [删除客户通知(remove_notify)](module/ProdMgmt/customer/notify/remove_notify) ，参数为`Default(传入变量)`
+调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户删除通知(remove_notify)](module/ProdMgmt/customer/notify/remove_notify) ，参数为`Default(传入变量)`
 
 
 ### 实体逻辑参数

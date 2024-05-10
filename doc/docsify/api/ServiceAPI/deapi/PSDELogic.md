@@ -33,12 +33,20 @@
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
@@ -69,6 +77,10 @@
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -77,6 +89,10 @@
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -109,6 +125,10 @@
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -117,6 +137,10 @@
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -169,6 +193,10 @@
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -177,6 +205,10 @@
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -246,12 +278,20 @@
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
@@ -282,6 +322,10 @@
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -290,6 +334,10 @@
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -322,6 +370,10 @@
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -330,6 +382,10 @@
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -373,12 +429,20 @@
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
@@ -409,6 +473,10 @@
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -417,6 +485,10 @@
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -465,12 +537,20 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
@@ -501,6 +581,10 @@ Integer
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -509,6 +593,10 @@ Integer
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -541,6 +629,10 @@ Integer
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -549,6 +641,10 @@ Integer
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -592,12 +688,20 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
@@ -628,6 +732,10 @@ Integer
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -636,6 +744,10 @@ Integer
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -668,6 +780,10 @@ Integer
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -676,6 +792,10 @@ Integer
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -724,12 +844,20 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
 |<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
@@ -760,6 +888,10 @@ Integer
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -768,6 +900,10 @@ Integer
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -821,6 +957,10 @@ Integer
   "createdate" : null,
   "createman" : null,
   "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
   "logictype" : null,
   "memo" : null,
   "psdeid" : null,
@@ -829,6 +969,10 @@ Integer
   "psdename" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "validflag" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
@@ -862,7 +1006,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_logicsubtype_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">n_psdeid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">n_psdelogicid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">n_psdelogicname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
+|<el-row justify="space-between"><el-col :span="20">n_psdelogicname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_psdename_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">n_psdename_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 
@@ -911,6 +1055,10 @@ Integer
     "createdate" : null,
     "createman" : null,
     "logicsubtype" : null,
+    "logictag" : null,
+    "logictag2" : null,
+    "logictag3" : null,
+    "logictag4" : null,
     "logictype" : null,
     "memo" : null,
     "psdeid" : null,
@@ -919,6 +1067,10 @@ Integer
     "psdename" : null,
     "updatedate" : null,
     "updateman" : null,
+    "usertag" : null,
+    "usertag2" : null,
+    "usertag3" : null,
+    "usertag4" : null,
     "validflag" : null,
     "extension_tag" : null,
     "extension_tag2" : null,

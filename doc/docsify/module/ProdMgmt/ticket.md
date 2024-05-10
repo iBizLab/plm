@@ -11,6 +11,7 @@
 |负责人|ASSIGNEE_NAME|外键值文本|100|是||
 |附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |渠道|CHANNEL|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
@@ -29,7 +30,7 @@
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |解决方案|SOLUTION|[单项选择(文本值)](index/dictionary_index#solutions "工单解决方案")|60|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#ticket_state "工单状态")|60|是||
+|状态|STATE|单项选择(文本值)|60|是||
 |提交时间|SUBMITTED_AT|日期时间型||是||
 |提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
 |提交人|SUBMITTER_NAME|文本，可指定长度|100|是||
@@ -53,7 +54,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |标题|TITLE|文本，可指定长度|500|否||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#ticket_state "工单状态")|60|是||
+|状态|STATE|单项选择(文本值)|60|是||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
 
 </el-tab-pane>
@@ -80,7 +81,7 @@
 | -------- |---------- |------------|----- |
 |[DERCUSTOM_ATTENTION_TICKET_OWNER_ID](der/DERCUSTOM_ATTENTION_TICKET_OWNER_ID)|[关注(ATTENTION)](module/Base/attention)|自定义关系||
 |[DERCUSTOM_COMMENT_TICKET_PRINCIPAL_ID](der/DERCUSTOM_COMMENT_TICKET_PRINCIPAL_ID)|[评论(COMMENT)](module/Base/comment)|自定义关系||
-|[DERCUSTOM_RELATION_TICKET](der/DERCUSTOM_RELATION_TICKET)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_TICKET](der/DERCUSTOM_RELATION_TARGET_TICKET)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_TICKET_ATTACHMENT](der/DERCUSTOM_TICKET_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
 |[DERCUSTOM_TICKET_SEARCH_ATTACHMENT](der/DERCUSTOM_TICKET_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
 |[DERCUSTOM_TICKET_SEARCH_COMMENT](der/DERCUSTOM_TICKET_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
@@ -117,8 +118,8 @@
 |客户取消关联工单|customer_del_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/customer_del_ticket "客户取消关联工单")|默认|不支持||||
 |取消关联|del_relation|[实体处理逻辑](module/ProdMgmt/ticket/logic/del_relation "取消关联")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProdMgmt/ticket/logic/delete "删除")|默认|不支持||||
+|获取产品成员|fill_product_member|[实体处理逻辑](module/ProdMgmt/ticket/logic/get_product_member "获取产品成员")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
-|获取产品成员|get_product_member|[实体处理逻辑](module/ProdMgmt/ticket/logic/get_product_member "获取产品成员")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/ticket/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联工单|others_relation_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/others_relation_ticket "其他实体关联工单")|默认|不支持||||
 |产品工单关联分页计数器|product_ticket_re_counters|[实体处理逻辑](module/ProdMgmt/ticket/logic/product_ticket_re_counters "产品工单关联分页计数器")|默认|不支持||||
@@ -191,12 +192,6 @@
     <td></td>
   </tr>
   <tr>
-    <td>归档(ARCHIVED)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>更新(UPDATE)<br><a href ="#/der/DER1N_TICKET_PRODUCT_PRODUCT_ID">DER1N_TICKET_PRODUCT_PRODUCT_ID</a></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -204,12 +199,6 @@
   </tr>
   <tr>
     <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>激活(ACTIVATE)</td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
@@ -229,6 +218,12 @@
 
 </table>
 
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|审计|数据审计|[活动(ACTIVITY)](module/Base/activity)||
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -296,12 +291,12 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[归档/激活通知](module/ProdMgmt/ticket/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[工单通知模板(归档/激活工单)](index/notify_index#ticket_archive)|负责人 关注人员 ||
-|[取消分配负责人通知](module/ProdMgmt/ticket/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[工单通知模板(取消分配负责人)](index/notify_index#ticket_assignee_cancel)|负责人 ||
-|[分配负责人通知](module/ProdMgmt/ticket/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[工单通知模板(分配负责人)](index/notify_index#ticket_assignee)|负责人 ||
-|[负责人变更通知](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[工单通知模板(负责人变更)](index/notify_index#ticket_assignee_onchange)|负责人 关注人员 ||
-|[删除/恢复工单通知](module/ProdMgmt/ticket/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[工单通知模板(删除/恢复工单)](index/notify_index#ticket_remove)|负责人 关注人员 ||
-|[状态变更通知](module/ProdMgmt/ticket/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[工单通知模板(状态变更)](index/notify_index#ticket_state_onchange)|关注人员 负责人 ||
+|[工单归档/激活通知](module/ProdMgmt/ticket/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[工单通知模板(归档/激活工单)](index/notify_index#ticket_archived_or_activate)|负责人 关注人员 ||
+|[工单取消分配负责人通知](module/ProdMgmt/ticket/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[工单通知模板(取消分配负责人)](index/notify_index#ticket_assignee_cancel)|负责人 ||
+|[工单分配负责人通知](module/ProdMgmt/ticket/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[工单通知模板(分配负责人)](index/notify_index#ticket_assignee)|负责人 ||
+|[工单负责人变更通知](module/ProdMgmt/ticket/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[工单通知模板(负责人变更)](index/notify_index#ticket_assignee_onchange)|负责人 关注人员 ||
+|[工单删除/恢复工单通知](module/ProdMgmt/ticket/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[工单通知模板(删除/恢复工单)](index/notify_index#ticket_remove_or_recover)|负责人 关注人员 ||
+|[工单状态变更通知](module/ProdMgmt/ticket/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[工单通知模板(状态变更)](index/notify_index#ticket_state_onchange)|负责人 关注人员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -314,6 +309,7 @@
 |N_CUSTOMER_ID_EQ|客户标识|EQ||
 |N_CUSTOMER_NAME_EQ|客户|EQ||
 |N_CUSTOMER_NAME_LIKE|客户|LIKE||
+|N_DESCRIPTION_LIKE|描述|LIKE||
 |N_ID_NOTEQ|标识|NOTEQ||
 |N_ID_EQ|标识|EQ||
 |N_IDENTIFIER_EQ|编号|EQ||
@@ -337,33 +333,45 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
+| 工单自定义导入 | ticket_custom_import_data | 导入 |无数据|<details><summary>打开数据导入视图</summary>[产品工单导入]()</details>||
 | 工单删除 | ticket_delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
 | 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
+| 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 确定 | panel_usr1226376706_button_okaction_click | 确定 |单项数据|用户自定义||
 | 添加工单（其他实体关联） | others_add_relation_ticket | 添加工单 |无数据|用户自定义||
 | 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
-| 关联产品需求 | link_product | 关联产品需求 |无数据|用户自定义||
+| 工单删除（工具栏） | toolbar_ticket_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 激活（工具栏） | toolbar_activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
+| 关联产品需求（工具栏） | toolbar_link_product | 关联产品需求 |无数据|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 设置标签 | choose_tag | 设置标签 |多项数据（主键）|<details><summary>后台调用</summary>[choose_tag](#行为)||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | 工单归档 | ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
+| 工单归档（工具栏） | toolbar_ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 客户取消关联工单 | customer_del_ticket | 取消关联 |单项数据|<details><summary>后台调用</summary>[customer_del_ticket](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[关联产品需求](module/ProdMgmt/ticket/uilogic/link_product)|link_product|关联产品需求，生成正反向关联数据|
+|[上传附件（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
+|[关联产品需求（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
+|[关联工作项（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联工单值变更](module/ProdMgmt/ticket/uilogic/relation_ticket_change)|relation_ticket_change|关联工单值变更时，调用处理逻辑，生成正反向关联数据|
+|[关联工单（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_ticket)|toolbar_link_ticket|主视图工具栏上点击触发，切换分页，打开下拉菜单|
+|[刷新工单表格](module/ProdMgmt/ticket/uilogic/refresh_ticket_grid)|refresh_ticket_grid||
+|[只读隐藏](module/ProdMgmt/ticket/uilogic/readonly_hide)|readonly_hide||
 |[客户添加工单值变更](module/ProdMgmt/ticket/uilogic/customer_add_change)|customer_add_change|客户添加工单值变更，触发工单的客户属性变更|
 |[工作项关联工单](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
-|[工具栏上传附件](module/ProdMgmt/ticket/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
 |[建立关联数据](module/ProdMgmt/ticket/uilogic/create_relation)|create_relation|新建执行后，建立关联数据|
 |[建立双向关联数据](module/ProdMgmt/ticket/uilogic/create_double_relation)|create_double_relation|建立双向关联数据|
 |[新建工单并生成关联数据](module/ProdMgmt/ticket/uilogic/create_and_relation)|create_and_relation|新建工单并生成关联数据|
+|[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/ticket/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项（工具栏）|
 |[测试判断只读用户](module/ProdMgmt/ticket/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[添加附件数据](module/ProdMgmt/ticket/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[获取工单总条数](module/ProdMgmt/ticket/uilogic/get_ticket_total)|get_ticket_total|获取工单的总条数信息|
@@ -389,7 +397,7 @@
 <el-descriptions-item label="优先级">-</el-descriptions-item>
 <el-descriptions-item label="解决方案">-</el-descriptions-item>
 <el-descriptions-item label="标签">-</el-descriptions-item>
-<el-descriptions-item label="产品">-</el-descriptions-item>
+<el-descriptions-item label="关注人">-</el-descriptions-item>
 </el-descriptions>
 
 ## 导出模式
@@ -433,6 +441,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/ticket?id=主状态控制`">
   主状态控制
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProdMgmt/ticket?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/ticket?id=数据查询`">
   数据查询

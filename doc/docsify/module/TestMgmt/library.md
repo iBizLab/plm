@@ -18,6 +18,8 @@
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |测试库名称|NAME|文本，可指定长度|200|否||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
@@ -34,8 +36,11 @@
 |[DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID](der/DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID)|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|1:N关系||
 |[DER1N_REVIEW_LIBRARY_LIBRARY_ID](der/DER1N_REVIEW_LIBRARY_LIBRARY_ID)|[评审(REVIEW)](module/TestMgmt/review)|1:N关系||
 |[DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID](der/DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
+|[DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID](der/DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID)|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|1:N关系||
 |[DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID](der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
 |[DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID](der/DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID)|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|1:N关系||
+|[DERCUSTOM_BASELINE_LIBRARY_OWNER_ID](der/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
+|[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
 
 
 </el-tab-pane>
@@ -90,71 +95,13 @@
 |[是否归档变更附加逻辑](module/TestMgmt/library/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||测试库归档或激活时触发相应的通知消息|
 |[激活](module/TestMgmt/library/logic/activate)|activate|无||激活已归档状态测试库，修改测试库的归档属性|
 |[生成最近访问](module/TestMgmt/library/logic/create_recent)|create_recent|无||在用户对测试库数据进行了get或update操作时生成相应的访问记录|
+|[自动创建人员](module/TestMgmt/library/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[设置星标](module/TestMgmt/library/logic/favorite)|favorite|无||设置为星标测试库|
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `是否星标(IS_FAVORITE)` 
-
-
-
-
-<p class="panel-title"><b>操作标识分布</b></p>
-<br>
-<table>
-  <tr>
-    <th>操作标识col350</th>
-    <th>是col150</th>
-    <th>否col150</th>
-    <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>删除(DELETE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>取消星标(CANCEL_FAVORITE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>子数据权限(SUBDATA)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>设置星标(ADD_FAVORITE)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-
-</table>
-
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -260,8 +207,8 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[测试库归档/激活通知](module/TestMgmt/library/notify/library_archive_notify)|library_archive_notify|[默认消息队列](index/notify_index)|[测试库通知模板(归档/激活测试库)](index/notify_index#library_archive)|当前测试库成员 ||
-|[测试库删除/恢复通知](module/TestMgmt/library/notify/library_remove_notify)|library_remove_notify|[默认消息队列](index/notify_index)|[测试库通知模板(删除/恢复测试库)](index/notify_index#library_remove)|当前测试库成员 ||
+|[测试库归档/激活通知](module/TestMgmt/library/notify/library_archive_notify)|library_archive_notify|[默认消息队列](index/notify_index)|[测试库通知模板(归档/激活测试库)](index/notify_index#library_archived_or_activate)|当前测试库成员 ||
+|[测试库删除/恢复通知](module/TestMgmt/library/notify/library_remove_notify)|library_remove_notify|[默认消息队列](index/notify_index)|[测试库通知模板(删除/恢复测试库)](index/notify_index#library_remove_or_recover)|当前测试库成员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -271,8 +218,8 @@
 |N_IDENTIFIER_EQ|测试库标识|EQ||
 |N_IS_ARCHIVED_EQ|是否已归档|EQ||
 |N_IS_DELETED_EQ|是否已删除|EQ||
-|N_IS_FAVORITE_EQ|是否星标|EQ||
 |N_NAME_LIKE|测试库名称|LIKE||
+|N_SCOPE_TYPE_EQ|所属|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
 ## 界面行为
@@ -282,6 +229,7 @@
 | 取消星标 | unstar | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 更多设置 | open_details_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 测试库信息 | open_show_edit_view | 测试库信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库信息](app/view/library_show_edit_view)</details>||
+| 新建测试库 | create_library | 新建测试库 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建测试库](app/view/library_create_wizard_view)</details>||
 | 恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 设置星标 | star | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
@@ -291,6 +239,7 @@
 | 测试库成员 | setting_library_member | 测试库成员 |单项数据（主键）|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 编辑基本信息 | setting_base_info | 编辑基本信息 |单项数据（主键）|用户自定义||
+| 打开新建测试库 | open_new_library | 打开新建测试库 |单项数据|<details><summary>打开顶级视图</summary>[测试库](app/view/library_index_view)</details>||
 | 新开窗口（测试库） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/library=${data.id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnav=root%3Anode/test_plan_all_grid_view/n_library_id_eq=${data.id}*</details>||
 | 打开测试库主视图 | open_index_view | 打开测试库主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_index_view)</details>||
 
@@ -299,6 +248,8 @@
 | --------|--------|--------|
 |[刷新当前表格](module/TestMgmt/library/uilogic/refresh_current_grid)|refresh_current_grid|按钮触发，通过脚本切换显示组件|
 |[批量删除测试库成员临时数据](module/TestMgmt/library/uilogic/remove_batch_temp)|remove_batch_temp|获取测试库内所有临时成员数据并删除|
+|[计算表格列行为状态(library)](module/TestMgmt/library/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[通知刷新](module/TestMgmt/library/uilogic/notify_refresh)|notify_refresh||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -316,8 +267,8 @@
 <el-anchor-link :href="`#/module/TestMgmt/library?id=处理逻辑`">
   处理逻辑
 </el-anchor-link>
-<el-anchor-link :href="`#/module/TestMgmt/library?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/TestMgmt/library?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/library?id=数据查询`">
   数据查询

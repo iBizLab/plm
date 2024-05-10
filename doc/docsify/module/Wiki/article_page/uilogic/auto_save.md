@@ -15,11 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./auto_save#begin {开始}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./auto_save#debugparam1 {调试逻辑参数}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./auto_save#preparejsparam1 {准备参数}]]
 state "静默保存" as VIEWCTRLINVOKE1  [[$./auto_save#viewctrlinvoke1 {静默保存}]]
 
 
-Begin --> PREPAREJSPARAM1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREJSPARAM1
 PREPAREJSPARAM1 --> VIEWCTRLINVOKE1 : [[$./auto_save#preparejsparam1-viewctrlinvoke1{值是否变更} 值是否变更]]
 
 
@@ -33,6 +35,13 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1 : [[$./auto_save#preparejsparam1-viewctrlinv
 
 
 
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`传入变量`的详细信息
 
 #### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -55,6 +64,6 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1 : [[$./auto_save#preparejsparam1-viewctrlinv
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|参数|param|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表单|FORM|部件对象||
-|参数|param|数据对象||

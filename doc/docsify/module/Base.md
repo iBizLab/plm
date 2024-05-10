@@ -9,7 +9,7 @@
 |[活动(ACTIVITY)](module/Base/activity)|activity|主实体|SQL|ACTIVITY|否|否|自控制|否|记录系统中用户或系统行为的日志，可以是实体属性更新、状态变更等。|
 |[附件(ATTACHMENT)](module/Base/attachment)|attachment|动态附属实体|SQL|ATTACHMENT|否|否|自控制|否|与工作项或文档、需求等实体关联的文件，用于提供额外信息。|
 |[关注(ATTENTION)](module/Base/attention)|attention|主实体|SQL|ATTENTION|是|否|附属主实体控制|否|允许用户标记重要的项目或信息，以便于跟踪和及时获取更新。|
-|[基线(BASELINE)](module/Base/baseline)|baseline|主实体|SQL|BASELINE|否|是|附属主实体控制（未映射自控）|否|用于查看和管理基线相关信息。|
+|[基线(BASELINE)](module/Base/baseline)|baseline|主实体|SQL|BASELINE|否|是|附属主实体控制|否|用于查看和管理基线相关信息。|
 |[类别(CATEGORY)](module/Base/category)|category|主实体|SQL|CATEGORY|否|否|自控制|否|逻辑上用于分类存储其他实体的容器。|
 |[评论(COMMENT)](module/Base/comment)|comment|主实体|SQL|COMMENT|否|否|附属主实体控制|否|用于存储用户在需求、工单、工作项、页面、等内容上发布的评论。|
 |[通用规则(COMMON_FLOW)](module/Base/common_flow)|common_flow|主实体|无存储||否|否|自控制|否|用于存储通用规则|
@@ -17,6 +17,7 @@
 |[部门(DEPARTMENT)](module/Base/department)|department|主实体|无存储||否|否|自控制|否|用于查看和管理企业的部门信息。|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|dictionary_data|主实体|SQL|DICTIONARY|否|否|自控制|否|用于记录基础数据字典。|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|dyna_dashboard|主实体|SQL|DYNADASHBOARD|否|否|自控制|否|配置动态数据看板功能必备。|
+|[动态看板部件配置(DYNA_PORTLET_SETTING)](module/Base/dyna_portlet_setting)|dyna_portlet_setting|主实体|无存储||否|否|自控制|否||
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|extend_log|主实体|SQL|EXTEND_LOG|否|否|自控制|否||
 |[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)|extend_storage|主实体|SQL|EXTEND_STORAGE|是|否|自控制|否||
 |[收藏(FAVORITE)](module/Base/favorite)|favorite|主实体|SQL|FAVORITE|是|否|自控制|否|用户自定义的收藏记录，方便快速访问常用的实体或页面。|

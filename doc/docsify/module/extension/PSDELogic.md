@@ -22,12 +22,16 @@
 |最后运行时间|LAST_START_AT|日期时间型||是||
 |最后运行状态|LAST_STATE|[单项选择(文本值)](index/dictionary_index#log_state "日志状态")|200|是||
 |逻辑子类|LOGICSUBTYPE|[单项选择(文本值)](index/dictionary_index#DELogicSubType "逻辑子类")|30|是||
+|逻辑标记|LOGICTAG|文本，可指定长度|60|是||
+|逻辑标记2|LOGICTAG2|文本，可指定长度|60|是||
+|逻辑标记3|LOGICTAG3|文本，可指定长度|60|是||
+|逻辑标记4|LOGICTAG4|文本，可指定长度|60|是||
 |逻辑类型|LOGICTYPE|文本，可指定长度|50|是||
 |备注|MEMO|长文本，长度1000|2000|是||
 |实体|PSDEID|文本，可指定长度|100|否||
 |实体处理逻辑标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDELOGICID|全局唯一标识，文本类型，用户不可见|100|否||
 |逻辑连接|PSDELOGICLINKS|一对多动态对象|1048576|是||
-|实体处理逻辑名称|PSDELOGICNAME|文本，可指定长度|200|是||
+|名称|PSDELOGICNAME|文本，可指定长度|200|是||
 |逻辑节点|PSDELOGICNODES|一对多动态对象|1048576|是||
 |逻辑参数|PSDELOGICPARAMS|一对多动态对象|1048576|是||
 |实体|PSDENAME|文本，可指定长度|100|是||
@@ -35,6 +39,10 @@
 |定时触发策略|TIMERPOLICY|文本，可指定长度|100|是||
 |更新时间|UPDATEDATE|日期时间型|8|否||
 |更新人|UPDATEMAN|文本，可指定长度|60|否||
+|用户标记|USERTAG|文本，可指定长度|200|是||
+|用户标记2|USERTAG2|文本，可指定长度|200|是||
+|用户标记3|USERTAG3|文本，可指定长度|50|是||
+|用户标记4|USERTAG4|文本，可指定长度|50|是||
 |启用|VALIDFLAG|是否逻辑||是||
 
 
@@ -70,7 +78,7 @@
 |实体处理逻辑标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDELOGICID|全局唯一标识，文本类型，用户不可见|100|否||
 |扩展状态|APPLYFLAG|[单项选择(数值)](index/dictionary_index#extension_status "扩展状态")||是||
 |实体|PSDEID|文本，可指定长度|100|否||
-|实体处理逻辑名称|PSDELOGICNAME|文本，可指定长度|200|是||
+|名称|PSDELOGICNAME|文本，可指定长度|200|是||
 |附加到指定数据集|ATTACHTOPSDEDATASETNAME|文本，可指定长度|100|是||
 |扩展标记2|EXTENSION_TAG2|文本，可指定长度|200|是||
 |建立人|CREATEMAN|文本，可指定长度|60|否||
@@ -141,7 +149,7 @@
 |N_LOGICSUBTYPE_NOTEQ|逻辑子类|NOTEQ||
 |N_PSDEID_EQ|实体|EQ||
 |N_PSDELOGICID_EQ|实体处理逻辑标识|EQ||
-|N_PSDELOGICNAME_LIKE|实体处理逻辑名称|LIKE||
+|N_PSDELOGICNAME_LIKE|名称|LIKE||
 |N_PSDENAME_EQ|实体|EQ||
 |N_PSDENAME_LIKE|实体|LIKE||
 

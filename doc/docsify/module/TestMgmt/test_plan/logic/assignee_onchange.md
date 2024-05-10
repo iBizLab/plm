@@ -47,12 +47,12 @@ PREPAREPARAM1 --> DENOTIFY2
 
 
 
-调用实体 [测试计划(TEST_PLAN)](module/TestMgmt/test_plan.md) 通知 [分配负责人通知(assignee_notify)](module/TestMgmt/test_plan/notify/assignee_notify) ，参数为`Default(传入变量)`
+调用实体 [测试计划(TEST_PLAN)](module/TestMgmt/test_plan.md) 通知 [测试计划分配负责人通知(assignee_notify)](module/TestMgmt/test_plan/notify/assignee_notify) ，参数为`Default(传入变量)`
 #### 取消分配负责人通知 :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [测试计划(TEST_PLAN)](module/TestMgmt/test_plan.md) 通知 [取消分配负责人通知(assignee_cancel_notify)](module/TestMgmt/test_plan/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
+调用实体 [测试计划(TEST_PLAN)](module/TestMgmt/test_plan.md) 通知 [测试计划取消分配负责人通知(assignee_cancel_notify)](module/TestMgmt/test_plan/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
 
 ### 连接条件说明
 #### 变更后数据存在负责人 :id=Begin-DENOTIFY1

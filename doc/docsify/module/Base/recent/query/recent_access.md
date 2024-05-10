@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`TYPE(访问类型)` EQ `'2'` AND `CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid`)
+(`TYPE(访问类型)` EQ `'2'` AND `CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` AND `IS_DELETED(是否已删除)` EQ `'0'`)
 
 
 
@@ -58,7 +58,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`TYPE` = '2'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t1.`TYPE` = '2'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

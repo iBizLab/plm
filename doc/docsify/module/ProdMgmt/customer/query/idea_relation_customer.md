@@ -36,7 +36,7 @@
 
 ### 查询连接
 * **RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_CUSTOMER**<br>
-连接关系：[DERCUSTOM_RELATION_CUSTOMER](der/DERCUSTOM_RELATION_CUSTOMER)<br>
+连接关系：[DERCUSTOM_RELATION_TARGET_CUSTOMER](der/DERCUSTOM_RELATION_TARGET_CUSTOMER)<br>
 连接实体：[客户](module/ProdMgmt/customer)<br>
 连接条件：(`TARGET_TYPE(关联目标类型)` EQ `'customer'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'idea'` AND `PRINCIPAL_ID(关联主体标识)` EQ `网页请求上下文.principal_id`)<br>
 

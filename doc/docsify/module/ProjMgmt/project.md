@@ -22,6 +22,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |是否本地配置|IS_LOCAL_CONFIGURE|是否逻辑||是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |项目名称|NAME|文本，可指定长度|200|否||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |开始时间|START_AT|日期型||是||
 |状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
 |类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
@@ -83,6 +85,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[DER1N_TEST_PLAN_PROJECT_PROJECT_ID](der/DER1N_TEST_PLAN_PROJECT_PROJECT_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
 |[DER1N_WORK_ITEM_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
 |[DERCCUSTOM_FAVORITE_PROJECT](der/DERCCUSTOM_FAVORITE_PROJECT)|[收藏(FAVORITE)](module/Base/favorite)|自定义关系||
+|[DERCUSTOM_BASELINE_PROJECT_OWNER_ID](der/DERCUSTOM_BASELINE_PROJECT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_WORK_PROJECT_PILOT_ID](der/DERCUSTOM_WORK_PROJECT_PILOT_ID)|[工作(WORK)](module/Base/work)|自定义关系||
 
 
@@ -145,74 +148,18 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[激活](module/ProjMgmt/project/logic/activate)|activate|无||激活已归档状态项目，修改项目的归档属性|
 |[生成最近访问](module/ProjMgmt/project/logic/create_recent)|create_recent|无||在用户对项目数据进行了get或update操作时生成相应的访问记录|
 |[生成默认看板](module/ProjMgmt/project/logic/create_default_board)|create_default_board|无||新建看板项目后，会附加生成出默认看板|
+|[自动创建人员](module/ProjMgmt/project/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[获取项目进度](module/ProjMgmt/project/logic/get_schedule)|get_schedule|无||通过已完成工作项数量/所有工作项数量，计算出此项目进度|
 |[设置星标](module/ProjMgmt/project/logic/favorite)|favorite|无||设置为星标项目|
 |[负责人变更附加逻辑](module/ProjMgmt/project/logic/assignee_id_onchange)|assignee_id_onchange|属性逻辑||项目负责人变更时触发相应的通知消息|
 |[项目状态变更通知](module/ProjMgmt/project/logic/state_notify)|state_notify|属性逻辑||项目状态变更时触发相应的通知消息|
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `是否星标(IS_FAVORITE)` 
-
-
-
-
-<p class="panel-title"><b>操作标识分布</b></p>
-<br>
-<table>
-  <tr>
-    <th>操作标识col350</th>
-    <th>是col150</th>
-    <th>否col150</th>
-    <th>备注col600</th>
-  </tr>
-  <tr>
-    <td>删除(DELETE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>取消星标(CANCEL_FAVORITE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>子数据权限(SUBDATA)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>建立(CREATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>设置星标(ADD_FAVORITE)</td>
-    <td align="center"></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>读取(READ)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-
-</table>
-
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体扩展|实体扩展|[扩展日志(EXTEND_LOG)](module/Base/extend_log)||
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
+|动态存储|动态存储|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -260,10 +207,12 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `DELETE`
+* `BEGIN`
+* `SUBDATA`
 * `UPDATE`
 * `READ`
-* `SUBDATA`
-* `DELETE`
+* `END`
 
 
 
@@ -275,10 +224,12 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE`
 * `SUBDATA`
-* `READ`
 * `CREATE`
+* `DELETE`
+* `READ`
+* `END`
+* `BEGIN`
 * `UPDATE`
 
 
@@ -317,8 +268,10 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `END`
 * `READ`
 * `SUBDATA`
+* `BEGIN`
 
 
 
@@ -326,11 +279,11 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[项目归档/激活通知](module/ProjMgmt/project/notify/archived_notify)|archived_notify|[默认消息队列](index/notify_index)|[项目通知模板(归档/激活项目)](index/notify_index#project_archive)|当前项目成员 ||
+|[项目归档/激活通知](module/ProjMgmt/project/notify/archived_notify)|archived_notify|[默认消息队列](index/notify_index)|[项目通知模板(归档/激活项目)](index/notify_index#project_archived_or_activate)|当前项目成员 ||
 |[项目分配负责人通知](module/ProjMgmt/project/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[项目通知模板(分配负责人)](index/notify_index#project_assignee)|负责人 ||
 |[项目变更负责人通知](module/ProjMgmt/project/notify/change_assignee_notify)|change_assignee_notify|[默认消息队列](index/notify_index)|[项目通知模板(变更负责人)](index/notify_index#project_change_assignee)|当前项目成员 ||
-|[项目删除/恢复通知](module/ProjMgmt/project/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[项目通知模板(删除/恢复项目)](index/notify_index#project_remove)|当前项目成员 ||
-|[项目状态状态变更通知](module/ProjMgmt/project/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[项目通知模板(项目状态变更)](index/notify_index#project_state_change)|当前项目成员 ||
+|[项目删除/恢复通知](module/ProjMgmt/project/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[项目通知模板(删除/恢复项目)](index/notify_index#project_remove_or_recover)|当前项目成员 ||
+|[项目状态变更通知](module/ProjMgmt/project/notify/state_notify)|state_notify|[默认消息队列](index/notify_index)|[项目通知模板(项目状态变更)](index/notify_index#project_state_change)|当前项目成员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -341,8 +294,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |N_IDENTIFIER_LIKE|项目标识|LIKE||
 |N_IS_ARCHIVED_EQ|是否已归档|EQ||
 |N_IS_DELETED_EQ|是否已删除|EQ||
-|N_IS_FAVORITE_EQ|是否星标|EQ||
 |N_NAME_LIKE|项目名称|LIKE||
+|N_SCOPE_TYPE_EQ|所属|EQ||
 |N_STATE_EQ|状态|EQ||
 |N_TYPE_EQ|类型|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
@@ -351,6 +304,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 打开项目配置(全局) | open_global_setting | 项目配置 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目管理](app/view/project_config_tree_exp_view)</details>||
+| 打开新建项目 | open_new_project | 打开新建项目 |单项数据|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 项目成员 | open_project_member | 项目成员 |单项数据（主键）|用户自定义||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
@@ -363,6 +317,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 打开项目导航页 | open_project_exp_view | 打开项目导航页 |无数据|<details><summary>打开顶级视图</summary>[项目管理](app/view/project_tree_exp_view)</details>||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 回收站 | open_deleted_project | 回收站 |单项数据（主键）|用户自定义||
+| 新建项目 | create_project | 新建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_view)</details>||
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
@@ -377,6 +332,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
 |[根据类型跳转项目主视图](module/ProjMgmt/project/uilogic/open_project_main_view)|open_project_main_view|判断类型跳转不同的项目主视图|
+|[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -394,8 +351,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 <el-anchor-link :href="`#/module/ProjMgmt/project?id=处理逻辑`">
   处理逻辑
 </el-anchor-link>
-<el-anchor-link :href="`#/module/ProjMgmt/project?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/ProjMgmt/project?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/project?id=数据查询`">
   数据查询

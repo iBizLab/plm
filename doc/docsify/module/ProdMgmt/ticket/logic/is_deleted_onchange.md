@@ -36,7 +36,7 @@ Begin --> DENOTIFY1
 
 
 
-调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [删除/恢复工单通知(remove_notify)](module/ProdMgmt/ticket/notify/remove_notify) ，参数为`Default(传入变量)`
+调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [工单删除/恢复工单通知(remove_notify)](module/ProdMgmt/ticket/notify/remove_notify) ，参数为`Default(传入变量)`
 
 
 ### 实体逻辑参数

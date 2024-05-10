@@ -18,7 +18,6 @@ WHERE
 			t11.`TARGET_TYPE` = 'customer' 
 			AND t11.`PRINCIPAL_TYPE` = 'idea' 
 			AND t11.`PRINCIPAL_ID` = ? ) )
-			AND t.`is_archived` = 0
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

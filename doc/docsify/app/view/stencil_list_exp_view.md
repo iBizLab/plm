@@ -2,14 +2,14 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 列表视图导航栏(listexpbar)
-
 #### 搜索栏(searchbar)
 
+## 视图界面逻辑
+  * newdata(预置新建数据逻辑)
+  * opendata(预置打开数据逻辑)
 
 
 ### 关联界面行为

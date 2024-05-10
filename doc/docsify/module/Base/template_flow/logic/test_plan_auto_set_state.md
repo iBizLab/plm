@@ -19,9 +19,9 @@ state "准备测试计划" as PREPAREPARAM1  [[$./test_plan_auto_set_state#prepa
 state "获取执行用例对应的测试计划" as DEACTION1  [[$./test_plan_auto_set_state#deaction1 {"获取执行用例对应的测试计划"}]]
 state "获取计划下所有执行用例" as DEDATASET1  [[$./test_plan_auto_set_state#dedataset1 {"获取计划下所有执行用例"}]]
 state "初始化设置结束标识" as PREPAREPARAM3  [[$./test_plan_auto_set_state#prepareparam3 {"初始化设置结束标识"}]]
+state "结束" as END2 <<end>> [[$./test_plan_auto_set_state#end2 {"结束"}]]
 state "设置计划为已完成" as PREPAREPARAM4  [[$./test_plan_auto_set_state#prepareparam4 {"设置计划为已完成"}]]
 state "设计计划为进行中" as PREPAREPARAM5  [[$./test_plan_auto_set_state#prepareparam5 {"设计计划为进行中"}]]
-state "结束" as END2 <<end>> [[$./test_plan_auto_set_state#end2 {"结束"}]]
 state "结束" as END1 <<end>> [[$./test_plan_auto_set_state#end1 {"结束"}]]
 state "循环计算执行用例" as LOOPSUBCALL1  [[$./test_plan_auto_set_state#loopsubcall1 {"循环计算执行用例"}]] #green {
 state "存在未执行的用例设置结束变量为0" as PREPAREPARAM2  [[$./test_plan_auto_set_state#prepareparam2 {"存在未执行的用例设置结束变量为0"}]]
@@ -84,6 +84,12 @@ LOOPSUBCALL1 --> END2
 
 
 循环参数`runs(计划下所有执行用例)`，子循环参数使用`temp_run(执行用例（循环使用）)`
+#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+*- N/A*
+
 #### 存在未执行的用例设置结束变量为0 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -103,12 +109,6 @@ LOOPSUBCALL1 --> END2
 
 
     无
-
-#### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-*- N/A*
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

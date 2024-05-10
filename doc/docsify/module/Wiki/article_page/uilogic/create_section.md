@@ -40,8 +40,9 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1
 
 1. 将`node_3` 设置给  `node_param(节点参数).nodeType`
 2. 将`1` 设置给  `defaultValue(默认值对象).is_published`
-3. 将`2` 设置给  `defaultValue(默认值对象).type`
-4. 将`defaultValue(默认值对象)` 设置给  `node_param(节点参数).defaultValue`
+3. 将`HTML` 设置给  `defaultValue(默认值对象).FORMAT_TYPE`
+4. 将`2` 设置给  `defaultValue(默认值对象).type`
+5. 将`defaultValue(默认值对象)` 设置给  `node_param(节点参数).defaultValue`
 
 #### 视图部件调用 :id=VIEWCTRLINVOKE1<sup class="footnote-symbol"> <font color=gray size=1>[视图部件调用]</font></sup>
 
@@ -55,7 +56,7 @@ PREPAREJSPARAM1 --> VIEWCTRLINVOKE1
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |树部件|treeexpbar_tree|部件对象||
-|默认值对象|defaultValue|数据对象||
-|上下文对象|context|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |节点参数|node_param|数据对象||
+|默认值对象|defaultValue|数据对象||
+|上下文对象|context|导航视图参数绑定参数||

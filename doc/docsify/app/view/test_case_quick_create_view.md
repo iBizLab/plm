@@ -1,42 +1,22 @@
 # 新建用例(test_case_quick_create_view)  <!-- {docsify-ignore-all} -->
 
 
-<el-skeleton style="width:60%">
-	<template #template>
-		<div style="padding-bottom: 5px;">
-			<div style="height:40px;display: flex;align-items: center;justify-content: space-between;">
-				<el-tooltip content="页面标题">
-					<el-skeleton-item variant="text" style="height:40px;"></el-skeleton-item>
-				</el-tooltip>
-			</div>
-		</div>
-		<el-tooltip content="编辑表单">
-			<el-skeleton-item variant="p" style="height:300px"></el-skeleton-item>
-		</el-tooltip>
-		<el-skeleton style="display: flex;align-items: center;justify-content:end">
-			<template #template>
-				<div style="">
-					<el-tooltip content="确认">
-						<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-					</el-tooltip>
-					<el-tooltip content="取消">
-						<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-					</el-tooltip>
-				</div>
-			</template>
-		</el-skeleton>
-	</template>
-</el-skeleton>
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### DATAINFOBAR(datainfobar)
-
 #### 编辑表单(form)
+#### 工具栏(toolbar)
+
+## 视图界面逻辑
+  * [清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)
 
 
+### 关联界面行为
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [选择模板](module/TestMgmt/test_case#界面行为)
+
+### 关联界面逻辑
+  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)
 
 ### 关联视图
   * [测试库(library_pick_up_view)](app/view/library_pick_up_view)

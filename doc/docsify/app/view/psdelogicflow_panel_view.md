@@ -2,18 +2,12 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据图表(chart)
-
 #### 编辑表单(form)
-
 #### 编辑表单(form1)
-
 #### 数据表格(grid)
-
 
 
 ### 关联界面行为

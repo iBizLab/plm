@@ -31,7 +31,7 @@
 
 <p class="panel-title"><b>分组参数</b></p>
 
-* `STATE(评审状态)`  分组处理：`STATE`
+* `STATE(状态)`  分组处理：`STATE`
 
 <p class="panel-title"><b>聚合参数</b></p>
 

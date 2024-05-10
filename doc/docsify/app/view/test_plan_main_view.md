@@ -1,40 +1,21 @@
 # 测试计划(test_plan_main_view)  <!-- {docsify-ignore-all} -->
 
 
-<el-skeleton style="width:60%">
-	<template #template>
-		<div style="padding-bottom: 5px;">
-			<div style="height:40px;display: flex;align-items: center;justify-content: space-between;">
-				<el-skeleton style="width:250px;">
-					<template #template>
-						<el-tooltip content="分页栏">
-							<div style="display: flex;align-items: center;justify-content:end">
-								<el-skeleton-item variant="text" style="height:40px;width:80px"></el-skeleton-item>
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-								<el-skeleton-item variant="text" style="margin-left: 10px;height:40px;width:80px"></el-skeleton-item>
-							</div>
-						</el-tooltip>
-					</template>
-				</el-skeleton>
-			</div>
-		</div>
-		<el-tooltip content="导航区占位">
-			<el-skeleton-item variant="p" style="height:300px"></el-skeleton-item>
-		</el-tooltip>
-	</template>
-</el-skeleton>
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 数据关系分页部件(tabexppanel)
 
 
+### 关联界面逻辑
+  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [设置门户默认搜索时间](module/TestMgmt/test_plan/uilogic/set_portlet_search_date)
 
 ### 关联视图
   * [全部用例(run_all_grid_view)](app/view/run_all_grid_view)
   * [执行用例导航(run_tree_exp_view)](app/view/run_tree_exp_view)
+  * [测试计划(test_plan_conclude_edit_view)](app/view/test_plan_conclude_edit_view)
+  * [测试报告(test_plan_report_dashboard_view)](app/view/test_plan_report_dashboard_view)
+  * [报告概览(test_plan_report_survey_custom_view)](app/view/test_plan_report_survey_custom_view)
   * [缺陷(work_item_test_plan_bug_grid_view)](app/view/work_item_test_plan_bug_grid_view)
 
 <script>

@@ -32,6 +32,12 @@
 |删除活动|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |更新活动|Update|内置方法|默认|不支持||||
+|获取活动对象详情|get_activity_obj_detail|[实体处理逻辑](module/Base/activity/logic/get_activity_obj_detail "获取活动对象详情")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[获取活动对象详情](module/Base/activity/logic/get_activity_obj_detail)|get_activity_obj_detail|无||测试|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -83,6 +89,11 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_OBJECTID_EQ|对象标识|EQ||
 
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[跳转视图](module/Base/activity/uilogic/jump_view)|jump_view||
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -92,6 +103,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/activity?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/activity?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/activity?id=数据查询`">
   数据查询
@@ -104,6 +118,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/activity?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/activity?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

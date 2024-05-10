@@ -1,0 +1,16 @@
+```sql
+SELECT
+t1.`COMMENT`,
+t1.`CONTENT_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`RESULT_STATE`,
+t1.`STAGE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `REVIEW_RESULT` t1 
+
+
+```

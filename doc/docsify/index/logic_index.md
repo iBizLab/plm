@@ -1,5 +1,11 @@
 # 处理逻辑 <!-- {docsify-ignore-all} -->
 
+## [活动(ACTIVITY)](module/Base/activity.md) :id=activity
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[获取活动对象详情](module/Base/activity/logic/get_activity_obj_detail)|get_activity_obj_detail|无||测试|
+
 
 
 ## [关注(ATTENTION)](module/Base/attention.md) :id=attention
@@ -10,10 +16,48 @@
 
 
 
+## [基线(BASELINE)](module/Base/baseline.md) :id=baseline
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[删除基线前附加逻辑](module/Base/baseline/logic/before_remove)|before_remove|无||删除基线前，删除基线关联数据|
+|[设立完成（产品）](module/Base/baseline/logic/set_complete_product)|set_complete_product|无||产品基线设立完成|
+|[设立完成（测试库）](module/Base/baseline/logic/set_complete_library)|set_complete_library|无||测试库基线设立完成|
+|[设立完成（项目）](module/Base/baseline/logic/set_complete_project)|set_complete_project|无||项目基线设立完成|
+
+
+## [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea.md) :id=baseline_idea
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[基线对比数据查询](module/ProdMgmt/baseline_idea/logic/baseline_comparison)|baseline_comparison|无||基线对比数据获取，查询两个基线下的关联产品需求|
+|[移入基线](module/ProdMgmt/baseline_idea/logic/shift_in_baseline)|shift_in_baseline|无||将需求移入对应基线|
+|[移出基线](module/ProdMgmt/baseline_idea/logic/shift_out_baseline)|shift_out_baseline|无||将需求移出对应基线|
+
+
+## [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case.md) :id=baseline_test_case
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[基线对比数据查询](module/TestMgmt/baseline_test_case/logic/baseline_comparison)|baseline_comparison|无||基线对比数据获取，查询两个基线下的关联用例|
+|[移入基线](module/TestMgmt/baseline_test_case/logic/shift_in_baseline)|shift_in_baseline|无||将用例移入对应基线|
+|[移出基线](module/TestMgmt/baseline_test_case/logic/shift_out_baseline)|shift_out_baseline|无||将用例移出对应基线|
+
+
+## [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item.md) :id=baseline_work_item
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[基线对比数据查询](module/ProjMgmt/baseline_work_item/logic/baseline_comparison)|baseline_comparison|无||基线对比数据获取，查询两个基线下的关联工作项|
+|[移入基线](module/ProjMgmt/baseline_work_item/logic/shift_in_baseline)|shift_in_baseline|无||将工作项移入对应基线|
+|[移出基线](module/ProjMgmt/baseline_work_item/logic/shift_out_baseline)|shift_out_baseline|无||将工作项移出对应基线|
+
+
 ## [看板(BOARD)](module/ProjMgmt/board.md) :id=board
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[删除看板之前判断](module/ProjMgmt/board/logic/before_remove)|before_remove|无||删除看板之前，判断项目下看板数量。必须保留一个看板|
 |[生成默认看板栏和泳道](module/ProjMgmt/board/logic/create_default_entry)|create_default_entry|无||新建看板项目后，会附加生成出默认看板栏和泳道|
 
 
@@ -43,11 +87,25 @@
 |[产品客户关联分页计数器](module/ProdMgmt/customer/logic/product_customer_re_counters)|product_customer_re_counters|无||产品下的客户主视图的分页计数器数据来源|
 |[其他实体关联客户](module/ProdMgmt/customer/logic/others_relation_customer)|others_relation_customer|无||客户实体的关联操作，生成正向，反向关联数据|
 |[删除客户发送通知](module/ProdMgmt/customer/logic/remove_customer_notify)|remove_customer_notify|无||根据客户标识触发删除客户发送通知|
+|[删除类别](module/ProdMgmt/customer/logic/delete_categories)|delete_categories|无||当类别删除时修改客户的类别属性|
 |[取消关联](module/ProdMgmt/customer/logic/del_relation)|del_relation|无||客户取消关联数据（正反向关联数据同时删除）|
 |[变更负责人附加逻辑](module/ProdMgmt/customer/logic/assignee_onchage)|assignee_onchage|属性逻辑||客户负责人变更时触发相应的通知消息|
 |[客户选择工单](module/ProdMgmt/customer/logic/customer_choose_ticket)|customer_choose_ticket|无||客户选择工单操作，更新工单的客户属性|
 |[无操作](module/ProdMgmt/customer/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加至类别](module/ProdMgmt/customer/logic/add_categories)|add_categories|无||添加客户类别操作|
+|[获取产品成员](module/ProdMgmt/customer/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+
+
+
+
+
+## [数据字典(DICTIONARY)](module/Base/dictionary_data.md) :id=dictionary_data
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/Base/dictionary_data/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+
+
 
 
 
@@ -68,6 +126,7 @@
 |[删除](module/ProdMgmt/idea/logic/delete)|delete|无||需求数据的逻辑删除，修改需求的是否删除属性值|
 |[取消关联](module/ProdMgmt/idea/logic/del_relation)|del_relation|无||产品需求取消关联数据（正反向关联数据同时删除）|
 |[变更需求状态](module/ProdMgmt/idea/logic/change_state)|change_state|无||产品需求状态变更触发相关通知|
+|[基线规划需求数据查询](module/ProdMgmt/idea/logic/baseline_plan_idea)|baseline_plan_idea|无||基线规划需求时，填充需求当前版本名称|
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -76,12 +135,15 @@
 |[激活](module/ProdMgmt/idea/logic/activate)|activate|无||激活已归档状态需求，修改需求的归档属性|
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
+|[获取产品成员](module/ProdMgmt/idea/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+|[获取基线名称](module/ProdMgmt/idea/logic/get_baseline_name)|get_baseline_name|无||需求主视图获取所属基线|
 |[获取默认模块](module/ProdMgmt/idea/logic/idea_category)|idea_category|无||获取需求的默认模块|
 |[计划内需求批删除](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
 |[负责人变更附加逻辑](module/ProdMgmt/idea/logic/assignee_onchange)|assignee_onchange|属性逻辑||产品需求负责人变更时触发相应的通知消息|
 |[需求复制](module/ProdMgmt/idea/logic/idea_copy)|idea_copy|无||复制需求至其他产品（复制需求信息，在目标产品中创建新需求）|
 |[需求排期](module/ProdMgmt/idea/logic/idea_re_plan)|idea_re_plan|无||需求排期，用户在排期内关联相应需求，生成正反向关联关系|
 |[需求移动](module/ProdMgmt/idea/logic/idea_move)|idea_move|无||移动需求至其他位置（修改需求的所属产品，重新生成编号）|
+
 
 
 
@@ -101,6 +163,7 @@
 |[是否归档变更附加逻辑](module/TestMgmt/library/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||测试库归档或激活时触发相应的通知消息|
 |[激活](module/TestMgmt/library/logic/activate)|activate|无||激活已归档状态测试库，修改测试库的归档属性|
 |[生成最近访问](module/TestMgmt/library/logic/create_recent)|create_recent|无||在用户对测试库数据进行了get或update操作时生成相应的访问记录|
+|[自动创建人员](module/TestMgmt/library/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[设置星标](module/TestMgmt/library/logic/favorite)|favorite|无||设置为星标测试库|
 
 
@@ -108,10 +171,28 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/TestMgmt/library_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建测试库成员](module/TestMgmt/library_member/logic/create_library_member)|create_library_member|无||新建测试库成员|
+|[无操作](module/TestMgmt/library_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除测试库成员通知](module/TestMgmt/library_member/logic/remove_library_member_notify)|remove_library_member_notify|无||移除测试库成员时向对应用户发送通知消息|
 
 
+## [登录日志(LOGIN_LOG)](module/Base/login_log.md) :id=login_log
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[计算活跃成员图表数据](module/Base/login_log/logic/calc_active_chart_datas)|calc_active_chart_datas|无||计算活跃成员模块下的图表所需要的数据|
+|[计算活跃成员数据信息](module/Base/login_log/logic/calc_active_member_info)|calc_active_member_info|无||获取活跃成员下的昨日活跃人数、昨日活跃率、活跃总人数、近七日活跃人数、近七日活跃率的数值|
+
+
+
+## [成员(MEMBER)](module/Base/member.md) :id=member
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[变更角色](module/Base/member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[新建成员](module/Base/member/logic/create_member)|create_member|无||批量新建角色|
+|[无操作](module/Base/member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 
 
@@ -124,11 +205,12 @@
 |[获取用户通知设置](module/Base/notify_setting/logic/get_by_user)|get_by_user|无|||
 
 
+
 ## [页面(PAGE)](module/Wiki/article_page.md) :id=article_page
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
-|[删除](module/Wiki/article_page/logic/delete)|delete|无||页面数据的逻辑删除，修改产品的是否删除属性值|
+|[删除](module/Wiki/article_page/logic/delete)|delete|无||页面数据的逻辑删除，修改页面的是否删除属性值|
 |[发布页面](module/Wiki/article_page/logic/publish_page)|publish_page|无||页面发布，设置发布状态及发布人，发布时间|
 |[发布页面（测试）](module/Wiki/article_page/logic/publish_page_test)|publish_page_test|无||（测试）页面发布，设置发布状态及发布人，发布时间|
 |[取消星标](module/Wiki/article_page/logic/un_favorite)|un_favorite|无||页面取消收藏|
@@ -137,10 +219,13 @@
 |[恢复历史版本](module/Wiki/article_page/logic/recover_version)|recover_version|无||恢复页面版本至某一指定历史版本|
 |[无操作](module/Wiki/article_page/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[生成最近访问](module/Wiki/article_page/logic/create_recent)|create_recent|无||在用户对页面数据进行了get或update操作时生成相应的访问记录|
+|[生成版本](module/Wiki/article_page/logic/commit_version)|commit_version|无|||
 |[获取历史版本](module/Wiki/article_page/logic/get_by_version)|get_by_version|无||获取当前页面的历史版本记录|
 |[获取模板数据](module/Wiki/article_page/logic/get_form_stencil)|get_form_stencil|无||获取页面的模板数据，并返回|
-|[获取草稿页面](module/Wiki/article_page/logic/get_draft_pages)|get_draft_pages|无|||
+|[获取草稿页面](module/Wiki/article_page/logic/get_draft_pages)|get_draft_pages|无||查询并返回草稿数据|
 |[设置星标](module/Wiki/article_page/logic/favorite)|favorite|无||加入到我的收藏页面|
+
+
 
 
 ## [文件夹(PORTFOLIO)](module/Base/portfolio.md) :id=portfolio
@@ -151,6 +236,7 @@
 |[删除项目集](module/Base/portfolio/logic/delete_project_set)|delete_project_set|无||项目集数据的逻辑删除，修改项目集的是否删除属性值|
 |[取消星标](module/Base/portfolio/logic/un_favorite)|un_favorite|无||项目集取消星标|
 |[恢复项目集](module/Base/portfolio/logic/recover_project_set)|recover_project_set|无||恢复已删除状态项目集数据，修改项目集的是否删除属性值|
+|[是否删除变更附加逻辑](module/Base/portfolio/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||项目集删除或恢复时触发相应的通知消息|
 |[设置星标](module/Base/portfolio/logic/favorite)|favorite|无||设置为星标项目集|
 
 
@@ -158,6 +244,8 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/Base/portfolio_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[无操作](module/Base/portfolio_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除项目集成员通知](module/Base/portfolio_member/logic/remove_project_set_member_notify)|remove_project_set_member_notify|无||移除项目集成员时向对应用户发送通知消息|
 
 
@@ -177,7 +265,9 @@
 |[是否删除变更附加逻辑](module/ProdMgmt/product/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品删除或恢复时时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/product/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品归档或激活数据时触发相应的通知消息|
 |[激活](module/ProdMgmt/product/logic/activate)|activate|无||激活已归档状态产品，修改产品的归档属性|
+|[生成产品工单类型](module/ProdMgmt/product/logic/create_product_ticket)|create_product_ticket|无||产品建立时将工单类型中is_system=1的数据同步至产品工单类型中|
 |[生成最近访问](module/ProdMgmt/product/logic/create_recent)|create_recent|无||在用户对产品数据进行了get或update操作时生成相应的访问记录|
+|[自动创建人员](module/ProdMgmt/product/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[设置星标](module/ProdMgmt/product/logic/favorite)|favorite|无||设置为星标产品|
 
 
@@ -185,7 +275,9 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/ProdMgmt/product_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建产品成员](module/ProdMgmt/product_member/logic/create_product_member)|create_product_member|无||新建产品成员|
+|[无操作](module/ProdMgmt/product_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除产品成员通知](module/ProdMgmt/product_member/logic/remove_product_member_notify)|remove_product_member_notify|无||移除产品成员时向对应用户发送通知消息|
 
 
@@ -194,6 +286,7 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[删除](module/ProdMgmt/product_plan/logic/delete)|delete|无||产品排期数据的逻辑删除，修改产品排期的是否删除属性|
+|[删除类别](module/ProdMgmt/product_plan/logic/delete_categories)|delete_categories|无||删除对应类别时对对应排期的类别属性进行处理|
 |[排期关联需求](module/ProdMgmt/product_plan/logic/product_plan_relation_idea)|product_plan_relation_idea|无||排期计划关联需求，生成正反向关联数据|
 
 
@@ -218,6 +311,7 @@
 |[激活](module/ProjMgmt/project/logic/activate)|activate|无||激活已归档状态项目，修改项目的归档属性|
 |[生成最近访问](module/ProjMgmt/project/logic/create_recent)|create_recent|无||在用户对项目数据进行了get或update操作时生成相应的访问记录|
 |[生成默认看板](module/ProjMgmt/project/logic/create_default_board)|create_default_board|无||新建看板项目后，会附加生成出默认看板|
+|[自动创建人员](module/ProjMgmt/project/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[获取项目进度](module/ProjMgmt/project/logic/get_schedule)|get_schedule|无||通过已完成工作项数量/所有工作项数量，计算出此项目进度|
 |[设置星标](module/ProjMgmt/project/logic/favorite)|favorite|无||设置为星标项目|
 |[负责人变更附加逻辑](module/ProjMgmt/project/logic/assignee_id_onchange)|assignee_id_onchange|属性逻辑||项目负责人变更时触发相应的通知消息|
@@ -228,9 +322,17 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/ProjMgmt/project_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建项目成员](module/ProjMgmt/project_member/logic/create_project_member)|create_project_member|无||新建项目成员|
+|[无操作](module/ProjMgmt/project_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除项目成员通知](module/ProjMgmt/project_member/logic/remove_project_member_notify)|remove_project_member_notify|无||移除项目成员时向对应用户发送通知消息|
 
+
+## [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag.md) :id=project_tag
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProjMgmt/project_tag/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 
 
@@ -267,12 +369,45 @@
 
 
 
+## [关联(RELATION)](module/Base/relation.md) :id=relation
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[取消关联](module/Base/relation/logic/del_relation)|del_relation|无||工作项取消关联数据（正反向关联数据同时删除）|
+|[工作项取消关联测试用例](module/Base/relation/logic/work_item_del_relation_test_case)|work_item_del_relation_test_case|无||1.工作项取消关联对应测试用例 2.判断是缺陷类型工作项时检验是否需删除执行用例关联|
+|[执行用例取消关联缺陷](module/Base/relation/logic/run_del_relation_bug)|run_del_relation_bug|无||1.执行用例取消关联缺陷 2.对应测试用例取消关联缺陷|
+|[测试用例取消关联缺陷](module/Base/relation/logic/test_case_del_relation_bug)|test_case_del_relation_bug|无||1.测试用例取消关联缺陷 2.对应执行用例取消关联缺陷|
+|[规划用例](module/Base/relation/logic/program_test_case)|program_test_case|无||规划用例，将用例规划至评审内，生成正反向关联数据|
+
 
 ## [项目发布(RELEASE)](module/ProjMgmt/release.md) :id=release
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[删除类别](module/ProjMgmt/release/logic/delete_categories)|delete_categories|无||当类别删除时修改发布的类别属性|
 |[规划工作项](module/ProjMgmt/release/logic/plan_work_item)|plan_work_item|无||规划工作项至指定发布|
+
+
+## [评审(REVIEW)](module/TestMgmt/review.md) :id=review
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[待办数据](module/TestMgmt/review/logic/TodoData)|TodoData|无||测试|
+|[提交评审](module/TestMgmt/review/logic/submit_review)|submit_review|无||测试|
+|[规划用例](module/TestMgmt/review/logic/program_test_case)|program_test_case|无||规划用例，将用例规划至评审内，生成正反向关联数据|
+
+
+
+## [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md) :id=review_content
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[规划用例](module/TestMgmt/review_content/logic/program_test_case)|program_test_case|无||规划用例，将用例规划至评审内，生成正反向关联数据|
+|[设置评审结果](module/TestMgmt/review_content/logic/set_review_result)|set_review_result|无||测试|
+|[评审结果条数](module/TestMgmt/review_content/logic/review_content_total)|review_content_total|无||查询评审结果总条数与已评审条数|
+
+
+
 
 
 
@@ -289,11 +424,13 @@
 |[无操作](module/TestMgmt/run/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[每日执行用例趋势](module/TestMgmt/run/logic/run_daily_tendencies)|run_daily_tendencies|无||报表每日执行用例趋势数据源|
 |[每日测试次数统计](module/TestMgmt/run/logic/run_everyday_test)|run_everyday_test|无||报表每日测试次数统计数据源|
+|[测试用例最新执行结果](module/TestMgmt/run/logic/case_latest_executed)|case_latest_executed|无||测试用例最新执行结果|
 |[测试计划对比分析](module/TestMgmt/run/logic/plan_compar_ative_analysis)|plan_compar_ative_analysis|无||报表测试计划对比分析数据源|
 |[添加计划执行用例](module/TestMgmt/run/logic/create_plan_run)|create_plan_run|无||将测试计划主键置空并生成执行用例|
 |[移除用例相关信息](module/TestMgmt/run/logic/delete_run_info)|delete_run_info|无||在执行remove操作之前，移除相关的执行用例信息|
 |[获取实际工时](module/TestMgmt/run/logic/get_actual_workload)|get_actual_workload|无||获取用例的实际工时|
 |[获取当前用例详情](module/TestMgmt/run/logic/this_run_details)|this_run_details|无||获取当前执行用例详情信息|
+|[获取测试库成员](module/TestMgmt/run/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前登陆者权限|
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
@@ -344,10 +481,13 @@
 |[归档](module/Wiki/space/logic/archive)|archive|无||未归档空间数据的归档处理，修改空间的归档状态为已归档|
 |[恢复](module/Wiki/space/logic/recover)|recover|无||已删除状态空间数据的恢复，修改空间的是否删除属性值，并恢复访问记录|
 |[无操作](module/Wiki/space/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[是否删除变更附加逻辑](module/Wiki/space/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||空间删除或恢复时触发相应的通知消息|
+|[是否归档变更附加逻辑](module/Wiki/space/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||空间归档或激活时触发相应的通知消息|
 |[激活](module/Wiki/space/logic/activate)|activate|无||激活已归档状态空间，修改空间的归档属性|
 |[生成最近访问](module/Wiki/space/logic/create_recent)|create_recent|无||在用户对空间数据进行了get或update操作时生成相应的访问记录|
 |[移出分类](module/Wiki/space/logic/move_out_category)|move_out_category|无||将空间移除分类|
 |[自动创建主页](module/Wiki/space/logic/auto_create_home_page)|auto_create_home_page|无||附加在实体的CREATE行为后，自动生成模板化的主页|
+|[自动创建人员](module/Wiki/space/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员，若选择个人，则添加个人为所属成员。|
 |[设置星标](module/Wiki/space/logic/favorite)|favorite|无||设置为星标产品|
 
 
@@ -355,6 +495,8 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[变更角色](module/Wiki/space_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[无操作](module/Wiki/space_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除空间成员发送通知](module/Wiki/space_member/logic/remove_space_member_notify)|remove_space_member_notify|无||移除空间成员时向对应用户发送通知消息|
 
 
@@ -362,6 +504,7 @@
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[删除类别](module/ProjMgmt/sprint/logic/delete_categories)|delete_categories|无||当类别删除时修改迭代的类别属性|
 |[开始迭代](module/ProjMgmt/sprint/logic/start_sprint)|start_sprint|无||开始迭代|
 |[无操作](module/ProjMgmt/sprint/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[结束迭代](module/ProjMgmt/sprint/logic/end_sprint)|end_sprint|无||结束迭代，根据用户选择，将未完成的工作项 移动至其他迭代会待分配|
@@ -386,13 +529,16 @@
 
 
 
+
 ## [规则模板(TEMPLATE_FLOW)](module/Base/template_flow.md) :id=template_flow
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[同步父子工作项的完成状态](module/Base/template_flow/logic/sync_work_item_finish)|sync_work_item_finish|事件处理（运行时支持）|||
-|[定时将已完成工作项归档](module/Base/template_flow/logic/turn_work_item_archived)|turn_work_item_archived|定时作业（运行时支持）||通过定时任务，将已完成的工作项归档，结束时间超过三天|
+|[定时将已完成工作项归档](module/Base/template_flow/logic/turn_work_item_archived)|turn_work_item_archived|定时作业（运行时支持）||通过定时任务，将已完成的工作项归档，结束时间超过三天。|
 |[自动创建子任务](module/Base/template_flow/logic/auto_create_sub_work_item)|auto_create_sub_work_item|事件处理（运行时支持）|||
+|[自动将新成员加入指定空间](module/Base/template_flow/logic/auto_add_member_to_space)|auto_add_member_to_space|事件处理（运行时支持）||新成员加入团队后，自动加入到指定的空间。|
+|[自动将新成员加入指定项目](module/Base/template_flow/logic/auto_add_member_to_project)|auto_add_member_to_project|事件处理（运行时支持）||新成员加入团队后，自动加入到指定的项目。|
 |[自动设置工作项负责人](module/Base/template_flow/logic/auto_fill_assign_man)|auto_fill_assign_man|事件处理（运行时支持）|||
 |[自动设置测试计划的启动和完成状态](module/Base/template_flow/logic/test_plan_auto_set_state)|test_plan_auto_set_state|事件处理（运行时支持）|||
 
@@ -404,6 +550,8 @@
 |[其他实体关联用例](module/TestMgmt/test_case/logic/others_relation_test_case)|others_relation_test_case|无||测试用例实体的关联操作，生成正向，反向关联数据|
 |[删除](module/TestMgmt/test_case/logic/delete)|delete|无||测试用例数据的逻辑删除，修改产品的是否删除属性值|
 |[取消关联](module/TestMgmt/test_case/logic/del_relation)|del_relation|无||测试用例取消关联数据（正反向关联数据同时删除）|
+|[基线规划用例数据查询](module/TestMgmt/test_case/logic/baseline_plan_case)|baseline_plan_case|无||基线规划用例时，填充用例当前版本名称|
+|[填充最近执行](module/TestMgmt/test_case/logic/fill_latest_executed)|fill_latest_executed|属性逻辑|||
 |[复制用例](module/TestMgmt/test_case/logic/copy_test_case)|copy_test_case|无||复制测试用例|
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
 |[无操作](module/TestMgmt/test_case/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -416,11 +564,24 @@
 |[移入计划](module/TestMgmt/test_case/logic/case_move_plan)|case_move_plan|无||将选中测试用例移入执行计划（在指定的执行用例内生成执行用例）|
 |[移动用例](module/TestMgmt/test_case/logic/move_test_case)|move_test_case|无||移动用例至其他位置（修改用例的所属测试库，重新生成编号）|
 |[维护人变更附加逻辑](module/TestMgmt/test_case/logic/maintenance_onchange)|maintenance_onchange|属性逻辑||测试用例维护人变更时触发相应的通知消息|
+|[获取基线名称](module/TestMgmt/test_case/logic/get_baseline_name)|get_baseline_name|无||用例主视图获取所属基线|
+|[获取最新执行结果](module/TestMgmt/test_case/logic/case_latest_result)|case_latest_result|无|||
 |[获取最近执行](module/TestMgmt/test_case/logic/newest_run)|newest_run|无||获取当前测试用例的最近执行记录|
+|[获取测试库成员](module/TestMgmt/test_case/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前登陆者权限|
+|[规划用例](module/TestMgmt/test_case/logic/program_test_case)|program_test_case|无||规划用例|
 |[规划计划](module/TestMgmt/test_case/logic/program_plan)|program_plan|无||将测试用例规划进测试计划内，生成执行用例|
 |[设置维护人](module/TestMgmt/test_case/logic/set_maintenance)|set_maintenance|无||设置当前测试用例维护人|
 |[设置评审状态](module/TestMgmt/test_case/logic/set_state)|set_state|无||设置测试用例的评审状态属性|
 |[设置重要程度](module/TestMgmt/test_case/logic/set_level)|set_level|无||设置测试用例的重要程度属性|
+|[选择用例模板](module/TestMgmt/test_case/logic/choose_case_template)|choose_case_template|无||获取选中模板并返回详情|
+
+
+## [用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template.md) :id=test_case_template
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/TestMgmt/test_case_template/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[选择用例模板](module/TestMgmt/test_case_template/logic/choose_case_template)|choose_case_template|无|||
 
 
 ## [测试计划(TEST_PLAN)](module/TestMgmt/test_plan.md) :id=test_plan
@@ -428,6 +589,7 @@
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
 |[开始测试](module/TestMgmt/test_plan/logic/start_test_plan)|start_test_plan|无||测试计划开始测试|
+|[测试报告概览数据源](module/TestMgmt/test_plan/logic/test_plan_report_survey)|test_plan_report_survey|无||测试报告概览的数据源|
 |[结束测试](module/TestMgmt/test_plan/logic/end_test_plan)|end_test_plan|无||设置测试计划状态为结束|
 |[负责人变更附加逻辑](module/TestMgmt/test_plan/logic/assignee_onchange)|assignee_onchange|属性逻辑||测试计划负责人变更时触发相应的通知消息|
 
@@ -458,7 +620,22 @@
 |[负责人变更附加逻辑](module/ProdMgmt/ticket/logic/assignee_onchange)|assignee_onchange|属性逻辑||工单负责人变更时触发相应的通知消息|
 
 
+## [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type.md) :id=ticket_type
 
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProdMgmt/ticket_type/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[获取关联的工单](module/ProdMgmt/ticket_type/logic/get_con_ticket)|get_con_ticket|无||在删除工单类型时，获取与之关联的工单数量以及提示信息。|
+
+
+
+
+
+## [版本(VERSION)](module/Base/version.md) :id=version
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[新建版本时填充默认版本名称](module/Base/version/logic/fill_default_name)|fill_default_name|无||新建版本时，根据已创建的版本记录生成默认版本名称|
 
 
 
@@ -488,11 +665,19 @@
 |[获取已登记工时](module/Base/workload/logic/get_register_workload)|get_register_workload|无||查看工时详情时，获取预估、已登记、剩余工时；并计算出工时进度|
 
 
+## [工时类别(WORKLOAD_TYPE)](module/Base/workload_type.md) :id=workload_type
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/Base/workload_type/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+
+
 
 ## [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) :id=work_item
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
 | -------- |---------- |----------- |------------|----------|
+|[修复版本数据](module/ProjMgmt/work_item/logic/fix_commit)|fix_commit|无||修复初始版本数据|
 |[修改时间](module/ProjMgmt/work_item/logic/change_time)|change_time|无||修改工作项的开始、结束时间|
 |[其他实体关联工作项](module/ProjMgmt/work_item/logic/others_relation_work_item)|others_relation_work_item|无||工作项实体的关联操作，生成正向，反向关联数据|
 |[分配负责人](module/ProjMgmt/work_item/logic/change_assignee)|change_assignee|无||工作项分配负责人|
@@ -501,30 +686,38 @@
 |[变更父工作项](module/ProjMgmt/work_item/logic/change_parent)|change_parent|无||变更父工作项|
 |[变更状态](module/ProjMgmt/work_item/logic/change_state)|change_state|无||变更工作项状态|
 |[变更顶级工作项](module/ProjMgmt/work_item/logic/change_top)|change_top|无||变更父工作项时，同时继承父工作项的顶级标识|
+|[团队速度](module/ProjMgmt/work_item/logic/project_team_speed)|project_team_speed|无||团队速度报表数据源|
+|[基线规划工作项数据查询](module/ProjMgmt/work_item/logic/baseline_plan_work_item)|baseline_plan_work_item|无||基线规划工作项时，填充工作项当前版本名称|
 |[复制子工作项](module/ProjMgmt/work_item/logic/copy_child_work_item)|copy_child_work_item|无||复制工作项时，同时复制子工作项|
 |[复制工作项](module/ProjMgmt/work_item/logic/copy_work_item)|copy_work_item|无||复制工作项到其他的同类型项目|
 |[子工作项取消关联](module/ProjMgmt/work_item/logic/child_del_relation)|child_del_relation|无||工作项取消关联子工作项|
 |[工作项关联分页计数器](module/ProjMgmt/work_item/logic/work_item_re_counters)|work_item_re_counters|无||计算分页下关联事项的条数|
+|[工作项分布](module/ProjMgmt/work_item/logic/kanban_work_item_distribution)|kanban_work_item_distribution|无||工作项分布数据源|
 |[工作项删除变更附加逻辑](module/ProjMgmt/work_item/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||工作项删除或恢复时触发相应的通知消息|
 |[工作项归档变更附加逻辑](module/ProjMgmt/work_item/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||工作项归档或激活时触发相应的通知消息|
+|[工作项树状或平铺表格查询](module/ProjMgmt/work_item/logic/tree_or_tile_query)|tree_or_tile_query|无||工作项树状或平铺表格查询|
 |[工作项状态变更附加逻辑](module/ProjMgmt/work_item/logic/state_onchange)|state_onchange|属性逻辑||工作项状态变更时触发相应的通知消息，同时生成流转记录|
 |[工作项负责人变更附加逻辑](module/ProjMgmt/work_item/logic/assignee_onchange)|assignee_onchange|属性逻辑||工作项负责人变更时触发相应的通知消息|
 |[归档](module/ProjMgmt/work_item/logic/archive)|archive|无||未归档工作项数据的归档处理，修改工作项的归档状态为已归档，递归所有下级工作项|
 |[恢复](module/ProjMgmt/work_item/logic/recover)|recover|无||递归所有下级工作项，恢复已删除状态工作项数据，修改工作项的是否删除属性值，并恢复访问记录|
 |[恢复历史版本](module/ProjMgmt/work_item/logic/restore_version)|restore_version|无||恢复工作项版本至某一指定历史版本|
+|[成员负荷报告](module/ProjMgmt/work_item/logic/sprint_user_stat)|sprint_user_stat|无||成员负荷报告数据源|
 |[无操作](module/ProjMgmt/work_item/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
-|[树状或平铺表格数据查询（测试）](module/ProjMgmt/work_item/logic/tree_tile_grid_query)|tree_tile_grid_query|无||过程中测试调式逻辑|
 |[激活](module/ProjMgmt/work_item/logic/activate)|activate|无||激活已归档状态工作项，工作项存在子工作项，递归激活所有下级工作项|
 |[生成最近访问](module/ProjMgmt/work_item/logic/create_recent)|create_recent|无||在用户对工作项数据进行了get或update操作时生成相应的访问记录|
 |[移入发布](module/ProjMgmt/work_item/logic/shift_in_version)|shift_in_version|无||将工作项移入对应发布|
+|[移入基线](module/ProjMgmt/work_item/logic/shift_in_baseline)|shift_in_baseline|无||将工作项移入对应基线|
 |[移入看板](module/ProjMgmt/work_item/logic/shift_in_kanban)|shift_in_kanban|无||将工作项移入对应看板|
 |[移入迭代](module/ProjMgmt/work_item/logic/shift_in_sprint)|shift_in_sprint|无||将工作项移入对应迭代|
+|[移出基线](module/ProjMgmt/work_item/logic/shift_out_baseline)|shift_out_baseline|无||将工作项移出对应基线|
 |[移动工作项](module/ProjMgmt/work_item/logic/move_work_item)|move_work_item|无||工作项移动至其他的同类型项目|
 |[移动时子工作项的处理](module/ProjMgmt/work_item/logic/move_child_work_item)|move_child_work_item|无||父工作项移动; 子工作项也移动;并对Top_id进行更新|
 |[缺陷年龄报告](module/ProjMgmt/work_item/logic/defect_age_report)|defect_age_report|无||报表缺陷年龄报告数据源<br>|
 |[缺陷每日趋势](module/ProjMgmt/work_item/logic/defect_daily_trend)|defect_daily_trend|无||报表缺陷每日趋势数据源|
 |[缺陷累计趋势查询](module/ProjMgmt/work_item/logic/defect_total_trend)|defect_total_trend|无||报表缺陷累计趋势报表数据源|
+|[获取基线名称](module/ProjMgmt/work_item/logic/get_baseline_name)|get_baseline_name|无||工作项主视图获取所属基线|
 |[获取测试计划对应项目](module/ProjMgmt/work_item/logic/work_item_test_plan_project)|work_item_test_plan_project|无||获取测试计划对应项目|
+|[获取项目成员](module/ProjMgmt/work_item/logic/get_project_member)|get_project_member|无||获取项目成员信息，用于判断当前登陆者权限|
 |[规划工作项](module/ProjMgmt/work_item/logic/plan_work_item)|plan_work_item|无||规划选中工作项至指定发布|
 |[设置缺陷类型](module/ProjMgmt/work_item/logic/set_type_bug)|set_type_bug|无||设置当前工作项为缺陷类型|
 |[设置默认看板栏](module/ProjMgmt/work_item/logic/set_default_entry)|set_default_entry|无||选择看板后，自动填充所属看板下的的首个看板栏|
@@ -536,4 +729,16 @@
 |[顶级工作项](module/ProjMgmt/work_item/logic/top_work_item)|top_work_item|无||创建时继承父工作项的顶级工作项|
 
 
+## [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state.md) :id=work_item_state
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProjMgmt/work_item_state/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+
+
+## [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type.md) :id=work_item_type
+
+| 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProjMgmt/work_item_type/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 

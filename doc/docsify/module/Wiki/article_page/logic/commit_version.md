@@ -20,7 +20,7 @@ state "准备版本信息" as PREPARE_PARAM1  [[$./commit_version#prepare_param1
 state "建立版本" as COMMIT_VERSION  [[$./commit_version#commit_version {"建立版本"}]]
 
 
-Begin --> PREPARE_PARAM1 : [[$./commit_version#begin-prepare_param1{连接名称} 连接名称]]
+Begin --> PREPARE_PARAM1 : [[$./commit_version#begin-prepare_param1{已发布} 已发布]]
 PREPARE_PARAM1 --> COMMIT_VERSION : [[$./commit_version#prepare_param1-commit_version{连接名称} 连接名称]]
 COMMIT_VERSION --> END1
 
@@ -57,7 +57,7 @@ COMMIT_VERSION --> END1
 
 
 ### 连接条件说明
-#### 连接名称 :id=Begin-PREPARE_PARAM1
+#### 已发布 :id=Begin-PREPARE_PARAM1
 
 `Default(传入变量).IS_PUBLISHED(是否发布)` EQ `1` AND `last(last).IS_PUBLISHED(是否发布)` EQ `1`
 #### 连接名称 :id=PREPARE_PARAM1-COMMIT_VERSION

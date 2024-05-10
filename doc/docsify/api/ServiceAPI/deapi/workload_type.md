@@ -16,6 +16,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -24,6 +25,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -38,6 +40,7 @@
 ```json
 
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -72,6 +75,7 @@
 ```json
 
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -125,6 +129,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -133,6 +138,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -147,6 +153,7 @@
 ```json
 
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -174,6 +181,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -182,6 +190,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -214,6 +223,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -222,6 +232,7 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -236,6 +247,7 @@ Integer
 ```json
 
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -263,6 +275,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
@@ -271,6 +284,7 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -285,6 +299,7 @@ Integer
 ```json
 
 {
+  "sequence" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -333,6 +348,7 @@ Integer
 ```json
 [
   {
+    "sequence" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,

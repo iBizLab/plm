@@ -18,25 +18,18 @@ state "开始" as Begin <<start>> [[$./advanced_search#begin {"开始"}]]
 state "关联查询" as DEDATASET1  [[$./advanced_search#dedataset1 {"关联查询"}]]
 state "结束" as END1 <<end>> [[$./advanced_search#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./advanced_search#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./advanced_search#resetparam1 {"重置参数"}]]
 state "绑定参数" as BINDPARAM1  [[$./advanced_search#bindparam1 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM1  [[$./advanced_search#prepareparam1 {"准备参数"}]]
-state "重置参数" as RESETPARAM2  [[$./advanced_search#resetparam2 {"重置参数"}]]
 state "绑定参数" as BINDPARAM2  [[$./advanced_search#bindparam2 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM2  [[$./advanced_search#prepareparam2 {"准备参数"}]]
-state "重置参数" as RESETPARAM3  [[$./advanced_search#resetparam3 {"重置参数"}]]
 state "绑定参数" as BINDPARAM3  [[$./advanced_search#bindparam3 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM3  [[$./advanced_search#prepareparam3 {"准备参数"}]]
-state "重置参数" as RESETPARAM4  [[$./advanced_search#resetparam4 {"重置参数"}]]
 state "绑定参数" as BINDPARAM4  [[$./advanced_search#bindparam4 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM4  [[$./advanced_search#prepareparam4 {"准备参数"}]]
-state "重置参数" as RESETPARAM5  [[$./advanced_search#resetparam5 {"重置参数"}]]
 state "绑定参数" as BINDPARAM5  [[$./advanced_search#bindparam5 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM5  [[$./advanced_search#prepareparam5 {"准备参数"}]]
-state "重置参数" as RESETPARAM6  [[$./advanced_search#resetparam6 {"重置参数"}]]
 state "绑定参数" as BINDPARAM6  [[$./advanced_search#bindparam6 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM6  [[$./advanced_search#prepareparam6 {"准备参数"}]]
-state "重置参数" as RESETPARAM7  [[$./advanced_search#resetparam7 {"重置参数"}]]
 state "绑定参数" as BINDPARAM7  [[$./advanced_search#bindparam7 {"绑定参数"}]]
 state "准备参数" as PREPAREPARAM7  [[$./advanced_search#prepareparam7 {"准备参数"}]]
 }
@@ -44,27 +37,20 @@ state "准备参数" as PREPAREPARAM7  [[$./advanced_search#prepareparam7 {"准�
 
 Begin --> DEDATASET1
 DEDATASET1 --> LOOPSUBCALL1
-LOOPSUBCALL1 --> RESETPARAM1 : [[$./advanced_search#loopsubcall1-resetparam1{工作项} 工作项]]
-RESETPARAM1 --> BINDPARAM1
+LOOPSUBCALL1 --> BINDPARAM1 : [[$./advanced_search#loopsubcall1-bindparam1{工作项} 工作项]]
 BINDPARAM1 --> PREPAREPARAM1
 LOOPSUBCALL1 --> END1
-LOOPSUBCALL1 --> RESETPARAM2 : [[$./advanced_search#loopsubcall1-resetparam2{产品需求} 产品需求]]
-RESETPARAM2 --> BINDPARAM2
+LOOPSUBCALL1 --> BINDPARAM2 : [[$./advanced_search#loopsubcall1-bindparam2{产品需求} 产品需求]]
 BINDPARAM2 --> PREPAREPARAM2
-LOOPSUBCALL1 --> RESETPARAM3 : [[$./advanced_search#loopsubcall1-resetparam3{工单} 工单]]
-RESETPARAM3 --> BINDPARAM3
+LOOPSUBCALL1 --> BINDPARAM3 : [[$./advanced_search#loopsubcall1-bindparam3{工单} 工单]]
 BINDPARAM3 --> PREPAREPARAM3
-LOOPSUBCALL1 --> RESETPARAM4 : [[$./advanced_search#loopsubcall1-resetparam4{客户} 客户]]
-RESETPARAM4 --> BINDPARAM4
+LOOPSUBCALL1 --> BINDPARAM4 : [[$./advanced_search#loopsubcall1-bindparam4{客户} 客户]]
 BINDPARAM4 --> PREPAREPARAM4
-LOOPSUBCALL1 --> RESETPARAM5 : [[$./advanced_search#loopsubcall1-resetparam5{测试用例} 测试用例]]
-RESETPARAM5 --> BINDPARAM5
+LOOPSUBCALL1 --> BINDPARAM5 : [[$./advanced_search#loopsubcall1-bindparam5{测试用例} 测试用例]]
 BINDPARAM5 --> PREPAREPARAM5
-LOOPSUBCALL1 --> RESETPARAM6 : [[$./advanced_search#loopsubcall1-resetparam6{页面} 页面]]
-RESETPARAM6 --> BINDPARAM6
+LOOPSUBCALL1 --> BINDPARAM6 : [[$./advanced_search#loopsubcall1-bindparam6{页面} 页面]]
 BINDPARAM6 --> PREPAREPARAM6
-LOOPSUBCALL1 --> RESETPARAM7 : [[$./advanced_search#loopsubcall1-resetparam7{执行用例} 执行用例]]
-RESETPARAM7 --> BINDPARAM7
+LOOPSUBCALL1 --> BINDPARAM7 : [[$./advanced_search#loopsubcall1-bindparam7{执行用例} 执行用例]]
 BINDPARAM7 --> PREPAREPARAM7
 
 
@@ -79,11 +65,6 @@ BINDPARAM7 --> PREPAREPARAM7
 
 
 *- N/A*
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```work_item(工作项)```
 #### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -106,11 +87,6 @@ BINDPARAM7 --> PREPAREPARAM7
 
 将执行结果返回给参数`result_page(分页查询结果变量)`
 
-#### 重置参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```idea(产品需求)```
 #### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -130,11 +106,6 @@ BINDPARAM7 --> PREPAREPARAM7
 
 
 循环参数`result_page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重置参数 :id=RESETPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```ticket(工单)```
 #### 绑定参数 :id=BINDPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -149,11 +120,6 @@ BINDPARAM7 --> PREPAREPARAM7
 3. 将`ticket(工单).PRODUCT_NAME(所属产品)` 设置给  `for_temp_obj(循环临时变量).PRINCIPAL_PARENT_NAME(评论主体父名称)`
 4. 将`ticket(工单).SHOW_IDENTIFIER(编号)` 设置给  `for_temp_obj(循环临时变量).PRINCIPAL_IDENTIFIER(评论主体编号)`
 
-#### 重置参数 :id=RESETPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```customer(客户)```
 #### 绑定参数 :id=BINDPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -167,11 +133,6 @@ BINDPARAM7 --> PREPAREPARAM7
 2. 将`customer(客户).PRODUCT_ID(产品标识)` 设置给  `for_temp_obj(循环临时变量).PRINCIPAL_PARENT_ID(评论主体父标识)`
 3. 将`customer(客户).PRODUCT_NAME(产品名称)` 设置给  `for_temp_obj(循环临时变量).PRINCIPAL_PARENT_NAME(评论主体父名称)`
 
-#### 重置参数 :id=RESETPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```test_case(测试用例)```
 #### 绑定参数 :id=BINDPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -192,11 +153,6 @@ BINDPARAM7 --> PREPAREPARAM7
 
 返回 `result_page(分页查询结果变量)`
 
-#### 重置参数 :id=RESETPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```page(页面)```
 #### 绑定参数 :id=BINDPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -211,16 +167,11 @@ BINDPARAM7 --> PREPAREPARAM7
 3. 将`page(页面).SPACE_NAME(空间名称)` 设置给  `for_temp_obj(循环临时变量).PRINCIPAL_PARENT_NAME(评论主体父名称)`
 4. 将`page(页面).SHOW_IDENTIFIER(编号)` 设置给  `for_temp_obj(循环临时变量).PRINCIPAL_IDENTIFIER(评论主体编号)`
 
-#### 重置参数 :id=RESETPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
-
-
-
-重置参数```run(执行用例)```
 #### 绑定参数 :id=BINDPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
-绑定参数`Default(传入变量)` 到 `run(执行用例)`
+绑定参数`for_temp_obj(循环临时变量)` 到 `run(执行用例)`
 #### 准备参数 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -233,25 +184,25 @@ BINDPARAM7 --> PREPAREPARAM7
 
 
 ### 连接条件说明
-#### 工作项 :id=LOOPSUBCALL1-RESETPARAM1
+#### 工作项 :id=LOOPSUBCALL1-BINDPARAM1
 
 `for_temp_obj(循环临时变量).PRINCIPAL_TYPE(评论主体类型)` EQ `WORK_ITEM`
-#### 产品需求 :id=LOOPSUBCALL1-RESETPARAM2
+#### 产品需求 :id=LOOPSUBCALL1-BINDPARAM2
 
 `for_temp_obj(循环临时变量).PRINCIPAL_TYPE(评论主体类型)` EQ `IDEA`
-#### 工单 :id=LOOPSUBCALL1-RESETPARAM3
+#### 工单 :id=LOOPSUBCALL1-BINDPARAM3
 
 `for_temp_obj(循环临时变量).PRINCIPAL_TYPE(评论主体类型)` EQ `TICKET`
-#### 客户 :id=LOOPSUBCALL1-RESETPARAM4
+#### 客户 :id=LOOPSUBCALL1-BINDPARAM4
 
 `for_temp_obj(循环临时变量).PRINCIPAL_TYPE(评论主体类型)` EQ `CUSTOMER`
-#### 测试用例 :id=LOOPSUBCALL1-RESETPARAM5
+#### 测试用例 :id=LOOPSUBCALL1-BINDPARAM5
 
 `for_temp_obj(循环临时变量).PRINCIPAL_TYPE(评论主体类型)` EQ `TEST_CASE`
-#### 页面 :id=LOOPSUBCALL1-RESETPARAM6
+#### 页面 :id=LOOPSUBCALL1-BINDPARAM6
 
 `for_temp_obj(循环临时变量).PRINCIPAL_TYPE(评论主体类型)` EQ `PAGE`
-#### 执行用例 :id=LOOPSUBCALL1-RESETPARAM7
+#### 执行用例 :id=LOOPSUBCALL1-BINDPARAM7
 
 `Default(传入变量).PRINCIPAL_TYPE(评论主体类型)` EQ `RUN`
 

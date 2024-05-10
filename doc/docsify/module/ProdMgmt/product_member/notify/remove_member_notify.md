@@ -1,4 +1,4 @@
-## 移除产品成员通知(remove_member_notify) <!-- {docsify-ignore-all} -->
+## 产品成员移除通知(remove_member_notify) <!-- {docsify-ignore-all} -->
 
 
 

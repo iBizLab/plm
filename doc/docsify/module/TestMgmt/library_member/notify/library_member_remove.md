@@ -1,4 +1,4 @@
-## 移除测试库成员通知(library_member_remove) <!-- {docsify-ignore-all} -->
+## 测试库成员移除通知(library_member_remove) <!-- {docsify-ignore-all} -->
 
 
 

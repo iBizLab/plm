@@ -34,13 +34,6 @@
 
 
 
-### 查询连接
-* **RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TICKET**<br>
-连接关系：[DERCUSTOM_RELATION_TICKET](der/DERCUSTOM_RELATION_TICKET)<br>
-连接实体：[工单](module/ProdMgmt/ticket)<br>
-连接条件：(`TARGET_TYPE(关联目标类型)` EQ `'ticket'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'customer'` AND `PRINCIPAL_ID(关联主体标识)` EQ `网页请求上下文.principal_id`)<br>
-
-
 
 
 <el-dialog v-model="MYSQL5" title="MYSQL5">
@@ -80,9 +73,7 @@ FROM `TICKET` t1
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
-WHERE EXISTS(SELECT * FROM `RELATION` t31 
- WHERE 
- t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'customer'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` = 0 )
+WHERE ( t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

@@ -27,6 +27,8 @@
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -50,6 +52,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -79,6 +83,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -128,6 +134,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -196,6 +204,8 @@
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -219,6 +229,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -248,6 +260,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -295,6 +309,8 @@
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -318,6 +334,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -366,6 +384,8 @@
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -389,6 +409,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -432,6 +454,8 @@
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -455,6 +479,8 @@
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -507,6 +533,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -530,6 +558,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -578,6 +608,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -601,6 +633,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -644,6 +678,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -667,6 +703,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -696,6 +734,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -791,6 +831,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -814,6 +856,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -843,6 +887,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -890,6 +936,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -913,6 +961,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -956,6 +1006,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -979,6 +1031,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -1008,6 +1062,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -1050,6 +1106,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -1073,6 +1131,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -1102,6 +1162,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -1149,6 +1211,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">is_local_configure</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否本地配置|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
@@ -1172,6 +1236,8 @@ Integer
   "description" : null,
   "is_deleted" : null,
   "is_favorite" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "is_local_configure" : null,
   "members" : null,
   "assignee_name" : null,
@@ -1210,8 +1276,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1230,8 +1296,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1254,6 +1320,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1291,8 +1359,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1311,8 +1379,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1335,6 +1403,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1372,8 +1442,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1392,8 +1462,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1416,6 +1486,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1453,8 +1525,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1473,8 +1545,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1497,6 +1569,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1534,8 +1608,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1554,8 +1628,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1578,6 +1652,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1615,8 +1691,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1635,8 +1711,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1659,6 +1735,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1696,8 +1774,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1716,8 +1794,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1740,6 +1818,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1777,8 +1857,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1797,8 +1877,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1821,6 +1901,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1858,8 +1940,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1878,8 +1960,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1902,6 +1984,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -1939,8 +2023,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -1959,8 +2043,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -1983,6 +2067,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -2020,8 +2106,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -2040,8 +2126,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -2064,6 +2150,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -2101,8 +2189,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -2121,8 +2209,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -2145,6 +2233,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,
@@ -2182,8 +2272,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目标识|
 |<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
 |<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类型|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
@@ -2202,8 +2292,8 @@ Integer
   "n_identifier_like" : null,
   "n_is_archived_eq" : null,
   "n_is_deleted_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_state_eq" : null,
   "n_type_eq" : null,
   "n_visibility_eq" : null,
@@ -2226,6 +2316,8 @@ Integer
     "description" : null,
     "is_deleted" : null,
     "is_favorite" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "is_local_configure" : null,
     "members" : null,
     "assignee_name" : null,

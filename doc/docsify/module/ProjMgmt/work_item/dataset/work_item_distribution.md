@@ -9,7 +9,7 @@
 
 <p class="panel-title"><b>数据集类型</b></p>
 
-* `数据查询`
+* `实体逻辑`
 
 <p class="panel-title"><b>选择列级别</b></p>
 
@@ -19,21 +19,3 @@
 
 
 ### 数据查询
-  * [看板工作项(kanban_work_item)](module/ProjMgmt/work_item/query/kanban_work_item)
-
-### 数据聚合
-
-<br>
-<p class="panel-title"><b>聚合模式</b></p>
-
-* `指定分组参数`
-
-
-<p class="panel-title"><b>分组参数</b></p>
-
-* `ENTRY_ID(看板栏标识)`  分组处理：`ENTRY_ID`
-
-<p class="panel-title"><b>聚合参数</b></p>
-
-* `count2`  聚合函数：`SUM(CASE WHEN STATE_TYPE != 'completed' THEN 1 ELSE 0 END)`
-* `STATE_TYPE`  聚合函数：`SUM(CASE WHEN STATE_TYPE = 'completed' THEN 1 ELSE 0 END)`

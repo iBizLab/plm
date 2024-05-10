@@ -36,7 +36,7 @@
 
 ### 查询连接
 * **RELATION存在1:N（EXISTS (SELECT)）DERCUSTOM_RELATION_TICKET**<br>
-连接关系：[DERCUSTOM_RELATION_TICKET](der/DERCUSTOM_RELATION_TICKET)<br>
+连接关系：[DERCUSTOM_RELATION_TARGET_TICKET](der/DERCUSTOM_RELATION_TARGET_TICKET)<br>
 连接实体：[工单](module/ProdMgmt/ticket)<br>
 连接条件：(`PRINCIPAL_ID(关联主体标识)` EQ `网页请求上下文.principal_id` AND `TARGET_TYPE(关联目标类型)` EQ `'ticket'` AND `PRINCIPAL_TYPE(关联主体类型)` EQ `'idea'`)<br>
 

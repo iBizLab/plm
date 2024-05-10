@@ -4,38 +4,26 @@
 
 <el-row>
   <el-menu :ellipsis="false" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-    <el-menu-item index="menuitem1" @click="itemClick('#/app/view/recent_tab_exp_view')"><i class="fa fa-home"></i>工作台</el-menu-item>
+    <el-menu-item index="menuitem1" @click="itemClick('#/app/view/workspace_tab_exp_view')"><i class="fa fa-home"></i>工作台</el-menu-item>
     <el-menu-item index="menuitem2" @click="itemClick('#/app/view/product_tree_exp_view')"><i class="fa fa-th-large"></i>产品管理</el-menu-item>
     <el-menu-item index="menuitem3" @click="itemClick('#/app/view/project_tree_exp_view')"><i class="fa fa-file-text-o"></i>项目管理</el-menu-item>
     <el-menu-item index="menuitem4" @click="itemClick('#/app/view/library_tree_exp_view')"><i class="fa fa-bug"></i>测试管理</el-menu-item>
     <el-menu-item index="menuitem5" @click="itemClick('#/app/view/space_tree_exp_view')"><i class="fa fa-book"></i>知识管理</el-menu-item>
     <el-menu-item index="menuitem6" disabled>效能度量</el-menu-item>
     <el-menu-item index="menuitem7" disabled>协作空间</el-menu-item>
-    <el-menu-item index="menuitem8" @click="itemClick('#/app/view/flow_tab_exp_view')"><i class="fa fa-rocket"></i>自动化</el-menu-item>
+    <el-menu-item index="index_view_search" @click="itemClick('#/app/view/search_hub_tab_search_view')">应用搜索匹配的菜单项（勿删）</el-menu-item>
+    <el-menu-item index="setting" @click="itemClick('#/app/view/management_tab_exp_view')"><i class="fa fa-gears"></i>管理后台</el-menu-item>
     <el-menu-item index="menuitem9" @click="itemClick('#/app/view/workload_management_view')"><i class="fa fa-clock-o"></i>工时管理</el-menu-item>
-    <el-sub-menu index="menuitem10">
-      <template #title>后台管理</template>
-    <el-menu-item index="menuitem12" @click="itemClick('#/app/view/work_item_state_grid_view')"><i class="fa fa-gear"></i>工作项状态</el-menu-item>
-    <el-menu-item index="menuitem11" @click="itemClick('#/app/view/work_item_type_grid_view')"><i class="fa fa-gear"></i>工作项类型</el-menu-item>
-    <el-menu-item index="menuitem13" @click="itemClick('#/app/view/project_tag_grid_view')"><i class="fa fa-gear"></i>项目标签</el-menu-item>
-    <el-menu-item index="menuitem14" @click="itemClick('#/app/view/product_tag_grid_view')"><i class="fa fa-gear"></i>产品标签</el-menu-item>
-    <el-menu-item index="menuitem16" @click="itemClick('#/app/view/user_tree_exp_view')"><i class="fa fa-users"></i>企业用户</el-menu-item>
-    </el-sub-menu>
+    <el-menu-item index="menuitem8" @click="itemClick('#/app/view/flow_tab_exp_view')"><i class="fa fa-rocket"></i>自动化</el-menu-item>
     <el-sub-menu index="menuitem17">
       <template #title>测试</template>
     <el-menu-item index="menuitem20" @click="itemClick('#/app/view/library_grid_view')">测试库主数据56</el-menu-item>
     <el-menu-item index="menuitem22" @click="itemClick('#/app/view/work_item_tree_grid_view')">树表测试</el-menu-item>
     <el-menu-item index="menuitem30" @click="itemClick('#/app/view/work_item_work_item_testdyna')">测试动态视图</el-menu-item>
-    <el-sub-menu index="menuitem36">
-      <template #title>报表测试1</template>
-    <el-menu-item index="menuitem42" @click="itemClick('#/app/view/insight_grid_view')">Scrum项目报表</el-menu-item>
-    <el-menu-item index="menuitem43" @click="itemClick('#/app/view/insight_kanban_grid_view')">看板项目报表</el-menu-item>
-    <el-menu-item index="menuitem44" @click="itemClick('#/app/view/insight_library_grid_view')">测试报表</el-menu-item>
-    </el-sub-menu>
+    <el-menu-item index="menuitem52" @click="itemClick('#/app/view/test_plan_report_custom_view')">测试报告（测试）</el-menu-item>
     <el-menu-item index="menuitem37" @click="itemClick('#/app/view/product_grid_view')">产品配置测试</el-menu-item>
     <el-menu-item index="menuitem38" @click="itemClick('#/app/view/notify_setting_config_view')">通知列表（测试）</el-menu-item>
     <el-menu-item index="menuitem39" @click="itemClick('#/app/view/article_page_log_list_view')">日志列表</el-menu-item>
-    <el-menu-item index="menuitem50" @click="itemClick('#/app/view/work_item_advanced_search_view')">测试高级搜索</el-menu-item>
     <el-menu-item index="menuitem41" @click="itemClick('#/app/view/ticket_test_all_grid_view')">工单测试</el-menu-item>
     <el-menu-item index="menuitem45" @click="itemClick('#/app/view/library_grid_view')">测试库配置测试</el-menu-item>
     <el-menu-item index="menuitem46" @click="itemClick('#/app/view/space_grid_view')">测试功能_空间配置</el-menu-item>
@@ -43,6 +31,15 @@
     <el-menu-item index="menuitem48" @click="itemClick('#/app/view/portfolio_grid_view')">测试功能_项目集配置</el-menu-item>
     <el-menu-item index="menuitem40" @click="itemClick('#/app/view/work_item_project_resource_assignment_view')">测试资源报表</el-menu-item>
     <el-menu-item index="menuitem49" @click="itemClick('#/app/view/article_page_test_edit_view')">测试协同编辑</el-menu-item>
+    <el-menu-item index="menuitem51" @click="itemClick('#/app/view/recent_his_tab_exp_view')">测试功能_工作台</el-menu-item>
+    <el-menu-item index="menuitem16" @click="itemClick('#/app/view/dictionary_data_grid_view')">数据字典</el-menu-item>
+    <el-menu-item index="menuitem32" @click="itemClick('#/app/view/parameter_grid_view')">测试功能_系统参数</el-menu-item>
+    <el-menu-item index="menuitem10" @click="itemClick('#/app/view/search_hub_tab_search_view')">高级搜索</el-menu-item>
+    <el-menu-item index="menuitem11" @click="itemClick('#/app/view/activity_test_all_list_view')">活动列表测试</el-menu-item>
+    <el-menu-item index="menuitem12" @click="itemClick('#/app/view/baseline_work_item_comparison_grid_view')">项目基线对比</el-menu-item>
+    <el-menu-item index="menuitem13" @click="itemClick('#/app/view/work_item_version_comparison_view')">工作项版本对比1</el-menu-item>
+    <el-menu-item index="menuitem14" @click="itemClick('#/app/view/login_log_active_members')">测试日志图表</el-menu-item>
+    <el-menu-item index="menuitem36" @click="itemClick('#/app/view/article_page_help_tree_exp_view')">测试帮助页面</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </el-row>
@@ -53,6 +50,7 @@
 |  中文名     |   代码名  |  视图标题 | 视图类型   |   备注  |
 |  --------   |------------| -----------|  -----   |  -----   |
 |[活动历史列表](app/view/activity_history_list_view)|activity_history_list_view|活动历史列表|实体列表视图||
+|[全部活动列表（测试）](app/view/activity_test_all_list_view)|activity_test_all_list_view|全部活动列表（测试）|实体列表视图||
 |[PLM](app/view/app_index_view)|app_index_view|产品生命周期管理系统|应用首页视图||
 |[仪表盘测试](app/view/app_portal_view_test)|app_portal_view_test|仪表盘测试|应用看板视图||
 |[页面高级搜索表格视图](app/view/article_page_advanced_search_grid_view)|article_page_advanced_search_grid_view|页面|实体表格视图||
@@ -60,6 +58,8 @@
 |[页面编辑视图](app/view/article_page_document_edit_view)|article_page_document_edit_view|页面|实体编辑视图||
 |[草稿展示编辑视图](app/view/article_page_draft_show_edit_view)|article_page_draft_show_edit_view|草稿|实体编辑视图||
 |[页面编辑视图](app/view/article_page_edit_view)|article_page_edit_view|页面|实体编辑视图|系统自动添加|
+|[帮助页面](app/view/article_page_help_tree_exp_view)|article_page_help_tree_exp_view|帮助页面|实体树导航视图||
+|[页面](app/view/article_page_help_view)|article_page_help_view|页面|实体编辑视图|系统自动添加|
 |[日志列表视图](app/view/article_page_log_list_view)|article_page_log_list_view|PLM系统更新日志|实体列表视图||
 |[页面](app/view/article_page_model_show_view)|article_page_model_show_view|页面|实体编辑视图||
 |[我收藏的页面](app/view/article_page_my_favorite_page_grid_view)|article_page_my_favorite_page_grid_view|我的收藏|实体表格视图||
@@ -81,7 +81,41 @@
 |[附件数据重定向视图](app/view/attachment_redirect_view)|attachment_redirect_view|附件|实体数据重定向视图|系统自动添加|
 |[执行用例关联结果附件表格](app/view/attachment_run_re_attachment_grid_view)|attachment_run_re_attachment_grid_view|附件|实体表格视图||
 |[我关注的事项](app/view/attention_tab_exp_view)|attention_tab_exp_view|关注|实体分页导航视图||
+|[基线编辑视图](app/view/baseline_edit_view)|baseline_edit_view|基线|实体编辑视图|系统自动添加|
+|[产品基线对比表格视图](app/view/baseline_idea_comparison_grid_view)|baseline_idea_comparison_grid_view|基线对比|实体表格视图||
+|[基线工需求编辑视图](app/view/baseline_idea_edit_view)|baseline_idea_edit_view|基线需求|实体编辑视图|系统自动添加|
+|[基线工需求数据重定向视图](app/view/baseline_idea_redirect_view)|baseline_idea_redirect_view|基线需求|实体数据重定向视图|系统自动添加|
+|[基线需求表格视图](app/view/baseline_idea_relation_grid_view)|baseline_idea_relation_grid_view|需求|实体表格视图||
+|[基线关联测试用例版本列表视图](app/view/baseline_idea_relation_version_list_view)|baseline_idea_relation_version_list_view|基线需求|实体列表视图||
+|[测试库基线快速建立视图](app/view/baseline_library_create_view)|baseline_library_create_view|新建基线|实体选项操作视图||
+|[测试库基线树导航表格视图](app/view/baseline_library_grid_view)|baseline_library_grid_view|全部基线|实体表格视图||
+|[测试库基线分页导航视图](app/view/baseline_library_main_view)|baseline_library_main_view|基线|实体分页导航视图||
+|[测试库基线树导航视图](app/view/baseline_library_tree_exp_view)|baseline_library_tree_exp_view|基线|实体树导航视图||
+|[测试库基线编辑视图](app/view/baseline_library_update_view)|baseline_library_update_view|编辑基线|实体选项操作视图||
+|[产品基线快速建立视图](app/view/baseline_product_create_view)|baseline_product_create_view|新建基线|实体选项操作视图||
+|[产品基线树导航表格视图](app/view/baseline_product_grid_view)|baseline_product_grid_view|全部基线|实体表格视图||
+|[产品基线分页导航视图](app/view/baseline_product_main_view)|baseline_product_main_view|基线|实体分页导航视图||
+|[产品基线树导航视图](app/view/baseline_product_tree_exp_view)|baseline_product_tree_exp_view|基线|实体树导航视图||
+|[产品基线编辑视图](app/view/baseline_product_update_view)|baseline_product_update_view|编辑基线|实体选项操作视图||
+|[项目基线快速建立视图](app/view/baseline_project_create_view)|baseline_project_create_view|新建基线|实体选项操作视图||
+|[项目基线树导航表格视图](app/view/baseline_project_grid_view)|baseline_project_grid_view|全部基线|实体表格视图||
+|[项目基线分页导航视图](app/view/baseline_project_main_view)|baseline_project_main_view|基线|实体分页导航视图||
+|[项目基线树导航视图](app/view/baseline_project_tree_exp_view)|baseline_project_tree_exp_view|基线|实体树导航视图||
+|[项目基线编辑视图](app/view/baseline_project_update_view)|baseline_project_update_view|编辑基线|实体选项操作视图||
+|[基线数据重定向视图](app/view/baseline_redirect_view)|baseline_redirect_view|基线|实体数据重定向视图|系统自动添加|
+|[测试库基线对比表格视图](app/view/baseline_test_case_comparison_grid_view)|baseline_test_case_comparison_grid_view|基线对比|实体表格视图||
+|[基线用例编辑视图](app/view/baseline_test_case_edit_view)|baseline_test_case_edit_view|基线用例|实体编辑视图|系统自动添加|
+|[基线用例数据重定向视图](app/view/baseline_test_case_redirect_view)|baseline_test_case_redirect_view|基线用例|实体数据重定向视图|系统自动添加|
+|[基线用例表格视图](app/view/baseline_test_case_relation_grid_view)|baseline_test_case_relation_grid_view|用例|实体表格视图||
+|[基线关联测试用例版本列表视图](app/view/baseline_test_case_relation_version_list_view)|baseline_test_case_relation_version_list_view|基线用例|实体列表视图||
+|[项目基线对比表格视图](app/view/baseline_work_item_comparison_grid_view)|baseline_work_item_comparison_grid_view|基线对比|实体表格视图||
+|[基线工作项编辑视图](app/view/baseline_work_item_edit_view)|baseline_work_item_edit_view|基线工作项|实体编辑视图|系统自动添加|
+|[基线关联工作项版本列表视图](app/view/baseline_work_item_realtion_version_list_view)|baseline_work_item_realtion_version_list_view|基线工作项|实体列表视图||
+|[基线工作项数据重定向视图](app/view/baseline_work_item_redirect_view)|baseline_work_item_redirect_view|基线工作项|实体数据重定向视图|系统自动添加|
+|[基线工作项实体表格视图](app/view/baseline_work_item_relation_grid_view)|baseline_work_item_relation_grid_view|工作项|实体表格视图||
+|[确认删除看板视图](app/view/board_confirm_remove_view)|board_confirm_remove_view|确认删除看板|实体选项操作视图||
 |[看板编辑视图](app/view/board_edit_view)|board_edit_view|看板|实体编辑视图|系统自动添加|
+|[看板表格视图](app/view/board_grid_view)|board_grid_view|看板管理|实体表格视图||
 |[看板选择表格视图](app/view/board_pick_up_grid_view)|board_pick_up_grid_view|看板|实体选择表格视图（部件视图）|系统自动添加|
 |[看板数据选择视图](app/view/board_pick_up_view)|board_pick_up_view|看板|实体数据选择视图|系统自动添加|
 |[看板快速建立视图](app/view/board_quick_create_view)|board_quick_create_view|新建看板|实体选项操作视图||
@@ -94,6 +128,7 @@
 |[评论列表视图](app/view/comment_wiki_list_view)|comment_wiki_list_view|评论|实体列表视图||
 |[添加至类别](app/view/customer_add_category_option_view)|customer_add_category_option_view|选择类别|实体选项操作视图||
 |[全部客户](app/view/customer_all_grid_view)|customer_all_grid_view|全部客户|实体表格视图||
+|[客户应用数据导入视图](app/view/customer_app_data_upload_view)|customer_app_data_upload_view||应用数据导入视图|客户自定义导入视图|
 |[客户编辑视图](app/view/customer_edit_view)|customer_edit_view|客户|实体编辑视图|系统自动添加|
 |[需求关联客户](app/view/customer_idea_re_customer_grid_view)|customer_idea_re_customer_grid_view|需求关联客户|实体表格视图||
 |[客户实体主视图](app/view/customer_main_view)|customer_main_view|客户|实体编辑视图||
@@ -107,13 +142,27 @@
 |[测试树下拉选择的表格](app/view/customer_test_tree_select_grid_view)|customer_test_tree_select_grid_view|客户|实体表格视图||
 |[客户](app/view/customer_tree_exp_view)|customer_tree_exp_view|客户|实体树导航视图||
 |[交付物编辑视图](app/view/deliverable_edit_view)|deliverable_edit_view|交付物|实体编辑视图|系统自动添加|
-|[交付物表格视图（项目分页）](app/view/deliverable_grid_view)|deliverable_grid_view|交付物|实体表格视图||
-|[交付物表格视图（项目分页）](app/view/deliverable_grid_view)|deliverable_grid_view|交付物|实体表格视图||
+|[交付物表格视图](app/view/deliverable_grid_view)|deliverable_grid_view|交付物|实体表格视图||
+|[交付物表格视图（项目分页）](app/view/deliverable_project_grid_view)|deliverable_project_grid_view|交付物|实体表格视图||
 |[快速建立交付目标视图](app/view/deliverable_quick_create_view)|deliverable_quick_create_view|新建交付目标|实体选项操作视图||
 |[交付物数据重定向视图](app/view/deliverable_redirect_view)|deliverable_redirect_view|交付物|实体数据重定向视图|系统自动添加|
+|[交付目标修改视图](app/view/deliverable_target_edit_view)|deliverable_target_edit_view|编辑交付目标|实体选项操作视图||
 |[交付目标表格视图](app/view/deliverable_target_grid_view)|deliverable_target_grid_view|交付物|实体表格视图||
 |[部门选择表格视图](app/view/department_pick_up_grid_view)|department_pick_up_grid_view|部门|实体选择表格视图（部件视图）|系统自动添加|
 |[部门数据选择视图](app/view/department_pick_up_view)|department_pick_up_view|部门|实体数据选择视图|系统自动添加|
+|[数据字典编辑视图](app/view/dictionary_data_edit_view)|dictionary_data_edit_view|数据字典|实体编辑视图|系统自动添加|
+|[新建阶段](app/view/dictionary_data_global_create_view)|dictionary_data_global_create_view|新建阶段|实体选项操作视图||
+|[编辑阶段](app/view/dictionary_data_global_edit_view)|dictionary_data_global_edit_view|编辑阶段|实体选项操作视图||
+|[发布阶段](app/view/dictionary_data_global_grid_view)|dictionary_data_global_grid_view|发布阶段|实体表格视图||
+|[发布配置](app/view/dictionary_data_global_tab_exp_view)|dictionary_data_global_tab_exp_view|发布配置|实体分页导航视图||
+|[数据字典表格视图](app/view/dictionary_data_grid_view)|dictionary_data_grid_view|数据字典|实体表格视图||
+|[需求配置状态管理实体确认删除视图](app/view/dictionary_data_idea_confirm_remove_view)|dictionary_data_idea_confirm_remove_view|确认删除|实体选项操作视图|系统自动添加|
+|[状态管理](app/view/dictionary_data_idea_state_grid_view)|dictionary_data_idea_state_grid_view|状态管理|实体表格视图||
+|[新建状态](app/view/dictionary_data_quick_create_view)|dictionary_data_quick_create_view|新建状态|实体选项操作视图||
+|[数据字典数据重定向视图](app/view/dictionary_data_redirect_view)|dictionary_data_redirect_view|数据字典|实体数据重定向视图|系统自动添加|
+|[编辑状态](app/view/dictionary_data_state_edit_view)|dictionary_data_state_edit_view|编辑状态|实体选项操作视图||
+|[工单配置状态管理实体确认删除视图](app/view/dictionary_data_ticket_confirm_remove_view)|dictionary_data_ticket_confirm_remove_view|确认删除|实体选项操作视图|系统自动添加|
+|[状态管理](app/view/dictionary_data_ticket_state_grid_view)|dictionary_data_ticket_state_grid_view|状态管理|实体表格视图||
 |[看板栏选择表格视图](app/view/entry_pick_up_grid_view)|entry_pick_up_grid_view|看板栏|实体选择表格视图（部件视图）|系统自动添加|
 |[看板栏数据选择视图](app/view/entry_pick_up_view)|entry_pick_up_view|看板栏|实体数据选择视图|系统自动添加|
 |[日志信息](app/view/extend_log_info_view)|extend_log_info_view|日志信息|实体编辑视图||
@@ -122,9 +171,16 @@
 |[我收藏的空间](app/view/favorite_space_grid_view)|favorite_space_grid_view|我的收藏|实体表格视图||
 |[自动化](app/view/flow_tab_exp_view)|flow_tab_exp_view|自动化|实体分页导航视图||
 |[自动化](app/view/flow_tree_exp_view)|flow_tree_exp_view|自动化|实体树导航视图||
+|[新建团队](app/view/group_quick_create_view)|group_quick_create_view|新建团队|实体选项操作视图||
+|[团队管理](app/view/group_tree_exp_view)|group_tree_exp_view|团队|实体树导航视图||
+|[编辑团队](app/view/group_update_view)|group_update_view|编辑团队|实体选项操作视图||
 |[需求高级搜索表格视图](app/view/idea_advanced_search_grid_view)|idea_advanced_search_grid_view|需求|实体表格视图||
 |[全部需求](app/view/idea_all_grid_view)|idea_all_grid_view|全部需求|实体表格视图||
+|[需求应用数据导入视图](app/view/idea_app_data_upload_view)|idea_app_data_upload_view||应用数据导入视图|需求自定义导入视图|
+|[基线规划需求多项选择视图_选择数据视图](app/view/idea_baseline_mpick_up_grid_view)|idea_baseline_mpick_up_grid_view|需求|实体选择表格视图（部件视图）|系统自动添加|
+|[基线规划需求多项选择视图](app/view/idea_baseline_mpick_up_view)|idea_baseline_mpick_up_view|需求|实体多项数据选择视图（左右关系）||
 |[变更状态](app/view/idea_change_state_view)|idea_change_state_view|需求|实体选项操作视图||
+|[需求配置](app/view/idea_config_tab_exp_view)|idea_config_tab_exp_view|需求配置|实体分页导航视图||
 |[复制需求](app/view/idea_copy_option_view)|idea_copy_option_view|复制需求|实体选项操作视图||
 |[关联需求快速新建视图](app/view/idea_create_re_idea_view)|idea_create_re_idea_view|需求|实体选项操作视图||
 |[需求编辑视图](app/view/idea_edit_view)|idea_edit_view|需求|实体编辑视图|系统自动添加|
@@ -151,6 +207,7 @@
 |[工单关联需求表格视图](app/view/idea_ticket_re_idea_grid_view)|idea_ticket_re_idea_grid_view|需求|实体表格视图||
 |[需求模块](app/view/idea_tree_exp_view)|idea_tree_exp_view|需求模块|实体树导航视图||
 |[未排期的需求](app/view/idea_un_scheduled_pickup_grid_view)|idea_un_scheduled_pickup_grid_view|选择需求|实体选择表格视图（部件视图）||
+|[需求版本对比视图](app/view/idea_version_comparison_view)|idea_version_comparison_view|版本对比|实体编辑视图||
 |[工作项关联需求表格视图](app/view/idea_work_item_re_idea_grid_view)|idea_work_item_re_idea_grid_view|需求|实体表格视图||
 |[洞察力编辑视图](app/view/insight_edit_view)|insight_edit_view|洞察力|实体编辑视图||
 |[scrum报表视图](app/view/insight_grid_view)|insight_grid_view|scrum报表|实体表格视图||
@@ -163,6 +220,7 @@
 |[Scrum报表树导航](app/view/insight_scrum_tree_exp_view)|insight_scrum_tree_exp_view|Scrum报表|实体树导航视图||
 |[岗位选择表格视图](app/view/job_pick_up_grid_view)|job_pick_up_grid_view|岗位|实体选择表格视图（部件视图）|系统自动添加|
 |[岗位数据选择视图](app/view/job_pick_up_view)|job_pick_up_view|岗位|实体数据选择视图|系统自动添加|
+|[看板工作项应用数据导入视图](app/view/kan_ban_work_item_app_data_upload_view)|kan_ban_work_item_app_data_upload_view||应用数据导入视图|看板工作项应用数据导入视图|
 |[高级设置](app/view/library_advanced_setting_edit_view)|library_advanced_setting_edit_view|高级设置|实体编辑视图||
 |[全部测试库](app/view/library_all_grid_view)|library_all_grid_view|全部测试库|实体表格视图||
 |[测试库管理](app/view/library_archived_grid_view)|library_archived_grid_view|测试库管理|实体表格视图||
@@ -174,6 +232,7 @@
 |[测试库配置](app/view/library_details_setting_tree_exp_view)|library_details_setting_tree_exp_view|测试库配置|实体树导航视图||
 |[测试库编辑视图](app/view/library_edit_view)|library_edit_view|测试库|实体编辑视图|系统自动添加|
 |[测试库表格视图](app/view/library_grid_view)|library_grid_view|测试库|实体表格视图||
+|[组织测试库](app/view/library_group_grid_view)|library_group_grid_view|组织测试库|实体表格视图|系统自动添加|
 |[测试库管理](app/view/library_in_progress_grid_view)|library_in_progress_grid_view|测试库管理|实体表格视图||
 |[测试库](app/view/library_index_view)|library_index_view|测试库|实体首页视图||
 |[测试库](app/view/library_main_view)|library_main_view|测试库|实体分页导航视图||
@@ -181,7 +240,7 @@
 |[测试库成员](app/view/library_member_config_grid_view)|library_member_config_grid_view|测试库成员|实体表格视图||
 |[测试库成员编辑视图](app/view/library_member_edit_view)|library_member_edit_view|测试库成员|实体编辑视图|系统自动添加|
 |[测试库成员数据重定向视图](app/view/library_member_redirect_view)|library_member_redirect_view|测试库成员|实体数据重定向视图|系统自动添加|
-|[组织测试库](app/view/library_org_grid_view)|library_org_grid_view|组织测试库|实体表格视图|系统自动添加|
+|[设置角色](app/view/library_member_role_edit_view)|library_member_role_edit_view|设置角色|实体选项操作视图||
 |[测试库选择表格视图](app/view/library_pick_up_grid_view)|library_pick_up_grid_view|测试库|实体选择表格视图（部件视图）|系统自动添加|
 |[测试库数据选择视图](app/view/library_pick_up_view)|library_pick_up_view|测试库|实体数据选择视图|系统自动添加|
 |[新建测试库](app/view/library_quick_create_view)|library_quick_create_view|新建测试库|实体选项操作视图||
@@ -191,12 +250,27 @@
 |[测试库展示信息视图](app/view/library_show_edit_view)|library_show_edit_view|测试库信息|实体编辑视图||
 |[团队测试库](app/view/library_team_grid_view)|library_team_grid_view|团队测试库|实体表格视图|系统自动添加|
 |[测试管理](app/view/library_tree_exp_view)|library_tree_exp_view|测试管理|实体树导航视图||
-|[消息设置](app/view/notify_setting_config_view)|notify_setting_config_view|消息设置|实体编辑视图||
+|[活跃成员](app/view/login_log_active_members)|login_log_active_members|活跃成员|实体自定义视图||
+|[登陆日志编辑视图](app/view/login_log_edit_view)|login_log_edit_view|登录日志|实体编辑视图|系统自动添加|
+|[登录日志表格视图](app/view/login_log_grid_view)|login_log_grid_view|登录日志|实体表格视图|系统自动添加|
+|[概览](app/view/login_log_over_view)|login_log_over_view|概览|实体自定义视图||
+|[配置中心](app/view/management_config_tab_exp_view)|management_config_tab_exp_view|配置中心|实体分页导航视图||
+|[管理后台](app/view/management_tab_exp_view)|management_tab_exp_view|管理后台|实体分页导航视图||
+|[成员编辑视图](app/view/member_edit_view)|member_edit_view|成员|实体编辑视图|系统自动添加|
+|[成员表格视图](app/view/member_grid_view)|member_grid_view|成员|实体表格视图|系统自动添加|
+|[设置角色](app/view/member_role_edit_view)|member_role_edit_view|设置角色|实体选项操作视图||
+|[通知设置](app/view/notify_setting_config_view)|notify_setting_config_view|通知设置|实体编辑视图||
+|[消息设置](app/view/notify_setting_config_view_test)|notify_setting_config_view_test|消息设置|实体编辑视图||
+|[系统参数编辑视图](app/view/parameter_edit_view)|parameter_edit_view|系统参数|实体编辑视图|系统自动添加|
+|[系统参数表格视图](app/view/parameter_grid_view)|parameter_grid_view|系统参数|实体表格视图||
+|[项目集管理](app/view/portfolio_deleted_grid_view)|portfolio_deleted_grid_view|项目集管理|实体表格视图||
 |[项目集表格视图](app/view/portfolio_grid_view)|portfolio_grid_view|文件夹|实体表格视图||
+|[项目集管理](app/view/portfolio_in_progress_grid_view)|portfolio_in_progress_grid_view|项目集管理|实体表格视图||
 |[文件夹成员编辑视图](app/view/portfolio_member_edit_view)|portfolio_member_edit_view|文件夹成员|实体编辑视图|系统自动添加|
 |[项目集成员绑定表格视图](app/view/portfolio_member_project_bind_member_grid_view)|portfolio_member_project_bind_member_grid_view|文件夹成员|实体表格视图||
 |[文件夹成员表格视图](app/view/portfolio_member_project_member_grid_view)|portfolio_member_project_member_grid_view|项目集成员|实体表格视图|项目集成员表格视图|
 |[文件夹成员数据重定向视图](app/view/portfolio_member_redirect_view)|portfolio_member_redirect_view|文件夹成员|实体数据重定向视图|系统自动添加|
+|[设置角色](app/view/portfolio_member_role_edit_view)|portfolio_member_role_edit_view|设置角色|实体选项操作视图||
 |[文件夹数据多项选择视图](app/view/portfolio_mpick_up_view)|portfolio_mpick_up_view|文件夹|实体数据多项选择视图||
 |[文件夹选择表格视图](app/view/portfolio_pick_up_grid_view)|portfolio_pick_up_grid_view|文件夹|实体选择表格视图（部件视图）|系统自动添加|
 |[新建项目集](app/view/portfolio_project_create_wizard_view)|portfolio_project_create_wizard_view|新建项目集|实体向导视图||
@@ -204,8 +278,6 @@
 |[项目集表格视图](app/view/portfolio_project_grid_view)|portfolio_project_grid_view|项目集|实体表格视图|系统自动添加|
 |[项目集首页视图](app/view/portfolio_project_index_view)|portfolio_project_index_view|文件夹|实体首页视图||
 |[项目集高级设置编辑视图](app/view/portfolio_project_set_advanced_view)|portfolio_project_set_advanced_view|高级设置|实体编辑视图||
-|[已删除项目集表格视图](app/view/portfolio_project_set_delete_grid_view)|portfolio_project_set_delete_grid_view|已删除|实体表格视图||
-|[进行中项目集表格视图](app/view/portfolio_project_set_going_view)|portfolio_project_set_going_view|进行中|实体表格视图||
 |[项目集管理分页导航视图](app/view/portfolio_project_set_tab_exp_view)|portfolio_project_set_tab_exp_view|项目集管理|实体分页导航视图||
 |[项目集配置视图](app/view/portfolio_project_setting_view)|portfolio_project_setting_view|文件夹|实体树导航视图||
 |[项目集信息展示视图](app/view/portfolio_project_show_view)|portfolio_project_show_view|文件夹|实体编辑视图|系统自动添加|
@@ -213,23 +285,24 @@
 |[项目集配置](app/view/portfolio_setting_view)|portfolio_setting_view|项目集配置|实体编辑视图（左右关系）||
 |[高级设置](app/view/product_advanced_setting_edit_view)|product_advanced_setting_edit_view|高级设置|实体编辑视图||
 |[全部产品](app/view/product_all_grid_view)|product_all_grid_view|全部产品|实体表格视图||
+|[产品管理](app/view/product_archived_grid_view)|product_archived_grid_view|产品管理|实体表格视图||
 |[基本信息](app/view/product_base_information_edit_view)|product_base_information_edit_view|基本信息|实体编辑视图||
 |[产品中心配置](app/view/product_config_tree_exp_view)|product_config_tree_exp_view|产品中心配置|实体树导航视图||
 |[新建产品](app/view/product_create_wizard_view)|product_create_wizard_view|新建产品|实体向导视图||
+|[产品管理](app/view/product_deleted_grid_view)|product_deleted_grid_view|产品管理|实体表格视图||
 |[产品详情配置](app/view/product_details_setting_view)|product_details_setting_view|产品详情配置|实体树导航视图||
 |[产品编辑视图](app/view/product_edit_view)|product_edit_view|产品|实体编辑视图|系统自动添加|
 |[产品表格视图](app/view/product_grid_view)|product_grid_view|产品|实体表格视图||
+|[组织产品](app/view/product_group_grid_view)|product_group_grid_view|组织产品|实体表格视图||
+|[产品管理](app/view/product_in_progress_grid_view)|product_in_progress_grid_view|产品管理|实体表格视图||
 |[产品](app/view/product_index_view)|product_index_view|产品|实体首页视图||
 |[产品主视图](app/view/product_main_view)|product_main_view|产品|实体分页导航视图||
-|[产品管理表格视图_已归档](app/view/product_management_archived_grid_view)|product_management_archived_grid_view|产品管理|实体表格视图||
-|[产品管理表格视图_已删除](app/view/product_management_deleted_grid_view)|product_management_deleted_grid_view|产品管理|实体表格视图||
-|[产品管理表格视图_进行中](app/view/product_management_in_progress_grid_view)|product_management_in_progress_grid_view|产品管理|实体表格视图||
 |[产品管理导航](app/view/product_management_tab_exp_view)|product_management_tab_exp_view|产品管理|实体分页导航视图||
 |[产品成员](app/view/product_member_assigned_grid_view)|product_member_assigned_grid_view|产品成员|实体表格视图|系统自动添加|
 |[产品成员](app/view/product_member_config_grid_view)|product_member_config_grid_view|产品成员|实体表格视图||
 |[产品成员编辑视图](app/view/product_member_edit_view)|product_member_edit_view|产品成员|实体编辑视图|系统自动添加|
 |[产品成员数据重定向视图](app/view/product_member_redirect_view)|product_member_redirect_view|产品成员|实体数据重定向视图|系统自动添加|
-|[组织产品](app/view/product_org_grid_view)|product_org_grid_view|组织产品|实体表格视图||
+|[设置角色](app/view/product_member_role_edit_view)|product_member_role_edit_view|设置角色|实体选项操作视图||
 |[产品选择表格视图](app/view/product_pick_up_grid_view)|product_pick_up_grid_view|产品|实体选择表格视图（部件视图）|系统自动添加|
 |[产品数据选择视图](app/view/product_pick_up_view)|product_pick_up_view|产品|实体数据选择视图|系统自动添加|
 |[全部计划](app/view/product_plan_all_grid_view)|product_plan_all_grid_view|全部计划|实体表格视图||
@@ -251,31 +324,35 @@
 |[产品标签数据重定向视图](app/view/product_tag_redirect_view)|product_tag_redirect_view|产品标签|实体数据重定向视图|系统自动添加|
 |[标签管理](app/view/product_tag_tag_grid_view)|product_tag_tag_grid_view|标签管理|实体表格视图||
 |[团队产品](app/view/product_team_grid_view)|product_team_grid_view|团队产品|实体表格视图||
+|[编辑工单类型](app/view/product_ticket_type_edit_view)|product_ticket_type_edit_view|编辑工单类型|实体选项操作视图||
+|[工单类型](app/view/product_ticket_type_global_setting_view)|product_ticket_type_global_setting_view|工单类型|实体表格视图||
+|[新建工单类型](app/view/product_ticket_type_quick_create_view)|product_ticket_type_quick_create_view|新建工单类型|实体选项操作视图||
 |[产品管理](app/view/product_tree_exp_view)|product_tree_exp_view|产品管理|实体树导航视图||
 |[高级设置](app/view/project_advanced_setting_edit_view)|project_advanced_setting_edit_view|高级设置|实体编辑视图||
 |[全部项目](app/view/project_all_grid_view)|project_all_grid_view|全部项目|实体表格视图||
+|[项目管理](app/view/project_archived_grid_view)|project_archived_grid_view|项目管理|实体表格视图||
 |[基本信息](app/view/project_base_information_edit_view)|project_base_information_edit_view|基本信息|实体编辑视图||
 |[基本信息](app/view/project_baseinfo_over_view)|project_baseinfo_over_view|基本信息|实体编辑视图||
 |[项目管理配置](app/view/project_config_tree_exp_view)|project_config_tree_exp_view|项目管理|实体树导航视图||
 |[新建项目](app/view/project_create_wizard_view)|project_create_wizard_view|新建项目|实体向导视图||
 |[主数据表格视图（测试）](app/view/project_data_grid_main)|project_data_grid_main|主数据表格视图（测试）|实体表格视图||
+|[项目管理](app/view/project_deleted_grid_view)|project_deleted_grid_view|项目管理|实体表格视图||
 |[项目编辑视图](app/view/project_edit_view)|project_edit_view|项目|实体编辑视图|系统自动添加|
 |[项目表格视图](app/view/project_grid_view)|project_grid_view|项目|实体表格视图||
+|[组织项目](app/view/project_group_grid_view)|project_group_grid_view|组织项目|实体表格视图||
+|[项目管理](app/view/project_in_progress_grid_view)|project_in_progress_grid_view|项目管理|实体表格视图||
 |[主数据视图kanban](app/view/project_kanban_index_view)|project_kanban_index_view|项目|实体首页视图||
 |[项目](app/view/project_kanban_main_view)|project_kanban_main_view|项目|实体分页导航视图||
-|[项目管理](app/view/project_management_archived_grid_view)|project_management_archived_grid_view|项目管理|实体表格视图||
-|[项目管理](app/view/project_management_deleted_grid_view)|project_management_deleted_grid_view|项目管理|实体表格视图||
-|[项目管理](app/view/project_management_in_progress_grid_view)|project_management_in_progress_grid_view|项目管理|实体表格视图||
 |[项目管理](app/view/project_management_tab_exp_view)|project_management_tab_exp_view|项目管理|实体分页导航视图||
 |[项目成员绑定表格视图](app/view/project_member_assigned_grid_view)|project_member_assigned_grid_view|项目成员|实体表格视图||
 |[项目成员](app/view/project_member_config_grid_view)|project_member_config_grid_view|项目成员|实体表格视图||
 |[项目成员编辑视图](app/view/project_member_edit_view)|project_member_edit_view|项目成员|实体编辑视图|系统自动添加|
 |[项目成员数据重定向视图](app/view/project_member_redirect_view)|project_member_redirect_view|项目成员|实体数据重定向视图|系统自动添加|
+|[设置角色](app/view/project_member_role_edit_view)|project_member_role_edit_view|设置角色|实体选项操作视图||
 |[测试项布局面板](app/view/project_member_test_list_view)|project_member_test_list_view|项目成员|实体列表视图||
 |[工作项移动时选择视图_选择数据视图](app/view/project_move_choose_pick_up_grid_view)|project_move_choose_pick_up_grid_view|项目|实体选择表格视图（部件视图）|系统自动添加|
 |[工作项移动时选择视图](app/view/project_move_choose_pick_up_view)|project_move_choose_pick_up_view|选择项目|实体数据选择视图||
 |[项目数据多项选择视图](app/view/project_mpick_up_view)|project_mpick_up_view|项目|实体数据多项选择视图||
-|[组织项目](app/view/project_org_grid_view)|project_org_grid_view|组织项目|实体表格视图||
 |[项目概览](app/view/project_over_view)|project_over_view|概览|实体数据看板视图||
 |[项目选择表格视图](app/view/project_pick_up_grid_view)|project_pick_up_grid_view|项目|实体选择表格视图（部件视图）|系统自动添加|
 |[项目数据选择视图](app/view/project_pick_up_view)|project_pick_up_view|项目|实体数据选择视图|系统自动添加|
@@ -313,10 +390,11 @@
 |[自动化规则](app/view/psdelogicflow_grid_view)|psdelogicflow_grid_view|自动化规则|实体表格视图||
 |[自动化规则](app/view/psdelogicflow_main_view)|psdelogicflow_main_view|自动化规则|实体分页导航视图||
 |[自动化规则看板](app/view/psdelogicflow_panel_view)|psdelogicflow_panel_view|自动化规则看板|实体面板视图||
-|[自动化规则](app/view/psdelogicglobal_flow_grid_view)|psdelogicglobal_flow_grid_view|自动化规则|实体表格视图||
+|[自动化规则](app/view/psdelogicglobal_flow_grid_view)|psdelogicglobal_flow_grid_view|全部规则|实体表格视图||
 |[设计](app/view/psdelogiclogicdesign)|psdelogiclogicdesign|实体处理逻辑|实体子应用引用视图||
 |[设计](app/view/psdelogiclogicdesign_readonly)|psdelogiclogicdesign_readonly|实体处理逻辑|实体子应用引用视图||
 |[设计](app/view/psdelogicmslogicdesign)|psdelogicmslogicdesign|设计|实体子应用引用视图||
+|[设计](app/view/psdelogicmslogicdesign_modal)|psdelogicmslogicdesign_modal|设计|实体子应用引用视图||
 |[规则配置视图](app/view/psdelogicquick_cfg_view)|psdelogicquick_cfg_view|实体处理逻辑|实体选项操作视图||
 |[实体处理逻辑快速建立视图](app/view/psdelogicquick_create_view_auto_flow)|psdelogicquick_create_view_auto_flow|实体处理逻辑|实体选项操作视图||
 |[实体处理逻辑快速建立视图](app/view/psdelogicquick_create_view_schedule)|psdelogicquick_create_view_schedule|实体处理逻辑|实体选项操作视图||
@@ -329,6 +407,7 @@
 |[工作台-概览](app/view/recent_data_view)|recent_data_view|最近访问|实体表格视图||
 |[最近访问编辑视图](app/view/recent_edit_view)|recent_edit_view|最近访问|实体编辑视图|系统自动添加|
 |[最近访问表格视图](app/view/recent_grid_view)|recent_grid_view|最近访问|实体表格视图|系统自动添加|
+|[工作台](app/view/recent_his_tab_exp_view)|recent_his_tab_exp_view|工作台|实体分页导航视图||
 |[工作台2](app/view/recent_index_view)|recent_index_view|工作台2|实体首页视图||
 |[我负责的事项](app/view/recent_my_assignee_item_tap_exp_view)|recent_my_assignee_item_tap_exp_view|我负责的事项|实体分页导航视图||
 |[我创建的事项](app/view/recent_my_created_tab_exp_view)|recent_my_created_tab_exp_view|最近访问|实体分页导航视图||
@@ -337,7 +416,6 @@
 |[最近访问的项目](app/view/recent_recent_project_grid_view)|recent_recent_project_grid_view|最近访问的项目|实体表格视图||
 |[最近访问的用例](app/view/recent_recent_test_case_grid_view)|recent_recent_test_case_grid_view|最近访问的用例|实体表格视图||
 |[最近访问数据重定向视图](app/view/recent_redirect_view)|recent_redirect_view|最近访问|实体数据重定向视图|系统自动添加|
-|[工作台](app/view/recent_tab_exp_view)|recent_tab_exp_view|工作台|实体分页导航视图||
 |[我的待办](app/view/recent_todo_custom_view)|recent_todo_custom_view|我的待办|实体自定义视图||
 |[首页](app/view/recent_tree_exp_view)|recent_tree_exp_view|首页|实体树导航视图||
 |[引用索引编辑视图](app/view/references_index_edit_view)|references_index_edit_view|引用索引|实体编辑视图|系统自动添加|
@@ -346,7 +424,39 @@
 |[引用索引数据选择视图](app/view/references_index_index_pick_up_view)|references_index_index_pick_up_view|引用索引|实体数据选择视图|系统自动添加|
 |[工作项关联编辑视图](app/view/relation_edit_view)|relation_edit_view|关联|实体编辑视图||
 |[工作项关联表格视图](app/view/relation_grid_view)|relation_grid_view|关联|实体表格视图||
+|[需求关联客户](app/view/relation_idea_re_customer_grid_view)|relation_idea_re_customer_grid_view|关联|实体表格视图||
+|[需求关联客户列表视图](app/view/relation_idea_re_customer_list_view)|relation_idea_re_customer_list_view|关联|实体列表视图||
+|[需求关联需求](app/view/relation_idea_re_idea_grid_view)|relation_idea_re_idea_grid_view|关联|实体表格视图||
+|[需求关联需求列表视图](app/view/relation_idea_re_self_list_view)|relation_idea_re_self_list_view|关联|实体列表视图||
+|[需求关联测试用例](app/view/relation_idea_re_test_case_grid_view)|relation_idea_re_test_case_grid_view|关联|实体表格视图||
+|[需求关联测试用例列表视图](app/view/relation_idea_re_test_case_list_view)|relation_idea_re_test_case_list_view|关联|实体列表视图||
+|[需求关联工单](app/view/relation_idea_re_ticket_grid_view)|relation_idea_re_ticket_grid_view|关联|实体表格视图||
+|[需求关联工单列表视图](app/view/relation_idea_re_ticket_list_view)|relation_idea_re_ticket_list_view|关联|实体列表视图||
+|[需求关联工作项](app/view/relation_idea_re_work_item_grid_view)|relation_idea_re_work_item_grid_view|关联|实体表格视图||
+|[需求关联工作项列表视图](app/view/relation_idea_re_work_item_list_view)|relation_idea_re_work_item_list_view|关联|实体列表视图||
+|[工作项关联数据重定向视图](app/view/relation_redirect_view)|relation_redirect_view|关联|实体数据重定向视图||
+|[评审关联测试用例](app/view/relation_review_re_test_case_grid_view)|relation_review_re_test_case_grid_view|关联|实体表格视图||
+|[执行用例关联缺陷](app/view/relation_run_re_bug_grid_view)|relation_run_re_bug_grid_view|关联|实体表格视图||
+|[执行用例关联需求](app/view/relation_run_re_idea_grid_view)|relation_run_re_idea_grid_view|关联|实体表格视图||
+|[执行用例关联工作项](app/view/relation_run_re_work_item_grid_view)|relation_run_re_work_item_grid_view|关联|实体表格视图||
+|[测试用例关联缺陷](app/view/relation_test_case_re_bug_grid_view)|relation_test_case_re_bug_grid_view|关联|实体表格视图||
+|[测试用例关联缺陷列表视图](app/view/relation_test_case_re_bug_list_view)|relation_test_case_re_bug_list_view|关联|实体列表视图||
+|[测试用例关联需求](app/view/relation_test_case_re_idea_grid_view)|relation_test_case_re_idea_grid_view|关联|实体表格视图||
+|[测试用例关联产品需求列表视图](app/view/relation_test_case_re_idea_list_view)|relation_test_case_re_idea_list_view|关联|实体列表视图||
+|[测试用例关联工作项表格](app/view/relation_test_case_re_work_item_grid_view)|relation_test_case_re_work_item_grid_view|关联|实体表格视图||
+|[测试用例关联工作项列表视图](app/view/relation_test_case_re_work_item_list_view)|relation_test_case_re_work_item_list_view|关联|实体列表视图||
 |[关联缺陷](app/view/relation_test_plan_bug_grid_vew)|relation_test_plan_bug_grid_vew|关联缺陷|实体表格视图||
+|[工单关联产品需求表格视图](app/view/relation_ticket_re_idea_grid_view)|relation_ticket_re_idea_grid_view|关联|实体表格视图||
+|[工单关联工单表格视图](app/view/relation_ticket_re_self_grid_view)|relation_ticket_re_self_grid_view|关联|实体表格视图||
+|[工单关联工作项表格视图](app/view/relation_ticket_re_work_item_grid_view)|relation_ticket_re_work_item_grid_view|关联|实体表格视图||
+|[工作项关联产品需求表格视图](app/view/relation_work_item_re_idea_grid_view)|relation_work_item_re_idea_grid_view|关联|实体表格视图||
+|[工作项关联产品需求列表视图](app/view/relation_work_item_re_idea_list_view)|relation_work_item_re_idea_list_view|关联|实体列表视图|show_identifier,title|
+|[工作项关联工作项表格视图](app/view/relation_work_item_re_self_grid_view)|relation_work_item_re_self_grid_view|关联|实体表格视图||
+|[工作项关联工作项列表视图](app/view/relation_work_item_re_self_list_view)|relation_work_item_re_self_list_view|关联|实体列表视图||
+|[工作项关联测试用例表格视图](app/view/relation_work_item_re_test_case_grid_view)|relation_work_item_re_test_case_grid_view|关联|实体表格视图||
+|[工作项关联测试用例列表视图](app/view/relation_work_item_re_test_case_list_view)|relation_work_item_re_test_case_list_view|关联|实体列表视图||
+|[工作项关联工单表格视图](app/view/relation_work_item_re_ticket_grid_view)|relation_work_item_re_ticket_grid_view|关联|实体表格视图||
+|[工作项关联工单列表视图](app/view/relation_work_item_re_ticket_list_view)|relation_work_item_re_ticket_list_view|关联|实体列表视图||
 |[项目发布表格视图（全部发布）](app/view/release_all_grid_view)|release_all_grid_view|全部发布|实体表格视图||
 |[项目发布主视图](app/view/release_main_view)|release_main_view|项目发布|实体分页导航视图||
 |[项目发布实体数据选择视图（左右关系）_选择数据视图](app/view/release_pick_up_around_grid_view)|release_pick_up_around_grid_view|项目发布|实体选择表格视图（部件视图）||
@@ -356,15 +466,34 @@
 |[新建项目发布操作视图](app/view/release_quick_create_view)|release_quick_create_view|新建发布|实体选项操作视图||
 |[项目发布模块导航视图](app/view/release_tree_exp_view)|release_tree_exp_view|发布模块|实体树导航视图||
 |[编辑项目发布操作视图](app/view/release_update_view)|release_update_view|编辑发布|实体选项操作视图||
+|[全部评审表格](app/view/review_all_grid_view)|review_all_grid_view|全部评审|实体表格视图||
+|[评审内容编辑视图](app/view/review_content_edit_view)|review_content_edit_view|评审内容|实体编辑视图|系统自动添加|
+|[评审内容数据重定向视图](app/view/review_content_redirect_view)|review_content_redirect_view|评审内容|实体数据重定向视图|系统自动添加|
+|[评审结果选项操作视图](app/view/review_content_result_option_view)|review_content_result_option_view|评审内容|实体选项操作视图||
+|[评审内容表格](app/view/review_content_under_review_grid_view)|review_content_under_review_grid_view|评审内容|实体表格视图||
+|[工作流评审内容表格](app/view/review_content_wf_grid_view)|review_content_wf_grid_view|评审内容|实体表格视图||
+|[评审新建向导](app/view/review_create_wizard_view)|review_create_wizard_view|新建评审|实体向导视图||
+|[评审编辑视图](app/view/review_edit_view)|review_edit_view|评审|实体编辑视图|系统自动添加|
+|[评审主视图](app/view/review_main_view)|review_main_view|评审|实体编辑视图||
+|[评审选择](app/view/review_pick_up_tree_view)|review_pick_up_tree_view|评审选择|实体选择树视图（部件视图）||
+|[评审快速建立视图](app/view/review_quick_create_view)|review_quick_create_view|新建评审|实体编辑视图||
+|[评审数据重定向视图](app/view/review_redirect_view)|review_redirect_view|评审|实体数据重定向视图|系统自动添加|
+|[待办全部评审](app/view/review_todo_all_grid_view)|review_todo_all_grid_view|全部评审|实体表格视图||
+|[评审实体树导航](app/view/review_tree_exp_view)|review_tree_exp_view|评审|实体树导航视图||
+|[评审工作流动态编辑视图](app/view/review_wf_dyna_edit_view)|review_wf_dyna_edit_view|评审|实体工作流动态视图（分页关系）||
 |[全部用例](app/view/run_all_grid_view)|run_all_grid_view|全部用例|实体表格视图||
 |[执行用例结果附件表格视图](app/view/run_attachment_grid_view)|run_attachment_grid_view|执行用例结果附件|实体表格视图||
 |[测试用例计划对比分析](app/view/run_comparative_analysis_report_view)|run_comparative_analysis_report_view|测试用例计划对比分析|实体图表视图||
+|[编辑部件](app/view/run_daily_tendencies_option_view)|run_daily_tendencies_option_view|编辑部件|实体选项操作视图||
 |[每日执行用例趋势](app/view/run_daily_tendencies_report_view)|run_daily_tendencies_report_view|每日执行用例趋势|实体图表视图||
+|[编辑部件](app/view/run_daily_test_option_view)|run_daily_test_option_view|编辑部件|实体选项操作视图||
 |[每日测试次数统计](app/view/run_daily_test_report_view)|run_daily_test_report_view|每日测试次数统计|实体图表视图||
 |[执行用例](app/view/run_edit_view)|run_edit_view|执行用例|实体编辑视图||
-|[执行历史](app/view/run_history_grid_view)|run_history_grid_view|执行历史|实体表格视图||
+|[执行历史](app/view/run_history_grid_view)|run_history_grid_view|执行用例|实体表格视图||
 |[执行结果关联执行用例编辑视图](app/view/run_history_re_run_edit_view)|run_history_re_run_edit_view|执行结果|实体编辑视图||
+|[执行结果选项操作视图](app/view/run_implementationresults_option_view)|run_implementationresults_option_view|编辑部件|实体选项操作视图||
 |[执行用例主视图](app/view/run_main_view)|run_main_view|执行用例|实体编辑视图|系统自动添加|
+|[成员执行情况选项操作视图](app/view/run_members_distribution_option_view)|run_members_distribution_option_view|编辑部件|实体选项操作视图||
 |[执行用例成员分布](app/view/run_members_distribution_report_view)|run_members_distribution_report_view|执行用例成员分布|实体图表视图||
 |[执行用例优先级分布](app/view/run_priority_distributions_report_view)|run_priority_distributions_report_view|执行用例优先级分布|实体图表视图||
 |[执行用例数据重定向视图](app/view/run_redirect_view)|run_redirect_view|执行用例|实体数据重定向视图|系统自动添加|
@@ -374,6 +503,8 @@
 |[设置执行结果视图](app/view/run_set_status_option_view)|run_set_status_option_view|执行结果|实体选项操作视图||
 |[设置执行人视图](app/view/run_setting_actual_executor_view)|run_setting_actual_executor_view|执行人|实体选项操作视图||
 |[执行用例导航](app/view/run_tree_exp_view)|run_tree_exp_view|执行用例导航|实体树导航视图||
+|[Scrum需求应用数据导入视图](app/view/scrum_back_log_app_data_upload_view)|scrum_back_log_app_data_upload_view||应用数据导入视图|Scrum需求自定义导入视图|
+|[应用数据导入视图](app/view/scrum_bug_app_data_upload_view)|scrum_bug_app_data_upload_view||应用数据导入视图|Scrum缺陷自定义导入视图|
 |[附件高级搜索表格视图](app/view/search_attachment_advanced_search_grid_view)|search_attachment_advanced_search_grid_view|附件搜索|实体表格视图||
 |[附件搜索编辑视图](app/view/search_attachment_edit_view)|search_attachment_edit_view|附件搜索|实体编辑视图|系统自动添加|
 |[附件搜索数据重定向视图](app/view/search_attachment_redirect_view)|search_attachment_redirect_view|附件搜索|实体数据重定向视图|系统自动添加|
@@ -385,25 +516,26 @@
 |[分组数据选择视图](app/view/section_pick_up_view)|section_pick_up_view|分组|实体数据选择视图|系统自动添加|
 |[高级设置](app/view/space_advanced_setting_view)|space_advanced_setting_view|高级设置|实体编辑视图||
 |[全部空间](app/view/space_all_grid_view)|space_all_grid_view|全部空间|实体表格视图||
+|[空间管理](app/view/space_archived_grid_view)|space_archived_grid_view|空间管理|实体表格视图||
 |[基本信息](app/view/space_base_info_edit_view)|space_base_info_edit_view|基本信息|实体编辑视图||
 |[全部空间](app/view/space_category_grid_view)|space_category_grid_view|全部空间|实体表格视图||
 |[空间分类树导航](app/view/space_category_tree_exp_view)|space_category_tree_exp_view|空间分类|实体树导航视图||
 |[配置中心](app/view/space_config_tree_exp_view)|space_config_tree_exp_view|配置中心|实体树导航视图||
 |[新建空间](app/view/space_create_wizard_view)|space_create_wizard_view|新建空间|实体向导视图||
+|[空间管理](app/view/space_deleted_grid_view)|space_deleted_grid_view|空间管理|实体表格视图||
 |[空间详情配置](app/view/space_details_setting_view)|space_details_setting_view|空间配置|实体树导航视图||
 |[空间编辑视图](app/view/space_edit_view)|space_edit_view|空间|实体编辑视图|系统自动添加|
 |[空间表格视图](app/view/space_grid_view)|space_grid_view|空间|实体表格视图||
+|[组织空间](app/view/space_group_grid_view)|space_group_grid_view|组织空间|实体表格视图||
+|[空间管理](app/view/space_in_progress_grid_view)|space_in_progress_grid_view|空间管理|实体表格视图||
 |[空间](app/view/space_index_view)|space_index_view|空间|实体首页视图||
 |[空间信息](app/view/space_info_view)|space_info_view|空间信息|实体编辑视图||
-|[空间管理](app/view/space_is_archived_grid_view)|space_is_archived_grid_view|空间管理|实体表格视图||
-|[空间管理](app/view/space_is_deleted_grid_view)|space_is_deleted_grid_view|空间管理|实体表格视图||
-|[空间管理](app/view/space_is_running_grid_view)|space_is_running_grid_view|空间管理|实体表格视图||
 |[空间成员](app/view/space_member_assigned_grid_view)|space_member_assigned_grid_view|空间成员|实体表格视图||
 |[空间成员表格](app/view/space_member_config_grid_view)|space_member_config_grid_view|空间成员|实体表格视图||
 |[空间成员编辑视图](app/view/space_member_edit_view)|space_member_edit_view|空间成员|实体编辑视图|系统自动添加|
 |[空间成员数据重定向视图](app/view/space_member_redirect_view)|space_member_redirect_view|空间成员|实体数据重定向视图|系统自动添加|
+|[设置角色](app/view/space_member_role_edit_view)|space_member_role_edit_view|设置角色|实体选项操作视图||
 |[个人空间](app/view/space_oneself_grid_view)|space_oneself_grid_view|个人空间|实体表格视图||
-|[组织空间](app/view/space_org_grid_view)|space_org_grid_view|组织空间|实体表格视图||
 |[空间选择表格视图](app/view/space_pick_up_grid_view)|space_pick_up_grid_view|空间|实体选择表格视图（部件视图）|系统自动添加|
 |[空间选择树视图](app/view/space_pick_up_tree_view)|space_pick_up_tree_view|空间选择|实体选择树视图（部件视图）||
 |[产品选择关联空间](app/view/space_product_re_space_choose_option_view)|space_product_re_space_choose_option_view|关联空间|实体选项操作视图||
@@ -434,15 +566,22 @@
 |[另存为模板选项操作视图](app/view/stencil_save_option_view)|stencil_save_option_view|另存为模板|实体选项操作视图||
 |[页面模板编辑视图_展示](app/view/stencil_show_edit_view)|stencil_show_edit_view|页面模板|实体编辑视图||
 |[空间下页面模板表格视图](app/view/stencil_space_all_grid_view)|stencil_space_all_grid_view|页面模板|实体表格视图||
+|[全部待办数据](app/view/sys_todo_all_grid_view)|sys_todo_all_grid_view|待办|实体表格视图||
+|[待办编辑视图](app/view/sys_todo_edit_view)|sys_todo_edit_view|待办|实体编辑视图|系统自动添加|
+|[待办数据重定向视图](app/view/sys_todo_redirect_view)|sys_todo_redirect_view|待办|实体数据重定向视图|系统自动添加|
 |[模板库](app/view/template_flow_data_view)|template_flow_data_view|模板库|实体数据视图||
 |[自动化规则](app/view/template_flow_grid_view)|template_flow_grid_view|自动化规则|实体表格视图||
 |[测试用例活动情况](app/view/test_case_activities_status_report_view)|test_case_activities_status_report_view|测试用例活动情况|实体图表视图||
 |[测试用例高级搜索表格视图](app/view/test_case_advanced_search_grid_view)|test_case_advanced_search_grid_view|用例|实体表格视图||
 |[全部用例](app/view/test_case_all_grid_view)|test_case_all_grid_view|全部用例|实体表格视图||
+|[测试用例应用数据导入视图](app/view/test_case_app_data_upload_view)|test_case_app_data_upload_view||应用数据导入视图|测试用例自定义导入视图|
 |[测试用例评审结果分布](app/view/test_case_assessment_result_report_view)|test_case_assessment_result_report_view|测试用例评审结果分布|实体图表视图||
+|[基线规划用例多项选择视图_选择数据视图](app/view/test_case_baseline_mpick_up_grid_view)|test_case_baseline_mpick_up_grid_view|用例|实体选择表格视图（部件视图）|系统自动添加|
+|[基线规划用例多项选择视图](app/view/test_case_baseline_mpick_up_view)|test_case_baseline_mpick_up_view|用例|实体多项数据选择视图（左右关系）||
 |[用例移入计划](app/view/test_case_case_move_plan_option_view)|test_case_case_move_plan_option_view|用例|实体选项操作视图||
 |[用例成员分布](app/view/test_case_case_person_report_view)|test_case_case_person_report_view|用例成员分布|实体图表视图||
 |[测试用例类型分布](app/view/test_case_case_type_report_view)|test_case_case_type_report_view|测试用例类型分布|实体图表视图||
+|[选择模板选择](app/view/test_case_choose_template_option_view)|test_case_choose_template_option_view|选择模板|实体选项操作视图||
 |[复制用例](app/view/test_case_copy_test_case_option_view)|test_case_copy_test_case_option_view|复制用例|实体选项操作视图||
 |[每日执行用例趋势](app/view/test_case_daily_tendencies_report_view)|test_case_daily_tendencies_report_view|每日执行用例趋势|实体图表视图||
 |[每日测试次数统计](app/view/test_case_daily_test_report_view)|test_case_daily_test_report_view|每日测试次数统计|实体图表视图||
@@ -464,6 +603,7 @@
 |[其他实体关联用例多项选择视图](app/view/test_case_others_re_mpick_up_view)|test_case_others_re_mpick_up_view|选择测试用例|实体多项数据选择视图（左右关系）||
 |[测试用例维护人分布](app/view/test_case_person_distributions_report_view)|test_case_person_distributions_report_view|测试用例维护人分布|实体图表视图||
 |[用例选择表格视图](app/view/test_case_pick_up_grid_view)|test_case_pick_up_grid_view|用例|实体选择表格视图（部件视图）||
+|[用例选择树视图](app/view/test_case_pick_up_tree_view)|test_case_pick_up_tree_view|用例选择树视图|实体选择树视图（部件视图）||
 |[用例数据选择视图](app/view/test_case_pick_up_view)|test_case_pick_up_view|用例|实体数据选择视图||
 |[测试用例优先级分布](app/view/test_case_priority_distributions_report_view)|test_case_priority_distributions_report_view|测试用例优先级分布|实体图表视图||
 |[测试用例规划分析](app/view/test_case_program_analyze_report_view)|test_case_program_analyze_report_view|测试用例规划分析|实体图表视图||
@@ -472,15 +612,25 @@
 |[已删除用例编辑视图](app/view/test_case_recycle_edit_view)|test_case_recycle_edit_view|用例|实体编辑视图||
 |[测试用例回收站表格](app/view/test_case_recycle_grid_view)|test_case_recycle_grid_view|回收站|实体表格视图||
 |[用例数据重定向视图](app/view/test_case_redirect_view)|test_case_redirect_view|用例|实体数据重定向视图|系统自动添加|
+|[评审内容](app/view/test_case_review_content_grid_view)|test_case_review_content_grid_view|评审内容|实体表格视图||
 |[设置重要程度](app/view/test_case_set_level_option_view)|test_case_set_level_option_view|用例|实体选项操作视图||
 |[设置维护人](app/view/test_case_set_maintenance_option_view)|test_case_set_maintenance_option_view|用例|实体选项操作视图||
 |[设置评审状态视图](app/view/test_case_set_state_option_view)|test_case_set_state_option_view|用例|实体选项操作视图||
+|[用例模板表格视图](app/view/test_case_template_all_grid_view)|test_case_template_all_grid_view|用例模板|实体表格视图||
+|[选择用例模板](app/view/test_case_template_choose_template_option_view)|test_case_template_choose_template_option_view|用例模板|实体选项操作视图||
+|[用例模板编辑视图](app/view/test_case_template_edit_view)|test_case_template_edit_view|模板|实体编辑视图|系统自动添加|
+|[用例模板新建](app/view/test_case_template_new_edit_view)|test_case_template_new_edit_view|新建|实体编辑视图||
+|[用例模板选择表格视图](app/view/test_case_template_pickup_grid_view)|test_case_template_pickup_grid_view|用例模板|实体选择表格视图（部件视图）|系统自动添加|
+|[用例模板数据选择视图](app/view/test_case_template_pickup_view)|test_case_template_pickup_view|用例模板|实体数据选择视图|系统自动添加|
+|[用例模板展示](app/view/test_case_template_show_edit_view)|test_case_template_show_edit_view|用例模板|实体编辑视图||
 |[测试用例表格视图](app/view/test_case_test_all_grid_view)|test_case_test_all_grid_view|用例|实体表格视图||
 |[计划关联用例多项选择视图](app/view/test_case_test_plan_re_test_case_prickup_view)|test_case_test_plan_re_test_case_prickup_view|用例|实体多项数据选择视图（左右关系）||
 |[当前模块下用例](app/view/test_case_this_suite_test_case_grid_view)|test_case_this_suite_test_case_grid_view|用例|实体表格视图||
 |[用例导航](app/view/test_case_tree_exp_view)|test_case_tree_exp_view|用例|实体树导航视图|需求关联用例多选视图内的树导航视图|
+|[用例版本对比视图](app/view/test_case_version_comparison_view)|test_case_version_comparison_view|版本对比|实体编辑视图||
 |[工作项关联用例表格视图](app/view/test_case_work_item_re_case_grid_view)|test_case_work_item_re_case_grid_view|用例|实体表格视图||
 |[全部计划](app/view/test_plan_all_grid_view)|test_plan_all_grid_view|全部计划|实体表格视图||
+|[报告总结](app/view/test_plan_conclude_edit_view)|test_plan_conclude_edit_view|测试计划|实体编辑视图||
 |[测试计划编辑视图](app/view/test_plan_edit_view)|test_plan_edit_view|测试计划|实体编辑视图|系统自动添加|
 |[进行中的测试计划](app/view/test_plan_in_progress_grid_view)|test_plan_in_progress_grid_view|测试计划|实体表格视图||
 |[测试计划](app/view/test_plan_main_view)|test_plan_main_view|测试计划|实体分页导航视图||
@@ -494,6 +644,9 @@
 |[测试计划树导航视图（项目）](app/view/test_plan_project_tree_exp_view)|test_plan_project_tree_exp_view|测试计划|实体树导航视图||
 |[新建测试计划](app/view/test_plan_quick_create_view)|test_plan_quick_create_view|新建测试计划|实体选项操作视图||
 |[测试计划数据重定向视图](app/view/test_plan_redirect_view)|test_plan_redirect_view|测试计划|实体数据重定向视图|系统自动添加|
+|[测试报告](app/view/test_plan_report_custom_view)|test_plan_report_custom_view|测试报告|实体自定义视图|测试，测试报告|
+|[测试报告](app/view/test_plan_report_dashboard_view)|test_plan_report_dashboard_view|测试报告|实体数据看板视图||
+|[报告概览](app/view/test_plan_report_survey_custom_view)|test_plan_report_survey_custom_view|报告概览|实体自定义视图||
 |[测试计划](app/view/test_plan_tree_exp_view)|test_plan_tree_exp_view|测试计划|实体树导航视图||
 |[测试计划编辑视图](app/view/test_plan_update_option_view)|test_plan_update_option_view|编辑测试计划|实体选项操作视图||
 |[用例模块编辑视图](app/view/test_suite_edit_view)|test_suite_edit_view|用例模块|实体编辑视图|系统自动添加|
@@ -505,7 +658,9 @@
 |[工单高级搜索表格视图](app/view/ticket_advanced_search_grid_view)|ticket_advanced_search_grid_view|工单|实体表格视图||
 |[全部工单](app/view/ticket_all_grid_view)|ticket_all_grid_view|全部工单|实体表格视图||
 |[分配负责人](app/view/ticket_allocate_person_view)|ticket_allocate_person_view|工单|实体选项操作视图||
+|[应用数据导入视图](app/view/ticket_app_data_upload_view)|ticket_app_data_upload_view||应用数据导入视图|工单自定义导入视图|
 |[已归档的工单](app/view/ticket_archived_grid_view)|ticket_archived_grid_view|已归档的工单|实体表格视图||
+|[工单配置](app/view/ticket_config_tab_exp_view)|ticket_config_tab_exp_view|工单配置|实体分页导航视图||
 |[关联工单快速新建实体](app/view/ticket_create_re_ticket_view)|ticket_create_re_ticket_view|工单|实体选项操作视图||
 |[客户关联工单表格视图](app/view/ticket_customer_re_ticket_grid_view)|ticket_customer_re_ticket_grid_view|工单|实体表格视图||
 |[客户关联工单多项选择表格](app/view/ticket_customer_re_ticket_pick_up_grid_view)|ticket_customer_re_ticket_pick_up_grid_view|工单|实体选择表格视图（部件视图）||
@@ -529,10 +684,20 @@
 |[设置标签](app/view/ticket_set_tags_option_view)|ticket_set_tags_option_view|工单|实体选项操作视图||
 |[我提交的工单](app/view/ticket_submit_grid_view)|ticket_submit_grid_view|我提交的工单|实体表格视图||
 |[当前标签下工单](app/view/ticket_tags_tciket_grid_view)|ticket_tags_tciket_grid_view|本标签-工单|实体表格视图||
+|[工单编辑视图(测试)](app/view/ticket_test_ai_main_view)|ticket_test_ai_main_view|工单编辑视图(测试)|实体编辑视图|测试|
 |[全部工单——测试](app/view/ticket_test_all_grid_view)|ticket_test_all_grid_view|全部工单|实体表格视图||
 |[工单](app/view/ticket_test_main_view)|ticket_test_main_view|工单|实体编辑视图|测试|
 |[工单关联工单表格视图](app/view/ticket_ticket_re_ticket_grid_view)|ticket_ticket_re_ticket_grid_view|工单|实体表格视图||
 |[工单导航](app/view/ticket_tree_exp_view)|ticket_tree_exp_view|工单导航|实体树导航视图||
+|[工单配置](app/view/ticket_type_config_tab_exp_view)|ticket_type_config_tab_exp_view|工单配置|实体分页导航视图||
+|[工单类型实体确认删除视图](app/view/ticket_type_confirm_remove_view)|ticket_type_confirm_remove_view|确认删除|实体选项操作视图|系统自动添加|
+|[工单类型编辑视图](app/view/ticket_type_edit_view)|ticket_type_edit_view|工单类型|实体编辑视图|系统自动添加|
+|[编辑工单类型](app/view/ticket_type_editor_view)|ticket_type_editor_view|编辑工单类型|实体选项操作视图||
+|[工单类型](app/view/ticket_type_global_setting_view)|ticket_type_global_setting_view|工单类型|实体表格视图||
+|[工单类型选择表格视图](app/view/ticket_type_pick_up_grid_view)|ticket_type_pick_up_grid_view|工单类型|实体选择表格视图（部件视图）|系统自动添加|
+|[工单类型数据选择视图](app/view/ticket_type_pick_up_view)|ticket_type_pick_up_view|工单类型|实体数据选择视图|系统自动添加|
+|[新建工单类型](app/view/ticket_type_quick_create_view)|ticket_type_quick_create_view|新建工单类型|实体选项操作视图||
+|[工单类型数据重定向视图](app/view/ticket_type_redirect_view)|ticket_type_redirect_view|工单类型|实体数据重定向视图|系统自动添加|
 |[待计划的工单](app/view/ticket_un_plan_grid_view)|ticket_un_plan_grid_view|待计划的工单|实体表格视图||
 |[工作项关联工单表格视图](app/view/ticket_work_item_re_ticket_grid_view)|ticket_work_item_re_ticket_grid_view|工单|实体表格视图||
 |[流转记录](app/view/transition_history_idea_calendar_view)|transition_history_idea_calendar_view|流转记录|实体日历视图|系统自动添加|
@@ -540,36 +705,42 @@
 |[流转记录](app/view/transition_history_work_item_calendar_view)|transition_history_work_item_calendar_view|流转记录|实体日历视图||
 |[帐号设置](app/view/user_account_view)|user_account_view|帐号设置|实体编辑视图||
 |[选择成员](app/view/user_choose_mpick_up_view)|user_choose_mpick_up_view|选择成员|实体多项数据选择视图（左右关系）||
+|[用户选择](app/view/user_choose_pick_up_grid_view)|user_choose_pick_up_grid_view|用户选择|实体选择表格视图（部件视图）||
 |[企业用户编辑视图](app/view/user_edit_view)|user_edit_view|企业用户|实体编辑视图|系统自动添加|
 |[成员管理](app/view/user_grid_view)|user_grid_view|成员管理|实体表格视图||
 |[用户信息自定义视图](app/view/user_info_custom_view)|user_info_custom_view|用户信息自定义视图|实体自定义视图||
 |[帐号信息](app/view/user_info_view)|user_info_view|帐号信息|实体编辑视图||
 |[企业用户数据多项选择视图](app/view/user_mpick_up_view)|user_mpick_up_view|企业用户|实体数据多项选择视图||
-|[用户选择](app/view/user_pick_up_grid_view)|user_pick_up_grid_view|用户选择|实体选择表格视图（部件视图）||
-|[用户选择](app/view/user_pick_up_grid_view)|user_pick_up_grid_view|用户选择|实体选择表格视图（部件视图）||
+|[企业用户选择表格视图](app/view/user_pick_up_grid_view)|user_pick_up_grid_view|企业用户|实体选择表格视图（部件视图）|系统自动添加|
 |[企业用户数据选择视图](app/view/user_pick_up_view)|user_pick_up_view|企业用户|实体数据选择视图|系统自动添加|
 |[设置成员信息](app/view/user_quick_cfg_view)|user_quick_cfg_view|设置成员信息|实体编辑视图||
 |[企业用户数据重定向视图](app/view/user_redirect_view)|user_redirect_view|企业用户|实体数据重定向视图|系统自动添加|
 |[帐号设置](app/view/user_setting_view)|user_setting_view|帐号设置|实体编辑视图（左右关系）||
+|[成员](app/view/user_tab_exp_view)|user_tab_exp_view|成员|实体分页导航视图||
 |[成员管理](app/view/user_tree_exp_view)|user_tree_exp_view|成员管理|实体树导航视图||
 |[成员管理](app/view/user_unassigned_dept_grid_view)|user_unassigned_dept_grid_view|成员管理|实体表格视图||
-|[项目发布编辑视图](app/view/version_edit_view)|version_edit_view|版本（temp）|实体编辑视图|系统自动添加|
+|[编辑版本操作视图](app/view/version_edit_version_view)|version_edit_version_view|编辑版本|实体选项操作视图||
+|[项目发布编辑视图](app/view/version_edit_view)|version_edit_view|版本|实体编辑视图|系统自动添加|
+|[产品需求版本表格视图](app/view/version_idea_grid_view)|version_idea_grid_view|版本|实体表格视图||
 |[历史版本](app/view/version_list_exp_view)|version_list_exp_view|历史版本|实体列表导航视图||
-|[项目发布选择表格视图](app/view/version_pick_up_grid_view)|version_pick_up_grid_view|版本（temp）|实体选择表格视图（部件视图）|系统自动添加|
-|[项目发布数据选择视图](app/view/version_pick_up_view)|version_pick_up_view|版本（temp）|实体数据选择视图|系统自动添加|
+|[项目发布选择表格视图](app/view/version_pick_up_grid_view)|version_pick_up_grid_view|版本|实体选择表格视图（部件视图）|系统自动添加|
+|[项目发布数据选择视图](app/view/version_pick_up_view)|version_pick_up_view|版本|实体数据选择视图|系统自动添加|
 |[建立版本](app/view/version_quick_create_view)|version_quick_create_view|建立版本|实体选项操作视图||
-|[项目发布数据重定向视图](app/view/version_redirect_view)|version_redirect_view|版本（temp）|实体数据重定向视图|系统自动添加|
-|[工作项版本表格视图](app/view/version_work_item_grid_view)|version_work_item_grid_view|版本（temp）|实体表格视图||
+|[项目发布数据重定向视图](app/view/version_redirect_view)|version_redirect_view|版本|实体数据重定向视图|系统自动添加|
+|[测试用例版本实体表格视图](app/view/version_test_case_grid_view)|version_test_case_grid_view|版本|实体表格视图||
+|[工作项版本表格视图](app/view/version_work_item_grid_view)|version_work_item_grid_view|版本|实体表格视图||
+|[瀑布工作项应用数据导入视图](app/view/waterfall_work_item_app_data_upload_view)|waterfall_work_item_app_data_upload_view||应用数据导入视图|瀑布工作项应用数据导入视图|
 |[工作编辑视图](app/view/work_edit_view)|work_edit_view|工作|实体编辑视图|系统自动添加|
 |[工作表格视图](app/view/work_grid_view)|work_grid_view|工作|实体表格视图|系统自动添加|
 |[工作项高级搜索表格视图](app/view/work_item_advanced_search_grid_view)|work_item_advanced_search_grid_view|工作项|实体表格视图||
-|[高级搜索视图](app/view/work_item_advanced_search_view)|work_item_advanced_search_view|高级搜索视图|实体分页搜索视图||
 |[工作项](app/view/work_item_all_kanban_grid_view)|work_item_all_kanban_grid_view|工作项|实体表格视图||
 |[工作项](app/view/work_item_all_scrum_grid_view)|work_item_all_scrum_grid_view|工作项|实体表格视图|系统自动添加|
 |[全部需求](app/view/work_item_all_story_scrum_grid_view)|work_item_all_story_scrum_grid_view|全部需求|实体表格视图||
 |[工作项](app/view/work_item_all_waterfall_grid_view)|work_item_all_waterfall_grid_view|工作项|实体表格视图||
 |[Scrum需求年龄报告报表](app/view/work_item_backlog_age_report_report_view)|work_item_backlog_age_report_report_view|需求年龄报告|实体图表视图||
 |[需求每日趋势报表](app/view/work_item_backlog_daily_trend_report_view)|work_item_backlog_daily_trend_report_view|需求每日趋势|实体图表视图||
+|[基线规划工作项多项选择视图_选择数据视图](app/view/work_item_baseline_mpick_up_grid_view)|work_item_baseline_mpick_up_grid_view|工作项|实体选择表格视图（部件视图）||
+|[基线规划工作项多项选择视图](app/view/work_item_baseline_mpick_up_view)|work_item_baseline_mpick_up_view|工作项|实体多项数据选择视图（左右关系）||
 |[缺陷](app/view/work_item_bug_main_view)|work_item_bug_main_view|缺陷|实体编辑视图||
 |[缺陷属性分布报表测试](app/view/work_item_bug_state_statement)|work_item_bug_state_statement|缺陷属性分布报表测试|实体表格视图||
 |[工作项日历](app/view/work_item_calendar_view)|work_item_calendar_view|我的日历|实体日历视图||
@@ -585,10 +756,10 @@
 |[子工作项多项选择视图](app/view/work_item_choose_child_mpick_up_view)|work_item_choose_child_mpick_up_view|工作项|实体多项数据选择视图（左右关系）||
 |[复制工作项选项视图](app/view/work_item_copy_view)|work_item_copy_view|复制工作项|实体选项操作视图||
 |[工作项](app/view/work_item_dyna_main_view)|work_item_dyna_main_view|工作项|实体编辑视图||
+|[工作项表格视图（动态）](app/view/work_item_dyna_scrum_grid_view)|work_item_dyna_scrum_grid_view|工作项|实体表格视图|系统自动添加|
 |[工作项编辑视图](app/view/work_item_edit_view)|work_item_edit_view|工作项|实体编辑视图|系统自动添加|
 |[工作项](app/view/work_item_epic_main_view)|work_item_epic_main_view|工作项|实体编辑视图||
 |[筛选器表格视图](app/view/work_item_filter_grid_view)|work_item_filter_grid_view|查询结果|实体表格视图||
-|[工作项甘特图](app/view/work_item_gantt_view)|work_item_gantt_view|工作项甘特图|实体甘特视图||
 |[工作项甘特图](app/view/work_item_gantt_view)|work_item_gantt_view|工作项甘特图|实体甘特视图||
 |[工作项配置](app/view/work_item_global_setting_view)|work_item_global_setting_view|工作项配置|实体分页导航视图||
 |[工作项表格视图](app/view/work_item_grid_view)|work_item_grid_view|工作项|实体表格视图|系统自动添加|
@@ -602,7 +773,7 @@
 |[KanBan缺陷年龄报告](app/view/work_item_kanban_defect_age_report_view)|work_item_kanban_defect_age_report_view|缺陷年龄报告|实体图表视图||
 |[kanban缺陷属性分布报表](app/view/work_item_kanban_defect_property_report_view)|work_item_kanban_defect_property_report_view|缺陷属性分布|实体图表视图||
 |[kanban成员负荷报告](app/view/work_item_kanban_user_stat_report_view)|work_item_kanban_user_stat_report_view|成员负荷报告|实体图表视图||
-|[工作项看板](app/view/work_item_kanban_view)|work_item_kanban_view|工作项看板|实体看板视图|SRFNAVCTX.BOARD=fdbc1f55-cd26-6bc6-1163-51a0683402ed|
+|[工作项看板](app/view/work_item_kanban_view)|work_item_kanban_view|工作项看板|实体看板视图||
 |[kanban工作项分布报表](app/view/work_item_kanban_work_item_report_view)|work_item_kanban_work_item_report_view|工作项分布|实体图表视图||
 |[工作项](app/view/work_item_main_view)|work_item_main_view|工作项|实体编辑视图||
 |[工作项表格视图（里程碑）](app/view/work_item_milestone_grid_view)|work_item_milestone_grid_view|里程碑|实体表格视图||
@@ -653,9 +824,9 @@
 |[移入看板选项操作视图](app/view/work_item_shift_in_kanban)|work_item_shift_in_kanban|移入看板|实体选项操作视图||
 |[工作项表格视图（迭代）](app/view/work_item_sprint_grid_view)|work_item_sprint_grid_view|全部工作项|实体表格视图||
 |[工作项状态编辑视图](app/view/work_item_state_edit_view)|work_item_state_edit_view|工作项状态|实体编辑视图|系统自动添加|
-|[工作项状态编辑视图](app/view/work_item_state_edit_view)|work_item_state_edit_view|工作项状态|实体编辑视图|系统自动添加|
-|[工作项状态表格视图](app/view/work_item_state_grid_view)|work_item_state_grid_view|工作项全局状态|实体表格视图||
-|[工作项状态快速建立](app/view/work_item_state_quick_edit_view)|work_item_state_quick_edit_view|新建状态|实体编辑视图||
+|[工作项状态表格视图](app/view/work_item_state_grid_view)|work_item_state_grid_view|工作项状态|实体表格视图||
+|[新建工作项状态](app/view/work_item_state_quick_create_view)|work_item_state_quick_create_view|新建状态|实体选项操作视图||
+|[编辑工作项状态](app/view/work_item_state_update_view)|work_item_state_update_view|编辑状态|实体选项操作视图||
 |[测试用例关联缺陷表格视图](app/view/work_item_test_case_re_bug_grid_view)|work_item_test_case_re_bug_grid_view|工作项|实体表格视图||
 |[测试用例关联工作项表格视图](app/view/work_item_test_case_re_work_item_grid_view)|work_item_test_case_re_work_item_grid_view|工作项|实体表格视图||
 |[测试关注编辑视图](app/view/work_item_test_follow_edit_view)|work_item_test_follow_edit_view|工作项|实体编辑视图||
@@ -664,12 +835,17 @@
 |[工单关联工作项表格](app/view/work_item_ticket_re_work_item_gridview)|work_item_ticket_re_work_item_gridview|工作项|实体表格视图||
 |[工作项树表格视图](app/view/work_item_tree_grid_view)|work_item_tree_grid_view|工作项|实体树表格视图||
 |[工作项类型编辑视图](app/view/work_item_type_edit_view)|work_item_type_edit_view|工作项类型|实体编辑视图|系统自动添加|
+|[新建工作项类型](app/view/work_item_type_global_create_view)|work_item_type_global_create_view|新建工作项类型|实体选项操作视图||
+|[编辑工作项类型](app/view/work_item_type_global_edit_view)|work_item_type_global_edit_view|编辑工作项类型|实体选项操作视图||
+|[工作项类型](app/view/work_item_type_global_grid_view)|work_item_type_global_grid_view|工作项类型|实体表格视图||
 |[工作项配置](app/view/work_item_type_global_setting_view_scrum)|work_item_type_global_setting_view_scrum|工作项配置|实体列表视图||
 |[工作项类型表格视图](app/view/work_item_type_grid_view)|work_item_type_grid_view|工作项类型|实体表格视图||
 |[工作项类型选择表格视图](app/view/work_item_type_pick_up_grid_view)|work_item_type_pick_up_grid_view|工作项类型|实体选择表格视图（部件视图）|系统自动添加|
 |[工作项类型数据选择视图](app/view/work_item_type_pick_up_view)|work_item_type_pick_up_view|工作项类型|实体数据选择视图|系统自动添加|
+|[工作项类型数据重定向视图](app/view/work_item_type_redirect_view)|work_item_type_redirect_view|工作项类型|实体数据重定向视图|系统自动添加|
 |[工作项配置](app/view/work_item_type_setting_view_scrum)|work_item_type_setting_view_scrum|工作项类型|实体列表视图||
 |[项目集下工作项表格视图](app/view/work_item_under_work_grid_view)|work_item_under_work_grid_view|工作项|实体表格视图||
+|[工作项版本对比视图](app/view/work_item_version_comparison_view)|work_item_version_comparison_view|版本对比|实体编辑视图||
 |[全部缺陷](app/view/work_item_waterfall_bug_grid_view)|work_item_waterfall_bug_grid_view|全部缺陷|实体表格视图|系统自动添加|
 |[全部需求](app/view/work_item_waterfall_story_grid_view)|work_item_waterfall_story_grid_view|全部需求|实体表格视图|系统自动添加|
 |[工作项表格视图（操作标识测试）](app/view/work_item_work_item_test)|work_item_work_item_test|操作标识测试|实体表格视图||
@@ -685,6 +861,10 @@
 |[工时日历用例维度表格视图（管理）](app/view/workload_calendar_test_case_management_grid_view)|workload_calendar_test_case_management_grid_view|工时|实体表格视图|系统自动添加|
 |[工时日历工作项维度表格视图](app/view/workload_calendar_work_item_grid_view)|workload_calendar_work_item_grid_view|工时|实体表格视图||
 |[工时日历工作项维度表格视图（管理）](app/view/workload_calendar_work_item_management_grid_view)|workload_calendar_work_item_management_grid_view|工时|实体表格视图||
+|[日工时链接表格视图](app/view/workload_day_link_grid_view)|workload_day_link_grid_view|工时日志|实体表格视图||
+|[日工时链接表格视图（管理）](app/view/workload_day_link_management_grid_view)|workload_day_link_management_grid_view|工时日志|实体表格视图||
+|[日工时工作类别链接表格视图](app/view/workload_day_type_link_grid_view)|workload_day_type_link_grid_view|工时日志|实体表格视图||
+|[日工时工作类别链接表格视图（管理）](app/view/workload_day_type_link_management_grid_view)|workload_day_type_link_management_grid_view|工时日志|实体表格视图||
 |[工时记录列表视图](app/view/workload_detail_list_view)|workload_detail_list_view|工时记录|实体列表视图||
 |[工时编辑视图](app/view/workload_edit_view)|workload_edit_view|工时|实体编辑视图||
 |[工时日历测试库维度表格视图](app/view/workload_library_gird_view)|workload_library_gird_view|工时|实体表格视图||
@@ -706,10 +886,18 @@
 |[工时明细列表视图（执行用例）](app/view/workload_run_list_view)|workload_run_list_view|工时|实体列表视图||
 |[工时实体分页导航视图](app/view/workload_tab_exp_view)|workload_tab_exp_view|工时|实体分页导航视图||
 |[工时日历分页搜索视图](app/view/workload_tab_search_view)|workload_tab_search_view|工时|实体分页搜索视图||
+|[工时类别实体确认删除视图](app/view/workload_type_confirm_remove_view)|workload_type_confirm_remove_view|确认删除|实体选项操作视图|系统自动添加|
+|[工时日历工作类别链接表格视图](app/view/workload_type_of_link_grid_view)|workload_type_of_link_grid_view|工时日志|实体表格视图||
+|[工时日历工作类别管理链接表格视图](app/view/workload_type_of_link_management_grid_view)|workload_type_of_link_management_grid_view|工时日志|实体表格视图||
 |[工时类别选择表格视图](app/view/workload_type_pick_up_grid_view)|workload_type_pick_up_grid_view|工时类别|实体选择表格视图（部件视图）|系统自动添加|
+|[工时类别](app/view/workload_type_pick_up_tap_exp_view)|workload_type_pick_up_tap_exp_view|工时类别|实体分页导航视图||
 |[工时类别数据选择视图](app/view/workload_type_pick_up_view)|workload_type_pick_up_view|工时类别|实体数据选择视图|系统自动添加|
+|[新建类别](app/view/workload_type_quick_create_view)|workload_type_quick_create_view|新建类别|实体选项操作视图||
+|[编辑类别](app/view/workload_type_quick_edit_view)|workload_type_quick_edit_view|编辑类别|实体选项操作视图||
+|[类别设置](app/view/workload_type_setup_grid_view)|workload_type_setup_grid_view|类别设置|实体表格视图||
 |[修改实际工时视图](app/view/workload_update_view)|workload_update_view|修改实际工时|实体选项操作视图||
 |[工时日历工作类别维度表格视图](app/view/workload_work_type_grid_view)|workload_work_type_grid_view|工时|实体表格视图||
+|[工作台](app/view/workspace_tab_exp_view)|workspace_tab_exp_view|工作台|实体分页导航视图||
 
 <script>
  const { createApp } = Vue

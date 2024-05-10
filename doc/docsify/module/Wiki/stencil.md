@@ -11,10 +11,12 @@
 |正文|CONTENT|长文本，没有长度限制|1048576|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|正文格式|FORMAT_TYPE|单项选择(文本值)|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |全局模板|IS_GLOBAL|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |空间标识|SPACE_ID|外键值|100|是||
+|空间名称|SPACE_NAME|外键值文本|200|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
@@ -74,6 +76,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Wiki/stencil/dataset/Default)|DEFAULT|数据查询|是|||
 |[非空间下模板(no_space_stencil)](module/Wiki/stencil/dataset/no_space_stencil)|no_space_stencil|数据查询|否|||
+|[只读用户(reader)](module/Wiki/stencil/dataset/reader)|reader|数据查询|否|||
 |[空间下页面模板(space_stencil)](module/Wiki/stencil/dataset/space_stencil)|space_stencil|数据查询|否|||
 
 ## 数据权限
@@ -105,11 +108,11 @@
 
 
 
-##### 组织数据（读） :id=stencil-ORG_R
+##### 只读用户（读） :id=stencil-USER_R
 
 <p class="panel-title"><b>数据范围</b></p>
 
-* `数据集合` ：[非空间下模板(no_space_stencil)](module/Wiki/stencil#数据集合)
+* `数据集合` ：[只读用户(reader)](module/Wiki/stencil#数据集合)
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -121,16 +124,19 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_FORMAT_TYPE_EQ|正文格式|EQ||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_SPACE_ID_EQ|空间标识|EQ||
 |N_SPACE_ID_ISNULL|空间标识|ISNULL||
+|N_SPACE_NAME_EQ|空间名称|EQ||
+|N_SPACE_NAME_LIKE|空间名称|LIKE||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 使用此模板 | panel_usr0312103524_button_calluilogic_click | 使用此模板 |单项数据|用户自定义||
-| 编辑模板 | edit_stencil | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面模板](app/view/stencil_model_edit_view)</details>||
+| 编辑模板 | edit_stencil | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面模板](app/view/stencil_edit_view)</details>||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑

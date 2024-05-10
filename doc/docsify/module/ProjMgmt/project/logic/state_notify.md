@@ -38,7 +38,7 @@ DENOTIFY1 --> END1
 
 
 
-调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 通知 [项目状态状态变更通知(state_notify)](module/ProjMgmt/project/notify/state_notify) ，参数为`Default(传入变量)`
+调用实体 [项目(PROJECT)](module/ProjMgmt/project.md) 通知 [项目状态变更通知(state_notify)](module/ProjMgmt/project/notify/state_notify) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 

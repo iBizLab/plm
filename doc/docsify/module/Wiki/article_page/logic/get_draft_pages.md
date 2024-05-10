@@ -1,6 +1,6 @@
 ## 获取草稿页面 <!-- {docsify-ignore-all} -->
 
-   
+   查询并返回草稿数据
 
 ### 处理过程
 
@@ -21,15 +21,11 @@ state "调试逻辑参数" as DEBUGPARAM2  [[$./get_draft_pages#debugparam2 {"�
 state "获取当前空间下的草稿页面" as DEDATASET1  [[$./get_draft_pages#dedataset1 {"获取当前空间下的草稿页面"}]]
 state "调试逻辑参数" as DEBUGPARAM3  [[$./get_draft_pages#debugparam3 {"调试逻辑参数"}]]
 state "返回查询结果" as END1 <<end>> [[$./get_draft_pages#end1 {"返回查询结果"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./get_draft_pages#rawsqlcall1 {"直接SQL调用"}]]
-state "调试逻辑参数" as DEBUGPARAM5  [[$./get_draft_pages#debugparam5 {"调试逻辑参数"}]]
-state "调试逻辑参数" as DEBUGPARAM4  [[$./get_draft_pages#debugparam4 {"调试逻辑参数"}]]
+state "查询草稿数据" as RAWSQLCALL1  [[$./get_draft_pages#rawsqlcall1 {"查询草稿数据"}]]
 
 
-Begin --> DEBUGPARAM4
-DEBUGPARAM4 --> RAWSQLCALL1
-RAWSQLCALL1 --> DEBUGPARAM5
-DEBUGPARAM5 --> END1
+Begin --> RAWSQLCALL1
+RAWSQLCALL1 --> END1
 
 
 @enduml
@@ -76,13 +72,18 @@ DEBUGPARAM5 --> END1
 > 调试输出参数`pages(页面分页结果)`的详细信息
 
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 返回查询结果 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
 返回 `page_list(页面列表)`
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 查询草稿数据 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
@@ -97,27 +98,6 @@ select * from page where page.SPACE_ID = ? and page.IS_PUBLISHED = 0;
 1. `Default(传入变量).space_id(空间标识)`
 
 重置参数`page_list(页面列表)`，并将执行sql结果赋值给参数`page_list(页面列表)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`page_list(页面列表)`的详细信息
-
-
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
 
 
 

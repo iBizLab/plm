@@ -69,7 +69,7 @@ defaultObj.set("update_time", new Date());
 
 
 
-调用实体 [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member.md) 通知 [移除测试库成员通知(library_member_remove)](module/TestMgmt/library_member/notify/library_member_remove) ，参数为`Default(传入变量)`
+调用实体 [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member.md) 通知 [测试库成员移除通知(library_member_remove)](module/TestMgmt/library_member/notify/library_member_remove) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 

@@ -1,4 +1,4 @@
-## 加入测试库成员通知(library_member_create) <!-- {docsify-ignore-all} -->
+## 测试库成员加入通知(library_member_create) <!-- {docsify-ignore-all} -->
 
 
 

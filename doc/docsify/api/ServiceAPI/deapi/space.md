@@ -23,6 +23,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -41,6 +43,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -65,6 +69,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -109,6 +115,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -172,6 +180,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -190,6 +200,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -214,6 +226,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -256,6 +270,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -274,6 +290,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -317,6 +335,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -335,6 +355,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -373,6 +395,8 @@
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -391,6 +415,8 @@
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -438,6 +464,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -456,6 +484,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -499,6 +529,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -517,6 +549,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -560,6 +594,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -578,6 +614,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -616,6 +654,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -634,6 +674,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -658,6 +700,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -700,6 +744,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -718,6 +764,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -761,6 +809,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -779,6 +829,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -803,6 +855,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -845,6 +899,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -863,6 +919,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -901,6 +959,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -919,6 +979,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -943,6 +1005,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -985,6 +1049,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
 |<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
@@ -1003,6 +1069,8 @@ Integer
   "is_deleted" : null,
   "is_favorite" : null,
   "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
   "members" : null,
   "category_id" : null,
   "category_name" : null,
@@ -1038,8 +1106,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1054,8 +1122,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1072,6 +1140,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1106,8 +1176,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1122,8 +1192,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1140,6 +1210,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1174,8 +1246,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1190,8 +1262,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1208,6 +1280,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1242,8 +1316,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1258,8 +1332,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1276,6 +1350,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1310,8 +1386,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1326,8 +1402,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1344,6 +1420,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1378,8 +1456,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1394,8 +1472,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1412,6 +1490,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1446,8 +1526,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1462,8 +1542,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1480,6 +1560,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1514,8 +1596,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1530,8 +1612,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1548,6 +1630,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1582,8 +1666,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1598,8 +1682,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1616,6 +1700,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1650,8 +1736,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1666,8 +1752,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1684,6 +1770,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1718,8 +1806,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1734,8 +1822,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1752,6 +1840,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,
@@ -1786,8 +1876,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_is_favorite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
 |<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
@@ -1802,8 +1892,8 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
-  "n_is_favorite_eq" : null,
   "n_name_like" : null,
+  "n_scope_type_eq" : null,
   "n_visibility_eq" : null,
 }
 ```
@@ -1820,6 +1910,8 @@ Integer
     "is_deleted" : null,
     "is_favorite" : null,
     "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
     "members" : null,
     "category_id" : null,
     "category_name" : null,

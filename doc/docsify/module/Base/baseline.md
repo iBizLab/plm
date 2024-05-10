@@ -31,6 +31,9 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DERCUSTOM_BASELINE_IDEA_BASELINE](der/DERCUSTOM_BASELINE_IDEA_BASELINE)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|自定义关系||
+|[DERCUSTOM_BASELINE_TEST_CASE_BASELINE](der/DERCUSTOM_BASELINE_TEST_CASE_BASELINE)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|自定义关系||
+|[DERCUSTOM_BASELINE_WORK_ITEM_BASELINE](der/DERCUSTOM_BASELINE_WORK_ITEM_BASELINE)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|自定义关系||
 |[DERCUSTOM_RELATION_BASELINE](der/DERCUSTOM_RELATION_BASELINE)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
@@ -39,6 +42,8 @@
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
+|[DERCUSTOM_BASELINE_LIBRARY_OWNER_ID](der/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID)|[测试库(LIBRARY)](module/TestMgmt/library)|自定义关系||
+|[DERCUSTOM_BASELINE_PRODUCT_OWNER_ID](der/DERCUSTOM_BASELINE_PRODUCT_OWNER_ID)|[产品(PRODUCT)](module/ProdMgmt/product)|自定义关系||
 |[DERCUSTOM_BASELINE_PROJECT_OWNER_ID](der/DERCUSTOM_BASELINE_PROJECT_OWNER_ID)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 
 </el-tab-pane>
@@ -52,15 +57,20 @@
 |Create|Create|内置方法|默认|不支持||||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
-|Remove|Remove|内置方法|默认|支持||||
+|Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#baseline_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
-|设立完成|set_complete|[实体处理逻辑](module/Base/baseline/logic/set_complete "设立完成")|默认|不支持||||
+|设立完成（测试库）|set_complete_library|[实体处理逻辑](module/Base/baseline/logic/set_complete_library "设立完成（测试库）")|默认|不支持||||
+|设立完成（产品）|set_complete_product|[实体处理逻辑](module/Base/baseline/logic/set_complete_product "设立完成（产品）")|默认|不支持||||
+|设立完成（项目）|set_complete_project|[实体处理逻辑](module/Base/baseline/logic/set_complete_project "设立完成（项目）")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[设立完成](module/Base/baseline/logic/set_complete)|set_complete|无||基线设立完成|
+|[删除基线前附加逻辑](module/Base/baseline/logic/before_remove)|before_remove|无||删除基线前，删除基线关联数据|
+|[设立完成（产品）](module/Base/baseline/logic/set_complete_product)|set_complete_product|无||产品基线设立完成|
+|[设立完成（测试库）](module/Base/baseline/logic/set_complete_library)|set_complete_library|无||测试库基线设立完成|
+|[设立完成（项目）](module/Base/baseline/logic/set_complete_project)|set_complete_project|无||项目基线设立完成|
 
 ## 主状态控制
 
@@ -78,10 +88,12 @@
     <th>操作标识col350</th>
     <th>打开col150</th>
     <th>设立完成col150</th>
+    <th>规划快照col150</th>
     <th>备注col600</th>
   </tr>
   <tr>
     <td>删除(DELETE)</td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
@@ -90,16 +102,19 @@
     <td>建立(CREATE)</td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
   </tr>
   <tr>
     <td>更新(UPDATE)</td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
   </tr>
   <tr>
     <td>读取(READ)</td>
+    <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
@@ -137,6 +152,7 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_CATEGORIES_LIKE|类别|LIKE||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_OWNER_ID_EQ|所属数据标识|EQ||
@@ -146,25 +162,50 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 编辑 | open_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_update_view)</details>||
-| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_product_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_project_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_product_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_library_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 新建分组 | toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 编辑 | toolbar_project_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 设立完成（产品） | set_complete_product | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_product](#行为)||
+| 新建分组 | toolbar_product_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 新建类别 | toolbar_project_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 删除 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
-| 设立完成 | set_complete | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete](#行为)||
+| 编辑 | toolbar_library_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_project_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑基线（测试库） | open_library_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_library_update_view)</details>||
+| 删除 | toolbar_library_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_product_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 设立完成（项目） | set_complete_project | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_project](#行为)||
+| 新建类别 | toolbar_library_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 新建分组 | toolbar_project_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 新建类别 | toolbar_product_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 删除 | toolbar_library_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_library_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 编辑 | toolbar_library_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 编辑基线（项目） | open_project_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_project_update_view)</details>||
+| 编辑 | toolbar_project_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 编辑基线（产品） | open_product_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑基线](app/view/baseline_product_update_view)</details>||
+| 删除 | toolbar_product_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_product_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 编辑 | toolbar_project_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_project_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 设立完成（测试库） | set_complete_library | 设立完成 |单项数据（主键）|<details><summary>后台调用</summary>[set_complete_library](#行为)||
+| 编辑 | toolbar_product_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[产品基线新建分组](module/Base/baseline/uilogic/product_create_section)|product_create_section|产品基线调用树节点新建方法，新建分组|
+|[产品基线新建类别](module/Base/baseline/uilogic/product_create_category)|product_create_category|产品基线调用树节点新建方法新建类别|
 |[删除类别或分组](module/Base/baseline/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除，删除类别或分组数据|
-|[新建分组](module/Base/baseline/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
-|[新建类别](module/Base/baseline/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
+|[测试库基线新建分组](module/Base/baseline/uilogic/library_create_section)|library_create_section|测试库基线调用树节点新建方法，新建分组|
+|[测试库基线新建类别](module/Base/baseline/uilogic/library_create_category)|library_create_category|测试库基线调用树节点新建方法新建类别|
 |[编辑类别或分组](module/Base/baseline/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[计算表格列行为状态](module/Base/baseline/uilogic/calc_column_action_state)|calc_column_action_state|用于动态启用列绑定的界面行为|
+|[项目基线新建分组](module/Base/baseline/uilogic/project_create_section)|project_create_section|项目基线调用树节点新建方法，新建分组|
+|[项目基线新建类别](module/Base/baseline/uilogic/project_create_category)|project_create_category|项目基线调用树节点新建方法新建类别|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

@@ -42,7 +42,7 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 
-调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [维护人变更通知(maintainer_onchange_notify)](module/TestMgmt/test_case/notify/maintainer_onchange_notify) ，参数为`Default(传入变量)`
+调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [测试用例维护人变更通知(maintainer_onchange_notify)](module/TestMgmt/test_case/notify/maintainer_onchange_notify) ，参数为`Default(传入变量)`
 #### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -54,12 +54,12 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 
-调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [分配维护人通知(maintainer_notify)](module/TestMgmt/test_case/notify/maintainer_notify) ，参数为`Default(传入变量)`
+调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [测试用例分配维护人通知(maintainer_notify)](module/TestMgmt/test_case/notify/maintainer_notify) ，参数为`Default(传入变量)`
 #### 取消分配维护人通知 :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [取消分配维护人通知(maintainer_cancel_notify)](module/TestMgmt/test_case/notify/maintainer_cancel_notify) ，参数为`Last(变更前)`
+调用实体 [用例(TEST_CASE)](module/TestMgmt/test_case.md) 通知 [测试用例取消分配维护人通知(maintainer_cancel_notify)](module/TestMgmt/test_case/notify/maintainer_cancel_notify) ，参数为`Last(变更前)`
 
 ### 连接条件说明
 #### 重新分配负责人 :id=DENOTIFY2-DENOTIFY1

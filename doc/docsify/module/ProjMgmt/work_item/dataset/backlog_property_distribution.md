@@ -31,11 +31,11 @@
 
 <p class="panel-title"><b>分组参数</b></p>
 
-* `BACKLOG_FROM(需求来源)`  分组处理：`IF(TRIM(backlog_from) is null, '未设置需求来源', backlog_from)`
+* `BACKLOG_FROM(需求来源)`  分组处理：`BACKLOG_FROM`
 * `BACKLOG_TYPE(需求类型)`  分组处理：`IF(TRIM(backlog_type) is null, '未分配需求类型', backlog_type)`
 * `PRIORITY(优先级)`  分组处理：`IF(TRIM(priority) is null, '未设置优先级', priority)`
 * `RISK(风险)`  分组处理：`IF(TRIM(risk) is null, '未设置风险', risk)`
-* `SPRINT_NAME(迭代名称)`  分组处理：`IF(TRIM(sprint_name) is null, '未分组', sprint_name)`
+* `SPRINT_ID(迭代标识)`  分组处理：`IF(TRIM(sprint_id) is null, '未分组', sprint_id)`
 * `STATE(状态)`  分组处理：`STATE`
 * `WORK_ITEM_TYPE_NAME(工作项类型)`  分组处理：`WORK_ITEM_TYPE_NAME`
 

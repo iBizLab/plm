@@ -1,4 +1,4 @@
-## 提醒关注页面通知(attention_page_notify) <!-- {docsify-ignore-all} -->
+## 页面提醒关注通知(attention_page_notify) <!-- {docsify-ignore-all} -->
 
 
 

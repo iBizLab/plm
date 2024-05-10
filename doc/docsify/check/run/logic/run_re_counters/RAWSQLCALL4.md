@@ -2,11 +2,12 @@
 
 ```sql
 SELECT
-	count( t.id ) AS run_re_run_history
+    COUNT(t.id) AS run_re_run_history
 FROM
-	run_history t 
+    run_history t
 WHERE
-    t.run_id = ?
+    t.run_id = ? 
+
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

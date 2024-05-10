@@ -15,15 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_children_work_item_type_context#begin {开始}]]
-state "获取工作项类型" as PREPAREJSPARAM1  [[$./calc_children_work_item_type_context#preparejsparam1 {获取工作项类型}]]
-state "结束" as END1 <<end>> [[$./calc_children_work_item_type_context#end1 {结束}]]
-state "计算敏捷项目子类型" as RAWJSCODE3  [[$./calc_children_work_item_type_context#rawjscode3 {计算敏捷项目子类型}]]
-state "计算看板项目子类型" as RAWJSCODE1  [[$./calc_children_work_item_type_context#rawjscode1 {计算看板项目子类型}]]
-state "计算瀑布项目子类型" as RAWJSCODE2  [[$./calc_children_work_item_type_context#rawjscode2 {计算瀑布项目子类型}]]
 state "合并父工作项类型" as PREPAREJSPARAM2  [[$./calc_children_work_item_type_context#preparejsparam2 {合并父工作项类型}]]
+state "计算瀑布项目子类型" as RAWJSCODE2  [[$./calc_children_work_item_type_context#rawjscode2 {计算瀑布项目子类型}]]
+state "计算敏捷项目子类型" as RAWJSCODE3  [[$./calc_children_work_item_type_context#rawjscode3 {计算敏捷项目子类型}]]
+state "获取工作项类型" as PREPAREJSPARAM1  [[$./calc_children_work_item_type_context#preparejsparam1 {获取工作项类型}]]
+state "绑定父视图中表单数据" as PREPAREJSPARAM3  [[$./calc_children_work_item_type_context#preparejsparam3 {绑定父视图中表单数据}]]
+state "计算看板项目子类型" as RAWJSCODE1  [[$./calc_children_work_item_type_context#rawjscode1 {计算看板项目子类型}]]
+state "结束" as END1 <<end>> [[$./calc_children_work_item_type_context#end1 {结束}]]
 
 
-Begin --> PREPAREJSPARAM1 : [[$./calc_children_work_item_type_context#begin-preparejsparam1{工作项类型不为空} 工作项类型不为空]]
+Begin --> PREPAREJSPARAM3
+PREPAREJSPARAM3 --> PREPAREJSPARAM1 : [[$./calc_children_work_item_type_context#preparejsparam3-preparejsparam1{工作项类型不为空} 工作项类型不为空]]
 PREPAREJSPARAM1 --> RAWJSCODE1 : [[$./calc_children_work_item_type_context#preparejsparam1-rawjscode1{看板项目} 看板项目]]
 RAWJSCODE1 --> PREPAREJSPARAM2 : [[$./calc_children_work_item_type_context#rawjscode1-preparejsparam2{父类型不为空} 父类型不为空]]
 PREPAREJSPARAM2 --> END1
@@ -44,12 +46,18 @@ RAWJSCODE3 --> PREPAREJSPARAM2 : [[$./calc_children_work_item_type_context#rawjs
 
 
 
+#### 绑定父视图中表单数据 :id=PREPAREJSPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`view.parentView.layoutPanel.panelItems.form.control.data` 设置给  `parentview_form_data(父视图表单数据)`
+
 #### 获取工作项类型 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-1. 将`数据上下文[work_item_type_id] ==> type` 设置给  `type(工作项类型)`
-2. 将`数据上下文[work_item_type_id.split('_')[0]] ==> project_type` 设置给  `project_type(项目类型)`
+1. 将`parentview_form_data(父视图表单数据).work_item_type_id` 设置给  `type(工作项类型)`
+2. 将`parentview_form_data(父视图表单数据).work_item_type_id.split('_')[0]` 设置给  `project_type(项目类型)`
 
 #### 计算看板项目子类型 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -138,9 +146,9 @@ if (type === 'epic') {
 
 
 ### 连接条件说明
-#### 工作项类型不为空 :id=Begin-PREPAREJSPARAM1
+#### 工作项类型不为空 :id=PREPAREJSPARAM3-PREPAREJSPARAM1
 
-```context(上下文).work_item_type_id``` ISNOTNULL
+```parentview_form_data(父视图表单数据).work_item_type_id``` ISNOTNULL
 #### 看板项目 :id=PREPAREJSPARAM1-RAWJSCODE1
 
 ```project_type(项目类型)``` EQ ```kanban```
@@ -165,10 +173,12 @@ if (type === 'epic') {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|视图参数|params|||
+|view|view|当前视图对象||
 |工作项类型|type|数据对象||
-|项目类型|project_type|数据对象||
 |上下文|context|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|父视图表单数据|parentview_form_data|数据对象||
 |新建默认数据对象|srfDefaultData|数据对象||
+|视图参数|params|||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |子工作项类型|children_type|数据对象||
+|项目类型|project_type|数据对象||

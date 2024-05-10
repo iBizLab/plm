@@ -1,4 +1,4 @@
-## 评论页面通知(page_notify) <!-- {docsify-ignore-all} -->
+## 页面评论通知(page_notify) <!-- {docsify-ignore-all} -->
 
 
 

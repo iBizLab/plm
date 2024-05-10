@@ -16,7 +16,7 @@
 |是否系统类型|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |项目类型|PROJECT_TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
-|序号|SEQUENCE|数值||否||
+|序号|SEQUENCE|数值||是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
@@ -47,6 +47,12 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/ProjMgmt/work_item_type/logic/nothing "无操作")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/ProjMgmt/work_item_type/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -105,11 +111,12 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 配置 | panel_usr1229905828_button_link1_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign)</details>||
+| 配置 | panel_usr1229905828_button_link1_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
 | 配置 | panel_usr12299058218_button_link3_click | 通知配置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[通知配置](app/view/psde_notify_tab_exp_view)</details>||
 | 配置 | panel_usr12299058218_form_cfg_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
-| 配置 | panel_usr1229905828_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdelogicmslogicdesign)</details>||
-| 配置 | panel_usr12299058218_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdelogicmslogicdesign)</details>||
+| 配置 | panel_usr1229905828_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdelogicmslogicdesign_modal)</details>||
+| 配置 | panel_usr12299058218_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdelogicmslogicdesign_modal)</details>||
+| 新建工作项类型 | create_type | 新建工作项类型 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项类型](app/view/work_item_type_global_create_view)</details>||
 | 配置 | panel_usr1229905828_button_link3_click | 通知配置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[通知配置](app/view/psde_notify_tab_exp_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -124,6 +131,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_type?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item_type?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_type?id=数据查询`">
   数据查询

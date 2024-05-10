@@ -1,4 +1,4 @@
-## 项目状态状态变更通知(state_notify) <!-- {docsify-ignore-all} -->
+## 项目状态变更通知(state_notify) <!-- {docsify-ignore-all} -->
 
 
 

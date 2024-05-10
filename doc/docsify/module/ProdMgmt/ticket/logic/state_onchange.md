@@ -59,7 +59,7 @@ DENOTIFY1 --> END1
 
 
 
-调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [状态变更通知(state_onchage_notify)](module/ProdMgmt/ticket/notify/state_onchage_notify) ，参数为`Default(传入变量)`
+调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [工单状态变更通知(state_onchage_notify)](module/ProdMgmt/ticket/notify/state_onchage_notify) ，参数为`Default(传入变量)`
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 

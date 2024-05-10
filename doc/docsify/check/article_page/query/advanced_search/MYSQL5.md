@@ -1,5 +1,6 @@
 ```sql
 SELECT
+t1.`CATEGORIES`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
@@ -14,6 +15,7 @@ t1.`IS_LEAF`,
 t1.`IS_PUBLISHED`,
 t1.`NAME`,
 t1.`PARENT_ID`,
+t1.`PUBLISHED`,
 t1.`PUBLISH_MAN`,
 t1.`PUBLISH_NAME`,
 t1.`PUBLISH_TIME`,
@@ -28,5 +30,5 @@ t1.`UPDATE_TIME`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  exists(select 1 from space t2, space_member t3 where t1.space_id = t2.id and t2.id = t3.space_id and t3.user_id = #{ctx.sessioncontext.srfpersonid}) )
+WHERE ( t1.`IS_DELETED` = 0  AND  exists(select 1 from space t2, space_member t3 where t1.space_id = t2.id and t2.id = t3.space_id and t3.user_id = #{ctx.sessioncontext.srfpersonid})  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`TYPE` = '1' )
 ```

@@ -10,7 +10,7 @@
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
-|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_work_item_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|编号|IDENTIFIER|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|是否逻辑||是||
 |名称|NAME|文本，可指定长度|500|是||
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||

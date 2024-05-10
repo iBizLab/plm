@@ -42,7 +42,7 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 
-调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [变更负责人通知(assignee_onchage_notify)](module/ProdMgmt/customer/notify/assignee_onchage_notify) ，参数为`Default(传入变量)`
+调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户变更负责人通知(assignee_onchange_notify)](module/ProdMgmt/customer/notify/assignee_onchange_notify) ，参数为`Default(传入变量)`
 #### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -54,12 +54,12 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 
-调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/customer/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
+调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/customer/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
 #### 客户分配负责人通知 :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
-调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [分配负责人通知(assignee_notify)](module/ProdMgmt/customer/notify/assignee_notify) ，参数为`Default(传入变量)`
+调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户分配负责人通知(assignee_notify)](module/ProdMgmt/customer/notify/assignee_notify) ，参数为`Default(传入变量)`
 
 ### 连接条件说明
 #### 重新分配负责人 :id=DENOTIFY1-DENOTIFY2

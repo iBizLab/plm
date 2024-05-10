@@ -12,14 +12,14 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |部门标识|DEPARTMENT_ID|外键值|100|是||
 |部门名称|DEPARTMENT_NAME|外键值文本|200|是||
-|显示名称|DISPLAY_NAME|文本，可指定长度|200|是||
+|姓名|DISPLAY_NAME|文本，可指定长度|200|是||
 |邮箱|EMAIL|电子邮件|100|是||
 |工号|EMPLOYEE_NUMBER|文本，可指定长度|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |岗位标识|JOB_ID|外键值|100|是||
 |职位名称|JOB_NAME|外键值文本|200|是||
 |手机号|MOBILE|文本，可指定长度|100|是||
-|名称|NAME|文本，可指定长度|200|是||
+|登录名|NAME|文本，可指定长度|200|是||
 |密码|PASSWORD|文本，可指定长度|200|是||
 |状态|STATUS|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -123,60 +123,6 @@
 
 
 
-##### 当前部门（读） :id=user-CURDEPT_R
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `部门范围` ： <i class="fa fa-check-square"/></i> 当前部门
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `READ`
-
-
-
-##### 当前部门（读写） :id=user-CURDEPT_RW
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `部门范围` ： <i class="fa fa-check-square"/></i> 当前部门
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `DELETE`
-* `UPDATE`
-* `READ`
-* `CREATE`
-
-
-
-##### 当前组织（读） :id=user-CURORG_R
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `组织范围` ： <i class="fa fa-check-square"/></i> 当前组织
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `READ`
-
-
-
-##### 当前组织（读写） :id=user-CURORG_RW
-
-<p class="panel-title"><b>数据范围</b></p>
-
-* `组织范围` ： <i class="fa fa-check-square"/></i> 当前组织
-
-<p class="panel-title"><b>数据能力</b></p>
-
-* `CREATE`
-* `READ`
-* `UPDATE`
-* `DELETE`
-
-
-
 ##### 当前用户（读写） :id=user-USER_RW
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -195,14 +141,15 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_DEPARTMENT_ID_EQ|部门标识|EQ||
+|N_DEPARTMENT_ID_ISNULL|部门标识|ISNULL||
 |N_DEPARTMENT_NAME_EQ|部门名称|EQ||
 |N_DEPARTMENT_NAME_LIKE|部门名称|LIKE||
-|N_DISPLAY_NAME_LIKE|显示名称|LIKE||
+|N_DISPLAY_NAME_LIKE|姓名|LIKE||
 |N_ID_EQ|标识|EQ||
 |N_JOB_ID_EQ|岗位标识|EQ||
 |N_JOB_NAME_EQ|职位名称|EQ||
 |N_JOB_NAME_LIKE|职位名称|LIKE||
-|N_NAME_LIKE|名称|LIKE||
+|N_NAME_LIKE|登录名|LIKE||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

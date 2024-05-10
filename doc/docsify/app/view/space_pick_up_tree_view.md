@@ -2,14 +2,10 @@
 
 
 
-
 ## 控件
 #### CAPTIONBAR(captionbar)
-
 #### 搜索栏(searchbar)
-
 #### 树视图(tree)
-
 
 
 <script>

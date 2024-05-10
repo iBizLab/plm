@@ -55,6 +55,11 @@
 |N_MSG_TYPE_EQ|消息类型|EQ||
 |N_NAME_LIKE|名称|LIKE||
 
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[保存列表多数据部件](module/extension/notify_event/uilogic/save_list_mdctrl)|save_list_mdctrl||
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -76,6 +81,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/notify_event?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/extension/notify_event?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

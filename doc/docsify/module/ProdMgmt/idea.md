@@ -12,14 +12,21 @@
 |负责人|ASSIGNEE_NAME|外键值文本|100|是||
 |附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
 |类别路径|CATEGORIES|外键值附加数据|2000|是||
 |类别标识|CATEGORY_ID|外键值|100|是||
 |名称|CATEGORY_NAME|外键值文本|200|是||
+|选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
+|选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
 |描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|需求来源|IDEA_FROM|[单项选择(文本值)](index/dictionary_index#demand_sources "需求来源")|60|是||
+|需求类型|IDEA_TYPE|[单项选择(文本值)](index/dictionary_index#requirement_type "需求类型")|60|是||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_idea_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
@@ -41,7 +48,7 @@
 |子产品标识|SECTION_ID|外键值附加数据|100|是||
 |子产品名称|SECTION_NAME|外键值附加数据|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#idea_state "需求状态")|60|是||
+|状态|STATE|单项选择(文本值)|60|是||
 |模块|SUITE|文本，可指定长度|100|是||
 |标题|TITLE|文本，可指定长度|500|否||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -74,7 +81,7 @@
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |产品|PRODUCT_ID|外键值|100|否||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
-|状态|STATE|[单项选择(文本值)](index/dictionary_index#idea_state "需求状态")|60|是||
+|状态|STATE|单项选择(文本值)|60|是||
 
 </el-tab-pane>
 <el-tab-pane label="负责人" name="field_group_assignee">
@@ -116,6 +123,8 @@
 |[DERCUSTOM_IDEA_SEARCH_COMMENT](der/DERCUSTOM_IDEA_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
 |[DERCUSTOM_IDEA_WORKLOAD](der/DERCUSTOM_IDEA_WORKLOAD)|[工时(WORKLOAD)](module/Base/workload)|自定义关系||
 |[DERCUSTOM_RELATION_IDEA](der/DERCUSTOM_RELATION_IDEA)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_IDEA](der/DERCUSTOM_RELATION_TARGET_IDEA)|[关联(RELATION)](module/Base/relation)|自定义关系||
+|[DERCUSTOM_VERSION_IDEA](der/DERCUSTOM_VERSION_IDEA)|[版本(VERSION)](module/Base/version)|自定义关系||
 
 
 </el-tab-pane>
@@ -146,7 +155,9 @@
 |变更需求状态|change_state|[实体处理逻辑](module/ProdMgmt/idea/logic/change_state "变更需求状态")|默认|不支持||||
 |取消关联|del_relation|[实体处理逻辑](module/ProdMgmt/idea/logic/del_relation "取消关联")|默认|不支持|||取消关联，删除相应的正反向关联数据|
 |删除|delete|[实体处理逻辑](module/ProdMgmt/idea/logic/delete "删除")|默认|不支持||||
+|获取产品成员|fill_product_member|[实体处理逻辑](module/ProdMgmt/idea/logic/get_product_member "获取产品成员")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
+|获取基线名称|get_baseline_name|[实体处理逻辑](module/ProdMgmt/idea/logic/get_baseline_name "获取基线名称")|默认|不支持||||
 |获取默认模块|idea_category|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_category "获取默认模块")|默认|不支持||||
 |需求复制|idea_copy|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_copy "需求复制")|默认|不支持||||
 |需求移动|idea_move|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_move "需求移动")|默认|不支持||||
@@ -165,6 +176,7 @@
 |[删除](module/ProdMgmt/idea/logic/delete)|delete|无||需求数据的逻辑删除，修改需求的是否删除属性值|
 |[取消关联](module/ProdMgmt/idea/logic/del_relation)|del_relation|无||产品需求取消关联数据（正反向关联数据同时删除）|
 |[变更需求状态](module/ProdMgmt/idea/logic/change_state)|change_state|无||产品需求状态变更触发相关通知|
+|[基线规划需求数据查询](module/ProdMgmt/idea/logic/baseline_plan_idea)|baseline_plan_idea|无||基线规划需求时，填充需求当前版本名称|
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -173,6 +185,8 @@
 |[激活](module/ProdMgmt/idea/logic/activate)|activate|无||激活已归档状态需求，修改需求的归档属性|
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
+|[获取产品成员](module/ProdMgmt/idea/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+|[获取基线名称](module/ProdMgmt/idea/logic/get_baseline_name)|get_baseline_name|无||需求主视图获取所属基线|
 |[获取默认模块](module/ProdMgmt/idea/logic/idea_category)|idea_category|无||获取需求的默认模块|
 |[计划内需求批删除](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
 |[负责人变更附加逻辑](module/ProdMgmt/idea/logic/assignee_onchange)|assignee_onchange|属性逻辑||产品需求负责人变更时触发相应的通知消息|
@@ -223,12 +237,6 @@
     <td></td>
   </tr>
   <tr>
-    <td>归档(ARCHIVED)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
     <td>更新(UPDATE)<br><a href ="#/der/DER1N_IDEA_PRODUCT_PRODUCT_ID">DER1N_IDEA_PRODUCT_PRODUCT_ID</a></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
@@ -236,12 +244,6 @@
   </tr>
   <tr>
     <td>更新(UPDATE)</td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td align="center"><i class="fa fa-check"></i></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>激活(ACTIVATE)</td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td align="center"><i class="fa fa-check"></i></td>
     <td></td>
@@ -262,6 +264,14 @@
 </table>
 
 
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
+|审计|数据审计|[活动(ACTIVITY)](module/Base/activity)||
+|version|版本控制|[版本(VERSION)](module/Base/version)||
+|存储扩展|动态存储|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)||
+
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
@@ -269,6 +279,7 @@
 |[默认（全部数据）(VIEW)](module/ProdMgmt/idea/query/View)|VIEW|否|否 |否 |默认查询；全部数据|
 |[高级搜索(advanced_search)](module/ProdMgmt/idea/query/advanced_search)|advanced_search|否|否 |否 |指定属性组；查询未删除的需求数据|
 |[已归档(archived)](module/ProdMgmt/idea/query/archived)|archived|否|否 |否 |查询已归档且未删除的需求数据|
+|[基线选择需求(baseline_choose_idea)](module/ProdMgmt/idea/query/baseline_choose_idea)|baseline_choose_idea|否|否 |否 |基线选择需求|
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 |查询指定属性组；评论负责人|
 |[通用需求查询(common)](module/ProdMgmt/idea/query/common)|common|否|否 |否 |状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[已删除(deleted)](module/ProdMgmt/idea/query/deleted)|deleted|否|否 |否 |查询已删除的需求数据|
@@ -291,6 +302,8 @@
 |[数据集(DEFAULT)](module/ProdMgmt/idea/dataset/Default)|DEFAULT|数据查询|是||默认普通数据查询|
 |[高级搜索(advanced_search)](module/ProdMgmt/idea/dataset/advanced_search)|advanced_search|数据查询|否||指定属性组；查询未删除的需求数据|
 |[已归档(archived)](module/ProdMgmt/idea/dataset/archived)|archived|数据查询|否||查询已归档且未删除的需求数据|
+|[基线选择需求(baseline_choose_idea)](module/ProdMgmt/idea/dataset/baseline_choose_idea)|baseline_choose_idea|数据查询|否||基线选择需求|
+|[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/dataset/baseline_plan_idea)|baseline_plan_idea|[实体逻辑](module/ProdMgmt/idea/logic/baseline_plan_idea)|否|||
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/dataset/comment_notify_assignee)|comment_notify_assignee|数据查询|否||查询指定属性组；评论负责人|
 |[普通需求(common)](module/ProdMgmt/idea/dataset/common)|common|数据查询|否||状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[已删除(deleted)](module/ProdMgmt/idea/dataset/deleted)|deleted|数据查询|否||查询已删除的需求数据|
@@ -326,12 +339,12 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[归档/激活通知](module/ProdMgmt/idea/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[需求通知模板(归档/激活需求)](index/notify_index#idea_archive)|负责人 关注人员 ||
-|[取消分配负责人通知](module/ProdMgmt/idea/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[需求通知模板(取消分配负责人)](index/notify_index#idea_assignee_cancel)|负责人 ||
-|[分配负责人通知](module/ProdMgmt/idea/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[需求通知模板(分配负责人)](index/notify_index#idea_assignee)|负责人 ||
-|[负责人变更通知](module/ProdMgmt/idea/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[需求通知模板(负责人变更通知)](index/notify_index#idea_assignee_onchange)|关注人员 ||
-|[删除/恢复需求通知](module/ProdMgmt/idea/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[需求通知模板(删除/恢复需求)](index/notify_index#idea_remove)|关注人员 负责人 ||
-|[状态变更通知](module/ProdMgmt/idea/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[需求通知模板(状态变更)](index/notify_index#idea_state_onchange)|负责人 关注人员 ||
+|[产品需求归档/激活通知](module/ProdMgmt/idea/notify/archive_notify)|archive_notify|[默认消息队列](index/notify_index)|[需求通知模板(归档/激活需求)](index/notify_index#idea_archived_or_activate)|负责人 关注人员 ||
+|[产品需求取消分配负责人通知](module/ProdMgmt/idea/notify/assignee_cancel_notify)|assignee_cancel_notify|[默认消息队列](index/notify_index)|[需求通知模板(取消分配负责人)](index/notify_index#idea_assignee_cancel)|负责人 ||
+|[产品需求分配负责人通知](module/ProdMgmt/idea/notify/assignee_notify)|assignee_notify|[默认消息队列](index/notify_index)|[需求通知模板(分配负责人)](index/notify_index#idea_assignee)|负责人 ||
+|[产品需求负责人变更通知](module/ProdMgmt/idea/notify/assignee_onchange_notify)|assignee_onchange_notify|[默认消息队列](index/notify_index)|[需求通知模板(负责人变更通知)](index/notify_index#idea_assignee_onchange)|关注人员 ||
+|[产品需求删除/恢复通知](module/ProdMgmt/idea/notify/remove_notify)|remove_notify|[默认消息队列](index/notify_index)|[需求通知模板(删除/恢复需求)](index/notify_index#idea_remove_or_recover)|负责人 关注人员 ||
+|[产品需求状态变更通知](module/ProdMgmt/idea/notify/state_onchage_notify)|state_onchage_notify|[默认消息队列](index/notify_index)|[需求通知模板(状态变更)](index/notify_index#idea_state_onchange)|负责人 关注人员 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -339,6 +352,7 @@
 |N_ASSIGNEE_ID_EQ|负责人|EQ||
 |N_ASSIGNEE_NAME_EQ|负责人|EQ||
 |N_ASSIGNEE_NAME_LIKE|负责人|LIKE||
+|N_CATEGORIES_LIKE|类别路径|LIKE||
 |N_CATEGORY_ID_EQ|类别标识|EQ||
 |N_CATEGORY_NAME_EQ|名称|EQ||
 |N_CATEGORY_NAME_LIKE|名称|LIKE||
@@ -347,8 +361,11 @@
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
 |N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
 |N_DESCRIPTION_LIKE|描述|LIKE||
+|N_ID_IN|标识|IN||
 |N_ID_NOTEQ|标识|NOTEQ||
 |N_ID_EQ|标识|EQ||
+|N_IDEA_FROM_EQ|需求来源|EQ||
+|N_IDEA_TYPE_EQ|需求类型|EQ||
 |N_IDENTIFIER_EQ|编号|EQ||
 |N_IDENTIFIER_ISNULL|编号|ISNULL||
 |N_IDENTIFIER_LIKE|编号|LIKE||
@@ -372,15 +389,22 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
 | 取消关联（其他实体关联） | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)|其他实体关联需求表格、需求关联需求表格上界面行为组调用；|
+| 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node4_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 需求移动 | idea_move | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
+| 激活（工具栏） | toolbar_activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|工具栏上按钮调用；|
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|批操作工具栏上按钮调用|
+| 需求自定义导入 | custom_import_data | 需求导入 |无数据|<details><summary>打开数据导入视图</summary>[产品需求导入]()</details>||
+| 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 需求排期 | idea_re_plan | 需求排期 |多项数据（主键）|<details><summary>后台调用</summary>[idea_re_plan](#行为)|批操作工具栏上按钮调用|
+| 删除（工具栏） | toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|工具栏上按钮调用|
+| 关联测试用例（工具栏） | toolbar_link_test_case | 关联测试用例 |无数据|用户自定义||
 | 新建子产品 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建子产品 |单项数据|用户自定义||
 | 变更需求状态 | change_idea_state | 变更需求状态 |多项数据（主键）|<details><summary>后台调用</summary>[change_state](#行为)|批操作工具栏上按钮调用|
 | 取消关联（计划批操作） | del_relation_more | 取消关联 |多项数据（主键）|<details><summary>后台调用</summary>[plan_delete_idea](#行为)|批操作工具栏上按钮调用|
@@ -392,25 +416,35 @@
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 需求归档 | idea_archive | 需求归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)|批操作工具栏上按钮调用|
 | 删除 | toolbar_tree_exp_view_node4_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 需求归档（工具栏） | toolbar_idea_archive | 需求归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)|主视图工具栏上按钮调用|
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 新建模块 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建模块 |单项数据|用户自定义||
 | 需求复制 | idea_copy | 需求复制 |多项数据（主键）|<details><summary>后台调用</summary>[idea_copy](#行为)|批操作工具栏上按钮调用|
+| 需求移动（工具栏） | idea_move_toolbar | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 显示下拉并展开数据（嵌入视图） | toolbar_show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
+| 关联需求（工具栏） | toolbar_link_idea | 关联需求 |无数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[上传附件（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
+|[关联产品需求（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
+|[关联工作项（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
+|[关联工单（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_ticket)|toolbar_link_ticket|主视图工具栏上点击触发，切换分页，打开下拉菜单|
+|[关联测试用例（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_test_case)|toolbar_link_test_case|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求值变更](module/ProdMgmt/idea/uilogic/relation_idea_change)|relation_idea_change|关联操作时触发，内部调用关联逻辑进行关联操作|
 |[删除类别或分组](module/ProdMgmt/idea/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[刷新需求表格](module/ProdMgmt/idea/uilogic/refresh_idea_grid)|refresh_idea_grid|刷新需求表格|
 |[工作项关联需求](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
 |[工单关联需求](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
 |[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
 |[新建模块](module/ProdMgmt/idea/uilogic/create_category)|create_category|产品需求页左侧树的新建模块逻辑|
-|[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/show_dorpdown_data)|show_dorpdown_data|显示下拉区域并展开选项|
+|[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项(工具栏)|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
+|[测试判断只读用户](module/ProdMgmt/idea/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
@@ -428,12 +462,15 @@
 记录产品开发过程中的用户需求。
 
 
-<el-descriptions direction="vertical" :column="5" :size="size" border>
+<el-descriptions direction="vertical" :column="8" :size="size" border>
 <el-descriptions-item label="标题">-</el-descriptions-item>
 <el-descriptions-item label="状态">-</el-descriptions-item>
 <el-descriptions-item label="负责人">-</el-descriptions-item>
 <el-descriptions-item label="描述">-</el-descriptions-item>
 <el-descriptions-item label="优先级">-</el-descriptions-item>
+<el-descriptions-item label="需求来源">-</el-descriptions-item>
+<el-descriptions-item label="需求类型">-</el-descriptions-item>
+<el-descriptions-item label="关注人">-</el-descriptions-item>
 </el-descriptions>
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -454,6 +491,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/idea?id=主状态控制`">
   主状态控制
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProdMgmt/idea?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/idea?id=数据查询`">
   数据查询
