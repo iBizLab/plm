@@ -7,7 +7,7 @@ networks:
 services:
   #mysql
   mysql:
-    image: ibizlab/mysql:5.7.plm.20240322
+    image: ibizlab/mysql:5.7.plm.20240611
     ports:
     - "30006:3306"  
     environment:
@@ -120,7 +120,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
-    image: ibizlab/ibiz-ebsx-allinone-rt:8.1.0.503.240506
+    image: ibizlab/ibiz-ebsx-allinone-rt:8.1.0.530
     environment:
     - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
     - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048          
@@ -178,7 +178,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #cloudmgrapi
   cloudmgrapi:
-    image: ibizlab/ibiz-service-runner:8.1.0.459
+    image: ibizlab/ibiz-service-runner:8.1.0.532.1
     ports:
     - "30100:30100"
     networks:
@@ -200,9 +200,24 @@ services:
     extra_hosts:
     - "gateway.ibizcloud.cn:${IPADDR}"    
     - "nacos.ibizcloud.cn:${IPADDR}"
+  #plmweb
+  plmweb:
+    image: ibizlab/ibiz-cloud-web-runner:9.0.7.23.plm.240611
+    ports:
+    - 30250:80
+    networks:
+    - agent_network
+    environment:
+    - MOCKDCSYSTEMID=preview-ibizplm
+    - APPCODE=web
+    entrypoint: /entrypoint-waitfor.sh
+    command: nacos:8848
+    extra_hosts:
+    - "gateway.ibizcloud.cn:${IPADDR}"    
+    - "nacos.ibizcloud.cn:${IPADDR}"
   #plmservice
   plmservice:
-    image: ibizlab/ibiz-service-runner:8.1.0.504
+    image: ibizlab/ibiz-service-runner:8.1.0.534.2
     ports:
     - "30251:30251"
     networks:
@@ -225,21 +240,6 @@ services:
     - ZOOKEEPER_PORT=2181
     entrypoint: /entrypoint-waitfor.sh
     command: ibiz-ebsx-allinone:30000
-    extra_hosts:
-    - "gateway.ibizcloud.cn:${IPADDR}"    
-    - "nacos.ibizcloud.cn:${IPADDR}"
-  #plmweb
-  plmweb:
-    image: ibizlab/ibiz-cloud-web-runner:9.0.7.6.plm.240506
-    ports:
-    - 30250:80
-    networks:
-    - agent_network
-    environment:
-    - MOCKDCSYSTEMID=preview-ibizplm
-    - APPCODE=web
-    entrypoint: /entrypoint-waitfor.sh
-    command: nacos:8848
     extra_hosts:
     - "gateway.ibizcloud.cn:${IPADDR}"    
     - "nacos.ibizcloud.cn:${IPADDR}"
