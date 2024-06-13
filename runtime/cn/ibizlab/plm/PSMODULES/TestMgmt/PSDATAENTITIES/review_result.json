@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -86,6 +89,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -111,6 +115,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -136,6 +141,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -157,6 +163,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -174,6 +181,32 @@
       "type" : "VOID"
     },
     "builtinAction" : true
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "set_result",
+    "dataAccessAction" : "UPDATE",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDEACTIONS/set_result.json",
+    "logicName" : "设置结果",
+    "name" : "set_result",
+    "getPSDEActionInput" : {
+      "name" : "Set_resultInput",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "review_result_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Set_resultResult",
+      "type" : "VOID"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDELOGICS/set_result.json"
+    },
+    "enableFront" : false
   } ],
   "getAllPSDEDBConfigs" : [ {
     "dBType" : "MYSQL5",
@@ -192,28 +225,31 @@
       "codeName" : "comment"
     }, {
       "name" : "STAGE_ID",
-      "codeName" : "stage_id"
+      "codeName" : "STAGE_ID"
     }, {
-      "name" : "NAME",
-      "codeName" : "name"
+      "name" : "SEQUENCES",
+      "codeName" : "sequences"
     }, {
       "name" : "ID",
       "codeName" : "id"
     }, {
-      "name" : "CREATE_TIME",
-      "codeName" : "create_time"
+      "name" : "NAME",
+      "codeName" : "name"
     }, {
       "name" : "CREATE_MAN",
       "codeName" : "create_man"
     }, {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
     }, {
       "name" : "UPDATE_MAN",
       "codeName" : "update_man"
     }, {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    }, {
       "name" : "CONTENT_ID",
-      "codeName" : "Content_id"
+      "codeName" : "content_id"
     } ],
     "codeName" : "Table",
     "name" : "REVIEW_RESULT",
@@ -301,6 +337,11 @@
   "getAllPSDEDataSets" : [ {
     "codeName" : "Default",
     "logicName" : "数据集",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "SEQUENCES",
+      "codeName" : "sequences"
+    },
     "name" : "DEFAULT",
     "getPSDEDataQueries" : [ {
       "modelref" : true,
@@ -332,7 +373,8 @@
       "dBType" : "MYSQL5",
       "name" : "RESULT_STATE",
       "queryCodeExp" : "t1.`RESULT_STATE`",
-      "standardColumnName" : "`RESULT_STATE`"
+      "standardColumnName" : "`RESULT_STATE`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_RESULT_STATE_EQ",
@@ -382,6 +424,7 @@
     "codeName" : "result_state",
     "dEFType" : 1,
     "dataType" : "NSCODELIST",
+    "defaultValue" : "1",
     "importOrder" : 1000,
     "logicName" : "状态",
     "name" : "RESULT_STATE",
@@ -479,20 +522,21 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "STAGE_ID",
+      "columnName" : "WHETHER_REVIEW",
       "dBType" : "MYSQL5",
-      "name" : "STAGE_ID",
-      "queryCodeExp" : "t1.`STAGE_ID`",
-      "standardColumnName" : "`STAGE_ID`"
+      "name" : "WHETHER_REVIEW",
+      "queryCodeExp" : "(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = t1.`CONTENT_ID`  AND t3.state = '20') THEN 1 ELSE 0 END AS result)",
+      "standardColumnName" : "`WHETHER_REVIEW`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[STAGE_ID][阶段标识]移动端默认",
+      "name" : "[WHETHER_REVIEW][是否可评审]移动端默认",
       "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[STAGE_ID][阶段标识]移动端默认",
-        "stringLength" : 100,
+        "editorType" : "SPAN",
+        "name" : "[WHETHER_REVIEW][是否可评审]移动端默认",
+        "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -500,15 +544,94 @@
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[STAGE_ID][阶段标识]",
+      "name" : "[WHETHER_REVIEW][是否可评审]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[WHETHER_REVIEW][是否可评审]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "WHETHER_REVIEW",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "whether_review",
+    "dEFType" : 2,
+    "dataType" : "TEXT",
+    "defaultValue" : "0",
+    "formulaColumns" : "content_id",
+    "formulaFormat" : "(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = %1$s  AND t3.state = '20') THEN 1 ELSE 0 END AS result)",
+    "importOrder" : 1000,
+    "length" : 200,
+    "logicName" : "是否可评审",
+    "name" : "WHETHER_REVIEW",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "serviceCodeName" : "whether_review",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "formulaDEField" : true,
+    "phisicalDEField" : false
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "STAGE_ID",
+      "dBType" : "MYSQL5",
+      "name" : "STAGE_ID",
+      "queryCodeExp" : "t1.`STAGE_ID`",
+      "standardColumnName" : "`STAGE_ID`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[STAGE_ID][属性]",
       "getPSDEFFormItem" : {
         "codeName" : "Default",
         "editorType" : "TEXTBOX",
-        "name" : "[STAGE_ID][阶段标识]",
+        "name" : "[STAGE_ID][属性]",
         "stringLength" : 100,
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[STAGE_ID][属性]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[STAGE_ID][属性]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -535,7 +658,7 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "stage_id",
+    "codeName" : "STAGE_ID",
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
@@ -550,49 +673,35 @@
       "modelref" : true,
       "id" : "STAGE_ID"
     },
-    "serviceCodeName" : "stage_id",
     "stdDataType" : 25,
     "stringLength" : 100,
-    "valueFormat" : "%1$s"
+    "valueFormat" : "%1$s",
+    "serviceCodeName" : "stage_id"
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "NAME",
+      "columnName" : "SEQUENCES",
       "dBType" : "MYSQL5",
-      "name" : "NAME",
-      "queryCodeExp" : "t1.`NAME`",
-      "standardColumnName" : "`NAME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_NAME_LIKE",
-      "name" : "N_NAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
+      "name" : "SEQUENCES",
+      "queryCodeExp" : "t1.`SEQUENCES`",
+      "standardColumnName" : "`SEQUENCES`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[NAME][名称]",
+      "name" : "[SEQUENCES][顺序]",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
         "codeName" : "Default",
         "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
+        "name" : "[SEQUENCES][顺序]",
         "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
       "codeName" : "MobileDefault",
-      "name" : "[NAME][名称]移动端默认",
+      "name" : "[SEQUENCES][顺序]移动端默认",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
         "codeName" : "MobileDefault",
         "editorType" : "MOBTEXT",
-        "name" : "[NAME][名称]移动端默认",
-        "stringLength" : 200,
+        "name" : "[SEQUENCES][顺序]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
@@ -605,49 +714,31 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "NAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
+        "name" : "默认组"
       },
-      "ruleInfo" : "内容长度必须小于等于[200]",
+      "ruleInfo" : "默认规则",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "name",
+    "codeName" : "sequences",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "INT",
     "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.NAME"
-    },
-    "length" : 200,
-    "logicName" : "名称",
-    "name" : "NAME",
+    "logicName" : "顺序",
+    "name" : "SEQUENCES",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "NAME"
+      "id" : "SEQUENCES"
     },
-    "serviceCodeName" : "name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "enableQuickSearch" : true,
-    "majorDEField" : true
+    "serviceCodeName" : "sequences",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -747,44 +838,48 @@
     "pasteReset" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "CREATE_TIME",
+      "columnName" : "NAME",
       "dBType" : "MYSQL5",
-      "name" : "CREATE_TIME",
-      "queryCodeExp" : "t1.`CREATE_TIME`",
-      "standardColumnName" : "`CREATE_TIME`"
+      "name" : "NAME",
+      "queryCodeExp" : "t1.`NAME`",
+      "standardColumnName" : "`NAME`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_NAME_LIKE",
+      "name" : "N_NAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[NAME][名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
         },
         "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "editorType" : "MOBTEXT",
+        "name" : "[NAME][名称]移动端默认",
+        "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -792,38 +887,49 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组"
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
       },
-      "ruleInfo" : "默认规则",
+      "ruleInfo" : "内容长度必须小于等于[200]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "create_time",
+    "codeName" : "name",
     "dEFType" : 1,
-    "dataType" : "DATETIME",
+    "dataType" : "TEXT",
     "importOrder" : 1000,
-    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      "lanResTag" : "DEF.LNAME.NAME"
     },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
+    "length" : 200,
+    "logicName" : "名称",
+    "name" : "NAME",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "CREATE_TIME"
+      "id" : "NAME"
     },
-    "predefinedType" : "CREATEDATE",
-    "serviceCodeName" : "create_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-    "allowEmpty" : false,
-    "systemReserver" : true
+    "serviceCodeName" : "name",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "enableQuickSearch" : true,
+    "majorDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_MAN",
@@ -921,22 +1027,22 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.`CREATE_TIME`",
+      "standardColumnName" : "`CREATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -946,14 +1052,14 @@
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[CREATE_TIME][建立时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
+        "name" : "[CREATE_TIME][建立时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -974,26 +1080,26 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "create_time",
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "UPDATE_TIME"
+      "id" : "CREATE_TIME"
     },
-    "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "update_time",
+    "predefinedType" : "CREATEDATE",
+    "serviceCodeName" : "create_time",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
@@ -1095,6 +1201,85 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "update_time",
+    "dEFType" : 1,
+    "dataType" : "DATETIME",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "UPDATE_TIME"
+    },
+    "predefinedType" : "UPDATEDATE",
+    "serviceCodeName" : "update_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "allowEmpty" : false,
+    "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CONTENT_ID",
       "dBType" : "MYSQL5",
       "name" : "CONTENT_ID",
@@ -1165,7 +1350,7 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "Content_id",
+    "codeName" : "content_id",
     "dEFType" : 1,
     "dataType" : "PICKUP",
     "importOrder" : 1000,
@@ -1200,15 +1385,86 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content_extend.json"
     },
+    "serviceCodeName" : "content_id",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
-    "linkDEField" : true,
-    "serviceCodeName" : "content_id"
+    "linkDEField" : true
+  } ],
+  "getAllPSDELogics" : [ {
+    "codeName" : "set_result",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDELOGICS/set_result.json",
+    "logicName" : "设置评审结果",
+    "name" : "设置评审结果",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 294,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 618,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "review_result_dto",
     "getPSDEMethodDTOFields" : [ {
+      "defaultValue" : "1",
       "logicName" : "状态",
       "name" : "result_state",
       "getPSDEField" : {
@@ -1230,22 +1486,44 @@
       "stringLength" : 2000,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "0",
+      "logicName" : "是否可评审",
+      "name" : "whether_review",
+      "getPSDEField" : {
+        "name" : "WHETHER_REVIEW",
+        "codeName" : "whether_review"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "阶段标识",
       "name" : "stage_id",
       "getPSDEField" : {
         "name" : "STAGE_ID",
-        "codeName" : "stage_id"
+        "codeName" : "STAGE_ID"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "顺序",
+      "name" : "sequences",
+      "getPSDEField" : {
+        "name" : "SEQUENCES",
+        "codeName" : "sequences"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "评审内容标识",
       "name" : "content_id",
       "getPSDEField" : {
         "name" : "CONTENT_ID",
-        "codeName" : "Content_id"
+        "codeName" : "content_id"
       },
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
@@ -1341,7 +1619,7 @@
       },
       "getPSDEField" : {
         "name" : "CONTENT_ID",
-        "codeName" : "Content_id"
+        "codeName" : "content_id"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -1375,6 +1653,7 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
       "logicName" : "状态",
       "name" : "n_result_state_eq",
       "getPSDEFSearchMode" : {
@@ -1454,6 +1733,13 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "set_result_edit_view_Form",
+    "logicName" : "设置评审结果_表单",
+    "modelTag2" : "0",
+    "name" : "设置评审结果_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
     "codeName" : "Main",
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
@@ -1502,6 +1788,7 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "memo" : "存储评审的评审结果",
   "getMinorPSDERs" : [ {
     "codeName" : "review_content_extend",
     "dERType" : "DER1N",
@@ -1513,7 +1800,7 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content_extend.json"
     },
     "masterOrder" : -1,
-    "masterRS" : 0,
+    "masterRS" : 8,
     "minorCodeName" : "review_results",
     "getMinorPSDataEntity" : {
       "modelref" : true,
@@ -1521,6 +1808,10 @@
     },
     "minorServiceCodeName" : "review_results",
     "name" : "DER1N_REVIEW_RESULT_REVIEW_CONTENT_EXTEND_CONTENT_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
     "orderValue" : 100,
     "getPSOne2ManyDataDEField" : {
       "name" : "STAGE_RESULTS",
@@ -1528,13 +1819,43 @@
     },
     "getPSPickupDEField" : {
       "name" : "CONTENT_ID",
-      "codeName" : "Content_id"
+      "codeName" : "content_id"
     },
     "pickupDEFName" : "CONTENT_ID",
-    "removeActionType" : -1,
+    "removeActionType" : 1,
     "removeOrder" : 0,
     "serviceCodeName" : "review_content_extend",
-    "enableFKey" : true
+    "enableFKey" : true,
+    "nestedRS" : true
+  }, {
+    "codeName" : "REVIEW_CONTENT",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result/PSDERS/DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID.json",
+    "logicName" : "评审内容-结果",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+    },
+    "masterRS" : 0,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_result.json"
+    },
+    "name" : "DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID",
+    "getNestedPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "orderValue" : 100,
+    "pickupDEFName" : "CONTENT_ID",
+    "getPickupPSDEField" : {
+      "name" : "CONTENT_ID",
+      "codeName" : "content_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "review_content"
   } ],
   "name" : "REVIEW_RESULT",
   "getPSSysDBScheme" : {

@@ -42,20 +42,30 @@
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
+      "noPrivDisplayMode" : 1,
       "getPSAppViewUIAction" : {
         "modelref" : true,
         "id" : "grid_batchtoolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "grid_batchtoolbar",
+        "logicType" : "SCRIPT",
+        "name" : "logic",
+        "scriptCode" : "context.baseline_status !== '2'",
+        "triggerType" : "ITEMENABLE"
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf112@FontAwesome",
         "cssClass" : "fa fa-mail-reply"
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
         "caption" : "移出",
         "codeName" : "shift_out_baseline",
         "confirmMsg" : "确认从此基线中移出？",
+        "dataAccessAction" : "UPDATE",
         "fullCodeName" : "baseline_idea_shift_out_baseline",
         "name" : "移出基线",
         "getPSAppDEMethod" : {
@@ -65,6 +75,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
         },
         "getPSSysImage" : {
           "glyph" : "xf112@FontAwesome",
@@ -201,7 +215,7 @@
     "valueFormat" : "YYYY-MM-DD",
     "width" : 180,
     "widthUnit" : "PX",
-    "enableSort" : true
+    "enableSort" : false
   }, {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
@@ -347,6 +361,7 @@
     },
     "allowEmpty" : true
   } ],
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -365,7 +380,7 @@
   "sortMode" : "REMOTE",
   "hasWFDataItems" : false,
   "enableColFilter" : false,
-  "enableCustomized" : true,
+  "enableCustomized" : false,
   "enableGroup" : false,
   "enablePagingBar" : true,
   "enableRowEdit" : false,
@@ -373,7 +388,7 @@
   "enableRowNew" : false,
   "forceFit" : false,
   "hideHeader" : false,
-  "noSort" : false,
+  "noSort" : true,
   "singleSelect" : false,
   "modelid" : "7079c123aec209665264c00e875f5d8f",
   "modeltype" : "PSDEGRID"

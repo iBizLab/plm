@@ -15,22 +15,7 @@
         "modelref" : true,
         "id" : "DEBUGPARAM1"
       },
-      "name" : "通过上下文添加的principal_id属性存在",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "ISNOTNULL",
-          "dstFieldName" : "principal_id",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[principal_id] 值不为空(NotNil)"
-        } ]
-      },
+      "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "Begin"
@@ -124,7 +109,7 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "END1"
+        "id" : "THROWEXCEPTION1"
       },
       "name" : "循环结束",
       "getSrcPSDELogicNode" : {
@@ -179,6 +164,25 @@
       }
     } ],
     "topPos" : 330
+  }, {
+    "codeName" : "THROWEXCEPTION1",
+    "errorCode" : 0,
+    "errorInfo" : "主动结束",
+    "leftPos" : 400,
+    "logicNodeType" : "THROWEXCEPTION",
+    "name" : "主动结束",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "THROWEXCEPTION1"
+      }
+    } ],
+    "topPos" : 449
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 760,
@@ -316,7 +320,7 @@
     "leftPos" : 400,
     "logicNodeType" : "END",
     "name" : "结束",
-    "topPos" : 481
+    "topPos" : 557
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {

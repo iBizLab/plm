@@ -75,6 +75,10 @@ margin: 0;
   background-color: white;
 }
 
+    .choose-resource .ibiz-route-picker .ibiz-route-picker__dropdown .el-dropdown .el-tooltip__trigger{
+    font-size: 16px;
+    margin-top: 3px;
+}
     /* 表单分组标题 */
 .main-info-common-view .ibiz-form-group--right_grouppanel .ibiz-form-group__caption {
   font-size: 16px;
@@ -128,6 +132,7 @@ margin: 0;
 .main-info-common-view  .ibiz-form-item--title .ibiz-input.is-textarea.ibiz-input--readonly {
     font-size: var(--ibiz-font-size-header-3);
     padding: 5px 11px;
+    height: 100%;
 }
     .main-info-common-view .ibiz-form-item-container--top .ibiz-autocomplete--readonly {
   padding: 0 11px;
@@ -185,6 +190,10 @@ margin: 0;
   padding-bottom: 0;
   margin-bottom: var(--ibiz-spacing-tright);
 }
+/* 评审列表视图背景颜色 */
+.main-info-common-view .ibiz-view.ibiz-view-delistview {
+  background-color: transparent;
+}
 
     
 .main-info-common-view .ibiz-grid-container--container_view_bottom {
@@ -195,7 +204,7 @@ margin: 0;
 }
 .main-info-common-view .ibiz-grid-container--container_view_bottom .ibiz-panel-field--field_textbox {
   position: relative;
-  z-index: 99998;
+  z-index: 998;
 }
 .main-info-common-view .ibiz-grid-container--container_view_bottom .ibiz-html-comment {
   position: absolute;
@@ -208,7 +217,7 @@ margin: 0;
 }
 .main-info-common-view .ibiz-grid-container--container_view_bottom .ibiz-panel-button--comment__cancel,
 .main-info-common-view .ibiz-grid-container--container_view_bottom .ibiz-panel-button--comment__send {
-  z-index: 99999;
+  z-index: 999;
 }
     .main-info-common-view .ibiz-control-form > .ibiz-form-page > .ibiz-form-page-item > .ibiz-col--grid:first-child > .ibiz-form-group{
     padding-left: 5px;
@@ -361,13 +370,23 @@ width: calc(100% - 4px);
 min-height: 48px;
 padding-right: 32px;
 position: absolute;
-bottom: 0;
+top: 0;
 }
 /* 时间范围宽度 */
 .main-info-common-view .ibiz-date-range-picker {
 max-width: 250px;
 }
 
+    .codelist-only-icon {
+    display: flex;
+    align-items: center;
+}
+.codelist-only-icon .ibiz-span .ibiz-code-list__item {
+    font-size: 0;
+}
+.codelist-only-icon .ibiz-span .ibiz-code-list__item svg {
+    font-size: var(--ibiz-form-item-font-size);
+}
     .recentcustom_dashboard_view_style .ibiz-portlet-layout {
   --ibiz-portlet-layout-padding: var(--ibiz-spacing-extra-tight);
 }
@@ -447,6 +466,15 @@ font-size: 16px;
   padding: var(--ibiz-panel-view-content-padding);
 }
 
+    .ibiz-view-detabexpview .ibiz-panel-view-content:has(.ibiz-nav-pos) {
+  padding-top: 0;
+}
+
+    .delete-button .el-button{
+    color: #fff;
+    background-color: #ff7575;
+    border-color: #ff7575;
+}
     .recycle-bin .ibiz-form-group-header .ibiz-form-group-header__right {
 	display: none;
 }
@@ -481,6 +509,9 @@ font-size: 16px;
 }
     .ibiz-nav-pos > .ibiz-view-detreeexpview .ibiz-panel-ctrl-pos--treeexpbar_tree > .ibiz-control-treeview {
   padding-left: 0;
+}
+.ibiz-nav-pos > .ibiz-view-detreeexpview .ibiz-panel-ctrl-pos--treeexpbar_tree > .ibiz-control-treeview .ibiz-control-treeview-tree {
+    padding-left: 0;
 }
 
     .recentdata-custom>div>div>div:nth-child(2) {
@@ -566,6 +597,28 @@ margin-left: -8px;
 /* 适配分隔符在后面 */
 .ibiz-control-toolbar__menu--style2 + .ibiz-control-toolbar__item-separator {
 margin-left: -4px;
+}
+/* 分组按钮样式 */
+.ibiz-control-toolbar__menu--style2.el-menu--horizontal>.el-sub-menu.is-active .el-sub-menu__title {
+border: none;
+}
+    
+/* 窗口缩小样式 */
+.ibiz-control-toolbar--user .ibiz-control-toolbar__item.is-short-cut .el-button{
+color: var(--ibiz-color-primary);
+}
+.ibiz-control-toolbar--user .ibiz-control-toolbar__item.is-short-cut .el-button:hover,
+.ibiz-control-toolbar--user .ibiz-control-toolbar__item.is-short-cut .el-button:hover i{
+  font-weight: 600;
+}
+.ibiz-control-toolbar--user .ibiz-control-toolbar__item.is-short-cut .el-button svg,
+.ibiz-control-toolbar--user .ibiz-control-toolbar__item.is-short-cut .el-button svg path {
+  fill: var(--ibiz-color-primary) !important;
+}
+
+.ibiz-control-toolbar--user .ibiz-control-toolbar__item.is-short-cut .el-button .icon>path {
+stroke: var(--ibiz-color-primary) !important;
+stroke-width: 30 !important;
 }
     /*工具栏分组项按钮3样式*/
 .ibiz-control-toolbar__submenu-popper--style3 .el-menu .el-menu-item,
@@ -717,14 +770,31 @@ padding: 0;
 }
 /* 分页搜索子视图左侧样式 */
 .workload_log_head .ibiz-panel-container--view_header_left:nth-of-type(1){
-padding-right: 16px;
+padding-right: 8px;
 width: auto;
 height: 63px;
 }
     .activate_button .el-button{
     background: none;
     color: #4ba7f1;
-    margin-left: -5px;
+    margin-left: 5px;
+    height: 0px;
+
+}
+.activate_button{
+    margin: 0px 10px 0px -10px;
+} 
+
+.activate_button .ibiz-rawitem__text{
+    color: #999;
+}
+.activate_button .ibiz-span.ibiz-panel-field-content{
+    color: #999;
+}
+
+.activate_button .ibiz-panel-button.ibiz-panel-button--default{
+        height: 15px;
+    padding: 0px;
 }
     .todo-tips{
     height: 80px;
@@ -736,6 +806,45 @@ height: 63px;
 }
     .todo-background{
     
+}
+    /* 视图大的布局样式 */
+.quick-create-view-content {
+box-shadow: rgba(0, 0, 0, 0.08) 0px 0px var(--ibiz-spacing-base) 0px;
+border-radius: var(--ibiz-border-radius-medium);
+overflow: hidden;
+}
+/* 按钮样式 */
+.quick-create-view-content .ibiz-panel-container--quick_create_content .ibiz-panel-button {
+max-height: 40px;
+margin: 0;
+padding: 0;
+}
+.quick-create-view-content .ibiz-panel-container--quick_create_content .ibiz-panel-button .el-button {
+min-height: 40px;
+/*padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-extra-loose);*/
+text-align: left;
+justify-content: flex-start;
+}
+/* 按钮内字体样式 */
+.quick-create-view-content .ibiz-panel-container--quick_create_content .ibiz-panel-button .ibiz-icon {
+color: var(--ibiz-color-text-3);
+font-size: var(--ibiz-font-size-header-5);
+min-width: 18px;
+line-height: 18px;
+}
+
+    /* 按钮内字体样式 */
+.quick-create-view-content .ibiz-panel-container--quick_create_content .ibiz-panel-button .ibiz-panel-button-content {
+color: var(--ibiz-color-text-0);
+align-items: center;
+}
+.quick-create-view-content .ibiz-panel-container--quick_create_content .el-button .ibiz-panel-button-content .ibiz-icon+.ibiz-panel-button-content--caption {
+margin-left: var(--ibiz-spacing-tight);
+}
+/* 分割线 */
+.quick-create-view-content .ibiz-panel-container--quick_create_content .el-divider.el-divider--horizontal {
+text-align: center;
+margin: var(--ibiz-spacing-extra-tight) auto;
 }
     .run_history_remark_style{
     border-right: 1px solid var(--ibiz-form-group-header-border-color);
@@ -769,6 +878,9 @@ width: var(--ibiz-height-control-default) ;
 .ibiz-control-toolbar__item--style2 .el-button,
 .ibiz-panel-button--style2.ibiz-panel-button--style2 {
 padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-super-tight);
+}
+    .prompt_message_style {
+    margin: 0px 16px 0px -16px;
 }
     .data-upload-view {
   padding: 8px 32px;
@@ -853,6 +965,19 @@ padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-super-tight);
   text-decoration: underline;
 }
 
+    /* 控制项标题文字过多导致的样式异常 */
+.create_work_item_choose_parent_style .ibiz-panel-field--show_identifier .ibiz-panel-field-content{
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+}
+.create_work_item_choose_parent_style .ibiz-panel-field--title .ibiz-panel-field-content{
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+}
     /* 星标及切换背景颜色 */
 .star_css .ibiz-control-toolbar__menu .ibiz-control-toolbar-submenu .el-sub-menu__title:hover,
 .star_css button:hover {
@@ -1026,6 +1151,25 @@ width: 100%;
     background-color: #ffdcaf;
     vertical-align: inherit;
 }
+    .active-members-font-postion >.ibiz-rawitem>.ibiz-rawitem__text{
+    position: relative;
+    bottom: -34px;
+    left: -1px;
+}
+    .active-members-grey-color>.ibiz-rawitem>.ibiz-rawitem__text{
+    color: #999;
+}
+    .active-members-view{
+    padding: 24px 0px 0 0;
+    .ibiz-panel-field>.ibiz-span{
+        font-size: 48px;
+        color: #333;
+    }
+    .ibiz-grid-container--container_grid{
+        width: 75%;
+        margin: 0 auto;
+    }
+}
     .transition-time .ibiz-span{
   font-size: var(--ibiz-font-size-small);
   color: var(--ibiz-color-disabled-text);
@@ -1181,18 +1325,20 @@ width: 100%;
 .test-plan-report-view .ibiz-control-dashboard .ibiz-portlet-layout-content {
   padding: 0 28px;
 }
-    .ibiz-portlet-layout__toolbar--portlet-chart-daily_test .el-dropdown__list,
-.ibiz-portlet-layout__toolbar--portlet-chart-daily_tendencies .el-dropdown__list,
-.ibiz-portlet-layout__toolbar--portlet-chart-members_distribution .el-dropdown__list,
-.ibiz-portlet-layout__toolbar--portlet-chart-results_report .el-dropdown__list {
+    .ibiz-portlet-layout__toolbar--test_plan_report_dashboard_view .el-dropdown__list {
   background-color: var(--ibiz-color-bg-3) !important;
 }
-.ibiz-portlet-layout__toolbar--portlet-chart-daily_test .el-dropdown-menu,
-.ibiz-portlet-layout__toolbar--portlet-chart-daily_tendencies .el-dropdown-menu,
-.ibiz-portlet-layout__toolbar--portlet-chart-members_distribution .el-dropdown-menu,
-.ibiz-portlet-layout__toolbar--portlet-chart-results_report .el-dropdown-menu {
+.ibiz-portlet-layout__toolbar--test_plan_report_dashboard_view .el-dropdown-menu {
   background-color: transparent !important;
 }
+.ibiz-portlet-layout__toolbar--test_plan_report_dashboard_view .el-dropdown-menu__item {
+  color: var(--ibiz-color-text-3) !important;
+  background-color: transparent !important;
+}
+.ibiz-portlet-layout__toolbar--test_plan_report_dashboard_view .el-dropdown-menu__item:hover {
+  background-color: var(--ibiz-color-bg-0) !important;
+}
+
     .test-plan-report-view .ibiz-portlet-view--report_conclude .ibiz-portlet-layout-content,
 .test-plan-report-view .ibiz-portlet-view--report_conclude .ibiz-portlet-layout-content .ibiz-panel-view-content--view_content {
 	overflow: visible;
@@ -1206,18 +1352,8 @@ width: 100%;
 	position: unset;
 }
 
-    .ibiz-portlet-layout__toolbar--portlet-chart-daily_test .el-dropdown-menu__item,
-.ibiz-portlet-layout__toolbar--portlet-chart-daily_tendencies .el-dropdown-menu__item,
-.ibiz-portlet-layout__toolbar--portlet-chart-members_distribution .el-dropdown-menu__item,
-.ibiz-portlet-layout__toolbar--portlet-chart-results_report .el-dropdown-menu__item {
-  color: var(--ibiz-color-text-3) !important;
-  background-color: transparent !important;
-}
-.ibiz-portlet-layout__toolbar--portlet-chart-daily_test .el-dropdown-menu__item:hover,
-.ibiz-portlet-layout__toolbar--portlet-chart-daily_tendencies .el-dropdown-menu__item:hover,
-.ibiz-portlet-layout__toolbar--portlet-chart-members_distribution .el-dropdown-menu__item:hover,
-.ibiz-portlet-layout__toolbar--portlet-chart-results_report .el-dropdown-menu__item:hover {
-  background-color: var(--ibiz-color-bg-0) !important;
+    .message_layout_panel_img_style{
+    
 }
     .grey-span{
 width: 58px;
@@ -1498,6 +1634,12 @@ width: 58px;
     background-color: #ccf2cc;
     vertical-align: inherit;
 }
+    .ibiz-form-item{
+   --ibiz-form-item-placeholder-color:#cacaca;
+}
+.el-input{
+    --el-input-placeholder-color:#cacaca;
+}
     .blue-span{
 width: 58px;
     height: 24px;
@@ -1544,6 +1686,27 @@ padding-bottom: 16px;
     .ibiz-panel-view-content {
     --ibiz-panel-view-content-padding: var(--ibiz-spacing-tight) var(--ibiz-spacing-tight) 0 var(--ibiz-spacing-tight);
 }
+ /* 视图右侧padding */
+.ibiz-panel-view-header .ibiz-panel-container--view_header_right {
+    padding: 0 var(--ibiz-spacing-tight);
+}
+/* 树padding */
+.ibiz-nav-pos > .ibiz-view-detreeexpview .ibiz-panel-ctrl-pos--treeexpbar_tree > .ibiz-control-treeview .ibiz-control-treeview-tree {
+    padding: 0 var(--ibiz-spacing-tight);
+}
+    .view-content-no-padding .ibiz-panel-view-content {
+  padding: 0;
+}
+.view-content-no-padding .ibiz-panel-view-content .ibiz-panel-view-content {
+  padding: var(--ibiz-panel-view-content-padding);
+}
+
+    .ibiz-view-message {
+    padding: var(--ibiz-spacing-tight);
+}
+.ibiz-view-message .el-alert--info.is-light {
+    background-color: var(--el-alert-bg-color);
+}
     /* 全局 计数器 样式 */
 .ibiz-badge.ibiz-badge {
 min-width: 16px;
@@ -1571,6 +1734,31 @@ color: var(--ibiz-color-primary);
   background-color: var(--ibiz-color-primary-light-default);
 }
 
+    .discuss_reply_padding .ibiz-form-group-content{
+    padding-left: 5px;
+}
+.discuss_reply_padding .ibiz-form-group-content .ibiz-control-list-item{
+    padding-left: 0;
+}
+.discuss_reply_padding .ibiz-form-group-content .ibiz-control-list-item ibiz-panel-button--style2 .el-button{
+    padding-left: 0;
+}
+    .discuss-comment-btn{
+    width: 100px;
+}
+.discuss-comment-btn .el-button{
+    min-height: var(--ibiz-height-control-default);
+    min-width: var(--ibiz-height-control-default);
+    background: transparent;
+    border: none;
+    color: var(--ibiz-color-text-3);
+    font-size: var(--ibiz-font-size-header-6);
+    padding: 8px;
+}
+.discuss-comment-btn .el-button:hover {
+  color: var(--ibiz-color-primary);
+  background-color: var(--ibiz-color-primary-light-default);
+}
     .comment-list-height-auto .ibiz-no-data {
   padding: 0;
   --el-empty-image-width: 64px;
@@ -1618,6 +1806,61 @@ color: var(--ibiz-color-primary);
     height: 1em;
     width: 1em;
     line-height: 40px;
+}
+    .resource-capacity-view .ibiz-panel-view-content--view_content {
+  padding: 0 var(--ibiz-spacing-tight);
+}
+
+.resource-capacity-view .ibiz-form-page,
+.resource-capacity-view .ibiz-form-page .ibiz-form-page-item {
+  height: 100%
+}
+
+.resource-capacity-view .ibiz-form-page .ibiz-form-page-item>.ibiz-col--grid:last-child {
+  height: calc(100% - 54px);
+}
+
+.resource-capacity-view .ibiz-form-group--header {
+  line-height: 52px;
+  overflow-y: scroll;
+  border-bottom: 1px solid var(--ibiz-color-border);
+}
+
+.resource-capacity-view .ibiz-form-group--header .ibiz-rawitem {
+  padding: 0 var(--ibiz-spacing-loose);
+}
+
+.resource-capacity-view .ibiz-form-group--header .ibiz-col--grid:not(:last-child) .ibiz-rawitem {
+  border-right: 1px solid var(--ibiz-color-border);
+}
+    .resource-capacity-view .ibiz-form-group--body {
+  overflow-y: scroll;
+}
+
+.resource-capacity-view .ibiz-form-group--body .ibiz-mdctrl-container-item {
+  border-bottom: 1px solid var(--ibiz-color-border);
+}
+
+.resource-capacity-view .ibiz-form-group--body .ibiz-mdctrl-container-item .ibiz-control-form {
+  padding: 0;
+}
+
+.resource-capacity-view .ibiz-form-group--body .ibiz-form-item-container {
+  height: 52px;
+  padding: 0 var(--ibiz-spacing-loose);
+}
+
+.resource-capacity-view .ibiz-form-group--body .ibiz-form-item-container__editor>div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.resource-capacity-view .ibiz-form-group--body .ibiz-col--grid:not(:last-child) .ibiz-form-item-container {
+  border-right: 1px solid var(--ibiz-color-border);
+}
+    .resource-view-head .ibiz-panel-container--control_searchform > .ibiz-row  {
+  overflow: hidden;
 }
     .ibiz-view-depickuptreeview .el-tree-node__content .el-checkbox.is-disabled {
 	display: none;

@@ -20,19 +20,13 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templateend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templatedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templateprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templatedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templatedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="输出选中数据"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templateprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中数据ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casechoose_case_templatedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取选中模板详情"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_debugparam2" sourceRef="deaction1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_end1" sourceRef="debugparam2" targetRef="end1">
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

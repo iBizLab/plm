@@ -236,6 +236,74 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem1",
+          "contentType" : "RAW",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem1",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "caption" : "如果要变更产品的所属关系及可见范围，你可以移动它。移动后不影响产品下的数据。",
+            "contentType" : "RAW",
+            "name" : "rawitem1",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "如果要变更产品的所属关系及可见范围，你可以移动它。移动后不影响产品下的数据。",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "actionType" : "UIACTION",
+          "caption" : "移动产品",
+          "codeName" : "button1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "BUTTON",
+          "name" : "button1",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "form_button1"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 2,
+            "colMD" : 2,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "移动产品",
+            "codeName" : "product_move",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_move_option_view.json",
+              "viewType" : "DEOPTVIEW"
+            },
+            "fullCodeName" : "product_product_move",
+            "name" : "移动产品",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "product_move"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+            },
+            "successMsg" : "移动成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "product_move",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "id" : "product_move@product"
+          },
+          "tooltip" : "移动产品",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true
+        } ],
         "getPSLayout" : {
           "childColLG" : -1,
           "childColMD" : 24,
@@ -249,7 +317,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : false
+        "showCaption" : true
       }, {
         "caption" : "归档产品",
         "codeName" : "grouppanel2",
@@ -297,7 +365,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "归档",
             "codeName" : "in_progress_into_archived",
-            "confirmMsg" : "确认归档产品？",
+            "confirmMsg" : "确认归档该产品？",
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "product_in_progress_into_archived",
             "name" : "进行中_归档",
@@ -380,6 +448,9 @@
             "colLG" : 2,
             "colMD" : 2,
             "layout" : "TABLE_24COL"
+          },
+          "getPSSysCss" : {
+            "cssName" : "delete-button"
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
@@ -556,6 +627,7 @@
   "viewType" : "DEEDITVIEW",
   "xDataControlName" : "form",
   "enableDP" : true,
+  "showCaptionBar" : false,
   "showDataInfoBar" : true,
   "modelid" : "537f87fa0665bd5fe79c75c3a684cda6",
   "modeltype" : "PSAPPDEVIEW"

@@ -7,7 +7,7 @@
   "name" : "发布页面",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -490,
+    "leftPos" : -530,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
@@ -34,27 +34,6 @@
     },
     "returnType" : "LOGICPARAM",
     "topPos" : 200
-  }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : -368,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSFCODE1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 208
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 72,
@@ -104,7 +83,7 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM5"
       },
       "name" : "非第一次保存",
       "getPSDELogicLinkGroupCond" : {
@@ -178,14 +157,10 @@
     } ],
     "topPos" : 208
   }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 486,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 480,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -220,7 +195,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM5"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -270,7 +245,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM5"
       }
     } ],
     "topPos" : 208
@@ -308,10 +283,31 @@
     },
     "topPos" : 208
   }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : -408,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "调试逻辑参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
     "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"publish_time\", new Date());",
     "codeName" : "RAWSFCODE1",
     "codeType" : "JavaScript",
-    "leftPos" : -156,
+    "leftPos" : -226,
     "logicNodeType" : "RAWSFCODE",
     "name" : "设置发布时间",
     "getPSDELogicLinks" : [ {

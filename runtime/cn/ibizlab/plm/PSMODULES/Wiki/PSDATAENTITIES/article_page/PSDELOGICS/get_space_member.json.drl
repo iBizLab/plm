@@ -1,0 +1,126 @@
+package cn.ibizlab.plm.wiki.logic.article_pagelogic.get_space_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.article_page article_pageget_space_memberdefault;
+                global cn.ibizlab.plm.core.wiki.domain.space_member article_pageget_space_memberfilter;
+                global java.util.Map article_pageget_space_memberfor_obj;
+                global cn.ibizlab.plm.core.wiki.domain.space_member article_pageget_space_membermembers;
+                    global cn.ibizlab.plm.core.wiki.service.Ispace_memberService space_memberservice;
+        global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService iBzSysArticle_pageDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "article_pageget_space_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "article_pageget_space_memberend2"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取知识空间id并设置过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "article_pageget_space_memberprepareparam2"
+            when
+            then
+                            article_pageget_space_memberfilter.set("n_space_id_eq",article_pageget_space_memberdefault.get("product_id"));
+                                article_pageget_space_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为知识空间成员]
+            rule "dedataset3"
+            ruleflow-group "article_pageget_space_memberdedataset3"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "article_pageget_space_memberprepareparam5"
+            when
+            then
+                            article_pageget_space_memberfor_obj.set("",article_pageget_space_membermembers.get("0"));
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "article_pageget_space_memberrawsfcode1"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "article_pageget_space_memberrawsfcode2"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "article_pageget_space_memberend6"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "article_pageget_space_memberrawsfcode3"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode4"
+            ruleflow-group "article_pageget_space_memberrawsfcode4"
+            when
+            then
+                        update(article_pageget_space_memberdefault);//更新fact中变量值
+                        update(article_pageget_space_memberfilter);//更新fact中变量值
+                        update(article_pageget_space_memberfor_obj);//更新fact中变量值
+                        update(article_pageget_space_membermembers);//更新fact中变量值
+            end

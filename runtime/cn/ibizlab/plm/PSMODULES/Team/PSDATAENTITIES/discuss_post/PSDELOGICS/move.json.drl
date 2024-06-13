@@ -1,0 +1,71 @@
+package cn.ibizlab.plm.team.logic.discuss_postlogic.move;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postmovedefault;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postmovefor_temp_obj;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postmovesrfactionparam;
+                global cn.ibizlab.plm.core.team.domain.discuss_post discuss_postmoveupdate_obj;
+                    global cn.ibizlab.plm.core.team.service.Idiscuss_postService discuss_postservice;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_postService iBzSysDiscuss_postDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_postmovebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定界面数据]
+            rule "bindparam1"
+            ruleflow-group "discuss_postmovebindparam1"
+            when
+            then
+                        update(discuss_postmovedefault);//更新fact中变量值
+                        update(discuss_postmovefor_temp_obj);//更新fact中变量值
+                        update(discuss_postmovesrfactionparam);//更新fact中变量值
+                        update(discuss_postmoveupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "discuss_postmoveloopsubcall1"
+            when
+            then
+                        update(discuss_postmovedefault);//更新fact中变量值
+                        update(discuss_postmovefor_temp_obj);//更新fact中变量值
+                        update(discuss_postmovesrfactionparam);//更新fact中变量值
+                        update(discuss_postmoveupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充移动到的话题标识]
+            rule "prepareparam1"
+            ruleflow-group "discuss_postmoveprepareparam1"
+            when
+            then
+                            discuss_postmoveupdate_obj.set("topicid",discuss_postmovefor_temp_obj.get("target_topic_id"));
+                            discuss_postmoveupdate_obj.set("id",discuss_postmovedefault.get("id"));
+                        update(discuss_postmovedefault);//更新fact中变量值
+                        update(discuss_postmovefor_temp_obj);//更新fact中变量值
+                        update(discuss_postmovesrfactionparam);//更新fact中变量值
+                        update(discuss_postmoveupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行更新]
+            rule "deaction1"
+            ruleflow-group "discuss_postmovedeaction1"
+            when
+            then
+                        discuss_postservice.update(discuss_postmoveupdate_obj);
+                        update(discuss_postmovedefault);//更新fact中变量值
+                        update(discuss_postmovefor_temp_obj);//更新fact中变量值
+                        update(discuss_postmovesrfactionparam);//更新fact中变量值
+                        update(discuss_postmoveupdate_obj);//更新fact中变量值
+            end

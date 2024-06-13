@@ -40,15 +40,15 @@
                             <tns:global identifier="baseline_work_itembaseline_comparisonwork_item_versions" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置关联查询过滤器的分页参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取当前基线下工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonappendparam2" id="appendparam2" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="提取关联对象中的主键标识"/>
                         <endEvent id="rawsfcode1_end" name="end"/>
                         <sequenceFlow id="rawsfcode1_end_line" sourceRef="rawsfcode1" targetRef="rawsfcode1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="填充工作项过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充对比基线关联查询过滤器需要的baseline参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取对比基线下的工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取最新版本工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
@@ -56,19 +56,19 @@
                         <endEvent id="appendparam3_end" name="end"/>
                         <sequenceFlow id="appendparam3_end_line" sourceRef="appendparam3" targetRef="appendparam3_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="填充最新版本工作项附加属性"/>
                         <endEvent id="prepareparam7_end" name="end"/>
                         <sequenceFlow id="prepareparam7_end_line" sourceRef="prepareparam7" targetRef="prepareparam7_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="工作项cur_version_ids"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="提取关联对象中的版本标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="填充版本查询过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="将处理好的列表对象绑定至分页结果对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisondedataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取版本结果集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall4" id="loopsubcall4" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonloopsubcall5" id="loopsubcall5" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="填充关联目标版本对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baseline_work_itembaseline_comparisonappendparam4" id="appendparam4" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
                         <endEvent id="appendparam4_end" name="end"/>
                         <sequenceFlow id="appendparam4_end_line" sourceRef="appendparam4" targetRef="appendparam4_end"/>

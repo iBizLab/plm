@@ -9,11 +9,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
                 global cn.ibizlab.plm.core.projmgmt.domain.project_member work_itemget_project_memberfilter;
                 global java.util.Map work_itemget_project_memberfor_obj;
                 global cn.ibizlab.plm.core.projmgmt.domain.project_member work_itemget_project_membermembers;
-                global cn.ibizlab.plm.core.projmgmt.domain.project work_itemget_project_memberproject_info;
-                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemget_project_memberticket;
-                global java.util.Map work_itemget_project_memberuser;
-                global java.util.Map work_itemget_project_memberviewctx;
-                global java.util.Map work_itemget_project_memberwebctx;
                     global cn.ibizlab.plm.core.projmgmt.service.Iproject_memberService project_memberservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -28,58 +23,42 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
             then
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam3"
-            ruleflow-group "work_itemget_project_memberdebugparam3"
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "work_itemget_project_memberrawsfcode3"
             when
             then
                         update(work_itemget_project_memberdefault);//更新fact中变量值
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
                         update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取项目id]
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "work_itemget_project_memberend2"
+            when
+            then
+                        update(work_itemget_project_memberdefault);//更新fact中变量值
+                        update(work_itemget_project_memberfilter);//更新fact中变量值
+                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
+                        update(work_itemget_project_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品id并设置过滤参数]
             rule "prepareparam2"
             ruleflow-group "work_itemget_project_memberprepareparam2"
             when
             then
-                            work_itemget_project_memberproject_info.set("id",work_itemget_project_memberdefault.get("projectid"));
                             work_itemget_project_memberfilter.set("n_project_id_eq",work_itemget_project_memberdefault.get("projectid"));
                                 work_itemget_project_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
                         update(work_itemget_project_memberdefault);//更新fact中变量值
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
                         update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam6"
-            ruleflow-group "work_itemget_project_memberdebugparam6"
-            when
-            then
-                        update(work_itemget_project_memberdefault);//更新fact中变量值
-                        update(work_itemget_project_memberfilter);//更新fact中变量值
-                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
-                        update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
-            end
-
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[查询当前用户是否为项目成员]
             rule "dedataset3"
             ruleflow-group "work_itemget_project_memberdedataset3"
             when
@@ -88,78 +67,40 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
                         update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall3"
-            ruleflow-group "work_itemget_project_memberloopsubcall3"
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "work_itemget_project_memberprepareparam5"
+            when
+            then
+                            work_itemget_project_memberfor_obj.set("",work_itemget_project_membermembers.get("0"));
+                        update(work_itemget_project_memberdefault);//更新fact中变量值
+                        update(work_itemget_project_memberfilter);//更新fact中变量值
+                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
+                        update(work_itemget_project_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemget_project_memberrawsfcode1"
             when
             then
                         update(work_itemget_project_memberdefault);//更新fact中变量值
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
                         update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[只读]
-            rule "prepareparam10"
-            ruleflow-group "work_itemget_project_memberprepareparam10"
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "work_itemget_project_memberrawsfcode2"
             when
             then
-                            work_itemget_project_memberuser.set("readonly","true");
                         update(work_itemget_project_memberdefault);//更新fact中变量值
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
                         update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
-            end
-
-            //逻辑处理节点[只读]
-            rule "prepareparam8"
-            ruleflow-group "work_itemget_project_memberprepareparam8"
-            when
-            then
-                            work_itemget_project_memberuser.set("readonly","true");
-                        update(work_itemget_project_memberdefault);//更新fact中变量值
-                        update(work_itemget_project_memberfilter);//更新fact中变量值
-                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
-                        update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
-            end
-
-            //逻辑处理节点[非只读]
-            rule "prepareparam9"
-            ruleflow-group "work_itemget_project_memberprepareparam9"
-            when
-            then
-                            work_itemget_project_memberuser.set("readonly","false");
-                        update(work_itemget_project_memberdefault);//更新fact中变量值
-                        update(work_itemget_project_memberfilter);//更新fact中变量值
-                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
-                        update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -171,9 +112,15 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.get_project_member;
                         update(work_itemget_project_memberfilter);//更新fact中变量值
                         update(work_itemget_project_memberfor_obj);//更新fact中变量值
                         update(work_itemget_project_membermembers);//更新fact中变量值
-                        update(work_itemget_project_memberproject_info);//更新fact中变量值
-                        update(work_itemget_project_memberticket);//更新fact中变量值
-                        update(work_itemget_project_memberuser);//更新fact中变量值
-                        update(work_itemget_project_memberviewctx);//更新fact中变量值
-                        update(work_itemget_project_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode4"
+            ruleflow-group "work_itemget_project_memberrawsfcode4"
+            when
+            then
+                        update(work_itemget_project_memberdefault);//更新fact中变量值
+                        update(work_itemget_project_memberfilter);//更新fact中变量值
+                        update(work_itemget_project_memberfor_obj);//更新fact中变量值
+                        update(work_itemget_project_membermembers);//更新fact中变量值
             end

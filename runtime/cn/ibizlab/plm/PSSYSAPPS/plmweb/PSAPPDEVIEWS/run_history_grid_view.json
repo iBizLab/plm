@@ -3,7 +3,7 @@
   "getCapPSLanguageRes" : {
     "lanResTag" : "DE.LNAME.RUN"
   },
-  "caption" : "执行历史",
+  "caption" : "执行用例",
   "codeName" : "run_history_grid_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/run_history_grid_view.json",
   "gridRowActiveMode" : 1,
@@ -16,12 +16,6 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Test.json"
   },
-  "getPSAppViewNavParams" : [ {
-    "key" : "n_status_isnotnull",
-    "name" : "n_status_isnotnull",
-    "value" : "1",
-    "rawValue" : true
-  } ],
   "getPSDEViewCodeName" : "history_grid_view",
   "getPSDEViewId" : "90e815c4639c2fe2911e6d4e9df60a52",
   "getPSViewLayoutPanel" : {
@@ -73,31 +67,6 @@
           "layout" : "FLEX"
         },
         "getPSPanelItems" : [ {
-          "caption" : "容器",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "CONTAINER",
-          "name" : "view_captionbar",
-          "getPSLayout" : {
-            "align" : "center",
-            "layout" : "FLEX"
-          },
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "heightMode" : "FULL",
-            "layout" : "FLEX"
-          },
-          "getPSPanelItems" : [ {
-            "caption" : "页面标题",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "CTRLPOS",
-            "name" : "captionbar",
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "showCaption" : true
-          } ]
-        }, {
           "caption" : "容器",
           "itemStyle" : "DEFAULT",
           "itemType" : "CONTAINER",
@@ -179,18 +148,7 @@
             "grow" : -1,
             "heightMode" : "FULL",
             "layout" : "FLEX"
-          },
-          "getPSPanelItems" : [ {
-            "caption" : "工具栏",
-            "itemStyle" : "DEFAULT",
-            "itemType" : "CTRLPOS",
-            "name" : "toolbar",
-            "getPSLayoutPos" : {
-              "grow" : -1,
-              "layout" : "FLEX"
-            },
-            "showCaption" : true
-          } ]
+          }
         } ]
       } ],
       "predefinedType" : "VIEWHEADER"
@@ -234,12 +192,6 @@
       "eventNames" : "onMounted",
       "logicTrigger" : "VIEWEVENT",
       "logicType" : "SCRIPT",
-      "name" : "LOGIC",
-      "scriptCode" : "// 初始化默认隐藏表格\r\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\r\nview.layoutPanel.panelItems.grid.state.visible = false;"
-    }, {
-      "eventNames" : "onMounted",
-      "logicTrigger" : "VIEWEVENT",
-      "logicType" : "SCRIPT",
       "name" : "viewmounted",
       "scriptCode" : "view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;\n\n// 初始化默认隐藏表格\nview.layoutPanel.panelItems.grid.state.keepAlive = true;\nview.layoutPanel.panelItems.grid.state.visible = false;\nconst form = view.getController('form');\nif (form) {\n    form.evt.on('onFormDetailEvent', event =>{\n        const panelItems = view.layoutPanel.panelItems;\n        if (!panelItems.comment) {\n            return;\n        }\n        if (event.formDetailName === 'tabpage1') {\n            panelItems.comment.state.visible = true;\n        } else {\n            panelItems.comment.state.visible = false;\n        }\n    });\n}\n\n// 初始化隐藏发送和清空按钮\nview.layoutPanel.panelItems.button_calluilogic1.state.visible = false\nview.layoutPanel.panelItems.button_calluilogic.state.visible = false"
     }, {
@@ -249,7 +201,7 @@
       "name" : "onloadsuccess",
       "getPSAppDEUILogic" : {
         "modelref" : true,
-        "id" : "get_idea_total"
+        "id" : "get_grid_total"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -266,8 +218,8 @@
           "refMode" : "TEST_CASE",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-            "viewType" : "DEMPICKUPVIEW"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+            "viewType" : "DEMPICKUPVIEW2"
           }
         } ],
         "logicType" : "PREDEFINED",
@@ -296,8 +248,8 @@
           "refMode" : "TEST_CASE",
           "getRefPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-            "viewType" : "DEMPICKUPVIEW"
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+            "viewType" : "DEMPICKUPVIEW2"
           }
         } ],
         "viewLogicType" : "APP_NEWDATA",
@@ -360,34 +312,16 @@
     }, {
       "name" : "MPICKUPVIEW:TEST_CASE",
       "realOpenMode" : "POPUPMODAL",
-      "realTitle" : "用例数据多项选择视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.TEST_CASE.MPICKUPVIEW"
-      },
+      "realTitle" : "用例实体数据多项选择",
       "getRefPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-        "viewType" : "DEMPICKUPVIEW"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+        "viewType" : "DEMPICKUPVIEW2"
       }
     }, {
       "name" : "MPICKUPVIEW:TEST_PLAN"
     } ],
     "getPSControls" : [ {
-      "codeName" : "history_grid_view_toolbar",
-      "controlType" : "TOOLBAR",
-      "logicName" : "工具栏模板（只有一个实体界面行为组）",
-      "name" : "toolbar",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
-      },
-      "getPSControlParam" : {
-        "id" : "TOOLBAR"
-      },
-      "xDataControlName" : "grid",
-      "modelid" : "97b647cbe00cc608f9a368e2d0874c1e",
-      "modeltype" : "PSDETOOLBAR"
-    }, {
       "aggMode" : "NONE",
       "codeName" : "history",
       "columnEnableFilter" : 2,
@@ -401,7 +335,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_default"
+          "id" : "fetch_plan_run_history"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -410,11 +344,6 @@
       },
       "groupMode" : "NONE",
       "logicName" : "执行历史",
-      "minorSortDir" : "DESC",
-      "getMinorSortPSAppDEField" : {
-        "name" : "EXECUTED_AT",
-        "codeName" : "executed_at"
-      },
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
@@ -490,7 +419,7 @@
           "name" : "fetch",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "fetch_default"
+            "id" : "fetch_plan_run_history"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -714,7 +643,7 @@
       "getCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.RUN"
       },
-      "caption" : "执行历史",
+      "caption" : "执行用例",
       "codeName" : "history_grid_view_captionbar",
       "controlType" : "CAPTIONBAR",
       "name" : "captionbar",
@@ -736,7 +665,6 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
-  "showCaptionBar" : false,
   "modelid" : "823c20406cd1fe1aa9a276dc93f34c74",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {

@@ -32,6 +32,40 @@
   } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
+    "codeName" : "cancel_report_flag",
+    "methodType" : "DEACTION",
+    "name" : "cancel_report_flag",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/cancel_report_flag.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "cancel_report_flag"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/cancel_report_flag",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
     "actionTag" : "ChangePwd",
     "codeName" : "change_pwd",
     "methodType" : "DEACTION",
@@ -330,6 +364,40 @@
     "requestPath" : "/save",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "set_report_flag",
+    "methodType" : "DEACTION",
+    "name" : "set_report_flag",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/set_report_flag.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "set_report_flag"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/set_report_flag",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "UPDATE",
     "actionTag" : "Update",
     "codeName" : "update",
@@ -483,6 +551,44 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_user",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_workload",
+    "dataSetName" : "workload",
+    "dataSetTag" : "workload",
+    "methodType" : "FETCH",
+    "name" : "fetch_workload",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_workload"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_workload",
     "builtinMethod" : false
   } ],
   "getAllPSAppDEFields" : [ {
@@ -706,6 +812,36 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
+      "name" : "[REPORT_FLAG][统计状态]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[REPORT_FLAG][统计状态]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[REPORT_FLAG][统计状态]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[REPORT_FLAG][统计状态]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "report_flag",
+    "logicName" : "统计",
+    "name" : "REPORT_FLAG",
+    "stdDataType" : 9
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
       "name" : "[ID][标识]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -833,14 +969,14 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[CREATE_TIME][建立时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
+        "name" : "[CREATE_TIME][建立时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -848,14 +984,14 @@
       "type" : "DEFAULT"
     }, {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -864,12 +1000,12 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "create_time",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -917,14 +1053,14 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
+      "name" : "[UPDATE_TIME][更新时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
+        "name" : "[UPDATE_TIME][更新时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -932,14 +1068,14 @@
       "type" : "DEFAULT"
     }, {
       "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -948,12 +1084,12 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "create_time",
+    "codeName" : "update_time",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -1222,6 +1358,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "report_flag",
+      "logicName" : "统计",
+      "name" : "report_flag",
+      "getPSAppDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "codeName" : "create_man",
       "logicName" : "建立人",
       "name" : "create_man",
@@ -1411,6 +1558,17 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "codeName" : "n_id_notin",
+      "logicName" : "标识",
+      "name" : "n_id_notin",
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLES"
+    }, {
       "codeName" : "n_job_id_eq",
       "logicName" : "岗位标识",
       "name" : "n_job_id_eq",
@@ -1459,6 +1617,40 @@
     "type" : "DEFILTER"
   } ],
   "getAllPSAppDEMethods" : [ {
+    "actionMode" : "CUSTOM",
+    "codeName" : "cancel_report_flag",
+    "methodType" : "DEACTION",
+    "name" : "cancel_report_flag",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/cancel_report_flag.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "cancel_report_flag"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/cancel_report_flag",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CUSTOM",
     "actionTag" : "ChangePwd",
     "codeName" : "change_pwd",
@@ -1758,6 +1950,40 @@
     "requestPath" : "/save",
     "builtinMethod" : false
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "set_report_flag",
+    "methodType" : "DEACTION",
+    "name" : "set_report_flag",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/user/PSDEACTIONS/set_report_flag.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "set_report_flag"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/set_report_flag",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "UPDATE",
     "actionTag" : "Update",
     "codeName" : "update",
@@ -1912,6 +2138,44 @@
     "requestPath" : "/fetch_user",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_workload",
+    "dataSetName" : "workload",
+    "dataSetTag" : "workload",
+    "methodType" : "FETCH",
+    "name" : "fetch_workload",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "user_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "workload"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_workload"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_workload",
+    "builtinMethod" : false
+  }, {
     "codeName" : "FilterCreate",
     "methodType" : "FILTERACTION",
     "name" : "FILTERCREATE",
@@ -1977,6 +2241,34 @@
     "closePopupView" : true,
     "id" : "account_setting@user"
   }, {
+    "actionTarget" : "MULTIKEY",
+    "caption" : "取消统计",
+    "codeName" : "cancel_report_flag",
+    "confirmMsg" : "确定取消统计？",
+    "fullCodeName" : "user_cancel_report_flag",
+    "name" : "取消统计",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "cancel_report_flag"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf00d@FontAwesome",
+      "cssClass" : "fa fa-remove"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "取消成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "cancel_report_flag",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "cancel_report_flag@user"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "确认",
     "codeName" : "chang_pas",
@@ -2021,6 +2313,51 @@
     "closeEditView" : true,
     "closePopupView" : true,
     "id" : "open_log_list@user"
+  }, {
+    "actionTarget" : "MULTIKEY",
+    "caption" : "开启统计",
+    "codeName" : "set_report_flag",
+    "confirmMsg" : "确定开启统计？",
+    "fullCodeName" : "user_set_report_flag",
+    "name" : "开启统计",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "set_report_flag"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf185@FontAwesome",
+      "cssClass" : "fa fa-sun-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "开启成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "set_report_flag",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "set_report_flag@user"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "主题设置",
+    "codeName" : "theme_setting",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "user_theme_setting",
+    "name" : "主题设置",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+    },
+    "scriptCode" : "ibiz.util.theme.customTheme();\r\nif (view) {\r\n    view.closeView();\r\n}",
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "theme_setting",
+    "uIActionType" : "DEUIACTION",
+    "id" : "theme_setting@user"
   } ],
   "getAllPSAppDEUILogics" : [ {
     "codeName" : "change_pas",
@@ -2143,6 +2480,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_account_view.json",
     "viewType" : "DEEDITVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_user_pick_up_tree_view.json",
+    "viewType" : "DEPICKUPTREEVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_info_custom_view.json",

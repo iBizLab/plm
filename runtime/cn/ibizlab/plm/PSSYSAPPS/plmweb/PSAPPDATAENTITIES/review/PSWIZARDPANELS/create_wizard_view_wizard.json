@@ -126,6 +126,17 @@
       "showBusyIndicator" : true,
       "id" : "wizardpanel_form_fill_info"
     },
+    "getPSDEFormItemUpdates" : [ {
+      "codeName" : "fill_guideline",
+      "name" : "fill_guideline",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "fill_guideline"
+      },
+      "getPSDEFIUpdateDetails" : [ {
+        "name" : "guideline_id"
+      } ]
+    } ],
     "getPSDEFormItems" : [ {
       "id" : "srfupdatedate",
       "hidden" : true,
@@ -211,6 +222,13 @@
     }, {
       "id" : "categories_name",
       "dataType" : 25
+    }, {
+      "id" : "guideline_id",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "GUIDELINE_ID",
+        "codeName" : "guideline_id"
+      }
     }, {
       "id" : "categories",
       "hidden" : true,
@@ -319,10 +337,10 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetchrecent_access`"
+                "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
@@ -487,6 +505,10 @@
             "name" : "TYPE",
             "codeName" : "type"
           },
+          "getPSDEFormItemUpdate" : {
+            "modelref" : true,
+            "id" : "fill_guideline"
+          },
           "getPSEditor" : {
             "editorType" : "DROPDOWNLIST",
             "name" : "type",
@@ -565,6 +587,35 @@
             "layout" : "TABLE_24COL"
           },
           "valueItemName" : "categories",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "流程准则标识",
+          "codeName" : "guideline_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "guideline_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "GUIDELINE_ID",
+            "codeName" : "guideline_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 100,
+            "name" : "guideline_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "resetItemName" : "type",
+          "resetItemNames" : [ "type" ],
           "allowEmpty" : true,
           "showCaption" : true
         }, {
@@ -774,6 +825,7 @@
         "id" : "评审信息"
       },
       "stepActions" : [ "NEXT" ],
+      "stepTag" : "fill_info",
       "firstForm" : true
     },
     "getPSLayout" : {
@@ -956,7 +1008,7 @@
           "caption" : "评审内容",
           "codeName" : "review_content_under_review_grid_view",
           "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_content_under_review_grid_view.json",
-          "gridRowActiveMode" : 1,
+          "gridRowActiveMode" : 0,
           "name" : "review_contentunder_review_grid_view",
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -982,8 +1034,8 @@
                 "refMode" : "TEST_CASE",
                 "getRefPSAppView" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-                  "viewType" : "DEMPICKUPVIEW"
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                  "viewType" : "DEMPICKUPVIEW2"
                 }
               } ],
               "logicType" : "PREDEFINED",
@@ -1012,8 +1064,8 @@
                 "refMode" : "TEST_CASE",
                 "getRefPSAppView" : {
                   "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-                  "viewType" : "DEMPICKUPVIEW"
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+                  "viewType" : "DEMPICKUPVIEW2"
                 }
               } ],
               "viewLogicType" : "APP_NEWDATA",
@@ -1049,7 +1101,7 @@
           "getPSAppViewParams" : [ {
             "key" : "PROPERTYMAP",
             "name" : "PROPERTYMAP",
-            "value" : "show_identifier:target_identifier,title:target_title,change_type:change_type,cur_version_id:change_version"
+            "value" : "show_identifier:target_identifier,title:target_title,change_type:change_type,change_version:change_version,id:target_id"
           } ],
           "getPSAppViewRefs" : [ {
             "name" : "EDITDATA",
@@ -1076,18 +1128,15 @@
               "viewType" : "DEEDITVIEW"
             }
           }, {
-            "name" : "MPICKUPVIEW:REVIEW"
+            "name" : "MPICKUPVIEW:REVIEW_WIZARD"
           }, {
             "name" : "MPICKUPVIEW:TEST_CASE",
             "realOpenMode" : "POPUPMODAL",
-            "realTitle" : "用例数据多项选择视图",
-            "getRealTitlePSLanguageRes" : {
-              "lanResTag" : "PAGE.TITLE.TEST_CASE.MPICKUPVIEW"
-            },
+            "realTitle" : "用例实体数据多项选择",
             "getRefPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-              "viewType" : "DEMPICKUPVIEW"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+              "viewType" : "DEMPICKUPVIEW2"
             }
           } ],
           "getPSControls" : [ {
@@ -1215,6 +1264,7 @@
               }
             },
             "groupMode" : "NONE",
+            "height" : 500.0,
             "logicName" : "评审内容实体表格视图_表格",
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -1303,6 +1353,7 @@
               "id" : "数据表格处理器"
             },
             "getPSControlParam" : {
+              "height" : 500.0,
               "autoLoad" : true,
               "showBusyIndicator" : true,
               "id" : "GRID"
@@ -1315,6 +1366,7 @@
               "columnType" : "DEFGRIDCOLUMN",
               "dataItemName" : "target_identifier",
               "excelCaption" : "编号",
+              "memo" : "VALUETYPE=OBJECT\nOBJECTNAMEFIELD=show_identifier",
               "name" : "target_identifier",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
@@ -1332,6 +1384,7 @@
               "columnType" : "DEFGRIDCOLUMN",
               "dataItemName" : "target_title",
               "excelCaption" : "标题",
+              "memo" : "VALUETYPE=OBJECT\nOBJECTNAMEFIELD=title",
               "name" : "target_title",
               "noPrivDisplayMode" : 1,
               "getPSAppDEField" : {
@@ -1377,61 +1430,34 @@
                 "name" : "CHANGE_VERSION",
                 "codeName" : "change_version"
               },
-              "getPSDEUIActionGroup" : {
-                "codeName" : "Usr0428139586",
-                "name" : "评审内容行为组（向导）",
-                "getPSAppDataEntity" : {
-                  "modelref" : true,
-                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+              "getPSDEUIAction" : {
+                "caption" : "保存行",
+                "codeName" : "SaveRow",
+                "fullCodeName" : "SaveRow",
+                "name" : "表格界面_保存行",
+                "getPSSysImage" : {
+                  "glyph" : "xf0c7@FontAwesome",
+                  "cssClass" : "fa fa-save"
                 },
-                "getPSUIActionGroupDetails" : [ {
-                  "actionLevel" : 200,
-                  "detailType" : "DEUIACTION",
-                  "name" : "ua330b95",
-                  "getPSSysImage" : {
-                    "glyph" : "xf112@FontAwesome",
-                    "cssClass" : "fa fa-mail-reply"
-                  },
-                  "getPSUIAction" : {
-                    "actionTarget" : "MULTIKEY",
-                    "caption" : "移出用例",
-                    "codeName" : "remove_case",
-                    "confirmMsg" : "确定移除该用例？",
-                    "fullCodeName" : "review_content_remove_case",
-                    "name" : "移出用例",
-                    "getPSAppDEMethod" : {
-                      "modelref" : true,
-                      "id" : "remove"
-                    },
-                    "getPSAppDataEntity" : {
-                      "modelref" : true,
-                      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
-                    },
-                    "getPSSysImage" : {
-                      "glyph" : "xf112@FontAwesome",
-                      "cssClass" : "fa fa-mail-reply"
-                    },
-                    "refreshMode" : 1,
-                    "successMsg" : "移除成功",
-                    "timeout" : 60000,
-                    "tooltip" : "移出",
-                    "uIActionMode" : "BACKEND",
-                    "uIActionTag" : "remove_case",
-                    "uIActionType" : "DEUIACTION",
-                    "enableConfirm" : true,
-                    "reloadData" : true,
-                    "id" : "remove_case@review_content"
-                  },
-                  "tooltip" : "移出",
-                  "addSeparator" : false,
-                  "showCaption" : false,
-                  "showIcon" : true
-                } ],
-                "uniqueTag" : "review_content__Usr0428139586"
+                "predefinedType" : "GRIDVIEW_SAVEROWACTION",
+                "timeout" : 60000,
+                "uIActionMode" : "SYS",
+                "uIActionTag" : "SaveRow",
+                "uIActionType" : "DEUIACTION"
               },
-              "width" : 120,
+              "getPSSysPFPlugin" : {
+                "pluginType" : "GRID_COLRENDER",
+                "pluginCode" : "COLUMN_CHANGE_VERSION",
+                "runtimeObject" : true
+              },
+              "valueType" : "OBJECTS",
+              "width" : 184,
               "widthUnit" : "PX",
-              "enableSort" : false
+              "enableRowEdit" : true,
+              "enableSort" : false,
+              "getUserParam" : {
+                "SRFNAVPARAM.n_owner_id_eq" : "%owner_id%"
+              }
             } ],
             "getPSDEGridDataItems" : [ {
               "dataType" : 25,
@@ -1460,7 +1486,8 @@
               "getPSAppDEField" : {
                 "name" : "CHANGE_VERSION",
                 "codeName" : "change_version"
-              }
+              },
+              "valueType" : "OBJECTS"
             }, {
               "dataType" : 25,
               "name" : "target_id",
@@ -1474,6 +1501,13 @@
               "getPSAppDEField" : {
                 "name" : "TARGET_PARENT_ID",
                 "codeName" : "target_parent_id"
+              }
+            }, {
+              "dataType" : 25,
+              "name" : "final_stage_results",
+              "getPSAppDEField" : {
+                "name" : "FINAL_STAGE_RESULTS",
+                "codeName" : "final_stage_results"
               }
             }, {
               "dataType" : 25,
@@ -1501,7 +1535,6 @@
             "getPSDEGridEditItems" : [ {
               "caption" : "变更类型",
               "codeName" : "change_type",
-              "createDV" : "10",
               "enableCond" : 3,
               "ignoreInput" : 0,
               "name" : "change_type",
@@ -1518,9 +1551,50 @@
                 },
                 "singleSelect" : true
               },
-              "updateDV" : "10",
               "allowEmpty" : true,
               "needCodeListConfig" : true
+            }, {
+              "caption" : "变更版本",
+              "codeName" : "change_version",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "name" : "change_version",
+              "getPSAppDEField" : {
+                "name" : "CHANGE_VERSION",
+                "codeName" : "change_version"
+              },
+              "getPSEditor" : {
+                "editorParams" : {
+                  "AC" : "TRUE",
+                  "TRIGGER" : "TRUE",
+                  "PICKUPVIEW" : "FALSE"
+                },
+                "editorType" : "PICKEREX_TRIGGER",
+                "handlerType" : "PickupText",
+                "name" : "change_version",
+                "getPSAppDEACMode" : {
+                  "modelref" : true,
+                  "id" : "Default"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+                },
+                "valueType" : "OBJECTS",
+                "enableAC" : true,
+                "enablePickupView" : false,
+                "forceSelection" : true,
+                "showTrigger" : true,
+                "singleSelect" : true
+              },
+              "allowEmpty" : true,
+              "getUserParam" : {
+                "SRFNAVPARAM.n_owner_id_eq" : "%owner_id%"
+              }
             }, {
               "caption" : "标识",
               "codeName" : "srfkey",
@@ -1715,7 +1789,6 @@
             "layoutPanel" : true,
             "useDefaultLayout" : true
           },
-          "refFlag" : false,
           "title" : "评审内容表格",
           "viewStyle" : "DEFAULT",
           "viewType" : "DEGRIDVIEW",
@@ -1772,6 +1845,50 @@
             "getParentPSAppDEField" : {
               "name" : "TARGET_ID",
               "codeName" : "target_id"
+            },
+            "rSMode" : 2
+          } ], [ {
+            "actionRSMode" : 1,
+            "codeName" : "review_wizards",
+            "dataRSMode" : 0,
+            "majorDECodeName" : "library",
+            "majorDEName" : "LIBRARY",
+            "getMajorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+            },
+            "minorDECodeName" : "review_wizard",
+            "minorDEName" : "REVIEW_WIZARD",
+            "getMinorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_wizard.json"
+            },
+            "name" : "DER1N_REVIEW_WIZARD_LIBRARY_LIBRARY_ID",
+            "getParentPSAppDEField" : {
+              "name" : "LIBRARY_ID",
+              "codeName" : "library_id"
+            },
+            "rSMode" : 2
+          }, {
+            "actionRSMode" : 1,
+            "codeName" : "review_contents",
+            "dataRSMode" : 0,
+            "majorDECodeName" : "review_wizard",
+            "majorDEName" : "REVIEW_WIZARD",
+            "getMajorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_wizard.json"
+            },
+            "minorDECodeName" : "review_content",
+            "minorDEName" : "REVIEW_CONTENT",
+            "getMinorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+            },
+            "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD",
+            "getParentPSAppDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
             },
             "rSMode" : 2
           } ], [ {
@@ -1841,6 +1958,28 @@
               "codeName" : "target_id"
             },
             "rSMode" : 2
+          } ], [ {
+            "actionRSMode" : 1,
+            "codeName" : "review_contents",
+            "dataRSMode" : 0,
+            "majorDECodeName" : "review_wizard",
+            "majorDEName" : "REVIEW_WIZARD",
+            "getMajorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_wizard.json"
+            },
+            "minorDECodeName" : "review_content",
+            "minorDEName" : "REVIEW_CONTENT",
+            "getMinorPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+            },
+            "name" : "DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD",
+            "getParentPSAppDEField" : {
+              "name" : "PRINCIPAL_ID",
+              "codeName" : "principal_id"
+            },
+            "rSMode" : 2
           } ] ]
         },
         "getPSLayoutPos" : {
@@ -1904,6 +2043,7 @@
         "id" : "评审内容"
       },
       "stepActions" : [ "PREV", "FINISH" ],
+      "stepTag" : "review_connect",
       "firstForm" : false
     },
     "getPSLayout" : {
@@ -1953,6 +2093,7 @@
         "id" : "评审信息"
       },
       "stepActions" : [ "NEXT" ],
+      "stepTag" : "fill_info",
       "firstForm" : true
     }, {
       "formTag" : "review_connect",
@@ -1963,6 +2104,7 @@
         "id" : "评审内容"
       },
       "stepActions" : [ "PREV", "FINISH" ],
+      "stepTag" : "review_connect",
       "firstForm" : false
     } ],
     "getPSDEWizardSteps" : [ {

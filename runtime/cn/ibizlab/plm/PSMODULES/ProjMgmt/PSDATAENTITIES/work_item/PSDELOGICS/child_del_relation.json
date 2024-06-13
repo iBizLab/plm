@@ -26,11 +26,11 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "将子工作项的父标识和顶级标识置空",
+    "name" : "将子工作项的父标识置空",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DELOGIC1"
+        "id" : "DEACTION1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -47,22 +47,13 @@
       "name" : "空值（NULL） ==> Default[PID]",
       "paramAction" : "SETPARAMVALUE",
       "srcValueType" : "NULLVALUE"
-    }, {
-      "dstFieldName" : "TOP_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "空值（NULL） ==> Default[TOP_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
     } ],
     "topPos" : 350
   }, {
-    "codeName" : "DELOGIC1",
-    "getDstPSDELogic" : {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/change_top.json"
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDEACTIONS/Update.json"
     },
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -73,8 +64,8 @@
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
     },
     "leftPos" : 160,
-    "logicNodeType" : "DELOGIC",
-    "name" : "变更顶级工作项",
+    "logicNodeType" : "DEACTION",
+    "name" : "更新子工作项",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -83,10 +74,10 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DELOGIC1"
+        "id" : "DEACTION1"
       }
     } ],
-    "topPos" : 480
+    "topPos" : 483
   }, {
     "codeName" : "END1",
     "leftPos" : 200,

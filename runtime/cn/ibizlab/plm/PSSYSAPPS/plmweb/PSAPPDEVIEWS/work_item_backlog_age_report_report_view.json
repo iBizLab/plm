@@ -15,6 +15,12 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewNavContexts" : [ {
+    "key" : "SRFREADONLY",
+    "name" : "SRFREADONLY",
+    "value" : "false",
+    "rawValue" : true
+  } ],
   "getPSDEViewCodeName" : "backlog_age_report_report_view",
   "getPSDEViewId" : "569a44e9d70381577b170a7c1923d467",
   "getPSViewLayoutPanel" : {
@@ -341,15 +347,19 @@
           "codeName" : "backlog_from"
         }
       }, {
-        "id" : "n_is_archived_eq",
+        "id" : "n_is_archived_in",
         "dataType" : 9,
+        "createDV" : "1,0",
+        "updateDV" : "1,0",
         "getPSAppDEField" : {
           "name" : "IS_ARCHIVED",
           "codeName" : "is_archived"
         }
       }, {
-        "id" : "n_is_deleted_eq",
+        "id" : "n_is_deleted_in",
         "dataType" : 9,
+        "createDV" : "1,0",
+        "updateDV" : "1,0",
         "getPSAppDEField" : {
           "name" : "IS_DELETED",
           "codeName" : "is_deleted"
@@ -397,6 +407,10 @@
             "attrName" : "shortcuts",
             "attrValue" : "[\r\n    {\r\n    text: '最近7天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 6);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '最近30天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 29);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本周',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const currentDay = end_at.getDay();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 计算本周的开始日期 (周一)\r\n        start_at.setDate(\r\n        end_at.getDate() - currentDay + (currentDay === 0 ? -6 : 1),\r\n        );\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本月',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 将日期设置为本月第一天\r\n        start_at.setDate(1);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n]",
             "name" : "date_range_shortcuts"
+          }, {
+            "attrName" : "clearable",
+            "attrValue" : "false",
+            "name" : "clearable1"
           } ],
           "getPSEditor" : {
             "dateTimeFormat" : "YYYY-MM-DD",
@@ -518,8 +532,9 @@
           "needCodeListConfig" : true,
           "showCaption" : true
         }, {
-          "caption" : "是否已归档",
-          "codeName" : "n_is_archived_eq",
+          "caption" : "是否包含归档",
+          "codeName" : "n_is_archived_in",
+          "createDV" : "1,0",
           "dataType" : 9,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -527,31 +542,39 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "n_is_archived_eq",
+          "name" : "n_is_archived_in",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "IS_ARCHIVED",
             "codeName" : "is_archived"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "clearable",
+            "attrValue" : "false",
+            "name" : "clearable2"
+          } ],
           "getPSEditor" : {
             "editorType" : "DROPDOWNLIST_100",
-            "name" : "n_is_archived_eq",
+            "name" : "n_is_archived_in",
             "getPSAppCodeList" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__contains_archive.json"
             },
+            "valueType" : "SIMPLES",
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "updateDV" : "1,0",
           "allowEmpty" : true,
           "needCodeListConfig" : true,
           "showCaption" : true
         }, {
-          "caption" : "是否已删除",
-          "codeName" : "n_is_deleted_eq",
+          "caption" : "是否包含删除",
+          "codeName" : "n_is_deleted_in",
+          "createDV" : "1,0",
           "dataType" : 9,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -559,25 +582,32 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "n_is_deleted_eq",
+          "name" : "n_is_deleted_in",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "IS_DELETED",
             "codeName" : "is_deleted"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "clearable",
+            "attrValue" : "false",
+            "name" : "clearable3"
+          } ],
           "getPSEditor" : {
             "editorType" : "DROPDOWNLIST_100",
-            "name" : "n_is_deleted_eq",
+            "name" : "n_is_deleted_in",
             "getPSAppCodeList" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__contains_delete.json"
             },
+            "valueType" : "SIMPLES",
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "updateDV" : "1,0",
           "allowEmpty" : true,
           "needCodeListConfig" : true,
           "showCaption" : true

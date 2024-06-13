@@ -7,7 +7,7 @@
   "name" : "记录执行结果",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -110,
+    "leftPos" : 190,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
@@ -23,6 +23,45 @@
     } ],
     "topPos" : 60,
     "parallelOutput" : true
+  }, {
+    "codeName" : "DEACTION6",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run_history"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
+    },
+    "leftPos" : 600,
+    "logicNodeType" : "DEACTION",
+    "name" : "创建执行结果",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION6"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run_history"
+    },
+    "topPos" : -100
+  }, {
+    "codeName" : "END3",
+    "leftPos" : 1205,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 60
   }, {
     "codeName" : "PREPAREPARAM5",
     "leftPos" : 371,
@@ -111,9 +150,10 @@
         "modelref" : true,
         "id" : "run_history"
       },
-      "name" : "空值（NULL） ==> run_history[EXECUTOR_ID]",
+      "name" : "用户全局对象[srfpersonid] ==> run_history[EXECUTOR_ID]",
       "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
     }, {
       "dstFieldName" : "ID",
       "getDstPSDELogicParam" : {
@@ -177,47 +217,8 @@
     } ],
     "topPos" : 68
   }, {
-    "codeName" : "DEACTION6",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "run_history"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
-    },
-    "leftPos" : 600,
-    "logicNodeType" : "DEACTION",
-    "name" : "创建执行结果",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM6"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION6"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "run_history"
-    },
-    "topPos" : -100
-  }, {
-    "codeName" : "END3",
-    "leftPos" : 1495,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "topPos" : 60
-  }, {
     "codeName" : "PREPAREPARAM6",
-    "leftPos" : 844,
+    "leftPos" : 780,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "执行用例数据准备",
     "getPSDELogicLinks" : [ {
@@ -331,7 +332,7 @@
       "modelref" : true,
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
     },
-    "leftPos" : 1280,
+    "leftPos" : 990,
     "logicNodeType" : "DEACTION",
     "name" : "更新执行用例",
     "getPSDELogicLinks" : [ {
@@ -345,7 +346,7 @@
         "id" : "DEACTION7"
       }
     } ],
-    "topPos" : 150
+    "topPos" : 68
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

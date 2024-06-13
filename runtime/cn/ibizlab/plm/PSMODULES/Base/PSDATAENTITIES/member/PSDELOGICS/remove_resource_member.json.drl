@@ -1,0 +1,135 @@
+package cn.ibizlab.plm.base.logic.memberlogic.remove_resource_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.member memberremove_resource_memberdefault;
+                global cn.ibizlab.plm.core.base.domain.addon_resource memberremove_resource_memberaddon_resource;
+                global cn.ibizlab.plm.core.base.domain.resource_member memberremove_resource_memberfor_member_obj;
+                global cn.ibizlab.plm.core.base.domain.resource_member memberremove_resource_memberinsert_members;
+                global cn.ibizlab.plm.core.base.domain.resource_member memberremove_resource_membermembers;
+                    global cn.ibizlab.plm.core.base.service.Iaddon_resourceService addon_resourceservice;
+        global cn.ibizlab.plm.core.base.service.ImemberService iBzSysMemberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "memberremove_resource_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取资源组件标识]
+            rule "rawsfcode1"
+            ruleflow-group "memberremove_resource_memberrawsfcode1"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取资源组件]
+            rule "deaction1"
+            ruleflow-group "memberremove_resource_memberdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(addon_resourceservice.get(memberremove_resource_memberaddon_resource.getId()),memberremove_resource_memberaddon_resource);
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "memberremove_resource_memberbindparam1"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "memberremove_resource_memberloopsubcall1"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "memberremove_resource_memberprepareparam1"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[附加到数组参数]
+            rule "appendparam1"
+            ruleflow-group "memberremove_resource_memberappendparam1"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode2"
+            ruleflow-group "memberremove_resource_memberrawsfcode2"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[保存资源成员]
+            rule "deaction2"
+            ruleflow-group "memberremove_resource_memberdeaction2"
+            when
+            then
+                        addon_resourceservice.update(memberremove_resource_memberaddon_resource);
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "memberremove_resource_memberend1"
+            when
+            then
+                        update(memberremove_resource_memberdefault);//更新fact中变量值
+                        update(memberremove_resource_memberaddon_resource);//更新fact中变量值
+                        update(memberremove_resource_memberfor_member_obj);//更新fact中变量值
+                        update(memberremove_resource_memberinsert_members);//更新fact中变量值
+                        update(memberremove_resource_membermembers);//更新fact中变量值
+            end

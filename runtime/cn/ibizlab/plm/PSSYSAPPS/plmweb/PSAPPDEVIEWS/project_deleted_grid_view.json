@@ -53,17 +53,19 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_show_edit_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_show_edit_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -71,20 +73,21 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "EDITDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "展示项目信息编辑视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_show_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "NEWDATA",
     "realTitle" : "项目编辑视图",
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_edit_view.json",
       "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "EDITDATA",
-    "realTitle" : "项目数据重定向视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -390,6 +393,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",

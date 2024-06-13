@@ -7,7 +7,7 @@
   "name" : "产品需求关联分页计数器",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : -410,
+    "leftPos" : -350,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
@@ -203,7 +203,7 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 30,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置需求主键",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -353,6 +353,39 @@
       "id" : "idea"
     },
     "topPos" : 318
+  }, {
+    "codeName" : "RAWSQLCALL12",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 736,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "查询所有计数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL12"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n    SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_idea,\r\n    SUM(CASE WHEN t11.`TARGET_TYPE` = 'customer' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_customer,\r\n    SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_ticket,\r\n    SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_work_item,\r\n    SUM(CASE WHEN t11.`TARGET_TYPE` = 'test_case' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t5.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_test_case\r\nFROM\r\n    `RELATION` t11\r\nJOIN\r\n    `idea` t ON t.`ID` = t11.`PRINCIPAL_ID`\r\nLEFT JOIN\r\n    `idea` t1 ON t1.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `customer` t2 ON t2.ID = t11.TARGET_ID\r\nLEFT JOIN\r\n    `ticket` t3 ON t3.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `work_item` t4 ON t4.ID = t11.TARGET_ID\r\nLEFT JOIN\r\n    `test_case` t5 ON t5.ID = t11.TARGET_ID\r\nWHERE\r\n    (t11.`PRINCIPAL_ID` = ?);",
+    "topPos" : 318,
+    "fillDstLogicParam" : true
   }, {
     "codeName" : "RAWSQLCALL6",
     "getDstPSDELogicParam" : {

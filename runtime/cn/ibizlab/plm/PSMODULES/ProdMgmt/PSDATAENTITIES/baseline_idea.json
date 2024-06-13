@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -86,6 +89,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -111,6 +115,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -136,6 +141,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -157,6 +163,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -179,6 +186,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "shift_in_baseline",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/shift_in_baseline.json",
     "logicName" : "移入基线",
     "name" : "shift_in_baseline",
@@ -208,6 +216,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "shift_out_baseline",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEACTIONS/shift_out_baseline.json",
     "logicName" : "移出基线",
     "name" : "shift_out_baseline",
@@ -302,6 +311,76 @@
     },
     "getPSDEDataQueryReturn" : {
       "name" : "ViewResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_dto"
+      },
+      "type" : "DTOS"
+    },
+    "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDEDATAQUERIES/baseline_relation_version/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "baseline_relation_version",
+    "logicName" : "基线关联版本",
+    "name" : "baseline_relation_version",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "BASELINE_IDEA",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "idea",
+          "fieldName" : "TARGET_ID",
+          "name" : "(TARGET_ID) 等于(=) 网页请求上下文 idea",
+          "getPSDEField" : {
+            "name" : "TARGET_ID",
+            "codeName" : "target_id"
+          },
+          "getPSVARTypeId" : "WEBCONTEXT"
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "idea",
+          "fieldName" : "TARGET_TYPE",
+          "name" : "(TARGET_TYPE) 等于(=) idea",
+          "getPSDEField" : {
+            "name" : "TARGET_TYPE",
+            "codeName" : "target_type"
+          }
+        }, {
+          "condOp" : "EQ",
+          "condType" : "SINGLE",
+          "condValue" : "baseline",
+          "fieldName" : "PRINCIPAL_TYPE",
+          "name" : "(PRINCIPAL_TYPE) 等于(=) baseline",
+          "getPSDEField" : {
+            "name" : "PRINCIPAL_TYPE",
+            "codeName" : "principal_type"
+          }
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Baseline_relation_versionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Baseline_relation_versionResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "baseline_idea_dto"
@@ -440,6 +519,38 @@
     "predefinedType" : "DELOGIC",
     "enableBackend" : true,
     "enableFront" : false
+  }, {
+    "codeName" : "baseline_relation_version",
+    "logicName" : "基线关联版本",
+    "majorSortDir" : "DESC",
+    "getMajorSortPSDEField" : {
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    },
+    "name" : "baseline_relation_version",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "baseline_relation_version"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Baseline_relation_versionInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Baseline_relation_versionResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "viewLevel" : 0,
+    "enableBackend" : true,
+    "enableFront" : true
   }, {
     "codeName" : "fill_version_data",
     "logicName" : "填充产品需求版本数据",
@@ -2560,49 +2671,30 @@
     "phisicalDEField" : false,
     "uIAssistDEField" : true
   }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "NAME",
-      "dBType" : "MYSQL5",
-      "name" : "NAME",
-      "queryCodeExp" : "t1.`NAME`",
-      "standardColumnName" : "`NAME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_NAME_LIKE",
-      "name" : "N_NAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
-    } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[NAME][名称]移动端默认",
+      "codeName" : "Default",
+      "name" : "[BASELINE][基线]",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[BASELINE][基线]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[BASELINE][基线]移动端默认",
+      "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[NAME][名称]移动端默认",
-        "stringLength" : 200,
+        "editorType" : "SPAN",
+        "name" : "[BASELINE][基线]移动端默认",
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -2613,62 +2705,42 @@
         "name" : "默认组",
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
-          "dEFName" : "NAME",
-          "maxValue" : 200,
+          "dEFName" : "BASELINE",
+          "maxValue" : 1048576,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
+          "ruleInfo" : "内容长度必须小于等于[1048576]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
+        "ruleInfo" : "内容长度必须小于等于[1048576]"
       },
-      "ruleInfo" : "内容长度必须小于等于[200]",
+      "ruleInfo" : "内容长度必须小于等于[1048576]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "name",
-    "dEFType" : 3,
-    "dataType" : "INHERIT",
+    "codeName" : "baseline",
+    "dEFType" : 5,
+    "dataType" : "PICKUPOBJECT",
     "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.NAME"
-    },
-    "length" : 200,
-    "logicName" : "名称",
-    "name" : "NAME",
+    "length" : 1048576,
+    "logicName" : "基线",
+    "name" : "BASELINE",
     "getPSDER" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDERS/DERMULINH_BASELINE_IDEA_RELATION.json"
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDERS/DERCUSTOM_BASELINE_IDEA_BASELINE.json"
     },
-    "getRealPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "serviceCodeName" : "name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
+    "getPSDER1N" : "外键值对象属性[BASELINE_IDEA#基线需求|BASELINE#基线]实体关系[DERCUSTOM_BASELINE_IDEA_BASELINE]类型不正确",
+    "serviceCodeName" : "baseline",
+    "stdDataType" : 21,
+    "stringLength" : 1048576,
     "valueFormat" : "%1$s",
     "viewLevel" : 0,
-    "enableQuickSearch" : true,
-    "inheritDEField" : true,
-    "linkDEField" : true,
-    "majorDEField" : true,
-    "phisicalDEField" : false
+    "phisicalDEField" : false,
+    "queryColumn" : false,
+    "uIAssistDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -2784,136 +2856,46 @@
     "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
+      "columnName" : "NAME",
       "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
+      "name" : "NAME",
+      "queryCodeExp" : "t1.`NAME`",
+      "standardColumnName" : "`NAME`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_NAME_LIKE",
+      "name" : "N_NAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.NAME"
         },
         "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "editorType" : "MOBTEXT",
+        "name" : "[NAME][名称]移动端默认",
+        "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[NAME][名称]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.NAME"
         },
         "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组"
-      },
-      "ruleInfo" : "默认规则",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "update_time",
-    "dEFType" : 3,
-    "dataType" : "INHERIT",
-    "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-    },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDERS/DERMULINH_BASELINE_IDEA_RELATION.json"
-    },
-    "predefinedType" : "UPDATEDATE",
-    "getRealPSDEField" : {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
-    },
-    "getRealPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "getRelatedPSDEField" : {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
-    },
-    "getRelatedPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-    },
-    "serviceCodeName" : "update_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-    "viewLevel" : 0,
-    "allowEmpty" : false,
-    "inheritDEField" : true,
-    "linkDEField" : true,
-    "phisicalDEField" : false,
-    "systemReserver" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_MAN",
-      "dBType" : "MYSQL5",
-      "name" : "UPDATE_MAN",
-      "queryCodeExp" : "t1.`UPDATE_MAN`",
-      "standardColumnName" : "`UPDATE_MAN`"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_MAN][更新人]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     } ],
@@ -2926,67 +2908,62 @@
         "name" : "默认组",
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
-          "dEFName" : "UPDATE_MAN",
-          "maxValue" : 100,
+          "dEFName" : "NAME",
+          "maxValue" : 200,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
+          "ruleInfo" : "内容长度必须小于等于[200]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
+        "ruleInfo" : "内容长度必须小于等于[200]"
       },
-      "ruleInfo" : "内容长度必须小于等于[100]",
+      "ruleInfo" : "内容长度必须小于等于[200]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_man",
+    "codeName" : "name",
     "dEFType" : 3,
     "dataType" : "INHERIT",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+      "lanResTag" : "DEF.LNAME.NAME"
     },
-    "length" : 100,
-    "logicName" : "更新人",
-    "name" : "UPDATE_MAN",
-    "getPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSCODELISTS/SysOperator.json"
-    },
+    "length" : 200,
+    "logicName" : "名称",
+    "name" : "NAME",
     "getPSDER" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDERS/DERMULINH_BASELINE_IDEA_RELATION.json"
     },
-    "predefinedType" : "UPDATEMAN",
     "getRealPSDEField" : {
-      "name" : "UPDATE_MAN",
-      "codeName" : "update_man"
+      "name" : "NAME",
+      "codeName" : "name"
     },
     "getRealPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
     },
     "getRelatedPSDEField" : {
-      "name" : "UPDATE_MAN",
-      "codeName" : "update_man"
+      "name" : "NAME",
+      "codeName" : "name"
     },
     "getRelatedPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
     },
-    "serviceCodeName" : "update_man",
+    "serviceCodeName" : "name",
     "stdDataType" : 25,
-    "stringLength" : 100,
+    "stringLength" : 200,
     "valueFormat" : "%1$s",
     "viewLevel" : 0,
-    "allowEmpty" : false,
+    "enableQuickSearch" : true,
     "inheritDEField" : true,
     "linkDEField" : true,
-    "phisicalDEField" : false,
-    "systemReserver" : true
+    "majorDEField" : true,
+    "phisicalDEField" : false
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_MAN",
@@ -3192,6 +3169,211 @@
     "linkDEField" : true,
     "phisicalDEField" : false,
     "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "MYSQL5",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.`UPDATE_MAN`",
+      "standardColumnName" : "`UPDATE_MAN`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_MAN][更新人]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "UPDATE_MAN",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "update_man",
+    "dEFType" : 3,
+    "dataType" : "INHERIT",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "length" : 100,
+    "logicName" : "更新人",
+    "name" : "UPDATE_MAN",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/SysOperator.json"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDERS/DERMULINH_BASELINE_IDEA_RELATION.json"
+    },
+    "predefinedType" : "UPDATEMAN",
+    "getRealPSDEField" : {
+      "name" : "UPDATE_MAN",
+      "codeName" : "update_man"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "UPDATE_MAN",
+      "codeName" : "update_man"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "serviceCodeName" : "update_man",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "allowEmpty" : false,
+    "inheritDEField" : true,
+    "linkDEField" : true,
+    "phisicalDEField" : false,
+    "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "update_time",
+    "dEFType" : 3,
+    "dataType" : "INHERIT",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea/PSDERS/DERMULINH_BASELINE_IDEA_RELATION.json"
+    },
+    "predefinedType" : "UPDATEDATE",
+    "getRealPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
+    },
+    "serviceCodeName" : "update_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "viewLevel" : 0,
+    "allowEmpty" : false,
+    "inheritDEField" : true,
+    "linkDEField" : true,
+    "phisicalDEField" : false,
+    "systemReserver" : true
   } ],
   "getAllPSDELogics" : [ {
     "codeName" : "baseline_comparison",
@@ -3222,7 +3404,7 @@
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "设置关联查询过滤器的分页参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3401,7 +3583,7 @@
           "modelref" : true,
           "id" : "RAWSFCODE1"
         },
-        "name" : "连接名称",
+        "name" : "自身基线对比",
         "getPSDELogicLinkGroupCond" : {
           "groupOP" : "AND",
           "logicType" : "GROUP",
@@ -3437,15 +3619,16 @@
     }, {
       "code" : "var idea_ids = logic.getParam(\"idea_ids\");\r\nvar for_temp_obj = logic.getParam(\"for_temp_obj\");\r\nif(for_temp_obj.get(\"target_id\")){\r\n    var ids = idea_ids.get(\"ids\");\r\n    if(ids){\r\n        ids = ids + \",\" + for_temp_obj.get(\"target_id\");\r\n    } else {\r\n        ids = for_temp_obj.get(\"target_id\");\r\n    }\r\n    idea_ids.set(\"ids\", ids);\r\n}",
       "codeName" : "RAWSFCODE1",
-      "leftPos" : 583,
+      "codeType" : "JavaScript",
+      "leftPos" : 693,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "执行脚本代码",
+      "name" : "提取关联对象中的主键标识",
       "topPos" : 420
     }, {
       "codeName" : "PREPAREPARAM3",
       "leftPos" : -470,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充工作项过滤器参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3487,7 +3670,7 @@
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充对比基线关联查询过滤器需要的baseline参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3672,7 +3855,7 @@
       "codeName" : "PREPAREPARAM7",
       "leftPos" : -918,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充最新版本产品需求附加属性",
       "getPSDELogicNodeParams" : [ {
         "dstFieldName" : "target_version_id",
         "getDstPSDELogicParam" : {
@@ -3733,7 +3916,7 @@
       "codeType" : "JavaScript",
       "leftPos" : -728,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "产品需求cur_version_ids",
+      "name" : "提取关联对象中的版本标识",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3750,7 +3933,7 @@
       "codeName" : "PREPAREPARAM5",
       "leftPos" : -470,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充版本查询过滤器参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3796,7 +3979,7 @@
       },
       "leftPos" : 159,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "将处理好的列表对象绑定至分页结果对象",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -3944,7 +4127,7 @@
       "codeName" : "PREPAREPARAM6",
       "leftPos" : -782,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充关联目标版本对象",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4149,7 +4332,7 @@
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 1060,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充初始v1版本属性",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4270,7 +4453,7 @@
       },
       "leftPos" : 160,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定所勾选的数据对象",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4332,7 +4515,7 @@
       },
       "leftPos" : 494,
       "logicNodeType" : "RESETPARAM",
-      "name" : "重置参数",
+      "name" : "重置关系参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4353,7 +4536,7 @@
       },
       "leftPos" : 660,
       "logicNodeType" : "RESETPARAM",
-      "name" : "重置参数",
+      "name" : "重置版本参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4986,6 +5169,24 @@
       "stdDataType" : 5,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "基线",
+      "name" : "baseline",
+      "getPSDEField" : {
+        "name" : "BASELINE",
+        "codeName" : "baseline"
+      },
+      "getRefPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_dto"
+      },
+      "getRefPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
+      },
+      "sourceType" : "DEFIELD",
+      "stringLength" : 1048576,
+      "type" : "DTO"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -5217,6 +5418,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "relation_version_list_view",
+    "logicName" : "基线关联需求版本列表视图",
+    "name" : "基线关联需求版本列表视图",
+    "realModelSubType" : "DELISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "EditView2",
     "logicName" : "基线工需求实体编辑视图（左右关系）",
     "name" : "基线工需求实体编辑视图（左右关系）",
@@ -5267,7 +5474,7 @@
   "dEType" : 1,
   "dSLink" : "DEFAULT",
   "dataAccCtrlArch" : 1,
-  "dataAccCtrlMode" : 1,
+  "dataAccCtrlMode" : 3,
   "dataChangeLogMode" : 0,
   "dataImpExpMode" : 3,
   "getDefaultPSDEDataQuery" : {
@@ -5304,6 +5511,7 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "memo" : "记录产品基线中规划的需求。",
   "getMinorPSDERs" : [ {
     "codeName" : "baseline_principal_idea",
     "dERSubType" : "DER1N",
@@ -5314,13 +5522,15 @@
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/baseline.json"
     },
-    "masterRS" : 0,
+    "masterOrder" : 100,
+    "masterRS" : 5,
     "getMinorPSDataEntity" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/baseline_idea.json"
     },
     "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
     "orderValue" : 100,
+    "parentSubType" : "baseline",
     "pickupDEFName" : "PRINCIPAL_ID",
     "getPickupPSDEField" : {
       "name" : "PRINCIPAL_ID",

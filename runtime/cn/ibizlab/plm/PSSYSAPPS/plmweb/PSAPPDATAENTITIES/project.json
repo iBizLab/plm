@@ -39,13 +39,14 @@
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
             "viewType" : "DETREEEXPVIEW"
           },
-          "frontProcessType" : "WIZARD",
+          "frontProcessType" : "OTHER",
           "fullCodeName" : "project_open_global_setting",
           "name" : "打开项目配置(全局)",
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
           },
+          "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
           "timeout" : 60000,
           "uIActionMode" : "FRONT",
           "uIActionTag" : "open_global_setting",
@@ -507,6 +508,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "change_admin_role",
+    "methodType" : "DEACTION",
+    "name" : "change_admin_role",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/change_admin_role.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "NONE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "change_admin_role"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/change_admin_role",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -766,6 +801,69 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "kanban_index_addon_counter",
+    "methodType" : "DEACTION",
+    "name" : "kanban_index_addon_counter",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/kanban_index_addon_counter.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "kanban_index_addon_counter"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/kanban_index_addon_counter",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "methodType" : "DEACTION",
+    "name" : "nothing",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "nothing"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NothingInput",
+      "name" : "NothingInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NothingResult",
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/nothing.json"
+    },
+    "builtinMethod" : false
+  }, {
     "actionMode" : "UPDATE",
     "codeName" : "other_re_space",
     "methodType" : "DEACTION",
@@ -802,6 +900,45 @@
     "requestMethod" : "PUT",
     "requestParamType" : "ENTITY",
     "requestPath" : "/other_re_space",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UPDATE",
+    "codeName" : "project_move",
+    "methodType" : "DEACTION",
+    "name" : "project_move",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/project_move.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "project_move"
+    },
+    "requestMethod" : "PUT",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/project_move",
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
@@ -955,6 +1092,40 @@
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
+    "codeName" : "scrum_index_addon_counter",
+    "methodType" : "DEACTION",
+    "name" : "scrum_index_addon_counter",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/scrum_index_addon_counter.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "scrum_index_addon_counter"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/scrum_index_addon_counter",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
     "codeName" : "un_favorite",
     "methodType" : "DEACTION",
     "name" : "un_favorite",
@@ -1027,6 +1198,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "waterfall_index_addon_counter",
+    "methodType" : "DEACTION",
+    "name" : "waterfall_index_addon_counter",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/waterfall_index_addon_counter.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "waterfall_index_addon_counter"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/waterfall_index_addon_counter",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
     "codeName" : "fetch_admin",
@@ -1295,6 +1500,44 @@
     "requestPath" : "/fetch_favorite",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_main",
+    "dataSetName" : "main",
+    "dataSetTag" : "main",
+    "methodType" : "FETCH",
+    "name" : "fetch_main",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "main"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_main"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_main",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_normal",
     "dataSetName" : "normal",
     "dataSetTag" : "normal",
@@ -1331,6 +1574,82 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_normal",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_quick",
+    "dataSetName" : "quick",
+    "dataSetTag" : "quick",
+    "methodType" : "FETCH",
+    "name" : "fetch_quick",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "quick"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_quick"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_quick",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_quick_user",
+    "dataSetName" : "quick_user",
+    "dataSetTag" : "quick_user",
+    "methodType" : "FETCH",
+    "name" : "fetch_quick_user",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "quick_user"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_quick_user"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_quick_user",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_reader",
@@ -2177,48 +2496,6 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "create_time",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
-    },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
-    "stdDataType" : 5,
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
       "name" : "[CREATE_MAN][建立人]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -2261,14 +2538,14 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[CREATE_TIME][建立时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
+        "name" : "[CREATE_TIME][建立时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -2276,14 +2553,14 @@
       "type" : "DEFAULT"
     }, {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -2292,12 +2569,12 @@
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "create_time",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
@@ -2342,6 +2619,84 @@
     "name" : "UPDATE_MAN",
     "stdDataType" : 25,
     "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "update_time",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  } ],
+  "getAllPSAppDELogics" : [ {
+    "codeName" : "nothing",
+    "defaultParamName" : "Default",
+    "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
+    "name" : "无操作",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "topPos" : 200,
+      "parallelOutput" : true
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : false,
+    "enableFront" : true
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "project_dto",
@@ -3384,6 +3739,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "change_admin_role",
+    "methodType" : "DEACTION",
+    "name" : "change_admin_role",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/change_admin_role.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "NONE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "change_admin_role"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/change_admin_role",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
     "codeName" : "check_key",
@@ -3643,6 +4032,69 @@
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "kanban_index_addon_counter",
+    "methodType" : "DEACTION",
+    "name" : "kanban_index_addon_counter",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/kanban_index_addon_counter.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "kanban_index_addon_counter"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/kanban_index_addon_counter",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "actionType" : "DELOGIC",
+    "codeName" : "nothing",
+    "methodType" : "DEACTION",
+    "name" : "nothing",
+    "getPSAppDELogic" : {
+      "modelref" : true,
+      "id" : "nothing"
+    },
+    "getPSAppDEMethodInput" : {
+      "codeName" : "NothingInput",
+      "name" : "NothingInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "NothingResult",
+      "name" : "NothingResult",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/nothing.json"
+    },
+    "builtinMethod" : false
+  }, {
     "actionMode" : "UPDATE",
     "codeName" : "other_re_space",
     "methodType" : "DEACTION",
@@ -3679,6 +4131,45 @@
     "requestMethod" : "PUT",
     "requestParamType" : "ENTITY",
     "requestPath" : "/other_re_space",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "UPDATE",
+    "codeName" : "project_move",
+    "methodType" : "DEACTION",
+    "name" : "project_move",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO",
+      "output" : true
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/project_move.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "project_move"
+    },
+    "requestMethod" : "PUT",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/project_move",
     "builtinMethod" : false,
     "needResourceKey" : true
   }, {
@@ -3832,6 +4323,40 @@
     "builtinMethod" : false
   }, {
     "actionMode" : "CUSTOM",
+    "codeName" : "scrum_index_addon_counter",
+    "methodType" : "DEACTION",
+    "name" : "scrum_index_addon_counter",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/scrum_index_addon_counter.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "scrum_index_addon_counter"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/scrum_index_addon_counter",
+    "builtinMethod" : false,
+    "needResourceKey" : true
+  }, {
+    "actionMode" : "CUSTOM",
     "codeName" : "un_favorite",
     "methodType" : "DEACTION",
     "name" : "un_favorite",
@@ -3904,6 +4429,40 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "actionMode" : "CUSTOM",
+    "codeName" : "waterfall_index_addon_counter",
+    "methodType" : "DEACTION",
+    "name" : "waterfall_index_addon_counter",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "type" : "VOID"
+    },
+    "getPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project/PSDEACTIONS/waterfall_index_addon_counter.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "waterfall_index_addon_counter"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/waterfall_index_addon_counter",
+    "builtinMethod" : false,
+    "needResourceKey" : true
   }, {
     "codeName" : "fetch_admin",
     "dataSetName" : "admin",
@@ -4171,6 +4730,44 @@
     "requestPath" : "/fetch_favorite",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_main",
+    "dataSetName" : "main",
+    "dataSetTag" : "main",
+    "methodType" : "FETCH",
+    "name" : "fetch_main",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "main"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_main"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_main",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_normal",
     "dataSetName" : "normal",
     "dataSetTag" : "normal",
@@ -4207,6 +4804,82 @@
     "requestMethod" : "POST",
     "requestParamType" : "ENTITY",
     "requestPath" : "/fetch_normal",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_quick",
+    "dataSetName" : "quick",
+    "dataSetTag" : "quick",
+    "methodType" : "FETCH",
+    "name" : "fetch_quick",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "quick"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_quick"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_quick",
+    "builtinMethod" : false
+  }, {
+    "codeName" : "fetch_quick_user",
+    "dataSetName" : "quick_user",
+    "dataSetTag" : "quick_user",
+    "methodType" : "FETCH",
+    "name" : "fetch_quick_user",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "quick_user"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_quick_user"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_quick_user",
     "builtinMethod" : false
   }, {
     "codeName" : "fetch_reader",
@@ -4699,6 +5372,83 @@
     "tempDataMode" : 2,
     "builtinMethod" : false
   }, {
+    "codeName" : "FetchTempMain",
+    "dataSetTag" : "main",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "main",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "MainInput",
+      "name" : "MainInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "MainResult",
+      "name" : "MainResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "1",
+        "fieldName" : "IS_FAVORITE",
+        "name" : "(IS_FAVORITE) 等于(=) 1"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    }, {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_FAVORITE",
+        "name" : "(IS_FAVORITE) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "main"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
     "codeName" : "FetchTempNormal",
     "dataSetTag" : "normal",
     "dataSetType" : "DATAQUERY",
@@ -4743,6 +5493,83 @@
     "getPSDEDataSet" : {
       "modelref" : true,
       "id" : "normal"
+    },
+    "tempDataMode" : 2,
+    "builtinMethod" : false
+  }, {
+    "codeName" : "FetchTempQuick_user",
+    "dataSetTag" : "quick_user",
+    "dataSetType" : "DATAQUERY",
+    "methodType" : "FETCHTEMP",
+    "name" : "quick_user",
+    "getPSAppDEMethodInput" : {
+      "codeName" : "Quick_userInput",
+      "name" : "Quick_userInput",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "codeName" : "Quick_userResult",
+      "name" : "Quick_userResult",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "project_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDQGroupConditions" : [ {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "1",
+        "fieldName" : "IS_FAVORITE",
+        "name" : "(IS_FAVORITE) 等于(=) 1"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      } ]
+    }, {
+      "condOp" : "AND",
+      "condType" : "GROUP",
+      "name" : "连接条件",
+      "getPSDEDQConditions" : [ {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_DELETED",
+        "name" : "(IS_DELETED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_ARCHIVED",
+        "name" : "(IS_ARCHIVED) 等于(=) 0"
+      }, {
+        "condOp" : "EQ",
+        "condType" : "SINGLE",
+        "condValue" : "0",
+        "fieldName" : "IS_FAVORITE",
+        "name" : "(IS_FAVORITE) 等于(=) 0"
+      } ]
+    } ],
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "quick_user"
     },
     "tempDataMode" : 2,
     "builtinMethod" : false
@@ -5084,7 +5911,7 @@
     "actionTarget" : "SINGLEKEY",
     "caption" : "归档",
     "codeName" : "archive",
-    "confirmMsg" : "是否确认将该项目归档？",
+    "confirmMsg" : "确认归档该项目？",
     "frontProcessType" : "WIZARD",
     "fullCodeName" : "project_archive",
     "name" : "进行中_归档",
@@ -5170,6 +5997,44 @@
     "reloadData" : true,
     "id" : "cancel_favorite@project"
   }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "设置管理员",
+    "codeName" : "change_admin_role",
+    "dataAccessAction" : "UPDATE",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+      "viewType" : "DEMPICKUPVIEW2"
+    },
+    "fullCodeName" : "project_change_admin_role",
+    "name" : "设置管理员",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "change_admin_role"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
+    },
+    "getPSSysImage" : {
+      "glyph" : "xf185@FontAwesome",
+      "cssClass" : "fa fa-sun-o"
+    },
+    "refreshMode" : 1,
+    "successMsg" : "设置成功！",
+    "timeout" : 60000,
+    "tooltip" : "设置管理员",
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "change_admin_role",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "reloadData" : true,
+    "id" : "change_admin_role@project"
+  }, {
     "actionTarget" : "NONE",
     "caption" : "新建项目",
     "codeName" : "create_project",
@@ -5229,6 +6094,32 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "in_progress_into_deleted@project"
+  }, {
+    "actionTarget" : "SINGLEKEY",
+    "caption" : "移动项目",
+    "codeName" : "move_project",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_move_option_view.json",
+      "viewType" : "DEOPTVIEW"
+    },
+    "fullCodeName" : "project_move_project",
+    "name" : "移动项目",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "project_move"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "successMsg" : "移动成功",
+    "timeout" : 60000,
+    "uIActionMode" : "BACKEND",
+    "uIActionTag" : "move_project",
+    "uIActionType" : "DEUIACTION",
+    "enableConfirm" : true,
+    "id" : "move_project@project"
   }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "回收站",
@@ -5314,13 +6205,14 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
       "viewType" : "DETREEEXPVIEW"
     },
-    "frontProcessType" : "WIZARD",
+    "frontProcessType" : "OTHER",
     "fullCodeName" : "project_open_global_setting",
     "name" : "打开项目配置(全局)",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
     },
+    "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
     "timeout" : 60000,
     "uIActionMode" : "FRONT",
     "uIActionTag" : "open_global_setting",
@@ -5391,6 +6283,10 @@
     "getPSNavigateContexts" : [ {
       "key" : "PROJECT",
       "name" : "PROJECT",
+      "rawValue" : true
+    }, {
+      "key" : "SRFREADONLY",
+      "name" : "SRFREADONLY",
       "rawValue" : true
     } ],
     "timeout" : 60000,
@@ -5711,6 +6607,7 @@
     "codeName" : "notify_refresh",
     "defaultParamName" : "Default",
     "logicName" : "通知刷新",
+    "memo" : "通知页面刷新",
     "name" : "通知刷新",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -6139,6 +7036,10 @@
     "viewType" : "DEPICKUPGRIDVIEW"
   }, {
     "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_move_option_view.json",
+    "viewType" : "DEOPTVIEW"
+  }, {
+    "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_scrum_index_view.json",
     "viewType" : "DEINDEXVIEW"
   }, {
@@ -6163,7 +7064,7 @@
     "viewType" : "DEPORTALVIEW"
   }, {
     "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_group_grid_view.json",
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_org_grid_view.json",
     "viewType" : "DEGRIDVIEW"
   }, {
     "modelref" : true,
@@ -6414,6 +7315,25 @@
     },
     "uniqueTag" : "project__Usr1219112932",
     "getPSUIActionGroupDetails" : [ {
+      "detailType" : "DEUIACTION",
+      "name" : "ud083c86",
+      "getPSSysImage" : {
+        "glyph" : "xf185@FontAwesome",
+        "cssClass" : "fa fa-sun-o"
+      },
+      "tooltip" : "设置管理员",
+      "addSeparator" : false,
+      "showCaption" : false,
+      "showIcon" : true,
+      "getPSUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
+        "modelref" : true,
+        "id" : "change_admin_role@project"
+      }
+    }, {
       "detailType" : "DEUIACTION",
       "name" : "u93f345b",
       "getPSSysImage" : {

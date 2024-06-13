@@ -100,11 +100,11 @@
     },
     "leftPos" : 440,
     "logicNodeType" : "DEDATASET",
-    "name" : "实体数据集",
+    "name" : "类别实体数据集",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM4"
       },
       "name" : "不存在子级",
       "getPSDELogicLinkGroupCond" : {
@@ -165,7 +165,7 @@
       "modelref" : true,
       "id" : "for_temp_obj"
     },
-    "leftPos" : 680,
+    "leftPos" : 700,
     "logicNodeType" : "LOOPSUBCALL",
     "name" : "循环子调用",
     "getPSDELogicLinks" : [ {
@@ -182,7 +182,7 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM4"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -211,17 +211,13 @@
     },
     "leftPos" : 950,
     "logicNodeType" : "DELOGIC",
-    "name" : "循环调用",
+    "name" : "删除类别及子类别",
     "topPos" : 290
   }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
+    "codeName" : "PREPAREPARAM4",
     "leftPos" : 440,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "结束前的默认参数",
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "判断节点（无操作）",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -245,7 +241,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM4"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -279,7 +275,7 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM4"
       }
     }, {
       "getDstPSDELogicNode" : {
@@ -313,10 +309,80 @@
       },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM4"
       }
     } ],
     "topPos" : 500
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 790,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "上级的是否叶子节点变更",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parent_section"
+      },
+      "name" : "Default[SECTION_ID] ==> parent_section[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SECTION_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : " ==> filter",
+      "paramAction" : "RENEWPARAM"
+    }, {
+      "dstFieldName" : "N_SECTION_ID_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "Default[SECTION_ID] ==> filter[N_SECTION_ID_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SECTION_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "category_page"
+      },
+      "name" : " ==> category_page",
+      "paramAction" : "RENEWPARAM"
+    }, {
+      "dstFieldName" : "IS_LEAF",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "parent_section"
+      },
+      "name" : "直接值[1] ==> parent_section[IS_LEAF]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 630
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 140,
@@ -499,76 +565,6 @@
     } ],
     "sql" : "UPDATE idea t \r\nINNER JOIN category t21 ON t.category_id = t21.ID \r\nSET t.category_id = NULL\r\nWHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))",
     "topPos" : -40
-  }, {
-    "codeName" : "PREPAREPARAM3",
-    "leftPos" : 790,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "上级的是否叶子节点变更",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM3"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parent_section"
-      },
-      "name" : "Default[SECTION_ID] ==> parent_section[ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "SECTION_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : " ==> filter",
-      "paramAction" : "RENEWPARAM"
-    }, {
-      "dstFieldName" : "N_SECTION_ID_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "filter"
-      },
-      "name" : "Default[SECTION_ID] ==> filter[N_SECTION_ID_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "SECTION_ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "category_page"
-      },
-      "name" : " ==> category_page",
-      "paramAction" : "RENEWPARAM"
-    }, {
-      "dstFieldName" : "IS_LEAF",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "parent_section"
-      },
-      "name" : "直接值[1] ==> parent_section[IS_LEAF]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "1",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 630
   }, {
     "codeName" : "DEDATASET2",
     "getDstPSDEDataSet" : {

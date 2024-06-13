@@ -13,6 +13,9 @@
     "expression" : "t1.`PUBLISH_CONTENT`",
     "name" : "PUBLISH_CONTENT"
   }, {
+    "expression" : "t1.`CATEGORIES`",
+    "name" : "CATEGORIES"
+  }, {
     "expression" : "t1.`CREATE_MAN`",
     "name" : "CREATE_MAN"
   }, {
@@ -45,6 +48,9 @@
   }, {
     "expression" : "t1.`IS_LEAF`",
     "name" : "IS_LEAF"
+  }, {
+    "expression" : "t1.`IS_LOCK`",
+    "name" : "IS_LOCK"
   }, {
     "expression" : "t1.`IS_PUBLISHED`",
     "name" : "IS_PUBLISHED"
@@ -91,6 +97,6 @@
     "expression" : "t1.`UPDATE_TIME`",
     "name" : "UPDATE_TIME"
   } ],
-  "queryCode" : "SELECT\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`CUR_VERSION_ID`,\nt1.`CUR_VERSION_NAME`,\nt1.`FORMAT_TYPE`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LEAF`,\nt1.`IS_PUBLISHED`,\nt1.`NAME`,\nt1.`PARENT_ID`,\nt1.`PUBLISHED`,\nt1.`PUBLISH_MAN`,\nt1.`PUBLISH_NAME`,\nt1.`PUBLISH_TIME`,\nt1.`SEQUENCE`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPACE_ID`,\nt11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,\nt11.`NAME` AS `SPACE_NAME`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `PAGE` t1 \nLEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` \n",
+  "queryCode" : "SELECT\nt1.`CATEGORIES`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`CUR_VERSION_ID`,\nt1.`CUR_VERSION_NAME`,\nt1.`FORMAT_TYPE`,\nt1.`ID`,\nt1.`IDENTIFIER`,\nt1.`IS_ARCHIVED`,\nt1.`IS_DELETED`,\n(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,\nt1.`IS_LEAF`,\nt1.`IS_LOCK`,\nt1.`IS_PUBLISHED`,\nt1.`NAME`,\nt1.`PARENT_ID`,\nt1.`PUBLISHED`,\nt1.`PUBLISH_MAN`,\nt1.`PUBLISH_NAME`,\nt1.`PUBLISH_TIME`,\nt1.`SEQUENCE`,\nconcat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt1.`SPACE_ID`,\nt11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,\nt11.`NAME` AS `SPACE_NAME`,\nt1.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `PAGE` t1 \nLEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` \n",
   "id" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEDATAQUERIES/draft_page/PSDEDQCODES/MYSQL5.json"
 }

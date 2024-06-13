@@ -62,31 +62,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
                         update(work_itemchoose_childupdate_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[继承父级的顶层标识]
-            rule "prepareparam3"
-            ruleflow-group "work_itemchoose_childprepareparam3"
-            when
-            then
-                            work_itemchoose_childupdate_obj.set("topid",work_itemchoose_childparent_work_item.get("topid"));
-                        update(work_itemchoose_childdefault);//更新fact中变量值
-                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
-                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
-                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
-                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
-            end
-
-            //逻辑处理节点[修改子工作项的顶级标识]
-            rule "delogic1"
-            ruleflow-group "work_itemchoose_childdelogic1"
-            when
-            then
-                        update(work_itemchoose_childdefault);//更新fact中变量值
-                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
-                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
-                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
-                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
-            end
-
             //逻辑处理节点[循环子调用]
             rule "loopsubcall1"
             ruleflow-group "work_itemchoose_childloopsubcall1"
@@ -125,12 +100,12 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
                         update(work_itemchoose_childupdate_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[将父级标识做为顶级标识]
-            rule "prepareparam4"
-            ruleflow-group "work_itemchoose_childprepareparam4"
+            //逻辑处理节点[更新子工作项的父标识]
+            rule "deaction3"
+            ruleflow-group "work_itemchoose_childdeaction3"
             when
             then
-                            work_itemchoose_childupdate_obj.set("topid",work_itemchoose_childparent_work_item.get("id"));
+                        work_itemservice.update(work_itemchoose_childupdate_obj);
                         update(work_itemchoose_childdefault);//更新fact中变量值
                         update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
                         update(work_itemchoose_childparent_work_item);//更新fact中变量值

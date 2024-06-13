@@ -68,38 +68,3 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_parent;
                         update(work_itemchange_parentparent_obj);//更新fact中变量值
                         update(work_itemchange_parentsrfactionparam);//更新fact中变量值
             end
-
-            //逻辑处理节点[继承父工作项的顶级标识]
-            rule "prepareparam2"
-            ruleflow-group "work_itemchange_parentprepareparam2"
-            when
-            then
-                            work_itemchange_parentdefault.set("topid",work_itemchange_parentfor_temp_obj.get("topid"));
-                        update(work_itemchange_parentdefault);//更新fact中变量值
-                        update(work_itemchange_parentfor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_parentparent_obj);//更新fact中变量值
-                        update(work_itemchange_parentsrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[父工作项id为顶级标识]
-            rule "prepareparam3"
-            ruleflow-group "work_itemchange_parentprepareparam3"
-            when
-            then
-                            work_itemchange_parentdefault.set("topid",work_itemchange_parentfor_temp_obj.get("id"));
-                        update(work_itemchange_parentdefault);//更新fact中变量值
-                        update(work_itemchange_parentfor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_parentparent_obj);//更新fact中变量值
-                        update(work_itemchange_parentsrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[变更顶级工作项]
-            rule "delogic1"
-            ruleflow-group "work_itemchange_parentdelogic1"
-            when
-            then
-                        update(work_itemchange_parentdefault);//更新fact中变量值
-                        update(work_itemchange_parentfor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_parentparent_obj);//更新fact中变量值
-                        update(work_itemchange_parentsrfactionparam);//更新fact中变量值
-            end

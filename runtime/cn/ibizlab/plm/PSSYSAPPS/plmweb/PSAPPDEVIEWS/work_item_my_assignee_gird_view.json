@@ -101,6 +101,17 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
+    "name" : "NEWDATA",
+    "realTitle" : "工作项编辑视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
     "name" : "EDITDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "getPSNavigateContexts" : [ {
@@ -114,17 +125,6 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
-    "name" : "NEWDATA",
-    "realTitle" : "工作项编辑视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.WORK_ITEM.EDITVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_edit_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -473,6 +473,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -666,31 +667,13 @@
           "codeName" : "state"
         },
         "getPSEditor" : {
-          "editorParams" : {
-            "AC" : "TRUE",
-            "TRIGGER" : "TRUE",
-            "PICKUPVIEW" : "FALSE"
-          },
-          "editorType" : "PICKEREX_TRIGGER",
-          "handlerType" : "PickupText",
+          "editorType" : "DROPDOWNLIST",
           "name" : "n_state_eq",
-          "getPSAppDEACMode" : {
+          "getPSAppCodeList" : {
             "modelref" : true,
-            "id" : "Default"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_default"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
           },
           "placeHolder" : "选择状态",
-          "enableAC" : true,
-          "enablePickupView" : false,
-          "forceSelection" : true,
-          "showTrigger" : true,
           "singleSelect" : true
         },
         "getPSLayoutPos" : {
@@ -699,7 +682,8 @@
           "layout" : "TABLE_24COL"
         },
         "allowEmpty" : true,
-        "emptyCaption" : true
+        "emptyCaption" : true,
+        "needCodeListConfig" : true
       }, {
         "caption" : "所属项目",
         "codeName" : "n_project_name_eq",
@@ -731,7 +715,7 @@
           },
           "getPSAppDEDataSet" : {
             "modelref" : true,
-            "id" : "fetch_normal"
+            "id" : "fetch_main"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -760,13 +744,14 @@
                   "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
                   "viewType" : "DETREEEXPVIEW"
                 },
-                "frontProcessType" : "WIZARD",
+                "frontProcessType" : "OTHER",
                 "fullCodeName" : "project_open_global_setting",
                 "name" : "打开项目配置(全局)",
                 "getPSAppDataEntity" : {
                   "modelref" : true,
                   "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
                 },
+                "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
                 "timeout" : 60000,
                 "uIActionMode" : "FRONT",
                 "uIActionTag" : "open_global_setting",

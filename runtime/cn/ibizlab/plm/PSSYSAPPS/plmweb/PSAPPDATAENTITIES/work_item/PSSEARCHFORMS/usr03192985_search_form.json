@@ -39,7 +39,15 @@
       "codeName" : "sprint_id"
     }
   }, {
+    "id" : "n_release_name_eq",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "RELEASE_NAME",
+      "codeName" : "release_name"
+    }
+  }, {
     "id" : "n_release_id_eq",
+    "hidden" : true,
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "RELEASE_ID",
@@ -272,6 +280,61 @@
       "showCaption" : true
     }, {
       "caption" : "发布",
+      "codeName" : "n_release_name_eq",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "n_release_name_eq",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "RELEASE_NAME",
+        "codeName" : "release_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "PICKUPVIEW" : "FALSE"
+        },
+        "editorType" : "PICKEREX_TRIGGER",
+        "handlerType" : "PickupText",
+        "name" : "n_release_name_eq",
+        "getPSAppDEACMode" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_default"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
+        },
+        "getPSEditorItems" : [ {
+          "name" : "n_release_id_eq"
+        } ],
+        "placeHolder" : "选择发布类型",
+        "valueItemName" : "n_release_id_eq",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "n_release_id_eq",
+      "allowEmpty" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "发布",
       "codeName" : "n_release_id_eq",
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
@@ -287,37 +350,15 @@
         "codeName" : "release_id"
       },
       "getPSEditor" : {
-        "editorParams" : {
-          "AC" : "TRUE",
-          "TRIGGER" : "TRUE",
-          "PICKUPVIEW" : "FALSE"
-        },
-        "editorType" : "PICKEREX_TRIGGER",
-        "handlerType" : "PickupText",
-        "name" : "n_release_id_eq",
-        "getPSAppDEACMode" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "fetch_default"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-        },
-        "enableAC" : true,
-        "enablePickupView" : false,
-        "forceSelection" : true,
-        "showTrigger" : true,
-        "singleSelect" : true
+        "editorType" : "HIDDEN",
+        "name" : "n_release_id_eq"
       },
       "getPSLayoutPos" : {
         "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
       "allowEmpty" : true,
+      "hidden" : true,
       "showCaption" : true
     }, {
       "caption" : "统计方式",
@@ -360,7 +401,7 @@
       },
       "getPSEditor" : {
         "editorParams" : {
-          "SRFNAVPARAM.N_PROJECT_TYPE_EQ" : "kanban"
+          "SRFNAVPARAM.N_PROJECT_TYPE_EQ" : "scrum"
         },
         "editorType" : "MDROPDOWNLIST",
         "name" : "n_work_item_type_id_eq",
@@ -371,9 +412,10 @@
         "getPSNavigateParams" : [ {
           "key" : "n_project_type_eq",
           "name" : "n_project_type_eq",
-          "value" : "kanban",
+          "value" : "scrum",
           "rawValue" : true
         } ],
+        "placeHolder" : "选择工作项类型",
         "singleSelect" : false
       },
       "getPSLayoutPos" : {

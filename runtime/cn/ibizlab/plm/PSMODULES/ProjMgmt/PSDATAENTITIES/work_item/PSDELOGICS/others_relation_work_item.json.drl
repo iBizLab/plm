@@ -98,7 +98,73 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.others_relation_work_item;
             when
             then
                             work_itemothers_relation_work_itemforward_relation_obj.set("targetid",work_itemothers_relation_work_itemfor_temp_obj.get("owner_id"));
+                            work_itemothers_relation_work_itemforward_relation_obj.set("relationtype",work_itemothers_relation_work_itemdefault.get("relation_type"));
                             work_itemothers_relation_work_itemreverse_relation_obj.set("principalid",work_itemothers_relation_work_itemfor_temp_obj.get("owner_id"));
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重复或关联]
+            rule "prepareparam3"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam3"
+            when
+            then
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("relationtype",work_itemothers_relation_work_itemforward_relation_obj.get("relationtype"));
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结果]
+            rule "prepareparam4"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam4"
+            when
+            then
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("relationtype","is_caused_by");
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[原因]
+            rule "prepareparam5"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam5"
+            when
+            then
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("relationtype","causes");
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[被阻塞]
+            rule "prepareparam6"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam6"
+            when
+            then
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("relationtype","is_blocked_by");
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[阻塞]
+            rule "prepareparam7"
+            ruleflow-group "work_itemothers_relation_work_itemprepareparam7"
+            when
+            then
+                            work_itemothers_relation_work_itemreverse_relation_obj.set("relationtype","blocks");
                         update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
                         update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
                         update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值

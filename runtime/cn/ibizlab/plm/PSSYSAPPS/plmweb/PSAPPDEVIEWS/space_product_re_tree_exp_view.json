@@ -269,6 +269,14 @@
             "modelref" : true,
             "id" : "node_cm_deuiaction1"
           },
+          "getPSControlLogics" : [ {
+            "itemName" : "deuiaction1",
+            "logicTag" : "node_cm",
+            "logicType" : "SCRIPT",
+            "name" : "deuiaction1",
+            "scriptCode" : "context.srfreadonly != true",
+            "triggerType" : "ITEMVISIBLE"
+          } ],
           "getPSSysImage" : {
             "glyph" : "xf127@FontAwesome",
             "cssClass" : "fa fa-chain-broken"
@@ -1050,6 +1058,14 @@
               "modelref" : true,
               "id" : "node_cm_deuiaction1"
             },
+            "getPSControlLogics" : [ {
+              "itemName" : "deuiaction1",
+              "logicTag" : "node_cm",
+              "logicType" : "SCRIPT",
+              "name" : "deuiaction1",
+              "scriptCode" : "context.srfreadonly != true",
+              "triggerType" : "ITEMVISIBLE"
+            } ],
             "getPSSysImage" : {
               "glyph" : "xf127@FontAwesome",
               "cssClass" : "fa fa-chain-broken"
@@ -1568,7 +1584,7 @@
           "logicTag" : "treeexpbar_toolbar",
           "logicType" : "SCRIPT",
           "name" : "project",
-          "scriptCode" : "!context.project",
+          "scriptCode" : "!context.project && !context.srfreadonly",
           "triggerType" : "ITEMVISIBLE"
         } ],
         "getPSSysImage" : {
@@ -1581,7 +1597,7 @@
           "codeName" : "product_relation_space",
           "getFrontPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_product_re_space_choose_option_view.json",
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_choose_option_view.json",
             "viewType" : "DEOPTVIEW"
           },
           "frontProcessType" : "WIZARD",
@@ -1638,7 +1654,7 @@
           "logicTag" : "treeexpbar_toolbar",
           "logicType" : "SCRIPT",
           "name" : "product",
-          "scriptCode" : "!context.product",
+          "scriptCode" : "!context.product && !context.srfreadonly",
           "triggerType" : "ITEMVISIBLE"
         } ],
         "getPSSysImage" : {
@@ -1651,7 +1667,7 @@
           "codeName" : "project_relation_space",
           "getFrontPSAppView" : {
             "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_product_re_space_choose_option_view.json",
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_choose_option_view.json",
             "viewType" : "DEOPTVIEW"
           },
           "frontProcessType" : "WIZARD",
@@ -1703,6 +1719,14 @@
           "modelref" : true,
           "id" : "treeexpbar_toolbar_deuiaction2"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction2",
+          "logicTag" : "treeexpbar_toolbar",
+          "logicType" : "SCRIPT",
+          "name" : "refresh",
+          "scriptCode" : "!context.srfreadonly",
+          "triggerType" : "ITEMVISIBLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf021@FontAwesome",
           "cssClass" : "fa fa-refresh"

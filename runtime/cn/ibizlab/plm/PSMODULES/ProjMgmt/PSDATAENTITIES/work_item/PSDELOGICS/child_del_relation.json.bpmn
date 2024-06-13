@@ -12,16 +12,16 @@
                             <tns:global identifier="work_itemchild_del_relationdefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchild_del_relationprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="将子工作项的父标识和顶级标识置空"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchild_del_relationdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="变更顶级工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchild_del_relationprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="将子工作项的父标识置空"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchild_del_relationdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchild_del_relationend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                     <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_delogic1" sourceRef="prepareparam1" targetRef="delogic1">
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="delogic1_end1" sourceRef="delogic1" targetRef="end1">
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

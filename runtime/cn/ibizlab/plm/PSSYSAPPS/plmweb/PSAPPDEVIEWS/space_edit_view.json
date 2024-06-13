@@ -221,6 +221,13 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "scope_type",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
+      }
+    }, {
       "id" : "name",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -247,6 +254,14 @@
       "getPSAppDEField" : {
         "name" : "DESCRIPTION",
         "codeName" : "description"
+      }
+    }, {
+      "id" : "scope_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_ID",
+        "codeName" : "scope_id"
       }
     }, {
       "id" : "id",
@@ -276,6 +291,67 @@
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
+          "caption" : "所属",
+          "codeName" : "scope_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 0,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_TYPE",
+            "codeName" : "scope_type"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "fillMap" : "{\"user\":\"user\",\"user_group\":\"user_group\",\"organization\":\"organization\"}",
+              "enablePerson" : "true",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorStyle" : "TEAM_PICKER",
+            "editorType" : "PICKER",
+            "handlerType" : "PickupText",
+            "name" : "scope_type",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "scope_id"
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "TEAM_PICKER",
+              "runtimeObject" : true
+            },
+            "valueItemName" : "scope_id",
+            "enableAC" : true,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "scope_id",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "CONTROL.DEFORM.SPACE.MAIN.FORMITEM.NAME"
           },
@@ -416,6 +492,33 @@
         "infoGroupMode" : false,
         "showCaption" : false
       }, {
+        "caption" : "所属对象",
+        "codeName" : "scope_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "TOP",
+        "labelWidth" : 130,
+        "name" : "scope_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "SCOPE_ID",
+          "codeName" : "scope_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "scope_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true,
+        "showCaption" : true
+      }, {
         "getCapPSLanguageRes" : {
           "lanResTag" : "DEF.LNAME.ID"
         },
@@ -536,8 +639,13 @@
         },
         "caption" : "保存并关闭",
         "codeName" : "SaveAndExit",
+        "dataAccessAction" : "SUBDATA",
         "fullCodeName" : "SaveAndExit",
         "name" : "编辑界面_保存并退出操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
+        },
         "getPSSysImage" : {
           "cssClass" : "sx-tb-saveandclose"
         },

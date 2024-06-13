@@ -226,61 +226,61 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "name" : "Default[N_IS_ARCHIVED_EQ]",
+      "name" : "Default[n_is_archived_in]",
       "paramAction" : "SQLPARAM",
-      "srcFieldName" : "N_IS_ARCHIVED_EQ",
+      "srcFieldName" : "n_is_archived_in",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "name" : "Default[N_IS_ARCHIVED_EQ]",
+      "name" : "Default[n_is_archived_in]",
       "paramAction" : "SQLPARAM",
-      "srcFieldName" : "N_IS_ARCHIVED_EQ",
+      "srcFieldName" : "n_is_archived_in",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "name" : "Default[N_IS_ARCHIVED_EQ]",
+      "name" : "Default[n_is_archived_in]",
       "paramAction" : "SQLPARAM",
-      "srcFieldName" : "N_IS_ARCHIVED_EQ",
+      "srcFieldName" : "n_is_archived_in",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "name" : "Default[N_IS_DELETED_EQ]",
+      "name" : "Default[N_IS_DELETED_IN]",
       "paramAction" : "SQLPARAM",
-      "srcFieldName" : "N_IS_DELETED_EQ",
+      "srcFieldName" : "N_IS_DELETED_IN",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "name" : "Default[N_IS_DELETED_EQ]",
+      "name" : "Default[N_IS_DELETED_IN]",
       "paramAction" : "SQLPARAM",
-      "srcFieldName" : "N_IS_DELETED_EQ",
+      "srcFieldName" : "N_IS_DELETED_IN",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
-      "name" : "Default[N_IS_DELETED_EQ]",
+      "name" : "Default[N_IS_DELETED_IN]",
       "paramAction" : "SQLPARAM",
-      "srcFieldName" : "N_IS_DELETED_EQ",
+      "srcFieldName" : "N_IS_DELETED_IN",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n    time_ranges.filter_type,\r\n    COALESCE(SUM(count), 0) AS count\r\nFROM (\r\n         SELECT '10' AS filter_type UNION ALL\r\n         SELECT '20' UNION ALL\r\n         SELECT '30' UNION ALL\r\n         SELECT '40' UNION ALL\r\n         SELECT '50' UNION ALL\r\n         SELECT '60' UNION ALL\r\n         SELECT '70'\r\n     ) AS time_ranges\r\n         LEFT JOIN (\r\n    SELECT\r\n        CASE\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 1 THEN '10'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 1 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 2 THEN '20'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 2 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 5 THEN '30'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 5 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 7 THEN '40'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 7 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 15 THEN '50'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 15 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 30 THEN '60'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 30 THEN '70'\r\n            ELSE NULL\r\n            END AS filter_type,\r\n        COUNT(*) AS count\r\n    FROM work_item T1\r\n    INNER JOIN work_item_type T2 ON T1.WORK_ITEM_TYPE_ID = T2.ID\r\n    WHERE T1.UPDATE_TIME IS NOT NULL and T2.`GROUP` = 'requirement'\r\n      AND T1.PROJECT_ID = ?\r\n      AND ((? IS NULL OR ? = '') OR T1.BOARD_ID = ?)  -- 看板\r\n      AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR T1.CREATE_TIME BETWEEN ? AND ?) -- 创建时间范围\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.BACKLOG_TYPE, ?)) -- 需求类型\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.PRIORITY, ?)) -- 优先级\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.BACKLOG_FROM, ?)) -- 需求来源\r\n      AND ((? IS NULL OR ? = '') OR T1.IS_ARCHIVED = ?) -- 是否归档\r\n      AND ((? IS NULL OR ? = '') OR T1.IS_DELETED = ?) -- 是否删除\r\n    GROUP BY filter_type\r\n) AS T1 ON T1.filter_type = time_ranges.filter_type\r\nGROUP BY time_ranges.filter_type\r\nORDER BY time_ranges.filter_type ASC;",
+    "sql" : "SELECT\r\n    time_ranges.filter_type,\r\n    COALESCE(SUM(count), 0) AS count\r\nFROM (\r\n         SELECT '10' AS filter_type UNION ALL\r\n         SELECT '20' UNION ALL\r\n         SELECT '30' UNION ALL\r\n         SELECT '40' UNION ALL\r\n         SELECT '50' UNION ALL\r\n         SELECT '60' UNION ALL\r\n         SELECT '70'\r\n     ) AS time_ranges\r\n         LEFT JOIN (\r\n    SELECT\r\n        CASE\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 1 THEN '10'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 1 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 2 THEN '20'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 2 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 5 THEN '30'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 5 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 7 THEN '40'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 7 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 15 THEN '50'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 15 AND TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) <= 30 THEN '60'\r\n            WHEN TIMESTAMPDIFF(DAY, T1.CREATE_TIME, NOW()) > 30 THEN '70'\r\n            ELSE NULL\r\n            END AS filter_type,\r\n        COUNT(*) AS count\r\n    FROM work_item T1\r\n    INNER JOIN work_item_type T2 ON T1.WORK_ITEM_TYPE_ID = T2.ID\r\n    WHERE T1.UPDATE_TIME IS NOT NULL and T2.`GROUP` = 'requirement'\r\n      AND T1.PROJECT_ID = ?\r\n      AND ((? IS NULL OR ? = '') OR T1.BOARD_ID = ?)  -- 看板\r\n      AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR T1.CREATE_TIME BETWEEN ? AND ?) -- 创建时间范围\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.BACKLOG_TYPE, ?)) -- 需求类型\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.PRIORITY, ?)) -- 优先级\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.BACKLOG_FROM, ?)) -- 需求来源\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.IS_ARCHIVED, ?)) -- 是否归档\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.IS_DELETED, ?)) -- 是否删除\r\n    GROUP BY filter_type\r\n) AS T1 ON T1.filter_type = time_ranges.filter_type\r\nGROUP BY time_ranges.filter_type\r\nORDER BY time_ranges.filter_type ASC;",
     "topPos" : 208,
     "fillDstLogicParam" : true
   } ],

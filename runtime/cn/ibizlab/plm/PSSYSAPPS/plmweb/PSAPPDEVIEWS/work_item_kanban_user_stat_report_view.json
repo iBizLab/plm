@@ -15,6 +15,12 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewNavContexts" : [ {
+    "key" : "SRFREADONLY",
+    "name" : "SRFREADONLY",
+    "value" : "false",
+    "rawValue" : true
+  } ],
   "getPSAppViewNavParams" : [ {
     "key" : "project_type",
     "name" : "project_type",
@@ -263,11 +269,11 @@
       "name" : "engine"
     } ],
     "getPSControls" : [ {
-      "codeName" : "usr03192985_search_form",
+      "codeName" : "kanban_user_stat_search_form",
       "controlType" : "SEARCHFORM",
       "defaultLabelWidth" : 130,
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSSEARCHFORMS/usr03192985_search_form.json",
-      "logicName" : "Scrum成员负荷报告_搜索表单",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSSEARCHFORMS/kanban_user_stat_search_form.json",
+      "logicName" : "kanban成员负荷报告_搜索表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
@@ -331,22 +337,15 @@
           "codeName" : "board_id"
         }
       }, {
-        "id" : "n_sprint_name_eq",
+        "id" : "n_release_name_eq",
         "dataType" : 25,
         "getPSAppDEField" : {
-          "name" : "SPRINT_NAME",
-          "codeName" : "sprint_name"
-        }
-      }, {
-        "id" : "n_sprint_id_eq",
-        "hidden" : true,
-        "dataType" : 25,
-        "getPSAppDEField" : {
-          "name" : "SPRINT_ID",
-          "codeName" : "sprint_id"
+          "name" : "RELEASE_NAME",
+          "codeName" : "release_name"
         }
       }, {
         "id" : "n_release_id_eq",
+        "hidden" : true,
         "dataType" : 25,
         "getPSAppDEField" : {
           "name" : "RELEASE_ID",
@@ -436,6 +435,7 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_pick_up_view.json",
               "viewType" : "DEPICKUPVIEW"
             },
+            "placeHolder" : "选择看板",
             "valueItemName" : "n_board_id_eq",
             "enableAC" : true,
             "enablePickupView" : true,
@@ -492,8 +492,8 @@
           "hidden" : true,
           "showCaption" : true
         }, {
-          "caption" : "迭代名称",
-          "codeName" : "n_sprint_name_eq",
+          "caption" : "发布",
+          "codeName" : "n_release_name_eq",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -501,20 +501,21 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "n_sprint_name_eq",
+          "name" : "n_release_name_eq",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
-            "name" : "SPRINT_NAME",
-            "codeName" : "sprint_name"
+            "name" : "RELEASE_NAME",
+            "codeName" : "release_name"
           },
           "getPSEditor" : {
             "editorParams" : {
               "AC" : "TRUE",
-              "PICKUPVIEW" : "TRUE"
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
             },
-            "editorType" : "PICKER",
+            "editorType" : "PICKEREX_TRIGGER",
             "handlerType" : "PickupText",
-            "name" : "n_sprint_name_eq",
+            "name" : "n_release_name_eq",
             "getPSAppDEACMode" : {
               "modelref" : true,
               "id" : "Default"
@@ -525,20 +526,15 @@
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
             },
             "getPSEditorItems" : [ {
-              "name" : "n_sprint_id_eq"
+              "name" : "n_release_id_eq"
             } ],
-            "getPickupPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprint_pick_up_view.json",
-              "viewType" : "DEPICKUPVIEW"
-            },
-            "placeHolder" : "选择迭代",
-            "valueItemName" : "n_sprint_id_eq",
+            "placeHolder" : "选择发布类型",
+            "valueItemName" : "n_release_id_eq",
             "enableAC" : true,
-            "enablePickupView" : true,
+            "enablePickupView" : false,
             "forceSelection" : true,
             "showTrigger" : true,
             "singleSelect" : true
@@ -547,35 +543,8 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "valueItemName" : "n_sprint_id_eq",
+          "valueItemName" : "n_release_id_eq",
           "allowEmpty" : true,
-          "showCaption" : true
-        }, {
-          "caption" : "迭代",
-          "codeName" : "n_sprint_id_eq",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "TOP",
-          "labelWidth" : 130,
-          "name" : "n_sprint_id_eq",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "SPRINT_ID",
-            "codeName" : "sprint_id"
-          },
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "n_sprint_id_eq"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "hidden" : true,
           "showCaption" : true
         }, {
           "caption" : "发布",
@@ -594,37 +563,15 @@
             "codeName" : "release_id"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "AC" : "TRUE",
-              "TRIGGER" : "TRUE",
-              "PICKUPVIEW" : "FALSE"
-            },
-            "editorType" : "PICKEREX_TRIGGER",
-            "handlerType" : "PickupText",
-            "name" : "n_release_id_eq",
-            "getPSAppDEACMode" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_default"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/release.json"
-            },
-            "enableAC" : true,
-            "enablePickupView" : false,
-            "forceSelection" : true,
-            "showTrigger" : true,
-            "singleSelect" : true
+            "editorType" : "HIDDEN",
+            "name" : "n_release_id_eq"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "hidden" : true,
           "showCaption" : true
         }, {
           "caption" : "统计方式",
@@ -681,6 +628,7 @@
               "value" : "kanban",
               "rawValue" : true
             } ],
+            "placeHolder" : "选择工作项类型",
             "singleSelect" : false
           },
           "getPSLayoutPos" : {
@@ -743,7 +691,7 @@
       "enableFilterSave" : false,
       "noTabHeader" : true,
       "name" : "searchform",
-      "modelid" : "7c13bef3b6ac73067e4188cb7a93206d",
+      "modelid" : "920f77dc4a742e1cc566a15d545393a0",
       "modeltype" : "PSDEFORM_SEARCHFORM"
     }, {
       "codeName" : "kanban_user_stat_chart",
@@ -1049,7 +997,7 @@
   "enableQuickGroup" : false,
   "enableQuickSearch" : false,
   "enableSearch" : true,
-  "expandSearchForm" : false,
+  "expandSearchForm" : true,
   "loadDefault" : true,
   "modelid" : "65c3c3d32b558b925fb21b2a175a2cf0",
   "modeltype" : "PSAPPDEVIEW",

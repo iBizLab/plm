@@ -3,16 +3,17 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/get_draft_pages.json",
   "logicName" : "获取草稿页面",
+  "memo" : "查询并返回草稿数据",
   "name" : "获取草稿页面",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 40,
+    "leftPos" : 210,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM4"
+        "id" : "RAWSQLCALL1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -20,7 +21,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 380,
+    "topPos" : 362,
     "parallelOutput" : true
   }, {
     "codeName" : "DEBUGPARAM1",
@@ -140,7 +141,7 @@
     "topPos" : 264
   }, {
     "codeName" : "END1",
-    "leftPos" : 721,
+    "leftPos" : 661,
     "logicNodeType" : "END",
     "name" : "返回查询结果",
     "getReturnParam" : {
@@ -157,11 +158,11 @@
     },
     "leftPos" : 359,
     "logicNodeType" : "RAWSQLCALL",
-    "name" : "直接SQL调用",
+    "name" : "查询草稿数据",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM5"
+        "id" : "END1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -182,48 +183,6 @@
     "sql" : "select * from page where page.SPACE_ID = ? and page.IS_PUBLISHED = 0;",
     "topPos" : 370,
     "fillDstLogicParam" : true
-  }, {
-    "codeName" : "DEBUGPARAM5",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page_list"
-    },
-    "leftPos" : 545,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM5"
-      }
-    } ],
-    "topPos" : 370
-  }, {
-    "codeName" : "DEBUGPARAM4",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 136,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM4"
-      }
-    } ],
-    "topPos" : 380
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

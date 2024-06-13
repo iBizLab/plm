@@ -34,13 +34,14 @@
                             <tns:global identifier="notify_settingget_by_useruser_setting" type="cn.ibizlab.plm.core.base.domain.notify_setting" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置过滤分页"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置通知过滤分页"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取用户通知"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取通知列表"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环构建通知事件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_usersortparam1" id="sortparam1" implementation="http://www.jboss.org/drools/rule" name="排序数组参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="将通知事件集填充"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定用户配置"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="notify_settingget_by_userrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新初始化事件"/>
@@ -89,7 +90,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    <sequenceFlow id="loopsubcall1_sortparam1" sourceRef="loopsubcall1" targetRef="sortparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="sortparam1_prepareparam2" sourceRef="sortparam1" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_end1" sourceRef="prepareparam2" targetRef="end1">
                     </sequenceFlow>

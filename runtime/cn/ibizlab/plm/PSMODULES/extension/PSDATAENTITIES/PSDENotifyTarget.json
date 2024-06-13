@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -86,6 +89,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -111,6 +115,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -136,6 +141,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -157,6 +163,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/extension/PSDATAENTITIES/PSDENotifyTarget/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -286,44 +293,44 @@
   } ],
   "getAllPSDEFields" : [ {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
+      "columnName" : "PSDENOTIFYTARGETID",
       "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
+      "name" : "PSDENOTIFYTARGETID",
+      "queryCodeExp" : "t1.`PSDENOTIFYTARGETID`",
+      "standardColumnName" : "`PSDENOTIFYTARGETID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PSDENOTIFYTARGETID_EQ",
+      "name" : "N_PSDENOTIFYTARGETID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]移动端默认",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]移动端默认",
+        "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -331,66 +338,73 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组"
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PSDENOTIFYTARGETID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
       },
-      "ruleInfo" : "默认规则",
+      "ruleInfo" : "内容长度必须小于等于[100]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "PSDENotifyTargetId",
     "dEFType" : 1,
-    "dataType" : "DATETIME",
+    "dataType" : "GUID",
     "importOrder" : 1000,
-    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-    },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "update_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "length" : 100,
+    "logicName" : "实体通知目标标识",
+    "name" : "PSDENOTIFYTARGETID",
+    "serviceCodeName" : "PSDENotifyTargetId",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
     "allowEmpty" : false,
-    "systemReserver" : true
+    "keyDEField" : true,
+    "pasteReset" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "CREATE_TIME",
+      "columnName" : "PSDENOTIFYTARGETNAME",
       "dBType" : "MYSQL5",
-      "name" : "CREATE_TIME",
-      "queryCodeExp" : "t1.`CREATE_TIME`",
-      "standardColumnName" : "`CREATE_TIME`"
+      "name" : "PSDENOTIFYTARGETNAME",
+      "queryCodeExp" : "t1.`PSDENOTIFYTARGETNAME`",
+      "standardColumnName" : "`PSDENOTIFYTARGETNAME`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PSDENOTIFYTARGETNAME_LIKE",
+      "name" : "N_PSDENOTIFYTARGETNAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
+      "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
         "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
+        "editorType" : "TEXTBOX",
+        "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     }, {
       "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]移动端默认",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
         "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "editorType" : "MOBTEXT",
+        "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]移动端默认",
+        "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
@@ -402,30 +416,38 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组"
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PSDENOTIFYTARGETNAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
       },
-      "ruleInfo" : "默认规则",
+      "ruleInfo" : "内容长度必须小于等于[200]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "create_time",
+    "codeName" : "PSDENotifyTargetName",
     "dEFType" : 1,
-    "dataType" : "DATETIME",
+    "dataType" : "TEXT",
     "importOrder" : 1000,
-    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
-    },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
-    "predefinedType" : "CREATEDATE",
-    "serviceCodeName" : "create_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-    "allowEmpty" : false,
-    "systemReserver" : true
+    "length" : 200,
+    "logicName" : "实体通知目标名称",
+    "name" : "PSDENOTIFYTARGETNAME",
+    "serviceCodeName" : "PSDENotifyTargetName",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "enableQuickSearch" : true,
+    "majorDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_MAN",
@@ -511,6 +533,77 @@
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
+    "allowEmpty" : false,
+    "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "CREATE_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.`CREATE_TIME`",
+      "standardColumnName" : "`CREATE_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CREATE_TIME][建立时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "create_time",
+    "dEFType" : 1,
+    "dataType" : "DATETIME",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+    },
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
+    "serviceCodeName" : "create_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
   }, {
@@ -602,121 +695,44 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "PSDENOTIFYTARGETNAME",
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
-      "name" : "PSDENOTIFYTARGETNAME",
-      "queryCodeExp" : "t1.`PSDENOTIFYTARGETNAME`",
-      "standardColumnName" : "`PSDENOTIFYTARGETNAME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_PSDENOTIFYTARGETNAME_LIKE",
-      "name" : "N_PSDENOTIFYTARGETNAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]",
+      "name" : "[UPDATE_TIME][更新时间]",
       "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
         "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
       },
       "type" : "DEFAULT"
     }, {
       "codeName" : "MobileDefault",
-      "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]移动端默认",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[PSDENOTIFYTARGETNAME][实体通知目标名称]移动端默认",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "PSDENOTIFYTARGETNAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[200]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "PSDENotifyTargetName",
-    "dEFType" : 1,
-    "dataType" : "TEXT",
-    "importOrder" : 1000,
-    "length" : 200,
-    "logicName" : "实体通知目标名称",
-    "name" : "PSDENOTIFYTARGETNAME",
-    "serviceCodeName" : "PSDENotifyTargetName",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "enableQuickSearch" : true,
-    "majorDEField" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "PSDENOTIFYTARGETID",
-      "dBType" : "MYSQL5",
-      "name" : "PSDENOTIFYTARGETID",
-      "queryCodeExp" : "t1.`PSDENOTIFYTARGETID`",
-      "standardColumnName" : "`PSDENOTIFYTARGETID`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_PSDENOTIFYTARGETID_EQ",
-      "name" : "N_PSDENOTIFYTARGETID_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]移动端默认",
-      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]移动端默认",
-        "stringLength" : 100,
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]",
-      "getPSDEFFormItem" : {
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[PSDENOTIFYTARGETID][实体通知目标标识]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -724,39 +740,30 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "PSDENOTIFYTARGETID",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
+        "name" : "默认组"
       },
-      "ruleInfo" : "内容长度必须小于等于[100]",
+      "ruleInfo" : "默认规则",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "PSDENotifyTargetId",
+    "codeName" : "update_time",
     "dEFType" : 1,
-    "dataType" : "GUID",
+    "dataType" : "DATETIME",
     "importOrder" : 1000,
-    "length" : 100,
-    "logicName" : "实体通知目标标识",
-    "name" : "PSDENOTIFYTARGETID",
-    "serviceCodeName" : "PSDENotifyTargetId",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
+    "serviceCodeName" : "update_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
-    "keyDEField" : true,
-    "pasteReset" : true
+    "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "DATA",

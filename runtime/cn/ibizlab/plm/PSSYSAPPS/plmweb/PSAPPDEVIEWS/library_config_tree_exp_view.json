@@ -60,6 +60,22 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_config_tab_exp_view.json",
         "viewType" : "DETABEXPVIEW"
       }
+    }, {
+      "name" : "EXPITEM:node_5",
+      "realTitle" : "流程准则全部表格视图",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/guideline_all_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_7",
+      "realTitle" : "组件设置",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_setting_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
     } ],
     "getPSControlHandler" : {
       "enableDEFieldPrivilege" : false,
@@ -219,9 +235,9 @@
       }, {
         "getChildPSDETreeNode" : {
           "modelref" : true,
-          "id" : "node_4"
+          "id" : "node_7"
         },
-        "name" : "配置 - 测试用例配置",
+        "name" : "配置 - 测试库配置",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node_2"
@@ -255,9 +271,21 @@
       }, {
         "getChildPSDETreeNode" : {
           "modelref" : true,
-          "id" : "node_5"
+          "id" : "node_2"
         },
-        "name" : "配置 - 测试库配置",
+        "name" : "默认根节点 - 配置",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_4"
+        },
+        "name" : "配置 - 测试用例配置",
         "getParentPSDETreeNode" : {
           "modelref" : true,
           "id" : "node_2"
@@ -267,12 +295,12 @@
       }, {
         "getChildPSDETreeNode" : {
           "modelref" : true,
-          "id" : "node_2"
+          "id" : "node_5"
         },
-        "name" : "默认根节点 - 配置",
+        "name" : "配置 - 评审配置",
         "getParentPSDETreeNode" : {
           "modelref" : true,
-          "id" : "ROOT"
+          "id" : "node_2"
         },
         "parentValueLevel" : 1,
         "searchMode" : 3
@@ -418,12 +446,17 @@
       }, {
         "counterMode" : 0,
         "name" : "评审配置",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/guideline_all_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
         "nodeType" : "node_5",
         "text" : "评审配置",
         "treeNodeType" : "STATIC",
         "hasPSDETreeNodeRSs" : false,
         "appendPNodeId" : false,
-        "disableSelect" : true,
+        "disableSelect" : false,
         "enableCheck" : false,
         "enableEditData" : false,
         "enableNewData" : false,
@@ -459,6 +492,44 @@
         "selectFirstOnly" : false,
         "selected" : false,
         "id" : "node_6"
+      }, {
+        "counterMode" : 0,
+        "name" : "测试库配置",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_setting_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_7",
+        "getPSNavigateParams" : [ {
+          "key" : "n_owner_type_eq",
+          "name" : "n_owner_type_eq",
+          "value" : "library",
+          "rawValue" : true
+        }, {
+          "key" : "n_owner_id_isnull",
+          "name" : "n_owner_id_isnull",
+          "value" : "1",
+          "rawValue" : true
+        } ],
+        "text" : "测试库配置",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_7"
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "TREE_RENDER",
@@ -504,7 +575,66 @@
       "name" : "treeexpbar_tree",
       "modelid" : "76ed6ac985c38b506b3bcd563493bae4",
       "modeltype" : "PSDETREEVIEW"
+    }, {
+      "codeName" : "config_tree_exp_view_treeexpbar_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "工具栏模板（只有一个返回按钮）",
+      "name" : "treeexpbar_toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+      },
+      "getPSControlParam" : {
+        "id" : "treeexpbar_toolbar"
+      },
+      "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "STYLE2",
+        "caption" : "返回",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treeexpbar_toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf053@FontAwesome",
+          "cssClass" : "fa fa-chevron-left"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "返回",
+          "codeName" : "back",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "management_back",
+          "name" : "返回",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/management.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf053@FontAwesome",
+            "cssClass" : "fa fa-chevron-left"
+          },
+          "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/management_setting_view/srfnav=workload/workload_type_setup_grid_view/-`",
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "back",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "back@management"
+        },
+        "tooltip" : "返回",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "toolbarStyle" : "USER",
+      "modelid" : "A18F0469-F5DB-4EF1-BB2F-832EA9AE889C",
+      "modeltype" : "PSDETOOLBAR"
     } ],
+    "title" : "测试库",
     "xDataControlName" : "treeexpbar_tree",
     "enableCounter" : true,
     "enableSearch" : false,

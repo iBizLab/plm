@@ -62,6 +62,7 @@
     }
   },
   "groupMode" : "NONE",
+  "height" : 500.0,
   "logicName" : "评审内容实体表格视图_表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
@@ -75,6 +76,7 @@
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "target_identifier",
     "excelCaption" : "编号",
+    "memo" : "VALUETYPE=OBJECT\nOBJECTNAMEFIELD=show_identifier",
     "name" : "target_identifier",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
@@ -92,6 +94,7 @@
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "target_title",
     "excelCaption" : "标题",
+    "memo" : "VALUETYPE=OBJECT\nOBJECTNAMEFIELD=title",
     "name" : "target_title",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
@@ -137,61 +140,34 @@
       "name" : "CHANGE_VERSION",
       "codeName" : "change_version"
     },
-    "getPSDEUIActionGroup" : {
-      "codeName" : "Usr0428139586",
-      "name" : "评审内容行为组（向导）",
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+    "getPSDEUIAction" : {
+      "caption" : "保存行",
+      "codeName" : "SaveRow",
+      "fullCodeName" : "SaveRow",
+      "name" : "表格界面_保存行",
+      "getPSSysImage" : {
+        "glyph" : "xf0c7@FontAwesome",
+        "cssClass" : "fa fa-save"
       },
-      "getPSUIActionGroupDetails" : [ {
-        "actionLevel" : 200,
-        "detailType" : "DEUIACTION",
-        "name" : "ua330b95",
-        "getPSSysImage" : {
-          "glyph" : "xf112@FontAwesome",
-          "cssClass" : "fa fa-mail-reply"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "MULTIKEY",
-          "caption" : "移出用例",
-          "codeName" : "remove_case",
-          "confirmMsg" : "确定移除该用例？",
-          "fullCodeName" : "review_content_remove_case",
-          "name" : "移出用例",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "remove"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf112@FontAwesome",
-            "cssClass" : "fa fa-mail-reply"
-          },
-          "refreshMode" : 1,
-          "successMsg" : "移除成功",
-          "timeout" : 60000,
-          "tooltip" : "移出",
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "remove_case",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "remove_case@review_content"
-        },
-        "tooltip" : "移出",
-        "addSeparator" : false,
-        "showCaption" : false,
-        "showIcon" : true
-      } ],
-      "uniqueTag" : "review_content__Usr0428139586"
+      "predefinedType" : "GRIDVIEW_SAVEROWACTION",
+      "timeout" : 60000,
+      "uIActionMode" : "SYS",
+      "uIActionTag" : "SaveRow",
+      "uIActionType" : "DEUIACTION"
     },
-    "width" : 120,
+    "getPSSysPFPlugin" : {
+      "pluginType" : "GRID_COLRENDER",
+      "pluginCode" : "COLUMN_CHANGE_VERSION",
+      "runtimeObject" : true
+    },
+    "valueType" : "OBJECTS",
+    "width" : 184,
     "widthUnit" : "PX",
-    "enableSort" : false
+    "enableRowEdit" : true,
+    "enableSort" : false,
+    "getUserParam" : {
+      "SRFNAVPARAM.n_owner_id_eq" : "%owner_id%"
+    }
   } ],
   "getPSDEGridDataItems" : [ {
     "dataType" : 25,
@@ -220,7 +196,8 @@
     "getPSAppDEField" : {
       "name" : "CHANGE_VERSION",
       "codeName" : "change_version"
-    }
+    },
+    "valueType" : "OBJECTS"
   }, {
     "dataType" : 25,
     "name" : "target_id",
@@ -234,6 +211,13 @@
     "getPSAppDEField" : {
       "name" : "TARGET_PARENT_ID",
       "codeName" : "target_parent_id"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "final_stage_results",
+    "getPSAppDEField" : {
+      "name" : "FINAL_STAGE_RESULTS",
+      "codeName" : "final_stage_results"
     }
   }, {
     "dataType" : 25,
@@ -261,7 +245,6 @@
   "getPSDEGridEditItems" : [ {
     "caption" : "变更类型",
     "codeName" : "change_type",
-    "createDV" : "10",
     "enableCond" : 3,
     "ignoreInput" : 0,
     "name" : "change_type",
@@ -278,9 +261,50 @@
       },
       "singleSelect" : true
     },
-    "updateDV" : "10",
     "allowEmpty" : true,
     "needCodeListConfig" : true
+  }, {
+    "caption" : "变更版本",
+    "codeName" : "change_version",
+    "enableCond" : 3,
+    "ignoreInput" : 0,
+    "name" : "change_version",
+    "getPSAppDEField" : {
+      "name" : "CHANGE_VERSION",
+      "codeName" : "change_version"
+    },
+    "getPSEditor" : {
+      "editorParams" : {
+        "AC" : "TRUE",
+        "TRIGGER" : "TRUE",
+        "PICKUPVIEW" : "FALSE"
+      },
+      "editorType" : "PICKEREX_TRIGGER",
+      "handlerType" : "PickupText",
+      "name" : "change_version",
+      "getPSAppDEACMode" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getPSAppDEDataSet" : {
+        "modelref" : true,
+        "id" : "fetch_default"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+      },
+      "valueType" : "OBJECTS",
+      "enableAC" : true,
+      "enablePickupView" : false,
+      "forceSelection" : true,
+      "showTrigger" : true,
+      "singleSelect" : true
+    },
+    "allowEmpty" : true,
+    "getUserParam" : {
+      "SRFNAVPARAM.n_owner_id_eq" : "%owner_id%"
+    }
   }, {
     "caption" : "标识",
     "codeName" : "srfkey",

@@ -1,0 +1,65 @@
+{
+  "codeName" : "fill_latest_executed",
+  "dEFLogicMode" : "COMPUTE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEFLOGICS/fill_latest_executed.json",
+  "logicName" : "填充最近执行",
+  "logicSubType" : "DEFIELD",
+  "name" : "填充最近执行",
+  "getPSDEField" : {
+    "name" : "LATEST_EXECUTED",
+    "codeName" : "latest_executed"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "code" : "def _default = logic.param(\"Default\").real;\r\ndef cur_version_id = _default.get(\"cur_version_id\");\r\ndef runDERuntime = dataentity(\"RUN\");\r\ndef searchContextDTO = runDERuntime.createSearchContext();\r\nsearchContextDTO.limit(1).count(false).sort(\"executed_at,desc\");\r\ndef args = [searchContextDTO,\"SRFVERSIONID\",cur_version_id] as Object[];\r\ndef page = runDERuntime.fetchDataSet(\"Default\", null, args);\r\n_default.set(\"latest_executed\",page.getContent());",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 290,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "执行脚本代码",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 340
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

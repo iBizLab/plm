@@ -218,7 +218,7 @@
           "itemType" : "RAWITEM",
           "name" : "nav_pos",
           "getPSLayoutPos" : {
-            "grow" : -1,
+            "grow" : 1,
             "layout" : "FLEX"
           },
           "getPSRawItem" : {
@@ -568,17 +568,6 @@
               }
             } ],
             "getPSAppViewRefs" : [ {
-              "name" : "NEWDATA",
-              "realTitle" : "工时编辑视图",
-              "getRealTitlePSLanguageRes" : {
-                "lanResTag" : "PAGE.TITLE.WORKLOAD.EDITVIEW"
-              },
-              "getRefPSAppView" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_edit_view.json",
-                "viewType" : "DEEDITVIEW"
-              }
-            }, {
               "name" : "EDITDATA",
               "realTitle" : "工时数据重定向视图",
               "getRealTitlePSLanguageRes" : {
@@ -588,6 +577,17 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_redirect_view.json",
                 "viewType" : "DEREDIRECTVIEW"
+              }
+            }, {
+              "name" : "NEWDATA",
+              "realTitle" : "工时编辑视图",
+              "getRealTitlePSLanguageRes" : {
+                "lanResTag" : "PAGE.TITLE.WORKLOAD.EDITVIEW"
+              },
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_edit_view.json",
+                "viewType" : "DEEDITVIEW"
               }
             } ],
             "getPSControls" : [ {
@@ -757,7 +757,7 @@
                 },
                 "width" : 150,
                 "widthUnit" : "STAR",
-                "enableSort" : true,
+                "enableSort" : false,
                 "getUserParam" : {
                   "DEFAULTSORT" : "asc"
                 }
@@ -800,7 +800,7 @@
                 "valueFormat" : "#0.0",
                 "width" : 150,
                 "widthUnit" : "PX",
-                "enableSort" : true
+                "enableSort" : false
               } ],
               "getPSDEGridDataItems" : [ {
                 "dataType" : 25,
@@ -868,6 +868,7 @@
                 "pluginCode" : "WORKLOAD_TABLE",
                 "runtimeObject" : true
               },
+              "pagingMode" : 1,
               "pagingSize" : 20,
               "getRemovePSControlAction" : {
                 "actionName" : "Remove",
@@ -888,7 +889,7 @@
               "enableColFilter" : false,
               "enableCustomized" : false,
               "enableGroup" : true,
-              "enablePagingBar" : false,
+              "enablePagingBar" : true,
               "enableRowEdit" : false,
               "enableRowEditOrder" : false,
               "enableRowNew" : false,
@@ -1131,6 +1132,13 @@
                 "getPSAppDEField" : {
                   "name" : "CREATE_MAN",
                   "codeName" : "create_man"
+                },
+                "getPSDEFSearchMode" : {
+                  "codeName" : "N_CREATE_MAN_IN",
+                  "name" : "N_CREATE_MAN_IN",
+                  "stdDataType" : 25,
+                  "valueOP" : "IN",
+                  "array" : true
                 },
                 "getPSEditor" : {
                   "editorParams" : {

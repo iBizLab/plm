@@ -23,14 +23,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取父工作项内容"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="继承父级的顶层标识"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="修改子工作项的顶级标识"/>
-                        <endEvent id="delogic1_end" name="end"/>
-                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要更新的父工作项标识"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="将父级标识做为顶级标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="更新子工作项的父标识"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
                     <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction2" sourceRef="prepareparam2" targetRef="deaction2">
@@ -39,31 +37,11 @@
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_delogic1" sourceRef="prepareparam3" targetRef="delogic1">
-                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
                     </sequenceFlow>
                     <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam1_prepareparam3" sourceRef="gateway-prepareparam1" targetRef="prepareparam3">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemchoose_childdefault:work_item();
-                                            $work_itemchoose_childfor_temp_obj:work_item();
-                                            $work_itemchoose_childparent_work_item:work_item();
-                                            $work_itemchoose_childsrfactionparam:work_item();
-                                            $work_itemchoose_childupdate_obj:work_item();
-                                    eval($work_itemchoose_childdefault==work_itemchoose_childdefault && $work_itemchoose_childfor_temp_obj==work_itemchoose_childfor_temp_obj && $work_itemchoose_childparent_work_item==work_itemchoose_childparent_work_item && $work_itemchoose_childsrfactionparam==work_itemchoose_childsrfactionparam && $work_itemchoose_childupdate_obj==work_itemchoose_childupdate_obj);
-                                eval((RuleUtils.test($work_itemchoose_childupdate_obj.get("topId"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
+                    <sequenceFlow id="prepareparam1_deaction3" sourceRef="prepareparam1" targetRef="deaction3">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_prepareparam4" sourceRef="prepareparam1" targetRef="prepareparam4">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_delogic1" sourceRef="prepareparam4" targetRef="delogic1">
-                    </sequenceFlow>
-                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
-                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
-                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
-                            <endEvent id="gateway-prepareparam1_end" name="end"/>
         </process>
     </definitions>

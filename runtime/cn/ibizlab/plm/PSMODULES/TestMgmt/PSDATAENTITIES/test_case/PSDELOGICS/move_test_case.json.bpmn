@@ -26,8 +26,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_caserenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_casedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取当前用例详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_caseprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置当前用例参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_caseprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_casedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="输出当前待修改数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_caseprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置用例模块标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_casemove_test_casedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="修改用例数据"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
@@ -61,7 +60,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam1_debugparam2" sourceRef="gateway-prepareparam1" targetRef="debugparam2">
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $test_casemove_test_casedefault:test_case();
                                             $test_casemove_test_casefor_temp_obj:test_case();
@@ -74,9 +73,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_debugparam2" sourceRef="prepareparam2" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_deaction1" sourceRef="debugparam2" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
                             <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>

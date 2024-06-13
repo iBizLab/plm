@@ -390,7 +390,7 @@
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.NAME"
           },
-          "caption" : "名称",
+          "caption" : "模版名称",
           "codeName" : "name1",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
@@ -408,7 +408,8 @@
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
             "maxLength" : 200,
-            "name" : "name1"
+            "name" : "name1",
+            "placeHolder" : "输入模版名称"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -440,6 +441,7 @@
             "editorType" : "TEXTAREA",
             "maxLength" : 500,
             "name" : "title",
+            "placeHolder" : "输入标题",
             "showMaxLength" : true
           },
           "getPSLayoutPos" : {
@@ -483,10 +485,10 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetchrecent_access`"
+                "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
@@ -495,7 +497,8 @@
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
                 "pluginCode" : "COMMENT",
                 "runtimeObject" : true
-              }
+              },
+              "placeHolder" : "输入前置条件"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -580,7 +583,8 @@
               } ],
               "getPSEditor" : {
                 "editorType" : "TEXTBOX",
-                "name" : "description"
+                "name" : "description",
+                "placeHolder" : "输入步骤描述"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -617,7 +621,8 @@
               } ],
               "getPSEditor" : {
                 "editorType" : "TEXTBOX",
-                "name" : "expected_value"
+                "name" : "expected_value",
+                "placeHolder" : "输入预期结果"
               },
               "getPSLayoutPos" : {
                 "colMD" : 24,
@@ -766,6 +771,7 @@
               "editorType" : "TEXTAREA_10",
               "maxLength" : 2000,
               "name" : "case_description",
+              "placeHolder" : "输入描述",
               "showMaxLength" : true
             },
             "getPSLayoutPos" : {
@@ -855,6 +861,7 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_pick_up_view.json",
               "viewType" : "DEPICKUPVIEW"
             },
+            "placeHolder" : "选择所属测试库",
             "valueItemName" : "test_library_id",
             "enableAC" : true,
             "enablePickupView" : true,
@@ -933,6 +940,7 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_suite_pick_up_view.json",
               "viewType" : "DEPICKUPVIEW"
             },
+            "placeHolder" : "选择模块",
             "valueItemName" : "suite_id",
             "enableAC" : true,
             "enablePickupView" : true,
@@ -972,6 +980,7 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_type.json"
             },
+            "placeHolder" : "选择测试用例",
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
@@ -1004,6 +1013,7 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_level.json"
             },
+            "placeHolder" : "选择重要程度",
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
@@ -1036,6 +1046,7 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_case_test_type.json"
             },
+            "placeHolder" : "选择测试类型",
             "singleSelect" : true
           },
           "getPSLayoutPos" : {

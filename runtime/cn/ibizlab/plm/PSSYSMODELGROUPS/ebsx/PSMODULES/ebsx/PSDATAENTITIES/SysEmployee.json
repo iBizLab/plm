@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -45,6 +46,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -72,6 +74,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -98,6 +101,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -127,6 +131,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -156,6 +161,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "USERCUSTOM",
     "codeName" : "ChangePwd",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/ChangePwd.json",
     "logicName" : "变更密码",
     "name" : "ChangePwd",
@@ -179,6 +185,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -204,6 +211,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "USERCUSTOM",
     "codeName" : "InitPwd",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/InitPwd.json",
     "logicName" : "初始化密码",
     "name" : "InitPwd",
@@ -227,6 +235,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -3932,6 +3941,60 @@
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "systemReserver" : true
   }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[REPORT_FLAG][统计]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBSWITCH",
+        "name" : "[REPORT_FLAG][统计]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true,
+        "needCodeListConfig" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[REPORT_FLAG][统计]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "[REPORT_FLAG][统计]",
+        "uIMode" : "DEFAULT",
+        "needCodeListConfig" : true
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "report_flag",
+    "dEFType" : 4,
+    "dataType" : "YESNO",
+    "importOrder" : 1000,
+    "logicName" : "统计",
+    "name" : "REPORT_FLAG",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/YesNo.json"
+    },
+    "serviceCodeName" : "report_flag",
+    "stdDataType" : 9,
+    "valueFormat" : "%1$s",
+    "dynaStorageDEField" : true
+  }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "STATE",
       "dBType" : "MYSQL5",
@@ -4986,6 +5049,16 @@
       "type" : "SIMPLE",
       "readOnly" : true
     }, {
+      "logicName" : "统计",
+      "name" : "report_flag",
+      "getPSDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 9,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "钉钉用户标识",
       "name" : "DDUnionId",
       "getPSDEField" : {
@@ -5148,13 +5221,6 @@
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/ALL_RW.json",
     "name" : "全部数据（读写）",
     "getPSDEUserRoleOPPrivs" : [ {
-      "dataAccessAction" : "UPDATE",
-      "name" : "UPDATE",
-      "getPSDEOPPriv" : {
-        "modelref" : true,
-        "id" : "UPDATE"
-      }
-    }, {
       "dataAccessAction" : "DELETE",
       "name" : "DELETE",
       "getPSDEOPPriv" : {
@@ -5169,6 +5235,13 @@
         "id" : "READ"
       }
     }, {
+      "dataAccessAction" : "UPDATE",
+      "name" : "UPDATE",
+      "getPSDEOPPriv" : {
+        "modelref" : true,
+        "id" : "UPDATE"
+      }
+    }, {
       "dataAccessAction" : "CREATE",
       "name" : "CREATE",
       "getPSDEOPPriv" : {
@@ -5179,8 +5252,7 @@
     "roleTag" : "ALL_RW",
     "userCat" : "CAT1",
     "userDRAction" : "READ",
-    "allData" : true,
-    "systemReserved" : true
+    "allData" : true
   }, {
     "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUSERROLES/USER_RW.json",
     "name" : "普通用户（读写）",
@@ -5201,6 +5273,17 @@
     "userDRAction" : "READ",
     "enableUserDR" : true,
     "systemReserved" : true
+  } ],
+  "getAllPSDEUtils" : [ {
+    "codeName" : "Usr0521278914",
+    "dynaModelFilePath" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysEmployee/PSDEUTILDES/Usr0521278914.json",
+    "name" : "存储扩展",
+    "getUtilPSDE" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/extend_storage.json"
+    },
+    "utilPSDEName" : "EXTEND_STORAGE",
+    "utilType" : "DYNASTORAGE"
   } ],
   "getAllPSModelDatas" : [ {
     "codeName" : "GridView",

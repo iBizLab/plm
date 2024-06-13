@@ -151,6 +151,10 @@
                 "key" : "PROJECT",
                 "name" : "PROJECT",
                 "rawValue" : true
+              }, {
+                "key" : "SRFREADONLY",
+                "name" : "SRFREADONLY",
+                "rawValue" : true
               } ],
               "timeout" : 60000,
               "uIActionMode" : "FRONT",
@@ -352,14 +356,42 @@
     "modelid" : "bfd8d6b555e0db7a26a1982bb1d28ab3",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSControls" : [ {
-      "codeName" : "item_set_index_view_dr",
+      "codeName" : "portfolio",
       "controlStyle" : "DRBAR_EX",
       "controlType" : "DRBAR",
+      "dataRelationTag" : "portfolio",
       "getEditItemCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.PORTFOLIO"
       },
       "editItemCaption" : "文件夹",
       "name" : "drbar",
+      "getPSAppCounterRef" : {
+        "modelref" : true,
+        "id" : "3370a213527b742d8094a795ccb3a0fd"
+      },
+      "getPSAppCounterRefs" : [ {
+        "getPSAppCounter" : {
+          "codeName" : "portfolio_addon_counters",
+          "counterType" : "DEDR",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCOUNTERS/portfolio_addon_counters.json",
+          "getGetPSAppDEAction" : {
+            "modelref" : true,
+            "id" : "portfolio_index_addon_counter"
+          },
+          "memo" : "项目集组件显示隐藏计数器",
+          "name" : "项目集组件显示隐藏计数器",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
+          },
+          "uniqueTag" : "portfolio_addon_counters"
+        },
+        "refMode" : {
+          "srfdeid" : "PORTFOLIO"
+        },
+        "tag" : "3370a213527b742d8094a795ccb3a0fd",
+        "id" : "3370a213527b742d8094a795ccb3a0fd"
+      } ],
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/portfolio.json"
@@ -383,9 +415,17 @@
         "name" : "工作项",
         "hidden" : false,
         "id" : "UsrDRGroup0301548518"
+      }, {
+        "caption" : "资源",
+        "name" : "资源",
+        "hidden" : false,
+        "id" : "UsrDRGroup0603126886"
       } ],
       "getPSDEDRCtrlItems" : [ {
         "caption" : "工作",
+        "counterId" : "work",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "work",
         "getPSAppView" : {
           "modelref" : true,
@@ -398,6 +438,9 @@
         }
       }, {
         "caption" : "工作项",
+        "counterId" : "work_item",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "work_item",
         "getPSAppView" : {
           "modelref" : true,
@@ -414,6 +457,21 @@
           "value" : "portfolio",
           "rawValue" : false
         } ]
+      }, {
+        "caption" : "资源",
+        "counterId" : "resource",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "resource",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_project_set_resource_gantt_view.json",
+          "viewType" : "DEGANTTVIEW"
+        },
+        "getPSDEDRBarGroup" : {
+          "modelref" : true,
+          "id" : "UsrDRGroup0603126886"
+        }
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "CUSTOM",

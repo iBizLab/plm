@@ -1,0 +1,311 @@
+{
+  "codeName" : "create_default_addon",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library/PSDELOGICS/create_default_addon.json",
+  "logicName" : "生成默认组件信息数据",
+  "memo" : "新建测试库后，生成默认组件消息数据",
+  "name" : "生成默认组件信息数据",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 140,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备组件过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_owner_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_filter"
+      },
+      "name" : "直接值[library] ==> addon_filter[n_owner_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "library",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_owner_id_isnull",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_filter"
+      },
+      "name" : "直接值[1] ==> addon_filter[n_owner_id_isnull]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 279
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取测试库默认组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_page"
+    },
+    "topPos" : 388
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_page"
+    },
+    "topPos" : 500
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 362,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充组件数据属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "IS_ENABLED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "for_temp_obj[IS_ENABLED] ==> new_addon[IS_ENABLED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IS_ENABLED",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "Default[ID] ==> new_addon[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "for_temp_obj[OWNER_TYPE] ==> new_addon[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "OWNER_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ADDON_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "for_temp_obj[ADDON_TYPE] ==> new_addon[ADDON_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ADDON_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "DESCRIPTION",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "for_temp_obj[DESCRIPTION] ==> new_addon[DESCRIPTION]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "DESCRIPTION",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "for_temp_obj[NAME] ==> new_addon[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ORDER_VALUE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "new_addon"
+      },
+      "name" : "for_temp_obj[ORDER_VALUE] ==> new_addon[ORDER_VALUE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ORDER_VALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 500
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon/PSDEACTIONS/Create.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "new_addon"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+    },
+    "leftPos" : 752,
+    "logicNodeType" : "DEACTION",
+    "name" : "生成测试库组件信息数据",
+    "topPos" : 500
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "addon_filter",
+    "logicName" : "组件过滤器",
+    "name" : "组件过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "addon_page",
+    "logicName" : "组件分页查询结果",
+    "name" : "组件分页查询结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "new_addon",
+    "logicName" : "新建组件信息对象",
+    "name" : "新建组件信息对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

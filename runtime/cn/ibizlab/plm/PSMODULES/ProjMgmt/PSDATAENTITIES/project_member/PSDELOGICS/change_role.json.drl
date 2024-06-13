@@ -22,7 +22,7 @@ package cn.ibizlab.plm.projmgmt.logic.project_memberlogic.change_role;
             then
             end
 
-            //逻辑处理节点[获取传递的参数]
+            //逻辑处理节点[获取传递成员的参数]
             rule "bindparam1"
             ruleflow-group "project_memberchange_rolebindparam1"
             when
@@ -32,18 +32,7 @@ package cn.ibizlab.plm.projmgmt.logic.project_memberlogic.change_role;
                         update(project_memberchange_rolesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取传递的状态]
-            rule "prepareparam2"
-            ruleflow-group "project_memberchange_roleprepareparam2"
-            when
-            then
-                            project_memberchange_roledefault.set("roleid",project_memberchange_rolefor_temp_obj.get("roleid"));
-                        update(project_memberchange_roledefault);//更新fact中变量值
-                        update(project_memberchange_rolefor_temp_obj);//更新fact中变量值
-                        update(project_memberchange_rolesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[变更状态]
+            //逻辑处理节点[变更成员状态]
             rule "deaction1"
             ruleflow-group "project_memberchange_roledeaction1"
             when
@@ -59,6 +48,17 @@ package cn.ibizlab.plm.projmgmt.logic.project_memberlogic.change_role;
             ruleflow-group "project_memberchange_roleloopsubcall1"
             when
             then
+                        update(project_memberchange_roledefault);//更新fact中变量值
+                        update(project_memberchange_rolefor_temp_obj);//更新fact中变量值
+                        update(project_memberchange_rolesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取传递的成员状态]
+            rule "prepareparam2"
+            ruleflow-group "project_memberchange_roleprepareparam2"
+            when
+            then
+                            project_memberchange_roledefault.set("roleid",project_memberchange_rolefor_temp_obj.get("roleid"));
                         update(project_memberchange_roledefault);//更新fact中变量值
                         update(project_memberchange_rolefor_temp_obj);//更新fact中变量值
                         update(project_memberchange_rolesrfactionparam);//更新fact中变量值

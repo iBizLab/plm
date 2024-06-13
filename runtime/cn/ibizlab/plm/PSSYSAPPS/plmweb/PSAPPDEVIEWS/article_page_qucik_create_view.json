@@ -29,6 +29,16 @@
     "name" : "MOUNTED",
     "scriptCode" : "view.modal.hooks.shouldDismiss.tapPromise(async context => {\r\n    const form = view.getController('form');\r\n    if (form.data.title !== null && form.data.title !== '' && form.data.title !== undefined) {\r\n        console.log('关闭');\r\n         console.log(form);\r\n    const uiDomain = ibiz.uiDomainManager.get(view.context.srfsessionid);\r\n    const isChange =\r\n        (form.state.modified || uiDomain.dataModification)\r\n        if (isChange && context.allowClose == null) {\r\n        if (form) {\r\n            await form.save({silent: true});\r\n            context.allowClose = true;\r\n        }\r\n        }\r\n    }\r\n});\r\n// 关闭前传递是否发布参数\r\nview.modal.hooks.beforeDismiss.tapPromise(async modalData => {\r\n    modalData.data = [{is_published: !!view.is_published}];\r\n});"
   } ],
+  "getPSAppViewNavContexts" : [ {
+    "key" : "ARTICLE_PAGE",
+    "name" : "ARTICLE_PAGE",
+    "rawValue" : true
+  }, {
+    "key" : "PAGE_P",
+    "name" : "PAGE_P",
+    "value" : "article_page",
+    "rawValue" : false
+  } ],
   "getPSAppViewNavParams" : [ {
     "key" : "space",
     "name" : "space",
@@ -349,6 +359,18 @@
       "getPSAppDEField" : {
         "name" : "SPACE_ID",
         "codeName" : "space_id"
+      }
+    }, {
+      "id" : "parent_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "createDVT" : "APPDATA",
+      "createDV" : "page_p",
+      "updateDVT" : "APPDATA",
+      "updateDV" : "page_p",
+      "getPSAppDEField" : {
+        "name" : "PARENT_ID",
+        "codeName" : "parent_id"
       }
     }, {
       "id" : "attentions",
@@ -708,6 +730,37 @@
           "colMD" : 24,
           "layout" : "TABLE_24COL"
         },
+        "allowEmpty" : true,
+        "hidden" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "父页面",
+        "codeName" : "parent_id",
+        "createDV" : "page_p",
+        "createDVT" : "APPDATA",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "parent_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "PARENT_ID",
+          "codeName" : "parent_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "parent_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "updateDV" : "page_p",
+        "updateDVT" : "APPDATA",
         "allowEmpty" : true,
         "hidden" : true,
         "showCaption" : true

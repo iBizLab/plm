@@ -32,8 +32,8 @@
         "refMode" : "TEST_CASE",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-          "viewType" : "DEMPICKUPVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+          "viewType" : "DEMPICKUPVIEW2"
         }
       } ],
       "logicType" : "PREDEFINED",
@@ -62,8 +62,8 @@
         "refMode" : "TEST_CASE",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-          "viewType" : "DEMPICKUPVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+          "viewType" : "DEMPICKUPVIEW2"
         }
       } ],
       "viewLogicType" : "APP_NEWDATA",
@@ -177,14 +177,11 @@
   }, {
     "name" : "MPICKUPVIEW:TEST_CASE",
     "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "用例数据多项选择视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.TEST_CASE.MPICKUPVIEW"
-    },
+    "realTitle" : "用例实体数据多项选择",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view.json",
-      "viewType" : "DEMPICKUPVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_mpick_up_view2_review.json",
+      "viewType" : "DEMPICKUPVIEW2"
     }
   }, {
     "name" : "MPICKUPVIEW:TEST_PLAN"
@@ -211,6 +208,14 @@
         "modelref" : true,
         "id" : "toolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "deuiaction1",
+        "scriptCode" : "context.srfreadonly != true",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
       "getPSUIAction" : {
         "actionTarget" : "NONE",
         "caption" : "选择用例",
@@ -260,108 +265,6 @@
       },
       "tooltip" : "规划计划",
       "uIActionTarget" : "NONE",
-      "showCaption" : true,
-      "showIcon" : true
-    }, {
-      "itemType" : "SEPERATOR",
-      "name" : "seperator1",
-      "spanMode" : false
-    }, {
-      "buttonStyle" : "STYLE2",
-      "itemType" : "ITEMS",
-      "name" : "items1",
-      "getPSDEToolbarItems" : [ {
-        "caption" : "手动规划",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction2",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "toolbar_deuiaction2"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "NONE",
-          "caption" : "选择用例",
-          "codeName" : "choose_test_case",
-          "getFrontPSAppView" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_case_test_plan_re_test_case_prickup_view.json",
-            "viewType" : "DEMPICKUPVIEW2"
-          },
-          "frontProcessType" : "WIZARD",
-          "fullCodeName" : "run_choose_test_case",
-          "name" : "选择用例",
-          "getPSAppDEMethod" : {
-            "modelref" : true,
-            "id" : "program_plan"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
-          },
-          "getPSNavigateContexts" : [ {
-            "key" : "TARGET_TYPE",
-            "name" : "TARGET_TYPE",
-            "value" : "test_case",
-            "rawValue" : true
-          }, {
-            "key" : "PRINCIPAL_TYPE",
-            "name" : "PRINCIPAL_TYPE",
-            "value" : "test_plan",
-            "rawValue" : true
-          } ],
-          "getPSNavigateParams" : [ {
-            "key" : "principal_id",
-            "name" : "principal_id",
-            "value" : "test_plan",
-            "rawValue" : false
-          } ],
-          "refreshMode" : 1,
-          "successMsg" : "规划成功",
-          "timeout" : 60000,
-          "uIActionMode" : "BACKEND",
-          "uIActionTag" : "choose_test_case",
-          "uIActionType" : "DEUIACTION",
-          "enableConfirm" : true,
-          "reloadData" : true,
-          "id" : "choose_test_case@run"
-        },
-        "tooltip" : "手动规划",
-        "uIActionTarget" : "NONE",
-        "showCaption" : true,
-        "showIcon" : true
-      }, {
-        "caption" : "通过测试计划规划",
-        "groupExtractMode" : "ITEM",
-        "itemType" : "DEUIACTION",
-        "name" : "deuiaction3",
-        "noPrivDisplayMode" : 2,
-        "getPSAppViewUIAction" : {
-          "modelref" : true,
-          "id" : "toolbar_deuiaction3"
-        },
-        "getPSUIAction" : {
-          "actionTarget" : "MULTIKEY",
-          "caption" : "用户实体界面行为1",
-          "codeName" : "UserAction",
-          "fullCodeName" : "UserAction",
-          "name" : "用户实体界面行为1",
-          "predefinedType" : "VIEW_USERACTION",
-          "timeout" : 60000,
-          "uIActionMode" : "SYS",
-          "uIActionTag" : "UserAction",
-          "uIActionType" : "DEUIACTION"
-        },
-        "tooltip" : "通过测试计划规划",
-        "uIActionTarget" : "MULTIKEY",
-        "showCaption" : true,
-        "showIcon" : true
-      } ],
-      "getPSSysImage" : {
-        "glyph" : "xf0ca@FontAwesome",
-        "cssClass" : "fa fa-list-ul"
-      },
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -550,6 +453,14 @@
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction1"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction1",
+          "logicTag" : "grid_batchtoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "deuiaction1",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMENABLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf044@FontAwesome",
           "cssClass" : "fa fa-edit"
@@ -602,6 +513,14 @@
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction2"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction2",
+          "logicTag" : "grid_batchtoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "deuiaction2",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMENABLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf021@FontAwesome",
           "cssClass" : "fa fa-refresh"
@@ -611,6 +530,7 @@
           "caption" : "重置为未测",
           "codeName" : "reset_not_test",
           "confirmMsg" : "确认将该执行用例重置为未测吗？",
+          "dataAccessAction" : "UPDATE",
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "run_reset_not_test",
           "name" : "重置为未测",
@@ -621,6 +541,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf021@FontAwesome",
@@ -650,6 +574,14 @@
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction3"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction3",
+          "logicTag" : "grid_batchtoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "deuiaction3",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMENABLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf007@FontAwesome",
           "cssClass" : "fa fa-user"
@@ -702,6 +634,14 @@
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction5"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction5",
+          "logicTag" : "grid_batchtoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "deuiaction5",
+          "scriptCode" : "context.srfreadonly != true",
+          "triggerType" : "ITEMENABLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf112@FontAwesome",
           "cssClass" : "fa fa-reply"
@@ -711,6 +651,7 @@
           "caption" : "移出",
           "codeName" : "delete_run",
           "confirmMsg" : "确认移出该执行用例？",
+          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "run_delete_run",
           "name" : "移出",
           "getPSAppDEMethod" : {
@@ -724,6 +665,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf112@FontAwesome",
@@ -799,6 +744,7 @@
             "caption" : "重置为未测",
             "codeName" : "reset_not_test",
             "confirmMsg" : "确认将该执行用例重置为未测吗？",
+            "dataAccessAction" : "UPDATE",
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "run_reset_not_test",
             "name" : "重置为未测",
@@ -809,6 +755,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf021@FontAwesome",
@@ -840,6 +790,7 @@
             "caption" : "移出",
             "codeName" : "delete_run",
             "confirmMsg" : "确认移出该执行用例？",
+            "dataAccessAction" : "UPDATE",
             "fullCodeName" : "run_delete_run",
             "name" : "移出",
             "getPSAppDEMethod" : {
@@ -853,6 +804,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/run.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf112@FontAwesome",
@@ -1389,6 +1344,7 @@
       "pluginCode" : "NUMBER_GRID",
       "runtimeObject" : true
     },
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -1423,6 +1379,7 @@
     "enableColFilter" : false,
     "enableCustomized" : true,
     "enableGroup" : false,
+    "enableItemPrivilege" : true,
     "enablePagingBar" : true,
     "enableRowEdit" : true,
     "enableRowEditOrder" : false,
@@ -1494,15 +1451,19 @@
       "itemType" : "FILTER",
       "labelPos" : "NONE",
       "labelWidth" : 0,
-      "name" : "executor_id",
+      "name" : "executor_id_eq",
       "getPSAppDEField" : {
         "name" : "EXECUTOR_ID",
         "codeName" : "executor_id"
       },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTOR_ID_EQ",
+        "name" : "N_EXECUTOR_ID_EQ",
+        "stdDataType" : 25,
+        "valueOP" : "EQ"
+      },
       "getPSEditor" : {
         "editorParams" : {
-          "ISADDSYMBOL" : "true",
-          "MULTIPLE" : "true",
           "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
           "AC" : "TRUE",
           "TRIGGER" : "TRUE",
@@ -1516,7 +1477,7 @@
         },
         "editorStyle" : "PERSONEL_SELECT_LIBRARY",
         "editorType" : "PICKEREX_TRIGGER",
-        "name" : "executor_id",
+        "name" : "executor_id_eq",
         "getPSNavigateParams" : [ {
           "key" : "n_department_id_eq",
           "name" : "n_department_id_eq",
@@ -1611,6 +1572,410 @@
       "emptyCaption" : false,
       "hidden" : false,
       "needCodeListConfig" : true,
+      "showCaption" : false
+    }, {
+      "caption" : "执行人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executor_id_in",
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTOR_ID_IN",
+        "name" : "N_EXECUTOR_ID_IN",
+        "stdDataType" : 25,
+        "valueOP" : "IN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "executor_id_in",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "executor_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "executor_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "执行人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executor_id_not_in",
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTOR_ID_NOTIN",
+        "name" : "N_EXECUTOR_ID_NOTIN",
+        "stdDataType" : 25,
+        "valueOP" : "NOTIN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "executor_id_not_in",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "executor_id",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "executor_id",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "执行人标识(Nil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executor_is_null",
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTOR_ID_ISNULL",
+        "name" : "N_EXECUTOR_ID_ISNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "executor_is_null"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "执行人标识(NotNil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "executor_notnull",
+      "getPSAppDEField" : {
+        "name" : "EXECUTOR_ID",
+        "codeName" : "executor_id"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_EXECUTOR_ID_ISNOTNULL",
+        "name" : "N_EXECUTOR_ID_ISNOTNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNOTNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "TEXTBOX",
+        "name" : "executor_notnull"
+      },
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "创建人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_eq",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_EQ",
+        "name" : "N_CREATE_MAN_EQ",
+        "stdDataType" : 25,
+        "valueOP" : "EQ"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man_eq",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "create_man",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "create_man",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "创建人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_in",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_IN",
+        "name" : "N_CREATE_MAN_IN",
+        "stdDataType" : 25,
+        "valueOP" : "IN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man_in",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "create_man",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "create_man",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "创建人",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_not_in",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_NOTIN",
+        "name" : "N_CREATE_MAN_NOTIN",
+        "stdDataType" : 25,
+        "valueOP" : "NOTIN",
+        "array" : true
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "ISADDSYMBOL" : "true",
+          "MULTIPLE" : "true",
+          "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+          "AC" : "TRUE",
+          "TRIGGER" : "TRUE",
+          "URL" : "libraries/${context.library}/library_members/fetch_default",
+          "PICKUPVIEW" : "FALSE",
+          "USERMETHOD" : "post",
+          "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+          "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+          "DEPTMETHOD" : "get",
+          "DEPTURL" : "/users/fetch_default"
+        },
+        "editorStyle" : "PERSONEL_SELECT_LIBRARY",
+        "editorType" : "PICKEREX_TRIGGER",
+        "name" : "create_man_not_in",
+        "getPSNavigateParams" : [ {
+          "key" : "n_department_id_eq",
+          "name" : "n_department_id_eq",
+          "value" : "srforgsectorid",
+          "rawValue" : false
+        } ],
+        "getPSSysPFPlugin" : {
+          "pluginType" : "EDITOR_CUSTOMSTYLE",
+          "pluginCode" : "PERSON_SELECT",
+          "runtimeObject" : true
+        },
+        "valueItemName" : "create_man",
+        "enableAC" : true,
+        "enablePickupView" : false,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "valueItemName" : "create_man",
+      "allowEmpty" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "建立人(Nil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_isnull",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_ISNULL",
+        "name" : "N_CREATE_MAN_ISNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "SPAN",
+        "name" : "create_man_isnull",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "enableLinkView" : false
+      },
+      "allowEmpty" : true,
+      "convertToCodeItemText" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
+      "showCaption" : false
+    }, {
+      "caption" : "建立人(NotNil)",
+      "dataType" : 25,
+      "itemType" : "FILTER",
+      "labelPos" : "NONE",
+      "labelWidth" : 0,
+      "name" : "create_man_notnull",
+      "getPSAppDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "getPSDEFSearchMode" : {
+        "codeName" : "N_CREATE_MAN_ISNOTNULL",
+        "name" : "N_CREATE_MAN_ISNOTNULL",
+        "stdDataType" : 25,
+        "valueOP" : "ISNOTNULL"
+      },
+      "getPSEditor" : {
+        "editorType" : "SPAN",
+        "name" : "create_man_notnull",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+        },
+        "enableLinkView" : false
+      },
+      "allowEmpty" : true,
+      "convertToCodeItemText" : true,
+      "emptyCaption" : false,
+      "hidden" : false,
       "showCaption" : false
     } ],
     "quickGroupCount" : -1,

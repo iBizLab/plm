@@ -12,7 +12,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "PREPAREPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -27,6 +27,17 @@
     "leftPos" : 430,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
     "getPSDELogicNodeParams" : [ {
       "dstFieldName" : "size",
       "getDstPSDELogicParam" : {
@@ -60,28 +71,6 @@
     } ],
     "topPos" : 390
   }, {
-    "codeName" : "DEDATASET1",
-    "getDstPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "run_filter"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-    },
-    "leftPos" : 450,
-    "logicNodeType" : "DEDATASET",
-    "name" : "实体数据集",
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "run_page"
-    },
-    "topPos" : 480
-  }, {
     "codeName" : "DEBUGPARAM1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -91,6 +80,28 @@
     "logicNodeType" : "DEBUGPARAM",
     "name" : "调试逻辑参数",
     "topPos" : 500
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "case_latest_executed"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    },
+    "leftPos" : 460,
+    "logicNodeType" : "DEDATASET",
+    "name" : "实体数据集",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "run_page"
+    },
+    "topPos" : 540
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

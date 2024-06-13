@@ -611,6 +611,7 @@
         },
         "allowEmpty" : true
       } ],
+      "pagingMode" : 1,
       "pagingSize" : 20,
       "getRemovePSControlAction" : {
         "actionName" : "Remove",
@@ -728,8 +729,10 @@
           "codeName" : "severity"
         }
       }, {
-        "id" : "n_is_archived_eq",
+        "id" : "n_is_archived_in",
         "dataType" : 9,
+        "createDV" : "1,0",
+        "updateDV" : "1,0",
         "getPSAppDEField" : {
           "name" : "IS_ARCHIVED",
           "codeName" : "is_archived"
@@ -954,7 +957,8 @@
           "showCaption" : true
         }, {
           "caption" : "是否包含归档",
-          "codeName" : "n_is_archived_eq",
+          "codeName" : "n_is_archived_in",
+          "createDV" : "1,0",
           "dataType" : 9,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -962,25 +966,32 @@
           "ignoreInput" : 0,
           "labelPos" : "TOP",
           "labelWidth" : 130,
-          "name" : "n_is_archived_eq",
+          "name" : "n_is_archived_in",
           "noPrivDisplayMode" : 1,
           "getPSAppDEField" : {
             "name" : "IS_ARCHIVED",
             "codeName" : "is_archived"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "clearable",
+            "attrValue" : "false",
+            "name" : "n_is_archived_in"
+          } ],
           "getPSEditor" : {
             "editorType" : "DROPDOWNLIST_100",
-            "name" : "n_is_archived_eq",
+            "name" : "n_is_archived_in",
             "getPSAppCodeList" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__contains_archive.json"
             },
+            "valueType" : "SIMPLES",
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
+          "updateDV" : "1,0",
           "allowEmpty" : true,
           "needCodeListConfig" : true,
           "showCaption" : true

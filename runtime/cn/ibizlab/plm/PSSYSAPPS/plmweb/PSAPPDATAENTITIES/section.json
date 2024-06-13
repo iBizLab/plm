@@ -301,6 +301,80 @@
     "noServiceCodeName" : true
   } ],
   "getAllPSAppDEDataSets" : [ {
+    "getADPSDEDQConditions" : [ {
+      "condOp" : "NOTEQ",
+      "condType" : "SINGLE",
+      "condValue" : "id",
+      "fieldName" : "ID",
+      "name" : "(ID) 不等于(<>) 数据上下文 id",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "name",
+      "fieldName" : "NAME",
+      "name" : "(NAME) 等于(=) 数据上下文 name",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "owner_id",
+      "fieldName" : "OWNER_ID",
+      "name" : "(OWNER_ID) 等于(=) 数据上下文 owner_id",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "owner_type",
+      "fieldName" : "OWNER_TYPE",
+      "name" : "(OWNER_TYPE) 等于(=) 数据上下文 owner_type",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "owner_subtype",
+      "fieldName" : "OWNER_SUBTYPE",
+      "name" : "(OWNER_SUBTYPE) 等于(=) 数据上下文 owner_subtype",
+      "getPSVARTypeId" : "DATACONTEXT"
+    } ],
+    "codeName" : "fetch_check_name",
+    "dataSetName" : "check_name",
+    "dataSetTag" : "check_name",
+    "methodType" : "FETCH",
+    "name" : "fetch_check_name",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "section_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "section_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "check_name"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_check_name"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_check_name",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -574,132 +648,6 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "codeName" : "create_time",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
-    },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
-    "stdDataType" : 5,
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "update_time",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-    },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "stdDataType" : 5,
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_MAN][更新人]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "update_man",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-    },
-    "logicName" : "更新人",
-    "name" : "UPDATE_MAN",
-    "stdDataType" : 25,
-    "stringLength" : 100
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "Default",
       "name" : "[NAME][名称]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
@@ -781,6 +729,132 @@
     "name" : "CREATE_MAN",
     "stdDataType" : 25,
     "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[CREATE_TIME][建立时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "codeName" : "create_time",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+    },
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_MAN][更新人]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "update_man",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "logicName" : "更新人",
+    "name" : "UPDATE_MAN",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "update_time",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   } ],
   "getAllPSAppDEMethodDTOs" : [ {
     "codeName" : "section_dto",
@@ -1247,6 +1321,80 @@
     "builtinMethod" : false,
     "needResourceKey" : true,
     "noServiceCodeName" : true
+  }, {
+    "getADPSDEDQConditions" : [ {
+      "condOp" : "NOTEQ",
+      "condType" : "SINGLE",
+      "condValue" : "id",
+      "fieldName" : "ID",
+      "name" : "(ID) 不等于(<>) 数据上下文 id",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "name",
+      "fieldName" : "NAME",
+      "name" : "(NAME) 等于(=) 数据上下文 name",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "owner_id",
+      "fieldName" : "OWNER_ID",
+      "name" : "(OWNER_ID) 等于(=) 数据上下文 owner_id",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "owner_type",
+      "fieldName" : "OWNER_TYPE",
+      "name" : "(OWNER_TYPE) 等于(=) 数据上下文 owner_type",
+      "getPSVARTypeId" : "DATACONTEXT"
+    }, {
+      "condOp" : "EQ",
+      "condType" : "SINGLE",
+      "condValue" : "owner_subtype",
+      "fieldName" : "OWNER_SUBTYPE",
+      "name" : "(OWNER_SUBTYPE) 等于(=) 数据上下文 owner_subtype",
+      "getPSVARTypeId" : "DATACONTEXT"
+    } ],
+    "codeName" : "fetch_check_name",
+    "dataSetName" : "check_name",
+    "dataSetTag" : "check_name",
+    "methodType" : "FETCH",
+    "name" : "fetch_check_name",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "section_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "section_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "check_name"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "READ"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_check_name"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_check_name",
+    "builtinMethod" : false
   }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",

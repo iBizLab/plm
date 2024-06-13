@@ -347,6 +347,17 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
+      "name" : "NEWDATA",
+      "realTitle" : "项目发布编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.VERSION.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_edit_view.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    }, {
       "name" : "EDITDATA",
       "openMode" : "POPUPMODAL",
       "getPSNavigateContexts" : [ {
@@ -369,17 +380,6 @@
       "getRefPSAppView" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
-        "viewType" : "DEEDITVIEW"
-      }
-    }, {
-      "name" : "NEWDATA",
-      "realTitle" : "项目发布编辑视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.VERSION.EDITVIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_edit_view.json",
         "viewType" : "DEEDITVIEW"
       }
     } ],
@@ -405,7 +405,6 @@
         }
       },
       "groupMode" : "NONE",
-      "hookEventNames" : [ "ONLOADSUCCESS" ],
       "logicName" : "需求版本_表格",
       "minorSortDir" : "DESC",
       "getMinorSortPSAppDEField" : {
@@ -498,20 +497,6 @@
         "enableDEFieldPrivilege" : false,
         "id" : "数据表格处理器"
       },
-      "getPSControlLogics" : [ {
-        "eventNames" : "onLoadSuccess",
-        "logicTag" : "grid",
-        "logicType" : "APPDEUILOGIC",
-        "name" : "calc_column_action_state",
-        "getPSAppDEUILogic" : {
-          "modelref" : true,
-          "id" : "calc_column_button_state"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        }
-      } ],
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
@@ -612,8 +597,10 @@
             },
             "getPSUIAction" : {
               "actionTarget" : "SINGLEKEY",
+              "noPrivDisplayMode" : 1,
               "caption" : "编辑版本",
               "codeName" : "edit_version",
+              "dataAccessAction" : "SUBDATA",
               "getFrontPSAppView" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/version_edit_version_view.json",
@@ -625,6 +612,10 @@
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+              },
+              "getPSDEOPPriv" : {
+                "modelref" : true,
+                "id" : "SUBDATA"
               },
               "getPSSysImage" : {
                 "glyph" : "xf044@FontAwesome",
@@ -651,8 +642,10 @@
             },
             "getPSUIAction" : {
               "actionTarget" : "SINGLEDATA",
+              "noPrivDisplayMode" : 1,
               "caption" : "恢复版本",
               "codeName" : "restore",
+              "dataAccessAction" : "SUBDATA",
               "fullCodeName" : "version_restore",
               "name" : "恢复版本",
               "getPSAppDEMethod" : {
@@ -666,6 +659,10 @@
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+              },
+              "getPSDEOPPriv" : {
+                "modelref" : true,
+                "id" : "SUBDATA"
               },
               "getPSSysImage" : {
                 "glyph" : "xf021@FontAwesome",
@@ -844,6 +841,7 @@
       "enableColFilter" : false,
       "enableCustomized" : false,
       "enableGroup" : false,
+      "enableItemPrivilege" : true,
       "enablePagingBar" : false,
       "enableRowEdit" : false,
       "enableRowEditOrder" : false,

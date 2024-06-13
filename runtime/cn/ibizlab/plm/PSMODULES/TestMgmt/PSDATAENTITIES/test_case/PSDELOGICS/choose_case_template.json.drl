@@ -34,18 +34,7 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.choose_case_template;
                         update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "test_casechoose_case_templatedebugparam1"
-            when
-            then
-                        update(test_casechoose_case_templatedefault);//更新fact中变量值
-                        update(test_casechoose_case_templatechoosed_data);//更新fact中变量值
-                        update(test_casechoose_case_templatefor_obj);//更新fact中变量值
-                        update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[获取选中数据id]
             rule "prepareparam1"
             ruleflow-group "test_casechoose_case_templateprepareparam1"
             when
@@ -57,23 +46,12 @@ package cn.ibizlab.plm.testmgmt.logic.test_caselogic.choose_case_template;
                         update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体行为]
+            //逻辑处理节点[获取选中模板详情]
             rule "deaction1"
             ruleflow-group "test_casechoose_case_templatedeaction1"
             when
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_case_templateservice.get(test_casechoose_case_templatechoosed_data.getId()),test_casechoose_case_templatechoosed_data);
-                        update(test_casechoose_case_templatedefault);//更新fact中变量值
-                        update(test_casechoose_case_templatechoosed_data);//更新fact中变量值
-                        update(test_casechoose_case_templatefor_obj);//更新fact中变量值
-                        update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[输出选中数据]
-            rule "debugparam2"
-            ruleflow-group "test_casechoose_case_templatedebugparam2"
-            when
-            then
                         update(test_casechoose_case_templatedefault);//更新fact中变量值
                         update(test_casechoose_case_templatechoosed_data);//更新fact中变量值
                         update(test_casechoose_case_templatefor_obj);//更新fact中变量值

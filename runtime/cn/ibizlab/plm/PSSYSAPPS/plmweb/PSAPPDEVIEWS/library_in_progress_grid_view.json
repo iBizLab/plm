@@ -56,17 +56,19 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -83,14 +85,12 @@
     }
   }, {
     "name" : "EDITDATA",
-    "realTitle" : "测试库数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.LIBRARY.REDIRECTVIEW"
-    },
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "测试库展示信息视图",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
+      "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -288,6 +288,56 @@
         },
         "getPSUIActionGroupDetails" : [ {
           "detailType" : "DEUIACTION",
+          "name" : "uccf2f29",
+          "getPSSysImage" : {
+            "glyph" : "xf185@FontAwesome",
+            "cssClass" : "fa fa-sun-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "设置管理员",
+            "codeName" : "change_admin_role",
+            "dataAccessAction" : "UPDATE",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+              "viewType" : "DEMPICKUPVIEW2"
+            },
+            "fullCodeName" : "library_change_admin_role",
+            "name" : "设置管理员",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "change_admin_role"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf185@FontAwesome",
+              "cssClass" : "fa fa-sun-o"
+            },
+            "refreshMode" : 1,
+            "successMsg" : "设置成功！",
+            "timeout" : 60000,
+            "tooltip" : "设置管理员",
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "change_admin_role",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "change_admin_role@library"
+          },
+          "tooltip" : "设置管理员",
+          "addSeparator" : false,
+          "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "detailType" : "DEUIACTION",
           "name" : "uf444d6d",
           "getPSSysImage" : {
             "glyph" : "xf1c6@FontAwesome",
@@ -297,7 +347,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "归档",
             "codeName" : "archive",
-            "confirmMsg" : "是否确认该测试库归档？",
+            "confirmMsg" : "确认归档该测试库？",
             "fullCodeName" : "library_archive",
             "name" : "进行中_归档",
             "getPSAppDEMethod" : {
@@ -343,10 +393,6 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
             },
-            "getPSSysImage" : {
-              "glyph" : "xf014@FontAwesome",
-              "cssClass" : "fa fa-trash-o"
-            },
             "refreshMode" : 1,
             "successMsg" : "删除成功",
             "timeout" : 60000,
@@ -363,7 +409,7 @@
         } ],
         "uniqueTag" : "library__Usr1219840776"
       },
-      "width" : 100,
+      "width" : 150,
       "widthUnit" : "PX",
       "enableSort" : false
     } ],
@@ -428,6 +474,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",

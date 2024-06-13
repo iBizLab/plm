@@ -7,10 +7,15 @@
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="login_logcalc_active_member_infodefault" type="entity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infodatas" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infolast_active_members" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="login_logcalc_active_member_infolast_day_endtime" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="login_logcalc_active_member_infolast_day_starttime" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infologin_log_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infologin_log_obj" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infologin_log_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infoseven_active_members" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="login_logcalc_active_member_infoseven_day_endtime" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="login_logcalc_active_member_infoseven_day_starttime" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="login_logcalc_active_member_infouser_filter" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.login_log()" name="login_logcalc_active_member_infouser_page" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="userservice" type="service"/>
@@ -19,35 +24,72 @@
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="login_logcalc_active_member_infodefault" type="cn.ibizlab.plm.core.base.domain.login_log" />
                             <tns:global identifier="login_logcalc_active_member_infodatas" type="cn.ibizlab.plm.core.base.domain.login_log" />
+                            <tns:global identifier="login_logcalc_active_member_infolast_active_members" type="cn.ibizlab.plm.core.base.domain.login_log" />
                             <tns:global identifier="login_logcalc_active_member_infologin_log_filter" type="cn.ibizlab.plm.core.base.domain.login_log" />
+                            <tns:global identifier="login_logcalc_active_member_infologin_log_obj" type="cn.ibizlab.plm.core.base.domain.login_log" />
                             <tns:global identifier="login_logcalc_active_member_infologin_log_page" type="cn.ibizlab.plm.core.base.domain.login_log" />
+                            <tns:global identifier="login_logcalc_active_member_infoseven_active_members" type="cn.ibizlab.plm.core.base.domain.login_log" />
                             <tns:global identifier="login_logcalc_active_member_infouser_filter" type="cn.ibizlab.plm.core.base.domain.user" />
                             <tns:global identifier="login_logcalc_active_member_infouser_page" type="cn.ibizlab.plm.core.base.domain.login_log" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备用户过滤器参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infodedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询活跃总人数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="赋值活跃总人数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infodedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询昨日活跃人数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备日志过滤参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备昨日活跃总人数"/>
+                        <endEvent id="prepareparam4_end" name="end"/>
+                        <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name=" 准备昨日开始结束时间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重置过滤器"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重置分页结果变量"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforenewparam3" id="renewparam3" implementation="http://www.jboss.org/drools/rule" name="重置结果变量"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="准备近七日开始结束时间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备近七日活跃总人数"/>
+                        <endEvent id="prepareparam6_end" name="end"/>
+                        <sequenceFlow id="prepareparam6_end_line" sourceRef="prepareparam6" targetRef="prepareparam6_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infodedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询近七日活跃人数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备日志过滤参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="赋值活跃总人数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="赋值昨日和近七日活跃人数、活跃率"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="login_logcalc_active_member_inforawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="赋值昨日活跃人数、活跃率"/>
                     <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_rawsfcode1" sourceRef="dedataset1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_rawsfcode2" sourceRef="prepareparam2" targetRef="rawsfcode2">
+                    <sequenceFlow id="loopsubcall1_prepareparam4" sourceRef="loopsubcall1" targetRef="prepareparam4">
                     </sequenceFlow>
-                    <sequenceFlow id="dedataset2_prepareparam2" sourceRef="dedataset2" targetRef="prepareparam2">
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall1" sourceRef="dedataset2" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_dedataset2" sourceRef="prepareparam3" targetRef="dedataset2">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_prepareparam3" sourceRef="rawsfcode1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_renewparam2" sourceRef="renewparam1" targetRef="renewparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam2_renewparam3" sourceRef="renewparam2" targetRef="renewparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam3_rawsfcode3" sourceRef="renewparam3" targetRef="rawsfcode3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode3_prepareparam5" sourceRef="rawsfcode3" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam2" sourceRef="loopsubcall2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam6" sourceRef="loopsubcall2" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall2" sourceRef="dedataset3" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_dedataset3" sourceRef="prepareparam5" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_rawsfcode2" sourceRef="prepareparam2" targetRef="rawsfcode2">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_end1" sourceRef="rawsfcode2" targetRef="end1">
                     </sequenceFlow>

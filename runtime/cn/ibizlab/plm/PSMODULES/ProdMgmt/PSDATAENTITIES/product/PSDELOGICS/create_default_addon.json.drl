@@ -1,0 +1,95 @@
+package cn.ibizlab.plm.prodmgmt.logic.productlogic.create_default_addon;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product productcreate_default_addondefault;
+                global cn.ibizlab.plm.core.base.domain.addon productcreate_default_addonaddon_filter;
+                global cn.ibizlab.plm.core.base.domain.addon productcreate_default_addonaddon_page;
+                global cn.ibizlab.plm.core.base.domain.addon productcreate_default_addonfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.addon productcreate_default_addonnew_addon;
+                    global cn.ibizlab.plm.core.base.service.IaddonService addonservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IproductService iBzSysProductDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "productcreate_default_addonbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[准备组件过滤器参数]
+            rule "prepareparam1"
+            ruleflow-group "productcreate_default_addonprepareparam1"
+            when
+            then
+                            productcreate_default_addonaddon_filter.set("n_owner_type_eq","product");
+                            productcreate_default_addonaddon_filter.set("n_owner_id_isnull","1");
+                        update(productcreate_default_addondefault);//更新fact中变量值
+                        update(productcreate_default_addonaddon_filter);//更新fact中变量值
+                        update(productcreate_default_addonaddon_page);//更新fact中变量值
+                        update(productcreate_default_addonfor_temp_obj);//更新fact中变量值
+                        update(productcreate_default_addonnew_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品默认组件]
+            rule "dedataset1"
+            ruleflow-group "productcreate_default_addondedataset1"
+            when
+            then
+                        update(productcreate_default_addondefault);//更新fact中变量值
+                        update(productcreate_default_addonaddon_filter);//更新fact中变量值
+                        update(productcreate_default_addonaddon_page);//更新fact中变量值
+                        update(productcreate_default_addonfor_temp_obj);//更新fact中变量值
+                        update(productcreate_default_addonnew_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "productcreate_default_addonloopsubcall1"
+            when
+            then
+                        update(productcreate_default_addondefault);//更新fact中变量值
+                        update(productcreate_default_addonaddon_filter);//更新fact中变量值
+                        update(productcreate_default_addonaddon_page);//更新fact中变量值
+                        update(productcreate_default_addonfor_temp_obj);//更新fact中变量值
+                        update(productcreate_default_addonnew_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充组件数据属性]
+            rule "prepareparam2"
+            ruleflow-group "productcreate_default_addonprepareparam2"
+            when
+            then
+                            productcreate_default_addonnew_addon.set("isenabled",productcreate_default_addonfor_temp_obj.get("isenabled"));
+                            productcreate_default_addonnew_addon.set("ownerid",productcreate_default_addondefault.get("id"));
+                            productcreate_default_addonnew_addon.set("ownertype",productcreate_default_addonfor_temp_obj.get("ownertype"));
+                            productcreate_default_addonnew_addon.set("addontype",productcreate_default_addonfor_temp_obj.get("addontype"));
+                            productcreate_default_addonnew_addon.set("description",productcreate_default_addonfor_temp_obj.get("description"));
+                            productcreate_default_addonnew_addon.set("name",productcreate_default_addonfor_temp_obj.get("name"));
+                            productcreate_default_addonnew_addon.set("ordervalue",productcreate_default_addonfor_temp_obj.get("ordervalue"));
+                        update(productcreate_default_addondefault);//更新fact中变量值
+                        update(productcreate_default_addonaddon_filter);//更新fact中变量值
+                        update(productcreate_default_addonaddon_page);//更新fact中变量值
+                        update(productcreate_default_addonfor_temp_obj);//更新fact中变量值
+                        update(productcreate_default_addonnew_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成产品组件信息数据]
+            rule "deaction1"
+            ruleflow-group "productcreate_default_addondeaction1"
+            when
+            then
+                        addonservice.create(productcreate_default_addonnew_addon);
+                        update(productcreate_default_addondefault);//更新fact中变量值
+                        update(productcreate_default_addonaddon_filter);//更新fact中变量值
+                        update(productcreate_default_addonaddon_page);//更新fact中变量值
+                        update(productcreate_default_addonfor_temp_obj);//更新fact中变量值
+                        update(productcreate_default_addonnew_addon);//更新fact中变量值
+            end

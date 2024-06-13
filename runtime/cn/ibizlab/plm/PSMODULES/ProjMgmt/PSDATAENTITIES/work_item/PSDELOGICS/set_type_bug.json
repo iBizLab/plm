@@ -15,22 +15,12 @@
         "modelref" : true,
         "id" : "PREPAREPARAM1"
       },
-      "name" : "缺陷类型，且项目ID不为空",
+      "name" : "项目ID不为空",
       "getPSDELogicLinkGroupCond" : {
         "groupOP" : "AND",
         "logicType" : "GROUP",
         "name" : "连接条件组",
         "getPSDELogicLinkConds" : [ {
-          "condOP" : "EQ",
-          "dstFieldName" : "work_item_type_group_bug",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "logicType" : "SINGLE",
-          "name" : "Default[work_item_type_group_bug] 等于(=) bug",
-          "paramValue" : "bug"
-        }, {
           "condOP" : "ISNOTNULL",
           "dstFieldName" : "PROJECT_ID",
           "getDstLogicParam" : {
@@ -100,7 +90,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RAWSFCODE1"
+        "id" : "PREPAREPARAM2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -113,6 +103,91 @@
       "id" : "project"
     },
     "topPos" : 510
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 570,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置项目类别",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "缺陷类型不为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "work_item_type_group_bug",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[work_item_type_group_bug] 等于(=) bug",
+          "paramValue" : "bug"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "缺陷类型为空",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "work_item_type_group_bug",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[work_item_type_group_bug] 不等于(<>) bug",
+          "paramValue" : "bug"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "PROJECT_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "project[TYPE] ==> Default[PROJECT_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "project"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 641
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 860,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 762
   }, {
     "code" : "var Default = logic.getParam(\"Default\");\r\nvar project = logic.getParam(\"project\");\r\nDefault.set(\"work_item_type_id\", project.get(\"type\") + \"_bug\");\r\nDefault.set(\"work_item_type_name\", \"缺陷\");\r\n",
     "codeName" : "RAWSFCODE1",
@@ -131,18 +206,7 @@
         "id" : "RAWSFCODE1"
       }
     } ],
-    "topPos" : 620
-  }, {
-    "codeName" : "END1",
-    "leftPos" : 610,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 720
+    "topPos" : 770
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

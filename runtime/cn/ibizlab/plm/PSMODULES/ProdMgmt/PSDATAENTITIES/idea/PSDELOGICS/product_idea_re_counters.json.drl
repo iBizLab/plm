@@ -125,7 +125,7 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.product_idea_re_counters;
                         update(ideaproduct_idea_re_countersidea);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[设置需求主键]
             rule "prepareparam1"
             ruleflow-group "ideaproduct_idea_re_countersprepareparam1"
             when
@@ -141,6 +141,25 @@ package cn.ibizlab.plm.prodmgmt.logic.idealogic.product_idea_re_counters;
             when
             then
                             cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(ideaservice.get(ideaproduct_idea_re_countersidea.getId()),ideaproduct_idea_re_countersidea);
+                        update(ideaproduct_idea_re_countersdefault);//更新fact中变量值
+                        update(ideaproduct_idea_re_countersidea);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询所有计数]
+            rule "rawsqlcall12"
+            ruleflow-group "ideaproduct_idea_re_countersrawsqlcall12"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",ideaproduct_idea_re_countersdefault.get("id"));
+    String strSql="SELECT     SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_idea,     SUM(CASE WHEN t11.`TARGET_TYPE` = 'customer' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_customer,     SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_ticket,     SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_work_item,     SUM(CASE WHEN t11.`TARGET_TYPE` = 'test_case' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t5.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_test_case FROM     `RELATION` t11 JOIN     `idea` t ON t.`ID` = t11.`PRINCIPAL_ID` LEFT JOIN     `idea` t1 ON t1.ID = t11.TARGET_ID  LEFT JOIN     `customer` t2 ON t2.ID = t11.TARGET_ID LEFT JOIN     `ticket` t3 ON t3.ID = t11.TARGET_ID  LEFT JOIN     `work_item` t4 ON t4.ID = t11.TARGET_ID LEFT JOIN     `test_case` t5 ON t5.ID = t11.TARGET_ID WHERE     (t11.`PRINCIPAL_ID` = #{et.param0});";
+                        java.util.List<JSONObject> entities=iBzSysIdeaDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    ideaproduct_idea_re_countersdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
                         update(ideaproduct_idea_re_countersdefault);//更新fact中变量值
                         update(ideaproduct_idea_re_countersidea);//更新fact中变量值
             end

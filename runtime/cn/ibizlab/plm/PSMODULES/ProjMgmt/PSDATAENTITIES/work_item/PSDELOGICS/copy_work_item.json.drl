@@ -11,11 +11,14 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                 global cn.ibizlab.plm.core.base.domain.attention work_itemcopy_work_itemattention;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcopy_work_itemcopy_child;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcopy_work_itemfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation work_itemcopy_work_itemforward_relation_obj;
                 global java.util.Map work_itemcopy_work_itemid;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcopy_work_itemnew_work_item;
+                global cn.ibizlab.plm.core.base.domain.relation work_itemcopy_work_itemreverse_relation_obj;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcopy_work_itemsrfactionparam;
                 global cn.ibizlab.plm.core.projmgmt.domain.work_item work_itemcopy_work_itemtemp_obj;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
                     global cn.ibizlab.plm.core.base.service.IattentionService attentionservice;
                     global cn.ibizlab.plm.core.base.service.IattachmentService attachmentservice;
         global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService iBzSysWork_itemDefaultService;
@@ -31,7 +34,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
             then
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定界面数据]
             rule "bindparam1"
             ruleflow-group "work_itemcopy_work_itembindparam1"
             when
@@ -42,13 +45,15 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[设置id]
             rule "prepareparam5"
             ruleflow-group "work_itemcopy_work_itemprepareparam5"
             when
@@ -60,8 +65,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -77,8 +84,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -95,8 +104,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -121,8 +132,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -139,8 +152,79 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[关联数据属性]
+            rule "prepareparam8"
+            ruleflow-group "work_itemcopy_work_itemprepareparam8"
+            when
+            then
+                            work_itemcopy_work_itemforward_relation_obj.set("principaltype","WORK_ITEM");
+                            work_itemcopy_work_itemforward_relation_obj.set("targettype","WORK_ITEM");
+                            work_itemcopy_work_itemreverse_relation_obj.set("targettype","WORK_ITEM");
+                            work_itemcopy_work_itemreverse_relation_obj.set("principaltype","WORK_ITEM");
+                            work_itemcopy_work_itemforward_relation_obj.set("principalid",work_itemcopy_work_itemtemp_obj.get("id"));
+                            work_itemcopy_work_itemforward_relation_obj.set("targetid",work_itemcopy_work_itemnew_work_item.get("id"));
+                            work_itemcopy_work_itemreverse_relation_obj.set("targetid",work_itemcopy_work_itemtemp_obj.get("id"));
+                            work_itemcopy_work_itemreverse_relation_obj.set("principalid",work_itemcopy_work_itemnew_work_item.get("id"));
+                            work_itemcopy_work_itemforward_relation_obj.set("relationtype","replica");
+                            work_itemcopy_work_itemreverse_relation_obj.set("relationtype","copy");
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成关联数据]
+            rule "deaction6"
+            ruleflow-group "work_itemcopy_work_itemdeaction6"
+            when
+            then
+                        relationservice.save(work_itemcopy_work_itemforward_relation_obj);
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
+                        update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成关联数据]
+            rule "deaction7"
+            ruleflow-group "work_itemcopy_work_itemdeaction7"
+            when
+            then
+                        relationservice.save(work_itemcopy_work_itemreverse_relation_obj);
+                        update(work_itemcopy_work_itemdefault);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachment);//更新fact中变量值
+                        update(work_itemcopy_work_itemattachments);//更新fact中变量值
+                        update(work_itemcopy_work_itemattention);//更新fact中变量值
+                        update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
+                        update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemid);//更新fact中变量值
+                        update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -156,8 +240,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -179,8 +265,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -197,8 +285,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -216,8 +306,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -233,8 +325,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -250,13 +344,15 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备附件参数]
             rule "prepareparam4"
             ruleflow-group "work_itemcopy_work_itemprepareparam4"
             when
@@ -270,8 +366,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -288,8 +386,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end
@@ -305,8 +405,10 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_work_item;
                         update(work_itemcopy_work_itemattention);//更新fact中变量值
                         update(work_itemcopy_work_itemcopy_child);//更新fact中变量值
                         update(work_itemcopy_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemcopy_work_itemforward_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemid);//更新fact中变量值
                         update(work_itemcopy_work_itemnew_work_item);//更新fact中变量值
+                        update(work_itemcopy_work_itemreverse_relation_obj);//更新fact中变量值
                         update(work_itemcopy_work_itemsrfactionparam);//更新fact中变量值
                         update(work_itemcopy_work_itemtemp_obj);//更新fact中变量值
             end

@@ -14,11 +14,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="sprintdelete_categoriesend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="sprintdelete_categoriesdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="sprintdelete_categoriesrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_rawsqlcall1" sourceRef="debugparam1" targetRef="rawsqlcall1">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="sprintdelete_categoriesrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="当类别删除时，修改迭代的类别属性"/>
+                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
                     </sequenceFlow>

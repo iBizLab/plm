@@ -671,6 +671,7 @@
         },
         "allowEmpty" : true
       } ],
+      "pagingMode" : 1,
       "pagingSize" : 20,
       "getRemovePSControlAction" : {
         "actionName" : "Remove",
@@ -703,10 +704,10 @@
       "modelid" : "2fbc03930f01aeb7289c54178a71a304",
       "modeltype" : "PSDEGRID"
     }, {
-      "codeName" : "usr02271588_search_form",
+      "codeName" : "choose_search_form",
       "controlType" : "SEARCHFORM",
       "defaultLabelWidth" : 130,
-      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page/PSSEARCHFORMS/usr02271588_search_form.json",
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page/PSSEARCHFORMS/choose_search_form.json",
       "logicName" : "页面数据统计表格_搜索表单",
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -755,12 +756,85 @@
         "showBusyIndicator" : true,
         "id" : "SEARCHFORM"
       },
+      "getPSDEFormItems" : [ {
+        "id" : "n_identifier_like",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
+        }
+      }, {
+        "id" : "n_name_like",
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        }
+      } ],
       "getPSDEFormPages" : [ {
         "caption" : "常规条件",
         "codeName" : "formpage1",
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMPAGE",
         "name" : "formpage1",
+        "getPSDEFormDetails" : [ {
+          "caption" : "编号",
+          "codeName" : "n_identifier_like",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "n_identifier_like",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "IDENTIFIER",
+            "codeName" : "identifier"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "n_identifier_like",
+            "placeHolder" : "请输入查询编号"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "CONTROL.DEFSFITEM.PAGE.N_NAME_LIKE"
+          },
+          "caption" : "页面名称",
+          "codeName" : "n_name_like",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "n_name_like",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "name" : "n_name_like",
+            "placeHolder" : "请输入页面主题名称"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 8,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true
+        } ],
         "getPSLayout" : {
           "childColLG" : -1,
           "childColMD" : 24,

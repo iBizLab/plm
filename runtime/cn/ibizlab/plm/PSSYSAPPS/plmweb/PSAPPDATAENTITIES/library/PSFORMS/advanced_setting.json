@@ -133,6 +133,82 @@
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
+      "getPSDEFormDetails" : [ {
+        "codeName" : "rawitem1",
+        "contentType" : "RAW",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "RAWITEM",
+        "name" : "rawitem1",
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSRawItem" : {
+          "caption" : "如果要变更测试库的所属关系及可见范围，你可以移动它。移动后不影响测试库下的计划、用例、评审和报表。",
+          "contentType" : "RAW",
+          "name" : "rawitem1",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0
+        },
+        "rawContent" : "如果要变更测试库的所属关系及可见范围，你可以移动它。移动后不影响测试库下的计划、用例、评审和报表。",
+        "rawItemHeight" : -1.0,
+        "rawItemWidth" : -1.0,
+        "showCaption" : true
+      }, {
+        "actionType" : "UIACTION",
+        "caption" : "移动测试库",
+        "codeName" : "button1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "BUTTON",
+        "name" : "button1",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "form_button1"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 2,
+          "colMD" : 2,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "移动测试库",
+          "codeName" : "move_library",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_move_library_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "fullCodeName" : "library_move_library",
+          "name" : "移动测试库",
+          "getNextPSUIAction" : {
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+            },
+            "modelref" : true,
+            "id" : "setting_library_member@library"
+          },
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "move_library"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+          },
+          "successMsg" : "移动成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "move_library",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "id" : "move_library@library"
+        },
+        "tooltip" : "移动测试库",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true
+      } ],
       "getPSLayout" : {
         "childColLG" : -1,
         "childColMD" : 24,
@@ -146,7 +222,7 @@
         "layout" : "TABLE_24COL"
       },
       "infoGroupMode" : false,
-      "showCaption" : false
+      "showCaption" : true
     }, {
       "caption" : "归档测试库",
       "codeName" : "grouppanel1",
@@ -194,7 +270,7 @@
           "actionTarget" : "SINGLEKEY",
           "caption" : "归档",
           "codeName" : "archive",
-          "confirmMsg" : "是否确认该测试库归档？",
+          "confirmMsg" : "确认归档该测试库？",
           "fullCodeName" : "library_archive",
           "name" : "进行中_归档",
           "getPSAppDEMethod" : {
@@ -276,9 +352,8 @@
           "colMD" : 2,
           "layout" : "TABLE_24COL"
         },
-        "getPSSysImage" : {
-          "glyph" : "xf014@FontAwesome",
-          "cssClass" : "fa fa-trash-o"
+        "getPSSysCss" : {
+          "cssName" : "delete-button"
         },
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
@@ -294,10 +369,6 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
-          },
-          "getPSSysImage" : {
-            "glyph" : "xf014@FontAwesome",
-            "cssClass" : "fa fa-trash-o"
           },
           "refreshMode" : 1,
           "successMsg" : "删除成功",

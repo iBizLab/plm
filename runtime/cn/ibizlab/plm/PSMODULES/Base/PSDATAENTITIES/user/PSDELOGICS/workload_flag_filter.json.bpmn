@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.userworkload_flag_filter" isClosed="false" isExecutable="true" name="base_user_workload_flag_filter_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.userworkload_flag_filter">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="userworkload_flag_filterdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="userworkload_flag_filterstorage_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="userworkload_flag_filterstorage_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="userworkload_flag_filteruser_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="userworkload_flag_filteruser_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_storageService))" name="extend_storageservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="userservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="iBzSysUserDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="userworkload_flag_filterdefault" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="userworkload_flag_filterstorage_filter" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="userworkload_flag_filterstorage_page" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="userworkload_flag_filteruser_filter" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="userworkload_flag_filteruser_page" type="cn.ibizlab.plm.core.base.domain.user" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="userworkload_flag_filterprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置条件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="userworkload_flag_filterdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="过滤非统计人员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="userworkload_flag_filterend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="userworkload_flag_filterrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="userworkload_flag_filterdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取用户数据"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_rawsfcode1" sourceRef="dedataset1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_dedataset2" sourceRef="rawsfcode1" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_end1" sourceRef="dedataset2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

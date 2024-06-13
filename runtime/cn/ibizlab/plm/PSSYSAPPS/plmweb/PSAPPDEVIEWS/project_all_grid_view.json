@@ -82,12 +82,13 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "项目数据重定向视图",
+    "name" : "OPENDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "项目快速建立",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_quick_create_view.json",
+      "viewType" : "DEOPTVIEW"
     }
   }, {
     "name" : "NEWDATA",
@@ -99,13 +100,12 @@
       "viewType" : "DEWIZARDVIEW"
     }
   }, {
-    "name" : "OPENDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "项目快速建立",
+    "name" : "EDITDATA",
+    "realTitle" : "项目数据重定向视图",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_quick_create_view.json",
-      "viewType" : "DEOPTVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_redirect_view.json",
+      "viewType" : "DEREDIRECTVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -191,7 +191,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_normal"
+        "id" : "fetch_main"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -201,11 +201,6 @@
     "groupMode" : "NONE",
     "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
-    "minorSortDir" : "DESC",
-    "getMinorSortPSAppDEField" : {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
-    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
@@ -281,7 +276,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_normal"
+          "id" : "fetch_main"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -858,6 +853,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",

@@ -74,6 +74,14 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_type_config_tab_exp_view.json",
         "viewType" : "DETABEXPVIEW"
       }
+    }, {
+      "name" : "EXPITEM:node_3",
+      "realTitle" : "组件设置",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_setting_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
     } ],
     "getPSControlHandler" : {
       "enableDEFieldPrivilege" : false,
@@ -410,7 +418,23 @@
       }, {
         "counterMode" : 0,
         "name" : "产品配置",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/addon_setting_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
         "nodeType" : "node_3",
+        "getPSNavigateParams" : [ {
+          "key" : "n_owner_type_eq",
+          "name" : "n_owner_type_eq",
+          "value" : "product",
+          "rawValue" : true
+        }, {
+          "key" : "n_owner_id_isnull",
+          "name" : "n_owner_id_isnull",
+          "value" : "1",
+          "rawValue" : true
+        } ],
         "text" : "产品配置",
         "treeNodeType" : "STATIC",
         "hasPSDETreeNodeRSs" : false,
@@ -562,7 +586,66 @@
       "name" : "treeexpbar_tree",
       "modelid" : "d98032342ac257fd94fb1593f6e2d47a",
       "modeltype" : "PSDETREEVIEW"
+    }, {
+      "codeName" : "config_tree_exp_view_treeexpbar_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "工具栏模板（只有一个返回按钮）",
+      "name" : "treeexpbar_toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+      },
+      "getPSControlParam" : {
+        "id" : "treeexpbar_toolbar"
+      },
+      "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "STYLE2",
+        "caption" : "返回",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treeexpbar_toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf053@FontAwesome",
+          "cssClass" : "fa fa-chevron-left"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "返回",
+          "codeName" : "back",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "management_back",
+          "name" : "返回",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/management.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf053@FontAwesome",
+            "cssClass" : "fa fa-chevron-left"
+          },
+          "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/management_setting_view/srfnav=workload/workload_type_setup_grid_view/-`",
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "back",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "back@management"
+        },
+        "tooltip" : "返回",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "toolbarStyle" : "USER",
+      "modelid" : "A18F0469-F5DB-4EF1-BB2F-832EA9AE889C",
+      "modeltype" : "PSDETOOLBAR"
     } ],
+    "title" : "产品",
     "xDataControlName" : "treeexpbar_tree",
     "enableCounter" : true,
     "enableSearch" : false,

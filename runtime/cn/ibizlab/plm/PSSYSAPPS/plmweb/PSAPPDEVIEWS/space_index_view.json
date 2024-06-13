@@ -147,6 +147,10 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
               },
               "getPSNavigateContexts" : [ {
+                "key" : "SRFREADONLY",
+                "name" : "SRFREADONLY",
+                "rawValue" : true
+              }, {
                 "key" : "SPACE",
                 "name" : "SPACE",
                 "rawValue" : true
@@ -208,7 +212,7 @@
               },
               "getPSAppDEDataSet" : {
                 "modelref" : true,
-                "id" : "fetch_normal"
+                "id" : "fetch_main"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -654,14 +658,42 @@
       "modelid" : "a44417119f08e4a0d9d8208f6fb163f1",
       "modeltype" : "PSDEFORM_EDITFORM"
     }, {
-      "codeName" : "index_view_dr",
+      "codeName" : "space",
       "controlStyle" : "DRBAR_EX",
       "controlType" : "DRBAR",
+      "dataRelationTag" : "space",
       "getEditItemCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.SPACE"
       },
       "editItemCaption" : "空间",
       "name" : "drbar",
+      "getPSAppCounterRef" : {
+        "modelref" : true,
+        "id" : "db48a729f39c55e5c363d94c717bc3f3"
+      },
+      "getPSAppCounterRefs" : [ {
+        "getPSAppCounter" : {
+          "codeName" : "space_add_on_counters",
+          "counterType" : "DEDR",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCOUNTERS/space_add_on_counters.json",
+          "getGetPSAppDEAction" : {
+            "modelref" : true,
+            "id" : "space_index_addon_counter"
+          },
+          "memo" : "空间组件显示隐藏计算器",
+          "name" : "空间组件显示隐藏计算器",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          },
+          "uniqueTag" : "space_add_on_counters"
+        },
+        "refMode" : {
+          "srfdeid" : "SPACE"
+        },
+        "tag" : "db48a729f39c55e5c363d94c717bc3f3",
+        "id" : "db48a729f39c55e5c363d94c717bc3f3"
+      } ],
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
@@ -680,9 +712,17 @@
         "name" : "页面",
         "hidden" : false,
         "id" : "DRGroup"
+      }, {
+        "caption" : "基线",
+        "name" : "基线",
+        "hidden" : false,
+        "id" : "UsrDRGroup0524525844"
       } ],
       "getPSDEDRCtrlItems" : [ {
         "caption" : "页面",
+        "counterId" : "page",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "page",
         "getPSAppView" : {
           "modelref" : true,
@@ -692,6 +732,21 @@
         "getPSDEDRBarGroup" : {
           "modelref" : true,
           "id" : "DRGroup"
+        }
+      }, {
+        "caption" : "基线",
+        "counterId" : "baseline",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "baseline",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_space_tree_exp_view.json",
+          "viewType" : "DETREEEXPVIEW"
+        },
+        "getPSDEDRBarGroup" : {
+          "modelref" : true,
+          "id" : "UsrDRGroup0524525844"
         }
       } ],
       "getPSSysPFPlugin" : {
@@ -933,6 +988,68 @@
             "id" : "open_space_member@space"
           },
           "tooltip" : "空间成员",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "caption" : "编辑基本信息",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction5",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "toolbar_deuiaction5"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "编辑基本信息",
+            "codeName" : "edit_space_info",
+            "dataAccessAction" : "UPDATE",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_setting_view.json",
+              "viewType" : "DEEDITVIEW2"
+            },
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "space_edit_space_info",
+            "name" : "编辑空间基本信息",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "getPSNavigateContexts" : [ {
+              "key" : "SRFDEFAULTTOROUTEDEPTH",
+              "name" : "SRFDEFAULTTOROUTEDEPTH",
+              "value" : "3",
+              "rawValue" : true
+            } ],
+            "getPSNavigateParams" : [ {
+              "key" : "srfnav",
+              "name" : "srfnav",
+              "value" : "root:setting:info",
+              "rawValue" : true
+            } ],
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "scriptCode" : "const srfkey = context.space? context.space: data[0].id;\r\nwindow.location.hash=`/-/index/space=${srfkey}/space_index_view/srfnav=drgroup/space_setting_view/srfnav=base/space_base_info_edit_view/-`",
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "edit_space_info",
+            "uIActionType" : "DEUIACTION",
+            "id" : "edit_space_info@space"
+          },
+          "tooltip" : "编辑基本信息",
           "uIActionTarget" : "SINGLEKEY",
           "showCaption" : true,
           "showIcon" : true

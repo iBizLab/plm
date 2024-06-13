@@ -6,12 +6,24 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="template_flowauto_add_new_group_member_to_spacedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.space_member()" name="template_flowauto_add_new_group_member_to_spacespace_member" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Ispace_memberService))" name="space_memberservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Itemplate_flowService))" name="iBzSysTemplate_flowDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="template_flowauto_add_new_group_member_to_spacedefault" type="cn.ibizlab.plm.core.base.domain.template_flow" />
+                            <tns:global identifier="template_flowauto_add_new_group_member_to_spacespace_member" type="cn.ibizlab.plm.core.wiki.domain.space_member" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <endEvent id="begin_end" name="end"/>
-                        <sequenceFlow id="begin_end_line" sourceRef="begin" targetRef="begin_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_new_group_member_to_spaceprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置空间成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_new_group_member_to_spacedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="添加空间成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="template_flowauto_add_new_group_member_to_spaceend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
         </process>
     </definitions>

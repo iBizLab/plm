@@ -23,10 +23,10 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置发布信息"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagedebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="保存发布页面信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pagerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置发布时间"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="重置ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagepublish_pageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置发布状态"/>
@@ -45,8 +45,6 @@
                         <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam1_rawsfcode1" sourceRef="debugparam1" targetRef="rawsfcode1">
-                    </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam1_prepareparam4" sourceRef="gateway-prepareparam1" targetRef="prepareparam4">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $article_pagepublish_pagedefault:article_page();
@@ -59,7 +57,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam1_debugparam2" sourceRef="gateway-prepareparam1" targetRef="debugparam2">
+                    <sequenceFlow id="gateway-prepareparam1_prepareparam5" sourceRef="gateway-prepareparam1" targetRef="prepareparam5">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $article_pagepublish_pagedefault:article_page();
                                             $article_pagepublish_pagefilter:Map();
@@ -71,7 +69,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam2_deaction2" sourceRef="gateway-debugparam2" targetRef="deaction2">
+                    <sequenceFlow id="gateway-prepareparam5_deaction2" sourceRef="gateway-prepareparam5" targetRef="deaction2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $article_pagepublish_pagedefault:article_page();
                                             $article_pagepublish_pagefilter:Map();
@@ -83,7 +81,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam2_prepareparam2" sourceRef="gateway-debugparam2" targetRef="prepareparam2">
+                    <sequenceFlow id="gateway-prepareparam5_prepareparam2" sourceRef="gateway-prepareparam5" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $article_pagepublish_pagedefault:article_page();
                                             $article_pagepublish_pagefilter:Map();
@@ -96,6 +94,8 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_rawsfcode1" sourceRef="debugparam1" targetRef="rawsfcode1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
                     </sequenceFlow>
@@ -115,9 +115,9 @@
                             <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
                             <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
                             <endEvent id="gateway-prepareparam1_end" name="end"/>
-                            <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
-                            <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
-                            <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
-                            <endEvent id="gateway-debugparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
+                            <endEvent id="gateway-prepareparam5_end" name="end"/>
         </process>
     </definitions>

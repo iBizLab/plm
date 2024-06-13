@@ -49,6 +49,17 @@
     "logicType" : "CUSTOM",
     "name" : "wizardpanel_formload"
   } ],
+  "getPSDEFormItemUpdates" : [ {
+    "codeName" : "fill_guideline",
+    "name" : "fill_guideline",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "fill_guideline"
+    },
+    "getPSDEFIUpdateDetails" : [ {
+      "name" : "guideline_id"
+    } ]
+  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -134,6 +145,13 @@
   }, {
     "id" : "categories_name",
     "dataType" : 25
+  }, {
+    "id" : "guideline_id",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "GUIDELINE_ID",
+      "codeName" : "guideline_id"
+    }
   }, {
     "id" : "categories",
     "hidden" : true,
@@ -242,10 +260,10 @@
               "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
               "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
               "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-              "QUOTEURL" : "`recents/fetchrecent_access`"
+              "QUOTEURL" : "`recents/fetch_recent_access`"
             },
             "editorStyle" : "COLLAPSE",
             "editorType" : "HTMLEDITOR",
@@ -410,6 +428,10 @@
           "name" : "TYPE",
           "codeName" : "type"
         },
+        "getPSDEFormItemUpdate" : {
+          "modelref" : true,
+          "id" : "fill_guideline"
+        },
         "getPSEditor" : {
           "editorType" : "DROPDOWNLIST",
           "name" : "type",
@@ -488,6 +510,35 @@
           "layout" : "TABLE_24COL"
         },
         "valueItemName" : "categories",
+        "allowEmpty" : true,
+        "showCaption" : true
+      }, {
+        "caption" : "流程准则标识",
+        "codeName" : "guideline_id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "guideline_id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "GUIDELINE_ID",
+          "codeName" : "guideline_id"
+        },
+        "getPSEditor" : {
+          "editorType" : "TEXTBOX",
+          "maxLength" : 100,
+          "name" : "guideline_id"
+        },
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "resetItemName" : "type",
+        "resetItemNames" : [ "type" ],
         "allowEmpty" : true,
         "showCaption" : true
       }, {
@@ -697,6 +748,7 @@
       "id" : "评审信息"
     },
     "stepActions" : [ "NEXT" ],
+    "stepTag" : "fill_info",
     "firstForm" : true
   },
   "getPSLayout" : {

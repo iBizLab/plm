@@ -4,7 +4,7 @@
   "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/template_flow/PSDELOGICS/turn_work_item_archived.json",
   "logicName" : "定时将已完成工作项归档",
   "logicSubType" : "TIMERTASK",
-  "memo" : "通过定时任务，将已完成的工作项归档，结束时间超过三天",
+  "memo" : "通过定时任务，将已完成的工作项归档，结束时间超过三天。",
   "name" : "定时将已完成工作项归档",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
@@ -51,6 +51,26 @@
       "srcValue" : "scrum_task",
       "srcValueType" : "SRCVALUE"
     }, {
+      "dstFieldName" : "IS_ARCHIVED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "直接值[0] ==> work_item_filter[IS_ARCHIVED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "IS_DELETED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item_filter"
+      },
+      "name" : "直接值[0] ==> work_item_filter[IS_DELETED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
       "dstFieldName" : "f_end_at_datediffnow_gtandeq",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -81,7 +101,7 @@
       "srcValue" : "1000",
       "srcValueType" : "SRCVALUE"
     } ],
-    "topPos" : 331
+    "topPos" : 301
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -156,7 +176,7 @@
       "modelref" : true,
       "id" : "work_items"
     },
-    "topPos" : 450
+    "topPos" : 420
   }, {
     "codeName" : "END2",
     "leftPos" : 649,
@@ -198,7 +218,7 @@
       "modelref" : true,
       "id" : "work_items"
     },
-    "topPos" : 666,
+    "topPos" : 716,
     "parallelOutput" : true
   }, {
     "codeName" : "DEACTION1",
@@ -261,6 +281,7 @@
     "modelref" : true,
     "id" : "Begin"
   },
+  "userTag2" : "项目管理",
   "enableBackend" : true,
   "enableFront" : false
 }

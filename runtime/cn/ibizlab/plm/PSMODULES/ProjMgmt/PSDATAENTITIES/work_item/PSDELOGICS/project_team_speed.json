@@ -3,6 +3,7 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/project_team_speed.json",
   "logicName" : "团队速度",
+  "memo" : "团队速度报表数据源",
   "name" : "团队速度",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
@@ -41,7 +42,7 @@
     },
     "leftPos" : 370,
     "logicNodeType" : "RAWSQLCALL",
-    "name" : "直接SQL调用",
+    "name" : "查询团队速度",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -117,7 +118,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n  SUM(CASE WHEN t31.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count2,\r\n  COUNT(*) AS count,\r\n  COALESCE(t1.`ASSIGNEE_ID`, '未分组') AS filter_type\r\nFROM\r\n  `WORK_ITEM` t1\r\n  LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID`\r\nWHERE\r\n  t1.`PROJECT_ID` = ?\r\n  AND t1.`WORK_ITEM_TYPE_ID` LIKE '%story%'\r\n  AND t1.`IS_DELETED` = 0\r\n\tAND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR t1.CREATE_TIME BETWEEN ? and ? )\r\nGROUP BY\r\n  filter_type;\r\n",
+    "sql" : "SELECT\r\n  SUM(CASE WHEN t31.`TYPE` = 'completed' THEN 1 ELSE 0 END) AS count2,\r\n  COUNT(*) AS count,\r\n  COALESCE(t1.`SPRINT_ID`, '未加入迭代') AS filter_type\r\nFROM\r\n  `WORK_ITEM` t1\r\n  LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID`\r\nWHERE\r\n  t1.`PROJECT_ID` = ?\r\n--   AND t1.`WORK_ITEM_TYPE_ID` LIKE '%story%'\r\n  AND t1.`IS_DELETED` = 0\r\n\tAND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR t1.CREATE_TIME BETWEEN ? and ? )\r\nGROUP BY\r\n  filter_type;\r\n",
     "topPos" : 208,
     "fillDstLogicParam" : true
   } ],

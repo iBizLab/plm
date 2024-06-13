@@ -235,6 +235,21 @@
       "hidden" : true,
       "dataType" : 25
     }, {
+      "id" : "scope_type",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
+      }
+    }, {
+      "id" : "scope_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_ID",
+        "codeName" : "scope_id"
+      }
+    }, {
       "id" : "name",
       "dataType" : 25,
       "getPSAppDEField" : {
@@ -284,6 +299,94 @@
         "detailType" : "GROUPPANEL",
         "name" : "group1",
         "getPSDEFormDetails" : [ {
+          "caption" : "所属",
+          "codeName" : "scope_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 0,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_TYPE",
+            "codeName" : "scope_type"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "fillMap" : "{\"user\":\"user\",\"user_group\":\"user_group\",\"organization\":\"organization\"}",
+              "enablePerson" : "false",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorStyle" : "TEAM_PICKER",
+            "editorType" : "PICKER",
+            "handlerType" : "PickupText",
+            "name" : "scope_type",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "scope_id"
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "TEAM_PICKER",
+              "runtimeObject" : true
+            },
+            "valueItemName" : "scope_id",
+            "enableAC" : true,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "scope_id",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "所属对象",
+          "codeName" : "scope_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_ID",
+            "codeName" : "scope_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "scope_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
+          "showCaption" : true
+        }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.NAME"
           },
@@ -308,8 +411,8 @@
             "name" : "name"
           },
           "getPSLayoutPos" : {
-            "colLG" : 6,
-            "colMD" : 6,
+            "colLG" : 12,
+            "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
@@ -345,65 +448,44 @@
             }
           },
           "getPSLayoutPos" : {
-            "colLG" : 6,
-            "colMD" : 6,
+            "colLG" : 12,
+            "colMD" : 12,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : false,
           "showCaption" : true
         }, {
-          "codeName" : "grouppanel1",
+          "caption" : "可见范围",
+          "codeName" : "visibility",
+          "dataType" : 25,
           "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "name" : "grouppanel1",
-          "getPSDEFormDetails" : [ {
-            "caption" : "可见范围",
-            "codeName" : "visibility",
-            "dataType" : 25,
-            "detailStyle" : "DEFAULT",
-            "detailType" : "FORMITEM",
-            "enableCond" : 3,
-            "ignoreInput" : 0,
-            "labelPos" : "TOP",
-            "labelWidth" : 130,
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "visibility",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "VISIBILITY",
+            "codeName" : "visibility"
+          },
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST",
             "name" : "visibility",
-            "noPrivDisplayMode" : 1,
-            "getPSAppDEField" : {
-              "name" : "VISIBILITY",
-              "codeName" : "visibility"
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/visibility.json"
             },
-            "getPSEditor" : {
-              "editorType" : "DROPDOWNLIST",
-              "name" : "visibility",
-              "getPSAppCodeList" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/visibility.json"
-              },
-              "singleSelect" : true
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 12,
-              "colMD" : 12,
-              "layout" : "TABLE_24COL"
-            },
-            "allowEmpty" : false,
-            "needCodeListConfig" : true,
-            "showCaption" : true
-          } ],
-          "getPSLayout" : {
-            "childColLG" : -1,
-            "childColMD" : 24,
-            "childColSM" : -1,
-            "childColXS" : -1,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
+            "singleSelect" : true
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "infoGroupMode" : false,
-          "showCaption" : false
+          "allowEmpty" : false,
+          "needCodeListConfig" : true,
+          "showCaption" : true
         }, {
           "caption" : "描述",
           "codeName" : "description",
@@ -432,78 +514,57 @@
             "showMaxLength" : true
           },
           "getPSLayoutPos" : {
-            "colLG" : 12,
-            "colMD" : 12,
+            "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
           "showCaption" : true
         }, {
-          "codeName" : "grouppanel2",
+          "actionType" : "UIACTION",
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "TBB.TEXT.*.SAVE"
+          },
+          "caption" : "确定",
+          "codeName" : "button1",
           "detailStyle" : "DEFAULT",
-          "detailType" : "GROUPPANEL",
-          "name" : "grouppanel2",
-          "getPSDEFormDetails" : [ {
-            "actionType" : "UIACTION",
+          "detailType" : "BUTTON",
+          "name" : "button1",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "form_button1"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 4,
+            "colMD" : 4,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf0c7@FontAwesome",
+            "cssClass" : "fa fa-save"
+          },
+          "getPSUIAction" : {
             "getCapPSLanguageRes" : {
               "lanResTag" : "TBB.TEXT.*.SAVE"
             },
-            "caption" : "确定",
-            "codeName" : "button1",
-            "detailStyle" : "DEFAULT",
-            "detailType" : "BUTTON",
-            "name" : "button1",
-            "getPSAppViewUIAction" : {
-              "modelref" : true,
-              "id" : "form_button1"
-            },
-            "getPSLayoutPos" : {
-              "colLG" : 2,
-              "colMD" : 2,
-              "layout" : "TABLE_24COL"
-            },
+            "caption" : "保存",
+            "codeName" : "Save",
+            "fullCodeName" : "Save",
+            "name" : "编辑界面_保存操作",
             "getPSSysImage" : {
               "glyph" : "xf0c7@FontAwesome",
               "cssClass" : "fa fa-save"
             },
-            "getPSUIAction" : {
-              "getCapPSLanguageRes" : {
-                "lanResTag" : "TBB.TEXT.*.SAVE"
-              },
-              "caption" : "保存",
-              "codeName" : "Save",
-              "fullCodeName" : "Save",
-              "name" : "编辑界面_保存操作",
-              "getPSSysImage" : {
-                "glyph" : "xf0c7@FontAwesome",
-                "cssClass" : "fa fa-save"
-              },
-              "predefinedType" : "EDITVIEW_SAVEACTION",
-              "timeout" : 60000,
-              "getTooltipPSLanguageRes" : {
-                "lanResTag" : "TBB.TOOLTIP.*.SAVE"
-              },
-              "uIActionMode" : "SYS",
-              "uIActionTag" : "Save",
-              "uIActionType" : "DEUIACTION"
+            "predefinedType" : "EDITVIEW_SAVEACTION",
+            "timeout" : 60000,
+            "getTooltipPSLanguageRes" : {
+              "lanResTag" : "TBB.TOOLTIP.*.SAVE"
             },
-            "tooltip" : "确定",
-            "showCaption" : true
-          } ],
-          "getPSLayout" : {
-            "childColLG" : -1,
-            "childColMD" : 24,
-            "childColSM" : -1,
-            "childColXS" : -1,
-            "columnCount" : 24,
-            "layout" : "TABLE_24COL"
+            "uIActionMode" : "SYS",
+            "uIActionTag" : "Save",
+            "uIActionType" : "DEUIACTION"
           },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "infoGroupMode" : false,
-          "showCaption" : false
+          "tooltip" : "确定",
+          "showCaption" : true
         } ],
         "getPSLayout" : {
           "childColLG" : -1,
@@ -514,7 +575,8 @@
           "layout" : "TABLE_24COL"
         },
         "getPSLayoutPos" : {
-          "colMD" : 24,
+          "colLG" : 12,
+          "colMD" : 12,
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
@@ -651,6 +713,7 @@
   "viewType" : "DEEDITVIEW",
   "xDataControlName" : "form",
   "enableDP" : true,
+  "showCaptionBar" : false,
   "showDataInfoBar" : true,
   "modelid" : "758da90a5eff6e1e4c7aa43cb4ab86d4",
   "modeltype" : "PSAPPDEVIEW"

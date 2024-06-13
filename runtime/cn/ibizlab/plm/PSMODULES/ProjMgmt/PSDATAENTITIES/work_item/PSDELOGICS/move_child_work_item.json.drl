@@ -35,18 +35,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.move_child_work_item;
                         update(work_itemmove_child_work_itemfor_temp_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[子工作项继承父工作项的顶级标识]
-            rule "prepareparam3"
-            ruleflow-group "work_itemmove_child_work_itemprepareparam3"
-            when
-            then
-                            work_itemmove_child_work_itemfor_temp_obj.set("topid",work_itemmove_child_work_itemdefault.get("topid"));
-                        update(work_itemmove_child_work_itemdefault);//更新fact中变量值
-                        update(work_itemmove_child_work_itemchild_page);//更新fact中变量值
-                        update(work_itemmove_child_work_itemfilter);//更新fact中变量值
-                        update(work_itemmove_child_work_itemfor_temp_obj);//更新fact中变量值
-            end
-
             //逻辑处理节点[获取所有子工作项]
             rule "dedataset1"
             ruleflow-group "work_itemmove_child_work_itemdedataset1"
@@ -98,18 +86,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.move_child_work_item;
             ruleflow-group "work_itemmove_child_work_itemdelogic1"
             when
             then
-                        update(work_itemmove_child_work_itemdefault);//更新fact中变量值
-                        update(work_itemmove_child_work_itemchild_page);//更新fact中变量值
-                        update(work_itemmove_child_work_itemfilter);//更新fact中变量值
-                        update(work_itemmove_child_work_itemfor_temp_obj);//更新fact中变量值
-            end
-
-            //逻辑处理节点[将父标识当做顶级标识]
-            rule "prepareparam4"
-            ruleflow-group "work_itemmove_child_work_itemprepareparam4"
-            when
-            then
-                            work_itemmove_child_work_itemfor_temp_obj.set("topid",work_itemmove_child_work_itemdefault.get("id"));
                         update(work_itemmove_child_work_itemdefault);//更新fact中变量值
                         update(work_itemmove_child_work_itemchild_page);//更新fact中变量值
                         update(work_itemmove_child_work_itemfilter);//更新fact中变量值

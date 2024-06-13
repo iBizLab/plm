@@ -74,6 +74,7 @@
         "actionTarget" : "NONE",
         "caption" : "新建史诗",
         "codeName" : "new_kanban_epic",
+        "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -89,6 +90,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
         "getPSNavigateParams" : [ {
           "key" : "work_item_type_id",
@@ -118,6 +123,7 @@
         "actionTarget" : "NONE",
         "caption" : "新建特性",
         "codeName" : "new_kanban_feature",
+        "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -133,6 +139,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
         "getPSNavigateParams" : [ {
           "key" : "work_item_type_id",
@@ -162,6 +172,7 @@
         "actionTarget" : "NONE",
         "caption" : "新建用户故事",
         "codeName" : "new_kanban_story",
+        "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -177,6 +188,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
         "getPSNavigateParams" : [ {
           "key" : "work_item_type_id",
@@ -206,6 +221,7 @@
         "actionTarget" : "NONE",
         "caption" : "新建任务",
         "codeName" : "new_kanban_task",
+        "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -221,6 +237,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
         "getPSNavigateParams" : [ {
           "key" : "work_item_type_id",
@@ -250,6 +270,7 @@
         "actionTarget" : "NONE",
         "caption" : "新建缺陷",
         "codeName" : "new_kanban_bug",
+        "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -265,6 +286,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
         "getPSNavigateParams" : [ {
           "key" : "work_item_type_id",
@@ -294,6 +319,7 @@
         "actionTarget" : "NONE",
         "caption" : "新建事务",
         "codeName" : "new_kanban_issue",
+        "dataAccessAction" : "SUBDATA",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -309,6 +335,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
         },
         "getPSNavigateParams" : [ {
           "key" : "work_item_type_id",
@@ -497,6 +527,14 @@
               "itemStyle" : "INFO",
               "itemType" : "BUTTON",
               "name" : "more_button",
+              "getPSControlLogics" : [ {
+                "itemName" : "more_button",
+                "logicTag" : "itemlayoutpanel",
+                "logicType" : "SCRIPT",
+                "name" : "more_button",
+                "scriptCode" : "context.srfreadonly != true",
+                "triggerType" : "ITEMVISIBLE"
+              } ],
               "getPSLayoutPos" : {
                 "grow" : -1,
                 "layout" : "FLEX"
@@ -921,17 +959,17 @@
   },
   "getPSDEDataViewDataItems" : [ {
     "dataType" : 25,
-    "name" : "identifier",
-    "getPSAppDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
-    }
-  }, {
-    "dataType" : 25,
     "name" : "title",
     "getPSAppDEField" : {
       "name" : "TITLE",
       "codeName" : "title"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "identifier",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
     }
   }, {
     "dataType" : 25,
@@ -2938,18 +2976,18 @@
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
           "caption" : "移入发布",
-          "codeName" : "shift_in_version",
+          "codeName" : "shift_in_release",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_pick_up_around_view.json",
             "viewType" : "DEPICKUPVIEW2"
           },
           "frontProcessType" : "WIZARD",
-          "fullCodeName" : "work_item_shift_in_version",
+          "fullCodeName" : "work_item_shift_in_release",
           "name" : "移入发布",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "shift_in_version"
+            "id" : "shift_in_release"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -2963,11 +3001,11 @@
           "successMsg" : "成功移入发布",
           "timeout" : 60000,
           "uIActionMode" : "BACKEND",
-          "uIActionTag" : "shift_in_version",
+          "uIActionTag" : "shift_in_release",
           "uIActionType" : "DEUIACTION",
           "enableConfirm" : true,
           "reloadData" : true,
-          "id" : "shift_in_version@work_item"
+          "id" : "shift_in_release@work_item"
         },
         "addSeparator" : false,
         "showCaption" : true,
@@ -2977,16 +3015,6 @@
     },
     "enableSort" : false
   }, {
-    "caption" : "编号",
-    "dataItemName" : "identifier",
-    "itemType" : "DATAITEM",
-    "name" : "IDENTIFIER",
-    "getPSAppDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
-    },
-    "enableSort" : true
-  }, {
     "caption" : "标题",
     "dataItemName" : "title",
     "itemType" : "DATAITEM",
@@ -2994,6 +3022,16 @@
     "getPSAppDEField" : {
       "name" : "TITLE",
       "codeName" : "title"
+    },
+    "enableSort" : true
+  }, {
+    "caption" : "编号",
+    "dataItemName" : "identifier",
+    "itemType" : "DATAITEM",
+    "name" : "IDENTIFIER",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
     },
     "enableSort" : true
   } ],

@@ -128,447 +128,140 @@
     "detailType" : "FORMPAGE",
     "name" : "formpage1",
     "getPSDEFormDetails" : [ {
-      "caption" : "通知设置基本信息",
+      "caption" : "消息设置",
       "codeName" : "group1",
       "detailStyle" : "DEFAULT",
       "detailType" : "GROUPPANEL",
       "name" : "group1",
       "getPSDEFormDetails" : [ {
         "buildInActions" : 2,
+        "caption" : "消息设置",
         "codeName" : "setting_model",
-        "getContentPSControl" : {
-          "codeName" : "list",
-          "controlType" : "LIST",
-          "getCreatePSControlAction" : {
-            "modelref" : true,
-            "id" : "create",
-            "actionName" : "Create",
-            "actionType" : "DEACTION",
-            "dataAccessAction" : "CREATE",
-            "name" : "create",
-            "getPSAppDEMethod" : {
-              "modelref" : true,
-              "id" : "Create"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-            }
-          },
-          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event/PSLISTS/list.json",
-          "getFetchPSControlAction" : {
-            "modelref" : true,
-            "id" : "fetch",
-            "actionType" : "DEDATASET",
-            "name" : "fetch",
-            "getPSAppDEMethod" : {
-              "modelref" : true,
-              "id" : "FetchDefault"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-            }
-          },
-          "getGetPSControlAction" : {
-            "modelref" : true,
-            "id" : "load",
-            "actionName" : "Get",
-            "actionType" : "DEACTION",
-            "dataAccessAction" : "READ",
-            "name" : "load",
-            "getPSAppDEMethod" : {
-              "modelref" : true,
-              "id" : "Get"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-            }
-          },
-          "groupMode" : "AUTO",
-          "getGroupPSAppDEField" : {
-            "name" : "GROUP",
-            "codeName" : "group"
-          },
-          "getItemPSLayoutPanel" : {
-            "getAllPSPanelFields" : [ {
-              "id" : "name",
-              "viewFieldName" : "NAME"
+        "contentType" : "REPEATER",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "MDCTRL",
+        "name" : "setting_model",
+        "getPSAppDEField" : {
+          "name" : "SETTING_MODEL",
+          "codeName" : "setting_model"
+        },
+        "getPSDEFormDetails" : [ {
+          "codeName" : "grouppanel2",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel2",
+          "getPSDEFormDetails" : [ {
+            "codeName" : "grouppanel1",
+            "detailStyle" : "DEFAULT",
+            "detailType" : "GROUPPANEL",
+            "name" : "grouppanel1",
+            "getPSDEFormDetails" : [ {
+              "caption" : "名称",
+              "codeName" : "name",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "name",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "SPAN",
+                "name" : "name",
+                "enableLinkView" : false
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 12,
+                "colMD" : 12,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "repeatContent" : true
             }, {
-              "id" : "id",
-              "hidden" : true,
-              "viewFieldName" : "id"
-            }, {
-              "id" : "msg_type",
-              "viewFieldName" : "MSG_TYPE"
+              "codeName" : "msg_type",
+              "dataType" : 25,
+              "detailStyle" : "DEFAULT",
+              "detailType" : "FORMITEM",
+              "enableCond" : 3,
+              "ignoreInput" : 0,
+              "labelPos" : "NONE",
+              "labelWidth" : 0,
+              "name" : "msg_type",
+              "noPrivDisplayMode" : 1,
+              "getPSEditor" : {
+                "editorType" : "CHECKBOXLIST",
+                "name" : "msg_type",
+                "getPSAppCodeList" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__WFInfomMsgType.json"
+                }
+              },
+              "getPSLayoutPos" : {
+                "colLG" : 12,
+                "colMD" : 12,
+                "layout" : "TABLE_24COL"
+              },
+              "allowEmpty" : true,
+              "needCodeListConfig" : true,
+              "repeatContent" : true
             } ],
-            "codeName" : "usr0428284495",
-            "controlType" : "PANEL",
-            "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event/PSPANELS/usr0428284495.json",
-            "hookEventNames" : [ "ONCHANGE" ],
-            "layoutMode" : "TABLE_24COL",
-            "logicName" : "List_列表项面板",
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-            },
-            "getPSControlLogics" : [ {
-              "eventNames" : "onChange",
-              "itemName" : "MSG_TYPE",
-              "logicTag" : "setting_model_list_itempanel",
-              "logicType" : "APPDEUIACTION",
-              "name" : "logic",
-              "getPSAppDEUIAction" : {
-                "caption" : "保存变更",
-                "codeName" : "SaveChanges",
-                "fullCodeName" : "SaveChanges",
-                "name" : "保存变更",
-                "predefinedType" : "EDITVIEW_SAVEACTION",
-                "timeout" : 60000,
-                "uIActionMode" : "SYS",
-                "uIActionTag" : "SaveChanges",
-                "uIActionType" : "DEUIACTION"
-              }
-            } ],
-            "getPSControlParam" : { },
             "getPSLayout" : {
-              "childColLG" : -1,
-              "childColMD" : 24,
+              "childColLG" : 12,
+              "childColMD" : 12,
               "childColSM" : -1,
               "childColXS" : -1,
               "columnCount" : 24,
               "layout" : "TABLE_24COL"
             },
-            "getRootPSPanelItems" : [ {
-              "itemStyle" : "DEFAULT",
-              "itemType" : "CONTAINER",
-              "name" : "page_container",
-              "getPSLayout" : {
-                "dir" : "column",
-                "layout" : "FLEX"
-              },
-              "getPSLayoutPos" : {
-                "colMD" : 24,
-                "layout" : "TABLE_24COL"
-              },
-              "getPSPanelItems" : [ {
-                "caption" : "栅格容器",
-                "itemStyle" : "DEFAULT",
-                "itemType" : "CONTAINER",
-                "name" : "container_grid",
-                "getPSLayout" : {
-                  "layout" : "SIMPLEFLEX"
-                },
-                "getPSLayoutPos" : {
-                  "grow" : -1,
-                  "layout" : "FLEX"
-                },
-                "getPSPanelItems" : [ {
-                  "caption" : "面板容器",
-                  "itemStyle" : "DEFAULT",
-                  "itemType" : "CONTAINER",
-                  "name" : "container1",
-                  "getPSLayout" : {
-                    "childColLG" : -1,
-                    "childColMD" : 24,
-                    "childColSM" : -1,
-                    "childColXS" : -1,
-                    "columnCount" : 24,
-                    "layout" : "TABLE_24COL"
-                  },
-                  "getPSLayoutPos" : {
-                    "grow" : 4,
-                    "layout" : "SIMPLEFLEX"
-                  },
-                  "getPSPanelItems" : [ {
-                    "caption" : "容器",
-                    "itemStyle" : "DEFAULT",
-                    "itemType" : "CONTAINER",
-                    "name" : "container",
-                    "getPSLayout" : {
-                      "align" : "flex-start",
-                      "dir" : "row",
-                      "layout" : "FLEX"
-                    },
-                    "getPSLayoutPos" : {
-                      "colMD" : 24,
-                      "layout" : "TABLE_24COL"
-                    },
-                    "getPSPanelItems" : [ {
-                      "caption" : "文本框",
-                      "itemStyle" : "DEFAULT",
-                      "itemType" : "FIELD",
-                      "name" : "name",
-                      "getPSEditor" : {
-                        "editorType" : "SPAN",
-                        "name" : "name",
-                        "predefinedType" : "FIELD_TEXTBOX",
-                        "enableLinkView" : false
-                      },
-                      "getPSLayoutPos" : {
-                        "grow" : -1,
-                        "layout" : "FLEX",
-                        "spacingLeft" : "OUTERLARGE"
-                      },
-                      "viewFieldName" : "NAME",
-                      "hidden" : false,
-                      "showCaption" : false
-                    }, {
-                      "caption" : "文本(动态)",
-                      "itemStyle" : "DEFAULT",
-                      "itemType" : "FIELD",
-                      "name" : "id",
-                      "getPSEditor" : {
-                        "editorType" : "HIDDEN",
-                        "name" : "id"
-                      },
-                      "getPSLayoutPos" : {
-                        "grow" : -1,
-                        "layout" : "FLEX"
-                      },
-                      "viewFieldName" : "id",
-                      "hidden" : true,
-                      "showCaption" : false
-                    } ]
-                  } ]
-                }, {
-                  "caption" : "面板容器",
-                  "itemStyle" : "DEFAULT",
-                  "itemType" : "CONTAINER",
-                  "name" : "container2",
-                  "getPSLayout" : {
-                    "childColLG" : -1,
-                    "childColMD" : 24,
-                    "childColSM" : -1,
-                    "childColXS" : -1,
-                    "columnCount" : 24,
-                    "layout" : "TABLE_24COL"
-                  },
-                  "getPSLayoutPos" : {
-                    "grow" : 4,
-                    "layout" : "SIMPLEFLEX"
-                  },
-                  "getPSPanelItems" : [ {
-                    "caption" : "容器",
-                    "itemStyle" : "DEFAULT",
-                    "itemType" : "CONTAINER",
-                    "name" : "container4",
-                    "getPSLayout" : {
-                      "align" : "flex-start",
-                      "dir" : "row",
-                      "layout" : "FLEX"
-                    },
-                    "getPSLayoutPos" : {
-                      "colMD" : 24,
-                      "layout" : "TABLE_24COL"
-                    },
-                    "getPSPanelItems" : [ {
-                      "caption" : "文本框",
-                      "itemStyle" : "DEFAULT",
-                      "itemType" : "FIELD",
-                      "name" : "msg_type",
-                      "getPSEditor" : {
-                        "editorType" : "CHECKBOXLIST",
-                        "name" : "msg_type",
-                        "getPSAppCodeList" : {
-                          "modelref" : true,
-                          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__WFInfomMsgType.json"
-                        },
-                        "predefinedType" : "FIELD_TEXTBOX"
-                      },
-                      "getPSLayoutPos" : {
-                        "grow" : -1,
-                        "layout" : "FLEX"
-                      },
-                      "viewFieldName" : "MSG_TYPE",
-                      "hidden" : false,
-                      "showCaption" : false
-                    } ]
-                  } ]
-                }, {
-                  "caption" : "面板容器",
-                  "itemStyle" : "DEFAULT",
-                  "itemType" : "CONTAINER",
-                  "name" : "container3",
-                  "getPSLayout" : {
-                    "childColLG" : -1,
-                    "childColMD" : 24,
-                    "childColSM" : -1,
-                    "childColXS" : -1,
-                    "columnCount" : 24,
-                    "layout" : "TABLE_24COL"
-                  },
-                  "getPSLayoutPos" : {
-                    "grow" : 4,
-                    "layout" : "SIMPLEFLEX"
-                  }
-                } ],
-                "predefinedType" : "CONTAINER_GRID"
-              } ]
-            } ],
-            "name" : "setting_model_list_itempanel",
-            "modelid" : "9EF686B5-2BAA-45B5-91CB-DE8E11D551FC",
-            "modeltype" : "PSSYSVIEWPANEL"
-          },
-          "logicName" : "List",
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-          },
-          "getPSControlHandler" : {
-            "getPSHandlerActions" : [ {
-              "actionName" : "Get",
-              "actionType" : "DEACTION",
-              "dataAccessAction" : "READ",
-              "name" : "load",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "Get"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-              }
-            }, {
-              "actionName" : "Create",
-              "actionType" : "DEACTION",
-              "dataAccessAction" : "CREATE",
-              "name" : "create",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "Create"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-              }
-            }, {
-              "actionName" : "Update",
-              "actionType" : "DEACTION",
-              "dataAccessAction" : "UPDATE",
-              "name" : "update",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "Update"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-              }
-            }, {
-              "actionName" : "Remove",
-              "actionType" : "DEACTION",
-              "dataAccessAction" : "DELETE",
-              "name" : "remove",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "Remove"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-              }
-            }, {
-              "actionType" : "DEDATASET",
-              "name" : "fetch",
-              "getPSAppDEMethod" : {
-                "modelref" : true,
-                "id" : "FetchDefault"
-              },
-              "getPSAppDataEntity" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-              }
-            } ],
-            "userDRAction" : "READ",
-            "enableDEFieldPrivilege" : false,
-            "id" : "列表控件处理器"
-          },
-          "getPSControlParam" : {
-            "autoLoad" : true,
-            "showBusyIndicator" : true
-          },
-          "getPSDEListDataItems" : [ {
-            "dataType" : 25,
-            "name" : "id"
-          }, {
-            "dataType" : 25,
-            "name" : "group"
-          }, {
-            "dataType" : 9,
-            "getFrontPSCodeList" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__WFInfomMsgType.json"
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
             },
-            "name" : "msg_type"
-          }, {
-            "dataType" : 25,
-            "name" : "name"
-          }, {
-            "dataType" : 25,
-            "name" : "srfkey",
-            "getPSAppDEField" : {
-              "name" : "ID",
-              "codeName" : "id"
-            }
-          }, {
-            "dataType" : 25,
-            "name" : "srfmajortext",
-            "getPSAppDEField" : {
-              "name" : "NAME",
-              "codeName" : "name"
-            }
+            "infoGroupMode" : false,
+            "repeatContent" : true,
+            "showCaption" : false
           } ],
-          "pagingSize" : 1000,
-          "getRemovePSControlAction" : {
-            "modelref" : true,
-            "id" : "remove",
-            "actionName" : "Remove",
-            "actionType" : "DEACTION",
-            "dataAccessAction" : "DELETE",
-            "name" : "remove",
-            "getPSAppDEMethod" : {
-              "modelref" : true,
-              "id" : "Remove"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-            }
+          "getPSLayout" : {
+            "childColLG" : -1,
+            "childColMD" : 24,
+            "childColSM" : -1,
+            "childColXS" : -1,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
           },
-          "getUpdatePSControlAction" : {
-            "modelref" : true,
-            "id" : "update",
-            "actionName" : "Update",
-            "actionType" : "DEACTION",
-            "dataAccessAction" : "UPDATE",
-            "name" : "update",
-            "getPSAppDEMethod" : {
-              "modelref" : true,
-              "id" : "Update"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_event.json"
-            }
+          "getPSLayoutPos" : {
+            "colLG" : 16,
+            "colMD" : 16,
+            "layout" : "TABLE_24COL"
           },
-          "hasWFDataItems" : false,
-          "enableGroup" : true,
-          "enableRowEdit" : false,
-          "enableRowEditGroup" : false,
-          "enableRowEditOrder" : false,
-          "enableRowNew" : false,
-          "noSort" : false,
-          "showHeader" : true,
-          "name" : "setting_model_list",
-          "modelid" : "8532217D-475D-4721-B541-001B12559E4F",
-          "modeltype" : "PSDELIST"
-        },
-        "contentType" : "LIST",
-        "detailStyle" : "DEFAULT",
-        "detailType" : "MDCTRL",
-        "name" : "setting_model",
+          "infoGroupMode" : false,
+          "repeatContent" : true,
+          "showCaption" : false
+        }, {
+          "codeName" : "id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "id",
+          "noPrivDisplayMode" : 1,
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
+          "repeatContent" : true
+        } ],
         "getPSLayout" : {
           "childColLG" : -1,
           "childColMD" : 24,
@@ -582,7 +275,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : false
+        "showCaption" : true
       } ],
       "getPSLayout" : {
         "childColLG" : -1,
@@ -593,10 +286,7 @@
         "layout" : "TABLE_24COL"
       },
       "getPSLayoutPos" : {
-        "colLG" : 22,
-        "colLGOffset" : 1,
-        "colMD" : 22,
-        "colMDOffset" : 1,
+        "colMD" : 24,
         "layout" : "TABLE_24COL"
       },
       "infoGroupMode" : false,
@@ -684,6 +374,6 @@
     }
   },
   "noTabHeader" : true,
-  "modelid" : "0122cf8a2f9dc169d5601c6d1f83cd60",
+  "modelid" : "55619e09d85925b704460a68689a7257",
   "modeltype" : "PSDEFORM_EDITFORM"
 }

@@ -75,15 +75,13 @@
       "editMode" : true
     }
   } ],
+  "getPSAppViewNavParams" : [ {
+    "key" : "n_scope_type_eq",
+    "name" : "n_scope_type_eq",
+    "value" : "scope_type",
+    "rawValue" : false
+  } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "项目主视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_scrum_main_view.json",
-      "viewType" : "DETABEXPVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "新建项目",
@@ -91,6 +89,14 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_create_wizard_view.json",
       "viewType" : "DEWIZARDVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "项目主视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_scrum_main_view.json",
+      "viewType" : "DETABEXPVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -120,25 +126,42 @@
         "cssClass" : "fa fa-plus"
       },
       "getPSUIAction" : {
+        "actionTarget" : "NONE",
         "caption" : "新建项目",
-        "codeName" : "new_project",
+        "codeName" : "create_project",
         "dataAccessAction" : "SRFUR__PROJECT_M",
-        "fullCodeName" : "new_project",
-        "name" : "表格界面_新建项目",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_create_wizard_view.json",
+          "viewType" : "DEWIZARDVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "project_create_project",
+        "name" : "新建项目",
+        "getNextPSUIAction" : {
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "modelref" : true,
+          "id" : "open_new_project@project"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+        },
         "getPSDEOPPriv" : {
           "modelref" : true,
           "id" : "SRFUR__PROJECT_M"
         },
-        "predefinedType" : "GRIDVIEW_NEWACTION",
-        "refreshMode" : 1,
         "timeout" : 60000,
-        "uIActionMode" : "SYS",
-        "uIActionTag" : "new_project",
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "create_project",
         "uIActionType" : "DEUIACTION",
-        "globalUIAction" : true,
-        "reloadData" : true
+        "id" : "create_project@project"
       },
       "tooltip" : "新建项目",
+      "uIActionTarget" : "NONE",
       "showCaption" : true,
       "showIcon" : true
     } ],
@@ -169,11 +192,6 @@
     "groupMode" : "NONE",
     "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
-    "minorSortDir" : "DESC",
-    "getMinorSortPSAppDEField" : {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
-    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
@@ -826,6 +844,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -1063,7 +1082,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "组织项目",
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.PROJECT.GRID_VIEW_ORG"

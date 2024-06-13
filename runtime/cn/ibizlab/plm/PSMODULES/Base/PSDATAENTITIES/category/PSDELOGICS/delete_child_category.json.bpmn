@@ -24,16 +24,16 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除类别"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置过滤器参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="类别实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="循环调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="删除类别及子类别"/>
                         <endEvent id="delogic1_end" name="end"/>
                         <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="结束前的默认参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="判断节点（无操作）"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="上级的是否叶子节点变更"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="上级的是否叶子节点变更"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="模块下模块"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="修改需求信息"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="上级的是否叶子节点变更"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categorydedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="子产品下模块"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="categorydelete_child_categoryend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end2_end" name="end"/>
@@ -46,7 +46,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-dedataset1_debugparam2" sourceRef="gateway-dedataset1" targetRef="debugparam2">
+                    <sequenceFlow id="gateway-dedataset1_prepareparam4" sourceRef="gateway-dedataset1" targetRef="prepareparam4">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $categorydelete_child_categorydefault:category();
                                             $categorydelete_child_categorycategory_page:category();
@@ -74,9 +74,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_delogic1" sourceRef="loopsubcall1" targetRef="delogic1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_debugparam2" sourceRef="loopsubcall1" targetRef="debugparam2">
+                    <sequenceFlow id="loopsubcall1_prepareparam4" sourceRef="loopsubcall1" targetRef="prepareparam4">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam2_prepareparam2" sourceRef="gateway-debugparam2" targetRef="prepareparam2">
+                    <sequenceFlow id="gateway-prepareparam4_prepareparam2" sourceRef="gateway-prepareparam4" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $categorydelete_child_categorydefault:category();
                                             $categorydelete_child_categorycategory_page:category();
@@ -89,7 +89,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam2_prepareparam3" sourceRef="gateway-debugparam2" targetRef="prepareparam3">
+                    <sequenceFlow id="gateway-prepareparam4_prepareparam3" sourceRef="gateway-prepareparam4" targetRef="prepareparam3">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $categorydelete_child_categorydefault:category();
                                             $categorydelete_child_categorycategory_page:category();
@@ -102,7 +102,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-debugparam2_end2" sourceRef="gateway-debugparam2" targetRef="end2">
+                    <sequenceFlow id="gateway-prepareparam4_end2" sourceRef="gateway-prepareparam4" targetRef="end2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $categorydelete_child_categorydefault:category();
                                             $categorydelete_child_categorycategory_page:category();
@@ -114,6 +114,8 @@
                                 eval((RuleUtils.test($categorydelete_child_categorydefault.get("pid"),"ISNULL",""))&&(RuleUtils.test($categorydelete_child_categorydefault.get("sectionId"),"ISNULL","")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset2" sourceRef="prepareparam3" targetRef="dedataset2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
                     </sequenceFlow>
@@ -144,8 +146,6 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall1_deaction2" sourceRef="rawsqlcall1" targetRef="deaction2">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_dedataset2" sourceRef="prepareparam3" targetRef="dedataset2">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset2_end2" sourceRef="gateway-dedataset2" targetRef="end2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -181,10 +181,10 @@
                             <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
                             <endEvent id="gateway-dedataset1_end" name="end"/>
-                            <exclusiveGateway id="gateway-debugparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-debugparam2_end_line"></exclusiveGateway>
-                            <sequenceFlow id="debugparam2_gateway-debugparam2_gatewayline" sourceRef="debugparam2" targetRef="gateway-debugparam2"></sequenceFlow>
-                            <sequenceFlow id="gateway-debugparam2_end_line" sourceRef="gateway-debugparam2" targetRef="gateway-debugparam2_end"/>
-                            <endEvent id="gateway-debugparam2_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam4" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam4_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam4_gateway-prepareparam4_gatewayline" sourceRef="prepareparam4" targetRef="gateway-prepareparam4"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam4_end_line" sourceRef="gateway-prepareparam4" targetRef="gateway-prepareparam4_end"/>
+                            <endEvent id="gateway-prepareparam4_end" name="end"/>
                             <exclusiveGateway id="gateway-dedataset3" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset3_end_line"></exclusiveGateway>
                             <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>

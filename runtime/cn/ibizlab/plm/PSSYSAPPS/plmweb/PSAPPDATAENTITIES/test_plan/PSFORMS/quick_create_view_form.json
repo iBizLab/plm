@@ -68,6 +68,109 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
   },
+  "getPSDEFormItemVRs" : [ {
+    "checkMode" : 1,
+    "name" : "表单项值规则",
+    "getPSDEFValueRule" : {
+      "codeName" : "START_AT",
+      "name" : "开始时间",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "[条件组]OR",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "ISNULL",
+            "condType" : "SIMPLE",
+            "dEFName" : "START_AT",
+            "name" : "[常规条件] 值为空(Nil)"
+          }, {
+            "condOp" : "OR",
+            "condType" : "GROUP",
+            "name" : "[条件组]OR",
+            "getPSDEFVRConditions" : [ {
+              "condOp" : "ISNULL",
+              "condType" : "SIMPLE",
+              "dEFName" : "END_AT",
+              "name" : "[常规条件] 值为空(Nil)"
+            }, {
+              "condOp" : "LTANDEQ",
+              "condType" : "SIMPLE",
+              "dEFName" : "START_AT",
+              "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
+              "paramType" : "ENTITYFIELD",
+              "paramValue" : "END_AT",
+              "ruleInfo" : "开始时间必须小于等于发布时间"
+            } ],
+            "ruleInfo" : "开始时间必须小于等于发布时间"
+          } ],
+          "ruleInfo" : "开始时间必须小于等于发布时间"
+        } ],
+        "ruleInfo" : "开始时间必须小于等于发布时间"
+      },
+      "ruleInfo" : "开始时间必须小于等于发布时间",
+      "checkDefault" : true,
+      "defaultMode" : false,
+      "enableBackend" : true,
+      "enableFront" : true
+    },
+    "getPSDEFormItemName" : "start_at",
+    "valueRuleType" : "DEFVALUERULE"
+  }, {
+    "checkMode" : 1,
+    "name" : "表单项值规则",
+    "getPSDEFValueRule" : {
+      "codeName" : "END_AT",
+      "name" : "结束时间",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condOp" : "OR",
+          "condType" : "GROUP",
+          "name" : "[条件组]OR",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "ISNULL",
+            "condType" : "SIMPLE",
+            "dEFName" : "END_AT",
+            "name" : "[常规条件] 值为空(Nil)"
+          }, {
+            "condOp" : "OR",
+            "condType" : "GROUP",
+            "name" : "[条件组]OR",
+            "getPSDEFVRConditions" : [ {
+              "condOp" : "GTANDEQ",
+              "condType" : "SIMPLE",
+              "dEFName" : "END_AT",
+              "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
+              "paramType" : "ENTITYFIELD",
+              "paramValue" : "START_AT",
+              "ruleInfo" : "发布时间必须大于等于开始时间"
+            }, {
+              "condOp" : "ISNULL",
+              "condType" : "SIMPLE",
+              "dEFName" : "START_AT",
+              "name" : "[常规条件] 值为空(Nil)"
+            } ],
+            "ruleInfo" : "发布时间必须大于等于开始时间"
+          } ],
+          "ruleInfo" : "发布时间必须大于等于开始时间"
+        } ],
+        "ruleInfo" : "发布时间必须大于等于开始时间"
+      },
+      "ruleInfo" : "发布时间必须大于等于开始时间",
+      "checkDefault" : true,
+      "defaultMode" : false,
+      "enableBackend" : true,
+      "enableFront" : true
+    },
+    "getPSDEFormItemName" : "end_at",
+    "valueRuleType" : "DEFVALUERULE"
+  } ],
   "getPSDEFormItems" : [ {
     "id" : "srfupdatedate",
     "hidden" : true,
@@ -162,7 +265,15 @@
       "codeName" : "release_name"
     }
   }, {
-    "id" : "categoryies",
+    "id" : "categories_name",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "CATEGORIES_NAME",
+      "codeName" : "categories_name"
+    }
+  }, {
+    "id" : "categories",
+    "hidden" : true,
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "CATEGORIES",
@@ -198,6 +309,12 @@
       "name" : "PROJECT_ID",
       "codeName" : "project_id"
     }
+  }, {
+    "id" : "checkid",
+    "hidden" : true,
+    "dataType" : 25,
+    "createDVT" : "APPDATA",
+    "createDV" : "library"
   }, {
     "id" : "release_id",
     "hidden" : true,
@@ -265,7 +382,8 @@
         "getPSEditor" : {
           "editorType" : "TEXTBOX",
           "maxLength" : 200,
-          "name" : "name"
+          "name" : "name",
+          "placeHolder" : "输入计划名称"
         },
         "getPSLayoutPos" : {
           "colLG" : 24,
@@ -280,7 +398,7 @@
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
-        "enableCond" : 3,
+        "enableCond" : 1,
         "ignoreInput" : 0,
         "labelPos" : "TOP",
         "labelWidth" : 130,
@@ -290,6 +408,19 @@
           "name" : "LIBRARY_NAME",
           "codeName" : "library_name"
         },
+        "getPSDEFDGroupLogics" : [ {
+          "groupOP" : "AND",
+          "logicCat" : "ITEMENABLE",
+          "logicType" : "GROUP",
+          "name" : "表单成员[library_name][表单项启用]逻辑",
+          "getPSDEFDLogics" : [ {
+            "condOP" : "ISNULL",
+            "dEFDName" : "checkid",
+            "logicType" : "SINGLE"
+          } ],
+          "relatedDetailNames" : [ "checkid" ],
+          "notMode" : false
+        } ],
         "getPSEditor" : {
           "editorParams" : {
             "AC" : "TRUE",
@@ -356,6 +487,7 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/TestMgmt__test_plan_type.json"
           },
+          "placeHolder" : "选择测试分类",
           "singleSelect" : true
         },
         "getPSLayoutPos" : {
@@ -537,7 +669,7 @@
             },
             "getPSAppDEDataSet" : {
               "modelref" : true,
-              "id" : "fetch_default"
+              "id" : "fetch_main"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -566,13 +698,14 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
                     "viewType" : "DETREEEXPVIEW"
                   },
-                  "frontProcessType" : "WIZARD",
+                  "frontProcessType" : "OTHER",
                   "fullCodeName" : "project_open_global_setting",
                   "name" : "打开项目配置(全局)",
                   "getPSAppDataEntity" : {
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
                   },
+                  "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
                   "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "open_global_setting",
@@ -590,6 +723,7 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_pick_up_view.json",
               "viewType" : "DEPICKUPVIEW"
             },
+            "placeHolder" : "选择关联项目",
             "valueItemName" : "project_id",
             "enableAC" : true,
             "enablePickupView" : true,
@@ -682,7 +816,7 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprint_pick_up_view.json",
               "viewType" : "DEPICKUPVIEW"
             },
-            "placeHolder" : "请先选择所关联的项目",
+            "placeHolder" : "选择关联迭代",
             "valueItemName" : "sprint_id",
             "enableAC" : true,
             "enablePickupView" : true,
@@ -777,7 +911,7 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_pick_up_view.json",
               "viewType" : "DEPICKUPVIEW"
             },
-            "placeHolder" : "请先选择所关联的项目",
+            "placeHolder" : "选择关联发布",
             "valueItemName" : "release_id",
             "enableAC" : true,
             "enablePickupView" : true,
@@ -794,6 +928,86 @@
           "resetItemNames" : [ "project_name" ],
           "valueItemName" : "release_id",
           "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "类别",
+          "codeName" : "categories_name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "categories_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CATEGORIES_NAME",
+            "codeName" : "categories_name"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "multiple" : "true",
+              "DROPDOWNVIEW" : "TRUE",
+              "AC" : "FALSE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorType" : "PICKEREX_DROPDOWNVIEW",
+            "handlerType" : "PickupText",
+            "name" : "categories_name",
+            "getPSEditorItems" : [ {
+              "name" : "categories"
+            } ],
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_categories_pick_up_tree_view.json",
+              "viewType" : "DEPICKUPTREEVIEW"
+            },
+            "placeHolder" : "选择类别",
+            "valueItemName" : "categories",
+            "dropDownView" : true,
+            "enableAC" : false,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 24,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "categories",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "类别",
+          "codeName" : "categories",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
+          "labelWidth" : 130,
+          "name" : "categories",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CATEGORIES",
+            "codeName" : "categories"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "categories"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 24,
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true,
           "showCaption" : true
         } ],
         "getPSLayout" : {
@@ -812,71 +1026,6 @@
         "infoGroupMode" : false,
         "showCaption" : false
       }, {
-        "caption" : "类别",
-        "codeName" : "categoryies",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "TOP",
-        "labelWidth" : 130,
-        "name" : "categoryies",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "CATEGORIES",
-          "codeName" : "categories"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "SRFNAVPARAM.N_OWNER_ID_EQ" : "%library%",
-            "SRFNAVPARAM.N_OWNER_SUBTYPE_EQ" : "test_plan",
-            "SRFNAVPARAM.N_OWNER_TYPE_EQ" : "library",
-            "PICKUPVIEW" : "TRUE"
-          },
-          "editorType" : "ADDRESSPICKUP",
-          "name" : "categoryies",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_default"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
-          },
-          "getPSNavigateParams" : [ {
-            "key" : "n_owner_id_eq",
-            "name" : "n_owner_id_eq",
-            "value" : "library",
-            "rawValue" : false
-          }, {
-            "key" : "n_owner_subtype_eq",
-            "name" : "n_owner_subtype_eq",
-            "value" : "test_plan",
-            "rawValue" : true
-          }, {
-            "key" : "n_owner_type_eq",
-            "name" : "n_owner_type_eq",
-            "value" : "library",
-            "rawValue" : true
-          } ],
-          "enableAC" : false,
-          "enablePickupView" : true,
-          "forceSelection" : true,
-          "showTrigger" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 24,
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      }, {
         "caption" : "计划开始",
         "codeName" : "start_at",
         "dataType" : 5,
@@ -893,6 +1042,11 @@
           "name" : "START_AT",
           "codeName" : "start_at"
         },
+        "getPSControlAttributes" : [ {
+          "attrName" : "disabledDate",
+          "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+          "name" : "start_at_disabledDate"
+        } ],
         "getPSEditor" : {
           "dateTimeFormat" : "YYYY-MM-DD",
           "editorParams" : {
@@ -900,7 +1054,8 @@
           },
           "editorType" : "DATEPICKEREX_NOTIME",
           "editorWidth" : 1.0,
-          "name" : "start_at"
+          "name" : "start_at",
+          "placeHolder" : "选择开始时间"
         },
         "getPSLayoutPos" : {
           "colLG" : 12,
@@ -927,6 +1082,11 @@
           "name" : "END_AT",
           "codeName" : "end_at"
         },
+        "getPSControlAttributes" : [ {
+          "attrName" : "disabledDate",
+          "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+          "name" : "end_at_disabledDate"
+        } ],
         "getPSEditor" : {
           "dateTimeFormat" : "YYYY-MM-DD",
           "editorParams" : {
@@ -934,7 +1094,8 @@
           },
           "editorType" : "DATEPICKEREX_NOTIME",
           "editorWidth" : 1.0,
-          "name" : "end_at"
+          "name" : "end_at",
+          "placeHolder" : "选择结束时间"
         },
         "getPSLayoutPos" : {
           "colLG" : 12,
@@ -1000,6 +1161,31 @@
         "allowEmpty" : true,
         "hidden" : true,
         "showCaption" : true
+      }, {
+        "caption" : "上下文id",
+        "codeName" : "checkid",
+        "createDV" : "library",
+        "createDVT" : "APPDATA",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "checkid",
+        "noPrivDisplayMode" : 1,
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "checkid"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
       } ],
       "getPSLayout" : {
         "childColLG" : 12,

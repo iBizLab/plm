@@ -413,6 +413,44 @@
     "requestPath" : "/fetch_baseline_comparison",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_baseline_relation_version",
+    "dataSetName" : "baseline_relation_version",
+    "dataSetTag" : "baseline_relation_version",
+    "methodType" : "FETCH",
+    "name" : "fetch_baseline_relation_version",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_relation_version"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "NONE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_baseline_relation_version"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_baseline_relation_version",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -1393,46 +1431,35 @@
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   }, {
     "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[NAME][名称]移动端默认",
+      "codeName" : "Default",
+      "name" : "[BASELINE][基线]",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[BASELINE][基线]",
+        "stringLength" : 1048576,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[BASELINE][基线]移动端默认",
+      "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[NAME][名称]移动端默认",
-        "stringLength" : 200,
+        "editorType" : "SPAN",
+        "name" : "[BASELINE][基线]移动端默认",
+        "stringLength" : 1048576,
         "uIMode" : "MOBILEDEFAULT",
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
-      },
-      "type" : "DEFAULT"
     } ],
-    "codeName" : "name",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.NAME"
-    },
-    "logicName" : "名称",
-    "name" : "NAME",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "enableQuickSearch" : true,
-    "majorField" : true
+    "codeName" : "baseline",
+    "logicName" : "基线",
+    "name" : "BASELINE",
+    "stdDataType" : 21,
+    "stringLength" : 1048576
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1479,87 +1506,45 @@
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[NAME][名称]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.NAME"
         },
         "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "editorType" : "MOBTEXT",
+        "name" : "[NAME][名称]移动端默认",
+        "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[NAME][名称]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.NAME"
         },
         "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
       },
       "type" : "DEFAULT"
     } ],
-    "codeName" : "update_time",
+    "codeName" : "name",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.NAME"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "stdDataType" : 5,
-    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
-  }, {
-    "getAllPSAppDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_MAN][更新人]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]移动端默认",
-        "stringLength" : 100,
-        "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "codeName" : "update_man",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-    },
-    "logicName" : "更新人",
-    "name" : "UPDATE_MAN",
+    "logicName" : "名称",
+    "name" : "NAME",
     "stdDataType" : 25,
-    "stringLength" : 100
+    "stringLength" : 200,
+    "enableQuickSearch" : true,
+    "majorField" : true
   }, {
     "getAllPSAppDEFUIModes" : [ {
       "codeName" : "Default",
@@ -1642,6 +1627,90 @@
     },
     "logicName" : "建立时间",
     "name" : "CREATE_TIME",
+    "stdDataType" : 5,
+    "valueFormat" : "YYYY-MM-DD HH:mm:ss"
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_MAN][更新人]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "update_man",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "logicName" : "更新人",
+    "name" : "UPDATE_MAN",
+    "stdDataType" : 25,
+    "stringLength" : 100
+  }, {
+    "getAllPSAppDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "codeName" : "update_time",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
     "stdDataType" : 5,
     "valueFormat" : "YYYY-MM-DD HH:mm:ss"
   } ],
@@ -1977,6 +2046,24 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 5,
       "type" : "SIMPLE"
+    }, {
+      "codeName" : "baseline",
+      "logicName" : "基线",
+      "name" : "baseline",
+      "getPSAppDEField" : {
+        "name" : "BASELINE",
+        "codeName" : "baseline"
+      },
+      "getRefPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_dto"
+      },
+      "getRefPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+      },
+      "sourceType" : "DEFIELD",
+      "type" : "DTO"
     }, {
       "codeName" : "create_man",
       "logicName" : "建立人",
@@ -2530,6 +2617,44 @@
     "requestPath" : "/fetch_baseline_comparison",
     "builtinMethod" : false
   }, {
+    "codeName" : "fetch_baseline_relation_version",
+    "dataSetName" : "baseline_relation_version",
+    "dataSetTag" : "baseline_relation_version",
+    "methodType" : "FETCH",
+    "name" : "fetch_baseline_relation_version",
+    "getPSAppDEMethodInput" : {
+      "name" : "输入对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSAppDEMethodReturn" : {
+      "name" : "返回对象",
+      "getPSAppDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "baseline_idea_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "baseline_relation_version"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "NONE"
+    },
+    "getPSDEServiceAPIMethod" : {
+      "modelref" : true,
+      "id" : "fetch_baseline_relation_version"
+    },
+    "requestMethod" : "POST",
+    "requestParamType" : "ENTITY",
+    "requestPath" : "/fetch_baseline_relation_version",
+    "builtinMethod" : false
+  }, {
     "codeName" : "fetch_default",
     "dataSetName" : "DEFAULT",
     "dataSetTag" : "Default",
@@ -2645,6 +2770,7 @@
     "actionTarget" : "NONE",
     "caption" : "规划需求",
     "codeName" : "baseline_plan_idea",
+    "dataAccessAction" : "UPDATE",
     "getFrontPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_baseline_mpick_up_view.json",
@@ -2659,6 +2785,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSNavigateParams" : [ {
       "key" : "baseline_id",
@@ -2728,9 +2858,11 @@
     "id" : "idea_version_comparison@baseline_idea"
   }, {
     "actionTarget" : "MULTIKEY",
+    "noPrivDisplayMode" : 1,
     "caption" : "移出",
     "codeName" : "shift_out_baseline",
     "confirmMsg" : "确认从此基线中移出？",
+    "dataAccessAction" : "UPDATE",
     "fullCodeName" : "baseline_idea_shift_out_baseline",
     "name" : "移出基线",
     "getPSAppDEMethod" : {
@@ -2740,6 +2872,10 @@
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSDEOPPriv" : {
+      "modelref" : true,
+      "id" : "UPDATE"
     },
     "getPSSysImage" : {
       "glyph" : "xf112@FontAwesome",
@@ -2754,6 +2890,189 @@
     "enableConfirm" : true,
     "reloadData" : true,
     "id" : "shift_out_baseline@baseline_idea"
+  }, {
+    "actionTarget" : "SINGLEDATA",
+    "caption" : "版本对比",
+    "codeName" : "version_comparison",
+    "getFrontPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_version_comparison_view.json",
+      "viewType" : "DEEDITVIEW"
+    },
+    "frontProcessType" : "WIZARD",
+    "fullCodeName" : "baseline_idea_version_comparison",
+    "name" : "版本对比（基线列表）",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "getPSNavigateParams" : [ {
+      "key" : "base_version",
+      "name" : "base_version",
+      "value" : "base_version",
+      "rawValue" : false
+    }, {
+      "key" : "compare_version",
+      "name" : "compare_version",
+      "value" : "compare_version.id",
+      "rawValue" : false
+    } ],
+    "timeout" : 60000,
+    "tooltip" : "版本对比",
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "version_comparison",
+    "uIActionType" : "DEUIACTION",
+    "id" : "version_comparison@baseline_idea"
+  } ],
+  "getAllPSAppDEUILogics" : [ {
+    "codeName" : "back",
+    "defaultParamName" : "Default",
+    "logicName" : "返回",
+    "memo" : "查看已规划基线后，返回主表单按钮使用",
+    "name" : "返回",
+    "getPSDEUILogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200
+    }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "load",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "表单刷新",
+      "topPos" : 630
+    }, {
+      "code" : "uiLogic.parentview.ctx.controllersMap.get(\"form\").details.grouppanel8.state.visible=true;\r\nuiLogic.parentview.ctx.controllersMap.get(\"form\").details.baseline.state.visible=false;\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 160,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "切换显示组件",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "VIEWCTRLINVOKE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 510
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "获取父视图对象",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parentView"
+        },
+        "name" : "view[parentView] ==> parentView",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "parentView",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 310
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "绑定表单",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "form"
+        },
+        "name" : "parentView[layoutPanel.panelItems.form.control] ==> form",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "layoutPanel.panelItems.form.control",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parentView"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 410
+    } ],
+    "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "表单",
+      "name" : "表单",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "parentView",
+      "logicName" : "parentView",
+      "name" : "parentView",
+      "entityParam" : true
+    } ],
+    "getStartPSDEUILogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
@@ -2767,6 +3086,10 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_comparison_grid_view.json",
     "viewType" : "DEGRIDVIEW"
+  }, {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_relation_version_list_view.json",
+    "viewType" : "DELISTVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_idea_redirect_view.json",
@@ -2790,7 +3113,7 @@
   "dEAPICodeName2" : "baseline_ideas",
   "dEAPITag" : "BASELINE_IDEA",
   "dataAccCtrlArch" : 1,
-  "dataAccCtrlMode" : 1,
+  "dataAccCtrlMode" : 3,
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json",
   "enableUIActions" : 15,
   "getKeyPSAppDEField" : {
@@ -2805,6 +3128,30 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "getMinorPSAppDERSs" : [ {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ],
   "name" : "BASELINE_IDEA",
   "getPSDEName" : "BASELINE_IDEA",
   "getPSDEServiceAPI" : {

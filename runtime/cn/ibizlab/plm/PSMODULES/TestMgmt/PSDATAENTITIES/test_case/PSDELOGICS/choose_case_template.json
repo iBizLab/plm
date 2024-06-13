@@ -3,16 +3,17 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/choose_case_template.json",
   "logicName" : "选择用例模板",
+  "memo" : "获取选中模板并返回详情",
   "name" : "选择用例模板",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 130,
+    "leftPos" : 320,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "PREPAREPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -24,7 +25,7 @@
     "parallelOutput" : true
   }, {
     "codeName" : "END1",
-    "leftPos" : 1260,
+    "leftPos" : 910,
     "logicNodeType" : "END",
     "name" : "结束",
     "getReturnParam" : {
@@ -34,31 +35,10 @@
     "returnType" : "LOGICPARAM",
     "topPos" : 200
   }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 224,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 208
-  }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 440,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "获取选中数据ID",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -102,11 +82,11 @@
     },
     "leftPos" : 683,
     "logicNodeType" : "DEACTION",
-    "name" : "实体行为",
+    "name" : "获取选中模板详情",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "END1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -118,27 +98,6 @@
       "modelref" : true,
       "id" : "choosed_data"
     },
-    "topPos" : 208
-  }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "choosed_data"
-    },
-    "leftPos" : 919,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "输出选中数据",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
     "topPos" : 208
   } ],
   "getPSDELogicParams" : [ {

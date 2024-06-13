@@ -82,14 +82,6 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "测试库",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
-      "viewType" : "DEINDEXVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "新建测试库",
@@ -97,6 +89,14 @@
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_create_wizard_view.json",
       "viewType" : "DEWIZARDVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realTitle" : "测试库",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
+      "viewType" : "DEINDEXVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -182,7 +182,7 @@
       "name" : "fetch",
       "getPSAppDEMethod" : {
         "modelref" : true,
-        "id" : "fetch_normal"
+        "id" : "fetch_main"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -192,11 +192,6 @@
     "groupMode" : "NONE",
     "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "主表格",
-    "minorSortDir" : "DESC",
-    "getMinorSortPSAppDEField" : {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
-    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
@@ -272,7 +267,7 @@
         "name" : "fetch",
         "getPSAppDEMethod" : {
           "modelref" : true,
-          "id" : "fetch_normal"
+          "id" : "fetch_main"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -774,6 +769,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",

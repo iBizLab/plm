@@ -32,7 +32,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_child_work_item;
             then
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备主键数据]
             rule "prepareparam1"
             ruleflow-group "work_itemcopy_child_work_itemprepareparam1"
             when
@@ -163,12 +163,21 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_child_work_item;
                         update(work_itemcopy_child_work_itemrecursion);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam3"
-            ruleflow-group "work_itemcopy_child_work_itemprepareparam3"
+            //逻辑处理节点[填充新子工作项的属性]
+            rule "prepareparam2"
+            ruleflow-group "work_itemcopy_child_work_itemprepareparam2"
             when
             then
-                            work_itemcopy_child_work_itemnew_child.set("topid",work_itemcopy_child_work_itemafter_copy_parent.get("id"));
+                            work_itemcopy_child_work_itemnew_child.set("projectid",work_itemcopy_child_work_itemafter_copy_parent.get("projectid"));
+                            work_itemcopy_child_work_itemnew_child.set("description",work_itemcopy_child_work_itemfor_temp_obj.get("description"));
+                            work_itemcopy_child_work_itemattachments.set("",work_itemcopy_child_work_itemfor_temp_obj.get("attachments"));
+                            work_itemcopy_child_work_itemnew_child.set("workitemtypeid",work_itemcopy_child_work_itemfor_temp_obj.get("workitemtypeid"));
+                            work_itemcopy_child_work_itemnew_child.set("title",work_itemcopy_child_work_itemfor_temp_obj.get("title"));
+                            work_itemcopy_child_work_itemnew_child.set("priority",work_itemcopy_child_work_itemfor_temp_obj.get("priority"));
+                            work_itemcopy_child_work_itemnew_child.set("startat",work_itemcopy_child_work_itemfor_temp_obj.get("startat"));
+                            work_itemcopy_child_work_itemnew_child.set("endat",work_itemcopy_child_work_itemfor_temp_obj.get("endat"));
+                            work_itemcopy_child_work_itemnew_child.set("state",work_itemcopy_child_work_itemfor_temp_obj.get("state"));
+                            work_itemcopy_child_work_itemnew_child.set("pid",work_itemcopy_child_work_itemafter_copy_parent.get("id"));
                         update(work_itemcopy_child_work_itemdefault);//更新fact中变量值
                         update(work_itemcopy_child_work_itemafter_copy_parent);//更新fact中变量值
                         update(work_itemcopy_child_work_itemattachment);//更新fact中变量值
@@ -201,53 +210,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_child_work_item;
                         update(work_itemcopy_child_work_itemrecursion);//更新fact中变量值
             end
 
-            //逻辑处理节点[填充新子工作项的属性]
-            rule "prepareparam2"
-            ruleflow-group "work_itemcopy_child_work_itemprepareparam2"
-            when
-            then
-                            work_itemcopy_child_work_itemnew_child.set("projectid",work_itemcopy_child_work_itemafter_copy_parent.get("projectid"));
-                            work_itemcopy_child_work_itemnew_child.set("description",work_itemcopy_child_work_itemfor_temp_obj.get("description"));
-                            work_itemcopy_child_work_itemattachments.set("",work_itemcopy_child_work_itemfor_temp_obj.get("attachments"));
-                            work_itemcopy_child_work_itemnew_child.set("workitemtypeid",work_itemcopy_child_work_itemfor_temp_obj.get("workitemtypeid"));
-                            work_itemcopy_child_work_itemnew_child.set("title",work_itemcopy_child_work_itemfor_temp_obj.get("title"));
-                            work_itemcopy_child_work_itemnew_child.set("priority",work_itemcopy_child_work_itemfor_temp_obj.get("priority"));
-                            work_itemcopy_child_work_itemnew_child.set("startat",work_itemcopy_child_work_itemfor_temp_obj.get("startat"));
-                            work_itemcopy_child_work_itemnew_child.set("endat",work_itemcopy_child_work_itemfor_temp_obj.get("endat"));
-                            work_itemcopy_child_work_itemnew_child.set("state",work_itemcopy_child_work_itemfor_temp_obj.get("state"));
-                            work_itemcopy_child_work_itemnew_child.set("pid",work_itemcopy_child_work_itemafter_copy_parent.get("id"));
-                        update(work_itemcopy_child_work_itemdefault);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemafter_copy_parent);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemattachment);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemattachments);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemattention);//更新fact中变量值
-                        update(work_itemcopy_child_work_itembefore_copy_parent);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemchild_page);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemfor_temp_obj);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemnew_child);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemquery_child_filter);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemrecursion);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam4"
-            ruleflow-group "work_itemcopy_child_work_itemprepareparam4"
-            when
-            then
-                            work_itemcopy_child_work_itemnew_child.set("topid",work_itemcopy_child_work_itemafter_copy_parent.get("topid"));
-                        update(work_itemcopy_child_work_itemdefault);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemafter_copy_parent);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemattachment);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemattachments);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemattention);//更新fact中变量值
-                        update(work_itemcopy_child_work_itembefore_copy_parent);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemchild_page);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemfor_temp_obj);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemnew_child);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemquery_child_filter);//更新fact中变量值
-                        update(work_itemcopy_child_work_itemrecursion);//更新fact中变量值
-            end
-
             //逻辑处理节点[重置参数]
             rule "resetparam3"
             ruleflow-group "work_itemcopy_child_work_itemresetparam3"
@@ -266,7 +228,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.copy_child_work_item;
                         update(work_itemcopy_child_work_itemrecursion);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备关注人数据]
             rule "prepareparam6"
             ruleflow-group "work_itemcopy_child_work_itemprepareparam6"
             when

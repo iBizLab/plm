@@ -1,0 +1,572 @@
+{
+  "codeName" : "complete_review",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content/PSDELOGICS/complete_review.json",
+  "logicName" : "完成评审",
+  "memo" : "完成评审，判断是否为最终阶段，如果是变更评审的状态",
+  "name" : "完成评审",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 1877,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 200
+  }, {
+    "codeName" : "DEBUGPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 99,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "传入参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 254,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "获取评审详情ID",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "name" : "Default[principal_id] ==> review_detail[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "principal_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Get.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 411,
+    "logicNodeType" : "DEACTION",
+    "name" : "获取评审详情",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 624,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "获取阶段信息",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_list"
+      },
+      "name" : "review_detail[STAGE] ==> stage_list",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "STAGE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ORDER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_list"
+      },
+      "dstSortDir" : "DESC",
+      "name" : " ==> stage_list[ORDER]",
+      "paramAction" : "SORTPARAM"
+    }, {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "end_stage"
+      },
+      "name" : "stage_list[0] ==> end_stage",
+      "paramAction" : "BINDPARAM",
+      "srcFieldName" : "0",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_list"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_stage"
+    },
+    "leftPos" : 905,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "SORTPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      },
+      "name" : "进入循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stage_list"
+    },
+    "topPos" : 208
+  }, {
+    "codeName" : "SORTPARAM1",
+    "dstFieldName" : "order",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "stage_arr"
+    },
+    "dstSortDir" : "ASC",
+    "leftPos" : 1117,
+    "logicNodeType" : "SORTPARAM",
+    "name" : "排序数组参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "SORTPARAM1"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 1320,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "绑定阶段数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "STAGE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "name" : "stage_arr ==> review_detail[STAGE]",
+      "paramAction" : "SETPARAMVALUE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_arr"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "DEBUGPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "leftPos" : 1484,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "最后评审详情",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM3"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "review_detail"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1682,
+    "logicNodeType" : "DEACTION",
+    "name" : "实体行为",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "topPos" : 208
+  }, {
+    "codeName" : "DEBUGPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_stage"
+    },
+    "leftPos" : 905,
+    "logicNodeType" : "DEBUGPARAM",
+    "name" : "当前阶段数据",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "当前循环阶段为选中阶段",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_stage"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_stage 等于(=) curstage_id",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "curstage_id",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "非选中阶段",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_stage"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_stage 不等于(<>) curstage_id",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "curstage_id",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEBUGPARAM2"
+      }
+    } ],
+    "topPos" : 324
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 730,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置阶段完成",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "当前阶段为最后阶段",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_stage"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_stage[ID] 等于(=) id",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "id",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "end_stage"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "STAGE_STATE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_stage"
+      },
+      "name" : "直接值[30] ==> for_stage[STAGE_STATE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "30",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 450
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 1150,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicNodeParams" : [ {
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "stage_arr"
+      },
+      "name" : "for_stage ==> stage_arr",
+      "paramAction" : "APPENDPARAM",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_stage"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 450
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 730,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "STATE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "review_detail"
+      },
+      "name" : "直接值[60] ==> review_detail[STATE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "60",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 662
+  }, {
+    "code" : "var defaultObj = logic.getParam(\"review_detail\");\r\ndefaultObj.set(\"COMPLETED_AT\", new Date());",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 905,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "完成时间",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 662
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_content.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "end_stage",
+    "logicName" : "最终阶段",
+    "name" : "最终阶段",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "for_stage",
+    "logicName" : "当前循环阶段",
+    "name" : "当前循环阶段",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "review_detail",
+    "logicName" : "评审详情",
+    "name" : "评审详情",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "stage_arr",
+    "logicName" : "阶段数据",
+    "name" : "阶段数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "stage_list",
+    "logicName" : "阶段列表",
+    "name" : "阶段列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_stage.json"
+    },
+    "entityListParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

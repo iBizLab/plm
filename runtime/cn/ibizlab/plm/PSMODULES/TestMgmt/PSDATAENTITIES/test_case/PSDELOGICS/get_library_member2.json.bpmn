@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.test_caseget_library_member2" isClosed="false" isExecutable="true" name="testmgmt_test_case_get_library_member2_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.test_caseget_library_member2">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="test_caseget_library_member2default" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.library_member()" name="test_caseget_library_member2filter" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="test_caseget_library_member2for_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.library_member()" name="test_caseget_library_member2members" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService))" name="library_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_caseService))" name="iBzSysTest_caseDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="test_caseget_library_member2default" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
+                            <tns:global identifier="test_caseget_library_member2filter" type="cn.ibizlab.plm.core.testmgmt.domain.library_member" />
+                            <tns:global identifier="test_caseget_library_member2members" type="cn.ibizlab.plm.core.testmgmt.domain.library_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_member2prepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取测试库ID并设置过滤参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_member2dedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="查询当前用户是否为测试库成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_member2prepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定用户数据到for_obj"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_member2rawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_member2rawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="非只读权限"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_caseget_library_member2end6" id="end6" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end6_end" name="end"/>
+                        <sequenceFlow id="end6_end_line" sourceRef="end6" targetRef="end6_end"/>
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset3" sourceRef="prepareparam2" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset3_rawsfcode1" sourceRef="gateway-dedataset3" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_caseget_library_member2default:test_case();
+                                            $test_caseget_library_member2filter:library_member();
+                                            $test_caseget_library_member2for_obj:Map();
+                                            $test_caseget_library_member2members:library_member();
+                                    eval($test_caseget_library_member2default==test_caseget_library_member2default && $test_caseget_library_member2filter==test_caseget_library_member2filter && $test_caseget_library_member2members==test_caseget_library_member2members);
+                                eval((RuleUtils.test($test_caseget_library_member2members.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset3_prepareparam5" sourceRef="gateway-dedataset3" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_caseget_library_member2default:test_case();
+                                            $test_caseget_library_member2filter:library_member();
+                                            $test_caseget_library_member2for_obj:Map();
+                                            $test_caseget_library_member2members:library_member();
+                                    eval($test_caseget_library_member2default==test_caseget_library_member2default && $test_caseget_library_member2filter==test_caseget_library_member2filter && $test_caseget_library_member2members==test_caseget_library_member2members);
+                                eval((RuleUtils.test($test_caseget_library_member2members.get("size"),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam5_rawsfcode2" sourceRef="gateway-prepareparam5" targetRef="rawsfcode2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_caseget_library_member2default:test_case();
+                                            $test_caseget_library_member2filter:library_member();
+                                            $test_caseget_library_member2for_obj:Map();
+                                            $test_caseget_library_member2members:library_member();
+                                    eval($test_caseget_library_member2default==test_caseget_library_member2default && $test_caseget_library_member2filter==test_caseget_library_member2filter && $test_caseget_library_member2members==test_caseget_library_member2members);
+                                eval((RuleUtils.test($test_caseget_library_member2for_obj.get("role_id"),"NOTEQ","reader")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam5_rawsfcode1" sourceRef="gateway-prepareparam5" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_caseget_library_member2default:test_case();
+                                            $test_caseget_library_member2filter:library_member();
+                                            $test_caseget_library_member2for_obj:Map();
+                                            $test_caseget_library_member2members:library_member();
+                                    eval($test_caseget_library_member2default==test_caseget_library_member2default && $test_caseget_library_member2filter==test_caseget_library_member2filter && $test_caseget_library_member2members==test_caseget_library_member2members);
+                                eval((RuleUtils.test($test_caseget_library_member2for_obj.get("role_id"),"EQ","reader")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end6" sourceRef="rawsfcode1" targetRef="end6">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_end6" sourceRef="rawsfcode2" targetRef="end6">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset3" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset3_gateway-dedataset3_gatewayline" sourceRef="dedataset3" targetRef="gateway-dedataset3"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset3_end_line" sourceRef="gateway-dedataset3" targetRef="gateway-dedataset3_end"/>
+                            <endEvent id="gateway-dedataset3_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam5" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam5_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam5_gateway-prepareparam5_gatewayline" sourceRef="prepareparam5" targetRef="gateway-prepareparam5"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam5_end_line" sourceRef="gateway-prepareparam5" targetRef="gateway-prepareparam5_end"/>
+                            <endEvent id="gateway-prepareparam5_end" name="end"/>
+        </process>
+    </definitions>

@@ -56,16 +56,40 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PRODUCT",
+          "name" : "PRODUCT",
+          "value" : "idea.product_id",
+          "rawValue" : false
+        }, {
+          "key" : "IDEA",
+          "name" : "IDEA",
+          "value" : "idea.id",
+          "rawValue" : false
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
           "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
+        "getPSNavigateContexts" : [ {
+          "key" : "PRODUCT",
+          "name" : "PRODUCT",
+          "value" : "idea.product_id",
+          "rawValue" : false
+        }, {
+          "key" : "IDEA",
+          "name" : "IDEA",
+          "value" : "idea.id",
+          "rawValue" : false
+        } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
           "viewType" : "DEEDITVIEW"
         }
       } ],
@@ -74,18 +98,31 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "realTitle" : "工作项关联编辑视图",
+    "name" : "EDITDATA",
+    "openMode" : "POPUPMODAL",
+    "getPSNavigateContexts" : [ {
+      "key" : "PRODUCT",
+      "name" : "PRODUCT",
+      "value" : "idea.product_id",
+      "rawValue" : false
+    }, {
+      "key" : "IDEA",
+      "name" : "IDEA",
+      "value" : "idea.id",
+      "rawValue" : false
+    } ],
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "需求",
     "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
+      "lanResTag" : "PAGE.TITLE.IDEA.MAIN_VIEW"
     },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
   }, {
-    "name" : "EDITDATA",
+    "name" : "NEWDATA",
     "realTitle" : "工作项关联编辑视图",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
@@ -238,6 +275,9 @@
     "groupMode" : "NONE",
     "getItemPSLayoutPanel" : {
       "getAllPSPanelFields" : [ {
+        "id" : "idea",
+        "viewFieldName" : "IDEA"
+      }, {
         "id" : "field_text_dynamic",
         "viewFieldName" : "IDEA"
       } ],
@@ -272,30 +312,70 @@
           "layout" : "TABLE_24COL"
         },
         "getPSPanelItems" : [ {
-          "caption" : "文本(动态)",
+          "caption" : "容器",
           "itemStyle" : "DEFAULT",
-          "itemType" : "FIELD",
-          "name" : "field_text_dynamic",
-          "getPSEditor" : {
-            "editorParams" : {
-              "OBJECTNAMEFIELD" : "product_name",
-              "VALUETYPE" : "OBJECT"
-            },
-            "editorType" : "SPAN",
-            "name" : "field_text_dynamic",
-            "objectNameField" : "product_name",
-            "predefinedType" : "FIELD_TEXT_DYNAMIC",
-            "renderMode" : "TEXT_DYNAMIC",
-            "valueType" : "OBJECT",
-            "enableLinkView" : false
+          "itemType" : "CONTAINER",
+          "name" : "container",
+          "getPSLayout" : {
+            "dir" : "row",
+            "layout" : "FLEX"
           },
           "getPSLayoutPos" : {
             "grow" : -1,
             "layout" : "FLEX"
           },
-          "viewFieldName" : "IDEA",
-          "hidden" : false,
-          "showCaption" : false
+          "getPSPanelItems" : [ {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "idea",
+            "getPSEditor" : {
+              "editorParams" : {
+                "OBJECTNAMEFIELD" : "show_identifier",
+                "VALUETYPE" : "OBJECT"
+              },
+              "editorType" : "SPAN",
+              "name" : "idea",
+              "objectNameField" : "show_identifier",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "valueType" : "OBJECT",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX",
+              "spacingRight" : "OUTERMEDIUM"
+            },
+            "viewFieldName" : "IDEA",
+            "hidden" : false,
+            "showCaption" : false
+          }, {
+            "caption" : "文本(动态)",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "FIELD",
+            "name" : "field_text_dynamic",
+            "getPSEditor" : {
+              "editorParams" : {
+                "OBJECTNAMEFIELD" : "title",
+                "VALUETYPE" : "OBJECT"
+              },
+              "editorType" : "SPAN",
+              "name" : "field_text_dynamic",
+              "objectNameField" : "title",
+              "predefinedType" : "FIELD_TEXT_DYNAMIC",
+              "renderMode" : "TEXT_DYNAMIC",
+              "valueType" : "OBJECT",
+              "enableLinkView" : false
+            },
+            "getPSLayoutPos" : {
+              "grow" : -1,
+              "layout" : "FLEX"
+            },
+            "viewFieldName" : "IDEA",
+            "hidden" : false,
+            "showCaption" : false
+          } ]
         } ]
       } ],
       "name" : "list_itempanel",
@@ -490,7 +570,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "refFlag" : false,
   "title" : "需求关联需求列表视图",
   "viewStyle" : "DEFAULT",
   "viewType" : "DELISTVIEW",
@@ -540,6 +619,180 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
     },
     "name" : "工作项-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "test_cases",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "test_case",
+    "minorDEName" : "TEST_CASE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "name" : "DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID",
+    "getParentPSAppDEField" : {
+      "name" : "TEST_LIBRARY_ID",
+      "codeName" : "test_library_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_case",
+    "majorDEName" : "TEST_CASE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "用例-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "pages",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "article_page",
+    "minorDEName" : "PAGE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+    },
+    "name" : "DER1N_PAGE_SPACE_SPACE_ID",
+    "getParentPSAppDEField" : {
+      "name" : "SPACE_ID",
+      "codeName" : "space_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "article_page",
+    "majorDEName" : "PAGE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "页面-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "idea",
+    "minorDEName" : "IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "name" : "DER1N_IDEA_PRODUCT_PRODUCT_ID",
+    "getParentPSAppDEField" : {
+      "name" : "PRODUCT_ID",
+      "codeName" : "product_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "idea",
+    "majorDEName" : "IDEA",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "需求-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "article_page",
+    "majorDEName" : "PAGE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "页面-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "idea",
+    "majorDEName" : "IDEA",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/idea.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "需求-关联",
+    "rSMode" : 2
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "relations",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "test_case",
+    "majorDEName" : "TEST_CASE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_case.json"
+    },
+    "minorDECodeName" : "relation",
+    "minorDEName" : "RELATION",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
+    },
+    "name" : "用例-关联",
     "rSMode" : 2
   } ], [ {
     "actionRSMode" : 1,

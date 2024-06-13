@@ -27,15 +27,7 @@ package cn.ibizlab.plm.projmgmt.logic.releaselogic.delete_categories;
                         update(releasedelete_categoriesdefault);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "releasedelete_categoriesdebugparam1"
-            when
-            then
-                        update(releasedelete_categoriesdefault);//更新fact中变量值
-            end
-
-            //逻辑处理节点[直接sql调用]
+            //逻辑处理节点[当类别删除时修改发布的类别属性]
             rule "rawsqlcall1"
             ruleflow-group "releasedelete_categoriesrawsqlcall1"
             when
@@ -43,7 +35,7 @@ package cn.ibizlab.plm.projmgmt.logic.releaselogic.delete_categories;
     Map param =new HashMap();
         param.put("param0",releasedelete_categoriesdefault.get("id"));
         param.put("param1",releasedelete_categoriesdefault.get("id"));
-    String strSql="UPDATE sprint SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', #{et.param0}, ','), ',')) WHERE FIND_IN_SET(#{et.param1}, categories) > 0 ;";
+    String strSql="UPDATE project_release SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', #{et.param0}, ','), ',')) WHERE FIND_IN_SET(#{et.param1}, categories) > 0 ;  ";
                         iBzSysReleaseDefaultService.execute(strSql,param);//SQL调用
                         update(releasedelete_categoriesdefault);//更新fact中变量值
             end

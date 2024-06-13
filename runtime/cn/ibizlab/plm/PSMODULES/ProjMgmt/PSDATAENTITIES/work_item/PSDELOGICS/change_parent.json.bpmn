@@ -22,11 +22,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_parentloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_parentprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充工作项父级标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_parentdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更父工作项"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_parentprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="继承父工作项的顶级标识"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_parentprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="父工作项ID为顶级标识"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_parentdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="变更顶级工作项"/>
-                        <endEvent id="delogic1_end" name="end"/>
-                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
@@ -35,35 +32,5 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-deaction1_prepareparam2" sourceRef="gateway-deaction1" targetRef="prepareparam2">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemchange_parentdefault:work_item();
-                                            $work_itemchange_parentfor_temp_obj:work_item();
-                                            $work_itemchange_parentparent_obj:work_item();
-                                            $work_itemchange_parentsrfactionparam:work_item();
-                                    eval($work_itemchange_parentdefault==work_itemchange_parentdefault && $work_itemchange_parentfor_temp_obj==work_itemchange_parentfor_temp_obj && $work_itemchange_parentparent_obj==work_itemchange_parentparent_obj && $work_itemchange_parentsrfactionparam==work_itemchange_parentsrfactionparam);
-                                eval((RuleUtils.test($work_itemchange_parentfor_temp_obj.get("topId"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-deaction1_prepareparam3" sourceRef="gateway-deaction1" targetRef="prepareparam3">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemchange_parentdefault:work_item();
-                                            $work_itemchange_parentfor_temp_obj:work_item();
-                                            $work_itemchange_parentparent_obj:work_item();
-                                            $work_itemchange_parentsrfactionparam:work_item();
-                                    eval($work_itemchange_parentdefault==work_itemchange_parentdefault && $work_itemchange_parentfor_temp_obj==work_itemchange_parentfor_temp_obj && $work_itemchange_parentparent_obj==work_itemchange_parentparent_obj && $work_itemchange_parentsrfactionparam==work_itemchange_parentsrfactionparam);
-                                eval((RuleUtils.test($work_itemchange_parentfor_temp_obj.get("topId"),"ISNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_delogic1" sourceRef="prepareparam2" targetRef="delogic1">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_delogic1" sourceRef="prepareparam3" targetRef="delogic1">
-                    </sequenceFlow>
-                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
-                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
-                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
-                            <endEvent id="gateway-deaction1_end" name="end"/>
         </process>
     </definitions>

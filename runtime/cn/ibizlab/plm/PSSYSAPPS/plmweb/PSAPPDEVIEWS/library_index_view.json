@@ -59,18 +59,7 @@
           "grow" : -1,
           "layout" : "FLEX",
           "shrink" : 0
-        },
-        "getPSPanelItems" : [ {
-          "caption" : "表单",
-          "itemStyle" : "DEFAULT",
-          "itemType" : "CTRLPOS",
-          "name" : "form",
-          "getPSLayoutPos" : {
-            "grow" : -1,
-            "layout" : "FLEX"
-          },
-          "showCaption" : true
-        } ]
+        }
       }, {
         "caption" : "容器",
         "contentHeight" : 50.0,
@@ -151,6 +140,10 @@
                 "key" : "LIBRARY",
                 "name" : "LIBRARY",
                 "rawValue" : true
+              }, {
+                "key" : "SRFREADONLY",
+                "name" : "SRFREADONLY",
+                "rawValue" : true
               } ],
               "timeout" : 60000,
               "uIActionMode" : "FRONT",
@@ -205,11 +198,11 @@
               "name" : "route_picker",
               "getPSAppDEACMode" : {
                 "modelref" : true,
-                "id" : "Default2"
+                "id" : "Default"
               },
               "getPSAppDEDataSet" : {
                 "modelref" : true,
-                "id" : "fetch_normal"
+                "id" : "fetch_main"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -344,6 +337,16 @@
         } ]
       } ],
       "predefinedType" : "VIEWCONTENT"
+    }, {
+      "caption" : "表单",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CTRLPOS",
+      "name" : "form",
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "showCaption" : true
     } ],
     "layoutBodyOnly" : false,
     "layoutPanel" : true,
@@ -352,14 +355,42 @@
     "modelid" : "25e93207c14ecdcba5b3ee43619b5fb2",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSControls" : [ {
-      "codeName" : "index_view_dr",
+      "codeName" : "library",
       "controlStyle" : "DRBAR_EX",
       "controlType" : "DRBAR",
+      "dataRelationTag" : "library",
       "getEditItemCapPSLanguageRes" : {
         "lanResTag" : "DE.LNAME.LIBRARY"
       },
       "editItemCaption" : "测试库",
       "name" : "drbar",
+      "getPSAppCounterRef" : {
+        "modelref" : true,
+        "id" : "fdb3c79327ff4c30fbfeb873edf15e44"
+      },
+      "getPSAppCounterRefs" : [ {
+        "getPSAppCounter" : {
+          "codeName" : "library_add_on_counters",
+          "counterType" : "DEDR",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCOUNTERS/library_add_on_counters.json",
+          "getGetPSAppDEAction" : {
+            "modelref" : true,
+            "id" : "library_index_addon_counter"
+          },
+          "memo" : "测试库组件显示隐藏计数器",
+          "name" : "测试库组件显示隐藏计数器",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+          },
+          "uniqueTag" : "library_add_on_counters"
+        },
+        "refMode" : {
+          "srfdeid" : "LIBRARY"
+        },
+        "tag" : "fdb3c79327ff4c30fbfeb873edf15e44",
+        "id" : "fdb3c79327ff4c30fbfeb873edf15e44"
+      } ],
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
@@ -389,6 +420,11 @@
         "hidden" : false,
         "id" : "UsrDRGroup0424036679"
       }, {
+        "caption" : "评审",
+        "name" : "评审",
+        "hidden" : false,
+        "id" : "UsrDRGroup0416402881"
+      }, {
         "caption" : "报表",
         "name" : "报表",
         "hidden" : false,
@@ -396,6 +432,9 @@
       } ],
       "getPSDEDRCtrlItems" : [ {
         "caption" : "计划",
+        "counterId" : "test_plan",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "test_plan",
         "getPSAppView" : {
           "modelref" : true,
@@ -408,7 +447,10 @@
         }
       }, {
         "caption" : "用例",
-        "name" : "test_suite",
+        "counterId" : "test_case",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "test_case",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_suite_tree_exp_view.json",
@@ -420,6 +462,9 @@
         }
       }, {
         "caption" : "基线",
+        "counterId" : "baseline",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "baseline",
         "getPSAppView" : {
           "modelref" : true,
@@ -431,7 +476,25 @@
           "id" : "UsrDRGroup0424036679"
         }
       }, {
+        "caption" : "评审",
+        "counterId" : "review",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "review",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_tree_exp_view.json",
+          "viewType" : "DETREEEXPVIEW"
+        },
+        "getPSDEDRBarGroup" : {
+          "modelref" : true,
+          "id" : "UsrDRGroup0416402881"
+        }
+      }, {
         "caption" : "报表",
+        "counterId" : "report",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "report",
         "getPSAppView" : {
           "modelref" : true,

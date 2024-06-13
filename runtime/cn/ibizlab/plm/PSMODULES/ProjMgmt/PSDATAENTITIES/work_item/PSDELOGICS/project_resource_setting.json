@@ -1,0 +1,803 @@
+{
+  "codeName" : "project_resource_setting",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item/PSDELOGICS/project_resource_setting.json",
+  "logicName" : "项目资源成员设置",
+  "memo" : "项目资源成员设置，默认设置容量/工作日",
+  "name" : "项目资源成员设置",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "存在当前项目标识",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "project_id",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[project_id] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : -20,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "存在选择成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "srfactionparam"
+          },
+          "logicType" : "SINGLE",
+          "name" : "srfactionparam[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "srfactionparam",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "topPos" : 132
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 160,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备资源组件过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_owner_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource_filter"
+      },
+      "name" : "Default[PROJECT_ID] ==> addon_resource_filter[n_owner_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PROJECT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "n_owner_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource_filter"
+      },
+      "name" : "直接值[project] ==> addon_resource_filter[n_owner_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "project",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_addon_type_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource_filter"
+      },
+      "name" : "直接值[resource] ==> addon_resource_filter[n_addon_type_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "resource",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 269
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource_filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "获取当前项目下的资源组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      },
+      "name" : "当前项目存在资源组件",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "GT",
+          "dstFieldName" : "size",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource_page"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource_page[size] 大于(>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource_page"
+    },
+    "topPos" : 360
+  }, {
+    "codeName" : "BINDPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定资源组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      },
+      "name" : "已存在资源成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNOTNULL",
+          "dstFieldName" : "MEMBERS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource[MEMBERS] 值不为空(NotNil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "不存在资源成员",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "MEMBERS",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "addon_resource"
+          },
+          "logicType" : "SINGLE",
+          "name" : "addon_resource[MEMBERS] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      }
+    } ],
+    "srcFieldName" : "0",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource_page"
+    },
+    "topPos" : 505
+  }, {
+    "codeName" : "BINDPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "resource_members"
+    },
+    "leftPos" : 399,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      }
+    } ],
+    "srcFieldName" : "members",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "topPos" : 505
+  }, {
+    "codeName" : "LOOPSUBCALL2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 399,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "name" : "进入循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "循环结束",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL2"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "resource_members"
+    },
+    "topPos" : 604
+  }, {
+    "codeName" : "LOOPSUBCALL3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_choose_obj"
+    },
+    "leftPos" : 654,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL3"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "topPos" : 604
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 910,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "判定节点（无业务操作）",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "APPENDPARAM2"
+      },
+      "name" : "若成员已加入资源",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "USER_ID",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[USER_ID] 等于(=) USER_ID",
+          "paramType" : "SRCENTITYFIELD",
+          "paramValue" : "USER_ID",
+          "getSrcLogicParam" : {
+            "modelref" : true,
+            "id" : "for_choose_obj"
+          }
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "topPos" : 604
+  }, {
+    "codeName" : "APPENDPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "insert_members"
+    },
+    "leftPos" : 1136,
+    "logicNodeType" : "APPENDPARAM",
+    "name" : "附加到数组参数",
+    "srcIndex" : 0,
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 604
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_choose_obj"
+    },
+    "leftPos" : 399,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE4"
+      },
+      "name" : "进入循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE3"
+      },
+      "name" : "循环结束",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "srfactionparam"
+    },
+    "topPos" : 799
+  }, {
+    "code" : "def insert_members = logic.param('insert_members').getReal()\r\ndef for_choose_obj = logic.param('for_choose_obj').getReal()\r\ninsert_members.each { item ->\r\n    def user_id = item.user_id\r\n    if(user_id == for_choose_obj.get('user_id')){\r\n       for_choose_obj.set('already_exist', '1') \r\n    }\r\n}\r\n\r\n",
+    "codeName" : "RAWSFCODE4",
+    "codeType" : "Groovy",
+    "leftPos" : 600,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "判断此成员是否已加入至资源",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      },
+      "name" : "若此成员之前未加入至资源",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "ISNULL",
+          "dstFieldName" : "already_exist",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_choose_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_choose_obj[already_exist] 值为空(Nil)"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE4"
+      }
+    } ],
+    "topPos" : 799
+  }, {
+    "codeName" : "RENEWPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "resource_member"
+    },
+    "leftPos" : 826,
+    "logicNodeType" : "RENEWPARAM",
+    "name" : "重新建立参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM1"
+      }
+    } ],
+    "topPos" : 799
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 1020,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充默认容量/工作日",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "resource_member"
+      },
+      "name" : "for_choose_obj[USER_ID] ==> resource_member[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_choose_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "ADDON_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "resource_member"
+      },
+      "name" : "addon_resource[ID] ==> resource_member[ADDON_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "addon_resource"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "resource_member"
+      },
+      "name" : "for_choose_obj[NAME] ==> resource_member[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_choose_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "USER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "resource_member"
+      },
+      "name" : "for_choose_obj[USER_ID] ==> resource_member[USER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_choose_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "WEEKDAY",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "resource_member"
+      },
+      "name" : "直接值[1,2,3,4,5] ==> resource_member[WEEKDAY]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1,2,3,4,5",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "day_capacity"
+      },
+      "name" : "for_choose_obj[USER_ID] ==> day_capacity[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_choose_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "WORK_ITEM_COUNT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "day_capacity"
+      },
+      "name" : "直接值[3] ==> day_capacity[WORK_ITEM_COUNT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "3",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "ESTIMATED_WORKLOAD",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "day_capacity"
+      },
+      "name" : "直接值[8] ==> day_capacity[ESTIMATED_WORKLOAD]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "8",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "REMAINING_WORKLOAD",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "day_capacity"
+      },
+      "name" : "直接值[1] ==> day_capacity[REMAINING_WORKLOAD]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "STORY_POINTS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "day_capacity"
+      },
+      "name" : "直接值[2] ==> day_capacity[STORY_POINTS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "2",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 799
+  }, {
+    "code" : "def resource_member = logic.param('resource_member').getReal()\r\ndef day_capacity = logic.param('day_capacity').getReal()\r\nresource_member.set('day_capacity', day_capacity)",
+    "codeName" : "RAWSFCODE2",
+    "codeType" : "Groovy",
+    "leftPos" : 1226,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "资源成员绑定容量属性",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "APPENDPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
+    } ],
+    "topPos" : 799
+  }, {
+    "codeName" : "APPENDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "insert_members"
+    },
+    "leftPos" : 1399,
+    "logicNodeType" : "APPENDPARAM",
+    "name" : "附加到数组参数",
+    "srcIndex" : 0,
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "resource_member"
+    },
+    "topPos" : 799
+  }, {
+    "code" : "def insert_members = logic.param('insert_members').getReal()\r\ndef addon_resource = logic.param('addon_resource').getReal()\r\naddon_resource.set('members', insert_members)",
+    "codeName" : "RAWSFCODE3",
+    "codeType" : "Groovy",
+    "leftPos" : 399,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "资源成员绑定至组件",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE3"
+      }
+    } ],
+    "topPos" : 923
+  }, {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "leftPos" : 399,
+    "logicNodeType" : "DEACTION",
+    "name" : "保存资源成员",
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "addon_resource"
+    },
+    "topPos" : 1023
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "addon_resource",
+    "logicName" : "资源组件对象",
+    "name" : "资源组件对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "addon_resource_filter",
+    "logicName" : "资源组件过滤器",
+    "name" : "资源组件过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "addon_resource_page",
+    "logicName" : "资源组件分页查询结果变量",
+    "name" : "资源组件分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/addon_resource.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "day_capacity",
+    "logicName" : "容量对象",
+    "name" : "容量对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/day_capacity.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "for_choose_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "成员循环临时变量",
+    "name" : "成员循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "insert_members",
+    "logicName" : "保存资源列表成员",
+    "name" : "保存资源列表成员",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/resource_member.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "resource_member",
+    "logicName" : "资源成员对象",
+    "name" : "资源成员对象",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/resource_member.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "resource_members",
+    "logicName" : "资源成员列表",
+    "name" : "资源成员列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/resource_member.json"
+    },
+    "entityListParam" : true
+  }, {
+    "codeName" : "srfactionparam",
+    "logicName" : "选择成员列表",
+    "name" : "选择成员列表",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/member.json"
+    },
+    "entityListParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

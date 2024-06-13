@@ -236,6 +236,74 @@
         "detailStyle" : "DEFAULT",
         "detailType" : "GROUPPANEL",
         "name" : "group1",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem1",
+          "contentType" : "RAW",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem1",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "caption" : "如果要变更项目的所属关系及可见范围，你可以移动它。移动后不影响项目下的工作项。",
+            "contentType" : "RAW",
+            "name" : "rawitem1",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawContent" : "如果要变更项目的所属关系及可见范围，你可以移动它。移动后不影响项目下的工作项。",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "actionType" : "UIACTION",
+          "caption" : "移动项目",
+          "codeName" : "button1",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "BUTTON",
+          "name" : "button1",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "form_button1"
+          },
+          "getPSLayoutPos" : {
+            "colLG" : 2,
+            "colMD" : 2,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "移动项目",
+            "codeName" : "move_project",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_move_option_view.json",
+              "viewType" : "DEOPTVIEW"
+            },
+            "fullCodeName" : "project_move_project",
+            "name" : "移动项目",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "project_move"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+            },
+            "successMsg" : "移动成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "move_project",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "id" : "move_project@project"
+          },
+          "tooltip" : "移动项目",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true
+        } ],
         "getPSLayout" : {
           "childColLG" : -1,
           "childColMD" : 24,
@@ -249,7 +317,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : false
+        "showCaption" : true
       }, {
         "caption" : "归档项目",
         "codeName" : "grouppanel1",
@@ -297,7 +365,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "归档",
             "codeName" : "archive",
-            "confirmMsg" : "是否确认将该项目归档？",
+            "confirmMsg" : "确认归档该项目？",
             "frontProcessType" : "WIZARD",
             "fullCodeName" : "project_archive",
             "name" : "进行中_归档",
@@ -380,6 +448,9 @@
             "colLG" : 2,
             "colMD" : 2,
             "layout" : "TABLE_24COL"
+          },
+          "getPSSysCss" : {
+            "cssName" : "delete-button"
           },
           "getPSUIAction" : {
             "actionTarget" : "SINGLEKEY",
@@ -551,11 +622,13 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
+  "refFlag" : false,
   "title" : "高级设置",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
   "xDataControlName" : "form",
   "enableDP" : true,
+  "showCaptionBar" : false,
   "showDataInfoBar" : true,
   "modelid" : "049abc13862993ca4392bbeb9bd3452d",
   "modeltype" : "PSAPPDEVIEW"

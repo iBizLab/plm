@@ -106,7 +106,7 @@ package cn.ibizlab.plm.testmgmt.logic.runlogic.run_re_counters;
             then
     Map param =new HashMap();
         param.put("param0",runrun_re_countersdefault.get("id"));
-    String strSql="SELECT 	count( t.id ) AS run_re_run_history FROM 	run_history t  WHERE     t.run_id = #{et.param0}";
+    String strSql="SELECT     COUNT(t.id) AS run_re_run_history FROM     run_history t WHERE     t.run_id = #{et.param0}  ";
                         java.util.List<JSONObject> entities=iBzSysRunDefaultService.select(strSql,param);//SQL调用
                             if(entities.size()>0){
                             JSONObject entity=entities.get(0);

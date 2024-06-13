@@ -1,0 +1,64 @@
+package cn.ibizlab.plm.base.logic.memberlogic.cur_project_set_resource_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.member membercur_project_set_resource_memberdefault;
+                global cn.ibizlab.plm.core.base.domain.addon_resource membercur_project_set_resource_memberaddon_resource;
+                global cn.ibizlab.plm.core.base.domain.member membercur_project_set_resource_membermember_page;
+                    global cn.ibizlab.plm.core.base.service.Iaddon_resourceService addon_resourceservice;
+        global cn.ibizlab.plm.core.base.service.ImemberService iBzSysMemberDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "membercur_project_set_resource_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取资源组件标识]
+            rule "rawsfcode1"
+            ruleflow-group "membercur_project_set_resource_memberrawsfcode1"
+            when
+            then
+                        update(membercur_project_set_resource_memberdefault);//更新fact中变量值
+                        update(membercur_project_set_resource_memberaddon_resource);//更新fact中变量值
+                        update(membercur_project_set_resource_membermember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取资源组件]
+            rule "deaction1"
+            ruleflow-group "membercur_project_set_resource_memberdeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(addon_resourceservice.get(membercur_project_set_resource_memberaddon_resource.getId()),membercur_project_set_resource_memberaddon_resource);
+                        update(membercur_project_set_resource_memberdefault);//更新fact中变量值
+                        update(membercur_project_set_resource_memberaddon_resource);//更新fact中变量值
+                        update(membercur_project_set_resource_membermember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "membercur_project_set_resource_memberbindparam1"
+            when
+            then
+                        update(membercur_project_set_resource_memberdefault);//更新fact中变量值
+                        update(membercur_project_set_resource_memberaddon_resource);//更新fact中变量值
+                        update(membercur_project_set_resource_membermember_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "membercur_project_set_resource_memberend1"
+            when
+            then
+                        update(membercur_project_set_resource_memberdefault);//更新fact中变量值
+                        update(membercur_project_set_resource_memberaddon_resource);//更新fact中变量值
+                        update(membercur_project_set_resource_membermember_page);//更新fact中变量值
+            end

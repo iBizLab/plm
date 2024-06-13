@@ -12,7 +12,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_default"
+      "id" : "fetch_baseline"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -20,11 +20,26 @@
     }
   },
   "groupMode" : "NONE",
+  "hookEventNames" : [ "ONLOADSUCCESS" ],
   "logicName" : "主表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
   },
+  "getPSControlLogics" : [ {
+    "eventNames" : "onLoadSuccess",
+    "logicTag" : "grid",
+    "logicType" : "APPDEUILOGIC",
+    "name" : "logic",
+    "getPSAppDEUILogic" : {
+      "modelref" : true,
+      "id" : "calc_column_action_state"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    }
+  } ],
   "getPSDEGridColumns" : [ {
     "align" : "LEFT",
     "cLConvertMode" : "NONE",
@@ -63,6 +78,7 @@
           "caption" : "设立完成",
           "codeName" : "set_complete_project",
           "confirmMsg" : "确认设立基线吗？",
+          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "baseline_set_complete_project",
           "name" : "设立完成（项目）",
           "getPSAppDEMethod" : {
@@ -72,6 +88,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SPACE__UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf192@FontAwesome",
@@ -104,6 +124,7 @@
           "actionTarget" : "SINGLEKEY",
           "caption" : "编辑",
           "codeName" : "open_project_update_view",
+          "dataAccessAction" : "UPDATE",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_project_update_view.json",
@@ -115,6 +136,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "SPACE__UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf044@FontAwesome",
@@ -142,8 +167,9 @@
           "caption" : "删除",
           "codeName" : "remove",
           "confirmMsg" : "确认删除该基线？",
+          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "baseline_remove",
-          "name" : "删除",
+          "name" : "删除基线",
           "getPSAppDEMethod" : {
             "modelref" : true,
             "id" : "remove"
@@ -151,6 +177,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "LIBRARY__UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
@@ -198,7 +228,7 @@
     "enableSort" : true
   }, {
     "align" : "LEFT",
-    "cLConvertMode" : "NONE",
+    "cLConvertMode" : "FRONT",
     "caption" : "类别",
     "codeName" : "categories",
     "columnType" : "DEFGRIDCOLUMN",
@@ -206,13 +236,16 @@
     "excelCaption" : "类别",
     "name" : "categories",
     "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+    },
     "getPSAppDEField" : {
       "name" : "CATEGORIES",
       "codeName" : "categories"
     },
     "width" : 300,
     "widthUnit" : "PX",
-    "enableRowEdit" : true,
     "enableSort" : true
   }, {
     "align" : "LEFT",
@@ -321,47 +354,8 @@
       "name" : "NAME",
       "codeName" : "name"
     }
-  }, {
-    "dataType" : 25,
-    "name" : "srfmstag"
   } ],
   "getPSDEGridEditItems" : [ {
-    "caption" : "类别",
-    "codeName" : "categories",
-    "enableCond" : 3,
-    "ignoreInput" : 0,
-    "name" : "categories",
-    "getPSAppDEField" : {
-      "name" : "CATEGORIES",
-      "codeName" : "categories"
-    },
-    "getPSEditor" : {
-      "editorParams" : {
-        "readonly" : "true",
-        "PICKUPVIEW" : "TRUE"
-      },
-      "editorType" : "ADDRESSPICKUP",
-      "name" : "categories",
-      "getPSAppDEACMode" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getPSAppDEDataSet" : {
-        "modelref" : true,
-        "id" : "fetch_default"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
-      },
-      "enableAC" : false,
-      "enablePickupView" : true,
-      "forceSelection" : true,
-      "readOnly" : true,
-      "showTrigger" : true
-    },
-    "allowEmpty" : true
-  }, {
     "caption" : "标识",
     "codeName" : "srfkey",
     "enableCond" : 3,
@@ -377,6 +371,7 @@
     },
     "allowEmpty" : true
   } ],
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -397,6 +392,7 @@
   "enableColFilter" : false,
   "enableCustomized" : false,
   "enableGroup" : false,
+  "enableItemPrivilege" : true,
   "enablePagingBar" : true,
   "enableRowEdit" : false,
   "enableRowEditOrder" : false,

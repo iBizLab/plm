@@ -11,14 +11,14 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_echarts_datas"
+      "id" : "fetch_calc_chart_datas"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/login_log.json"
     }
   },
-  "height" : 400.0,
+  "height" : 450.0,
   "logicName" : "active_members",
   "memo" : "管理后台活跃成员图表",
   "getPSAppDataEntity" : {
@@ -28,10 +28,10 @@
   "getPSChartCoordinateSystems" : [ {
     "eChartsType" : "cartesian2d",
     "index" : 0,
-    "name" : "[bar_0]直角坐标系[0]",
+    "name" : "[line_1]直角坐标系[0]",
     "getPSChartGrid" : {
       "index" : 0,
-      "name" : "[bar_0]直角坐标系[0]",
+      "name" : "[line_1]直角坐标系[0]",
       "getPSChartCoordinateSystem" : {
         "modelref" : true,
         "id" : "0"
@@ -44,6 +44,10 @@
         "modelref" : true,
         "id" : "0"
       },
+      "getPSChartGridYAxis1" : {
+        "modelref" : true,
+        "id" : "1"
+      },
       "type" : "grid",
       "id" : "0"
     },
@@ -52,10 +56,10 @@
   } ],
   "getPSChartDataSetGroups" : [ {
     "index" : 0,
-    "name" : "ECHARTS_DATAS",
+    "name" : "CALC_CHART_DATAS",
     "getPSAppDEDataSet" : {
       "modelref" : true,
-      "id" : "fetch_echarts_datas"
+      "id" : "fetch_calc_chart_datas"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -65,7 +69,22 @@
   } ],
   "getPSChartDataSets" : [ {
     "index" : 0,
-    "name" : "bar_0-ECHARTS_DATAS",
+    "name" : "line_1-CALC_CHART_DATAS",
+    "getPSChartDataSetFields" : [ {
+      "index" : 0,
+      "name" : "AUTHTIME",
+      "groupField" : true,
+      "id" : "0"
+    }, {
+      "index" : 1,
+      "name" : "ACTIVE_RATE",
+      "groupField" : false,
+      "id" : "1"
+    } ],
+    "id" : "0"
+  }, {
+    "index" : 1,
+    "name" : "bar_0-CALC_CHART_DATAS",
     "getPSChartDataSetFields" : [ {
       "index" : 0,
       "name" : "AUTHTIME",
@@ -77,11 +96,11 @@
       "groupField" : false,
       "id" : "1"
     } ],
-    "id" : "0"
+    "id" : "1"
   } ],
   "getPSChartGrids" : [ {
     "index" : 0,
-    "name" : "[bar_0]直角坐标系[0]",
+    "name" : "[line_1]直角坐标系[0]",
     "getPSChartCoordinateSystem" : {
       "modelref" : true,
       "id" : "0"
@@ -94,6 +113,10 @@
       "modelref" : true,
       "id" : "0"
     },
+    "getPSChartGridYAxis1" : {
+      "modelref" : true,
+      "id" : "1"
+    },
     "type" : "grid",
     "id" : "0"
   } ],
@@ -104,6 +127,9 @@
     "name" : "axis_xAxis_0",
     "position" : "bottom",
     "type" : "category",
+    "getUserParam" : {
+      "EC.axisTick" : "{\"show\":0}"
+    },
     "id" : "0"
   } ],
   "getPSChartYAxises" : [ {
@@ -113,7 +139,24 @@
     "name" : "axis_yAxis_0",
     "position" : "left",
     "type" : "numeric",
+    "getUserParam" : {
+      "EC.alignTicks" : "true"
+    },
     "id" : "0"
+  }, {
+    "eChartsPos" : "yAxis",
+    "eChartsType" : "value",
+    "index" : 1,
+    "name" : "axis_yAxis_2",
+    "position" : "right",
+    "type" : "numeric",
+    "getUserParam" : {
+      "EC.axisTick" : "{\"show\":0,\"length\":2}",
+      "EC.axisLine" : "{\"show\":0}",
+      "EC.minorTick" : "{\"show\":0}",
+      "EC.axisLabel" : "{\"rotate\":0,\"formatter\":\"{value}%\"}"
+    },
+    "id" : "1"
   } ],
   "getPSDEChartDataGrid" : {
     "index" : 0,
@@ -121,15 +164,16 @@
   },
   "getPSDEChartLegend" : {
     "index" : 0,
-    "legendPos" : "RIGHT",
+    "legendPos" : "BOTTOM",
     "showLegend" : true,
     "id" : "0"
   },
   "getPSDEChartSerieses" : [ {
+    "caption" : "活跃率",
     "catalogField" : "AUTHTIME",
-    "eChartsType" : "bar",
+    "eChartsType" : "line",
     "index" : 0,
-    "name" : "bar_0",
+    "name" : "line_1",
     "getPSChartCoordinateSystem" : {
       "modelref" : true,
       "id" : "0"
@@ -137,6 +181,46 @@
     "getPSChartDataSet" : {
       "modelref" : true,
       "id" : "0"
+    },
+    "getPSChartSeriesEncode" : {
+      "index" : 0,
+      "name" : "坐标系编码",
+      "getPSChartXAxis" : {
+        "modelref" : true,
+        "id" : "0"
+      },
+      "getPSChartYAxis" : {
+        "modelref" : true,
+        "id" : "1"
+      },
+      "type" : "XY",
+      "x" : [ "AUTHTIME" ],
+      "y" : [ "ACTIVE_RATE" ],
+      "id" : "0"
+    },
+    "seriesLayoutBy" : "column",
+    "seriesType" : "line",
+    "step" : false,
+    "valueField" : "ACTIVE_RATE",
+    "enableChartDataSet" : true,
+    "stack" : false,
+    "getUserParam" : {
+      "EC.label" : "{\"show\":0}",
+      "EC.lineStyle" : "{\"color\":\"#2CCCDA\"}"
+    }
+  }, {
+    "caption" : "活跃成员数",
+    "catalogField" : "AUTHTIME",
+    "eChartsType" : "bar",
+    "index" : 1,
+    "name" : "bar_0",
+    "getPSChartCoordinateSystem" : {
+      "modelref" : true,
+      "id" : "0"
+    },
+    "getPSChartDataSet" : {
+      "modelref" : true,
+      "id" : "1"
     },
     "getPSChartSeriesEncode" : {
       "index" : 0,
@@ -158,7 +242,13 @@
     "seriesType" : "bar",
     "valueField" : "ACTIVE_MEMBERS",
     "enableChartDataSet" : true,
-    "stack" : false
+    "stack" : false,
+    "getUserParam" : {
+      "EC.label" : "{\"show\":0}",
+      "EC.itemStyle" : "{\"color\":\"#67BCFE\",\"borderWidth\":100}",
+      "EC.barWidth" : "40",
+      "EC.lineStyle" : "{\"color\":\"#F3EAEA\",\"width\":10}"
+    }
   } ],
   "getPSDEChartTitle" : {
     "index" : 0,
@@ -166,11 +256,12 @@
     "showTitle" : false,
     "id" : "0"
   },
-  "width" : 1750.0,
   "readOnly" : true,
   "modelid" : "4529CDEA-184A-46D5-9862-913ACDFAF2CD",
   "modeltype" : "PSDECHART",
   "getUserParam" : {
+    "EC.tooltip" : "{\"trigger\":\"axis\",\"formatter\": \"function (params, ticket, callback) {const newDiv = document.createElement('div');Object.assign(newDiv, { style: 'margin: 0px 0 0;line-height:1;' });const items = Array.isArray(params) ? params : [params];const axisVal = items[0].axisValue;const nodes = items.map((item, index) => {const margin = index === 0 ? '0px 0 0' : '10px 0 0';const { seriesName, marker, data } = item;const yData = data[1];const yValue = data[2] || {};const showValue =  yValue._seriesModelId === 'line_1' ? `${yData}%` : yData;return `<div style='margin: 0px 0 0;line-height:1;'><div style='margin:${margin};line-height:1;'>${marker}<span style='font-size:14px;color:#666;font-weight:400;margin-left:2px'>${seriesName}</span><span style='float:right;margin-left:20px;font-size:14px;color:#666;font-weight:900'>${showValue}</span><div style='clear:both'></div></div><div style='clear:both'></div></div>`;});const newDivContent = `<div style='margin: 0px 0 0;line-height:1;'><div style='font-size:14px;color:#666;font-weight:400;line-height:1;'>${axisVal}</div><div style='margin: 10px 0 0;line-height:1;'>${nodes.join('')}<div style='clear:both'></div></div><div style='clear:both'></div></div><div style='clear:both'></div>`;newDiv.innerHTML = newDivContent;return newDiv;}\"}",
+    "EC.grid" : "{\"left\":\"64px\",\"right\":\"64px\"}",
     "EC.color" : "[\"#5470c6\",\"#91cc75\",\"#fac858\",\"#ee6666\",\"#73c0de\",\"#3ba272\",\"#fc8452\",\"#9a60b4\",\"#ea7ccc\",\"#5470c6\",\"#91cc75\"]"
   }
 }

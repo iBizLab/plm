@@ -237,7 +237,15 @@
       "codeName" : "assignee_name"
     }
   }, {
+    "id" : "categories_name",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "CATEGORIES_NAME",
+      "codeName" : "categories_name"
+    }
+  }, {
     "id" : "categories",
+    "hidden" : true,
     "dataType" : 25,
     "getPSAppDEField" : {
       "name" : "CATEGORIES",
@@ -326,7 +334,7 @@
       "dataType" : 25,
       "detailStyle" : "DEFAULT",
       "detailType" : "FORMITEM",
-      "enableCond" : 3,
+      "enableCond" : 0,
       "ignoreInput" : 0,
       "labelPos" : "TOP",
       "labelWidth" : 130,
@@ -379,13 +387,14 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
                 "viewType" : "DETREEEXPVIEW"
               },
-              "frontProcessType" : "WIZARD",
+              "frontProcessType" : "OTHER",
               "fullCodeName" : "project_open_global_setting",
               "name" : "打开项目配置(全局)",
               "getPSAppDataEntity" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
               },
+              "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
               "timeout" : 60000,
               "uIActionMode" : "FRONT",
               "uIActionTag" : "open_global_setting",
@@ -525,6 +534,7 @@
           } ],
           "uniqueTag" : "project_member__Usr0104465165"
         },
+        "placeHolder" : "选择负责人",
         "valueItemName" : "ASSIGNEE_ID",
         "enableAC" : true,
         "enablePickupView" : false,
@@ -539,6 +549,58 @@
       },
       "valueItemName" : "ASSIGNEE_ID",
       "allowEmpty" : false,
+      "showCaption" : true
+    }, {
+      "caption" : "类别",
+      "codeName" : "categories_name",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "TOP",
+      "labelWidth" : 130,
+      "name" : "categories_name",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "CATEGORIES_NAME",
+        "codeName" : "categories_name"
+      },
+      "getPSEditor" : {
+        "editorParams" : {
+          "multiple" : "true",
+          "DROPDOWNVIEW" : "TRUE",
+          "AC" : "FALSE",
+          "TRIGGER" : "TRUE",
+          "PICKUPVIEW" : "TRUE"
+        },
+        "editorType" : "PICKEREX_DROPDOWNVIEW",
+        "handlerType" : "PickupText",
+        "name" : "categories_name",
+        "getPSEditorItems" : [ {
+          "name" : "categories"
+        } ],
+        "getPickupPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_release_pick_up_tree_view.json",
+          "viewType" : "DEPICKUPTREEVIEW"
+        },
+        "placeHolder" : "选择所属类别",
+        "valueItemName" : "categories",
+        "dropDownView" : true,
+        "enableAC" : false,
+        "enablePickupView" : true,
+        "forceSelection" : true,
+        "showTrigger" : true,
+        "singleSelect" : true
+      },
+      "getPSLayoutPos" : {
+        "colLG" : 24,
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "valueItemName" : "categories",
+      "allowEmpty" : true,
       "showCaption" : true
     }, {
       "caption" : "类别",
@@ -557,47 +619,8 @@
         "codeName" : "categories"
       },
       "getPSEditor" : {
-        "editorParams" : {
-          "srfnavparam.n_owner_subtype_eq" : "release",
-          "srfnavparam.n_owner_id_eq" : "%project%",
-          "PICKUPVIEW" : "TRUE",
-          "srfnavparam.n_owner_type_eq" : "project"
-        },
-        "editorType" : "ADDRESSPICKUP",
-        "name" : "categories",
-        "getPSAppDEACMode" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "fetch_default"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
-        },
-        "getPSNavigateParams" : [ {
-          "key" : "n_owner_subtype_eq",
-          "name" : "n_owner_subtype_eq",
-          "value" : "release",
-          "rawValue" : true
-        }, {
-          "key" : "n_owner_id_eq",
-          "name" : "n_owner_id_eq",
-          "value" : "project",
-          "rawValue" : false
-        }, {
-          "key" : "n_owner_type_eq",
-          "name" : "n_owner_type_eq",
-          "value" : "project",
-          "rawValue" : true
-        } ],
-        "placeHolder" : "选择所属类别",
-        "enableAC" : false,
-        "enablePickupView" : true,
-        "forceSelection" : true,
-        "showTrigger" : true
+        "editorType" : "HIDDEN",
+        "name" : "categories"
       },
       "getPSLayoutPos" : {
         "colLG" : 24,
@@ -605,6 +628,7 @@
         "layout" : "TABLE_24COL"
       },
       "allowEmpty" : true,
+      "hidden" : true,
       "showCaption" : true
     }, {
       "caption" : "开始时间",
@@ -635,7 +659,8 @@
         },
         "editorType" : "DATEPICKEREX_NOTIME",
         "editorWidth" : 1.0,
-        "name" : "start_at"
+        "name" : "start_at",
+        "placeHolder" : "选择开始时间"
       },
       "getPSLayoutPos" : {
         "colLG" : 12,
@@ -674,7 +699,8 @@
         },
         "editorType" : "DATEPICKEREX_NOTIME",
         "editorWidth" : 1.0,
-        "name" : "end_at"
+        "name" : "end_at",
+        "placeHolder" : "选择结束时间"
       },
       "getPSLayoutPos" : {
         "colLG" : 12,

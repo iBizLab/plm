@@ -303,20 +303,30 @@
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
         "name" : "deuiaction1",
-        "noPrivDisplayMode" : 2,
+        "noPrivDisplayMode" : 1,
         "getPSAppViewUIAction" : {
           "modelref" : true,
           "id" : "grid_batchtoolbar_deuiaction1"
         },
+        "getPSControlLogics" : [ {
+          "itemName" : "deuiaction1",
+          "logicTag" : "grid_batchtoolbar",
+          "logicType" : "SCRIPT",
+          "name" : "logic",
+          "scriptCode" : "context.baseline_status !== '2'",
+          "triggerType" : "ITEMENABLE"
+        } ],
         "getPSSysImage" : {
           "glyph" : "xf112@FontAwesome",
           "cssClass" : "fa fa-mail-reply"
         },
         "getPSUIAction" : {
           "actionTarget" : "MULTIKEY",
+          "noPrivDisplayMode" : 1,
           "caption" : "移出",
           "codeName" : "shift_out_baseline",
           "confirmMsg" : "确认从此基线中移出？",
+          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "baseline_idea_shift_out_baseline",
           "name" : "移出基线",
           "getPSAppDEMethod" : {
@@ -326,6 +336,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf112@FontAwesome",
@@ -462,7 +476,7 @@
       "valueFormat" : "YYYY-MM-DD",
       "width" : 180,
       "widthUnit" : "PX",
-      "enableSort" : true
+      "enableSort" : false
     }, {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
@@ -608,6 +622,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -626,7 +641,7 @@
     "sortMode" : "REMOTE",
     "hasWFDataItems" : false,
     "enableColFilter" : false,
-    "enableCustomized" : true,
+    "enableCustomized" : false,
     "enableGroup" : false,
     "enablePagingBar" : true,
     "enableRowEdit" : false,
@@ -634,7 +649,7 @@
     "enableRowNew" : false,
     "forceFit" : false,
     "hideHeader" : false,
-    "noSort" : false,
+    "noSort" : true,
     "singleSelect" : false,
     "name" : "grid",
     "modelid" : "7079c123aec209665264c00e875f5d8f",
@@ -729,16 +744,19 @@
     "modelid" : "fd122cd5ef963ce45b46dc09bea6472b",
     "modeltype" : "PSDEFORM_SEARCHFORM"
   }, {
-    "codeName" : "relation_grid_view_toolbar",
+    "codeName" : "relation_grid_view_tabtoolbar",
     "controlType" : "TOOLBAR",
     "logicName" : "规划需求",
-    "name" : "toolbar",
+    "name" : "tabtoolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
     },
     "getPSControlParam" : {
-      "id" : "TOOLBAR"
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABTOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
       "caption" : "规划需求",
@@ -748,8 +766,16 @@
       "noPrivDisplayMode" : 2,
       "getPSAppViewUIAction" : {
         "modelref" : true,
-        "id" : "toolbar_deuiaction1"
+        "id" : "tabtoolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "tabtoolbar",
+        "logicType" : "SCRIPT",
+        "name" : "logic",
+        "scriptCode" : "context.baseline_status !== '2'",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf0cb@FontAwesome",
         "cssClass" : "fa fa-list-ol"
@@ -758,6 +784,7 @@
         "actionTarget" : "NONE",
         "caption" : "规划需求",
         "codeName" : "baseline_plan_idea",
+        "dataAccessAction" : "UPDATE",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_baseline_mpick_up_view.json",
@@ -772,6 +799,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
         },
         "getPSNavigateParams" : [ {
           "key" : "baseline_id",
@@ -858,6 +889,188 @@
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "42502568507a11ac2ead47c1114fea83",
-  "modeltype" : "PSAPPDEVIEW"
+  "modeltype" : "PSAPPDEVIEW",
+  "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_SPACE_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "project",
+    "majorDEName" : "PROJECT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PROJECT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "product",
+    "majorDEName" : "PRODUCT",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_PRODUCT_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ], [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "library",
+    "majorDEName" : "LIBRARY",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_LIBRARY_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  }, {
+    "actionRSMode" : 1,
+    "codeName" : "baseline_ideas",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "baseline",
+    "majorDEName" : "BASELINE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "minorDECodeName" : "baseline_idea",
+    "minorDEName" : "BASELINE_IDEA",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_idea.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_IDEA_BASELINE",
+    "getParentPSAppDEField" : {
+      "name" : "PRINCIPAL_ID",
+      "codeName" : "principal_id"
+    },
+    "rSMode" : 2,
+    "majorDEMajor" : false
+  } ] ]
 }

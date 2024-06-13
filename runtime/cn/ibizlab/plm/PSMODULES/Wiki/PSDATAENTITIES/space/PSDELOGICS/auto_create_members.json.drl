@@ -25,12 +25,13 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.auto_create_members;
             then
             end
 
-            //逻辑处理节点[准备生成用户数据]
+            //逻辑处理节点[准备用户数据]
             rule "prepareparam3"
             ruleflow-group "spaceauto_create_membersprepareparam3"
             when
             then
                             spaceauto_create_membersspace_member.set("spaceid",spaceauto_create_membersdefault.get("id"));
+                            spaceauto_create_membersspace_member.set("roleid","admin");
                                 spaceauto_create_membersspace_member.set("userid",curuser.getSessionParams().get("srfpersonid"));
                                 spaceauto_create_membersspace_member.set("name",curuser.getSessionParams().get("srfpersonname"));
                         update(spaceauto_create_membersdefault);//更新fact中变量值
@@ -103,7 +104,7 @@ package cn.ibizlab.plm.wiki.logic.spacelogic.auto_create_members;
                         update(spaceauto_create_membersspace_member);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备用户数据]
             rule "prepareparam4"
             ruleflow-group "spaceauto_create_membersprepareparam4"
             when

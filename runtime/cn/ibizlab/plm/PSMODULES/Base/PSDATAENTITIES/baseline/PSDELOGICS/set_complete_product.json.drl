@@ -28,7 +28,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
             then
             end
 
-            //逻辑处理节点[设立完成状态]
+            //逻辑处理节点[设置基线状态为完成状态]
             rule "prepareparam1"
             ruleflow-group "baselineset_complete_productprepareparam1"
             when
@@ -42,7 +42,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
                         update(baselineset_complete_productversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[设立完成]
+            //逻辑处理节点[更新基线的状态]
             rule "deaction1"
             ruleflow-group "baselineset_complete_productdeaction1"
             when
@@ -56,7 +56,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
                         update(baselineset_complete_productversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备过滤器参数]
+            //逻辑处理节点[准备关联查询过滤器参数]
             rule "prepareparam2"
             ruleflow-group "baselineset_complete_productprepareparam2"
             when
@@ -99,7 +99,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
                         update(baselineset_complete_productversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[重置参数]
+            //逻辑处理节点[重置产品需求参数]
             rule "resetparam1"
             ruleflow-group "baselineset_complete_productresetparam1"
             when
@@ -112,7 +112,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
                         update(baselineset_complete_productversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[重置参数]
+            //逻辑处理节点[重置版本参数]
             rule "resetparam2"
             ruleflow-group "baselineset_complete_productresetparam2"
             when
@@ -125,7 +125,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
                         update(baselineset_complete_productversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[填充产品需求主键标识]
             rule "prepareparam3"
             ruleflow-group "baselineset_complete_productprepareparam3"
             when
@@ -159,7 +159,7 @@ package cn.ibizlab.plm.base.logic.baselinelogic.set_complete_product;
             when
             then
                             baselineset_complete_productversion.set("ownerid",baselineset_complete_productfor_temp_obj.get("targetid"));
-                            baselineset_complete_productversion.set("ownertype","WORK_ITEM");
+                            baselineset_complete_productversion.set("ownertype","IDEA");
                             baselineset_complete_productversion.set("name","设立基线创建版本");
                         update(baselineset_complete_productdefault);//更新fact中变量值
                         update(baselineset_complete_productfor_temp_obj);//更新fact中变量值

@@ -487,6 +487,14 @@
         "createDVT" : "APPDATA",
         "createDV" : "product"
       }, {
+        "id" : "product_id",
+        "hidden" : true,
+        "dataType" : 25,
+        "getPSAppDEField" : {
+          "name" : "PRODUCT_ID",
+          "codeName" : "product_id"
+        }
+      }, {
         "id" : "type",
         "dataType" : 25,
         "getPSAppDEField" : {
@@ -533,14 +541,6 @@
         "getPSAppDEField" : {
           "name" : "ATTENTIONS",
           "codeName" : "attentions"
-        }
-      }, {
-        "id" : "product_id",
-        "hidden" : true,
-        "dataType" : 25,
-        "getPSAppDEField" : {
-          "name" : "PRODUCT_ID",
-          "codeName" : "product_id"
         }
       }, {
         "id" : "id",
@@ -595,6 +595,7 @@
               "editorType" : "TEXTAREA",
               "maxLength" : 500,
               "name" : "title",
+              "placeHolder" : "输入标题",
               "showMaxLength" : true
             },
             "getPSLayoutPos" : {
@@ -632,10 +633,10 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetchrecent_access`"
+                "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
@@ -644,7 +645,8 @@
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
                 "pluginCode" : "COMMENT",
                 "runtimeObject" : true
-              }
+              },
+              "placeHolder" : "输入描述"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -1287,9 +1289,10 @@
             "getPSEditor" : {
               "editorParams" : {
                 "AC" : "TRUE",
-                "PICKUPVIEW" : "TRUE"
+                "TRIGGER" : "TRUE",
+                "PICKUPVIEW" : "FALSE"
               },
-              "editorType" : "PICKER",
+              "editorType" : "PICKEREX_TRIGGER",
               "handlerType" : "PickupText",
               "name" : "product_name",
               "getPSAppDEACMode" : {
@@ -1298,7 +1301,7 @@
               },
               "getPSAppDEDataSet" : {
                 "modelref" : true,
-                "id" : "fetch_default"
+                "id" : "fetch_quick"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -1307,14 +1310,10 @@
               "getPSEditorItems" : [ {
                 "name" : "product_id"
               } ],
-              "getPickupPSAppView" : {
-                "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_pick_up_view.json",
-                "viewType" : "DEPICKUPVIEW"
-              },
+              "placeHolder" : "选择所属产品",
               "valueItemName" : "product_id",
               "enableAC" : true,
-              "enablePickupView" : true,
+              "enablePickupView" : false,
               "forceSelection" : true,
               "showTrigger" : true,
               "singleSelect" : true
@@ -1351,6 +1350,33 @@
             "allowEmpty" : true,
             "hidden" : true
           }, {
+            "caption" : "产品标识",
+            "codeName" : "product_id",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "TOP",
+            "labelWidth" : 130,
+            "name" : "product_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "PRODUCT_ID",
+              "codeName" : "product_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "product_id"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true,
+            "showCaption" : true
+          }, {
             "caption" : "类型",
             "codeName" : "type",
             "dataType" : 25,
@@ -1366,19 +1392,44 @@
               "name" : "TYPE",
               "codeName" : "type"
             },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "ITEMENABLE",
+              "logicType" : "GROUP",
+              "name" : "表单成员[type][表单项启用]逻辑",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "ISNOTNULL",
+                "dEFDName" : "product_name",
+                "logicType" : "SINGLE"
+              } ],
+              "relatedDetailNames" : [ "product_name" ],
+              "notMode" : false
+            } ],
             "getPSEditor" : {
+              "editorParams" : {
+                "SRFNAVCTX.PRODUCT" : "%PRODUCT_ID%"
+              },
               "editorType" : "DROPDOWNLIST",
               "name" : "type",
               "getPSAppCodeList" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__product_ticket_type.json"
               },
+              "getPSNavigateContexts" : [ {
+                "key" : "PRODUCT",
+                "name" : "PRODUCT",
+                "value" : "PRODUCT_ID",
+                "rawValue" : false
+              } ],
+              "placeHolder" : "选择类型",
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "resetItemName" : "product_name",
+            "resetItemNames" : [ "product_name" ],
             "allowEmpty" : true,
             "needCodeListConfig" : true,
             "showCaption" : true
@@ -1466,6 +1517,7 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customer_pick_up_view.json",
                 "viewType" : "DEPICKUPVIEW"
               },
+              "placeHolder" : "选择客户",
               "valueItemName" : "customer_id",
               "enableAC" : true,
               "enablePickupView" : true,
@@ -1477,8 +1529,8 @@
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
-            "resetItemName" : "product_id",
-            "resetItemNames" : [ "product_id" ],
+            "resetItemName" : "product_name",
+            "resetItemNames" : [ "product_name" ],
             "valueItemName" : "customer_id",
             "allowEmpty" : true,
             "showCaption" : true
@@ -1766,33 +1818,6 @@
           },
           "infoGroupMode" : false,
           "showCaption" : false
-        }, {
-          "caption" : "产品标识",
-          "codeName" : "product_id",
-          "dataType" : 25,
-          "detailStyle" : "DEFAULT",
-          "detailType" : "FORMITEM",
-          "enableCond" : 3,
-          "ignoreInput" : 0,
-          "labelPos" : "LEFT",
-          "labelWidth" : 130,
-          "name" : "product_id",
-          "noPrivDisplayMode" : 1,
-          "getPSAppDEField" : {
-            "name" : "PRODUCT_ID",
-            "codeName" : "product_id"
-          },
-          "getPSEditor" : {
-            "editorType" : "HIDDEN",
-            "name" : "product_id"
-          },
-          "getPSLayoutPos" : {
-            "colMD" : 24,
-            "layout" : "TABLE_24COL"
-          },
-          "allowEmpty" : true,
-          "hidden" : true,
-          "showCaption" : true
         }, {
           "getCapPSLanguageRes" : {
             "lanResTag" : "DEF.LNAME.ID"

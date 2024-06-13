@@ -147,6 +147,10 @@
                 "key" : "PROJECT",
                 "name" : "PROJECT",
                 "rawValue" : true
+              }, {
+                "key" : "SRFREADONLY",
+                "name" : "SRFREADONLY",
+                "rawValue" : true
               } ],
               "timeout" : 60000,
               "uIActionMode" : "FRONT",
@@ -208,7 +212,7 @@
               },
               "getPSAppDEDataSet" : {
                 "modelref" : true,
-                "id" : "fetch_normal"
+                "id" : "fetch_main"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -360,11 +364,39 @@
       }
     } ],
     "getPSControls" : [ {
-      "codeName" : "waterfall_main_view",
+      "codeName" : "waterfall",
       "controlStyle" : "DRBAR_EX",
       "controlType" : "DRBAR",
+      "dataRelationTag" : "waterfall",
       "editItemCaption" : "项目",
       "name" : "drbar",
+      "getPSAppCounterRef" : {
+        "modelref" : true,
+        "id" : "d3d8763d3794df6a38d49a4edb2003e5"
+      },
+      "getPSAppCounterRefs" : [ {
+        "getPSAppCounter" : {
+          "codeName" : "waterfall_project_add_on_counters",
+          "counterType" : "DEDR",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCOUNTERS/waterfall_project_add_on_counters.json",
+          "getGetPSAppDEAction" : {
+            "modelref" : true,
+            "id" : "waterfall_index_addon_counter"
+          },
+          "memo" : "瀑布项目组件显示隐藏计数器",
+          "name" : "瀑布项目组件显示隐藏计数器",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+          },
+          "uniqueTag" : "waterfall_project_add_on_counters"
+        },
+        "refMode" : {
+          "srfdeid" : "PROJECT"
+        },
+        "tag" : "d3d8763d3794df6a38d49a4edb2003e5",
+        "id" : "d3d8763d3794df6a38d49a4edb2003e5"
+      } ],
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
@@ -433,9 +465,17 @@
         "name" : "页面",
         "hidden" : false,
         "id" : "UsrDRGroup1225293659"
+      }, {
+        "caption" : "资源",
+        "name" : "资源",
+        "hidden" : false,
+        "id" : "UsrDRGroup1225643013"
       } ],
       "getPSDEDRCtrlItems" : [ {
         "caption" : "概览",
+        "counterId" : "overview",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "overview",
         "getPSAppView" : {
           "modelref" : true,
@@ -448,7 +488,10 @@
         }
       }, {
         "caption" : "规划",
-        "name" : "guihua",
+        "counterId" : "plan",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "plan",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_gantt_view.json",
@@ -460,6 +503,9 @@
         }
       }, {
         "caption" : "里程碑",
+        "counterId" : "milestone",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "milestone",
         "getPSAppView" : {
           "modelref" : true,
@@ -472,6 +518,9 @@
         }
       }, {
         "caption" : "交付物",
+        "counterId" : "deliverable",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "deliverable",
         "getPSAppView" : {
           "modelref" : true,
@@ -490,11 +539,14 @@
         } ]
       }, {
         "caption" : "工作项",
-        "name" : "workitem",
+        "counterId" : "work_item",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "work_item",
         "getPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_all_waterfall_grid_view.json",
-          "viewType" : "DEGRIDVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_waterfall_tree_grid_view.json",
+          "viewType" : "DETREEGRIDVIEW"
         },
         "getPSDEDRBarGroup" : {
           "modelref" : true,
@@ -502,7 +554,10 @@
         }
       }, {
         "caption" : "需求",
-        "name" : "story",
+        "counterId" : "requirement",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "requirement",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_waterfall_story_grid_view.json",
@@ -514,7 +569,10 @@
         }
       }, {
         "caption" : "缺陷",
-        "name" : "bug",
+        "counterId" : "defect",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "defect",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_waterfall_bug_grid_view.json",
@@ -526,7 +584,10 @@
         }
       }, {
         "caption" : "发布",
-        "name" : "version",
+        "counterId" : "release",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "release",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_tree_exp_view.json",
@@ -538,6 +599,9 @@
         }
       }, {
         "caption" : "基线",
+        "counterId" : "baseline",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "baseline",
         "getPSAppView" : {
           "modelref" : true,
@@ -550,7 +614,10 @@
         }
       }, {
         "caption" : "测试",
-        "name" : "test",
+        "counterId" : "test_plan",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "test_plan",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/test_plan_project_tree_exp_view.json",
@@ -562,7 +629,10 @@
         }
       }, {
         "caption" : "页面",
-        "name" : "viewpage",
+        "counterId" : "space",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "space",
         "getPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_product_re_tree_exp_view.json",
@@ -604,6 +674,21 @@
           "value" : "project",
           "rawValue" : false
         } ]
+      }, {
+        "caption" : "资源",
+        "counterId" : "resource",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
+        "name" : "resource",
+        "getPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_project_resource_gantt_view.json",
+          "viewType" : "DEGANTTVIEW"
+        },
+        "getPSDEDRBarGroup" : {
+          "modelref" : true,
+          "id" : "UsrDRGroup1225643013"
+        }
       } ],
       "getPSSysPFPlugin" : {
         "pluginType" : "CUSTOM",

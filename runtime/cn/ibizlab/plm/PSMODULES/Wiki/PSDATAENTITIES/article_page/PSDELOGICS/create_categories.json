@@ -1,0 +1,402 @@
+{
+  "codeName" : "create_categories",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDELOGICS/create_categories.json",
+  "logicName" : "一键生成类别路径",
+  "memo" : "通过按钮触发处理逻辑，一键更新类别路径字段的值",
+  "name" : "一键生成类别路径",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 390,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 190
+  }, {
+    "codeName" : "END2",
+    "leftPos" : 726,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 190
+  }, {
+    "codeName" : "RAWSQLCALL2",
+    "leftPos" : 502,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "直接SQL调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL2"
+      }
+    } ],
+    "sql" : "SELECT GROUP_CONCAT(t2.parent_id ORDER BY t1._id ASC SEPARATOR '/') AS concatenated_parent_ids\r\nFROM (\r\n    SELECT @r := parent_id as _id\r\n    FROM page\r\n    WHERE id = '4a9db83886481a910ad8e2189d44214e'\r\n    UNION ALL\r\n    SELECT @r := parent_id\r\n    FROM page, (SELECT @r := '4a9db83886481a910ad8e2189d44214e') as vars\r\n    WHERE page.id = @r AND @r IS NOT NULL\r\n) t1\r\nJOIN page t2 ON t1._id = t2.id",
+    "topPos" : 198
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 350,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备过滤参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "n_space_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[plm_space] ==> filter[n_space_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "plm_space",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_is_deleted_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[0] ==> filter[n_is_deleted_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "0",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_parent_id_isnotnull",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "filter"
+      },
+      "name" : "直接值[1] ==> filter[n_parent_id_isnotnull]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 310
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "filter"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "DEDATASET",
+    "name" : "查询指定页面结果",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_page"
+    },
+    "topPos" : 430
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 670,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 562
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_obj"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      },
+      "name" : "进入子循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "结束循环",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page_page"
+    },
+    "topPos" : 570
+  }, {
+    "codeName" : "RESETPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置page参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM1"
+      }
+    } ],
+    "topPos" : 718
+  }, {
+    "codeName" : "RESETPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "pagelist"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "RESETPARAM",
+    "name" : "重置pagelist参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM2"
+      }
+    } ],
+    "topPos" : 808
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "pagelist"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "通过ID查询树级结构",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "page_obj[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "page_obj[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT GROUP_CONCAT(t2.parent_id ORDER BY t1._id ASC SEPARATOR '/') AS concatenated_parent_ids\r\nFROM (\r\n    SELECT @r := parent_id as _id\r\n    FROM page\r\n    WHERE id = ?\r\n    UNION ALL\r\n    SELECT @r := parent_id\r\n    FROM page, (SELECT @r := ?) as vars\r\n    WHERE page.id = @r AND @r IS NOT NULL\r\n) t1\r\nJOIN page t2 ON t1._id = t2.id",
+    "topPos" : 930,
+    "fillDstLogicParam" : true
+  }, {
+    "code" : "var pagelist = logic.getParam(\"pagelist\");\r\nvar page_obj = logic.getParam(\"page_obj\");\r\nvar concatenated_parent_ids = pagelist.get(\"concatenated_parent_ids\");\r\nvar result = concatenated_parent_ids +'/'+page_obj.get(\"parent_id\")+'/';\r\npagelist.set(\"concatenated_parent_ids\",result);\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 350,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "拼接类别路径",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 1042
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 350,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备更新参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "name" : "page_obj[ID] ==> page[ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "CATEGORIES",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "name" : "pagelist[concatenated_parent_ids] ==> page[CATEGORIES]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "concatenated_parent_ids",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "pagelist"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 1140
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page/PSDEACTIONS/Update.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "leftPos" : 350,
+    "logicNodeType" : "DEACTION",
+    "name" : "更新操作",
+    "topPos" : 1240
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "filter",
+    "logicName" : "过滤器",
+    "name" : "过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "page",
+    "logicName" : "页面",
+    "name" : "页面",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "page_obj",
+    "logicName" : "页面结果变量",
+    "name" : "页面结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "page_page",
+    "logicName" : "页面分页结果变量",
+    "name" : "页面分页结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "pagelist",
+    "logicName" : "页面列表变量",
+    "name" : "页面列表变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

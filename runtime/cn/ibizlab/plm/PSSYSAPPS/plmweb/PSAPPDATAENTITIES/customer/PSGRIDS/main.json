@@ -48,6 +48,14 @@
         "modelref" : true,
         "id" : "grid_batchtoolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "grid_batchtoolbar",
+        "logicType" : "SCRIPT",
+        "name" : "deuiaction1",
+        "scriptCode" : "context.srfreadonly != true",
+        "triggerType" : "ITEMENABLE"
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf044@FontAwesome",
         "cssClass" : "fa fa-edit"
@@ -56,6 +64,7 @@
         "actionTarget" : "MULTIKEY",
         "caption" : "设置类别",
         "codeName" : "add_categories",
+        "dataAccessAction" : "UPDATE",
         "getFrontPSAppView" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customer_add_category_option_view.json",
@@ -71,6 +80,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "product__UPDATE"
         },
         "getPSSysImage" : {
           "glyph" : "xf044@FontAwesome",
@@ -134,6 +147,7 @@
           "actionTarget" : "MULTIKEY",
           "caption" : "设置类别",
           "codeName" : "add_categories",
+          "dataAccessAction" : "UPDATE",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customer_add_category_option_view.json",
@@ -149,6 +163,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "product__UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf044@FontAwesome",
@@ -180,6 +198,7 @@
           "caption" : "删除",
           "codeName" : "delete_customer",
           "confirmMsg" : "确认删除该客户？",
+          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "customer_delete_customer",
           "name" : "删除",
           "getPSAppDEMethod" : {
@@ -190,16 +209,22 @@
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
           },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "product__UPDATE"
+          },
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
             "cssClass" : "fa fa-trash-o"
           },
+          "refreshMode" : 1,
           "successMsg" : "删除成功",
           "timeout" : 60000,
           "uIActionMode" : "BACKEND",
           "uIActionTag" : "delete_customer",
           "uIActionType" : "DEUIACTION",
           "enableConfirm" : true,
+          "reloadData" : true,
           "id" : "delete_customer@customer"
         },
         "addSeparator" : false,
@@ -673,6 +698,7 @@
     "pluginCode" : "NUMBER_GRID",
     "runtimeObject" : true
   },
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",

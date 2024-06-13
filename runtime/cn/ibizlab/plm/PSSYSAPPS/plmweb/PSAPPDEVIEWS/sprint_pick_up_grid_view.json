@@ -270,6 +270,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "编辑",
             "codeName" : "open_edit_view",
+            "dataAccessAction" : "UPDATE",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sprint_update_view.json",
@@ -281,6 +282,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "project__UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf044@FontAwesome",
@@ -308,6 +313,7 @@
             "caption" : "删除",
             "codeName" : "remove",
             "confirmMsg" : "确认删除该迭代？",
+            "dataAccessAction" : "UPDATE",
             "fullCodeName" : "sprint_remove",
             "name" : "删除",
             "getPSAppDEMethod" : {
@@ -317,6 +323,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/sprint.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "project__UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf014@FontAwesome",
@@ -363,7 +373,7 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
-      "cLConvertMode" : "NONE",
+      "cLConvertMode" : "FRONT",
       "caption" : "类别",
       "codeName" : "categories",
       "columnType" : "DEFGRIDCOLUMN",
@@ -371,13 +381,16 @@
       "excelCaption" : "类别",
       "name" : "categories",
       "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
+      },
       "getPSAppDEField" : {
         "name" : "CATEGORIES",
         "codeName" : "categories"
       },
       "width" : 300,
       "widthUnit" : "PX",
-      "enableRowEdit" : true,
       "enableSort" : true
     }, {
       "align" : "LEFT",
@@ -519,42 +532,6 @@
       "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
-      "caption" : "类别",
-      "codeName" : "categories",
-      "enableCond" : 3,
-      "ignoreInput" : 0,
-      "name" : "categories",
-      "getPSAppDEField" : {
-        "name" : "CATEGORIES",
-        "codeName" : "categories"
-      },
-      "getPSEditor" : {
-        "editorParams" : {
-          "readonly" : "true",
-          "PICKUPVIEW" : "TRUE"
-        },
-        "editorType" : "ADDRESSPICKUP",
-        "name" : "categories",
-        "getPSAppDEACMode" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "getPSAppDEDataSet" : {
-          "modelref" : true,
-          "id" : "fetch_default"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
-        },
-        "enableAC" : false,
-        "enablePickupView" : true,
-        "forceSelection" : true,
-        "readOnly" : true,
-        "showTrigger" : true
-      },
-      "allowEmpty" : true
-    }, {
       "caption" : "负责人",
       "codeName" : "assignee_name",
       "enableCond" : 3,
@@ -707,6 +684,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",

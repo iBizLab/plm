@@ -252,8 +252,6 @@
       "id" : "categorys",
       "hidden" : true,
       "dataType" : 25,
-      "createDVT" : "APPDATA",
-      "createDV" : "category",
       "getPSAppDEField" : {
         "name" : "CATEGORIES",
         "codeName" : "categories"
@@ -315,7 +313,8 @@
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
             "maxLength" : 500,
-            "name" : "name"
+            "name" : "name",
+            "placeHolder" : "输入客户名称"
           },
           "getPSLayoutPos" : {
             "colLG" : 24,
@@ -375,7 +374,8 @@
           },
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
-            "name" : "scale"
+            "name" : "scale",
+            "placeHolder" : "输入客户规模"
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
@@ -412,13 +412,25 @@
             "handlerType" : "PickupText",
             "name" : "categories_name",
             "getPSEditorItems" : [ {
-              "name" : "categorys"
+              "name" : "categorys",
+              "getPSNavigateParams" : [ {
+                "key" : "n_owner_subtype_eq",
+                "name" : "n_owner_subtype_eq",
+                "value" : "customer",
+                "rawValue" : true
+              }, {
+                "key" : "n_owner_id_eq",
+                "name" : "n_owner_id_eq",
+                "value" : "product",
+                "rawValue" : false
+              } ]
             } ],
             "getPickupPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/customer_pick_up_tree_view.json",
               "viewType" : "DEPICKUPTREEVIEW"
             },
+            "placeHolder" : "选择类别",
             "valueItemName" : "categorys",
             "dropDownView" : true,
             "enableAC" : false,
@@ -438,8 +450,6 @@
         }, {
           "caption" : "类别",
           "codeName" : "categorys",
-          "createDV" : "category",
-          "createDVT" : "APPDATA",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
@@ -454,8 +464,23 @@
             "codeName" : "categories"
           },
           "getPSEditor" : {
+            "editorParams" : {
+              "SRFNAVPARAM.n_owner_subtype_eq" : "customer",
+              "SRFNAVPARAM.n_owner_id_eq" : "%product%"
+            },
             "editorType" : "HIDDEN",
-            "name" : "categorys"
+            "name" : "categorys",
+            "getPSNavigateParams" : [ {
+              "key" : "n_owner_subtype_eq",
+              "name" : "n_owner_subtype_eq",
+              "value" : "customer",
+              "rawValue" : true
+            }, {
+              "key" : "n_owner_id_eq",
+              "name" : "n_owner_id_eq",
+              "value" : "product",
+              "rawValue" : false
+            } ]
           },
           "getPSLayoutPos" : {
             "colLG" : 24,
@@ -496,10 +521,10 @@
               "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
               "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
               "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+              "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
               "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
               "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-              "QUOTEURL" : "`recents/fetchrecent_access`"
+              "QUOTEURL" : "`recents/fetch_recent_access`"
             },
             "editorStyle" : "COLLAPSE",
             "editorType" : "HTMLEDITOR",
@@ -508,7 +533,8 @@
               "pluginType" : "EDITOR_CUSTOMSTYLE",
               "pluginCode" : "COMMENT",
               "runtimeObject" : true
-            }
+            },
+            "placeHolder" : "输入客户介绍"
           },
           "getPSLayoutPos" : {
             "colLG" : 24,

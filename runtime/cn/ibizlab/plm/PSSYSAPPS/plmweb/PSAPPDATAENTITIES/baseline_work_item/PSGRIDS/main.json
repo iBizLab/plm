@@ -42,20 +42,30 @@
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
       "name" : "deuiaction1",
-      "noPrivDisplayMode" : 2,
+      "noPrivDisplayMode" : 1,
       "getPSAppViewUIAction" : {
         "modelref" : true,
         "id" : "grid_batchtoolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "grid_batchtoolbar",
+        "logicType" : "SCRIPT",
+        "name" : "logic",
+        "scriptCode" : "context.baseline_status !== '2'",
+        "triggerType" : "ITEMENABLE"
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf112@FontAwesome",
         "cssClass" : "fa fa-mail-reply"
       },
       "getPSUIAction" : {
         "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
         "caption" : "移出",
         "codeName" : "shift_out_baseline",
         "confirmMsg" : "确认从此基线中移出？",
+        "dataAccessAction" : "UPDATE",
         "fullCodeName" : "baseline_work_item_shift_out_baseline",
         "name" : "移出基线",
         "getPSAppDEMethod" : {
@@ -65,6 +75,10 @@
         "getPSAppDataEntity" : {
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline_work_item.json"
+        },
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "UPDATE"
         },
         "getPSSysImage" : {
           "glyph" : "xf112@FontAwesome",
@@ -371,6 +385,7 @@
     },
     "allowEmpty" : true
   } ],
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -389,7 +404,7 @@
   "sortMode" : "REMOTE",
   "hasWFDataItems" : false,
   "enableColFilter" : false,
-  "enableCustomized" : true,
+  "enableCustomized" : false,
   "enableGroup" : false,
   "enablePagingBar" : true,
   "enableRowEdit" : false,

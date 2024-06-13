@@ -235,6 +235,33 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "name" : "Default[n_is_archived_in]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_is_archived_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_is_archived_in]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_is_archived_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_is_archived_in]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_is_archived_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "name" : "Default[n_create_time_ltandeq]",
       "paramAction" : "SQLPARAM",
       "srcFieldName" : "n_create_time_ltandeq",
@@ -387,8 +414,35 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_is_archived_in]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_is_archived_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_is_archived_in]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_is_archived_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_is_archived_in]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_is_archived_in",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "SELECT\r\n    date_series.date AS filter_type,\r\n    IFNULL(b.new_bugs, 0) AS count,\r\n    IFNULL(c.completed_bugs, 0) AS count2\r\nFROM (\r\n         SELECT DATE_ADD(?, INTERVAL seq.seq DAY) AS date\r\n         FROM (\r\n                  SELECT a.i+b.i*10+c.i*100 AS seq\r\n                  FROM (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,\r\n                       (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) b,\r\n                       (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) c\r\n              ) seq\r\n         WHERE DATE_ADD(?, INTERVAL seq.seq DAY) <= ?\r\n     ) date_series\r\n         LEFT JOIN (\r\n    SELECT\r\n        DATE(wi.CREATE_TIME) AS created_date,\r\n        COUNT(*) AS new_bugs\r\n    FROM work_item wi\r\n             JOIN work_item_type wit ON wi.WORK_ITEM_TYPE_ID = wit.ID\r\n             JOIN work_item_state wis ON wi.state = wis.ID\r\n    WHERE wi.CREATE_TIME BETWEEN ? AND ?\r\n      AND wit.GROUP = 'requirement'\r\n      AND ((? IS NULL OR ? = '') OR wi.BOARD_ID = ?)\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.PRIORITY, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wis.TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_FROM, ?))\r\n    GROUP BY created_date\r\n) b ON date_series.date = b.created_date\r\n         LEFT JOIN (\r\n    SELECT\r\n        DATE(wi.UPDATE_TIME) AS update_date,\r\n        COUNT(*) AS completed_bugs\r\n    FROM work_item wi\r\n             JOIN work_item_type wit ON wi.WORK_ITEM_TYPE_ID = wit.ID\r\n             JOIN work_item_state wis ON wi.state = wis.ID\r\n    WHERE wi.UPDATE_TIME BETWEEN ? AND ?\r\n      AND wit.GROUP = 'requirement'\r\n      AND wi.STATE = '40'\r\n      AND ((? IS NULL OR ? = '') OR wi.BOARD_ID = ?)\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.PRIORITY, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wis.TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_FROM, ?))\r\n    GROUP BY update_date\r\n) c ON date_series.date = c.update_date\r\nORDER BY date_series.date;",
+    "sql" : "SELECT\r\n    date_series.date AS filter_type,\r\n    IFNULL(b.new_bugs, 0) AS count,\r\n    IFNULL(c.completed_bugs, 0) AS count2\r\nFROM (\r\n         SELECT DATE_ADD(?, INTERVAL seq.seq DAY) AS date\r\n         FROM (\r\n                  SELECT a.i+b.i*10+c.i*100 AS seq\r\n                  FROM (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,\r\n                       (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) b,\r\n                       (SELECT 0 AS i UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) c\r\n              ) seq\r\n         WHERE DATE_ADD(?, INTERVAL seq.seq DAY) <= ?\r\n     ) date_series\r\n         LEFT JOIN (\r\n    SELECT\r\n        DATE(wi.CREATE_TIME) AS created_date,\r\n        COUNT(*) AS new_bugs\r\n    FROM work_item wi\r\n             JOIN work_item_type wit ON wi.WORK_ITEM_TYPE_ID = wit.ID\r\n             JOIN work_item_state wis ON wi.state = wis.ID\r\n    WHERE wi.CREATE_TIME BETWEEN ? AND ?\r\n      AND wit.GROUP = 'requirement'\r\n      AND ((? IS NULL OR ? = '') OR wi.BOARD_ID = ?)\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.PRIORITY, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wis.TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_FROM, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.IS_ARCHIVED, ?))\r\n    GROUP BY created_date\r\n) b ON date_series.date = b.created_date\r\n         LEFT JOIN (\r\n    SELECT\r\n        DATE(wi.UPDATE_TIME) AS update_date,\r\n        COUNT(*) AS completed_bugs\r\n    FROM work_item wi\r\n             JOIN work_item_type wit ON wi.WORK_ITEM_TYPE_ID = wit.ID\r\n             JOIN work_item_state wis ON wi.state = wis.ID\r\n    WHERE wi.UPDATE_TIME BETWEEN ? AND ?\r\n      AND wit.GROUP = 'requirement'\r\n      AND wi.STATE = '40'\r\n      AND ((? IS NULL OR ? = '') OR wi.BOARD_ID = ?)\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.PRIORITY, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wis.TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_FROM, ?))\r\n      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.IS_ARCHIVED, ?))\r\n    GROUP BY update_date\r\n) c ON date_series.date = c.update_date\r\nORDER BY date_series.date;",
     "topPos" : 208,
     "fillDstLogicParam" : true
   } ],

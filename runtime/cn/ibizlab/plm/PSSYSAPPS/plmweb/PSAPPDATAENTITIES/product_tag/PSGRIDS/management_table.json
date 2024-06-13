@@ -148,22 +148,26 @@
         "detailType" : "DEUIACTION",
         "name" : "ub539582",
         "getPSSysImage" : {
-          "glyph" : "xf1f8@FontAwesome",
-          "cssClass" : "fa fa-trash"
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
         },
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
           "noPrivDisplayMode" : 1,
           "caption" : "删除标签",
           "codeName" : "delete_tag",
-          "confirmMsg" : "确认删除该标签？",
           "dataAccessAction" : "DELETE",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_tag_product_tag_confirm_remove_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "product_tag_delete_tag",
           "name" : "删除标签",
           "getPSAppDEMethod" : {
             "modelref" : true,
-            "id" : "remove"
+            "id" : "delete_tag"
           },
           "getPSAppDataEntity" : {
             "modelref" : true,
@@ -173,6 +177,12 @@
             "modelref" : true,
             "id" : "DELETE"
           },
+          "getPSNavigateParams" : [ {
+            "key" : "name",
+            "name" : "name",
+            "value" : "name",
+            "rawValue" : false
+          } ],
           "refreshMode" : 1,
           "successMsg" : "删除成功",
           "timeout" : 60000,
@@ -263,6 +273,7 @@
     },
     "allowEmpty" : true
   } ],
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -290,7 +301,7 @@
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : false,
-  "singleSelect" : false,
+  "singleSelect" : true,
   "modelid" : "d7574d308a30ebe11f73f83e211c78a1",
   "modeltype" : "PSDEGRID"
 }

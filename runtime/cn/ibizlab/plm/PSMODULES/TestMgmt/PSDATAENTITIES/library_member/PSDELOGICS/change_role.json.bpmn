@@ -16,12 +16,12 @@
                             <tns:global identifier="library_memberchange_rolesrfactionparam" type="cn.ibizlab.plm.core.testmgmt.domain.library_member" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_rolebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取传递的参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_roleloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环ID列表进行操作"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_roleprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取传递的状态"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_roledeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_rolebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取传递成员的参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_roledeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="变更成员状态"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_roleloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环ID列表进行操作"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="library_memberchange_roleprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取传递成员的状态"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">

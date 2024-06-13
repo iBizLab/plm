@@ -1,0 +1,47 @@
+package cn.ibizlab.plm.base.logic.userlogic.cancel_workload;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.user usercancel_workloaddefault;
+                    global cn.ibizlab.plm.core.base.service.IuserService userservice;
+        global cn.ibizlab.plm.core.base.service.IuserService iBzSysUserDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "usercancel_workloadbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置用户参数]
+            rule "prepareparam1"
+            ruleflow-group "usercancel_workloadprepareparam1"
+            when
+            then
+                            usercancel_workloaddefault.set("workloadflag","0");
+                        update(usercancel_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[取消用户工时统计状态]
+            rule "deaction1"
+            ruleflow-group "usercancel_workloaddeaction1"
+            when
+            then
+                        userservice.update(usercancel_workloaddefault);
+                        update(usercancel_workloaddefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "usercancel_workloadend1"
+            when
+            then
+                        update(usercancel_workloaddefault);//更新fact中变量值
+            end

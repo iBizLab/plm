@@ -34,19 +34,17 @@
                             <tns:global identifier="work_itemcopy_child_work_itemrecursion" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备主键数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询所有子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取复制前的父工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取复制后的父工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="新建子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充新子工作项的属性"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="新建子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemresetparam3" id="resetparam3" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备关注人数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="创建默认关注人"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_child_work_itemprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备附件参数"/>
@@ -88,47 +86,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="resetparam2_prepareparam2" sourceRef="resetparam2" targetRef="prepareparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_deaction3" sourceRef="prepareparam3" targetRef="deaction3">
+                    <sequenceFlow id="prepareparam2_deaction3" sourceRef="prepareparam2" targetRef="deaction3">
                     </sequenceFlow>
                     <sequenceFlow id="deaction3_resetparam3" sourceRef="deaction3" targetRef="resetparam3">
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam2_prepareparam3" sourceRef="gateway-prepareparam2" targetRef="prepareparam3">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemcopy_child_work_itemdefault:work_item();
-                                            $work_itemcopy_child_work_itemafter_copy_parent:work_item();
-                                            $work_itemcopy_child_work_itemattachment:attachment();
-                                            $work_itemcopy_child_work_itemattachments:attachment();
-                                            $work_itemcopy_child_work_itemattention:attention();
-                                            $work_itemcopy_child_work_itembefore_copy_parent:work_item();
-                                            $work_itemcopy_child_work_itemchild_page:work_item();
-                                            $work_itemcopy_child_work_itemfor_temp_obj:work_item();
-                                            $work_itemcopy_child_work_itemnew_child:work_item();
-                                            $work_itemcopy_child_work_itemquery_child_filter:work_item();
-                                            $work_itemcopy_child_work_itemrecursion:work_item();
-                                    eval($work_itemcopy_child_work_itemdefault==work_itemcopy_child_work_itemdefault && $work_itemcopy_child_work_itemafter_copy_parent==work_itemcopy_child_work_itemafter_copy_parent && $work_itemcopy_child_work_itemattachment==work_itemcopy_child_work_itemattachment && $work_itemcopy_child_work_itemattachments==work_itemcopy_child_work_itemattachments && $work_itemcopy_child_work_itemattention==work_itemcopy_child_work_itemattention && $work_itemcopy_child_work_itembefore_copy_parent==work_itemcopy_child_work_itembefore_copy_parent && $work_itemcopy_child_work_itemchild_page==work_itemcopy_child_work_itemchild_page && $work_itemcopy_child_work_itemfor_temp_obj==work_itemcopy_child_work_itemfor_temp_obj && $work_itemcopy_child_work_itemnew_child==work_itemcopy_child_work_itemnew_child && $work_itemcopy_child_work_itemquery_child_filter==work_itemcopy_child_work_itemquery_child_filter && $work_itemcopy_child_work_itemrecursion==work_itemcopy_child_work_itemrecursion);
-                                eval((RuleUtils.test($work_itemcopy_child_work_itemafter_copy_parent.get("topId"),"ISNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="gateway-prepareparam2_prepareparam4" sourceRef="gateway-prepareparam2" targetRef="prepareparam4">
-                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
-                                            $work_itemcopy_child_work_itemdefault:work_item();
-                                            $work_itemcopy_child_work_itemafter_copy_parent:work_item();
-                                            $work_itemcopy_child_work_itemattachment:attachment();
-                                            $work_itemcopy_child_work_itemattachments:attachment();
-                                            $work_itemcopy_child_work_itemattention:attention();
-                                            $work_itemcopy_child_work_itembefore_copy_parent:work_item();
-                                            $work_itemcopy_child_work_itemchild_page:work_item();
-                                            $work_itemcopy_child_work_itemfor_temp_obj:work_item();
-                                            $work_itemcopy_child_work_itemnew_child:work_item();
-                                            $work_itemcopy_child_work_itemquery_child_filter:work_item();
-                                            $work_itemcopy_child_work_itemrecursion:work_item();
-                                    eval($work_itemcopy_child_work_itemdefault==work_itemcopy_child_work_itemdefault && $work_itemcopy_child_work_itemafter_copy_parent==work_itemcopy_child_work_itemafter_copy_parent && $work_itemcopy_child_work_itemattachment==work_itemcopy_child_work_itemattachment && $work_itemcopy_child_work_itemattachments==work_itemcopy_child_work_itemattachments && $work_itemcopy_child_work_itemattention==work_itemcopy_child_work_itemattention && $work_itemcopy_child_work_itembefore_copy_parent==work_itemcopy_child_work_itembefore_copy_parent && $work_itemcopy_child_work_itemchild_page==work_itemcopy_child_work_itemchild_page && $work_itemcopy_child_work_itemfor_temp_obj==work_itemcopy_child_work_itemfor_temp_obj && $work_itemcopy_child_work_itemnew_child==work_itemcopy_child_work_itemnew_child && $work_itemcopy_child_work_itemquery_child_filter==work_itemcopy_child_work_itemquery_child_filter && $work_itemcopy_child_work_itemrecursion==work_itemcopy_child_work_itemrecursion);
-                                eval((RuleUtils.test($work_itemcopy_child_work_itemafter_copy_parent.get("topId"),"ISNOTNULL","")))
-                                ]]>
-                            </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_deaction3" sourceRef="prepareparam4" targetRef="deaction3">
                     </sequenceFlow>
                     <sequenceFlow id="resetparam3_prepareparam6" sourceRef="resetparam3" targetRef="prepareparam6">
                     </sequenceFlow>
@@ -180,10 +140,6 @@
                             <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
                             <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
                             <endEvent id="gateway-dedataset1_end" name="end"/>
-                            <exclusiveGateway id="gateway-prepareparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam2_end_line"></exclusiveGateway>
-                            <sequenceFlow id="prepareparam2_gateway-prepareparam2_gatewayline" sourceRef="prepareparam2" targetRef="gateway-prepareparam2"></sequenceFlow>
-                            <sequenceFlow id="gateway-prepareparam2_end_line" sourceRef="gateway-prepareparam2" targetRef="gateway-prepareparam2_end"/>
-                            <endEvent id="gateway-prepareparam2_end" name="end"/>
                             <exclusiveGateway id="gateway-deaction5" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction5_end_line"></exclusiveGateway>
                             <sequenceFlow id="deaction5_gateway-deaction5_gatewayline" sourceRef="deaction5" targetRef="gateway-deaction5"></sequenceFlow>
                             <sequenceFlow id="gateway-deaction5_end_line" sourceRef="gateway-deaction5" targetRef="gateway-deaction5_end"/>

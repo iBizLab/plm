@@ -15,6 +15,17 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewNavContexts" : [ {
+    "key" : "PROJECT_TYPE",
+    "name" : "PROJECT_TYPE",
+    "value" : "kanban",
+    "rawValue" : true
+  }, {
+    "key" : "SRFREADONLY",
+    "name" : "SRFREADONLY",
+    "value" : "false",
+    "rawValue" : true
+  } ],
   "getPSDEViewCodeName" : "kanban_defect_property_report_view",
   "getPSDEViewId" : "39850741781046e6094606a93b9808e1",
   "getPSViewLayoutPanel" : {
@@ -344,12 +355,22 @@
           "codeName" : "severity"
         }
       }, {
-        "id" : "n_is_archived_eq",
+        "id" : "n_is_archived_in",
         "dataType" : 9,
+        "createDV" : "1,0",
+        "updateDV" : "1,0",
         "getPSAppDEField" : {
           "name" : "IS_ARCHIVED",
           "codeName" : "is_archived"
         }
+      }, {
+        "id" : "project_type",
+        "hidden" : true,
+        "dataType" : 25,
+        "createDVT" : "APPDATA",
+        "createDV" : "project_type",
+        "updateDVT" : "APPDATA",
+        "updateDV" : "project_type"
       } ],
       "getPSDEFormPages" : [ {
         "caption" : "常规条件",
@@ -376,6 +397,11 @@
             "labelWidth" : 130,
             "name" : "groupcond",
             "noPrivDisplayMode" : 1,
+            "getPSControlAttributes" : [ {
+              "attrName" : "clearable",
+              "attrValue" : "false",
+              "name" : "groupcond"
+            } ],
             "getPSEditor" : {
               "editorType" : "DROPDOWNLIST",
               "name" : "groupcond",
@@ -409,6 +435,20 @@
               "name" : "SPRINT_NAME",
               "codeName" : "sprint_name"
             },
+            "getPSDEFDGroupLogics" : [ {
+              "groupOP" : "AND",
+              "logicCat" : "PANELVISIBLE",
+              "logicType" : "GROUP",
+              "name" : "表单成员[n_sprint_name_eq][面板显示]逻辑",
+              "getPSDEFDLogics" : [ {
+                "condOP" : "NOTEQ",
+                "dEFDName" : "project_type",
+                "logicType" : "SINGLE",
+                "value" : "kanban"
+              } ],
+              "relatedDetailNames" : [ "project_type" ],
+              "notMode" : false
+            } ],
             "getPSEditor" : {
               "editorParams" : {
                 "AC" : "TRUE",
@@ -542,8 +582,9 @@
             "needCodeListConfig" : true,
             "showCaption" : true
           }, {
-            "caption" : "是否已归档",
-            "codeName" : "n_is_archived_eq",
+            "caption" : "是否包含归档",
+            "codeName" : "n_is_archived_in",
+            "createDV" : "1,0",
             "dataType" : 9,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -551,28 +592,61 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "n_is_archived_eq",
+            "name" : "n_is_archived_in",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
               "name" : "IS_ARCHIVED",
               "codeName" : "is_archived"
             },
+            "getPSControlAttributes" : [ {
+              "attrName" : "clearable",
+              "attrValue" : "false",
+              "name" : "n_is_archived_in_logic"
+            } ],
             "getPSEditor" : {
               "editorType" : "DROPDOWNLIST_100",
-              "name" : "n_is_archived_eq",
+              "name" : "n_is_archived_in",
               "getPSAppCodeList" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__contains_archive.json"
               },
+              "valueType" : "SIMPLES",
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "updateDV" : "1,0",
             "allowEmpty" : true,
             "needCodeListConfig" : true,
             "showCaption" : true
+          }, {
+            "caption" : "表单项",
+            "codeName" : "project_type",
+            "createDV" : "project_type",
+            "createDVT" : "APPDATA",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "NONE",
+            "labelWidth" : 0,
+            "name" : "project_type",
+            "noPrivDisplayMode" : 1,
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "project_type"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "project_type",
+            "updateDVT" : "APPDATA",
+            "allowEmpty" : true,
+            "hidden" : true
           } ],
           "getPSLayout" : {
             "childColLG" : -1,

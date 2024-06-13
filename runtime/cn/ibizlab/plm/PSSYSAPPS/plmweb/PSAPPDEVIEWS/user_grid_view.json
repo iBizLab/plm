@@ -94,26 +94,25 @@
     }
   } ],
   "getPSControls" : [ {
-    "codeName" : "grid_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "企业用户管理表格视图_工具栏",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "xDataControlName" : "grid",
-    "modelid" : "924215731158b518ae501c3fb92f16a8",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
     "aggMode" : "NONE",
     "codeName" : "main_grid",
     "columnEnableFilter" : 2,
     "columnEnableLink" : 2,
     "controlType" : "GRID",
+    "getCreatePSControlAction" : {
+      "actionName" : "Create",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "name" : "create",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "create"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+      }
+    },
     "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user/PSGRIDS/main_grid.json",
     "getFetchPSControlAction" : {
       "modelref" : true,
@@ -123,6 +122,34 @@
       "getPSAppDEMethod" : {
         "modelref" : true,
         "id" : "fetch_default"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+      }
+    },
+    "getGetDraftPSControlAction" : {
+      "actionName" : "GetDraft",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "CREATE",
+      "name" : "loaddraft",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "get_draft"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+      }
+    },
+    "getGetPSControlAction" : {
+      "actionName" : "Get",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "READ",
+      "name" : "load",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "get"
       },
       "getPSAppDataEntity" : {
         "modelref" : true,
@@ -222,6 +249,116 @@
       "showBusyIndicator" : true,
       "id" : "GRID"
     },
+    "getPSControls" : [ {
+      "codeName" : "grid_view_grid_batchtoolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "企业用户管理表格视图_工具栏",
+      "name" : "grid_batchtoolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+      },
+      "getPSControlParam" : {
+        "id" : "grid_batchtoolbar"
+      },
+      "getPSDEToolbarItems" : [ {
+        "caption" : "开启统计",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "grid_batchtoolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf185@FontAwesome",
+          "cssClass" : "fa fa-sun-o"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "开启统计",
+          "codeName" : "set_report_flag",
+          "confirmMsg" : "确定开启统计？",
+          "fullCodeName" : "user_set_report_flag",
+          "name" : "开启统计",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "set_report_flag"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf185@FontAwesome",
+            "cssClass" : "fa fa-sun-o"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "开启成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "set_report_flag",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "set_report_flag@user"
+        },
+        "tooltip" : "开启统计",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      }, {
+        "caption" : "取消统计",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction2",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "grid_batchtoolbar_deuiaction2"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf00d@FontAwesome",
+          "cssClass" : "fa fa-remove"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "MULTIKEY",
+          "caption" : "取消统计",
+          "codeName" : "cancel_report_flag",
+          "confirmMsg" : "确定取消统计？",
+          "fullCodeName" : "user_cancel_report_flag",
+          "name" : "取消统计",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "cancel_report_flag"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf00d@FontAwesome",
+            "cssClass" : "fa fa-remove"
+          },
+          "refreshMode" : 1,
+          "successMsg" : "取消成功",
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "cancel_report_flag",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "reloadData" : true,
+          "id" : "cancel_report_flag@user"
+        },
+        "tooltip" : "取消统计",
+        "uIActionTarget" : "MULTIKEY",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "modelid" : "924215731158b518ae501c3fb92f16a8",
+      "modeltype" : "PSDETOOLBAR"
+    } ],
     "getPSDEGridColumns" : [ {
       "align" : "LEFT",
       "cLConvertMode" : "NONE",
@@ -346,6 +483,28 @@
       "enableSort" : true
     }, {
       "align" : "LEFT",
+      "cLConvertMode" : "FRONT",
+      "caption" : "统计",
+      "codeName" : "report_flag",
+      "columnType" : "DEFGRIDCOLUMN",
+      "dataItemName" : "report_flag",
+      "excelCaption" : "统计",
+      "name" : "report_flag",
+      "noPrivDisplayMode" : 1,
+      "getPSAppCodeList" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__user_report_flag.json"
+      },
+      "getPSAppDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      },
+      "width" : 100,
+      "widthUnit" : "PX",
+      "enableRowEdit" : true,
+      "enableSort" : false
+    }, {
+      "align" : "LEFT",
       "cLConvertMode" : "NONE",
       "getCapPSLanguageRes" : {
         "lanResTag" : "DEF.LNAME.CREATE_TIME"
@@ -416,6 +575,13 @@
         "codeName" : "job_name"
       }
     }, {
+      "dataType" : 9,
+      "name" : "report_flag",
+      "getPSAppDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      }
+    }, {
       "format" : "YYYY-MM-DD HH:mm:ss",
       "dataType" : 5,
       "name" : "create_time",
@@ -461,6 +627,27 @@
       }
     } ],
     "getPSDEGridEditItems" : [ {
+      "caption" : "统计",
+      "codeName" : "report_flag",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "name" : "report_flag",
+      "getPSAppDEField" : {
+        "name" : "REPORT_FLAG",
+        "codeName" : "report_flag"
+      },
+      "getPSEditor" : {
+        "editorType" : "DROPDOWNLIST_100",
+        "name" : "report_flag",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__user_report_flag.json"
+        },
+        "singleSelect" : true
+      },
+      "allowEmpty" : true,
+      "needCodeListConfig" : true
+    }, {
       "caption" : "标识",
       "codeName" : "srfkey",
       "enableCond" : 3,
@@ -476,6 +663,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -492,14 +680,28 @@
       }
     },
     "sortMode" : "REMOTE",
+    "getUpdatePSControlAction" : {
+      "actionName" : "Update",
+      "actionType" : "DEACTION",
+      "dataAccessAction" : "UPDATE",
+      "name" : "update",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "update"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+      }
+    },
     "hasWFDataItems" : false,
     "enableColFilter" : false,
     "enableCustomized" : true,
     "enableGroup" : false,
     "enablePagingBar" : true,
-    "enableRowEdit" : false,
+    "enableRowEdit" : true,
     "enableRowEditOrder" : false,
-    "enableRowNew" : false,
+    "enableRowNew" : true,
     "forceFit" : false,
     "hideHeader" : false,
     "noSort" : false,
@@ -563,7 +765,7 @@
   "enableFilter" : true,
   "enableImport" : true,
   "enableQuickSearch" : true,
-  "enableRowEdit" : false,
+  "enableRowEdit" : true,
   "enableSearch" : true,
   "rowEditDefault" : false,
   "modelid" : "47b59e3d23ead9a7a07d8dd8091676cc",

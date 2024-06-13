@@ -4,9 +4,10 @@
   "codeName" : "psde_field_quick_cfg_view",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/psde_field_quick_cfg_view.json",
   "funcViewMode" : "EDITVIEW",
+  "height" : 300,
   "memo" : "系统自动添加",
   "name" : "PSDEFieldquick_cfg_view",
-  "openMode" : "DRAWER_RIGHT",
+  "openMode" : "POPUPMODAL",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/PSDEField.json"
@@ -55,8 +56,13 @@
         },
         "caption" : "保存并关闭",
         "codeName" : "SaveAndExit",
+        "dataAccessAction" : "SUBDATA",
         "fullCodeName" : "SaveAndExit",
         "name" : "编辑界面_保存并退出操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
+        },
         "getPSSysImage" : {
           "cssClass" : "sx-tb-saveandclose"
         },
@@ -289,6 +295,7 @@
       }
     }, {
       "id" : "psdefieldname",
+      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "PSDEFIELDNAME",
@@ -296,6 +303,7 @@
       }
     }, {
       "id" : "codename",
+      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "CODENAME",
@@ -428,8 +436,7 @@
               "codeName" : "PSDEFieldName"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxLength" : 200,
+              "editorType" : "HIDDEN",
               "name" : "psdefieldname"
             },
             "getPSLayoutPos" : {
@@ -438,6 +445,7 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
+            "hidden" : true,
             "showCaption" : true
           }, {
             "caption" : "代码名称",
@@ -456,8 +464,7 @@
               "codeName" : "CodeName"
             },
             "getPSEditor" : {
-              "editorType" : "TEXTBOX",
-              "maxLength" : 60,
+              "editorType" : "HIDDEN",
               "name" : "codename"
             },
             "getPSLayoutPos" : {
@@ -466,6 +473,7 @@
               "layout" : "TABLE_24COL"
             },
             "allowEmpty" : true,
+            "hidden" : true,
             "showCaption" : true
           } ],
           "getPSLayout" : {
@@ -786,7 +794,7 @@
           "layout" : "TABLE_24COL"
         },
         "infoGroupMode" : false,
-        "showCaption" : true
+        "showCaption" : false
       }, {
         "caption" : "实体属性标识",
         "codeName" : "psdefieldid",
@@ -911,6 +919,7 @@
   "title" : "实体属性编辑视图",
   "viewStyle" : "DEFAULT",
   "viewType" : "DEEDITVIEW",
+  "width" : 800,
   "xDataControlName" : "form",
   "enableDP" : true,
   "showDataInfoBar" : true,

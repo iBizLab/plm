@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -88,6 +91,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -113,6 +117,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -138,6 +143,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -159,6 +165,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -181,6 +188,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "get_by_user",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/get_by_user.json",
     "logicName" : "获取用户设置",
     "name" : "get_by_user",
@@ -210,6 +218,7 @@
     "actionMode" : "CREATE",
     "actionType" : "DELOGIC",
     "codeName" : "save_setting",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDEACTIONS/save_setting.json",
     "logicName" : "保存配置",
     "name" : "save_setting",
@@ -343,6 +352,11 @@
   }, {
     "codeName" : "cur_user",
     "logicName" : "当前用户",
+    "majorSortDir" : "ASC",
+    "getMajorSortPSDEField" : {
+      "name" : "NAME",
+      "codeName" : "name"
+    },
     "name" : "CUR_USER",
     "getPSDEDataSetInput" : {
       "name" : "Cur_userInput",
@@ -606,77 +620,6 @@
     "allowEmpty" : false,
     "keyDEField" : true,
     "pasteReset" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
-      "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组"
-      },
-      "ruleInfo" : "默认规则",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "update_time",
-    "dEFType" : 1,
-    "dataType" : "DATETIME",
-    "importOrder" : 1000,
-    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-    },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "update_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-    "allowEmpty" : false,
-    "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "NAME",
@@ -1010,6 +953,77 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "update_time",
+    "dEFType" : 1,
+    "dataType" : "DATETIME",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
+    "serviceCodeName" : "update_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "allowEmpty" : false,
+    "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "SYSTEM_TAG",
       "dBType" : "MYSQL5",
       "name" : "SYSTEM_TAG",
@@ -1159,6 +1173,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDELOGICS/get_by_user.json",
     "logicName" : "获取用户通知设置",
+    "memo" : "获取用户通知设置",
     "name" : "获取用户通知设置",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -1182,7 +1197,7 @@
       "codeName" : "PREPAREPARAM5",
       "leftPos" : 331,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "设置过滤分页",
+      "name" : "设置通知过滤分页",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1312,7 +1327,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "END1",
-      "leftPos" : 1110,
+      "leftPos" : 1290,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -1344,7 +1359,7 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "SORTPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -1359,8 +1374,31 @@
       "topPos" : 580,
       "parallelOutput" : true
     }, {
-      "codeName" : "PREPAREPARAM2",
+      "codeName" : "SORTPARAM1",
+      "dstFieldName" : "name",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "notify_events"
+      },
+      "dstSortDir" : "ASC",
       "leftPos" : 820,
+      "logicNodeType" : "SORTPARAM",
+      "name" : "排序数组参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "SORTPARAM1"
+        }
+      } ],
+      "topPos" : 580
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 1040,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "将通知事件集填充",
       "getPSDELogicLinks" : [ {
@@ -1854,6 +1892,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDELOGICS/save_setting.json",
     "logicName" : "保存设置",
+    "memo" : "保存通知设置",
     "name" : "保存设置",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -1876,7 +1915,7 @@
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 156,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "设置ID",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1920,7 +1959,7 @@
       },
       "leftPos" : 366,
       "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
+      "name" : "获取通知设置",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1960,7 +1999,7 @@
       },
       "leftPos" : 746,
       "logicNodeType" : "DEACTION",
-      "name" : "更新",
+      "name" : "更新通知设置信息",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1995,7 +2034,7 @@
       },
       "leftPos" : 366,
       "logicNodeType" : "DEACTION",
-      "name" : "建立",
+      "name" : "建立通知设置信息",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2178,19 +2217,6 @@
         "codeName" : "owner_id"
       }
     }, {
-      "dstFieldName" : "NAME",
-      "getDstPSDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      },
-      "mapType" : "FIELD",
-      "name" : "NAME ==> NAME",
-      "srcFieldName" : "NAME",
-      "getSrcPSDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    }, {
       "dstFieldName" : "ID",
       "getDstPSDEField" : {
         "name" : "ID",
@@ -2204,17 +2230,30 @@
         "codeName" : "id"
       }
     }, {
-      "dstFieldName" : "UPDATE_MAN",
+      "dstFieldName" : "NAME",
       "getDstPSDEField" : {
-        "name" : "UPDATE_MAN",
-        "codeName" : "update_man"
+        "name" : "NAME",
+        "codeName" : "name"
       },
       "mapType" : "FIELD",
-      "name" : "UPDATE_MAN ==> UPDATE_MAN",
-      "srcFieldName" : "UPDATE_MAN",
+      "name" : "NAME ==> NAME",
+      "srcFieldName" : "NAME",
       "getSrcPSDEField" : {
-        "name" : "UPDATE_MAN",
-        "codeName" : "update_man"
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "dstFieldName" : "CREATE_MAN",
+      "getDstPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
+      },
+      "mapType" : "FIELD",
+      "name" : "CREATE_MAN ==> CREATE_MAN",
+      "srcFieldName" : "CREATE_MAN",
+      "getSrcPSDEField" : {
+        "name" : "CREATE_MAN",
+        "codeName" : "create_man"
       }
     }, {
       "dstFieldName" : "CREATE_TIME",
@@ -2230,6 +2269,19 @@
         "codeName" : "create_time"
       }
     }, {
+      "dstFieldName" : "UPDATE_MAN",
+      "getDstPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      },
+      "mapType" : "FIELD",
+      "name" : "UPDATE_MAN ==> UPDATE_MAN",
+      "srcFieldName" : "UPDATE_MAN",
+      "getSrcPSDEField" : {
+        "name" : "UPDATE_MAN",
+        "codeName" : "update_man"
+      }
+    }, {
       "dstFieldName" : "UPDATE_TIME",
       "getDstPSDEField" : {
         "name" : "UPDATE_TIME",
@@ -2241,19 +2293,6 @@
       "getSrcPSDEField" : {
         "name" : "UPDATE_TIME",
         "codeName" : "update_time"
-      }
-    }, {
-      "dstFieldName" : "CREATE_MAN",
-      "getDstPSDEField" : {
-        "name" : "CREATE_MAN",
-        "codeName" : "create_man"
-      },
-      "mapType" : "FIELD",
-      "name" : "CREATE_MAN ==> CREATE_MAN",
-      "srcFieldName" : "CREATE_MAN",
-      "getSrcPSDEField" : {
-        "name" : "CREATE_MAN",
-        "codeName" : "create_man"
       }
     }, {
       "dstFieldName" : "SYSTEM_TAG",
@@ -2600,9 +2639,9 @@
     "realModelSubType" : "DEEDITVIEW2",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "config_view_test",
-    "logicName" : "config_view",
-    "name" : "config_view",
+    "codeName" : "config_view",
+    "logicName" : "通知设置",
+    "name" : "通知设置",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -2620,9 +2659,9 @@
     "realModelSubType" : "DEPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "config_view",
-    "logicName" : "config_view",
-    "name" : "config_view",
+    "codeName" : "config_view_test",
+    "logicName" : "消息设置(测试)",
+    "name" : "消息设置(测试)",
     "realModelSubType" : "DEEDITVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
@@ -2640,17 +2679,17 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
-    "codeName" : "config_view_test_Form",
-    "logicName" : "config_view_表单(测试)",
-    "modelTag2" : "0",
-    "name" : "config_view_表单(测试)",
-    "realModelSubType" : "EDITFORM",
-    "realModelType" : "PSDEFORM"
-  }, {
     "codeName" : "config_view_Form",
     "logicName" : "config_view_表单",
     "modelTag2" : "0",
     "name" : "config_view_表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "config_view_test_Form",
+    "logicName" : "config_view_表单(测试)",
+    "modelTag2" : "0",
+    "name" : "config_view_表单(测试)",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

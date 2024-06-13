@@ -1,0 +1,93 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.get_library_member2;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseget_library_member2default;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member test_caseget_library_member2filter;
+                global java.util.Map test_caseget_library_member2for_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member test_caseget_library_member2members;
+                    global cn.ibizlab.plm.core.testmgmt.service.Ilibrary_memberService library_memberservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_caseget_library_member2begin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取测试库id并设置过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "test_caseget_library_member2prepareparam2"
+            when
+            then
+                            test_caseget_library_member2filter.set("n_library_id_eq",test_caseget_library_member2default.get("product_id"));
+                                test_caseget_library_member2filter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(test_caseget_library_member2default);//更新fact中变量值
+                        update(test_caseget_library_member2filter);//更新fact中变量值
+                        update(test_caseget_library_member2for_obj);//更新fact中变量值
+                        update(test_caseget_library_member2members);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为测试库成员]
+            rule "dedataset3"
+            ruleflow-group "test_caseget_library_member2dedataset3"
+            when
+            then
+                        update(test_caseget_library_member2default);//更新fact中变量值
+                        update(test_caseget_library_member2filter);//更新fact中变量值
+                        update(test_caseget_library_member2for_obj);//更新fact中变量值
+                        update(test_caseget_library_member2members);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "test_caseget_library_member2prepareparam5"
+            when
+            then
+                            test_caseget_library_member2for_obj.set("",test_caseget_library_member2members.get("0"));
+                        update(test_caseget_library_member2default);//更新fact中变量值
+                        update(test_caseget_library_member2filter);//更新fact中变量值
+                        update(test_caseget_library_member2for_obj);//更新fact中变量值
+                        update(test_caseget_library_member2members);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "test_caseget_library_member2rawsfcode1"
+            when
+            then
+                        update(test_caseget_library_member2default);//更新fact中变量值
+                        update(test_caseget_library_member2filter);//更新fact中变量值
+                        update(test_caseget_library_member2for_obj);//更新fact中变量值
+                        update(test_caseget_library_member2members);//更新fact中变量值
+            end
+
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "test_caseget_library_member2rawsfcode2"
+            when
+            then
+                        update(test_caseget_library_member2default);//更新fact中变量值
+                        update(test_caseget_library_member2filter);//更新fact中变量值
+                        update(test_caseget_library_member2for_obj);//更新fact中变量值
+                        update(test_caseget_library_member2members);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "test_caseget_library_member2end6"
+            when
+            then
+                        update(test_caseget_library_member2default);//更新fact中变量值
+                        update(test_caseget_library_member2filter);//更新fact中变量值
+                        update(test_caseget_library_member2for_obj);//更新fact中变量值
+                        update(test_caseget_library_member2members);//更新fact中变量值
+            end

@@ -56,17 +56,19 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
+        "openMode" : "POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -74,23 +76,21 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realTitle" : "测试库数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.LIBRARY.REDIRECTVIEW"
-    },
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realTitle" : "测试库",
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_index_view.json",
       "viewType" : "DEINDEXVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "测试库展示信息视图",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/library_show_edit_view.json",
+      "viewType" : "DEEDITVIEW"
     }
   } ],
   "getPSControls" : [ {
@@ -343,10 +343,6 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/library.json"
             },
-            "getPSSysImage" : {
-              "glyph" : "xf014@FontAwesome",
-              "cssClass" : "fa fa-trash-o"
-            },
             "refreshMode" : 1,
             "successMsg" : "删除成功",
             "timeout" : 60000,
@@ -428,6 +424,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",

@@ -26,10 +26,8 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_draft_pagesend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="返回查询结果"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_draft_pagesrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="直接SQL调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_draft_pagesdebugparam5" id="debugparam5" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_draft_pagesdebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                    <sequenceFlow id="begin_debugparam4" sourceRef="begin" targetRef="debugparam4">
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pageget_draft_pagesrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="查询草稿数据"/>
+                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
                     </sequenceFlow>
@@ -39,11 +37,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="dedataset1_debugparam3" sourceRef="dedataset1" targetRef="debugparam3">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsqlcall1_debugparam5" sourceRef="rawsqlcall1" targetRef="debugparam5">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam5_end1" sourceRef="debugparam5" targetRef="end1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam4_rawsqlcall1" sourceRef="debugparam4" targetRef="rawsqlcall1">
+                    <sequenceFlow id="rawsqlcall1_end1" sourceRef="rawsqlcall1" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.memberremove_resource_member" isClosed="false" isExecutable="true" name="base_member_remove_resource_member_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.memberremove_resource_member">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="memberremove_resource_memberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.addon_resource()" name="memberremove_resource_memberaddon_resource" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.resource_member()" name="memberremove_resource_memberfor_member_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.resource_member()" name="memberremove_resource_memberinsert_members" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.resource_member()" name="memberremove_resource_membermembers" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iaddon_resourceService))" name="addon_resourceservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ImemberService))" name="iBzSysMemberDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="memberremove_resource_memberdefault" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="memberremove_resource_memberaddon_resource" type="cn.ibizlab.plm.core.base.domain.addon_resource" />
+                            <tns:global identifier="memberremove_resource_memberfor_member_obj" type="cn.ibizlab.plm.core.base.domain.resource_member" />
+                            <tns:global identifier="memberremove_resource_memberinsert_members" type="cn.ibizlab.plm.core.base.domain.resource_member" />
+                            <tns:global identifier="memberremove_resource_membermembers" type="cn.ibizlab.plm.core.base.domain.resource_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="获取资源组件标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取资源组件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberappendparam1" id="appendparam1" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam1_end" name="end"/>
+                        <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="执行脚本代码"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存资源成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberremove_resource_memberend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_rawsfcode1" sourceRef="begin" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction1" sourceRef="rawsfcode1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_bindparam1" sourceRef="gateway-deaction1" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $memberremove_resource_memberdefault:member();
+                                            $memberremove_resource_memberaddon_resource:addon_resource();
+                                            $memberremove_resource_memberfor_member_obj:resource_member();
+                                            $memberremove_resource_memberinsert_members:resource_member();
+                                            $memberremove_resource_membermembers:resource_member();
+                                    eval($memberremove_resource_memberdefault==memberremove_resource_memberdefault && $memberremove_resource_memberaddon_resource==memberremove_resource_memberaddon_resource && $memberremove_resource_memberfor_member_obj==memberremove_resource_memberfor_member_obj && $memberremove_resource_memberinsert_members==memberremove_resource_memberinsert_members && $memberremove_resource_membermembers==memberremove_resource_membermembers);
+                                eval((RuleUtils.test($memberremove_resource_memberaddon_resource.get("members"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction1_end1" sourceRef="gateway-deaction1" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $memberremove_resource_memberdefault:member();
+                                            $memberremove_resource_memberaddon_resource:addon_resource();
+                                            $memberremove_resource_memberfor_member_obj:resource_member();
+                                            $memberremove_resource_memberinsert_members:resource_member();
+                                            $memberremove_resource_membermembers:resource_member();
+                                    eval($memberremove_resource_memberdefault==memberremove_resource_memberdefault && $memberremove_resource_memberaddon_resource==memberremove_resource_memberaddon_resource && $memberremove_resource_memberfor_member_obj==memberremove_resource_memberfor_member_obj && $memberremove_resource_memberinsert_members==memberremove_resource_memberinsert_members && $memberremove_resource_membermembers==memberremove_resource_membermembers);
+                                eval((RuleUtils.test($memberremove_resource_memberaddon_resource.get("members"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam1" sourceRef="loopsubcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_appendparam1" sourceRef="gateway-prepareparam1" targetRef="appendparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $memberremove_resource_memberdefault:member();
+                                            $memberremove_resource_memberaddon_resource:addon_resource();
+                                            $memberremove_resource_memberfor_member_obj:resource_member();
+                                            $memberremove_resource_memberinsert_members:resource_member();
+                                            $memberremove_resource_membermembers:resource_member();
+                                    eval($memberremove_resource_memberdefault==memberremove_resource_memberdefault && $memberremove_resource_memberaddon_resource==memberremove_resource_memberaddon_resource && $memberremove_resource_memberfor_member_obj==memberremove_resource_memberfor_member_obj && $memberremove_resource_memberinsert_members==memberremove_resource_memberinsert_members && $memberremove_resource_membermembers==memberremove_resource_membermembers);
+                                eval((RuleUtils.test($memberremove_resource_memberfor_member_obj.get("userId"),"NOTEQ","USER_ID")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_deaction2" sourceRef="rawsfcode2" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction1" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction1_gateway-deaction1_gatewayline" sourceRef="deaction1" targetRef="gateway-deaction1"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction1_end_line" sourceRef="gateway-deaction1" targetRef="gateway-deaction1_end"/>
+                            <endEvent id="gateway-deaction1_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>

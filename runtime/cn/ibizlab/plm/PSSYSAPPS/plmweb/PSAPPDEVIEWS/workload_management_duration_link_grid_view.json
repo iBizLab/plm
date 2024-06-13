@@ -686,6 +686,7 @@
         },
         "allowEmpty" : true
       } ],
+      "pagingMode" : 1,
       "pagingSize" : 20,
       "getRemovePSControlAction" : {
         "actionName" : "Remove",
@@ -971,10 +972,64 @@
         "itemType" : "FILTER",
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "create_man",
+        "name" : "create_man_eq",
         "getPSAppDEField" : {
           "name" : "CREATE_MAN",
           "codeName" : "create_man"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_EQ",
+          "name" : "N_CREATE_MAN_EQ",
+          "stdDataType" : 25,
+          "valueOP" : "EQ"
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "URL" : "/users/fetch_default",
+            "ISSHOWTAB" : "false",
+            "USERMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "AC" : "TRUE",
+            "USERMETHOD" : "get",
+            "TRIGGER" : "TRUE",
+            "PICKUPVIEW" : "FALSE"
+          },
+          "editorStyle" : "PERSONEL_SELECT_ALL",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "create_man_eq",
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueItemName" : "create_man",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "valueItemName" : "create_man",
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "登记人",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "create_man_in",
+        "getPSAppDEField" : {
+          "name" : "CREATE_MAN",
+          "codeName" : "create_man"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_IN",
+          "name" : "N_CREATE_MAN_IN",
+          "stdDataType" : 25,
+          "valueOP" : "IN",
+          "array" : true
         },
         "getPSEditor" : {
           "editorParams" : {
@@ -990,7 +1045,7 @@
           },
           "editorStyle" : "PERSONEL_SELECT_ALL",
           "editorType" : "PICKEREX_TRIGGER",
-          "name" : "create_man",
+          "name" : "create_man_in",
           "getPSSysPFPlugin" : {
             "pluginType" : "EDITOR_CUSTOMSTYLE",
             "pluginCode" : "PERSON_SELECT",

@@ -19,7 +19,6 @@
     }
   },
   "height" : 1.0,
-  "hookEventNames" : [ "ONBEFORELOAD" ],
   "logicName" : "dailyTendencies_report",
   "memo" : "每日执行用例趋势左右布局",
   "getPSAppDataEntity" : {
@@ -164,13 +163,6 @@
     "position" : "left",
     "type" : "numeric",
     "id" : "0"
-  } ],
-  "getPSControlLogics" : [ {
-    "eventNames" : "onBeforeLoad",
-    "logicTag" : "dashboard_sysportlet4_chart",
-    "logicType" : "SCRIPT",
-    "name" : "time_logic",
-    "scriptCode" : "const time = new Date();\r\nconst preTime = new Date(time.getTime() - 604800000);\r\nconst n_create_time_gtandeq = preTime.getFullYear() +'-' +(preTime.getMonth() + 1 < 10 ? '0' + (preTime.getMonth() + 1): preTime.getMonth() + 1) +'-' +(preTime.getDate() < 10 ? '0' + preTime.getDate() : preTime.getDate()) \r\nconst n_create_time_ltandeq = time.getFullYear() +'-' +(time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1): time.getMonth() + 1) +'-' +(time.getDate() < 10 ? '0' + time.getDate() : time.getDate())\r\nconst date_range = n_create_time_gtandeq + ',' + n_create_time_ltandeq;\r\nObject.assign(viewParam, { n_create_time_gtandeq, n_create_time_ltandeq, date_range});"
   } ],
   "getPSDEChartDataGrid" : {
     "dataGridPos" : "RIGHT",

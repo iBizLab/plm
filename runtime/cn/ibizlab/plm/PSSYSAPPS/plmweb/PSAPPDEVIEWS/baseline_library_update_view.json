@@ -242,7 +242,15 @@
         "codeName" : "assignee_name"
       }
     }, {
+      "id" : "categories_name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "CATEGORIES_NAME",
+        "codeName" : "categories_name"
+      }
+    }, {
       "id" : "categories",
+      "hidden" : true,
       "dataType" : 25,
       "getPSAppDEField" : {
         "name" : "CATEGORIES",
@@ -280,6 +288,15 @@
         "name" : "ID",
         "codeName" : "id"
       }
+    }, {
+      "id" : "type",
+      "hidden" : true,
+      "dataType" : 25,
+      "createDV" : "principal",
+      "getPSAppDEField" : {
+        "name" : "TYPE",
+        "codeName" : "type"
+      }
     } ],
     "getPSDEFormPages" : [ {
       "caption" : "基本信息",
@@ -315,7 +332,8 @@
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
             "maxLength" : 200,
-            "name" : "name"
+            "name" : "name",
+            "placeHolder" : "输入基线名称"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -404,6 +422,7 @@
               "pluginCode" : "PERSON_SELECT",
               "runtimeObject" : true
             },
+            "placeHolder" : "选择负责人",
             "valueItemName" : "ASSIGNEE_ID",
             "enableAC" : true,
             "enablePickupView" : false,
@@ -421,13 +440,64 @@
           "showCaption" : true
         }, {
           "caption" : "类别",
-          "codeName" : "categories",
+          "codeName" : "categories_name",
           "dataType" : 25,
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
           "ignoreInput" : 0,
           "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "categories_name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "CATEGORIES_NAME",
+            "codeName" : "categories_name"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "multiple" : "true",
+              "DROPDOWNVIEW" : "TRUE",
+              "AC" : "FALSE",
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorType" : "PICKEREX_DROPDOWNVIEW",
+            "handlerType" : "PickupText",
+            "name" : "categories_name",
+            "getPSEditorItems" : [ {
+              "name" : "categories"
+            } ],
+            "getPickupPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/baseline_library_categories_pick_up_tree_view.json",
+              "viewType" : "DEPICKUPTREEVIEW"
+            },
+            "placeHolder" : "选择类别",
+            "valueItemName" : "categories",
+            "dropDownView" : true,
+            "enableAC" : false,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "categories",
+          "allowEmpty" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "类别",
+          "codeName" : "categories",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "LEFT",
           "labelWidth" : 130,
           "name" : "categories",
           "noPrivDisplayMode" : 1,
@@ -436,52 +506,15 @@
             "codeName" : "categories"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "srfnavparam.n_owner_subtype_eq" : "baseline",
-              "srfnavparam.n_owner_id_eq" : "%library%",
-              "PICKUPVIEW" : "TRUE",
-              "srfnavparam.n_owner_type_eq" : "library"
-            },
-            "editorType" : "ADDRESSPICKUP",
-            "name" : "categories",
-            "getPSAppDEACMode" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_default"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
-            },
-            "getPSNavigateParams" : [ {
-              "key" : "n_owner_subtype_eq",
-              "name" : "n_owner_subtype_eq",
-              "value" : "baseline",
-              "rawValue" : true
-            }, {
-              "key" : "n_owner_id_eq",
-              "name" : "n_owner_id_eq",
-              "value" : "library",
-              "rawValue" : false
-            }, {
-              "key" : "n_owner_type_eq",
-              "name" : "n_owner_type_eq",
-              "value" : "library",
-              "rawValue" : true
-            } ],
-            "enableAC" : false,
-            "enablePickupView" : true,
-            "forceSelection" : true,
-            "showTrigger" : true
+            "editorType" : "HIDDEN",
+            "name" : "categories"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
+          "hidden" : true,
           "showCaption" : true
         }, {
           "caption" : "描述",
@@ -508,6 +541,7 @@
             "editorType" : "TEXTAREA_10",
             "maxLength" : 2000,
             "name" : "description",
+            "placeHolder" : "输入基线描述",
             "showMaxLength" : true
           },
           "getPSLayoutPos" : {
@@ -593,6 +627,33 @@
           "getPSEditor" : {
             "editorType" : "HIDDEN",
             "name" : "id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "caption" : "基线类型",
+          "codeName" : "type",
+          "createDV" : "principal",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "NONE",
+          "labelWidth" : 0,
+          "name" : "type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "TYPE",
+            "codeName" : "type"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "type"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -722,6 +783,28 @@
   "modelid" : "9ef2c2b8fd8e360b1a8081036ee8d863",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {
+    "actionRSMode" : 1,
+    "codeName" : "baselines",
+    "dataRSMode" : 0,
+    "majorDECodeName" : "space",
+    "majorDEName" : "SPACE",
+    "getMajorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "minorDECodeName" : "baseline",
+    "minorDEName" : "BASELINE",
+    "getMinorPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/baseline.json"
+    },
+    "name" : "DERCUSTOM_BASELINE_SPACE_OWNER_ID",
+    "getParentPSAppDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "rSMode" : 2
+  } ], [ {
     "actionRSMode" : 1,
     "codeName" : "baselines",
     "dataRSMode" : 0,

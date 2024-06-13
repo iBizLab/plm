@@ -7,7 +7,7 @@
   "name" : "生成最近访问",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
-    "leftPos" : 402,
+    "leftPos" : 346,
     "logicNodeType" : "BEGIN",
     "name" : "开始",
     "getPSDELogicLinks" : [ {
@@ -30,6 +30,16 @@
           "logicType" : "SINGLE",
           "name" : "Default[IS_PUBLISHED] 等于(=) 1",
           "paramValue" : "1"
+        }, {
+          "condOP" : "NOTEQ",
+          "dstFieldName" : "TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "logicType" : "SINGLE",
+          "name" : "Default[TYPE] 不等于(<>) 2",
+          "paramValue" : "2"
         } ]
       },
       "getSrcPSDELogicNode" : {
@@ -63,7 +73,7 @@
         "id" : "Begin"
       }
     } ],
-    "topPos" : 20,
+    "topPos" : -90,
     "parallelOutput" : true
   }, {
     "codeName" : "PREPAREPARAM1",

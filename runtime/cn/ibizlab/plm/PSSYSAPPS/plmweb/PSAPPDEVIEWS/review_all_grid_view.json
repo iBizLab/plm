@@ -30,18 +30,18 @@
       "logicType" : "PREDEFINED",
       "name" : "新建数据",
       "getNewDataPSAppView" : {
-        "openMode" : "POPUPMODAL",
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_create_wizard_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_create_wizard_view.json",
           "viewType" : "DEWIZARDVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
-        "openMode" : "POPUPMODAL",
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_create_wizard_view.json",
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_create_wizard_view.json",
           "viewType" : "DEWIZARDVIEW"
         }
       } ],
@@ -58,19 +58,19 @@
       "logicType" : "PREDEFINED",
       "name" : "打开数据",
       "getOpenDataPSAppView" : {
-        "openMode" : "POPUPMODAL",
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
-          "viewType" : "DEWFDYNAEDITVIEW3"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       },
       "getPSAppUILogicRefViews" : [ {
-        "openMode" : "POPUPMODAL",
+        "openMode" : "INDEXVIEWTAB_POPUPMODAL",
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
-          "viewType" : "DEWFDYNAEDITVIEW3"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
+          "viewType" : "DEEDITVIEW"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -78,43 +78,32 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "OPENDATA",
+    "name" : "NEWDATA",
     "openMode" : "INDEXVIEWTAB_POPUPMODAL",
     "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "评审工作流动态编辑视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
-      "viewType" : "DEWFDYNAEDITVIEW3"
-    }
-  }, {
-    "name" : "EDITDATA",
-    "openMode" : "POPUPMODAL",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "评审工作流动态编辑视图",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
-      "viewType" : "DEWFDYNAEDITVIEW3"
-    }
-  }, {
-    "name" : "NEWDATA",
-    "openMode" : "POPUPMODAL",
-    "realOpenMode" : "POPUPMODAL",
     "realTitle" : "评审新建向导",
     "getRealTitlePSLanguageRes" : {
       "lanResTag" : "PAGE.TITLE.REVIEW.CREATE_WIZARD_VIEW"
     },
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_create_wizard_view.json",
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wizard_create_wizard_view.json",
       "viewType" : "DEWIZARDVIEW"
     }
+  }, {
+    "name" : "EDITDATA",
+    "openMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "评审主视图",
+    "getRealTitlePSLanguageRes" : {
+      "lanResTag" : "PAGE.TITLE.REVIEW.MAIN_VIEW"
+    },
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
   } ],
-  "getPSAppWF" : {
-    "modelref" : true,
-    "id" : "case_review_flow"
-  },
   "getPSControls" : [ {
     "codeName" : "all_grid_view_toolbar",
     "controlType" : "TOOLBAR",
@@ -128,42 +117,6 @@
       "id" : "TOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
-      "caption" : "打开流程视图",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction2_open_edit_view",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_deuiaction2_open_edit_view"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "SINGLEKEY",
-        "caption" : "打开流程视图",
-        "codeName" : "open_edit_view",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_main_view.json",
-          "viewType" : "DEEDITVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "review_open_edit_view",
-        "name" : "打开编辑视图",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
-        },
-        "timeout" : 60000,
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "open_edit_view",
-        "uIActionType" : "DEUIACTION",
-        "id" : "open_edit_view@review"
-      },
-      "tooltip" : "打开流程视图",
-      "uIActionTarget" : "SINGLEKEY",
-      "showCaption" : true,
-      "showIcon" : true
-    }, {
       "getCapPSLanguageRes" : {
         "lanResTag" : "TBB.TEXT.*.NEW"
       },
@@ -185,21 +138,28 @@
           "lanResTag" : "TBB.TEXT.*.NEW"
         },
         "caption" : "新建",
-        "codeName" : "New",
-        "fullCodeName" : "New",
-        "name" : "表格界面_新建操作",
+        "codeName" : "new_subdata",
+        "dataAccessAction" : "SUBDATA",
+        "fullCodeName" : "new_subdata",
+        "name" : "表格界面_新建操作_子数据",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
+        },
         "getPSSysImage" : {
           "glyph" : "xf0f6@FontAwesome",
           "cssClass" : "fa fa-file-text-o"
         },
         "predefinedType" : "GRIDVIEW_NEWACTION",
+        "refreshMode" : 1,
         "timeout" : 60000,
         "getTooltipPSLanguageRes" : {
           "lanResTag" : "TBB.TOOLTIP.*.NEW"
         },
         "uIActionMode" : "SYS",
-        "uIActionTag" : "New",
-        "uIActionType" : "DEUIACTION"
+        "uIActionTag" : "new_subdata",
+        "uIActionType" : "DEUIACTION",
+        "reloadData" : true
       },
       "tooltip" : "新建评审",
       "getTooltipPSLanguageRes" : {
@@ -235,6 +195,11 @@
     "groupMode" : "NONE",
     "hookEventNames" : [ "ONLOADSUCCESS" ],
     "logicName" : "全部评审表格视图_表格",
+    "minorSortDir" : "DESC",
+    "getMinorSortPSAppDEField" : {
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
+    },
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
@@ -396,6 +361,7 @@
             "actionTarget" : "SINGLEDATA",
             "caption" : "提交评审",
             "codeName" : "submit_review",
+            "dataAccessAction" : "SUBDATA",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "review_submit_review",
             "name" : "提交评审",
@@ -407,16 +373,22 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
             },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
+            },
             "getPSSysImage" : {
               "glyph" : "xf1d9@FontAwesome",
               "cssClass" : "fa fa-send-o"
             },
+            "refreshMode" : 1,
             "timeout" : 60000,
             "tooltip" : "提交评审",
             "uIActionMode" : "BACKEND",
             "uIActionTag" : "submit_review",
             "uIActionType" : "DEUIACTION",
             "enableConfirm" : true,
+            "reloadData" : true,
             "id" : "submit_review@review"
           },
           "tooltip" : "提交评审",
@@ -435,26 +407,124 @@
             "actionTarget" : "SINGLEDATA",
             "caption" : "撤销评审",
             "codeName" : "repeal_review",
-            "fullCodeName" : "repeal_review",
+            "dataAccessAction" : "SUBDATA",
+            "fullCodeName" : "review_repeal_review",
             "name" : "撤销评审",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "repeal_review"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSSysImage" : {
               "glyph" : "xf112@FontAwesome",
               "cssClass" : "fa fa-mail-reply"
             },
-            "predefinedType" : "EDITVIEW_ROLLBACKWFACTION",
+            "refreshMode" : 1,
             "timeout" : 60000,
             "tooltip" : "撤销评审",
-            "uIActionMode" : "SYS",
+            "uIActionMode" : "BACKEND",
             "uIActionTag" : "repeal_review",
-            "uIActionType" : "DEUIACTION"
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "repeal_review@review"
           },
           "tooltip" : "撤销评审",
           "addSeparator" : false,
           "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "actionLevel" : 50,
+          "caption" : "删除",
+          "detailType" : "DEUIACTION",
+          "name" : "u10cbfb3",
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "删除",
+            "codeName" : "delete",
+            "confirmMsg" : "确认删除评审吗？ 评审删除后不可恢复，用例会保留评审记录。",
+            "dataAccessAction" : "UPDATE",
+            "fullCodeName" : "review_delete",
+            "name" : "删除",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "refreshMode" : 1,
+            "successMsg" : "删除成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "delete",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "delete@review"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
+          "showIcon" : true
+        }, {
+          "actionLevel" : 50,
+          "caption" : "设置类别",
+          "detailType" : "DEUIACTION",
+          "name" : "u92af992",
+          "getPSSysImage" : {
+            "glyph" : "xf044@FontAwesome",
+            "cssClass" : "fa fa-edit"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "设置类别",
+            "codeName" : "set_category",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_set_category_option_view.json",
+              "viewType" : "DEOPTVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "review_set_category",
+            "name" : "设置类别",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf044@FontAwesome",
+              "cssClass" : "fa fa-edit"
+            },
+            "refreshMode" : 1,
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "set_category",
+            "uIActionType" : "DEUIACTION",
+            "reloadData" : true,
+            "id" : "set_category@review"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
           "showIcon" : true
         } ],
         "uniqueTag" : "review__Usr0428064370"
@@ -483,7 +553,7 @@
         "name" : "TYPE",
         "codeName" : "type"
       },
-      "width" : 100,
+      "width" : 150,
       "widthUnit" : "PX",
       "enableSort" : true
     }, {
@@ -680,17 +750,17 @@
       }
     }, {
       "dataType" : 25,
+      "name" : "guideline_id",
+      "getPSAppDEField" : {
+        "name" : "GUIDELINE_ID",
+        "codeName" : "guideline_id"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "srfmajortext",
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "srfwfstep",
-      "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
       }
     } ],
     "getPSDEGridEditItems" : [ {
@@ -734,6 +804,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -750,10 +821,11 @@
       }
     },
     "sortMode" : "REMOTE",
-    "hasWFDataItems" : true,
+    "hasWFDataItems" : false,
     "enableColFilter" : false,
     "enableCustomized" : true,
     "enableGroup" : false,
+    "enableItemPrivilege" : true,
     "enablePagingBar" : true,
     "enableRowEdit" : false,
     "enableRowEditOrder" : false,
@@ -901,15 +973,6 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
-  "getPSWFVersion" : {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSWORKFLOWS/case_review_flow/PSWFVERSIONS/case_review_flowv1.json"
-  },
-  "getPSWorkflow" : {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSWORKFLOWS/case_review_flow.json"
-  },
-  "refFlag" : false,
   "title" : "全部评审表格",
   "getTitlePSLanguageRes" : {
     "lanResTag" : "PAGE.TITLE.REVIEW.ALL_GRID_VIEW"

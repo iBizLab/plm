@@ -56,6 +56,14 @@
       "name" : "CREATE_TIME",
       "codeName" : "create_time"
     }
+  }, {
+    "id" : "project_type",
+    "hidden" : true,
+    "dataType" : 25,
+    "createDVT" : "APPDATA",
+    "createDV" : "project_type",
+    "updateDVT" : "APPDATA",
+    "updateDV" : "project_type"
   } ],
   "getPSDEFormPages" : [ {
     "caption" : "常规条件",
@@ -83,6 +91,10 @@
         "attrName" : "shortcuts",
         "attrValue" : "[\r\n    {\r\n    text: '最近7天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 6);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '最近30天',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date();\r\n        start_at.setDate(end_at.getDate() - 29);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本周',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const currentDay = end_at.getDay();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 计算本周的开始日期 (周一)\r\n        start_at.setDate(\r\n        end_at.getDate() - currentDay + (currentDay === 0 ? -6 : 1),\r\n        );\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n    {\r\n    text: '本月',\r\n    value: () => {\r\n        const end_at = new Date();\r\n        const start_at = new Date(end_at);\r\n\r\n        // 将日期设置为本月第一天\r\n        start_at.setDate(1);\r\n        return [start_at, end_at];\r\n    },\r\n    },\r\n]",
         "name" : "date_range_shortcuts"
+      }, {
+        "attrName" : "clearable",
+        "attrValue" : "false",
+        "name" : "clearable1"
       } ],
       "getPSEditor" : {
         "dateTimeFormat" : "YYYY-MM-DD",
@@ -120,6 +132,20 @@
         "name" : "SPRINT_NAME",
         "codeName" : "sprint_name"
       },
+      "getPSDEFDGroupLogics" : [ {
+        "groupOP" : "AND",
+        "logicCat" : "PANELVISIBLE",
+        "logicType" : "GROUP",
+        "name" : "表单成员[n_sprint_name_eq][面板显示]逻辑",
+        "getPSDEFDLogics" : [ {
+          "condOP" : "EQ",
+          "dEFDName" : "project_type",
+          "logicType" : "SINGLE",
+          "value" : "scrum"
+        } ],
+        "relatedDetailNames" : [ "project_type" ],
+        "notMode" : false
+      } ],
       "getPSEditor" : {
         "editorParams" : {
           "AC" : "TRUE",
@@ -213,6 +239,7 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
         },
+        "placeHolder" : "选择优先级",
         "singleSelect" : false
       },
       "getPSLayoutPos" : {
@@ -245,6 +272,7 @@
           "modelref" : true,
           "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__severity.json"
         },
+        "placeHolder" : "选择严重程度",
         "singleSelect" : false
       },
       "getPSLayoutPos" : {
@@ -307,6 +335,33 @@
         "layout" : "TABLE_24COL"
       },
       "valueFormat" : "YYYY-MM-DD HH:mm:ss",
+      "allowEmpty" : true,
+      "hidden" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "表单项",
+      "codeName" : "project_type",
+      "createDV" : "project_type",
+      "createDVT" : "APPDATA",
+      "dataType" : 25,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "project_type",
+      "noPrivDisplayMode" : 1,
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "project_type"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "updateDV" : "project_type",
+      "updateDVT" : "APPDATA",
       "allowEmpty" : true,
       "hidden" : true,
       "showCaption" : true

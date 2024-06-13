@@ -9,11 +9,7 @@ package cn.ibizlab.plm.prodmgmt.logic.customerlogic.get_product_member;
                 global cn.ibizlab.plm.core.prodmgmt.domain.product_member customerget_product_memberfilter;
                 global java.util.Map customerget_product_memberfor_obj;
                 global cn.ibizlab.plm.core.prodmgmt.domain.product_member customerget_product_membermembers;
-                global cn.ibizlab.plm.core.prodmgmt.domain.product customerget_product_memberproduct_info;
-                global cn.ibizlab.plm.core.prodmgmt.domain.customer customerget_product_memberticket;
                 global java.util.Map customerget_product_memberuser;
-                global java.util.Map customerget_product_memberviewctx;
-                global java.util.Map customerget_product_memberwebctx;
                     global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService product_memberservice;
         global cn.ibizlab.plm.core.prodmgmt.service.IcustomerService iBzSysCustomerDefaultService;
         global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
@@ -29,57 +25,56 @@ package cn.ibizlab.plm.prodmgmt.logic.customerlogic.get_product_member;
             end
 
             //逻辑处理节点[调试逻辑参数]
-            rule "debugparam3"
-            ruleflow-group "customerget_product_memberdebugparam3"
+            rule "debugparam1"
+            ruleflow-group "customerget_product_memberdebugparam1"
             when
             then
                         update(customerget_product_memberdefault);//更新fact中变量值
                         update(customerget_product_memberfilter);//更新fact中变量值
                         update(customerget_product_memberfor_obj);//更新fact中变量值
                         update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
                         update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[获取产品id]
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "customerget_product_memberrawsfcode3"
+            when
+            then
+                        update(customerget_product_memberdefault);//更新fact中变量值
+                        update(customerget_product_memberfilter);//更新fact中变量值
+                        update(customerget_product_memberfor_obj);//更新fact中变量值
+                        update(customerget_product_membermembers);//更新fact中变量值
+                        update(customerget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "customerget_product_memberend2"
+            when
+            then
+                        update(customerget_product_memberdefault);//更新fact中变量值
+                        update(customerget_product_memberfilter);//更新fact中变量值
+                        update(customerget_product_memberfor_obj);//更新fact中变量值
+                        update(customerget_product_membermembers);//更新fact中变量值
+                        update(customerget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品id并设置过滤参数]
             rule "prepareparam2"
             ruleflow-group "customerget_product_memberprepareparam2"
             when
             then
-                            customerget_product_memberproduct_info.set("id",customerget_product_memberdefault.get("productid"));
                             customerget_product_memberfilter.set("n_product_id_eq",customerget_product_memberdefault.get("productid"));
                                 customerget_product_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
                         update(customerget_product_memberdefault);//更新fact中变量值
                         update(customerget_product_memberfilter);//更新fact中变量值
                         update(customerget_product_memberfor_obj);//更新fact中变量值
                         update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
                         update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam6"
-            ruleflow-group "customerget_product_memberdebugparam6"
-            when
-            then
-                        update(customerget_product_memberdefault);//更新fact中变量值
-                        update(customerget_product_memberfilter);//更新fact中变量值
-                        update(customerget_product_memberfor_obj);//更新fact中变量值
-                        update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
-                        update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
-            end
-
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[查询当前用户是否为产品成员]
             rule "dedataset3"
             ruleflow-group "customerget_product_memberdedataset3"
             when
@@ -88,78 +83,44 @@ package cn.ibizlab.plm.prodmgmt.logic.customerlogic.get_product_member;
                         update(customerget_product_memberfilter);//更新fact中变量值
                         update(customerget_product_memberfor_obj);//更新fact中变量值
                         update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
                         update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall3"
-            ruleflow-group "customerget_product_memberloopsubcall3"
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "customerget_product_memberprepareparam5"
+            when
+            then
+                            customerget_product_memberfor_obj.set("",customerget_product_membermembers.get("0"));
+                        update(customerget_product_memberdefault);//更新fact中变量值
+                        update(customerget_product_memberfilter);//更新fact中变量值
+                        update(customerget_product_memberfor_obj);//更新fact中变量值
+                        update(customerget_product_membermembers);//更新fact中变量值
+                        update(customerget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "customerget_product_memberrawsfcode1"
             when
             then
                         update(customerget_product_memberdefault);//更新fact中变量值
                         update(customerget_product_memberfilter);//更新fact中变量值
                         update(customerget_product_memberfor_obj);//更新fact中变量值
                         update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
                         update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
             end
 
-            //逻辑处理节点[只读]
-            rule "prepareparam10"
-            ruleflow-group "customerget_product_memberprepareparam10"
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "customerget_product_memberrawsfcode2"
             when
             then
-                            customerget_product_memberuser.set("readonly","true");
                         update(customerget_product_memberdefault);//更新fact中变量值
                         update(customerget_product_memberfilter);//更新fact中变量值
                         update(customerget_product_memberfor_obj);//更新fact中变量值
                         update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
                         update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
-            end
-
-            //逻辑处理节点[只读]
-            rule "prepareparam8"
-            ruleflow-group "customerget_product_memberprepareparam8"
-            when
-            then
-                            customerget_product_memberuser.set("readonly","true");
-                        update(customerget_product_memberdefault);//更新fact中变量值
-                        update(customerget_product_memberfilter);//更新fact中变量值
-                        update(customerget_product_memberfor_obj);//更新fact中变量值
-                        update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
-                        update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
-            end
-
-            //逻辑处理节点[非只读]
-            rule "prepareparam9"
-            ruleflow-group "customerget_product_memberprepareparam9"
-            when
-            then
-                            customerget_product_memberuser.set("readonly","false");
-                        update(customerget_product_memberdefault);//更新fact中变量值
-                        update(customerget_product_memberfilter);//更新fact中变量值
-                        update(customerget_product_memberfor_obj);//更新fact中变量值
-                        update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
-                        update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
             end
 
             //逻辑处理节点[结束]
@@ -171,9 +132,17 @@ package cn.ibizlab.plm.prodmgmt.logic.customerlogic.get_product_member;
                         update(customerget_product_memberfilter);//更新fact中变量值
                         update(customerget_product_memberfor_obj);//更新fact中变量值
                         update(customerget_product_membermembers);//更新fact中变量值
-                        update(customerget_product_memberproduct_info);//更新fact中变量值
-                        update(customerget_product_memberticket);//更新fact中变量值
                         update(customerget_product_memberuser);//更新fact中变量值
-                        update(customerget_product_memberviewctx);//更新fact中变量值
-                        update(customerget_product_memberwebctx);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode4"
+            ruleflow-group "customerget_product_memberrawsfcode4"
+            when
+            then
+                        update(customerget_product_memberdefault);//更新fact中变量值
+                        update(customerget_product_memberfilter);//更新fact中变量值
+                        update(customerget_product_memberfor_obj);//更新fact中变量值
+                        update(customerget_product_membermembers);//更新fact中变量值
+                        update(customerget_product_memberuser);//更新fact中变量值
             end

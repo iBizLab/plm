@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -86,6 +89,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -111,6 +115,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -136,6 +141,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -157,6 +163,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -179,6 +186,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "active_member",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEACTIONS/active_member.json",
     "logicName" : "获取活跃成员数据",
     "name" : "active_member",
@@ -328,6 +336,38 @@
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEDATAQUERIES/distinct_userid/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "distinct_userid",
+    "logicName" : "排重用户",
+    "name" : "distinct_userid",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "LOGIN_LOG"
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Distinct_useridInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "login_log_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Distinct_useridResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "login_log_dto"
+      },
+      "type" : "DTOS"
+    }
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDEDATAQUERIES/echarts_datas/PSDEDQCODES/MYSQL5.json"
     } ],
     "codeName" : "echarts_datas",
@@ -339,35 +379,7 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
       },
       "joinType" : "MAIN",
-      "name" : "LOGIN_LOG",
-      "getPSDEDQGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "连接条件",
-        "getPSDEDQConditions" : [ {
-          "condOp" : "GTANDEQ",
-          "condType" : "SINGLE",
-          "condValue" : "15",
-          "fieldName" : "AUTHTIME",
-          "name" : "过去天数(AUTHTIME) 大于等于(>=) 15",
-          "getPSDEField" : {
-            "name" : "AUTHTIME",
-            "codeName" : "AuthTime"
-          },
-          "valueFunc" : "DATEDIFFNOW"
-        }, {
-          "condOp" : "LTANDEQ",
-          "condType" : "SINGLE",
-          "condValue" : "0",
-          "fieldName" : "AUTHTIME",
-          "name" : "未来天数(AUTHTIME) 小于等于(<=) 0",
-          "getPSDEField" : {
-            "name" : "AUTHTIME",
-            "codeName" : "AuthTime"
-          },
-          "valueFunc" : "DATEDIFFNOW2"
-        } ]
-      }
+      "name" : "LOGIN_LOG"
     },
     "getPSDEDataQueryInput" : {
       "name" : "Echarts_datasInput",
@@ -418,6 +430,35 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "actionHolder" : 1,
+    "codeName" : "calc_chart_datas",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "计算活跃成员图表数据",
+    "name" : "CALC_CHART_DATAS",
+    "getPSDEDataSetInput" : {
+      "name" : "Calc_chart_datasInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "login_log_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Calc_chart_datasResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "login_log_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDELOGICS/calc_active_chart_datas.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "cur_user",
     "logicName" : "当前用户",
     "name" : "CUR_USER",
@@ -444,6 +485,50 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "distinct_userid",
+    "groupMode" : 1,
+    "logicName" : "排重用户",
+    "name" : "DISTINCT_USERID",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "distinct_userid"
+    } ],
+    "getPSDEDataSetGroupParams" : [ {
+      "groupCode" : "count(distinct USER_ID)",
+      "name" : "ACTIVE_MEMBERS",
+      "getPSDEField" : {
+        "name" : "ACTIVE_MEMBERS",
+        "codeName" : "active_members"
+      },
+      "stdDataType" : 25
+    }, {
+      "name" : "USER_ID",
+      "getPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      },
+      "stdDataType" : 25
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Distinct_useridInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "login_log_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Distinct_useridResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "login_log_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true,
+    "enableGroup" : true
+  }, {
     "codeName" : "echarts_datas",
     "groupMode" : 1,
     "logicName" : "获取活跃人员图表数据",
@@ -453,6 +538,14 @@
       "id" : "echarts_datas"
     } ],
     "getPSDEDataSetGroupParams" : [ {
+      "groupCode" : "count(distinct USER_ID)",
+      "name" : "ACTIVE_MEMBERS",
+      "getPSDEField" : {
+        "name" : "ACTIVE_MEMBERS",
+        "codeName" : "active_members"
+      },
+      "stdDataType" : 25
+    }, {
       "groupCode" : "DATE(AUTHTIME)",
       "name" : "AUTHTIME",
       "getPSDEField" : {
@@ -461,6 +554,13 @@
       },
       "stdDataType" : 5,
       "enableGroup" : true
+    }, {
+      "name" : "USER_ID",
+      "getPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      },
+      "stdDataType" : 25
     } ],
     "getPSDEDataSetInput" : {
       "name" : "Echarts_datasInput",
@@ -1715,22 +1815,22 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.`CREATE_TIME`",
+      "standardColumnName" : "`CREATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -1740,14 +1840,14 @@
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[CREATE_TIME][建立时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
+        "name" : "[CREATE_TIME][建立时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -1768,18 +1868,18 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "create_time",
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
-    "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "update_time",
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
+    "predefinedType" : "CREATEDATE",
+    "serviceCodeName" : "create_time",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
@@ -1873,22 +1973,22 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "CREATE_TIME",
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
-      "name" : "CREATE_TIME",
-      "queryCodeExp" : "t1.`CREATE_TIME`",
-      "standardColumnName" : "`CREATE_TIME`"
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -1898,14 +1998,14 @@
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
+      "name" : "[UPDATE_TIME][更新时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
+        "name" : "[UPDATE_TIME][更新时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -1926,29 +2026,355 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "create_time",
+    "codeName" : "update_time",
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
-    "predefinedType" : "CREATEDATE",
-    "serviceCodeName" : "create_time",
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "predefinedType" : "UPDATEDATE",
+    "serviceCodeName" : "update_time",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
   } ],
   "getAllPSDELogics" : [ {
+    "codeName" : "calc_active_chart_datas",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDELOGICS/calc_active_chart_datas.json",
+    "logicName" : "计算活跃成员图表数据",
+    "memo" : "计算活跃成员模块下的图表所需要的数据",
+    "name" : "计算活跃成员图表数据",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 500,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : -190,
+      "parallelOutput" : true
+    }, {
+      "code" : "// 创建一个新的 Date 对象，获取前15天的日期 \r\nvar fifty = new Date();  \r\n// 获取前15天的日期  \r\nfifty.setDate(fifty.getDate() - 15);  \r\n// 获取年、月、日信息  \r\nvar year = fifty.getFullYear();  \r\nvar month = fifty.getMonth() + 1;  \r\nvar day = fifty.getDate();  \r\nif (month < 10) {\r\n    month = '0' + month;\r\n}\r\nif (day < 10) {\r\n    day = '0' + day;\r\n}\r\n// 创建一个新的 Date 对象，获取今天的日期 \r\nvar today = new Date();  \r\n// 获取年、月、日信息  \r\nvar todayYear = today.getFullYear();  \r\nvar todayMonth = today.getMonth() + 1;  \r\nvar todayDay = today.getDate();  \r\nif (todayMonth < 10) {\r\n    todayMonth = '0' + todayMonth;\r\n}\r\nif (todayDay < 10) {\r\n    todayDay = '0' + todayDay;\r\n}\r\n// 生成日期字符串，格式为 YYYY-MM-DD\r\nvar dateStr = year + '-' + month + '-' + day;\r\nvar todayDateStr = todayYear + '-' + todayMonth + '-' + todayDay;\r\n\r\nvar beforefiftyday = dateStr + ' 00:00:00';\r\nvar todays =  todayDateStr + ' 23:59:59';\r\n\r\n\r\nlogic.setParam('starttime',beforefiftyday);\r\nlogic.setParam('endtime',todays)",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "leftPos" : 596,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "计算前15天和今天的日期",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : -182
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 780,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备日期过滤参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_authtime_gtandeq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "starttime ==> Default[n_authtime_gtandeq]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "starttime"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "n_authtime_ltandeq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "endtime ==> Default[n_authtime_ltandeq]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "endtime"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "user_filter"
+        },
+        "name" : "直接值[1] ==> user_filter[size]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : -182
+    }, {
+      "codeName" : "DEDATASET2",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "leftPos" : 950,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询活跃总人数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "user_page"
+      },
+      "topPos" : -182
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 1110,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "赋值活跃总人数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "total",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "user_total"
+        },
+        "name" : "user_page[total] ==> user_total[total]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "total",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "user_page"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : -182
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "echarts_datas"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "leftPos" : 1290,
+      "logicNodeType" : "DEDATASET",
+      "name" : "获取图表默认数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "echart_page"
+      },
+      "topPos" : -182
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "echart_obj"
+      },
+      "leftPos" : 1450,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "进入子循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        }
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "echart_page"
+      },
+      "topPos" : -182
+    }, {
+      "code" : "var echart_obj = logic.getParam('echart_obj');\r\n//活跃总人数\r\nvar user_total = logic.getParam('user_total');\r\nvar total = user_total.get('total');\r\n//活跃人数\r\nvar active_members = echart_obj.get('active_members');\r\n//计算活跃率\r\nvar active_rate = ((active_members / total) * 100).toFixed(2); \r\n//补充活跃率\r\nechart_obj.set(\"active_rate\",active_rate);\r\n\r\n//处理authtime\r\nvar newdate = String(echart_obj.get('auth_time')).split(' ')[0]; \r\nechart_obj.set(\"auth_time\",newdate);",
+      "codeName" : "RAWSFCODE2",
+      "codeType" : "JavaScript",
+      "leftPos" : 1450,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "计算图表所需数据",
+      "topPos" : -44
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1720,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "echart_page"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : -190
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "echart_obj",
+      "logicName" : "图表数据变量",
+      "name" : "图表数据变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "echart_page",
+      "logicName" : "图表分页查询结果变量",
+      "name" : "图表分页查询结果变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "endtime",
+      "logicName" : "结束时间",
+      "name" : "结束时间",
+      "stdDataType" : 25,
+      "simpleParam" : true
+    }, {
+      "codeName" : "starttime",
+      "logicName" : "开始时间",
+      "name" : "开始时间",
+      "stdDataType" : 25,
+      "simpleParam" : true
+    }, {
+      "codeName" : "user_filter",
+      "logicName" : "过滤器",
+      "name" : "过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "user_page",
+      "logicName" : "用户分页查询结果变量",
+      "name" : "用户分页查询结果变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "user_total",
+      "logicName" : "用户总人数",
+      "name" : "用户总人数",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/user.json"
+      },
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "calc_active_member_info",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/login_log/PSDELOGICS/calc_active_member_info.json",
     "logicName" : "计算活跃成员数据信息",
-    "memo" : "获取活跃成员下的昨日活跃人数、昨日活跃率、活跃总人数的数值",
+    "memo" : "获取活跃成员下的昨日活跃人数、昨日活跃率、活跃总人数、近七日活跃人数、近七日活跃率的数值",
     "name" : "计算活跃成员数据信息",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -2030,36 +2456,40 @@
       },
       "topPos" : 138
     }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 150,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "赋值活跃总人数",
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_obj"
+      },
+      "leftPos" : 121,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "RAWSFCODE2"
+          "id" : "PREPAREPARAM4"
         },
-        "name" : "连接名称",
+        "name" : "进入子循环",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM1"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
         }
       } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "active_count",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "datas"
-        },
-        "name" : "user_page[total] ==> datas[active_count]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "total",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "user_page"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_page"
+      },
       "topPos" : 242
     }, {
       "codeName" : "DEDATASET2",
@@ -2075,13 +2505,13 @@
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
       },
-      "leftPos" : 340,
+      "leftPos" : 330,
       "logicNodeType" : "DEDATASET",
       "name" : "查询昨日活跃人数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM2"
+          "id" : "LOOPSUBCALL1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -2139,6 +2569,27 @@
       } ],
       "topPos" : 242
     }, {
+      "codeName" : "PREPAREPARAM4",
+      "leftPos" : -70,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备昨日活跃总人数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ACTIVE_MEMBERS",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "last_active_members"
+        },
+        "name" : "login_log_obj[ACTIVE_MEMBERS] ==> last_active_members[ACTIVE_MEMBERS]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ACTIVE_MEMBERS",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "login_log_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 242
+    }, {
       "code" : "// 创建一个新的 Date 对象，包含当前的日期和时间  \r\nvar lastday = new Date();  \r\n// 获取昨天的日期  \r\nlastday.setDate(lastday.getDate() - 1);  \r\n// 获取年、月、日信息  \r\nvar year = lastday.getFullYear();  \r\nvar month = lastday.getMonth() + 1;  \r\nvar day = lastday.getDate();  \r\nif (month < 10) {\r\n    month = '0' + month;\r\n}\r\nif (day < 10) {\r\n    day = '0' + day;\r\n}\r\n\r\n// 生成日期字符串，格式为 YYYY-MM-DD\r\nvar dateStr = year + '-' + month + '-' + day;\r\nvar lastdayFirst = dateStr + ' 00:00:00';\r\nvar lastdayLast =  dateStr + ' 23:59:59';\r\n\r\nlogic.setParam('last_day_starttime',lastdayFirst);\r\nlogic.setParam('last_day_endtime',lastdayLast)\r\n\r\n",
       "codeName" : "RAWSFCODE1",
       "codeType" : "JavaScript",
@@ -2158,23 +2609,260 @@
       } ],
       "topPos" : 242
     }, {
-      "codeName" : "END1",
-      "leftPos" : 450,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
+      "codeName" : "RENEWPARAM1",
+      "getDstPSDELogicParam" : {
         "modelref" : true,
-        "id" : "datas"
+        "id" : "login_log_filter"
       },
-      "returnType" : "LOGICPARAM",
+      "leftPos" : 121,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重置过滤器",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM1"
+        }
+      } ],
       "topPos" : 342
     }, {
-      "code" : "var datas = logic.getParam('datas');\r\nsys.info(datas,\"123123123123123\");\r\n//活跃总人数\r\nvar active_count = datas.get('active_count');\r\n//昨日活跃人数\r\nvar lastday_active_count = 10;\r\n//活跃率\r\nvar active_rate = (active_count / lastday_active_count) * 100;\r\n//设置昨日活跃人数和活跃率\r\ndatas.set(\"lastday_active_count\",lastday_active_count);\r\ndatas.set(\"active_rate\",active_rate);\r\n",
+      "codeName" : "RENEWPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_page"
+      },
+      "leftPos" : 340,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重置分页结果变量",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM2"
+        }
+      } ],
+      "topPos" : 342
+    }, {
+      "codeName" : "RENEWPARAM3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_obj"
+      },
+      "leftPos" : 516,
+      "logicNodeType" : "RENEWPARAM",
+      "name" : "重置结果变量",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RENEWPARAM3"
+        }
+      } ],
+      "topPos" : 342
+    }, {
+      "code" : "// 创建一个新的 Date 对象，包含当前的日期和时间  \r\nvar sevenday = new Date();  \r\n// 获取前6天的日期  \r\nsevenday.setDate(sevenday.getDate() - 6);  \r\n// 获取年、月、日信息  \r\nvar year = sevenday.getFullYear();  \r\nvar month = sevenday.getMonth() + 1;  \r\nvar day = sevenday.getDate();  \r\nif (month < 10) {\r\n    month = '0' + month;\r\n}\r\nif (day < 10) {\r\n    day = '0' + day;\r\n}\r\n// 生成日期字符串，格式为 YYYY-MM-DD\r\nvar dateStr = year + '-' + month + '-' + day;\r\nvar sevendayFirst = dateStr + ' 00:00:00';\r\n\r\n\r\n\r\n\r\n// 创建一个新的 Date 对象，包含当前的日期和时间  \r\nvar today = new Date();  \r\n// 获取年、月、日信息  \r\nvar todayyear = today.getFullYear();  \r\nvar todaymonth = today.getMonth() + 1;  \r\nvar todayday = today.getDate();  \r\nif (todaymonth < 10) {\r\n    todaymonth = '0' + todaymonth;\r\n}\r\nif (todayday < 10) {\r\n    todayday = '0' + todayday;\r\n}\r\n// 生成日期字符串，格式为 YYYY-MM-DD\r\nvar enddate = todayyear + '-' + todaymonth + '-' + todayday + ' 23:59:59';\r\n\r\nlogic.setParam('seven_day_starttime',sevendayFirst);\r\nlogic.setParam('seven_day_endtime',enddate)\r\n\r\n",
+      "codeName" : "RAWSFCODE3",
+      "codeType" : "JavaScript",
+      "leftPos" : 700,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "准备近七日开始结束时间",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      } ],
+      "topPos" : 342
+    }, {
+      "codeName" : "PREPAREPARAM6",
+      "leftPos" : 121,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备近七日活跃总人数",
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "ACTIVE_MEMBERS",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "seven_active_members"
+        },
+        "name" : "login_log_obj[ACTIVE_MEMBERS] ==> seven_active_members[ACTIVE_MEMBERS]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ACTIVE_MEMBERS",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "login_log_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 460
+    }, {
+      "codeName" : "LOOPSUBCALL2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_obj"
+      },
+      "leftPos" : 350,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "结束循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "进入子循环",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_page"
+      },
+      "topPos" : 460
+    }, {
+      "codeName" : "DEDATASET3",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "distinct_userid"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "leftPos" : 516,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询近七日活跃人数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "login_log_page"
+      },
+      "topPos" : 460
+    }, {
+      "codeName" : "PREPAREPARAM5",
+      "leftPos" : 700,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "准备日志过滤参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "n_authtime_gtandeq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "login_log_filter"
+        },
+        "name" : "seven_day_starttime ==> login_log_filter[n_authtime_gtandeq]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "seven_day_starttime"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "n_authtime_ltandeq",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "login_log_filter"
+        },
+        "name" : "seven_day_endtime ==> login_log_filter[n_authtime_ltandeq]",
+        "paramAction" : "SETPARAMVALUE",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "seven_day_endtime"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 460
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 350,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "赋值活跃总人数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "active_count",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "datas"
+        },
+        "name" : "user_page[total] ==> datas[active_count]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "total",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "user_page"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 560
+    }, {
+      "code" : "var datas = logic.getParam('datas');\r\nvar last_active_members = logic.getParam('last_active_members');\r\nvar seven_active_members = logic.getParam('seven_active_members');\r\n//活跃总人数\r\nvar active_count = datas.get('active_count');\r\n//昨日活跃人数\r\nvar lastday_count = last_active_members.get('ACTIVE_MEMBERS');\r\n//昨日活跃率\r\nvar lastday_rate = ((lastday_count / active_count) * 100).toFixed(2);\r\n//设置昨日活跃人数和活跃率\r\ndatas.set(\"lastday_active_count\",lastday_count);\r\ndatas.set(\"lastday_active_rate\",lastday_rate);\r\n//近七日活跃人数\r\nvar sevenday_count = seven_active_members.get('ACTIVE_MEMBERS');\r\n//近七日活跃率\r\nvar sevenday_rate = ((sevenday_count / active_count) * 100).toFixed(2);\r\n//设置近七日活跃人数和活跃率\r\ndatas.set(\"sevenday_active_count\",sevenday_count);\r\ndatas.set(\"sevenday_active_rate\",sevenday_rate);\r\n",
       "codeName" : "RAWSFCODE2",
       "codeType" : "JavaScript",
-      "leftPos" : 150,
+      "leftPos" : 350,
       "logicNodeType" : "RAWSFCODE",
-      "name" : "赋值昨日活跃人数、活跃率",
+      "name" : "赋值昨日和近七日活跃人数、活跃率",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2186,7 +2874,18 @@
           "id" : "RAWSFCODE2"
         }
       } ],
-      "topPos" : 350
+      "topPos" : 670
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 390,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "datas"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 792
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -2202,6 +2901,15 @@
       "codeName" : "datas",
       "logicName" : "返回结果数据",
       "name" : "返回结果数据",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "last_active_members",
+      "logicName" : "昨日活跃人数",
+      "name" : "昨日活跃人数",
       "getParamPSDataEntity" : {
         "modelref" : true,
         "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
@@ -2229,6 +2937,15 @@
       },
       "filterParam" : true
     }, {
+      "codeName" : "login_log_obj",
+      "logicName" : "日志结果变量",
+      "name" : "日志结果变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "entityParam" : true
+    }, {
       "codeName" : "login_log_page",
       "logicName" : "日志分页结果变量",
       "name" : "日志分页结果变量",
@@ -2237,6 +2954,27 @@
         "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
       },
       "entityPageParam" : true
+    }, {
+      "codeName" : "seven_active_members",
+      "logicName" : "近七日活跃人数",
+      "name" : "近七日活跃人数",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/login_log.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "seven_day_endtime",
+      "logicName" : "近七日结束时间",
+      "name" : "近七日结束时间",
+      "stdDataType" : 25,
+      "simpleParam" : true
+    }, {
+      "codeName" : "seven_day_starttime",
+      "logicName" : "近七日开始时间",
+      "name" : "近七日开始时间",
+      "stdDataType" : 25,
+      "simpleParam" : true
     }, {
       "codeName" : "user_filter",
       "logicName" : "用户过滤条件",
@@ -2280,56 +3018,28 @@
         "modelref" : true,
         "id" : "echarts_datas"
       }
+    }, {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "distinct_userid"
+      },
+      "name" : "PSDEMAPDS",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "distinct_userid"
+      }
+    }, {
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "DEFAULT ==> DEFAULT",
+      "getSrcPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      }
     } ],
     "getPSDEMapFields" : [ {
-      "dstFieldName" : "LOGID",
-      "getDstPSDEField" : {
-        "name" : "LOGID",
-        "codeName" : "LogId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "ID",
-      "getSrcPSDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dstFieldName" : "AUTHTIME",
-      "getDstPSDEField" : {
-        "name" : "AUTHTIME",
-        "codeName" : "AuthTime"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "AUTHTIME",
-      "getSrcPSDEField" : {
-        "name" : "AUTHTIME",
-        "codeName" : "AuthTime"
-      }
-    }, {
-      "dstFieldName" : "USERAGENT",
-      "getDstPSDEField" : {
-        "name" : "USERAGENT",
-        "codeName" : "UserAgent"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_AGENT",
-      "getSrcPSDEField" : {
-        "name" : "USER_AGENT",
-        "codeName" : "user_agent"
-      }
-    }, {
-      "dstFieldName" : "USERID",
-      "getDstPSDEField" : {
-        "name" : "USERID",
-        "codeName" : "UserId"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "USER_ID",
-      "getSrcPSDEField" : {
-        "name" : "USER_ID",
-        "codeName" : "user_id"
-      }
-    }, {
       "dstFieldName" : "PERSONNAME",
       "getDstPSDEField" : {
         "name" : "PERSONNAME",
@@ -2340,18 +3050,6 @@
       "getSrcPSDEField" : {
         "name" : "USER_NAME",
         "codeName" : "user_name"
-      }
-    }, {
-      "dstFieldName" : "IPADDR",
-      "getDstPSDEField" : {
-        "name" : "IPADDR",
-        "codeName" : "IPAddr"
-      },
-      "mapType" : "FIELD",
-      "srcFieldName" : "IP",
-      "getSrcPSDEField" : {
-        "name" : "IP",
-        "codeName" : "ip"
       }
     }, {
       "dstFieldName" : "AUTHAGENT",
@@ -2366,6 +3064,54 @@
         "codeName" : "login_method"
       }
     }, {
+      "dstFieldName" : "USERAGENT",
+      "getDstPSDEField" : {
+        "name" : "USERAGENT",
+        "codeName" : "UserAgent"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "USER_AGENT",
+      "getSrcPSDEField" : {
+        "name" : "USER_AGENT",
+        "codeName" : "user_agent"
+      }
+    }, {
+      "dstFieldName" : "AUTHTIME",
+      "getDstPSDEField" : {
+        "name" : "AUTHTIME",
+        "codeName" : "AuthTime"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "AUTHTIME",
+      "getSrcPSDEField" : {
+        "name" : "AUTHTIME",
+        "codeName" : "AuthTime"
+      }
+    }, {
+      "dstFieldName" : "USERID",
+      "getDstPSDEField" : {
+        "name" : "USERID",
+        "codeName" : "UserId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "USER_ID",
+      "getSrcPSDEField" : {
+        "name" : "USER_ID",
+        "codeName" : "user_id"
+      }
+    }, {
+      "dstFieldName" : "LOGID",
+      "getDstPSDEField" : {
+        "name" : "LOGID",
+        "codeName" : "LogId"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ID",
+      "getSrcPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
       "dstFieldName" : "AUTHCODE",
       "getDstPSDEField" : {
         "name" : "AUTHCODE",
@@ -2376,6 +3122,30 @@
       "getSrcPSDEField" : {
         "name" : "AUTHCODE",
         "codeName" : "AuthCode"
+      }
+    }, {
+      "dstFieldName" : "IPADDR",
+      "getDstPSDEField" : {
+        "name" : "IPADDR",
+        "codeName" : "IPAddr"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "IP",
+      "getSrcPSDEField" : {
+        "name" : "IP",
+        "codeName" : "ip"
+      }
+    }, {
+      "dstFieldName" : "ACTIVE_MEMBERS",
+      "getDstPSDEField" : {
+        "name" : "ACTIVE_MEMBERS",
+        "codeName" : "active_members"
+      },
+      "mapType" : "FIELD",
+      "srcFieldName" : "ACTIVE_MEMBERS",
+      "getSrcPSDEField" : {
+        "name" : "ACTIVE_MEMBERS",
+        "codeName" : "active_members"
       }
     } ]
   }, {
@@ -3011,6 +3781,7 @@
     "name" : "NAME",
     "codeName" : "name"
   },
+  "memo" : "存储员工登录信息",
   "name" : "LOGIN_LOG",
   "getPSSysDBScheme" : {
     "modelref" : true,

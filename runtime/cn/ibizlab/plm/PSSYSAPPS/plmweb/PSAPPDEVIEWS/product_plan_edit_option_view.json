@@ -173,6 +173,109 @@
       "showBusyIndicator" : true,
       "id" : "FORM"
     },
+    "getPSDEFormItemVRs" : [ {
+      "checkMode" : 1,
+      "name" : "表单项值规则",
+      "getPSDEFValueRule" : {
+        "codeName" : "START_AT",
+        "name" : "开始时间",
+        "getPSDEFVRGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "默认组",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "OR",
+            "condType" : "GROUP",
+            "name" : "[条件组]OR",
+            "getPSDEFVRConditions" : [ {
+              "condOp" : "ISNULL",
+              "condType" : "SIMPLE",
+              "dEFName" : "START_AT",
+              "name" : "[常规条件] 值为空(Nil)"
+            }, {
+              "condOp" : "OR",
+              "condType" : "GROUP",
+              "name" : "[条件组]OR",
+              "getPSDEFVRConditions" : [ {
+                "condOp" : "ISNULL",
+                "condType" : "SIMPLE",
+                "dEFName" : "END_AT",
+                "name" : "[常规条件] 值为空(Nil)"
+              }, {
+                "condOp" : "LTANDEQ",
+                "condType" : "SIMPLE",
+                "dEFName" : "START_AT",
+                "name" : "[常规条件] 小于等于(<=) 数据对象属性 (END_AT)",
+                "paramType" : "ENTITYFIELD",
+                "paramValue" : "END_AT",
+                "ruleInfo" : "开始时间必须小于等于发布时间"
+              } ],
+              "ruleInfo" : "开始时间必须小于等于发布时间"
+            } ],
+            "ruleInfo" : "开始时间必须小于等于发布时间"
+          } ],
+          "ruleInfo" : "开始时间必须小于等于发布时间"
+        },
+        "ruleInfo" : "开始时间必须小于等于发布时间",
+        "checkDefault" : true,
+        "defaultMode" : false,
+        "enableBackend" : true,
+        "enableFront" : true
+      },
+      "getPSDEFormItemName" : "start_at",
+      "valueRuleType" : "DEFVALUERULE"
+    }, {
+      "checkMode" : 1,
+      "name" : "表单项值规则",
+      "getPSDEFValueRule" : {
+        "codeName" : "END_AT",
+        "name" : "结束时间",
+        "getPSDEFVRGroupCondition" : {
+          "condOp" : "AND",
+          "condType" : "GROUP",
+          "name" : "默认组",
+          "getPSDEFVRConditions" : [ {
+            "condOp" : "OR",
+            "condType" : "GROUP",
+            "name" : "[条件组]OR",
+            "getPSDEFVRConditions" : [ {
+              "condOp" : "ISNULL",
+              "condType" : "SIMPLE",
+              "dEFName" : "END_AT",
+              "name" : "[常规条件] 值为空(Nil)"
+            }, {
+              "condOp" : "OR",
+              "condType" : "GROUP",
+              "name" : "[条件组]OR",
+              "getPSDEFVRConditions" : [ {
+                "condOp" : "GTANDEQ",
+                "condType" : "SIMPLE",
+                "dEFName" : "END_AT",
+                "name" : "[常规条件] 大于等于(>=) 数据对象属性 (START_AT)",
+                "paramType" : "ENTITYFIELD",
+                "paramValue" : "START_AT",
+                "ruleInfo" : "发布时间必须大于等于开始时间"
+              }, {
+                "condOp" : "ISNULL",
+                "condType" : "SIMPLE",
+                "dEFName" : "START_AT",
+                "name" : "[常规条件] 值为空(Nil)"
+              } ],
+              "ruleInfo" : "发布时间必须大于等于开始时间"
+            } ],
+            "ruleInfo" : "发布时间必须大于等于开始时间"
+          } ],
+          "ruleInfo" : "发布时间必须大于等于开始时间"
+        },
+        "ruleInfo" : "发布时间必须大于等于开始时间",
+        "checkDefault" : true,
+        "defaultMode" : false,
+        "enableBackend" : true,
+        "enableFront" : true
+      },
+      "getPSDEFormItemName" : "end_at",
+      "valueRuleType" : "DEFVALUERULE"
+    } ],
     "getPSDEFormItems" : [ {
       "id" : "srfupdatedate",
       "hidden" : true,
@@ -311,7 +414,8 @@
           "getPSEditor" : {
             "editorType" : "TEXTBOX",
             "maxLength" : 200,
-            "name" : "name"
+            "name" : "name",
+            "placeHolder" : "输入计划名称"
           },
           "getPSLayoutPos" : {
             "colLG" : 24,
@@ -368,9 +472,10 @@
             } ],
             "getPickupPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_plan_pick_up_tree_view.json",
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_plan_categories_pick_up_tree_view.json",
               "viewType" : "DEPICKUPTREEVIEW"
             },
+            "placeHolder" : "选择类别",
             "valueItemName" : "categories",
             "dropDownView" : true,
             "enableAC" : false,
@@ -405,9 +510,9 @@
           },
           "getPSEditor" : {
             "editorParams" : {
-              "srfnavparam.n_owner_subtype_eq" : "product_plan",
-              "srfnavparam.n_owner_id_eq" : "%product%",
-              "srfnavparam.n_owner_type_eq" : "product"
+              "SRFNAVPARAM.n_owner_subtype_eq" : "product_plan",
+              "SRFNAVPARAM.n_owner_id_eq" : "%product%",
+              "SRFNAVPARAM.n_owner_type_eq" : "product"
             },
             "editorType" : "HIDDEN",
             "name" : "categories",
@@ -426,7 +531,8 @@
               "name" : "n_owner_type_eq",
               "value" : "product",
               "rawValue" : true
-            } ]
+            } ],
+            "placeHolder" : "选择类别"
           },
           "getPSLayoutPos" : {
             "colLG" : 24,
@@ -453,6 +559,11 @@
             "name" : "START_AT",
             "codeName" : "start_at"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "disabledDate",
+            "attrValue" : "(time) => {\r\n    if (!data.end_at) {\r\n        return false;\r\n    }\r\n    const end_at = new Date(data.end_at);\r\n    // 比对天\r\n    time.setHours(0, 0, 0, 0);\r\n    end_at.setHours(0, 0, 0, 0);\r\n    return time.getTime() > end_at.getTime();\r\n}",
+            "name" : "start_at_disabledDate"
+          } ],
           "getPSEditor" : {
             "dateTimeFormat" : "YYYY-MM-DD",
             "editorParams" : {
@@ -460,7 +571,8 @@
             },
             "editorType" : "DATEPICKEREX_NOTIME",
             "editorWidth" : 1.0,
-            "name" : "start_at"
+            "name" : "start_at",
+            "placeHolder" : "选择开始时间"
           },
           "getPSLayoutPos" : {
             "colLG" : 12,
@@ -487,6 +599,11 @@
             "name" : "END_AT",
             "codeName" : "end_at"
           },
+          "getPSControlAttributes" : [ {
+            "attrName" : "disabledDate",
+            "attrValue" : "(time) => {\r\n    if (!data.start_at) {\r\n        return false;\r\n    }\r\n    const start_at = new Date(data.start_at);\r\n    // 比对天\r\n    start_at.setHours(0, 0, 0, 0);\r\n    time.setHours(0, 0, 0, 0);\r\n    return time.getTime() < start_at.getTime();\r\n}",
+            "name" : "end_at_disabledDate"
+          } ],
           "getPSEditor" : {
             "dateTimeFormat" : "YYYY-MM-DD",
             "editorParams" : {
@@ -494,7 +611,8 @@
             },
             "editorType" : "DATEPICKEREX_NOTIME",
             "editorWidth" : 1.0,
-            "name" : "end_at"
+            "name" : "end_at",
+            "placeHolder" : "选择结束时间"
           },
           "getPSLayoutPos" : {
             "colLG" : 12,

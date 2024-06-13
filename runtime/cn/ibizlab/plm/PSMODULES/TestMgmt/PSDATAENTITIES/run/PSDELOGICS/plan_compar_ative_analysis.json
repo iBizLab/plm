@@ -55,6 +55,33 @@
       }
     } ],
     "getPSDELogicNodeParams" : [ {
+      "name" : "Default[n_status_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_status_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_status_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_status_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_status_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_status_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "name" : "Default[N_TEST_LIBRARY_ID_EQ]",
       "paramAction" : "SQLPARAM",
       "srcFieldName" : "N_TEST_LIBRARY_ID_EQ",
@@ -171,35 +198,8 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
-    }, {
-      "name" : "Default[n_status_eq]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "n_status_eq",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "name" : "Default[n_status_eq]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "n_status_eq",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "name" : "Default[n_status_eq]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "n_status_eq",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
     } ],
-    "sql" : "\r\nSELECT\r\n    tp.ID AS filter_type,\r\n    tp.Name AS TestPlanName,\r\n    COUNT(r.ID) AS TotalRuns, -- 执行用例数量\r\n    COALESCE(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END), 0) AS ExecutedRuns, -- 已执行用例数量\r\n    COALESCE(SUM(CASE WHEN r.status = '10' THEN 1 ELSE 0 END), 0) AS PassedRuns, -- 通过的用例数量\r\n    -- 测试执行率：已执行用例数量 / 执行用例数量（\r\n    CONCAT(COALESCE(ROUND(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(r.ID), 0), 2), 0.00), '%') AS ExecutionRate,\r\n    -- 测试通过率：通过的用例数量 / 已执行用例数量\r\n    CONCAT(COALESCE(ROUND(SUM(CASE WHEN r.status = '10' THEN 1 ELSE 0 END) * 100.0 / NULLIF(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END), 0), 2), 0.00), '%') AS PassRate\r\nFROM\r\n    test_plan tp\r\n        LEFT JOIN run r ON tp.ID = r.plan_id\r\n        LEFT JOIN test_case tc ON r.case_id = tc.ID\r\nWHERE\r\n        tc.TEST_LIBRARY_ID = ?\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(PLAN_ID, ?))\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(EXECUTOR_ID, ?))\r\n  AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR EXECUTED_AT BETWEEN ? and ? )\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(STATE, ?))\r\nGROUP BY\r\n    tp.ID\r\nORDER BY\r\n    tp.ID;",
+    "sql" : "\r\nSELECT\r\n    tp.ID AS filter_type,\r\n    tp.Name AS TestPlanName,\r\n    COUNT(r.ID) AS TotalRuns, -- 执行用例数量\r\n    COALESCE(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END), 0) AS ExecutedRuns, -- 已执行用例数量\r\n    COALESCE(SUM(CASE WHEN r.status = '10' THEN 1 ELSE 0 END), 0) AS PassedRuns, -- 通过的用例数量\r\n    -- 测试执行率：已执行用例数量 / 执行用例数量（\r\n    CONCAT(COALESCE(ROUND(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(r.ID), 0), 2), 0.00), '%') AS ExecutionRate,\r\n    -- 测试通过率：通过的用例数量 / 已执行用例数量\r\n    CONCAT(COALESCE(ROUND(SUM(CASE WHEN r.status = '10' THEN 1 ELSE 0 END) * 100.0 / NULLIF(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END), 0), 2), 0.00), '%') AS PassRate\r\nFROM\r\n    test_plan tp\r\n        LEFT JOIN run r ON tp.ID = r.plan_id AND ((? IS NULL OR ? = '') OR FIND_IN_SET(r.STATUS, ?))\r\n        LEFT JOIN test_case tc ON r.case_id = tc.ID\r\nWHERE\r\n        tc.TEST_LIBRARY_ID = ?\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(PLAN_ID, ?))\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(EXECUTOR_ID, ?))\r\n  AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR EXECUTED_AT BETWEEN ? and ? )\r\nGROUP BY\r\n    tp.ID\r\nORDER BY\r\n    tp.ID;",
     "topPos" : 208,
     "fillDstLogicParam" : true
   } ],

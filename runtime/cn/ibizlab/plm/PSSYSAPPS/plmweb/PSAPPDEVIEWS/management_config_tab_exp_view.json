@@ -23,6 +23,7 @@
   "getPSControls" : [ {
     "codeName" : "config_tab_exp_view_dr",
     "controlType" : "DRTAB",
+    "dataRelationTag" : "config_tab_exp_view_DR",
     "getEditItemCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.MANAGEMENT"
     },
@@ -42,7 +43,19 @@
       "id" : "TABEXPPANEL"
     },
     "getPSDEDRTabPages" : [ {
-      "caption" : "产品",
+      "caption" : "工时设置",
+      "name" : "workload",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/workload_type_setup_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf013@FontAwesome",
+        "cssClass" : "fa fa-gear"
+      }
+    }, {
+      "caption" : "产品管理",
       "name" : "product",
       "getPSAppView" : {
         "modelref" : true,
@@ -54,7 +67,7 @@
         "cssClass" : "fa fa-th-large"
       }
     }, {
-      "caption" : "项目",
+      "caption" : "项目管理",
       "name" : "project",
       "getPSAppView" : {
         "modelref" : true,
@@ -66,7 +79,7 @@
         "cssClass" : "fa fa-file-text-o"
       }
     }, {
-      "caption" : "测试",
+      "caption" : "测试管理",
       "name" : "library",
       "getPSAppView" : {
         "modelref" : true,
@@ -78,7 +91,7 @@
         "cssClass" : "fa fa-bug"
       }
     }, {
-      "caption" : "知识",
+      "caption" : "知识管理",
       "name" : "space",
       "getPSAppView" : {
         "modelref" : true,
@@ -88,6 +101,18 @@
       "getPSSysImage" : {
         "glyph" : "xf02d@FontAwesome",
         "cssClass" : "fa fa-book"
+      }
+    }, {
+      "caption" : "协作空间",
+      "name" : "discuss",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/discuss_topic_config_tree_exp_view.json",
+        "viewType" : "DETREEEXPVIEW"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf086@FontAwesome",
+        "cssClass" : "fa fa-comments"
       }
     } ],
     "uniqueTag" : "management_config_tab_exp_view__tabexppanel",
@@ -124,6 +149,7 @@
     "layoutPanel" : true,
     "useDefaultLayout" : true
   },
+  "refFlag" : false,
   "tabLayout" : "TOP",
   "title" : "配置中心",
   "viewStyle" : "DEFAULT",

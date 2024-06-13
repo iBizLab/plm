@@ -351,13 +351,14 @@
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/notify_setting_config_view.json",
               "viewType" : "DEEDITVIEW"
             },
-            "frontProcessType" : "TOP",
+            "frontProcessType" : "OTHER",
             "fullCodeName" : "notify_setting_config",
             "name" : "通知设置",
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/notify_setting.json"
             },
+            "scriptCode" : "window.location.hash=`/-/index/-/user_setting_view/srfnav=notice/notify_setting_config_view/-`",
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
             "uIActionTag" : "config",
@@ -432,6 +433,47 @@
           },
           "renderMode" : "LINK",
           "tooltip" : "版本日志",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true
+        }, {
+          "actionType" : "UIACTION",
+          "buttonStyle" : "DEFAULT",
+          "caption" : "主题设置",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "BUTTON",
+          "name" : "button_link2",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "layoutpanel_button_link2"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf1b2@FontAwesome",
+            "cssClass" : "fa fa-cube"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "主题设置",
+            "codeName" : "theme_setting",
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "user_theme_setting",
+            "name" : "主题设置",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+            },
+            "scriptCode" : "ibiz.util.theme.customTheme();\r\nif (view) {\r\n    view.closeView();\r\n}",
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "theme_setting",
+            "uIActionType" : "DEUIACTION",
+            "id" : "theme_setting@user"
+          },
+          "renderMode" : "LINK",
+          "tooltip" : "主题设置",
           "uIActionTarget" : "NONE",
           "showCaption" : true
         }, {

@@ -20,21 +20,21 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.child_del_relation;
             then
             end
 
-            //逻辑处理节点[将子工作项的父标识和顶级标识置空]
+            //逻辑处理节点[将子工作项的父标识置空]
             rule "prepareparam1"
             ruleflow-group "work_itemchild_del_relationprepareparam1"
             when
             then
                                 work_itemchild_del_relationdefault.set("pid",null);
-                                work_itemchild_del_relationdefault.set("topid",null);
                         update(work_itemchild_del_relationdefault);//更新fact中变量值
             end
 
-            //逻辑处理节点[变更顶级工作项]
-            rule "delogic1"
-            ruleflow-group "work_itemchild_del_relationdelogic1"
+            //逻辑处理节点[更新子工作项]
+            rule "deaction1"
+            ruleflow-group "work_itemchild_del_relationdeaction1"
             when
             then
+                        work_itemservice.update(work_itemchild_del_relationdefault);
                         update(work_itemchild_del_relationdefault);//更新fact中变量值
             end
 

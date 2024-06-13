@@ -405,18 +405,6 @@
         },
         "parentValueLevel" : 1,
         "searchMode" : 3
-      }, {
-        "getChildPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "node_14"
-        },
-        "name" : "通用 - 工时设置",
-        "getParentPSDETreeNode" : {
-          "modelref" : true,
-          "id" : "node_10"
-        },
-        "parentValueLevel" : 1,
-        "searchMode" : 3
       } ],
       "getPSDETreeNodes" : [ {
         "counterMode" : 0,
@@ -855,12 +843,70 @@
       "name" : "treeexpbar_tree",
       "modelid" : "8d94ad11f9804a52c86924b4e19fe2e5",
       "modeltype" : "PSDETREEVIEW"
+    }, {
+      "codeName" : "config_tree_exp_view_treeexpbar_toolbar",
+      "controlType" : "TOOLBAR",
+      "logicName" : "工具栏模板（只有一个返回按钮）",
+      "name" : "treeexpbar_toolbar",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
+      },
+      "getPSControlParam" : {
+        "id" : "treeexpbar_toolbar"
+      },
+      "getPSDEToolbarItems" : [ {
+        "buttonStyle" : "STYLE2",
+        "caption" : "返回",
+        "groupExtractMode" : "ITEM",
+        "itemType" : "DEUIACTION",
+        "name" : "deuiaction1",
+        "noPrivDisplayMode" : 2,
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "treeexpbar_toolbar_deuiaction1"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf053@FontAwesome",
+          "cssClass" : "fa fa-chevron-left"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "NONE",
+          "caption" : "返回",
+          "codeName" : "back",
+          "frontProcessType" : "OTHER",
+          "fullCodeName" : "management_back",
+          "name" : "返回",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/management.json"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf053@FontAwesome",
+            "cssClass" : "fa fa-chevron-left"
+          },
+          "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/management_setting_view/srfnav=workload/workload_type_setup_grid_view/-`",
+          "timeout" : 60000,
+          "uIActionMode" : "FRONT",
+          "uIActionTag" : "back",
+          "uIActionType" : "DEUIACTION",
+          "globalUIAction" : true,
+          "id" : "back@management"
+        },
+        "tooltip" : "返回",
+        "uIActionTarget" : "NONE",
+        "showCaption" : true,
+        "showIcon" : true
+      } ],
+      "toolbarStyle" : "USER",
+      "modelid" : "A18F0469-F5DB-4EF1-BB2F-832EA9AE889C",
+      "modeltype" : "PSDETOOLBAR"
     } ],
-    "title" : "项目管理",
+    "title" : "项目",
     "xDataControlName" : "treeexpbar_tree",
     "enableCounter" : true,
     "enableSearch" : false,
-    "showTitleBar" : false,
+    "showTitleBar" : true,
     "modelid" : "a1d160f412b364b1e6d566ffeb628627_treeexpbar",
     "modeltype" : "PSEXPBAR"
   }, {

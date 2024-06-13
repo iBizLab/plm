@@ -353,6 +353,7 @@
             "editorType" : "TEXTAREA",
             "maxLength" : 500,
             "name" : "title",
+            "placeHolder" : "输入标题",
             "showMaxLength" : true
           },
           "getPSLayoutPos" : {
@@ -402,10 +403,10 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetchrecent_access`"
+                "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
@@ -414,7 +415,8 @@
                 "pluginType" : "EDITOR_CUSTOMSTYLE",
                 "pluginCode" : "COMMENT",
                 "runtimeObject" : true
-              }
+              },
+              "placeHolder" : "输入描述"
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
@@ -1083,9 +1085,10 @@
           "getPSEditor" : {
             "editorParams" : {
               "AC" : "TRUE",
-              "PICKUPVIEW" : "TRUE"
+              "TRIGGER" : "TRUE",
+              "PICKUPVIEW" : "FALSE"
             },
-            "editorType" : "PICKER",
+            "editorType" : "PICKEREX_TRIGGER",
             "handlerType" : "PickupText",
             "name" : "product_name",
             "getPSAppDEACMode" : {
@@ -1094,7 +1097,7 @@
             },
             "getPSAppDEDataSet" : {
               "modelref" : true,
-              "id" : "fetch_default"
+              "id" : "fetch_quick"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -1103,14 +1106,10 @@
             "getPSEditorItems" : [ {
               "name" : "product_id"
             } ],
-            "getPickupPSAppView" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_pick_up_view.json",
-              "viewType" : "DEPICKUPVIEW"
-            },
+            "placeHolder" : "选择所属产品",
             "valueItemName" : "product_id",
             "enableAC" : true,
-            "enablePickupView" : true,
+            "enablePickupView" : false,
             "forceSelection" : true,
             "showTrigger" : true,
             "singleSelect" : true
@@ -1168,9 +1167,24 @@
             "name" : "CATEGORY_NAME",
             "codeName" : "category_name"
           },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[category_name][表单项启用]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "ISNOTNULL",
+              "dEFDName" : "product_name",
+              "logicType" : "SINGLE"
+            } ],
+            "relatedDetailNames" : [ "product_name" ],
+            "notMode" : false
+          } ],
           "getPSEditor" : {
             "editorParams" : {
+              "trigger" : "true",
               "DROPDOWNVIEW" : "TRUE",
+              "SRFNAVPARAM.product" : "%product_id%",
               "AC" : "FALSE",
               "TRIGGER" : "TRUE",
               "PICKUPVIEW" : "TRUE"
@@ -1193,11 +1207,18 @@
             "getPSEditorItems" : [ {
               "name" : "category_id"
             } ],
+            "getPSNavigateParams" : [ {
+              "key" : "product",
+              "name" : "product",
+              "value" : "product_id",
+              "rawValue" : false
+            } ],
             "getPickupPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/idea_pick_up_tree_view.json",
               "viewType" : "DEPICKUPTREEVIEW"
             },
+            "placeHolder" : "选择所属模块",
             "valueItemName" : "category_id",
             "dropDownView" : true,
             "enableAC" : false,
@@ -1355,6 +1376,7 @@
               } ],
               "uniqueTag" : "product_member__Usr0311005787"
             },
+            "placeHolder" : "选择负责人",
             "valueItemName" : "assignee_id",
             "enableAC" : true,
             "enablePickupView" : false,

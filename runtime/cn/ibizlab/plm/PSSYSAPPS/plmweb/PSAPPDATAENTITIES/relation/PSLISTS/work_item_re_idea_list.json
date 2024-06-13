@@ -25,7 +25,7 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_work_item_relation_idea"
+      "id" : "fetch_idea_re_idea"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -51,6 +51,9 @@
   "groupMode" : "NONE",
   "getItemPSLayoutPanel" : {
     "getAllPSPanelFields" : [ {
+      "id" : "idea",
+      "viewFieldName" : "IDEA"
+    }, {
       "id" : "field_text_dynamic",
       "viewFieldName" : "IDEA"
     } ],
@@ -85,30 +88,70 @@
         "layout" : "TABLE_24COL"
       },
       "getPSPanelItems" : [ {
-        "caption" : "文本(动态)",
+        "caption" : "容器",
         "itemStyle" : "DEFAULT",
-        "itemType" : "FIELD",
-        "name" : "field_text_dynamic",
-        "getPSEditor" : {
-          "editorParams" : {
-            "OBJECTNAMEFIELD" : "product_name",
-            "VALUETYPE" : "OBJECT"
-          },
-          "editorType" : "SPAN",
-          "name" : "field_text_dynamic",
-          "objectNameField" : "product_name",
-          "predefinedType" : "FIELD_TEXT_DYNAMIC",
-          "renderMode" : "TEXT_DYNAMIC",
-          "valueType" : "OBJECT",
-          "enableLinkView" : false
+        "itemType" : "CONTAINER",
+        "name" : "container",
+        "getPSLayout" : {
+          "dir" : "row",
+          "layout" : "FLEX"
         },
         "getPSLayoutPos" : {
           "grow" : -1,
           "layout" : "FLEX"
         },
-        "viewFieldName" : "IDEA",
-        "hidden" : false,
-        "showCaption" : false
+        "getPSPanelItems" : [ {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "idea",
+          "getPSEditor" : {
+            "editorParams" : {
+              "OBJECTNAMEFIELD" : "show_identifier",
+              "VALUETYPE" : "OBJECT"
+            },
+            "editorType" : "SPAN",
+            "name" : "idea",
+            "objectNameField" : "show_identifier",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "valueType" : "OBJECT",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingRight" : "OUTERMEDIUM"
+          },
+          "viewFieldName" : "IDEA",
+          "hidden" : false,
+          "showCaption" : false
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "field_text_dynamic",
+          "getPSEditor" : {
+            "editorParams" : {
+              "OBJECTNAMEFIELD" : "title",
+              "VALUETYPE" : "OBJECT"
+            },
+            "editorType" : "SPAN",
+            "name" : "field_text_dynamic",
+            "objectNameField" : "title",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "valueType" : "OBJECT",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "IDEA",
+          "hidden" : false,
+          "showCaption" : false
+        } ]
       } ]
     } ],
     "name" : "list_itempanel",

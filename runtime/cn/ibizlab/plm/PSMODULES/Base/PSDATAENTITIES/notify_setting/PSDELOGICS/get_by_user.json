@@ -3,6 +3,7 @@
   "defaultParamName" : "Default",
   "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/notify_setting/PSDELOGICS/get_by_user.json",
   "logicName" : "获取用户通知设置",
+  "memo" : "获取用户通知设置",
   "name" : "获取用户通知设置",
   "getPSDELogicNodes" : [ {
     "codeName" : "Begin",
@@ -26,7 +27,7 @@
     "codeName" : "PREPAREPARAM5",
     "leftPos" : 331,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置过滤分页",
+    "name" : "设置通知过滤分页",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -156,7 +157,7 @@
     "parallelOutput" : true
   }, {
     "codeName" : "END1",
-    "leftPos" : 1110,
+    "leftPos" : 1290,
     "logicNodeType" : "END",
     "name" : "结束",
     "getReturnParam" : {
@@ -188,7 +189,7 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM2"
+        "id" : "SORTPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -203,8 +204,31 @@
     "topPos" : 580,
     "parallelOutput" : true
   }, {
-    "codeName" : "PREPAREPARAM2",
+    "codeName" : "SORTPARAM1",
+    "dstFieldName" : "name",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "notify_events"
+    },
+    "dstSortDir" : "ASC",
     "leftPos" : 820,
+    "logicNodeType" : "SORTPARAM",
+    "name" : "排序数组参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "SORTPARAM1"
+      }
+    } ],
+    "topPos" : 580
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 1040,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "将通知事件集填充",
     "getPSDELogicLinks" : [ {

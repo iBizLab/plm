@@ -27,7 +27,7 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 310,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "获取选中数据",
+    "name" : "获取选中工单数据",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -58,7 +58,7 @@
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
-      "id" : "for_temp_obj"
+      "id" : "for_ticket"
     },
     "leftPos" : 310,
     "logicNodeType" : "LOOPSUBCALL",
@@ -88,7 +88,7 @@
     },
     "leftPos" : 640,
     "logicNodeType" : "RENEWPARAM",
-    "name" : "重新建立参数",
+    "name" : "重新建立工单更新参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -105,7 +105,7 @@
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 640,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "填充更新属性",
+    "name" : "填充工单更新属性",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -128,7 +128,7 @@
       "srcFieldName" : "owner_id",
       "getSrcPSDELogicParam" : {
         "modelref" : true,
-        "id" : "for_temp_obj"
+        "id" : "for_ticket"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
@@ -146,7 +146,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 538
+    "topPos" : 520
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -177,39 +177,30 @@
     "default" : true,
     "entityParam" : true
   }, {
-    "codeName" : "for_temp_obj",
-    "logicName" : "循环临时变量",
-    "name" : "循环临时变量",
+    "codeName" : "for_ticket",
+    "logicName" : "工单循环变量",
+    "name" : "工单循环变量",
     "getParamPSDataEntity" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
     },
     "entityParam" : true
   }, {
     "codeName" : "srfactionparam",
-    "logicName" : "选中的客户列表",
-    "name" : "选中的客户列表",
+    "logicName" : "选中的工单列表",
+    "name" : "选中的工单列表",
     "getParamPSDataEntity" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
     },
     "entityListParam" : true
-  }, {
-    "codeName" : "this_ticket",
-    "logicName" : "当前工单",
-    "name" : "当前工单",
-    "getParamPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
-    },
-    "entityParam" : true
   }, {
     "codeName" : "update_obj",
     "logicName" : "更新对象",
     "name" : "更新对象",
     "getParamPSDataEntity" : {
       "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
     },
     "entityParam" : true
   } ],

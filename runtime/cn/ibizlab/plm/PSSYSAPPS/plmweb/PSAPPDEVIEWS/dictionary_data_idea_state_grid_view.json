@@ -88,15 +88,6 @@
     "rawValue" : false
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "编辑状态",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_state_edit_view.json",
-      "viewType" : "DEOPTVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realOpenMode" : "POPUPMODAL",
     "realTitle" : "新建状态",
@@ -105,73 +96,17 @@
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_quick_create_view.json",
       "viewType" : "DEOPTVIEW"
     }
+  }, {
+    "name" : "EDITDATA",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "编辑状态",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_state_edit_view.json",
+      "viewType" : "DEOPTVIEW"
+    }
   } ],
   "getPSControls" : [ {
-    "codeName" : "idea_state_grid_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（只有一个实体界面行为组）",
-    "name" : "toolbar",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
-    },
-    "getPSControlParam" : {
-      "id" : "TOOLBAR"
-    },
-    "getPSDEToolbarItems" : [ {
-      "caption" : "新建状态",
-      "groupExtractMode" : "ITEM",
-      "itemType" : "DEUIACTION",
-      "name" : "deuiaction1_create_state_type",
-      "noPrivDisplayMode" : 2,
-      "getPSAppViewUIAction" : {
-        "modelref" : true,
-        "id" : "toolbar_deuiaction1_create_state_type"
-      },
-      "getPSSysImage" : {
-        "glyph" : "xf067@FontAwesome",
-        "cssClass" : "fa fa-plus"
-      },
-      "getPSUIAction" : {
-        "actionTarget" : "NONE",
-        "caption" : "新建状态",
-        "codeName" : "create_state_type",
-        "dialogResult" : "OK",
-        "getFrontPSAppView" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_quick_create_view.json",
-          "viewType" : "DEOPTVIEW"
-        },
-        "frontProcessType" : "WIZARD",
-        "fullCodeName" : "dictionary_data_create_state_type",
-        "name" : "新建状态",
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
-        },
-        "getPSSysImage" : {
-          "glyph" : "xf067@FontAwesome",
-          "cssClass" : "fa fa-plus"
-        },
-        "refreshMode" : 1,
-        "timeout" : 60000,
-        "uIActionMode" : "FRONT",
-        "uIActionTag" : "create_state_type",
-        "uIActionType" : "DEUIACTION",
-        "closeEditView" : true,
-        "closePopupView" : true,
-        "reloadData" : true,
-        "id" : "create_state_type@dictionary_data"
-      },
-      "tooltip" : "新建状态",
-      "uIActionTarget" : "NONE",
-      "showCaption" : true,
-      "showIcon" : true
-    } ],
-    "xDataControlName" : "grid",
-    "modelid" : "97b647cbe00cc608f9a368e2d0874c1e",
-    "modeltype" : "PSDETOOLBAR"
-  }, {
     "aggMode" : "NONE",
     "codeName" : "idea_grid_view",
     "columnEnableFilter" : 2,
@@ -597,6 +532,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -629,6 +565,99 @@
     "modelid" : "49C2899C-7DA4-454E-8A94-4A54C2F8DFFD",
     "modeltype" : "PSDEGRID"
   }, {
+    "codeName" : "fast_searchbar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data/PSSEARCHBARS/fast_searchbar.json",
+    "logicName" : "快速搜索栏",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABSEARCHBAR"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "17220FF3-D930-42AB-8E2F-F6CE2CD1B69F",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
+    "codeName" : "idea_state_grid_view_tabtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工具栏模板（只有一个实体界面行为组）",
+    "name" : "tabtoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABTOOLBAR"
+    },
+    "getPSDEToolbarItems" : [ {
+      "caption" : "新建状态",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction1_create_state_type",
+      "noPrivDisplayMode" : 2,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "tabtoolbar_deuiaction1_create_state_type"
+      },
+      "getPSSysImage" : {
+        "glyph" : "xf067@FontAwesome",
+        "cssClass" : "fa fa-plus"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "NONE",
+        "caption" : "新建状态",
+        "codeName" : "create_state_type",
+        "dialogResult" : "OK",
+        "getFrontPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/dictionary_data_quick_create_view.json",
+          "viewType" : "DEOPTVIEW"
+        },
+        "frontProcessType" : "WIZARD",
+        "fullCodeName" : "dictionary_data_create_state_type",
+        "name" : "新建状态",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dictionary_data.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf067@FontAwesome",
+          "cssClass" : "fa fa-plus"
+        },
+        "refreshMode" : 1,
+        "timeout" : 60000,
+        "uIActionMode" : "FRONT",
+        "uIActionTag" : "create_state_type",
+        "uIActionType" : "DEUIACTION",
+        "closeEditView" : true,
+        "closePopupView" : true,
+        "reloadData" : true,
+        "id" : "create_state_type@dictionary_data"
+      },
+      "tooltip" : "新建状态",
+      "uIActionTarget" : "NONE",
+      "showCaption" : true,
+      "showIcon" : true
+    } ],
+    "xDataControlName" : "grid",
+    "modelid" : "97b647cbe00cc608f9a368e2d0874c1e",
+    "modeltype" : "PSDETOOLBAR"
+  }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
     "getPSAppDataEntity" : {
@@ -639,11 +668,11 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
@@ -683,10 +712,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "ba4d7044222c59c58d663d4d6ea9bb74",
   "modeltype" : "PSAPPDEVIEW"
 }

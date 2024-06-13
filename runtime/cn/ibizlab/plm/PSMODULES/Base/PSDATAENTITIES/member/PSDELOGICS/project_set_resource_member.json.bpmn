@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.memberproject_set_resource_member" isClosed="false" isExecutable="true" name="base_member_project_set_resource_member_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.memberproject_set_resource_member">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="memberproject_set_resource_memberdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="memberproject_set_resource_memberfor_member" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.portfolio_member()" name="memberproject_set_resource_memberfor_portfolio_member" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="memberproject_set_resource_memberfor_user_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="memberproject_set_resource_membergroup_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.portfolio_member()" name="memberproject_set_resource_memberportfolio_member_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.portfolio_member()" name="memberproject_set_resource_memberportfolio_member_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.project_member()" name="memberproject_set_resource_memberproject_member_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.project_member()" name="memberproject_set_resource_memberproject_member_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="memberproject_set_resource_memberuser_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.user()" name="memberproject_set_resource_memberuser_page" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IuserService))" name="userservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ImemberService))" name="memberservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iportfolio_memberService))" name="portfolio_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ImemberService))" name="iBzSysMemberDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="memberproject_set_resource_memberdefault" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="memberproject_set_resource_memberfor_member" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="memberproject_set_resource_memberfor_portfolio_member" type="cn.ibizlab.plm.core.base.domain.portfolio_member" />
+                            <tns:global identifier="memberproject_set_resource_memberfor_user_obj" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="memberproject_set_resource_membergroup_page" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="memberproject_set_resource_memberportfolio_member_filter" type="cn.ibizlab.plm.core.base.domain.portfolio_member" />
+                            <tns:global identifier="memberproject_set_resource_memberportfolio_member_page" type="cn.ibizlab.plm.core.base.domain.portfolio_member" />
+                            <tns:global identifier="memberproject_set_resource_memberproject_member_filter" type="cn.ibizlab.plm.core.projmgmt.domain.project_member" />
+                            <tns:global identifier="memberproject_set_resource_memberproject_member_page" type="cn.ibizlab.plm.core.projmgmt.domain.project_member" />
+                            <tns:global identifier="memberproject_set_resource_memberuser_filter" type="cn.ibizlab.plm.core.base.domain.user" />
+                            <tns:global identifier="memberproject_set_resource_memberuser_page" type="cn.ibizlab.plm.core.base.domain.user" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置分页查询参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备部门成员过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备团队成员过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备当前项目集成员过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberdedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取部门成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberdedataset3" id="dedataset3" implementation="http://www.jboss.org/drools/rule" name="获取团队成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberdedataset4" id="dedataset4" implementation="http://www.jboss.org/drools/rule" name="获取当前项目集下成员"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置用户标识与标识一致，目的已选择的成员不可再次勾选"/>
+                        <endEvent id="prepareparam7_end" name="end"/>
+                        <sequenceFlow id="prepareparam7_end_line" sourceRef="prepareparam7" targetRef="prepareparam7_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="设置用户标识与标识一致，目的已选择的成员不可再次勾选"/>
+                        <endEvent id="prepareparam8_end" name="end"/>
+                        <sequenceFlow id="prepareparam8_end_line" sourceRef="prepareparam8" targetRef="prepareparam8_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberend3" id="end3" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end3_end" name="end"/>
+                        <sequenceFlow id="end3_end_line" sourceRef="end3" targetRef="end3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="填充用户标识"/>
+                        <endEvent id="prepareparam4_end" name="end"/>
+                        <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberend4" id="end4" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end4_end" name="end"/>
+                        <sequenceFlow id="end4_end_line" sourceRef="end4" targetRef="end4_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="memberproject_set_resource_memberend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                    <sequenceFlow id="begin_prepareparam6" sourceRef="begin" targetRef="prepareparam6">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam6_prepareparam3" sourceRef="gateway-prepareparam6" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $memberproject_set_resource_memberdefault:member();
+                                            $memberproject_set_resource_memberfor_member:member();
+                                            $memberproject_set_resource_memberfor_portfolio_member:portfolio_member();
+                                            $memberproject_set_resource_memberfor_user_obj:user();
+                                            $memberproject_set_resource_membergroup_page:member();
+                                            $memberproject_set_resource_memberportfolio_member_filter:portfolio_member();
+                                            $memberproject_set_resource_memberportfolio_member_page:portfolio_member();
+                                            $memberproject_set_resource_memberproject_member_filter:project_member();
+                                            $memberproject_set_resource_memberproject_member_page:project_member();
+                                            $memberproject_set_resource_memberuser_filter:user();
+                                            $memberproject_set_resource_memberuser_page:user();
+                                    eval($memberproject_set_resource_memberdefault==memberproject_set_resource_memberdefault && $memberproject_set_resource_memberfor_member==memberproject_set_resource_memberfor_member && $memberproject_set_resource_memberfor_portfolio_member==memberproject_set_resource_memberfor_portfolio_member && $memberproject_set_resource_memberfor_user_obj==memberproject_set_resource_memberfor_user_obj && $memberproject_set_resource_membergroup_page==memberproject_set_resource_membergroup_page && $memberproject_set_resource_memberportfolio_member_filter==memberproject_set_resource_memberportfolio_member_filter && $memberproject_set_resource_memberportfolio_member_page==memberproject_set_resource_memberportfolio_member_page && $memberproject_set_resource_memberproject_member_filter==memberproject_set_resource_memberproject_member_filter && $memberproject_set_resource_memberproject_member_page==memberproject_set_resource_memberproject_member_page && $memberproject_set_resource_memberuser_filter==memberproject_set_resource_memberuser_filter && $memberproject_set_resource_memberuser_page==memberproject_set_resource_memberuser_page);
+                                eval((RuleUtils.test($memberproject_set_resource_memberdefault.get("user_group"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam6_prepareparam2" sourceRef="gateway-prepareparam6" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $memberproject_set_resource_memberdefault:member();
+                                            $memberproject_set_resource_memberfor_member:member();
+                                            $memberproject_set_resource_memberfor_portfolio_member:portfolio_member();
+                                            $memberproject_set_resource_memberfor_user_obj:user();
+                                            $memberproject_set_resource_membergroup_page:member();
+                                            $memberproject_set_resource_memberportfolio_member_filter:portfolio_member();
+                                            $memberproject_set_resource_memberportfolio_member_page:portfolio_member();
+                                            $memberproject_set_resource_memberproject_member_filter:project_member();
+                                            $memberproject_set_resource_memberproject_member_page:project_member();
+                                            $memberproject_set_resource_memberuser_filter:user();
+                                            $memberproject_set_resource_memberuser_page:user();
+                                    eval($memberproject_set_resource_memberdefault==memberproject_set_resource_memberdefault && $memberproject_set_resource_memberfor_member==memberproject_set_resource_memberfor_member && $memberproject_set_resource_memberfor_portfolio_member==memberproject_set_resource_memberfor_portfolio_member && $memberproject_set_resource_memberfor_user_obj==memberproject_set_resource_memberfor_user_obj && $memberproject_set_resource_membergroup_page==memberproject_set_resource_membergroup_page && $memberproject_set_resource_memberportfolio_member_filter==memberproject_set_resource_memberportfolio_member_filter && $memberproject_set_resource_memberportfolio_member_page==memberproject_set_resource_memberportfolio_member_page && $memberproject_set_resource_memberproject_member_filter==memberproject_set_resource_memberproject_member_filter && $memberproject_set_resource_memberproject_member_page==memberproject_set_resource_memberproject_member_page && $memberproject_set_resource_memberuser_filter==memberproject_set_resource_memberuser_filter && $memberproject_set_resource_memberuser_page==memberproject_set_resource_memberuser_page);
+                                eval(((RuleUtils.test($memberproject_set_resource_memberdefault.get("n_department_id_eq"),"ISNOTNULL",""))||(RuleUtils.test($memberproject_set_resource_memberdefault.get("department"),"ISNOTNULL",""))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam6_prepareparam5" sourceRef="gateway-prepareparam6" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $memberproject_set_resource_memberdefault:member();
+                                            $memberproject_set_resource_memberfor_member:member();
+                                            $memberproject_set_resource_memberfor_portfolio_member:portfolio_member();
+                                            $memberproject_set_resource_memberfor_user_obj:user();
+                                            $memberproject_set_resource_membergroup_page:member();
+                                            $memberproject_set_resource_memberportfolio_member_filter:portfolio_member();
+                                            $memberproject_set_resource_memberportfolio_member_page:portfolio_member();
+                                            $memberproject_set_resource_memberproject_member_filter:project_member();
+                                            $memberproject_set_resource_memberproject_member_page:project_member();
+                                            $memberproject_set_resource_memberuser_filter:user();
+                                            $memberproject_set_resource_memberuser_page:user();
+                                    eval($memberproject_set_resource_memberdefault==memberproject_set_resource_memberdefault && $memberproject_set_resource_memberfor_member==memberproject_set_resource_memberfor_member && $memberproject_set_resource_memberfor_portfolio_member==memberproject_set_resource_memberfor_portfolio_member && $memberproject_set_resource_memberfor_user_obj==memberproject_set_resource_memberfor_user_obj && $memberproject_set_resource_membergroup_page==memberproject_set_resource_membergroup_page && $memberproject_set_resource_memberportfolio_member_filter==memberproject_set_resource_memberportfolio_member_filter && $memberproject_set_resource_memberportfolio_member_page==memberproject_set_resource_memberportfolio_member_page && $memberproject_set_resource_memberproject_member_filter==memberproject_set_resource_memberproject_member_filter && $memberproject_set_resource_memberproject_member_page==memberproject_set_resource_memberproject_member_page && $memberproject_set_resource_memberuser_filter==memberproject_set_resource_memberuser_filter && $memberproject_set_resource_memberuser_page==memberproject_set_resource_memberuser_page);
+                                eval((RuleUtils.test($memberproject_set_resource_memberdefault.get("cur_project_set"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset2" sourceRef="prepareparam2" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset3" sourceRef="prepareparam3" targetRef="dedataset3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_dedataset4" sourceRef="prepareparam5" targetRef="dedataset4">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_loopsubcall1" sourceRef="dedataset2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_end3" sourceRef="dedataset3" targetRef="end3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset3_loopsubcall3" sourceRef="dedataset3" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset4_end4" sourceRef="dedataset4" targetRef="end4">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset4_loopsubcall2" sourceRef="dedataset4" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam7" sourceRef="loopsubcall2" targetRef="prepareparam7">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_prepareparam8" sourceRef="loopsubcall3" targetRef="prepareparam8">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end2" sourceRef="loopsubcall1" targetRef="end2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam4" sourceRef="loopsubcall1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam6" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam6_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam6_gateway-prepareparam6_gatewayline" sourceRef="prepareparam6" targetRef="gateway-prepareparam6"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam6_end_line" sourceRef="gateway-prepareparam6" targetRef="gateway-prepareparam6_end"/>
+                            <endEvent id="gateway-prepareparam6_end" name="end"/>
+        </process>
+    </definitions>

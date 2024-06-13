@@ -20,7 +20,7 @@
     }
   },
   "groupMode" : "NONE",
-  "logicName" : "项目集选择项目表格",
+  "logicName" : "选择项目_表格",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
@@ -31,19 +31,63 @@
     "getCapPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.NAME"
     },
-    "caption" : "项目名称",
+    "caption" : "项目",
     "codeName" : "name",
     "columnType" : "DEFGRIDCOLUMN",
     "dataItemName" : "name",
-    "excelCaption" : "项目名称",
+    "excelCaption" : "项目",
     "name" : "name",
     "noPrivDisplayMode" : 1,
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "name"
     },
-    "width" : 100,
+    "width" : 200,
     "widthUnit" : "STAR",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "NONE",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.IDENTIFIER"
+    },
+    "caption" : "标识",
+    "codeName" : "identifier",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "identifier",
+    "excelCaption" : "标识",
+    "name" : "identifier",
+    "noPrivDisplayMode" : 1,
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    },
+    "width" : 200,
+    "widthUnit" : "PX",
+    "enableSort" : true
+  }, {
+    "align" : "LEFT",
+    "cLConvertMode" : "FRONT",
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.TYPE"
+    },
+    "caption" : "类型",
+    "codeName" : "type",
+    "columnType" : "DEFGRIDCOLUMN",
+    "dataItemName" : "type",
+    "excelCaption" : "类型",
+    "name" : "type",
+    "noPrivDisplayMode" : 1,
+    "getPSAppCodeList" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__project_type.json"
+    },
+    "getPSAppDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
+    },
+    "width" : 150,
+    "widthUnit" : "PX",
     "enableSort" : true
   } ],
   "getPSDEGridDataItems" : [ {
@@ -52,6 +96,20 @@
     "getPSAppDEField" : {
       "name" : "NAME",
       "codeName" : "name"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "identifier",
+    "getPSAppDEField" : {
+      "name" : "IDENTIFIER",
+      "codeName" : "identifier"
+    }
+  }, {
+    "dataType" : 25,
+    "name" : "type",
+    "getPSAppDEField" : {
+      "name" : "TYPE",
+      "codeName" : "type"
     }
   }, {
     "dataType" : 25,
@@ -92,6 +150,7 @@
     },
     "allowEmpty" : true
   } ],
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -110,9 +169,9 @@
   "sortMode" : "REMOTE",
   "hasWFDataItems" : false,
   "enableColFilter" : false,
-  "enableCustomized" : true,
+  "enableCustomized" : false,
   "enableGroup" : false,
-  "enablePagingBar" : false,
+  "enablePagingBar" : true,
   "enableRowEdit" : false,
   "enableRowEditOrder" : false,
   "enableRowNew" : false,

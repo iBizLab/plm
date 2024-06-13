@@ -3,6 +3,10 @@
   "name" : "MySQL5",
   "getPSDEDataQueryCodeConds" : [ {
     "condType" : "CUSTOM",
+    "customCond" : "NOT(EXISTS(SELECT * FROM `WORK_ITEM` t31 \n WHERE \n t1.`ID` = t31.`SPRINT_ID`  AND  ( t31.`ID` = #{ctx.webcontext.work_item} ) ))",
+    "name" : "查询条件"
+  }, {
+    "condType" : "CUSTOM",
     "customCond" : "( t1.`STATUS` <> '3' )",
     "name" : "查询条件"
   } ],

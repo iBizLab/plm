@@ -15,6 +15,12 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/ProjMgmt.json"
   },
+  "getPSAppViewNavContexts" : [ {
+    "key" : "SRFREADONLY",
+    "name" : "SRFREADONLY",
+    "value" : "false",
+    "rawValue" : true
+  } ],
   "getPSDEViewCodeName" : "scrum_property_distribution_report_view",
   "getPSDEViewId" : "61eff9e9bf52a45830d31caf4ce84887",
   "getPSViewLayoutPanel" : {
@@ -344,8 +350,10 @@
           "codeName" : "backlog_from"
         }
       }, {
-        "id" : "n_is_archived_eq",
+        "id" : "n_is_archived_in",
         "dataType" : 9,
+        "createDV" : "1,0",
+        "updateDV" : "1,0",
         "getPSAppDEField" : {
           "name" : "IS_ARCHIVED",
           "codeName" : "is_archived"
@@ -376,6 +384,11 @@
             "labelWidth" : 130,
             "name" : "groupcond",
             "noPrivDisplayMode" : 1,
+            "getPSControlAttributes" : [ {
+              "attrName" : "clearable",
+              "attrValue" : "false",
+              "name" : "clearable_logic2"
+            } ],
             "getPSEditor" : {
               "editorType" : "DROPDOWNLIST",
               "name" : "groupcond",
@@ -443,6 +456,7 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_priority.json"
               },
+              "placeHolder" : "选择优先级",
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
@@ -475,6 +489,7 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__requirement_type.json"
               },
+              "placeHolder" : "选择需求分类",
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
@@ -507,6 +522,7 @@
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__demand_sources.json"
               },
+              "placeHolder" : "选择需求来源",
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
@@ -517,8 +533,9 @@
             "needCodeListConfig" : true,
             "showCaption" : true
           }, {
-            "caption" : "是否已归档",
-            "codeName" : "n_is_archived_eq",
+            "caption" : "是否包含归档",
+            "codeName" : "n_is_archived_in",
+            "createDV" : "1,0",
             "dataType" : 9,
             "detailStyle" : "DEFAULT",
             "detailType" : "FORMITEM",
@@ -526,25 +543,32 @@
             "ignoreInput" : 0,
             "labelPos" : "TOP",
             "labelWidth" : 130,
-            "name" : "n_is_archived_eq",
+            "name" : "n_is_archived_in",
             "noPrivDisplayMode" : 1,
             "getPSAppDEField" : {
               "name" : "IS_ARCHIVED",
               "codeName" : "is_archived"
             },
+            "getPSControlAttributes" : [ {
+              "attrName" : "clearable",
+              "attrValue" : "false",
+              "name" : "clearable_logic"
+            } ],
             "getPSEditor" : {
               "editorType" : "DROPDOWNLIST_100",
-              "name" : "n_is_archived_eq",
+              "name" : "n_is_archived_in",
               "getPSAppCodeList" : {
                 "modelref" : true,
-                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/YesNo.json"
+                "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/Base__contains_archive.json"
               },
+              "valueType" : "SIMPLES",
               "singleSelect" : true
             },
             "getPSLayoutPos" : {
               "colMD" : 24,
               "layout" : "TABLE_24COL"
             },
+            "updateDV" : "1,0",
             "allowEmpty" : true,
             "needCodeListConfig" : true,
             "showCaption" : true

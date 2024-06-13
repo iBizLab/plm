@@ -148,6 +148,20 @@
       "codeName" : "TimerPolicy"
     }
   }, {
+    "id" : "fieldeventname",
+    "dataType" : 25,
+    "getPSAppDEField" : {
+      "name" : "EVENTS",
+      "codeName" : "Events"
+    }
+  }, {
+    "id" : "eventmodel",
+    "dataType" : 21,
+    "getPSAppDEField" : {
+      "name" : "EVENTMODEL",
+      "codeName" : "EventModel"
+    }
+  }, {
     "id" : "memo",
     "dataType" : 25,
     "getPSAppDEField" : {
@@ -304,7 +318,7 @@
           "detailStyle" : "DEFAULT",
           "detailType" : "FORMITEM",
           "enableCond" : 3,
-          "ignoreInput" : 0,
+          "ignoreInput" : 4,
           "labelPos" : "TOP",
           "labelWidth" : 130,
           "name" : "events",
@@ -318,6 +332,32 @@
             "logicCat" : "PANELVISIBLE",
             "logicType" : "GROUP",
             "name" : "表单成员[events][面板显示]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "EVENTHOOK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMBLANK",
+            "logicType" : "GROUP",
+            "name" : "表单成员[events][表单项空输入]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "NOTEQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "EVENTHOOK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[events][表单项启用]逻辑",
             "getPSDEFDLogics" : [ {
               "condOP" : "EQ",
               "dEFDName" : "logicsubtype",
@@ -340,7 +380,7 @@
             "colMD" : 24,
             "layout" : "TABLE_24COL"
           },
-          "allowEmpty" : true,
+          "allowEmpty" : false,
           "needCodeListConfig" : true,
           "showCaption" : true
         }, {
@@ -372,6 +412,32 @@
             } ],
             "relatedDetailNames" : [ "logicsubtype" ],
             "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMBLANK",
+            "logicType" : "GROUP",
+            "name" : "表单成员[timerpolicy][表单项空输入]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "NOTEQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "TIMERTASK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[timerpolicy][表单项启用]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "TIMERTASK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
           } ],
           "getPSEditor" : {
             "editorStyle" : "CronEditor",
@@ -384,6 +450,106 @@
               "runtimeObject" : true
             },
             "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "caption" : "变更属性",
+          "codeName" : "fieldeventname",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 3,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "fieldeventname",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "EVENTS",
+            "codeName" : "Events"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[fieldeventname][面板显示]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "DEFIELDHOOK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
+          }, {
+            "groupOP" : "AND",
+            "logicCat" : "ITEMENABLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[fieldeventname][表单项启用]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "DEFIELDHOOK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "fieldeventname",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/extension__enable_field_change.json"
+            },
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "convertToCodeItemText" : true,
+          "showCaption" : true
+        }, {
+          "caption" : "触发条件",
+          "codeName" : "eventmodel",
+          "dataType" : 21,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "eventmodel",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "EVENTMODEL",
+            "codeName" : "EventModel"
+          },
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[eventmodel][面板显示]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "logicsubtype",
+              "logicType" : "SINGLE",
+              "value" : "DEFIELDHOOK"
+            } ],
+            "relatedDetailNames" : [ "logicsubtype" ],
+            "notMode" : false
+          } ],
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 1048576,
+            "name" : "eventmodel"
           },
           "getPSLayoutPos" : {
             "colMD" : 24,
@@ -453,6 +619,8 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "psdelogiclinks",
+          "objectIdField" : "PSDELogicLinkId",
+          "objectNameField" : "PSDELogicLinkName",
           "valueType" : "OBJECTS"
         },
         "getPSLayoutPos" : {
@@ -481,6 +649,8 @@
         "getPSEditor" : {
           "editorType" : "HIDDEN",
           "name" : "psdelogicnodes",
+          "objectIdField" : "PSDELogicNodeId",
+          "objectNameField" : "PSDELogicNodeName",
           "valueType" : "OBJECTS"
         },
         "getPSLayoutPos" : {

@@ -331,15 +331,150 @@
     "topPos" : 334
   }, {
     "codeName" : "PREPAREPARAM2",
-    "leftPos" : 1050,
+    "leftPos" : 1359,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "存在owner_id",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "PREPAREPARAM3"
       },
-      "name" : "连接名称",
+      "name" : "关联类型为重复或关联",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "groupOP" : "OR",
+          "logicType" : "GROUP",
+          "name" : "OR",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "RELATION_TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "forward_relation_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "forward_relation_obj[RELATION_TYPE] 等于(=) duplicates",
+            "paramValue" : "duplicates"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "RELATION_TYPE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "forward_relation_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "forward_relation_obj[RELATION_TYPE] 等于(=) relates",
+            "paramValue" : "relates"
+          } ]
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "原因",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "RELATION_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "forward_relation_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "forward_relation_obj[RELATION_TYPE] 等于(=) causes",
+          "paramValue" : "causes"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "结果",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "RELATION_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "forward_relation_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "forward_relation_obj[RELATION_TYPE] 等于(=) is_caused_by",
+          "paramValue" : "is_caused_by"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "阻塞",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "RELATION_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "forward_relation_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "forward_relation_obj[RELATION_TYPE] 等于(=) blocks",
+          "paramValue" : "blocks"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      },
+      "name" : "被阻塞",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "RELATION_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "forward_relation_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "forward_relation_obj[RELATION_TYPE] 等于(=) is_blocked_by",
+          "paramValue" : "is_blocked_by"
+        } ]
+      },
       "getSrcPSDELogicNode" : {
         "modelref" : true,
         "id" : "PREPAREPARAM2"
@@ -360,6 +495,20 @@
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
+      "dstFieldName" : "RELATION_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "name" : "Default[relation_type] ==> forward_relation_obj[RELATION_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "relation_type",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
       "dstFieldName" : "PRINCIPAL_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -374,7 +523,151 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 580
+    "topPos" : 334
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 1050,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "重复或关联",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "RELATION_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "forward_relation_obj[RELATION_TYPE] ==> reverse_relation_obj[RELATION_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "RELATION_TYPE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "forward_relation_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 620
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 1205,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "结果",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "RELATION_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "直接值[is_caused_by] ==> reverse_relation_obj[RELATION_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "is_caused_by",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 620
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 1359,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "原因",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "RELATION_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "直接值[causes] ==> reverse_relation_obj[RELATION_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "causes",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 620
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 1530,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "被阻塞",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "RELATION_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "直接值[is_blocked_by] ==> reverse_relation_obj[RELATION_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "is_blocked_by",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 620
+  }, {
+    "codeName" : "PREPAREPARAM7",
+    "leftPos" : 1692,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "阻塞",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM7"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "RELATION_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "reverse_relation_obj"
+      },
+      "name" : "直接值[blocks] ==> reverse_relation_obj[RELATION_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "blocks",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 620
   }, {
     "codeName" : "END1",
     "leftPos" : 460,

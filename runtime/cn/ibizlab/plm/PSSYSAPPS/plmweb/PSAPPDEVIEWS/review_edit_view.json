@@ -24,10 +24,6 @@
     "engineType" : "EditView",
     "name" : "engine"
   } ],
-  "getPSAppWF" : {
-    "modelref" : true,
-    "id" : "case_review_flow"
-  },
   "getPSControls" : [ {
     "codeName" : "main",
     "controlType" : "FORM",
@@ -168,30 +164,6 @@
         "getPSAppDEMethod" : {
           "modelref" : true,
           "id" : "remove"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
-        }
-      }, {
-        "actionName" : "WFSTART",
-        "actionType" : "WFACTION",
-        "name" : "wfstart",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "WFStart"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
-        }
-      }, {
-        "actionName" : "WFSUBMIT",
-        "actionType" : "WFACTION",
-        "name" : "wfsubmit",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "WFSubmit"
         },
         "getPSAppDataEntity" : {
           "modelref" : true,
@@ -387,10 +359,10 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetchrecent_access`"
+                "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
@@ -742,36 +714,6 @@
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
       }
     },
-    "getWFStartPSControlAction" : {
-      "modelref" : true,
-      "id" : "wfstart",
-      "actionName" : "WFSTART",
-      "actionType" : "WFACTION",
-      "name" : "wfstart",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "WFStart"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
-      }
-    },
-    "getWFSubmitPSControlAction" : {
-      "modelref" : true,
-      "id" : "wfsubmit",
-      "actionName" : "WFSUBMIT",
-      "actionType" : "WFACTION",
-      "name" : "wfsubmit",
-      "getPSAppDEMethod" : {
-        "modelref" : true,
-        "id" : "WFSubmit"
-      },
-      "getPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
-      }
-    },
     "noTabHeader" : true,
     "name" : "form",
     "modelid" : "28604d635cb58b674237b3730ad53d3b",
@@ -811,8 +753,13 @@
         },
         "caption" : "保存并关闭",
         "codeName" : "SaveAndExit",
+        "dataAccessAction" : "SUBDATA",
         "fullCodeName" : "SaveAndExit",
         "name" : "编辑界面_保存并退出操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "SUBDATA"
+        },
         "getPSSysImage" : {
           "cssClass" : "sx-tb-saveandclose"
         },
@@ -875,14 +822,6 @@
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : true
-  },
-  "getPSWFVersion" : {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSWORKFLOWS/case_review_flow/PSWFVERSIONS/case_review_flowv1.json"
-  },
-  "getPSWorkflow" : {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSWORKFLOWS/case_review_flow.json"
   },
   "refFlag" : false,
   "title" : "评审编辑视图",

@@ -1,0 +1,225 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.set_change_type;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseset_change_typedefault;
+                global java.util.Map test_caseset_change_typechange_version;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseset_change_typefor_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_caseset_change_typepage_results;
+                global cn.ibizlab.plm.core.testmgmt.domain.review test_caseset_change_typereview_detail;
+                global cn.ibizlab.plm.core.base.domain.version test_caseset_change_typeversion_filter;
+                global cn.ibizlab.plm.core.base.domain.version test_caseset_change_typeversion_pages_results;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService test_caseservice;
+                    global cn.ibizlab.plm.core.base.service.IversionService versionservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_caseset_change_typebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam3"
+            ruleflow-group "test_caseset_change_typedebugparam3"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询用例分页数据]
+            rule "dedataset1"
+            ruleflow-group "test_caseset_change_typededataset1"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "test_caseset_change_typeloopsubcall1"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam4"
+            ruleflow-group "test_caseset_change_typedebugparam4"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置版本过滤器]
+            rule "prepareparam1"
+            ruleflow-group "test_caseset_change_typeprepareparam1"
+            when
+            then
+                            test_caseset_change_typeversion_filter.set("n_owner_id_eq",test_caseset_change_typefor_obj.get("id"));
+                            test_caseset_change_typeversion_filter.set("size","2");
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[直接sql调用]
+            rule "rawsqlcall1"
+            ruleflow-group "test_caseset_change_typerawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",test_caseset_change_typedefault.get("review"));
+        param.put("param1",test_caseset_change_typedefault.get("n_test_library_id_eq"));
+    String strSql="SELECT *  FROM test_case t1 WHERE NOT EXISTS (     SELECT *      FROM relation t2      JOIN review_content_extend t3 ON t3.id = t2.id      JOIN review t4 ON t4.id = t2.PRINCIPAL_ID      WHERE t2.TARGET_ID = t1.id      AND t4.id = #{et.param0} )AND t1.TEST_LIBRARY_ID = #{et.param1} ORDER BY t1.IDENTIFIER;";
+                        java.util.List<JSONObject> entities=iBzSysTest_caseDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    test_caseset_change_typepage_results.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询符合条件的版本]
+            rule "dedataset2"
+            ruleflow-group "test_caseset_change_typededataset2"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam2"
+            ruleflow-group "test_caseset_change_typedebugparam2"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置变更类型为新增]
+            rule "prepareparam2"
+            ruleflow-group "test_caseset_change_typeprepareparam2"
+            when
+            then
+                            test_caseset_change_typefor_obj.set("change_type","0");
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置变更类型为修改]
+            rule "prepareparam3"
+            ruleflow-group "test_caseset_change_typeprepareparam3"
+            when
+            then
+                            test_caseset_change_typefor_obj.set("change_type","1");
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode1"
+            ruleflow-group "test_caseset_change_typerawsfcode1"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[执行脚本代码]
+            rule "rawsfcode2"
+            ruleflow-group "test_caseset_change_typerawsfcode2"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_caseset_change_typeend1"
+            when
+            then
+                        update(test_caseset_change_typedefault);//更新fact中变量值
+                        update(test_caseset_change_typechange_version);//更新fact中变量值
+                        update(test_caseset_change_typefor_obj);//更新fact中变量值
+                        update(test_caseset_change_typepage_results);//更新fact中变量值
+                        update(test_caseset_change_typereview_detail);//更新fact中变量值
+                        update(test_caseset_change_typeversion_filter);//更新fact中变量值
+                        update(test_caseset_change_typeversion_pages_results);//更新fact中变量值
+            end

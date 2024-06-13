@@ -33,7 +33,7 @@ package cn.ibizlab.plm.base.logic.notify_settinglogic.get_by_user;
             then
             end
 
-            //逻辑处理节点[设置过滤分页]
+            //逻辑处理节点[设置通知过滤分页]
             rule "prepareparam5"
             ruleflow-group "notify_settingget_by_userprepareparam5"
             when
@@ -118,6 +118,26 @@ package cn.ibizlab.plm.base.logic.notify_settinglogic.get_by_user;
             //逻辑处理节点[循环构建通知事件]
             rule "loopsubcall1"
             ruleflow-group "notify_settingget_by_userloopsubcall1"
+            when
+            then
+                        update(notify_settingget_by_userdefault);//更新fact中变量值
+                        update(notify_settingget_by_usercontext);//更新fact中变量值
+                        update(notify_settingget_by_userloop_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_event);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_events);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotify_setting_filter);//更新fact中变量值
+                        update(notify_settingget_by_usernotifys);//更新fact中变量值
+                        update(notify_settingget_by_userorigin_events);//更新fact中变量值
+                        update(notify_settingget_by_usersession_param);//更新fact中变量值
+                        update(notify_settingget_by_useruser_setting);//更新fact中变量值
+                        update(notify_settingget_by_useruser_settings);//更新fact中变量值
+            end
+
+            //逻辑处理节点[排序数组参数]
+            rule "sortparam1"
+            ruleflow-group "notify_settingget_by_usersortparam1"
             when
             then
                         update(notify_settingget_by_userdefault);//更新fact中变量值

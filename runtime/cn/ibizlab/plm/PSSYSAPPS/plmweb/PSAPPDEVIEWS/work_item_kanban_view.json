@@ -136,6 +136,7 @@
                     "actionTarget" : "NONE",
                     "caption" : "新建看板",
                     "codeName" : "New",
+                    "dataAccessAction" : "SUBDATA",
                     "getFrontPSAppView" : {
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_quick_create_view.json",
@@ -155,6 +156,10 @@
                     "getPSAppDataEntity" : {
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
+                    },
+                    "getPSDEOPPriv" : {
+                      "modelref" : true,
+                      "id" : "SUBDATA"
                     },
                     "getPSNavigateContexts" : [ {
                       "key" : "BOARD",
@@ -186,6 +191,7 @@
                     "actionTarget" : "NONE",
                     "caption" : "看板管理",
                     "codeName" : "board_management",
+                    "dataAccessAction" : "SUBDATA",
                     "getFrontPSAppView" : {
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/board_grid_view.json",
@@ -198,7 +204,21 @@
                       "modelref" : true,
                       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/board.json"
                     },
+                    "getPSDEOPPriv" : {
+                      "modelref" : true,
+                      "id" : "SUBDATA"
+                    },
                     "getPSNavigateContexts" : [ {
+                      "key" : "PROJECT",
+                      "name" : "PROJECT",
+                      "value" : "project",
+                      "rawValue" : false
+                    }, {
+                      "key" : "CURBOARD",
+                      "name" : "CURBOARD",
+                      "value" : "board",
+                      "rawValue" : false
+                    }, {
                       "key" : "BOARD",
                       "name" : "BOARD",
                       "rawValue" : true
@@ -471,6 +491,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建工作项",
             "codeName" : "new_kanban_story_toolbar",
+            "dataAccessAction" : "SUBDATA",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "work_item_new_kanban_story_toolbar",
             "name" : "新建用户故事（kanban）（工具栏）",
@@ -481,6 +502,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
@@ -507,6 +532,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建工作项",
             "codeName" : "new_kanban_task_toolbar",
+            "dataAccessAction" : "SUBDATA",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "work_item_new_kanban_task_toolbar",
             "name" : "新建任务（kanban）（工具栏）",
@@ -517,6 +543,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
@@ -543,6 +573,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建工作项",
             "codeName" : "new_kanban_bug_toolbar",
+            "dataAccessAction" : "SUBDATA",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "work_item_new_kanban_bug_toolbar",
             "name" : "新建缺陷（kanban）（工具栏）",
@@ -553,6 +584,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "timeout" : 60000,
             "uIActionMode" : "FRONT",
@@ -739,31 +774,13 @@
             "codeName" : "state"
           },
           "getPSEditor" : {
-            "editorParams" : {
-              "AC" : "TRUE",
-              "TRIGGER" : "TRUE",
-              "PICKUPVIEW" : "FALSE"
-            },
-            "editorType" : "PICKEREX_TRIGGER",
-            "handlerType" : "PickupText",
+            "editorType" : "DROPDOWNLIST",
             "name" : "n_state_eq",
-            "getPSAppDEACMode" : {
+            "getPSAppCodeList" : {
               "modelref" : true,
-              "id" : "Default"
-            },
-            "getPSAppDEDataSet" : {
-              "modelref" : true,
-              "id" : "fetch_default"
-            },
-            "getPSAppDataEntity" : {
-              "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state.json"
             },
             "placeHolder" : "选择状态",
-            "enableAC" : true,
-            "enablePickupView" : false,
-            "forceSelection" : true,
-            "showTrigger" : true,
             "singleSelect" : true
           },
           "getPSLayoutPos" : {
@@ -772,7 +789,8 @@
             "layout" : "TABLE_24COL"
           },
           "allowEmpty" : true,
-          "emptyCaption" : true
+          "emptyCaption" : true,
+          "needCodeListConfig" : true
         }, {
           "caption" : "所属项目",
           "codeName" : "n_project_name_eq",
@@ -804,7 +822,7 @@
             },
             "getPSAppDEDataSet" : {
               "modelref" : true,
-              "id" : "fetch_normal"
+              "id" : "fetch_main"
             },
             "getPSAppDataEntity" : {
               "modelref" : true,
@@ -833,13 +851,14 @@
                     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_config_tree_exp_view.json",
                     "viewType" : "DETREEEXPVIEW"
                   },
-                  "frontProcessType" : "WIZARD",
+                  "frontProcessType" : "OTHER",
                   "fullCodeName" : "project_open_global_setting",
                   "name" : "打开项目配置(全局)",
                   "getPSAppDataEntity" : {
                     "modelref" : true,
                     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
                   },
+                  "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/project_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_10%3Anode/project_management_tab_exp_view/srfnav=management_tab_exp_view_in_progress/project_in_progress_grid_view/-`",
                   "timeout" : 60000,
                   "uIActionMode" : "FRONT",
                   "uIActionTag" : "open_global_setting",
@@ -994,6 +1013,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建史诗",
             "codeName" : "new_kanban_epic",
+            "dataAccessAction" : "SUBDATA",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -1009,6 +1029,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSNavigateParams" : [ {
               "key" : "work_item_type_id",
@@ -1038,6 +1062,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建特性",
             "codeName" : "new_kanban_feature",
+            "dataAccessAction" : "SUBDATA",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -1053,6 +1078,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSNavigateParams" : [ {
               "key" : "work_item_type_id",
@@ -1082,6 +1111,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建用户故事",
             "codeName" : "new_kanban_story",
+            "dataAccessAction" : "SUBDATA",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -1097,6 +1127,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSNavigateParams" : [ {
               "key" : "work_item_type_id",
@@ -1126,6 +1160,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建任务",
             "codeName" : "new_kanban_task",
+            "dataAccessAction" : "SUBDATA",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -1141,6 +1176,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSNavigateParams" : [ {
               "key" : "work_item_type_id",
@@ -1170,6 +1209,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建缺陷",
             "codeName" : "new_kanban_bug",
+            "dataAccessAction" : "SUBDATA",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -1185,6 +1225,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSNavigateParams" : [ {
               "key" : "work_item_type_id",
@@ -1214,6 +1258,7 @@
             "actionTarget" : "NONE",
             "caption" : "新建事务",
             "codeName" : "new_kanban_issue",
+            "dataAccessAction" : "SUBDATA",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_quick_create_view.json",
@@ -1229,6 +1274,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSNavigateParams" : [ {
               "key" : "work_item_type_id",
@@ -1417,6 +1466,14 @@
                   "itemStyle" : "INFO",
                   "itemType" : "BUTTON",
                   "name" : "more_button",
+                  "getPSControlLogics" : [ {
+                    "itemName" : "more_button",
+                    "logicTag" : "itemlayoutpanel",
+                    "logicType" : "SCRIPT",
+                    "name" : "more_button",
+                    "scriptCode" : "context.srfreadonly != true",
+                    "triggerType" : "ITEMVISIBLE"
+                  } ],
                   "getPSLayoutPos" : {
                     "grow" : -1,
                     "layout" : "FLEX"
@@ -1928,17 +1985,17 @@
       },
       "getPSDEDataViewDataItems" : [ {
         "dataType" : 25,
-        "name" : "identifier",
-        "getPSAppDEField" : {
-          "name" : "IDENTIFIER",
-          "codeName" : "identifier"
-        }
-      }, {
-        "dataType" : 25,
         "name" : "title",
         "getPSAppDEField" : {
           "name" : "TITLE",
           "codeName" : "title"
+        }
+      }, {
+        "dataType" : 25,
+        "name" : "identifier",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
         }
       }, {
         "dataType" : 25,
@@ -3945,18 +4002,18 @@
             "getPSUIAction" : {
               "actionTarget" : "MULTIKEY",
               "caption" : "移入发布",
-              "codeName" : "shift_in_version",
+              "codeName" : "shift_in_release",
               "getFrontPSAppView" : {
                 "modelref" : true,
                 "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/release_pick_up_around_view.json",
                 "viewType" : "DEPICKUPVIEW2"
               },
               "frontProcessType" : "WIZARD",
-              "fullCodeName" : "work_item_shift_in_version",
+              "fullCodeName" : "work_item_shift_in_release",
               "name" : "移入发布",
               "getPSAppDEMethod" : {
                 "modelref" : true,
-                "id" : "shift_in_version"
+                "id" : "shift_in_release"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -3970,11 +4027,11 @@
               "successMsg" : "成功移入发布",
               "timeout" : 60000,
               "uIActionMode" : "BACKEND",
-              "uIActionTag" : "shift_in_version",
+              "uIActionTag" : "shift_in_release",
               "uIActionType" : "DEUIACTION",
               "enableConfirm" : true,
               "reloadData" : true,
-              "id" : "shift_in_version@work_item"
+              "id" : "shift_in_release@work_item"
             },
             "addSeparator" : false,
             "showCaption" : true,
@@ -3984,16 +4041,6 @@
         },
         "enableSort" : false
       }, {
-        "caption" : "编号",
-        "dataItemName" : "identifier",
-        "itemType" : "DATAITEM",
-        "name" : "IDENTIFIER",
-        "getPSAppDEField" : {
-          "name" : "IDENTIFIER",
-          "codeName" : "identifier"
-        },
-        "enableSort" : true
-      }, {
         "caption" : "标题",
         "dataItemName" : "title",
         "itemType" : "DATAITEM",
@@ -4001,6 +4048,16 @@
         "getPSAppDEField" : {
           "name" : "TITLE",
           "codeName" : "title"
+        },
+        "enableSort" : true
+      }, {
+        "caption" : "编号",
+        "dataItemName" : "identifier",
+        "itemType" : "DATAITEM",
+        "name" : "IDENTIFIER",
+        "getPSAppDEField" : {
+          "name" : "IDENTIFIER",
+          "codeName" : "identifier"
         },
         "enableSort" : true
       } ],
@@ -4161,15 +4218,19 @@
         "itemType" : "FILTER",
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "assignee_id",
+        "name" : "assignee_id_eq",
         "getPSAppDEField" : {
           "name" : "ASSIGNEE_ID",
           "codeName" : "assignee_id"
         },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_ASSIGNEE_ID_EQ",
+          "name" : "N_ASSIGNEE_ID_EQ",
+          "stdDataType" : 25,
+          "valueOP" : "EQ"
+        },
         "getPSEditor" : {
           "editorParams" : {
-            "ISADDSYMBOL" : "true",
-            "MULTIPLE" : "true",
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
             "TRIGGER" : "TRUE",
@@ -4183,7 +4244,19 @@
           },
           "editorStyle" : "PERSONEL_SELECT_PROJECT",
           "editorType" : "PICKEREX_TRIGGER",
-          "name" : "assignee_id",
+          "name" : "assignee_id_eq",
+          "getPSAppDEACMode" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+          },
           "getPSNavigateParams" : [ {
             "key" : "n_department_id_eq",
             "name" : "n_department_id_eq",
@@ -4213,15 +4286,19 @@
         "itemType" : "FILTER",
         "labelPos" : "NONE",
         "labelWidth" : 0,
-        "name" : "create_man",
+        "name" : "create_man_eq",
         "getPSAppDEField" : {
           "name" : "CREATE_MAN",
           "codeName" : "create_man"
         },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_EQ",
+          "name" : "N_CREATE_MAN_EQ",
+          "stdDataType" : 25,
+          "valueOP" : "EQ"
+        },
         "getPSEditor" : {
           "editorParams" : {
-            "ISADDSYMBOL" : "true",
-            "MULTIPLE" : "true",
             "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
             "AC" : "TRUE",
             "TRIGGER" : "TRUE",
@@ -4235,7 +4312,7 @@
           },
           "editorStyle" : "PERSONEL_SELECT_PROJECT",
           "editorType" : "PICKEREX_TRIGGER",
-          "name" : "create_man",
+          "name" : "create_man_eq",
           "getPSNavigateParams" : [ {
             "key" : "n_department_id_eq",
             "name" : "n_department_id_eq",
@@ -4247,12 +4324,14 @@
             "pluginCode" : "PERSON_SELECT",
             "runtimeObject" : true
           },
+          "valueItemName" : "create_man",
           "enableAC" : true,
           "enablePickupView" : false,
           "forceSelection" : true,
           "showTrigger" : true,
           "singleSelect" : true
         },
+        "valueItemName" : "create_man",
         "allowEmpty" : true,
         "emptyCaption" : false,
         "hidden" : false,
@@ -4272,6 +4351,378 @@
           "name" : "description"
         },
         "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "负责人",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "assignee_id_not_in",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_ID",
+          "codeName" : "assignee_id"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_ASSIGNEE_ID_NOTIN",
+          "name" : "N_ASSIGNEE_ID_NOTIN",
+          "stdDataType" : 25,
+          "valueOP" : "NOTIN",
+          "array" : true
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "ISADDSYMBOL" : "true",
+            "MULTIPLE" : "true",
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+            "AC" : "TRUE",
+            "TRIGGER" : "TRUE",
+            "URL" : "projects/${context.project}/project_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
+          },
+          "editorStyle" : "PERSONEL_SELECT_PROJECT",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "assignee_id_not_in",
+          "getPSAppDEACMode" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueItemName" : "assignee_id",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "valueItemName" : "assignee_id",
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "负责人",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "assignee_id_in",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_ID",
+          "codeName" : "assignee_id"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_ASSIGNEE_ID_IN",
+          "name" : "N_ASSIGNEE_ID_IN",
+          "stdDataType" : 25,
+          "valueOP" : "IN",
+          "array" : true
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "ISADDSYMBOL" : "true",
+            "MULTIPLE" : "true",
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+            "AC" : "TRUE",
+            "TRIGGER" : "TRUE",
+            "URL" : "projects/${context.project}/project_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
+          },
+          "editorStyle" : "PERSONEL_SELECT_PROJECT",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "assignee_id_in",
+          "getPSAppDEACMode" : {
+            "modelref" : true,
+            "id" : "Default"
+          },
+          "getPSAppDEDataSet" : {
+            "modelref" : true,
+            "id" : "fetch_default"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+          },
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueItemName" : "assignee_id",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "valueItemName" : "assignee_id",
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "创建人",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "create_man_in",
+        "getPSAppDEField" : {
+          "name" : "CREATE_MAN",
+          "codeName" : "create_man"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_IN",
+          "name" : "N_CREATE_MAN_IN",
+          "stdDataType" : 25,
+          "valueOP" : "IN",
+          "array" : true
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "ISADDSYMBOL" : "true",
+            "MULTIPLE" : "true",
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+            "AC" : "TRUE",
+            "TRIGGER" : "TRUE",
+            "URL" : "projects/${context.project}/project_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
+          },
+          "editorStyle" : "PERSONEL_SELECT_PROJECT",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "create_man_in",
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueItemName" : "create_man",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "valueItemName" : "create_man",
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "创建人",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "create_man_not_in",
+        "getPSAppDEField" : {
+          "name" : "CREATE_MAN",
+          "codeName" : "create_man"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_NOTIN",
+          "name" : "N_CREATE_MAN_NOTIN",
+          "stdDataType" : 25,
+          "valueOP" : "NOTIN",
+          "array" : true
+        },
+        "getPSEditor" : {
+          "editorParams" : {
+            "ISADDSYMBOL" : "true",
+            "MULTIPLE" : "true",
+            "SRFNAVPARAM.n_department_id_eq" : "%srforgsectorid%",
+            "AC" : "TRUE",
+            "TRIGGER" : "TRUE",
+            "URL" : "projects/${context.project}/project_members/fetch_default",
+            "PICKUPVIEW" : "FALSE",
+            "USERMETHOD" : "post",
+            "USERMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
+            "DEPTMAP" : "{\"id\":\"id\",\"name\":\"display_name\"}",
+            "DEPTMETHOD" : "get",
+            "DEPTURL" : "/users/fetch_default"
+          },
+          "editorStyle" : "PERSONEL_SELECT_PROJECT",
+          "editorType" : "PICKEREX_TRIGGER",
+          "name" : "create_man_not_in",
+          "getPSNavigateParams" : [ {
+            "key" : "n_department_id_eq",
+            "name" : "n_department_id_eq",
+            "value" : "srforgsectorid",
+            "rawValue" : false
+          } ],
+          "getPSSysPFPlugin" : {
+            "pluginType" : "EDITOR_CUSTOMSTYLE",
+            "pluginCode" : "PERSON_SELECT",
+            "runtimeObject" : true
+          },
+          "valueItemName" : "create_man",
+          "enableAC" : true,
+          "enablePickupView" : false,
+          "forceSelection" : true,
+          "showTrigger" : true,
+          "singleSelect" : true
+        },
+        "valueItemName" : "create_man",
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "负责人",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "assignee_isnull",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_ID",
+          "codeName" : "assignee_id"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_ASSIGNEE_ID_ISNULL",
+          "name" : "N_ASSIGNEE_ID_ISNULL",
+          "stdDataType" : 25,
+          "valueOP" : "ISNULL"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "assignee_isnull"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : true,
+        "showCaption" : false
+      }, {
+        "caption" : "负责人(NotNil)",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "assignee_isnotnull",
+        "getPSAppDEField" : {
+          "name" : "ASSIGNEE_ID",
+          "codeName" : "assignee_id"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_ASSIGNEE_ID_ISNOTNULL",
+          "name" : "N_ASSIGNEE_ID_ISNOTNULL",
+          "stdDataType" : 25,
+          "valueOP" : "ISNOTNULL"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "assignee_isnotnull"
+        },
+        "allowEmpty" : true,
+        "emptyCaption" : false,
+        "hidden" : true,
+        "showCaption" : false
+      }, {
+        "caption" : "建立人(Nil)",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "create_man_isnull",
+        "getPSAppDEField" : {
+          "name" : "CREATE_MAN",
+          "codeName" : "create_man"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_ISNULL",
+          "name" : "N_CREATE_MAN_ISNULL",
+          "stdDataType" : 25,
+          "valueOP" : "ISNULL"
+        },
+        "getPSEditor" : {
+          "editorType" : "SPAN",
+          "name" : "create_man_isnull",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+          },
+          "enableLinkView" : false
+        },
+        "allowEmpty" : true,
+        "convertToCodeItemText" : true,
+        "emptyCaption" : false,
+        "hidden" : false,
+        "showCaption" : false
+      }, {
+        "caption" : "建立人(NotNil)",
+        "dataType" : 25,
+        "itemType" : "FILTER",
+        "labelPos" : "NONE",
+        "labelWidth" : 0,
+        "name" : "create_man_isnotnull",
+        "getPSAppDEField" : {
+          "name" : "CREATE_MAN",
+          "codeName" : "create_man"
+        },
+        "getPSDEFSearchMode" : {
+          "codeName" : "N_CREATE_MAN_ISNOTNULL",
+          "name" : "N_CREATE_MAN_ISNOTNULL",
+          "stdDataType" : 25,
+          "valueOP" : "ISNOTNULL"
+        },
+        "getPSEditor" : {
+          "editorType" : "SPAN",
+          "name" : "create_man_isnotnull",
+          "getPSAppCodeList" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+          },
+          "enableLinkView" : false
+        },
+        "allowEmpty" : true,
+        "convertToCodeItemText" : true,
         "emptyCaption" : false,
         "hidden" : false,
         "showCaption" : false

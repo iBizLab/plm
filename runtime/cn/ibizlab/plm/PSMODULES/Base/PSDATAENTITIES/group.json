@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -86,6 +89,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -111,6 +115,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -136,6 +141,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -157,6 +163,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/group/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -194,14 +201,14 @@
       "name" : "AVATAR",
       "codeName" : "avatar"
     }, {
-      "name" : "UPDATE_TIME",
-      "codeName" : "update_time"
+      "name" : "ID",
+      "codeName" : "id"
     }, {
       "name" : "NAME",
       "codeName" : "name"
     }, {
-      "name" : "ID",
-      "codeName" : "id"
+      "name" : "CREATE_MAN",
+      "codeName" : "create_man"
     }, {
       "name" : "CREATE_TIME",
       "codeName" : "create_time"
@@ -209,8 +216,8 @@
       "name" : "UPDATE_MAN",
       "codeName" : "update_man"
     }, {
-      "name" : "CREATE_MAN",
-      "codeName" : "create_man"
+      "name" : "UPDATE_TIME",
+      "codeName" : "update_time"
     }, {
       "name" : "SECTION_ID",
       "codeName" : "section_id"
@@ -484,6 +491,32 @@
     "enableBackend" : true,
     "enableFront" : true
   }, {
+    "codeName" : "reader",
+    "logicName" : "团队默认读取",
+    "name" : "reader",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "Default"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "ReaderInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "group_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "ReaderResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "group_dto"
+      },
+      "type" : "PAGE"
+    },
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
     "codeName" : "user_group_admin",
     "logicName" : "团队管理员",
     "name" : "user_group_admin",
@@ -739,44 +772,50 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
+      "columnName" : "ID",
       "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
+      "name" : "ID",
+      "queryCodeExp" : "t1.`ID`",
+      "standardColumnName" : "`ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_ID_EQ",
+      "name" : "N_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    }, {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[ID][标识]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.ID"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[ID][标识]移动端默认",
+        "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[ID][标识]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[ID][标识]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -784,38 +823,50 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组"
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
       },
-      "ruleInfo" : "默认规则",
+      "ruleInfo" : "内容长度必须小于等于[100]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "id",
     "dEFType" : 1,
-    "dataType" : "DATETIME",
+    "dataType" : "GUID",
     "importOrder" : 1000,
-    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.ID"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
+    "length" : 100,
+    "logicName" : "标识",
+    "name" : "ID",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "UPDATE_TIME"
+      "id" : "ID"
     },
-    "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "update_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "serviceCodeName" : "id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
     "allowEmpty" : false,
-    "systemReserver" : true
+    "keyDEField" : true,
+    "pasteReset" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "NAME",
@@ -915,28 +966,22 @@
     "majorDEField" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "ID",
+      "columnName" : "CREATE_MAN",
       "dBType" : "MYSQL5",
-      "name" : "ID",
-      "queryCodeExp" : "t1.`ID`",
-      "standardColumnName" : "`ID`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_ID_EQ",
-      "name" : "N_ID_EQ",
-      "stdDataType" : 25,
-      "valueOP" : "EQ"
+      "name" : "CREATE_MAN",
+      "queryCodeExp" : "t1.`CREATE_MAN`",
+      "standardColumnName" : "`CREATE_MAN`"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[ID][标识]移动端默认",
+      "name" : "[CREATE_MAN][建立人]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[ID][标识]移动端默认",
+        "name" : "[CREATE_MAN][建立人]移动端默认",
         "stringLength" : 100,
         "uIMode" : "MOBILEDEFAULT",
         "allowEmpty" : false,
@@ -946,14 +991,14 @@
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[ID][标识]",
+      "name" : "[CREATE_MAN][建立人]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.ID"
+          "lanResTag" : "DEF.LNAME.CREATE_MAN"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[ID][标识]",
+        "name" : "[CREATE_MAN][建立人]",
         "stringLength" : 100,
         "uIMode" : "DEFAULT",
         "allowEmpty" : false
@@ -969,7 +1014,7 @@
         "name" : "默认组",
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
-          "dEFName" : "ID",
+          "dEFName" : "CREATE_MAN",
           "maxValue" : 100,
           "name" : "默认字符串长度",
           "ruleInfo" : "内容长度必须小于等于[100]",
@@ -985,31 +1030,35 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "id",
+    "codeName" : "create_man",
     "dEFType" : 1,
-    "dataType" : "GUID",
+    "dataType" : "TEXT",
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.ID"
+      "lanResTag" : "DEF.LNAME.CREATE_MAN"
     },
     "length" : 100,
-    "logicName" : "标识",
-    "name" : "ID",
+    "logicName" : "建立人",
+    "name" : "CREATE_MAN",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/SysOperator.json"
+    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "ID"
+      "id" : "CREATE_MAN"
     },
-    "serviceCodeName" : "id",
+    "predefinedType" : "CREATEMAN",
+    "serviceCodeName" : "create_man",
     "stdDataType" : 25,
     "stringLength" : 100,
     "valueFormat" : "%1$s",
     "allowEmpty" : false,
-    "keyDEField" : true,
-    "pasteReset" : true
+    "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_TIME",
@@ -1186,44 +1235,44 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "CREATE_MAN",
+      "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
-      "name" : "CREATE_MAN",
-      "queryCodeExp" : "t1.`CREATE_MAN`",
-      "standardColumnName" : "`CREATE_MAN`"
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_MAN][建立人]移动端默认",
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]移动端默认",
-        "stringLength" : 100,
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_MAN][建立人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_MAN][建立人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1231,52 +1280,36 @@
       "getPSDEFVRGroupCondition" : {
         "condOp" : "AND",
         "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "CREATE_MAN",
-          "maxValue" : 100,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
+        "name" : "默认组"
       },
-      "ruleInfo" : "内容长度必须小于等于[100]",
+      "ruleInfo" : "默认规则",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "create_man",
+    "codeName" : "update_time",
     "dEFType" : 1,
-    "dataType" : "TEXT",
+    "dataType" : "DATETIME",
     "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_MAN"
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
     },
-    "length" : 100,
-    "logicName" : "建立人",
-    "name" : "CREATE_MAN",
-    "getPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSCODELISTS/SysOperator.json"
-    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "CREATE_MAN"
+      "id" : "UPDATE_TIME"
     },
-    "predefinedType" : "CREATEMAN",
-    "serviceCodeName" : "create_man",
-    "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
+    "predefinedType" : "UPDATEDATE",
+    "serviceCodeName" : "update_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
   }, {
@@ -1936,7 +1969,7 @@
     "codeName" : "name"
   },
   "getMajorPSDERs" : [ {
-    "codeName" : "GROUP",
+    "codeName" : "member_group",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/member/PSDERS/DERCUSTOM_MEMBER_GROUP_OWNER_ID.json",
@@ -1953,6 +1986,7 @@
     },
     "name" : "DERCUSTOM_MEMBER_GROUP_OWNER_ID",
     "orderValue" : 100,
+    "parentSubType" : "GROUP",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -1960,7 +1994,7 @@
     },
     "removeActionType" : 0,
     "removeOrder" : -1,
-    "serviceCodeName" : "group",
+    "serviceCodeName" : "member_group",
     "typeValue" : "GROUP"
   } ],
   "memo" : "记录团队信息。",
@@ -1993,7 +2027,7 @@
       "codeName" : "section_name"
     },
     "pickupDEFName" : "SECTION_ID",
-    "removeActionType" : -1,
+    "removeActionType" : 2,
     "removeOrder" : 0,
     "serviceCodeName" : "section",
     "enableFKey" : true

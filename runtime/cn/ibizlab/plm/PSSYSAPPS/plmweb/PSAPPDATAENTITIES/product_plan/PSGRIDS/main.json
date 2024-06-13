@@ -103,6 +103,7 @@
           "actionTarget" : "SINGLEKEY",
           "caption" : "编辑",
           "codeName" : "edit_plan",
+          "dataAccessAction" : "UPDATE",
           "getFrontPSAppView" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_plan_edit_option_view.json",
@@ -114,6 +115,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_plan.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "product__UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf044@FontAwesome",
@@ -141,6 +146,7 @@
           "caption" : "删除",
           "codeName" : "delete",
           "confirmMsg" : "确认删除该计划？",
+          "dataAccessAction" : "UPDATE",
           "fullCodeName" : "product_plan_delete",
           "name" : "删除",
           "getPSAppDEMethod" : {
@@ -150,6 +156,10 @@
           "getPSAppDataEntity" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product_plan.json"
+          },
+          "getPSDEOPPriv" : {
+            "modelref" : true,
+            "id" : "UPDATE"
           },
           "getPSSysImage" : {
             "glyph" : "xf014@FontAwesome",
@@ -194,7 +204,6 @@
     },
     "width" : 200,
     "widthUnit" : "PX",
-    "enableRowEdit" : true,
     "enableSort" : true
   }, {
     "align" : "LEFT",
@@ -326,31 +335,6 @@
     }
   } ],
   "getPSDEGridEditItems" : [ {
-    "caption" : "类别",
-    "codeName" : "categorys",
-    "enableCond" : 3,
-    "ignoreInput" : 0,
-    "name" : "categorys",
-    "getPSAppDEField" : {
-      "name" : "CATEGORIES",
-      "codeName" : "categories"
-    },
-    "getPSEditor" : {
-      "editorParams" : {
-        "readonly" : "true"
-      },
-      "editorType" : "MDROPDOWNLIST",
-      "name" : "categorys",
-      "getPSAppCodeList" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__category.json"
-      },
-      "readOnly" : true,
-      "singleSelect" : false
-    },
-    "allowEmpty" : true,
-    "needCodeListConfig" : true
-  }, {
     "caption" : "负责人",
     "codeName" : "assignee_name",
     "enableCond" : 3,
@@ -411,6 +395,7 @@
     },
     "allowEmpty" : true
   } ],
+  "pagingMode" : 1,
   "pagingSize" : 20,
   "getRemovePSControlAction" : {
     "actionName" : "Remove",
@@ -445,6 +430,7 @@
   "enableColFilter" : false,
   "enableCustomized" : true,
   "enableGroup" : false,
+  "enableItemPrivilege" : true,
   "enablePagingBar" : true,
   "enableRowEdit" : true,
   "enableRowEditOrder" : false,

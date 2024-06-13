@@ -29,6 +29,7 @@
       "internalLogic" : true
     } ],
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -62,6 +63,7 @@
       "internalLogic" : true
     } ],
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -86,6 +88,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -114,6 +117,15 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/fill_latest_executed.json"
+      },
+      "internalLogic" : true
+    }, {
+      "actionLogicType" : 1,
+      "attachMode" : "AFTER",
+      "name" : "附加逻辑",
+      "getPSDELogic" : {
+        "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/create_recent.json"
       },
       "internalLogic" : true
@@ -123,11 +135,12 @@
       "name" : "附加逻辑",
       "getPSDELogic" : {
         "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/get_baseline_name.json"
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/get_library_member.json"
       },
       "internalLogic" : true
     } ],
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -153,6 +166,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -178,6 +192,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -199,6 +214,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -221,6 +237,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "case_move_plan",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/case_move_plan.json",
     "logicName" : "移入计划",
     "name" : "case_move_plan",
@@ -247,6 +264,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "DELOGIC",
     "codeName" : "choose_case_template",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/choose_case_template.json",
     "logicName" : "选择用例模板",
     "name" : "choose_case_template",
@@ -276,6 +294,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "copy_case",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/copy_case.json",
     "logicName" : "复制用例",
     "name" : "copy_case",
@@ -301,33 +320,8 @@
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
-    "codeName" : "del_relation",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/del_relation.json",
-    "logicName" : "取消关联",
-    "name" : "del_relation",
-    "getPSDEActionInput" : {
-      "name" : "Del_relationInput",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "test_case_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEActionReturn" : {
-      "name" : "Del_relationResult",
-      "type" : "VOID"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/del_relation.json"
-    },
-    "enableAudit" : true,
-    "enableFront" : false
-  }, {
-    "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
-    "actionType" : "DELOGIC",
     "codeName" : "delete",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/delete.json",
     "logicName" : "删除",
     "name" : "delete",
@@ -351,35 +345,67 @@
     "enableFront" : false
   }, {
     "actionHolder" : 1,
-    "actionMode" : "CUSTOM",
-    "actionType" : "DELOGIC",
-    "codeName" : "fill_library_member",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/fill_library_member.json",
-    "logicName" : "获取测试库成员",
-    "name" : "fill_library_member",
+    "actionMode" : "READ",
+    "actionType" : "BUILTIN",
+    "codeName" : "get_attention",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/get_attention.json",
+    "logicName" : "获取关注人",
+    "name" : "get_attention",
     "getPSDEActionInput" : {
-      "name" : "Fill_library_memberInput",
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "Get_attentionInput",
+      "type" : "KEYFIELD"
+    },
+    "getPSDEActionReturn" : {
+      "name" : "Get_attentionResult",
       "getPSDEMethodDTO" : {
         "modelref" : true,
         "id" : "test_case_dto"
       },
       "type" : "DTO"
     },
+    "builtinAction" : true,
+    "enableFront" : false
+  }, {
+    "actionHolder" : 1,
+    "actionMode" : "READ",
+    "actionType" : "DELOGIC",
+    "codeName" : "get_baseline_name",
+    "dataAccessAction" : "READ",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/get_baseline_name.json",
+    "logicName" : "获取基线名称",
+    "name" : "get_baseline_name",
+    "getPSDEActionInput" : {
+      "getKeyPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "name" : "Get_baseline_nameInput",
+      "type" : "KEYFIELD"
+    },
     "getPSDEActionReturn" : {
-      "name" : "Fill_library_memberResult",
-      "type" : "VOID"
+      "name" : "Get_baseline_nameResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "DTO"
     },
     "getPSDELogic" : {
       "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/get_library_member.json"
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/get_baseline_name.json"
     },
-    "enableAudit" : true,
     "enableFront" : false
   }, {
     "actionHolder" : 1,
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "move_case",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/move_case.json",
     "logicName" : "移动用例",
     "name" : "move_case",
@@ -406,6 +432,7 @@
     "actionMode" : "READ",
     "actionType" : "DELOGIC",
     "codeName" : "newest_run",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/newest_run.json",
     "logicName" : "获取最近执行",
     "name" : "newest_run",
@@ -461,6 +488,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "DELOGIC",
     "codeName" : "others_relation_case",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/others_relation_case.json",
     "logicName" : "其他实体关联用例",
     "name" : "others_relation_case",
@@ -488,6 +516,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "program_test_case",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/program_test_case.json",
     "logicName" : "规划用例",
     "name" : "program_test_case",
@@ -514,6 +543,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "recover",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/recover.json",
     "logicName" : "恢复",
     "name" : "recover",
@@ -540,6 +570,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "set_level",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/set_level.json",
     "logicName" : "设置重要程度",
     "name" : "set_level",
@@ -566,6 +597,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "set_maintenance",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/set_maintenance.json",
     "logicName" : "设置维护人",
     "name" : "set_maintenance",
@@ -592,6 +624,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "set_state",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/set_state.json",
     "logicName" : "设置评审状态",
     "name" : "set_state",
@@ -618,6 +651,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "test_case_re_counters",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEACTIONS/test_case_re_counters.json",
     "logicName" : "测试用例关联分页计数器",
     "name" : "test_case_re_counters",
@@ -697,20 +731,20 @@
       "name" : "ID",
       "codeName" : "id"
     }, {
-      "name" : "CREATE_TIME",
-      "codeName" : "create_time"
-    }, {
       "name" : "CREATE_MAN",
       "codeName" : "create_man"
     }, {
-      "name" : "NAME",
-      "codeName" : "name"
+      "name" : "CREATE_TIME",
+      "codeName" : "create_time"
+    }, {
+      "name" : "UPDATE_MAN",
+      "codeName" : "update_man"
     }, {
       "name" : "UPDATE_TIME",
       "codeName" : "update_time"
     }, {
-      "name" : "UPDATE_MAN",
-      "codeName" : "update_man"
+      "name" : "NAME",
+      "codeName" : "name"
     }, {
       "name" : "TEST_LIBRARY_ID",
       "codeName" : "Test_library_id"
@@ -762,19 +796,16 @@
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem0430858164.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem0507181009.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem0507547821.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem0601160404.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem1222590305.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem1222696693.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem1225422784.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem1225750118.json"
-  }, {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDEDRITEMS/UsrDRItem1229604456.json"
   } ],
   "getAllPSDEDataImports" : [ {
     "batchSize" : 1000,
@@ -789,6 +820,10 @@
       "caption" : "模块",
       "name" : "SUITE_ID",
       "orderValue" : 100,
+      "getPSCodeList" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSCODELISTS/test_suite_upload.json"
+      },
       "getPSDEField" : {
         "name" : "SUITE_ID",
         "codeName" : "Suite_id"
@@ -870,12 +905,12 @@
         "codeName" : "precondition"
       }
     }, {
-      "caption" : "步骤描述",
-      "name" : "STEPS",
+      "caption" : "步骤",
+      "name" : "STEPS_IMP",
       "orderValue" : 190,
       "getPSDEField" : {
-        "name" : "STEPS",
-        "codeName" : "steps"
+        "name" : "STEPS_IMP",
+        "codeName" : "steps_imp"
       }
     }, {
       "caption" : "关注人",
@@ -2841,35 +2876,6 @@
     "enableFront" : true,
     "enableGroup" : true
   }, {
-    "actionHolder" : 1,
-    "codeName" : "case_latest_result",
-    "dataSetType" : "DELOGIC",
-    "logicName" : "获取最新执行结果",
-    "name" : "case_latest_result",
-    "getPSDEDataSetInput" : {
-      "name" : "Case_latest_resultInput",
-      "getPSDEFilterDTO" : {
-        "modelref" : true,
-        "id" : "test_case_filter_dto"
-      },
-      "type" : "DTO"
-    },
-    "getPSDEDataSetReturn" : {
-      "name" : "Case_latest_resultResult",
-      "getPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "test_case_dto"
-      },
-      "type" : "PAGE"
-    },
-    "getPSDELogic" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/case_latest_result.json"
-    },
-    "predefinedType" : "DELOGIC",
-    "enableBackend" : true,
-    "enableFront" : false
-  }, {
     "codeName" : "comment_notify_maintenance",
     "logicName" : "评论通知维护人",
     "name" : "comment_notify_maintenance",
@@ -3213,10 +3219,10 @@
   }, {
     "codeName" : "normal",
     "logicName" : "正常状态",
-    "majorSortDir" : "ASC",
+    "majorSortDir" : "DESC",
     "getMajorSortPSDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
     },
     "name" : "normal",
     "getPSDEDataQueries" : [ {
@@ -3429,10 +3435,10 @@
   }, {
     "codeName" : "recent_test_case",
     "logicName" : "最近浏览",
-    "majorSortDir" : "ASC",
+    "majorSortDir" : "DESC",
     "getMajorSortPSDEField" : {
-      "name" : "IDENTIFIER",
-      "codeName" : "identifier"
+      "name" : "SHOW_IDENTIFIER",
+      "codeName" : "show_identifier"
     },
     "name" : "recent_test_case",
     "getPSDEDataQueries" : [ {
@@ -3457,6 +3463,35 @@
     },
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "review_data",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "评审数据",
+    "name" : "review_data",
+    "getPSDEDataSetInput" : {
+      "name" : "Review_dataInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "test_case_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Review_dataResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "test_case_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/set_change_type.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
   }, {
     "codeName" : "suites_test_case",
     "logicName" : "当前模块下用例",
@@ -4727,6 +4762,23 @@
       "name" : "N_MAINTENANCE_ID_EQ",
       "stdDataType" : 25,
       "valueOP" : "EQ"
+    }, {
+      "codeName" : "N_MAINTENANCE_ID_IN",
+      "name" : "N_MAINTENANCE_ID_IN",
+      "stdDataType" : 25,
+      "valueOP" : "IN",
+      "array" : true
+    }, {
+      "codeName" : "N_MAINTENANCE_ID_NOTEQ",
+      "name" : "N_MAINTENANCE_ID_NOTEQ",
+      "stdDataType" : 25,
+      "valueOP" : "NOTEQ"
+    }, {
+      "codeName" : "N_MAINTENANCE_ID_NOTIN",
+      "name" : "N_MAINTENANCE_ID_NOTIN",
+      "stdDataType" : 25,
+      "valueOP" : "NOTIN",
+      "array" : true
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "Default",
@@ -5997,7 +6049,8 @@
       "dBType" : "MYSQL5",
       "name" : "REVIEW_RESULT_STATE",
       "queryCodeExp" : "t1.`REVIEW_RESULT_STATE`",
-      "standardColumnName" : "`REVIEW_RESULT_STATE`"
+      "standardColumnName" : "`REVIEW_RESULT_STATE`",
+      "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
       "codeName" : "N_REVIEW_RESULT_STATE_EQ",
@@ -6060,10 +6113,15 @@
     "codeName" : "review_result_state",
     "dEFType" : 1,
     "dataType" : "SSCODELIST",
+    "defaultValue" : "1",
     "importOrder" : 1000,
     "length" : 60,
     "logicName" : "评审结果",
     "name" : "REVIEW_RESULT_STATE",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSCODELISTS/review_result.json"
+    },
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
@@ -6182,15 +6240,11 @@
     } ],
     "codeName" : "latest_executed",
     "dEFType" : 5,
-    "dataType" : "ONE2MANYDATA",
+    "dataType" : "ONE2MANYOBJ",
     "importOrder" : 1000,
     "length" : 1048576,
     "logicName" : "最新执行结果",
     "name" : "LATEST_EXECUTED",
-    "getPSDER" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DERCUSTOM_TEST_CASE_RUN.json"
-    },
     "serviceCodeName" : "latest_executed",
     "stdDataType" : 21,
     "stringLength" : 1048576,
@@ -6252,6 +6306,76 @@
     "valueFormat" : "%1$s",
     "dynaStorageDEField" : true,
     "enableAudit" : true
+  }, {
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[STEPS_IMP][步骤]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[STEPS_IMP][步骤]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[STEPS_IMP][步骤]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[STEPS_IMP][步骤]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "STEPS_IMP",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "steps_imp",
+    "dEFType" : 5,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "步骤",
+    "name" : "STEPS_IMP",
+    "getPSSysTranslator" : {
+      "modelref" : true,
+      "path" : "PSSYSTRANSLATORS/CaseStepImp.json"
+    },
+    "serviceCodeName" : "steps_imp",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "translatorMode" : "TRANSLATE",
+    "valueFormat" : "%1$s",
+    "viewLevel" : 0,
+    "phisicalDEField" : false,
+    "uIAssistDEField" : true
   }, {
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
@@ -6627,105 +6751,6 @@
     "pasteReset" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "CREATE_TIME",
-      "dBType" : "MYSQL5",
-      "name" : "CREATE_TIME",
-      "queryCodeExp" : "t1.`CREATE_TIME`",
-      "standardColumnName" : "`CREATE_TIME`"
-    } ],
-    "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_CREATE_TIME_EQ",
-      "name" : "N_CREATE_TIME_EQ",
-      "stdDataType" : 5,
-      "valueOP" : "EQ"
-    }, {
-      "codeName" : "N_CREATE_TIME_GTANDEQ",
-      "name" : "N_CREATE_TIME_GTANDEQ",
-      "stdDataType" : 5,
-      "valueOP" : "GTANDEQ"
-    }, {
-      "codeName" : "N_CREATE_TIME_LTANDEQ",
-      "name" : "N_CREATE_TIME_LTANDEQ",
-      "getPSSysTranslator" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSSYSTRANSLATORS/EndOfDay.json"
-      },
-      "stdDataType" : 5,
-      "valueOP" : "LTANDEQ"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[CREATE_TIME][建立时间]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]移动端默认",
-        "uIMode" : "MOBILEDEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false,
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[CREATE_TIME][建立时间]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.CREATE_TIME"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[CREATE_TIME][建立时间]",
-        "uIMode" : "DEFAULT",
-        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组"
-      },
-      "ruleInfo" : "默认规则",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "create_time",
-    "dEFType" : 1,
-    "dataType" : "DATETIME",
-    "importOrder" : 1000,
-    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.CREATE_TIME"
-    },
-    "logicName" : "建立时间",
-    "name" : "CREATE_TIME",
-    "getPSDEDBTable" : {
-      "modelref" : true,
-      "id" : "Table"
-    },
-    "getPSSysDBColumn" : {
-      "modelref" : true,
-      "id" : "CREATE_TIME"
-    },
-    "predefinedType" : "CREATEDATE",
-    "serviceCodeName" : "create_time",
-    "stdDataType" : 5,
-    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
-    "allowEmpty" : false,
-    "systemReserver" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
       "columnName" : "CREATE_MAN",
       "dBType" : "MYSQL5",
       "name" : "CREATE_MAN",
@@ -6827,115 +6852,42 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "NAME",
+      "columnName" : "CREATE_TIME",
       "dBType" : "MYSQL5",
-      "name" : "NAME",
-      "queryCodeExp" : "t1.`NAME`",
-      "standardColumnName" : "`NAME`"
+      "name" : "CREATE_TIME",
+      "queryCodeExp" : "t1.`CREATE_TIME`",
+      "standardColumnName" : "`CREATE_TIME`"
     } ],
     "getAllPSDEFSearchModes" : [ {
-      "codeName" : "N_NAME_LIKE",
-      "name" : "N_NAME_LIKE",
-      "stdDataType" : 25,
-      "valueOP" : "LIKE"
-    } ],
-    "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[NAME][名称]移动端默认",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "MobileDefault",
-        "editorType" : "MOBTEXT",
-        "name" : "[NAME][名称]移动端默认",
-        "stringLength" : 200,
-        "uIMode" : "MOBILEDEFAULT",
-        "mobileMode" : true
-      },
-      "type" : "MOBILEDEFAULT",
-      "mobileMode" : true
+      "codeName" : "N_CREATE_TIME_EQ",
+      "name" : "N_CREATE_TIME_EQ",
+      "stdDataType" : 5,
+      "valueOP" : "EQ"
     }, {
-      "codeName" : "Default",
-      "name" : "[NAME][名称]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.NAME"
-        },
-        "codeName" : "Default",
-        "editorType" : "TEXTBOX",
-        "name" : "[NAME][名称]",
-        "stringLength" : 200,
-        "uIMode" : "DEFAULT"
+      "codeName" : "N_CREATE_TIME_GTANDEQ",
+      "name" : "N_CREATE_TIME_GTANDEQ",
+      "stdDataType" : 5,
+      "valueOP" : "GTANDEQ"
+    }, {
+      "codeName" : "N_CREATE_TIME_LTANDEQ",
+      "name" : "N_CREATE_TIME_LTANDEQ",
+      "getPSSysTranslator" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSSYSTRANSLATORS/EndOfDay.json"
       },
-      "type" : "DEFAULT"
-    } ],
-    "getAllPSDEFValueRules" : [ {
-      "codeName" : "Default",
-      "name" : "默认规则",
-      "getPSDEFVRGroupCondition" : {
-        "condOp" : "AND",
-        "condType" : "GROUP",
-        "name" : "默认组",
-        "getPSDEFVRConditions" : [ {
-          "condType" : "STRINGLENGTH",
-          "dEFName" : "NAME",
-          "maxValue" : 200,
-          "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[200]",
-          "includeMaxValue" : true,
-          "includeMinValue" : false,
-          "keyCond" : true
-        } ],
-        "ruleInfo" : "内容长度必须小于等于[200]"
-      },
-      "ruleInfo" : "内容长度必须小于等于[200]",
-      "checkDefault" : true,
-      "defaultMode" : true,
-      "enableBackend" : true,
-      "enableFront" : true
-    } ],
-    "codeName" : "name",
-    "dEFType" : 1,
-    "dataType" : "TEXT",
-    "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.NAME"
-    },
-    "length" : 200,
-    "logicName" : "名称",
-    "name" : "NAME",
-    "getPSDEDBTable" : {
-      "modelref" : true,
-      "id" : "Table"
-    },
-    "getPSSysDBColumn" : {
-      "modelref" : true,
-      "id" : "NAME"
-    },
-    "serviceCodeName" : "name",
-    "stdDataType" : 25,
-    "stringLength" : 200,
-    "valueFormat" : "%1$s",
-    "enableAudit" : true
-  }, {
-    "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_TIME",
-      "dBType" : "MYSQL5",
-      "name" : "UPDATE_TIME",
-      "queryCodeExp" : "t1.`UPDATE_TIME`",
-      "standardColumnName" : "`UPDATE_TIME`"
+      "stdDataType" : 5,
+      "valueOP" : "LTANDEQ"
     } ],
     "getAllPSDEFUIModes" : [ {
       "codeName" : "MobileDefault",
-      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "name" : "[CREATE_TIME][建立时间]移动端默认",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "MobileDefault",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "name" : "[CREATE_TIME][建立时间]移动端默认",
         "uIMode" : "MOBILEDEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false,
@@ -6945,14 +6897,14 @@
       "mobileMode" : true
     }, {
       "codeName" : "Default",
-      "name" : "[UPDATE_TIME][更新时间]",
+      "name" : "[CREATE_TIME][建立时间]",
       "getPSDEFFormItem" : {
         "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+          "lanResTag" : "DEF.LNAME.CREATE_TIME"
         },
         "codeName" : "Default",
         "editorType" : "SPAN",
-        "name" : "[UPDATE_TIME][更新时间]",
+        "name" : "[CREATE_TIME][建立时间]",
         "uIMode" : "DEFAULT",
         "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
         "allowEmpty" : false
@@ -6973,26 +6925,26 @@
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_time",
+    "codeName" : "create_time",
     "dEFType" : 1,
     "dataType" : "DATETIME",
     "importOrder" : 1000,
     "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
     "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+      "lanResTag" : "DEF.LNAME.CREATE_TIME"
     },
-    "logicName" : "更新时间",
-    "name" : "UPDATE_TIME",
+    "logicName" : "建立时间",
+    "name" : "CREATE_TIME",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "UPDATE_TIME"
+      "id" : "CREATE_TIME"
     },
-    "predefinedType" : "UPDATEDATE",
-    "serviceCodeName" : "update_time",
+    "predefinedType" : "CREATEDATE",
+    "serviceCodeName" : "create_time",
     "stdDataType" : 5,
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
@@ -7092,6 +7044,178 @@
     "valueFormat" : "%1$s",
     "allowEmpty" : false,
     "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_TIME",
+      "dBType" : "MYSQL5",
+      "name" : "UPDATE_TIME",
+      "queryCodeExp" : "t1.`UPDATE_TIME`",
+      "standardColumnName" : "`UPDATE_TIME`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_TIME][更新时间]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]移动端默认",
+        "uIMode" : "MOBILEDEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_TIME][更新时间]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_TIME][更新时间]",
+        "uIMode" : "DEFAULT",
+        "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组"
+      },
+      "ruleInfo" : "默认规则",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "update_time",
+    "dEFType" : 1,
+    "dataType" : "DATETIME",
+    "importOrder" : 1000,
+    "jsonFormat" : "yyyy-MM-dd HH:mm:ss",
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_TIME"
+    },
+    "logicName" : "更新时间",
+    "name" : "UPDATE_TIME",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "UPDATE_TIME"
+    },
+    "predefinedType" : "UPDATEDATE",
+    "serviceCodeName" : "update_time",
+    "stdDataType" : 5,
+    "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
+    "allowEmpty" : false,
+    "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "NAME",
+      "dBType" : "MYSQL5",
+      "name" : "NAME",
+      "queryCodeExp" : "t1.`NAME`",
+      "standardColumnName" : "`NAME`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_NAME_LIKE",
+      "name" : "N_NAME_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[NAME][名称]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "MOBTEXT",
+        "name" : "[NAME][名称]移动端默认",
+        "stringLength" : 200,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[NAME][名称]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.NAME"
+        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[NAME][名称]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "NAME",
+          "maxValue" : 200,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[200]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[200]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[200]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "name",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.NAME"
+    },
+    "length" : 200,
+    "logicName" : "名称",
+    "name" : "NAME",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "NAME"
+    },
+    "serviceCodeName" : "name",
+    "stdDataType" : 25,
+    "stringLength" : 200,
+    "valueFormat" : "%1$s",
+    "enableAudit" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "TEST_LIBRARY_ID",
@@ -8070,135 +8194,6 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
-    "codeName" : "case_latest_result",
-    "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/case_latest_result.json",
-    "logicName" : "获取最新执行结果",
-    "name" : "获取最新执行结果",
-    "getPSDELogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREPARAM1",
-      "leftPos" : 430,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "size",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "run_filter"
-        },
-        "name" : "直接值[1] ==> run_filter[size]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "1",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "N_STATUS_ISNOTNULL",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "run_filter"
-        },
-        "name" : "直接值[1] ==> run_filter[N_STATUS_ISNOTNULL]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "1",
-        "srcValueType" : "SRCVALUE"
-      }, {
-        "dstFieldName" : "sort",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "run_filter"
-        },
-        "name" : "直接值[executed_at,desc] ==> run_filter[sort]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "executed_at,desc",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 390
-    }, {
-      "codeName" : "DEDATASET1",
-      "getDstPSDEDataSet" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_filter"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-      },
-      "leftPos" : 450,
-      "logicNodeType" : "DEDATASET",
-      "name" : "实体数据集",
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_page"
-      },
-      "topPos" : 480
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 150,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "topPos" : 500
-    } ],
-    "getPSDELogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      },
-      "default" : true,
-      "filterParam" : true
-    }, {
-      "codeName" : "run_filter",
-      "logicName" : "执行用例过滤器",
-      "name" : "执行用例过滤器",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-      },
-      "filterParam" : true
-    }, {
-      "codeName" : "run_page",
-      "logicName" : "执行用例分页结果变量",
-      "name" : "执行用例分页结果变量",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-      },
-      "entityPageParam" : true
-    } ],
-    "getStartPSDELogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    },
-    "enableBackend" : true,
-    "enableFront" : false
-  }, {
     "codeName" : "case_move_plan",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/case_move_plan.json",
@@ -8777,16 +8772,17 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/choose_case_template.json",
     "logicName" : "选择用例模板",
+    "memo" : "获取选中模板并返回详情",
     "name" : "选择用例模板",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 130,
+      "leftPos" : 320,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "PREPAREPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -8798,7 +8794,7 @@
       "parallelOutput" : true
     }, {
       "codeName" : "END1",
-      "leftPos" : 1260,
+      "leftPos" : 910,
       "logicNodeType" : "END",
       "name" : "结束",
       "getReturnParam" : {
@@ -8808,31 +8804,10 @@
       "returnType" : "LOGICPARAM",
       "topPos" : 200
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 224,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 440,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "获取选中数据ID",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -8876,11 +8851,11 @@
       },
       "leftPos" : 683,
       "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
+      "name" : "获取选中模板详情",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM2"
+          "id" : "END1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -8892,27 +8867,6 @@
         "modelref" : true,
         "id" : "choosed_data"
       },
-      "topPos" : 208
-    }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "choosed_data"
-      },
-      "leftPos" : 919,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "输出选中数据",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
       "topPos" : 208
     } ],
     "getPSDELogicParams" : [ {
@@ -9929,223 +9883,6 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
-    "codeName" : "del_relation",
-    "defaultParamName" : "Default",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/del_relation.json",
-    "logicName" : "取消关联",
-    "memo" : "测试用例取消关联数据（正反向关联数据同时删除）",
-    "name" : "取消关联",
-    "getPSDELogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : -40
-    }, {
-      "codeName" : "PREPAREPARAM1",
-      "leftPos" : 160,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "填充正反关联对象的主要关联属性",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "PRINCIPAL_ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "reverse_relation_obj"
-        },
-        "name" : "Default[principal_id] ==> reverse_relation_obj[PRINCIPAL_ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "principal_id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "TARGET_ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "forward_relation_obj"
-        },
-        "name" : "Default[principal_id] ==> forward_relation_obj[TARGET_ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "principal_id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "PRINCIPAL_ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "forward_relation_obj"
-        },
-        "name" : "Default[ID] ==> forward_relation_obj[PRINCIPAL_ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "TARGET_ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "reverse_relation_obj"
-        },
-        "name" : "Default[ID] ==> reverse_relation_obj[TARGET_ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "ID",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 69
-    }, {
-      "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\"));\r\n}",
-      "codeName" : "RAWSFCODE1",
-      "codeType" : "JavaScript",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "拼接关联对象的主键",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : 170
-    }, {
-      "codeName" : "DEACTION2",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEACTIONS/Remove.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "forward_relation_obj"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "删除正向关联",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION2"
-        }
-      } ],
-      "topPos" : 268
-    }, {
-      "codeName" : "DEACTION3",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation/PSDEACTIONS/Remove.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reverse_relation_obj"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEACTION",
-      "name" : "删除反向关联",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION3"
-        }
-      } ],
-      "topPos" : 360
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 460
-    } ],
-    "getPSDELogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      },
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "forward_relation_obj",
-      "logicName" : "正向关联对象",
-      "name" : "正向关联对象",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      },
-      "entityParam" : true
-    }, {
-      "codeName" : "reverse_relation_obj",
-      "logicName" : "反向关联对象",
-      "name" : "反向关联对象",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
-      },
-      "entityParam" : true
-    } ],
-    "getStartPSDELogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    },
-    "enableBackend" : true,
-    "enableFront" : false
-  }, {
     "codeName" : "delete",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/delete.json",
@@ -10591,6 +10328,65 @@
     "enableBackend" : true,
     "enableFront" : false
   }, {
+    "codeName" : "fill_latest_executed",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/fill_latest_executed.json",
+    "logicName" : "填充最近执行",
+    "memo" : "填充最近执行",
+    "name" : "填充最近执行",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "code" : "def _default = logic.param(\"Default\").real;\r\ndef _id = _default.get(\"id\");\r\ndef cur_version_id = _default.get(\"cur_version_id\");\r\ndef runDERuntime = sys.dataentity(\"RUN\");\r\ndef searchContextDTO = runDERuntime.createSearchContext();\r\nsearchContextDTO.limit(1).count(false).eq(\"case_id\",_id).nn(\"status\").sort(\"executed_at,desc\");\r\ndef args = [searchContextDTO,\"SRFVERSIONID\",cur_version_id] as Object[];\r\ndef page = runDERuntime.fetchDataSet(\"Default\", null, args);\r\n_default.set(\"latest_executed\", page.getContent());",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "Groovy",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 290,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "topPos" : 340
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "default" : true,
+      "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
     "codeName" : "get_baseline_name",
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/get_baseline_name.json",
@@ -10676,12 +10472,12 @@
         "srcValue" : "create_time,desc",
         "srcValueType" : "SRCVALUE"
       }, {
-        "dstFieldName" : "TARGET_VERSION_ID",
+        "dstFieldName" : "n_target_version_id_eq",
         "getDstPSDELogicParam" : {
           "modelref" : true,
           "id" : "relation_filter"
         },
-        "name" : "Default[CUR_VERSION_ID] ==> relation_filter[TARGET_VERSION_ID]",
+        "name" : "Default[CUR_VERSION_ID] ==> relation_filter[n_target_version_id_eq]",
         "paramAction" : "SETPARAMVALUE",
         "srcFieldName" : "CUR_VERSION_ID",
         "getSrcPSDELogicParam" : {
@@ -10959,19 +10755,86 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/get_library_member.json",
     "logicName" : "获取测试库成员",
-    "memo" : "获取测试库成员信息，用于判断当前登陆者权限",
+    "memo" : "获取测试库成员信息，用于判断当前用户权限",
     "name" : "获取测试库成员",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : -130,
+      "leftPos" : -140,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM3"
+          "id" : "RAWSFCODE3"
         },
         "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_DELETED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_DELETED] 等于(=) 0",
+            "paramValue" : "0"
+          }, {
+            "condOP" : "EQ",
+            "dstFieldName" : "IS_ARCHIVED",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[IS_ARCHIVED] 等于(=) 0",
+            "paramValue" : "0"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE4"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "groupOP" : "OR",
+            "logicType" : "GROUP",
+            "name" : "OR",
+            "getPSDELogicLinkConds" : [ {
+              "condOP" : "EQ",
+              "dstFieldName" : "IS_ARCHIVED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[IS_ARCHIVED] 等于(=) 1",
+              "paramValue" : "1"
+            }, {
+              "condOP" : "EQ",
+              "dstFieldName" : "IS_DELETED",
+              "getDstLogicParam" : {
+                "modelref" : true,
+                "id" : "Default"
+              },
+              "logicType" : "SINGLE",
+              "name" : "Default[IS_DELETED] 等于(=) 1",
+              "paramValue" : "1"
+            } ]
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "Begin"
@@ -10980,31 +10843,76 @@
       "topPos" : -80,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEBUGPARAM3",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -27,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
+      "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
+      "codeName" : "RAWSFCODE3",
+      "codeType" : "Groovy",
+      "leftPos" : 66,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "判断系统管理员身份",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
           "id" : "PREPAREPARAM2"
         },
-        "name" : "连接名称",
+        "name" : "非系统管理员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 值为空(Nil)"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM3"
+          "id" : "RAWSFCODE3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "系统管理员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 等于(=) false",
+            "paramValue" : "false"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
         }
       } ],
       "topPos" : -72
     }, {
+      "codeName" : "END2",
+      "leftPos" : 106,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 79
+    }, {
       "codeName" : "PREPAREPARAM2",
-      "leftPos" : 184,
+      "leftPos" : 284,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "获取产品ID",
+      "name" : "获取测试库ID并设置过滤参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -11017,28 +10925,14 @@
         }
       } ],
       "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "library_info"
-        },
-        "name" : "Default[test_library_id] ==> library_info[ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "test_library_id",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
         "dstFieldName" : "N_LIBRARY_ID_EQ",
         "getDstPSDELogicParam" : {
           "modelref" : true,
           "id" : "filter"
         },
-        "name" : "Default[test_library_id] ==> filter[N_LIBRARY_ID_EQ]",
+        "name" : "Default[product_id] ==> filter[N_LIBRARY_ID_EQ]",
         "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "test_library_id",
+        "srcFieldName" : "product_id",
         "getSrcPSDELogicParam" : {
           "modelref" : true,
           "id" : "Default"
@@ -11057,69 +10951,6 @@
       } ],
       "topPos" : -72
     }, {
-      "codeName" : "DEBUGPARAM6",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_obj"
-      },
-      "leftPos" : 492,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM9"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "role_id",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "for_obj"
-            },
-            "logicType" : "SINGLE",
-            "name" : "for_obj[role_id] 等于(=) user",
-            "paramValue" : "user"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM6"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM10"
-        },
-        "name" : "连接名称",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "role_id",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "for_obj"
-            },
-            "logicType" : "SINGLE",
-            "name" : "for_obj[role_id] 等于(=) reader",
-            "paramValue" : "reader"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM6"
-        }
-      } ],
-      "topPos" : -346
-    }, {
       "codeName" : "DEDATASET3",
       "getDstPSDEDataSet" : {
         "modelref" : true,
@@ -11135,21 +10966,11 @@
       },
       "leftPos" : 492,
       "logicNodeType" : "DEDATASET",
-      "name" : "实体数据集",
+      "name" : "查询当前用户是否为测试库成员",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "LOOPSUBCALL3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET3"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM8"
+          "id" : "RAWSFCODE1"
         },
         "name" : "不在测试库中的成员",
         "getPSDELogicLinkGroupCond" : {
@@ -11172,6 +10993,32 @@
           "modelref" : true,
           "id" : "DEDATASET3"
         }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "当前用户为测试库成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "size",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "members"
+            },
+            "logicType" : "SINGLE",
+            "name" : "members[size] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        }
       } ],
       "getRetPSDELogicParam" : {
         "modelref" : true,
@@ -11179,64 +11026,84 @@
       },
       "topPos" : -72
     }, {
-      "codeName" : "LOOPSUBCALL3",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_obj"
-      },
+      "codeName" : "PREPAREPARAM5",
       "leftPos" : 492,
-      "logicNodeType" : "LOOPSUBCALL",
-      "name" : "循环子调用",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "LOOPSUBCALL3"
-        },
-        "subCallLink" : true
-      } ],
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "members"
-      },
-      "topPos" : -217
-    }, {
-      "codeName" : "PREPAREPARAM10",
-      "leftPos" : 750,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "只读",
+      "name" : "绑定用户数据到for_obj",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "END6"
+          "id" : "RAWSFCODE2"
         },
-        "name" : "连接名称",
+        "name" : "非只读成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "role_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[role_id] 不等于(<>) reader",
+            "paramValue" : "reader"
+          } ]
+        },
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM10"
+          "id" : "PREPAREPARAM5"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "只读成员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "role_id",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[role_id] 等于(=) reader",
+            "paramValue" : "reader"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
         }
       } ],
       "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "readonly",
         "getDstPSDELogicParam" : {
           "modelref" : true,
-          "id" : "user"
+          "id" : "for_obj"
         },
-        "name" : "直接值[true] ==> user[readonly]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
+        "name" : "members[0] ==> for_obj",
+        "paramAction" : "BINDPARAM",
+        "srcFieldName" : "0",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "members"
+        },
+        "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : -210
+      "topPos" : -336
     }, {
-      "codeName" : "PREPAREPARAM8",
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "codeName" : "RAWSFCODE1",
       "leftPos" : 756,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "只读",
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只读权限",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -11245,26 +11112,16 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM8"
+          "id" : "RAWSFCODE1"
         }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "readonly",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "user"
-        },
-        "name" : "直接值[true] ==> user[readonly]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : -72
     }, {
-      "codeName" : "PREPAREPARAM9",
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);",
+      "codeName" : "RAWSFCODE2",
       "leftPos" : 756,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "非只读",
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "非只读权限",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -11273,19 +11130,8 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREPARAM9"
+          "id" : "RAWSFCODE2"
         }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "readonly",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "user"
-        },
-        "name" : "直接值[false] ==> user[readonly]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : -336
     }, {
@@ -11295,10 +11141,17 @@
       "name" : "结束",
       "getReturnParam" : {
         "modelref" : true,
-        "id" : "user"
+        "id" : "Default"
       },
       "returnType" : "LOGICPARAM",
-      "topPos" : -217
+      "topPos" : -220
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);",
+      "codeName" : "RAWSFCODE4",
+      "leftPos" : -180,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "topPos" : 109
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -11325,15 +11178,6 @@
       "name" : "循环临时变量",
       "entityParam" : true
     }, {
-      "codeName" : "library_info",
-      "logicName" : "测试库信息",
-      "name" : "测试库信息",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library.json"
-      },
-      "entityParam" : true
-    }, {
       "codeName" : "members",
       "logicName" : "成员",
       "name" : "成员",
@@ -11342,30 +11186,6 @@
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
       },
       "entityPageParam" : true
-    }, {
-      "codeName" : "ticket",
-      "logicName" : "工单",
-      "name" : "工单",
-      "getParamPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-      },
-      "entityParam" : true
-    }, {
-      "codeName" : "user",
-      "logicName" : "当前登录人",
-      "name" : "当前登录人",
-      "entityParam" : true
-    }, {
-      "codeName" : "viewctx",
-      "logicName" : "viewctx",
-      "name" : "viewctx",
-      "appContextParam" : true
-    }, {
-      "codeName" : "webctx",
-      "logicName" : "webctx",
-      "name" : "webctx",
-      "webContextParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
@@ -11844,7 +11664,7 @@
           "modelref" : true,
           "id" : "PREPAREPARAM2"
         },
-        "name" : "连接名称",
+        "name" : "用例模块标识不为空",
         "getPSDELogicLinkGroupCond" : {
           "groupOP" : "AND",
           "logicType" : "GROUP",
@@ -11867,9 +11687,9 @@
       }, {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM2"
+          "id" : "DEACTION1"
         },
-        "name" : "连接名称",
+        "name" : "用例模块标识为空",
         "getPSDELogicLinkGroupCond" : {
           "groupOP" : "AND",
           "logicType" : "GROUP",
@@ -11937,11 +11757,11 @@
       "leftPos" : 1000,
       "logicNodeType" : "PREPAREPARAM",
       "memo" : "设置模块ID",
-      "name" : "准备参数",
+      "name" : "设置用例模块标识",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM2"
+          "id" : "DEACTION1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -11966,27 +11786,6 @@
       } ],
       "topPos" : 500
     }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "temp_obj"
-      },
-      "leftPos" : 880,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "输出当前待修改数据",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 670
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSDEAction" : {
         "modelref" : true,
@@ -12000,10 +11799,10 @@
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
       },
-      "leftPos" : 880,
+      "leftPos" : 864,
       "logicNodeType" : "DEACTION",
       "name" : "修改用例数据",
-      "topPos" : 800
+      "topPos" : 750
     }, {
       "codeName" : "END1",
       "leftPos" : 200,
@@ -13325,6 +13124,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/program_test_case.json",
     "logicName" : "规划用例",
+    "memo" : "规划用例",
     "name" : "规划用例",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -13846,6 +13646,530 @@
       },
       "default" : true,
       "entityParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
+  }, {
+    "codeName" : "set_change_type",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDELOGICS/set_change_type.json",
+    "logicName" : "获取变更类型与变更版本",
+    "memo" : "获取测试用例变更类型与变更版本",
+    "name" : "获取变更类型与变更版本",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 370,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 200,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEBUGPARAM3",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 456,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "review",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[review] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "review",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[review] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM3"
+        }
+      } ],
+      "topPos" : 208,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "leftPos" : 672,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询用例分页数据",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "LOOPSUBCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj"
+      },
+      "leftPos" : 866,
+      "logicNodeType" : "LOOPSUBCALL",
+      "name" : "循环子调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "subCallLink" : true
+      } ],
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "DEBUGPARAM4",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "leftPos" : 620,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "LOOPSUBCALL1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM4"
+        }
+      } ],
+      "topPos" : 300
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 866,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置版本过滤器",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_OWNER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "version_filter"
+        },
+        "name" : "for_obj[ID] ==> version_filter[N_OWNER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "ID",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "SIZE",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "version_filter"
+        },
+        "name" : "直接值[2] ==> version_filter[SIZE]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "2",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 346
+    }, {
+      "codeName" : "RAWSQLCALL1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "leftPos" : 456,
+      "logicNodeType" : "RAWSQLCALL",
+      "name" : "直接SQL调用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSQLCALL1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "name" : "Default[review]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "review",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "name" : "Default[n_test_library_id_eq]",
+        "paramAction" : "SQLPARAM",
+        "srcFieldName" : "n_test_library_id_eq",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "sql" : "SELECT * \r\nFROM test_case t1\r\nWHERE NOT EXISTS (\r\n    SELECT * \r\n    FROM relation t2 \r\n    JOIN review_content_extend t3 ON t3.id = t2.id \r\n    JOIN review t4 ON t4.id = t2.PRINCIPAL_ID \r\n    WHERE t2.TARGET_ID = t1.id \r\n    AND t4.id = ?\r\n)AND t1.TEST_LIBRARY_ID = ?\r\nORDER BY t1.IDENTIFIER;",
+      "topPos" : 375,
+      "fillDstLogicParam" : true
+    }, {
+      "codeName" : "DEDATASET2",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version_filter"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      },
+      "leftPos" : 866,
+      "logicNodeType" : "DEDATASET",
+      "name" : "查询符合条件的版本",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET2"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version_pages_results"
+      },
+      "topPos" : 468
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_obj"
+      },
+      "leftPos" : 1130,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "未评审",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "REVIEW_RESULT_STATE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[REVIEW_RESULT_STATE] 等于(=) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "已评审",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "NOTEQ",
+            "dstFieldName" : "REVIEW_RESULT_STATE",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "for_obj"
+            },
+            "logicType" : "SINGLE",
+            "name" : "for_obj[REVIEW_RESULT_STATE] 不等于(<>) 1",
+            "paramValue" : "1"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
+      } ],
+      "topPos" : 468
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 960,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置变更类型为新增",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "change_type",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "直接值[0] ==> for_obj[change_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "0",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 720
+    }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 1310,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置变更类型为修改",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "change_type",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "for_obj"
+        },
+        "name" : "直接值[1] ==> for_obj[change_type]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "1",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 720
+    }, {
+      "code" : "var version_pages_results = logic.getParam(\"version_pages_results\");\r\n\r\nif (version_pages_results) {\r\n    var change_version = {};\r\n    var for_obj = logic.getParam(\"for_obj\");\r\n    for (var i = 0; i < version_pages_results.length; i++) {\r\n        //新增只有to\r\n        if (i === 0) {\r\n            change_version[\"to\"] = version_pages_results.get(i);\r\n        }\r\n    }\r\n\r\n    for_obj.set(\"change_version\", change_version);\r\n}",
+      "codeName" : "RAWSFCODE1",
+      "codeType" : "JavaScript",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "version_pages_results"
+      },
+      "leftPos" : 960,
+      "logicNodeType" : "RAWSFCODE",
+      "memo" : "设置from-to都为最新版",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 830
+    }, {
+      "code" : "var version_pages_results = logic.getParam(\"version_pages_results\");\r\nif (version_pages_results) {\r\n    var change_version = {};\r\n    var for_obj = logic.getParam(\"for_obj\");\r\n    for (var i = 0; i < version_pages_results.length; i++) {\r\n        if (i === 0) {\r\n            change_version[\"from\"] = version_pages_results.get(i);\r\n            change_version[\"to\"] = version_pages_results.get(i);\r\n            sys.info(\"进入1\");\r\n        } else if (i === 1) {\r\n            change_version[\"from\"] = version_pages_results.get(i);\r\n            sys.info(\"进入2\");\r\n        }\r\n    }\r\n    for_obj.set(\"change_version\", change_version);}",
+      "codeName" : "RAWSFCODE2",
+      "leftPos" : 1310,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE2"
+        }
+      } ],
+      "topPos" : 830
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1170,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "page_results"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 1010
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "change_version",
+      "logicName" : "变更版本",
+      "name" : "变更版本",
+      "entityParam" : true
+    }, {
+      "codeName" : "for_obj",
+      "logicName" : "循环临时变量",
+      "name" : "循环临时变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "page_results",
+      "logicName" : "分页查询结果",
+      "name" : "分页查询结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+      },
+      "entityPageParam" : true
+    }, {
+      "codeName" : "review_detail",
+      "logicName" : "评审详情",
+      "name" : "评审详情",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+      },
+      "entityParam" : true
+    }, {
+      "codeName" : "version_filter",
+      "logicName" : "版本过滤器",
+      "name" : "版本过滤器",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      },
+      "filterParam" : true
+    }, {
+      "codeName" : "version_pages_results",
+      "logicName" : "版本分页结果",
+      "name" : "版本分页结果",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/version.json"
+      },
+      "entityPageParam" : true
     } ],
     "getStartPSDELogicNode" : {
       "modelref" : true,
@@ -15553,6 +15877,7 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
       "logicName" : "评审结果",
       "name" : "review_result_state",
       "getPSDEField" : {
@@ -15581,18 +15906,6 @@
         "name" : "LATEST_EXECUTED",
         "codeName" : "latest_executed"
       },
-      "getPSDER" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DERCUSTOM_TEST_CASE_RUN.json"
-      },
-      "getRefPSDEMethodDTO" : {
-        "modelref" : true,
-        "id" : "run_dto"
-      },
-      "getRefPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-      },
       "sourceType" : "DEFIELD",
       "stringLength" : 1048576,
       "type" : "DTOS"
@@ -15606,6 +15919,17 @@
       "precision" : 1,
       "sourceType" : "DEFIELD",
       "stdDataType" : 6,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "步骤",
+      "name" : "steps_imp",
+      "getPSDEField" : {
+        "name" : "STEPS_IMP",
+        "codeName" : "steps_imp"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "当前版本名称",
@@ -16007,6 +16331,48 @@
       "type" : "SIMPLE"
     }, {
       "logicName" : "维护人",
+      "name" : "n_maintenance_id_in",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_MAINTENANCE_ID_IN"
+      },
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_ID",
+        "codeName" : "maintenance_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLES"
+    }, {
+      "logicName" : "维护人",
+      "name" : "n_maintenance_id_noteq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_MAINTENANCE_ID_NOTEQ"
+      },
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_ID",
+        "codeName" : "maintenance_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "维护人",
+      "name" : "n_maintenance_id_notin",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_MAINTENANCE_ID_NOTIN"
+      },
+      "getPSDEField" : {
+        "name" : "MAINTENANCE_ID",
+        "codeName" : "maintenance_id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLES"
+    }, {
+      "logicName" : "维护人",
       "name" : "n_maintenance_name_eq",
       "getPSDEFSearchMode" : {
         "modelref" : true,
@@ -16034,6 +16400,7 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "1",
       "logicName" : "评审结果",
       "name" : "n_review_result_state_eq",
       "getPSDEFSearchMode" : {
@@ -16350,6 +16717,7 @@
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/maintainer_cancel_notify.json",
     "msgType" : 65,
     "name" : "测试用例取消分配维护人通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
       "name" : "维护人",
       "getTargetPSDEField" : {
@@ -16372,6 +16740,7 @@
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/maintainer_notify.json",
     "msgType" : 65,
     "name" : "测试用例分配维护人通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
       "name" : "维护人",
       "getTargetPSDEField" : {
@@ -16394,18 +16763,19 @@
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/maintainer_onchange_notify.json",
     "msgType" : 65,
     "name" : "测试用例维护人变更通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "关注人员",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "负责人",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/TestMgmt/PSSYSMSGTARGETS/test_case_notify_maintenance_id.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "关注人员",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
@@ -16423,18 +16793,19 @@
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case/PSDENOTIFIES/remove_notify.json",
     "msgType" : 65,
     "name" : "测试用例删除/恢复通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
-      "name" : "维护人",
-      "getPSSysMsgTarget" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSSYSMSGTARGETS/test_case_notify_maintenance_id.json"
-      },
-      "targetType" : "SYSMSGTARGET"
-    }, {
       "name" : "关注人员",
       "getPSSysMsgTarget" : {
         "modelref" : true,
         "path" : "PSMODULES/ProjMgmt/PSSYSMSGTARGETS/attention_by_ownerid.json"
+      },
+      "targetType" : "SYSMSGTARGET"
+    }, {
+      "name" : "维护人",
+      "getPSSysMsgTarget" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSSYSMSGTARGETS/test_case_notify_maintenance_id.json"
       },
       "targetType" : "SYSMSGTARGET"
     } ],
@@ -16611,6 +16982,13 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mpick_up_view2_review",
+    "logicName" : "用例实体数据多项选择视图（评审）",
+    "modelTag" : "MPICKUPVIEW",
+    "name" : "用例实体数据多项选择视图（评审）",
+    "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "this_suite_test_case_grid_view",
     "logicName" : "当前模块下用例表格视图",
     "name" : "当前模块下用例表格视图",
@@ -16619,7 +16997,6 @@
   }, {
     "codeName" : "mpick_up_view",
     "logicName" : "用例实体数据多项选择视图",
-    "modelTag" : "MPICKUPVIEW",
     "name" : "用例实体数据多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW",
     "realModelType" : "PSDEVIEWBASE"
@@ -16658,12 +17035,6 @@
     "logicName" : "移动用例视图(单项)",
     "name" : "移动用例视图(单项)",
     "realModelSubType" : "DEOPTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "idea_re_test_case_grid_view",
-    "logicName" : "产品需求关联用例表格视图",
-    "name" : "产品需求关联用例表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "others_re_mpick_up_view",
@@ -16731,6 +17102,12 @@
     "logicName" : "计划关联用例多项选择视图",
     "name" : "计划关联用例多项选择视图",
     "realModelSubType" : "DEMPICKUPVIEW2",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "pick_up_tree_view",
+    "logicName" : "用例选择树视图",
+    "name" : "用例选择树视图",
+    "realModelSubType" : "DEPICKUPTREEVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "others_re_mpick_up_grid_view",
@@ -16861,16 +17238,22 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "not_add_pick_up_grid_view_review",
+    "logicName" : "未添加的用例表格视图（评审）",
+    "name" : "未添加的用例表格视图（评审）",
+    "realModelSubType" : "DEPICKUPGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mpick_up_view_review",
+    "logicName" : "用例实体数据多项选择视图(评审)",
+    "name" : "用例实体数据多项选择视图(评审)",
+    "realModelSubType" : "DEMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "activities_status_report_view",
     "logicName" : "测试用例活动情况图表视图",
     "name" : "测试用例活动情况图表视图",
     "realModelSubType" : "DECHARTVIEW",
-    "realModelType" : "PSDEVIEWBASE"
-  }, {
-    "codeName" : "work_item_re_case_grid_view",
-    "logicName" : "工作项关联用例表格视图",
-    "name" : "工作项关联用例表格视图",
-    "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "RedirectView",
@@ -17045,7 +17428,7 @@
       "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
     },
     "masterOrder" : 100,
-    "masterRS" : 3,
+    "masterRS" : 131,
     "minorCodeName" : "runs",
     "getMinorPSDataEntity" : {
       "modelref" : true,
@@ -17123,6 +17506,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "TEST_CASE",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -17150,6 +17534,7 @@
     },
     "name" : "DERCUSTOM_COMMENT_TEST_CASE_PRINCIPAL_ID",
     "orderValue" : 100,
+    "parentSubType" : "TEST_CASE",
     "pickupDEFName" : "PRINCIPAL_ID",
     "getPickupPSDEField" : {
       "name" : "PRINCIPAL_ID",
@@ -17176,6 +17561,7 @@
     },
     "name" : "DERCUSTOM_RELATION_TARGET_TEST_CASE",
     "orderValue" : 100,
+    "parentSubType" : "test_case",
     "pickupDEFName" : "TARGET_ID",
     "getPickupPSDEField" : {
       "name" : "TARGET_ID",
@@ -17206,6 +17592,7 @@
       "id" : "test_case_version_relation"
     },
     "orderValue" : 100,
+    "parentSubType" : "test_case",
     "pickupDEFName" : "PRINCIPAL_ID",
     "getPickupPSDEField" : {
       "name" : "PRINCIPAL_ID",
@@ -17278,39 +17665,6 @@
     "removeOrder" : -1,
     "serviceCodeName" : "test_case"
   }, {
-    "codeName" : "test_case_latest_run",
-    "dERSubType" : "DER1N",
-    "dERType" : "DERCUSTOM",
-    "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDERS/DERCUSTOM_TEST_CASE_RUN.json",
-    "logicName" : "名称",
-    "getMajorPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
-    },
-    "masterRS" : 0,
-    "getMinorPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
-    },
-    "name" : "DERCUSTOM_TEST_CASE_RUN",
-    "getNestedPSDEDataSet" : {
-      "modelref" : true,
-      "id" : "case_latest_executed"
-    },
-    "getOne2XDataPSDEField" : {
-      "name" : "LATEST_EXECUTED",
-      "codeName" : "latest_executed"
-    },
-    "orderValue" : 100,
-    "pickupDEFName" : "CASE_ID",
-    "getPickupPSDEField" : {
-      "name" : "CASE_ID",
-      "codeName" : "Case_id"
-    },
-    "removeActionType" : 0,
-    "removeOrder" : -1,
-    "serviceCodeName" : "test_case_latest_run"
-  }, {
     "codeName" : "DER_TEST_CASE",
     "dERSubType" : "DER1N",
     "dERType" : "DERCUSTOM",
@@ -17377,6 +17731,7 @@
     },
     "name" : "DERCUSTOM_TEST_CASE_WORKLOAD",
     "orderValue" : 100,
+    "parentSubType" : "TEST_CASE",
     "pickupDEFName" : "PRINCIPAL_ID",
     "getPickupPSDEField" : {
       "name" : "PRINCIPAL_ID",

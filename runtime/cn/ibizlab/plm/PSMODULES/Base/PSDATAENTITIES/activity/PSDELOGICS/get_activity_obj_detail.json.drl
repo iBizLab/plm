@@ -7,7 +7,8 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
         import cn.ibizlab.plm.util.errors.BadRequestAlertException;
                 global cn.ibizlab.plm.core.base.domain.activity activityget_activity_obj_detaildefault;
                 global java.util.Map activityget_activity_obj_detailobject_id;
-                global java.util.Map activityget_activity_obj_detaildetail_info;
+                global cn.ibizlab.plm.core.base.domain.activity activityget_activity_obj_detaildetail_info;
+                global java.util.Map activityget_activity_obj_detailoption_info;
                     global cn.ibizlab.plm.core.prodmgmt.service.IideaService ideaservice;
                     global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
                     global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
@@ -37,6 +38,7 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
             //逻辑处理节点[获取工作项类详情]
@@ -48,6 +50,19 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置选中id]
+            rule "prepareparam1"
+            ruleflow-group "activityget_activity_obj_detailprepareparam1"
+            when
+            then
+                            activityget_activity_obj_detaildetail_info.set("id",activityget_activity_obj_detaildefault.get("object_id"));
+                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
+                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
+                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
             //逻辑处理节点[获取工单类详情]
@@ -59,47 +74,7 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "activityget_activity_obj_detaildebugparam1"
-            when
-            then
-                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
-                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
-                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam1"
-            ruleflow-group "activityget_activity_obj_detailprepareparam1"
-            when
-            then
-                            activityget_activity_obj_detaildetail_info.set("id",activityget_activity_obj_detaildefault.get("object_id"));
-                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
-                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
-                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
-            end
-
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "activityget_activity_obj_detailend1"
-            when
-            then
-                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
-                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
-                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "activityget_activity_obj_detaildebugparam2"
-            when
-            then
-                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
-                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
-                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
             //逻辑处理节点[获取客户类详情]
@@ -111,16 +86,7 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam3"
-            ruleflow-group "activityget_activity_obj_detaildebugparam3"
-            when
-            then
-                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
-                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
-                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
             //逻辑处理节点[获取测试用例类需求]
@@ -132,6 +98,57 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置项目信息]
+            rule "prepareparam2"
+            ruleflow-group "activityget_activity_obj_detailprepareparam2"
+            when
+            then
+                            activityget_activity_obj_detailoption_info.set("parent_id",activityget_activity_obj_detaildetail_info.get("project_id"));
+                            activityget_activity_obj_detailoption_info.set("self_id",activityget_activity_obj_detaildetail_info.get("id"));
+                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
+                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
+                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置产品信息]
+            rule "prepareparam3"
+            ruleflow-group "activityget_activity_obj_detailprepareparam3"
+            when
+            then
+                            activityget_activity_obj_detailoption_info.set("parent_id",activityget_activity_obj_detaildetail_info.get("product_id"));
+                            activityget_activity_obj_detailoption_info.set("self_id",activityget_activity_obj_detaildetail_info.get("id"));
+                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
+                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
+                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "activityget_activity_obj_detailend1"
+            when
+            then
+                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
+                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
+                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置测试库信息]
+            rule "prepareparam4"
+            ruleflow-group "activityget_activity_obj_detailprepareparam4"
+            when
+            then
+                            activityget_activity_obj_detailoption_info.set("parent_id",activityget_activity_obj_detaildetail_info.get("test_library_id"));
+                            activityget_activity_obj_detailoption_info.set("self_id",activityget_activity_obj_detaildetail_info.get("id"));
+                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
+                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
+                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
             //逻辑处理节点[获取执行用例类数据]
@@ -143,6 +160,7 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end
 
             //逻辑处理节点[获取页面类数据]
@@ -154,4 +172,18 @@ package cn.ibizlab.plm.base.logic.activitylogic.get_activity_obj_detail;
                         update(activityget_activity_obj_detaildefault);//更新fact中变量值
                         update(activityget_activity_obj_detailobject_id);//更新fact中变量值
                         update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置空间信息]
+            rule "prepareparam5"
+            ruleflow-group "activityget_activity_obj_detailprepareparam5"
+            when
+            then
+                            activityget_activity_obj_detailoption_info.set("parent_id",activityget_activity_obj_detaildetail_info.get("space_id"));
+                            activityget_activity_obj_detailoption_info.set("self_id",activityget_activity_obj_detaildetail_info.get("id"));
+                        update(activityget_activity_obj_detaildefault);//更新fact中变量值
+                        update(activityget_activity_obj_detailobject_id);//更新fact中变量值
+                        update(activityget_activity_obj_detaildetail_info);//更新fact中变量值
+                        update(activityget_activity_obj_detailoption_info);//更新fact中变量值
             end

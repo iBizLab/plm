@@ -19,6 +19,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -41,6 +42,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -64,6 +66,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -86,6 +89,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -111,6 +115,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -136,6 +141,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -157,6 +163,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -228,8 +235,8 @@
       "name" : "ICON",
       "codeName" : "icon"
     }, {
-      "name" : "UPDATE_MAN",
-      "codeName" : "update_man"
+      "name" : "SUB_TYPE",
+      "codeName" : "sub_type"
     }, {
       "name" : "ID",
       "codeName" : "id"
@@ -243,8 +250,14 @@
       "name" : "CREATE_TIME",
       "codeName" : "create_time"
     }, {
+      "name" : "UPDATE_MAN",
+      "codeName" : "update_man"
+    }, {
       "name" : "UPDATE_TIME",
       "codeName" : "update_time"
+    }, {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
     } ],
     "codeName" : "Table",
     "name" : "WORK_ITEM_TYPE",
@@ -325,6 +338,49 @@
       "type" : "DTOS"
     },
     "viewLevel" : 0
+  }, {
+    "getAllPSDEDataQueryCodes" : [ {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDEDATAQUERIES/cur_project_type/PSDEDQCODES/MYSQL5.json"
+    } ],
+    "codeName" : "cur_project_type",
+    "logicName" : "当前项目工作项类型",
+    "memo" : "数据上下文过滤，非瀑布项目",
+    "name" : "cur_project_type",
+    "getPSDEDQMain" : {
+      "getJoinPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+      },
+      "joinType" : "MAIN",
+      "name" : "WORK_ITEM_TYPE",
+      "getPSDEDQGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "连接条件",
+        "getPSDEDQConditions" : [ {
+          "condType" : "CUSTOM",
+          "condition" : "`PROJECT_TYPE` = (select type from project where id=#{ctx.datacontext.project})",
+          "name" : "数据上下文过滤"
+        } ]
+      }
+    },
+    "getPSDEDataQueryInput" : {
+      "name" : "Cur_project_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_type_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataQueryReturn" : {
+      "name" : "Cur_project_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_type_dto"
+      },
+      "type" : "DTOS"
+    }
   }, {
     "getAllPSDEDataQueryCodes" : [ {
       "modelref" : true,
@@ -445,6 +501,33 @@
     },
     "viewLevel" : 0,
     "defaultMode" : true,
+    "enableBackend" : true,
+    "enableFront" : true
+  }, {
+    "codeName" : "cur_project_type",
+    "logicName" : "当前项目工作项类型",
+    "memo" : "数据上下文过滤，非瀑布项目",
+    "name" : "cur_project_type",
+    "getPSDEDataQueries" : [ {
+      "modelref" : true,
+      "id" : "cur_project_type"
+    } ],
+    "getPSDEDataSetInput" : {
+      "name" : "Cur_project_typeInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "work_item_type_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Cur_project_typeResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "work_item_type_dto"
+      },
+      "type" : "PAGE"
+    },
     "enableBackend" : true,
     "enableFront" : true
   }, {
@@ -983,44 +1066,36 @@
     "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
-      "columnName" : "UPDATE_MAN",
+      "columnName" : "SUB_TYPE",
       "dBType" : "MYSQL5",
-      "name" : "UPDATE_MAN",
-      "queryCodeExp" : "t1.`UPDATE_MAN`",
-      "standardColumnName" : "`UPDATE_MAN`"
+      "name" : "SUB_TYPE",
+      "queryCodeExp" : "t1.`SUB_TYPE`",
+      "standardColumnName" : "`SUB_TYPE`"
     } ],
     "getAllPSDEFUIModes" : [ {
-      "codeName" : "MobileDefault",
-      "name" : "[UPDATE_MAN][更新人]移动端默认",
+      "codeName" : "Default",
+      "name" : "[SUB_TYPE][下级类型]",
       "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
+        "codeName" : "Default",
+        "editorType" : "TEXTBOX",
+        "name" : "[SUB_TYPE][下级类型]",
+        "stringLength" : 200,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[SUB_TYPE][下级类型]移动端默认",
+      "getPSDEFFormItem" : {
         "codeName" : "MobileDefault",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]移动端默认",
-        "stringLength" : 100,
+        "editorType" : "MOBTEXT",
+        "name" : "[SUB_TYPE][下级类型]移动端默认",
+        "stringLength" : 200,
         "uIMode" : "MOBILEDEFAULT",
-        "allowEmpty" : false,
         "mobileMode" : true
       },
       "type" : "MOBILEDEFAULT",
       "mobileMode" : true
-    }, {
-      "codeName" : "Default",
-      "name" : "[UPDATE_MAN][更新人]",
-      "getPSDEFFormItem" : {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-        },
-        "codeName" : "Default",
-        "editorType" : "SPAN",
-        "name" : "[UPDATE_MAN][更新人]",
-        "stringLength" : 100,
-        "uIMode" : "DEFAULT",
-        "allowEmpty" : false
-      },
-      "type" : "DEFAULT"
     } ],
     "getAllPSDEFValueRules" : [ {
       "codeName" : "Default",
@@ -1031,51 +1106,41 @@
         "name" : "默认组",
         "getPSDEFVRConditions" : [ {
           "condType" : "STRINGLENGTH",
-          "dEFName" : "UPDATE_MAN",
-          "maxValue" : 100,
+          "dEFName" : "SUB_TYPE",
+          "maxValue" : 200,
           "name" : "默认字符串长度",
-          "ruleInfo" : "内容长度必须小于等于[100]",
+          "ruleInfo" : "内容长度必须小于等于[200]",
           "includeMaxValue" : true,
           "includeMinValue" : false,
           "keyCond" : true
         } ],
-        "ruleInfo" : "内容长度必须小于等于[100]"
+        "ruleInfo" : "内容长度必须小于等于[200]"
       },
-      "ruleInfo" : "内容长度必须小于等于[100]",
+      "ruleInfo" : "内容长度必须小于等于[200]",
       "checkDefault" : true,
       "defaultMode" : true,
       "enableBackend" : true,
       "enableFront" : true
     } ],
-    "codeName" : "update_man",
+    "codeName" : "sub_type",
     "dEFType" : 1,
     "dataType" : "TEXT",
     "importOrder" : 1000,
-    "getLNPSLanguageRes" : {
-      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
-    },
-    "length" : 100,
-    "logicName" : "更新人",
-    "name" : "UPDATE_MAN",
-    "getPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSCODELISTS/SysOperator.json"
-    },
+    "length" : 200,
+    "logicName" : "下级类型",
+    "name" : "SUB_TYPE",
     "getPSDEDBTable" : {
       "modelref" : true,
       "id" : "Table"
     },
     "getPSSysDBColumn" : {
       "modelref" : true,
-      "id" : "UPDATE_MAN"
+      "id" : "SUB_TYPE"
     },
-    "predefinedType" : "UPDATEMAN",
-    "serviceCodeName" : "update_man",
+    "serviceCodeName" : "sub_type",
     "stdDataType" : 25,
-    "stringLength" : 100,
-    "valueFormat" : "%1$s",
-    "allowEmpty" : false,
-    "systemReserver" : true
+    "stringLength" : 200,
+    "valueFormat" : "%1$s"
   }, {
     "getAllPSDEFDTColumns" : [ {
       "columnName" : "ID",
@@ -1086,6 +1151,11 @@
       "valueAutoGen" : true
     } ],
     "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_ID_LIKE",
+      "name" : "N_ID_LIKE",
+      "stdDataType" : 25,
+      "valueOP" : "LIKE"
+    }, {
       "codeName" : "N_ID_EQ",
       "name" : "N_ID_EQ",
       "stdDataType" : 25,
@@ -1249,6 +1319,11 @@
     "codeName" : "name",
     "dEFType" : 1,
     "dataType" : "TEXT",
+    "dupCheckMode" : "ALL",
+    "getDupCheckPSDEFields" : [ {
+      "name" : "PROJECT_TYPE",
+      "codeName" : "project_type"
+    } ],
     "importOrder" : 1000,
     "getLNPSLanguageRes" : {
       "lanResTag" : "DEF.LNAME.NAME"
@@ -1446,6 +1521,101 @@
     "systemReserver" : true
   }, {
     "getAllPSDEFDTColumns" : [ {
+      "columnName" : "UPDATE_MAN",
+      "dBType" : "MYSQL5",
+      "name" : "UPDATE_MAN",
+      "queryCodeExp" : "t1.`UPDATE_MAN`",
+      "standardColumnName" : "`UPDATE_MAN`"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "MobileDefault",
+      "name" : "[UPDATE_MAN][更新人]移动端默认",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "MobileDefault",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]移动端默认",
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "allowEmpty" : false,
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    }, {
+      "codeName" : "Default",
+      "name" : "[UPDATE_MAN][更新人]",
+      "getPSDEFFormItem" : {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+        },
+        "codeName" : "Default",
+        "editorType" : "SPAN",
+        "name" : "[UPDATE_MAN][更新人]",
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT",
+        "allowEmpty" : false
+      },
+      "type" : "DEFAULT"
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "UPDATE_MAN",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "update_man",
+    "dEFType" : 1,
+    "dataType" : "TEXT",
+    "importOrder" : 1000,
+    "getLNPSLanguageRes" : {
+      "lanResTag" : "DEF.LNAME.UPDATE_MAN"
+    },
+    "length" : 100,
+    "logicName" : "更新人",
+    "name" : "UPDATE_MAN",
+    "getPSCodeList" : {
+      "modelref" : true,
+      "path" : "PSCODELISTS/SysOperator.json"
+    },
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "UPDATE_MAN"
+    },
+    "predefinedType" : "UPDATEMAN",
+    "serviceCodeName" : "update_man",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "allowEmpty" : false,
+    "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
       "columnName" : "UPDATE_TIME",
       "dBType" : "MYSQL5",
       "name" : "UPDATE_TIME",
@@ -1523,6 +1693,118 @@
     "valueFormat" : "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS",
     "allowEmpty" : false,
     "systemReserver" : true
+  }, {
+    "getAllPSDEFDTColumns" : [ {
+      "columnName" : "PROJECT_ID",
+      "dBType" : "MYSQL5",
+      "name" : "PROJECT_ID",
+      "queryCodeExp" : "t1.`PROJECT_ID`",
+      "standardColumnName" : "`PROJECT_ID`"
+    } ],
+    "getAllPSDEFSearchModes" : [ {
+      "codeName" : "N_PROJECT_ID_EQ",
+      "name" : "N_PROJECT_ID_EQ",
+      "stdDataType" : 25,
+      "valueOP" : "EQ"
+    } ],
+    "getAllPSDEFUIModes" : [ {
+      "codeName" : "Default",
+      "name" : "[PROJECT_ID][项目标识]",
+      "getPSDEFFormItem" : {
+        "codeName" : "Default",
+        "editorType" : "HIDDEN",
+        "name" : "[PROJECT_ID][项目标识]",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "DEFAULT"
+      },
+      "type" : "DEFAULT"
+    }, {
+      "codeName" : "MobileDefault",
+      "name" : "[PROJECT_ID][项目标识]移动端默认",
+      "getPSDEFFormItem" : {
+        "codeName" : "MobileDefault",
+        "editorType" : "HIDDEN",
+        "name" : "[PROJECT_ID][项目标识]移动端默认",
+        "getRefPSDataEntity" : {
+          "modelref" : true,
+          "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+        },
+        "stringLength" : 100,
+        "uIMode" : "MOBILEDEFAULT",
+        "mobileMode" : true
+      },
+      "type" : "MOBILEDEFAULT",
+      "mobileMode" : true
+    } ],
+    "getAllPSDEFValueRules" : [ {
+      "codeName" : "Default",
+      "name" : "默认规则",
+      "getPSDEFVRGroupCondition" : {
+        "condOp" : "AND",
+        "condType" : "GROUP",
+        "name" : "默认组",
+        "getPSDEFVRConditions" : [ {
+          "condType" : "STRINGLENGTH",
+          "dEFName" : "PROJECT_ID",
+          "maxValue" : 100,
+          "name" : "默认字符串长度",
+          "ruleInfo" : "内容长度必须小于等于[100]",
+          "includeMaxValue" : true,
+          "includeMinValue" : false,
+          "keyCond" : true
+        } ],
+        "ruleInfo" : "内容长度必须小于等于[100]"
+      },
+      "ruleInfo" : "内容长度必须小于等于[100]",
+      "checkDefault" : true,
+      "defaultMode" : true,
+      "enableBackend" : true,
+      "enableFront" : true
+    } ],
+    "codeName" : "project_id",
+    "dEFType" : 1,
+    "dataType" : "PICKUP",
+    "importOrder" : 1000,
+    "length" : 100,
+    "logicName" : "项目标识",
+    "name" : "PROJECT_ID",
+    "getPSDEDBTable" : {
+      "modelref" : true,
+      "id" : "Table"
+    },
+    "getPSDER" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDERS/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID.json"
+    },
+    "getPSSysDBColumn" : {
+      "modelref" : true,
+      "id" : "PROJECT_ID"
+    },
+    "getRealPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRealPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "getRelatedPSDEField" : {
+      "name" : "ID",
+      "codeName" : "id"
+    },
+    "getRelatedPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "serviceCodeName" : "project_id",
+    "stdDataType" : 25,
+    "stringLength" : 100,
+    "valueFormat" : "%1$s",
+    "linkDEField" : true
   } ],
   "getAllPSDELogics" : [ {
     "codeName" : "nothing",
@@ -1625,6 +1907,17 @@
       "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
+      "logicName" : "下级类型",
+      "name" : "sub_type",
+      "getPSDEField" : {
+        "name" : "SUB_TYPE",
+        "codeName" : "sub_type"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "建立人",
       "name" : "create_man",
       "getPSDEField" : {
@@ -1674,6 +1967,17 @@
       "sourceType" : "DEFIELD",
       "stdDataType" : 25,
       "stringLength" : 200,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "项目标识",
+      "name" : "project_id",
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "project_id"
+      },
+      "sourceType" : "DEFIELD",
+      "stdDataType" : 25,
+      "stringLength" : 100,
       "type" : "SIMPLE"
     }, {
       "logicName" : "更新人",
@@ -1752,6 +2056,22 @@
       "stdDataType" : 25,
       "type" : "SIMPLE"
     }, {
+      "defaultValue" : "code",
+      "defaultValueType" : "PARAM",
+      "logicName" : "标识",
+      "name" : "n_id_like",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_ID_LIKE"
+      },
+      "getPSDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
       "logicName" : "名称",
       "name" : "n_name_like",
       "getPSDEFSearchMode" : {
@@ -1761,6 +2081,20 @@
       "getPSDEField" : {
         "name" : "NAME",
         "codeName" : "name"
+      },
+      "sourceType" : "DEFSEARCHMODE",
+      "stdDataType" : 25,
+      "type" : "SIMPLE"
+    }, {
+      "logicName" : "项目标识",
+      "name" : "n_project_id_eq",
+      "getPSDEFSearchMode" : {
+        "modelref" : true,
+        "id" : "N_PROJECT_ID_EQ"
+      },
+      "getPSDEField" : {
+        "name" : "PROJECT_ID",
+        "codeName" : "project_id"
       },
       "sourceType" : "DEFSEARCHMODE",
       "stdDataType" : 25,
@@ -2048,6 +2382,36 @@
     "enableFKey" : true
   } ],
   "memo" : "仅瀑布类型项目可以自定义工作项类型（定义瀑布型项目中可自定义的不同工作项类别。）",
+  "getMinorPSDERs" : [ {
+    "codeName" : "project",
+    "dERType" : "DER1N",
+    "dynaModelFilePath" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type/PSDERS/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID.json",
+    "fKeyName" : "F93656A15AFB5D3224",
+    "logicName" : "项目-工作项类型",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/project.json"
+    },
+    "masterOrder" : -1,
+    "masterRS" : 0,
+    "minorCodeName" : "work_item_types",
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item_type.json"
+    },
+    "minorServiceCodeName" : "work_item_types",
+    "name" : "DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID",
+    "orderValue" : 100,
+    "getPSPickupDEField" : {
+      "name" : "PROJECT_ID",
+      "codeName" : "project_id"
+    },
+    "pickupDEFName" : "PROJECT_ID",
+    "removeActionType" : -1,
+    "removeOrder" : 0,
+    "serviceCodeName" : "project",
+    "enableFKey" : true
+  } ],
   "name" : "WORK_ITEM_TYPE",
   "getPSSysDBScheme" : {
     "modelref" : true,

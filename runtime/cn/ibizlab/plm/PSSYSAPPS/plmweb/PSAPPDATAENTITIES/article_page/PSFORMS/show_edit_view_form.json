@@ -171,6 +171,14 @@
       "codeName" : "format_type"
     }
   }, {
+    "id" : "is_lock",
+    "hidden" : true,
+    "dataType" : 9,
+    "getPSAppDEField" : {
+      "name" : "IS_LOCK",
+      "codeName" : "is_lock"
+    }
+  }, {
     "id" : "id",
     "hidden" : true,
     "dataType" : 25,
@@ -225,12 +233,54 @@
           },
           "allowEmpty" : true,
           "emptyCaption" : true
+        }, {
+          "codeName" : "rawitem3",
+          "contentType" : "IMAGE",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "memo" : "锁定图标",
+          "name" : "rawitem3",
+          "getPSDEFDGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "表单成员[rawitem3][面板显示]逻辑",
+            "getPSDEFDLogics" : [ {
+              "condOP" : "EQ",
+              "dEFDName" : "is_lock",
+              "logicType" : "SINGLE",
+              "value" : "1"
+            } ],
+            "relatedDetailNames" : [ "is_lock" ],
+            "notMode" : false
+          } ],
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "contentType" : "IMAGE",
+            "name" : "rawitem3",
+            "getPSSysImage" : {
+              "glyph" : "xf023@FontAwesome",
+              "cssClass" : "fa fa-lock"
+            },
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf023@FontAwesome",
+            "cssClass" : "fa fa-lock"
+          },
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
         } ],
         "getPSLayout" : {
           "align" : "flex-start",
           "dir" : "row",
           "layout" : "FLEX",
-          "vAlign" : "flex-end"
+          "vAlign" : "center"
         },
         "getPSLayoutPos" : {
           "colMD" : 24,
@@ -317,7 +367,8 @@
             "cssStyle" : "min-height: 500px;",
             "editorParams" : {
               "contenttype" : "HTML",
-              "TITLE" : "name"
+              "TITLE" : "name",
+              "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\")"
             },
             "editorStyle" : "ANCHO_HTML",
             "editorType" : "RAW",
@@ -1111,6 +1162,33 @@
       "getPSEditor" : {
         "editorType" : "HIDDEN",
         "name" : "format_type"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "allowEmpty" : true,
+      "hidden" : true,
+      "showCaption" : true
+    }, {
+      "caption" : "是否锁定",
+      "codeName" : "is_lock",
+      "dataType" : 9,
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMITEM",
+      "enableCond" : 3,
+      "ignoreInput" : 0,
+      "labelPos" : "LEFT",
+      "labelWidth" : 130,
+      "name" : "is_lock",
+      "noPrivDisplayMode" : 1,
+      "getPSAppDEField" : {
+        "name" : "IS_LOCK",
+        "codeName" : "is_lock"
+      },
+      "getPSEditor" : {
+        "editorType" : "HIDDEN",
+        "name" : "is_lock"
       },
       "getPSLayoutPos" : {
         "grow" : -1,

@@ -44,6 +44,7 @@
       "internalLogic" : false
     } ],
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -67,6 +68,7 @@
     "actionMode" : "CREATE",
     "actionType" : "BUILTIN",
     "codeName" : "CreateTemp",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/CreateTemp.json",
     "logicName" : "CreateTemp",
     "name" : "CreateTemp",
@@ -93,6 +95,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -126,6 +129,7 @@
       "internalLogic" : true
     } ],
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -148,6 +152,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -173,6 +178,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -198,6 +204,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -219,6 +226,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -241,6 +249,7 @@
     "actionMode" : "CUSTOM",
     "actionType" : "DELOGIC",
     "codeName" : "change_role",
+    "dataAccessAction" : "NONE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/change_role.json",
     "logicName" : "变更角色",
     "name" : "change_role",
@@ -266,6 +275,7 @@
     "actionMode" : "CREATE",
     "actionType" : "DELOGIC",
     "codeName" : "create_library_member",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/create_library_member.json",
     "logicName" : "新建测试库成员",
     "name" : "create_library_member",
@@ -1724,7 +1734,7 @@
       },
       "leftPos" : -90,
       "logicNodeType" : "BINDPARAM",
-      "name" : "获取传递的参数",
+      "name" : "获取传递成员的参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1742,6 +1752,24 @@
         "id" : "Default"
       },
       "topPos" : 403
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Update.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
+      },
+      "leftPos" : 396,
+      "logicNodeType" : "DEACTION",
+      "name" : "变更成员状态",
+      "topPos" : 562
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -1772,7 +1800,7 @@
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 180,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "获取传递的状态",
+      "name" : "获取传递成员的状态",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1799,24 +1827,6 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 562
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDEACTIONS/Update.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member.json"
-      },
-      "leftPos" : 396,
-      "logicNodeType" : "DEACTION",
-      "name" : "变更状态",
       "topPos" : 562
     } ],
     "getPSDELogicParams" : [ {
@@ -1887,7 +1897,7 @@
       },
       "leftPos" : 360,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定选中成员参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -1991,7 +2001,7 @@
       },
       "leftPos" : 989,
       "logicNodeType" : "RENEWPARAM",
-      "name" : "重新建立参数",
+      "name" : "重新建立成员参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2206,7 +2216,7 @@
       },
       "leftPos" : 160,
       "logicNodeType" : "DEACTION",
-      "name" : "获取数据",
+      "name" : "获取测试库成员数据",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -2572,6 +2582,7 @@
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDENOTIFIES/library_member_create.json",
     "msgType" : 65,
     "name" : "测试库成员加入通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
       "name" : "勾选对象",
       "getTargetPSDEField" : {
@@ -2594,6 +2605,7 @@
     "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/library_member/PSDENOTIFIES/library_member_remove.json",
     "msgType" : 65,
     "name" : "测试库成员移除通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
       "name" : "勾选对象",
       "getTargetPSDEField" : {

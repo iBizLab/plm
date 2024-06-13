@@ -99,7 +99,7 @@
   "getPSControls" : [ {
     "codeName" : "project_grid_view_toolbar",
     "controlType" : "TOOLBAR",
-    "logicName" : "工具栏模板（只有一个实体界面行为组）",
+    "logicName" : "新建交付目标",
     "name" : "toolbar",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -112,12 +112,20 @@
       "caption" : "新建交付目标",
       "groupExtractMode" : "ITEM",
       "itemType" : "DEUIACTION",
-      "name" : "deuiaction1_create_deliver_target",
+      "name" : "deuiaction1",
       "noPrivDisplayMode" : 2,
       "getPSAppViewUIAction" : {
         "modelref" : true,
-        "id" : "toolbar_deuiaction1_create_deliver_target"
+        "id" : "toolbar_deuiaction1"
       },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction1",
+        "logicTag" : "toolbar",
+        "logicType" : "SCRIPT",
+        "name" : "deuiaction1",
+        "scriptCode" : "context.srfreadonly != true",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
         "cssClass" : "fa fa-plus"
@@ -156,7 +164,7 @@
       "showIcon" : true
     } ],
     "xDataControlName" : "grid",
-    "modelid" : "97b647cbe00cc608f9a368e2d0874c1e",
+    "modelid" : "4938C1A3-911C-4A51-AB4D-008E9859701B",
     "modeltype" : "PSDETOOLBAR"
   }, {
     "aggMode" : "NONE",
@@ -381,6 +389,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "提交",
             "codeName" : "submit",
+            "dataAccessAction" : "UPDATE",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "deliverable_submit",
             "name" : "提交",
@@ -391,6 +400,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSNavigateContexts" : [ {
               "key" : "ATTACHMENT",
@@ -428,6 +441,7 @@
             "actionTarget" : "SINGLEKEY",
             "caption" : "编辑",
             "codeName" : "edit",
+            "dataAccessAction" : "UPDATE",
             "getFrontPSAppView" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/deliverable_target_edit_view.json",
@@ -439,6 +453,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf044@FontAwesome",
@@ -466,6 +484,7 @@
             "caption" : "删除",
             "codeName" : "del_grid",
             "confirmMsg" : "确认删除该交付物？",
+            "dataAccessAction" : "UPDATE",
             "fullCodeName" : "deliverable_del_grid",
             "name" : "删除",
             "getPSAppDEMethod" : {
@@ -475,6 +494,10 @@
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/deliverable.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
             },
             "getPSSysImage" : {
               "glyph" : "xf014@FontAwesome",
@@ -496,7 +519,7 @@
         } ],
         "uniqueTag" : "deliverable__Usr0118491970"
       },
-      "width" : 300,
+      "width" : 500,
       "widthUnit" : "PX",
       "enableSort" : true
     }, {
@@ -551,6 +574,7 @@
         "uIActionMode" : "FRONT",
         "uIActionTag" : "download",
         "uIActionType" : "DEUIACTION",
+        "userTag" : "{\"hiddenError\":true}",
         "id" : "download@deliverable"
       },
       "width" : 500,
@@ -681,9 +705,6 @@
         "name" : "TITLE",
         "codeName" : "title"
       }
-    }, {
-      "dataType" : 25,
-      "name" : "srfmstag"
     } ],
     "getPSDEGridEditItems" : [ {
       "caption" : "标识",
@@ -701,6 +722,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -735,6 +757,7 @@
     "enableColFilter" : false,
     "enableCustomized" : false,
     "enableGroup" : false,
+    "enableItemPrivilege" : true,
     "enablePagingBar" : true,
     "enableRowEdit" : true,
     "enableRowEditOrder" : false,

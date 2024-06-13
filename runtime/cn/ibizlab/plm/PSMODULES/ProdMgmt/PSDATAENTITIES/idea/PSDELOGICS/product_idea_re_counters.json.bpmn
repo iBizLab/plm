@@ -22,8 +22,9 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置需求主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取产品需求当前版本"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall12" id="rawsqlcall12" implementation="http://www.jboss.org/drools/rule" name="查询所有计数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall6" id="rawsqlcall6" implementation="http://www.jboss.org/drools/rule" name="产品需求版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall7" id="rawsqlcall7" implementation="http://www.jboss.org/drools/rule" name="需求关联客户"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaproduct_idea_re_countersrawsqlcall8" id="rawsqlcall8" implementation="http://www.jboss.org/drools/rule" name="需求关联需求"/>
@@ -61,6 +62,8 @@
                                 eval((RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"ISNOTNULL",""))&&(RuleUtils.test($ideaproduct_idea_re_countersdefault.get("srfversionid"),"NOTEQ","cur_version_id")))
                                 ]]>
                             </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall12_end1" sourceRef="rawsqlcall12" targetRef="end1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsqlcall6_prepareparam1" sourceRef="rawsqlcall6" targetRef="prepareparam1">
                     </sequenceFlow>

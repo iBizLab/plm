@@ -3,7 +3,7 @@
   "controlType" : "DASHBOARD",
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan/PSDASHBOARDS/dashboard.json",
   "hookEventNames" : [ "ONCREATED", "ONRESETPORTLET" ],
-  "logicName" : "test_plan_report",
+  "logicName" : "测试报告概览",
   "getPSAppDataEntity" : {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/test_plan.json"
@@ -1418,6 +1418,7 @@
             "detailType" : "FORMITEM",
             "enableCond" : 3,
             "ignoreInput" : 0,
+            "itemHeight" : 1.0,
             "labelPos" : "NONE",
             "labelWidth" : 0,
             "name" : "summary",
@@ -1427,6 +1428,7 @@
               "codeName" : "summary"
             },
             "getPSEditor" : {
+              "editorHeight" : 1.0,
               "editorParams" : {
                 "USERINSCRIPT" : "value.replaceAll(/\\@\\{\\\"(user)?id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\"\\}/g,(x, user, id, name) => {return controller.getNodeInfo({ id, name })}).replaceAll(/\\@\\{userid=(.+?),name=(.+?)\\}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})",
                 "MAXHEIGHT" : "450",
@@ -1439,10 +1441,10 @@
                 "QUOTEINSCRIPT" : "value.replaceAll(/\\#\\{\\\"id\\\":\\\"(.+?)\\\",\\\"name\\\":\\\"(.+?)\\\",\\\"identifier\\\":\\\"(.+?)\\\",\\\"icon\\\":\\\"((.|[\\t\\r\\f\\n\\s])+?)\\\"\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })}).replaceAll(/\\#\\{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)\\}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})",
                 "USERSCRIPT" : "`@{\"id\":\"${data.id}\",\"name\":\"${data.name}\"}`",
                 "QUOTESCRIPT" : "`#{\"id\":\"${data.id}\",\"name\":\"${data.name}\",\"identifier\":\"${data.identifier}\",\"icon\":\"${data.icon}\"}`",
-                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetchdefault` : context.product ? `products/${context.product}/product_members/fetchdefault` : context.project ? `projects/${context.project}/project_members/fetchdefault` : ''}`",
+                "USERURL" : "`${context.library ? `libraries/${context.library}/library_members/fetch_default` : context.product ? `products/${context.product}/product_members/fetch_default` : context.project ? `projects/${context.project}/project_members/fetch_default` : ''}`",
                 "USERFIELDMAP" : "{\"id\":\"user_id\",\"name\":\"name\"}",
                 "INSERTKEYS" : "[{\"index\":66,\"keys\":[\"marker\"]},{\"index\":5,\"keys\":[\"paintformat\"]}]",
-                "QUOTEURL" : "`recents/fetchrecent_access`"
+                "QUOTEURL" : "`recents/fetch_recent_access`"
               },
               "editorStyle" : "COLLAPSE",
               "editorType" : "HTMLEDITOR",
@@ -2216,7 +2218,7 @@
         "EC.legend" : "{\"show\":true}",
         "EC.dataZoom" : "[{\"type\":\"slider\",\"xAxisIndex\":0,\"start\":0,\"end\":20}]",
         "EC.showGridPrcent" : "true",
-        "EC.showGridCaption" : "true",
+        "EC.showGridCaption" : "false",
         "EC.groupSerieMode" : "true",
         "EC.grid" : "{\"left\":75,\"right\":75,\"top\":75,\"bottom\":75}"
       }
@@ -2686,7 +2688,6 @@
         }
       },
       "height" : 1.0,
-      "hookEventNames" : [ "ONBEFORELOAD" ],
       "logicName" : "dailyTendencies_report",
       "memo" : "每日执行用例趋势左右布局",
       "getPSAppDataEntity" : {
@@ -2901,13 +2902,6 @@
         "enableDEFieldPrivilege" : false,
         "id" : "图形控件处理器"
       },
-      "getPSControlLogics" : [ {
-        "eventNames" : "onBeforeLoad",
-        "logicTag" : "dashboard_sysportlet4_chart",
-        "logicType" : "SCRIPT",
-        "name" : "time_logic",
-        "scriptCode" : "const time = new Date();\r\nconst preTime = new Date(time.getTime() - 604800000);\r\nconst n_create_time_gtandeq = preTime.getFullYear() +'-' +(preTime.getMonth() + 1 < 10 ? '0' + (preTime.getMonth() + 1): preTime.getMonth() + 1) +'-' +(preTime.getDate() < 10 ? '0' + preTime.getDate() : preTime.getDate()) \r\nconst n_create_time_ltandeq = time.getFullYear() +'-' +(time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1): time.getMonth() + 1) +'-' +(time.getDate() < 10 ? '0' + time.getDate() : time.getDate())\r\nconst date_range = n_create_time_gtandeq + ',' + n_create_time_ltandeq;\r\nObject.assign(viewParam, { n_create_time_gtandeq, n_create_time_ltandeq, date_range});"
-      } ],
       "getPSControlParam" : {
         "height" : 1.0,
         "autoLoad" : true,

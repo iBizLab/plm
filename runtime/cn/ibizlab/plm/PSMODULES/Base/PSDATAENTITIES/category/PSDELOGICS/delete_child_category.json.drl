@@ -54,7 +54,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[类别实体数据集]
             rule "dedataset1"
             ruleflow-group "categorydelete_child_categorydedataset1"
             when
@@ -80,7 +80,7 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环调用]
+            //逻辑处理节点[删除类别及子类别]
             rule "delogic1"
             ruleflow-group "categorydelete_child_categorydelogic1"
             when
@@ -93,11 +93,27 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
                         update(categorydelete_child_categoryparent_section);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束前的默认参数]
-            rule "debugparam2"
-            ruleflow-group "categorydelete_child_categorydebugparam2"
+            //逻辑处理节点[判断节点（无操作）]
+            rule "prepareparam4"
+            ruleflow-group "categorydelete_child_categoryprepareparam4"
             when
             then
+                        update(categorydelete_child_categorydefault);//更新fact中变量值
+                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
+                        update(categorydelete_child_categoryfilter);//更新fact中变量值
+                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
+                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
+            end
+
+            //逻辑处理节点[上级的是否叶子节点变更]
+            rule "prepareparam3"
+            ruleflow-group "categorydelete_child_categoryprepareparam3"
+            when
+            then
+                            categorydelete_child_categoryparent_section.set("id",categorydelete_child_categorydefault.get("sectionid"));
+                            categorydelete_child_categoryfilter.set("n_section_id_eq",categorydelete_child_categorydefault.get("sectionid"));
+                            categorydelete_child_categoryparent_section.set("isleaf","1");
                         update(categorydelete_child_categorydefault);//更新fact中变量值
                         update(categorydelete_child_categorycategory_page);//更新fact中变量值
                         update(categorydelete_child_categoryfilter);//更新fact中变量值
@@ -145,22 +161,6 @@ package cn.ibizlab.plm.base.logic.categorylogic.delete_child_category;
         param.put("param1",categorydelete_child_categorydefault.get("id"));
     String strSql="UPDATE idea t  INNER JOIN category t21 ON t.category_id = t21.ID  SET t.category_id = NULL WHERE (t.category_id = #{et.param0} OR t21.categories LIKE CONCAT('%',#{et.param1},'%'))";
                         iBzSysCategoryDefaultService.execute(strSql,param);//SQL调用
-                        update(categorydelete_child_categorydefault);//更新fact中变量值
-                        update(categorydelete_child_categorycategory_page);//更新fact中变量值
-                        update(categorydelete_child_categoryfilter);//更新fact中变量值
-                        update(categorydelete_child_categoryfor_temp_obj);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_category);//更新fact中变量值
-                        update(categorydelete_child_categoryparent_section);//更新fact中变量值
-            end
-
-            //逻辑处理节点[上级的是否叶子节点变更]
-            rule "prepareparam3"
-            ruleflow-group "categorydelete_child_categoryprepareparam3"
-            when
-            then
-                            categorydelete_child_categoryparent_section.set("id",categorydelete_child_categorydefault.get("sectionid"));
-                            categorydelete_child_categoryfilter.set("n_section_id_eq",categorydelete_child_categorydefault.get("sectionid"));
-                            categorydelete_child_categoryparent_section.set("isleaf","1");
                         update(categorydelete_child_categorydefault);//更新fact中变量值
                         update(categorydelete_child_categorycategory_page);//更新fact中变量值
                         update(categorydelete_child_categoryfilter);//更新fact中变量值

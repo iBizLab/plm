@@ -22,7 +22,9 @@
   } ],
   "getPSControls" : [ {
     "codeName" : "tab_exp_view_dr",
+    "controlStyle" : "ROUTE_DRTAB",
     "controlType" : "DRTAB",
+    "dataRelationTag" : "tab_exp_view_DR",
     "getEditItemCapPSLanguageRes" : {
       "lanResTag" : "DE.LNAME.MANAGEMENT"
     },
@@ -42,12 +44,20 @@
       "id" : "TABEXPPANEL"
     },
     "getPSDEDRTabPages" : [ {
+      "caption" : "概览",
+      "name" : "overview",
+      "getPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/login_log_over_view.json",
+        "viewType" : "DECUSTOMVIEW"
+      }
+    }, {
       "caption" : "配置中心",
       "name" : "config",
       "getPSAppView" : {
         "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/management_config_tab_exp_view.json",
-        "viewType" : "DETABEXPVIEW"
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/management_setting_view.json",
+        "viewType" : "DECUSTOMVIEW"
       }
     }, {
       "caption" : "成员",
@@ -58,6 +68,11 @@
         "viewType" : "DETABEXPVIEW"
       }
     } ],
+    "getPSSysPFPlugin" : {
+      "pluginType" : "CUSTOM",
+      "pluginCode" : "ROUTE_DRTAB",
+      "runtimeObject" : true
+    },
     "uniqueTag" : "management_tab_exp_view__tabexppanel",
     "hideEditItem" : true,
     "modelid" : "3D4AE63E-1263-4FDC-8143-D72724AE85EF",

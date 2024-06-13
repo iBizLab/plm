@@ -1,0 +1,121 @@
+package cn.ibizlab.plm.base.logic.portfoliologic.after_create;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.portfolio portfolioafter_createdefault;
+                global cn.ibizlab.plm.core.base.domain.addon portfolioafter_createaddon_filter;
+                global cn.ibizlab.plm.core.base.domain.addon portfolioafter_createaddon_page;
+                global cn.ibizlab.plm.core.base.domain.addon portfolioafter_createaddon_resource;
+                global cn.ibizlab.plm.core.base.domain.addon portfolioafter_createfor_addon;
+                    global cn.ibizlab.plm.core.base.service.IaddonService addonservice;
+        global cn.ibizlab.plm.core.base.service.IportfolioService iBzSysPortfolioDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "portfolioafter_createbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[填充项目集组件查询过滤器参数]
+            rule "prepareparam2"
+            ruleflow-group "portfolioafter_createprepareparam2"
+            when
+            then
+                            portfolioafter_createaddon_filter.set("n_owner_type_eq","portfolio");
+                            portfolioafter_createaddon_filter.set("n_owner_id_isnull","1");
+                            portfolioafter_createaddon_filter.set("n_owner_subtype_eq","project");
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取全局项目集默认组件]
+            rule "dedataset1"
+            ruleflow-group "portfolioafter_creatededataset1"
+            when
+            then
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "portfolioafter_createloopsubcall1"
+            when
+            then
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "portfolioafter_createrenewparam1"
+            when
+            then
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置项目集组件属性]
+            rule "prepareparam3"
+            ruleflow-group "portfolioafter_createprepareparam3"
+            when
+            then
+                            portfolioafter_createaddon_resource.set("name",portfolioafter_createfor_addon.get("name"));
+                            portfolioafter_createaddon_resource.set("addontype",portfolioafter_createfor_addon.get("addontype"));
+                            portfolioafter_createaddon_resource.set("description",portfolioafter_createfor_addon.get("description"));
+                            portfolioafter_createaddon_resource.set("ownersubtype",portfolioafter_createfor_addon.get("ownersubtype"));
+                            portfolioafter_createaddon_resource.set("ordervalue",portfolioafter_createfor_addon.get("ordervalue"));
+                            portfolioafter_createaddon_resource.set("isenabled",portfolioafter_createfor_addon.get("isenabled"));
+                            portfolioafter_createaddon_resource.set("ownertype",portfolioafter_createfor_addon.get("ownertype"));
+                            portfolioafter_createaddon_resource.set("ownerid",portfolioafter_createdefault.get("id"));
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成组件数据]
+            rule "deaction1"
+            ruleflow-group "portfolioafter_createdeaction1"
+            when
+            then
+                        addonservice.create(portfolioafter_createaddon_resource);
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "portfolioafter_createend1"
+            when
+            then
+                        update(portfolioafter_createdefault);//更新fact中变量值
+                        update(portfolioafter_createaddon_filter);//更新fact中变量值
+                        update(portfolioafter_createaddon_page);//更新fact中变量值
+                        update(portfolioafter_createaddon_resource);//更新fact中变量值
+                        update(portfolioafter_createfor_addon);//更新fact中变量值
+            end

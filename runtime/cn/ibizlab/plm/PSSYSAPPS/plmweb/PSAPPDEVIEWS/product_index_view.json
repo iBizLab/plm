@@ -21,7 +21,7 @@
     "codeName" : "de_custom_index_view_layout_product",
     "controlType" : "VIEWLAYOUTPANEL",
     "layoutMode" : "FLEX",
-    "logicName" : "自定义实体首页视图布局面板（测试库）",
+    "logicName" : "自定义实体首页视图布局面板（产品）",
     "name" : "layoutpanel",
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -144,6 +144,10 @@
                 "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
               },
               "getPSNavigateContexts" : [ {
+                "key" : "SRFREADONLY",
+                "name" : "SRFREADONLY",
+                "rawValue" : true
+              }, {
                 "key" : "PRODUCT",
                 "name" : "PRODUCT",
                 "rawValue" : true
@@ -205,7 +209,7 @@
               },
               "getPSAppDEDataSet" : {
                 "modelref" : true,
-                "id" : "fetch_normal"
+                "id" : "fetch_main"
               },
               "getPSAppDataEntity" : {
                 "modelref" : true,
@@ -348,11 +352,39 @@
     "modelid" : "8b7287dd51152fc912397042d807eaf7",
     "modeltype" : "PSSYSVIEWLAYOUTPANEL",
     "getPSControls" : [ {
-      "codeName" : "index_view_dr",
+      "codeName" : "product",
       "controlStyle" : "DRBAR_EX",
       "controlType" : "DRBAR",
+      "dataRelationTag" : "product",
       "editItemCaption" : "产品",
       "name" : "drbar",
+      "getPSAppCounterRef" : {
+        "modelref" : true,
+        "id" : "a0bae0287de963bd22cdc7c0b52d6895"
+      },
+      "getPSAppCounterRefs" : [ {
+        "getPSAppCounter" : {
+          "codeName" : "product_add_on_counters",
+          "counterType" : "DEDR",
+          "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPCOUNTERS/product_add_on_counters.json",
+          "getGetPSAppDEAction" : {
+            "modelref" : true,
+            "id" : "product_index_addon_counter"
+          },
+          "memo" : "产品组件显示隐藏计数器",
+          "name" : "产品组件显示隐藏计数器",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
+          },
+          "uniqueTag" : "product_add_on_counters"
+        },
+        "refMode" : {
+          "srfdeid" : "PRODUCT"
+        },
+        "tag" : "a0bae0287de963bd22cdc7c0b52d6895",
+        "id" : "a0bae0287de963bd22cdc7c0b52d6895"
+      } ],
       "getPSAppDataEntity" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
@@ -399,6 +431,9 @@
       } ],
       "getPSDEDRCtrlItems" : [ {
         "caption" : "需求",
+        "counterId" : "idea",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "idea",
         "getPSAppView" : {
           "modelref" : true,
@@ -411,6 +446,9 @@
         }
       }, {
         "caption" : "排期",
+        "counterId" : "plan",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "plan",
         "getPSAppView" : {
           "modelref" : true,
@@ -423,6 +461,9 @@
         }
       }, {
         "caption" : "工单",
+        "counterId" : "ticket",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "ticket",
         "getPSAppView" : {
           "modelref" : true,
@@ -432,9 +473,18 @@
         "getPSDEDRBarGroup" : {
           "modelref" : true,
           "id" : "UsrDRGroup1228280909"
-        }
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "SRFREADONLY",
+          "name" : "SRFREADONLY",
+          "value" : "srfreadonly",
+          "rawValue" : false
+        } ]
       }, {
         "caption" : "客户",
+        "counterId" : "customer",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "customer",
         "getPSAppView" : {
           "modelref" : true,
@@ -444,9 +494,18 @@
         "getPSDEDRBarGroup" : {
           "modelref" : true,
           "id" : "UsrDRGroup1228275731"
-        }
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "SRFREADONLY",
+          "name" : "SRFREADONLY",
+          "value" : "srfreadonly",
+          "rawValue" : false
+        } ]
       }, {
         "caption" : "基线",
+        "counterId" : "baseline",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "baseline",
         "getPSAppView" : {
           "modelref" : true,
@@ -456,9 +515,18 @@
         "getPSDEDRBarGroup" : {
           "modelref" : true,
           "id" : "UsrDRGroup0423482168"
-        }
+        },
+        "getPSNavigateContexts" : [ {
+          "key" : "SRFREADONLY",
+          "name" : "SRFREADONLY",
+          "value" : "srfreadonly",
+          "rawValue" : false
+        } ]
       }, {
         "caption" : "页面",
+        "counterId" : "space",
+        "counterMode" : 1,
+        "enableMode" : "COUNT_GTE_ZERO",
         "name" : "space",
         "getPSAppView" : {
           "modelref" : true,
@@ -474,6 +542,11 @@
           "name" : "PRINCIPAL_TYPE",
           "value" : "product",
           "rawValue" : true
+        }, {
+          "key" : "SRFREADONLY",
+          "name" : "SRFREADONLY",
+          "value" : "srfreadonly",
+          "rawValue" : false
         }, {
           "key" : "TARGET_TYPE",
           "name" : "TARGET_TYPE",
@@ -968,7 +1041,7 @@
             "codeName" : "open_show_view",
             "getFrontPSAppView" : {
               "modelref" : true,
-              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_show_eidt_view.json",
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/product_show_edit_view.json",
               "viewType" : "DEEDITVIEW"
             },
             "frontProcessType" : "WIZARD",

@@ -29,6 +29,7 @@
       "internalLogic" : true
     } ],
     "codeName" : "Create",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/Create.json",
     "logicName" : "Create",
     "name" : "Create",
@@ -51,6 +52,7 @@
     "actionMode" : "UPDATE",
     "actionType" : "BUILTIN",
     "codeName" : "Update",
+    "dataAccessAction" : "UPDATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/Update.json",
     "logicName" : "Update",
     "name" : "Update",
@@ -74,6 +76,7 @@
     "actionType" : "BUILTIN",
     "batchActionMode" : 1,
     "codeName" : "Remove",
+    "dataAccessAction" : "DELETE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/Remove.json",
     "logicName" : "Remove",
     "name" : "Remove",
@@ -96,6 +99,7 @@
     "actionMode" : "READ",
     "actionType" : "BUILTIN",
     "codeName" : "Get",
+    "dataAccessAction" : "READ",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/Get.json",
     "logicName" : "Get",
     "name" : "Get",
@@ -121,6 +125,7 @@
     "actionMode" : "GETDRAFT",
     "actionType" : "BUILTIN",
     "codeName" : "GetDraft",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/GetDraft.json",
     "logicName" : "GetDraft",
     "name" : "GetDraft",
@@ -146,6 +151,7 @@
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
     "codeName" : "CheckKey",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/CheckKey.json",
     "logicName" : "CheckKey",
     "name" : "CheckKey",
@@ -167,6 +173,7 @@
     "actionMode" : "SAVE",
     "actionType" : "BUILTIN",
     "codeName" : "Save",
+    "dataAccessAction" : "CREATE",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDEACTIONS/Save.json",
     "logicName" : "Save",
     "name" : "Save",
@@ -205,6 +212,33 @@
     "codeName" : "ATTENTION",
     "indexType" : "NORMAL",
     "name" : "ATTENTION",
+    "allowReverse" : true
+  }, {
+    "getAllPSDEDBIndexFields" : [ {
+      "name" : "OWNER_ID",
+      "getPSDEField" : {
+        "name" : "OWNER_ID",
+        "codeName" : "owner_id"
+      },
+      "sortDir" : "ASC"
+    }, {
+      "name" : "OWNER_SUBTYPE",
+      "getPSDEField" : {
+        "name" : "OWNER_SUBTYPE",
+        "codeName" : "owner_subtype"
+      },
+      "sortDir" : "ASC"
+    }, {
+      "name" : "OWNER_TYPE",
+      "getPSDEField" : {
+        "name" : "OWNER_TYPE",
+        "codeName" : "owner_type"
+      },
+      "sortDir" : "ASC"
+    } ],
+    "codeName" : "ATTENTION2",
+    "indexType" : "NORMAL",
+    "name" : "ATTENTION2",
     "allowReverse" : true
   } ],
   "getAllPSDEDBTables" : [ {
@@ -2406,7 +2440,8 @@
     "codeName" : "attention_customer_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_customer_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注客户通知",
+    "name" : "客户提醒关注通知",
+    "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2421,14 +2456,15 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_customer.json"
     },
     "taskMode" : 0
   }, {
     "codeName" : "attention_idea_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_idea_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注产品需求通知",
+    "name" : "产品需求提醒关注通知",
+    "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2443,14 +2479,15 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_idea.json"
     },
     "taskMode" : 0
   }, {
     "codeName" : "attention_page_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_page_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注页面通知",
+    "name" : "页面提醒关注通知",
+    "notifyTag2" : "知识管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2465,14 +2502,15 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/page_notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_page.json"
     },
     "taskMode" : 0
   }, {
     "codeName" : "attention_run_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_run_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注执行用例通知",
+    "name" : "执行用例提醒关注通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2487,14 +2525,15 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_run.json"
     },
     "taskMode" : 0
   }, {
     "codeName" : "attention_test_case_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_test_case_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注测试用例通知",
+    "name" : "测试用例提醒关注通知",
+    "notifyTag2" : "测试管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2509,14 +2548,15 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_test_case.json"
     },
     "taskMode" : 0
   }, {
     "codeName" : "attention_ticket_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_ticket_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注工单通知",
+    "name" : "工单提醒关注通知",
+    "notifyTag2" : "产品管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2531,14 +2571,15 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_ticket.json"
     },
     "taskMode" : 0
   }, {
     "codeName" : "attention_work_item_notify",
     "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDENOTIFIES/attention_work_item_notify.json",
     "msgType" : 65,
-    "name" : "提醒关注工作项通知",
+    "name" : "工作项提醒关注通知",
+    "notifyTag2" : "项目管理",
     "getPSDENotifyTargets" : [ {
       "name" : "关注人",
       "getTargetPSDEField" : {
@@ -2553,7 +2594,7 @@
     },
     "getPSSysMsgTempl" : {
       "modelref" : true,
-      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention.json"
+      "path" : "PSMODULES/Base/PSSYSMSGTEMPLS/notice_attention_work_item.json"
     },
     "taskMode" : 0
   } ],
@@ -2741,6 +2782,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "CUSTOMER",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2750,6 +2792,38 @@
     "removeOrder" : -1,
     "serviceCodeName" : "customer",
     "typeValue" : "CUSTOMER"
+  }, {
+    "codeName" : "DISCUSS_POST",
+    "dERSubType" : "DER1N",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDERS/DERCUSTOM_ATTENTION_DISCUSS_POST_OWNER_ID.json",
+    "logicName" : "名称",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Team/PSDATAENTITIES/discuss_post.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "name" : "DERCUSTOM_ATTENTION_DISCUSS_POST_OWNER_ID",
+    "getOne2XDataPSDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "attentions"
+    },
+    "orderValue" : 100,
+    "parentSubType" : "DISCUSS_POST",
+    "pickupDEFName" : "OWNER_ID",
+    "getPickupPSDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "discuss_post",
+    "typeValue" : "DISCUSS_POST"
   }, {
     "codeName" : "IDEA",
     "dERSubType" : "DER1N",
@@ -2772,6 +2846,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "IDEA",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2803,6 +2878,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "PAGE",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2834,6 +2910,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "REVIEW",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2842,6 +2919,38 @@
     "removeActionType" : 0,
     "removeOrder" : -1,
     "serviceCodeName" : "review",
+    "typeValue" : "REVIEW"
+  }, {
+    "codeName" : "REVIEW_WIZARD",
+    "dERSubType" : "USER",
+    "dERType" : "DERCUSTOM",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/attention/PSDERS/DERCUSTOM_ATTENTION_REVIEW_WIZARD.json",
+    "logicName" : "评审_关注",
+    "getMajorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review_wizard.json"
+    },
+    "masterOrder" : 100,
+    "masterRS" : 5,
+    "getMinorPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/attention.json"
+    },
+    "name" : "DERCUSTOM_ATTENTION_REVIEW_WIZARD",
+    "getOne2XDataPSDEField" : {
+      "name" : "ATTENTIONS",
+      "codeName" : "attentions"
+    },
+    "orderValue" : 100,
+    "parentSubType" : "REVIEW",
+    "pickupDEFName" : "OWNER_ID",
+    "getPickupPSDEField" : {
+      "name" : "OWNER_ID",
+      "codeName" : "owner_id"
+    },
+    "removeActionType" : 0,
+    "removeOrder" : -1,
+    "serviceCodeName" : "review_wizard",
     "typeValue" : "REVIEW"
   }, {
     "codeName" : "RUN",
@@ -2865,6 +2974,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "RUN",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2896,6 +3006,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "TEST_CASE",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2927,6 +3038,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "TICKET",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",
@@ -2958,6 +3070,7 @@
       "codeName" : "attentions"
     },
     "orderValue" : 100,
+    "parentSubType" : "WORK_ITEM",
     "pickupDEFName" : "OWNER_ID",
     "getPickupPSDEField" : {
       "name" : "OWNER_ID",

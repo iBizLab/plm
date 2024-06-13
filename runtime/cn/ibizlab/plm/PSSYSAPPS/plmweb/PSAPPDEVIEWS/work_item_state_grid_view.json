@@ -29,7 +29,7 @@
     "name" : "ONLOADSUCCESS",
     "getPSAppDEUILogic" : {
       "modelref" : true,
-      "id" : "get_idea_total"
+      "id" : "get_grid_total"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -97,16 +97,6 @@
     "id" : "UsrVMGroup0423875248"
   },
   "getPSAppViewRefs" : [ {
-    "name" : "NEWDATA",
-    "openMode" : "POPUPMODAL",
-    "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "新建工作项状态",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_quick_create_view.json",
-      "viewType" : "DEOPTVIEW"
-    }
-  }, {
     "name" : "OPENDATA",
     "openMode" : "POPUPMODAL",
     "realOpenMode" : "POPUPMODAL",
@@ -114,6 +104,16 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_update_view.json",
+      "viewType" : "DEOPTVIEW"
+    }
+  }, {
+    "name" : "NEWDATA",
+    "openMode" : "POPUPMODAL",
+    "realOpenMode" : "POPUPMODAL",
+    "realTitle" : "新建工作项状态",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_state_quick_create_view.json",
       "viewType" : "DEOPTVIEW"
     }
   }, {
@@ -128,133 +128,6 @@
     }
   } ],
   "getPSControls" : [ {
-    "codeName" : "default",
-    "controlType" : "SEARCHFORM",
-    "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state/PSSEARCHFORMS/default.json",
-    "logicName" : "默认搜索表单",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
-    },
-    "getPSControlHandler" : {
-      "getPSHandlerActions" : [ {
-        "actionType" : "FILTERACTION",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGet"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "loaddraft",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGetDraft"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "search",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterSearch"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
-        }
-      } ],
-      "enableDEFieldPrivilege" : false,
-      "id" : "搜索表单处理器"
-    },
-    "getPSControlParam" : {
-      "autoLoad" : true,
-      "showBusyIndicator" : true,
-      "id" : "SEARCHFORM"
-    },
-    "getPSDEFormItems" : [ {
-      "id" : "n_name_like",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "getPSDEFormPages" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.WORK_ITEM_STATE.DEFAULT.FORMPAGE.FORMPAGE1"
-      },
-      "caption" : "常规条件",
-      "codeName" : "formpage1",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage1",
-      "getPSDEFormDetails" : [ {
-        "getCapPSLanguageRes" : {
-          "lanResTag" : "CONTROL.DEFSFITEM.WORK_ITEM_STATE.N_NAME_LIKE"
-        },
-        "caption" : "名称",
-        "codeName" : "n_name_like",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "n_name_like",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "NAME",
-          "codeName" : "name"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "n_name_like"
-        },
-        "getPSLayoutPos" : {
-          "colMD" : 24,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "showCaption" : true
-      } ],
-      "getPSLayout" : {
-        "childColLG" : -1,
-        "childColMD" : 24,
-        "childColSM" : -1,
-        "childColXS" : -1,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
-    } ],
-    "getPSLayout" : {
-      "childColLG" : -1,
-      "childColMD" : 24,
-      "childColSM" : -1,
-      "childColXS" : -1,
-      "columnCount" : 24,
-      "layout" : "TABLE_24COL"
-    },
-    "searchButtonStyle" : "DEFAULT",
-    "tabHeaderPos" : "TOP",
-    "enableAdvanceSearch" : false,
-    "enableAutoSearch" : false,
-    "enableFilterSave" : false,
-    "noTabHeader" : true,
-    "name" : "searchform",
-    "modelid" : "57b5a800a1d4a9d9be688770dc4b007d",
-    "modeltype" : "PSDEFORM_SEARCHFORM"
-  }, {
     "aggMode" : "NONE",
     "codeName" : "main",
     "columnEnableFilter" : 2,
@@ -629,16 +502,44 @@
     "modelid" : "0b5d304ac0377a2ed245e7a198c1860b",
     "modeltype" : "PSDEGRID"
   }, {
-    "codeName" : "grid_view_toolbar",
-    "controlType" : "TOOLBAR",
-    "logicName" : "工作项状态_新建状态",
-    "name" : "toolbar",
+    "codeName" : "tabsearchbar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state/PSSEARCHBARS/tabsearchbar.json",
+    "logicName" : "快速搜索栏",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
     },
     "getPSControlParam" : {
-      "id" : "TOOLBAR"
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABSEARCHBAR"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "9599D0EE-51C4-417E-8FA7-9DB4AE04E407",
+    "modeltype" : "PSSYSSEARCHBAR"
+  }, {
+    "codeName" : "grid_view_tabtoolbar",
+    "controlType" : "TOOLBAR",
+    "logicName" : "工作项状态_新建状态",
+    "name" : "tabtoolbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item_state.json"
+    },
+    "getPSControlParam" : {
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
+      },
+      "id" : "TABTOOLBAR"
     },
     "getPSDEToolbarItems" : [ {
       "getCapPSLanguageRes" : {
@@ -651,7 +552,7 @@
       "noPrivDisplayMode" : 2,
       "getPSAppViewUIAction" : {
         "modelref" : true,
-        "id" : "toolbar_deuiaction1"
+        "id" : "tabtoolbar_deuiaction1"
       },
       "getPSSysImage" : {
         "glyph" : "xf067@FontAwesome",
@@ -699,11 +600,11 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
@@ -746,10 +647,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "1b43aca90574e278cc3708c0c4cfe08a",
   "modeltype" : "PSAPPDEVIEW"
 }

@@ -76,15 +76,6 @@
     }
   } ],
   "getPSAppViewRefs" : [ {
-    "name" : "EDITDATA",
-    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
-    "realTitle" : "工单",
-    "getRefPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view.json",
-      "viewType" : "DEEDITVIEW"
-    }
-  }, {
     "name" : "NEWDATA",
     "realTitle" : "工单编辑视图",
     "getRealTitlePSLanguageRes" : {
@@ -93,6 +84,15 @@
     "getRefPSAppView" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_edit_view.json",
+      "viewType" : "DEEDITVIEW"
+    }
+  }, {
+    "name" : "EDITDATA",
+    "realOpenMode" : "INDEXVIEWTAB_POPUPMODAL",
+    "realTitle" : "工单",
+    "getRefPSAppView" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/ticket_main_view.json",
       "viewType" : "DEEDITVIEW"
     }
   } ],
@@ -223,6 +223,7 @@
         "id" : "grid_batchtoolbar"
       },
       "getPSDEToolbarItems" : [ {
+        "actionLevel" : 200,
         "caption" : "恢复",
         "groupExtractMode" : "ITEM",
         "itemType" : "DEUIACTION",
@@ -237,6 +238,7 @@
           "cssClass" : "fa fa-refresh"
         },
         "getPSUIAction" : {
+          "actionLevel" : 200,
           "actionTarget" : "MULTIKEY",
           "caption" : "恢复",
           "codeName" : "ticket_recover",
@@ -299,6 +301,7 @@
           "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
         },
         "getPSUIActionGroupDetails" : [ {
+          "actionLevel" : 200,
           "caption" : "恢复",
           "detailType" : "DEUIACTION",
           "name" : "u24ed628",
@@ -307,6 +310,7 @@
             "cssClass" : "fa fa-refresh"
           },
           "getPSUIAction" : {
+            "actionLevel" : 200,
             "actionTarget" : "MULTIKEY",
             "caption" : "恢复",
             "codeName" : "ticket_recover",
@@ -482,6 +486,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -514,293 +519,30 @@
     "modelid" : "0ce5475651d791ee747d2e7d8e47369b",
     "modeltype" : "PSDEGRID"
   }, {
-    "codeName" : "default",
-    "controlType" : "SEARCHFORM",
-    "defaultLabelWidth" : 130,
-    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket/PSSEARCHFORMS/default.json",
-    "logicName" : "默认搜索表单",
+    "codeName" : "fast_searchbar",
+    "controlType" : "SEARCHBAR",
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket/PSSEARCHBARS/fast_searchbar.json",
+    "logicName" : "快速搜索栏",
     "getPSAppDataEntity" : {
       "modelref" : true,
       "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
     },
-    "getPSControlHandler" : {
-      "getPSHandlerActions" : [ {
-        "actionType" : "FILTERACTION",
-        "name" : "load",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGet"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "loaddraft",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterGetDraft"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
-        }
-      }, {
-        "actionType" : "FILTERACTION",
-        "name" : "search",
-        "getPSAppDEMethod" : {
-          "modelref" : true,
-          "id" : "FilterSearch"
-        },
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/ticket.json"
-        }
-      } ],
-      "enableDEFieldPrivilege" : false,
-      "id" : "搜索表单处理器"
-    },
     "getPSControlParam" : {
-      "autoLoad" : true,
-      "showBusyIndicator" : true,
-      "id" : "SEARCHFORM"
-    },
-    "getPSDEFormItems" : [ {
-      "id" : "n_show_identifier_like",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "SHOW_IDENTIFIER",
-        "codeName" : "show_identifier"
-      }
-    }, {
-      "id" : "n_title_like",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      }
-    }, {
-      "id" : "n_state_eq",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
-      }
-    }, {
-      "id" : "n_product_name_eq",
-      "dataType" : 25,
-      "getPSAppDEField" : {
-        "name" : "PRODUCT_NAME",
-        "codeName" : "product_name"
-      }
-    }, {
-      "id" : "n_product_id_eq",
-      "hidden" : true,
-      "dataType" : 25
-    } ],
-    "getPSDEFormPages" : [ {
-      "getCapPSLanguageRes" : {
-        "lanResTag" : "CONTROL.DEFORM.TICKET.DEFAULT.FORMPAGE.FORMPAGE1"
+      "ctrlParams" : {
+        "TELEPORTFLAG" : "true"
       },
-      "caption" : "常规条件",
-      "codeName" : "formpage1",
-      "detailStyle" : "DEFAULT",
-      "detailType" : "FORMPAGE",
-      "name" : "formpage1",
-      "getPSDEFormDetails" : [ {
-        "caption" : "编号",
-        "codeName" : "n_show_identifier_like",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "n_show_identifier_like",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "SHOW_IDENTIFIER",
-          "codeName" : "show_identifier"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "n_show_identifier_like",
-          "placeHolder" : "编号"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true
-      }, {
-        "caption" : "标题",
-        "codeName" : "n_title_like",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "n_title_like",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "TITLE",
-          "codeName" : "title"
-        },
-        "getPSEditor" : {
-          "editorType" : "TEXTBOX",
-          "name" : "n_title_like",
-          "placeHolder" : "标题"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true
-      }, {
-        "caption" : "状态",
-        "codeName" : "n_state_eq",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "n_state_eq",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "STATE",
-          "codeName" : "state"
-        },
-        "getPSEditor" : {
-          "editorType" : "DROPDOWNLIST",
-          "name" : "n_state_eq",
-          "getPSAppCodeList" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProdMgmt__ticket_state.json"
-          },
-          "placeHolder" : "选择状态",
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "needCodeListConfig" : true
-      }, {
-        "caption" : "所属产品",
-        "codeName" : "n_product_name_eq",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "NONE",
-        "labelWidth" : 0,
-        "name" : "n_product_name_eq",
-        "noPrivDisplayMode" : 1,
-        "getPSAppDEField" : {
-          "name" : "PRODUCT_NAME",
-          "codeName" : "product_name"
-        },
-        "getPSEditor" : {
-          "editorParams" : {
-            "AC" : "TRUE",
-            "TRIGGER" : "TRUE",
-            "PICKUPVIEW" : "FALSE"
-          },
-          "editorType" : "PICKEREX_TRIGGER",
-          "handlerType" : "PickupText",
-          "name" : "n_product_name_eq",
-          "getPSAppDEACMode" : {
-            "modelref" : true,
-            "id" : "Default"
-          },
-          "getPSAppDEDataSet" : {
-            "modelref" : true,
-            "id" : "fetch_normal"
-          },
-          "getPSAppDataEntity" : {
-            "modelref" : true,
-            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-          },
-          "getPSEditorItems" : [ {
-            "name" : "n_product_id_eq"
-          } ],
-          "placeHolder" : "选择产品",
-          "valueItemName" : "n_product_id_eq",
-          "enableAC" : true,
-          "enablePickupView" : false,
-          "forceSelection" : true,
-          "showTrigger" : true,
-          "singleSelect" : true
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
-          "layout" : "TABLE_24COL"
-        },
-        "valueItemName" : "n_product_id_eq",
-        "allowEmpty" : true
-      }, {
-        "codeName" : "n_product_id_eq",
-        "dataType" : 25,
-        "detailStyle" : "DEFAULT",
-        "detailType" : "FORMITEM",
-        "enableCond" : 3,
-        "ignoreInput" : 0,
-        "labelPos" : "LEFT",
-        "labelWidth" : 130,
-        "name" : "n_product_id_eq",
-        "noPrivDisplayMode" : 1,
-        "getPSEditor" : {
-          "editorType" : "HIDDEN",
-          "name" : "n_product_id_eq"
-        },
-        "getPSLayoutPos" : {
-          "colLG" : 3,
-          "colMD" : 3,
-          "layout" : "TABLE_24COL"
-        },
-        "allowEmpty" : true,
-        "hidden" : true,
-        "showCaption" : true
-      } ],
-      "getPSLayout" : {
-        "childColLG" : 3,
-        "childColMD" : 3,
-        "childColSM" : -1,
-        "childColXS" : -1,
-        "columnCount" : 24,
-        "layout" : "TABLE_24COL"
-      },
-      "infoGroupMode" : false
-    } ],
-    "getPSLayout" : {
-      "childColLG" : -1,
-      "childColMD" : 24,
-      "childColSM" : -1,
-      "childColXS" : -1,
-      "columnCount" : 24,
-      "layout" : "TABLE_24COL"
+      "id" : "TABSEARCHBAR"
     },
-    "searchButtonStyle" : "NONE",
-    "tabHeaderPos" : "TOP",
-    "enableAdvanceSearch" : false,
-    "enableAutoSearch" : true,
-    "enableFilterSave" : false,
-    "noTabHeader" : true,
-    "name" : "searchform",
-    "modelid" : "efcc0c209641a30316331a766e3d2193",
-    "modeltype" : "PSDEFORM_SEARCHFORM"
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false,
+    "name" : "tabsearchbar",
+    "modelid" : "0E51AE94-BC36-416B-BBD5-5E558D2C6220",
+    "modeltype" : "PSSYSSEARCHBAR"
   }, {
     "controlType" : "SEARCHBAR",
     "name" : "searchbar",
@@ -812,11 +554,11 @@
       "id" : "searchbar"
     },
     "quickGroupCount" : -1,
-    "quickSearchMode" : 1,
+    "quickSearchMode" : 0,
     "quickSearchWidth" : 0,
     "enableFilter" : false,
     "enableGroup" : false,
-    "enableQuickSearch" : true,
+    "enableQuickSearch" : false,
     "mobileSearchBar" : false
   }, {
     "getCapPSLanguageRes" : {
@@ -856,10 +598,10 @@
   "enableExport" : true,
   "enableFilter" : true,
   "enableImport" : true,
-  "enableQuickSearch" : true,
   "enableRowEdit" : false,
   "enableSearch" : true,
   "rowEditDefault" : false,
+  "showCaptionBar" : false,
   "modelid" : "1039d6606c362886e38e3994e7ff61c4",
   "modeltype" : "PSAPPDEVIEW",
   "getPSAppDERSPaths" : [ [ {

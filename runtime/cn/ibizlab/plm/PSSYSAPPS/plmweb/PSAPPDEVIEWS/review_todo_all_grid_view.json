@@ -67,8 +67,8 @@
         } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
+          "viewType" : "DEWFDYNAEDITVIEW3"
         }
       },
       "getPSAppUILogicRefViews" : [ {
@@ -81,8 +81,8 @@
         } ],
         "getRefPSAppView" : {
           "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_redirect_view.json",
-          "viewType" : "DEREDIRECTVIEW"
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
+          "viewType" : "DEWFDYNAEDITVIEW3"
         }
       } ],
       "viewLogicType" : "APP_OPENDATA",
@@ -111,14 +111,11 @@
       "rawValue" : false
     } ],
     "realOpenMode" : "POPUPMODAL",
-    "realTitle" : "待办数据重定向视图",
-    "getRealTitlePSLanguageRes" : {
-      "lanResTag" : "PAGE.TITLE.SYS_TODO.REDIRECTVIEW"
-    },
+    "realTitle" : "评审工作流动态编辑视图",
     "getRefPSAppView" : {
       "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/sys_todo_redirect_view.json",
-      "viewType" : "DEREDIRECTVIEW"
+      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/review_wf_dyna_edit_view.json",
+      "viewType" : "DEWFDYNAEDITVIEW3"
     }
   } ],
   "getPSAppWF" : {
@@ -310,6 +307,7 @@
             "actionTarget" : "SINGLEDATA",
             "caption" : "提交评审",
             "codeName" : "submit_review",
+            "dataAccessAction" : "SUBDATA",
             "frontProcessType" : "OTHER",
             "fullCodeName" : "review_submit_review",
             "name" : "提交评审",
@@ -321,16 +319,22 @@
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
             },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
+            },
             "getPSSysImage" : {
               "glyph" : "xf1d9@FontAwesome",
               "cssClass" : "fa fa-send-o"
             },
+            "refreshMode" : 1,
             "timeout" : 60000,
             "tooltip" : "提交评审",
             "uIActionMode" : "BACKEND",
             "uIActionTag" : "submit_review",
             "uIActionType" : "DEUIACTION",
             "enableConfirm" : true,
+            "reloadData" : true,
             "id" : "submit_review@review"
           },
           "tooltip" : "提交评审",
@@ -349,26 +353,84 @@
             "actionTarget" : "SINGLEDATA",
             "caption" : "撤销评审",
             "codeName" : "repeal_review",
-            "fullCodeName" : "repeal_review",
+            "dataAccessAction" : "SUBDATA",
+            "fullCodeName" : "review_repeal_review",
             "name" : "撤销评审",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "repeal_review"
+            },
             "getPSAppDataEntity" : {
               "modelref" : true,
               "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
             },
             "getPSSysImage" : {
               "glyph" : "xf112@FontAwesome",
               "cssClass" : "fa fa-mail-reply"
             },
-            "predefinedType" : "EDITVIEW_ROLLBACKWFACTION",
+            "refreshMode" : 1,
             "timeout" : 60000,
             "tooltip" : "撤销评审",
-            "uIActionMode" : "SYS",
+            "uIActionMode" : "BACKEND",
             "uIActionTag" : "repeal_review",
-            "uIActionType" : "DEUIACTION"
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "repeal_review@review"
           },
           "tooltip" : "撤销评审",
           "addSeparator" : false,
           "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "actionLevel" : 50,
+          "caption" : "删除",
+          "detailType" : "DEUIACTION",
+          "name" : "u10cbfb3",
+          "getPSSysImage" : {
+            "glyph" : "xf014@FontAwesome",
+            "cssClass" : "fa fa-trash-o"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEDATA",
+            "caption" : "删除",
+            "codeName" : "delete",
+            "confirmMsg" : "确认删除评审吗？ 评审删除后不可恢复，用例会保留评审记录。",
+            "dataAccessAction" : "UPDATE",
+            "fullCodeName" : "review_delete",
+            "name" : "删除",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "remove"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "UPDATE"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf014@FontAwesome",
+              "cssClass" : "fa fa-trash-o"
+            },
+            "refreshMode" : 1,
+            "successMsg" : "删除成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "delete",
+            "uIActionType" : "DEUIACTION",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "delete@review"
+          },
+          "addSeparator" : false,
+          "showCaption" : true,
           "showIcon" : true
         } ],
         "uniqueTag" : "review__Usr0428064370"
@@ -594,17 +656,17 @@
       }
     }, {
       "dataType" : 25,
+      "name" : "guideline_id",
+      "getPSAppDEField" : {
+        "name" : "GUIDELINE_ID",
+        "codeName" : "guideline_id"
+      }
+    }, {
+      "dataType" : 25,
       "name" : "srfmajortext",
       "getPSAppDEField" : {
         "name" : "NAME",
         "codeName" : "name"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "srfwfstep",
-      "getPSAppDEField" : {
-        "name" : "STATE",
-        "codeName" : "state"
       }
     } ],
     "getPSDEGridEditItems" : [ {
@@ -648,6 +710,7 @@
       },
       "allowEmpty" : true
     } ],
+    "pagingMode" : 1,
     "pagingSize" : 20,
     "getRemovePSControlAction" : {
       "actionName" : "Remove",
@@ -811,10 +874,6 @@
     "layoutBodyOnly" : true,
     "layoutPanel" : true,
     "useDefaultLayout" : true
-  },
-  "getPSWFVersion" : {
-    "modelref" : true,
-    "path" : "PSMODULES/TestMgmt/PSWORKFLOWS/case_review_flow/PSWFVERSIONS/case_review_flowv1.json"
   },
   "getPSWorkflow" : {
     "modelref" : true,

@@ -20,15 +20,11 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencilend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencildebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencilprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取模板ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencildeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="根据模板ID获取模板信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencilprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置返回数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencildeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="创建草稿页面"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="stencilnew_draft_form_stencildebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                    <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_prepareparam2" sourceRef="debugparam2" targetRef="prepareparam2">
+                    <sequenceFlow id="begin_prepareparam2" sourceRef="begin" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
@@ -36,9 +32,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction2" sourceRef="prepareparam1" targetRef="deaction2">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction2_debugparam1" sourceRef="deaction2" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_end1" sourceRef="debugparam1" targetRef="end1">
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
                     </sequenceFlow>
         </process>
     </definitions>

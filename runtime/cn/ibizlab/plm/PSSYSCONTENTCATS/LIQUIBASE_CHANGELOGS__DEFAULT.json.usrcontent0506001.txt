@@ -18,7 +18,20 @@ UPDATE stencil SET FORMAT_TYPE = 'HTML'  where FORMAT_TYPE is null;
 delete   from product_ticket_type where TICKET_TYPE_ID is null;
 INSERT INTO  `product_ticket_type`(`CREATE_MAN`, `CREATE_TIME`, `ID`, `PRODUCT_ID`, `TICKET_TYPE_ID`, `UPDATE_MAN`, `UPDATE_TIME`) 
 select t.CREATE_MAN,t.CREATE_TIME,CONCAT(t.id,'-',t1.id),t.id,t1.id,t.CREATE_MAN,t.CREATE_TIME 
-from product t left outer join ticket_type  t1 on 1=1 where t1.IS_SYSTEM=1 and not exists(select 1 from product_ticket_type t2 where t2.product_id=t.id);  
+from product t left outer join ticket_type  t1 on 1=1 where t1.IS_SYSTEM=1 and not exists(select 1 from product_ticket_type t2 where t2.product_id=t.id);
+update relation set relation_type = 'relates' where principal_type = 'work_item' and target_type = 'work_item' and relation_type is null;
+update category set IS_LEAF2=1 where IS_LEAF2 is null;
+update category t set IS_LEAF2=0 where exists(select 1 from idea  a where a.CATEGORY_ID=t.id);
+update baseline set `TYPE` = 'principal' where `TYPE` is null;
+update page set is_lock=0 where is_lock is null;
+INSERT INTO addon (ID,CREATE_TIME,NAME,ADDON_TYPE,OWNER_TYPE,DESCRIPTION,IS_ENABLED,ORDER_VALUE) values
+('all_resource', '2024-06-01 00:00:00','默认资源','resource','all','设置周期内成员的工作容量，进行分配和调整',1,100);
+INSERT INTO guideline (CREATE_MAN,CREATE_TIME,ID,NAME,SCOPE_ID,UPDATE_MAN,UPDATE_TIME,OBJECT_TYPE,SUBJECT_TYPE,REVIEW_RULE,REVIEW_STAGE,REVIEW_ACTION_RULE,IS_ENABLED) VALUES
+(NULL,'2024-06-04 14:13:45','default_library_test_case','用例评审',NULL,NULL,NULL,'LIBRARY','TEST_CASE',NULL,'[{"reviewer_type":"10","stage_state":"10","order":1,"guideline_id":"default_library_test_case","id":"DEFULT","name":"默认阶段"}]',NULL,1);
+insert into guideline (id, SCOPE_ID, NAME, OBJECT_TYPE, SUBJECT_TYPE, IS_ENABLED, REVIEW_STAGE)
+select concat(t1.id,'_',t2.ID) ,  t1.id, t2.NAME, t2.OBJECT_TYPE, t2.SUBJECT_TYPE, t2.IS_ENABLED,
+concat('[{"reviewer_type":"10","stage_state":"10","order":1,"guideline_id":"', concat(t1.id, '_library_test_case'), '","id":"default","name":"默认阶段"}]')
+from library t1, guideline t2 where t2.ID = 'default_library_test_case' and not exists(select 1 from guideline where id =concat(t1.id,'_',t2.ID));
 </sql>
 </changeSet>
 </databaseChangeLog>

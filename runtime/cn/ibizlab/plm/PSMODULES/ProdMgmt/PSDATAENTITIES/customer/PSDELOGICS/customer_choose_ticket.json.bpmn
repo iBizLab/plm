@@ -6,24 +6,22 @@
                 <tns:import name="org.springframework.util.StringUtils"/>
                 <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
                                 <tns:metaData express="" name="customercustomer_choose_ticketdefault" type="entity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="customercustomer_choose_ticketfor_temp_obj" type="refentity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="customercustomer_choose_ticketsrfactionparam" type="refentity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="customercustomer_choose_ticketthis_ticket" type="refentity"/>
-                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.customer()" name="customercustomer_choose_ticketupdate_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="customercustomer_choose_ticketfor_ticket" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="customercustomer_choose_ticketsrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.ticket()" name="customercustomer_choose_ticketupdate_obj" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IticketService))" name="ticketservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IcustomerService))" name="iBzSysCustomerDefaultService" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
                             <tns:global identifier="customercustomer_choose_ticketdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
-                            <tns:global identifier="customercustomer_choose_ticketfor_temp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
-                            <tns:global identifier="customercustomer_choose_ticketsrfactionparam" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
-                            <tns:global identifier="customercustomer_choose_ticketthis_ticket" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
-                            <tns:global identifier="customercustomer_choose_ticketupdate_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.customer" />
+                            <tns:global identifier="customercustomer_choose_ticketfor_ticket" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+                            <tns:global identifier="customercustomer_choose_ticketsrfactionparam" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
+                            <tns:global identifier="customercustomer_choose_ticketupdate_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取选中工单数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充更新属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立工单更新参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填充工单更新属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="customercustomer_choose_ticketdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新工单信息"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>

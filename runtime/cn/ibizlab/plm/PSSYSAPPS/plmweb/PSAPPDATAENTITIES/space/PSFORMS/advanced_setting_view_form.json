@@ -148,6 +148,110 @@
       "infoGroupMode" : false,
       "showCaption" : false
     }, {
+      "caption" : "移动空间",
+      "codeName" : "move",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "GROUPPANEL",
+      "name" : "move",
+      "getPSControlLogics" : [ {
+        "itemName" : "move",
+        "logicTag" : "form",
+        "logicType" : "SCRIPT",
+        "name" : "move_show_logic",
+        "scriptCode" : "data.scope_type !== 'user'",
+        "triggerType" : "ITEMVISIBLE"
+      } ],
+      "getPSDEFormDetails" : [ {
+        "codeName" : "rawitem1",
+        "contentType" : "RAW",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "RAWITEM",
+        "name" : "rawitem1",
+        "getPSLayoutPos" : {
+          "colMD" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSRawItem" : {
+          "caption" : "如果要变更空间的所属关系及可见范围，你可以移动它。移动后不影响空间下的页面。",
+          "contentType" : "RAW",
+          "name" : "rawitem1",
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0
+        },
+        "rawContent" : "如果要变更空间的所属关系及可见范围，你可以移动它。移动后不影响空间下的页面。",
+        "rawItemHeight" : -1.0,
+        "rawItemWidth" : -1.0,
+        "showCaption" : true
+      }, {
+        "actionType" : "UIACTION",
+        "caption" : "移动空间",
+        "codeName" : "button1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "BUTTON",
+        "name" : "button1",
+        "getPSAppViewUIAction" : {
+          "modelref" : true,
+          "id" : "form_button1"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 2,
+          "colMD" : 2,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSUIAction" : {
+          "actionTarget" : "SINGLEKEY",
+          "caption" : "移动空间",
+          "codeName" : "move_space",
+          "getFrontPSAppView" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_move_space_view.json",
+            "viewType" : "DEOPTVIEW"
+          },
+          "frontProcessType" : "WIZARD",
+          "fullCodeName" : "space_move_space",
+          "name" : "移动空间",
+          "getNextPSUIAction" : {
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+            },
+            "modelref" : true,
+            "id" : "open_space_member@space"
+          },
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "move_space"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          },
+          "timeout" : 60000,
+          "uIActionMode" : "BACKEND",
+          "uIActionTag" : "move_space",
+          "uIActionType" : "DEUIACTION",
+          "enableConfirm" : true,
+          "id" : "move_space@space"
+        },
+        "tooltip" : "移动空间",
+        "uIActionTarget" : "SINGLEKEY",
+        "showCaption" : true
+      } ],
+      "getPSLayout" : {
+        "childColLG" : -1,
+        "childColMD" : 24,
+        "childColSM" : -1,
+        "childColXS" : -1,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "getPSLayoutPos" : {
+        "colMD" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false,
+      "showCaption" : true
+    }, {
       "caption" : "归档空间",
       "codeName" : "grouppanel2",
       "detailStyle" : "DEFAULT",
@@ -194,7 +298,7 @@
           "actionTarget" : "SINGLEKEY",
           "caption" : "归档",
           "codeName" : "in_progress_into_archived",
-          "confirmMsg" : "确认归档产品？",
+          "confirmMsg" : "确认归档该空间？",
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "space_in_progress_into_archived",
           "name" : "进行中_归档",
@@ -278,11 +382,14 @@
           "colMD" : 2,
           "layout" : "TABLE_24COL"
         },
+        "getPSSysCss" : {
+          "cssName" : "delete-button"
+        },
         "getPSUIAction" : {
           "actionTarget" : "SINGLEKEY",
           "caption" : "删除",
           "codeName" : "in_progress_into_deleted",
-          "confirmMsg" : "确认删除该产品？",
+          "confirmMsg" : "确认删除该空间？",
           "frontProcessType" : "WIZARD",
           "fullCodeName" : "space_in_progress_into_deleted",
           "name" : "进行中_删除",

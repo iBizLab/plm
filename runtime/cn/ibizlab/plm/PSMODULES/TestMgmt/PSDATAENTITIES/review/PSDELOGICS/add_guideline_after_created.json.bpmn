@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.reviewadd_guideline_after_created" isClosed="false" isExecutable="true" name="testmgmt_review_add_guideline_after_created_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.reviewadd_guideline_after_created">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="reviewadd_guideline_after_createddefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.attention()" name="reviewadd_guideline_after_createdattentions" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.attention()" name="reviewadd_guideline_after_createdcur_user" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.guideline()" name="reviewadd_guideline_after_createdguideline_detail" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IguidelineService))" name="guidelineservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="reviewservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="iBzSysReviewDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="reviewadd_guideline_after_createddefault" type="cn.ibizlab.plm.core.testmgmt.domain.review" />
+                            <tns:global identifier="reviewadd_guideline_after_createdattentions" type="cn.ibizlab.plm.core.base.domain.attention" />
+                            <tns:global identifier="reviewadd_guideline_after_createdcur_user" type="cn.ibizlab.plm.core.base.domain.attention" />
+                            <tns:global identifier="reviewadd_guideline_after_createdguideline_detail" type="cn.ibizlab.plm.core.testmgmt.domain.guideline" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="获取规则ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="根据ID获取规则"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createddebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段数据"/>
+                        <endEvent id="prepareparam2_end" name="end"/>
+                        <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置默认关注人"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createddeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存评审数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="begin_prepareparam3" sourceRef="begin" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_debugparam2" sourceRef="deaction1" targetRef="debugparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam2_prepareparam2" sourceRef="debugparam2" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_prepareparam5" sourceRef="prepareparam4" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction2" sourceRef="prepareparam5" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_end1" sourceRef="deaction2" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

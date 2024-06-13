@@ -16,22 +16,41 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemset_type_bugprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备项目ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemset_type_bugdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取项目信息"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemset_type_bugrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置缺陷类型"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemset_type_bugprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置项目类别"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemset_type_bugend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemset_type_bugrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置缺陷类型"/>
                     <sequenceFlow id="gateway-begin_prepareparam1" sourceRef="gateway-begin" targetRef="prepareparam1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $work_itemset_type_bugdefault:work_item();
                                             $work_itemset_type_bugproject:project();
                                     eval($work_itemset_type_bugdefault==work_itemset_type_bugdefault && $work_itemset_type_bugproject==work_itemset_type_bugproject);
-                                eval((RuleUtils.test($work_itemset_type_bugdefault.get("work_item_type_group_bug"),"EQ","bug"))&&(RuleUtils.test($work_itemset_type_bugdefault.get("projectId"),"ISNOTNULL","")))
+                                eval((RuleUtils.test($work_itemset_type_bugdefault.get("projectId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_rawsfcode1" sourceRef="deaction1" targetRef="rawsfcode1">
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_rawsfcode1" sourceRef="gateway-prepareparam2" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemset_type_bugdefault:work_item();
+                                            $work_itemset_type_bugproject:project();
+                                    eval($work_itemset_type_bugdefault==work_itemset_type_bugdefault && $work_itemset_type_bugproject==work_itemset_type_bugproject);
+                                eval((RuleUtils.test($work_itemset_type_bugdefault.get("work_item_type_group_bug"),"EQ","bug")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam2_end1" sourceRef="gateway-prepareparam2" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_itemset_type_bugdefault:work_item();
+                                            $work_itemset_type_bugproject:project();
+                                    eval($work_itemset_type_bugdefault==work_itemset_type_bugdefault && $work_itemset_type_bugproject==work_itemset_type_bugproject);
+                                eval((RuleUtils.test($work_itemset_type_bugdefault.get("work_item_type_group_bug"),"NOTEQ","bug")))
+                                ]]>
+                            </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
                     </sequenceFlow>
@@ -39,5 +58,9 @@
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
                             <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
                             <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam2" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam2_gateway-prepareparam2_gatewayline" sourceRef="prepareparam2" targetRef="gateway-prepareparam2"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam2_end_line" sourceRef="gateway-prepareparam2" targetRef="gateway-prepareparam2_end"/>
+                            <endEvent id="gateway-prepareparam2_end" name="end"/>
         </process>
     </definitions>

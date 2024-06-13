@@ -11,11 +11,14 @@
                                 <tns:metaData express="new cn.ibizlab.plm.core.base.domain.attention()" name="work_itemcopy_work_itemattention" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemcopy_work_itemcopy_child" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemcopy_work_itemfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="work_itemcopy_work_itemforward_relation_obj" type="refentity"/>
                                 <tns:metaData express="new HashMap()" name="work_itemcopy_work_itemid" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemcopy_work_itemnew_work_item" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="work_itemcopy_work_itemreverse_relation_obj" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemcopy_work_itemsrfactionparam" type="refentity"/>
                                 <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_itemcopy_work_itemtemp_obj" type="refentity"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IattentionService))" name="attentionservice" type="service"/>
                                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IattachmentService))" name="attachmentservice" type="service"/>
                     <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="iBzSysWork_itemDefaultService" type="service"/>
@@ -26,24 +29,29 @@
                             <tns:global identifier="work_itemcopy_work_itemattention" type="cn.ibizlab.plm.core.base.domain.attention" />
                             <tns:global identifier="work_itemcopy_work_itemcopy_child" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
                             <tns:global identifier="work_itemcopy_work_itemfor_temp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemforward_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="work_itemcopy_work_itemnew_work_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_itemcopy_work_itemreverse_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
                             <tns:global identifier="work_itemcopy_work_itemsrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
                             <tns:global identifier="work_itemcopy_work_itemtemp_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itembindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itembindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定界面数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置id"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="同步属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="创建工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam8" id="prepareparam8" implementation="http://www.jboss.org/drools/rule" name="关联数据属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="生成关联数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction7" id="deaction7" implementation="http://www.jboss.org/drools/rule" name="生成关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备关注参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="创建默认关注人"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="准备参数去复制子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="复制子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备附件参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcopy_work_itemdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="创建附件"/>
                         <endEvent id="deaction3_end" name="end"/>
                         <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
@@ -64,7 +72,13 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_resetparam1" sourceRef="deaction1" targetRef="resetparam1">
+                    <sequenceFlow id="deaction1_prepareparam8" sourceRef="deaction1" targetRef="prepareparam8">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam8_deaction6" sourceRef="prepareparam8" targetRef="deaction6">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction6_deaction7" sourceRef="deaction6" targetRef="deaction7">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction7_resetparam1" sourceRef="deaction7" targetRef="resetparam1">
                     </sequenceFlow>
                     <sequenceFlow id="resetparam1_prepareparam7" sourceRef="resetparam1" targetRef="prepareparam7">
                     </sequenceFlow>
@@ -82,11 +96,13 @@
                                             $work_itemcopy_work_itemattention:attention();
                                             $work_itemcopy_work_itemcopy_child:work_item();
                                             $work_itemcopy_work_itemfor_temp_obj:work_item();
+                                            $work_itemcopy_work_itemforward_relation_obj:relation();
                                             $work_itemcopy_work_itemid:Map();
                                             $work_itemcopy_work_itemnew_work_item:work_item();
+                                            $work_itemcopy_work_itemreverse_relation_obj:relation();
                                             $work_itemcopy_work_itemsrfactionparam:work_item();
                                             $work_itemcopy_work_itemtemp_obj:work_item();
-                                    eval($work_itemcopy_work_itemdefault==work_itemcopy_work_itemdefault && $work_itemcopy_work_itemattachment==work_itemcopy_work_itemattachment && $work_itemcopy_work_itemattachments==work_itemcopy_work_itemattachments && $work_itemcopy_work_itemattention==work_itemcopy_work_itemattention && $work_itemcopy_work_itemcopy_child==work_itemcopy_work_itemcopy_child && $work_itemcopy_work_itemfor_temp_obj==work_itemcopy_work_itemfor_temp_obj && $work_itemcopy_work_itemnew_work_item==work_itemcopy_work_itemnew_work_item && $work_itemcopy_work_itemsrfactionparam==work_itemcopy_work_itemsrfactionparam && $work_itemcopy_work_itemtemp_obj==work_itemcopy_work_itemtemp_obj);
+                                    eval($work_itemcopy_work_itemdefault==work_itemcopy_work_itemdefault && $work_itemcopy_work_itemattachment==work_itemcopy_work_itemattachment && $work_itemcopy_work_itemattachments==work_itemcopy_work_itemattachments && $work_itemcopy_work_itemattention==work_itemcopy_work_itemattention && $work_itemcopy_work_itemcopy_child==work_itemcopy_work_itemcopy_child && $work_itemcopy_work_itemfor_temp_obj==work_itemcopy_work_itemfor_temp_obj && $work_itemcopy_work_itemforward_relation_obj==work_itemcopy_work_itemforward_relation_obj && $work_itemcopy_work_itemnew_work_item==work_itemcopy_work_itemnew_work_item && $work_itemcopy_work_itemreverse_relation_obj==work_itemcopy_work_itemreverse_relation_obj && $work_itemcopy_work_itemsrfactionparam==work_itemcopy_work_itemsrfactionparam && $work_itemcopy_work_itemtemp_obj==work_itemcopy_work_itemtemp_obj);
                                 eval((RuleUtils.test($work_itemcopy_work_itemtemp_obj.get("attachments"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.reviewrepeal_review" isClosed="false" isExecutable="true" name="testmgmt_review_repeal_review_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.reviewrepeal_review">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="reviewrepeal_reviewdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="reviewrepeal_reviewcontent_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="reviewrepeal_reviewfor_content" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_result()" name="reviewrepeal_reviewresult" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_result()" name="reviewrepeal_reviewresults" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_content()" name="reviewrepeal_reviewreview_content" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="reviewrepeal_reviewstage" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.review_stage()" name="reviewrepeal_reviewstages" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_contentService))" name="review_contentservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="reviewservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Ireview_resultService))" name="review_resultservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IreviewService))" name="iBzSysReviewDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="reviewrepeal_reviewdefault" type="cn.ibizlab.plm.core.testmgmt.domain.review" />
+                            <tns:global identifier="reviewrepeal_reviewcontent_filter" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
+                            <tns:global identifier="reviewrepeal_reviewfor_content" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
+                            <tns:global identifier="reviewrepeal_reviewresult" type="cn.ibizlab.plm.core.testmgmt.domain.review_result" />
+                            <tns:global identifier="reviewrepeal_reviewresults" type="cn.ibizlab.plm.core.testmgmt.domain.review_result" />
+                            <tns:global identifier="reviewrepeal_reviewreview_content" type="cn.ibizlab.plm.core.testmgmt.domain.review_content" />
+                            <tns:global identifier="reviewrepeal_reviewstage" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+                            <tns:global identifier="reviewrepeal_reviewstages" type="cn.ibizlab.plm.core.testmgmt.domain.review_stage" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="绑定阶段"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取评审内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环阶段数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="清空提交人、状态、时间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置阶段为未开始"/>
+                        <endEvent id="prepareparam3_end" name="end"/>
+                        <sequenceFlow id="prepareparam3_end_line" sourceRef="prepareparam3" targetRef="prepareparam3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新评审"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环评审内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="获取评审阶段结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环评审结果"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置评审状态为为评审"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewrepeal_reviewdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="更新评审结果"/>
+                        <endEvent id="deaction2_end" name="end"/>
+                        <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam3" sourceRef="loopsubcall1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction1" sourceRef="loopsubcall1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_loopsubcall2" sourceRef="deaction1" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam4" sourceRef="loopsubcall2" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_end1" sourceRef="loopsubcall2" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_loopsubcall3" sourceRef="prepareparam4" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_prepareparam5" sourceRef="loopsubcall3" targetRef="prepareparam5">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_deaction2" sourceRef="prepareparam5" targetRef="deaction2">
+                    </sequenceFlow>
+        </process>
+    </definitions>

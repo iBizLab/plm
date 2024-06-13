@@ -55,19 +55,6 @@ package cn.ibizlab.plm.prodmgmt.logic.productlogic.delete;
                         update(productdeleteupdate_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[删除产品工单类型]
-            rule "rawsqlcall2"
-            ruleflow-group "productdeleterawsqlcall2"
-            when
-            then
-    Map param =new HashMap();
-        param.put("param0",productdeletedefault.get("id"));
-    String strSql="delete from product_ticket_type where PRODUCT_ID = #{et.param0}";
-                        iBzSysProductDefaultService.execute(strSql,param);//SQL调用
-                        update(productdeletedefault);//更新fact中变量值
-                        update(productdeleteupdate_obj);//更新fact中变量值
-            end
-
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "productdeleteend1"
