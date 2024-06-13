@@ -1,0 +1,175 @@
+$control-resource-gantt: (
+  negative-margin: rem(-6px),
+  progress-margin: rem(-3px),
+  toolbar-margin: rem(-20px),
+);
+
+@include b(control-resource-gantt) {
+  @include set-component-css-var(control-resource-gantt, $control-resource-gantt);
+
+  width: 100%;
+  height: 100%;
+
+  .xg-root {
+    &>.xg-view-toolbar {
+      display: none;
+    }
+
+    .xg-table-cell>div {
+      width: 100%;
+      padding: 0 getCssVar(spacing, base-tight);
+
+      .cell {
+        height: 100%;
+      }
+    }
+
+    .xg-table-body .xg-table-row {
+      cursor: pointer;
+
+      .xg-table-cell:not(:first-child) {
+        >div {
+          padding: 0;
+        }
+      }
+    }
+
+    .xg-mid-separate-line {
+      width: 2px;
+    }
+
+    .xg-scroll-container.xg-table-container {
+      z-index: 100;
+      box-shadow: 12px 0 16px -10px #00000026;
+    }
+
+    // 表格头部及甘特图头部高度 临时 后续通过配置
+    .xg-table-header,
+    .xg-gantt-header {
+      height: 46px !important;
+    }
+
+
+    // 特有的背景颜色
+    .xg-gantt-header-cell,
+    .xg-table-header-cell,
+    .xg-table-header {
+      font-weight: 400;
+    }
+
+    // 表格样式
+    .xg-scroll-container {
+      .xg-table-header-cell {
+        border-right: none;
+      }
+    }
+
+    // 甘特图样式
+    .xg-gantt-container {
+      .xg-gantt-header-cell {
+        font-size: getCssVar(font-size, small);
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+      }
+
+      .xg-gantt-table-cell {
+        border-right: 1px solid rgb(229 229 229);
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+
+      .xg-gantt-body {
+        &>.xg-gantt-table-row {
+          display: flex;
+        }
+
+      }
+
+      // 通过类名控制第一级滑块不显示
+      .xg-slider-level0 {
+        display: none;
+      }
+    }
+
+  }
+}
+
+// 甘特表格头
+@include b(control-gantt-column-title) {
+  @include e(top) {
+    margin-bottom: getCssVar('spacing', 'extra-tight');
+  }
+
+  @include e(today) {
+    font-weight: bold;
+    color: getCssVar(color, primary);
+  }
+}
+
+
+
+@include b(control-resource-gantt) {
+  // 滑块样式
+  @include e(slider) {
+    display: flex;
+    align-items: center;
+
+    @include m(caption) {
+      margin: 0;
+      overflow: hidden;
+      color: getCssVar(color, 'primary');
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .xg-gantt-container {
+    .xg-slider-block {
+      // 时间拖动图标
+      .xg-slider-resize.left,
+      .xg-slider-resize.right {
+        .resize-chunk {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            filter: none;
+          }
+
+          &::before {
+            display: inline-block;
+            width: 2px;
+            height: getCssVar('font-size', 'small');
+            content: '';
+            border-right: 1px solid getCssVar(color, disabled, text);
+            border-left: 1px solid getCssVar(color, disabled, text);
+          }
+
+          &::after {
+            margin-left: getCssVar('spacing', 'super-tight');
+          }
+        }
+
+      }
+    }
+  }
+
+  // 甘特图样式
+  .xg-gantt-container {
+    // 单元格样式
+    // 空白单元格禁用点击事件
+    .xg-gantt-table-row,
+    .xg-gantt-table-cell {
+      pointer-events: none;
+
+      .#{bem(top-level-cell)} {
+        pointer-events: all;
+      }
+    }
+  }
+
+}

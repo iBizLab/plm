@@ -1,0 +1,127 @@
+$control-review-list: (
+icon-top: rem(3px),
+avatar-height: rem(32px),
+);
+
+// 列表项样式
+@mixin review-list-custom-item-style {
+  display: flex;
+  align-items: center;
+  min-height: rem(48px);
+  max-height: rem(48px);
+  padding: 0 getCssVar('spacing', 'base-loose');
+  background-color: getCssVar(color, bg-1);
+  border: 1px solid getCssVar(color, border);
+}
+
+@mixin dropdown-arrow-style {
+  box-sizing: border-box;
+  display: block;
+  color: getCssVar('color', tertiary, light, active);
+  text-align: left;
+  pointer-events: auto;
+  text-size-adjust: 100%;
+  unicode-bidi: isolate;
+}
+
+// 自定义项
+@include b(control-review-list-custom-item) {
+  @include set-component-css-var(control-review-list, $control-review-list);
+
+  display: flex;
+  align-items: center;
+
+  @include review-list-custom-item-style;
+
+  border-radius: rem(48px);
+
+  @include e(icon) {
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: flex;
+      align-items: center;
+      fill: getCssVar(color, primary);
+    }
+  }
+
+  @include e(caption) {
+    margin-left: getCssVar('spacing', 'tight');
+    font-size: getCssVar('font-size', 'regular');
+    line-height: 100%;
+  }
+
+  @include e(avatar) {
+    margin-left: auto;
+
+    .#{bem(custom-avatar)} {
+      width: getCssVar(control-review-list, avatar-height);
+      height: getCssVar(control-review-list, avatar-height);
+      line-height: getCssVar(control-review-list, avatar-height);
+    }
+  }
+
+  &.is-last-item {
+    svg {
+      fill: getCssVar(color, danger);
+    }
+  }
+}
+
+@include b(control-review-list-scroll-item) {
+  border-radius: getCssVar('border-radius', 'medium');
+
+  .#{bem(control-review-list-item)} {
+    overflow: auto;
+    border-radius: getCssVar('border-radius', 'medium');
+    @include review-list-custom-item-style;
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid getCssVar(color, primary);
+    }
+
+    &.is-active {
+      background-color: getCssVar(color, primary, light, default);
+      border: 1px solid getCssVar(color, primary);
+    }
+  }
+
+  .#{bem(icon)} {
+    height: calc(100% - var(--ibiz-control-review-list-icon-top));
+  }
+}
+
+// 向下箭头
+@include b(control-review-list-dropdown-arrow) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: rem(26px);
+  font-size: getCssVar('font-size', 'regular');
+  line-height: rem(22px);
+  color: getCssVar('color', tertiary, light, active);
+  text-align: left;
+  pointer-events: auto;
+  text-size-adjust: 100%;
+  unicode-bidi: isolate;
+
+  @include e(vertical-line) {
+    width: rem(2px);
+    height: rem(16px);
+    background-color: getCssVar('color', tertiary, light, active);
+    transform: scaleX(0.38);
+    @include dropdown-arrow-style;
+  }
+
+  @include e(arrow-down) {
+    width: rem(10px);
+    height: rem(10px);
+    border-top: rem(10px) solid getCssVar('color', tertiary, light, active);
+    border-right: rem(5px) solid transparent;
+    border-left: rem(5px) solid transparent;
+    @include dropdown-arrow-style;
+  }
+}

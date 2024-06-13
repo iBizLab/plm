@@ -3,17 +3,22 @@
 /* stylelint-disable rule-empty-line-before */
 /* stylelint-disable selector-type-no-unknown */
 @include b('picker-dropdown') {
+
   @include b('picker-dropdown-select-value') {
     display: flex;
     gap: 8px;
-    align-items: baseline;
+    align-items: center;
     height: #{getCssVar(height, control, default)};
     cursor: pointer;
+    @include when('readonly'){
+      cursor: unset;
+    }
 
     @include e('textimg') {
       width: #{getCssVar(height, control, default)};
       min-width: #{getCssVar(height, control, default)};
       height: #{getCssVar(height, control, default)};
+      overflow: hidden;
       font-size: 12px;
       line-height: #{getCssVar(height, control, default)};
       color: #{getCssVar(color, primary, active, text)};
@@ -61,7 +66,9 @@
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
-    overflow: auto;
+    @include when('readonly'){
+      cursor: unset;
+    }
 
     @include e('item') {
       display: flex;
@@ -106,6 +113,17 @@
     justify-content: left;
     height: 32px;
     cursor: pointer;
+    @include when('readonly'){
+      cursor: unset;
+
+      &:hover {
+        color: unset;
+
+        img {
+          border: 1px dashed #{getCssVar(color, border)};
+        }
+      }
+    }
 
     &:hover {
       color: #{getCssVar(color, primary)};
@@ -247,6 +265,13 @@
         border-radius: 50%;
       }
 
+      @include m('avatar'){
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
       @include m('myself') {
         padding: 0 5px;
         font-size: 0.8em;
@@ -306,6 +331,9 @@
 @include b('picker-dropdown-person-value') {
   width: inherit;
   padding: 0 11px;
+  &.#{bem('picker-dropdown', '', 'readonly')} {
+    padding: 0;
+  }
 }
 
 .#{bem('grid-edit-item')} {
@@ -339,5 +367,24 @@
   .#{bem('picker-dropdown-select-value-multiple')}.#{bem('picker-dropdown-select-value-multiple__hidden')} {
     flex-wrap: nowrap;
     overflow: hidden;
+  }
+}
+
+// 只显示图片 不显示文字
+.#{bem('picker-dropdown')}.#{bem('picker-dropdown--only-icon')} {
+  padding: 0;
+  .#{bem('picker-dropdown-select-value')} {
+    cursor: pointer;
+    .#{bem('picker-dropdown-select-value__text')} {
+      display: none;
+    }
+  }
+  .#{bem('picker-dropdown-select-value__close')} {
+    display: none;
+  }
+  .#{bem('picker-dropdown-no-select-value')} {
+    span {
+      display: none;
+    }
   }
 }

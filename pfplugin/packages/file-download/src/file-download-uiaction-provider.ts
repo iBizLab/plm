@@ -35,7 +35,8 @@ export class FileDownloadUIActionProvider extends FrontUIActionProvider {
       params,
     );
     if (!resultParams.fileid) {
-      throw new RuntimeError('未配置文件id');
+      ibiz.log.error('未配置文件id');
+      return {};
     }
     const urls = (ibiz.util as IParams).file.calcFileUpDownUrl(
       resultContext,

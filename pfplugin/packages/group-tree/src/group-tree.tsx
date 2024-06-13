@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useControlController, useNamespace } from '@ibiz-template/vue3-util';
 import {
@@ -80,6 +81,12 @@ export const GroupTreeControl = defineComponent({
       (...args) => new GroupTreeController(...args),
     );
 
+    const readonly = computed(() => {
+      return !!(
+        c.context.srfreadonly === true || c.context.srfreadonly === 'true'
+      );
+    });
+
     const counterData = reactive<IData>({});
     c.evt.on('onCreated', () => {
       if (c.counter) {
@@ -90,6 +97,7 @@ export const GroupTreeControl = defineComponent({
     });
 
     const ns = useNamespace(`control-group-tree`);
+    const ns2 = useNamespace(`control-${c.model.controlType!.toLowerCase()}`);
     const treeRef = ref<InstanceType<typeof ElTree> | null>(null);
     const treeviewRef = ref<IData | null>(null);
 
@@ -279,12 +287,13 @@ export const GroupTreeControl = defineComponent({
      */
     const onNodeClick = (nodeData: ITreeNodeData, evt: MouseEvent) => {
       evt.stopPropagation();
+      if (nodeData._disableSelect) return;
       if (forbidClick) {
         return;
       }
 
       // 已经是当前节点，则进入编辑模式
-      if (treeRef.value?.getCurrentKey() === nodeData._id) {
+      if (treeRef.value?.getCurrentKey() === nodeData._id && !readonly.value) {
         const currentkey = treeRef.value?.getCurrentKey();
         c.updateTreeNode({ nodeKey: currentkey, defaultValue: {} });
       }
@@ -315,11 +324,11 @@ export const GroupTreeControl = defineComponent({
      */
     const onNodeDbClick = (nodeData: ITreeNodeData, evt: MouseEvent) => {
       evt.stopPropagation();
+      if (nodeData._disableSelect) return;
       c.onDbTreeNodeClick(nodeData);
     };
 
     // *上下文菜单相关 /
-
     let ContextMenu: IData;
     c.evt.on('onMounted', () => {
       // 有上下文菜单时加载组件
@@ -568,13 +577,56 @@ export const GroupTreeControl = defineComponent({
       }
     };
 
+    const onBack = async () => {
+      c.evt.emit('onBack', {});
+      c.isFilter.value = false;
+      if (treeRef.value) {
+        treeRef.value.filter('');
+      }
+    };
+
     onMounted(() => {
       treeviewRef.value?.$el.addEventListener('keydown', keydownHandle);
+      c.evt.on('onFilterNode', async (event: IData) => {
+        const { nodeTag } = event;
+        if (nodeTag) {
+          c.isFilter.value = true;
+        }
+        if (treeRef.value) {
+          treeRef.value.filter(`${nodeTag}@`);
+        }
+      });
+      c.evt.on('onResetSate', async () => {
+        c.evt.emit('onBack', {});
+        c.isFilter.value = false;
+        if (treeRef.value) {
+          treeRef.value.filter('');
+        }
+      });
+      c.evt.on('onLoadSuccess', () => {
+        if (c.isFilter.value) {
+          c.evt.emit('onFilterNode', { nodeTag: 'draft' });
+        } else {
+          c.evt.emit('onResetSate', {});
+        }
+      });
     });
 
     onUnmounted(() => {
       treeviewRef.value?.$el.removeEventListener('keydown', keydownHandle);
     });
+
+    const filterNode = (value: string, data: IData) => {
+      const id: string = data._id || '';
+      return id.includes(value);
+    };
+
+    const customNodeClass = (data: IData) => {
+      if (data._id === 'root:draft_parent') {
+        return 'draft_parent';
+      }
+      return null;
+    };
 
     const renderCounter = (nodeModel: IDETreeNode) => {
       if (nodeModel.counterId) {
@@ -592,6 +644,201 @@ export const GroupTreeControl = defineComponent({
           </div>
         );
       }
+    };
+
+    const renderFilter = () => {
+      if (!c.isFilter.value) {
+        return null;
+      }
+      return (
+        <div class={ns.b('filter')}>
+          <div class={ns.be('filter', 'header')} onClick={onBack}>
+            <ion-icon name='arrow-back-outline'></ion-icon>返回
+          </div>
+        </div>
+      );
+    };
+
+    const renderNewNode = (nodeData?: ITreeNodeData) => {
+      if (!c.state.newingNodeModel) {
+        return null;
+      }
+      const { parent_id } = c.state.newingNodeDefault || {};
+      if (parent_id) {
+        if (!nodeData) {
+          return null;
+        }
+        const { _value } = nodeData || {};
+        if (_value !== parent_id) {
+          return null;
+        }
+      }
+      if (!parent_id && nodeData) {
+        return null;
+      }
+      return (
+        <div class={[ns.be('node', 'newing')]}>
+          {c.state.newingNodeModel?.sysImage ? (
+            <iBizIcon
+              class={ns.be('node', 'icon')}
+              icon={c.state.newingNodeModel?.sysImage}
+            ></iBizIcon>
+          ) : null}
+          <el-input
+            v-model={c.state.newingNodeText}
+            ref='treeNodeTextInputRef'
+            class={ns.b('editing-node')}
+            onBlur={onNodeTextEditBlur}
+            onKeydown={(e: KeyboardEvent) => {
+              handleEditKeyDown(e);
+            }}
+          ></el-input>
+        </div>
+      );
+    };
+
+    const renderTree = () => {
+      return (
+        <div class={[ns.b('content'), ns.is('filter', c.isFilter.value)]}>
+          {renderFilter()}
+          <div class={[ns.b('tree-box'), ns.is('filter', c.isFilter.value)]}>
+            <el-tree
+              ref={'treeRef'}
+              key={treeRefreshKey.value}
+              class={[
+                ns2.b('tree'),
+                ns.is('list-tree', c.renderMode === 'listTree'),
+              ]}
+              node-key='_id'
+              highlight-current
+              // 点击节点的时候不展开
+              expand-on-click-node={false}
+              auto-expand-parent={false}
+              show-checkbox={!c.state.singleSelect}
+              check-strictly
+              default-expanded-keys={c.state.expandedKeys}
+              props={{
+                label: '_text',
+                children: '_children',
+                isLeaf: '_leaf',
+                class: customNodeClass,
+              }}
+              lazy
+              load={loadData}
+              onCheck={onCheck}
+              onNodeExpand={(data: IData) => {
+                updateNodeExpand(data, true);
+              }}
+              onNodeCollapse={(data: IData) => {
+                updateNodeExpand(data, false);
+              }}
+              draggable={!readonly.value}
+              allow-drop={allowDrop}
+              allow-drag={allowDrag}
+              onNodeDrop={handleDrop}
+              filter-node-method={filterNode}
+            >
+              {{
+                default: ({ data }: { node: IData; data: IData }) => {
+                  const nodeData = findNodeData(data._uuid, c)!;
+                  if (!nodeData) {
+                    return null;
+                  }
+                  const nodeModel = c.getNodeModel(nodeData._nodeId)!;
+
+                  // 绘制编辑项
+                  if (
+                    c.state.editingNodeKey === nodeData._id &&
+                    !readonly.value
+                  ) {
+                    console.log(555, readonly.value);
+                    return (
+                      <div class={[ns.b('node'), nodeModel.sysCss?.cssName]}>
+                        {nodeData._icon ? (
+                          <iBizIcon
+                            class={ns.be('node', 'icon')}
+                            icon={nodeData._icon}
+                          ></iBizIcon>
+                        ) : null}
+                        <el-input
+                          v-model={c.state.editingNodeText}
+                          ref='treeNodeTextInputRef'
+                          class={ns.b('editing-node')}
+                          onBlur={() => {
+                            onNodeTextEditBlur();
+                          }}
+                          onKeydown={(e: KeyboardEvent) => {
+                            handleEditKeyDown(e);
+                          }}
+                        ></el-input>
+                      </div>
+                    );
+                  }
+
+                  const layoutPanel = getControlPanel(nodeModel);
+
+                  let content;
+                  if (layoutPanel) {
+                    content = (
+                      <iBizControlShell
+                        data={nodeData}
+                        modelData={layoutPanel}
+                        context={c.context}
+                        params={c.params}
+                      ></iBizControlShell>
+                    );
+                  } else {
+                    content = [
+                      nodeData._icon ? (
+                        <iBizIcon
+                          class={ns.be('node', 'icon')}
+                          icon={nodeData._icon}
+                        ></iBizIcon>
+                      ) : null,
+                      nodeData._textHtml ? (
+                        <span
+                          class={ns.be('node', 'label')}
+                          v-html={nodeData._textHtml}
+                        ></span>
+                      ) : (
+                        <span class={ns.be('node', 'label')}>
+                          {nodeData._text}
+                        </span>
+                      ),
+                    ];
+                  }
+
+                  return [
+                    <div
+                      onDblclick={evt => onNodeDbClick(nodeData, evt)}
+                      onClick={evt => onNodeClick(nodeData, evt)}
+                      onContextmenu={evt => onNodeContextmenu(nodeData, evt)}
+                      class={[
+                        ns.b('node'),
+                        ns.is(
+                          'hidden',
+                          Object.is(c.hiddenNodeId, nodeData._nodeId) &&
+                            !c.isFilter.value,
+                        ),
+                        nodeData._leaf
+                          ? ns.be('node', 'item')
+                          : ns.be('node', 'group'),
+                        nodeModel.sysCss?.cssName,
+                      ]}
+                    >
+                      {content}
+                      {renderCounter(nodeModel)}
+                      {renderContextMenu(nodeModel, nodeData)}
+                    </div>,
+                    renderNewNode(nodeData),
+                  ];
+                },
+              }}
+            </el-tree>
+            {renderNewNode()}
+          </div>
+        </div>
+      );
     };
 
     return {
@@ -617,6 +864,7 @@ export const GroupTreeControl = defineComponent({
       allowDrag,
       handleDrop,
       onNodeTextEditBlur,
+      renderTree,
     };
   },
   render() {
@@ -628,7 +876,7 @@ export const GroupTreeControl = defineComponent({
         return (
           <el-input
             model-value={this.c.state.query}
-            class={[this.ns.b('quick-search'), this.ns.b('quick-search')]}
+            class={this.ns.b('quick-search')}
             placeholder={this.c.state.placeHolder}
             onInput={this.onInput}
           >
@@ -643,147 +891,21 @@ export const GroupTreeControl = defineComponent({
         );
       },
     };
+    if (this.c.bottomToolbar) {
+      slots.toolbar = () => {
+        return (
+          <iBizControlShell
+            modelData={this.c.bottomToolbar}
+            context={this.c.context}
+            params={this.c.params}
+          ></iBizControlShell>
+        );
+      };
+    }
     const key = this.c.controlPanel ? 'tree' : 'default';
     slots[key] = () => {
       if (this.c.state.isLoaded && this.treeRefreshKey) {
-        return (
-          <div class={this.ns.b('tree-box')}>
-            <el-tree
-              ref={'treeRef'}
-              key={this.treeRefreshKey}
-              node-key='_id'
-              highlight-current
-              // 点击节点的时候不展开
-              expand-on-click-node={false}
-              auto-expand-parent={false}
-              show-checkbox={!this.c.state.singleSelect}
-              check-strictly
-              default-expanded-keys={this.c.state.expandedKeys}
-              props={{
-                label: '_text',
-                children: '_children',
-                isLeaf: '_leaf',
-              }}
-              lazy
-              load={this.loadData}
-              onCheck={this.onCheck}
-              onNodeExpand={(data: IData) => {
-                this.updateNodeExpand(data, true);
-              }}
-              onNodeCollapse={(data: IData) => {
-                this.updateNodeExpand(data, false);
-              }}
-              draggable={true}
-              allow-drop={this.allowDrop}
-              allow-drag={this.allowDrag}
-              onNodeDrop={this.handleDrop}
-            >
-              {{
-                default: ({ data }: { node: IData; data: IData }) => {
-                  const nodeData = this.findNodeData(data._uuid, this.c)!;
-                  if (!nodeData) {
-                    return null;
-                  }
-                  const nodeModel = this.c.getNodeModel(nodeData._nodeId)!;
-
-                  // 绘制编辑项
-                  if (this.c.state.editingNodeKey === nodeData._id) {
-                    return (
-                      <div
-                        class={[this.ns.b('node'), nodeModel.sysCss?.cssName]}
-                      >
-                        {nodeData._icon ? (
-                          <iBizIcon
-                            class={this.ns.be('node', 'icon')}
-                            icon={nodeData._icon}
-                          ></iBizIcon>
-                        ) : null}
-                        <el-input
-                          v-model={this.c.state.editingNodeText}
-                          ref='treeNodeTextInputRef'
-                          class={this.ns.b('editing-node')}
-                          onBlur={() => {
-                            this.onNodeTextEditBlur();
-                          }}
-                          onKeydown={(e: KeyboardEvent) => {
-                            this.handleEditKeyDown(e);
-                          }}
-                        ></el-input>
-                      </div>
-                    );
-                  }
-
-                  const layoutPanel = getControlPanel(nodeModel);
-
-                  let content;
-                  if (layoutPanel) {
-                    content = (
-                      <iBizControlShell
-                        data={nodeData}
-                        modelData={layoutPanel}
-                        context={this.c.context}
-                        params={this.c.params}
-                      ></iBizControlShell>
-                    );
-                  } else {
-                    content = [
-                      nodeData._icon ? (
-                        <iBizIcon
-                          class={this.ns.be('node', 'icon')}
-                          icon={nodeData._icon}
-                        ></iBizIcon>
-                      ) : null,
-                      nodeData._textHtml ? (
-                        <span
-                          class={this.ns.be('node', 'label')}
-                          v-html={nodeData._textHtml}
-                        ></span>
-                      ) : (
-                        <span class={this.ns.be('node', 'label')}>
-                          {nodeData._text}
-                        </span>
-                      ),
-                    ];
-                  }
-
-                  return (
-                    <div
-                      onDblclick={evt => this.onNodeDbClick(nodeData, evt)}
-                      onClick={evt => this.onNodeClick(nodeData, evt)}
-                      onContextmenu={evt =>
-                        this.onNodeContextmenu(nodeData, evt)
-                      }
-                      class={[this.ns.b('node'), nodeModel.sysCss?.cssName]}
-                    >
-                      {content}
-                      {this.renderCounter(nodeModel)}
-                      {this.renderContextMenu(nodeModel, nodeData)}
-                    </div>
-                  );
-                },
-              }}
-            </el-tree>
-            {this.c.state.newingNodeModel ? (
-              <div class={[this.ns.be('node', 'newing')]}>
-                {this.c.state.newingNodeModel?.sysImage ? (
-                  <iBizIcon
-                    class={this.ns.be('node', 'icon')}
-                    icon={this.c.state.newingNodeModel?.sysImage}
-                  ></iBizIcon>
-                ) : null}
-                <el-input
-                  v-model={this.c.state.newingNodeText}
-                  ref='treeNodeTextInputRef'
-                  class={this.ns.b('editing-node')}
-                  onBlur={this.onNodeTextEditBlur}
-                  onKeydown={(e: KeyboardEvent) => {
-                    this.handleEditKeyDown(e);
-                  }}
-                ></el-input>
-              </div>
-            ) : null}
-          </div>
-        );
+        return this.renderTree();
       }
     };
 

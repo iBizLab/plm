@@ -1,0 +1,300 @@
+/* stylelint-disable selector-class-pattern */
+@include b(form-data-comparison) {
+  height: calc(100% - 20px);
+  overflow: auto;
+
+  @include e('content') {
+    display: flex;
+  }
+
+  @include e('top-hidesame-content') {
+    display: flex;
+    place-content: center space-between;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
+  @include e(top-content) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center space-between;
+    align-items: center;
+    width: 100%;
+    height: 53px;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+
+    & > .ibiz-form-data-comparison__top-content-choose:last-child {
+      border-right: none;
+    }
+  }
+
+  @include e(top-hidesame-content-right) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+  }
+
+  @include e(top-hidesame-content-right-item) {
+    display: flex;
+    flex-direction: row;
+    place-content: center space-around;
+    align-items: center;
+    width: 60px;
+    height: 30px;
+  }
+
+  @include e(top-hidesame-content-right-item-add) {
+    width: 16px;
+    height: 16px;
+    background: #d5f3e0;
+  }
+  @include e(top-hidesame-content-right-item-change) {
+    width: 16px;
+    height: 16px;
+    background: #fceecd;
+  }
+  @include e(top-hidesame-content-right-item-delete) {
+    width: 16px;
+    height: 16px;
+    background: #ffd5d5;
+  }
+
+  @include e(top-content-left) {
+    position: relative;
+    flex-shrink: 0;
+    width: 200px;
+    height: 100%;
+    background-image: linear-gradient(
+      to bottom left,
+      #fafafa 49.5%,
+      #eee,
+      #fafafa 51%
+    );
+    border-right: 1px solid #eee;
+  }
+
+  @include e(top-content-left-attribute) {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  @include e(top-content-left-version) {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  @include e(top-content-choose) {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    place-content: center space-between;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    padding: 12px;
+    border-right: 1px solid #eee;
+
+    &.modified {
+      background-color: #fffdf8;
+    }
+  }
+
+  @include e(top-content-choose-select) {
+    width: 100px;
+
+    .el-input {
+      height: 28px;
+    }
+  }
+
+  @include e(mid-content) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center space-between;
+    align-items: center;
+
+    // align-self: stretch;
+    width: 100%;
+
+    // height: 53px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+
+    & > .ibiz-form-data-comparison__mid-content-item:last-child {
+      border-right: 1px solid #eee;
+    }
+
+    &.added {
+      background-color: #d5f3e0;
+      .#{bem('form-data-comparison','mid-content-left')} {
+        background-color: #fff;
+      }
+
+      .#{bem('form-data-comparison','mid-content-item')} {
+        .el-table th.el-table__cell {
+          background-color: #d5f3e0;
+        }
+
+        .ibiz-control-grid__table.el-table .el-table__body-wrapper tr td {
+          background-color: #d5f3e0;
+        }
+
+        > .ibiz-view {
+          height: 100%;
+          background-color: #d5f3e0;
+        }
+
+        .ibiz-html .w-e-scroll > div {
+          background-color: #d5f3e0;
+        }
+      }
+    }
+
+    &.modified {
+      background-color: #fffdf8;
+      .#{bem('form-data-comparison','mid-content-left')} {
+        background-color: #fff;
+      }
+
+      .#{bem('form-data-comparison','mid-content-item')} {
+        .el-table th.el-table__cell {
+          background-color: #fffdf8;
+        }
+
+        .ibiz-control-grid__table.el-table .el-table__body-wrapper tr td {
+          background-color: #fffdf8;
+        }
+
+        > .ibiz-view {
+          height: 100%;
+          background-color: #fffdf8;
+        }
+
+        .ibiz-html .w-e-scroll > div {
+          background-color: #fffdf8;
+        }
+      }
+    }
+
+    &.deleted {
+      background-color: #ffd5d5;
+      .#{bem('form-data-comparison','mid-content-left')} {
+        background-color: #fff;
+      }
+
+      .#{bem('form-data-comparison','mid-content-item')} {
+        .el-table th.el-table__cell {
+          background-color: #ffd5d5;
+        }
+
+        .ibiz-control-grid__table.el-table .el-table__body-wrapper tr td {
+          background-color: #ffd5d5;
+        }
+
+        > .ibiz-view {
+          height: 100%;
+          background-color: #ffd5d5;
+        }
+
+        .ibiz-html .w-e-scroll > div {
+          background-color: #ffd5d5;
+        }
+      }
+    }
+  }
+
+  @include e('mid-content-left') {
+    display: flex;
+    flex-flow: row nowrap;
+    flex-shrink: 0;
+    place-content: center center;
+    align-items: center;
+    align-self: stretch;
+    width: 200px;
+
+    // padding: 12px;
+
+    // border-right: 1px solid #eee;
+    // border-left: 1px solid #eee;
+
+    &.slot {
+      width: 199px;
+      border-left: none;
+    }
+  }
+
+  @include e('mid-content-item') {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    place-content: center space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 50%;
+    min-width: 0;
+    max-width: 1024px;
+    min-height: 43px;
+    padding: 12px;
+    pointer-events: none;
+    border-left: 1px solid #eee;
+
+    > div {
+      max-width: 1024px;
+    }
+  }
+
+  @include e(collapse-item) {
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+
+    > .el-collapse-item__header {
+      position: relative;
+      padding-left: 30px;
+      border-right: 1px solid eee;
+      border-bottom: 1px solid #eee;
+
+      &::before {
+        position: absolute;
+        left: 200px;
+        display: block;
+        width: 1px;
+        height: 47px;
+        content: '';
+        background-color: #eee;
+      }
+
+      > .el-icon.el-collapse-item__arrow {
+        position: absolute;
+        left: 8px;
+      }
+    }
+
+    > .el-collapse-item__wrap {
+      border-bottom: none;
+
+      > .el-collapse-item__content {
+        padding-bottom: 0;
+
+        & > .slot:last-child {
+          /* 在此处添加您想要修改的样式 */
+          // border-bottom: none;
+        }
+
+        & > .slot:first-child {
+          /* 在此处添加您想要修改的样式 */
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+}

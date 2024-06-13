@@ -41,6 +41,8 @@ export const MenTion = defineComponent({
 
     const total = ref(0);
 
+    const errorLoadItems: Ref<string[]> = ref([]);
+
     const handleChange = (event: EventBase) => {
       const { eventArg } = event;
       if (eventArg) {
@@ -146,17 +148,49 @@ export const MenTion = defineComponent({
       }
     };
 
+    const getAvatarDownloadUrl = (avatarUrl: string) => {
+      if (!avatarUrl) {
+        return null;
+      }
+      const urlConfig = JSON.parse(avatarUrl);
+      if (urlConfig.length === 0) {
+        return null;
+      }
+      const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+        c.context,
+        c.params,
+        c.editorParams,
+      );
+      const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
+      return url;
+    };
+
+    const avatarLoadError = (url: string) => {
+      errorLoadItems.value.push(url);
+    };
+
     const renderItem = (user: IData) => {
       const usertext: string = user.name;
       const avatarBg = HtmlUtil.stringToHexColor(usertext);
       const avatarName = HtmlUtil.avatarName(usertext);
+      let url = '';
+      if (c.operatorMap.has(user.id)) {
+        const operator = c.operatorMap.get(user.id);
+        if (operator.data.iconurl) {
+          url = getAvatarDownloadUrl(operator.data.iconurl) || '';
+        }
+      }
       return (
         <div
           class={[ns.e('item'), ns.is('active', user.id === curUser.value.id)]}
           onClick={() => onUserSelect(user)}
         >
           <div class={ns.e('avatar')} style={`background: ${avatarBg};`}>
-            {avatarName}
+            {url && !errorLoadItems.value.includes(url) ? (
+              <img src={url} onError={() => avatarLoadError(url)} />
+            ) : (
+              avatarName
+            )}
           </div>
           <div class={ns.e('name')} title={usertext}>
             {usertext}

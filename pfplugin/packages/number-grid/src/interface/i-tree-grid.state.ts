@@ -8,4 +8,9 @@ export interface INumberTreeGridState extends ITreeGridState {
    * @memberof INumberTreeGridState
    */
   expandRows: IGridRowState[];
+
+  /**
+   * 树数据
+   */
+  treeData: IData[];
 }

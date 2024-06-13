@@ -7,7 +7,7 @@ import {
   onRouteChange,
   getNestedRoutePath,
 } from '@ibiz-template/vue3-util';
-import { defineComponent, PropType, watch } from 'vue';
+import { defineComponent, onUnmounted, PropType, reactive, watch } from 'vue';
 import { IDEDRBar } from '@ibiz/model-core';
 import { useRoute, useRouter } from 'vue-router';
 import { IControlProvider } from '@ibiz-template/runtime';
@@ -48,6 +48,20 @@ export const DRBarExControl = defineComponent({
     const ns = useNamespace(`control-${c.model.controlType!.toLowerCase()}-ex`);
     const router = useRouter();
 
+    const counterData = reactive<IData>({});
+    const fn = (counter: IData) => {
+      Object.assign(counterData, counter);
+    };
+    c.evt.on('onCreated', () => {
+      if (c.counter) {
+        c.counter.onChange(fn, true);
+      }
+    });
+
+    onUnmounted(() => {
+      c.counter?.offChange(fn);
+    });
+
     c.setRouter(router);
 
     const route = useRoute();
@@ -62,7 +76,11 @@ export const DRBarExControl = defineComponent({
         if (c.routeDepth && c.navPos) {
           const { pathNodes: newPathNodes } = route2routePath(to);
           const { pathNodes: oldPathNodes } = route2routePath(from);
+          const fromKey = getNestedRoutePath(from, c.routeDepth + 1);
           const currentKey = getNestedRoutePath(route, c.routeDepth + 1);
+          if (fromKey === currentKey) {
+            return;
+          }
           const isRouteModal =
             newPathNodes[c.routeDepth + 1]?.viewName === 'route-modal' ||
             oldPathNodes[c.routeDepth + 1]?.viewName === 'route-modal';
@@ -70,6 +88,8 @@ export const DRBarExControl = defineComponent({
             c.navPos.openView({
               key: currentKey,
               isRoutePushed: false,
+              context: c.context.clone(),
+              params: { ...c.params },
             });
           }
         }
@@ -100,24 +120,49 @@ export const DRBarExControl = defineComponent({
     return {
       c,
       ns,
+      counterData,
       handleSelect,
     };
   },
   render() {
-    const { isCreated, drBarItems, defaultItem } = this.c.state;
+    const { isCreated, drBarItems, defaultItem, isCalculatedPermission } =
+      this.c.state;
 
     return (
       <iBizControlBase controller={this.c} class={this.ns.b()}>
-        {isCreated && !!defaultItem && (
+        {isCreated && isCalculatedPermission && !!defaultItem && (
           <el-tabs
             modelValue={defaultItem}
             onTabClick={(pane: TabsPaneContext, ev: Event) => {
               this.handleSelect(pane.paneName as string);
             }}
           >
-            {drBarItems.map((item: IData) => {
+            {drBarItems.map(item => {
+              if (!item.visible) {
+                return;
+              }
               return (
-                <el-tab-pane label={item.caption} name={item.tag}></el-tab-pane>
+                <el-tab-pane label={item.caption} name={item.tag}>
+                  {{
+                    label: () => {
+                      return (
+                        <span class={this.ns.b('pane-label')}>
+                          <span class={this.ns.be('pane-label', 'text')}>
+                            {item.caption || ''}
+                          </span>
+                          {item.counterId &&
+                            this.counterData[item.counterId] != null && (
+                              <iBizBadge
+                                class={this.ns.be('pane-label', 'counter')}
+                                value={this.counterData[item.counterId]}
+                                counterMode={item.counterMode}
+                              />
+                            )}
+                        </span>
+                      );
+                    },
+                  }}
+                </el-tab-pane>
               );
             })}
           </el-tabs>

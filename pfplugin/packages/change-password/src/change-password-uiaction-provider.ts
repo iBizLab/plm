@@ -1,18 +1,13 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-await-in-loop */
 import { IAppDEUIAction } from '@ibiz/model-core';
 import {
-  IModal,
-  IModalData,
-  IOverlayPopoverContainer,
   IUIActionResult,
   IUILogicParams,
   UIActionProviderBase,
+  convertNavData,
+  formatMultiData,
 } from '@ibiz-template/runtime';
 import { HttpError } from '@ibiz-template/core';
-import { VNode, h } from 'vue';
-import { ChangePassword } from './change-password';
 
 /**
  * 修改密码界面行为插件
@@ -22,88 +17,109 @@ import { ChangePassword } from './change-password';
  * @extends {UIActionProviderBase}
  */
 export class ChangePasswordUIActionProvider extends UIActionProviderBase {
-  /**
-   * 气泡容器
-   *
-   * @type {IOverlayPopoverContainer}
-   * @memberof ChangePasswordUIActionProvider
-   */
-  public overlay: IOverlayPopoverContainer | null = null;
-
-  /**
-   * 执行界面行为
-   *
-   * @param {IAppDEUIAction} _action
-   * @param {IUILogicParams} _params
-   * @return {*}  {Promise<IUIActionResult>}
-   * @memberof ChangePasswordUIActionProvider
-   */
   async execAction(
-    _action: IAppDEUIAction,
-    _params: IUILogicParams,
+    action: IAppDEUIAction,
+    args: IUILogicParams,
   ): Promise<IUIActionResult> {
-    const data = await this.openModal();
-    if (data.length > 0) {
-      await this.changePass(data[0]);
-    }
-    return {};
-  }
-
-  /**
-   * 打开模态
-   *
-   * @return {*}
-   * @memberof ChangePasswordUIActionProvider
-   */
-  async openModal() {
-    const opts = {
-      width: '600px',
-    };
-    this.overlay = ibiz.overlay.createModal(
-      this.createOverlayView(),
-      undefined,
-      opts,
+    // 处理参数
+    const { context, params, data } = args;
+    const { resultParams } = await this.handleParams(
+      action,
+      context,
+      data,
+      params,
     );
-    await this.overlay.present();
-    const result: IModalData = await this.overlay.onWillDismiss();
-    return result.data || [];
+    const bol = this.validate(resultParams);
+    if (!bol) {
+      return { refresh: false };
+    }
+    const res = await this.changePass(resultParams);
+    if (res) {
+      return {
+        refresh: true,
+        refreshMode: action.refreshMode,
+      };
+    }
+    return { refresh: false };
   }
 
-  /**
-   * 创建overlay
-   *
-   * @return {*}  {(modal: IModal) => VNode}
-   * @memberof ChangePasswordUIActionProvider
-   */
-  createOverlayView(): (modal: IModal) => VNode {
-    return (modal: IModal) => {
-      return h(ChangePassword, {
-        modal,
-      });
-    };
-  }
-
-  /**
-   * 修改密码
-   *
-   * @param {IData} data
-   * @return {*}  {Promise<boolean>}
-   * @memberof ChangePasswordUIActionProvider
-   */
-  async changePass(data: IData): Promise<boolean> {
+  async changePass(params: IData): Promise<boolean> {
     try {
       await ibiz.net.post('/uaa/changepwd', {
-        oldPwd: data.oldPassword,
-        newPwd: data.newPassword,
+        oldPwd: params.oldpassword,
+        newPwd: params.newpassword,
       });
       ibiz.message.success('修改密码成功');
       return true;
     } catch (err: unknown) {
-      ibiz.notification.error({
-        title: '修改密码失败',
-        desc: (err as HttpError).message || '',
-      });
+      ibiz.message.error(`修改密码失败,${(err as HttpError).message || ''}`);
+      return false;
     }
-    return false;
+  }
+
+  protected validate(params: IData): boolean {
+    const { newpassword, oldpassword, surepassword } = params;
+    if (!newpassword) {
+      ibiz.message.error('原密码不能为空');
+      return false;
+    }
+    if (!oldpassword) {
+      ibiz.message.error('新密码不能为空');
+      return false;
+    }
+    if (!surepassword) {
+      ibiz.message.error('确认密码不能为空');
+      return false;
+    }
+    if (oldpassword === newpassword) {
+      ibiz.message.error('新密码不能与旧密码一致');
+      return false;
+    }
+    if (newpassword !== surepassword) {
+      ibiz.message.error('两次密码不一致');
+      return false;
+    }
+    return true;
+  }
+
+  protected async handleParams(
+    action: IAppDEUIAction,
+    context: IContext,
+    data: IData[],
+    params: IParams,
+  ): Promise<{
+    resultContext: IContext;
+    resultData: IData[];
+    resultParams: IParams;
+  }> {
+    const resultData: IData[] = [];
+
+    // 处理上下文导航参数
+    const resultContext = context.clone();
+    const navContexts = [...(action.navigateContexts || [])];
+
+    // 是否是多数据
+    const isMultiData =
+      ['MULTIKEY', 'MULTIDATA'].includes(action.actionTarget!) &&
+      data.length > 0;
+
+    // 处理自定义导航上下文
+    const tempContext = convertNavData(
+      navContexts,
+      isMultiData ? formatMultiData(navContexts, data) : data[0] || {},
+      params,
+      context,
+    );
+    Object.assign(resultContext, tempContext);
+
+    // 处理自定义导航视图参数
+    const navParams = action.navigateParams;
+    const resultParams = convertNavData(
+      navParams,
+      isMultiData ? formatMultiData(navParams, data) : data[0] || {},
+      params,
+      resultContext,
+    );
+    return { resultContext, resultData, resultParams };
   }
 }

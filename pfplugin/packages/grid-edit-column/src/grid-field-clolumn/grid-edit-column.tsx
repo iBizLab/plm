@@ -89,7 +89,8 @@ export const GridEditColumn = defineComponent({
 
     const userData = props.row.data.srfUserData;
     const getPickerData = async () => {
-      if (userData) {
+      const { srfuf } = props.row.data;
+      if (srfuf === Srfuf.CREATE && userData) {
         pickerData.value = await c.loadUserCodeList(userData);
         pickerValue.value = userData.defaultValue;
         c.curPickerId = userData.defaultValue;
@@ -170,7 +171,7 @@ export const GridEditColumn = defineComponent({
       }
       if (containerRef.value) {
         funcs = useClickOutside(containerRef, async () => {
-          if (!picking) {
+          if (!picking && !editorProps.readonly) {
             c.hasDropdown = false;
             editorProps.onBlur();
           }
@@ -830,7 +831,8 @@ export const GridEditColumn = defineComponent({
         ) : (
           <div class={this.ns.b('text-container')}>{content}</div>
         )}
-        {!(c.model.enableRowEdit && !this.editorProps.readonly) ? (
+        {!(c.model.enableRowEdit && !this.editorProps.readonly) &&
+        this.editorProps.cellEditable ? (
           <div class={this.ns.b('toolbar-container')}>
             {this.renderActions()}
           </div>

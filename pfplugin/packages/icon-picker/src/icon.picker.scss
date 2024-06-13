@@ -1,0 +1,194 @@
+/* stylelint-disable selector-class-pattern */
+$input: (
+  'min-height': getCssVar(editor, default, line-height),
+);
+
+@include b('icon-picker') {
+  width: 100%;
+  height: 100%;
+  font-size: getCssVar(form-item, font-size);
+  font-weight: getCssVar(form-item, regular);
+  @include set-component-css-var(input, $input);
+
+  .el-input .el-input__inner {
+    height: 100%;
+  }
+
+  .el-input .el-input__inner::placeholder {
+    color: getCssVar(form-item, placeholder-color);
+  }
+
+  .el-textarea .el-textarea__inner {
+    height: 100%;
+  }
+
+  .el-textarea .el-textarea__inner::placeholder {
+    color: getCssVar(form-item, placeholder-color);
+    @include overflow-wrap;
+  }
+  @include e('modal-box') {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    min-height: 60vh;
+    @include m('search-input') {
+      display: flex;
+      flex: 0;
+      justify-content: end;
+
+      .el-input {
+        width: 250px;
+
+        .el-input__inner {
+          height: 32px;
+        }
+      }
+    }
+    @include m('icon-menu') {
+      flex: 0;
+
+      .el-menu-item {
+        display: inline-block;
+        max-width: 12%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    @include m('icon-list') {
+      flex: 1;
+      flex-wrap: wrap;
+      height: inherit;
+      padding: 15px 0;
+      overflow: auto;
+      overflow-x:hidden ;
+    }
+    @include m('icon-item') {
+      display: inline-block;
+      flex: none;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      width: 100px;
+      height: 84px;
+      padding: 10px 20px 0;
+      font-size: 20px;
+      color: #606266;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        transform: scale(1.5);
+      }
+
+      .item-icon {
+        display: inline-block;
+        width: 100%;
+        height: 20px;
+        padding: 0;
+        margin: 0;
+        font-size: 20px;
+        line-height: 20px;
+        visibility: visible;
+      }
+
+      .icon-tip {
+        display: block;
+        width: 100%;
+        height: calc(100% - 25px);
+        margin: 5px 0 0;
+        font-size: 14px;
+        line-height: 12px;
+      }
+    }
+    @include m('icon-item-box') {
+      @include when('active') {
+        color: getCssVar(color, primary);
+      }
+    }
+  }
+
+  @include b(icon-picker-input) {
+    height: 100%;
+
+    .el-input__wrapper {
+      width: 100%;
+
+      // 避免自适应高度后，没配高度么有默认行高
+      min-height: getCssVar(input, min-height);
+    }
+  }
+
+  @include m(readonly) {
+    height: auto;
+    line-height: getCssVar(input, min-height);
+    color: getCssVar(form-item, readonly-color);
+  }
+
+  // 单位后缀样式
+  .el-input__suffix {
+    cursor: pointer;
+    .#{bem(input,unit)} {
+      // font-size: getCssVar('form-item', 'font-size');
+      font-style: normal;
+    }
+  }
+}
+
+// 表单下的时间选择器默认显示，悬浮上去显示编辑器
+@include b(icon-picker-form-default-content) {
+  display: none;
+}
+
+@include b(form-item) {
+  @include b(icon-picker) {
+    @include when(show-default) {
+      // 悬浮显示编辑器
+      &:hover {
+        @include b(icon-picker-form-default-content) {
+          display: none;
+        }
+
+        @include b(icon-picker-input) {
+          display: inline-flex;
+        }
+      }
+
+      // 不悬浮时显示信息态
+      @include b(icon-picker-form-default-content) {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: getCssVar(form-item, hover-edit-padding);
+        font-family: Arial, sans-serif;
+        font-size: getCssVar(form-item, font-size);
+        line-height: getCssVar(editor, default, line-height);
+        color: getCssVar(form-item, text-color);
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
+
+      @include b(icon-picker-input) {
+        display: none;
+        font-family: Arial, sans-serif;
+
+        &.el-textarea .el-textarea__inner {
+          word-wrap: break-word;
+          white-space: pre-wrap;
+        }
+      }
+
+      // 输入态
+      @include when(editable) {
+        @include b(icon-picker-form-default-content) {
+          display: none;
+        }
+
+        @include b(icon-picker-input) {
+          display: inline-flex;
+        }
+      }
+    }
+  }
+}

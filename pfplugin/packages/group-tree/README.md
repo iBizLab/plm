@@ -20,6 +20,8 @@
 
 **树节点拖拽后默认填充节点数据：**通过在节点关系上配置处理参数的方式指定下级节点填充值，格式为[下级节点要填充的数据字段名称]=[上级节点的数据字段名称]
 
+**切换草稿导航：**通过界面逻辑调用 changeTreeState 方法，当传递的参数为 draft 时，启用过滤。
+
 ## 输入参数
 
 ### 新建树节点 newTreeNode
@@ -42,6 +44,12 @@
 | ------- | ----------------- | ------ | ------ |
 | nodeKey | 树节点唯一标识 id | string | —      |
 
+### 切换草稿导航 changeTreeState
+
+| 属性名  | 描述              | 类型   | 默认值 |
+| ------- | ----------------- | ------ | ------ |
+| nodeTag | 用于树节点过滤的值  | string | —      |
+
 ### 树节点拖拽后默认填充节点数据
 
 通过在节点关系上配置处理参数的方式指定下级节点填充值，格式为[下级节点要填充的数据字段名称]=[上级节点的数据字段名称]
@@ -58,6 +66,7 @@ id :为上级节点的数据字段名称
 | newTreeNode    | 新建树节点     | 2 个参数，分别是当前树节点标识, 当前新增节点时携带参数 |
 | updateTreeNode | 编辑指定树节点 | 2 个参数，分别是当前树节点 id, 当前节点编辑时携带参数  |
 | removeTreeNode | 删除指定树节点 | 1 个参数，当前树节点 id                                |
+| changeTreeState| 传递参数为 draft 时显示草稿导航 | 1 个参数，用于过滤属于草稿的树节点       |
 
 ## 基本使用
 
@@ -73,7 +82,7 @@ id :为上级节点的数据字段名称
 [
   {
     "plugintype": "TREE_RENDER",
-    "rtobjectrepo": "@ibiz-template-plm/group-tree@0.0.2-dev.151",
+    "rtobjectrepo": "@ibiz-template-plm/group-tree@0.0.3-dev.76",
     "codename": "UsrPFPlugin1226747395",
     "plugintag": "GROUP_TREE",
     "rtobjectmode": 2,

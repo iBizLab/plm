@@ -9,6 +9,7 @@ import {
   IViewConfig,
   IModalData,
   UIActionUtil,
+  CodeListItem,
 } from '@ibiz-template/runtime';
 import {
   IAppDEACMode,
@@ -26,6 +27,13 @@ import { notNilEmpty } from 'qx-util';
  * @Date: 2022-08-25 10:57:58
  */
 export class PersonelSelectController extends EditorController<IPicker> {
+  /**
+   * 云系统操作者Map
+   *
+   * @memberof PersonelSelectController
+   */
+  public operatorMap = new Map();
+
   /**
    * 总数
    */
@@ -224,11 +232,22 @@ export class PersonelSelectController extends EditorController<IPicker> {
    */
   public defaultAttentionValue = '';
 
+  /**
+   * 是否显示姓名文字
+   */
+  public showNameText: boolean = true;
+
+  /**
+   * 是否显示姓名提示
+   */
+  public showNameTip: boolean = false;
+
   protected async onInit(): Promise<void> {
     super.onInit();
     this.initDefaultAttribute();
-    this.initParams();
     this.valueItem = this.model.valueItemName?.toLowerCase() || '';
+    this.initParams();
+    await this.getOperatorUserList();
     if (this.model.appDataEntityId) {
       if (this.model.appDEDataSetId) {
         this.interfaceName = this.model.appDEDataSetId;
@@ -328,6 +347,9 @@ export class PersonelSelectController extends EditorController<IPicker> {
     if (this.editorParams?.DEFAULTATNVALUE) {
       this.defaultAttentionValue = this.editorParams?.DEFAULTATNVALUE;
     }
+    if (this.editorParams?.VALUEITEMNAME) {
+      this.valueItem = this.editorParams?.VALUEITEMNAME;
+    }
 
     // 自填充映射
     if (
@@ -371,6 +393,13 @@ export class PersonelSelectController extends EditorController<IPicker> {
           name: 'name',
         };
       }
+    }
+
+    if (this.editorParams.SHOWNAMETEXT) {
+      this.showNameText = this.toBoolean(this.editorParams.SHOWNAMETEXT);
+    }
+    if (this.editorParams.SHOWNAMETIP) {
+      this.showNameTip = this.toBoolean(this.editorParams.SHOWNAMETIP);
     }
   }
 
@@ -743,5 +772,44 @@ export class PersonelSelectController extends EditorController<IPicker> {
       });
     }
     return object;
+  }
+
+  /**
+   * 获取操作用户列表
+   *
+   * @memberof PersonelSelectController
+   */
+  async getOperatorUserList(): Promise<void> {
+    const app = await ibiz.hub.getApp(this.context.srfappid);
+    let dataItems: readonly CodeListItem[] = [];
+    dataItems = await app.codeList.get(
+      'SysOperator',
+      this.context,
+      this.params,
+    );
+    // 构建一个map,避免后续匹配数据时循环花时间
+    this.operatorMap = new Map(
+      dataItems.map((item: CodeListItem) => [item.value, item]),
+    );
+  }
+
+  /**
+   * 判断是否显示姓名文字
+   *
+   * @return {*}  {boolean}
+   * @memberof PersonelSelectController
+   */
+  public isShowNameText(): boolean {
+    return this.showNameText;
+  }
+
+  /**
+   * 判断是否显示姓名提示
+   *
+   * @return {*}  {boolean}
+   * @memberof PersonelSelectController
+   */
+  public isShowNameTip(): boolean {
+    return this.showNameTip;
   }
 }

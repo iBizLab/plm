@@ -58,14 +58,14 @@
 
 ### 提及工作项
 
-| 属性名        | 描述                                 | 类型       | 默认值                                                                              |
-| ------------- | ------------------------------------ | ---------- | ----------------------------------------------------------------------------------- |
-| QUOTEURL      | 请求工作项列表 url                   | string     |                                                                                     |
-| QUOTEFIELDMAP | 工作项属性映射表，用于转换工作项数据 | Object     | {id: 'id', name:'name'}                                                             |
-| QUOTEMETHOD   | 请求用户数据方法                     | post / get | post                                                                                |
-| QUOTEPARAMS   | 请求参数                             | Object     |                                                                                     |
+| 属性名        | 描述                                 | 类型       | 默认值                                                       |
+| ------------- | ------------------------------------ | ---------- | ------------------------------------------------------------ |
+| QUOTEURL      | 请求工作项列表 url                   | string     |                                                              |
+| QUOTEFIELDMAP | 工作项属性映射表，用于转换工作项数据 | Object     | {id: 'id', name:'name'}                                      |
+| QUOTEMETHOD   | 请求用户数据方法                     | post / get | post                                                         |
+| QUOTEPARAMS   | 请求参数                             | Object     |                                                              |
 | QUOTESCRIPT   | 选中提及工作项时编辑器抛出的值格式   | string     | \#{id=${data.id},name=${data.name},identifier=${data.identifier},icon=${data.icon}} |
-| QUOTEINSCRIPT | 解析提及工作项数据格式脚本           | string     |                                                                                     |
+| QUOTEINSCRIPT | 解析提及工作项数据格式脚本           | string     |                                                              |
 
 - 输入#或点击#菜单时弹出用户列表（通过添加注册 marker 节点支持，工作项列表数据根据 QUOTEURL、QUOTEFIELDMAP、QUOTEMETHOD、QUOTEPARAMS 支持）
 - 支持 ac 过滤
@@ -87,27 +87,68 @@
 
 暂未支持
 
+### AI询问
+
+插件支持AI询问功能，在配置自填模式，且自填模式为AI聊天模式的情况下，评论工具栏会出现AI的图标，点击IA图标，会弹出AI聊天模态，可以与AI进行对话，同时可根据对话情况选择是否将AI回答内容回填到评论框中
+
 ### 协同编辑
 
-- 配置编辑器参数ENABLEREALTIME为true时，启用协同编辑，在多人共同编辑同一数据时，会实时同步他人的编辑数据，并显示该编辑人
+配置编辑器参数ENABLEREALTIME为true时，启用协同编辑，通过markOpenData服务进行数据消息的发送与接收。在多人共同编辑同一数据时，会实时同步他人的编辑数据，并显示用户标记和用户选区
+
+#### 初始化markOpenData服务
+
+在富文本编辑器初始化时，如果富文本启用协同编辑，则初始化数据服务，以便后续协同编辑时的数据同步：
+
+1. 在部件数据加载成功后，发送信息类型**VIEW**，并监听当前数据
+
+2. 在部件数据保存成功后，发送信息类型**UPDATE**
+
+3. 在视图关闭时，发送信息类型**CLOSE**
+
+#### 数据同步
+
+Slate框架有一个**apply**方法，在编辑器中的任意操作都会触发**apply**，因此只需要重写**apply**，在启用协同编辑的时候将数据通过markOpenData服务发送出去，其他用户接到消息之后将接到的数据传入**原本的apply**（防止死循环）中，交由Wangeditor自己将数据添加进来
+
+#### 光标信息处理
+
+在协同编辑时，我们想要知道其他用户的光标在当前编辑器上的位置，需在当前编辑器上其他用户的光标位置处插入一个用户标记来展示，因此我们需要在发送和接收消息的时候对光标数据进行处理，让我们能够得知其他用户的光标在当前编辑器的位置
+
+​    光标在每一行的文本偏移量在每个用户的编辑器上都是一致的，不会因为插入了用户标记导致位置不同，所以计算光标位置时我们使用光标在这行上的文本偏移量为基准来计算
+
+根据位置计算偏移量：**calcOffsetByPoint**
+
+根据偏移量计算位置：**calcPointByOffset**
+
+**注意：在计算时我们将空字符串的偏移量记为1，否则在一个图片节点前后都是一个空文本节点时导致数据解析出来的位置不对**
+
+#### 选区颜色
+
+为了和用户操作设置的背景色做区别，通过WangEditor给的接口重写了**renderStyle**方法
 
 ## 输入参数
 
-| 属性名      | 描述                                               | 类型            | 默认值  |
-| ----------- | -------------------------------------------------- | --------------- | ------- |
-| MINHEIGHT   | 折叠时的输入框高度                                 | number          | 48      |
-| MAXHEIGHT   | 展开时的富文本高度                                 | number          | 315     |
-| MODE        | 模式，default 时为富文本样式，comment 时为评论模式 | comment/default | comment |
-| REPLYSCRIPT | 回复脚本，回复的项绘制器脚本代码                   | string          |         |
-| RENDERMODE  | 支持段落化json，绘制模式                            | HTML/JSON       | HTML     |
-| SAVEINTERVAL| 支持段落化json，保存间隔                            | number          | 3000        |
-| EMITMODE    | 支持段落化json，抛值模式                            | BUTTON/AUTOMATIC| BUTTON    |
-| ENABLEREALTIME   | 实时编辑（协同编辑）                           | boolean          | false      |
+| 属性名         | 描述                                               | 类型             | 默认值  |
+| -------------- | -------------------------------------------------- | ---------------- | ------- |
+| MINHEIGHT      | 折叠时的输入框高度                                 | number           | 48      |
+| MAXHEIGHT      | 展开时的富文本高度                                 | number           | 315     |
+| MODE           | 模式，default 时为富文本样式，comment 时为评论模式 | comment/default  | comment |
+| REPLYSCRIPT    | 回复脚本，回复的项绘制器脚本代码                   | string           |         |
+| RENDERMODE     | 支持段落化json，绘制模式                           | HTML/JSON        | HTML    |
+| SAVEINTERVAL   | 支持段落化json，保存间隔                           | number           | 3000    |
+| EMITMODE       | 支持段落化json，抛值模式                           | BUTTON/AUTOMATIC | BUTTON  |
+| ENABLEREALTIME | 实时编辑（协同编辑）                               | boolean          | false   |
+
 ## 基本使用
 
 在具体项目中，先通过模型导入前端界面插件和编辑器插件，然后在具体的视图配置动态文本，然后将其编辑器类型改为 HTML 编辑框，编辑器类型选择“HTML（评论）”
 
 ## 附录：
+
+### 资料
+
+[Slate中文文档](https://rain120.github.io/athena/zh/slate/Summary.html#%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83)
+
+[WangEditor](https://www.wangeditor.com/)
 
 ### 编辑器插件
 
@@ -131,7 +172,7 @@
 [
   {
     "plugintype": "EDITOR_CUSTOMSTYLE",
-    "rtobjectrepo": "@ibiz-template-plm/html-comment@0.0.2-dev.26",
+    "rtobjectrepo": "@ibiz-template-plm/html-comment@0.0.3-dev.131",
     "codename": "UsrPFPlugin0104147761",
     "plugintag": "COMMENT",
     "rtobjectmode": 2,

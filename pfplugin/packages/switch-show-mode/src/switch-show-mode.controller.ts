@@ -114,6 +114,7 @@ export class SwitchShowModeController extends PanelItemController<IPanelButton> 
    */
   async updateButtonState(): Promise<void> {
     await this.state.uiActionState.update(
+      this.panel.context,
       this.data,
       this.panel.model.appDataEntityId,
     );

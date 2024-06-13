@@ -6,6 +6,7 @@ import {
   VNode,
   computed,
   defineComponent,
+  getCurrentInstance,
   h,
   reactive,
   resolveComponent,
@@ -15,6 +16,7 @@ import {
 import {
   EditFormController,
   EventBase,
+  FormDetailEventName,
   FormItemController,
   IEditFormController,
 } from '@ibiz-template/runtime';
@@ -40,6 +42,7 @@ export const RepeaterGridCaseSteps = defineComponent({
     const ns = useNamespace('repeater-grid');
     const formItems: IDEFormItem[] = [];
     const c = props.controller;
+    const vue = getCurrentInstance()!.proxy!;
 
     const indexMap = computed(() => {
       const result: string[] = [];
@@ -75,7 +78,7 @@ export const RepeaterGridCaseSteps = defineComponent({
     const onSingleValueChange = (value: IData, index: number) => {
       const arrData = [...(props.controller.value as IData[])];
       arrData[index] = value;
-      c.setValue(arrData);
+      vue.$forceUpdate();
     };
 
     const ctx = useCtx();
@@ -96,6 +99,17 @@ export const RepeaterGridCaseSteps = defineComponent({
         const formData = { ...event.data[0] };
         const index = getFormControllerIndex(formC);
         onSingleValueChange(formData, index);
+      });
+      formC.evt.on('onFormDetailEvent', event => {
+        const { formDetailEventName } = event;
+        if (formDetailEventName === FormDetailEventName.BLUR) {
+          // 失焦时抛值
+          const formData = { ...event.data[0] };
+          const index = getFormControllerIndex(formC);
+          const arrData = [...(props.controller.value as IData[])];
+          arrData[index] = formData;
+          c.setValue(arrData);
+        }
       });
     };
 
@@ -294,6 +308,9 @@ export const RepeaterGridCaseSteps = defineComponent({
           autosize
           onInput={(val: unknown): void => {
             formItemC.setDataValue(val);
+          }}
+          onBlur={(event: MouseEvent) => {
+            formItemC.onBlur(event);
           }}
           class={ns.b('input')}
           disabled={formItemC.state.disabled}

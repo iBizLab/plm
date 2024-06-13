@@ -9,8 +9,12 @@ import {
   Srfuf,
   IPanelItemNavPosController,
   hasSubRoute,
+  calcItemVisible,
+  calcItemVisibleByCounter,
+  AppCounter,
+  CounterService,
 } from '@ibiz-template/runtime';
-import { route2routePath } from '@ibiz-template/vue3-util';
+import { route2routePath, routePath2string } from '@ibiz-template/vue3-util';
 import { IDEDRBar, IDEDRBarItem } from '@ibiz/model-core';
 import { Router } from 'vue-router';
 
@@ -44,7 +48,7 @@ export class DRBarExController
    * @memberof DRBarExController
    */
   get form(): IEditFormController {
-    return this.view.getController('form') as IEditFormController;
+    return this.view?.getController('form') as IEditFormController;
   }
 
   /**
@@ -98,6 +102,15 @@ export class DRBarExController
   }
 
   /**
+   * 存储key前缀
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-22 18:05:13
+   * @type {string}
+   */
+  storagePrefix: string = 'DR_BAR_SELECTED_ITEM';
+
+  /**
    * 初始化state的属性
    *
    * @protected
@@ -119,6 +132,148 @@ export class DRBarExController
   async onCreated(): Promise<void> {
     await super.onCreated();
     this.initDRBarItems();
+    await this.initCounter();
+  }
+
+  /**
+   * 计数器对象
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:16
+   * @type {AppCounter}
+   */
+  counter?: AppCounter;
+
+  /**
+   * 通过计数器数据，计算项状态
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:21
+   * @param {IData} [_data]
+   * @param {boolean} [reset=true]
+   */
+  calcItemStateByCounter(_data?: IData, reset: boolean = true): void {
+    this.state.drBarItems.forEach(item => {
+      if (item.children?.length) {
+        item.children.forEach(childItem => {
+          const visible = calcItemVisibleByCounter(childItem, this.counter);
+          if (visible !== undefined) {
+            childItem.visible = visible;
+          }
+        });
+        // 有一个子显示的时候分组就是显示的
+        item.visible = item.children.some(childItem => childItem.visible);
+      } else {
+        // 不是分组的时候直接计算
+        const visible = calcItemVisibleByCounter(item, this.counter);
+        if (visible !== undefined) {
+          item.visible = visible;
+        }
+      }
+    });
+    if (this.state.selectedItem && reset) {
+      const { visible, defaultVisibleItem } = this.getItemVisibleState(
+        this.state.selectedItem,
+      );
+      if (!visible && defaultVisibleItem) {
+        this.handleSelectChange(defaultVisibleItem.tag);
+      }
+    }
+  }
+
+  /**
+   * 获取对应项的显示状态
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:41
+   * @param {string} key
+   * @return {*}  {{
+   *     visible: boolean;
+   *     defaultVisibleItem?: IDRBarItemsState;
+   *   }}
+   */
+  getItemVisibleState(key: string): {
+    visible: boolean;
+    defaultVisibleItem?: IDRBarItemsState;
+  } {
+    let visible = true;
+    let defaultVisibleItem: IDRBarItemsState | undefined;
+    this.state.drBarItems.forEach(item => {
+      if (item.children) {
+        if (!defaultVisibleItem) {
+          defaultVisibleItem = item.children.find(child => child.visible);
+        }
+        const drBarItem = item.children.find(child => child.tag === key);
+        if (drBarItem) {
+          visible = !!drBarItem.visible;
+        }
+      } else {
+        if (!defaultVisibleItem && item.visible) {
+          defaultVisibleItem = item;
+        }
+        if (item.tag === key) {
+          visible = !!item.visible;
+        }
+      }
+    });
+
+    return {
+      visible,
+      defaultVisibleItem,
+    };
+  }
+
+  /**
+   * 计算关系界面组权限
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:54
+   * @param {IDRBarItemsState} item
+   * @return {*}  {Promise<void>}
+   */
+  async calcPermitted(item: IDRBarItemsState): Promise<void> {
+    let permitted = true;
+    const data = this.getData()?.length ? this.getData()[0] : undefined;
+    const visible = await calcItemVisible(
+      item,
+      this.context,
+      this.params,
+      this.model.appDataEntityId!,
+      this.model.appId,
+      data,
+    );
+    if (visible !== undefined) {
+      permitted = visible;
+    }
+    item.visible = permitted;
+  }
+
+  /**
+   * 计算是否展示
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:59
+   * @return {*}  {Promise<void>}
+   */
+  async calcDrBarItemsState(): Promise<void> {
+    await Promise.all(
+      this.state.drBarItems.map(async item => {
+        if (item.children?.length) {
+          await Promise.all(
+            item.children.map(async childItem => {
+              await this.calcPermitted(childItem);
+            }),
+          );
+          // 有一个子显示的时候分组就是显示的
+          item.visible = item.children.some(childItem => childItem.visible);
+        } else {
+          // 不是分组的时候直接计算权限
+          await this.calcPermitted(item);
+        }
+      }),
+    );
+    this.calcItemStateByCounter({}, false);
+    this.state.isCalculatedPermission = true;
   }
 
   /**
@@ -130,13 +285,22 @@ export class DRBarExController
   async onMounted(): Promise<void> {
     await super.onMounted();
     if (this.form) {
-      this.form.evt.on('onLoadSuccess', () => {
+      this.form.evt.on('onLoadSuccess', async event => {
+        // 更新视图作用域数据和srfreadonly数据
+        const data = event.data?.[0];
+        this.view.state.srfactiveviewdata = data;
+        if (data && data.srfreadonly) {
+          this.view.context.srfreadonly = true;
+        }
+        await this.calcDrBarItemsState();
         this.doDefaultSelect();
       });
       // this.form.evt.on('onLoadDraftSuccess', () => {
       // });
       // this.form.evt.on('onSaveSuccess', () => {
       // });
+    } else {
+      await this.calcDrBarItemsState();
     }
 
     // 表单已经加载完成执行默认选中，否则加载完成事件里执行
@@ -168,10 +332,25 @@ export class DRBarExController
               group.caption,
             );
           }
+          const {
+            enableMode,
+            dataAccessAction,
+            testAppDELogicId,
+            testScriptCode,
+            counterId,
+            counterMode,
+          } = groupItems[0] || {};
           drBarItems.push({
             tag: group.id!,
             caption: itemCaption,
             sysImage: group.sysImage,
+            visible: false,
+            enableMode,
+            dataAccessAction,
+            testAppDELogicId,
+            testScriptCode,
+            counterId,
+            counterMode,
           });
         }
       });
@@ -204,6 +383,22 @@ export class DRBarExController
     }
     this.state.selectedItem = key;
     this.state.defaultItem = key;
+    // 存储当前选中的项
+    const userId = this.context.srfuserid;
+    if (userId) {
+      const routePath = route2routePath(this.router.currentRoute.value);
+      if (this.routeDepth && routePath.pathNodes[this.routeDepth - 2]) {
+        routePath.pathNodes = routePath.pathNodes.slice(0, this.routeDepth - 1);
+        const url = routePath2string(routePath);
+        const splitArr = url.split('/');
+        if (splitArr && splitArr.length) {
+          localStorage.setItem(
+            `${this.storagePrefix}_${userId}_${splitArr[splitArr.length - 1]}`,
+            key,
+          );
+        }
+      }
+    }
   }
 
   /**
@@ -313,6 +508,24 @@ export class DRBarExController
     // 默认选中第一个项或第一个分组的第一个项
     const { drBarItems } = this.state;
     let key = drBarItems[0].children?.[0].tag || drBarItems[0].tag;
+    // 从存储中获取上一次选中的项
+    const userId = this.context.srfuserid;
+    if (userId) {
+      const routePath = route2routePath(this.router.currentRoute.value);
+      if (this.routeDepth && routePath.pathNodes[this.routeDepth - 2]) {
+        routePath.pathNodes = routePath.pathNodes.slice(0, this.routeDepth - 1);
+        const url = routePath2string(routePath);
+        const splitArr = url.split('/');
+        if (splitArr && splitArr.length) {
+          const item = localStorage.getItem(
+            `${this.storagePrefix}_${userId}_${splitArr[splitArr.length - 1]}`,
+          );
+          if (item) {
+            key = item;
+          }
+        }
+      }
+    }
     // 路由中存在导航项则按照导航项为准
     const routePath = route2routePath(this.router.currentRoute.value);
     if (this.routeDepth && routePath.pathNodes[this.routeDepth - 1]) {
@@ -324,7 +537,13 @@ export class DRBarExController
     if (key) {
       // 路由模式下，且有子路由的时候不需要navpos跳转路由，只要做呈现
       const isRoutePushed = !!this.routeDepth && hasSubRoute(this.routeDepth);
-      this.handleSelectChange(key, isRoutePushed);
+      const { visible, defaultVisibleItem } = this.getItemVisibleState(key);
+      if (!visible && defaultVisibleItem) {
+        key = defaultVisibleItem.tag;
+        this.handleSelectChange(key);
+      } else {
+        this.handleSelectChange(key, isRoutePushed);
+      }
       this.state.defaultItem = key;
     }
   }
@@ -342,6 +561,51 @@ export class DRBarExController
       this.force(() => {
         this.state.defaultItem = info.srfnav;
       });
+    }
+  }
+
+  /**
+   * 初始化计数器
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:28
+   * @protected
+   * @return {*}  {Promise<void>}
+   */
+  protected async initCounter(): Promise<void> {
+    const { appCounterRefs } = this.model;
+    const appCounterRef = appCounterRefs?.[0];
+    if (appCounterRef) {
+      const routePath = route2routePath(this.router.currentRoute.value);
+      if (this.routeDepth) {
+        routePath.pathNodes = routePath.pathNodes.slice(0, this.routeDepth - 1);
+      }
+      const dataKey = routePath2string(routePath);
+      this.counter = await CounterService.getCounterByRef(
+        appCounterRef,
+        this.context,
+        dataKey
+          ? { srfcustomtag: dataKey, ...this.params }
+          : { ...this.params },
+      );
+      this.calcItemStateByCounter = this.calcItemStateByCounter.bind(this);
+      this.counter.onChange(this.calcItemStateByCounter);
+    }
+  }
+
+  /**
+   * 监听组件销毁
+   *
+   * @author zhanghengfeng
+   * @date 2024-05-20 11:05:37
+   * @protected
+   * @return {*}  {Promise<void>}
+   */
+  protected async onDestroyed(): Promise<void> {
+    await super.onDestroyed();
+    if (this.counter) {
+      this.counter.offChange(this.calcItemStateByCounter);
+      this.counter.destroy();
     }
   }
 }

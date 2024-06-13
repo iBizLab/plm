@@ -31,6 +31,7 @@ export const UserInfoPopover = defineComponent({
             <Avatar
               class={ns.em('content', 'avatar')}
               label={c.userInfo.srfusername}
+              img={c.userInfo.avatar}
             ></Avatar>
           </div>
           <div class={ns.em('content', 'info')}>

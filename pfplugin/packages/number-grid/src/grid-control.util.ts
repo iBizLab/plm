@@ -5,16 +5,15 @@ import {
   GridController,
   GridRowState,
   IControlProvider,
-  IGridRowState,
   IMDControlController,
   Srfuf,
-  TreeGridController,
 } from '@ibiz-template/runtime';
-import { IDEGrid, IDEGridColumn } from '@ibiz/model-core';
+import { IDEGrid, IDEGridColumn, ISysImage } from '@ibiz/model-core';
 import { TableColumnCtx } from 'element-plus';
 import { createUUID } from 'qx-util';
 import { computed, nextTick, Ref, ref, watch } from 'vue';
-import { ReloadNodeEvent } from './interface';
+import { INumberTreeGridState } from './interface';
+import { NumberTreeGridController } from './tree-grid.controller';
 
 /**
  * 表格部件props接口
@@ -58,7 +57,6 @@ export interface IGridProps {
  */
 export function useITableEvent(c: GridController): {
   tableRef: Ref<IData | undefined>;
-  treeGirdItems: Ref<IData[]>;
   treeGirdData: Ref<IData[]>;
   curSelectedData: Ref<IData[]>;
   onRowClick: (
@@ -92,26 +90,8 @@ export function useITableEvent(c: GridController): {
   // 当前选中数据包含分组数据
   const curSelectedData: Ref<IData[]> = ref([]);
 
-  const treeGirdItems = computed(() => {
-    return c.state.rows.map(row => getTreeGridDataItem(row.data));
-  });
-
   const treeGirdData = computed(() => {
-    const rootNodes: IData[] = [];
-    const ids: string[] = [];
-    treeGirdItems.value.forEach(item => {
-      const id = item[(c as TreeGridController).treeGridValueField];
-      if (id) {
-        ids.push(id);
-      }
-    });
-    treeGirdItems.value.forEach(item => {
-      if (!ids.includes(item[(c as TreeGridController).treeGridParentField])) {
-        rootNodes.push(item);
-      }
-    });
-
-    return rootNodes;
+    return (c.state as INumberTreeGridState).treeData;
   });
 
   async function onRowClick(
@@ -148,17 +128,6 @@ export function useITableEvent(c: GridController): {
       return;
     }
     c.onDbRowClick(data);
-  }
-
-  function getTreeGridDataItem(data: ControlVO): IData {
-    data._hasChildren = c.state.items.some(
-      item =>
-        data[(c as TreeGridController).treeGridValueField!] &&
-        data[(c as TreeGridController).treeGridValueField!] ===
-          item[(c as TreeGridController).treeGridParentField!],
-    );
-    data._children = [];
-    return data;
   }
 
   function isSelected(row: IData): boolean {
@@ -294,51 +263,12 @@ export function useITableEvent(c: GridController): {
     },
   );
 
-  const getParent = (row: GridRowState): IGridRowState | undefined => {
-    return c.state.rows.find(
-      item =>
-        row.data[(c as TreeGridController).treeGridParentField!] &&
-        item.data[(c as TreeGridController).treeGridValueField!] ===
-          row.data[(c as TreeGridController).treeGridParentField!],
-    );
-  };
-
-  const reloadNode = (event: ReloadNodeEvent): void => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { row, isReloadParent, eventName } = event;
-    // eslint-disable-next-line prefer-const
-    let targetRow = isReloadParent ? getParent(row) : row;
-    if (targetRow) {
-      // 特殊处理删除行时的异常情况
-      const treeData = tableRef.value!.store.states.treeData.value;
-      const lazyTreeNodeMap =
-        tableRef.value!.store.states.lazyTreeNodeMap.value;
-      if (treeData && treeData[targetRow.data.tempsrfkey]) {
-        treeData[targetRow.data.tempsrfkey].loaded = false;
-        const nodeData = treeGirdItems.value.find(
-          node =>
-            targetRow!.data[(c as TreeGridController).treeGridValueField] ===
-            node[(c as TreeGridController).treeGridValueField],
-        );
-        // 如果实际节点没有子数据，treeData中有子数据则需要将懒加载的树节点删除使其重新加载
-        if (
-          nodeData &&
-          !nodeData._hasChildren &&
-          treeData[targetRow.data.tempsrfkey].children.length > 0
-        ) {
-          delete lazyTreeNodeMap[targetRow.data.tempsrfkey];
-        }
-      }
-      tableRef.value!.store.loadOrToggle(targetRow.data);
-    }
-  };
-
-  (c as IData).evt.on('onReloadNode', (event: ReloadNodeEvent) => {
+  (c as NumberTreeGridController).evt.on('onRowCollapse', event => {
     setTimeout(() => {
-      if ((c as TreeGridController).state.showTreeGrid) {
-        reloadNode(event);
+      if (tableRef.value) {
+        tableRef.value.toggleRowExpansion(event.row.data, event.state);
       }
-    });
+    }, 0);
   });
 
   return {
@@ -349,7 +279,6 @@ export function useITableEvent(c: GridController): {
     onDbRowClick,
     isSelected,
     onSortChange,
-    treeGirdItems,
     treeGirdData,
     handleRowClassName,
     handleHeaderCellClassName,
@@ -459,19 +388,25 @@ export function useAppGridBase(
   // 表格数据，items和rows更新有时间差，用rows来获取items
   const tableData = computed(() => {
     const { state } = c;
-    let groupIcon = 'cube-outline';
+    let groupIcon: ISysImage = {
+      appId: c.context.srfappid,
+      cssClass: 'cube-outline',
+    };
     if (
       controlParam &&
       controlParam.ctrlParams &&
       controlParam.ctrlParams.GROUPICON
     ) {
-      groupIcon = controlParam.ctrlParams.GROUPICON;
+      groupIcon.cssClass = controlParam.ctrlParams.GROUPICON;
     }
     if (c.model.enableGroup) {
       const result: IData[] = [];
-      state.groups.forEach(item => {
+      state.groups.forEach((item: IParams) => {
         if (!item.children.length) {
           return;
+        }
+        if (item.groupIcon) {
+          groupIcon = item.groupIcon;
         }
         const _children = [...item.children];
         const uuid = createUUID();

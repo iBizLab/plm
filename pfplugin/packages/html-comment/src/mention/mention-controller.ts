@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
+  CodeListItem,
   ControllerEvent,
   IModal,
   IModalData,
@@ -27,6 +28,13 @@ import { commentEvent } from '../html-comment.event';
  * @extends {EditorController}
  */
 export class MenTionController {
+  /**
+   *云系统操作者Map
+   *
+   * @memberof MenTionController
+   */
+  public operatorMap = new Map();
+
   /**
    * 模型
    *
@@ -322,6 +330,26 @@ export class MenTionController {
         }
       });
     }
+    await this.getOperatorUserList();
+  }
+
+  /**
+   * 获取云系统操作者
+   *
+   * @memberof MenTionController
+   */
+  async getOperatorUserList() {
+    const app = await ibiz.hub.getApp(this.context.srfappid);
+    let dataItems: readonly CodeListItem[] = [];
+    dataItems = await app.codeList.get(
+      'SysOperator',
+      this.context,
+      this.params,
+    );
+    // 构建一个map,避免后续匹配数据时循环花时间
+    this.operatorMap = new Map(
+      dataItems.map((item: CodeListItem) => [item.value, item]),
+    );
   }
 
   public onDestroyed() {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { registerControlProvider } from '@ibiz-template/runtime';
 import { withInstall } from '@ibiz-template/vue3-util';
 import { App } from 'vue';
@@ -9,7 +10,7 @@ export * from './drbar-ex.controller';
 export const IBizDRBarExControl = withInstall(
   DRBarExControl,
   function (v: App) {
-    v.component(DRBarExControl.name, DRBarExControl);
+    v.component(DRBarExControl.name as string, DRBarExControl);
     registerControlProvider('CUSTOM_DRBAR_EX', () => new DRBarExProvider());
   },
 );
@@ -17,6 +18,6 @@ export const IBizDRBarExControl = withInstall(
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(app: App) {
-    app.use(IBizDRBarExControl);
+    app.use(IBizDRBarExControl as any);
   },
 };

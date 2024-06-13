@@ -21,6 +21,8 @@ export const AnchoHtml = defineComponent({
 
     const title = ref('');
 
+    const parseScript = ref('');
+
     // 类型
     let type = 'TEXT';
     // handlerBars模版
@@ -39,6 +41,9 @@ export const AnchoHtml = defineComponent({
     }
     if (editorModel.editorParams?.TITLE) {
       title.value = props.data[editorModel.editorParams.TITLE];
+    }
+    if (editorModel.editorParams?.PARSESCRIPT) {
+      parseScript.value = editorModel.editorParams.PARSESCRIPT;
     }
     // TODO 等接口有了放开
     // if (editorModel.template) {
@@ -90,6 +95,7 @@ export const AnchoHtml = defineComponent({
       type,
       template,
       title,
+      parseScript,
       showFormDefaultContent,
     };
   },
@@ -107,6 +113,7 @@ export const AnchoHtml = defineComponent({
           <AnchoHtmlNavBar
             class={this.ns.b('content')}
             content={this.content}
+            parseScript={this.parseScript}
             type={this.type}
             title={this.title}
           ></AnchoHtmlNavBar>

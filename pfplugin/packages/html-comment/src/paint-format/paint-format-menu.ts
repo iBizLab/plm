@@ -57,6 +57,12 @@ export class PaintFormatMenu implements IButtonMenu {
     if (container) {
       container.classList.remove('is-paint-format');
     }
+    const button = document.querySelector(
+      "button[data-menu-key='paintformat']",
+    );
+    if (button) {
+      button.classList.remove('active');
+    }
   }
 
   setPaintFormat = () => {
@@ -96,6 +102,12 @@ export class PaintFormatMenu implements IButtonMenu {
   }
 
   handle(editor: IDomEditor) {
+    // 再次点击取消格式刷
+    if (this.excting) {
+      this.clearFormat();
+      this.excting = false;
+      return;
+    }
     const fragment = editor.getFragment();
     this.calcFormat(fragment);
     this.editor = editor;

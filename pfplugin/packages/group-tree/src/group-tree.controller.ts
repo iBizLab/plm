@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-param-reassign */
 import {
-  ITreeEvent,
   TreeController,
   ITreeState,
   ITreeNodeData,
@@ -11,15 +11,23 @@ import {
   MDCtrlRemoveParams,
   handleAllSettled,
   getChildNodeRSs,
+  MDCtrlLoadParams,
 } from '@ibiz-template/runtime';
-import { IDETree, IDETreeDataSetNode, IDETreeNode } from '@ibiz/model-core';
+import {
+  IControl,
+  IDETree,
+  IDETreeDataSetNode,
+  IDETreeNode,
+} from '@ibiz/model-core';
 import {
   IPortalMessage,
   RuntimeError,
   RuntimeModelError,
 } from '@ibiz-template/core';
 import { isNil } from 'ramda';
+import { ref } from 'vue';
 import { findNodeData } from './el-tree-util';
+import { GroupTreeEvent } from './group-tree.event';
 
 export type DropNodeRSEx = {
   minorEntityId: string;
@@ -81,8 +89,8 @@ interface IGroupTreeStateEx extends ITreeState {
 export class GroupTreeController<
   T extends IDETree = IDETree,
   S extends ITreeState = ITreeState,
-  E extends ITreeEvent = ITreeEvent,
-> extends TreeController {
+  E extends GroupTreeEvent = GroupTreeEvent,
+> extends TreeController<IDETree, ITreeState, GroupTreeEvent> {
   /**
    * 状态对象
    *
@@ -90,6 +98,57 @@ export class GroupTreeController<
    * @memberof GroupTreeController
    */
   declare state: IGroupTreeStateEx;
+
+  /**
+   * 底部工具栏
+   *
+   * @type {(IControl | undefined)}
+   * @memberof GroupTreeController
+   */
+  public bottomToolbar: IControl | undefined = undefined;
+
+  /**
+   * 隐藏节点id
+   *
+   * @type {string}
+   * @memberof GroupTreeController
+   */
+  public hiddenNodeId: string = '';
+
+  /**
+   * 绘制模式
+   *
+   * @type {('tree' | 'listTree')}
+   * @memberof GroupTreeController
+   */
+  public renderMode: 'tree' | 'listTree' = 'tree';
+
+  /**
+   * 是否正在过滤
+   *
+   * @memberof GroupTreeController
+   */
+  public isFilter = ref(false);
+
+  /**
+   * 重新初始化
+   *
+   * @protected
+   * @return {*}  {Promise<void>}
+   * @memberof GroupTreeController
+   */
+  protected async onCreated(): Promise<void> {
+    await super.onCreated();
+    const controls = this.view.model.viewLayoutPanel?.controls || [];
+    this.bottomToolbar = controls.find(c => c.name === 'toolbar');
+    const { ctrlParams = {} } = this.model.controlParam as IData;
+    if (ctrlParams.HIDDENNODEID) {
+      this.hiddenNodeId = ctrlParams.HIDDENNODEID;
+    }
+    if (ctrlParams.RENDERMODE) {
+      this.renderMode = ctrlParams.RENDERMODE;
+    }
+  }
 
   protected initState(): void {
     super.initState();
@@ -160,7 +219,10 @@ export class GroupTreeController<
     nodeKey: string;
     defaultValue: IParams;
   }): void {
-    if (!nodeKey || nodeKey === this.state.editingNodeKey) {
+    const readonly = !!(
+      this.context.srfreadonly === true || this.context.srfreadonly === 'true'
+    );
+    if (!nodeKey || nodeKey === this.state.editingNodeKey || readonly) {
       return;
     }
     const nodeData = findNodeData(nodeKey, this)!;
@@ -240,6 +302,7 @@ export class GroupTreeController<
           _deData,
         );
 
+        this.emitDEDataChange('create', res.data);
         // 更新完之后更新state里的数据。
         if (res.data) {
           this.refresh();
@@ -633,7 +696,7 @@ export class GroupTreeController<
     // 刷新节点
     this.refreshNodeChildren(dropNode, refreshParent);
     // 刷新后清空选中 修复选中值闪烁
-    this.setSelection([]);
+    this.state.selectedData = [];
   }
 
   /**
@@ -646,17 +709,29 @@ export class GroupTreeController<
    * @return {*}  {void}
    */
   protected onDEDataChange(msg: IPortalMessage): void {
-    // msg.triggerKey 不为空，且与当前控制器的triggerKey一致时，则不处理
-    if (!isNil(msg.triggerKey) && msg.triggerKey === this.triggerKey) {
-      return;
-    }
-
-    // 新增数据不刷新
-    if (msg.subtype === 'OBJECTCREATED') {
+    // msg.triggerKey与当前控制器的triggerKey一致时，则不处理
+    if (msg.triggerKey === this.triggerKey) {
       return;
     }
 
     const data = msg.data as IData;
+    // 新增数据刷新根数据
+    if (msg.subtype === 'OBJECTCREATED') {
+      const hasCurEntity = this.model.detreeNodes?.find(item => {
+        if (item.appDataEntityId) {
+          const codeName = calcDeCodeNameById(item.appDataEntityId);
+          if (data.srfdecodename === codeName) {
+            return true;
+          }
+        }
+        return false;
+      });
+      if (hasCurEntity) {
+        this.refresh();
+      }
+      return;
+    }
+
     const findNode = this.state.items.find(
       item =>
         item._nodeType === 'DE' &&
@@ -672,5 +747,95 @@ export class GroupTreeController<
     this.doNextActive(() => this.refreshNodeChildren(findNode, true), {
       key: `refresh${findNode._id}`,
     });
+  }
+
+  async afterLoad(args: MDCtrlLoadParams, items: IData[]): Promise<IData[]> {
+    return super.afterLoad(args, items);
+  }
+
+  /**
+   * 重写节点点击事件
+   *
+   * @param {ITreeNodeData} nodeData
+   * @param {MouseEvent} event
+   * @return {*}  {Promise<void>}
+   * @memberof GroupTreeController
+   */
+  async onTreeNodeClick(
+    nodeData: ITreeNodeData,
+    event: MouseEvent,
+  ): Promise<void> {
+    // 节点有配置常用操作的上下文菜单时，触发界面行为，后续逻辑都不走
+    const clickActionItem =
+      this.contextMenuInfos[nodeData._nodeId]?.clickTBUIActionItem;
+    if (clickActionItem) {
+      return this.doUIAction(
+        clickActionItem.uiactionId!,
+        nodeData,
+        event,
+        clickActionItem.appId,
+      );
+    }
+
+    // 导航的时候，没有导航视图的时候，节点后续点击逻辑都不走，也不选中
+    if (this.state.navigational) {
+      const nodeModel = this.getNodeModel(nodeData._nodeId);
+      if (!nodeModel?.navAppViewId) {
+        return;
+      }
+    }
+
+    // 单选时，单击才会触发选中逻辑,禁止选择的时候不触发
+    if (this.state.singleSelect && !nodeData._disableSelect) {
+      this.setSelection([nodeData]);
+    }
+
+    // 激活事件
+    if (this.state.mdctrlActiveMode === 1) {
+      await this.setActive(nodeData);
+    }
+  }
+
+  /**
+   * 过滤节点
+   *
+   * @param {string} nodeTag
+   * @memberof GroupTreeController
+   */
+  public async changeTreeState(nodeTag: string): Promise<void> {
+    if (nodeTag && nodeTag === 'draft') {
+      this.isFilter.value = true;
+      this.evt.emit('onFilterNode', { nodeTag });
+    } else {
+      this.resetTreeState();
+    }
+  }
+
+  /**
+   *  重置过滤状态
+   *
+   * @author tony001
+   * @date 2024-04-12 15:04:44
+   * @param {boolean} state
+   */
+  public resetTreeState(): void {
+    if (this.isFilter.value) {
+      // 还原工具栏和搜索栏状态
+      this.evt.emit('onResetSate', {});
+      // 还原过滤状态
+      this.isFilter.value = false;
+    }
+  }
+
+  /**
+   * 重写刷新
+   *
+   * @author tony001
+   * @date 2024-04-12 15:04:53
+   * @return {*}  {Promise<void>}
+   */
+  async refresh(): Promise<void> {
+    super.refresh();
+    this.resetTreeState();
   }
 }

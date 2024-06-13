@@ -8,6 +8,7 @@ import {
   onBeforeUnmount,
   onMounted,
   PropType,
+  Ref,
   ref,
 } from 'vue';
 import { createUUID } from 'qx-util';
@@ -39,11 +40,21 @@ const ChartGrid = defineComponent({
     const maxHeight = ref(320);
     const uuid = createUUID();
 
+    const showTotal = ref(false);
+    const showPercent = ref(false);
+    const totalRow: Ref<any[]> = ref([]);
+
+    const gridpos = ref('bottom');
+
+    if (c.model.dechartDataGrid?.dataGridPos) {
+      gridpos.value = c.model.dechartDataGrid.dataGridPos.toLocaleLowerCase();
+    }
+
     const setHeight = async () => {
       await nextTick();
       const el = document.getElementById(uuid);
       if (el) {
-        const height = el.offsetHeight / 2 - 16;
+        const height = el.offsetHeight;
         maxHeight.value = height;
       }
     };
@@ -76,6 +87,54 @@ const ChartGrid = defineComponent({
       c.resizeChart();
     };
 
+    const handleTotal = () => {
+      const headers = (c.state as any).gridHeaders;
+      if (!headers.length) {
+        return null;
+      }
+      let total = 0;
+      const totalObj = {
+        srfpercent: '100%',
+      };
+      (c.state as any).cloneItems.forEach((item: any) => {
+        total += Number(item.count);
+      });
+      const tempid = headers[0].id;
+      Object.assign(totalObj, {
+        [tempid]: '合计',
+        count: total,
+      });
+      return totalObj;
+    };
+
+    // 处理表格数据
+    const handleGridData = () => {
+      const items = (c.state as any).cloneItems;
+      if (showTotal.value) {
+        const tempObj = handleTotal();
+        return [tempObj, ...items];
+      }
+      return items;
+    };
+
+    // 计算表格高度
+    const computeHeight = () => {
+      if (['top', 'bottom'].includes(gridpos.value)) {
+        return maxHeight.value / 2 - 16;
+      }
+      return maxHeight.value - 16;
+    };
+
+    const renderCollapseIcon = () => {
+      if (isCollapse.value) {
+        if (['left', 'right'].includes(gridpos.value)) {
+          return <i class='fa fa-angle-right' aria-hidden='true'></i>;
+        }
+        return <i class='fa fa-angle-up' aria-hidden='true'></i>;
+      }
+      return <i class='fa fa-angle-down' aria-hidden='true'></i>;
+    };
+
     return {
       c,
       ns,
@@ -84,14 +143,22 @@ const ChartGrid = defineComponent({
       isCollapse,
       collapse,
       chartRef,
+      showTotal,
+      showPercent,
       tableRef,
       maxHeight,
+      totalRow,
+      gridpos,
+      handleTotal,
+      computeHeight,
+      renderCollapseIcon,
+      handleGridData,
     };
   },
   render() {
     return (
       <iBizControlBase controller={this.c}>
-        <div class={this.ns.b()} id={this.uuid}>
+        <div class={[this.ns.b(), this.ns.b(this.gridpos)]} id={this.uuid}>
           <el-empty
             class={[
               this.ns.e('empty'),
@@ -103,6 +170,7 @@ const ChartGrid = defineComponent({
             ref='chartRef'
             class={[
               this.ns.e('chart'),
+              this.ns.be(this.gridpos, 'chart'),
               this.ns.is('no-data', this.c.state.items.length === 0),
             ]}
           >
@@ -111,21 +179,36 @@ const ChartGrid = defineComponent({
           <div
             class={[
               this.ns.e('grid'),
+              this.ns.be(this.gridpos, 'grid'),
               { [this.ns.e('is-colllapse')]: this.isCollapse },
             ]}
           >
             {(this.c.state as any).showGridCaption ? (
               <div class={[this.ns.e('caption')]}>
                 <div class={this.ns.em('caption', 'title')}>表格</div>
-                <div
-                  class={this.ns.em('caption', 'collapse-icon')}
-                  onClick={this.collapse}
-                >
-                  {this.isCollapse ? (
-                    <i class='fa fa-angle-up' aria-hidden='true'></i>
-                  ) : (
-                    <i class='fa fa-angle-down' aria-hidden='true'></i>
-                  )}
+                <div class={this.ns.em('caption', 'collapse-end')}>
+                  <div class={this.ns.em('caption', 'collapse-form')}>
+                    {(this.c.state as any).showGridTotal ? (
+                      <el-checkbox
+                        v-model={this.showTotal}
+                        label='显示合计'
+                        size='large'
+                      />
+                    ) : null}
+                    {(this.c.state as any).showGridPrcent ? (
+                      <el-checkbox
+                        v-model={this.showPercent}
+                        label='显示百分比'
+                        size='large'
+                      />
+                    ) : null}
+                  </div>
+                  <span
+                    class={this.ns.em('caption', 'collapse-icon')}
+                    onClick={this.collapse}
+                  >
+                    {this.renderCollapseIcon()}
+                  </span>
                 </div>
               </div>
             ) : null}
@@ -133,6 +216,7 @@ const ChartGrid = defineComponent({
               <div
                 class={[
                   this.ns.e('table'),
+                  this.ns.be(this.gridpos, 'table'),
                   this.ns.is(
                     'show-grid-caption',
                     (this.c.state as any).showGridCaption,
@@ -141,10 +225,10 @@ const ChartGrid = defineComponent({
               >
                 <el-table
                   ref='tableRef'
-                  data={(this.c.state as any).cloneItems}
+                  data={this.handleGridData()}
                   border
                   max-height={
-                    this.maxHeight -
+                    this.computeHeight() -
                     ((this.c.state as any).showGridCaption ? 72 : 0)
                   }
                   style={{ width: '100%' }}
@@ -153,15 +237,32 @@ const ChartGrid = defineComponent({
                 >
                   {(this.c.state as any).gridHeaders &&
                     (this.c.state as any).gridHeaders.map(
-                      (column: IData, index: number) => {
+                      (_column: IData, index: number) => {
                         return (
                           <el-table-column
-                            prop={column.id}
+                            prop={_column.id}
                             align={index === 0 ? 'left' : 'center'}
                             header-align='center'
-                            width={index === 0 ? '' : 320}
-                            label={column.name}
-                          ></el-table-column>
+                            // width={index === 0 ? '' : 250}
+                            label={_column.name}
+                          >
+                            {{
+                              default: (data: any) => {
+                                const { row, column } = data;
+                                return (
+                                  <div title={row[column.property]}>
+                                    {row[column.property]}
+                                    {_column.allowPercent &&
+                                    this.showPercent ? (
+                                      <span class='percent'>
+                                        ({row.srfpercent})
+                                      </span>
+                                    ) : null}
+                                  </div>
+                                );
+                              },
+                            }}
+                          </el-table-column>
                         );
                       },
                     )}

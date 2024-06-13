@@ -696,7 +696,7 @@ export const ListTreeControl = defineComponent({
         return (
           <el-tree
             ref={'treeRef'}
-            class={this.ns.is('list1', true)}
+            class={[this.ns.b('tree'), this.ns.is('list', true)]}
             key={this.treeRefreshKey}
             node-key='_id'
             highlight-current

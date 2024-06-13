@@ -1,0 +1,183 @@
+/* stylelint-disable selector-class-pattern */
+@include b(grid-change-version-column) {
+  @include m(ellipsis) {
+    // 内部所有的span都呈现成省略号
+    @include e(editor) {
+      @include utils-ellipsis;
+    }
+  }
+
+  @include m(wrap) {
+    @include e(editor) {
+      @include overflow-wrap;
+    }
+  }
+}
+
+
+
+@include b(grid-change-version-column-content) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 168px;
+  height: 100%;
+  padding-left: getCssVar(spacing, tight);
+  margin-left: rem(-8px);
+
+  @include e(right) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  @include e(center) {
+    margin: 0 getCssVar(spacing, extra-tight);
+    margin-right: auto;
+
+    svg {
+      fill: getCssVar(color, text-3);
+    }
+  }
+
+  @include e(left) {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    width: 76px;
+    min-width: 76px;
+    height: 100%;
+    margin-left: rem(-8px);
+
+
+    .el-dropdown {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      @include b(grid-change-version-column-dropdown) {
+        background: getCssVar(color, primary, light, default);
+
+        @include e(icon) {
+          display: block;
+        }
+      }
+
+      @include b(grid-change-version-column-span-item) {
+        position: relative;
+        z-index: 3;
+        width: 40px;
+      }
+    }
+  }
+
+  @include m(editor-readonly) {
+    .#{bem(grid-change-version-column-content__left)} {
+      pointer-events: none;
+
+      &:hover {
+        @include b(grid-change-version-column-dropdown) {
+          background: transparent;
+
+          @include e(icon) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include b(grid-change-version-column-span-item) {
+  display: inline-block;
+  width: auto;
+  min-width: 40px;
+  max-width: 78px;
+  height: getCssVar('height-control', 'small');
+  padding: 0 getCssVar(spacing, extra-tight);
+  overflow: hidden;
+  line-height: getCssVar('height-control', 'small');
+  color: var(--ibiz-color-text-2);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: getCssVar(color, disabled, fill);
+  border-radius: getCssVar('height-control', 'small');
+}
+
+
+@include b(grid-change-version-column-dropdown) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: getCssVar(spacing, tight);
+  border-radius: getCssVar('border-radius', 'small');
+
+  @include e(icon) {
+    display: none;
+    min-width: 14px;
+    margin-left: getCssVar(spacing, tight);
+    fill: var(--ibiz-color-text-3);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &.is-dropdown-expand {
+    background-color: getCssVar(color, primary, light, default);
+  }
+
+  .is-dropdown-icon-expand {
+    overflow: hidden;
+    transform: rotate(180deg);
+  }
+}
+
+@include b(grid-change-version-column-dropdown-popper) {
+  min-width: 200px;
+  min-height: 48px;
+
+  &.el-popper.el-dropdown__popper {
+    .el-scrollbar {
+      max-height: 20vh;
+      overflow: auto;
+
+      .el-dropdown-menu,
+      .el-dropdown-menu .el-dropdown-menu__item,
+      .el-dropdown__list {
+        background-color: var(--ibiz-color-bg-3);
+      }
+
+      .el-dropdown__list {
+        .el-dropdown-menu__item:hover {
+          background-color: getCssVar(color, bg-0);
+        }
+
+        .#{bem(grid-change-version-column-dropdown-popper__active)} {
+          &.el-dropdown-menu__item {
+            background-color: getCssVar(color, primary, light, default);
+          }
+        }
+      }
+
+      .el-scrollbar__bar.is-vertical>div {
+        min-height: 6px;
+      }
+    }
+  }
+
+  .#{bem(no-data)} {
+    padding: getCssVar(spacing, base) 0;
+    margin: auto 0;
+
+    .el-empty__image {
+      width: 60px;
+    }
+  }
+
+  .#{bem(grid-change-version-column-span-item)} {
+    max-width: 168px;
+  }
+}

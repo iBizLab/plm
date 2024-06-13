@@ -1,0 +1,50 @@
+@mixin common-resource-state {
+  .#{bem(panel-resource-state__content)} {
+    display: flex !important;
+    align-items: center;
+
+    &:last-child {
+      .#{bem(panel-resource-state__content--caption)} {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .#{bem(panel-resource-state__content--star)} {
+    width: rem(10px);
+    height: rem(10px);
+    border-radius: 50%;
+  }
+
+  .#{bem(panel-resource-state__content--caption)} {
+    margin-right: getCssVar('spacing', 'base');
+    margin-left: getCssVar('spacing', 'tight');
+    font-size: getCssVar('font-size', 'regular');
+  }
+}
+
+@include b(panel-resource-state) {
+  display: flex;
+  align-items: center;
+  @include common-resource-state;
+
+  @include e(standard) {
+    .#{bem(panel-resource-state__content--star)} {
+      background-color: var(--ibiz-color-success);
+      opacity: 0.2;
+    }
+  }
+
+  @include e(saturation) {
+    .#{bem(panel-resource-state__content--star)} {
+      background-color: var(--ibiz-color-success);
+    }
+  }
+
+  @include e(exceed) {
+    .#{bem(panel-resource-state__content--star)} {
+      background-color: var(--ibiz-color-danger);
+    }
+  }
+
+}

@@ -20,7 +20,7 @@ export type PersonnelMarkerElement = {
 
 function PersonnelMarkerToHtml(elem: SlateElement): string {
   const { data = {} } = elem as PersonnelMarkerElement;
-  return `<span>${data?.name}</span>`;
+  return `<span class='personnel-marker'>${data?.name}</span>`;
 }
 
 const elemToHtmlConf = {

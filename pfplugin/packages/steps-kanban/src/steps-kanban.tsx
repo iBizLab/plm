@@ -52,6 +52,12 @@ export const StepsKanbanControl = defineComponent({
       return !c.state.draggable || c.state.updating;
     });
 
+    const readonly = computed(() => {
+      return !!(
+        c.context.srfreadonly === true || c.context.srfreadonly === 'true'
+      );
+    });
+
     const batchKey = computed(() => {
       return c.state.batching ? c.state.selectGroupKey : '';
     });
@@ -396,7 +402,7 @@ export const StepsKanbanControl = defineComponent({
           class={ns.be('group', 'header-right')}
           onClick={(event: MouseEvent) => stopPropagation(event)}
         >
-          {c.enableNew && (
+          {c.enableNew && !readonly.value && (
             <el-button
               class={ns.be('group', 'header-new')}
               text
@@ -408,10 +414,11 @@ export const StepsKanbanControl = defineComponent({
               <ion-icon name='add-outline' title='新建'></ion-icon>
             </el-button>
           )}
-          {showActionBar && (
+          {showActionBar && !readonly.value && (
             <el-dropdown
               class={ns.be('group', 'header-actions')}
               trigger='click'
+              teleported={false}
             >
               {{
                 default: (): VNode => <span>···</span>,
@@ -465,7 +472,7 @@ export const StepsKanbanControl = defineComponent({
                 modelValue={runing.children}
                 group={c.model.id}
                 itemKey='srfkey'
-                disabled={disabled.value}
+                disabled={disabled.value || readonly.value}
                 onChange={(evt: IData) =>
                   onChange(evt, group, '1', `${group.key}_runing`)
                 }
@@ -497,7 +504,7 @@ export const StepsKanbanControl = defineComponent({
                 modelValue={finish.children}
                 group={c.model.id}
                 itemKey='srfkey'
-                disabled={disabled.value}
+                disabled={disabled.value || readonly.value}
                 onChange={(evt: IData) =>
                   onChange(evt, group, '2', `${group.key}_finish`)
                 }
@@ -531,7 +538,7 @@ export const StepsKanbanControl = defineComponent({
           modelValue={group.children}
           group={c.model.id}
           itemKey='srfkey'
-          disabled={disabled.value}
+          disabled={disabled.value || readonly.value}
           onChange={(evt: IData) => onChange(evt, group)}
         >
           {{
@@ -647,6 +654,7 @@ export const StepsKanbanControl = defineComponent({
         class={[
           this.ns.m(this.modelData.groupLayout?.toLowerCase()),
           this.ns.is('full', this.isFull),
+          this.ns.is('plugin', true),
         ]}
       >
         <div class={this.ns.b('group-container')}>

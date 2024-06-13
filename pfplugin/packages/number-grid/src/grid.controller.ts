@@ -195,8 +195,9 @@ export class NumberGridController extends GridController<
         const codeListItem = this.codeListItems?.find(
           item => item.value === key,
         );
-        this.state.groups.push({
+        (this.state.groups as IData).push({
           caption: codeListItem?.text || `${key || '其他'}`,
+          groupIcon: codeListItem?.sysImage,
           key,
           children: value,
         });

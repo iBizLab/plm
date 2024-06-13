@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useNamespace } from '@ibiz-template/vue3-util';
 import { IPanelButton } from '@ibiz/model-core';
-import { defineComponent, PropType, computed, ref } from 'vue';
+import {
+  defineComponent,
+  PropType,
+  ref,
+  onMounted,
+  nextTick,
+  watch,
+} from 'vue';
 import { SwitchShowModeController } from './switch-show-mode.controller';
 import './switch-show-mode.scss';
 
@@ -20,190 +27,129 @@ export const SwitchShowMode = defineComponent({
   setup(props) {
     const ns = useNamespace('switch-show-mode');
 
-    const { renderMode, codeName, itemStyle } = props.modelData;
-
-    const { state } = props.controller;
-
-    // 下拉项数据集合
-    const dropdownItems = ref([
+    // 显示模式列表
+    const items = [
       {
-        _icon: {},
-        _text: '视图',
-        _showCaption: true,
-        _className: 'item-view',
-      },
-      {
-        _icon: {},
-        _text: '',
-        _showCaption: true,
-        _className: 'item-divider',
-      },
-      {
-        _icon: {
-          htmlStr: `<svg t="1706002902701" class="icon" viewBox="0 0 1088 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1501" width="1em" height="1em"><path d="M480 64a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32v-128a32 32 0 0 0-32-32h-128zM192 704h32A96 96 0 0 1 320 800v128A96 96 0 0 1 224 1024h-128A96 96 0 0 1 0 928v-128A96 96 0 0 1 96 704H128V512a64 64 0 0 1 64-64h320V320h-32A96 96 0 0 1 384 224v-128A96 96 0 0 1 480 0h128A96 96 0 0 1 704 96v128A96 96 0 0 1 608 320H576v128h320a64 64 0 0 1 64 64v192h32a96 96 0 0 1 96 96v128a96 96 0 0 1-96 96h-128a96 96 0 0 1-96-96v-128a96 96 0 0 1 96-96h32V512H576v192h32a96 96 0 0 1 96 96v128A96 96 0 0 1 608 1024h-128A96 96 0 0 1 384 928v-128A96 96 0 0 1 480 704H512V512H192v192z m672 64a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32v-128a32 32 0 0 0-32-32h-128z m-384 0a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32v-128a32 32 0 0 0-32-32h-128z m-384 0a32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h128a32 32 0 0 0 32-32v-128a32 32 0 0 0-32-32h-128z" p-id="1502"></path></svg>`,
+        icon: {
+          htmlStr: `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" preserveAspectRatio="xMidYMid meet" focusable="false"><g stroke-width="1" fill-rule="evenodd"><path d="M7.353 6.926V4.992H5.937V1h4.158v3.992H8.553v1.934H14.395v4.153h1.479v3.993h-4.158V11.08h1.479V8.125H8.553v2.933h1.542v3.993H5.937v-3.993h1.416V8.126H2.679v2.933h1.479v3.993H0v-3.993h1.479V6.926H7.353zm-.216-4.727v1.594h1.758V2.199H7.137zM1.2 12.26v1.592h1.758v-1.593H1.2zm11.716.02v1.594h1.758V12.28h-1.758zm-5.779-.02v1.592h1.758v-1.593H7.137z"></path></g></svg>`,
         },
-        _text: '树状',
-        showMode: 'tree',
-        _showCaption: true,
-        selected: true,
+        title: '树状',
+        value: 'tree',
       },
       {
-        _icon: {
+        icon: {
           cssClass: 'fa fa-reorder',
         },
-        _text: '平铺',
-        showMode: 'grid',
-        _showCaption: true,
-        selected: false,
+        title: '平铺',
+        value: 'grid',
       },
-    ]);
+    ];
 
-    // 选中值
-    const selected = ref<IParams>(dropdownItems.value[2]);
+    const c = props.controller;
 
-    let isText = false;
-    if (Object.is(renderMode, 'LINK')) {
-      isText = true;
+    // 显示模式key
+    const key = `SHOW_MODE_${c.panel.context.project}_${c.panel.view.model.codeName}`;
+
+    // 当前激活项
+    const activeItem = ref(items[0].value);
+
+    // 设置默认激活项
+    const showMode = localStorage.getItem(key);
+    if (showMode === 'tree' || showMode === 'grid') {
+      activeItem.value = showMode;
     }
 
-    const buttonType = computed(() => {
-      if (Object.is(renderMode, 'LINK')) {
-        return null;
-      }
-      switch (itemStyle) {
-        case 'PRIMARY':
-          return 'primary';
-        case 'SUCCESS':
-          return 'success';
-        case 'INFO':
-          return 'info';
-        case 'WARNING':
-          return 'warning';
-        case 'DANGER':
-          return 'danger';
-        case 'INVERSE':
-          return 'info';
-        default:
-          return null;
-      }
+    // 指示器样式
+    const indicatorStyle = ref({
+      transition: 'none',
+      width: '',
+      transform: '',
     });
 
-    /**
-     * 处理选中状态
-     */
-    const handleSelected = (params: IParams) => {
-      dropdownItems.value.forEach((detail: IParams) => {
-        if (params?.showMode === detail?.showMode) {
-          Object.assign(detail, { selected: true });
-        } else {
-          Object.assign(detail, { selected: false });
+    // 容器元素
+    const content = ref<HTMLElement>();
+
+    // 更新指示器
+    const updateIndicator = () => {
+      nextTick(() => {
+        const el = content.value;
+        if (!el) {
+          return;
+        }
+        const child = Array.from(el.children).find(item =>
+          item.classList.contains(ns.is('active', true)),
+        ) as HTMLElement;
+        if (child) {
+          indicatorStyle.value.width = `${child.offsetWidth}px`;
+          indicatorStyle.value.transform = `translateX(${child.offsetLeft}px)`;
         }
       });
-      selected.value = params;
     };
 
-    /**
-     * 处理点击
-     */
-    const handleButtonClick = async (
-      event: MouseEvent,
-      params: IParams,
-    ): Promise<void> => {
-      // 过滤激活项及展示项
-      if (params?.showMode === selected.value?.showMode || !params?.showMode) {
+    // 处理项点击事件
+    const onClick = (e: MouseEvent, item: (typeof items)[0]) => {
+      e.stopPropagation();
+      if (item.value === activeItem.value) {
         return;
       }
-      try {
-        state.loading = true;
-        await props.controller.onActionClick(event, params);
-        handleSelected(params);
-        props.controller.onClick();
-      } finally {
-        state.loading = false;
+      const el = e.target as HTMLElement;
+      if (!el) {
+        return;
       }
+      indicatorStyle.value.transition = '';
+      activeItem.value = item.value;
+      localStorage.setItem(key, item.value);
+      updateIndicator();
+      setTimeout(() => {
+        props.controller.onActionClick(e, {
+          showMode: item.value,
+        });
+      });
     };
 
-    /**
-     * 绘制内容项
-     */
-    const renderContentItem = (_args: IParams) => {
-      const { _icon, _text, _showCaption } = _args;
-      return (
-        <div
-          class={[
-            ns.b('content'),
-            _args?._className,
-            _args?.selected ? ns.be('content', 'selected') : '',
-          ]}
-          onClick={event => {
-            handleButtonClick(event, _args);
-          }}
-        >
-          <iBizIcon class={ns.bm('content', 'icon')} icon={_icon} />
-          {_showCaption ? (
-            <span class={ns.bm('content', 'caption')}>{_text}</span>
-          ) : (
-            ''
-          )}
-        </div>
-      );
-    };
+    watch(
+      () => props.controller.state.visible,
+      () => {
+        updateIndicator();
+      },
+    );
+
+    onMounted(updateIndicator);
 
     return {
       ns,
-      isText,
-      buttonType,
-      codeName,
-      state,
-      dropdownItems,
-      selected,
-      handleButtonClick,
-      renderContentItem,
+      items,
+      indicatorStyle,
+      activeItem,
+      content,
+      onClick,
     };
   },
   render() {
-    if (this.state.visible) {
-      return (
-        <div
-          class={[
-            this.ns.b(),
-            this.ns.m(this.codeName),
-            this.ns.is('loading', this.state.loading),
-            ...this.controller.containerClass,
-          ]}
-        >
-          <el-dropdown trigger='click' popper-class={this.ns.b('popper')}>
-            {{
-              default: () => (
-                <el-button
-                  type={this.buttonType}
-                  text={this.isText}
-                  disabled={this.state.disabled}
-                  loading={this.state.loading}
-                >
-                  {this.renderContentItem(this.selected)}
-                </el-button>
-              ),
-              dropdown: () => (
-                <el-dropdown-menu>
-                  {{
-                    default: () =>
-                      this.dropdownItems.map((detail: IParams) => {
-                        return (
-                          <el-dropdown-item>
-                            {this.renderContentItem(detail)}
-                          </el-dropdown-item>
-                        );
-                      }),
-                  }}
-                </el-dropdown-menu>
-              ),
-            }}
-          </el-dropdown>
-        </div>
-      );
+    if (!this.controller.state.visible) {
+      return;
     }
-    return null;
+    return (
+      <div class={this.ns.b()}>
+        <div class={this.ns.b('content')} ref='content'>
+          {this.items.map(item => {
+            return (
+              <div
+                class={[
+                  this.ns.b('item'),
+                  this.ns.is('active', this.activeItem === item.value),
+                ]}
+                title={item.title}
+                onClick={(e: MouseEvent) => this.onClick(e, item)}
+              >
+                <iBizIcon class={this.ns.be('item', 'icon')} icon={item.icon} />
+              </div>
+            );
+          })}
+          <div class={this.ns.b('indicator')} style={this.indicatorStyle}></div>
+        </div>
+      </div>
+    );
   },
 });
 export default SwitchShowMode;

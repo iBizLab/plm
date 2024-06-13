@@ -14,19 +14,21 @@ import {
 import {
   getDataPickerProps,
   getEditorEmits,
+  getNestedRoutePath,
   renderString,
   route2routePath,
   routePath2string,
   useNamespace,
 } from '@ibiz-template/vue3-util';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import {
   IAppRedirectView,
   ILayoutPanel,
   IUIActionGroupDetail,
 } from '@ibiz/model-core';
 import { openRedirectView } from '@ibiz-template/runtime';
-import { listenJSEvent, NOOP } from '@ibiz-template/core';
+import { IBizContext, listenJSEvent, NOOP } from '@ibiz-template/core';
+import { isUndefined } from 'lodash-es';
 import { RoutePickerController } from './route-picker.controller';
 import './route-picker.scss';
 
@@ -40,7 +42,7 @@ export const RoutePicker = defineComponent({
     const c = props.controller!;
 
     const route = useRoute();
-
+    const router = useRouter();
     // 当前值
     const curValue: Ref<Array<string> | string | null> = ref('');
 
@@ -54,6 +56,8 @@ export const RoutePicker = defineComponent({
     const items: Ref<IData[]> = ref([]);
 
     const query: Ref<string> = ref('');
+
+    let curPath: string = '';
 
     let visible: boolean = false;
     const setCurSelect = () => {
@@ -95,7 +99,7 @@ export const RoutePicker = defineComponent({
             // 超过第一页的才出滚动条
             if (index + 1 > limit) {
               // eslint-disable-next-line prettier/prettier
-              container.scrollTop = 38 * ((index + 1) - limit);
+              container.scrollTop = 38 * (index + 1 - limit);
             } else {
               container.scrollTop = 0;
             }
@@ -155,6 +159,8 @@ export const RoutePicker = defineComponent({
     };
     let cleanup = NOOP;
     onMounted(() => {
+      const path = getNestedRoutePath(route, c.routeDepth);
+      curPath = path.substring(0, path.lastIndexOf('/'));
       cleanup = listenJSEvent(window, 'keyup', event => {
         if (visible) {
           // esc 退出
@@ -170,7 +176,7 @@ export const RoutePicker = defineComponent({
           }
         }
       });
-
+      
       // 清空下拉选实例监听的键盘事件 enter、space、down
       if (dropDown.value) {
         dropDown.value.triggerKeys = [];
@@ -217,7 +223,7 @@ export const RoutePicker = defineComponent({
       }
     };
 
-    const skipRoute = async (data: IData) => {
+    const skipRoute = async (data: IData, isCache: boolean = false) => {
       const id = data[c.keyName];
       const routeId = await c.getRouteKey(route, items.value);
       if (routeId === id) {
@@ -229,8 +235,19 @@ export const RoutePicker = defineComponent({
           const fullViewModel = await ibiz.hub.getAppView(
             c.RedirectViewModel.refAppViewId,
           );
-          const tempContext = c.context.clone();
-          Object.assign(tempContext, { [c.routeKey]: id });
+          const parentContext: IContext = {
+            srfsessionid: c.context.srfsessionid,
+            srfappid: c.context.srfappid,
+          };
+          Object.keys(c.context).forEach(key => {
+            if (key !== 'srfreadonly') {
+              parentContext[key] = c.context[key];
+            }
+          });
+          const tempContext = IBizContext.create(
+            { [c.routeKey]: id },
+            parentContext,
+          );
           return openRedirectView(
             fullViewModel as IAppRedirectView,
             tempContext,
@@ -251,15 +268,47 @@ export const RoutePicker = defineComponent({
         path = routePath2string(routePath);
       } else {
         const routePath = route2routePath(route);
+        const pathNode = routePath.pathNodes[c.routeDepth - 1] as IData;
+        if (isUndefined(pathNode.context)) {
+          Object.assign(routePath.pathNodes[c.routeDepth - 1], {
+            context: IBizContext.create(),
+          });
+        }
         (routePath.pathNodes[c.routeDepth - 1] as IData).context[c.routeKey] =
           id;
         path = routePath2string(routePath);
       }
-      ibiz.openView.push(path);
+      if (isCache) {
+        router.replace({ path });
+      } else {
+        ibiz.openView.push(path);
+      }
+    };
+
+    const setCache = (data: IData) => {
+      if (c.enableCache) {
+        localStorage.setItem(
+          `routePick-${c.context.srfuserid}-${curPath}`,
+          data.id,
+        );
+      }
+    };
+
+    const getCache = () => {
+      if (c.enableCache) {
+        const id = localStorage.getItem(
+          `routePick-${c.context.srfuserid}-${curPath}`,
+        );
+        return items.value.find(item => item.id === id);
+      }
     };
 
     // 处理选中数据后的处理逻辑
-    const onACSelect = async (data: IData, isInitialLoad: boolean) => {
+    const onACSelect = async (
+      data: IData,
+      isInitialLoad: boolean,
+      isCache: boolean = false,
+    ) => {
       // 关闭气泡
       handleHide();
 
@@ -278,11 +327,12 @@ export const RoutePicker = defineComponent({
         [c.textName]: item[c.textName] ? item[c.textName] : item.srfmajortext,
       });
       emit('change', data[c.textName]);
+      setCache(data);
       // 上下文变化且初始化时不做路由跳转
       if (isInitialLoad && c.valueMode && c.valueMode === 'CONTEXTCHANGE') {
         return;
       }
-      skipRoute(data);
+      skipRoute(data, isCache);
     };
 
     // 搜索
@@ -322,14 +372,23 @@ export const RoutePicker = defineComponent({
         items.value = res.data as IData[];
         const id = await c.getRouteKey(route, items.value, true);
         const item = items.value.find(_item => _item[c.keyName] === id);
-        if (item) {
+        const cache = getCache();
+        if (cache) {
+          onACSelect(cache, false, true);
+        } else if (item) {
           onACSelect(item, true);
         }
       }
     };
 
-    c.currentView.evt.on('onMounted', () => {
+    if (c.enableCache) {
       setDefaultSelect();
+    }
+
+    c.currentView.evt.on('onMounted', () => {
+      if (!c.enableCache) {
+        setDefaultSelect();
+      }
     });
 
     // 激活
@@ -356,6 +415,11 @@ export const RoutePicker = defineComponent({
       onACSelect(command, false);
     };
 
+    const dropDownClick = () => {
+      if (!dropDown.value) return;
+      dropDown.value.handleClose();
+    };
+
     const renderGroupAction = () => {
       const { uiactionGroup } = c.model;
       if (uiactionGroup) {
@@ -370,6 +434,7 @@ export const RoutePicker = defineComponent({
                 event: MouseEvent,
               ) => {
                 c.onActionClick(detail, event);
+                dropDownClick();
               }}
             ></iBizActionToolbar>
           </div>
@@ -412,11 +477,6 @@ export const RoutePicker = defineComponent({
     };
   },
   render() {
-    if (this.readonly) {
-      return (
-        <div class={(this.ns.b(), this.ns.m('readonly'))}>{this.valueText}</div>
-      );
-    }
     return (
       <div
         class={[

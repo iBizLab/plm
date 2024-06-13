@@ -18,14 +18,18 @@ import {
   SlateNode,
 } from '@wangeditor/editor';
 import type { IDomEditor } from '@wangeditor/editor';
-import { getCookie } from 'qx-util';
+import { createUUID, getCookie } from 'qx-util';
 import { isNil } from 'ramda';
 import {
   getEditorEmits,
   getHtmlProps,
   useNamespace,
 } from '@ibiz-template/vue3-util';
-import { CoreConst } from '@ibiz-template/core';
+import {
+  CoreConst,
+  IChatMessage,
+  IPortalAsyncAction,
+} from '@ibiz-template/core';
 import { ElMessageBox } from 'element-plus';
 import { EventBase, ScriptFactory } from '@ibiz-template/runtime';
 import { HtmlCommentController } from '../html-comment.controller';
@@ -101,6 +105,9 @@ const IBizHtmlContent = defineComponent({
     // 预览图片集合,此变量用于控制图片模态的显示隐藏,为空时会关闭模态,element图片组件未支持控制是否显示的属性
     const previewUrlList: Ref<string[] | []> = ref([]);
 
+    // 是否是回填
+    const isBackFill = ref(false);
+
     const editorModel = c.model;
     if (editorModel.editorParams) {
       if (editorModel.editorParams.enableEdit) {
@@ -125,6 +132,7 @@ const IBizHtmlContent = defineComponent({
       const { eventArg } = event;
       if (eventArg) {
         editorRef.value.setHtml(eventArg);
+        editorRef.value.focus(true);
         emit('focus');
       }
     };
@@ -141,6 +149,7 @@ const IBizHtmlContent = defineComponent({
       if (!editorRef.value) {
         return;
       }
+      editorRef.value.focus(true);
       emit('focus');
     };
 
@@ -225,7 +234,9 @@ const IBizHtmlContent = defineComponent({
         'emotion',
       ],
     };
-
+    if (c.chatCompletion) {
+      toolbarConfig.toolbarKeys!.push('aichart');
+    }
     // 编辑器配置
     const editorConfig: Partial<IEditorConfig> = {
       placeholder: c.placeHolder,
@@ -410,8 +421,111 @@ const IBizHtmlContent = defineComponent({
       handleEventListener('addEventListener');
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let chatInstance: any;
+
+    const onClickAI = async () => {
+      if (c.deService) {
+        const module = await import('@ibiz-template-plugin/ai-chat');
+        const chat = module.chat || module.default.chat;
+        chatInstance = chat;
+        const aiChat = chat.create({
+          question: async (arr: IChatMessage[]) => {
+            const id = createUUID();
+            await c.deService?.aiChatSse(
+              (msg: IPortalAsyncAction) => {
+                ibiz.log.info('aiChatSse', msg);
+                // 20: 持续回答中，消息会持续推送。同一个消息 id 会显示在同一个框内
+                if (msg.actionstate === 20 && msg.actionresult) {
+                  aiChat.addMessage({
+                    messageid: id,
+                    state: msg.actionstate,
+                    type: 'DEFAULT',
+                    role: 'ASSISTANT',
+                    content: msg.actionresult as string,
+                  });
+                }
+                // 30: 回答完成，包含具体所有消息内容。直接覆盖之前的临时拼接消息
+                else if (msg.actionstate === 30 && msg.actionresult) {
+                  const result = JSON.parse(msg.actionresult as string);
+                  const { choices } = result;
+                  if (choices && choices.length > 0) {
+                    aiChat.replaceMessage({
+                      messageid: id,
+                      state: msg.actionstate,
+                      type: 'DEFAULT',
+                      role: 'ASSISTANT',
+                      content: choices[0].content || '',
+                    });
+                  }
+                }
+                // 40: 回答报错，展示错误信息
+                else if (msg.actionstate === 40) {
+                  aiChat.replaceMessage({
+                    messageid: id,
+                    state: msg.actionstate,
+                    type: 'ERROR',
+                    role: 'ASSISTANT',
+                    content: msg.actionresult as string,
+                  });
+                }
+              },
+              c.context,
+              {},
+              {
+                messages: arr,
+              },
+            );
+            aiChat.addMessage({
+              messageid: id,
+              state: 10,
+              type: 'DEFAULT',
+              role: 'ASSISTANT',
+              content: '',
+            });
+            return true;
+          },
+          action: ((action: string, message: IChatMessage) => {
+            if (action === 'backfill') {
+              emit('change', message.content);
+              isBackFill.value = true;
+            }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          }) as any,
+          closed: () => {
+            // 关闭AI聊天窗口时左侧评论区聚焦
+            if (editorRef.value) {
+              if (props.value) {
+                if (editorRef.value) {
+                  editorRef.value.focus(true);
+                }
+              }
+            }
+          },
+        });
+        const res = await c.deService?.aiChatHistory(c.context, {});
+        if (res.data && Array.isArray(res.data)) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          res.data.forEach((item: any) => {
+            const msg = {
+              messageid: createUUID(),
+              state: 30,
+              type: 'DEFAULT',
+              role: item.role,
+              content: item.content,
+            } as const;
+            aiChat.addMessage(msg);
+          });
+        }
+      }
+    };
+
     // 组件销毁时，也及时销毁编辑器，重要！
     onBeforeUnmount(() => {
+      if (chatInstance) {
+        chatInstance.close();
+      }
+
       const editor = editorRef.value;
       if (editor == null) return;
 
@@ -434,6 +548,11 @@ const IBizHtmlContent = defineComponent({
         }
       });
       editor.setHtml(valueHtml.value);
+
+      editor.on('aiClick', () => {
+        onClickAI();
+      });
+
       c.onCreated(editorRef.value, props.data, toolbarConfig);
     };
     // 编辑器内容、选区变化时的回调函数
@@ -463,7 +582,7 @@ const IBizHtmlContent = defineComponent({
     // 编辑器销毁时的回调函数。调用 editor.destroy() 即可销毁编辑器
     const handleDestroyed = (_editor: IDomEditor) => {
       // console.log('destroyed', _editor);
-      c.onDestroyed();
+      // c.onDestroyed();
       c.evt.off('setHtml', handleSetHtml);
       c.evt.off('clear', handleClear);
       c.evt.off('onSetReply', handleSetReply);
@@ -788,6 +907,14 @@ const IBizHtmlContent = defineComponent({
               valueHtml.value = '';
             } else {
               valueHtml.value = newVal as string;
+            }
+            if (isBackFill.value) {
+              if (editorRef.value) {
+                nextTick(() => {
+                  editorRef.value.focus(true);
+                });
+              }
+              isBackFill.value = false;
             }
           }
         },

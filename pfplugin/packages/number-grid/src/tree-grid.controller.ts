@@ -5,7 +5,6 @@ import {
 } from '@ibiz-template/core';
 import {
   calcDeCodeNameById,
-  ControllerEvent,
   ControlVO,
   GridNotifyState,
   GridRowState,
@@ -21,10 +20,6 @@ export class NumberTreeGridController extends TreeGridController<
   INumberTreeGridState,
   INumberTreeGridEvent
 > {
-  protected get _evt(): ControllerEvent<INumberTreeGridEvent> {
-    return this.evt;
-  }
-
   get overflowMode(): 'wrap' | 'ellipsis' {
     return 'ellipsis';
   }
@@ -45,13 +40,115 @@ export class NumberTreeGridController extends TreeGridController<
    */
   public expandColumnIndex!: number;
 
+  protected initState(): void {
+    super.initState();
+    this.state.treeData = [];
+    const key = `SHOW_MODE_${this.context.project}_${this.view.model.codeName}`;
+    const showMode = localStorage.getItem(key);
+    if (showMode === 'tree') {
+      this.state.showTreeGrid = true;
+    } else if (showMode === 'grid') {
+      this.state.showTreeGrid = false;
+    }
+  }
+
+  /**
+   * 设置排序
+   */
+  setSort(fieldId?: string, order?: 'asc' | 'desc'): void {
+    // 初始化不做赋值处理，加载之前处理排序字段
+    if (!fieldId && !order) {
+      return;
+    }
+    let key;
+    if (fieldId) {
+      key = this.fieldIdNameMap.get(fieldId)!.toLowerCase();
+    }
+    if (key && order) {
+      this.state.sortQuery = `${key},${order}`;
+    } else {
+      // 排序字段和顺序只要有一个没有就置空
+      this.state.sortQuery = '';
+    }
+    this.setSortCache();
+  }
+
+  /**
+   * 设置排序缓存
+   */
+  setSortCache(): void {
+    // 设置后更新localStorage里的
+    if (this.view) {
+      if (this.state.sortQuery) {
+        localStorage.setItem(
+          `${this.view.model.id}.${this.model.name}.sort`,
+          this.state.sortQuery,
+        );
+      } else {
+        localStorage.removeItem(
+          `${this.view.model.id}.${this.model.name}.sort`,
+        );
+      }
+    }
+  }
+
+  /**
+   * 获取请求过滤参数（整合了视图参数，各种过滤条件，排序，分页）
+   */
+  async getFetchParams(extraParams?: IParams): Promise<IParams> {
+    const { curPage, size, sortQuery, noSort } = this.state;
+    const resultParams: IParams = {
+      ...this.params,
+    };
+    // 有size才给page和size。size默认值给0就不传分页和大小
+    if (size) {
+      resultParams.page = curPage - 1;
+      resultParams.size = size;
+    }
+
+    // 排序条件
+    if (!noSort) {
+      if (sortQuery) {
+        resultParams.sort = sortQuery;
+      } else {
+        // 设置默认排序(localStorage的优先级高于配置)
+        const { minorSortAppDEFieldId, minorSortDir } = this.getSortModel();
+        if (
+          this.view &&
+          localStorage.getItem(`${this.view.model.id}.${this.model.name}.sort`)
+        ) {
+          this.state.sortQuery = localStorage.getItem(
+            `${this.view.model.id}.${this.model.name}.sort`,
+          )!;
+        } else if (minorSortAppDEFieldId && minorSortDir) {
+          const fieldName = this.fieldIdNameMap.get(minorSortAppDEFieldId)!;
+          this.state.sortQuery = `${fieldName.toLowerCase()},${minorSortDir.toLowerCase()}`;
+        }
+        resultParams.sort = this.state.sortQuery;
+        this.setSortCache();
+      }
+    }
+    // *请求参数处理
+    await this.evt.emit('onBeforeLoad', undefined);
+    // 合并搜索条件参数，这些参数在onBeforeLoad监听里由外部填入
+    Object.assign(resultParams, {
+      ...this.state.searchParams,
+    });
+
+    // 额外附加参数
+    if (extraParams) {
+      Object.assign(resultParams, extraParams);
+    }
+    return resultParams;
+  }
+
   /**
    * 切换显示模式
    *
    * @param {IData} param
    * @memberof NumberTreeGridController
    */
-  switchShowMode(param: IData): void {
+  async switchShowMode(param: IData): Promise<void> {
     const { showMode } = param;
     if (showMode) {
       if (showMode === 'tree') {
@@ -59,7 +156,8 @@ export class NumberTreeGridController extends TreeGridController<
       } else if (showMode === 'grid') {
         this.state.showTreeGrid = false;
       }
-      this.refresh();
+      this.state.treeData = [...this.state.items];
+      await this.refresh();
     }
   }
 
@@ -92,15 +190,8 @@ export class NumberTreeGridController extends TreeGridController<
    * @return {*}  {Promise<void>}
    * @memberof NumberTreeGridController
    */
-  async refresh(): Promise<void> {
-    await this.load({ isInitialLoad: false });
-
-    // 重新加载树表格展开节点
-    this.state.expandRows.forEach(row => {
-      setTimeout(() => {
-        this._evt.emit('onReloadNode', { row, isReloadParent: false });
-      });
-    });
+  async refresh(isInitialLoad = false): Promise<void> {
+    await this.load({ isInitialLoad });
   }
 
   /**
@@ -148,6 +239,10 @@ export class NumberTreeGridController extends TreeGridController<
         this.state.total = res.total;
       }
 
+      if (typeof res.totalPages === 'number') {
+        this.state.totalPages = res.totalPages;
+      }
+
       if (isLoadMore) {
         this.state.items.push(...res.data);
       } else {
@@ -157,11 +252,11 @@ export class NumberTreeGridController extends TreeGridController<
       await this.afterLoad(args, res.data);
 
       this.state.isLoaded = true;
-      await this._evt.emit('onLoadSuccess', {
+      await this.evt.emit('onLoadSuccess', {
         isInitialLoad,
       });
     } catch (error) {
-      await this._evt.emit('onLoadError', undefined);
+      await this.evt.emit('onLoadError', undefined);
       this.actionNotification('FETCHERROR', {
         error: error as Error,
       });
@@ -197,7 +292,6 @@ export class NumberTreeGridController extends TreeGridController<
     // 初始加载需要重置选中数据和展开数据
     if (isInitialLoad) {
       this.state.selectedData = [];
-      this.state.expandRows = [];
     } else {
       // 不是初始化需重新计算选中数据
       const selectedData = this.state.selectedData.filter(select =>
@@ -205,7 +299,39 @@ export class NumberTreeGridController extends TreeGridController<
       );
       this.state.selectedData = selectedData;
     }
+    this.setTreeData();
     return items;
+  }
+
+  /**
+   * 设置树数据
+   *
+   * @memberof NumberTreeGridController
+   */
+  setTreeData(): void {
+    if (this.state.showTreeGrid) {
+      const keys: string[] = this.state.items
+        .map(node => node[this.treeGridValueField])
+        .filter(key => key !== undefined);
+      const rootNodes: IData[] = this.state.items.filter(
+        item => !keys.includes(item[this.treeGridParentField]),
+      );
+      const setNodeChildren = (nodes: IData[]) => {
+        nodes.forEach(node => {
+          const children = this.state.items.filter(
+            item =>
+              node[this.treeGridValueField] &&
+              item[this.treeGridParentField] === node[this.treeGridValueField],
+          );
+          if (children.length > 0) {
+            setNodeChildren(children);
+          }
+          node._children = children;
+        });
+      };
+      setNodeChildren(rootNodes);
+      this.state.treeData = rootNodes;
+    }
   }
 
   /**
@@ -250,7 +376,11 @@ export class NumberTreeGridController extends TreeGridController<
         ? await this.service.create(tempContext, data)
         : await this.service.update(tempContext, data);
     } catch (error) {
-      await this._evt.emit('onSaveError', undefined);
+      // 新建失败界面回滚
+      if (isCreate) {
+        await this.remove({ data: [data], silent: true });
+      }
+      await this.evt.emit('onSaveError', undefined);
       this.actionNotification(`${isCreate ? 'CREATE' : 'UPDATE'}ERROR`, {
         error: error as Error,
         data: rowState.data,
@@ -263,13 +393,9 @@ export class NumberTreeGridController extends TreeGridController<
     rowState.data = res.data;
     rowState.modified = false;
 
-    // 如果是新建行保存完成 之后需要再发一次通知父重新加载 因为tempsrfkey发生改变
-    if (isCreate) {
-      this._evt.emit('onReloadNode', { row: rowState, isReloadParent: true });
-    }
-
+    this.setTreeData();
     this.gridStateNotify(rowState, GridNotifyState.SAVE);
-    await this._evt.emit('onSaveSuccess', undefined);
+    await this.evt.emit('onSaveSuccess', undefined);
   }
 
   afterRemove(data: IData): void {
@@ -298,12 +424,16 @@ export class NumberTreeGridController extends TreeGridController<
       }
     });
 
-    // 通知树表父节点重新加载
-    this._evt.emit('onReloadNode', {
-      row: rowState,
-      isReloadParent: true,
-      eventName: 'remove',
+    this.setTreeData();
+    const parentRow = this.state.rows.find(row => {
+      return (
+        data[this.treeGridParentField] &&
+        row.data[this.treeGridValueField] === data[this.treeGridParentField]
+      );
     });
+    if (parentRow && parentRow.data._children.length === 0) {
+      this.evt.emit('onRowCollapse', { row: parentRow, state: false });
+    }
   }
 
   /**
@@ -316,7 +446,7 @@ export class NumberTreeGridController extends TreeGridController<
   async newRow(args: MDCtrlLoadParams = {}): Promise<void> {
     const { data } = args;
     const { editShowMode } = ibiz.config.grid;
-    let parent = null;
+    let parent: IData = {};
     if (data) {
       parent = Array.isArray(data) ? data[0] : data;
     }
@@ -350,9 +480,7 @@ export class NumberTreeGridController extends TreeGridController<
     mergeDefaultInLeft(draftData, defaultData);
 
     // 存在父数据就将父数据赋到子数据的父属性名称上
-    if (parent) {
-      draftData[this.treeGridParentField] = parent[this.treeGridValueField];
-    }
+    draftData[this.treeGridParentField] = parent[this.treeGridValueField];
     if (parent.srfUserData) {
       draftData.srfUserData = parent.srfUserData;
     }
@@ -366,7 +494,17 @@ export class NumberTreeGridController extends TreeGridController<
     if (editShowMode === 'row') {
       this.switchRowEdit(newRow, true);
     }
-    this._evt.emit('onReloadNode', { row: newRow, isReloadParent: true });
+    this.setTreeData();
+    const parentRow = this.state.rows.find(row => {
+      return (
+        newRow.data[this.treeGridParentField] &&
+        row.data[this.treeGridValueField] ===
+          newRow.data[this.treeGridParentField]
+      );
+    });
+    if (parentRow) {
+      this.evt.emit('onRowCollapse', { row: parentRow, state: true });
+    }
     this.actionNotification('GETDRAFTSUCCESS', { data: draftData });
   }
 
@@ -386,27 +524,6 @@ export class NumberTreeGridController extends TreeGridController<
     // 激活事件
     if (this.state.mdctrlActiveMode === 1) {
       await this.setActive(data);
-    }
-  }
-
-  /**
-   * 设置行展开
-   *
-   * @param {IData} data
-   * @param {boolean} state
-   * @memberof NumberTreeGridController
-   */
-  setRowExpand(data: IData, state: boolean): void {
-    const row = this.findRowState(data);
-    if (row) {
-      const index = this.state.expandRows.findIndex(
-        exp => exp.data.tempsrfkey === row?.data.tempsrfkey,
-      );
-      if (state && index === -1) {
-        this.state.expandRows.push(row);
-      } else if (!state && index > -1) {
-        this.state.expandRows.splice(index, 1);
-      }
     }
   }
 }

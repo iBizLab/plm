@@ -1,6 +1,6 @@
 import { PartialWithObject } from '@ibiz-template/core';
 import { EventBase, ITreeGridEvent } from '@ibiz-template/runtime';
-import { ReloadNodeEvent } from './reload-node.event';
+import { NodeEvent } from './node.event';
 
 /**
  * 编号树表格事件
@@ -11,16 +11,16 @@ import { ReloadNodeEvent } from './reload-node.event';
  */
 export interface INumberTreeGridEvent extends ITreeGridEvent {
   /**
-   * 重载节点事件
+   * 行折叠
    *
    * @type {{
-   *     event: ReloadNodeEvent,
-   *     emitArgs: PartialWithObject<ReloadNodeEvent, EventBase>;
+   *     event: NodeEvent;
+   *     emitArgs: PartialWithObject<NodeEvent, EventBase>;
    *   }}
    * @memberof INumberTreeGridEvent
    */
-  onReloadNode: {
-    event: ReloadNodeEvent;
-    emitArgs: PartialWithObject<ReloadNodeEvent, EventBase>;
+  onRowCollapse: {
+    event: NodeEvent;
+    emitArgs: PartialWithObject<NodeEvent, EventBase>;
   };
 }

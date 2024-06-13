@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Router } from 'vue-router';
 import {
   CTX,
@@ -7,8 +9,9 @@ import {
   IViewConfig,
   PanelItemController,
 } from '@ibiz-template/runtime';
-import { listenJSEvent, NOOP } from '@ibiz-template/core';
+import { listenJSEvent, NOOP, RuntimeError } from '@ibiz-template/core';
 import { h, inject } from 'vue';
+import { isArray } from 'lodash-es';
 import { UserInfoPopover } from './user-info-popover/user-info-popover';
 
 /**
@@ -19,6 +22,38 @@ import { UserInfoPopover } from './user-info-popover/user-info-popover';
  * @extends {PanelItemController}
  */
 export class CustomUserInfoController extends PanelItemController {
+  /**
+   * 弹框内导航视图名称
+   *
+   * @private
+   * @memberof CustomUserInfoController
+   */
+  private navViewName: string = '';
+
+  /**
+   * 头像属性
+   *
+   * @type {string}
+   * @memberof CustomUserInfoController
+   */
+  public avatarField: string = '';
+
+  /**
+   * 标题属性
+   *
+   * @type {string}
+   * @memberof CustomUserInfoController
+   */
+  public titlField: string = '';
+
+  /**
+   * 子标题属性
+   *
+   * @type {string}
+   * @memberof CustomUserInfoController
+   */
+  public subTitleField: string = '';
+
   /**
    * 路由
    *
@@ -100,11 +135,27 @@ export class CustomUserInfoController extends PanelItemController {
    */
   protected async onInit(): Promise<void> {
     await super.onInit();
+    this.initRawItemParams();
     try {
-      const { srfusername = '游客', srfpersonname } =
-        ibiz.appData?.context || {};
+      const appContext = ibiz.appData?.context || {};
+      const { srfusername = '游客', srfpersonname } = appContext;
       this.userInfo = { srfusername, srfpersonname };
-      this.userInfoView = await ibiz.hub.config.view.get('userinfocustomview');
+      if (this.avatarField && appContext[this.avatarField]) {
+        Object.assign(this.userInfo, {
+          avatar: this.parseAvatar(appContext[this.avatarField]),
+        });
+      }
+      if (this.titlField && appContext[this.titlField]) {
+        Object.assign(this.userInfo, {
+          srfusername: appContext[this.titlField],
+        });
+      }
+      if (this.subTitleField && appContext[this.subTitleField]) {
+        Object.assign(this.userInfo, {
+          srfpersonname: appContext[this.subTitleField],
+        });
+      }
+      this.userInfoView = await ibiz.hub.config.view.get(this.navViewName);
     } catch (error) {
       ibiz.log.error(error);
     }
@@ -113,6 +164,55 @@ export class CustomUserInfoController extends PanelItemController {
         this.overlay?.dismiss();
       }
     });
+  }
+
+  /**
+   * 解析头像数据
+   *
+   * @param {string} avatar
+   * @return {*}
+   * @memberof CustomUserInfoController
+   */
+  public parseAvatar(avatar: string) {
+    try {
+      const res = JSON.parse(avatar);
+      if (res) {
+        const data = isArray(res) ? res[0] : res;
+        const urls = ibiz.util.file.calcFileUpDownUrl(
+          this.panel.context,
+          this.panel.params,
+        );
+        return urls.downloadUrl.replace('%fileId%', data.id);
+      }
+    } catch (error) {
+      throw new RuntimeError('头像数据解析异常');
+    }
+  }
+
+  /**
+   * 初始化面板项高级参数
+   *
+   * @memberof CustomUserInfoController
+   */
+  initRawItemParams(): void {
+    const rawItem = (this.model as IParams)?.rawItem;
+    if (isArray(rawItem?.rawItemParams)) {
+      rawItem?.rawItemParams.forEach((item: IParams) => {
+        const { key, value } = item;
+        if (key === 'NAVVIEWNAME') {
+          this.navViewName = value;
+        }
+        if (key === 'AVATAR') {
+          this.avatarField = value.toLowerCase();
+        }
+        if (key === 'TITLE') {
+          this.titlField = value.toLowerCase();
+        }
+        if (key === 'SUBTITLE') {
+          this.subTitleField = value.toLowerCase();
+        }
+      });
+    }
   }
 
   /**

@@ -35,6 +35,7 @@
 | SUFFIX       | 后缀图标     | string                    | ——          |
 | ROUTEKEY     | 路由属性标识 | string                    | ——          |
 | MODE         | 值变更模式   | ROUTECHANGE/CONTEXTCHANGE | ROUTECHANGE |
+| ENABLECACHE  | 是否启用缓存模式   | boolean             | false |
 
 路由属性标识（ROUTEKEY）默认为实体主键，将会根据其对路由路径进行匹配，已确认当前路由主键信息
 

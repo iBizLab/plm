@@ -13,7 +13,7 @@ export class AttachGridController extends GridController {
     if (appDataEntityId) {
       const app = ibiz.hub.getApp(this.context.srfappid);
       await app.deService.exec(appDataEntityId, 'create', this.context, attach);
-      await this.refresh();
+      await this.load({ isInitialLoad: false });
       await this.evt.emit('onSaveSuccess', undefined);
     }
   }

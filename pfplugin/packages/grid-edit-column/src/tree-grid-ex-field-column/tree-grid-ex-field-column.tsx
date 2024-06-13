@@ -36,6 +36,10 @@ export const TreeGridExFieldColumn = defineComponent({
       return props.row.editColStates[nodeColumn.value!.name].editable;
     });
 
+    const readonly = computed(() => {
+      return props.row.editColStates[nodeColumn.value!.name].readonly;
+    });
+
     const setEditable = (flag: boolean): void => {
       props.row.editColStates[nodeColumn.value!.name].editable = flag;
     };
@@ -148,6 +152,7 @@ export const TreeGridExFieldColumn = defineComponent({
       clickable,
       tooltip,
       editable,
+      readonly,
       onInfoTextChange,
       onTextClick,
       onActionClick,
@@ -245,7 +250,7 @@ export const TreeGridExFieldColumn = defineComponent({
       >
         <div class={this.ns.b('text-container')}>{content}</div>
         <div class={this.ns.b('toolbar-container')}>
-          {!this.editable ? [editAction, actions] : null}
+          {!this.editable && !this.readonly ? [editAction, actions] : null}
         </div>
       </div>
     );

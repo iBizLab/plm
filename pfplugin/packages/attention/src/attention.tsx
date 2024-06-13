@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import {
   ref,
   watch,
@@ -90,7 +91,7 @@ export const Attention = defineComponent({
 
     // 只读状态
     const readonlyState = computed(() => {
-      return props?.readonly || c.context.srfreadonly;
+      return props?.readonly;
     });
 
     // 是否显示表单默认内容
@@ -841,6 +842,43 @@ export const Attention = defineComponent({
       }
     };
 
+    // 获取用户头像
+    const getUserAvatar = (avatarUrl: string) => {
+      if (!avatarUrl) {
+        return null;
+      }
+      const urlConfig = JSON.parse(avatarUrl);
+      if (urlConfig.length === 0) {
+        return null;
+      }
+      const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+        c.context,
+        c.params,
+        props.data,
+        c.editorParams,
+      );
+      const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
+      return (
+        <img
+          class={ns.bem('select-modal', 'personel-list', 'avatar')}
+          src={url}
+          alt=''
+        />
+      );
+    };
+
+    // 绘制用户头像
+    const renderUserAvatar = (userid: string, usertext: string) => {
+      if (
+        c.operatorMap &&
+        c.operatorMap.get(userid) &&
+        c.operatorMap.get(userid).data.iconurl
+      ) {
+        return getUserAvatar(c.operatorMap.get(userid).data.iconurl);
+      }
+      return renderTextPhoto(usertext);
+    };
+
     // 绘制列表项
     const renderPersonItem = (item: IData): JSX.Element => {
       const usertext: string =
@@ -864,7 +902,7 @@ export const Attention = defineComponent({
               class={ns.bem('select-modal', 'personel-list', 'text-img')}
               style={`background-color:${stringToHexColor(usertext)}`}
             >
-              {renderTextPhoto(usertext)}
+              {renderUserAvatar(userid, usertext)}
             </div>
             <div class={ns.bem('select-modal', 'personel-list', 'text-label')}>
               {usertext}
@@ -1118,7 +1156,7 @@ export const Attention = defineComponent({
                       placement='top'
                       offset={12}
                     >
-                      {renderTextPhoto(select.name)}
+                      {renderUserAvatar(select.id, select.name)}
                     </el-tooltip>
                     {props.readonly ? null : (
                       <div
@@ -1182,7 +1220,7 @@ export const Attention = defineComponent({
             class={ns.be('select-value', 'textimg')}
             style={`background-color:${stringToHexColor(valueText.value)}`}
           >
-            {renderTextPhoto(valueText.value)}
+            {renderUserAvatar(refValue.value, valueText.value)}
           </div>
           <div class={ns.be('select-value', 'text')}>
             <div class={ns.bem('select-value', 'text', 'label')}>
@@ -1348,7 +1386,6 @@ export const Attention = defineComponent({
           ? this.renderReadonlyContent()
           : this.renderEditContent()}
         <Follow
-          readonly={this.readonlyState}
           disabled={this.disabled}
           value={this.curAttentionValue}
           codeListId={this.c.codeListId}

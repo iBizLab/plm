@@ -18,6 +18,7 @@ export default defineConfig({
         '@ibiz-template/runtime',
         '@ibiz-template/theme',
         '@ibiz-template/vue3-util',
+        '@ibiz-template-plugin/ai-chat',
         '@ibiz/dynamic-model-api',
         '@wangeditor/editor',
         '@wangeditor/editor-for-vue',

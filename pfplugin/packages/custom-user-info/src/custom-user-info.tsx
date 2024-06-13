@@ -58,6 +58,7 @@ export const CustomUserInfo = defineComponent({
         <Avatar
           class={this.ns.e('avatar')}
           label={this.c.userInfo.srfusername}
+          img={this.c.userInfo.avatar}
           readOnly={true}
         />
         {!this.c.isCollapse && (

@@ -4,6 +4,7 @@ import {
   CodeListItem,
   GridFieldEditColumnController,
   GridRowState,
+  Srfuf,
 } from '@ibiz-template/runtime';
 import { IAppCodeList } from '@ibiz/model-core';
 
@@ -69,9 +70,12 @@ export class GridEditColumnController extends GridFieldEditColumnController {
    * @memberof GridEditColumnController
    */
   public setPickerValue(row: GridRowState) {
-    const userData = row.data.srfUserData;
-    if (userData && userData.pickerField) {
-      row.data[userData.pickerField] = this.curPickerId;
+    const { srfuf } = row.data;
+    if (srfuf === Srfuf.CREATE) {
+      const userData = row.data.srfUserData;
+      if (userData && userData.pickerField) {
+        row.data[userData.pickerField] = this.curPickerId;
+      }
     }
   }
 }

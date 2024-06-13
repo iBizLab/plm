@@ -1,0 +1,84 @@
+/* action-toolbar 界面行为组工具栏 start */
+$action-toolbar: (
+  item-margin: 0 4px 0 0,
+  separator-height: 20px,
+  separator-width: 2px,
+  separator-color: getCssVar(color, border),
+  popover-padding: 8px 0,
+  popover-button-padding: 8px 20px,
+  popover-button-color: getCssVar(color, text, 2),
+  popover-button-hover-bg: getCssVar(color, bg, 0),
+);
+
+/* action-toolbar 界面行为组工具栏 end */
+
+@include b(action-toolbar) {
+  @include set-component-css-var(action-toolbar, $action-toolbar);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  @include e(item) {
+    padding: getCssVar(spacing, extra-tight) 0;
+    margin: getCssVar(action-toolbar, item-margin);
+
+    @include m(icon) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      margin-right: 3px;
+      font-size: 14px;
+    }
+
+    &+& {
+      margin: getCssVar(action-toolbar, item-margin);
+    }
+  }
+
+  @include e(popover) {
+    @include set-component-css-var(action-toolbar, $action-toolbar);
+
+    // 这个是为了解决el-popover的宽度问题 必须要加 !important
+    width: auto !important;
+    min-width: 150px;
+
+    --el-popover-padding:#{getCssVar(action-toolbar, popover-padding)};
+
+    .el-button {
+      --el-button-size: 40px;
+
+      display: block;
+      width: 100%;
+      padding: getCssVar(action-toolbar, popover-button-padding);
+      margin: 0;
+      font-size: 14px;
+      color: getCssVar(action-toolbar, popover-button-color);
+      text-align: left;
+      border-radius: 0;
+
+      &:hover {
+        background-color: getCssVar(action-toolbar, popover-button-hover-bg);
+      }
+
+      .#{bem(icon)} {
+        margin-right: 6px;
+      }
+    }
+
+    @include e(separator) {
+      margin: 0;
+    }
+  }
+
+  @include m(dropdown) {
+    @include e(caption) {
+      cursor: pointer;
+    }
+
+    @include e(caption-icon) {
+      vertical-align: bottom;
+    }
+  }
+}

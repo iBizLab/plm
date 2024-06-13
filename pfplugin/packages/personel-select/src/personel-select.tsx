@@ -85,7 +85,7 @@ export const PersonelSelect = defineComponent({
     // popover组件
     const popoverRef = ref();
 
-    // 人员选则组件
+    // 人员选择组件
     const personelSelRef = ref();
 
     // 人员信息项组件popover组件,根据移入赋值
@@ -93,6 +93,9 @@ export const PersonelSelect = defineComponent({
 
     // 远程搜索定时器标识
     const timer = ref();
+
+    // 所有头像加载失败项
+    const errorLoadItems: Ref<string[]> = ref([]);
 
     // 为关注时，界面需要绘制的个数
     let selRenderNum: number = 0;
@@ -298,12 +301,10 @@ export const PersonelSelect = defineComponent({
                   c.separator,
                 );
                 let names = (curValue.value as string).split(c.separator);
-                if (values.length > 1 && c.isAddSymbol) {
+                if (c.isAddSymbol) {
                   values = values.map((value: string) => {
                     return value.slice(1, -1);
                   });
-                }
-                if (names.length > 1 && c.isAddSymbol) {
                   names = names.map((value: string) => {
                     return value.slice(1, -1);
                   });
@@ -365,7 +366,7 @@ export const PersonelSelect = defineComponent({
         let result = multipleSelect.value.map((select: IData) => {
           return select.id;
         });
-        if (result.length > 1 && c.isAddSymbol) {
+        if (c.isAddSymbol) {
           result = result.map((item: string) => {
             return `'${item}'`;
           });
@@ -378,7 +379,7 @@ export const PersonelSelect = defineComponent({
         let names = multipleSelect.value.map((select: IData) => {
           return select.name;
         });
-        if (names.length > 1 && c.isAddSymbol) {
+        if (c.isAddSymbol) {
           names = names.map((item: string) => {
             return `'${item}'`;
           });
@@ -389,6 +390,7 @@ export const PersonelSelect = defineComponent({
 
     // 往外抛值
     const onACSelect = async (data: IData) => {
+      console.log('选中数据', data);
       // 选中了搜索过滤返回的数据，那就把选中的数据加入已加载的人员或部门人员里,放在最前面,并去重
       if (searchValue.value) {
         if (selectState.value === 'user') {
@@ -448,7 +450,7 @@ export const PersonelSelect = defineComponent({
           let result = multipleSelect.value.map((select: IData) => {
             return select.id;
           });
-          if (result.length > 1 && c.isAddSymbol) {
+          if (c.isAddSymbol) {
             result = result.map((resItem: string) => {
               return `'${resItem}'`;
             });
@@ -461,7 +463,7 @@ export const PersonelSelect = defineComponent({
           let names = multipleSelect.value.map((select: IData) => {
             return select.name;
           });
-          if (names.length > 1 && c.isAddSymbol) {
+          if (c.isAddSymbol) {
             names = names.map((nameItem: string) => {
               return `'${nameItem}'`;
             });
@@ -584,6 +586,12 @@ export const PersonelSelect = defineComponent({
       { immediate: true },
     );
 
+    watch(popoverRef, newVal => {
+      if (props.autoFocus && newVal) {
+        modelVisible.value = true;
+      }
+    });
+
     // 远程搜索
     const remoteSearch = async (value: string | number) => {
       loading.value = true;
@@ -632,6 +640,14 @@ export const PersonelSelect = defineComponent({
       if (selectState.value === 'department' && deptItems.value.length === 0) {
         c.resetDeptState();
         load();
+      }
+    };
+
+    // 点击事件
+    const handleClick = (e: MouseEvent) => {
+      // 适配列表部件点击后执行行为
+      if (!c.isShowNameText()) {
+        e.stopPropagation();
       }
     };
 
@@ -834,7 +850,7 @@ export const PersonelSelect = defineComponent({
         // 多选
         if (refValue.value) {
           let values = refValue.value.split(c.separator);
-          if (values.length > 1 && c.isAddSymbol) {
+          if (c.isAddSymbol) {
             values = values.map((value: string) => {
               return value.slice(1, -1);
             });
@@ -904,6 +920,50 @@ export const PersonelSelect = defineComponent({
       }
     };
 
+    const avatarLoadError = (avatarUrl: string) => {
+      console.log('头像加载失败');
+      errorLoadItems.value.push(avatarUrl);
+    };
+
+    // 获取用户头像
+    const getUserAvatar = (avatarUrl: string) => {
+      if (!avatarUrl) {
+        return null;
+      }
+      const urlConfig = JSON.parse(avatarUrl);
+      if (urlConfig.length === 0) {
+        return null;
+      }
+      const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+        c.context,
+        c.params,
+        props.data,
+        c.editorParams,
+      );
+      const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
+      return (
+        <img
+          class={ns.bem('select-modal', 'personel-list', 'avatar')}
+          src={url}
+          onError={() => avatarLoadError(avatarUrl)}
+          alt=''
+        />
+      );
+    };
+
+    // 绘制用户头像
+    const renderUserAvatar = (userid: string, usertext: string) => {
+      if (
+        c.operatorMap &&
+        c.operatorMap.get(userid) &&
+        c.operatorMap.get(userid).data.iconurl &&
+        !errorLoadItems.value.includes(c.operatorMap.get(userid).data.iconurl)
+      ) {
+        return getUserAvatar(c.operatorMap.get(userid).data.iconurl);
+      }
+      return renderTextPhoto(usertext);
+    };
+
     // 绘制列表项
     const renderPersonItem = (item: IData) => {
       const usertext: string =
@@ -927,7 +987,7 @@ export const PersonelSelect = defineComponent({
               class={ns.bem('select-modal', 'personel-list', 'text-img')}
               style={`background-color:${stringToHexColor(usertext)}`}
             >
-              {renderTextPhoto(usertext)}
+              {renderUserAvatar(userid, usertext)}
             </div>
             <div class={ns.bem('select-modal', 'personel-list', 'text-label')}>
               {usertext}
@@ -1109,7 +1169,12 @@ export const PersonelSelect = defineComponent({
     // 无值时显示
     const renderNoSelectValue = () => {
       return (
-        <div class={ns.b('no-select-value')}>
+        <div
+          class={[
+            ns.b('no-select-value'),
+            ns.is('readonly', props.readonly || props.disabled),
+          ]}
+        >
           <img src={`${resource.dir('assets/images/svg/member.svg')}`} alt='' />
           <span>未设置</span>
         </div>
@@ -1118,6 +1183,7 @@ export const PersonelSelect = defineComponent({
 
     // 绘制显示框
     const renderSelectInput = () => {
+      const tipState = c.isShowNameTip();
       if (c.multiple) {
         // 多选场景
         // 判断绘制length与选中项length是否相等,如果小于则被截取过 超出隐藏逻辑
@@ -1128,12 +1194,12 @@ export const PersonelSelect = defineComponent({
         if (refValue.value) {
           let values = refValue.value.split(c.separator);
           let names = valueText.value.split(c.separator);
-          if (values.length > 1 && c.isAddSymbol) {
+          if (c.isAddSymbol) {
             values = values.map((value: string) => {
               return value.slice(1, -1);
             });
           }
-          if (names.length > 1 && c.isAddSymbol) {
+          if (c.isAddSymbol) {
             names = names.map((value: string) => {
               return value.slice(1, -1);
             });
@@ -1166,12 +1232,16 @@ export const PersonelSelect = defineComponent({
           <div
             class={[
               ns.b('select-value-multiple'),
+              ns.is('readonly', props.readonly || props.disabled),
               isEquality ? ns.be('select-value-multiple', 'hidden') : '',
             ]}
           >
             {selectItems?.map((select: IData) => {
               return (
-                <div class={ns.be('select-value-multiple', 'item')}>
+                <div
+                  class={ns.be('select-value-multiple', 'item')}
+                  title={tipState ? select.name : ''}
+                >
                   <div
                     class={[
                       ns.be('select-value', 'textimg'),
@@ -1186,7 +1256,7 @@ export const PersonelSelect = defineComponent({
                       placement='top'
                       offset={12}
                     >
-                      {renderTextPhoto(select.name)}
+                      {renderUserAvatar(select.id, select.name)}
                     </el-tooltip>
                     {props.readonly || props.disabled ? null : (
                       <div
@@ -1219,12 +1289,18 @@ export const PersonelSelect = defineComponent({
         );
       }
       return (
-        <div class={ns.b('select-value')}>
+        <div
+          class={[
+            ns.b('select-value'),
+            ns.is('readonly', props.readonly || props.disabled),
+          ]}
+          title={tipState ? valueText.value : ''}
+        >
           <div
             class={ns.be('select-value', 'textimg')}
             style={`background-color:${stringToHexColor(valueText.value)}`}
           >
-            {renderTextPhoto(valueText.value)}
+            {renderUserAvatar(refValue.value, valueText.value)}
           </div>
           <div class={ns.be('select-value', 'text')}>
             <div class={ns.bem('select-value', 'text', 'label')}>
@@ -1245,6 +1321,7 @@ export const PersonelSelect = defineComponent({
     // 展开下拉弹出框时加载
     const onPopShow = async () => {
       visible.value = true;
+      emit('focus');
       const { context, params } = c.handlePublicParams(
         props.data,
         c.context,
@@ -1332,6 +1409,7 @@ export const PersonelSelect = defineComponent({
       renderReadState,
       onPopShow,
       onPageHide,
+      handleClick,
       showFormDefaultContent,
       modelVisible,
     };
@@ -1368,9 +1446,11 @@ export const PersonelSelect = defineComponent({
           this.ns.b('person-value'),
           this.disabled ? this.ns.m('disabled') : '',
           this.readonly ? this.ns.m('readonly') : '',
+          !this.c.isShowNameText() ? this.ns.m('only-icon') : '',
           this.ns.is('editable', this.isEditable),
           this.ns.is('show-default', this.showFormDefaultContent),
         ]}
+        onClick={this.handleClick}
       >
         {this.readonly || this.disabled ? this.renderReadState() : editContent}
       </div>

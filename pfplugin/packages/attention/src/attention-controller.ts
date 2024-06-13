@@ -6,6 +6,7 @@ import {
   IViewConfig,
   IModalData,
   UIActionUtil,
+  CodeListItem,
 } from '@ibiz-template/runtime';
 import {
   IAppDEACMode,
@@ -23,6 +24,13 @@ import { notNilEmpty } from 'qx-util';
  * @Date: 2022-08-25 10:57:58
  */
 export class AttentionController extends EditorController<IPicker> {
+  /**
+   * 云系统操作者Map
+   *
+   * @memberof AttentionController
+   */
+  public operatorMap = new Map();
+
   /**
    * 总数
    */
@@ -230,6 +238,7 @@ export class AttentionController extends EditorController<IPicker> {
   protected async onInit(): Promise<void> {
     super.onInit();
     this.initParams();
+    await this.getOperatorUserList();
     this.valueItem = this.model.valueItemName?.toLowerCase() || '';
     if (this.model.appDataEntityId) {
       if (this.model.appDEDataSetId) {
@@ -722,5 +731,25 @@ export class AttentionController extends EditorController<IPicker> {
       });
     }
     return object;
+  }
+
+  /**
+   * 获取操作用户列表
+   *
+   * @return {*}  {Promise<void>}
+   * @memberof AttentionController
+   */
+  async getOperatorUserList(): Promise<void> {
+    const app = await ibiz.hub.getApp(this.context.srfappid);
+    let dataItems: readonly CodeListItem[] = [];
+    dataItems = await app.codeList.get(
+      'SysOperator',
+      this.context,
+      this.params,
+    );
+    // 构建一个map,避免后续匹配数据时循环花时间
+    this.operatorMap = new Map(
+      dataItems.map((item: CodeListItem) => [item.value, item]),
+    );
   }
 }

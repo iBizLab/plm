@@ -1,0 +1,126 @@
+@include b(grid-review-results-column) {
+  @include m(ellipsis) {
+    // 内部所有的span都呈现成省略号
+    @include e(editor) {
+      @include utils-ellipsis;
+    }
+  }
+
+  @include m(wrap) {
+    @include e(editor) {
+      @include overflow-wrap;
+    }
+  }
+}
+
+// 评审内容
+@include b(grid-review-results-column-content) {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding-right: getCssVar(spacing, extra-tight);
+  padding-left: getCssVar(spacing, tight);
+  margin-right: rem(-8px);
+  margin-left: rem(-8px);
+  cursor: pointer;
+  border-radius: getCssVar('border-radius', 'small');
+
+  &:hover {
+    background: getCssVar(color, primary, light, default);
+
+    @include e(icon) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  @include e(icon) {
+    position: absolute;
+    right: getCssVar(spacing, extra-tight);
+    display: none;
+    float: right;
+
+    svg {
+      fill: getCssVar(color, text-3);
+    }
+  }
+}
+
+// 评审结果
+@include b(grid-review-results-column-stage-results) {
+  display: flex;
+  gap: getCssVar(spacing, extra-tight);
+  align-items: center;
+  width: 100%;
+  max-width: calc(100% - var(--ibiz-spacing-base-loose));
+  height: 100%;
+  overflow: auto;
+}
+
+// 评审结果项
+@include b(grid-review-results-column-block) {
+  display: flex;
+  flex-grow: 1;
+  width: inherit;
+  min-width: 1px;
+  max-width: 10px;
+  height: 100%;
+  height: inherit;
+  max-height: 10px;
+  background-color: getCssVar(color, tertiary, light, active);
+
+  @include e(approve) {
+    &.#{bem(grid-review-results-column-block)} {
+      background: getCssVar(color, success);
+    }
+  }
+
+  @include e(reject) {
+    &.#{bem(grid-review-results-column-block)} {
+      background: getCssVar(color, danger);
+    }
+  }
+}
+
+// 绘制最终结果
+@include b(grid-review-results-column-final-result) {
+  display: flex;
+  align-items: center;
+  font-size: getCssVar(font-size, header-5);
+
+  svg {
+    fill: getCssVar(color, success);
+  }
+
+  &.is-fail {
+    svg {
+      fill: getCssVar(color, danger);
+    }
+  }
+}
+
+// 绘制单个
+@include b(grid-review-results-column-single-stage-results) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @include e(caption) {
+    margin-left: getCssVar(spacing, tight);
+    color: getCssVar(color, text-2);
+  }
+
+  .#{bem(grid-review-results-column-block)} {
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    fill: getCssVar(color, text-3);
+  }
+}

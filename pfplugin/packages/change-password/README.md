@@ -12,7 +12,22 @@
 
 - 修改当前登录者的密码
 
-- 行为执行采用嵌入输入弹框的方式进行操作
+- 在编辑视图中，输入新旧密码并确认后，即可修改密码
+
+
+## 配置示例
+
+### 导航参数配置
+
+```
+SRFNAVPARAM.oldPassword=%old_password%
+SRFNAVPARAM.newPassword=%new_password%
+SRFNAVPARAM.surePassword=%sure_password%
+```
+表单属性映射：oldPassword对应旧密码，newPassword对应新密码，surePassword对应确认新密码。
+
+![界面行为参数配置](./public/assets/images/action params-config.png)
+
 
 
 ## 附录
@@ -23,7 +38,7 @@
 [
   {
     "plugintype": "DEUIACTION",
-    "rtobjectrepo": "@ibiz-template-plugin/change-password@0.0.3-dev.38",
+    "rtobjectrepo": "@ibiz-template-plugin/change-password@0.0.3-dev.60",
     "codename": "UsrPFPlugin0326346903",
     "plugintag": "CHANGE_PASSWORD",
     "rtobjectmode": 2,

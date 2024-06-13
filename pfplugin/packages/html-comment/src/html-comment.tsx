@@ -24,6 +24,8 @@ export const HtmlComment = defineComponent({
 
     const editorRef = ref();
 
+    const isAvatarLoadError = ref(false);
+
     const onFocus = () => {
       c.collapsed.value = false;
       emit('focus');
@@ -44,7 +46,29 @@ export const HtmlComment = defineComponent({
       c.collapsed.value = true;
     };
 
+    const avatarLoadError = () => {
+      isAvatarLoadError.value = true;
+    };
+
     const renderAvatar = () => {
+      if (c.userAvatar && !isAvatarLoadError.value) {
+        const urlConfig = JSON.parse(c.userAvatar);
+        if (urlConfig.length === 0) {
+          return null;
+        }
+        const { downloadUrl } = ibiz.util.file.calcFileUpDownUrl(
+          c.context,
+          c.params,
+          props.data,
+          c.editorParams,
+        );
+        const url = downloadUrl.replace('%fileId%', urlConfig[0].id);
+        return (
+          <div class={ns.e('avatar-name')}>
+            <img src={url} alt='' onError={avatarLoadError} />
+          </div>
+        );
+      }
       const avatarBg = HtmlUtil.stringToHexColor(c.context.srfusername);
       const avatarName = HtmlUtil.avatarName(c.context.srfusername);
       if (c.context.srfusername) {

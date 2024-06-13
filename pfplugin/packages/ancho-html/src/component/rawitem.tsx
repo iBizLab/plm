@@ -12,6 +12,7 @@ import {
 } from '@ibiz/model-core';
 import Prism from 'prismjs';
 import './rawitem.scss';
+import { ScriptFactory } from '@ibiz-template/runtime';
 
 export const AnchoHtmlNavBar = defineComponent({
   name: 'AnchoHtmlNavBar',
@@ -30,9 +31,12 @@ export const AnchoHtmlNavBar = defineComponent({
     title: {
       type: String,
     },
+    parseScript: {
+      type: String,
+    },
   },
   setup(props) {
-    const ns = useNamespace('rawitem');
+    const ns = useNamespace('ancho-html-nav-bar');
     let rawItem = null;
     let contentType = '';
     if (props.rawItem) {
@@ -123,6 +127,35 @@ export const AnchoHtmlNavBar = defineComponent({
     // 没有标题就不显示锚点栏
     const showTitle = ref(false);
 
+    /**
+     * 解析 @ 人员
+     *
+     * @param {string} str
+     * @return {*}  {string}
+     */
+    const getPanelItemCustomHtml = (value: string): string => {
+      if (props.parseScript) {
+        return ScriptFactory.execScriptFn({ value }, props.parseScript, {
+          singleRowReturn: true,
+          isAsync: false,
+        }) as string;
+      }
+      return value
+        .replace(
+          /@{[^,]*,"name":"(.*?)"}/g,
+          "<span class='comment-tag'>@$1</span>",
+        )
+        .replace(/@{[^,]*,name=(.*?)}/g, "<span class='comment-tag'>@$1</span>")
+        .replace(
+          /#{"id":"(.+?)","name":"(.+?)","identifier":"(.+?)","icon":"((.|[\t\r\f\n\s])+?)"}/g,
+          "<span class='comment-tag'>$4 $3 $2</span>",
+        )
+        .replace(
+          /#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\t\r\f\n\s])+?)}/g,
+          "<span class='comment-tag'>$4 $3 $2</span>",
+        );
+    };
+
     // 转换各类值操作
     const convertValue = (): void => {
       // 图片类型
@@ -159,6 +192,7 @@ export const AnchoHtmlNavBar = defineComponent({
             .replace(/&gt;/g, '>')
             .replace(/&amp;nbsp;/g, ' ')
             .replace(/&nbsp;/g, ' ');
+          rawItemText.value = getPanelItemCustomHtml(rawItemText.value);
         }
       }
 

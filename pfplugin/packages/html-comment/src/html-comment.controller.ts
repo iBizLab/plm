@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-fallthrough */
+/* eslint-disable default-case */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
@@ -6,17 +11,16 @@ import {
   RuntimeError,
 } from '@ibiz-template/core';
 import {
+  CodeListItem,
   ControllerEvent,
   EditorController,
   EventBase,
+  getDeACMode,
+  IAppDEService,
 } from '@ibiz-template/runtime';
-import { IHtml } from '@ibiz/model-core';
-import {
-  Boot,
-  IDomEditor,
-  createEditor,
-  SlateTransforms,
-} from '@wangeditor/editor';
+import { IAppDEACMode, IHtml } from '@ibiz/model-core';
+import { Boot, IDomEditor, createEditor, SlateRange } from '@wangeditor/editor';
+import { VNode } from 'snabbdom';
 import { nextTick, Ref, ref } from 'vue';
 import { createUUID } from 'qx-util';
 import { toNumber } from 'lodash-es';
@@ -28,7 +32,9 @@ import {
   personnelMarkerModule,
   personnelMarkerPlugin,
 } from './personnel-marker/personnel-marker-node-module';
-import { IPersMarkerData, Message } from './interface';
+import { ICursor, IPersMarkData, Message } from './interface';
+import { renderStyle, SlateUtil } from './utils';
+import { AIMenu } from './ai/ai-modules';
 
 /**
  * html框编辑器控制器
@@ -38,6 +44,14 @@ import { IPersMarkerData, Message } from './interface';
  * @extends {EditorController}
  */
 export class HtmlCommentController extends EditorController<IHtml> {
+  /**
+   * 用户头像数据
+   *
+   * @type {string}
+   * @memberof HtmlCommentController
+   */
+  public userAvatar: string = '';
+
   /**
    * 上传参数
    */
@@ -155,9 +169,14 @@ export class HtmlCommentController extends EditorController<IHtml> {
   public editor!: IDomEditor;
 
   /**
-   * 编辑器实例原本的 apply（重要）
+   * 是否在处理中
    */
-  public apply!: Function;
+  public processing = ref(false);
+
+  /**
+   * 用户标记数据map
+   */
+  private persMarkMap: Map<string, IPersMarkData> = new Map();
 
   /**
    * 消息信息
@@ -165,9 +184,35 @@ export class HtmlCommentController extends EditorController<IHtml> {
   private msg!: Message;
 
   /**
-   * 是否在处理中
+   * 是否已监听
    */
-  private processing = ref(false);
+  private hasSubscribe: boolean = false;
+
+  /**
+   * 应用实体服务
+   *
+   * @type {IAppDEService}
+   * @memberof HtmlCommentController
+   */
+  deService?: IAppDEService;
+
+  /**
+   * 自填模式
+   *
+   * @author chitanda
+   * @date 2023-10-12 10:10:52
+   * @type {IAppDEACMode}
+   */
+  deACMode?: IAppDEACMode;
+
+  /**
+   * AI 聊天自填模式
+   *
+   * @author chitanda
+   * @date 2023-10-12 10:10:37
+   * @type {boolean}
+   */
+  chatCompletion: boolean = false;
 
   evt: ControllerEvent<commentEvent> = new ControllerEvent<commentEvent>(
     this.getEventArgs.bind(this),
@@ -180,12 +225,30 @@ export class HtmlCommentController extends EditorController<IHtml> {
       data: [],
       eventArg: '',
       targetName: this.model.name!,
-      view: (this.parent as IData).view,
+      view: this.getView(),
     };
   }
 
   protected async onInit(): Promise<void> {
     await super.onInit();
+    await this.getCurrentUserAvatar();
+
+    const { model } = this;
+    if (model.appDEACModeId) {
+      this.deACMode = await getDeACMode(
+        model.appDEACModeId,
+        model.appDataEntityId!,
+        this.context.srfappid,
+      );
+      if (this.deACMode) {
+        if (this.deACMode.actype === 'CHATCOMPLETION') {
+          this.deService = await ibiz.hub
+            .getApp(model.appId)
+            .deService.getService(this.context, model.appDataEntityId!);
+          this.chatCompletion = true;
+        }
+      }
+    }
 
     this.registerCustomElem();
     if (this.editorParams) {
@@ -273,6 +336,8 @@ export class HtmlCommentController extends EditorController<IHtml> {
         uiDomain.dataChange();
       }
     });
+    this.initMarkOpenData();
+    this.listenViewDestroyed();
   }
 
   /**
@@ -299,8 +364,21 @@ export class HtmlCommentController extends EditorController<IHtml> {
       Boot.registerModule(personnelMarkerModule);
       (window as IData).personnelMarkerIsRegiter = true;
     }
-
+    // 处理自定义样式
+    Boot.registerRenderStyle((node: IData, vnode: VNode) => {
+      return renderStyle(node, vnode);
+    });
     Boot.registerPlugin(personnelMarkerPlugin);
+
+    if (!(window as IData).aichartRegister) {
+      Boot.registerMenu({
+        key: 'aichart',
+        factory() {
+          return new AIMenu();
+        },
+      });
+      (window as IData).aichartRegister = true;
+    }
   }
 
   /**
@@ -311,7 +389,7 @@ export class HtmlCommentController extends EditorController<IHtml> {
    */
   public onCreated(editor: IDomEditor, data: IData, toolbarConfig: IData) {
     this.editor = editor;
-    this.initMarkOpenData(editor, data);
+    this.onLineEditing(editor, data);
     const controllers = CustomNodeFactory.getPluginsById(this.uuid);
     controllers.forEach(controller => {
       controller.init(editor, {
@@ -326,50 +404,177 @@ export class HtmlCommentController extends EditorController<IHtml> {
   }
 
   /**
+   * 处理编辑
+   * @param item
+   */
+  handleEdit(item: IMarkOpenData) {
+    const { data } = item;
+    if (data) {
+      this.processing.value = true;
+      const persMarkData = this.persMarkMap.get(item.username);
+      if (data.type === 'set_selection') {
+        this.drawPersonnelMarker({
+          id: item.username,
+          cursor: data.cursor,
+        });
+      } else if (
+        data.type === 'set_node' &&
+        persMarkData?.cursor.selectionRange
+      ) {
+        // 如果是设置用户的选区样式
+        this.setPersSelectionMark({
+          persMarkData,
+          mark: data.newProperties,
+        });
+      } else {
+        this.editor.apply(data as any);
+      }
+      this.processing.value = false;
+    }
+  }
+
+  /**
+   * 处理查看
+   * @param item
+   */
+  handleView(item: IMarkOpenData) {}
+
+  /**
+   * 处理更新
+   * @param item
+   */
+  handleUpdate(item: IMarkOpenData) {}
+
+  /**
+   * 处理关闭
+   * @param item
+   */
+  handleClose(item: IMarkOpenData) {}
+
+  /**
    * 标记打开数据回调
    * @param msg
    */
   private markOpenDataCallback(item: IMarkOpenData) {
     const { action, data } = item;
-    if (this.enableRealtime && action === 'EDIT' && data) {
-      if (data.type === 'set_selection') {
-        this.processing.value = true;
-        this.drawPersonnelMarker(item);
-        this.processing.value = false;
-      } else {
-        this.apply(data as any);
+    if (this.enableRealtime) {
+      switch (action) {
+        case 'VIEW':
+          this.handleView(item);
+          break;
+        case 'EDIT':
+          this.handleEdit(item);
+          break;
+        case 'UPDATE':
+          this.handleUpdate(item);
+          break;
+        case 'CLOSE':
+          this.handleClose(item);
+          break;
       }
     }
   }
 
   /**
-   * 处理标记打开数据相关逻辑
+   * 初始化MarkOpenData逻辑
+   */
+  private initMarkOpenData() {
+    this.markOpenDataCallback = this.markOpenDataCallback.bind(this);
+    if (this.enableRealtime) {
+      const ctrl: IData | null =
+        (this.parent as IData).form || (this.parent as IData).grid;
+      if (ctrl) {
+        ctrl.evt.on('onLoadSuccess', (event: EventBase) => {
+          const item = event.data[0];
+          this.msg = { deName: item.srfdecodename, srfkey: item.srfkey };
+          ibiz.markOpenData.action(this.msg.deName, this.msg.srfkey, 'VIEW');
+          if (!this.hasSubscribe) {
+            // 监听数据
+            ibiz.markOpenData.subscribe(
+              this.msg.deName,
+              this.msg.srfkey,
+              this.markOpenDataCallback,
+            );
+          }
+        });
+        ctrl.evt.on('onSaveSuccess', () => {
+          if (this.msg.srfkey) {
+            ibiz.markOpenData.action(
+              this.msg.deName,
+              this.msg.srfkey,
+              'UPDATE',
+            );
+          }
+        });
+        ctrl.view.evt.on('onCloseView', () => {
+          if (this.msg.srfkey) {
+            ibiz.markOpenData.action(this.msg.deName, this.msg.srfkey, 'CLOSE');
+          }
+        });
+      }
+    }
+  }
+
+  /**
+   * 在线编辑
    * @param editor
    * @param item
    */
-  private initMarkOpenData(editor: IDomEditor, item: IData) {
+  private onLineEditing(editor: IDomEditor, item: IData) {
     const { apply } = editor;
-    this.apply = apply;
-    this.msg = { deName: item.srfdecodename, srfkey: item.srfkey };
-    this.markOpenDataCallback = this.markOpenDataCallback.bind(this);
-    
-    // 协同编辑
     editor.apply = operation => {
-      if (!this.processing.value && this.enableRealtime) {
-        ibiz.markOpenData.send(
-          this.msg.deName,
-          this.msg.srfkey,
-          'EDIT',
-          operation,
-        );
-      }
       apply(operation);
+      if (this.enableRealtime && !this.processing.value) {
+        const data = { ...operation };
+        if (operation.type === 'set_selection') {
+          const cursor = this.handleCursor(operation);
+          Object.assign(data, { cursor });
+        }
+        ibiz.markOpenData.send(this.msg.deName, this.msg.srfkey, 'EDIT', data);
+      }
     };
-    ibiz.markOpenData.subscribe(
-      this.msg.deName,
-      this.msg.srfkey,
-      this.markOpenDataCallback,
-    );
+  }
+
+  /**
+   * 处理光标信息
+   * @param op
+   * @returns
+   */
+  public handleCursor(op: IData): ICursor {
+    const cursor: ICursor = {};
+    if (op.properties) {
+      cursor.position = {
+        path: op.properties.focus.path,
+        offset: SlateUtil.calcOffsetByPoint(this.editor, op.properties.focus),
+      };
+    }
+    if (op.newProperties) {
+      cursor.newPosition = {
+        path: op.newProperties.focus.path,
+        offset: SlateUtil.calcOffsetByPoint(
+          this.editor,
+          op.newProperties.focus,
+        ),
+      };
+    }
+    const { selection } = this.editor;
+    const isRange =
+      !SlateRange.isRange(op.newProperties) &&
+      !SlateRange.isRange(op.properties);
+    // 如果光标是一个选区
+    if (isRange && selection) {
+      cursor.selectionRange = {
+        anchor: {
+          path: selection.anchor.path,
+          offset: SlateUtil.calcOffsetByPoint(this.editor, selection.anchor),
+        },
+        focus: {
+          path: selection.focus.path,
+          offset: SlateUtil.calcOffsetByPoint(this.editor, selection.focus),
+        },
+      };
+    }
+    return cursor;
   }
 
   /**
@@ -383,11 +588,27 @@ export class HtmlCommentController extends EditorController<IHtml> {
       controller.onDestroyed();
     });
     CustomNodeFactory.destroy(this.uuid);
-    ibiz.markOpenData.unsubscribe(
-      this.msg.deName,
-      this.msg.srfkey,
-      this.markOpenDataCallback,
-    );
+    if (this.enableRealtime) {
+      ibiz.markOpenData.unsubscribe(
+        this.msg.deName,
+        this.msg.srfkey,
+        this.markOpenDataCallback,
+      );
+    }
+  }
+
+  /**
+   * 处理视图销毁
+   *
+   * @memberof HtmlCommentController
+   */
+  public listenViewDestroyed() {
+    const view = this.getView();
+    if (view) {
+      view.evt.on('onDestroyed', () => {
+        this.onDestroyed();
+      });
+    }
   }
 
   /**
@@ -550,27 +771,82 @@ export class HtmlCommentController extends EditorController<IHtml> {
 
   /**
    * 绘制正在编辑人员标记
-   * @param item 消息
+   * @param item 用户标记数据
    */
-  public drawPersonnelMarker(item: IMarkOpenData): void {
-    const { username, data } = item;
-    const { properties, newProperties } = data as IPersMarkerData;
+  public drawPersonnelMarker(item: IPersMarkData): void {
+    const { id } = item;
     const node = {
       type: 'personnel-marker',
-      data: { name: username },
+      data: { name: id },
       children: [{ text: '' }],
+      id,
     };
-    if (properties) {
-      const { focus } = properties;
-      SlateTransforms.removeNodes(this.editor, {
-        at: [focus.path[0], focus.path[1] + 1],
+    const preCursor = this.persMarkMap.get(id)?.cursor;
+    Object.assign(item, { preCursor });
+    SlateUtil.movePersNode(this.editor, {
+      node,
+      param: item,
+    });
+    this.persMarkMap.set(id, item);
+  }
+
+  /**
+   * 设置人员选区标记
+   * @param item
+   */
+  public setPersSelectionMark(item: {
+    persMarkData: IPersMarkData;
+    mark: IData;
+  }): void {
+    const { persMarkData, mark } = item;
+    const range = persMarkData.cursor.selectionRange;
+    if (range) {
+      SlateUtil.addMarks(this.editor, {
+        mark,
+        selection: {
+          anchor: SlateUtil.calcPointByOffset(this.editor, range.anchor),
+          focus: SlateUtil.calcPointByOffset(this.editor, range.focus),
+        },
       });
     }
-    if (newProperties) {
-      const { focus } = newProperties;
-      SlateTransforms.insertNodes(this.editor, [node], {
-        at: focus,
+  }
+
+  /**
+   * 获取当前用户头像
+   *
+   * @memberof HtmlCommentController
+   */
+  public async getCurrentUserAvatar() {
+    const app = await ibiz.hub.getApp(this.context.srfappid);
+    let dataItems: readonly CodeListItem[] = [];
+    dataItems = await app.codeList.get(
+      'SysOperator',
+      this.context,
+      this.params,
+    );
+    if (this.context.srfuserid) {
+      const tempItem = dataItems.filter((itme: CodeListItem) => {
+        return itme.value === this.context.srfuserid;
       });
+      if (tempItem && tempItem.length > 0) {
+        this.userAvatar = tempItem[0]?.data?.iconurl || '';
+      }
+    }
+  }
+
+  /**
+   * 获取当前视图
+   *
+   * @return {*}
+   * @memberof HtmlCommentController
+   */
+  public getView() {
+    const ctrl =
+      (this.parent as IData).form ||
+      (this.parent as IData).grid ||
+      (this.parent as IData).panel;
+    if (ctrl) {
+      return ctrl.view;
     }
   }
 }

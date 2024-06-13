@@ -22,8 +22,10 @@ import {
   IDETreeGrid,
 } from '@ibiz/model-core';
 import {
+  ControllerEvent,
   GridController,
   IControlProvider,
+  IGridEvent,
   ScriptFactory,
 } from '@ibiz-template/runtime';
 import { toNumber, isArray } from 'lodash-es';
@@ -102,7 +104,7 @@ export function renderColumn(
             }
             return (
               <div class='group-column'>
-                <ion-icon class='group-icon' name={row.groupIcon}></ion-icon>
+                <iBizIcon class='group-icon' icon={row.groupIcon}></iBizIcon>
                 {row.caption}
               </div>
             );
@@ -220,7 +222,6 @@ export const NumberGridControl = defineComponent({
       curSelectedData,
       getSelection,
       handleRowClassName,
-      treeGirdItems,
       treeGirdData,
       handleHeaderCellClassName,
     } = useITableEvent(c);
@@ -234,54 +235,21 @@ export const NumberGridControl = defineComponent({
       return false;
     });
 
-    //  触发节点加载数据
-    const loadData = async (
-      item: IData,
-      _row: unknown,
-      callback: (nodes: IData[]) => void,
-    ): Promise<void> => {
-      const items = treeGirdItems.value.filter(
-        data =>
-          item[(c as NumberTreeGridController).treeGridValueField] ===
-          data[(c as NumberTreeGridController).treeGridParentField],
-      );
-      callback(items);
-    };
-
-    let oldShowTr: HTMLElement[] = [];
-
-    const getShowTr = (): HTMLElement[] => {
-      const show: HTMLElement[] = [];
-      if (tableRef.value) {
-        const tableEl = tableRef.value.$el as HTMLElement;
-        const allTr = tableEl.getElementsByClassName(
-          'el-table__row',
-        ) as unknown as HTMLElement[];
-        allTr.forEach(element => {
-          if (element.style.display !== 'none') {
-            show.push(element);
-          }
-        });
-      }
-      return show;
-    };
-
     const setNumber = (time: number = 0): void => {
       setTimeout(() => {
-        const newShowTr = getShowTr();
-        if (newShowTr.length !== oldShowTr.length) {
-          oldShowTr = newShowTr;
-          newShowTr.forEach((element, index) => {
-            const child = element.firstChild as HTMLElement;
-            if (child.className.includes('ibiz-number-grid__first-column')) {
-              const numberCaption = child.getElementsByClassName(
-                'ibiz-number-grid__number--caption',
-              )[0];
-              if (numberCaption) {
-                (numberCaption as HTMLElement).innerText = `${
-                  (c.state.curPage - 1) * c.state.size + (index + 1)
-                }`;
-              }
+        if (tableRef.value) {
+          const tr: HTMLElement[] =
+            tableRef.value.$el.getElementsByClassName('el-table__row');
+          let index = 0;
+          tr.forEach(element => {
+            const caption = (
+              element.firstChild as HTMLElement
+            ).getElementsByClassName('ibiz-number-grid__number--caption')[0];
+            if (element.style.display !== 'none' && caption) {
+              (caption as HTMLElement).innerText = `${
+                (c.state.curPage - 1) * c.state.size + (index + 1)
+              }`;
+              index++;
             }
           });
         }
@@ -290,14 +258,18 @@ export const NumberGridControl = defineComponent({
 
     const onExpandChange = (row: IData, state: boolean): void => {
       setNumber();
-      (c as IData).setRowExpand(row, state);
     };
 
     onMounted(() => {
       const { controlType, enableGroup } = c.model;
-      if (controlType === 'GRID' && enableGroup) {
-        setNumber(1000);
-      }
+      (c.evt as ControllerEvent<IGridEvent>).on('onLoadSuccess', () => {
+        if (
+          controlType === 'TREEGRID' ||
+          (controlType === 'GRID' && enableGroup)
+        ) {
+          setNumber();
+        }
+      });
     });
 
     watch(
@@ -314,7 +286,7 @@ export const NumberGridControl = defineComponent({
     const calcTreeGridSelectable = (): IData[] => {
       const selectable: IData[] = [...treeGirdData.value];
       const setSelectable = (parent: IData): void => {
-        const items = treeGirdItems.value.filter(
+        const items = c.state.items.filter(
           data =>
             data[(c as NumberTreeGridController).treeGridParentField] &&
             parent[(c as NumberTreeGridController).treeGridValueField] ===
@@ -536,25 +508,24 @@ export const NumberGridControl = defineComponent({
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             default: ({ row, column, $index }: IData) => {
               const index = (c.state.curPage - 1) * c.state.size + ($index + 1);
-              if (c.state.singleSelect) {
-                return (
-                  <div class={ns3.e('number')}>
-                    <span>{index}</span>
-                  </div>
-                );
-              }
               return (
                 <div
-                  class={ns3.e('number')}
+                  class={[
+                    ns3.e('number'),
+                    ns3.is('multiple', !c.state.singleSelect),
+                    ns3.is('single', c.state.singleSelect),
+                  ]}
                   onClick={(e: MouseEvent) => onClickEvent(e)}
                 >
                   <span class={ns3.em('number', 'caption')}>{index}</span>
-                  <el-checkbox
-                    size='large'
-                    class={ns3.em('number', 'checkbox')}
-                    modelValue={isSelected(row)}
-                    onChange={() => toggleRowSelection(row)}
-                  />
+                  {!c.state.singleSelect && (
+                    <el-checkbox
+                      size='large'
+                      class={ns3.em('number', 'checkbox')}
+                      modelValue={isSelected(row)}
+                      onChange={() => toggleRowSelection(row)}
+                    />
+                  )}
                 </div>
               );
             },
@@ -575,7 +546,6 @@ export const NumberGridControl = defineComponent({
       tableRef,
       tableData,
       treeGirdData,
-      loadData,
       showTreeGrid,
       renderColumns,
       onDbRowClick,
@@ -636,8 +606,6 @@ export const NumberGridControl = defineComponent({
             tooltip-effect={'light'}
             default-expand-all={this.c.defaultExpandAll}
             tree-props={{ children: '_children', hasChildren: '_hasChildren' }}
-            load={this.loadData}
-            lazy={this.showTreeGrid}
           >
             {{
               empty: this.renderNoData,
@@ -665,6 +633,7 @@ export const NumberGridControl = defineComponent({
             total={state.total}
             curPage={state.curPage}
             size={state.size}
+            totalPages={state.totalPages}
             onChange={this.onPageChange}
             onPageSizeChange={this.onPageSizeChange}
             onPageRefresh={this.onPageRefresh}

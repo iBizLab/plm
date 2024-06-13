@@ -14,6 +14,7 @@ import {
 } from '@ibiz-template/runtime';
 import { IDEGrid } from '@ibiz/model-core';
 import dayjs from 'dayjs';
+import chineseToPinyin from 'chinese-to-pinyin';
 import { clone, isNil } from 'ramda';
 import { IDate, Util } from './util';
 
@@ -51,6 +52,21 @@ export class WorkloadTableController extends GridController<
    */
   precision: number = 1;
 
+  /**
+   * 排序代码表数据项
+   */
+  sortCodeListItems?: readonly CodeListItem[];
+
+  /**
+   * 排序顺序
+   */
+  order?: 'asc' | 'desc';
+
+  /**
+   * 排序属性
+   */
+  sort?: string;
+
   protected async onCreated(): Promise<void> {
     await super.onCreated();
     const { ctrlParams = {} } = this.model.controlParam as IData;
@@ -61,11 +77,35 @@ export class WorkloadTableController extends GridController<
     } catch (error) {
       ibiz.log.error(error);
     }
+    await this.initSort();
   }
 
   protected initState(): void {
     super.initState();
     this.initGanttColumns();
+  }
+
+  /**
+   * 初始化排序
+   */
+  protected async initSort() {
+    let appCodeListId: string | undefined = undefined;
+    this.model.degridColumns?.forEach(c => {
+      if (c.userParam?.DEFAULTSORT && c.columnType === 'DEFGRIDCOLUMN') {
+        appCodeListId = (c as IData).appCodeListId;
+        this.sort = (c as IData).appDEFieldId.toLowerCase();
+        this.order = c.userParam!.DEFAULTSORT.toLowerCase() as any;
+        return;
+      }
+    });
+    if (appCodeListId) {
+      const app = ibiz.hub.getApp(this.context.srfappid);
+      this.sortCodeListItems = await app.codeList.get(
+        appCodeListId,
+        this.context,
+        this.params,
+      );
+    }
   }
 
   /**
@@ -214,6 +254,7 @@ export class WorkloadTableController extends GridController<
       false,
     );
     const rows = this.calcMergeByGroup(items);
+    this.defaultSort(rows);
     // 生成表格row对象
     this.state.rows = rows.map(item => {
       const row = new GridRowState(item, this);
@@ -222,27 +263,42 @@ export class WorkloadTableController extends GridController<
     });
 
     // 响应式写法，用state里遍历出来的row才是reactive
-    this.state.rows.forEach(row => {
-      Object.values(row.uaColStates).forEach(uaState => {
-        uaState.update(
-          this.context,
-          row.data.getOrigin(),
-          this.model.appDataEntityId,
-        );
-      });
-    });
-
-    this.state.rows.forEach(row => {
-      Object.values(row.uiActionGroupStates).forEach(uaState => {
-        uaState.update(
-          this.context,
-          row.data.getOrigin(),
-          this.model.appDataEntityId,
-        );
-      });
-    });
+    await this.updateRows(this.state.rows);
     this.calcAggResult(items);
     return items;
+  }
+
+  /**
+   * 默认排序
+   * @param rows
+   */
+  protected defaultSort(rows: IData[]) {
+    if (this.sort) {
+      const getSortValue = (data: IData) => {
+        let value = data[this.sort!];
+        if (this.sortCodeListItems && this.sortCodeListItems.length > 0) {
+          const item = this.sortCodeListItems.find(s => s.value === value);
+          if (item) {
+            value = item.text;
+          }
+        }
+        return value;
+      };
+      rows.sort((a, b) => {
+        const pinyinA = chineseToPinyin(getSortValue(a), {
+          keepRest: true,
+          removeTone: true,
+        });
+        const pinyinB = chineseToPinyin(getSortValue(b), {
+          keepRest: true,
+          removeTone: true,
+        });
+        return pinyinA.localeCompare(pinyinB);
+      });
+      if (this.order === 'desc') {
+        rows.reverse();
+      }
+    }
   }
 
   /**
@@ -256,11 +312,12 @@ export class WorkloadTableController extends GridController<
   protected calcMergeByGroup(data: ControlVO[]): ControlVO[] {
     let items: ControlVO[] = [];
     data.forEach(item => {
-      Object.assign(item, {
-        [dayjs(item.register_date).format('YYYY-MM-DD')]: item.duration.toFixed(
-          this.precision,
-        ),
-      });
+      if (item.register_date) {
+        Object.assign(item, {
+          [dayjs(item.register_date).format('YYYY-MM-DD')]:
+            item.duration.toFixed(this.precision),
+        });
+      }
     });
     const { enableGroup, groupMode, groupAppDEFieldId } = this.model;
     if (enableGroup && groupAppDEFieldId) {

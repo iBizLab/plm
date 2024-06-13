@@ -3,9 +3,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import { clone } from '@ibiz-template/core';
-import { ChartController } from '@ibiz-template/runtime';
+import { ChartController, CodeListItem } from '@ibiz-template/runtime';
 
 export class ChartGridController extends ChartController {
+  public cloneOrginSeries: any = null;
+
   /**
    * 根据数据计算最终的options
    * 并刷新echarts
@@ -13,15 +15,26 @@ export class ChartGridController extends ChartController {
    * @date 2023-06-07 09:58:00
    * @param {IData[]} [data=this.state.items]
    */
-  calcOptions(data: IData[] = this.state.items): void {
+  async calcOptions(data: IData[] = this.state.items): Promise<void> {
     let gridHeaders: Array<any> = [];
-    let showGridCaption: boolean = false;
+    let showGridCaption: boolean = false; // 是否显示表格控制
+    let groupSerieMode: boolean = false; // 启用特殊的分组序列模式
+    let showGridTotal: boolean = false;
+    let showGridPrcent: boolean = false;
     const cloneItems = clone(data);
-    if (
-      this.generator.chartUserParam &&
-      this.generator.chartUserParam.showGridCaption
-    ) {
-      showGridCaption = !!this.generator.chartUserParam.showGridCaption;
+    if (this.generator.chartUserParam) {
+      if (this.generator.chartUserParam.showGridCaption) {
+        showGridCaption = !!this.generator.chartUserParam.showGridCaption;
+      }
+      // if (this.generator.chartUserParam.showGridTotal) {
+      //   showGridTotal = !!this.generator.chartUserParam.showGridTotal;
+      // }
+      // if (this.generator.chartUserParam.showGridPrcent) {
+      //   showGridPrcent = !!this.generator.chartUserParam.showGridPrcent;
+      // }
+      if (this.generator.chartUserParam.groupSerieMode) {
+        groupSerieMode = !!this.generator.chartUserParam.groupSerieMode;
+      }
     }
     // 判断是否全部都是静态序列，是的话就走默认逻辑
     const series = this.generator.seriesGenerators.filter(
@@ -115,40 +128,206 @@ export class ChartGridController extends ChartController {
       } else {
         // 普通序列图表
         gridHeaders = tempGridComfig;
-        this.generator.seriesGenerators.forEach((serie: IData) => {
-          const codeListId = serie.model.catalogCodeListId;
-          const codelist = serie.chartGenerator.codeListMap.get(codeListId);
-          const { catalogField } = serie;
-          if (codelist && cloneItems.length < codelist.length) {
-            codelist.forEach((code: IData) => {
-              const index = cloneItems.findIndex((item: IData) => {
-                return (
-                  item[catalogField] === code.value ||
-                  item[catalogField] === code.text
-                );
+
+        if (!groupSerieMode) {
+          this.generator.seriesGenerators.forEach((serie: IData) => {
+            const codeListId = serie.model.catalogCodeListId;
+            const codelist = serie.chartGenerator.codeListMap.get(codeListId);
+            const { catalogField } = serie;
+            if (codelist && cloneItems.length < codelist.length) {
+              codelist.forEach((code: IData) => {
+                const index = cloneItems.findIndex((item: IData) => {
+                  return (
+                    item[catalogField] === code.value ||
+                    item[catalogField] === code.text
+                  );
+                });
+                if (index < 0) {
+                  // 遍历表格列配置，生成一条新数据
+                  cloneItems.push(
+                    this.createWhiteData(
+                      { [catalogField]: code.text },
+                      gridHeaders,
+                    ),
+                  );
+                }
               });
-              if (index < 0) {
-                // 遍历表格列配置，生成一条新数据
-                cloneItems.push(
-                  this.createWhiteData(
-                    { [catalogField]: code.text },
-                    gridHeaders,
-                  ),
-                );
+            }
+            cloneItems.forEach((item: IData) => {
+              if (codelist) {
+                const tempCode = codelist.find((_code: IData) => {
+                  return _code.value === item[catalogField];
+                });
+                if (tempCode) {
+                  item[catalogField] = tempCode.text;
+                }
               }
             });
+          });
+        } else {
+          /**
+           *  多序列平铺模式 当前模式下特殊处理
+           * 先遍历数据，根据标识属性进行分组，然后复制唯一的serie模型，每种类型添加一个序列模型到总模型上
+           *
+           */
+          showGridTotal = true;
+          showGridPrcent = true;
+          const count = gridHeaders.find((item: any) => {
+            return item.id === 'count';
+          });
+          if (count) {
+            count.allowPercent = true;
           }
-          cloneItems.forEach((item: IData) => {
-            if (codelist) {
-              const tempCode = codelist.find((_code: IData) => {
-                return _code.value === item[catalogField];
+          const codelistId: string =
+            (this.generator.chartUserParam?.codeListTag as string) || '';
+          let dataItems: readonly CodeListItem[] = [];
+          if (codelistId) {
+            const app = await ibiz.hub.getApp(this.context.srfappid);
+            dataItems = await app.codeList.get(
+              codelistId,
+              this.context,
+              this.params,
+            );
+          }
+
+          if (
+            (this.generator.seriesGenerators &&
+              this.generator.seriesGenerators.length > 0) ||
+            this.cloneOrginSeries
+          ) {
+            // 保存原始序列模型
+            if (!this.cloneOrginSeries) {
+              this.cloneOrginSeries = clone(this.generator.seriesGenerators[0]);
+            }
+            const { catalogField, valueField, idField, catalogCodeListId } =
+              this.cloneOrginSeries.model;
+
+            // 标识属性分类
+            const idFieldGroup = this.state.items.map((item: IData) => {
+              return item[idField!];
+            });
+            // 图表序列分组,有代码表就解析代码表
+            const idGroups = Array.from(new Set(idFieldGroup)).map(
+              (_id: string) => {
+                if (codelistId && dataItems.length > 0) {
+                  const code = dataItems.find((_item: any) => {
+                    return _item.value === _id;
+                  });
+                  if (code) {
+                    return code.text;
+                  }
+                }
+                return _id;
+              },
+            );
+
+            // 表格数据里的标识属性也要做一次解析
+            if (codelistId && dataItems.length > 0) {
+              cloneItems.forEach((_item: IData) => {
+                const code = dataItems.find((codeitem: IData) => {
+                  return codeitem.value === _item[idField];
+                });
+                if (code) {
+                  _item[idField] = code.text;
+                  _item[`${idField}_code`] = code.value;
+                }
               });
-              if (tempCode) {
-                item[catalogField] = tempCode.text;
+            }
+            // 分类配置代码表时图表数据里同样也要做解析
+            if (catalogCodeListId) {
+              const codelist =
+                this.cloneOrginSeries.chartGenerator.codeListMap.get(
+                  catalogCodeListId,
+                );
+              if (cloneItems && codelist) {
+                cloneItems.forEach((_cloneItem: IData) => {
+                  const code = codelist.find((_codelist: IData) => {
+                    return _codelist.value === _cloneItem[catalogField];
+                  });
+                  if (code) {
+                    _cloneItem[catalogField] = code.text;
+                  }
+                });
               }
             }
+            const serieModels: any = [];
+            this.state.items.forEach((item: IData) => {
+              // 有代码表的解析一次
+              if (codelistId && dataItems.length > 0) {
+                // 对标识属性做解析
+                const code = dataItems.find((_item: any) => {
+                  return _item.value === item[idField];
+                });
+                if (code) {
+                  item[idField] = code.text;
+                }
+              }
+              idGroups.forEach((_id: string) => {
+                const type = item[idField!];
+                if (type === _id) {
+                  item[`${valueField}_${_id}`] = item[valueField!];
+                } else {
+                  item[`${valueField}_${_id}`] = 0;
+                }
+              });
+            });
+
+            idGroups.forEach((_id: string, index: number) => {
+              const tempSerieModel = clone(this.cloneOrginSeries);
+              tempSerieModel.valueField = `${valueField}_${_id}`;
+              tempSerieModel.seriesName = _id;
+              tempSerieModel.staticOptions.name = _id;
+              tempSerieModel.model.valueField = `${valueField}_${_id}`;
+              tempSerieModel.model.id = `${valueField}_${_id}`;
+              tempSerieModel.model.chartDataSetId = `${index}`;
+              (tempSerieModel.model.chartSeriesEncode! as any).y = [
+                `${valueField}_${_id}`,
+              ];
+              serieModels.push(tempSerieModel);
+            });
+            this.generator.seriesGenerators = serieModels;
+
+            this.options = this.generator.calcOptionsByData(data);
+            if (this.options) {
+              (this.options.series as any).forEach((_serie: IData) => {
+                if (!_serie.tooltip) {
+                  _serie.tooltip = { show: true };
+                }
+                Object.assign(_serie.tooltip, {
+                  formatter: (params: any) => {
+                    const { name, value, marker, seriesName } = params;
+                    return `<div> ${name}<br/> ${marker}${seriesName}：  ${value[1]} </div>`;
+                  },
+                });
+              });
+            }
+          }
+
+          // 对构建的数据进行排序
+          cloneItems.sort((a: IData, b: IData) => {
+            let an = 0;
+            let bn = 0;
+            if (Number.isNaN(Number(a[gridHeaders[0].id]))) {
+              if (Number.isNaN(Number(a[`${gridHeaders[0].id}_code`]))) {
+                an = 10000;
+              } else {
+                an = Number(a[`${gridHeaders[0].id}_code`]);
+              }
+            } else {
+              an = Number(a[gridHeaders[0].id]);
+            }
+            if (Number.isNaN(Number(b[gridHeaders[0].id]))) {
+              if (Number.isNaN(Number(b[`${gridHeaders[0].id}_code`]))) {
+                bn = 10000;
+              } else {
+                bn = Number(b[`${gridHeaders[0].id}_code`]);
+              }
+            } else {
+              bn = Number(b[gridHeaders[0].id]);
+            }
+            return an - bn;
           });
-        });
+        }
       }
     } else {
       // 有动态序列，手动构建options
@@ -253,6 +432,8 @@ export class ChartGridController extends ChartController {
     Object.assign(this.state, {
       cloneItems,
       showGridCaption,
+      showGridPrcent,
+      showGridTotal,
       gridHeaders,
     });
     this.updateChart();

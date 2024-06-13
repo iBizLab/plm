@@ -140,6 +140,7 @@ export function useCellEdit(
     autoFocus: isAutoFocus,
     disabled: editorDisabled,
     readonly: editorReadOnly,
+    cellEditable,
     onFocus,
     onBlur,
     onEnter,

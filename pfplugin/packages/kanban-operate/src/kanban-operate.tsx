@@ -457,6 +457,7 @@ export const KanbanOperate = defineComponent({
         style={this.tempStyle}>
         <el-popover
           ref='popoverRef'
+          disabled={this.controller.state.readonly}
           v-model:visible={this.isVisible}
           popperClass={[this.ns.b('one-popover')]}
           width={278}

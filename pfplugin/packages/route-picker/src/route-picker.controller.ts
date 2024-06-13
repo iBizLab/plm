@@ -83,6 +83,14 @@ export class RoutePickerController extends EditorController<IPicker> {
   public enablesearch: boolean = false;
 
   /**
+   * 允许缓存
+   *
+   * @type {boolean}
+   * @memberof RoutePickerController
+   */
+  public enableCache: boolean = false;
+
+  /**
    * 路由属性标识
    *
    * @type {string}
@@ -193,6 +201,11 @@ export class RoutePickerController extends EditorController<IPicker> {
             this.groupActionState.addState(detail.id!, buttonState);
           }
         });
+        await this.groupActionState.update(
+          this.context,
+          undefined,
+          this.model.appDataEntityId,
+        );
       }
     }
     const { editorParams } = this.model;
@@ -210,6 +223,11 @@ export class RoutePickerController extends EditorController<IPicker> {
         this.enablesearch =
           Object.is(editorParams.ENABLESEARCH, 'true') ||
           Object.is(editorParams.ENABLESEARCH, 'TRUE');
+      }
+      if (editorParams.ENABLECACHE) {
+        this.enableCache =
+          Object.is(editorParams.ENABLECACHE, 'true') ||
+          Object.is(editorParams.ENABLECACHE, 'TRUE');
       }
     }
   }
@@ -302,6 +320,9 @@ export class RoutePickerController extends EditorController<IPicker> {
     event: MouseEvent,
   ): Promise<void> {
     const actionId = detail.uiactionId;
+    Object.assign(this.context, {
+      srfdefaulttoroutedepth: (this.parent as any).panel.view.modal.routeDepth,
+    });
     await UIActionUtil.execAndResolved(
       actionId!,
       {

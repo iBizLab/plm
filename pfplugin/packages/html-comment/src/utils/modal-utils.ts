@@ -23,7 +23,7 @@ export class ModalUtil {
    * @memberof ModalUtil
    */
   calcModalPosition(): void {
-    const modalType = ['dropPanel'];
+    const modalType = ['dropPanel', 'selectList'];
     if (!modalType.includes(this.modalOrPanel.type)) {
       return;
     }
@@ -39,7 +39,7 @@ export class ModalUtil {
     // html-toolbar工具栏
     const outToolbarDom = dom.parentNode.parentNode.parentNode;
 
-    const menuKeys = ['bgColor', 'color'];
+    const menuKeys = ['bgColor', 'color', 'headerSelect'];
 
     if (
       !menuKeys.includes(dataMenuKey) ||
