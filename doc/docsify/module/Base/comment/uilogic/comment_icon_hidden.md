@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./comment_icon_hidden#begin {开始}]]
-state "获取部件状态信息" as PREPAREJSPARAM1  [[$./comment_icon_hidden#preparejsparam1 {获取部件状态信息}]]
 state "控制部件显示隐藏" as PREPAREJSPARAM2  [[$./comment_icon_hidden#preparejsparam2 {控制部件显示隐藏}]]
+state "获取部件状态信息" as PREPAREJSPARAM1  [[$./comment_icon_hidden#preparejsparam1 {获取部件状态信息}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -57,7 +57,7 @@ PREPAREJSPARAM1 --> PREPAREJSPARAM2
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |图标|icon|数据对象||
-|评论|send|数据对象||
 |视图|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |清空|reset|数据对象||
+|评论|send|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

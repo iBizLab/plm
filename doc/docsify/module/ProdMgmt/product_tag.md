@@ -41,17 +41,29 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|删除标签|delete_tag|[实体处理逻辑](module/ProdMgmt/product_tag/logic/delete_tag "删除标签")|默认|不支持||||
+|获取关联的工单和需求数量|get_con_product_tag|[实体处理逻辑](module/ProdMgmt/product_tag/logic/get_con_product_tag "获取关联的工单数量")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/ProdMgmt/product_tag/logic/nothing "无操作")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[删除标签](module/ProdMgmt/product_tag/logic/delete_tag)|delete_tag|无||删除标签时对工单的标签属性进行处理|
+|[无操作](module/ProdMgmt/product_tag/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[获取关联的工单数量](module/ProdMgmt/product_tag/logic/get_con_product_tag)|get_con_product_tag|无||在删除产品标签时，获取与之关联的工单数量。|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProdMgmt/product_tag/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProdMgmt/product_tag/query/View)|VIEW|否|否 |否 ||
+|[当前项目标签(cur_product_tag)](module/ProdMgmt/product_tag/query/cur_product_tag)|cur_product_tag|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProdMgmt/product_tag/dataset/Default)|DEFAULT|数据查询|是|||
+|[当前项目标签(cur_product_tag)](module/ProdMgmt/product_tag/dataset/cur_product_tag)|cur_product_tag|数据查询|否|||
 
 ## 数据权限
 
@@ -95,7 +107,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 删除标签 | delete_tag | 删除标签 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 删除标签 | delete_tag | 删除标签 |单项数据（主键）|<details><summary>后台调用</summary>[delete_tag](#行为)||
 | 编辑标签 | edit_tag | 编辑标签 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑标签](app/view/product_tag_edit_option_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -110,6 +122,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/product_tag?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProdMgmt/product_tag?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/product_tag?id=数据查询`">
   数据查询

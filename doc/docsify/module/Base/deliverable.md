@@ -46,16 +46,12 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/Base/deliverable/logic/nothing "无操作")|默认|不支持||||
 
-## 主状态控制
-
-<p class="panel-title"><b>控制属性</b></p>
-
-* `名称(NAME)` 
-
-
-
-> 控制属性未配置代码表，或者代码表未配置代码项
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[无操作](module/Base/deliverable/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -93,7 +89,6 @@
 | -------- |------------|------------|------|
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
-|N_NAME_EQ|名称|EQ||
 |N_OWNER_ID_EQ|所属数据标识|EQ||
 
 ## 界面行为
@@ -136,8 +131,8 @@
 <el-anchor-link :href="`#/module/Base/deliverable?id=行为`">
   行为
 </el-anchor-link>
-<el-anchor-link :href="`#/module/Base/deliverable?id=主状态控制`">
-  主状态控制
+<el-anchor-link :href="`#/module/Base/deliverable?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/deliverable?id=数据查询`">
   数据查询

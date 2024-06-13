@@ -22,6 +22,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DER1N_REVIEW_RULE_GUIDELINE_GUIDELINE_ID](der/DER1N_REVIEW_RULE_GUIDELINE_GUIDELINE_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|1:N关系||
+|[DERCUSTOM_REVIEW_REVIEW_RULE_RULE](der/DERCUSTOM_REVIEW_REVIEW_RULE_RULE)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>

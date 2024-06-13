@@ -1,6 +1,6 @@
 ## 撤销评审 <!-- {docsify-ignore-all} -->
 
-   
+   将评审状态设置为已撤回
 
 ### 处理过程
 
@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./repeal_review#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./repeal_review#deaction1 {实体行为}]]
 state "设置评审状态为已撤回" as PREPAREJSPARAM1  [[$./repeal_review#preparejsparam1 {设置评审状态为已撤回}]]
 state "结束" as END1 <<end>> [[$./repeal_review#end1 {结束}]]
+state "更新评审状态" as DEACTION1  [[$./repeal_review#deaction1 {更新评审状态}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -47,7 +47,7 @@ DEACTION1 --> END1
 
 1. 将`50` 设置给  `Default(传入变量).state`
 
-#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新评审状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

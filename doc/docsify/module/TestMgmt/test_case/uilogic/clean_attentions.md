@@ -1,6 +1,6 @@
 ## 清空表单关注人 <!-- {docsify-ignore-all} -->
 
-   
+   清空表单关注人
 
 ### 处理过程
 
@@ -16,17 +16,13 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./clean_attentions#begin {开始}]]
 state "清空附件数据" as RAWJSCODE2  [[$./clean_attentions#rawjscode2 {清空附件数据}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./clean_attentions#debugparam1 {调试逻辑参数}]]
-state "设置新关注人" as RAWJSCODE1  [[$./clean_attentions#rawjscode1 {设置新关注人}]]
 state "结束" as END1 <<end>> [[$./clean_attentions#end1 {结束}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./clean_attentions#debugparam2 {调试逻辑参数}]]
+state "设置新关注人" as RAWJSCODE1  [[$./clean_attentions#rawjscode1 {设置新关注人}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWJSCODE1
+Begin --> RAWJSCODE1
 RAWJSCODE1 --> RAWJSCODE2
-RAWJSCODE2 --> DEBUGPARAM2
-DEBUGPARAM2 --> END1
+RAWJSCODE2 --> END1
 
 
 @enduml
@@ -44,13 +40,6 @@ DEBUGPARAM2 --> END1
 
 
 
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`传入变量`的详细信息
 
 #### 设置新关注人 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -91,13 +80,6 @@ app2.deService.exec('plmweb.attachment', 'fetchdefault', {...context, test_case:
 })
 ```
 
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`表单`的详细信息
-
 
 
 ### 实体逻辑参数
@@ -106,6 +88,6 @@ app2.deService.exec('plmweb.attachment', 'fetchdefault', {...context, test_case:
 | --------| --------| --------  | --------   |
 |上下文|ctx|导航视图参数绑定参数||
 |关注人信息|attentions|数据对象||
-|表单|form|部件对象||
 |当前视图|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表单|form|部件对象||

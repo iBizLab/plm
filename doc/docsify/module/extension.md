@@ -12,6 +12,8 @@
 |[实体表单(PSDEFORM)](module/extension/PSDEForm)|PSDEForm|主实体|无存储||否|否|自控制|否||
 |[实体表格(PSDEGRID)](module/extension/PSDEGrid)|PSDEGrid|主实体|无存储||否|否|自控制|否||
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|PSDELogic|主实体|无存储||否|否|自控制|否||
+|[实体处理逻辑链接(PSDELOGICLINK)](module/extension/PSDELogicLink)|PSDELogicLink|主实体|无存储||否|否|自控制|否||
+|[实体处理逻辑节点(PSDELOGICNODE)](module/extension/PSDELogicNode)|PSDELogicNode|主实体|无存储||否|否|自控制|否||
 |[实体主状态迁移逻辑(PSDEMSLOGIC)](module/extension/PSDEMSLogic)|PSDEMSLogic|主实体|无存储||否|否|自控制|否||
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|PSDENotify|主实体|无存储||否|否|自控制|否||
 |[消息通知目标(PSDENOTIFYTARGET)](module/extension/PSDENotifyTarget)|PSDENotifyTarget|主实体|无存储||否|否|自控制|否||

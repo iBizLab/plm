@@ -35,10 +35,12 @@
 | -------- |---------- |------------|----- |
 |[DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID](der/DER1N_LIBRARY_MEMBER_LIBRARY_LIBRARY_ID)|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|1:N关系||
 |[DER1N_REVIEW_LIBRARY_LIBRARY_ID](der/DER1N_REVIEW_LIBRARY_LIBRARY_ID)|[评审(REVIEW)](module/TestMgmt/review)|1:N关系||
+|[DER1N_REVIEW_WIZARD_LIBRARY_LIBRARY_ID](der/DER1N_REVIEW_WIZARD_LIBRARY_LIBRARY_ID)|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|1:N关系||
 |[DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID](der/DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
 |[DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID](der/DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID)|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|1:N关系||
 |[DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID](der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
 |[DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID](der/DER1N_TEST_SUITE_LIBRARY_LIBRARY_ID)|[用例模块(TEST_SUITE)](module/TestMgmt/test_suite)|1:N关系||
+|[DERCUSTOM_ADDON_LIBRARY_OWNER_ID](der/DERCUSTOM_ADDON_LIBRARY_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 |[DERCUSTOM_BASELINE_LIBRARY_OWNER_ID](der/DERCUSTOM_BASELINE_LIBRARY_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID](der/DERCUSTOM_GUIDELINE_LIBRARY_LIBRARY_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|自定义关系||
 
@@ -76,8 +78,12 @@
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |激活|activate|[实体处理逻辑](module/TestMgmt/library/logic/activate "激活")|默认|不支持||||
 |归档|archive|[实体处理逻辑](module/TestMgmt/library/logic/archive "归档")|默认|不支持||||
+|变更管理员角色|change_admin_role|[实体处理逻辑](module/TestMgmt/library/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/TestMgmt/library/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/TestMgmt/library/logic/favorite "设置星标")|默认|不支持||||
+|测试库首页组件计数|library_index_addon_counter|[实体处理逻辑](module/TestMgmt/library/logic/library_addon_authority "测试库组件权限计数器")|默认|不支持||||
+|移动测试库|move_library|[实体处理逻辑](module/TestMgmt/library/logic/move_library "移动测试库")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/TestMgmt/library/logic/nothing "无操作")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/TestMgmt/library/logic/recover "恢复")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/TestMgmt/library/logic/un_favorite "取消星标")|默认|不支持||||
 
@@ -85,17 +91,24 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[创建之前](module/TestMgmt/library/logic/before_create)|before_create|无||创建测试库之前，对添加的测试库成员进行处理|
+|[创建测试库流程准则](module/TestMgmt/library/logic/auto_create_guideline)|auto_create_guideline|无||创建测试库后，自动生成测试库内的评审规则|
 |[删除](module/TestMgmt/library/logic/delete)|delete|无||测试库数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/TestMgmt/library/logic/un_favorite)|un_favorite|无||测试库取消星标|
+|[变更管理员角色](module/TestMgmt/library/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[归档](module/TestMgmt/library/logic/archive)|archive|无||未归档测试库数据的归档处理，修改测试库的归档状态为已归档|
 |[恢复](module/TestMgmt/library/logic/recover)|recover|无||恢复已删除状态测试库数据，修改测试库的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/TestMgmt/library/logic/recent_parent_name)|recent_parent_name|属性逻辑||当测试库名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
 |[批量更新最近访问父标识](module/TestMgmt/library/logic/recent_parent_identifier)|recent_parent_identifier|属性逻辑||当测试库标识变更时，触发此逻辑，批量对最近访问的父标识进行更新|
+|[无操作](module/TestMgmt/library/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/TestMgmt/library/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品删除或恢复数据时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/TestMgmt/library/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||测试库归档或激活时触发相应的通知消息|
+|[测试库组件权限计数器](module/TestMgmt/library/logic/library_addon_authority)|library_addon_authority|无||获取测试库组件权限|
 |[激活](module/TestMgmt/library/logic/activate)|activate|无||激活已归档状态测试库，修改测试库的归档属性|
 |[生成最近访问](module/TestMgmt/library/logic/create_recent)|create_recent|无||在用户对测试库数据进行了get或update操作时生成相应的访问记录|
+|[移动测试库](module/TestMgmt/library/logic/move_library)|move_library|无||更新测试库的所属、可见范围|
 |[自动创建人员](module/TestMgmt/library/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
+|[获取快速新建测试库集合](module/TestMgmt/library/logic/quick_create)|quick_create|无||用于获取可快速新建的测试库集合|
+|[获取测试库成员](module/TestMgmt/library/logic/get_library_member_one)|get_library_member_one|无||获取测试库成员信息，用于判断当前用户权限|
 |[设置星标](module/TestMgmt/library/logic/favorite)|favorite|无||设置为星标测试库|
 
 ## 功能配置
@@ -112,10 +125,13 @@
 |[已归档(archived)](module/TestMgmt/library/query/archived)|archived|否|否 |否 ||
 |[已删除(deleted)](module/TestMgmt/library/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/TestMgmt/library/query/favorite)|favorite|否|否 |否 ||
+|[查询星标（管理用户）(favorite_user)](module/TestMgmt/library/query/favorite_user)|favorite_user|否|否 |否 ||
 |[正常状态(normal)](module/TestMgmt/library/query/normal)|normal|否|否 |否 ||
 |[与项目关联的测试库(project_relation_library)](module/TestMgmt/library/query/project_relation_library)|project_relation_library|否|否 |否 |通过测试计划中进行关联项目展示测试库|
 |[公开(public)](module/TestMgmt/library/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/TestMgmt/library/query/reader)|reader|否|否 |否 ||
+|[非星标测试库(unfavorite)](module/TestMgmt/library/query/unfavorite)|unfavorite|否|否 |否 ||
+|[非星标测试库（管理用户）(unfavorite_user)](module/TestMgmt/library/query/unfavorite_user)|unfavorite_user|否|否 |否 ||
 |[普通成员(user)](module/TestMgmt/library/query/user)|user|否|否 |否 ||
 
 ## 数据集合
@@ -126,8 +142,11 @@
 |[已归档(archived)](module/TestMgmt/library/dataset/archived)|archived|数据查询|否|||
 |[已删除(deleted)](module/TestMgmt/library/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/TestMgmt/library/dataset/favorite)|favorite|数据查询|否|||
+|[主表格查询(main)](module/TestMgmt/library/dataset/main)|main|数据查询|否|||
 |[正常状态(normal)](module/TestMgmt/library/dataset/normal)|normal|数据查询|否|||
 |[与项目关联的测试库(project_relation_library)](module/TestMgmt/library/dataset/project_relation_library)|project_relation_library|数据查询|否||通过测试计划中进行关联项目展示测试库|
+|[快速新建查询(quick)](module/TestMgmt/library/dataset/quick)|quick|[实体逻辑](module/TestMgmt/library/logic/quick_create)|否|||
+|[快速新建查询（管理用户）(quick_user)](module/TestMgmt/library/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/TestMgmt/library/dataset/reader)|reader|数据查询|否|||
 |[操作用户(user)](module/TestMgmt/library/dataset/user)|user|数据查询|否|||
 
@@ -172,8 +191,6 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `UPDATE`
-* `DELETE`
 * `CREATE`
 
 
@@ -225,7 +242,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开测试库配置 | open_global_setting | 测试库配置 |无数据|<details><summary>打开视图或向导（模态）</summary>[测试库配置](app/view/library_config_tree_exp_view)</details>||
+| 打开测试库配置 | open_global_setting | 测试库配置 |无数据|用户自定义||
 | 取消星标 | unstar | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 更多设置 | open_details_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 测试库信息 | open_show_edit_view | 测试库信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库信息](app/view/library_show_edit_view)</details>||
@@ -233,9 +250,11 @@
 | 恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 设置星标 | star | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
+| 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 打开测试库导航页 | open_library_exp_view | 打开测试库导航页 |无数据|<details><summary>打开顶级视图</summary>[测试管理](app/view/library_tree_exp_view)</details>||
+| 移动测试库 | move_library | 移动测试库 |单项数据（主键）|<details><summary>后台调用</summary>[move_library](#行为)||
 | 测试库成员 | setting_library_member | 测试库成员 |单项数据（主键）|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 编辑基本信息 | setting_base_info | 编辑基本信息 |单项数据（主键）|用户自定义||
@@ -249,7 +268,7 @@
 |[刷新当前表格](module/TestMgmt/library/uilogic/refresh_current_grid)|refresh_current_grid|按钮触发，通过脚本切换显示组件|
 |[批量删除测试库成员临时数据](module/TestMgmt/library/uilogic/remove_batch_temp)|remove_batch_temp|获取测试库内所有临时成员数据并删除|
 |[计算表格列行为状态(library)](module/TestMgmt/library/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
-|[通知刷新](module/TestMgmt/library/uilogic/notify_refresh)|notify_refresh||
+|[通知刷新](module/TestMgmt/library/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

@@ -9,7 +9,8 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |负责人标识|ASSIGNEE_ID|文本，可指定长度|100|是||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
-|类别|CATEGORIES|长文本，长度1000|2000|是||
+|类别|CATEGORIES|多项选择(文本值)|2000|是||
+|类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
@@ -34,9 +35,11 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DER1N_SPRINT_ALTERATION_SPRINT_SPRINT_ID](der/DER1N_SPRINT_ALTERATION_SPRINT_SPRINT_ID)|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration)|1:N关系||
 |[DER1N_SPRINT_SPRINT_PID](der/DER1N_SPRINT_SPRINT_PID)|[迭代(SPRINT)](module/ProjMgmt/sprint)|1:N关系||
 |[DER1N_TEST_PLAN_SPRINT_SPRINT_ID](der/DER1N_TEST_PLAN_SPRINT_SPRINT_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
 |[DER1N_WORK_ITEM_SPRINT_SPRINT_ID](der/DER1N_WORK_ITEM_SPRINT_SPRINT_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DERCUSTOM_RELATION_SPRINT](der/DERCUSTOM_RELATION_SPRINT)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
 </el-tab-pane>
@@ -56,7 +59,7 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#sprint_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
@@ -65,16 +68,22 @@
 |结束迭代|end_sprint|[实体处理逻辑](module/ProjMgmt/sprint/logic/end_sprint "结束迭代")|默认|不支持||||
 |行为|get_not_finish|[实体处理逻辑](module/ProjMgmt/sprint/logic/get_not_finish "获取未完成的工作项数量")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/sprint/logic/nothing "无操作")|默认|不支持||||
+|获取概览基本信息统计数字|overview_num|[实体处理逻辑](module/ProjMgmt/sprint/logic/overview_num "获取概览基本信息统计数字")|默认|不支持||||
+|发布关联迭代|release_relation_sprint|[实体处理逻辑](module/ProjMgmt/sprint/logic/release_relation_sprint "发布关联迭代")|默认|不支持||||
 |开始迭代|start_sprint|[实体处理逻辑](module/ProjMgmt/sprint/logic/start_sprint "开始迭代")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[删除类别](module/ProjMgmt/sprint/logic/delete_categories)|delete_categories|无||当类别删除时修改迭代的类别属性|
+|[发布关联迭代](module/ProjMgmt/sprint/logic/release_relation_sprint)|release_relation_sprint|无||发布关联迭代生成关联数据|
+|[填充类别文本](module/ProjMgmt/sprint/logic/fill_categories_name)|fill_categories_name|无||填充类别对应文本|
 |[开始迭代](module/ProjMgmt/sprint/logic/start_sprint)|start_sprint|无||开始迭代|
 |[无操作](module/ProjMgmt/sprint/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[结束迭代](module/ProjMgmt/sprint/logic/end_sprint)|end_sprint|无||结束迭代，根据用户选择，将未完成的工作项 移动至其他迭代会待分配|
 |[获取未完成的工作项数量](module/ProjMgmt/sprint/logic/get_not_finish)|get_not_finish|无||完成迭代时，判断此迭代下是否存在未完成的工作项；提醒用户是否将未完成的工作项状态变更至已完成|
+|[获取概览基本信息统计数字](module/ProjMgmt/sprint/logic/overview_num)|overview_num|无||获取概览基本信息统计数字|
+|[迭代操作标识业务计算逻辑](module/ProjMgmt/sprint/logic/oppriv_logic)|oppriv_logic|DEOPPRIV||迭代操作标识业务计算逻辑|
 
 ## 主状态控制
 
@@ -175,19 +184,35 @@
 |[数据查询(DEFAULT)](module/ProjMgmt/sprint/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/sprint/query/View)|VIEW|否|否 |否 ||
 |[移动至(choose_move)](module/ProjMgmt/sprint/query/choose_move)|choose_move|否|否 |是 |确认迭代完成时，选择移动至其他迭代|
+|[选择关联的迭代(choose_sprint_relation)](module/ProjMgmt/sprint/query/choose_sprint_relation)|choose_sprint_relation|否|否 |否 ||
+|[当前项目迭代且未完成(cur_sprint_not_finish)](module/ProjMgmt/sprint/query/cur_sprint_not_finish)|cur_sprint_not_finish|否|否 |否 ||
 |[未结束的迭代(not_finish)](module/ProjMgmt/sprint/query/not_finish)|not_finish|否|否 |否 ||
+|[发布关联迭代(release_relation)](module/ProjMgmt/sprint/query/release_relation)|release_relation|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/sprint/dataset/Default)|DEFAULT|数据查询|是|||
 |[移动至(choose_move)](module/ProjMgmt/sprint/dataset/choose_move)|choose_move|数据查询|否||确认迭代完成时，选择移动至其他迭代|
+|[选择关联的迭代(choose_sprint_relation)](module/ProjMgmt/sprint/dataset/choose_sprint_relation)|choose_sprint_relation|数据查询|否|||
+|[当前项目未完成的迭代(cur_sprint_not_finish)](module/ProjMgmt/sprint/dataset/cur_sprint_not_finish)|cur_sprint_not_finish|数据查询|否|||
 |[未结束的迭代(not_finish)](module/ProjMgmt/sprint/dataset/not_finish)|not_finish|数据查询|否|||
+|[发布关联迭代(release_relation)](module/ProjMgmt/sprint/dataset/release_relation)|release_relation|数据查询|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_ASSIGNEE_ID_EQ|负责人标识|EQ||
+|N_ASSIGNEE_ID_IN|负责人标识|IN||
+|N_ASSIGNEE_ID_ISNOTNULL|负责人标识|ISNOTNULL||
+|N_ASSIGNEE_ID_ISNULL|负责人标识|ISNULL||
+|N_ASSIGNEE_ID_NOTIN|负责人标识|NOTIN||
 |N_CATEGORIES_LIKE|类别|LIKE||
+|N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_PID_EQ|父标识|EQ||
@@ -197,22 +222,24 @@
 |N_PROJECT_NAME_EQ|项目名称|EQ||
 |N_PROJECT_NAME_LIKE|项目名称|LIKE||
 |N_STATUS_EQ|状态|EQ||
+|N_STATUS_NOTEQ|状态|NOTEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 编辑 | open_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑迭代](app/view/sprint_update_view)</details>||
-| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 开始迭代 | start_sprint | 开始迭代 |单项数据（主键）|<details><summary>后台调用</summary>[start_sprint](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 发布关联迭代 | release_relation_sprint | 关联迭代 |无数据|<details><summary>后台调用</summary>[release_relation_sprint](#行为)||
 | 结束迭代 | end_sprint | 结束迭代 |单项数据（主键）|<details><summary>后台调用</summary>[end_sprint](#行为)||
-| 删除 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

@@ -58,7 +58,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[保存列表多数据部件](module/extension/notify_event/uilogic/save_list_mdctrl)|save_list_mdctrl||
+|[保存列表多数据部件](module/extension/notify_event/uilogic/save_list_mdctrl)|save_list_mdctrl|保存列表多数据部件|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

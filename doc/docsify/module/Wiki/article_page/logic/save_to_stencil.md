@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./save_to_stencil#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./save_to_stencil#end1 {"结束"}]]
-state "获取选中数据" as PREPAREPARAM1  [[$./save_to_stencil#prepareparam1 {"获取选中数据"}]]
+state "获取页面数据" as PREPAREPARAM1  [[$./save_to_stencil#prepareparam1 {"获取页面数据"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./save_to_stencil#loopsubcall1 {"循环子调用"}]] #green {
 state "输出当前循环数据" as DEBUGPARAM2  [[$./save_to_stencil#debugparam2 {"输出当前循环数据"}]]
 state "设置为空间可见模板" as PREPAREPARAM2  [[$./save_to_stencil#prepareparam2 {"设置为空间可见模板"}]]
@@ -46,8 +46,9 @@ PREPAREPARAM3 --> DEACTION1
 
 
 1. 将`for_temp_obj(循环临时变量).name` 设置给  `stencil_info(模板信息).NAME(名称)`
-2. 将`Default(传入变量).CONTENT(正文)` 设置给  `stencil_info(模板信息).CONTENT(正文)`
-3. 将`Default(传入变量).SPACE_ID(空间标识)` 设置给  `stencil_info(模板信息).SPACE_ID(空间标识)`
+2. 将`Default(传入变量).FORMAT_TYPE(正文格式)` 设置给  `stencil_info(模板信息).FORMAT_TYPE(正文格式)`
+3. 将`Default(传入变量).CONTENT(正文)` 设置给  `stencil_info(模板信息).CONTENT(正文)`
+4. 将`Default(传入变量).SPACE_ID(空间标识)` 设置给  `stencil_info(模板信息).SPACE_ID(空间标识)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -66,7 +67,7 @@ PREPAREPARAM3 --> DEACTION1
 
 
 *- N/A*
-#### 获取选中数据 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 获取页面数据 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -90,7 +91,8 @@ PREPAREPARAM3 --> DEACTION1
 
 
 1. 将`for_temp_obj(循环临时变量).name` 设置给  `stencil_info(模板信息).NAME(名称)`
-2. 将`Default(传入变量).CONTENT(正文)` 设置给  `stencil_info(模板信息).CONTENT(正文)`
+2. 将`Default(传入变量).FORMAT_TYPE(正文格式)` 设置给  `stencil_info(模板信息).FORMAT_TYPE(正文格式)`
+3. 将`Default(传入变量).CONTENT(正文)` 设置给  `stencil_info(模板信息).CONTENT(正文)`
 
 
 ### 连接条件说明

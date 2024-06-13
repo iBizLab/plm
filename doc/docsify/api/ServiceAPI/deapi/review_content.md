@@ -18,18 +18,15 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -53,14 +50,11 @@
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -90,14 +84,11 @@
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -147,14 +138,11 @@
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -219,18 +207,15 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -254,14 +239,11 @@
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -291,14 +273,11 @@
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -337,18 +316,15 @@
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -372,14 +348,11 @@
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -423,18 +396,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -458,14 +428,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -495,14 +462,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -546,18 +510,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -581,14 +542,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -618,14 +576,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -664,18 +619,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -699,14 +651,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -736,14 +685,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -782,18 +728,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -817,14 +760,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -854,14 +794,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -905,18 +842,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -940,14 +874,11 @@ Integer
   "owner_type" : null,
   "principal_type" : null,
   "stage_results" : null,
+  "final_stage_results" : null,
   "target_type" : null,
   "target_id" : null,
   "parent_version_id" : null,
   "target_version_id" : null,
-  "work_item" : null,
-  "idea" : null,
-  "ticket" : null,
-  "customer" : null,
   "test_case" : null,
   "cur_version_id" : null,
   "target_identifier" : null,
@@ -1016,14 +947,11 @@ Integer
     "owner_type" : null,
     "principal_type" : null,
     "stage_results" : null,
+    "final_stage_results" : null,
     "target_type" : null,
     "target_id" : null,
     "parent_version_id" : null,
     "target_version_id" : null,
-    "work_item" : null,
-    "idea" : null,
-    "ticket" : null,
-    "customer" : null,
     "test_case" : null,
     "cur_version_id" : null,
     "target_identifier" : null,
@@ -1091,14 +1019,11 @@ Integer
     "owner_type" : null,
     "principal_type" : null,
     "stage_results" : null,
+    "final_stage_results" : null,
     "target_type" : null,
     "target_id" : null,
     "parent_version_id" : null,
     "target_version_id" : null,
-    "work_item" : null,
-    "idea" : null,
-    "ticket" : null,
-    "customer" : null,
     "test_case" : null,
     "cur_version_id" : null,
     "target_identifier" : null,
@@ -1305,18 +1230,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1399,18 +1321,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1450,18 +1369,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1501,18 +1417,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1553,18 +1466,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1604,18 +1514,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1655,18 +1562,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -1707,18 +1611,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2006,18 +1907,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2100,18 +1998,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2151,18 +2046,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2202,18 +2094,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2254,18 +2143,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2305,18 +2191,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2356,18 +2239,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|
@@ -2408,18 +2288,15 @@ Integer
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">change_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更类型|
 |<el-row justify="space-between"><el-col :span="20">principal_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体标识|
-|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|变更版本|
+|<el-row justify="space-between"><el-col :span="20">change_version</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|变更版本|
 |<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
 |<el-row justify="space-between"><el-col :span="20">principal_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联主体类型|
-|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|评审结果|
+|<el-row justify="space-between"><el-col :span="20">final_stage_results</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最终评审结果|
 |<el-row justify="space-between"><el-col :span="20">target_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标类型|
 |<el-row justify="space-between"><el-col :span="20">target_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联目标标识|
 |<el-row justify="space-between"><el-col :span="20">parent_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父对象版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象版本标识|
-|<el-row justify="space-between"><el-col :span="20">work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项|
-|<el-row justify="space-between"><el-col :span="20">idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品需求|
-|<el-row justify="space-between"><el-col :span="20">ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工单|
-|<el-row justify="space-between"><el-col :span="20">customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|客户|
 |<el-row justify="space-between"><el-col :span="20">test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|测试用例|
 |<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
 |<el-row justify="space-between"><el-col :span="20">target_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象编号|

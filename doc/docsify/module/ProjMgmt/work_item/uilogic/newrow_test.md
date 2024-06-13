@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./newrow_test#begin {开始}]]
+state "计算子工作项类型" as DEUIACTION1  [[$./newrow_test#deuiaction1 {计算子工作项类型}]]
 state "结束" as END1 <<end>> [[$./newrow_test#end1 {结束}]]
-state "界面行为" as DEUIACTION1  [[$./newrow_test#deuiaction1 {界面行为}]]
 state "注入脚本代码" as RAWJSCODE1  [[$./newrow_test#rawjscode1 {注入脚本代码}]]
 
 
@@ -36,7 +36,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 界面行为 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
+#### 计算子工作项类型 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
 
 
 

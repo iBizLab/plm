@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./activate#begin {"开始"}]]
 state "设置归档状态" as PREPAREPARAM1  [[$./activate#prepareparam1 {"设置归档状态"}]]
-state "激活" as DEACTION1  [[$./activate#deaction1 {"激活"}]]
+state "更新激活状态" as DEACTION1  [[$./activate#deaction1 {"更新激活状态"}]]
 state "结束" as END1 <<end>> [[$./activate#end1 {"结束"}]]
 
 
@@ -43,7 +43,7 @@ DEACTION1 --> END1
 1. 将`0` 设置给  `update_obj(测试库更新对象).IS_ARCHIVED(是否已归档)`
 2. 将`Default(传入变量).ID(标识)` 设置给  `update_obj(测试库更新对象).ID(标识)`
 
-#### 激活 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新激活状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

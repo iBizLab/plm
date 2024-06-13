@@ -9,7 +9,8 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |负责人标识|ASSIGNEE_ID|文本，可指定长度|100|否||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
-|类别|CATEGORIES|长文本，长度1000|2000|是||
+|类别|CATEGORIES|多项选择(文本值)|2000|是||
+|类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |计划结束|END_AT|日期型||是||
@@ -66,11 +67,12 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#test_plan_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|删除类别|delete_categories|[实体处理逻辑](module/TestMgmt/test_plan/logic/delete_categories "删除类别")|默认|不支持||||
 |结束测试|end_test_plan|[实体处理逻辑](module/TestMgmt/test_plan/logic/end_test_plan "结束测试")|默认|不支持||||
 |开始测试|start_test_plan|[实体处理逻辑](module/TestMgmt/test_plan/logic/start_test_plan "开始测试")|默认|不支持||||
 |测试报告概览数据源|test_plan_report_survey|[实体处理逻辑](module/TestMgmt/test_plan/logic/test_plan_report_survey "测试报告概览数据源")|默认|不支持||||
@@ -78,9 +80,12 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[删除类别](module/TestMgmt/test_plan/logic/delete_categories)|delete_categories|无||当类别删除时修改发布的类别属性|
+|[填充类别文本](module/TestMgmt/test_plan/logic/fill_categories_name)|fill_categories_name|无||填充类别对应文本|
 |[开始测试](module/TestMgmt/test_plan/logic/start_test_plan)|start_test_plan|无||测试计划开始测试|
 |[测试报告概览数据源](module/TestMgmt/test_plan/logic/test_plan_report_survey)|test_plan_report_survey|无||测试报告概览的数据源|
 |[结束测试](module/TestMgmt/test_plan/logic/end_test_plan)|end_test_plan|无||设置测试计划状态为结束|
+|[计划操作标识业务计算逻辑](module/TestMgmt/test_plan/logic/oppriv_logic)|oppriv_logic|DEOPPRIV||计划操作标识业务计算逻辑|
 |[负责人变更附加逻辑](module/TestMgmt/test_plan/logic/assignee_onchange)|assignee_onchange|属性逻辑||测试计划负责人变更时触发相应的通知消息|
 
 ## 主状态控制
@@ -216,7 +221,6 @@
 |[我参与的(my_participate)](module/TestMgmt/test_plan/dataset/my_participate)|my_participate|数据查询|否|||
 |[未开始和进行中的计划(pending_and_in_progress)](module/TestMgmt/test_plan/dataset/pending_and_in_progress)|pending_and_in_progress|数据查询|否|||
 |[查询未移入过的计划(query_no_shift_in)](module/TestMgmt/test_plan/dataset/query_no_shift_in)|query_no_shift_in|数据查询|否|||
-|[测试报告概览(test_plan_report_survey)](module/TestMgmt/test_plan/dataset/test_plan_report_survey)|test_plan_report_survey|数据查询|否|||
 |[未加入计划(un_join_plan)](module/TestMgmt/test_plan/dataset/un_join_plan)|un_join_plan|数据查询|否|||
 ## 消息通知
 
@@ -229,9 +233,17 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ASSIGNEE_ID_EQ|负责人标识|EQ||
+|N_ASSIGNEE_ID_IN|负责人标识|IN||
+|N_ASSIGNEE_ID_ISNOTNULL|负责人标识|ISNOTNULL||
+|N_ASSIGNEE_ID_ISNULL|负责人标识|ISNULL||
+|N_ASSIGNEE_ID_NOTIN|负责人标识|NOTIN||
 |N_ASSIGNEE_NAME_EQ|负责人|EQ||
 |N_CATEGORIES_LIKE|类别|LIKE||
 |N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_ID_EQ|标识|EQ||
 |N_LIBRARY_ID_EQ|测试库标识|EQ||
 |N_LIBRARY_NAME_EQ|所属测试库|EQ||

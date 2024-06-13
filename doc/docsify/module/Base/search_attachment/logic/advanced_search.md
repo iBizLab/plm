@@ -15,27 +15,25 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./advanced_search#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./advanced_search#debugparam1 {"调试逻辑参数"}]]
 state "关联查询" as DEDATASET1  [[$./advanced_search#dedataset1 {"关联查询"}]]
 state "结束" as END1 <<end>> [[$./advanced_search#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./advanced_search#loopsubcall1 {"循环子调用"}]] #green {
 state "绑定参数" as BINDPARAM1  [[$./advanced_search#bindparam1 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./advanced_search#prepareparam1 {"准备参数"}]]
+state "填充工作项展示属性" as PREPAREPARAM1  [[$./advanced_search#prepareparam1 {"填充工作项展示属性"}]]
 state "绑定参数" as BINDPARAM2  [[$./advanced_search#bindparam2 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM2  [[$./advanced_search#prepareparam2 {"准备参数"}]]
+state "填充产品需求展示属性" as PREPAREPARAM2  [[$./advanced_search#prepareparam2 {"填充产品需求展示属性"}]]
 state "绑定参数" as BINDPARAM3  [[$./advanced_search#bindparam3 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM3  [[$./advanced_search#prepareparam3 {"准备参数"}]]
+state "填充工单展示属性" as PREPAREPARAM3  [[$./advanced_search#prepareparam3 {"填充工单展示属性"}]]
 state "绑定参数" as BINDPARAM4  [[$./advanced_search#bindparam4 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./advanced_search#prepareparam4 {"准备参数"}]]
+state "填充客户展示属性" as PREPAREPARAM4  [[$./advanced_search#prepareparam4 {"填充客户展示属性"}]]
 state "绑定参数" as BINDPARAM5  [[$./advanced_search#bindparam5 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM5  [[$./advanced_search#prepareparam5 {"准备参数"}]]
+state "填充测试用例展示属性" as PREPAREPARAM5  [[$./advanced_search#prepareparam5 {"填充测试用例展示属性"}]]
 state "绑定参数" as BINDPARAM6  [[$./advanced_search#bindparam6 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM6  [[$./advanced_search#prepareparam6 {"准备参数"}]]
+state "填充页面展示属性" as PREPAREPARAM6  [[$./advanced_search#prepareparam6 {"填充页面展示属性"}]]
 }
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> DEDATASET1
+Begin --> DEDATASET1
 DEDATASET1 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> BINDPARAM1 : [[$./advanced_search#loopsubcall1-bindparam1{工作项} 工作项]]
 BINDPARAM1 --> PREPAREPARAM1
@@ -68,7 +66,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 绑定参数`for_temp_obj(循环临时变量)` 到 `work_item(工作项)`
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充工作项展示属性 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -77,28 +75,6 @@ BINDPARAM6 --> PREPAREPARAM6
 3. 将`work_item(工作项).PROJECT_NAME(所属项目)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_NAME(所属数据父名称)`
 4. 将`work_item(工作项).TITLE(标题)` 设置给  `for_temp_obj(循环临时变量).OWNER_TITLE(所属数据标题)`
 
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
-#### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
-
-
-
-绑定参数`for_temp_obj(循环临时变量)` 到 `idea(产品需求)`
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`idea(产品需求).SHOW_IDENTIFIER(编号)` 设置给  `for_temp_obj(循环临时变量).OWNER_IDENTIFIER(所属数据编号)`
-2. 将`idea(产品需求).PRODUCT_ID(产品)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_ID(所属数据父标识)`
-3. 将`idea(产品需求).PRODUCT_NAME(所属产品)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_NAME(所属数据父名称)`
-4. 将`idea(产品需求).TITLE(标题)` 设置给  `for_temp_obj(循环临时变量).OWNER_TITLE(所属数据标题)`
-
 #### 关联查询 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
@@ -106,6 +82,20 @@ BINDPARAM6 --> PREPAREPARAM6
 调用实体 [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment.md) 数据集合 [关联查询(relation)](module/Base/search_attachment#数据集合) ，查询参数为`Default(传入变量)`
 
 将执行结果返回给参数`result_page(分页查询结果变量)`
+
+#### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+
+
+
+绑定参数`for_temp_obj(循环临时变量)` 到 `idea(产品需求)`
+#### 填充产品需求展示属性 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`idea(产品需求).SHOW_IDENTIFIER(编号)` 设置给  `for_temp_obj(循环临时变量).OWNER_IDENTIFIER(所属数据编号)`
+2. 将`idea(产品需求).PRODUCT_ID(产品)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_ID(所属数据父标识)`
+3. 将`idea(产品需求).PRODUCT_NAME(所属产品)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_NAME(所属数据父名称)`
+4. 将`idea(产品需求).TITLE(标题)` 设置给  `for_temp_obj(循环临时变量).OWNER_TITLE(所属数据标题)`
 
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 
@@ -117,7 +107,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 绑定参数`for_temp_obj(循环临时变量)` 到 `ticket(工单)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充工单展示属性 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -131,7 +121,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 绑定参数`for_temp_obj(循环临时变量)` 到 `customer(客户)`
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充客户展示属性 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -144,7 +134,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 绑定参数`for_temp_obj(循环临时变量)` 到 `test_case(测试用例)`
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充测试用例展示属性 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -164,7 +154,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 绑定参数`for_temp_obj(循环临时变量)` 到 `page(页面)`
-#### 准备参数 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充页面展示属性 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

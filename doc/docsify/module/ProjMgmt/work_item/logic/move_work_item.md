@@ -21,9 +21,8 @@ state "循环子调用" as LOOPSUBCALL1  [[$./move_work_item#loopsubcall1 {"循�
 state "准备参数" as PREPAREPARAM3  [[$./move_work_item#prepareparam3 {"准备参数"}]]
 state "填充父工作项的标识" as PREPAREPARAM5  [[$./move_work_item#prepareparam5 {"填充父工作项的标识"}]]
 state "获取选中父工作项" as DEACTION2  [[$./move_work_item#deaction2 {"获取选中父工作项"}]]
-state "准备参数" as PREPAREPARAM2  [[$./move_work_item#prepareparam2 {"准备参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./move_work_item#prepareparam4 {"准备参数"}]]
-state "Update" as DEACTION1  [[$./move_work_item#deaction1 {"Update"}]]
+state "填充父工作项标识" as PREPAREPARAM2  [[$./move_work_item#prepareparam2 {"填充父工作项标识"}]]
+state "执行更新" as DEACTION1  [[$./move_work_item#deaction1 {"执行更新"}]]
 state "移动时子工作项的处理" as DELOGIC1  [[$./move_work_item#delogic1 {"移动时子工作项的处理"}]]
 }
 
@@ -35,10 +34,8 @@ PREPAREPARAM3 --> DEACTION1 : [[$./move_work_item#prepareparam3-deaction1{移动
 DEACTION1 --> DELOGIC1
 PREPAREPARAM3 --> PREPAREPARAM5 : [[$./move_work_item#prepareparam3-prepareparam5{移动时选择父工作项} 移动时选择父工作项]]
 PREPAREPARAM5 --> DEACTION2
-DEACTION2 --> PREPAREPARAM2 : [[$./move_work_item#deaction2-prepareparam2{所选工作项不存在顶级标识} 所选工作项不存在顶级标识]]
+DEACTION2 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION1
-DEACTION2 --> PREPAREPARAM4 : [[$./move_work_item#deaction2-prepareparam4{所选工作项存在顶级标识} 所选工作项存在顶级标识]]
-PREPAREPARAM4 --> DEACTION1
 LOOPSUBCALL1 --> END1
 
 
@@ -72,6 +69,12 @@ LOOPSUBCALL1 --> END1
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选中项目)`
+#### 填充父工作项标识 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`parent_work_item(父工作项).ID(标识)` 设置给  `Default(传入变量).PID(父标识)`
+
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 
 
@@ -89,21 +92,7 @@ LOOPSUBCALL1 --> END1
 6. 将`空值（NULL）` 设置给  `Default(传入变量).TOP_ID(顶级工作项标识)`
 7. 将`空值（NULL）` 设置给  `Default(传入变量).PID(父标识)`
 
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`parent_work_item(父工作项).TOP_ID(顶级工作项标识)` 设置给  `Default(传入变量).TOP_ID(顶级工作项标识)`
-2. 将`parent_work_item(父工作项).ID(标识)` 设置给  `Default(传入变量).PID(父标识)`
-
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`parent_work_item(父工作项).ID(标识)` 设置给  `Default(传入变量).PID(父标识)`
-2. 将`parent_work_item(父工作项).ID(标识)` 设置给  `Default(传入变量).TOP_ID(顶级工作项标识)`
-
-#### Update :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 执行更新 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -111,17 +100,17 @@ LOOPSUBCALL1 --> END1
 
 将执行结果返回给参数`Default(传入变量)`
 
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-返回 `Default(传入变量)`
-
 #### 移动时子工作项的处理 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
 
 
 
 调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 处理逻辑 [移动时子工作项的处理]((module/ProjMgmt/work_item/logic/move_child_work_item.md)) ，行为参数为`Default(传入变量)`
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
 
 
 ### 连接条件说明
@@ -131,12 +120,6 @@ LOOPSUBCALL1 --> END1
 #### 移动时选择父工作项 :id=PREPAREPARAM3-PREPAREPARAM5
 
 `for_temp_obj(循环临时变量).PID(父标识)` ISNOTNULL
-#### 所选工作项不存在顶级标识 :id=DEACTION2-PREPAREPARAM2
-
-`parent_work_item(父工作项).TOP_ID(顶级工作项标识)` ISNULL
-#### 所选工作项存在顶级标识 :id=DEACTION2-PREPAREPARAM4
-
-`parent_work_item(父工作项).TOP_ID(顶级工作项标识)` ISNOTNULL
 
 
 ### 实体逻辑参数

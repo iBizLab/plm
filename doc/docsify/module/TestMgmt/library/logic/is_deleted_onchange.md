@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./is_deleted_onchange#begin {"开始"}]]
-state "实体通知" as DENOTIFY1  [[$./is_deleted_onchange#denotify1 {"实体通知"}]]
+state "测试库删除/恢复通知" as DENOTIFY1  [[$./is_deleted_onchange#denotify1 {"测试库删除/恢复通知"}]]
 
 
 Begin --> DENOTIFY1
@@ -32,7 +32,7 @@ Begin --> DENOTIFY1
 
 
 *- N/A*
-#### 实体通知 :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+#### 测试库删除/恢复通知 :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 

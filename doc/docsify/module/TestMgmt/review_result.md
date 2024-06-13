@@ -14,9 +14,11 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |状态|RESULT_STATE|[单项选择(数值)](index/dictionary_index#review_result "评审结果")||是||
+|顺序|SEQUENCES|整型||是||
 |阶段标识|STAGE_ID|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|是否可评审|WHETHER_REVIEW|文本，可指定长度|200|是||
 
 
 ## 关系
@@ -28,6 +30,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DER1N_REVIEW_RESULT_REVIEW_CONTENT_EXTEND_CONTENT_ID](der/DER1N_REVIEW_RESULT_REVIEW_CONTENT_EXTEND_CONTENT_ID)|[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|1:N关系||
+|[DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID](der/DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -43,6 +46,12 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|设置结果|set_result|[实体处理逻辑](module/TestMgmt/review_result/logic/set_result "设置评审结果")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[设置评审结果](module/TestMgmt/review_result/logic/set_result)|set_result|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -63,6 +72,11 @@
 |N_NAME_LIKE|名称|LIKE||
 |N_RESULT_STATE_EQ|状态|EQ||
 
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[通过](module/TestMgmt/review_result/uilogic/pass)|pass||
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -76,6 +90,9 @@
 <el-anchor-link :href="`#/module/TestMgmt/review_result?id=行为`">
   行为
 </el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review_result?id=处理逻辑`">
+  处理逻辑
+</el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_result?id=数据查询`">
   数据查询
 </el-anchor-link>
@@ -84,6 +101,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_result?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review_result?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

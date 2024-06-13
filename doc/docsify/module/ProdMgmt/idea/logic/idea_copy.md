@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./idea_copy#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./idea_copy#bindparam1 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM3  [[$./idea_copy#prepareparam3 {"准备参数"}]]
+state "绑定需求参数列表" as BINDPARAM1  [[$./idea_copy#bindparam1 {"绑定需求参数列表"}]]
+state "设置ID参数" as PREPAREPARAM3  [[$./idea_copy#prepareparam3 {"设置ID参数"}]]
 state "结束" as END1 <<end>> [[$./idea_copy#end1 {"结束"}]]
 state "结束" as END2 <<end>> [[$./idea_copy#end2 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./idea_copy#loopsubcall1 {"循环子调用"}]] #green {
@@ -58,12 +58,12 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定需求参数列表 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选择的数据对象)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置ID参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

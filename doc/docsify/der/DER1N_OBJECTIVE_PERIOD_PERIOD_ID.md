@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [周期(PERIOD)](module/team/period)
+* [周期(PERIOD)](module/Team/period)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [目标(OBJECTIVE)](module/team/objective)
+* [目标(OBJECTIVE)](module/Team/objective)
 
 <p class="panel-title"><b>关系类型</b></p>
 

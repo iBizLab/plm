@@ -29,17 +29,17 @@ RAWSQLCALL1 --> END1
 
 ### 处理步骤说明
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
 返回 `result(结果)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
 #### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
@@ -70,8 +70,8 @@ FROM (
     WHERE ts.TEST_LIBRARY_ID = ? AND rh.CREATE_TIME BETWEEN ? AND ?
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(r.PLAN_ID, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(r.EXECUTOR_ID, ?))
-      AND ((? IS NULL OR ? = '') OR r.EXECUTED_AT BETWEEN ? and ? )
-      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(rh.STATUS, ?))
+      AND ((? IS NULL OR ? = '') OR (? IS NULL OR ? = '') OR r.EXECUTED_AT BETWEEN ? and ? )
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(r.STATUS, ?))
     GROUP BY DATE(rh.CREATE_TIME)
 ) case_data ON date_series.date = case_data.create_date
 GROUP BY date_series.date
@@ -98,7 +98,7 @@ ORDER BY date_series.date;
 16. `Default(传入变量).n_executed_at_ltandeq`
 17. `Default(传入变量).n_executed_at_ltandeq`
 18. `Default(传入变量).n_executed_at_gtandeq`
-19. `Default(传入变量).n_executed_at_gtandeq`
+19. `Default(传入变量).n_executed_at_ltandeq`
 20. `Default(传入变量).n_status_eq`
 21. `Default(传入变量).n_status_eq`
 22. `Default(传入变量).n_status_eq`

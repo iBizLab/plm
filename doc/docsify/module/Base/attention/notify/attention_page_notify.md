@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [提醒关注通知模板(页面)](index/notify_index?id=page_notice_attention)
+* [提醒关注页面通知模板](index/notify_index?id=notice_attention_page)
 
 <p class="panel-title"><b>通知类型</b></p>
 

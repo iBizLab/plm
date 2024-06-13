@@ -57,6 +57,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/section/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/section/query/View)|VIEW|否|否 |否 ||
+|[检查名称是否重复(check_name)](module/Base/section/query/check_name)|check_name|否|否 |否 ||
 |[产品排期分组(this_product_section)](module/Base/section/query/this_product_section)|this_product_section|否|否 |否 ||
 
 ## 数据集合
@@ -64,6 +65,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/section/dataset/Default)|DEFAULT|数据查询|是|||
 |[产品排期分组(This_product_section)](module/Base/section/dataset/This_product_section)|This_product_section|数据查询|否|||
+|[检查名称是否重复(check_name)](module/Base/section/dataset/check_name)|check_name|数据查询|否|||
 
 ## 数据权限
 

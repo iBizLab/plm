@@ -10,15 +10,15 @@
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
 
 ### 关联界面行为
-  * [附件(ATTACHMENT)](module/Base/attachment) : [附件下载](module/Base/attachment#界面行为)
-  * [附件(ATTACHMENT)](module/Base/attachment) : [附件删除（表格）](module/Base/attachment#界面行为)
   * [附件(ATTACHMENT)](module/Base/attachment) : [添加附件数据（表格）](module/Base/attachment#界面行为)
+  * [附件(ATTACHMENT)](module/Base/attachment) : [附件删除（表格）](module/Base/attachment#界面行为)
+  * [附件(ATTACHMENT)](module/Base/attachment) : [附件下载](module/Base/attachment#界面行为)
 
 ### 关联视图
   * [附件(attachment_edit_view)](app/view/attachment_edit_view)

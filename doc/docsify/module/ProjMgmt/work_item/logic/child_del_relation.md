@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./child_del_relation#begin {"开始"}]]
-state "将子工作项的父标识和顶级标识置空" as PREPAREPARAM1  [[$./child_del_relation#prepareparam1 {"将子工作项的父标识和顶级标识置空"}]]
-state "变更顶级工作项" as DELOGIC1  [[$./child_del_relation#delogic1 {"变更顶级工作项"}]]
+state "将子工作项的父标识置空" as PREPAREPARAM1  [[$./child_del_relation#prepareparam1 {"将子工作项的父标识置空"}]]
+state "更新子工作项" as DEACTION1  [[$./child_del_relation#deaction1 {"更新子工作项"}]]
 state "结束" as END1 <<end>> [[$./child_del_relation#end1 {"结束"}]]
 
 
 Begin --> PREPAREPARAM1
-PREPAREPARAM1 --> DELOGIC1
-DELOGIC1 --> END1
+PREPAREPARAM1 --> DEACTION1
+DEACTION1 --> END1
 
 
 @enduml
@@ -36,18 +36,17 @@ DELOGIC1 --> END1
 
 
 *- N/A*
-#### 将子工作项的父标识和顶级标识置空 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 将子工作项的父标识置空 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`空值（NULL）` 设置给  `Default(传入变量).PID(父标识)`
-2. 将`空值（NULL）` 设置给  `Default(传入变量).TOP_ID(顶级工作项标识)`
 
-#### 变更顶级工作项 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
-
+#### 更新子工作项 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
-调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 处理逻辑 [变更顶级工作项]((module/ProjMgmt/work_item/logic/change_top.md)) ，行为参数为`Default(传入变量)`
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`Default(传入变量)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

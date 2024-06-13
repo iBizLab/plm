@@ -5,11 +5,11 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [关键结果(KEY_RESULT)](module/team/key_result)
+* [关键结果(KEY_RESULT)](module/Team/key_result)
 
 <p class="panel-title"><b>从实体</b></p>
 
-* [进展(UPDATE_RECORD)](module/team/update_record)
+* [进展(UPDATE_RECORD)](module/Team/update_record)
 
 <p class="panel-title"><b>关系类型</b></p>
 

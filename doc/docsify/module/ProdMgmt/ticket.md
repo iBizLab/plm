@@ -116,15 +116,14 @@
 |设置标签|choose_tag|[实体处理逻辑](module/ProdMgmt/ticket/logic/choose_tag "设置标签")|默认|不支持||||
 |客户选择工单|customer_choose_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/customer_choose_ticket "客户选择工单")|默认|不支持||||
 |客户取消关联工单|customer_del_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/customer_del_ticket "客户取消关联工单")|默认|不支持||||
-|取消关联|del_relation|[实体处理逻辑](module/ProdMgmt/ticket/logic/del_relation "取消关联")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProdMgmt/ticket/logic/delete "删除")|默认|不支持||||
-|获取产品成员|fill_product_member|[实体处理逻辑](module/ProdMgmt/ticket/logic/get_product_member "获取产品成员")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/ticket/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联工单|others_relation_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/others_relation_ticket "其他实体关联工单")|默认|不支持||||
 |产品工单关联分页计数器|product_ticket_re_counters|[实体处理逻辑](module/ProdMgmt/ticket/logic/product_ticket_re_counters "产品工单关联分页计数器")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProdMgmt/ticket/logic/recover "恢复")|默认|不支持||||
 |测试获取归档数据|test_get_archived_info|[实体处理逻辑](module/ProdMgmt/ticket/logic/get_archived_info "查询归档数据")|默认|不支持||||
+|工单只读用户判断|ticket_readonly_recognize|[实体处理逻辑](module/ProdMgmt/ticket/logic/get_product_member "获取产品成员")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
@@ -133,7 +132,6 @@
 |[其他实体关联工单](module/ProdMgmt/ticket/logic/others_relation_ticket)|others_relation_ticket|无||工单实体的关联操作，生成正向，反向关联数据|
 |[分配负责人](module/ProdMgmt/ticket/logic/allocate_person)|allocate_person|无||分配工单负责人，修改负责人属性|
 |[删除](module/ProdMgmt/ticket/logic/delete)|delete|无||工单数据的逻辑删除，修改工单的是否删除属性值|
-|[取消关联](module/ProdMgmt/ticket/logic/del_relation)|del_relation|无||工单取消关联数据（正反向关联数据同时删除）|
 |[客户取消关联工单](module/ProdMgmt/ticket/logic/customer_del_ticket)|customer_del_ticket|无||客户取消关联工单操作|
 |[客户选择工单](module/ProdMgmt/ticket/logic/customer_choose_ticket)|customer_choose_ticket|无||客户选择工单操作|
 |[归档](module/ProdMgmt/ticket/logic/archive)|archive|无||未归档工单数据的归档处理，修改工单的归档状态为归档|
@@ -145,7 +143,7 @@
 |[激活](module/ProdMgmt/ticket/logic/activate)|activate|无||激活已归档状态工单，修改工单的归档属性|
 |[状态变更附加逻辑](module/ProdMgmt/ticket/logic/state_onchange)|state_onchange|属性逻辑||工单状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/ticket/logic/create_recent)|create_recent|无||在用户对工单数据进行了get或update操作时生成相应的访问记录|
-|[获取产品成员](module/ProdMgmt/ticket/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+|[获取产品成员](module/ProdMgmt/ticket/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
 |[设置标签](module/ProdMgmt/ticket/logic/choose_tag)|choose_tag|无||设置工单标签，修改工单标签信息|
 |[负责人变更附加逻辑](module/ProdMgmt/ticket/logic/assignee_onchange)|assignee_onchange|属性逻辑||工单负责人变更时触发相应的通知消息|
 
@@ -302,7 +300,16 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ASSIGNEE_ID_EQ|负责人标识|EQ||
+|N_ASSIGNEE_ID_IN|负责人标识|IN||
+|N_ASSIGNEE_ID_ISNOTNULL|负责人标识|ISNOTNULL||
+|N_ASSIGNEE_ID_ISNULL|负责人标识|ISNULL||
+|N_ASSIGNEE_ID_NOTEQ|负责人标识|NOTEQ||
+|N_ASSIGNEE_ID_NOTIN|负责人标识|NOTIN||
 |N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_CREATE_TIME_EQ|建立时间|EQ||
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
 |N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
@@ -328,19 +335,21 @@
 |N_STATE_EQ|状态|EQ||
 |N_STATE_NOTEQ|状态|NOTEQ||
 |N_STATE_NOTIN|状态|NOTIN||
+|N_TAGS_LIKE|标签|LIKE||
 |N_TITLE_LIKE|标题|LIKE||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
+| 新建工单（快速新建） | quick_new_ticket | 新建工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
 | 工单自定义导入 | ticket_custom_import_data | 导入 |无数据|<details><summary>打开数据导入视图</summary>[产品工单导入]()</details>||
 | 工单删除 | ticket_delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
-| 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 确定 | panel_usr1226376706_button_okaction_click | 确定 |单项数据|用户自定义||
+| 工单恢复（工具栏） | ticket_recover_toolbar | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 添加工单（其他实体关联） | others_add_relation_ticket | 添加工单 |无数据|用户自定义||
 | 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 工单删除（工具栏） | toolbar_ticket_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
@@ -364,15 +373,16 @@
 |[关联工作项（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联工单值变更](module/ProdMgmt/ticket/uilogic/relation_ticket_change)|relation_ticket_change|关联工单值变更时，调用处理逻辑，生成正反向关联数据|
 |[关联工单（工具栏）](module/ProdMgmt/ticket/uilogic/toolbar_link_ticket)|toolbar_link_ticket|主视图工具栏上点击触发，切换分页，打开下拉菜单|
-|[刷新工单表格](module/ProdMgmt/ticket/uilogic/refresh_ticket_grid)|refresh_ticket_grid||
-|[只读隐藏](module/ProdMgmt/ticket/uilogic/readonly_hide)|readonly_hide||
+|[刷新工单表格](module/ProdMgmt/ticket/uilogic/refresh_ticket_grid)|refresh_ticket_grid|刷新工单表格|
+|[只读隐藏](module/ProdMgmt/ticket/uilogic/readonly_hide)|readonly_hide|工作项只读隐藏|
 |[客户添加工单值变更](module/ProdMgmt/ticket/uilogic/customer_add_change)|customer_add_change|客户添加工单值变更，触发工单的客户属性变更|
 |[工作项关联工单](module/ProdMgmt/ticket/uilogic/work_item_relation_ticket)|work_item_relation_ticket|值变更时触发，工单关联工单，调用处理逻辑生成正反向数据|
+|[工单只读用户判断](module/ProdMgmt/ticket/uilogic/ticket_readonly_recognize)|ticket_readonly_recognize|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
+|[已归档或已删除工单显示隐藏](module/ProdMgmt/ticket/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除工单显示隐藏|
 |[建立关联数据](module/ProdMgmt/ticket/uilogic/create_relation)|create_relation|新建执行后，建立关联数据|
 |[建立双向关联数据](module/ProdMgmt/ticket/uilogic/create_double_relation)|create_double_relation|建立双向关联数据|
 |[新建工单并生成关联数据](module/ProdMgmt/ticket/uilogic/create_and_relation)|create_and_relation|新建工单并生成关联数据|
 |[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/ticket/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项（工具栏）|
-|[测试判断只读用户](module/ProdMgmt/ticket/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[添加附件数据](module/ProdMgmt/ticket/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[获取工单总条数](module/ProdMgmt/ticket/uilogic/get_ticket_total)|get_ticket_total|获取工单的总条数信息|
 |[触发计数器刷新](module/ProdMgmt/ticket/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
@@ -408,7 +418,7 @@
 用于追踪和管理产品相关的客户请求和问题解决过程。
 
 
-<el-descriptions direction="vertical" :column="12" :size="size" border>
+<el-descriptions direction="vertical" :column="16" :size="size" border>
 <el-descriptions-item label="编号">-</el-descriptions-item>
 <el-descriptions-item label="标题">-</el-descriptions-item>
 <el-descriptions-item label="状态">-</el-descriptions-item>
@@ -421,6 +431,10 @@
 <el-descriptions-item label="预计时间">-</el-descriptions-item>
 <el-descriptions-item label="提交人">-</el-descriptions-item>
 <el-descriptions-item label="提交时间">-</el-descriptions-item>
+<el-descriptions-item label="更新人">-</el-descriptions-item>
+<el-descriptions-item label="更新时间">-</el-descriptions-item>
+<el-descriptions-item label="建立人">-</el-descriptions-item>
+<el-descriptions-item label="建立时间">-</el-descriptions-item>
 </el-descriptions>
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./recover#begin {"开始"}]]
 state "设置删除状态" as PREPAREPARAM1  [[$./recover#prepareparam1 {"设置删除状态"}]]
-state "恢复" as DEACTION1  [[$./recover#deaction1 {"恢复"}]]
+state "跟新恢复状态" as DEACTION1  [[$./recover#deaction1 {"跟新恢复状态"}]]
 state "恢复最近访问" as RAWSQLCALL1  [[$./recover#rawsqlcall1 {"恢复最近访问"}]]
 state "结束" as END1 <<end>> [[$./recover#end1 {"结束"}]]
 
@@ -45,7 +45,7 @@ RAWSQLCALL1 --> END1
 1. 将`0` 设置给  `update_obj(测试库更新对象).IS_DELETED(是否已删除)`
 2. 将`Default(传入变量).ID(标识)` 设置给  `update_obj(测试库更新对象).ID(标识)`
 
-#### 恢复 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 跟新恢复状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

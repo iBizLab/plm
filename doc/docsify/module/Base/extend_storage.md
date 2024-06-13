@@ -51,11 +51,21 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_BIGINT_VALUE_EQ|大整形值|EQ||
+|N_DATETIME_VALUE_EQ|时间值|EQ||
+|N_DECIMAL_VALUE_EQ|数值值|EQ||
+|N_DOUBLE_VALUE_EQ|浮点值|EQ||
 |N_ID_EQ|标识|EQ||
+|N_INT_VALUE_EQ|整形值|EQ||
+|N_LONGSTRING_VALUE_ISNULL|长文本值|ISNULL||
+|N_LONGSTRING_VALUE_LIKE|长文本值|LIKE||
 |N_NAME_EQ|名称|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_OWNER_ID_EQ|所属数据标识|EQ||
 |N_OWNER_TYPE_EQ|所属数据对象|EQ||
+|N_STRING_VALUE_EQ|文本值|EQ||
+|N_STRING_VALUE_ISNULL|文本值|ISNULL||
+|N_STRING_VALUE_LIKE|文本值|LIKE||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

@@ -39,7 +39,7 @@ Begin --> RAWJSCODE1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.update.send({ srfdecodename: 'work_item'})
+ibiz.mc.command.update.send({srfdecodename: 'work_item',srfkey: context.del_child_relation})
 
 ```
 

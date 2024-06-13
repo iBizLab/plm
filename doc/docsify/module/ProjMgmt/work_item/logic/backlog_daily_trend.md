@@ -75,6 +75,7 @@ FROM (
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wis.TYPE, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_FROM, ?))
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.IS_ARCHIVED, ?))
     GROUP BY created_date
 ) b ON date_series.date = b.created_date
          LEFT JOIN (
@@ -92,6 +93,7 @@ FROM (
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wis.TYPE, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_TYPE, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.BACKLOG_FROM, ?))
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(wi.IS_ARCHIVED, ?))
     GROUP BY update_date
 ) c ON date_series.date = c.update_date
 ORDER BY date_series.date;
@@ -119,23 +121,29 @@ ORDER BY date_series.date;
 18. `Default(传入变量).N_BACKLOG_FROM_EQ`
 19. `Default(传入变量).N_BACKLOG_FROM_EQ`
 20. `Default(传入变量).N_BACKLOG_FROM_EQ`
-21. `Default(传入变量).n_create_time_ltandeq`
-22. `Default(传入变量).n_create_time_gtandeq`
-23. `Default(传入变量).N_BOARD_ID_EQ`
-24. `Default(传入变量).N_BOARD_ID_EQ`
-25. `Default(传入变量).N_BOARD_ID_EQ`
-26. `Default(传入变量).N_PRIORITY_EQ`
-27. `Default(传入变量).N_PRIORITY_EQ`
-28. `Default(传入变量).N_PRIORITY_EQ`
-29. `Default(传入变量).n_work_item_type_group`
-30. `Default(传入变量).n_work_item_type_group`
-31. `Default(传入变量).n_work_item_type_group`
-32. `Default(传入变量).N_BACKLOG_TYPE_EQ`
-33. `Default(传入变量).N_BACKLOG_TYPE_EQ`
-34. `Default(传入变量).N_BACKLOG_TYPE_EQ`
-35. `Default(传入变量).N_BACKLOG_FROM_EQ`
-36. `Default(传入变量).N_BACKLOG_FROM_EQ`
-37. `Default(传入变量).N_BACKLOG_FROM_EQ`
+21. `Default(传入变量).n_is_archived_in`
+22. `Default(传入变量).n_is_archived_in`
+23. `Default(传入变量).n_is_archived_in`
+24. `Default(传入变量).n_create_time_ltandeq`
+25. `Default(传入变量).n_create_time_gtandeq`
+26. `Default(传入变量).N_BOARD_ID_EQ`
+27. `Default(传入变量).N_BOARD_ID_EQ`
+28. `Default(传入变量).N_BOARD_ID_EQ`
+29. `Default(传入变量).N_PRIORITY_EQ`
+30. `Default(传入变量).N_PRIORITY_EQ`
+31. `Default(传入变量).N_PRIORITY_EQ`
+32. `Default(传入变量).n_work_item_type_group`
+33. `Default(传入变量).n_work_item_type_group`
+34. `Default(传入变量).n_work_item_type_group`
+35. `Default(传入变量).N_BACKLOG_TYPE_EQ`
+36. `Default(传入变量).N_BACKLOG_TYPE_EQ`
+37. `Default(传入变量).N_BACKLOG_TYPE_EQ`
+38. `Default(传入变量).N_BACKLOG_FROM_EQ`
+39. `Default(传入变量).N_BACKLOG_FROM_EQ`
+40. `Default(传入变量).N_BACKLOG_FROM_EQ`
+41. `Default(传入变量).n_is_archived_in`
+42. `Default(传入变量).n_is_archived_in`
+43. `Default(传入变量).n_is_archived_in`
 
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 

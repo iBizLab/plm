@@ -42,6 +42,7 @@ RAWJSCODE1 --> END1
 
 ```javascript
 const rows = uiLogic.grid.state.rows;
+const srfreadonly = context.srfreadonly;
 if (rows && rows.length > 0) {
 	rows.forEach(row => {
 		const titleColumn = row.uiActionGroupStates.name;
@@ -56,6 +57,9 @@ if (rows && rows.length > 0) {
 					action.visible = status == '1';
 				}
                 if (action.uiActionId === 'set_complete_product@baseline') {
+					action.visible = status == '1';
+				}
+                if (action.uiActionId === 'set_complete_space@baseline') {
 					action.visible = status == '1';
 				}
 			})
@@ -76,5 +80,5 @@ if (rows && rows.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格|Grid|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表格|Grid|当前部件对象||

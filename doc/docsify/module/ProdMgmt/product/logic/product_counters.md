@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./product_counters#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./product_counters#end1 {"结束"}]]
-state "需求" as RAWSQLCALL1  [[$./product_counters#rawsqlcall1 {"需求"}]]
+state "查询产品关联需求数量" as RAWSQLCALL1  [[$./product_counters#rawsqlcall1 {"查询产品关联需求数量"}]]
 state "排期" as RAWSQLCALL2  [[$./product_counters#rawsqlcall2 {"排期"}]]
 state "工单" as RAWSQLCALL3  [[$./product_counters#rawsqlcall3 {"工单"}]]
 state "客户" as RAWSQLCALL4  [[$./product_counters#rawsqlcall4 {"客户"}]]
@@ -48,14 +48,14 @@ RAWSQLCALL5 --> END1
 
 返回 `Default(传入变量)`
 
-#### 需求 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 查询产品关联需求数量 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
--- 需求关联客户
+-- 产品关联需求
 SELECT
 	count( t.id ) AS idea_total 
 FROM

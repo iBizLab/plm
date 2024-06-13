@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./shift_in_baseline#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./shift_in_baseline#bindparam1 {"绑定参数"}]]
+state "绑定所勾选的数据对象" as BINDPARAM1  [[$./shift_in_baseline#bindparam1 {"绑定所勾选的数据对象"}]]
 state "结束" as END1 <<end>> [[$./shift_in_baseline#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./shift_in_baseline#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./shift_in_baseline#resetparam1 {"重置参数"}]]
-state "重置参数" as RESETPARAM2  [[$./shift_in_baseline#resetparam2 {"重置参数"}]]
+state "重置关系参数" as RESETPARAM1  [[$./shift_in_baseline#resetparam1 {"重置关系参数"}]]
+state "重置版本参数" as RESETPARAM2  [[$./shift_in_baseline#resetparam2 {"重置版本参数"}]]
 state "填充关联属性" as PREPAREPARAM1  [[$./shift_in_baseline#prepareparam1 {"填充关联属性"}]]
-state "准备参数" as PREPAREPARAM2  [[$./shift_in_baseline#prepareparam2 {"准备参数"}]]
+state "填充初始v1版本属性" as PREPAREPARAM2  [[$./shift_in_baseline#prepareparam2 {"填充初始v1版本属性"}]]
 state "修复v1版本" as DEACTION2  [[$./shift_in_baseline#deaction2 {"修复v1版本"}]]
 state "填充关联目标版本标识" as PREPAREPARAM3  [[$./shift_in_baseline#prepareparam3 {"填充关联目标版本标识"}]]
 state "建立基线-工作项关联数据" as DEACTION1  [[$./shift_in_baseline#deaction1 {"建立基线-工作项关联数据"}]]
@@ -52,7 +52,7 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充初始v1版本属性 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -74,7 +74,7 @@ LOOPSUBCALL1 --> END1
 
 1. 将`version(版本).ID(标识)` 设置给  `relation(关联对象).TARGET_VERSION_ID(目标对象版本标识)`
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定所勾选的数据对象 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -84,12 +84,12 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`srfactionparam(选择数据列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置关系参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```relation(关联对象)```
-#### 重置参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置版本参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 

@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./delete#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./delete#prepareparam1 {"准备参数"}]]
+state "准备评论删除提示信息" as PREPAREPARAM1  [[$./delete#prepareparam1 {"准备评论删除提示信息"}]]
 state "将评论内容修改为'已删除'" as DEACTION1  [[$./delete#deaction1 {"将评论内容修改为"已删除""}]]
 state "结束" as END1 <<end>> [[$./delete#end1 {"结束"}]]
 
@@ -36,7 +36,7 @@ DEACTION1 --> END1
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备评论删除提示信息 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

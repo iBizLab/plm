@@ -47,9 +47,11 @@ RAWSQLCALL1 --> END1
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-UPDATE release
+UPDATE project_release
 SET categories = TRIM(BOTH ',' FROM REPLACE(CONCAT(',', categories, ','), CONCAT(',', ?, ','), ','))
 WHERE FIND_IN_SET(?, categories) > 0 ;
+
+
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

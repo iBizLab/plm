@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recover_project_set#begin {"开始"}]]
-state "恢复状态" as PREPAREPARAM1  [[$./recover_project_set#prepareparam1 {"恢复状态"}]]
-state "恢复" as DEACTION1  [[$./recover_project_set#deaction1 {"恢复"}]]
+state "设置项目集恢复状态" as PREPAREPARAM1  [[$./recover_project_set#prepareparam1 {"设置项目集恢复状态"}]]
+state "更新项目集恢复状态" as DEACTION1  [[$./recover_project_set#deaction1 {"更新项目集恢复状态"}]]
 
 
 Begin --> PREPAREPARAM1
@@ -34,13 +34,13 @@ PREPAREPARAM1 --> DEACTION1
 
 
 *- N/A*
-#### 恢复状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置项目集恢复状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`0` 设置给  `Default(传入变量).IS_DELETED(是否已删除)`
 
-#### 恢复 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新项目集恢复状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

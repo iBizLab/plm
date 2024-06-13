@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./state_notify#begin {"开始"}]]
-state "实体通知" as DENOTIFY1  [[$./state_notify#denotify1 {"实体通知"}]]
+state "项目状态变更通知" as DENOTIFY1  [[$./state_notify#denotify1 {"项目状态变更通知"}]]
 state "结束" as END1 <<end>> [[$./state_notify#end1 {"结束"}]]
 
 
@@ -34,7 +34,7 @@ DENOTIFY1 --> END1
 
 
 *- N/A*
-#### 实体通知 :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+#### 项目状态变更通知 :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 

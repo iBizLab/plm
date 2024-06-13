@@ -15,35 +15,35 @@ entity "COMMENT\n评论" as COMMENT [[$../module/Base/comment {评论}]] {
         --
         <&link-intact> PID - 父标识
 }
-entity "DISCUSS_POST\n讨论" as DISCUSS_POST [[$../module/team/discuss_post {讨论}]] {
+entity "DISCUSS_POST\n讨论" as DISCUSS_POST [[$../module/Team/discuss_post {讨论}]] {
         <&key> ID - 标识
         --
         <&link-intact> TOPIC_ID - 话题标识
 }
-entity "DISCUSS_REPLY\n讨论回复" as DISCUSS_REPLY [[$../module/team/discuss_reply {讨论回复}]] {
+entity "DISCUSS_REPLY\n讨论回复" as DISCUSS_REPLY [[$../module/Team/discuss_reply {讨论回复}]] {
         <&key> ID - 标识
         --
         <&link-intact> POST_ID - 讨论标识
 }
-entity "DISCUSS_TOPIC\n话题" as DISCUSS_TOPIC [[$../module/team/discuss_topic {话题}]] {
+entity "DISCUSS_TOPIC\n话题" as DISCUSS_TOPIC [[$../module/Team/discuss_topic {话题}]] {
         <&key> ID - 标识
         --
 }
-entity "KEY_RESULT\n关键结果" as KEY_RESULT [[$../module/team/key_result {关键结果}]] {
+entity "KEY_RESULT\n关键结果" as KEY_RESULT [[$../module/Team/key_result {关键结果}]] {
         <&key> ID - 标识
         --
         <&link-intact> OBJECTIVE_ID - 目标标识
 }
-entity "OBJECTIVE\n目标" as OBJECTIVE [[$../module/team/objective {目标}]] {
+entity "OBJECTIVE\n目标" as OBJECTIVE [[$../module/Team/objective {目标}]] {
         <&key> ID - 标识
         --
         <&link-intact> PERIOD_ID - 周期标识
 }
-entity "PERIOD\n周期" as PERIOD [[$../module/team/period {周期}]] {
+entity "PERIOD\n周期" as PERIOD [[$../module/Team/period {周期}]] {
         <&key> ID - 标识
         --
 }
-entity "UPDATE_RECORD\n进展" as UPDATE_RECORD [[$../module/team/update_record {进展}]] {
+entity "UPDATE_RECORD\n进展" as UPDATE_RECORD [[$../module/Team/update_record {进展}]] {
         <&key> ID - 标识
         --
         <&link-intact> KEY_RESULT_ID - 关键结果标识

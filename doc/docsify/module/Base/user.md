@@ -21,6 +21,7 @@
 |手机号|MOBILE|文本，可指定长度|100|是||
 |登录名|NAME|文本，可指定长度|200|是||
 |密码|PASSWORD|文本，可指定长度|200|是||
+|统计|REPORT_FLAG|[是否逻辑](index/dictionary_index#user_report_flag "启停状态")||是||
 |状态|STATUS|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -36,12 +37,15 @@
 | -------- |---------- |------------|----- |
 |[DER1N_CUSTOMER_USER_ASSIGNEE_ID](der/DER1N_CUSTOMER_USER_ASSIGNEE_ID)|[客户(CUSTOMER)](module/ProdMgmt/customer)|1:N关系||
 |[DER1N_DEPARTMENT_USER_HEAD_ID](der/DER1N_DEPARTMENT_USER_HEAD_ID)|[部门(DEPARTMENT)](module/Base/department)|1:N关系||
+|[DER1N_DISCUSS_MEMBER_USER_USER_ID](der/DER1N_DISCUSS_MEMBER_USER_USER_ID)|[协作成员(DISCUSS_MEMBER)](module/Team/discuss_member)|1:N关系||
 |[DER1N_IDEA_USER_ASSIGNEE_ID](der/DER1N_IDEA_USER_ASSIGNEE_ID)|[需求(IDEA)](module/ProdMgmt/idea)|1:N关系||
+|[DER1N_INSIGHT_MEMBER_USER_USER_ID](der/DER1N_INSIGHT_MEMBER_USER_USER_ID)|[效能成员(INSIGHT_MEMBER)](module/Insight/insight_member)|1:N关系||
 |[DER1N_LIBRARY_MEMBER_USER_USER_ID](der/DER1N_LIBRARY_MEMBER_USER_USER_ID)|[测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)|1:N关系||
 |[DER1N_MEMBER_USER_USER_ID](der/DER1N_MEMBER_USER_USER_ID)|[成员(MEMBER)](module/Base/member)|1:N关系||
 |[DER1N_PORTFOLIO_MEMBER_USER_USER_ID](der/DER1N_PORTFOLIO_MEMBER_USER_USER_ID)|[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|1:N关系||
 |[DER1N_PRODUCT_MEMBER_USER_USER_ID](der/DER1N_PRODUCT_MEMBER_USER_USER_ID)|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|1:N关系||
 |[DER1N_PROJECT_MEMBER_USER_USER_ID](der/DER1N_PROJECT_MEMBER_USER_USER_ID)|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|1:N关系||
+|[DER1N_RESOURCE_MEMBER_USER_USER_ID](der/DER1N_RESOURCE_MEMBER_USER_USER_ID)|[资源组件成员(RESOURCE_MEMBER)](module/Base/resource_member)|1:N关系||
 |[DER1N_SPACE_MEMBER_USER_USER_ID](der/DER1N_SPACE_MEMBER_USER_USER_ID)|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|1:N关系||
 |[DER1N_TEST_CASE_USER_MAINTENANCE_ID](der/DER1N_TEST_CASE_USER_MAINTENANCE_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
 |[DER1N_TICKET_USER_ASSIGNEE_ID](der/DER1N_TICKET_USER_ASSIGNEE_ID)|[工单(TICKET)](module/ProdMgmt/ticket)|1:N关系||
@@ -78,6 +82,15 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|取消统计|cancel_report_flag|[实体处理逻辑](module/Base/user/logic/cancel_report_flag "取消统计")|默认|不支持||||
+|设置统计|set_report_flag|[实体处理逻辑](module/Base/user/logic/set_report_flag "设置统计")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[取消统计](module/Base/user/logic/cancel_report_flag)|cancel_report_flag|无||取消用户统计状态|
+|[统计过滤](module/Base/user/logic/report_flag_filter)|report_flag_filter|无|||
+|[设置统计](module/Base/user/logic/set_report_flag)|set_report_flag|无||更新用户统计状态|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -93,6 +106,7 @@
 |[数据集(DEFAULT)](module/Base/user/dataset/Default)|DEFAULT|数据查询|是|||
 |[未分配部门(unassigned_dept)](module/Base/user/dataset/unassigned_dept)|unassigned_dept|数据查询|否|||
 |[当前用户(user)](module/Base/user/dataset/user)|user|数据查询|否|||
+|[工时统计(workload)](module/Base/user/dataset/workload)|workload|[实体逻辑](module/Base/user/logic/report_flag_filter)|否|||
 
 ## 数据权限
 
@@ -116,10 +130,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `UPDATE`
 * `READ`
-* `CREATE`
 * `DELETE`
+* `UPDATE`
+* `CREATE`
 
 
 
@@ -145,6 +159,7 @@
 |N_DEPARTMENT_NAME_EQ|部门名称|EQ||
 |N_DEPARTMENT_NAME_LIKE|部门名称|LIKE||
 |N_DISPLAY_NAME_LIKE|姓名|LIKE||
+|N_ID_NOTIN|标识|NOTIN||
 |N_ID_EQ|标识|EQ||
 |N_JOB_ID_EQ|岗位标识|EQ||
 |N_JOB_NAME_EQ|职位名称|EQ||
@@ -155,8 +170,11 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 帐号设置 | account_setting | 帐号设置 |无数据|<details><summary>打开顶级视图</summary>[帐号设置](app/view/user_setting_view)</details>|当前用户帐号设置|
+| 主题设置 | theme_setting | 主题设置 |无数据|用户自定义||
 | 修改密码（表单） | chang_pas | 确认 |无数据|用户自定义||
 | 打开日志列表 | open_log_list | 打开日志列表 |无数据|<details><summary>打开顶级视图</summary>[PLM系统更新日志](app/view/article_page_updated_logs)</details>||
+| 取消统计 | cancel_report_flag | 取消统计 |多项数据（主键）|<details><summary>后台调用</summary>[cancel_report_flag](#行为)||
+| 开启统计 | set_report_flag | 开启统计 |多项数据（主键）|<details><summary>后台调用</summary>[set_report_flag](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
@@ -175,6 +193,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/user?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/user?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/user?id=数据查询`">
   数据查询

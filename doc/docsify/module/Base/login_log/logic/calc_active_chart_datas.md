@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_active_chart_datas#begin {"开始"}]]
-state "准备过滤参数" as PREPAREPARAM1  [[$./calc_active_chart_datas#prepareparam1 {"准备过滤参数"}]]
+state "计算前15天和今天的日期" as RAWSFCODE1  [[$./calc_active_chart_datas#rawsfcode1 {"计算前15天和今天的日期"}]]
+state "准备日期过滤参数" as PREPAREPARAM1  [[$./calc_active_chart_datas#prepareparam1 {"准备日期过滤参数"}]]
 state "查询活跃总人数" as DEDATASET2  [[$./calc_active_chart_datas#dedataset2 {"查询活跃总人数"}]]
 state "赋值活跃总人数" as PREPAREPARAM2  [[$./calc_active_chart_datas#prepareparam2 {"赋值活跃总人数"}]]
 state "获取图表默认数据" as DEDATASET1  [[$./calc_active_chart_datas#dedataset1 {"获取图表默认数据"}]]
-state "计算前15天和今天的日期" as RAWSFCODE1  [[$./calc_active_chart_datas#rawsfcode1 {"计算前15天和今天的日期"}]]
 state "结束" as END1 <<end>> [[$./calc_active_chart_datas#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./calc_active_chart_datas#loopsubcall1 {"循环子调用"}]] #green {
 state "计算图表所需数据" as RAWSFCODE2  [[$./calc_active_chart_datas#rawsfcode2 {"计算图表所需数据"}]]
@@ -47,6 +47,12 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `echart_page(图表分页查询结果变量)`
+
 #### 计算前15天和今天的日期 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
@@ -92,7 +98,7 @@ logic.setParam('starttime',beforefiftyday);
 logic.setParam('endtime',todays)
 ```
 
-#### 准备过滤参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备日期过滤参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -121,12 +127,6 @@ logic.setParam('endtime',todays)
 调用实体 [登录日志(LOGIN_LOG)](module/Base/login_log.md) 数据集合 [获取活跃人员图表数据(ECHARTS_DATAS)](module/Base/login_log#数据集合) ，查询参数为`Default(传入变量)`
 
 将执行结果返回给参数`echart_page(图表分页查询结果变量)`
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-返回 `echart_page(图表分页查询结果变量)`
 
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 

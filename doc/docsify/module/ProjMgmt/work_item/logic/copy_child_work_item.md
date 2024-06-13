@@ -23,8 +23,6 @@ state "循环子调用" as LOOPSUBCALL1  [[$./copy_child_work_item#loopsubcall1 
 state "重置参数" as RESETPARAM1  [[$./copy_child_work_item#resetparam1 {"重置参数"}]]
 state "重置参数" as RESETPARAM2  [[$./copy_child_work_item#resetparam2 {"重置参数"}]]
 state "填充新子工作项的属性" as PREPAREPARAM2  [[$./copy_child_work_item#prepareparam2 {"填充新子工作项的属性"}]]
-state "准备参数" as PREPAREPARAM3  [[$./copy_child_work_item#prepareparam3 {"准备参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./copy_child_work_item#prepareparam4 {"准备参数"}]]
 state "新建子工作项" as DEACTION3  [[$./copy_child_work_item#deaction3 {"新建子工作项"}]]
 state "重置参数" as RESETPARAM3  [[$./copy_child_work_item#resetparam3 {"重置参数"}]]
 state "准备参数" as PREPAREPARAM6  [[$./copy_child_work_item#prepareparam6 {"准备参数"}]]
@@ -45,8 +43,7 @@ DEACTION2 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> RESETPARAM1
 RESETPARAM1 --> RESETPARAM2
 RESETPARAM2 --> PREPAREPARAM2
-PREPAREPARAM2 --> PREPAREPARAM3 : [[$./copy_child_work_item#prepareparam2-prepareparam3{如果父工作项不存在Top_id} 如果父工作项不存在Top_id]]
-PREPAREPARAM3 --> DEACTION3
+PREPAREPARAM2 --> DEACTION3
 DEACTION3 --> RESETPARAM3
 RESETPARAM3 --> PREPAREPARAM6
 PREPAREPARAM6 --> DEACTION5
@@ -55,8 +52,6 @@ LOOPSUBCALL2 --> PREPAREPARAM5
 PREPAREPARAM5 --> DEACTION4
 LOOPSUBCALL2 --> DELOGIC1
 DEACTION5 --> DELOGIC1 : [[$./copy_child_work_item#deaction5-delogic1{不存在附件} 不存在附件]]
-PREPAREPARAM2 --> PREPAREPARAM4 : [[$./copy_child_work_item#prepareparam2-prepareparam4{如果父工作项存在Top_id} 如果父工作项存在Top_id]]
-PREPAREPARAM4 --> DEACTION3
 
 
 @enduml
@@ -117,12 +112,6 @@ PREPAREPARAM4 --> DEACTION3
 
 
 重置参数```attachments(附件列表)```
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`after_copy_parent(复制后的父工作项).ID(标识)` 设置给  `new_child(新建子工作项).TOP_ID(顶级工作项标识)`
-
 #### 填充新子工作项的属性 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -145,12 +134,6 @@ PREPAREPARAM4 --> DEACTION3
 调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Create](module/ProjMgmt/work_item#行为) ，行为参数为`new_child(新建子工作项)`
 
 将执行结果返回给参数`new_child(新建子工作项)`
-
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`after_copy_parent(复制后的父工作项).TOP_ID(顶级工作项标识)` 设置给  `new_child(新建子工作项).TOP_ID(顶级工作项标识)`
 
 #### 重置参数 :id=RESETPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
@@ -206,18 +189,12 @@ PREPAREPARAM4 --> DEACTION3
 #### 存在子工作项 :id=DEDATASET1-DEACTION1
 
 `child_page(子工作项分页结果变量).size` GT `0`
-#### 如果父工作项不存在Top_id :id=PREPAREPARAM2-PREPAREPARAM3
-
-`after_copy_parent(复制后的父工作项).TOP_ID(顶级工作项标识)` ISNULL
 #### 存在附件 :id=DEACTION5-LOOPSUBCALL2
 
 `attachments(附件列表)` ISNOTNULL
 #### 不存在附件 :id=DEACTION5-DELOGIC1
 
 `for_temp_obj(循环临时变量).ATTACHMENTS(附件)` ISNULL
-#### 如果父工作项存在Top_id :id=PREPAREPARAM2-PREPAREPARAM4
-
-`after_copy_parent(复制后的父工作项).TOP_ID(顶级工作项标识)` ISNOTNULL
 
 
 ### 实体逻辑参数

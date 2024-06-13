@@ -15,9 +15,6 @@
 ### 关联界面行为
   * [看板(BOARD)](module/ProjMgmt/board) : [删除](module/ProjMgmt/board#界面行为)
 
-### 关联视图
-  * [确认删除看板(board_confirm_remove_view)](app/view/board_confirm_remove_view)
-
 <script>
  const { createApp } = Vue
   createApp({

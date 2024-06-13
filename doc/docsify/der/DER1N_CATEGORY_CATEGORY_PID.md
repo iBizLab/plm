@@ -25,7 +25,7 @@
 
 <p class="panel-title"><b>删除方式</b></p>
 
-* `同时删除`
+* `置空`
 
 <p class="panel-title"><b>删除顺序</b></p>
 

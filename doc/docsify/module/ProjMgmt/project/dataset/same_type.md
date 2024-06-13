@@ -1,4 +1,4 @@
-## 相同类型工作项(same_type) <!-- {docsify-ignore-all} -->
+## 相同类型项目(same_type) <!-- {docsify-ignore-all} -->
 
 
 
@@ -16,7 +16,11 @@
 * `默认（全部查询列）`
 
 
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `CREATE_TIME(建立时间)` `DESC`
+
 
 
 ### 数据查询
-  * [相同类型工作项(same_type)](module/ProjMgmt/project/query/same_type)
+  * [相同类型项目(same_type)](module/ProjMgmt/project/query/same_type)

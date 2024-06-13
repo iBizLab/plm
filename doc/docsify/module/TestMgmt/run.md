@@ -14,6 +14,7 @@
 |名称|CASE_NAME|外键值文本|200|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |执行时间|EXECUTED_AT|日期时间型||是||
 |执行人标识|EXECUTOR_ID|文本，可指定长度|100|是||
@@ -25,6 +26,7 @@
 |所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
 |维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
 |名称|NAME|文本，可指定长度|200|是||
+|父对象版本标识|PARENT_VERSION_ID|文本，可指定长度|100|是||
 |测试计划标识|PLAN_ID|外键值|100|是||
 |测试计划|PLAN_NAME|外键值文本|200|是||
 |前置条件|PRECONDITION|外键值附加数据|2000|是||
@@ -90,7 +92,6 @@
 | -------- |---------- |-----------|----- |
 |[DER1N_RUN_TEST_CASE_CASE_ID](der/DER1N_RUN_TEST_CASE_CASE_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|1:N关系||
 |[DER1N_RUN_TEST_PLAN_PLAN_ID](der/DER1N_RUN_TEST_PLAN_PLAN_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
-|[DERCUSTOM_TEST_CASE_RUN](der/DERCUSTOM_TEST_CASE_RUN)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -101,14 +102,13 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#run_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#run_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |添加计划执行用例|add_plan_run|[实体处理逻辑](module/TestMgmt/run/logic/create_plan_run "添加计划执行用例")|默认|不支持||||
 |批设置执行结果|batch_save_run_history|[实体处理逻辑](module/TestMgmt/run/logic/batch_save_run_history "批设置执行结果")|默认|不支持||||
-|获取测试库成员|fill_library_member|[实体处理逻辑](module/TestMgmt/run/logic/get_library_member "获取测试库成员")|默认|不支持||||
 |获取实际工时|get_actual_workload|[实体处理逻辑](module/TestMgmt/run/logic/get_actual_workload "获取实际工时")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/TestMgmt/run/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联执行用例|other_relation_run|[实体处理逻辑](module/TestMgmt/run/logic/others_relation_run "其他实体关联执行用例")|默认|不支持||||
@@ -137,7 +137,7 @@
 |[移除用例相关信息](module/TestMgmt/run/logic/delete_run_info)|delete_run_info|无||在执行remove操作之前，移除相关的执行用例信息|
 |[获取实际工时](module/TestMgmt/run/logic/get_actual_workload)|get_actual_workload|无||获取用例的实际工时|
 |[获取当前用例详情](module/TestMgmt/run/logic/this_run_details)|this_run_details|无||获取当前执行用例详情信息|
-|[获取测试库成员](module/TestMgmt/run/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前登陆者权限|
+|[获取测试库成员](module/TestMgmt/run/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前用户权限|
 |[规划计划](module/TestMgmt/run/logic/program_plan)|program_plan|无||规划当前计划内用例（添加用例至测试计划内）|
 |[记录执行结果](module/TestMgmt/run/logic/create_result)|create_result|无||记录当前执行用例的执行结果|
 |[设置执行人](module/TestMgmt/run/logic/set_executor)|set_executor|无||设置当前执行用例执行人|
@@ -147,6 +147,7 @@
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
 | --------  | :----:    | ---- |----- |
+|版本数据存储|VERSIONSTORAGE|[附加数据版本(VERSION_DATA)](module/Base/version_data)||
 |实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 |审计|数据审计|[活动(ACTIVITY)](module/Base/activity)||
 
@@ -208,12 +209,22 @@
 |N_CASE_ID_EQ|测试用例标识|EQ||
 |N_CASE_NAME_EQ|名称|EQ||
 |N_CASE_NAME_LIKE|名称|LIKE||
+|N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
 |N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
 |N_EXECUTED_AT_EQ|执行时间|EQ||
 |N_EXECUTED_AT_GTANDEQ|执行时间|GTANDEQ||
 |N_EXECUTED_AT_LTANDEQ|执行时间|LTANDEQ||
 |N_EXECUTOR_ID_EQ|执行人标识|EQ||
+|N_EXECUTOR_ID_IN|执行人标识|IN||
+|N_EXECUTOR_ID_ISNOTNULL|执行人标识|ISNOTNULL||
+|N_EXECUTOR_ID_ISNULL|执行人标识|ISNULL||
+|N_EXECUTOR_ID_NOTEQ|执行人标识|NOTEQ||
+|N_EXECUTOR_ID_NOTIN|执行人标识|NOTIN||
 |N_EXECUTOR_NAME_EQ|执行人|EQ||
 |N_ID_EQ|标识|EQ||
 |N_LIBRARY_ID_EQ|测试库标识|EQ||
@@ -249,7 +260,6 @@
 |[填充并刷新门户数据（测试）](module/TestMgmt/run/uilogic/fill_and_refresh_portlet)|fill_and_refresh_portlet|门户界面行为打开选项操作视图后，计算需要填充到视图上的数据|
 |[打开关联用例](module/TestMgmt/run/uilogic/open_re_run)|open_re_run|调用界面行为，打开关联用例|
 |[查看工时明细](module/TestMgmt/run/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
-|[测试判断只读用户](module/TestMgmt/run/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
 |[获取执行结果总条数](module/TestMgmt/run/uilogic/get_run_result_total)|get_run_result_total|获取执行结果的总条数信息|
 |[触发计数器刷新(run)](module/TestMgmt/run/uilogic/refresh_counter_run)|refresh_counter_run|关联数据变更后，触发计数器刷新|

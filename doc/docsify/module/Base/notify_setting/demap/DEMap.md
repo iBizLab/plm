@@ -20,17 +20,17 @@
 * `属性等价`
 `OWNER_ID(所有者标识)` <i class="fa fa-angle-double-right"/></i> `OWNER_ID(所有者标识)`
 * `属性等价`
-`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `NAME(名称)`
-* `属性等价`
 `ID(标识)` <i class="fa fa-angle-double-right"/></i> `ID(标识)`
 * `属性等价`
-`UPDATE_MAN(更新人)` <i class="fa fa-angle-double-right"/></i> `UPDATE_MAN(更新人)`
+`NAME(名称)` <i class="fa fa-angle-double-right"/></i> `NAME(名称)`
+* `属性等价`
+`CREATE_MAN(建立人)` <i class="fa fa-angle-double-right"/></i> `CREATE_MAN(建立人)`
 * `属性等价`
 `CREATE_TIME(建立时间)` <i class="fa fa-angle-double-right"/></i> `CREATE_TIME(建立时间)`
 * `属性等价`
-`UPDATE_TIME(更新时间)` <i class="fa fa-angle-double-right"/></i> `UPDATE_TIME(更新时间)`
+`UPDATE_MAN(更新人)` <i class="fa fa-angle-double-right"/></i> `UPDATE_MAN(更新人)`
 * `属性等价`
-`CREATE_MAN(建立人)` <i class="fa fa-angle-double-right"/></i> `CREATE_MAN(建立人)`
+`UPDATE_TIME(更新时间)` <i class="fa fa-angle-double-right"/></i> `UPDATE_TIME(更新时间)`
 * `属性等价`
 `SYSTEM_TAG(系统标记)` <i class="fa fa-angle-double-right"/></i> `SYSTEM_TAG(系统标记)`
 * `属性等价`

@@ -63,6 +63,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/TestMgmt/test_suite/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/TestMgmt/test_suite/query/View)|VIEW|否|否 |否 ||
+|[当前测试库用例模块(cur_test_suite)](module/TestMgmt/test_suite/query/cur_test_suite)|cur_test_suite|否|否 |否 ||
 |[无父类(no_parent)](module/TestMgmt/test_suite/query/no_parent)|no_parent|否|否 |否 ||
 |[正常(normal)](module/TestMgmt/test_suite/query/normal)|normal|否|否 |否 ||
 |[顶级模块(root)](module/TestMgmt/test_suite/query/root)|root|否|否 |否 ||
@@ -71,6 +72,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/test_suite/dataset/Default)|DEFAULT|数据查询|是|||
+|[当前测试库用例模块(cur_test_suite)](module/TestMgmt/test_suite/dataset/cur_test_suite)|cur_test_suite|数据查询|否|||
 |[无父类(no_parent)](module/TestMgmt/test_suite/dataset/no_parent)|no_parent|数据查询|否|||
 |[正常(normal)](module/TestMgmt/test_suite/dataset/normal)|normal|数据查询|否|||
 |[顶级模块(root)](module/TestMgmt/test_suite/dataset/root)|root|数据查询|否|||
@@ -106,11 +108,9 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建模块 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建模块 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 
 ## 界面逻辑

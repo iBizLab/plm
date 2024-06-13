@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_complete_product#begin {"开始"}]]
-state "设立完成状态" as PREPAREPARAM1  [[$./set_complete_product#prepareparam1 {"设立完成状态"}]]
-state "设立完成" as DEACTION1  [[$./set_complete_product#deaction1 {"设立完成"}]]
-state "准备过滤器参数" as PREPAREPARAM2  [[$./set_complete_product#prepareparam2 {"准备过滤器参数"}]]
+state "设置基线状态为完成状态" as PREPAREPARAM1  [[$./set_complete_product#prepareparam1 {"设置基线状态为完成状态"}]]
+state "更新基线的状态" as DEACTION1  [[$./set_complete_product#deaction1 {"更新基线的状态"}]]
+state "准备关联查询过滤器参数" as PREPAREPARAM2  [[$./set_complete_product#prepareparam2 {"准备关联查询过滤器参数"}]]
 state "获取基线下关联的产品需求" as DEDATASET1  [[$./set_complete_product#dedataset1 {"获取基线下关联的产品需求"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_complete_product#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./set_complete_product#resetparam1 {"重置参数"}]]
-state "重置参数" as RESETPARAM2  [[$./set_complete_product#resetparam2 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM3  [[$./set_complete_product#prepareparam3 {"准备参数"}]]
+state "重置产品需求参数" as RESETPARAM1  [[$./set_complete_product#resetparam1 {"重置产品需求参数"}]]
+state "重置版本参数" as RESETPARAM2  [[$./set_complete_product#resetparam2 {"重置版本参数"}]]
+state "填充产品需求主键标识" as PREPAREPARAM3  [[$./set_complete_product#prepareparam3 {"填充产品需求主键标识"}]]
 state "获取产品需求" as DEACTION2  [[$./set_complete_product#deaction2 {"获取产品需求"}]]
 state "填充版本属性" as PREPAREPARAM4  [[$./set_complete_product#prepareparam4 {"填充版本属性"}]]
 state "创建新版本" as DEACTION3  [[$./set_complete_product#deaction3 {"创建新版本"}]]
@@ -33,7 +33,7 @@ Begin --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEDATASET1
-DEDATASET1 --> LOOPSUBCALL1 : [[$./set_complete_product#dedataset1-loopsubcall1{基线下存在关联工作项} 基线下存在关联工作项]]
+DEDATASET1 --> LOOPSUBCALL1 : [[$./set_complete_product#dedataset1-loopsubcall1{基线下存在关联产品需求} 基线下存在关联产品需求]]
 LOOPSUBCALL1 --> RESETPARAM1
 RESETPARAM1 --> RESETPARAM2
 RESETPARAM2 --> PREPAREPARAM3
@@ -53,13 +53,13 @@ PREPAREPARAM4 --> DEACTION3
 
 
 *- N/A*
-#### 设立完成状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置基线状态为完成状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`2` 设置给  `Default(传入变量).STATUS(状态)`
 
-#### 设立完成 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新基线的状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -67,7 +67,7 @@ PREPAREPARAM4 --> DEACTION3
 
 将执行结果返回给参数`Default(传入变量)`
 
-#### 准备过滤器参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备关联查询过滤器参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -89,17 +89,17 @@ PREPAREPARAM4 --> DEACTION3
 
 
 循环参数`relation_page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置产品需求参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```idea(产品需求)```
-#### 重置参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置版本参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```version(版本)```
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充产品需求主键标识 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -118,7 +118,7 @@ PREPAREPARAM4 --> DEACTION3
 
 
 1. 将`for_temp_obj(循环临时变量).TARGET_ID(关联目标标识)` 设置给  `version(版本).OWNER_ID(所属数据标识)`
-2. 将`WORK_ITEM` 设置给  `version(版本).OWNER_TYPE(所属数据对象)`
+2. 将`IDEA` 设置给  `version(版本).OWNER_TYPE(所属数据对象)`
 3. 将`设立基线创建版本` 设置给  `version(版本).NAME(名称)`
 
 #### 创建新版本 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
@@ -129,10 +129,10 @@ PREPAREPARAM4 --> DEACTION3
 
 
 ### 连接条件说明
-#### 基线下存在关联工作项 :id=DEDATASET1-LOOPSUBCALL1
+#### 基线下存在关联产品需求 :id=DEDATASET1-LOOPSUBCALL1
 
 `relation_page(分页查询结果变量).size` GT `0`
-#### 工作项的最新版本为基线中关联的版本 
+#### 产品需求的最新版本为基线中关联的版本 
 
 
 

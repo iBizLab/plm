@@ -31,7 +31,7 @@
 
 <p class="panel-title"><b>分组参数</b></p>
 
-* `STATUS(执行结果)`  分组处理：`IF(TRIM(status) is null, '未执行', status)`
+* `STATUS(执行结果)`  分组处理：`IF(TRIM(status) is null, '未设置', status)`
 
 <p class="panel-title"><b>聚合参数</b></p>
 

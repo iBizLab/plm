@@ -121,6 +121,7 @@
 |N_PROJECT_NAME_LIKE|项目名称|LIKE||
 |N_ROLE_ID_EQ|角色|EQ||
 |N_USER_ID_EQ|登录名|EQ||
+|N_USER_ID_NOTIN|登录名|NOTIN||
 |N_WEEKDAY_EQ|周工作日|EQ||
 
 ## 界面行为

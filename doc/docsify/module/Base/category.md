@@ -12,6 +12,8 @@
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否叶子节点|IS_LEAF|是否逻辑||是||
+|是否叶子节点2|IS_LEAF2|是否逻辑||是||
+|叶子节点标识|LEAF_FLAG|整型||是||
 |名称|NAME|文本，可指定长度|200|是||
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||
 |所属对象子类型|OWNER_SUBTYPE|文本，可指定长度|100|是||
@@ -34,6 +36,7 @@
 | -------- |---------- |------------|----- |
 |[DER1N_CATEGORY_CATEGORY_PID](der/DER1N_CATEGORY_CATEGORY_PID)|[类别(CATEGORY)](module/Base/category)|1:N关系||
 |[DER1N_IDEA_CATEGORY_CATEGORY_ID](der/DER1N_IDEA_CATEGORY_CATEGORY_ID)|[需求(IDEA)](module/ProdMgmt/idea)|1:N关系||
+|[DER1N_IDEA_TEMPLATE_CATEGORY_CATEGORY_ID](der/DER1N_IDEA_TEMPLATE_CATEGORY_CATEGORY_ID)|[需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template)|1:N关系||
 |[DER1N_SPACE_CATEGORY_CATEGORY_ID](der/DER1N_SPACE_CATEGORY_CATEGORY_ID)|[空间(SPACE)](module/Wiki/space)|1:N关系||
 
 
@@ -44,6 +47,8 @@
 | -------- |---------- |-----------|----- |
 |[DER1N_CATEGORY_CATEGORY_PID](der/DER1N_CATEGORY_CATEGORY_PID)|[类别(CATEGORY)](module/Base/category)|1:N关系||
 |[DER1N_CATEGORY_SECTION_SECTION_ID](der/DER1N_CATEGORY_SECTION_SECTION_ID)|[分组(SECTION)](module/Base/section)|1:N关系||
+|[DERCUSTOM_CATEGORY_INSIGHT_REPORT](der/DERCUSTOM_CATEGORY_INSIGHT_REPORT)|[效能报表(INSIGHT_REPORT)](module/Insight/insight_report)|自定义关系||
+|[DERCUSTOM_CATEGORY_PRODUCT_PLAN](der/DERCUSTOM_CATEGORY_PRODUCT_PLAN)|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -72,6 +77,8 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/category/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/category/query/View)|VIEW|否|否 |否 ||
+|[检查名称是否重复(check_name)](module/Base/category/query/check_name)|check_name|否|否 |否 ||
+|[通用类别（代码表）(common_categories)](module/Base/category/query/common_categories)|common_categories|否|否 |否 ||
 |[无分组的类别（且父标识不为空）(no_section)](module/Base/category/query/no_section)|no_section|否|否 |否 ||
 |[主模块(product_idea_category)](module/Base/category/query/product_idea_category)|product_idea_category|否|否 |否 |需求下子产品中父标识为空的模块|
 |[排期计划类别(product_plan)](module/Base/category/query/product_plan)|product_plan|否|否 |否 ||
@@ -82,6 +89,8 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/category/dataset/Default)|DEFAULT|数据查询|是|||
+|[检查名称是否重复(check_name)](module/Base/category/dataset/check_name)|check_name|数据查询|否|||
+|[当前项目类别(common_categories)](module/Base/category/dataset/common_categories)|common_categories|数据查询|否|||
 |[无分组的类别(no_section)](module/Base/category/dataset/no_section)|no_section|数据查询|否|||
 |[主模块(product_idea_category)](module/Base/category/dataset/product_idea_category)|product_idea_category|数据查询|否||需求下子产品中父标识为空的模块|
 |[排期计划类别(product_plan)](module/Base/category/dataset/product_plan)|product_plan|数据查询|否|||

@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_column_action_state#begin {开始}]]
+state "依据is_favorite显示星标按钮" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {依据is_favorite显示星标按钮}]]
 state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -34,7 +34,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 依据is_favorite显示星标按钮 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -48,11 +48,11 @@ RAWJSCODE1 --> END1
 			const is_favorite = row.data.is_favorite;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
-					// 收藏
+					// 星标
 					if (action.uiActionId === 'add_favorite@product') {
 						action.visible = is_favorite == 0;
 					} else if (action.uiActionId === 'cancel_favorite@product') {
-						// 取消收藏
+						// 取消星标
 						action.visible = is_favorite != 0;
 					}
 				})

@@ -24,7 +24,21 @@
 
 <p class="panel-title"><b>查询列级别</b></p>
 
-* `默认（全部查询列）`
+* `指定属性组`
+*  **属性组：**[主属性组](#)
+  * `REVIEW_ACTION_RULE(评审后置动作)`
+  * `REVIEW_RULE(评审规则)`
+  * `REVIEW_STAGE(评审阶段)`
+  * `SUBJECT_TYPE(主题类型)`
+  * `OBJECT_TYPE(对象类型)`
+  * `SCOPE_ID(所属主体标识)`
+  * `UPDATE_MAN(更新人)`
+  * `ID(标识)`
+  * `UPDATE_TIME(更新时间)`
+  * `NAME(名称)`
+  * `CREATE_TIME(建立时间)`
+  * `CREATE_MAN(建立人)`
+  * `IS_ENABLED(是否启用)`
 
 
 
@@ -38,8 +52,12 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_ENABLED`,
 t1.`NAME`,
 t1.`OBJECT_TYPE`,
+t1.`REVIEW_ACTION_RULE`,
+t1.`REVIEW_RULE`,
+t1.`REVIEW_STAGE`,
 t1.`SCOPE_ID`,
 t1.`SUBJECT_TYPE`,
 t1.`UPDATE_MAN`,

@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_state#begin {"开始"}]]
-state "获取传递的参数" as BINDPARAM1  [[$./change_state#bindparam1 {"获取传递的参数"}]]
+state "获取传递需求的参数" as BINDPARAM1  [[$./change_state#bindparam1 {"获取传递需求的参数"}]]
 state "循环ID列表进行操作" as LOOPSUBCALL1  [[$./change_state#loopsubcall1 {"循环ID列表进行操作"}]] #green {
-state "获取传递的状态" as PREPAREPARAM2  [[$./change_state#prepareparam2 {"获取传递的状态"}]]
-state "变更状态" as DEACTION1  [[$./change_state#deaction1 {"变更状态"}]]
+state "获取需求传递的状态" as PREPAREPARAM2  [[$./change_state#prepareparam2 {"获取需求传递的状态"}]]
+state "变更需求状态" as DEACTION1  [[$./change_state#deaction1 {"变更需求状态"}]]
 }
 
 
@@ -39,7 +39,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 获取传递的参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 获取传递需求的参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -49,13 +49,13 @@ PREPAREPARAM2 --> DEACTION1
 
 
 循环参数`srfactionparam(选择数据对象)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 获取传递的状态 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 获取需求传递的状态 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`for_temp_obj(循环临时变量).STATE(状态)` 设置给  `Default(传入变量).STATE(状态)`
 
-#### 变更状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 变更需求状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

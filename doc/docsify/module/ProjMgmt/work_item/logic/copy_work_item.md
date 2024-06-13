@@ -22,6 +22,9 @@ state "循环子调用" as LOOPSUBCALL1  [[$./copy_work_item#loopsubcall1 {"循�
 state "获取工作项" as DEACTION4  [[$./copy_work_item#deaction4 {"获取工作项"}]]
 state "同步属性" as PREPAREPARAM2  [[$./copy_work_item#prepareparam2 {"同步属性"}]]
 state "创建工作项" as DEACTION1  [[$./copy_work_item#deaction1 {"创建工作项"}]]
+state "关联数据属性" as PREPAREPARAM8  [[$./copy_work_item#prepareparam8 {"关联数据属性"}]]
+state "生成关联数据" as DEACTION6  [[$./copy_work_item#deaction6 {"生成关联数据"}]]
+state "生成关联数据" as DEACTION7  [[$./copy_work_item#deaction7 {"生成关联数据"}]]
 state "重置参数" as RESETPARAM1  [[$./copy_work_item#resetparam1 {"重置参数"}]]
 state "准备关注参数" as PREPAREPARAM7  [[$./copy_work_item#prepareparam7 {"准备关注参数"}]]
 state "创建默认关注人" as DEACTION5  [[$./copy_work_item#deaction5 {"创建默认关注人"}]]
@@ -40,7 +43,10 @@ PREPAREPARAM5 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> DEACTION4
 DEACTION4 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION1
-DEACTION1 --> RESETPARAM1
+DEACTION1 --> PREPAREPARAM8
+PREPAREPARAM8 --> DEACTION6
+DEACTION6 --> DEACTION7
+DEACTION7 --> RESETPARAM1
 RESETPARAM1 --> PREPAREPARAM7
 PREPAREPARAM7 --> DEACTION5
 DEACTION5 --> PREPAREPARAM6
@@ -107,6 +113,33 @@ LOOPSUBCALL1 --> END1
 调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Create](module/ProjMgmt/work_item#行为) ，行为参数为`new_work_item(新建工作项)`
 
 将执行结果返回给参数`new_work_item(新建工作项)`
+
+#### 关联数据属性 :id=PREPAREPARAM8<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`WORK_ITEM` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+2. 将`WORK_ITEM` 设置给  `forward_relation_obj(正向关联对象).TARGET_TYPE(关联目标类型)`
+3. 将`WORK_ITEM` 设置给  `reverse_relation_obj(反向关联对象).TARGET_TYPE(关联目标类型)`
+4. 将`WORK_ITEM` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+5. 将`temp_obj(临时变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
+6. 将`new_work_item(新建工作项).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+7. 将`temp_obj(临时变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
+8. 将`new_work_item(新建工作项).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+9. 将`replica` 设置给  `forward_relation_obj(正向关联对象).RELATION_TYPE(关联类型)`
+10. 将`copy` 设置给  `reverse_relation_obj(反向关联对象).RELATION_TYPE(关联类型)`
+
+#### 生成关联数据 :id=DEACTION6<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [关联(RELATION)](module/Base/relation.md) 行为 [Save](module/Base/relation#行为) ，行为参数为`forward_relation_obj(正向关联对象)`
+
+#### 生成关联数据 :id=DEACTION7<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [关联(RELATION)](module/Base/relation.md) 行为 [Save](module/Base/relation#行为) ，行为参数为`reverse_relation_obj(反向关联对象)`
 
 #### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
@@ -185,7 +218,9 @@ LOOPSUBCALL1 --> END1
 |关注|attention|数据对象|[关注(ATTENTION)](module/Base/attention.md)||
 |复制子工作项对象|copy_child|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
 |循环临时变量|for_temp_obj|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|正向关联对象|forward_relation_obj|数据对象|[关联(RELATION)](module/Base/relation.md)||
 |要更改状态的主键|id|简单数据|||
 |新建工作项|new_work_item|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|反向关联对象|reverse_relation_obj|数据对象|[关联(RELATION)](module/Base/relation.md)||
 |选中数据对象|srfactionparam|数据对象列表|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
 |临时变量|temp_obj|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||

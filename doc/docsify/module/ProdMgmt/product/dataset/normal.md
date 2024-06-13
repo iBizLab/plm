@@ -18,7 +18,7 @@
 
 <p class="panel-title"><b>主排序属性</b></p>
 
-* `NAME(产品名称)` `DESC`
+* `UPDATE_TIME(更新时间)` `DESC`
 
 
 

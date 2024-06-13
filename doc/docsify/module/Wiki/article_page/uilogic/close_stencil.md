@@ -15,12 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./close_stencil#begin {开始}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./close_stencil#debugparam1 {调试逻辑参数}]]
 state "结束" as END1 <<end>> [[$./close_stencil#end1 {结束}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> END1
+Begin --> END1
 
 
 @enduml
@@ -39,18 +37,11 @@ DEBUGPARAM1 --> END1
 
 
 
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`传入变量`的详细信息
-
 
 
 ### 实体逻辑参数
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|view|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|view|view|当前视图对象||

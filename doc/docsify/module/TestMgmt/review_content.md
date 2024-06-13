@@ -1,6 +1,9 @@
 # 评审内容(review_content)  <!-- {docsify-ignore-all} -->
 
 
+记录测试用例的评审内容
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -9,14 +12,14 @@
 |建立人|CREATE_MAN|继承属性|100|否||
 |建立时间|CREATE_TIME|继承属性||否||
 |当前版本标识|CUR_VERSION_ID|继承属性|100|是||
-|客户|CUSTOMER|继承属性|1048576|是||
+|最终评审结果|FINAL_STAGE_RESULTS|[继承属性](index/dictionary_index#final_stage_results "最终评审结果")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|继承属性|100|否||
-|产品需求|IDEA|继承属性|1048576|是||
 |名称|NAME|继承属性|200|是||
 |所属数据对象|OWNER_TYPE|继承属性|100|是||
 |父对象版本标识|PARENT_VERSION_ID|继承属性|100|是||
 |关联主体标识|PRINCIPAL_ID|继承属性|100|是||
 |关联主体类型|PRINCIPAL_TYPE|继承属性|100|是||
+|评审数据|REVIEW_DATA|外键值对象|1048576|是||
 |评审结果|STAGE_RESULTS|继承属性|1048576|是||
 |目标对象负责人|TARGET_ASSIGNEE|继承属性|100|是||
 |关联目标标识|TARGET_ID|继承属性|100|是||
@@ -29,10 +32,8 @@
 |关联目标版本|TARGET_VERSION|外键值对象|1048576|是||
 |目标对象版本标识|TARGET_VERSION_ID|继承属性|100|是||
 |测试用例|TEST_CASE|外键值对象|1048576|是||
-|工单|TICKET|继承属性|1048576|是||
 |更新人|UPDATE_MAN|继承属性|100|否||
 |更新时间|UPDATE_TIME|继承属性||否||
-|工作项|WORK_ITEM|继承属性|1048576|是||
 
 <p class="panel-title"><b>联合主键</b></p>
 
@@ -43,11 +44,20 @@
 
 <el-row>
 <el-tabs v-model="show_der">
+<el-tab-pane label="主关系" name="major">
+
+| 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
+| -------- |---------- |------------|----- |
+|[DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID](der/DERCUSTOM_REVIEW_RESULT_REVIEW_CONTENT_CONTENT_ID)|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result)|自定义关系||
+
+
+</el-tab-pane>
 <el-tab-pane label="从关系" name="minor">
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_REVIEW_CONTENT_REVIEW](der/DERCUSTOM_REVIEW_CONTENT_REVIEW)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
+|[DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD](der/DERCUSTOM_REVIEW_CONTENT_REVIEW_WIZARD)|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|自定义关系||
 |[DERCUSTOM_REVIEW_CONTENT_VERSION](der/DERCUSTOM_REVIEW_CONTENT_VERSION)|[版本(VERSION)](module/Base/version)|自定义关系||
 |[DERCUSTOM_TEST_CASE_REVIEW_CONTENT](der/DERCUSTOM_TEST_CASE_REVIEW_CONTENT)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
 |[DERMULINH_REVIEW_CONTENT_RELATION](der/DERMULINH_REVIEW_CONTENT_RELATION)|[关联(RELATION)](module/Base/relation)|多继承关系（虚拟实体）||
@@ -61,21 +71,34 @@
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#review_content_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#review_content_Update)|||
+|添加评审内容|add_review_content|[实体处理逻辑](module/TestMgmt/review_content/logic/add_review_content "添加内容")|默认|不支持||||
+|完成评审|complete_review|[实体处理逻辑](module/TestMgmt/review_content/logic/complete_review "完成评审")|默认|不支持||||
 |规划用例|program_test_case|[实体处理逻辑](module/TestMgmt/review_content/logic/program_test_case "规划用例")|默认|不支持||||
 |评审内容条数|review_content_total|[实体处理逻辑](module/TestMgmt/review_content/logic/review_content_total "评审结果条数")|默认|不支持||||
 |设置评审结果|set_review_result|[实体处理逻辑](module/TestMgmt/review_content/logic/set_review_result "设置评审结果")|默认|不支持||||
+|设置评审结果（批）|set_review_result_all|[实体处理逻辑](module/TestMgmt/review_content/logic/set_review_result_all "设置评审结果（批）")|默认|不支持||||
+|开始评审|start_review|[实体处理逻辑](module/TestMgmt/review_content/logic/start_review "开始评审")|默认|不支持||||
+|提交评审|submit_review|[实体处理逻辑](module/TestMgmt/review_content/logic/submit_review "提交评审")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[变更测试用例](module/TestMgmt/review_content/logic/change_test_case)|change_test_case|无||完成评审后变更测试用例的评审状态|
+|[完成评审](module/TestMgmt/review_content/logic/complete_review)|complete_review|无||完成评审，判断是否为最终阶段，如果是变更评审的状态|
+|[开始评审](module/TestMgmt/review_content/logic/start_review)|start_review|无||开启当前阶段评审|
+|[提交评审](module/TestMgmt/review_content/logic/submit_review)|submit_review|无||测试|
+|[添加内容](module/TestMgmt/review_content/logic/add_review_content)|add_review_content|无||添加内容，生成正反向关联数据|
+|[生成最终评审结果](module/TestMgmt/review_content/logic/generate_review_result_finally)|generate_review_result_finally|无||评审完成后生成最终的评审结果|
+|[生成评审结果](module/TestMgmt/review_content/logic/generate_review_results)|generate_review_results|无||创建后自动生成评审结果|
 |[规划用例](module/TestMgmt/review_content/logic/program_test_case)|program_test_case|无||规划用例，将用例规划至评审内，生成正反向关联数据|
-|[设置评审结果](module/TestMgmt/review_content/logic/set_review_result)|set_review_result|无||测试|
+|[设置评审结果](module/TestMgmt/review_content/logic/set_review_result)|set_review_result|无||待删除|
+|[设置评审结果（批）](module/TestMgmt/review_content/logic/set_review_result_all)|set_review_result_all|无||测试|
 |[评审结果条数](module/TestMgmt/review_content/logic/review_content_total)|review_content_total|无||查询评审结果总条数与已评审条数|
 
 ## 数据查询
@@ -84,12 +107,14 @@
 |[数据查询(DEFAULT)](module/TestMgmt/review_content/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/TestMgmt/review_content/query/View)|VIEW|否|否 |否 ||
 |[全部数据(all)](module/TestMgmt/review_content/query/all)|all|否|否 |否 ||
+|[评审历史列表(history_list)](module/TestMgmt/review_content/query/history_list)|history_list|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/review_content/dataset/Default)|DEFAULT|数据查询|是|||
 |[全部数据(all)](module/TestMgmt/review_content/dataset/all)|all|数据查询|否|||
+|[评审历史列表(history_list)](module/TestMgmt/review_content/dataset/history_list)|history_list|数据查询|否|||
 
 ## 数据权限
 
@@ -132,14 +157,23 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 设置评审结果 | set_review_result | 设置评审结果 |单项数据|<details><summary>后台调用</summary>[set_review_result](#行为)||
-| 移出用例 | remove_case | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 设置评审结果 | set_review_result | 设置评审结果 |单项数据（主键）|用户自定义||
+| 保存评审结果 | save_review_result | 完成评审 |无数据|用户自定义||
+| 返回 | back | 返回 |无数据|用户自定义||
+| 提交评审 | submit_review | 提交评审 |无数据|用户自定义||
+| 完成当前阶段评审 | complete_review | 完成评审 |无数据|用户自定义||
+| 开始当前阶段评审 | start_cur_stage_review | 开始评审 |无数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[保存评审结果](module/TestMgmt/review_content/uilogic/save_review_result)|save_review_result||
+|[完成当前阶段评审](module/TestMgmt/review_content/uilogic/complete_cur_stage_review)|complete_cur_stage_review||
+|[开始当前阶段评审](module/TestMgmt/review_content/uilogic/start_cur_stage_review)|start_cur_stage_review||
+|[打开评审结果](module/TestMgmt/review_content/uilogic/open_result)|open_result||
+|[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|commit_review||
 |[获取评审内容总条数](module/TestMgmt/review_content/uilogic/get_review_content_total)|get_review_content_total|获取评审内容总条数|
-|[评审内容保存之前处理](module/TestMgmt/review_content/uilogic/review_content_before_save)|review_content_before_save||
+|[返回](module/TestMgmt/review_content/uilogic/back)|back|查看评审结果后，返回主表单按钮使用|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -183,7 +217,7 @@
   createApp({
     data() {
       return {
-show_der:'minor',
+show_der:'major',
 
 
       }

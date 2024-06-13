@@ -1,4 +1,4 @@
-## 计算表格列行为状态(project) <!-- {docsify-ignore-all} -->
+## 计算表格列行为状态(review) <!-- {docsify-ignore-all} -->
 
    用于动态控制界面行为组按钮的显示隐藏状态
 
@@ -42,19 +42,25 @@ RAWJSCODE1 --> END1
 
 ```javascript
 	const rows = uiLogic.grid.state.rows;
+    const ctx = uiLogic.ctx;
 	if (rows && rows.length > 0) {
 		rows.forEach(row => {
 			const titleColumn = row.uiActionGroupStates.name;
-			const is_favorite = row.data.is_favorite;
+			const cur_user = ctx.srfuserid;
+			const state = row.data.state;
+			const create_man = row.data.create_man;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
-					// 收藏
-					if (action.uiActionId === 'add_favorite@review') {
-						action.visible = is_favorite == 0;
-					} else if (action.uiActionId === 'cancel_favorite@review') {
-						// 取消收藏
-						action.visible = is_favorite != 0;
-					}
+                    action.visible = false;
+                    if(action.uiActionId === 'delete@review'&& create_man == cur_user){
+                        action.visible = true;
+                    }else if (action.uiActionId === 'repeal_review@review'&& create_man == cur_user && state == '20' ) {
+						action.visible = true;
+					} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {
+						action.visible = true;
+					}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user){
+                        action.visible = true;
+                    }
 				})
 			}
 		})
@@ -73,5 +79,6 @@ RAWJSCODE1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格|Grid|当前部件对象||
+|上下文|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表格|Grid|当前部件对象||

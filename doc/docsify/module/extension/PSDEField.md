@@ -13,6 +13,8 @@
 |扩展标记2|EXTENSION_TAG2|文本，可指定长度|200|是||
 |扩展标记3|EXTENSION_TAG3|文本，可指定长度|200|是||
 |扩展标记4|EXTENSION_TAG4|文本，可指定长度|200|是||
+|属性标记|FIELDTAG|文本，可指定长度|100|是||
+|属性标记2|FIELDTAG2|文本，可指定长度|100|是||
 |长度|LENGTH|整型||是||
 |中文名称|LOGICNAME|文本，可指定长度|60|否||
 |浮点精度|PRECISION2|整型||是||
@@ -24,6 +26,10 @@
 |实体|PSDENAME|文本，可指定长度|100|否||
 |更新时间|UPDATEDATE|日期时间型|8|否||
 |更新人|UPDATEMAN|文本，可指定长度|60|否||
+|用户标记|USERTAG|文本，可指定长度|100|是||
+|用户标记2|USERTAG2|文本，可指定长度|100|是||
+|用户标记3|USERTAG3|文本，可指定长度|50|是||
+|用户标记4|USERTAG4|文本，可指定长度|50|是||
 
 
 ## 行为
@@ -40,7 +46,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[GetDraft](module/extension/PSDEField/logic/GetDraft)|GetDraft|无|||
+|[GetDraft](module/extension/PSDEField/logic/GetDraft)|GetDraft|无||未完成|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -75,11 +81,27 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_DEFTYPE_EQ|属性类型|EQ||
+|N_FIELDTAG_EQ|属性标记|EQ||
+|N_FIELDTAG2_EQ|属性标记2|EQ||
 |N_PSDEFIELDID_EQ|实体属性标识|EQ||
 |N_PSDEFIELDNAME_LIKE|实体属性名称|LIKE||
 |N_PSDEID_EQ|实体|EQ||
 |N_PSDENAME_EQ|实体|EQ||
 |N_PSDENAME_LIKE|实体|LIKE||
+|N_USERTAG_EQ|用户标记|EQ||
+|N_USERTAG_NOTEQ|用户标记|NOTEQ||
+|N_USERTAG2_EQ|用户标记2|EQ||
+|N_USERTAG2_NOTEQ|用户标记2|NOTEQ||
+|N_USERTAG3_EQ|用户标记3|EQ||
+|N_USERTAG3_NOTEQ|用户标记3|NOTEQ||
+|N_USERTAG4_EQ|用户标记4|EQ||
+|N_USERTAG4_NOTEQ|用户标记4|NOTEQ||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 编辑属性 | edit_field | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[实体属性](app/view/psde_field_quick_cfg_view)</details>||
+| 删除属性 | remove_field | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -105,6 +127,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSDEField?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/extension/PSDEField?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

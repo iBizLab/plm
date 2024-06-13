@@ -9,11 +9,15 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|部门|DEPARTMENT_NAME|文本，可指定长度|100|是||
+|工号|EMPLOYEE_NUMBER|文本，可指定长度|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|职位|JOB_NAME|文本，可指定长度|100|是||
 |名称|NAME|外键值文本|200|是||
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||
 |所属对象子类型|OWNER_SUBTYPE|文本，可指定长度|100|是||
 |所属数据对象|OWNER_TYPE|文本，可指定长度|100|是||
+|统计标识|REPORT_FLAG|[是否逻辑](index/dictionary_index#user_report_flag "启停状态")||是||
 |角色|ROLE_ID|[单项选择(文本值)](index/dictionary_index#user_group_role_type "团队角色类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -52,6 +56,7 @@
 |[DER1N_MEMBER_USER_USER_ID](der/DER1N_MEMBER_USER_USER_ID)|[企业用户(USER)](module/Base/user)|1:N关系||
 |[DERCUSTOM_MEMBER_COMMON_FLOW](der/DERCUSTOM_MEMBER_COMMON_FLOW)|[通用规则(COMMON_FLOW)](module/Base/common_flow)|自定义关系||
 |[DERCUSTOM_MEMBER_GROUP_OWNER_ID](der/DERCUSTOM_MEMBER_GROUP_OWNER_ID)|[团队(GROUP)](module/Base/group)|自定义关系||
+|[DERCUSTOM_MEMBER_PROJECT_OWNER_ID](der/DERCUSTOM_MEMBER_PROJECT_OWNER_ID)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -75,8 +80,14 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[变更角色](module/Base/member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
-|[新建成员](module/Base/member/logic/create_member)|create_member|无||批量新建角色|
+|[新建成员](module/Base/member/logic/create_member)|create_member|无||批量新建团队成员|
 |[无操作](module/Base/member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[获取当前项目下资源成员](module/Base/member/logic/cur_project_resource)|cur_project_resource|无||获取当前项目下资源成员|
+|[获取当前项目集下资源成员](module/Base/member/logic/cur_portfolio_resource)|cur_portfolio_resource|无||获取当前项目集下资源成员|
+|[获取资源成员（全局）](module/Base/member/logic/resource_member)|resource_member|无||获取资源成员（全局）|
+|[选择资源成员（全局）](module/Base/member/logic/choose_resource_member)|choose_resource_member|无||选择资源成员（全局）|
+|[选择项目资源成员](module/Base/member/logic/choose_project_resource)|choose_project_resource|无||项目资源分配下设置成员：当前项目下成员/部门/团队|
+|[选择项目集资源成员](module/Base/member/logic/choose_portfolio_resource)|choose_portfolio_resource|无||项目集资源分配下设置成员：当前项目下成员/部门/团队|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -89,6 +100,12 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/member/dataset/Default)|DEFAULT|数据查询|是|||
+|[选择项目集资源成员(choose_portfolio_resource)](module/Base/member/dataset/choose_portfolio_resource)|choose_portfolio_resource|[实体逻辑](module/Base/member/logic/choose_portfolio_resource)|否|||
+|[选择项目资源成员(choose_project_resource)](module/Base/member/dataset/choose_project_resource)|choose_project_resource|[实体逻辑](module/Base/member/logic/choose_project_resource)|否|||
+|[选择资源成员（全局）(choose_resource_member)](module/Base/member/dataset/choose_resource_member)|choose_resource_member|[实体逻辑](module/Base/member/logic/choose_resource_member)|否|||
+|[获取当前项目集下资源成员(cur_portfolio_resource)](module/Base/member/dataset/cur_portfolio_resource)|cur_portfolio_resource|[实体逻辑](module/Base/member/logic/cur_portfolio_resource)|否|||
+|[获取当前项目下资源成员(cur_project_resource)](module/Base/member/dataset/cur_project_resource)|cur_project_resource|[实体逻辑](module/Base/member/logic/cur_project_resource)|否|||
+|[获取资源成员（全局）(resource_member)](module/Base/member/dataset/resource_member)|resource_member|[实体逻辑](module/Base/member/logic/resource_member)|否|||
 |[团队管理员(user_group_admin)](module/Base/member/dataset/user_group_admin)|user_group_admin|数据查询|否|||
 
 ## 数据权限
@@ -118,6 +135,7 @@
 |N_OWNER_TYPE_EQ|所属数据对象|EQ||
 |N_ROLE_ID_EQ|角色|EQ||
 |N_USER_ID_EQ|登录名|EQ||
+|N_USER_ID_NOTIN|登录名|NOTIN||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

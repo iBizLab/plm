@@ -36,11 +36,13 @@
 |[DER1N_CHANNEL_PRODUCT_PRODUCT_ID](der/DER1N_CHANNEL_PRODUCT_PRODUCT_ID)|[工单渠道(CHANNEL)](module/ProdMgmt/channel)|1:N关系||
 |[DER1N_CUSTOMER_PRODUCT_PRODUCT_ID](der/DER1N_CUSTOMER_PRODUCT_PRODUCT_ID)|[客户(CUSTOMER)](module/ProdMgmt/customer)|1:N关系||
 |[DER1N_IDEA_PRODUCT_PRODUCT_ID](der/DER1N_IDEA_PRODUCT_PRODUCT_ID)|[需求(IDEA)](module/ProdMgmt/idea)|1:N关系||
+|[DER1N_IDEA_TEMPLATE_PRODUCT_PRODUCT_ID](der/DER1N_IDEA_TEMPLATE_PRODUCT_PRODUCT_ID)|[需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template)|1:N关系||
 |[DER1N_PLAN_PRODUCT_PRODUCT_ID](der/DER1N_PLAN_PRODUCT_PRODUCT_ID)|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|1:N关系||
 |[DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID)|[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|1:N关系||
 |[DER1N_PRODUCT_TAG_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_TAG_PRODUCT_PRODUCT_ID)|[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|1:N关系||
 |[DER1N_PRODUCT_TICKET_TYPE_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_TICKET_TYPE_PRODUCT_PRODUCT_ID)|[产品工单类型(PRODUCT_TICKET_TYPE)](module/ProdMgmt/product_ticket_type)|1:N关系||
 |[DER1N_TICKET_PRODUCT_PRODUCT_ID](der/DER1N_TICKET_PRODUCT_PRODUCT_ID)|[工单(TICKET)](module/ProdMgmt/ticket)|1:N关系||
+|[DERCUSTOM_ADDON_PRODUCT_OWNER_ID](der/DERCUSTOM_ADDON_PRODUCT_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 |[DERCUSTOM_BASELINE_PRODUCT_OWNER_ID](der/DERCUSTOM_BASELINE_PRODUCT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_FAVORITE_PRODUCT](der/DERCUSTOM_FAVORITE_PRODUCT)|[收藏(FAVORITE)](module/Base/favorite)|自定义关系||
 
@@ -78,10 +80,15 @@
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |激活|activate|[实体处理逻辑](module/ProdMgmt/product/logic/activate "激活")|默认|不支持||||
 |归档|archive|[实体处理逻辑](module/ProdMgmt/product/logic/archive "归档")|默认|不支持||||
+|变更管理员角色|change_admin_role|[实体处理逻辑](module/ProdMgmt/product/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProdMgmt/product/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProdMgmt/product/logic/favorite "设置星标")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/ProdMgmt/product/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProdMgmt/product/logic/product_re_space "产品关联空间")|默认|不支持||||
 |产品计数器|product_counters|[实体处理逻辑](module/ProdMgmt/product/logic/product_counters "产品关联分页计数器")|默认|不支持||||
+|产品首页组件计数|product_index_addon_counter|[实体处理逻辑](module/ProdMgmt/product/logic/product_addon_authority "产品组件权限计数器")|默认|不支持||||
+|产品移动|product_move|[实体处理逻辑](module/ProdMgmt/product/logic/product_move "产品移动")|默认|不支持||||
+|产品只读用户判断|product_readonly_recognize|[实体处理逻辑](module/ProdMgmt/product/logic/get_product_member_one "获取产品成员")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProdMgmt/product/logic/recover "恢复")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/ProdMgmt/product/logic/un_favorite "取消星标")|默认|不支持||||
 
@@ -90,19 +97,25 @@
 | -------- |---------- |----------- |------------|----------|
 |[产品关联分页计数器](module/ProdMgmt/product/logic/product_counters)|product_counters|无||计算关系分页下事件的条数|
 |[产品关联空间](module/ProdMgmt/product/logic/product_re_space)|product_re_space|无||产品关联空间操作，生成正反向关联数据|
+|[产品移动](module/ProdMgmt/product/logic/product_move)|product_move|无||产品更多设置中移动产品|
+|[产品组件权限计数器](module/ProdMgmt/product/logic/product_addon_authority)|product_addon_authority|无||获取产品组件权限|
 |[创建之前](module/ProdMgmt/product/logic/before_create)|before_create|无||创建产品之前，对添加的产品成员进行处理|
 |[删除](module/ProdMgmt/product/logic/delete)|delete|无||产品数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProdMgmt/product/logic/un_favorite)|un_favorite|无||产品取消星标|
+|[变更管理员角色](module/ProdMgmt/product/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[归档](module/ProdMgmt/product/logic/archive)|archive|无||未归档产品数据的归档处理，修改产品的归档状态为已归档|
 |[恢复](module/ProdMgmt/product/logic/recover)|recover|无||恢复已删除状态产品数据，修改产品的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProdMgmt/product/logic/recent_parent_name)|recent_parent_name|属性逻辑||产品名称属性变更时触发最近访问的父名称更新|
 |[批量更新最近访问父标识](module/ProdMgmt/product/logic/recent_parent_identifier)|recent_parent_identifier|属性逻辑||产品编号属性变更时触发最近访问的父标识更新|
+|[无操作](module/ProdMgmt/product/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/ProdMgmt/product/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||产品删除或恢复时时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProdMgmt/product/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||产品归档或激活数据时触发相应的通知消息|
 |[激活](module/ProdMgmt/product/logic/activate)|activate|无||激活已归档状态产品，修改产品的归档属性|
 |[生成产品工单类型](module/ProdMgmt/product/logic/create_product_ticket)|create_product_ticket|无||产品建立时将工单类型中is_system=1的数据同步至产品工单类型中|
 |[生成最近访问](module/ProdMgmt/product/logic/create_recent)|create_recent|无||在用户对产品数据进行了get或update操作时生成相应的访问记录|
 |[自动创建人员](module/ProdMgmt/product/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
+|[获取产品成员](module/ProdMgmt/product/logic/get_product_member_one)|get_product_member_one|无||获取产品成员信息，用于判断当前用户权限|
+|[获取快速新建产品集合](module/ProdMgmt/product/logic/quick_create)|quick_create|无||用于获取可快速新建的产品集合|
 |[设置星标](module/ProdMgmt/product/logic/favorite)|favorite|无||设置为星标产品|
 
 ## 功能配置
@@ -119,9 +132,12 @@
 |[已归档(archived)](module/ProdMgmt/product/query/archived)|archived|否|否 |否 ||
 |[已删除(deleted)](module/ProdMgmt/product/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProdMgmt/product/query/favorite)|favorite|否|否 |否 ||
+|[查询星标（管理用户）(favorite_user)](module/ProdMgmt/product/query/favorite_user)|favorite_user|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/product/query/normal)|normal|否|否 |否 ||
 |[公开(public)](module/ProdMgmt/product/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/ProdMgmt/product/query/reader)|reader|否|否 |否 ||
+|[未星标产品(unfavorite)](module/ProdMgmt/product/query/unfavorite)|unfavorite|否|否 |否 ||
+|[未星标产品（管理用户）(unfavorite_user)](module/ProdMgmt/product/query/unfavorite_user)|unfavorite_user|否|否 |否 ||
 |[操作用户(user)](module/ProdMgmt/product/query/user)|user|否|否 |否 ||
 
 ## 数据集合
@@ -132,7 +148,10 @@
 |[已归档(archived)](module/ProdMgmt/product/dataset/archived)|archived|数据查询|否|||
 |[已删除(deleted)](module/ProdMgmt/product/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/ProdMgmt/product/dataset/favorite)|favorite|数据查询|否|||
+|[主表格查询(main)](module/ProdMgmt/product/dataset/main)|main|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/product/dataset/normal)|normal|数据查询|否|||
+|[快速新建查询(quick)](module/ProdMgmt/product/dataset/quick)|quick|[实体逻辑](module/ProdMgmt/product/logic/quick_create)|否|||
+|[快速新建查询（管理用户）(quick_user)](module/ProdMgmt/product/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/ProdMgmt/product/dataset/reader)|reader|数据查询|否|||
 |[操作用户(user)](module/ProdMgmt/product/dataset/user)|user|数据查询|否|||
 
@@ -177,9 +196,7 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE`
 * `CREATE`
-* `UPDATE`
 
 
 
@@ -231,18 +248,20 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 添加产品成员 | add_product_member | 添加成员 |无数据|系统预定义||
-| 打开产品配置 | open_global_setting | 产品配置 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品中心配置](app/view/product_config_tree_exp_view)</details>||
+| 打开产品配置 | open_global_setting | 产品配置 |无数据|用户自定义||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 新建产品 | create_product | 新建产品 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建产品](app/view/product_create_wizard_view)</details>||
 | 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 产品成员 | open_product_member | 产品成员 |单项数据（主键）|用户自定义||
 | 更多设置 | opne_setting_view | 更多设置 |单项数据（主键）|用户自定义||
-| 产品信息 | open_show_view | 产品信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品信息](app/view/product_show_eidt_view)</details>||
+| 移动产品 | product_move | 移动产品 |单项数据（主键）|<details><summary>后台调用</summary>[product_move](#行为)||
+| 产品信息 | open_show_view | 产品信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品信息](app/view/product_show_edit_view)</details>||
 | 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 打开新建产品 | open_new_product | 打开新建产品 |单项数据|<details><summary>打开顶级视图</summary>[产品](app/view/product_index_view)</details>||
@@ -253,10 +272,11 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[产品只读用户判断](module/ProdMgmt/product/uilogic/product_readonly_recognize)|product_readonly_recognize|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[刷新当前表格](module/ProdMgmt/product/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
 |[计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
-|[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh||
+|[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

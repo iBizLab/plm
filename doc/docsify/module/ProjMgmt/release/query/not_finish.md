@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`STATUS(状态)` NOTEQ `'30'`)
+(`STATUS(阶段)` NOTEQ `'30'`)
 
 
 
@@ -38,7 +38,7 @@
 * **WORK_ITEM不存在1:N（NOT EXISTS (SELECT)）DER1N_WORK_ITEM_RELEASE_RELEASE_ID**<br>
 连接关系：[DER1N_WORK_ITEM_RELEASE_RELEASE_ID](der/DER1N_WORK_ITEM_RELEASE_RELEASE_ID)<br>
 连接实体：[项目发布](module/ProjMgmt/release)<br>
-连接条件：(`ID(标识)` NOTEQ `网页请求上下文.work_item`)<br>
+连接条件：(`ID(标识)` EQ `网页请求上下文.work_item`)<br>
 
 
 
@@ -68,7 +68,7 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 WHERE NOT(EXISTS(SELECT * FROM `WORK_ITEM` t21 
  WHERE 
- t1.`ID` = t21.`RELEASE_ID`  AND  ( t21.`ID` <> #{ctx.webcontext.work_item} ) )) AND ( t1.`STATUS` <> '30' )
+ t1.`ID` = t21.`RELEASE_ID`  AND  ( t21.`ID` = #{ctx.webcontext.work_item} ) )) AND ( t1.`STATUS` <> '30' )
 ```
 
 </el-dialog>

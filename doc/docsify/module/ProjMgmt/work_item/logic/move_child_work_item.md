@@ -20,8 +20,6 @@ state "获取所有子工作项" as DEDATASET1  [[$./move_child_work_item#dedata
 state "结束" as END1 <<end>> [[$./move_child_work_item#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./move_child_work_item#loopsubcall1 {"循环子调用"}]] #green {
 state "子工作项项目继承父工作项的项目标识" as PREPAREPARAM2  [[$./move_child_work_item#prepareparam2 {"子工作项项目继承父工作项的项目标识"}]]
-state "子工作项继承父工作项的顶级标识" as PREPAREPARAM3  [[$./move_child_work_item#prepareparam3 {"子工作项继承父工作项的顶级标识"}]]
-state "将父标识当做顶级标识" as PREPAREPARAM4  [[$./move_child_work_item#prepareparam4 {"将父标识当做顶级标识"}]]
 state "更新子工作项" as DEACTION1  [[$./move_child_work_item#deaction1 {"更新子工作项"}]]
 state "递归调用" as DELOGIC1  [[$./move_child_work_item#delogic1 {"递归调用"}]]
 }
@@ -31,11 +29,8 @@ Begin --> PREPAREPARAM1
 PREPAREPARAM1 --> DEDATASET1
 DEDATASET1 --> LOOPSUBCALL1 : [[$./move_child_work_item#dedataset1-loopsubcall1{存在子工作项} 存在子工作项]]
 LOOPSUBCALL1 --> PREPAREPARAM2
-PREPAREPARAM2 --> PREPAREPARAM3 : [[$./move_child_work_item#prepareparam2-prepareparam3{父工作项存在顶级标识} 父工作项存在顶级标识]]
-PREPAREPARAM3 --> DEACTION1
+PREPAREPARAM2 --> DEACTION1
 DEACTION1 --> DELOGIC1
-PREPAREPARAM2 --> PREPAREPARAM4 : [[$./move_child_work_item#prepareparam2-prepareparam4{父工作项不存在顶级标识} 父工作项不存在顶级标识]]
-PREPAREPARAM4 --> DEACTION1
 DEDATASET1 --> END1 : [[$./move_child_work_item#dedataset1-end1{不存在子工作项} 不存在子工作项]]
 
 
@@ -55,12 +50,6 @@ DEDATASET1 --> END1 : [[$./move_child_work_item#dedataset1-end1{不存在子工�
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `filter(工作项过滤器).n_pid_eq`
-
-#### 子工作项继承父工作项的顶级标识 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`Default(传入变量).TOP_ID(顶级工作项标识)` 设置给  `for_temp_obj(循环临时变量).TOP_ID(顶级工作项标识)`
 
 #### 获取所有子工作项 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -96,12 +85,6 @@ DEDATASET1 --> END1 : [[$./move_child_work_item#dedataset1-end1{不存在子工�
 
 调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 处理逻辑 [移动时子工作项的处理]((module/ProjMgmt/work_item/logic/move_child_work_item.md)) ，行为参数为`for_temp_obj(循环临时变量)`
 
-#### 将父标识当做顶级标识 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`Default(传入变量).ID(标识)` 设置给  `for_temp_obj(循环临时变量).TOP_ID(顶级工作项标识)`
-
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
@@ -113,12 +96,6 @@ DEDATASET1 --> END1 : [[$./move_child_work_item#dedataset1-end1{不存在子工�
 #### 存在子工作项 :id=DEDATASET1-LOOPSUBCALL1
 
 `child_page(子工作项查询结果).size` GT `0`
-#### 父工作项存在顶级标识 :id=PREPAREPARAM2-PREPAREPARAM3
-
-`Default(传入变量).TOP_ID(顶级工作项标识)` ISNOTNULL
-#### 父工作项不存在顶级标识 :id=PREPAREPARAM2-PREPAREPARAM4
-
-`Default(传入变量).TOP_ID(顶级工作项标识)` ISNULL
 #### 不存在子工作项 :id=DEDATASET1-END1
 
 `child_page(子工作项查询结果).size` EQ `0`

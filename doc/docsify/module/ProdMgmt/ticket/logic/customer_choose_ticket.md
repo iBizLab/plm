@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./customer_choose_ticket#begin {"开始"}]]
-state "获取选中数据" as PREPAREPARAM1  [[$./customer_choose_ticket#prepareparam1 {"获取选中数据"}]]
+state "获取选中客户数据" as PREPAREPARAM1  [[$./customer_choose_ticket#prepareparam1 {"获取选中客户数据"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./customer_choose_ticket#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./customer_choose_ticket#renewparam1 {"重新建立参数"}]]
-state "填充更新属性" as PREPAREPARAM2  [[$./customer_choose_ticket#prepareparam2 {"填充更新属性"}]]
+state "重新建立工单更新参数" as RENEWPARAM1  [[$./customer_choose_ticket#renewparam1 {"重新建立工单更新参数"}]]
+state "填充工单更新属性" as PREPAREPARAM2  [[$./customer_choose_ticket#prepareparam2 {"填充工单更新属性"}]]
 state "修改工单信息" as DEACTION1  [[$./customer_choose_ticket#deaction1 {"修改工单信息"}]]
 }
 
@@ -41,7 +41,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 获取选中数据 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 获取选中客户数据 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -52,12 +52,12 @@ PREPAREPARAM2 --> DEACTION1
 
 
 循环参数`srfactionparam(选中的客户列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立工单更新参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
 重建参数```update_obj(更新对象)```
-#### 填充更新属性 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充工单更新属性 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

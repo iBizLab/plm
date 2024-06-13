@@ -1,6 +1,6 @@
 ## 从模板建立规则 <!-- {docsify-ignore-all} -->
 
-   
+   从模板建立规则
 
 ### 处理过程
 
@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_by_template#begin {"开始"}]]
-state "实体行为" as DEACTION2  [[$./create_by_template#deaction2 {"实体行为"}]]
+state "获取数据" as DEACTION2  [[$./create_by_template#deaction2 {"获取数据"}]]
 state "变更实体标识" as PREPAREPARAM1  [[$./create_by_template#prepareparam1 {"变更实体标识"}]]
 state "建立规则" as DEACTION1  [[$./create_by_template#deaction1 {"建立规则"}]]
 state "结束" as END1 <<end>> [[$./create_by_template#end1 {"结束"}]]
@@ -38,7 +38,7 @@ DEACTION1 --> END1
 
 
 *- N/A*
-#### 实体行为 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 获取数据 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

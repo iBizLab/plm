@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_result#begin {"开始"}]]
-state "执行结果数据准备" as PREPAREPARAM5  [[$./create_result#prepareparam5 {"执行结果数据准备"}]]
 state "创建执行结果" as DEACTION6  [[$./create_result#deaction6 {"创建执行结果"}]]
 state "结束" as END3 <<end>> [[$./create_result#end3 {"结束"}]]
+state "执行结果数据准备" as PREPAREPARAM5  [[$./create_result#prepareparam5 {"执行结果数据准备"}]]
 state "执行用例数据准备" as PREPAREPARAM6  [[$./create_result#prepareparam6 {"执行用例数据准备"}]]
 state "更新执行用例" as DEACTION7  [[$./create_result#deaction7 {"更新执行用例"}]]
 
@@ -61,7 +61,7 @@ PREPAREPARAM5 --> PREPAREPARAM6 : [[$./create_result#prepareparam5-prepareparam6
 
 1. 将`Default(传入变量)` 拷贝到  `run_history(执行历史)`
 2. 将`Default(传入变量).REMARK(备注)` 设置给  `run_history(执行历史).REMARK(备注)`
-3. 将`空值（NULL）` 设置给  `run_history(执行历史).EXECUTOR_ID(执行人标识)`
+3. 将`用户全局对象.srfpersonid` 设置给  `run_history(执行历史).EXECUTOR_ID(执行人标识)`
 4. 将`Default(传入变量).ID(标识)` 设置给  `temp_obj(临时变量).ID(标识)`
 5. 将`空值（NULL）` 设置给  `run_history(执行历史).EXECUTED_AT(执行时间)`
 6. 将`Default(传入变量).ID(标识)` 设置给  `run_history(执行历史).RUN_ID(执行用例标识)`

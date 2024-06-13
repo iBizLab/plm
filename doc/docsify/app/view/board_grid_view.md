@@ -15,11 +15,10 @@
 
 
 ### 关联界面行为
-  * [看板(BOARD)](module/ProjMgmt/board) : [删除](module/ProjMgmt/board#界面行为)
   * [看板(BOARD)](module/ProjMgmt/board) : [新建看板（看板表格）](module/ProjMgmt/board#界面行为)
+  * [看板(BOARD)](module/ProjMgmt/board) : [删除](module/ProjMgmt/board#界面行为)
 
 ### 关联视图
-  * [确认删除看板(board_confirm_remove_view)](app/view/board_confirm_remove_view)
   * [看板(board_edit_view)](app/view/board_edit_view)
   * [新建看板(board_quick_create_view)](app/view/board_quick_create_view)
 

@@ -33,6 +33,7 @@
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -60,6 +61,7 @@
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -93,6 +95,7 @@
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -146,6 +149,7 @@
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -218,6 +222,7 @@
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -245,6 +250,7 @@
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -278,6 +284,7 @@
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -324,6 +331,7 @@
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -351,6 +359,7 @@
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -407,6 +416,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -434,6 +444,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -481,6 +492,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -508,6 +520,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -541,6 +554,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -592,6 +606,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -619,6 +634,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -671,6 +687,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -698,6 +715,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -745,6 +763,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -772,6 +791,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -805,6 +825,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -856,6 +877,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -883,6 +905,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -935,6 +958,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -962,6 +986,7 @@ Integer
   "target_title" : null,
   "target_state" : null,
   "target_assignee" : null,
+  "relation_type" : null,
   "target_priority" : null,
   "target_parent_id" : null,
   "create_man" : null,
@@ -1040,6 +1065,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1117,6 +1143,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1194,6 +1221,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1271,6 +1299,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1348,6 +1377,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1425,6 +1455,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1502,6 +1533,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1579,6 +1611,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1657,6 +1690,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1734,6 +1768,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1811,6 +1846,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1888,6 +1924,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -1965,6 +2002,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2043,6 +2081,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2120,6 +2159,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2198,6 +2238,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2276,6 +2317,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2353,6 +2395,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2430,6 +2473,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2507,6 +2551,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2584,6 +2629,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2661,6 +2707,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2738,6 +2785,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2815,6 +2863,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -2893,6 +2942,7 @@ Integer
     "target_title" : null,
     "target_state" : null,
     "target_assignee" : null,
+    "relation_type" : null,
     "target_priority" : null,
     "target_parent_id" : null,
     "create_man" : null,
@@ -3107,6 +3157,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3197,6 +3248,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3244,6 +3296,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3292,6 +3345,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3339,6 +3393,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3387,6 +3442,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3435,6 +3491,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3482,6 +3539,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3530,6 +3588,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3578,6 +3637,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4638,6 +4698,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4728,6 +4789,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4775,6 +4837,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4823,6 +4886,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4870,6 +4934,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4918,6 +4983,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -4966,6 +5032,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -5013,6 +5080,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -5061,6 +5129,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -5109,6 +5178,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6169,6 +6239,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6259,6 +6330,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6306,6 +6378,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6354,6 +6427,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6401,6 +6475,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6449,6 +6524,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6497,6 +6573,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6544,6 +6621,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6592,6 +6670,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6640,6 +6719,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">target_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象标题|
 |<el-row justify="space-between"><el-col :span="20">target_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象状态|
 |<el-row justify="space-between"><el-col :span="20">target_assignee</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象负责人|
+|<el-row justify="space-between"><el-col :span="20">relation_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关联类型|
 |<el-row justify="space-between"><el-col :span="20">target_priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象优先级|
 |<el-row justify="space-between"><el-col :span="20">target_parent_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|目标对象父标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|

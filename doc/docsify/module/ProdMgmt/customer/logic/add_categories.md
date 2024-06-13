@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_categories#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./add_categories#bindparam1 {"绑定参数"}]]
+state "获取选择类别信息参数" as BINDPARAM1  [[$./add_categories#bindparam1 {"获取选择类别信息参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./add_categories#loopsubcall1 {"循环子调用"}]] #green {
 state "设置类别路径" as PREPAREPARAM2  [[$./add_categories#prepareparam2 {"设置类别路径"}]]
 state "变更客户属性" as DEACTION1  [[$./add_categories#deaction1 {"变更客户属性"}]]
@@ -39,7 +39,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 获取选择类别信息参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

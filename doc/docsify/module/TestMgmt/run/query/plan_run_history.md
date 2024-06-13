@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`STATUS(执行结果)` ISNOTNULL AND `CASE_ID(测试用例标识)` EQ `网页请求上下文.null`)
+(`STATUS(执行结果)` ISNOTNULL)
 
 
 
@@ -44,6 +44,7 @@ t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
@@ -54,6 +55,7 @@ t21.`LIBRARY_ID`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
@@ -74,7 +76,7 @@ LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID`
 LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
 LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
 
-WHERE ( t1.`STATUS` IS NOT NULL  AND  t1.`CASE_ID` = #{ctx.webcontext.unknown} )
+WHERE ( t1.`STATUS` IS NOT NULL )
 ```
 
 </el-dialog>

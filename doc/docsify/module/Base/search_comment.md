@@ -102,7 +102,6 @@
 | 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
 | 打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_redirect_view)</details>||
 | 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
-| 打开所属主页视图 | open_parent_index_view | 打开所属主页视图 |单项数据|用户自定义|跳转至项目/产品/测试库/空间首页视图|
 | 打开执行用例主视图 | open_run_main_view | 打开执行用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[执行用例](app/view/run_main_view)</details>||
 | 打开测试库主视图 | open_library_main_view | 打开测试库主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_main_view)</details>||
 | 打开页面主视图 | open_page_main_view | 打开页面主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_show_view)</details>||

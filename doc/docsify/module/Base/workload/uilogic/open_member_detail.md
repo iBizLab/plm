@@ -19,7 +19,7 @@ state "打开成员工时记录列表视图" as DEUIACTION1  [[$./open_member_de
 state "获取搜索表单的日期范围条件" as RAWJSCODE1  [[$./open_member_detail#rawjscode1 {获取搜索表单的日期范围条件}]]
 
 
-Begin --> RAWJSCODE1
+Begin --> RAWJSCODE1 : [[$./open_member_detail#begin-rawjscode1{总时长大于0} 总时长大于0]]
 RAWJSCODE1 --> DEUIACTION1
 
 
@@ -53,6 +53,10 @@ uiLogic.default.n_register_date_ltandeq=n_register_date_ltandeq;
 
 调用实体 [工时(WORKLOAD)](module/Base/workload.md) 界面行为 [打开成员工时记录](module/Base/workload#界面行为) ，行为参数为`Default(传入变量)`
 
+### 连接条件说明
+#### 总时长大于0 :id=Begin-RAWJSCODE1
+
+```Default(传入变量).duration``` GT ```0```
 
 
 ### 实体逻辑参数

@@ -33,7 +33,7 @@
 
 <p class="panel-title"><b>删除方式</b></p>
 
-* `无操作`
+* `同时删除`
 
 <p class="panel-title"><b>删除顺序</b></p>
 

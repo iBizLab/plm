@@ -25,7 +25,7 @@
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_test_case_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
-|最新执行结果|LATEST_EXECUTED|长文本，没有长度限制|1048576|是||
+|最新执行结果|LATEST_EXECUTED|一对多动态对象|1048576|是||
 |重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#test_case_level "用例重要程度")|60|是||
 |测试库标识|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
 |维护人|MAINTENANCE_ID|外键值|100|是||
@@ -33,11 +33,12 @@
 |名称|NAME|文本，可指定长度|200|是||
 |前置条件|PRECONDITION|长文本，长度1000|2000|是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
-|评审结果|REVIEW_RESULT_STATE|单项选择(文本值)|60|是||
+|评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |执行结果|RUN_STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |状态|STATE|[单项选择(文本值)](index/dictionary_index#case_state "用例状态")|60|是||
 |步骤|STEPS|一对多关系数据集合|1048576|是||
+|步骤|STEPS_IMP|文本，可指定长度|100|是||
 |模块路径|SUITES|外键值附加数据|500|是||
 |用例模块标识|SUITE_ID|外键值|100|是||
 |所属模块|SUITE_NAME|外键值文本|200|是||
@@ -112,7 +113,6 @@
 |[DERCUSTOM_RELATION_TEST_CASE](der/DERCUSTOM_RELATION_TEST_CASE)|[关联(RELATION)](module/Base/relation)|自定义关系||
 |[DERCUSTOM_TEST_CASE_ATTACHMENT](der/DERCUSTOM_TEST_CASE_ATTACHMENT)|[附件(ATTACHMENT)](module/Base/attachment)|自定义关系||
 |[DERCUSTOM_TEST_CASE_REVIEW_CONTENT](der/DERCUSTOM_TEST_CASE_REVIEW_CONTENT)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|自定义关系||
-|[DERCUSTOM_TEST_CASE_RUN](der/DERCUSTOM_TEST_CASE_RUN)|[执行用例(RUN)](module/TestMgmt/run)|自定义关系||
 |[DERCUSTOM_TEST_CASE_SEARCH_ATTACHMENT](der/DERCUSTOM_TEST_CASE_SEARCH_ATTACHMENT)|[附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment)|自定义关系||
 |[DERCUSTOM_TEST_CASE_SEARCH_COMMENT](der/DERCUSTOM_TEST_CASE_SEARCH_COMMENT)|[评论搜索(SEARCH_COMMENT)](module/Base/search_comment)|自定义关系||
 |[DERCUSTOM_TEST_CASE_WORKLOAD](der/DERCUSTOM_TEST_CASE_WORKLOAD)|[工时(WORKLOAD)](module/Base/workload)|自定义关系||
@@ -145,9 +145,8 @@
 |移入计划|case_move_plan|[实体处理逻辑](module/TestMgmt/test_case/logic/case_move_plan "移入计划")|默认|不支持||||
 |选择用例模板|choose_case_template|[实体处理逻辑](module/TestMgmt/test_case/logic/choose_case_template "选择用例模板")|默认|不支持||||
 |复制用例|copy_case|[实体处理逻辑](module/TestMgmt/test_case/logic/copy_test_case "复制用例")|默认|不支持||||
-|取消关联|del_relation|[实体处理逻辑](module/TestMgmt/test_case/logic/del_relation "取消关联")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/TestMgmt/test_case/logic/delete "删除")|默认|不支持||||
-|获取测试库成员|fill_library_member|[实体处理逻辑](module/TestMgmt/test_case/logic/get_library_member "获取测试库成员")|默认|不支持||||
+|获取关注人|get_attention|内置方法|默认|不支持||||
 |获取基线名称|get_baseline_name|[实体处理逻辑](module/TestMgmt/test_case/logic/get_baseline_name "获取基线名称")|默认|不支持||||
 |移动用例|move_case|[实体处理逻辑](module/TestMgmt/test_case/logic/move_test_case "移动用例")|默认|不支持||||
 |获取最近执行|newest_run|[实体处理逻辑](module/TestMgmt/test_case/logic/newest_run "获取最近执行")|默认|不支持||||
@@ -165,9 +164,8 @@
 | -------- |---------- |----------- |------------|----------|
 |[其他实体关联用例](module/TestMgmt/test_case/logic/others_relation_test_case)|others_relation_test_case|无||测试用例实体的关联操作，生成正向，反向关联数据|
 |[删除](module/TestMgmt/test_case/logic/delete)|delete|无||测试用例数据的逻辑删除，修改产品的是否删除属性值|
-|[取消关联](module/TestMgmt/test_case/logic/del_relation)|del_relation|无||测试用例取消关联数据（正反向关联数据同时删除）|
 |[基线规划用例数据查询](module/TestMgmt/test_case/logic/baseline_plan_case)|baseline_plan_case|无||基线规划用例时，填充用例当前版本名称|
-|[填充最近执行](module/TestMgmt/test_case/logic/fill_latest_executed)|fill_latest_executed|属性逻辑|||
+|[填充最近执行](module/TestMgmt/test_case/logic/fill_latest_executed)|fill_latest_executed|无||填充最近执行|
 |[复制用例](module/TestMgmt/test_case/logic/copy_test_case)|copy_test_case|无||复制测试用例|
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
 |[无操作](module/TestMgmt/test_case/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -180,10 +178,10 @@
 |[移入计划](module/TestMgmt/test_case/logic/case_move_plan)|case_move_plan|无||将选中测试用例移入执行计划（在指定的执行用例内生成执行用例）|
 |[移动用例](module/TestMgmt/test_case/logic/move_test_case)|move_test_case|无||移动用例至其他位置（修改用例的所属测试库，重新生成编号）|
 |[维护人变更附加逻辑](module/TestMgmt/test_case/logic/maintenance_onchange)|maintenance_onchange|属性逻辑||测试用例维护人变更时触发相应的通知消息|
+|[获取变更类型与变更版本](module/TestMgmt/test_case/logic/set_change_type)|set_change_type|无||获取测试用例变更类型与变更版本|
 |[获取基线名称](module/TestMgmt/test_case/logic/get_baseline_name)|get_baseline_name|无||用例主视图获取所属基线|
-|[获取最新执行结果](module/TestMgmt/test_case/logic/case_latest_result)|case_latest_result|无|||
 |[获取最近执行](module/TestMgmt/test_case/logic/newest_run)|newest_run|无||获取当前测试用例的最近执行记录|
-|[获取测试库成员](module/TestMgmt/test_case/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前登陆者权限|
+|[获取测试库成员](module/TestMgmt/test_case/logic/get_library_member)|get_library_member|无||获取测试库成员信息，用于判断当前用户权限|
 |[规划用例](module/TestMgmt/test_case/logic/program_test_case)|program_test_case|无||规划用例|
 |[规划计划](module/TestMgmt/test_case/logic/program_plan)|program_plan|无||将测试用例规划进测试计划内，生成执行用例|
 |[设置维护人](module/TestMgmt/test_case/logic/set_maintenance)|set_maintenance|无||设置当前测试用例维护人|
@@ -244,7 +242,6 @@
 |[基线规划用例(baseline_plan_case)](module/TestMgmt/test_case/dataset/baseline_plan_case)|baseline_plan_case|[实体逻辑](module/TestMgmt/test_case/logic/baseline_plan_case)|否|||
 |[用例成员分布(casePerson)](module/TestMgmt/test_case/dataset/casePerson)|casePerson|数据查询|否|||
 |[用例类型分布(caseType)](module/TestMgmt/test_case/dataset/caseType)|caseType|数据查询|否|||
-|[获取最新执行结果(case_latest_result)](module/TestMgmt/test_case/dataset/case_latest_result)|case_latest_result|[实体逻辑](module/TestMgmt/test_case/logic/case_latest_result)|否|||
 |[评论通知维护人(comment_notify_maintenance)](module/TestMgmt/test_case/dataset/comment_notify_maintenance)|comment_notify_maintenance|数据查询|否|||
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/test_case/dataset/dailyTendencies)|dailyTendencies|数据查询|否|||
 |[测试用例重要程度分布(degreeImportance)](module/TestMgmt/test_case/dataset/degreeImportance)|degreeImportance|数据查询|否|||
@@ -263,6 +260,7 @@
 |[优先级分布(priorityDistributions)](module/TestMgmt/test_case/dataset/priorityDistributions)|priorityDistributions|数据查询|否|||
 |[测试用例规划分析(program_analyze)](module/TestMgmt/test_case/dataset/program_analyze)|program_analyze|[实体逻辑](module/TestMgmt/test_case/logic/program_analyze)|否|||
 |[最近浏览(recent_test_case)](module/TestMgmt/test_case/dataset/recent_test_case)|recent_test_case|数据查询|否|||
+|[评审数据(review_data)](module/TestMgmt/test_case/dataset/review_data)|review_data|[实体逻辑](module/TestMgmt/test_case/logic/set_change_type)|否|||
 |[当前模块下用例(this_suite_test_case)](module/TestMgmt/test_case/dataset/suites_test_case)|this_suite_test_case|数据查询|否|||
 |[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/dataset/test_case_maneuver_context)|test_case_maneuver_context|[实体逻辑](module/TestMgmt/test_case/logic/test_case_maneuver_context)|否|||
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/dataset/work_item_relation_test_case)|work_item_relation_test_case|数据查询|否|||
@@ -309,6 +307,9 @@
 |N_IS_DELETED_EQ|是否已删除|EQ||
 |N_LEVEL_EQ|重要程度|EQ||
 |N_MAINTENANCE_ID_EQ|维护人|EQ||
+|N_MAINTENANCE_ID_IN|维护人|IN||
+|N_MAINTENANCE_ID_NOTEQ|维护人|NOTEQ||
+|N_MAINTENANCE_ID_NOTIN|维护人|NOTIN||
 |N_MAINTENANCE_NAME_EQ|维护人|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_REVIEW_RESULT_STATE_EQ|评审结果|EQ||
@@ -334,16 +335,16 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 添加测试用例（其他实体关联） | others_add_relation_test_case | 添加用例 |无数据|用户自定义||
+| 新建测试用例（快速新建） | quick_new_test_case | 新建测试用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建用例](app/view/test_case_quick_create_view)</details>||
 | 移动 | move | 移动 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[移动用例](app/view/test_case_move_case_option_view)</details>||
 | 设置重要程度 | set_level | 设置重要程度 |多项数据（主键）|<details><summary>后台调用</summary>[set_level](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
-| 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 移入计划（气泡） | case_move_plan | 移入计划 |多项数据（主键）|<details><summary>后台调用</summary>[case_move_plan](#行为)||
 | 自定义测试用例导入 | test_case_import_data | 导入测试用例 |无数据|<details><summary>打开数据导入视图</summary>[测试用例导入]()</details>||
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
+| 恢复_视图消息 | recover_message | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 选择模板 | choose_case_template | 选择模板 |无数据|<details><summary>打开编辑表单</summary></details>||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 查看已规划基线 | check_baseline_version | 已规划基线 |单项数据|用户自定义||
@@ -368,20 +369,22 @@
 |[关联缺陷（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_bug)|toolbar_link_bug|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[删除类别或分组](module/TestMgmt/test_case/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
-|[刷新测试用例表格](module/TestMgmt/test_case/uilogic/refresh_test_case_grid)|refresh_test_case_grid||
+|[刷新测试用例表格](module/TestMgmt/test_case/uilogic/refresh_test_case_grid)|refresh_test_case_grid|刷新测试用例表格|
 |[工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
+|[已删除用例显示隐藏](module/TestMgmt/test_case/uilogic/deleted_visible)|deleted_visible|已删除用例显示隐藏|
 |[新建分组](module/TestMgmt/test_case/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/TestMgmt/test_case/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[显示下拉并展开选项（嵌入视图）](module/TestMgmt/test_case/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项(工具栏)|
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[查看已规划基线](module/TestMgmt/test_case/uilogic/check_baseline_version)|check_baseline_version|按钮触发，通过脚本切换显示组件|
-|[测试判断只读用户](module/TestMgmt/test_case/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
+|[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions||
+|[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions|清空表单关注人|
 |[编辑类别或分组](module/TestMgmt/test_case/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
 |[获取测试用例总条数](module/TestMgmt/test_case/uilogic/get_test_case_total)|get_test_case_total|获取测试用例的总条数信息|
 |[触发计数器刷新](module/TestMgmt/test_case/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[计算变更版本](module/TestMgmt/test_case/uilogic/cal_change_type)|cal_change_type|未完成|
 |[选择下拉框区域展示](module/TestMgmt/test_case/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[选择用例模板](module/TestMgmt/test_case/uilogic/choose_case_template)|choose_case_template|选择用例模板后回填所选模板数据至表单|
 |[需求关联用例](module/TestMgmt/test_case/uilogic/idea_relation_test_case)|idea_relation_test_case|值变更时触发，需求关联用例，调用处理逻辑生成正反向数据|
@@ -404,7 +407,7 @@
 <el-descriptions-item label="预估工时">-</el-descriptions-item>
 <el-descriptions-item label="剩余工时">-</el-descriptions-item>
 <el-descriptions-item label="前置条件">-</el-descriptions-item>
-<el-descriptions-item label="步骤描述">-</el-descriptions-item>
+<el-descriptions-item label="步骤">-</el-descriptions-item>
 <el-descriptions-item label="关注人">-</el-descriptions-item>
 </el-descriptions>
 

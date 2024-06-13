@@ -23,6 +23,24 @@
 |工作项标题|WORK_ITEM_TITLE|文本，可指定长度|100|是||
 
 
+###### 索引
+
+<el-row>
+<el-tabs v-model="show_index">
+
+<el-tab-pane label="ATTACHMENT" name="index_ATTACHMENT">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|所属数据标识|OWNER_ID|false|升序|-1||
+|所属对象子类型|OWNER_SUBTYPE|false|升序|-1||
+|所属数据对象|OWNER_TYPE|false|升序|-1||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
 ## 关系
 
 <el-row>
@@ -32,6 +50,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_ATTACHMENT_STENCIL](der/DERCUSTOM_ATTACHMENT_STENCIL)|[页面模板(STENCIL)](module/Wiki/stencil)|自定义关系||
+|[DERCUSTOM_DISCUSS_POST_ATTACHMENT](der/DERCUSTOM_DISCUSS_POST_ATTACHMENT)|[讨论(DISCUSS_POST)](module/Team/discuss_post)|自定义关系||
 |[DERCUSTOM_IDEA_ATTACHMENT](der/DERCUSTOM_IDEA_ATTACHMENT)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
 |[DERCUSTOM_PAGE_ATTACHMENT](der/DERCUSTOM_PAGE_ATTACHMENT)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCUSTOM_REVIEW_ATTACHMENT](der/DERCUSTOM_REVIEW_ATTACHMENT)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
@@ -157,7 +176,7 @@
       return {
 show_der:'minor',
 
-
+show_index:'index_ATTACHMENT',
       }
     },
     methods: {

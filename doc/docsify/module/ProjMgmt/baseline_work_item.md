@@ -1,6 +1,9 @@
 # 基线工作项(baseline_work_item)  <!-- {docsify-ignore-all} -->
 
 
+存储基线所包含的工作项
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -17,6 +20,7 @@
 |建立时间|CREATE_TIME|继承属性||否||
 |当前版本标识|CUR_VERSION_ID|继承属性|100|是||
 |描述|DESCRIPTION|文本，可指定长度|100|是||
+|结束时间|END_AT|日期型||是||
 |看板栏标识|ENTRY_ID|文本，可指定长度|100|是||
 |看板栏名称|ENTRY_NAME|文本，可指定长度|100|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
@@ -24,6 +28,7 @@
 |编号|IDENTIFIER|文本，可指定长度|100|是||
 |是否已归档|IS_ARCHIVED|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|文本，可指定长度|100|是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
 |名称|NAME|继承属性|200|是||
 |所属数据对象|OWNER_TYPE|继承属性|100|是||
 |父标识|PID|文本，可指定长度|100|是||
@@ -39,6 +44,7 @@
 |编号|SHOW_IDENTIFIER|文本，可指定长度|100|是||
 |迭代标识|SPRINT_ID|文本，可指定长度|100|是||
 |迭代名称|SPRINT_NAME|文本，可指定长度|100|是||
+|开始时间|START_AT|日期型||是||
 |状态|STATE|文本，可指定长度|100|是||
 |关联目标标识|TARGET_ID|继承属性|100|是||
 |关联目标类型|TARGET_TYPE|继承属性|100|是||
@@ -81,11 +87,13 @@
 |Update|Update|内置方法|默认|不支持||||
 |移入基线|shift_in_baseline|[实体处理逻辑](module/ProjMgmt/baseline_work_item/logic/shift_in_baseline "移入基线")|默认|不支持||||
 |移出基线|shift_out_baseline|[实体处理逻辑](module/ProjMgmt/baseline_work_item/logic/shift_out_baseline "移出基线")|默认|不支持||||
+|快照设立基线|snapshot_set_baseline|[实体处理逻辑](module/ProjMgmt/baseline_work_item/logic/snapshot_set_baseline "快照设立基线")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[基线对比数据查询](module/ProjMgmt/baseline_work_item/logic/baseline_comparison)|baseline_comparison|无||基线对比数据获取，查询两个基线下的关联工作项|
+|[快照设立基线](module/ProjMgmt/baseline_work_item/logic/snapshot_set_baseline)|snapshot_set_baseline|无||快照设立基线|
 |[移入基线](module/ProjMgmt/baseline_work_item/logic/shift_in_baseline)|shift_in_baseline|无||将工作项移入对应基线|
 |[移出基线](module/ProjMgmt/baseline_work_item/logic/shift_out_baseline)|shift_out_baseline|无||将工作项移出对应基线|
 
@@ -120,6 +128,7 @@
 | --------| --------| -------- |------------|------------|------------|
 | 基线规划工作项 | baseline_work_item | 规划工作项 |无数据|<details><summary>后台调用</summary>[shift_in_baseline](#行为)||
 | 移出基线 | shift_out_baseline | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[shift_out_baseline](#行为)||
+| 快照设立基线 | snapshot_set_baseline | 设立基线 |无数据|<details><summary>后台调用</summary>[snapshot_set_baseline](#行为)||
 | 工作项版本对比 | work_item_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/work_item_version_comparison_view)</details>||
 | 版本对比（基线列表） | version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/work_item_version_comparison_view)</details>||
 
@@ -127,6 +136,7 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[移出基线后刷新表格](module/ProjMgmt/baseline_work_item/uilogic/shift_out_refresh)|shift_out_refresh|移出基线后刷新表格|
+|[规划快照查看](module/ProjMgmt/baseline_work_item/uilogic/plan_snapshot_check)|plan_snapshot_check|规划快照查看：打开快照甘特图视图时依据快照状态，显示操作按钮|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

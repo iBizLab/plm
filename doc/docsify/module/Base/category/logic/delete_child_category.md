@@ -17,18 +17,18 @@ hide empty description
 state "开始" as Begin <<start>> [[$./delete_child_category#begin {"开始"}]]
 state "删除类别" as DEACTION2  [[$./delete_child_category#deaction2 {"删除类别"}]]
 state "设置过滤器参数" as PREPAREPARAM1  [[$./delete_child_category#prepareparam1 {"设置过滤器参数"}]]
-state "实体数据集" as DEDATASET1  [[$./delete_child_category#dedataset1 {"实体数据集"}]]
-state "结束前的默认参数" as DEBUGPARAM2  [[$./delete_child_category#debugparam2 {"结束前的默认参数"}]]
+state "类别实体数据集" as DEDATASET1  [[$./delete_child_category#dedataset1 {"类别实体数据集"}]]
+state "判断节点（无操作）" as PREPAREPARAM4  [[$./delete_child_category#prepareparam4 {"判断节点（无操作）"}]]
+state "上级的是否叶子节点变更" as PREPAREPARAM3  [[$./delete_child_category#prepareparam3 {"上级的是否叶子节点变更"}]]
 state "上级的是否叶子节点变更" as PREPAREPARAM2  [[$./delete_child_category#prepareparam2 {"上级的是否叶子节点变更"}]]
 state "模块下模块" as DEDATASET3  [[$./delete_child_category#dedataset3 {"模块下模块"}]]
 state "修改需求信息" as RAWSQLCALL1  [[$./delete_child_category#rawsqlcall1 {"修改需求信息"}]]
-state "上级的是否叶子节点变更" as PREPAREPARAM3  [[$./delete_child_category#prepareparam3 {"上级的是否叶子节点变更"}]]
 state "子产品下模块" as DEDATASET2  [[$./delete_child_category#dedataset2 {"子产品下模块"}]]
 state "结束" as END2 <<end>> [[$./delete_child_category#end2 {"结束"}]]
 state "变更上级节点" as DEACTION3  [[$./delete_child_category#deaction3 {"变更上级节点"}]]
 state "变更上级节点" as DEACTION4  [[$./delete_child_category#deaction4 {"变更上级节点"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./delete_child_category#loopsubcall1 {"循环子调用"}]] #green {
-state "循环调用" as DELOGIC1  [[$./delete_child_category#delogic1 {"循环调用"}]]
+state "删除类别及子类别" as DELOGIC1  [[$./delete_child_category#delogic1 {"删除类别及子类别"}]]
 }
 
 
@@ -36,21 +36,21 @@ Begin --> RAWSQLCALL1
 RAWSQLCALL1 --> DEACTION2
 DEACTION2 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEDATASET1
-DEDATASET1 --> DEBUGPARAM2 : [[$./delete_child_category#dedataset1-debugparam2{不存在子级} 不存在子级]]
-DEBUGPARAM2 --> PREPAREPARAM2 : [[$./delete_child_category#debugparam2-prepareparam2{存在上级模块} 存在上级模块]]
+DEDATASET1 --> PREPAREPARAM4 : [[$./delete_child_category#dedataset1-prepareparam4{不存在子级} 不存在子级]]
+PREPAREPARAM4 --> PREPAREPARAM2 : [[$./delete_child_category#prepareparam4-prepareparam2{存在上级模块} 存在上级模块]]
 PREPAREPARAM2 --> DEDATASET3
 DEDATASET3 --> DEACTION3 : [[$./delete_child_category#dedataset3-deaction3{无模块} 无模块]]
 DEACTION3 --> END2
 DEDATASET3 --> END2 : [[$./delete_child_category#dedataset3-end2{有模块} 有模块]]
-DEBUGPARAM2 --> PREPAREPARAM3 : [[$./delete_child_category#debugparam2-prepareparam3{存在子产品中无上级模块} 存在子产品中无上级模块]]
+PREPAREPARAM4 --> PREPAREPARAM3 : [[$./delete_child_category#prepareparam4-prepareparam3{存在子产品中无上级模块} 存在子产品中无上级模块]]
 PREPAREPARAM3 --> DEDATASET2
 DEDATASET2 --> END2 : [[$./delete_child_category#dedataset2-end2{有模块} 有模块]]
 DEDATASET2 --> DEACTION4 : [[$./delete_child_category#dedataset2-deaction4{无模块} 无模块]]
 DEACTION4 --> END2
-DEBUGPARAM2 --> END2 : [[$./delete_child_category#debugparam2-end2{无分组模块} 无分组模块]]
+PREPAREPARAM4 --> END2 : [[$./delete_child_category#prepareparam4-end2{无分组模块} 无分组模块]]
 DEDATASET1 --> LOOPSUBCALL1 : [[$./delete_child_category#dedataset1-loopsubcall1{存在子级} 存在子级]]
 LOOPSUBCALL1 --> DELOGIC1
-LOOPSUBCALL1 --> DEBUGPARAM2
+LOOPSUBCALL1 --> PREPAREPARAM4
 
 
 @enduml
@@ -95,7 +95,7 @@ WHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `filter(过滤器).N_PID_EQ`
 
-#### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+#### 类别实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 
@@ -108,19 +108,18 @@ WHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))
 
 
 循环参数`category_page(类别分页查询结果)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 循环调用 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
+#### 删除类别及子类别 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
 
 
 
 调用实体 [类别(CATEGORY)](module/Base/category.md) 处理逻辑 [删除类别及子类别]((module/Base/category/logic/delete_child_category.md)) ，行为参数为`for_temp_obj(循环临时变量)`
 
-#### 结束前的默认参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+#### 判断节点（无操作） :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
 
+    无
 
 #### 上级的是否叶子节点变更 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -178,10 +177,10 @@ WHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))
 
 
 ### 连接条件说明
-#### 不存在子级 :id=DEDATASET1-DEBUGPARAM2
+#### 不存在子级 :id=DEDATASET1-PREPAREPARAM4
 
 `category_page(类别分页查询结果).size` EQ `0`
-#### 存在上级模块 :id=DEBUGPARAM2-PREPAREPARAM2
+#### 存在上级模块 :id=PREPAREPARAM4-PREPAREPARAM2
 
 `Default(传入变量).PID(父标识)` ISNOTNULL
 #### 无模块 :id=DEDATASET3-DEACTION3
@@ -190,7 +189,7 @@ WHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))
 #### 有模块 :id=DEDATASET3-END2
 
 `category_page(类别分页查询结果).size` GT `0`
-#### 存在子产品中无上级模块 :id=DEBUGPARAM2-PREPAREPARAM3
+#### 存在子产品中无上级模块 :id=PREPAREPARAM4-PREPAREPARAM3
 
 `Default(传入变量).SECTION_ID(分组标识)` ISNOTNULL AND `Default(传入变量).PID(父标识)` ISNULL
 #### 有模块 :id=DEDATASET2-END2
@@ -199,7 +198,7 @@ WHERE (t.category_id = ? OR t21.categories LIKE CONCAT('%',?,'%'))
 #### 无模块 :id=DEDATASET2-DEACTION4
 
 `category_page(类别分页查询结果).size` EQ `0`
-#### 无分组模块 :id=DEBUGPARAM2-END2
+#### 无分组模块 :id=PREPAREPARAM4-END2
 
 `Default(传入变量).PID(父标识)` ISNULL AND `Default(传入变量).section_id(分组标识)` ISNULL
 #### 存在子级 :id=DEDATASET1-LOOPSUBCALL1

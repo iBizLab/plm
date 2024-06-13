@@ -48,6 +48,7 @@ entity "STAGE\n发布阶段" as STAGE [[$../module/ProjMgmt/stage {发布阶段}
         <&key> ID - 标识
         --
         <&link-intact> RELEASE_ID - 项目发布标识
+        <&link-intact> PID - 父标识
 }
 entity "SWIMLANE\n泳道" as SWIMLANE [[$../module/ProjMgmt/swimlane {泳道}]] {
         <&key> ID - 标识
@@ -90,6 +91,7 @@ entity "WORK_ITEM\n工作项" as WORK_ITEM [[$../module/ProjMgmt/work_item {工�
 entity "WORK_ITEM_TYPE\n工作项类型" as WORK_ITEM_TYPE [[$../module/ProjMgmt/work_item_type {工作项类型}]] {
         <&key> ID - 标识
         --
+        <&link-intact> PROJECT_ID - 项目标识
 }
 
 ENTRY--> BOARD : [[$../der/DER1N_ENTRY_BOARD_BOARD_ID{DER1N_ENTRY_BOARD_BOARD_ID} 1:N关系]]
@@ -102,7 +104,9 @@ PROGRESS--> PROJECT : [[$../der/DER1N_PROGRESS_PROJECT_PROJECT_ID{DER1N_PROGRESS
 PROJECT_MEMBER--> PROJECT : [[$../der/DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID{DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID} 1:N关系]]
 SWIMLANE--> PROJECT : [[$../der/DER1N_SWIMLANE_PROJECT_PROJECT_ID{DER1N_SWIMLANE_PROJECT_PROJECT_ID} 1:N关系]]
 WORK_ITEM--> PROJECT : [[$../der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID{DER1N_WORK_ITEM_PROJECT_PROJECT_ID} 1:N关系]]
+WORK_ITEM_TYPE--> PROJECT : [[$../der/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID{DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID} 1:N关系]]
 FAVORITE-- PROJECT : [[$../der/DERCCUSTOM_FAVORITE_PROJECT{DERCCUSTOM_FAVORITE_PROJECT} 自定义关系]]
+STAGE--> STAGE : [[$../der/DER1N_STAGE_STAGE_PID{DER1N_STAGE_STAGE_PID} 1:N关系]]
 WORK_ITEM--> SWIMLANE : [[$../der/DER1N_WORK_ITEM_SWIMLANE_SWIMLANE_ID{DER1N_WORK_ITEM_SWIMLANE_SWIMLANE_ID} 1:N关系]]
 WORKLOAD--> WORKLOAD_TYPE : [[$../der/DER1N_WORKLOAD_WORKLOAD_TYPE_TYPE_ID{DER1N_WORKLOAD_WORKLOAD_TYPE_TYPE_ID} 1:N关系]]
 WORK_ITEM--> WORK_ITEM : [[$../der/DER1N_WORK_ITEM_WORK_ITEM_PID{DER1N_WORK_ITEM_WORK_ITEM_PID} 1:N关系]]

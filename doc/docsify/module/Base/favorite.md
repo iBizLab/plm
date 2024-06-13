@@ -22,6 +22,23 @@
   * `所属数据标识(OWNER_ID)`
   * `建立人(CREATE_MAN)`
 
+###### 索引
+
+<el-row>
+<el-tabs v-model="show_index">
+
+<el-tab-pane label="FAVORITE" name="index_FAVORITE">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|建立人|CREATE_MAN|false|升序|-1||
+|所属数据标识|OWNER_ID|false|升序|-1||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
 ## 关系
 
 <el-row>
@@ -120,7 +137,7 @@
       return {
 show_der:'minor',
 
-
+show_index:'index_FAVORITE',
       }
     },
     methods: {

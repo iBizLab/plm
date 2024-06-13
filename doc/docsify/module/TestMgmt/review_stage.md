@@ -1,6 +1,9 @@
 # 评审阶段(review_stage)  <!-- {docsify-ignore-all} -->
 
 
+存储评审阶段的信息
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -9,6 +12,11 @@
 |准则标识|GUIDELINE_ID|外键值|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
+|顺序|ORDER|自增标识，整数类型，用户不可见|100|是||
+|评审人|REVIEWER|文本，可指定长度|100|是||
+|评审人名称|REVIEWER_NAME|文本，可指定长度|100|是||
+|评审人类型|REVIEWER_TYPE|[文本，可指定长度](index/dictionary_index#reviewer_type "评审人类型")|100|是||
+|评审阶段状态|STAGE_STATE|[单项选择(文本值)](index/dictionary_index#stage_state "评审阶段状态")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
@@ -22,6 +30,7 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DER1N_REVIEW_STAGE_GUIDELINE_GUIDELINE_ID](der/DER1N_REVIEW_STAGE_GUIDELINE_GUIDELINE_ID)|[流程准则(GUIDELINE)](module/TestMgmt/guideline)|1:N关系||
+|[DERCUSTOM_REVIEW_REVIEW_STAGE_STAGE](der/DERCUSTOM_REVIEW_REVIEW_STAGE_STAGE)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -55,6 +64,13 @@
 |N_GUIDELINE_ID_EQ|准则标识|EQ||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_STAGE_STATE_EQ|评审阶段状态|EQ||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[变更阶段评审人](module/TestMgmt/review_stage/uilogic/set_stage_reviewer)|set_stage_reviewer||
+|[选中阶段](module/TestMgmt/review_stage/uilogic/choose_stage)|choose_stage||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -77,6 +93,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_stage?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review_stage?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

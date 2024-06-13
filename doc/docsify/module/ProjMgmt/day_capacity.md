@@ -45,6 +45,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProjMgmt/day_capacity/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/day_capacity/query/View)|VIEW|否|否 |否 ||
+|[当前项目成员(cur_project_member)](module/ProjMgmt/day_capacity/query/cur_project_member)|cur_project_member|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|

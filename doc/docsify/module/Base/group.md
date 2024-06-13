@@ -66,6 +66,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/group/dataset/Default)|DEFAULT|数据查询|是|||
 |[无分组(no_section)](module/Base/group/dataset/no_section)|no_section|数据查询|否|||
+|[团队默认读取(reader)](module/Base/group/dataset/reader)|reader|数据查询|否|||
 |[团队管理员(user_group_admin)](module/Base/group/dataset/user_group_admin)|user_group_admin|数据查询|否|||
 
 ## 数据权限

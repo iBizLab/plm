@@ -25,12 +25,16 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|删除标签|delete_tag|[实体处理逻辑](module/ProjMgmt/project_tag/logic/delete_tag "删除标签")|默认|不支持||||
+|获取关联的工作项|get_con_project_tag|[实体处理逻辑](module/ProjMgmt/project_tag/logic/get_con_project_tag "获取关联的工作项")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/project_tag/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[删除标签](module/ProjMgmt/project_tag/logic/delete_tag)|delete_tag|无||删除标签时对工作项的标签属性进行处理|
 |[无操作](module/ProjMgmt/project_tag/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[获取关联的工作项](module/ProjMgmt/project_tag/logic/get_con_project_tag)|get_con_project_tag|无||在删除项目标签时，获取与之关联的工作项数量。|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -82,7 +86,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 删除标签 | delete_tag | 删除标签 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 删除标签 | delete_tag | 删除标签 |单项数据（主键）|<details><summary>后台调用</summary>[delete_tag](#行为)||
 | 编辑标签 | edit_tag | 编辑标签 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑标签](app/view/project_tag_option_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

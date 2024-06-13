@@ -18,10 +18,10 @@
 
 
 ### 关联界面行为
-  * [基线(BASELINE)](module/Base/baseline) : [编辑基线（产品）](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [表格界面_新建操作](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [设立完成（产品）](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [删除](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [表格界面_新建操作_子数据](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [设立完成（产品）](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [编辑基线（产品）](module/Base/baseline#界面行为)
 
 ### 关联界面逻辑
   * [基线(BASELINE)](module/Base/baseline) : [计算表格列行为状态](module/Base/baseline/uilogic/calc_column_action_state)

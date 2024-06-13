@@ -16,21 +16,17 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./get_form_stencil#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./get_form_stencil#end1 {"结束"}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./get_form_stencil#debugparam2 {"调试逻辑参数"}]]
 state "获取模板ID" as PREPAREPARAM2  [[$./get_form_stencil#prepareparam2 {"获取模板ID"}]]
 state "根据模板ID获取模板信息" as DEACTION1  [[$./get_form_stencil#deaction1 {"根据模板ID获取模板信息"}]]
 state "设置返回数据" as PREPAREPARAM1  [[$./get_form_stencil#prepareparam1 {"设置返回数据"}]]
 state "创建草稿页面" as DEACTION2  [[$./get_form_stencil#deaction2 {"创建草稿页面"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./get_form_stencil#debugparam1 {"调试逻辑参数"}]]
 
 
-Begin --> DEBUGPARAM2
-DEBUGPARAM2 --> PREPAREPARAM2
+Begin --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION1
 DEACTION1 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION2
-DEACTION2 --> DEBUGPARAM1
-DEBUGPARAM1 --> END1
+DEACTION2 --> END1
 
 
 @enduml
@@ -49,14 +45,6 @@ DEBUGPARAM1 --> END1
 
 
 *- N/A*
-
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
 
 #### 获取模板ID :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -85,14 +73,6 @@ DEBUGPARAM1 --> END1
 
 
 调用实体 [页面(PAGE)](module/Wiki/article_page.md) 行为 [Create](module/Wiki/article_page#行为) ，行为参数为`page_info(页面信息)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`page_info(页面信息)`的详细信息
-
 
 
 

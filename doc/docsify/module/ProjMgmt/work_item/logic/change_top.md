@@ -17,13 +17,12 @@ hide empty description
 state "开始" as Begin <<start>> [[$./change_top#begin {"开始"}]]
 state "准备参数" as PREPAREPARAM1  [[$./change_top#prepareparam1 {"准备参数"}]]
 state "拷贝参数" as COPYPARAM1  [[$./change_top#copyparam1 {"拷贝参数"}]]
-state "Update" as DEACTION1  [[$./change_top#deaction1 {"Update"}]]
+state "更新工作项" as DEACTION1  [[$./change_top#deaction1 {"更新工作项"}]]
 state "获取子级工作项" as DEDATASET1  [[$./change_top#dedataset1 {"获取子级工作项"}]]
 state "结束" as END1 <<end>> [[$./change_top#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./change_top#loopsubcall1 {"循环子调用"}]] #green {
 state "子工作项的顶级标识为父工作项" as PREPAREPARAM3  [[$./change_top#prepareparam3 {"子工作项的顶级标识为父工作项"}]]
 state "子工作项继承父工作项的顶级标识" as PREPAREPARAM2  [[$./change_top#prepareparam2 {"子工作项继承父工作项的顶级标识"}]]
-state "递归调用" as DELOGIC1  [[$./change_top#delogic1 {"递归调用"}]]
 }
 
 
@@ -33,9 +32,7 @@ COPYPARAM1 --> DEACTION1
 DEACTION1 --> DEDATASET1
 DEDATASET1 --> LOOPSUBCALL1 : [[$./change_top#dedataset1-loopsubcall1{存在子工作项} 存在子工作项]]
 LOOPSUBCALL1 --> PREPAREPARAM3
-PREPAREPARAM3 --> DELOGIC1
 LOOPSUBCALL1 --> PREPAREPARAM2 : [[$./change_top#loopsubcall1-prepareparam2{父工作项存在顶级标识} 父工作项存在顶级标识]]
-PREPAREPARAM2 --> DELOGIC1
 DEDATASET1 --> END1 : [[$./change_top#dedataset1-end1{不存在子工作项} 不存在子工作项]]
 
 
@@ -68,7 +65,7 @@ DEDATASET1 --> END1 : [[$./change_top#dedataset1-end1{不存在子工作项} 不
 
 1. 将`parent_item(父工作项).TOP_ID(顶级工作项标识)` 设置给  `for_temp(循环临时变量).TOP_ID(顶级工作项标识)`
 
-#### Update :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新工作项 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -89,12 +86,6 @@ DEDATASET1 --> END1 : [[$./change_top#dedataset1-end1{不存在子工作项} 不
 
 
 循环参数`child_page(下级工作项列表)`，子循环参数使用`for_temp(循环临时变量)`
-#### 递归调用 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
-
-
-
-调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 处理逻辑 [变更顶级工作项]((module/ProjMgmt/work_item/logic/change_top.md)) ，行为参数为`for_temp(循环临时变量)`
-
 #### 子工作项的顶级标识为父工作项 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 

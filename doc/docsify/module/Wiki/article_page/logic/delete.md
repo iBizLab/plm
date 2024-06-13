@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./delete#begin {"开始"}]]
-state "更新删除状态" as DEACTION1  [[$./delete#deaction1 {"更新删除状态"}]]
+state "更新页面删除状态" as DEACTION1  [[$./delete#deaction1 {"更新页面删除状态"}]]
 state "删除最近访问" as RAWSQLCALL1  [[$./delete#rawsqlcall1 {"删除最近访问"}]]
-state "设置过滤器参数" as PREPAREPARAM1  [[$./delete#prepareparam1 {"设置过滤器参数"}]]
+state "设置下级页面过滤器参数" as PREPAREPARAM1  [[$./delete#prepareparam1 {"设置下级页面过滤器参数"}]]
 state "查询下级页面" as DEDATASET1  [[$./delete#dedataset1 {"查询下级页面"}]]
-state "设置删除状态" as PREPAREPARAM2  [[$./delete#prepareparam2 {"设置删除状态"}]]
+state "设置页面删除状态" as PREPAREPARAM2  [[$./delete#prepareparam2 {"设置页面删除状态"}]]
 state "结束" as END1 <<end>> [[$./delete#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./delete#loopsubcall1 {"循环子调用"}]] #green {
-state "递归调用" as DELOGIC1  [[$./delete#delogic1 {"递归调用"}]]
+state "递归调用删除页面" as DELOGIC1  [[$./delete#delogic1 {"递归调用删除页面"}]]
 }
 
 
@@ -48,13 +48,13 @@ DEDATASET1 --> END1 : [[$./delete#dedataset1-end1{不存在子级} 不存在子�
 
 
 *- N/A*
-#### 设置删除状态 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置页面删除状态 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`1` 设置给  `Default(传入变量).IS_DELETED(是否已删除)`
 
-#### 更新删除状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新页面删除状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -75,7 +75,7 @@ update recent set IS_DELETED=1 where owner_id=? and owner_subtype='page'
 1. `Default(传入变量).ID(标识)`
 
 
-#### 设置过滤器参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置下级页面过滤器参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -94,7 +94,7 @@ update recent set IS_DELETED=1 where owner_id=? and owner_subtype='page'
 
 
 循环参数`selected_page(分页结果对象)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 递归调用 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
+#### 递归调用删除页面 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
 
 
 

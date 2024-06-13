@@ -23,6 +23,10 @@
 
 * `null`
 
+<p class="panel-title"><b>外键属性</b></p>
+
+* `ID(null)`
+
 <p class="panel-title"><b>主从关系类型</b></p>
 
 * <i class="fa fa-square"/></i> 附属关系 <i class="fa fa-square"/></i> 附属关系(N:N连接) <i class="fa fa-square"/></i> 数据访问控制 <i class="fa fa-square"/></i> 嵌套操作 <i class="fa fa-square"/></i> 递归关系 <i class="fa fa-check-square"/></i> 关联通知 <i class="fa fa-square"/></i> 附属扩展

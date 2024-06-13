@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./is_archived_onchange#begin {"开始"}]]
-state "实体通知" as DENOTIFY1  [[$./is_archived_onchange#denotify1 {"实体通知"}]]
+state "产品归档/激活通知" as DENOTIFY1  [[$./is_archived_onchange#denotify1 {"产品归档/激活通知"}]]
 state "结束" as END1 <<end>> [[$./is_archived_onchange#end1 {"结束"}]]
 
 
@@ -34,7 +34,7 @@ DENOTIFY1 --> END1
 
 
 *- N/A*
-#### 实体通知 :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+#### 产品归档/激活通知 :id=DENOTIFY1<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 

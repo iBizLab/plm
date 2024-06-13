@@ -15,30 +15,25 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recent_jump_other_view#begin {开始}]]
-state "项目类" as PREPAREJSPARAM6  [[$./recent_jump_other_view#preparejsparam6 {项目类}]]
-state "结束" as END1 <<end>> [[$./recent_jump_other_view#end1 {结束}]]
-state "选取的数据" as DEBUGPARAM2  [[$./recent_jump_other_view#debugparam2 {选取的数据}]]
-state "知识类" as PREPAREJSPARAM11  [[$./recent_jump_other_view#preparejsparam11 {知识类}]]
-state "获取选中卡片" as PREPAREJSPARAM1  [[$./recent_jump_other_view#preparejsparam1 {获取选中卡片}]]
-state "清空父类标识" as PREPAREJSPARAM10  [[$./recent_jump_other_view#preparejsparam10 {清空父类标识}]]
-state "测试用例" as PREPAREJSPARAM9  [[$./recent_jump_other_view#preparejsparam9 {测试用例}]]
-state "工单" as PREPAREJSPARAM5  [[$./recent_jump_other_view#preparejsparam5 {工单}]]
-state "表格" as DEBUGPARAM5  [[$./recent_jump_other_view#debugparam5 {表格}]]
-state "获取选中表格行" as PREPAREJSPARAM2  [[$./recent_jump_other_view#preparejsparam2 {获取选中表格行}]]
-state "工作项" as PREPAREJSPARAM7  [[$./recent_jump_other_view#preparejsparam7 {工作项}]]
-state "产品类" as PREPAREJSPARAM3  [[$./recent_jump_other_view#preparejsparam3 {产品类}]]
-state "卡片" as DEBUGPARAM4  [[$./recent_jump_other_view#debugparam4 {卡片}]]
 state "重定向跳转" as DEUIACTION1  [[$./recent_jump_other_view#deuiaction1 {重定向跳转}]]
-state "获取选中数据详情" as RAWJSCODE1  [[$./recent_jump_other_view#rawjscode1 {获取选中数据详情}]]
-state "需求" as PREPAREJSPARAM4  [[$./recent_jump_other_view#preparejsparam4 {需求}]]
 state "测试类" as PREPAREJSPARAM8  [[$./recent_jump_other_view#preparejsparam8 {测试类}]]
+state "工单" as PREPAREJSPARAM5  [[$./recent_jump_other_view#preparejsparam5 {工单}]]
+state "测试用例" as PREPAREJSPARAM9  [[$./recent_jump_other_view#preparejsparam9 {测试用例}]]
+state "项目类" as PREPAREJSPARAM6  [[$./recent_jump_other_view#preparejsparam6 {项目类}]]
+state "清空父类标识" as PREPAREJSPARAM10  [[$./recent_jump_other_view#preparejsparam10 {清空父类标识}]]
+state "工作项" as PREPAREJSPARAM7  [[$./recent_jump_other_view#preparejsparam7 {工作项}]]
+state "获取选中卡片" as PREPAREJSPARAM1  [[$./recent_jump_other_view#preparejsparam1 {获取选中卡片}]]
+state "需求" as PREPAREJSPARAM4  [[$./recent_jump_other_view#preparejsparam4 {需求}]]
 state "页面" as PREPAREJSPARAM12  [[$./recent_jump_other_view#preparejsparam12 {页面}]]
+state "知识类" as PREPAREJSPARAM11  [[$./recent_jump_other_view#preparejsparam11 {知识类}]]
+state "获取选中数据详情" as RAWJSCODE1  [[$./recent_jump_other_view#rawjscode1 {获取选中数据详情}]]
+state "产品类" as PREPAREJSPARAM3  [[$./recent_jump_other_view#preparejsparam3 {产品类}]]
+state "结束" as END1 <<end>> [[$./recent_jump_other_view#end1 {结束}]]
+state "获取选中表格行" as PREPAREJSPARAM2  [[$./recent_jump_other_view#preparejsparam2 {获取选中表格行}]]
 
 
-Begin --> DEBUGPARAM4 : [[$./recent_jump_other_view#begin-debugparam4{最近使用} 最近使用]]
-DEBUGPARAM4 --> PREPAREJSPARAM1
-PREPAREJSPARAM1 --> DEBUGPARAM2
-DEBUGPARAM2 --> RAWJSCODE1
+Begin --> PREPAREJSPARAM1 : [[$./recent_jump_other_view#begin-preparejsparam1{最近使用} 最近使用]]
+PREPAREJSPARAM1 --> RAWJSCODE1
 RAWJSCODE1 --> PREPAREJSPARAM3 : [[$./recent_jump_other_view#rawjscode1-preparejsparam3{父类型为产品} 父类型为产品]]
 PREPAREJSPARAM3 --> DEUIACTION1 : [[$./recent_jump_other_view#preparejsparam3-deuiaction1{最近访问数据（打开父）} 最近访问数据（打开父）]]
 DEUIACTION1 --> PREPAREJSPARAM10
@@ -59,9 +54,8 @@ RAWJSCODE1 --> PREPAREJSPARAM11 : [[$./recent_jump_other_view#rawjscode1-prepare
 PREPAREJSPARAM11 --> PREPAREJSPARAM12 : [[$./recent_jump_other_view#preparejsparam11-preparejsparam12{连接名称} 连接名称]]
 PREPAREJSPARAM12 --> DEUIACTION1
 PREPAREJSPARAM11 --> DEUIACTION1 : [[$./recent_jump_other_view#preparejsparam11-deuiaction1{连接名称} 连接名称]]
-Begin --> DEBUGPARAM5 : [[$./recent_jump_other_view#begin-debugparam5{最近访问} 最近访问]]
-DEBUGPARAM5 --> PREPAREJSPARAM2
-PREPAREJSPARAM2 --> DEBUGPARAM2
+Begin --> PREPAREJSPARAM2 : [[$./recent_jump_other_view#begin-preparejsparam2{最近访问} 最近访问]]
+PREPAREJSPARAM2 --> RAWJSCODE1
 
 
 @enduml
@@ -89,13 +83,6 @@ PREPAREJSPARAM2 --> DEBUGPARAM2
 
 1. 将`selectobj(选中数据).owner_id` 设置给  `ctx(上下文参数).ticket`
 
-#### 卡片 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`卡片参数`的详细信息
-
 #### 获取选中卡片 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -109,13 +96,6 @@ PREPAREJSPARAM2 --> DEBUGPARAM2
 
 1. 将`selectobj(选中数据).recent_parent` 设置给  `ctx(上下文参数).library`
 2. 将`selectobj(选中数据).owner_subtype` 设置给  `ctx(上下文参数).owner_subtype`
-
-#### 选取的数据 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`选中数据（数组）`的详细信息
 
 #### 获取选中数据详情 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -153,13 +133,6 @@ if (selecteddata.length > 0) {
 1. 将`空值（NULL）` 设置给  `ctx(上下文参数).library`
 2. 将`空值（NULL）` 设置给  `ctx(上下文参数).product`
 3. 将`空值（NULL）` 设置给  `ctx(上下文参数).project`
-
-#### 表格 :id=DEBUGPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`表格部件参数`的详细信息
 
 #### 获取选中表格行 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -201,7 +174,7 @@ if (selecteddata.length > 0) {
 1. 将`selectobj(选中数据).owner_id` 设置给  `ctx(上下文参数).article_page`
 
 ### 连接条件说明
-#### 最近使用 :id=Begin-DEBUGPARAM4
+#### 最近使用 :id=Begin-PREPAREJSPARAM1
 
 ```this_obj(当前部件对象).name``` EQ ```dataview```
 #### 父类型为产品 :id=RAWJSCODE1-PREPAREJSPARAM3
@@ -243,7 +216,7 @@ if (selecteddata.length > 0) {
 #### 连接名称 :id=PREPAREJSPARAM11-DEUIACTION1
 
 ```selectobj(选中数据).owner_subtype``` EQ ```space```
-#### 最近访问 :id=Begin-DEBUGPARAM5
+#### 最近访问 :id=Begin-PREPAREJSPARAM2
 
 ```this_obj(当前部件对象).name``` EQ ```grid```
 
@@ -252,12 +225,12 @@ if (selecteddata.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|卡片参数|DATAVIEW|部件对象||
-|选中数据（数组）|selectedData|简单数据列表||
-|当前视图|cur_view|当前视图对象||
-|选中数据|selectobj|数据对象||
-|当前部件对象|this_obj|当前部件对象||
 |表格部件参数|grid|部件对象||
+|当前部件对象|this_obj|当前部件对象||
+|选中数据（数组）|selectedData|简单数据列表||
+|卡片参数|DATAVIEW|部件对象||
+|state|STATE|数据对象||
+|选中数据|selectobj|数据对象||
+|当前视图|cur_view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |上下文参数|ctx|导航视图参数绑定参数||
-|state|STATE|数据对象||

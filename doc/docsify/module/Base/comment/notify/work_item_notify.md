@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [评论通知模板](index/notify_index?id=comment)
+* [评论工作项通知模板](index/notify_index?id=comment_work_item)
 
 <p class="panel-title"><b>通知类型</b></p>
 

@@ -36,6 +36,15 @@
 |所属数据标识|OWNER_ID|false|升序|-1||
 
 </el-tab-pane>
+<el-tab-pane label="ATTENTION2" name="index_ATTENTION2">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|所属数据标识|OWNER_ID|false|升序|-1||
+|所属对象子类型|OWNER_SUBTYPE|false|升序|-1||
+|所属数据对象|OWNER_TYPE|false|升序|-1||
+
+</el-tab-pane>
 
 </el-tabs>
 </el-row>
@@ -65,9 +74,11 @@
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_ATTENTION_CUSTOMER_OWNER_ID](der/DERCUSTOM_ATTENTION_CUSTOMER_OWNER_ID)|[客户(CUSTOMER)](module/ProdMgmt/customer)|自定义关系||
+|[DERCUSTOM_ATTENTION_DISCUSS_POST_OWNER_ID](der/DERCUSTOM_ATTENTION_DISCUSS_POST_OWNER_ID)|[讨论(DISCUSS_POST)](module/Team/discuss_post)|自定义关系||
 |[DERCUSTOM_ATTENTION_IDEA_OWNER_ID](der/DERCUSTOM_ATTENTION_IDEA_OWNER_ID)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
 |[DERCUSTOM_ATTENTION_PAGE_OWNER_ID](der/DERCUSTOM_ATTENTION_PAGE_OWNER_ID)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCUSTOM_ATTENTION_REVIEW_OWNER_ID](der/DERCUSTOM_ATTENTION_REVIEW_OWNER_ID)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
+|[DERCUSTOM_ATTENTION_REVIEW_WIZARD](der/DERCUSTOM_ATTENTION_REVIEW_WIZARD)|[评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)|自定义关系||
 |[DERCUSTOM_ATTENTION_RUN_OWNER_ID](der/DERCUSTOM_ATTENTION_RUN_OWNER_ID)|[执行用例(RUN)](module/TestMgmt/run)|自定义关系||
 |[DERCUSTOM_ATTENTION_TEST_CASE_OWNER_ID](der/DERCUSTOM_ATTENTION_TEST_CASE_OWNER_ID)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||
 |[DERCUSTOM_ATTENTION_TICKET_OWNER_ID](der/DERCUSTOM_ATTENTION_TICKET_OWNER_ID)|[工单(TICKET)](module/ProdMgmt/ticket)|自定义关系||
@@ -136,13 +147,13 @@
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
 |------------| -----   |  -------- | -------- |-------- |-------- |
-|[客户提醒关注通知](module/Base/attention/notify/attention_customer_notify)|attention_customer_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
-|[产品需求提醒关注通知](module/Base/attention/notify/attention_idea_notify)|attention_idea_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
-|[页面提醒关注通知](module/Base/attention/notify/attention_page_notify)|attention_page_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板(页面)](index/notify_index#page_notice_attention)|关注人 ||
-|[执行用例提醒关注通知](module/Base/attention/notify/attention_run_notify)|attention_run_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
-|[测试用例提醒关注通知](module/Base/attention/notify/attention_test_case_notify)|attention_test_case_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
-|[工单提醒关注通知](module/Base/attention/notify/attention_ticket_notify)|attention_ticket_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
-|[工作项提醒关注通知](module/Base/attention/notify/attention_work_item_notify)|attention_work_item_notify|[默认消息队列](index/notify_index)|[提醒关注通知模板](index/notify_index#notice_attention)|关注人 ||
+|[客户提醒关注通知](module/Base/attention/notify/attention_customer_notify)|attention_customer_notify|[默认消息队列](index/notify_index)|[提醒关注客户通知模板](index/notify_index#notice_attention_customer)|关注人 ||
+|[产品需求提醒关注通知](module/Base/attention/notify/attention_idea_notify)|attention_idea_notify|[默认消息队列](index/notify_index)|[提醒关注产品需求通知模板](index/notify_index#notice_attention_idea)|关注人 ||
+|[页面提醒关注通知](module/Base/attention/notify/attention_page_notify)|attention_page_notify|[默认消息队列](index/notify_index)|[提醒关注页面通知模板](index/notify_index#notice_attention_page)|关注人 ||
+|[执行用例提醒关注通知](module/Base/attention/notify/attention_run_notify)|attention_run_notify|[默认消息队列](index/notify_index)|[提醒关注执行用例通知模板](index/notify_index#notice_attention_run)|关注人 ||
+|[测试用例提醒关注通知](module/Base/attention/notify/attention_test_case_notify)|attention_test_case_notify|[默认消息队列](index/notify_index)|[提醒关注测试用例通知模板](index/notify_index#notice_attention_test_case)|关注人 ||
+|[工单提醒关注通知](module/Base/attention/notify/attention_ticket_notify)|attention_ticket_notify|[默认消息队列](index/notify_index)|[提醒关注工单通知模板](index/notify_index#notice_attention_ticket)|关注人 ||
+|[工作项提醒关注通知](module/Base/attention/notify/attention_work_item_notify)|attention_work_item_notify|[默认消息队列](index/notify_index)|[提醒关注工作项通知模板](index/notify_index#notice_attention_work_item)|关注人 ||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |

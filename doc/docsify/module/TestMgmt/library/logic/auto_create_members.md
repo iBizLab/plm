@@ -19,8 +19,8 @@ state "准备查询参数" as PREPAREPARAM2  [[$./auto_create_members#preparepar
 state "查询用户数据" as DEDATASET1  [[$./auto_create_members#dedataset1 {"查询用户数据"}]]
 state "结束" as END1 <<end>> [[$./auto_create_members#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./auto_create_members#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./auto_create_members#resetparam1 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"准备参数"}]]
+state "重置成员参数" as RESETPARAM1  [[$./auto_create_members#resetparam1 {"重置成员参数"}]]
+state "填充成员参数信息" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"填充成员参数信息"}]]
 state "生成用户数据" as DEACTION3  [[$./auto_create_members#deaction3 {"生成用户数据"}]]
 }
 
@@ -65,12 +65,12 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`member_page(用户分页结果数据)`，子循环参数使用`member_obj(用户结果变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置成员参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```library_member(成员参数)```
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充成员参数信息 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

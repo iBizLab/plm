@@ -50,13 +50,15 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |获取用户设置|get_by_user|[实体处理逻辑](module/Base/notify_setting/logic/get_by_user "获取用户通知设置")|默认|不支持||||
+|行为|nothing|[实体处理逻辑](module/Base/notify_setting/logic/nothing "无操作")|默认|不支持||||
 |保存配置|save_setting|[实体处理逻辑](module/Base/notify_setting/logic/save_setting "保存设置")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[保存设置](module/Base/notify_setting/logic/save_setting)|save_setting|无|||
-|[获取用户通知设置](module/Base/notify_setting/logic/get_by_user)|get_by_user|无|||
+|[保存设置](module/Base/notify_setting/logic/save_setting)|save_setting|无||保存通知设置|
+|[无操作](module/Base/notify_setting/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[获取用户通知设置](module/Base/notify_setting/logic/get_by_user)|get_by_user|无||获取用户通知设置|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

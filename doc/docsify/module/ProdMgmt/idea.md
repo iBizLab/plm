@@ -153,15 +153,14 @@
 |激活|activate|[实体处理逻辑](module/ProdMgmt/idea/logic/activate "激活")|默认|不支持||||
 |归档|archive|[实体处理逻辑](module/ProdMgmt/idea/logic/archive "归档")|默认|不支持||||
 |变更需求状态|change_state|[实体处理逻辑](module/ProdMgmt/idea/logic/change_state "变更需求状态")|默认|不支持||||
-|取消关联|del_relation|[实体处理逻辑](module/ProdMgmt/idea/logic/del_relation "取消关联")|默认|不支持|||取消关联，删除相应的正反向关联数据|
 |删除|delete|[实体处理逻辑](module/ProdMgmt/idea/logic/delete "删除")|默认|不支持||||
-|获取产品成员|fill_product_member|[实体处理逻辑](module/ProdMgmt/idea/logic/get_product_member "获取产品成员")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |获取基线名称|get_baseline_name|[实体处理逻辑](module/ProdMgmt/idea/logic/get_baseline_name "获取基线名称")|默认|不支持||||
 |获取默认模块|idea_category|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_category "获取默认模块")|默认|不支持||||
 |需求复制|idea_copy|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_copy "需求复制")|默认|不支持||||
 |需求移动|idea_move|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_move "需求移动")|默认|不支持||||
 |需求排期|idea_re_plan|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_re_plan "需求排期")|默认|不支持||||
+|需求只读用户判断|idea_readonly_recognize|[实体处理逻辑](module/ProdMgmt/idea/logic/get_product_member "获取产品成员")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/idea/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联需求|others_relation_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/others_relation_idea "其他实体关联需求")|默认|不支持||||
 |计划内批删除|plan_delete_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/plan_delete_idea "计划内需求批删除")|默认|不支持||||
@@ -174,7 +173,6 @@
 |[产品需求关联分页计数器](module/ProdMgmt/idea/logic/product_idea_re_counters)|product_idea_re_counters|无||计算分页下关联事项的条数|
 |[其他实体关联需求](module/ProdMgmt/idea/logic/others_relation_idea)|others_relation_idea|无||需求实体的关联操作，生成正向，反向关联数据|
 |[删除](module/ProdMgmt/idea/logic/delete)|delete|无||需求数据的逻辑删除，修改需求的是否删除属性值|
-|[取消关联](module/ProdMgmt/idea/logic/del_relation)|del_relation|无||产品需求取消关联数据（正反向关联数据同时删除）|
 |[变更需求状态](module/ProdMgmt/idea/logic/change_state)|change_state|无||产品需求状态变更触发相关通知|
 |[基线规划需求数据查询](module/ProdMgmt/idea/logic/baseline_plan_idea)|baseline_plan_idea|无||基线规划需求时，填充需求当前版本名称|
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
@@ -185,7 +183,7 @@
 |[激活](module/ProdMgmt/idea/logic/activate)|activate|无||激活已归档状态需求，修改需求的归档属性|
 |[状态变更附加逻辑](module/ProdMgmt/idea/logic/state_onchange)|state_onchange|属性逻辑||需求数据状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/idea/logic/create_recent)|create_recent|无||在用户对需求数据进行了get或update操作时生成相应的访问记录|
-|[获取产品成员](module/ProdMgmt/idea/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+|[获取产品成员](module/ProdMgmt/idea/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
 |[获取基线名称](module/ProdMgmt/idea/logic/get_baseline_name)|get_baseline_name|无||需求主视图获取所属基线|
 |[获取默认模块](module/ProdMgmt/idea/logic/idea_category)|idea_category|无||获取需求的默认模块|
 |[计划内需求批删除](module/ProdMgmt/idea/logic/plan_delete_idea)|plan_delete_idea|无||排期（计划）内取消关联需求，删除正反向关联数据|
@@ -283,7 +281,6 @@
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 |查询指定属性组；评论负责人|
 |[通用需求查询(common)](module/ProdMgmt/idea/query/common)|common|否|否 |否 |状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[已删除(deleted)](module/ProdMgmt/idea/query/deleted)|deleted|否|否 |否 |查询已删除的需求数据|
-|[产品需求关联需求(idea_relation_idea)](module/ProdMgmt/idea/query/idea_relation_idea)|idea_relation_idea|否|否 |否 |需求关联需求表格调用|
 |[我负责的产品需求(my_assign)](module/ProdMgmt/idea/query/my_assign)|my_assign|否|否 |否 |非归档数据，且负责人为当前登录人的数据|
 |[我关注的需求(my_attention)](module/ProdMgmt/idea/query/my_attention)|my_attention|否|否 |否 |查询我关注的需求（未归档、未删除）|
 |[我创建的(my_created)](module/ProdMgmt/idea/query/my_created)|my_created|否|否 |否 |首页我创建的需求表格调用|
@@ -292,9 +289,6 @@
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/query/notify_assignee)|notify_assignee|否|否 |否 |查询指定属性组（负责人相关）|
 |[计划关联需求(plan_relation_idea)](module/ProdMgmt/idea/query/plan_relation_idea)|plan_relation_idea|否|否 |否 |计划关联需求表格调用|
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/query/recent_idea)|recent_idea|否|否 |否 |最近浏览的且未关联当前主体且非归档非删除的数据|
-|[测试用例关联需求(test_case_relation)](module/ProdMgmt/idea/query/test_case_relation)|test_case_relation|否|否 |否 |测试用例关联需求表格调用；|
-|[工单关联需求(ticket_relation_idea)](module/ProdMgmt/idea/query/ticket_relation_idea)|ticket_relation_idea|否|否 |否 |工单关联需求表格调用|
-|[工作项关联需求(work_item_relation_idea)](module/ProdMgmt/idea/query/work_item_relation_idea)|work_item_relation_idea|否|否 |否 |工作项关联需求表格调用|
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -307,7 +301,6 @@
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/dataset/comment_notify_assignee)|comment_notify_assignee|数据查询|否||查询指定属性组；评论负责人|
 |[普通需求(common)](module/ProdMgmt/idea/dataset/common)|common|数据查询|否||状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[已删除(deleted)](module/ProdMgmt/idea/dataset/deleted)|deleted|数据查询|否||查询已删除的需求数据|
-|[产品需求关联需求(idea_relation_idea)](module/ProdMgmt/idea/dataset/idea_relation_idea)|idea_relation_idea|数据查询|否||需求关联需求表格调用|
 |[我负责的产品需求(my_assign)](module/ProdMgmt/idea/dataset/my_assign)|my_assign|数据查询|否||非归档数据，且负责人为当前登录人的数据|
 |[我负责的需求(my_assignee_count)](module/ProdMgmt/idea/dataset/my_assignee_count)|my_assignee_count|数据查询|否||非归档数据，且负责人为当前登录人的数据|
 |[我关注的需求(my_attention)](module/ProdMgmt/idea/dataset/my_attention)|my_attention|数据查询|否||查询我关注的需求（未归档、未删除）|
@@ -317,9 +310,6 @@
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/dataset/notify_assignee)|notify_assignee|数据查询|否||查询指定属性组（负责人相关）|
 |[计划关联需求(plan_relation_idea)](module/ProdMgmt/idea/dataset/plan_relation_idea)|plan_relation_idea|数据查询|否||计划关联需求表格调用|
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/dataset/recent_idea)|recent_idea|数据查询|否||最近浏览的且未关联当前主体且非归档非删除的数据|
-|[测试用例关联(test_case_relation)](module/ProdMgmt/idea/dataset/test_case_relation)|test_case_relation|数据查询|否||测试用例关联需求表格调用；|
-|[工单关联需求(ticket_relation_idea)](module/ProdMgmt/idea/dataset/ticket_relation_idea)|ticket_relation_idea|数据查询|否||工单关联需求表格调用|
-|[工作项关联需求(work_item_relation_idea)](module/ProdMgmt/idea/dataset/work_item_relation_idea)|work_item_relation_idea|数据查询|否||工作项关联需求表格调用|
 
 ## 数据权限
 
@@ -350,6 +340,11 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ASSIGNEE_ID_EQ|负责人|EQ||
+|N_ASSIGNEE_ID_IN|负责人|IN||
+|N_ASSIGNEE_ID_ISNOTNULL|负责人|ISNOTNULL||
+|N_ASSIGNEE_ID_ISNULL|负责人|ISNULL||
+|N_ASSIGNEE_ID_NOTEQ|负责人|NOTEQ||
+|N_ASSIGNEE_ID_NOTIN|负责人|NOTIN||
 |N_ASSIGNEE_NAME_EQ|负责人|EQ||
 |N_ASSIGNEE_NAME_LIKE|负责人|LIKE||
 |N_CATEGORIES_LIKE|类别路径|LIKE||
@@ -357,6 +352,11 @@
 |N_CATEGORY_NAME_EQ|名称|EQ||
 |N_CATEGORY_NAME_LIKE|名称|LIKE||
 |N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTEQ|建立人|NOTEQ||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_CREATE_TIME_EQ|建立时间|EQ||
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
 |N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
@@ -389,17 +389,19 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 恢复（工具栏） | recover_toolbar | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|已删除需求详情页恢复按钮调用；恢复已删除的需求|
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
-| 取消关联（其他实体关联） | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)|其他实体关联需求表格、需求关联需求表格上界面行为组调用；|
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node4_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
+| 新建需求（快速新建） | quick_new_idea | 新建需求 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
 | 需求移动 | idea_move | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
 | 激活（工具栏） | toolbar_activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|工具栏上按钮调用；|
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|批操作工具栏上按钮调用|
 | 需求自定义导入 | custom_import_data | 需求导入 |无数据|<details><summary>打开数据导入视图</summary>[产品需求导入]()</details>||
+| 关闭 | toolbar_show_edit_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 需求排期 | idea_re_plan | 需求排期 |多项数据（主键）|<details><summary>后台调用</summary>[idea_re_plan](#行为)|批操作工具栏上按钮调用|
@@ -408,8 +410,6 @@
 | 新建子产品 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建子产品 |单项数据|用户自定义||
 | 变更需求状态 | change_idea_state | 变更需求状态 |多项数据（主键）|<details><summary>后台调用</summary>[change_state](#行为)|批操作工具栏上按钮调用|
 | 取消关联（计划批操作） | del_relation_more | 取消关联 |多项数据（主键）|<details><summary>后台调用</summary>[plan_delete_idea](#行为)|批操作工具栏上按钮调用|
-| 新添加需求（需求） | new_relation_idea | 添加需求 |无数据|用户自定义|表格视图上，添加需求按钮调用；用于控制下方选择框的显示隐藏；|
-| 添加需求（其他实体关联） | others_add_relation_idea | 添加需求 |无数据|用户自定义|关联分页中, 下拉控件使用|
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)|回收站批操作按钮调用；恢复已删除的需求|
@@ -423,7 +423,9 @@
 | 需求移动（工具栏） | idea_move_toolbar | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 打开需求编辑页 | open_idea_edit_view | 编辑 |单项数据|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 评论 | toolbar_show_edit_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 显示下拉并展开数据（嵌入视图） | toolbar_show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 关联需求（工具栏） | toolbar_link_idea | 关联需求 |无数据|用户自定义||
 
@@ -436,21 +438,24 @@
 |[关联工单（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_ticket)|toolbar_link_ticket|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联测试用例（工具栏）](module/ProdMgmt/idea/uilogic/toolbar_link_test_case)|toolbar_link_test_case|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求值变更](module/ProdMgmt/idea/uilogic/relation_idea_change)|relation_idea_change|关联操作时触发，内部调用关联逻辑进行关联操作|
+|[关闭评论区](module/ProdMgmt/idea/uilogic/close_comment)|close_comment|隐藏评论区，同时显示评论按钮|
 |[删除类别或分组](module/ProdMgmt/idea/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[刷新需求表格](module/ProdMgmt/idea/uilogic/refresh_idea_grid)|refresh_idea_grid|刷新需求表格|
 |[工作项关联需求](module/ProdMgmt/idea/uilogic/work_item_relation_idea)|work_item_relation_idea|值变更时触发，工作项关联需求，调用处理逻辑生成正反向数据|
 |[工单关联需求](module/ProdMgmt/idea/uilogic/ticket_relation_idea)|ticket_relation_idea|值变更时触发，工单关联需求，调用处理逻辑生成正反向数据|
+|[已归档或已删除需求显示隐藏](module/ProdMgmt/idea/uilogic/archived_or_deleted_visible)|archived_or_deleted_visible|已归档或已删除需求显示隐藏|
 |[新建子产品](module/ProdMgmt/idea/uilogic/create_section)|create_section|产品需求页左侧树的新建子产品逻辑|
 |[新建模块](module/ProdMgmt/idea/uilogic/create_category)|create_category|产品需求页左侧树的新建模块逻辑|
 |[显示下拉并展开选项（嵌入视图）](module/ProdMgmt/idea/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项(工具栏)|
+|[显示评论区](module/ProdMgmt/idea/uilogic/show_commnet)|show_commnet|打开评论区，同时隐藏评论按钮|
 |[查看工时明细](module/ProdMgmt/idea/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
-|[测试判断只读用户](module/ProdMgmt/idea/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[添加附件数据](module/ProdMgmt/idea/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[用例关联需求](module/ProdMgmt/idea/uilogic/test_case_relation_idea)|test_case_relation_idea|值变更时触发，用例关联需求，调用处理逻辑生成正反向数据|
 |[编辑类别或分组](module/ProdMgmt/idea/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[获取工时进度](module/ProdMgmt/idea/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
-|[获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)|get_idea_total|获取需求的总条数信息|
+|[获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)|get_grid_total|获取表格的总条数信息|
 |[触发计数器刷新](module/ProdMgmt/idea/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[计算表格列行为状态(idea)](module/ProdMgmt/idea/uilogic/calc_column_action_state)|calc_column_action_state|动态识别readonly|
 |[选择下拉框区域展示](module/ProdMgmt/idea/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[需求关联需求](module/ProdMgmt/idea/uilogic/idea_relation_idea)|idea_relation_idea|值变更时触发，需求关联需求，调用处理逻辑生成正反向数据|
 

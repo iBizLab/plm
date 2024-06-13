@@ -9,7 +9,7 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |负责人标识|ASSIGNEE_ID|文本，可指定长度|100|是||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
-|类别|CATEGORIES|长文本，长度1000|2000|是||
+|类别|CATEGORIES|多项选择(文本值)|2000|是||
 |类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
@@ -32,6 +32,7 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
+|[DERCUSTOM_CATEGORY_PRODUCT_PLAN](der/DERCUSTOM_CATEGORY_PRODUCT_PLAN)|[类别(CATEGORY)](module/Base/category)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN](der/DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
@@ -51,7 +52,7 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#product_plan_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
@@ -65,6 +66,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[删除](module/ProdMgmt/product_plan/logic/delete)|delete|无||产品排期数据的逻辑删除，修改产品排期的是否删除属性|
 |[删除类别](module/ProdMgmt/product_plan/logic/delete_categories)|delete_categories|无||删除对应类别时对对应排期的类别属性进行处理|
+|[填充类别文本](module/ProdMgmt/product_plan/logic/fill_categories_name)|fill_categories_name|无||填充类别对应文本|
 |[排期关联需求](module/ProdMgmt/product_plan/logic/product_plan_relation_idea)|product_plan_relation_idea|无||排期计划关联需求，生成正反向关联数据|
 
 ## 数据查询
@@ -87,6 +89,7 @@
 | -------- |------------|------------|------|
 |N_CATEGORIES_LIKE|类别|LIKE||
 |N_ID_EQ|标识|EQ||
+|N_IS_DELETED_EQ|是否已删除|EQ||
 |N_NAME_LIKE|计划名称|LIKE||
 |N_PRODUCT_ID_EQ|产品标识|EQ||
 

@@ -22,8 +22,7 @@ state "循环子调用" as LOOPSUBCALL1  [[$./move_test_case#loopsubcall1 {"循�
 state "重新建立参数" as RENEWPARAM1  [[$./move_test_case#renewparam1 {"重新建立参数"}]]
 state "获取当前用例详情" as DEACTION2  [[$./move_test_case#deaction2 {"获取当前用例详情"}]]
 state "设置当前用例参数" as PREPAREPARAM1  [[$./move_test_case#prepareparam1 {"设置当前用例参数"}]]
-state "准备参数" as PREPAREPARAM2  [[$./move_test_case#prepareparam2 {"准备参数"}]]
-state "输出当前待修改数据" as DEBUGPARAM2  [[$./move_test_case#debugparam2 {"输出当前待修改数据"}]]
+state "设置用例模块标识" as PREPAREPARAM2  [[$./move_test_case#prepareparam2 {"设置用例模块标识"}]]
 state "修改用例数据" as DEACTION1  [[$./move_test_case#deaction1 {"修改用例数据"}]]
 }
 
@@ -35,10 +34,9 @@ LOOPSUBCALL1 --> END1
 LOOPSUBCALL1 --> RENEWPARAM1
 RENEWPARAM1 --> DEACTION2
 DEACTION2 --> PREPAREPARAM1
-PREPAREPARAM1 --> PREPAREPARAM2 : [[$./move_test_case#prepareparam1-prepareparam2{连接名称} 连接名称]]
-PREPAREPARAM2 --> DEBUGPARAM2
-DEBUGPARAM2 --> DEACTION1
-PREPAREPARAM1 --> DEBUGPARAM2 : [[$./move_test_case#prepareparam1-debugparam2{连接名称} 连接名称]]
+PREPAREPARAM1 --> PREPAREPARAM2 : [[$./move_test_case#prepareparam1-prepareparam2{用例模块标识不为空} 用例模块标识不为空]]
+PREPAREPARAM2 --> DEACTION1
+PREPAREPARAM1 --> DEACTION1 : [[$./move_test_case#prepareparam1-deaction1{用例模块标识为空} 用例模块标识为空]]
 
 
 @enduml
@@ -88,19 +86,11 @@ PREPAREPARAM1 --> DEBUGPARAM2 : [[$./move_test_case#prepareparam1-debugparam2{�
 2. 将` ==> temp_obj[IDENTIFIER]` 设置给  `temp_obj(临时变量).IDENTIFIER(编号)`
 3. 将`id(要更改状态的主键)` 设置给  `temp_obj(临时变量).ID(标识)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置用例模块标识 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 设置模块ID
 
 1. 将`for_temp_obj(循环临时变量).SUITE_ID(用例模块标识)` 设置给  `temp_obj(临时变量).SUITE_ID(用例模块标识)`
-
-#### 输出当前待修改数据 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`temp_obj(临时变量)`的详细信息
-
 
 #### 修改用例数据 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -116,10 +106,10 @@ PREPAREPARAM1 --> DEBUGPARAM2 : [[$./move_test_case#prepareparam1-debugparam2{�
 
 
 ### 连接条件说明
-#### 连接名称 :id=PREPAREPARAM1-PREPAREPARAM2
+#### 用例模块标识不为空 :id=PREPAREPARAM1-PREPAREPARAM2
 
 `for_temp_obj(循环临时变量).suite_id(用例模块标识)` ISNOTNULL
-#### 连接名称 :id=PREPAREPARAM1-DEBUGPARAM2
+#### 用例模块标识为空 :id=PREPAREPARAM1-DEACTION1
 
 `for_temp_obj(循环临时变量).suite_id(用例模块标识)` ISNULL
 

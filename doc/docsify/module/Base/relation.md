@@ -18,6 +18,7 @@
 |父对象版本标识|PARENT_VERSION_ID|文本，可指定长度|100|是||
 |关联主体标识|PRINCIPAL_ID|文本，可指定长度|100|是||
 |关联主体类型|PRINCIPAL_TYPE|文本，可指定长度|100|是||
+|关联类型|RELATION_TYPE|文本，可指定长度|100|是||
 |目标对象负责人|TARGET_ASSIGNEE|文本，可指定长度|100|是||
 |关联目标标识|TARGET_ID|文本，可指定长度|100|是||
 |目标对象编号|TARGET_IDENTIFIER|文本，可指定长度|100|是||
@@ -49,6 +50,7 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |关联主体标识|PRINCIPAL_ID|false|升序|-1||
 |关联主体类型|PRINCIPAL_TYPE|false|升序|-1||
+|关联目标标识|TARGET_ID|false|升序|-1||
 |关联目标类型|TARGET_TYPE|false|升序|-1||
 
 </el-tab-pane>
@@ -65,6 +67,7 @@
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
 |[DERMULINH_BASELINE_IDEA_RELATION](der/DERMULINH_BASELINE_IDEA_RELATION)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|多继承关系（虚拟实体）||
+|[DERMULINH_BASELINE_PAGE_RELATION](der/DERMULINH_BASELINE_PAGE_RELATION)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|多继承关系（虚拟实体）||
 |[DERMULINH_BASELINE_TEST_CASE_RELATION](der/DERMULINH_BASELINE_TEST_CASE_RELATION)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|多继承关系（虚拟实体）||
 |[DERMULINH_BASELINE_WORK_ITEM_RELATION](der/DERMULINH_BASELINE_WORK_ITEM_RELATION)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|多继承关系（虚拟实体）||
 |[DERMULINH_REVIEW_CONTENT_RELATION](der/DERMULINH_REVIEW_CONTENT_RELATION)|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)|多继承关系（虚拟实体）||
@@ -77,10 +80,13 @@
 | -------- |---------- |-----------|----- |
 |[DERCUSTOM_RELATION_BASELINE](der/DERCUSTOM_RELATION_BASELINE)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_RELATION_IDEA](der/DERCUSTOM_RELATION_IDEA)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
+|[DERCUSTOM_RELATION_RELEASE](der/DERCUSTOM_RELATION_RELEASE)|[项目发布(RELEASE)](module/ProjMgmt/release)|自定义关系||
 |[DERCUSTOM_RELATION_REVIEW](der/DERCUSTOM_RELATION_REVIEW)|[评审(REVIEW)](module/TestMgmt/review)|自定义关系||
 |[DERCUSTOM_RELATION_REVIEW_CONTENT_EXTEND](der/DERCUSTOM_RELATION_REVIEW_CONTENT_EXTEND)|[评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend)|自定义关系||
+|[DERCUSTOM_RELATION_SPRINT](der/DERCUSTOM_RELATION_SPRINT)|[迭代(SPRINT)](module/ProjMgmt/sprint)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_CUSTOMER](der/DERCUSTOM_RELATION_TARGET_CUSTOMER)|[客户(CUSTOMER)](module/ProdMgmt/customer)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_IDEA](der/DERCUSTOM_RELATION_TARGET_IDEA)|[需求(IDEA)](module/ProdMgmt/idea)|自定义关系||
+|[DERCUSTOM_RELATION_TARGET_PAGE](der/DERCUSTOM_RELATION_TARGET_PAGE)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN](der/DERCUSTOM_RELATION_TARGET_PRODUCT_PLAN)|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[空间(SPACE)](module/Wiki/space)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_TEST_CASE](der/DERCUSTOM_RELATION_TARGET_TEST_CASE)|[用例(TEST_CASE)](module/TestMgmt/test_case)|自定义关系||

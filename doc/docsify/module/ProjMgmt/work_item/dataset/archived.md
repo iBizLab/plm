@@ -18,7 +18,7 @@
 
 <p class="panel-title"><b>主排序属性</b></p>
 
-* `IDENTIFIER(编号)` `ASC`
+* `IDENTIFIER(编号)` `DESC`
 
 
 

@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./un_favorite#begin {"开始"}]]
-state "删除收藏数据" as RAWSQLCALL1  [[$./un_favorite#rawsqlcall1 {"删除收藏数据"}]]
+state "删除星标数据" as RAWSQLCALL1  [[$./un_favorite#rawsqlcall1 {"删除星标数据"}]]
 state "结束" as END1 <<end>> [[$./un_favorite#end1 {"结束"}]]
 
 
@@ -34,7 +34,7 @@ RAWSQLCALL1 --> END1
 
 
 *- N/A*
-#### 删除收藏数据 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 删除星标数据 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

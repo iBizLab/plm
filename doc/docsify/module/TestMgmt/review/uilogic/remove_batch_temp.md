@@ -47,6 +47,7 @@ RAWJSCODE1 --> END1
 
 ```javascript
 return (async function() { 
+    console.log('遍历临时数据删除')
     // 获取所有临时数据
     const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;
     const service = await serviceUtil.getService(context, 'plmweb.review_content');
@@ -67,5 +68,5 @@ return (async function() {
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |临时数据列表|list|数据对象列表||
-|view|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|view|view|当前视图对象||

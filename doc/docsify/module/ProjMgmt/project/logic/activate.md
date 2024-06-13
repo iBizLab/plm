@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./activate#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./activate#prepareparam1 {"准备参数"}]]
+state "设置激活状态" as PREPAREPARAM1  [[$./activate#prepareparam1 {"设置激活状态"}]]
 state "激活" as DEACTION1  [[$./activate#deaction1 {"激活"}]]
 state "结束" as END1 <<end>> [[$./activate#end1 {"结束"}]]
 
@@ -36,7 +36,7 @@ DEACTION1 --> END1
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置激活状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

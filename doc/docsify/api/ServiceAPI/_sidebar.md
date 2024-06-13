@@ -5,6 +5,9 @@
 
 * 基础管理
   * [活动](api/ServiceAPI/deapi/activity#activity)
+  * [组件](api/ServiceAPI/deapi/addon#addon)
+  * [资源组件](api/ServiceAPI/deapi/addon_resource#addon_resource)
+  * [组件权限成员](api/ServiceAPI/deapi/addon_role_member#addon_role_member)
   * [附件](api/ServiceAPI/deapi/attachment#attachment)
   * [关注](api/ServiceAPI/deapi/attention#attention)
   * [基线](api/ServiceAPI/deapi/baseline#baseline)
@@ -14,6 +17,7 @@
   * [部门](api/ServiceAPI/deapi/department#department)
   * [数据字典](api/ServiceAPI/deapi/dictionary_data#dictionary_data)
   * [动态数据看板](api/ServiceAPI/deapi/dyna_dashboard#dyna_dashboard)
+  * [动态应用菜单](api/ServiceAPI/deapi/dyna_appmenu#dyna_appmenu)
   * [扩展日志](api/ServiceAPI/deapi/extend_log#extend_log)
   * [收藏](api/ServiceAPI/deapi/favorite#favorite)
   * [团队](api/ServiceAPI/deapi/group#group)
@@ -67,10 +71,15 @@
   * [工作项类型](api/ServiceAPI/deapi/work_item_type#work_item_type)
 * 测试管理
   * [基线用例](api/ServiceAPI/deapi/baseline_test_case#baseline_test_case)
+  * [流程准则](api/ServiceAPI/deapi/guideline#guideline)
   * [测试库](api/ServiceAPI/deapi/library#library)
   * [测试库成员](api/ServiceAPI/deapi/library_member#library_member)
   * [评审](api/ServiceAPI/deapi/review#review)
+  * [评审后置动作](api/ServiceAPI/deapi/review_action_rule#review_action_rule)
   * [评审内容](api/ServiceAPI/deapi/review_content#review_content)
+  * [评审结果](api/ServiceAPI/deapi/review_result#review_result)
+  * [评审规则](api/ServiceAPI/deapi/review_rule#review_rule)
+  * [评审阶段](api/ServiceAPI/deapi/review_stage#review_stage)
   * [执行用例](api/ServiceAPI/deapi/run#run)
   * [执行用例结果附件](api/ServiceAPI/deapi/run_attachment#run_attachment)
   * [执行结果](api/ServiceAPI/deapi/run_history#run_history)
@@ -85,6 +94,14 @@
   * [空间成员](api/ServiceAPI/deapi/space_member#space_member)
   * [页面模板](api/ServiceAPI/deapi/stencil#stencil)
 * 协作空间
+  * [协作成员](api/ServiceAPI/deapi/discuss_member#discuss_member)
+  * [讨论](api/ServiceAPI/deapi/discuss_post#discuss_post)
+  * [讨论回复](api/ServiceAPI/deapi/discuss_reply#discuss_reply)
+  * [话题](api/ServiceAPI/deapi/discuss_topic#discuss_topic)
+* 效能度量
+  * [效能成员](api/ServiceAPI/deapi/insight_member#insight_member)
+  * [效能报表](api/ServiceAPI/deapi/insight_report#insight_report)
+  * [效能视图](api/ServiceAPI/deapi/insight_view#insight_view)
 * 全文检索
   * [检索中心](api/ServiceAPI/deapi/search_hub#search_hub)
 * 系统管理

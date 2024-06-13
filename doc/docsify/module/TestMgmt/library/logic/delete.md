@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./delete#begin {"开始"}]]
 state "设置删除状态" as PREPAREPARAM1  [[$./delete#prepareparam1 {"设置删除状态"}]]
-state "删除" as DEACTION1  [[$./delete#deaction1 {"删除"}]]
+state "更新删除状态" as DEACTION1  [[$./delete#deaction1 {"更新删除状态"}]]
 state "删除最近访问" as RAWSQLCALL1  [[$./delete#rawsqlcall1 {"删除最近访问"}]]
 state "结束" as END1 <<end>> [[$./delete#end1 {"结束"}]]
 
@@ -45,7 +45,7 @@ RAWSQLCALL1 --> END1
 1. 将`1` 设置给  `update_obj(测试库更新对象).IS_DELETED(是否已删除)`
 2. 将`Default(传入变量).ID(标识)` 设置给  `update_obj(测试库更新对象).ID(标识)`
 
-#### 删除 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新删除状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

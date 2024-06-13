@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_complete_library#begin {"开始"}]]
-state "设立完成状态" as PREPAREPARAM1  [[$./set_complete_library#prepareparam1 {"设立完成状态"}]]
-state "设立完成" as DEACTION1  [[$./set_complete_library#deaction1 {"设立完成"}]]
-state "准备过滤器参数" as PREPAREPARAM2  [[$./set_complete_library#prepareparam2 {"准备过滤器参数"}]]
+state "设置基线状态为完成状态" as PREPAREPARAM1  [[$./set_complete_library#prepareparam1 {"设置基线状态为完成状态"}]]
+state "更新基线状态" as DEACTION1  [[$./set_complete_library#deaction1 {"更新基线状态"}]]
+state "准备关联查询过滤器参数" as PREPAREPARAM2  [[$./set_complete_library#prepareparam2 {"准备关联查询过滤器参数"}]]
 state "获取基线下关联的用例" as DEDATASET1  [[$./set_complete_library#dedataset1 {"获取基线下关联的用例"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_complete_library#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./set_complete_library#resetparam1 {"重置参数"}]]
-state "重置参数" as RESETPARAM2  [[$./set_complete_library#resetparam2 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM3  [[$./set_complete_library#prepareparam3 {"准备参数"}]]
+state "重置测试用例参数" as RESETPARAM1  [[$./set_complete_library#resetparam1 {"重置测试用例参数"}]]
+state "重置版本参数" as RESETPARAM2  [[$./set_complete_library#resetparam2 {"重置版本参数"}]]
+state "填充测试用例对象主键标识" as PREPAREPARAM3  [[$./set_complete_library#prepareparam3 {"填充测试用例对象主键标识"}]]
 state "获取用例" as DEACTION2  [[$./set_complete_library#deaction2 {"获取用例"}]]
 state "填充版本属性" as PREPAREPARAM4  [[$./set_complete_library#prepareparam4 {"填充版本属性"}]]
 state "创建新版本" as DEACTION3  [[$./set_complete_library#deaction3 {"创建新版本"}]]
@@ -53,13 +53,13 @@ PREPAREPARAM4 --> DEACTION3
 
 
 *- N/A*
-#### 设立完成状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置基线状态为完成状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`2` 设置给  `Default(传入变量).STATUS(状态)`
 
-#### 设立完成 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新基线状态 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -67,7 +67,7 @@ PREPAREPARAM4 --> DEACTION3
 
 将执行结果返回给参数`Default(传入变量)`
 
-#### 准备过滤器参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备关联查询过滤器参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -89,17 +89,17 @@ PREPAREPARAM4 --> DEACTION3
 
 
 循环参数`relation_page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置测试用例参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```test_case(用例)```
-#### 重置参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置版本参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```version(版本)```
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充测试用例对象主键标识 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

@@ -35,6 +35,7 @@
 | -------- |---------- |------------|----- |
 |[DER1N_PORTFOLIO_MEMBER_PORTFOLIO_PORTFOLIO_ID](der/DER1N_PORTFOLIO_MEMBER_PORTFOLIO_PORTFOLIO_ID)|[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|1:N关系||
 |[DER1N_WORK_PORTFOLIO_PORTFOLIO_ID](der/DER1N_WORK_PORTFOLIO_PORTFOLIO_ID)|[工作(WORK)](module/Base/work)|1:N关系||
+|[DERCUSTOM_ADDON_PORTFOLIO_OWNER_ID](der/DERCUSTOM_ADDON_PORTFOLIO_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
 
 
 </el-tab-pane>
@@ -63,8 +64,10 @@
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |删除项目集|delete_project_set|[实体处理逻辑](module/Base/portfolio/logic/delete_project_set "删除项目集")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Base/portfolio/logic/favorite "设置星标")|默认|不支持||||
+|项目集首页组件计数|portfolio_index_addon_counter|[实体处理逻辑](module/Base/portfolio/logic/portfolio_addon_authority "项目集组件权限计数器")|默认|不支持||||
 |恢复项目集|recover_project_set|[实体处理逻辑](module/Base/portfolio/logic/recover_project_set "恢复项目集")|默认|不支持||||
 |从项目集中移除|remove_from_project_set|[实体处理逻辑](module/Base/portfolio/logic/remove_from_project_set "从项目集中移除")|默认|不支持||||
+|项目资源成员设置|resource_setting|[实体处理逻辑](module/Base/portfolio/logic/resource_member_setting "项目集资源成员设置")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/Base/portfolio/logic/un_favorite "取消星标")|默认|不支持||||
 
 ## 处理逻辑
@@ -76,6 +79,8 @@
 |[恢复项目集](module/Base/portfolio/logic/recover_project_set)|recover_project_set|无||恢复已删除状态项目集数据，修改项目集的是否删除属性值|
 |[是否删除变更附加逻辑](module/Base/portfolio/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||项目集删除或恢复时触发相应的通知消息|
 |[设置星标](module/Base/portfolio/logic/favorite)|favorite|无||设置为星标项目集|
+|[项目集组件权限计数器](module/Base/portfolio/logic/portfolio_addon_authority)|portfolio_addon_authority|无||获取项目集组件权限|
+|[项目集资源成员设置](module/Base/portfolio/logic/resource_member_setting)|resource_member_setting|无||项目集资源成员设置，默认设置容量/工作日|
 
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
@@ -151,8 +156,6 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `CREATE`
-* `UPDATE`
-* `DELETE`
 
 
 
@@ -200,12 +203,16 @@
 | --------| --------| -------- |------------|------------|------------|
 | 新开窗口（项目集） | open_new_project | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/portfolio=${data.id}/portfolio_project_index_view/srfnav=drgroup/work_tree_grid_ex_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D*</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
+| 项目集资源成员设置(设置回显数据) | project_set_resource_member_pre | 成员管理 |无数据|用户自定义||
 | 项目集成员 | open_project_member | 项目集成员 |单项数据（主键）|用户自定义||
 | 更多设置（项目集） | open_project_setting | 更多设置 |单项数据（主键）|用户自定义||
 | 新建项目集 | create_project_set | 新建项目集 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目集](app/view/portfolio_project_create_wizard_view)</details>||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 恢复项目集 | recover_project_set | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover_project_set](#行为)||
 | 打开新建项目集 | open_new_project_set | 打开新建项目集 |单项数据|<details><summary>打开顶级视图</summary>[文件夹](app/view/portfolio_project_index_view)</details>||
+| 项目集资源成员设置 | project_set_resource_member | 成员设置 |无数据|<details><summary>后台调用</summary>[resource_setting](#行为)||
+| 项目集容量设置 | portfolio_capacity | 容量设置 |无数据|用户自定义||
+| 打开项目集容量设置视图 | open_project_set_capacity | 容量设置 |无数据|<details><summary>打开视图或向导（模态）</summary>[容量设置](app/view/addon_resource_project_set_capacity_view)</details>||
 | 项目集信息 | project_info | 项目集信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[文件夹](app/view/portfolio_project_show_view)</details>||
 | 删除项目集 | delete_project_set | 删除项目集 |单项数据（主键）|<details><summary>后台调用</summary>[delete_project_set](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
@@ -216,9 +223,11 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[刷新当前表格](module/Base/portfolio/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
+|[打开项目集资源容量设置](module/Base/portfolio/uilogic/open_resource_capacity)|open_resource_capacity|根据当前项目集标识，获取项目集下的资源组件|
 |[批量删除项目集成员临时数据](module/Base/portfolio/uilogic/remove_batch_temp)|remove_batch_temp|获取项目集内所有临时成员数据并删除|
 |[计算表格列行为状态(portfolio)](module/Base/portfolio/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
-|[通知刷新](module/Base/portfolio/uilogic/notify_refresh)|notify_refresh||
+|[计算项目集资源成员](module/Base/portfolio/uilogic/calc_project_set_resouce_member)|calc_project_set_resouce_member|计算资源甘特部件当前人员，打开选择视图时回显simplelist|
+|[通知刷新](module/Base/portfolio/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

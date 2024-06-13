@@ -15,14 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./choose_case_template#begin {开始}]]
-state "设置表单数据" as PREPAREJSPARAM2  [[$./choose_case_template#preparejsparam2 {设置表单数据}]]
 state "结束" as END1 <<end>> [[$./choose_case_template#end1 {结束}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./choose_case_template#debugparam1 {调试逻辑参数}]]
 state "绑定表单数据" as PREPAREJSPARAM1  [[$./choose_case_template#preparejsparam1 {绑定表单数据}]]
+state "设置表单数据" as PREPAREJSPARAM2  [[$./choose_case_template#preparejsparam2 {设置表单数据}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREJSPARAM1
+Begin --> PREPAREJSPARAM1
 PREPAREJSPARAM1 --> PREPAREJSPARAM2
 PREPAREJSPARAM2 --> END1
 
@@ -42,13 +40,6 @@ PREPAREJSPARAM2 --> END1
 
 
 
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`传入变量`的详细信息
 
 #### 绑定表单数据 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -78,7 +69,7 @@ PREPAREJSPARAM2 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表单|form|部件对象||
 |表单数据|form_data|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图|view|当前视图对象||
+|表单|form|部件对象||

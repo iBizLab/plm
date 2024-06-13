@@ -21,7 +21,7 @@
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |空间名称|NAME|文本，可指定长度|200|否||
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
-|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#space_scope_type "所属类型（空间）")|60|是||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#user_scope_type "所属类型（包含个人）")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 |可见范围|VISIBILITY|单项选择(文本值)|60|否||
@@ -38,6 +38,8 @@
 |[DER1N_PAGE_SPACE_SPACE_ID](der/DER1N_PAGE_SPACE_SPACE_ID)|[页面(PAGE)](module/Wiki/article_page)|1:N关系||
 |[DER1N_SPACE_MEMBER_SPACE_SPACE_ID](der/DER1N_SPACE_MEMBER_SPACE_SPACE_ID)|[空间成员(SPACE_MEMBER)](module/Wiki/space_member)|1:N关系||
 |[DER1N_STENCIL_SPACE_SPACE_ID](der/DER1N_STENCIL_SPACE_SPACE_ID)|[页面模板(STENCIL)](module/Wiki/stencil)|1:N关系||
+|[DERCUSTOM_ADDON_SPACE_OWNER_ID](der/DERCUSTOM_ADDON_SPACE_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
+|[DERCUSTOM_BASELINE_SPACE_OWNER_ID](der/DERCUSTOM_BASELINE_SPACE_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
 |[DERCUSTOM_RELATION_TARGET_SPACE](der/DERCUSTOM_RELATION_TARGET_SPACE)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
@@ -74,13 +76,17 @@
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |激活|activate|[实体处理逻辑](module/Wiki/space/logic/activate "激活")|默认|不支持||||
 |归档|archive|[实体处理逻辑](module/Wiki/space/logic/archive "归档")|默认|不支持||||
+|变更管理员角色|change_admin_role|[实体处理逻辑](module/Wiki/space/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |取消关联|del_relation|[实体处理逻辑](module/Wiki/space/logic/del_relation "取消关联")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Wiki/space/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Wiki/space/logic/favorite "设置星标")|默认|不支持||||
 |移出分类|move_out_category|[实体处理逻辑](module/Wiki/space/logic/move_out_category "移出分类")|默认|不支持||||
+|移动空间|move_space|[实体处理逻辑](module/Wiki/space/logic/move_space "移动空间")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/space/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/Wiki/space/logic/other_re_space "其他实体关联空间")|默认|不支持||||
+|判断当前用户角色|recognize_cur_user_role|[实体处理逻辑](module/Wiki/space/logic/recognize_cur_user_role "判断当前用户角色")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Wiki/space/logic/recover "恢复")|默认|不支持||||
+|空间首页组件计数|space_index_addon_counter|[实体处理逻辑](module/Wiki/space/logic/space_addon_authority "空间组件权限计数器")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/Wiki/space/logic/un_favorite "取消星标")|默认|不支持||||
 
 ## 处理逻辑
@@ -89,8 +95,10 @@
 |[其他实体关联空间](module/Wiki/space/logic/other_re_space)|other_re_space|无||其他实体关联空间操作，生成正反向关联数据|
 |[创建之前](module/Wiki/space/logic/before_create)|before_create|无||创建空间之前，对添加的空间成员进行处理|
 |[删除](module/Wiki/space/logic/delete)|delete|无||空间数据的逻辑删除，修改产品的是否删除属性值|
+|[判断当前用户角色](module/Wiki/space/logic/recognize_cur_user_role)|recognize_cur_user_role|无|||
 |[取消关联](module/Wiki/space/logic/del_relation)|del_relation|无||空间取消关联数据（正反向关联数据同时删除）|
 |[取消星标](module/Wiki/space/logic/un_favorite)|un_favorite|无||空间取消星标|
+|[变更管理员角色](module/Wiki/space/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[归档](module/Wiki/space/logic/archive)|archive|无||未归档空间数据的归档处理，修改空间的归档状态为已归档|
 |[恢复](module/Wiki/space/logic/recover)|recover|无||已删除状态空间数据的恢复，修改空间的是否删除属性值，并恢复访问记录|
 |[无操作](module/Wiki/space/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -99,8 +107,12 @@
 |[激活](module/Wiki/space/logic/activate)|activate|无||激活已归档状态空间，修改空间的归档属性|
 |[生成最近访问](module/Wiki/space/logic/create_recent)|create_recent|无||在用户对空间数据进行了get或update操作时生成相应的访问记录|
 |[移出分类](module/Wiki/space/logic/move_out_category)|move_out_category|无||将空间移除分类|
+|[移动空间](module/Wiki/space/logic/move_space)|move_space|无||更新空间的所属、可见范围|
+|[空间组件权限计数器](module/Wiki/space/logic/space_addon_authority)|space_addon_authority|无||获取空间组件权限|
 |[自动创建主页](module/Wiki/space/logic/auto_create_home_page)|auto_create_home_page|无||附加在实体的CREATE行为后，自动生成模板化的主页|
 |[自动创建人员](module/Wiki/space/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员，若选择个人，则添加个人为所属成员。|
+|[获取快速新建空间集合](module/Wiki/space/logic/quick_create)|quick_create|无||用于获取可快速新建的空间集合|
+|[获取知识空间成员](module/Wiki/space/logic/get_space_member_one)|get_space_member_one|无||获取知识空间成员信息，用于判断当前用户权限|
 |[设置星标](module/Wiki/space/logic/favorite)|favorite|无||设置为星标产品|
 
 ## 功能配置
@@ -116,14 +128,18 @@
 |[管理员(admin)](module/Wiki/space/query/admin)|admin|否|否 |否 ||
 |[已归档(archived)](module/Wiki/space/query/archived)|archived|否|否 |否 ||
 |[目录下空间(category_space)](module/Wiki/space/query/category_space)|category_space|否|否 |否 ||
+|[当前空间(current)](module/Wiki/space/query/current)|current|否|否 |否 ||
 |[已删除(deleted)](module/Wiki/space/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/Wiki/space/query/favorite)|favorite|否|否 |否 ||
+|[查询星标（管理用户）(favorite_user)](module/Wiki/space/query/favorite_user)|favorite_user|否|否 |否 ||
 |[未存在目录中的空间(no_category_space)](module/Wiki/space/query/no_category_space)|no_category_space|否|否 |否 ||
 |[未关联的空间（产品）(no_re_space_product)](module/Wiki/space/query/no_re_space_product)|no_re_space_product|否|否 |否 ||
 |[正常状态(normal)](module/Wiki/space/query/normal)|normal|否|否 |否 ||
 |[产品关联的空间(product_re_space)](module/Wiki/space/query/product_re_space)|product_re_space|否|否 |否 ||
 |[公开(public)](module/Wiki/space/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/Wiki/space/query/reader)|reader|否|否 |否 ||
+|[非星标空间(unfavorite)](module/Wiki/space/query/unfavorite)|unfavorite|否|否 |否 ||
+|[非星标空间（管理用户）(unfavorite_user)](module/Wiki/space/query/unfavorite_user)|unfavorite_user|否|否 |否 ||
 |[操作用户(user)](module/Wiki/space/query/user)|user|否|否 |否 ||
 
 ## 数据集合
@@ -133,12 +149,16 @@
 |[管理员(admin)](module/Wiki/space/dataset/admin)|admin|数据查询|否|||
 |[已归档(archived)](module/Wiki/space/dataset/archived)|archived|数据查询|否|||
 |[目录下空间(category_space)](module/Wiki/space/dataset/category_space)|category_space|数据查询|否|||
+|[当前空间(current)](module/Wiki/space/dataset/current)|current|数据查询|否|||
 |[已删除(deleted)](module/Wiki/space/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/Wiki/space/dataset/favorite)|favorite|数据查询|否|||
+|[主表格查询(main)](module/Wiki/space/dataset/main)|main|数据查询|否|||
 |[未存在目录中的空间(no_category_space)](module/Wiki/space/dataset/no_category_space)|no_category_space|数据查询|否|||
 |[未关联的空间(no_re_space)](module/Wiki/space/dataset/no_re_space)|no_re_space|数据查询|否|||
 |[正常状态(normal)](module/Wiki/space/dataset/normal)|normal|数据查询|否|||
 |[关联的空间(other_re_space)](module/Wiki/space/dataset/other_re_space)|other_re_space|数据查询|否|||
+|[快速新建查询(quick)](module/Wiki/space/dataset/quick)|quick|[实体逻辑](module/Wiki/space/logic/quick_create)|否|||
+|[快速新建查询（管理用户）(quick_user)](module/Wiki/space/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/Wiki/space/dataset/reader)|reader|数据查询|否|||
 |[操作用户(user)](module/Wiki/space/dataset/user)|user|数据查询|否|||
 
@@ -184,8 +204,6 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `CREATE`
-* `UPDATE`
-* `DELETE`
 
 
 
@@ -229,6 +247,7 @@
 |N_CATEGORY_NAME_LIKE|分类|LIKE||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|空间名称|LIKE||
+|N_SCOPE_ID_EQ|所属对象|EQ||
 |N_SCOPE_TYPE_EQ|所属|EQ||
 |N_VISIBILITY_EQ|可见范围|EQ||
 
@@ -244,16 +263,17 @@
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 打开空间配置 | open_space_setting | 空间配置 |无数据|<details><summary>打开视图或向导（模态）</summary>[配置中心](app/view/space_config_tree_exp_view)</details>||
+| 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
+| 打开空间配置 | open_space_setting | 空间配置 |无数据|用户自定义||
 | 更多设置 | more_setting | 更多设置 |单项数据（主键）|用户自定义||
 | 打开空间导航页 | open_space_exp_page | 打开空间导航页 |无数据|<details><summary>打开顶级视图</summary>[知识管理](app/view/space_tree_exp_view)</details>||
 | 查看空间信息 | space_info | 空间信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[空间信息](app/view/space_info_view)</details>||
-| 产品关联空间 | product_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_product_re_space_choose_option_view)</details>||
+| 产品关联空间 | product_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_choose_option_view)</details>||
 | 移出分类 | move_out_category | 移出分类 |多项数据（主键）|<details><summary>后台调用</summary>[move_out_category](#行为)||
 | 查看空间成员 | open_space_member | 空间成员 |单项数据（主键）|用户自定义||
 | 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 移动空间 | move_space | 移动空间 |单项数据（主键）|<details><summary>后台调用</summary>[move_space](#行为)||
 | 打开新建空间 | open_new_space | 打开新建空间 |单项数据|<details><summary>打开顶级视图</summary>[空间](app/view/space_index_view)</details>||
-| 项目关联空间 | project_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_product_re_space_choose_option_view)</details>||
 | 新建空间 | create_space | 新建空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建空间](app/view/space_create_wizard_view)</details>||
 | 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
@@ -263,6 +283,7 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[产品关联空间](module/Wiki/space/uilogic/product_relation_space)|product_relation_space|调用后台关联逻辑，产品关联空间并生成正反关联数据|
+|[判断当前用户角色（关联）](module/Wiki/space/uilogic/recognize_cur_user_role)|recognize_cur_user_role|产品/项目中的页面组件下，判断进入的用户角色|
 |[刷新当前表格](module/Wiki/space/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[批量删除空间成员临时数据](module/Wiki/space/uilogic/remove_batch_temp)|remove_batch_temp|获取空间内所有临时成员数据并删除|
 |[新建目录](module/Wiki/space/uilogic/create_category)|create_category|新建空间目录|

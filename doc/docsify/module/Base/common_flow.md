@@ -26,6 +26,7 @@
 |[DERCUSTOM_MEMBER_COMMON_FLOW](der/DERCUSTOM_MEMBER_COMMON_FLOW)|[成员(MEMBER)](module/Base/member)|自定义关系||
 |[DERCUSTOM_PROJECT_COMMON_FLOW](der/DERCUSTOM_PROJECT_COMMON_FLOW)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 |[DERCUSTOM_TEST_PLAN_COMMON_FLOW](der/DERCUSTOM_TEST_PLAN_COMMON_FLOW)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|自定义关系||
+|[DERCUSTOM_WORK_ITEM_COMMON_FLOW](der/DERCUSTOM_WORK_ITEM_COMMON_FLOW)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|自定义关系||
 
 
 </el-tab-pane>

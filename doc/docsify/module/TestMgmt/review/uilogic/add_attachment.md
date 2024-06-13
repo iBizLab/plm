@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_attachment#begin {开始}]]
-state "视图部件调用" as VIEWCTRLINVOKE2  [[$./add_attachment#viewctrlinvoke2 {视图部件调用}]]
-state "界面行为" as DEUIACTION1  [[$./add_attachment#deuiaction1 {界面行为}]]
-state "设置附件参数" as RAWJSCODE4  [[$./add_attachment#rawjscode4 {设置附件参数}]]
 state "绑定表格部件" as PREPAREJSPARAM1  [[$./add_attachment#preparejsparam1 {绑定表格部件}]]
+state "视图部件调用" as VIEWCTRLINVOKE2  [[$./add_attachment#viewctrlinvoke2 {视图部件调用}]]
+state "上传附件" as DEUIACTION1  [[$./add_attachment#deuiaction1 {上传附件}]]
 state "结束" as END1 <<end>> [[$./add_attachment#end1 {结束}]]
+state "设置附件参数" as RAWJSCODE4  [[$./add_attachment#rawjscode4 {设置附件参数}]]
 
 
 Begin --> DEUIACTION1
@@ -39,6 +39,23 @@ VIEWCTRLINVOKE2 --> END1
 
 
 
+
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+
+#### 上传附件 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
+
+
+
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 界面行为 [上传附件](module/TestMgmt/review#界面行为) ，行为参数为`files(上传文件)`
+
+#### 绑定表格部件 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`form(表单).details.attachments.mdController` 设置给  `grid(重复器表格)`
 
 #### 设置附件参数 :id=RAWJSCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
@@ -61,23 +78,6 @@ uiLogic.attach = uiLogic.files.map(item =>
 )
 ```
 
-#### 界面行为 :id=DEUIACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
-
-
-
-调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 界面行为 [上传附件](module/TestMgmt/review#界面行为) ，行为参数为`files(上传文件)`
-
-#### 绑定表格部件 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`form(表单).details.attachments.mdController` 设置给  `grid(重复器表格)`
-
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-
 #### 视图部件调用 :id=VIEWCTRLINVOKE2<sup class="footnote-symbol"> <font color=gray size=1>[视图部件调用]</font></sup>
 
 
@@ -89,9 +89,9 @@ uiLogic.attach = uiLogic.files.map(item =>
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上传文件|files|数据对象列表||
 |表单|form|部件对象||
-|重复器表格|grid|部件对象||
-|附件|attach|数据对象列表||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|重复器表格|grid|部件对象||
 |当前视图对象|view|当前视图对象||
+|上传文件|files|数据对象列表||
+|附件|attach|数据对象列表||

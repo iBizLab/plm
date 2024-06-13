@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [评论通知模板](index/notify_index?id=comment)
+* [评论测试用例通知模板](index/notify_index?id=comment_test_case)
 
 <p class="panel-title"><b>通知类型</b></p>
 
@@ -21,9 +21,9 @@
 
 #### 通知目标
 
-* **维护人**<br>
-  目标类型：`系统消息目标`<br>
-  系统目标：`评论通知测试用例维护人`
 * **关注人员**<br>
   目标类型：`系统消息目标`<br>
   系统目标：`评论通知关注人`
+* **维护人**<br>
+  目标类型：`系统消息目标`<br>
+  系统目标：`评论通知测试用例维护人`

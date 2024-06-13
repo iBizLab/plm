@@ -1,6 +1,6 @@
 ## 获取用户通知设置 <!-- {docsify-ignore-all} -->
 
-   
+   获取用户通知设置
 
 ### 处理过程
 
@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_by_user#begin {"开始"}]]
-state "设置过滤分页" as PREPAREPARAM5  [[$./get_by_user#prepareparam5 {"设置过滤分页"}]]
+state "设置通知过滤分页" as PREPAREPARAM5  [[$./get_by_user#prepareparam5 {"设置通知过滤分页"}]]
 state "获取用户通知" as DEDATASET1  [[$./get_by_user#dedataset1 {"获取用户通知"}]]
 state "获取通知列表" as DEDATASET2  [[$./get_by_user#dedataset2 {"获取通知列表"}]]
 state "结束" as END1 <<end>> [[$./get_by_user#end1 {"结束"}]]
@@ -68,7 +68,7 @@ PREPAREPARAM2 --> END1
 
 
 *- N/A*
-#### 设置过滤分页 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置通知过滤分页 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

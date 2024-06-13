@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_library_member#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./create_library_member#bindparam1 {"绑定参数"}]]
+state "绑定选中成员参数" as BINDPARAM1  [[$./create_library_member#bindparam1 {"绑定选中成员参数"}]]
 state "结束" as END1 <<end>> [[$./create_library_member#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./create_library_member#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./create_library_member#renewparam1 {"重新建立参数"}]]
+state "重新建立成员参数" as RENEWPARAM1  [[$./create_library_member#renewparam1 {"重新建立成员参数"}]]
 state "填充测试库成员属性" as PREPAREPARAM1  [[$./create_library_member#prepareparam1 {"填充测试库成员属性"}]]
 state "建立测试库成员" as DEACTION1  [[$./create_library_member#deaction1 {"建立测试库成员"}]]
 }
@@ -44,7 +44,7 @@ BINDPARAM1 --> END1 : [[$./create_library_member#bindparam1-end1{未勾选添加
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中成员参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -54,7 +54,7 @@ BINDPARAM1 --> END1 : [[$./create_library_member#bindparam1-end1{未勾选添加
 
 
 循环参数`selectdata(用户列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立成员参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

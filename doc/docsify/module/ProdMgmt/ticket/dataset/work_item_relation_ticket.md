@@ -16,6 +16,10 @@
 * `默认（全部查询列）`
 
 
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `SHOW_IDENTIFIER(编号)` `DESC`
+
 
 
 ### 数据查询

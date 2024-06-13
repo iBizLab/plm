@@ -17,7 +17,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./defect_age_report#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./defect_age_report#end1 {"结束"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./defect_age_report#rawsqlcall1 {"直接SQL调用"}]]
+state "查询缺陷年龄报告" as RAWSQLCALL1  [[$./defect_age_report#rawsqlcall1 {"查询缺陷年龄报告"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -41,7 +41,7 @@ RAWSQLCALL1 --> END1
 
 返回 `result(结果)`
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 查询缺陷年龄报告 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
@@ -83,7 +83,7 @@ FROM (
       AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR CREATE_TIME BETWEEN ? AND ?) -- 创建时间范围
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(PRIORITY, ?)) -- 优先级
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(SEVERITY, ?)) -- 严重程度
-      AND ((? IS NULL OR ? = '') OR IS_ARCHIVED = ?) -- 是否归档
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(IS_ARCHIVED, ?)) -- 是否归档
     GROUP BY filter_type
 ) AS T1 ON T1.filter_type = time_ranges.filter_type
 GROUP BY time_ranges.filter_type
@@ -108,9 +108,9 @@ ORDER BY time_ranges.filter_type ASC;
 14. `Default(传入变量).N_SEVERITY_EQ`
 15. `Default(传入变量).N_SEVERITY_EQ`
 16. `Default(传入变量).N_SEVERITY_EQ`
-17. `Default(传入变量).N_IS_ARCHIVED_EQ`
-18. `Default(传入变量).N_IS_ARCHIVED_EQ`
-19. `Default(传入变量).N_IS_ARCHIVED_EQ`
+17. `Default(传入变量).n_is_archived_in`
+18. `Default(传入变量).n_is_archived_in`
+19. `Default(传入变量).n_is_archived_in`
 
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 

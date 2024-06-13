@@ -1,6 +1,6 @@
 ## 刷新客户表格 <!-- {docsify-ignore-all} -->
 
-   
+   刷新客户表格
 
 ### 处理过程
 
@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_customer_grid#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./refresh_customer_grid#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./refresh_customer_grid#end1 {结束}]]
+state "注入脚本代码" as RAWJSCODE1  [[$./refresh_customer_grid#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1

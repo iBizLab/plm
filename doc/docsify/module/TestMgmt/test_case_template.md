@@ -78,7 +78,6 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[无操作](module/TestMgmt/test_case_template/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
-|[选择用例模板](module/TestMgmt/test_case_template/logic/choose_case_template)|choose_case_template|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

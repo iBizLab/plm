@@ -15,18 +15,16 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./back#begin {开始}]]
-state "绑定表单" as PREPAREJSPARAM2  [[$./back#preparejsparam2 {绑定表单}]]
-state "获取父视图对象" as PREPAREJSPARAM1  [[$./back#preparejsparam1 {获取父视图对象}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./back#debugparam1 {调试逻辑参数}]]
-state "切换显示组件" as RAWJSCODE1  [[$./back#rawjscode1 {切换显示组件}]]
 state "表单刷新" as VIEWCTRLINVOKE1  [[$./back#viewctrlinvoke1 {表单刷新}]]
+state "切换显示组件" as RAWJSCODE1  [[$./back#rawjscode1 {切换显示组件}]]
+state "获取父视图对象" as PREPAREJSPARAM1  [[$./back#preparejsparam1 {获取父视图对象}]]
+state "绑定表单" as PREPAREJSPARAM2  [[$./back#preparejsparam2 {绑定表单}]]
 
 
 Begin --> PREPAREJSPARAM1
 PREPAREJSPARAM1 --> PREPAREJSPARAM2
 PREPAREJSPARAM2 --> RAWJSCODE1
 RAWJSCODE1 --> VIEWCTRLINVOKE1
-VIEWCTRLINVOKE1 --> DEBUGPARAM1
 
 
 @enduml
@@ -69,20 +67,13 @@ uiLogic.parentview.ctx.controllersMap.get("form").details.baseline.state.visible
 
 
 调用`form(表单)`的方法`load`，参数为`Default(传入变量)`
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`parentView`的详细信息
-
 
 
 ### 实体逻辑参数
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|parentView|parentView|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表单|form|部件对象||
+|parentView|parentView|数据对象||

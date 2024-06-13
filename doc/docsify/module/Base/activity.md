@@ -37,7 +37,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[获取活动对象详情](module/Base/activity/logic/get_activity_obj_detail)|get_activity_obj_detail|无||测试|
+|[获取活动对象详情](module/Base/activity/logic/get_activity_obj_detail)|get_activity_obj_detail|无||获取选中的活动对象详情|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -92,7 +92,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[跳转视图](module/Base/activity/uilogic/jump_view)|jump_view||
+|[跳转视图](module/Base/activity/uilogic/jump_view)|jump_view|跳转视图|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

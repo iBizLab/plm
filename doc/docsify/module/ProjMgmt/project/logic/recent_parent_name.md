@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recent_parent_name#begin {"开始"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./recent_parent_name#rawsqlcall1 {"直接SQL调用"}]]
+state "批量更新最近访问父级名称" as RAWSQLCALL1  [[$./recent_parent_name#rawsqlcall1 {"批量更新最近访问父级名称"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -32,7 +32,7 @@ Begin --> RAWSQLCALL1
 
 
 *- N/A*
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 批量更新最近访问父级名称 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

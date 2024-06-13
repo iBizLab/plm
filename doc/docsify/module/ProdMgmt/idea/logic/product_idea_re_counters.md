@@ -21,8 +21,9 @@ state "需求关联工单" as RAWSQLCALL3  [[$./product_idea_re_counters#rawsqlc
 state "需求关联工作项" as RAWSQLCALL4  [[$./product_idea_re_counters#rawsqlcall4 {"需求关联工作项"}]]
 state "需求关联测试用例" as RAWSQLCALL5  [[$./product_idea_re_counters#rawsqlcall5 {"需求关联测试用例"}]]
 state "结束" as END1 <<end>> [[$./product_idea_re_counters#end1 {"结束"}]]
-state "准备参数" as PREPAREPARAM1  [[$./product_idea_re_counters#prepareparam1 {"准备参数"}]]
+state "设置需求主键" as PREPAREPARAM1  [[$./product_idea_re_counters#prepareparam1 {"设置需求主键"}]]
 state "获取产品需求当前版本" as DEACTION1  [[$./product_idea_re_counters#deaction1 {"获取产品需求当前版本"}]]
+state "查询所有计数" as RAWSQLCALL12  [[$./product_idea_re_counters#rawsqlcall12 {"查询所有计数"}]]
 state "产品需求版本" as RAWSQLCALL6  [[$./product_idea_re_counters#rawsqlcall6 {"产品需求版本"}]]
 state "需求关联客户" as RAWSQLCALL7  [[$./product_idea_re_counters#rawsqlcall7 {"需求关联客户"}]]
 state "需求关联需求" as RAWSQLCALL8  [[$./product_idea_re_counters#rawsqlcall8 {"需求关联需求"}]]
@@ -242,7 +243,7 @@ WHERE
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置需求主键 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -255,6 +256,43 @@ WHERE
 调用实体 [需求(IDEA)](module/ProdMgmt/idea.md) 行为 [Get](module/ProdMgmt/idea#行为) ，行为参数为`idea(产品需求)`
 
 将执行结果返回给参数`idea(产品需求)`
+
+#### 查询所有计数 :id=RAWSQLCALL12<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_idea,
+    SUM(CASE WHEN t11.`TARGET_TYPE` = 'customer' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_customer,
+    SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_ticket,
+    SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_work_item,
+    SUM(CASE WHEN t11.`TARGET_TYPE` = 'test_case' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t5.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_test_case
+FROM
+    `RELATION` t11
+JOIN
+    `idea` t ON t.`ID` = t11.`PRINCIPAL_ID`
+LEFT JOIN
+    `idea` t1 ON t1.ID = t11.TARGET_ID 
+LEFT JOIN
+    `customer` t2 ON t2.ID = t11.TARGET_ID
+LEFT JOIN
+    `ticket` t3 ON t3.ID = t11.TARGET_ID 
+LEFT JOIN
+    `work_item` t4 ON t4.ID = t11.TARGET_ID
+LEFT JOIN
+    `test_case` t5 ON t5.ID = t11.TARGET_ID
+WHERE
+    (t11.`PRINCIPAL_ID` = ?);
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
 #### 需求关联客户 :id=RAWSQLCALL7<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 

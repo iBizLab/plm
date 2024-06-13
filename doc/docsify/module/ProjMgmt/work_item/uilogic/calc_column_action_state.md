@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_column_action_state#begin {开始}]]
-state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
 state "注入脚本代码" as RAWJSCODE1  [[$./calc_column_action_state#rawjscode1 {注入脚本代码}]]
+state "结束" as END1 <<end>> [[$./calc_column_action_state#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -41,15 +41,17 @@ RAWJSCODE1 --> END1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-setTimeout(() => {
+(async function() { 
+    const app2 = ibiz.hub.getApp(context.srfappid);
+    const dataItems = await app2.codeList.get("plmweb.projmgmt__work_item_type", context, params);
 	const rows = uiLogic.grid.state.rows;
 	if (rows && rows.length > 0) {
 		rows.forEach(row => {
 			const titleColumn = row.uiActionGroupStates.title;
 			const is_archived = row.data.is_archived;
             const type = row.data.work_item_type_id;
-            const newRowHiddenList = ['kanban_bug', 'kanban_issue', 'waterfall_bug', 'scrum_task', 'scrum_bug'];
-            const changeParentHiddenList = ['scrum_epic', 'kanban_epic', 'kanban_issue'];
+            const codelistItem = dataItems.find(x => x.id === type);
+            const parentItems = dataItems.filter(x => x.data && x.data.includes(type));
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
 					// 归档
@@ -60,16 +62,16 @@ setTimeout(() => {
 						action.disabled = is_archived === 0;
 					} else if (action.uiActionId === 'newrow_test@work_item') {
 						// 新建行
-						action.visible = !newRowHiddenList.includes(type);
+						action.visible = !!codelistItem.data;
 					} else if (action.uiActionId === 'change_parent@work_item') {
 						// 变更父工作项
-						action.visible = !changeParentHiddenList.includes(type);
+						action.visible = parentItems.length > 0;
 					}
 				})
 			}
 		})
 	}
-}, 1000);
+} )();
 ```
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
@@ -83,5 +85,5 @@ setTimeout(() => {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格|Grid|当前部件对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|表格|Grid|当前部件对象||

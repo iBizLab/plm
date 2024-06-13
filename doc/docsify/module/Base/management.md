@@ -43,6 +43,11 @@
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 返回 | back | 返回 |无数据|用户自定义||
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -61,6 +66,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/management?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/management?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

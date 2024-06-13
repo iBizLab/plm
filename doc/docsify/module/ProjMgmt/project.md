@@ -84,8 +84,12 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[DER1N_SWIMLANE_PROJECT_PROJECT_ID](der/DER1N_SWIMLANE_PROJECT_PROJECT_ID)|[泳道(SWIMLANE)](module/ProjMgmt/swimlane)|1:N关系||
 |[DER1N_TEST_PLAN_PROJECT_PROJECT_ID](der/DER1N_TEST_PLAN_PROJECT_PROJECT_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
 |[DER1N_WORK_ITEM_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID)|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|1:N关系||
 |[DERCCUSTOM_FAVORITE_PROJECT](der/DERCCUSTOM_FAVORITE_PROJECT)|[收藏(FAVORITE)](module/Base/favorite)|自定义关系||
+|[DERCUSTOM_ADDON_PROJECT_OWNER_ID](der/DERCUSTOM_ADDON_PROJECT_OWNER_ID)|[组件(ADDON)](module/Base/addon)|自定义关系||
+|[DERCUSTOM_ADDON_RESOURCE_PROJECT_OWNER_ID](der/DERCUSTOM_ADDON_RESOURCE_PROJECT_OWNER_ID)|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|自定义关系||
 |[DERCUSTOM_BASELINE_PROJECT_OWNER_ID](der/DERCUSTOM_BASELINE_PROJECT_OWNER_ID)|[基线(BASELINE)](module/Base/baseline)|自定义关系||
+|[DERCUSTOM_MEMBER_PROJECT_OWNER_ID](der/DERCUSTOM_MEMBER_PROJECT_OWNER_ID)|[成员(MEMBER)](module/Base/member)|自定义关系||
 |[DERCUSTOM_WORK_PROJECT_PILOT_ID](der/DERCUSTOM_WORK_PROJECT_PILOT_ID)|[工作(WORK)](module/Base/work)|自定义关系||
 
 
@@ -123,32 +127,46 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |激活|activate|[实体处理逻辑](module/ProjMgmt/project/logic/activate "激活")|默认|不支持||||
 |归档|archive|[实体处理逻辑](module/ProjMgmt/project/logic/archive "归档")|默认|不支持||||
+|变更管理员角色|change_admin_role|[实体处理逻辑](module/ProjMgmt/project/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProjMgmt/project/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProjMgmt/project/logic/favorite "设置星标")|默认|不支持||||
 |获取主数据|get_major_data|用户自定义|默认|不支持|[附加操作](index/action_logic_index#project_get_major_data)|||
+|看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/ProjMgmt/project/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/ProjMgmt/project/logic/other_re_space "其他实体关联空间")|默认|不支持||||
+|移动项目|project_move|[实体处理逻辑](module/ProjMgmt/project/logic/project_move "移动项目")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/ProjMgmt/project/logic/recover "恢复")|默认|不支持||||
 |从项目集中移除|remove_from_project_set|[实体处理逻辑](module/ProjMgmt/project/logic/remove_from_project_set "从项目集中移除")|默认|不支持||||
+|敏捷项目首页组件计数|scrum_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/scrum_project_addon_authority "scrum项目组件权限计数器")|默认|不支持||||
 |取消星标|un_favorite|[实体处理逻辑](module/ProjMgmt/project/logic/un_favorite "取消星标")|默认|不支持||||
+|瀑布项目首页组件计数|waterfall_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/waterfall_project_addon_authority "waterfall项目组件权限计数器")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[scrum项目组件权限计数器](module/ProjMgmt/project/logic/scrum_project_addon_authority)|scrum_project_addon_authority|无||获取scrum项目组件权限|
+|[waterfall项目组件权限计数器](module/ProjMgmt/project/logic/waterfall_project_addon_authority)|waterfall_project_addon_authority|无||获取waterfall项目组件权限|
 |[从项目集中移除](module/ProjMgmt/project/logic/remove_from_project_set)|remove_from_project_set|无||从项目集中移除某个指定子项目|
 |[其他实体关联空间](module/ProjMgmt/project/logic/other_re_space)|other_re_space|无||空间实体关联操作，生成正向，反向关联数据|
 |[创建之前](module/ProjMgmt/project/logic/before_create)|before_create|无||创建项目之前，对添加的项目成员进行处理|
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
+|[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
 |[批量更新最近访问父标识](module/ProjMgmt/project/logic/recent_parent_identifier)|recent_parent_identifier|属性逻辑||当项目标识变更时，触发此逻辑，批量对最近访问的父标识进行更新|
+|[无操作](module/ProjMgmt/project/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/ProjMgmt/project/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||项目删除或恢复数据时触发相应的通知消息|
 |[是否归档变更附加逻辑](module/ProjMgmt/project/logic/is_archived_onchange)|is_archived_onchange|属性逻辑||项目归档或激活时触发相应的通知消息|
 |[激活](module/ProjMgmt/project/logic/activate)|activate|无||激活已归档状态项目，修改项目的归档属性|
 |[生成最近访问](module/ProjMgmt/project/logic/create_recent)|create_recent|无||在用户对项目数据进行了get或update操作时生成相应的访问记录|
 |[生成默认看板](module/ProjMgmt/project/logic/create_default_board)|create_default_board|无||新建看板项目后，会附加生成出默认看板|
+|[看板项目组件权限计数器](module/ProjMgmt/project/logic/kanban_project_addon_authority)|kanban_project_addon_authority|无||获取看板项目组件权限|
+|[移动项目](module/ProjMgmt/project/logic/project_move)|project_move|无||项目更多设置移动项目<br>|
 |[自动创建人员](module/ProjMgmt/project/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
+|[获取快速新建项目集合](module/ProjMgmt/project/logic/quick_create)|quick_create|无||用于获取可快速新建的项目集合|
+|[获取项目成员](module/ProjMgmt/project/logic/get_project_member_one)|get_project_member_one|无||获取项目成员信息，用于判断当前用户权限|
 |[获取项目进度](module/ProjMgmt/project/logic/get_schedule)|get_schedule|无||通过已完成工作项数量/所有工作项数量，计算出此项目进度|
 |[设置星标](module/ProjMgmt/project/logic/favorite)|favorite|无||设置为星标项目|
 |[负责人变更附加逻辑](module/ProjMgmt/project/logic/assignee_id_onchange)|assignee_id_onchange|属性逻辑||项目负责人变更时触发相应的通知消息|
@@ -172,11 +190,14 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[当前项目(current)](module/ProjMgmt/project/query/current)|current|否|否 |否 ||
 |[已删除(deleted)](module/ProjMgmt/project/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProjMgmt/project/query/favorite)|favorite|否|否 |否 ||
+|[查询星标（管理用户）(favorite_user)](module/ProjMgmt/project/query/favorite_user)|favorite_user|否|否 |否 ||
 |[正常状态(normal)](module/ProjMgmt/project/query/normal)|normal|否|否 |否 ||
 |[公开(public)](module/ProjMgmt/project/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/ProjMgmt/project/query/reader)|reader|否|否 |否 ||
-|[相同类型工作项(same_type)](module/ProjMgmt/project/query/same_type)|same_type|否|否 |否 ||
+|[相同类型项目(same_type)](module/ProjMgmt/project/query/same_type)|same_type|否|否 |否 ||
 |[项目集下的项目(under_project_portfolio)](module/ProjMgmt/project/query/under_project_portfolio)|under_project_portfolio|否|否 |否 ||
+|[非星标项目(unfavorite)](module/ProjMgmt/project/query/unfavorite)|unfavorite|否|否 |否 ||
+|[非星标项目（管理用户）(unfavorite_user)](module/ProjMgmt/project/query/unfavorite_user)|unfavorite_user|否|否 |否 ||
 |[操作用户(user)](module/ProjMgmt/project/query/user)|user|否|否 |否 ||
 |[项目集工作下的项目(work_project)](module/ProjMgmt/project/query/work_project)|work_project|否|否 |否 ||
 
@@ -190,9 +211,12 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[当前项目(current)](module/ProjMgmt/project/dataset/current)|current|数据查询|否|||
 |[已删除(deleted)](module/ProjMgmt/project/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/ProjMgmt/project/dataset/favorite)|favorite|数据查询|否|||
+|[主表格查询(main)](module/ProjMgmt/project/dataset/main)|main|数据查询|否|||
 |[正常状态(normal)](module/ProjMgmt/project/dataset/normal)|normal|数据查询|否|||
+|[快速新建查询(quick)](module/ProjMgmt/project/dataset/quick)|quick|[实体逻辑](module/ProjMgmt/project/logic/quick_create)|否|||
+|[快速新建查询（管理用户）(quick_user)](module/ProjMgmt/project/dataset/quick_user)|quick_user|数据查询|否|||
 |[只读用户(reader)](module/ProjMgmt/project/dataset/reader)|reader|数据查询|否|||
-|[相同类型工作项(same_type)](module/ProjMgmt/project/dataset/same_type)|same_type|数据查询|否|||
+|[相同类型项目(same_type)](module/ProjMgmt/project/dataset/same_type)|same_type|数据查询|否|||
 |[项目集下的项目(under_project_portfolio)](module/ProjMgmt/project/dataset/under_project_portfolio)|under_project_portfolio|数据查询|否|||
 |[操作用户(user)](module/ProjMgmt/project/dataset/user)|user|数据查询|否|||
 |[项目集工作下的项目(work_project)](module/ProjMgmt/project/dataset/work_project)|work_project|数据查询|否|||
@@ -242,8 +266,6 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `DELETE`
-* `UPDATE`
 * `CREATE`
 
 
@@ -303,28 +325,31 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开项目配置(全局) | open_global_setting | 项目配置 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目管理](app/view/project_config_tree_exp_view)</details>||
-| 打开新建项目 | open_new_project | 打开新建项目 |单项数据|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
-| 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
+| 打开项目配置(全局) | open_global_setting | 项目配置 |无数据|用户自定义||
 | 项目成员 | open_project_member | 项目成员 |单项数据（主键）|用户自定义||
-| 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
-| 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
-| 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 打开项目主视图（scrum） | open_project_main_view_scrum | 打开项目主视图（scrum） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_scrum_main_view)</details>||
+| 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 打开项目主视图（kanban） | open_project_main_view_kanban | 打开项目主视图（kanban） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_kanban_main_view)</details>||
-| 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 打开项目导航页 | open_project_exp_view | 打开项目导航页 |无数据|<details><summary>打开顶级视图</summary>[项目管理](app/view/project_tree_exp_view)</details>||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
+| 项目关联空间 | project_relation_space | 项目关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_choose_option_view)</details>||
 | 回收站 | open_deleted_project | 回收站 |单项数据（主键）|用户自定义||
 | 新建项目 | create_project | 新建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_view)</details>||
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
-| 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
-| 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
 | 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 根据类型打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 | 新开窗口（项目） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.id}/project_redirect_view/project=${data.id}*</details>||
 | 打开项目主视图（waterfall） | open_project_main_view_waterfall | 打开项目主视图（waterfall） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_waterfall_main_view)</details>||
+| 打开新建项目 | open_new_project | 打开新建项目 |单项数据|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
+| 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
+| 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
+| 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
+| 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 移动项目 | move_project | 移动项目 |单项数据（主键）|<details><summary>后台调用</summary>[project_move](#行为)||
+| 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
+| 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
+| 根据类型打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
@@ -333,7 +358,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
 |[根据类型跳转项目主视图](module/ProjMgmt/project/uilogic/open_project_main_view)|open_project_main_view|判断类型跳转不同的项目主视图|
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
-|[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh||
+|[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
+|[项目关联空间](module/ProjMgmt/project/uilogic/project_relation_space)|project_relation_space|调用后台关联逻辑，项目关联空间并生成正反关联数据|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

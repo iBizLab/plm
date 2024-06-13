@@ -1,6 +1,9 @@
 # 评审内容扩展(review_content_extend)  <!-- {docsify-ignore-all} -->
 
 
+记录测试用例的评审内容的额外信息，例如版本、评审结果等
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -8,6 +11,7 @@
 |变更版本|CHANGE_VERSION|一对多动态对象（MAP）|1048576|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|最终评审结果|FINAL_STAGE_RESULTS|[单项选择(文本值)](index/dictionary_index#final_stage_results "最终评审结果")|60|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |评审结果|STAGE_RESULTS|一对多关系数据集合|1048576|是||
@@ -57,6 +61,7 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_FINAL_STAGE_RESULTS_EQ|最终评审结果|EQ||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 

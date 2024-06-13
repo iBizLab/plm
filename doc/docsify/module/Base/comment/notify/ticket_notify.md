@@ -13,7 +13,7 @@
 
 <p class="panel-title"><b>消息模板</b></p>
 
-* [评论通知模板](index/notify_index?id=comment)
+* [评论工单通知模板](index/notify_index?id=comment_ticket)
 
 <p class="panel-title"><b>通知类型</b></p>
 
@@ -21,9 +21,9 @@
 
 #### 通知目标
 
-* **负责人**<br>
-  目标类型：`系统消息目标`<br>
-  系统目标：`评论通知工单负责人`
 * **关注人员**<br>
   目标类型：`系统消息目标`<br>
   系统目标：`评论通知关注人`
+* **负责人**<br>
+  目标类型：`系统消息目标`<br>
+  系统目标：`评论通知工单负责人`

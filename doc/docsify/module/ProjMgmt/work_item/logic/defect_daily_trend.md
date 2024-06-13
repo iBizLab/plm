@@ -72,6 +72,7 @@ FROM (
       AND ((? IS NULL OR ? = '') OR SPRINT_ID = ?)
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(PRIORITY, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(SEVERITY, ?))
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(IS_ARCHIVED, ?))
     GROUP BY created_date
 ) b ON date_series.date = b.created_date
          LEFT JOIN (
@@ -86,6 +87,7 @@ FROM (
       AND ((? IS NULL OR ? = '') OR SPRINT_ID = ?)
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(PRIORITY, ?))
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(SEVERITY, ?))
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(IS_ARCHIVED, ?))
     GROUP BY update_date
 ) c ON date_series.date = c.update_date
 ORDER BY date_series.date;
@@ -110,20 +112,26 @@ ORDER BY date_series.date;
 15. `Default(传入变量).n_severity_eq`
 16. `Default(传入变量).n_severity_eq`
 17. `Default(传入变量).n_severity_eq`
-18. `Default(传入变量).n_create_time_gtandeq`
-19. `Default(传入变量).n_create_time_ltandeq`
-20. `Default(传入变量).n_board_id_eq`
-21. `Default(传入变量).n_board_id_eq`
-22. `Default(传入变量).n_board_id_eq`
-23. `Default(传入变量).n_sprint_id_eq`
-24. `Default(传入变量).n_sprint_id_eq`
-25. `Default(传入变量).n_sprint_id_eq`
-26. `Default(传入变量).n_priority_eq`
-27. `Default(传入变量).n_priority_eq`
-28. `Default(传入变量).n_priority_eq`
-29. `Default(传入变量).n_severity_eq`
-30. `Default(传入变量).n_severity_eq`
-31. `Default(传入变量).n_severity_eq`
+18. `Default(传入变量).n_is_archived_in`
+19. `Default(传入变量).n_is_archived_in`
+20. `Default(传入变量).n_is_archived_in`
+21. `Default(传入变量).n_create_time_gtandeq`
+22. `Default(传入变量).n_create_time_ltandeq`
+23. `Default(传入变量).n_board_id_eq`
+24. `Default(传入变量).n_board_id_eq`
+25. `Default(传入变量).n_board_id_eq`
+26. `Default(传入变量).n_sprint_id_eq`
+27. `Default(传入变量).n_sprint_id_eq`
+28. `Default(传入变量).n_sprint_id_eq`
+29. `Default(传入变量).n_priority_eq`
+30. `Default(传入变量).n_priority_eq`
+31. `Default(传入变量).n_priority_eq`
+32. `Default(传入变量).n_severity_eq`
+33. `Default(传入变量).n_severity_eq`
+34. `Default(传入变量).n_severity_eq`
+35. `Default(传入变量).n_is_archived_in`
+36. `Default(传入变量).n_is_archived_in`
+37. `Default(传入变量).n_is_archived_in`
 
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 

@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./idea_re_plan#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./idea_re_plan#bindparam1 {"绑定参数"}]]
+state "绑定需求参数列表" as BINDPARAM1  [[$./idea_re_plan#bindparam1 {"绑定需求参数列表"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./idea_re_plan#loopsubcall1 {"循环子调用"}]] #green {
 state "填充需要的属性" as PREPAREPARAM1  [[$./idea_re_plan#prepareparam1 {"填充需要的属性"}]]
 state "生成正向关联数据" as DEACTION1  [[$./idea_re_plan#deaction1 {"生成正向关联数据"}]]
@@ -41,7 +41,7 @@ DEACTION1 --> DEACTION2
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定需求参数列表 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

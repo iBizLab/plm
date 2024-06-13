@@ -15,8 +15,10 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否系统类型|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
+|项目标识|PROJECT_ID|外键值|100|是||
 |项目类型|PROJECT_TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
 |序号|SEQUENCE|数值||是||
+|下级类型|SUB_TYPE|文本，可指定长度|200|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
@@ -32,6 +34,13 @@
 |[DER1N_WORK_ITEM_STATE_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID](der/DER1N_WORK_ITEM_STATE_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID)|[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)|1:N关系||
 |[DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID](der/DER1N_WORK_ITEM_WORK_ITEM_TYPE_WORK_ITEM_TYPE_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
 
+
+</el-tab-pane>
+<el-tab-pane label="从关系" name="minor">
+
+|  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
+| -------- |---------- |-----------|----- |
+|[DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_TYPE_PROJECT_PROJECT_ID)|[项目(PROJECT)](module/ProjMgmt/project)|1:N关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -59,6 +68,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProjMgmt/work_item_type/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/work_item_type/query/View)|VIEW|否|否 |否 ||
+|[当前项目工作项类型(cur_project_type)](module/ProjMgmt/work_item_type/query/cur_project_type)|cur_project_type|否|否 |否 |数据上下文过滤，非瀑布项目|
 |[项目工作项类型(project_work_item_type)](module/ProjMgmt/work_item_type/query/project_work_item_type)|project_work_item_type|否|否 |否 ||
 |[非缺陷的工作项类型(project_work_item_type_not_bug)](module/ProjMgmt/work_item_type/query/project_work_item_type_not_bug)|project_work_item_type_not_bug|否|否 |否 ||
 
@@ -66,6 +76,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/work_item_type/dataset/Default)|DEFAULT|数据查询|是|||
+|[当前项目工作项类型(cur_project_type)](module/ProjMgmt/work_item_type/dataset/cur_project_type)|cur_project_type|数据查询|否||数据上下文过滤，非瀑布项目|
 |[项目工作项类型(project_work_item_type)](module/ProjMgmt/work_item_type/dataset/project_work_item_type)|project_work_item_type|数据查询|否|||
 |[非缺陷的工作项类型(project_work_item_type_not_bug)](module/ProjMgmt/work_item_type/dataset/project_work_item_type_not_bug)|project_work_item_type_not_bug|数据查询|否|||
 
@@ -104,8 +115,10 @@
 | -------- |------------|------------|------|
 |N_CODE_IN|编码|IN||
 |N_GROUP_EQ|类型分组|EQ||
+|N_ID_LIKE|标识|LIKE||
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_PROJECT_ID_EQ|项目标识|EQ||
 |N_PROJECT_TYPE_EQ|项目类型|EQ||
 
 ## 界面行为

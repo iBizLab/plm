@@ -34,6 +34,7 @@
 |手机号|PHONE|文本，可指定长度|100|是||
 |岗位标识|POSTID|文本，可指定长度|100|是||
 |岗位名称|POSTNAME|文本，可指定长度|100|是||
+|统计|REPORT_FLAG|是否逻辑||是||
 |保留|RESERVER|文本，可指定长度|255|是||
 |保留10|RESERVER10|长文本，没有长度限制|1048576|是||
 |保留11|RESERVER11|整型||是||
@@ -82,6 +83,11 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|存储扩展|动态存储|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)||
+
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
@@ -105,9 +111,9 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `UPDATE`
 * `DELETE`
 * `READ`
+* `UPDATE`
 * `CREATE`
 
 
@@ -142,6 +148,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ebsx/SysEmployee?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ebsx/SysEmployee?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ebsx/SysEmployee?id=数据查询`">
   数据查询

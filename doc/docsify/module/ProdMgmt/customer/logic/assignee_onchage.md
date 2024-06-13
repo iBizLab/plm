@@ -16,9 +16,9 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./assignee_onchage#begin {"开始"}]]
 state "变更负责人通知" as DENOTIFY1  [[$./assignee_onchage#denotify1 {"变更负责人通知"}]]
-state "准备参数" as PREPAREPARAM1  [[$./assignee_onchage#prepareparam1 {"准备参数"}]]
-state "客户取消分配通知" as DENOTIFY3  [[$./assignee_onchage#denotify3 {"客户取消分配通知"}]]
 state "客户分配负责人通知" as DENOTIFY2  [[$./assignee_onchage#denotify2 {"客户分配负责人通知"}]]
+state "准备更新人和更新时间参数" as PREPAREPARAM1  [[$./assignee_onchage#prepareparam1 {"准备更新人和更新时间参数"}]]
+state "客户取消分配通知" as DENOTIFY3  [[$./assignee_onchage#denotify3 {"客户取消分配通知"}]]
 
 
 Begin --> DENOTIFY1
@@ -43,23 +43,23 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户变更负责人通知(assignee_onchange_notify)](module/ProdMgmt/customer/notify/assignee_onchange_notify) ，参数为`Default(传入变量)`
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备更新人和更新时间参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).UPDATE_MAN(更新人)` 设置给  `Last(变更前).UPDATE_MAN`
 2. 将`Default(传入变量).UPDATE_TIME(更新时间)` 设置给  `Last(变更前).UPDATE_TIME`
 
-#### 客户取消分配通知 :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
-
-
-
-调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/customer/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
 #### 客户分配负责人通知 :id=DENOTIFY2<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
 
 
 
 调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户分配负责人通知(assignee_notify)](module/ProdMgmt/customer/notify/assignee_notify) ，参数为`Default(传入变量)`
+#### 客户取消分配通知 :id=DENOTIFY3<sup class="footnote-symbol"> <font color=gray size=1>[实体通知]</font></sup>
+
+
+
+调用实体 [客户(CUSTOMER)](module/ProdMgmt/customer.md) 通知 [客户取消分配负责人通知(assignee_cancel_notify)](module/ProdMgmt/customer/notify/assignee_cancel_notify) ，参数为`Last(变更前)`
 
 ### 连接条件说明
 #### 重新分配负责人 :id=DENOTIFY1-DENOTIFY2

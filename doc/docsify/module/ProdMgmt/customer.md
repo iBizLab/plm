@@ -11,7 +11,7 @@
 |负责人|ASSIGNEE_NAME|外键值文本|100|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
-|类别|CATEGORIES|长文本，长度1000|2000|是||
+|类别|CATEGORIES|多项选择(文本值)|2000|是||
 |类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
@@ -83,16 +83,16 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#customer_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持|[附加操作](index/action_logic_index#customer_Remove)|||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |添加至类别|add_categories|[实体处理逻辑](module/ProdMgmt/customer/logic/add_categories "添加至类别")|默认|不支持||||
 |客户选择工单|customer_choose_ticket|[实体处理逻辑](module/ProdMgmt/customer/logic/customer_choose_ticket "客户选择工单")|默认|不支持||||
+|客户只读用户判断|customer_readonly_recognize|[实体处理逻辑](module/ProdMgmt/customer/logic/get_product_member "获取产品成员")|默认|不支持||||
 |取消关联|del_relation|[实体处理逻辑](module/ProdMgmt/customer/logic/del_relation "取消关联")|默认|不支持||||
 |删除类别|delete_categories|[实体处理逻辑](module/ProdMgmt/customer/logic/delete_categories "删除类别")|默认|不支持||||
-|获取产品成员|fill_product_member|[实体处理逻辑](module/ProdMgmt/customer/logic/get_product_member "获取产品成员")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/customer/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联客户|others_relation_customer|[实体处理逻辑](module/ProdMgmt/customer/logic/others_relation_customer "其他实体关联客户")|默认|不支持||||
@@ -107,10 +107,11 @@
 |[删除类别](module/ProdMgmt/customer/logic/delete_categories)|delete_categories|无||当类别删除时修改客户的类别属性|
 |[取消关联](module/ProdMgmt/customer/logic/del_relation)|del_relation|无||客户取消关联数据（正反向关联数据同时删除）|
 |[变更负责人附加逻辑](module/ProdMgmt/customer/logic/assignee_onchage)|assignee_onchage|属性逻辑||客户负责人变更时触发相应的通知消息|
+|[填充类别文本](module/ProdMgmt/customer/logic/fill_categories_name)|fill_categories_name|无||填充类别对应文本|
 |[客户选择工单](module/ProdMgmt/customer/logic/customer_choose_ticket)|customer_choose_ticket|无||客户选择工单操作，更新工单的客户属性|
 |[无操作](module/ProdMgmt/customer/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加至类别](module/ProdMgmt/customer/logic/add_categories)|add_categories|无||添加客户类别操作|
-|[获取产品成员](module/ProdMgmt/customer/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前登陆者权限|
+|[获取产品成员](module/ProdMgmt/customer/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
 
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
@@ -166,8 +167,17 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ASSIGNEE_ID_EQ|负责人标识|EQ||
+|N_ASSIGNEE_ID_IN|负责人标识|IN||
+|N_ASSIGNEE_ID_ISNOTNULL|负责人标识|ISNOTNULL||
+|N_ASSIGNEE_ID_ISNULL|负责人标识|ISNULL||
+|N_ASSIGNEE_ID_NOTIN|负责人标识|NOTIN||
 |N_CATEGORYS_ISNULL|类别|ISNULL||
 |N_CATEGORYS_LIKE|类别|LIKE||
+|N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_GRADE_ID_EQ|等级|EQ||
 |N_ID_EQ|标识|EQ||
 |N_INDUSTRY_ID_EQ|行业|EQ||
@@ -179,12 +189,14 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 测试界面行为权限 | test_aciton | 测试 |无数据|用户自定义||
 | 添加客户（其他实体关联） | other_add_relation_customer | 添加客户 |无数据|用户自定义||
 | 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
 | 删除 | delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除（工具栏） | toolbar_delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 客户自定义导入 | customer_import_data | 客户导入 |无数据|<details><summary>打开数据导入视图</summary>[产品客户导入]()</details>||
 | 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
@@ -198,11 +210,12 @@
 | --------|--------|--------|
 |[关联客户值变更](module/ProdMgmt/customer/uilogic/relation_customer_change)|relation_customer_change|关联客户值变更时，调用处理逻辑，生成正反向关联数据|
 |[删除类别或分组](module/ProdMgmt/customer/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
-|[刷新客户表格](module/ProdMgmt/customer/uilogic/refresh_customer_grid)|refresh_customer_grid||
+|[刷新客户表格](module/ProdMgmt/customer/uilogic/refresh_customer_grid)|refresh_customer_grid|刷新客户表格|
+|[客户只读用户判断](module/ProdMgmt/customer/uilogic/customer_get_only_read)|customer_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[新建分组](module/ProdMgmt/customer/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/ProdMgmt/customer/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
-|[测试判断只读用户](module/ProdMgmt/customer/uilogic/test_get_only_read)|test_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[编辑类别或分组](module/ProdMgmt/customer/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
+|[表格行为列状态](module/ProdMgmt/customer/uilogic/readonly_grid_uiaction)|readonly_grid_uiaction|表格根据上下文srfreadonly判断行为列是否启用|
 |[触发计数器刷新](module/ProdMgmt/customer/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
 |[选择下拉框区域展示](module/ProdMgmt/customer/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)|idea_relation_customer|值变更时触发，需求关联客户，调用处理逻辑生成正反向数据|

@@ -9,7 +9,8 @@
 | --------   |------------| -----  | -----  | :----: | -------- |
 |负责人标识|ASSIGNEE_ID|文本，可指定长度|100|否||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
-|类别|CATEGORIES|长文本，长度1000|2000|是||
+|类别|CATEGORIES|多项选择(文本值)|2000|是||
+|类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
@@ -20,7 +21,7 @@
 |项目标识|PROJECT_ID|外键值|100|否||
 |项目名称|PROJECT_NAME|外键值文本|200|是||
 |开始时间|START_AT|日期型||是||
-|状态|STATUS|单项选择(文本值)|60|是||
+|阶段|STATUS|单项选择(文本值)|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
 
@@ -36,6 +37,7 @@
 |[DER1N_STAGE_RELEASE_RELEASE_ID](der/DER1N_STAGE_RELEASE_RELEASE_ID)|[发布阶段(STAGE)](module/ProjMgmt/stage)|1:N关系||
 |[DER1N_TEST_PLAN_RELEASE_RELEASE_ID](der/DER1N_TEST_PLAN_RELEASE_RELEASE_ID)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|1:N关系||
 |[DER1N_WORK_ITEM_RELEASE_RELEASE_ID](der/DER1N_WORK_ITEM_RELEASE_RELEASE_ID)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|1:N关系||
+|[DERCUSTOM_RELATION_RELEASE](der/DERCUSTOM_RELATION_RELEASE)|[关联(RELATION)](module/Base/relation)|自定义关系||
 
 
 </el-tab-pane>
@@ -54,32 +56,41 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#release_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|迭代取消关联发布|del_relation|[实体处理逻辑](module/ProjMgmt/release/logic/del_relation "迭代取消关联发布")|默认|不支持||||
 |删除类别|delete_categories|[实体处理逻辑](module/ProjMgmt/release/logic/delete_categories "删除类别")|默认|不支持||||
 |规划工作项|plan_work_item|[实体处理逻辑](module/ProjMgmt/release/logic/plan_work_item "规划工作项")|默认|不支持||||
+|迭代关联发布|sprint_relation_release|[实体处理逻辑](module/ProjMgmt/release/logic/sprint_relation_release "迭代关联发布")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[删除类别](module/ProjMgmt/release/logic/delete_categories)|delete_categories|无||当类别删除时修改发布的类别属性|
+|[填充类别文本](module/ProjMgmt/release/logic/fill_categories_name)|fill_categories_name|无||填充类别对应文本|
 |[规划工作项](module/ProjMgmt/release/logic/plan_work_item)|plan_work_item|无||规划工作项至指定发布|
+|[迭代关联发布](module/ProjMgmt/release/logic/sprint_relation_release)|sprint_relation_release|无||迭代关联发布|
+|[迭代取消关联发布](module/ProjMgmt/release/logic/del_relation)|del_relation|无||迭代取消关联发布|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProjMgmt/release/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/release/query/View)|VIEW|否|否 |否 ||
+|[选择发布关联(choose_relese_relation)](module/ProjMgmt/release/query/choose_relese_relation)|choose_relese_relation|否|否 |否 ||
 |[未完成的发布(not_finish)](module/ProjMgmt/release/query/not_finish)|not_finish|否|否 |否 ||
+|[迭代关联发布(sprint_relation)](module/ProjMgmt/release/query/sprint_relation)|sprint_relation|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/release/dataset/Default)|DEFAULT|数据查询|是|||
+|[选择发布关联(choose_relese_relation)](module/ProjMgmt/release/dataset/choose_relese_relation)|choose_relese_relation|数据查询|否|||
 |[未完成的发布(not_finish)](module/ProjMgmt/release/dataset/not_finish)|not_finish|数据查询|否|||
+|[迭代关联发布(sprint_relation)](module/ProjMgmt/release/dataset/sprint_relation)|sprint_relation|数据查询|否|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -90,22 +101,24 @@
 |N_PROJECT_ID_EQ|项目标识|EQ||
 |N_PROJECT_NAME_EQ|项目名称|EQ||
 |N_PROJECT_NAME_LIKE|项目名称|LIKE||
-|N_STATUS_EQ|状态|EQ||
+|N_STATUS_EQ|阶段|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 规划工作项（release） | plan_work_item | 规划工作项 |无数据|<details><summary>后台调用</summary>[plan_work_item](#行为)||
-| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
-| 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 编辑 | open_update_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑发布](app/view/release_update_view)</details>||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | remove | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 迭代取消关联发布 | sprint_del_relation_release | 取消关联 |单项数据|<details><summary>后台调用</summary>[del_relation](#行为)||
+| 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 迭代关联发布 | add_relation | 关联发布 |无数据|<details><summary>后台调用</summary>[sprint_relation_release](#行为)||
+| 规划工作项（release） | plan_work_item | 规划工作项 |无数据|<details><summary>后台调用</summary>[plan_work_item](#行为)||
+| 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
+| 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

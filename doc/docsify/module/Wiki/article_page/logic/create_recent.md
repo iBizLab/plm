@@ -68,7 +68,7 @@ Begin --> END1 : [[$./create_recent#begin-end1{未发布} 未发布]]
 ### 连接条件说明
 #### 已发布 :id=Begin-PREPAREPARAM1
 
-`Default(传入变量).IS_PUBLISHED(是否发布)` EQ `1`
+`Default(传入变量).IS_PUBLISHED(是否发布)` EQ `1` AND `Default(传入变量).TYPE(类型)` NOTEQ `2`
 #### 未发布 :id=Begin-END1
 
 `Default(传入变量).IS_PUBLISHED(是否发布)` EQ `0`

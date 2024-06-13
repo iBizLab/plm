@@ -15,31 +15,31 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./baseline_comparison#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM2  [[$./baseline_comparison#prepareparam2 {"准备参数"}]]
+state "设置关联查询过滤器的分页参数" as PREPAREPARAM2  [[$./baseline_comparison#prepareparam2 {"设置关联查询过滤器的分页参数"}]]
 state "获取当前基线下产品需求" as DEDATASET1  [[$./baseline_comparison#dedataset1 {"获取当前基线下产品需求"}]]
-state "准备参数" as PREPAREPARAM3  [[$./baseline_comparison#prepareparam3 {"准备参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./baseline_comparison#prepareparam1 {"准备参数"}]]
+state "填充工作项过滤器参数" as PREPAREPARAM3  [[$./baseline_comparison#prepareparam3 {"填充工作项过滤器参数"}]]
+state "填充对比基线关联查询过滤器需要的baseline参数" as PREPAREPARAM1  [[$./baseline_comparison#prepareparam1 {"填充对比基线关联查询过滤器需要的baseline参数"}]]
 state "获取对比基线下的产品需求" as DEDATASET2  [[$./baseline_comparison#dedataset2 {"获取对比基线下的产品需求"}]]
 state "获取最新版本产品需求" as DEDATASET3  [[$./baseline_comparison#dedataset3 {"获取最新版本产品需求"}]]
-state "准备参数" as PREPAREPARAM5  [[$./baseline_comparison#prepareparam5 {"准备参数"}]]
-state "绑定参数" as BINDPARAM1  [[$./baseline_comparison#bindparam1 {"绑定参数"}]]
+state "填充版本查询过滤器参数" as PREPAREPARAM5  [[$./baseline_comparison#prepareparam5 {"填充版本查询过滤器参数"}]]
+state "将处理好的列表对象绑定至分页结果对象" as BINDPARAM1  [[$./baseline_comparison#bindparam1 {"将处理好的列表对象绑定至分页结果对象"}]]
 state "获取版本结果集" as DEDATASET4  [[$./baseline_comparison#dedataset4 {"获取版本结果集"}]]
 state "结束" as END1 <<end>> [[$./baseline_comparison#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./baseline_comparison#loopsubcall1 {"循环子调用"}]] #green {
 state "附加到数组参数" as APPENDPARAM2  [[$./baseline_comparison#appendparam2 {"附加到数组参数"}]]
-state "执行脚本代码" as RAWSFCODE1  [[$./baseline_comparison#rawsfcode1 {"执行脚本代码"}]]
+state "提取关联对象中的主键标识" as RAWSFCODE1  [[$./baseline_comparison#rawsfcode1 {"提取关联对象中的主键标识"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./baseline_comparison#loopsubcall2 {"循环子调用"}]] #green {
 state "附加到数组参数" as APPENDPARAM3  [[$./baseline_comparison#appendparam3 {"附加到数组参数"}]]
 }
 state "循环子调用" as LOOPSUBCALL3  [[$./baseline_comparison#loopsubcall3 {"循环子调用"}]] #green {
-state "产品需求cur_version_ids" as RAWSFCODE2  [[$./baseline_comparison#rawsfcode2 {"产品需求cur_version_ids"}]]
-state "准备参数" as PREPAREPARAM7  [[$./baseline_comparison#prepareparam7 {"准备参数"}]]
+state "提取关联对象中的版本标识" as RAWSFCODE2  [[$./baseline_comparison#rawsfcode2 {"提取关联对象中的版本标识"}]]
+state "填充最新版本产品需求附加属性" as PREPAREPARAM7  [[$./baseline_comparison#prepareparam7 {"填充最新版本产品需求附加属性"}]]
 }
 state "循环子调用" as LOOPSUBCALL4  [[$./baseline_comparison#loopsubcall4 {"循环子调用"}]] #green {
 }
 state "循环子调用" as LOOPSUBCALL5  [[$./baseline_comparison#loopsubcall5 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM6  [[$./baseline_comparison#prepareparam6 {"准备参数"}]]
+state "填充关联目标版本对象" as PREPAREPARAM6  [[$./baseline_comparison#prepareparam6 {"填充关联目标版本对象"}]]
 state "附加到数组参数" as APPENDPARAM4  [[$./baseline_comparison#appendparam4 {"附加到数组参数"}]]
 }
 
@@ -80,7 +80,7 @@ LOOPSUBCALL4 --> BINDPARAM1
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置关联查询过滤器的分页参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -105,7 +105,7 @@ LOOPSUBCALL4 --> BINDPARAM1
 
 
 将参数`for_temp_obj(循环临时变量)` 添加到数组参数`content(基线产品需求列表)`
-#### 执行脚本代码 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 提取关联对象中的主键标识 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 
@@ -125,14 +125,14 @@ if(for_temp_obj.get("target_id")){
 }
 ```
 
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充工作项过滤器参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`idea_ids(承载产品需求标识对象).ids` 设置给  `idea_filter(产品需求查询过滤器).n_id_in`
 2. 将`500` 设置给  `idea_filter(产品需求查询过滤器).size`
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充对比基线关联查询过滤器需要的baseline参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -154,7 +154,7 @@ if(for_temp_obj.get("target_id")){
 
 将执行结果返回给参数`idea_page(产品需求分页结果变量)`
 
-#### 准备参数 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充最新版本产品需求附加属性 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -163,7 +163,7 @@ if(for_temp_obj.get("target_id")){
 3. 将`Default(传入变量).comparison_baseline` 设置给  `idea_for_temp(产品需求循环临时变量).principal_id`
 4. 将`1` 设置给  `idea_for_temp(产品需求循环临时变量).is_latest`
 
-#### 产品需求cur_version_ids :id=RAWSFCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 提取关联对象中的版本标识 :id=RAWSFCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 
@@ -198,14 +198,14 @@ if(idea_for_temp.get("cur_version_id")){
 
 
 将参数`for_temp_obj(循环临时变量)` 添加到数组参数`content(基线产品需求列表)`
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充版本查询过滤器参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`idea_versions(承载产品需求当前版本标识).version_id_in` 设置给  `version_filter(版本过滤器).n_id_in`
 2. 将`500` 设置给  `version_filter(版本过滤器).size`
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 将处理好的列表对象绑定至分页结果对象 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -234,7 +234,7 @@ if(idea_for_temp.get("cur_version_id")){
 
 
 循环参数`idea_page(产品需求分页结果变量)`，子循环参数使用`idea_for_temp(产品需求循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充关联目标版本对象 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -250,7 +250,7 @@ if(idea_for_temp.get("cur_version_id")){
 #### 不同基线之间对比 
 
 
-#### 连接名称 
+#### 自身基线对比 
 
 
 #### 自身基线对比 :id=LOOPSUBCALL1-PREPAREPARAM3

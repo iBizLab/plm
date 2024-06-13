@@ -39,6 +39,7 @@
 |<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -83,6 +84,7 @@
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -131,6 +133,7 @@
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -199,6 +202,7 @@
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -284,6 +288,7 @@
 |<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -328,6 +333,7 @@
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -376,6 +382,7 @@
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -435,6 +442,7 @@
 |<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -479,6 +487,7 @@
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -543,6 +552,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -587,6 +597,7 @@ Integer
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -635,6 +646,7 @@ Integer
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -694,6 +706,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -738,6 +751,7 @@ Integer
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -786,6 +800,7 @@ Integer
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -850,6 +865,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
 |<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -894,6 +910,7 @@ Integer
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -963,6 +980,7 @@ Integer
   "logictag4" : null,
   "logictype" : null,
   "memo" : null,
+  "ordervalue" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -1061,6 +1079,7 @@ Integer
     "logictag4" : null,
     "logictype" : null,
     "memo" : null,
+    "ordervalue" : null,
     "psdeid" : null,
     "psdelogicid" : null,
     "psdelogicname" : null,

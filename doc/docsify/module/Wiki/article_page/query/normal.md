@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`IS_DELETED(是否已删除)` EQ `'0'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'`)
+(`IS_DELETED(是否已删除)` EQ `'0'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `IS_PUBLISHED(是否发布)` EQ `'1'`)
 
 
 
@@ -52,6 +52,7 @@ t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
 t1.`NAME`,
 t1.`PARENT_ID`,
@@ -70,7 +71,7 @@ t1.`UPDATE_TIME`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
 ```
 
 </el-dialog>

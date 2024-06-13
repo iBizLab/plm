@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./auto_create_members#begin {"开始"}]]
-state "准备生成用户数据" as PREPAREPARAM3  [[$./auto_create_members#prepareparam3 {"准备生成用户数据"}]]
+state "准备用户数据" as PREPAREPARAM3  [[$./auto_create_members#prepareparam3 {"准备用户数据"}]]
 state "准备查询参数" as PREPAREPARAM2  [[$./auto_create_members#prepareparam2 {"准备查询参数"}]]
 state "生成用户数据" as DEACTION2  [[$./auto_create_members#deaction2 {"生成用户数据"}]]
 state "查询用户数据" as DEDATASET1  [[$./auto_create_members#dedataset1 {"查询用户数据"}]]
 state "结束" as END1 <<end>> [[$./auto_create_members#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./auto_create_members#loopsubcall1 {"循环子调用"}]] #green {
 state "重置参数" as RESETPARAM1  [[$./auto_create_members#resetparam1 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"准备参数"}]]
+state "准备用户数据" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"准备用户数据"}]]
 state "生成用户数据" as DEACTION3  [[$./auto_create_members#deaction3 {"生成用户数据"}]]
 }
 
@@ -50,13 +50,14 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 准备生成用户数据 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备用户数据 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `space_member(成员参数).SPACE_ID(空间标识)`
-2. 将`用户全局对象.srfpersonid` 设置给  `space_member(成员参数).USER_ID(登录名)`
-3. 将`用户全局对象.srfpersonname` 设置给  `space_member(成员参数).NAME(姓名)`
+2. 将`admin` 设置给  `space_member(成员参数).ROLE_ID(角色)`
+3. 将`用户全局对象.srfpersonid` 设置给  `space_member(成员参数).USER_ID(登录名)`
+4. 将`用户全局对象.srfpersonname` 设置给  `space_member(成员参数).NAME(姓名)`
 
 #### 准备查询参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -89,7 +90,7 @@ LOOPSUBCALL1 --> END1
 
 
 重置参数```space_member(成员参数)```
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备用户数据 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

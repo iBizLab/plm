@@ -5,7 +5,7 @@
 <br>
 <p class="panel-title"><b>主实体</b></p>
 
-* [讨论(DISCUSS_POST)](module/team/discuss_post)
+* [讨论(DISCUSS_POST)](module/Team/discuss_post)
 
 <p class="panel-title"><b>从实体</b></p>
 

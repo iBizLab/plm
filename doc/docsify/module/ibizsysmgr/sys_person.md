@@ -24,6 +24,7 @@
 |主部门|MDEPARTMENT_NAME|文本，可指定长度|100|是||
 |移动电话|MOBILE|文本，可指定长度|100|是||
 |地址|POSTAL_ADDRESS|文本，可指定长度|500|是||
+|统计|REPORT_FLAG|是否逻辑||是||
 |联系电话|TELEPHONE_NUMBER|文本，可指定长度|100|是||
 |职位|TITLE|文本，可指定长度|100|是||
 |uid/loginname|UID|文本，可指定长度|100|是||
@@ -45,6 +46,11 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+
+## 功能配置
+| 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
+| --------  | :----:    | ---- |----- |
+|存储扩展|动态存储|[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -69,10 +75,10 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
-* `CREATE`
 * `READ`
 * `UPDATE`
 * `DELETE`
+* `CREATE`
 
 
 
@@ -104,6 +110,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ibizsysmgr/sys_person?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ibizsysmgr/sys_person?id=功能配置`">
+  功能配置
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ibizsysmgr/sys_person?id=数据查询`">
   数据查询
