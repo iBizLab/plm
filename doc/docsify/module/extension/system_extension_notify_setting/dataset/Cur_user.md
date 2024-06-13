@@ -1,4 +1,4 @@
-## 当前用户(Cur_user) <!-- {docsify-ignore-all} -->
+## 当前用户(cur_user) <!-- {docsify-ignore-all} -->
 
 
 
@@ -15,6 +15,10 @@
 
 * `默认（全部查询列）`
 
+
+<p class="panel-title"><b>主排序属性</b></p>
+
+* `NAME(名称)` `ASC`
 
 
 
