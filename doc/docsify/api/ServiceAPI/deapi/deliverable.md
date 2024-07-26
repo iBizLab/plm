@@ -270,7 +270,7 @@ Integer
 <el-alert title="/deliverables/get_draft" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`CREATE`
+权限标识：`NONE`
 
 
 
@@ -418,7 +418,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 
@@ -431,7 +430,6 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_id_eq" : null,
-  "n_name_eq" : null,
   "n_name_like" : null,
   "n_owner_id_eq" : null,
 }
@@ -477,7 +475,6 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">n_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
 
@@ -490,7 +487,6 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_id_eq" : null,
-  "n_name_eq" : null,
   "n_name_like" : null,
   "n_owner_id_eq" : null,
 }

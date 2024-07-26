@@ -79,6 +79,7 @@
 |[默认（全部数据）(VIEW)](module/Base/category/query/View)|VIEW|否|否 |否 ||
 |[检查名称是否重复(check_name)](module/Base/category/query/check_name)|check_name|否|否 |否 ||
 |[通用类别（代码表）(common_categories)](module/Base/category/query/common_categories)|common_categories|否|否 |否 ||
+|[当前产品需求类别(cur_product_idea_category)](module/Base/category/query/cur_product_idea_category)|cur_product_idea_category|否|否 |否 ||
 |[无分组的类别（且父标识不为空）(no_section)](module/Base/category/query/no_section)|no_section|否|否 |否 ||
 |[主模块(product_idea_category)](module/Base/category/query/product_idea_category)|product_idea_category|否|否 |否 |需求下子产品中父标识为空的模块|
 |[排期计划类别(product_plan)](module/Base/category/query/product_plan)|product_plan|否|否 |否 ||
@@ -91,6 +92,7 @@
 |[数据集(DEFAULT)](module/Base/category/dataset/Default)|DEFAULT|数据查询|是|||
 |[检查名称是否重复(check_name)](module/Base/category/dataset/check_name)|check_name|数据查询|否|||
 |[当前项目类别(common_categories)](module/Base/category/dataset/common_categories)|common_categories|数据查询|否|||
+|[当前产品需求类别(cur_product_idea_category)](module/Base/category/dataset/cur_product_idea_category)|cur_product_idea_category|数据查询|否|||
 |[无分组的类别(no_section)](module/Base/category/dataset/no_section)|no_section|数据查询|否|||
 |[主模块(product_idea_category)](module/Base/category/dataset/product_idea_category)|product_idea_category|数据查询|否||需求下子产品中父标识为空的模块|
 |[排期计划类别(product_plan)](module/Base/category/dataset/product_plan)|product_plan|数据查询|否|||

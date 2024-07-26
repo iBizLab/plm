@@ -32,7 +32,6 @@
 
 (`IS_DELETED(是否已删除)` EQ `'0'` AND `WORK_ITEM_TYPE_GROUP(工作项类型分组)` EQ `'bug'` AND `(
             EXISTS (
-                -- 与计划ID关联的RUN的WORK_ITEM
                     SELECT 1
                     FROM `relation` rel
                              INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`
@@ -43,7 +42,6 @@
                       AND rel.`PRINCIPAL_TYPE` = 'run'
                 )
             OR EXISTS (
-                -- 直接与计划ID关联的WORK_ITEM
                     SELECT 1
                     FROM `relation` r
                     WHERE
@@ -91,11 +89,13 @@ t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
 t51.`NAME` AS `RELEASE_NAME`,
 t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
@@ -111,6 +111,7 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
@@ -129,7 +130,6 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
             EXISTS (
-                -- 与计划ID关联的RUN的WORK_ITEM
                     SELECT 1
                     FROM `relation` rel
                              INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`
@@ -140,7 +140,6 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
                       AND rel.`PRINCIPAL_TYPE` = 'run'
                 )
             OR EXISTS (
-                -- 直接与计划ID关联的WORK_ITEM
                     SELECT 1
                     FROM `relation` r
                     WHERE

@@ -19,4 +19,4 @@
 
 
 ### 数据查询
-  * [数据查询(DEFAULT)](module/team/update_record/query/Default)
+  * [数据查询(DEFAULT)](module/Team/update_record/query/Default)

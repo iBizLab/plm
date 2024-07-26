@@ -19,4 +19,4 @@
 
 
 ### 数据查询
-  * [数据查询(DEFAULT)](module/team/objective/query/Default)
+  * [数据查询(DEFAULT)](module/Team/objective/query/Default)

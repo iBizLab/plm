@@ -496,6 +496,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_weekday_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 
 
@@ -513,6 +514,7 @@ Integer
   "n_project_name_like" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
+  "n_user_id_notin" : null,
   "n_weekday_eq" : null,
 }
 ```
@@ -564,6 +566,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_weekday_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 
 
@@ -581,6 +584,7 @@ Integer
   "n_project_name_like" : null,
   "n_role_id_eq" : null,
   "n_user_id_eq" : null,
+  "n_user_id_notin" : null,
   "n_weekday_eq" : null,
 }
 ```
@@ -1060,6 +1064,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_weekday_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 
 
@@ -1094,6 +1099,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_weekday_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 
 
@@ -1576,6 +1582,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_weekday_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 
 
@@ -1610,6 +1617,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_project_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|项目名称|
 |<el-row justify="space-between"><el-col :span="20">n_role_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|角色|
 |<el-row justify="space-between"><el-col :span="20">n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_user_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
 |<el-row justify="space-between"><el-col :span="20">n_weekday_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|周工作日|
 
 

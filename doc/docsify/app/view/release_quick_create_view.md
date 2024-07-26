@@ -44,7 +44,8 @@
 
 
 ### 关联视图
-  * [项目(project_pick_up_view)](app/view/project_pick_up_view)
+  * [选择项目(project_pick_up_view)](app/view/project_pick_up_view)
+  * [发布类别选择树(release_release_pick_up_tree_view)](app/view/release_release_pick_up_tree_view)
 
 <script>
  const { createApp } = Vue

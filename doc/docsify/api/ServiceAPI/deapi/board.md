@@ -353,6 +353,57 @@ Integer
 
 ```
 
+## 当前项目看板（导入）
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/boards/fetch_cur_board_upload" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_project_id_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "project_id" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
 ## 当前项目下看板
 
 <el-row>
@@ -412,6 +463,57 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/boards/fetch_default" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_project_id_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "project_id" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 只读用户
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/boards/fetch_reader" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`READ`
@@ -835,6 +937,35 @@ Integer
 
 
 
+## 根据项目当前项目看板（导入）
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/boards/fetch_cur_board_upload" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
 ## 根据项目当前项目下看板
 
 <el-row>
@@ -872,6 +1003,35 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/projects/{pkey}/boards/fetch_default" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|项目主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_project_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+## 根据项目只读用户
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/projects/{pkey}/boards/fetch_reader" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 

@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`OWNER_TYPE(所属数据对象)` EQ `'project'` AND `OWNER_SUBTYPE(所属对象子类型)` EQ `'work_item'` AND `CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` AND `exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.is_deleted = 0)` AND `not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id})` AND `OWNER_ID(所属数据标识)` NOTEQ `网页请求上下文.principal_id`)
+(`OWNER_TYPE(所属数据对象)` EQ `'project'` AND `OWNER_SUBTYPE(所属对象子类型)` EQ `'work_item'` AND `CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` AND `exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.is_deleted = 0)` AND `not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id} and principal_type <> 'dependency')` AND `OWNER_ID(所属数据标识)` NOTEQ `网页请求上下文.principal_id`)
 
 
 
@@ -58,7 +58,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.is_deleted = 0)  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id})  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id} )
+WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.is_deleted = 0)  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id} and principal_type <> 'dependency')  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id} )
 ```
 
 </el-dialog>

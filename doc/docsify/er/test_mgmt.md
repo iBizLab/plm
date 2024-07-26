@@ -86,7 +86,7 @@ entity "RUN_HISTORY\n执行结果" as RUN_HISTORY [[$../module/TestMgmt/run_hist
 entity "SPRINT\n迭代" as SPRINT [[$../module/ProjMgmt/sprint {迭代}]] {
         <&key> ID - 标识
         --
-        <&link-intact> PROJECT_ID - 产品标识
+        <&link-intact> PROJECT_ID - 项目标识
         <&link-intact> PID - 父标识
 }
 entity "TEST_CASE\n用例" as TEST_CASE [[$../module/TestMgmt/test_case {用例}]] {

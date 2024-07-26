@@ -18,20 +18,11 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_导出数据模型](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_删除操作](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_拷贝操作](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_数据导入栏](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_新建操作](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_搜索栏](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_编辑操作](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [设置标签](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [激活](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_导出操作（Excel）](module/ProdMgmt/ticket#界面行为)
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [表格界面_帮助操作](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [分配负责人](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [激活](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单删除](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [设置标签](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [工单归档](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [工单(ticket_allocate_person_view)](app/view/ticket_allocate_person_view)

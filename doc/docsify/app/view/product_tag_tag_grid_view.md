@@ -15,13 +15,14 @@
 
 
 ### 关联界面行为
-  * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [编辑标签](module/ProdMgmt/product_tag#界面行为)
   * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [删除标签](module/ProdMgmt/product_tag#界面行为)
+  * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [编辑标签](module/ProdMgmt/product_tag#界面行为)
   * [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag) : [表格界面_新建操作_通用](module/ProdMgmt/product_tag#界面行为)
 
 ### 关联视图
   * [编辑标签(product_tag_edit_option_view)](app/view/product_tag_edit_option_view)
   * [新建标签(product_tag_new_option_view)](app/view/product_tag_new_option_view)
+  * [确认删除(product_tag_product_tag_confirm_remove_view)](app/view/product_tag_product_tag_confirm_remove_view)
   * [本标签-工单(ticket_tags_tciket_grid_view)](app/view/ticket_tags_tciket_grid_view)
 
 <script>

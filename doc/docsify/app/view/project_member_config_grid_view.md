@@ -22,7 +22,7 @@
   * [项目成员(project_member_edit_view)](app/view/project_member_edit_view)
   * [项目成员(project_member_redirect_view)](app/view/project_member_redirect_view)
   * [设置角色(project_member_role_edit_view)](app/view/project_member_role_edit_view)
-  * [项目(project_mpick_up_view)](app/view/project_mpick_up_view)
+  * [选择项目(project_mpick_up_view)](app/view/project_mpick_up_view)
   * [选择成员(user_choose_mpick_up_view)](app/view/user_choose_mpick_up_view)
 
 <script>

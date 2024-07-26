@@ -74,12 +74,10 @@
 |Update|Update|内置方法|默认|不支持||||
 |我负责的事项|my_charge_entry|[实体处理逻辑](module/Base/recent/logic/my_charge_entry "我负责的事项")|默认|不支持||||
 |我创建的事项|my_created_entry|[实体处理逻辑](module/Base/recent/logic/my_created_entry "我创建的事项")|默认|不支持||||
-|定时清理最近访问数据|recent_clean|[实体处理逻辑](module/Base/recent/logic/recent_clean "定时清理最近访问数据")|默认|不支持|||每天定时清理最近访问数据，每人每个访问类型数据只保留100条|
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[定时清理最近访问数据](module/Base/recent/logic/recent_clean)|recent_clean|无||每天定时清理最近访问数据，每人每个访问类型数据只保留100条|
 |[我创建的事项](module/Base/recent/logic/my_created_entry)|my_created_entry|无||查询当前用户创建的事项|
 |[我负责的事项](module/Base/recent/logic/my_charge_entry)|my_charge_entry|无||查询我负责的事项，工作台的计数器使用|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
@@ -103,6 +101,7 @@
 |[最近浏览_工作项(recent_work_item)](module/Base/recent/query/recent_work_item)|recent_work_item|否|否 |否 ||
 |[最近浏览工作项且不含缺陷(recent_work_item_and_nobug)](module/Base/recent/query/recent_work_item_and_nobug)|recent_work_item_and_nobug|否|否 |否 ||
 |[最近浏览_缺陷(recent_work_item_bug)](module/Base/recent/query/recent_work_item_bug)|recent_work_item_bug|否|否 |否 ||
+|[最近浏览_依赖工作项(recent_work_item_dependency)](module/Base/recent/query/recent_work_item_dependency)|recent_work_item_dependency|否|否 |否 ||
 |[本人最新访问(user)](module/Base/recent/query/user)|user|否|否 |否 ||
 
 ## 数据集合
@@ -124,6 +123,7 @@
 |[最近浏览_工作项(recent_work_item)](module/Base/recent/dataset/recent_work_item)|recent_work_item|数据查询|否|||
 |[最近浏览工作项且不含缺陷(recent_work_item_and_nobug)](module/Base/recent/dataset/recent_work_item_and_nobug)|recent_work_item_and_nobug|数据查询|否|||
 |[最近浏览_缺陷(recent_work_item_bug)](module/Base/recent/dataset/recent_work_item_bug)|recent_work_item_bug|数据查询|否|||
+|[最近浏览_工作项(依赖)(recent_work_item_dependency)](module/Base/recent/dataset/recent_work_item_dependency)|recent_work_item_dependency|数据查询|否|||
 |[本人最新访问(user)](module/Base/recent/dataset/user)|user|数据查询|否|||
 
 ## 数据权限
@@ -175,14 +175,15 @@
 | --------| --------| -------- |------------|------------|------------|
 | 新建工作项（测试用例） | test_case_create_new_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 首页 | panel_de_custom_index_view_layout_overview_button_calluilogic_click | 产品管理 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品管理](app/view/product_tree_exp_view)</details>||
+| 新建工单 | create_new_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
+| 新建子工作项 | create_child_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 新建需求 | create_new_idea | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
 | 新建缺陷 | create_new_work_item_bug | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建测试用例 | create_new_test_case | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建用例](app/view/test_case_quick_create_view)</details>||
-| 新建工单 | create_new_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
+| 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
-| 新建子工作项 | create_child_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建工作项 | create_new_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建缺陷(执行用例) | run_create_new_work_item_bug | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
-| 新建需求 | create_new_idea | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
 | 新建工单（客户） | customer_create_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
 | 通过重定向视图跳转 | jump | 通过重定向视图跳转 |单项数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_redirect_view)</details>||
 

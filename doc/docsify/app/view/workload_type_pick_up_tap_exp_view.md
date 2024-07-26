@@ -8,7 +8,7 @@
 
 
 ### 关联视图
-  * [类别设置(workload_type_setup_grid_view)](app/view/workload_type_setup_grid_view)
+  * [工时设置(workload_type_setup_grid_view)](app/view/workload_type_setup_grid_view)
 
 <script>
  const { createApp } = Vue

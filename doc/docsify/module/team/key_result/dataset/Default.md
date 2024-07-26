@@ -19,4 +19,4 @@
 
 
 ### 数据查询
-  * [数据查询(DEFAULT)](module/team/key_result/query/Default)
+  * [数据查询(DEFAULT)](module/Team/key_result/query/Default)

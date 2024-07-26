@@ -41,6 +41,7 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|移动排序|move_order|用户自定义|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Base/workload_type/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑

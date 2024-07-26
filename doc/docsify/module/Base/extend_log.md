@@ -7,6 +7,7 @@
 |类别|CATEGORY|文本，可指定长度|100|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|调试日志信息|DEBUG_INFO|长文本，没有长度限制|1048576|是||
 |持续时间|ELAPSED_TIME|整型|11|是||
 |结束时间|END_AT|日期时间型||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||

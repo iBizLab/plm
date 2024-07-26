@@ -8,7 +8,7 @@
 
 
 ### 关联视图
-  * [发布阶段(dictionary_data_global_grid_view)](app/view/dictionary_data_global_grid_view)
+  * [发布阶段(stage_data_global_grid_view)](app/view/stage_data_global_grid_view)
 
 <script>
  const { createApp } = Vue

@@ -29,7 +29,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[同步父子工作项的完成状态](module/Base/template_flow/logic/sync_work_item_finish)|sync_work_item_finish|DEFIELDCHANGEHOOK|||
+|[同步父子工作项的完成状态](module/Base/template_flow/logic/sync_work_item_finish)|sync_work_item_finish|属性变化处理（运行时支持）|||
 |[定时将已完成工作项归档](module/Base/template_flow/logic/turn_work_item_archived)|turn_work_item_archived|定时作业（运行时支持）||通过定时任务，将已完成的工作项归档，结束时间超过三天。|
 |[自动创建子任务](module/Base/template_flow/logic/auto_create_sub_work_item)|auto_create_sub_work_item|事件处理（运行时支持）||自动化，自动创建子任务|
 |[自动将新团队成员加入团队空间](module/Base/template_flow/logic/auto_add_member_to_space)|auto_add_member_to_space|事件处理（运行时支持）||新成员加入团队后，自动加入到该团队的空间。|

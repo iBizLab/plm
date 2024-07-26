@@ -19,7 +19,6 @@
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)
 
 ### 关联视图
-  * [测试库(library_pick_up_view)](app/view/library_pick_up_view)
   * [用例模块(test_suite_pick_up_view)](app/view/test_suite_pick_up_view)
 
 <script>

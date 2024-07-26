@@ -16,6 +16,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Object|通知目标|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">checktimer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|检查间隔|
@@ -41,6 +42,8 @@
 |<el-row justify="space-between"><el-col :span="20">pssysmsgqueuename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息队列|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|系统消息模板|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息模板|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
 |<el-row justify="space-between"><el-col :span="20">taskmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
 |<el-row justify="space-between"><el-col :span="20">timermode</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|定时触发模式|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
@@ -48,13 +51,13 @@
 |<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识3|
 |<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
-|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|null|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -80,6 +83,8 @@
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -91,7 +96,6 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 ```
 
@@ -100,6 +104,7 @@
 ```json
 
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -125,6 +130,8 @@
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -136,7 +143,6 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 
 ```
@@ -165,6 +171,7 @@
 ```json
 
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -190,6 +197,8 @@
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -201,7 +210,6 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 
 ```
@@ -249,6 +257,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Object|通知目标|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">checktimer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|检查间隔|
@@ -274,6 +283,8 @@
 |<el-row justify="space-between"><el-col :span="20">pssysmsgqueuename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息队列|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|系统消息模板|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息模板|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
 |<el-row justify="space-between"><el-col :span="20">taskmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
 |<el-row justify="space-between"><el-col :span="20">timermode</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|定时触发模式|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
@@ -281,13 +292,13 @@
 |<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识3|
 |<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
-|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|null|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -313,6 +324,8 @@
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -324,7 +337,6 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 ```
 
@@ -333,6 +345,7 @@
 ```json
 
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -358,6 +371,8 @@
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -369,7 +384,6 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 
 ```
@@ -391,6 +405,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Object|通知目标|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">checktimer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|检查间隔|
@@ -416,6 +431,8 @@
 |<el-row justify="space-between"><el-col :span="20">pssysmsgqueuename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息队列|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|系统消息模板|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息模板|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
 |<el-row justify="space-between"><el-col :span="20">taskmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
 |<el-row justify="space-between"><el-col :span="20">timermode</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|定时触发模式|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
@@ -423,13 +440,13 @@
 |<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识3|
 |<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
-|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|null|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -455,6 +472,8 @@
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -466,7 +485,6 @@
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 ```
 
@@ -493,6 +511,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Object|通知目标|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">checktimer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|检查间隔|
@@ -518,6 +537,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">pssysmsgqueuename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息队列|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|系统消息模板|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息模板|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
 |<el-row justify="space-between"><el-col :span="20">taskmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
 |<el-row justify="space-between"><el-col :span="20">timermode</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|定时触发模式|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
@@ -525,13 +546,13 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识3|
 |<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
-|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|null|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -557,6 +578,8 @@ Integer
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -568,7 +591,6 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 ```
 
@@ -577,6 +599,7 @@ Integer
 ```json
 
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -602,6 +625,8 @@ Integer
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -613,7 +638,6 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 
 ```
@@ -635,6 +659,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Object|通知目标|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">checktimer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|检查间隔|
@@ -660,6 +685,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">pssysmsgqueuename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息队列|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|系统消息模板|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息模板|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
 |<el-row justify="space-between"><el-col :span="20">taskmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
 |<el-row justify="space-between"><el-col :span="20">timermode</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|定时触发模式|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
@@ -667,13 +694,13 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识3|
 |<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
-|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|null|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -699,6 +726,8 @@ Integer
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -710,7 +739,6 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 ```
 
@@ -719,6 +747,7 @@ Integer
 ```json
 
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -744,6 +773,8 @@ Integer
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -755,7 +786,6 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 
 ```
@@ -782,6 +812,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Object|通知目标|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">beginpsdefname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|开始时间属性|
 |<el-row justify="space-between"><el-col :span="20">checktimer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|检查间隔|
@@ -807,6 +838,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">pssysmsgqueuename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息队列|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|系统消息模板|
 |<el-row justify="space-between"><el-col :span="20">pssysmsgtemplname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|系统消息模板|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
+|<el-row justify="space-between"><el-col :span="20">pssyssfpluginname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|后端模板插件|
 |<el-row justify="space-between"><el-col :span="20">taskmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
 |<el-row justify="space-between"><el-col :span="20">timermode</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|定时触发模式|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
@@ -814,13 +847,13 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识3|
 |<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识4|
 |<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|启用|
-|<el-row justify="space-between"><el-col :span="20">psdenotifytargets</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|null|
 
 
 
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "psdenotifytargets" : null,
   "beginpsdefid" : null,
   "beginpsdefname" : null,
   "checktimer" : null,
@@ -846,6 +879,8 @@ Integer
   "pssysmsgqueuename" : null,
   "pssysmsgtemplid" : null,
   "pssysmsgtemplname" : null,
+  "pssyssfpluginid" : null,
+  "pssyssfpluginname" : null,
   "taskmode" : null,
   "timermode" : null,
   "usertag" : null,
@@ -857,7 +892,6 @@ Integer
   "create_time" : null,
   "update_man" : null,
   "update_time" : null,
-  "psdenotifytargets" : null,
 }
 ```
 
@@ -885,6 +919,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_psdenotifyid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体通知标识|
 |<el-row justify="space-between"><el-col :span="20">n_psdenotifyname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体通知名称|
 |<el-row justify="space-between"><el-col :span="20">n_taskmode_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加任务模式|
+|<el-row justify="space-between"><el-col :span="20">n_usertag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标识|
 
 
 
@@ -899,6 +934,7 @@ Integer
   "n_psdenotifyid_eq" : null,
   "n_psdenotifyname_like" : null,
   "n_taskmode_eq" : null,
+  "n_usertag_eq" : null,
 }
 ```
 
@@ -907,6 +943,7 @@ Integer
 ```json
 [
   {
+    "psdenotifytargets" : null,
     "beginpsdefid" : null,
     "beginpsdefname" : null,
     "checktimer" : null,
@@ -932,6 +969,8 @@ Integer
     "pssysmsgqueuename" : null,
     "pssysmsgtemplid" : null,
     "pssysmsgtemplname" : null,
+    "pssyssfpluginid" : null,
+    "pssyssfpluginname" : null,
     "taskmode" : null,
     "timermode" : null,
     "usertag" : null,
@@ -943,7 +982,6 @@ Integer
     "create_time" : null,
     "update_man" : null,
     "update_time" : null,
-    "psdenotifytargets" : null,
   }
 ]
 ```

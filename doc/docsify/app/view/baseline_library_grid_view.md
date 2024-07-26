@@ -18,8 +18,8 @@
 
 
 ### 关联界面行为
+  * [基线(BASELINE)](module/Base/baseline) : [删除基线](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [表格界面_新建操作_子数据](module/Base/baseline#界面行为)
-  * [基线(BASELINE)](module/Base/baseline) : [删除](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [设立完成（测试库）](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [编辑基线（测试库）](module/Base/baseline#界面行为)
 

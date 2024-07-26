@@ -15,12 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./run_re_counters#begin {"开始"}]]
-state "结束" as END1 <<end>> [[$./run_re_counters#end1 {"结束"}]]
 state "测试用例关联产品需求" as RAWSQLCALL1  [[$./run_re_counters#rawsqlcall1 {"测试用例关联产品需求"}]]
 state "测试用例关联工作项" as RAWSQLCALL2  [[$./run_re_counters#rawsqlcall2 {"测试用例关联工作项"}]]
+state "结束" as END1 <<end>> [[$./run_re_counters#end1 {"结束"}]]
 state "执行用例关联缺陷" as RAWSQLCALL3  [[$./run_re_counters#rawsqlcall3 {"执行用例关联缺陷"}]]
 state "执行用例结果附件" as RAWSQLCALL5  [[$./run_re_counters#rawsqlcall5 {"执行用例结果附件"}]]
 state "测试用例执行历史" as RAWSQLCALL4  [[$./run_re_counters#rawsqlcall4 {"测试用例执行历史"}]]
+state "合并查询计数器" as RAWSQLCALL6  [[$./run_re_counters#rawsqlcall6 {"合并查询计数器"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -36,17 +37,6 @@ RAWSQLCALL4 --> END1
 
 
 ### 处理步骤说明
-
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
-
-
-
-返回 `Default(传入变量)`
 
 #### 测试用例关联产品需求 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -117,6 +107,17 @@ AND	EXISTS (
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+
+
+
+返回 `Default(传入变量)`
+
 #### 执行用例关联缺陷 :id=RAWSQLCALL3<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
@@ -180,6 +181,34 @@ WHERE
 <p class="panel-title"><b>执行sql参数</b></p>
 
 1. `Default(传入变量).ID(标识)`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
+
+#### 合并查询计数器 :id=RAWSQLCALL6<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+
+
+
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_idea,
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_work_item
+FROM
+    `RELATION` t11
+JOIN
+    `test_case` t ON t.`ID` = t11.`PRINCIPAL_ID`
+LEFT JOIN
+    `idea` t1 ON t1.ID = t11.TARGET_ID 
+LEFT JOIN
+    `work_item` t4 ON t4.ID = t11.TARGET_ID
+WHERE
+    (t11.`PRINCIPAL_ID` = ?);
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `Default(传入变量).CASE_ID(测试用例标识)`
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 

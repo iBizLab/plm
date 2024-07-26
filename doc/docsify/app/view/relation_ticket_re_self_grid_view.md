@@ -39,7 +39,7 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 

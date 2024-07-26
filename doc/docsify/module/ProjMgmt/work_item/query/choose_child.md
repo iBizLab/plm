@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`IS_DELETED(是否已删除)` EQ `'0'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `ID(标识)` NOTEQ `网页请求上下文.principal_id` AND `PROJECT_ID(项目)` EQ `网页请求上下文.project_id` AND `( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )` AND `( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )` AND (`PID(父标识)` NOTEQ `网页请求上下文.principal_id` OR `PID(父标识)` ISNULL))
+(`IS_DELETED(是否已删除)` EQ `'0'` AND `ID(标识)` NOTEQ `网页请求上下文.principal_id` AND `PROJECT_ID(项目)` EQ `网页请求上下文.project_id` AND `( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )` AND `( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )` AND (`PID(父标识)` NOTEQ `网页请求上下文.principal_id` OR `PID(父标识)` ISNULL))
 
 
 
@@ -69,11 +69,13 @@ t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
 t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
 t51.`NAME` AS `RELEASE_NAME`,
 t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
@@ -89,6 +91,7 @@ t1.`TOP_ID`,
 t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
 t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
@@ -105,7 +108,7 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  t1.`PROJECT_ID` = #{ctx.webcontext.project_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( t1.`PID` <> #{ctx.webcontext.principal_id}  OR  t1.`PID` IS NULL ) )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  t1.`PROJECT_ID` = #{ctx.webcontext.project_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( t1.`PID` <> #{ctx.webcontext.principal_id}  OR  t1.`PID` IS NULL ) )
 ```
 
 </el-dialog>

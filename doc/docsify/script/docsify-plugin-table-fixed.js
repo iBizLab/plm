@@ -60,6 +60,8 @@
 
           //去除超链接
           title = title.replace(/<a\b[^>]*>(.*?)<\/a>/gi, '$1');
+          //title 换行替换
+          title = title.replace(/<br>/gi, '&#10;');
           //复杂内容 忽略
           if(title.indexOf('<')!=-1){
             title = ''

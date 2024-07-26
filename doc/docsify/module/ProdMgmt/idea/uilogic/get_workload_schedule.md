@@ -1,4 +1,4 @@
-## 获取工时进度 <!-- {docsify-ignore-all} -->
+## 获取需求工时进度 <!-- {docsify-ignore-all} -->
 
    获取工时信息，并计算工时进度
 
@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_workload_schedule#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE2  [[$./get_workload_schedule#rawjscode2 {注入脚本代码}]]
 state "计算工时进度" as RAWJSCODE1  [[$./get_workload_schedule#rawjscode1 {计算工时进度}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./get_workload_schedule#preparejsparam2 {准备参数}]]
-state "获取基线名称" as DEACTION1  [[$./get_workload_schedule#deaction1 {获取基线名称}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./get_workload_schedule#preparejsparam1 {准备参数}]]
+state "填充基线名称" as PREPAREJSPARAM1  [[$./get_workload_schedule#preparejsparam1 {填充基线名称}]]
 state "结束" as END1 <<end>> [[$./get_workload_schedule#end1 {结束}]]
+state "填充需求属性" as PREPAREJSPARAM2  [[$./get_workload_schedule#preparejsparam2 {填充需求属性}]]
+state "动态显示组件" as RAWJSCODE2  [[$./get_workload_schedule#rawjscode2 {动态显示组件}]]
+state "获取基线名称" as DEACTION1  [[$./get_workload_schedule#deaction1 {获取基线名称}]]
 
 
 Begin --> RAWJSCODE1
@@ -72,7 +72,7 @@ if((actual + remaining) != 0){
 }
 ```
 
-#### 注入脚本代码 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 动态显示组件 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -81,13 +81,14 @@ if((actual + remaining) != 0){
 ```javascript
 const form = uiLogic.form.details;
 const srfreadonly = context.srfreadonly;
-if(srfreadonly == true){
+if(srfreadonly === true || srfreadonly === 'true'){
     form.grouppanel4.state.visible=false;
+    form.button3.state.visible=false;
     form.grouppanel5.state.actionGroupState.u3a6466f.visible=false;
 }
 ```
 
-#### 准备参数 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充需求属性 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -102,7 +103,7 @@ if(srfreadonly == true){
 
 将执行结果返回给参数`idea(产品需求)`
 
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充基线名称 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -119,7 +120,7 @@ if(srfreadonly == true){
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |产品需求|idea|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表单|form|当前部件对象||
 |当前视图对象|view|当前视图对象||

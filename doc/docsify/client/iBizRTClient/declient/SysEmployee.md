@@ -72,6 +72,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -137,6 +138,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,
@@ -216,6 +218,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -281,6 +284,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,
@@ -360,6 +364,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -425,6 +430,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,
@@ -523,6 +529,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -588,6 +595,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,
@@ -672,6 +680,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -737,6 +746,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,
@@ -835,6 +845,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -900,6 +911,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,
@@ -984,6 +996,7 @@
 |superuser|Integer|SuperUser|
 |createdate|Timestamp|CreateDate|
 |updatedate|Timestamp|UpdateDate|
+|report_flag|Integer|report_flag|
 |ddunionid|String|DDUnionId|
 |dduserid|String|DDUserId|
 |msgtype|Integer|MsgType|
@@ -1049,6 +1062,7 @@
   "superuser" : null,
   "createdate" : null,
   "updatedate" : null,
+  "report_flag" : null,
   "ddunionid" : null,
   "dduserid" : null,
   "msgtype" : null,

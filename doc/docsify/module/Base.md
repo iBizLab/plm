@@ -20,7 +20,7 @@
 |[部门(DEPARTMENT)](module/Base/department)|department|主实体|无存储||否|否|自控制|否|用于查看和管理企业的部门信息。|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|dictionary_data|主实体|SQL|DICTIONARY|否|否|自控制|否|用于记录基础数据字典。|
 |[动态应用菜单(DYNA_APPMENU)](module/Base/dyna_appmenu)|dyna_appmenu|主实体|SQL|DYNA_APPMENU|否|否|自控制|否|配置动态菜单功能必备。|
-|[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|dyna_dashboard|主实体|SQL|DYNADASHBOARD|否|否|自控制|否|配置动态数据看板功能必备。|
+|[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)|dyna_dashboard|主实体|SQL|DYNADASHBOARD|否|否|附属主实体控制（未映射自控）|否|配置动态数据看板功能必备。|
 |[动态看板部件配置(DYNA_PORTLET_SETTING)](module/Base/dyna_portlet_setting)|dyna_portlet_setting|主实体|无存储||否|否|自控制|否||
 |[扩展日志(EXTEND_LOG)](module/Base/extend_log)|extend_log|主实体|SQL|EXTEND_LOG|否|否|自控制|否||
 |[扩展存储(EXTEND_STORAGE)](module/Base/extend_storage)|extend_storage|主实体|SQL|EXTEND_STORAGE|是|否|自控制|否||

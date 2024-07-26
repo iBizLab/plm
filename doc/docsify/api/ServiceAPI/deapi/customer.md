@@ -931,6 +931,106 @@ Integer
 
 ```
 
+## 获取需求中客户的信息
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/customers/get_idea_customer_info" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">scale</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|规模|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">logo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|品牌标识|
+|<el-row justify="space-between"><el-col :span="20">grade_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
+|<el-row justify="space-between"><el-col :span="20">industry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">categories_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">ticket_total</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工单总数|
+|<el-row justify="space-between"><el-col :span="20">ticket_finish</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|已完成工单数|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|客户名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "scale" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "logo" : null,
+  "grade_id" : null,
+  "industry_id" : null,
+  "categories" : null,
+  "categories_name" : null,
+  "product_name" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "attentions" : null,
+  "ticket_total" : null,
+  "ticket_finish" : null,
+  "attentions_imp" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "product_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "scale" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "logo" : null,
+  "grade_id" : null,
+  "industry_id" : null,
+  "categories" : null,
+  "categories_name" : null,
+  "product_name" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "attentions" : null,
+  "ticket_total" : null,
+  "ticket_finish" : null,
+  "attentions_imp" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "product_id" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
+
 ## 其他实体关联客户
 
 <el-row>
@@ -2333,6 +2433,51 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/products/{pkey}/customers/get_draft" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|产品主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">scale</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|规模|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">logo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|品牌标识|
+|<el-row justify="space-between"><el-col :span="20">grade_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
+|<el-row justify="space-between"><el-col :span="20">industry_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">categories_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品名称|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">ticket_total</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|工单总数|
+|<el-row justify="space-between"><el-col :span="20">ticket_finish</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|已完成工单数|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|客户名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+
+
+
+## 根据产品获取需求中客户的信息
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/products/{pkey}/customers/get_idea_customer_info" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 

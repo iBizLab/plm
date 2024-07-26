@@ -21,8 +21,8 @@
 
 | 名称col350     |   从实体col200 | 关系类型col200     |   备注col500  |
 | -------- |---------- |------------|----- |
-|[DER1N_KEY_RESULT_OBJECTIVE_OBJECTIVE_ID](der/DER1N_KEY_RESULT_OBJECTIVE_OBJECTIVE_ID)|[关键结果(KEY_RESULT)](module/team/key_result)|1:N关系||
-|[DER1N_UPDATE_RECORD_OBJECTIVE_OBJECTIVE_ID](der/DER1N_UPDATE_RECORD_OBJECTIVE_OBJECTIVE_ID)|[进展(UPDATE_RECORD)](module/team/update_record)|1:N关系||
+|[DER1N_KEY_RESULT_OBJECTIVE_OBJECTIVE_ID](der/DER1N_KEY_RESULT_OBJECTIVE_OBJECTIVE_ID)|[关键结果(KEY_RESULT)](module/Team/key_result)|1:N关系||
+|[DER1N_UPDATE_RECORD_OBJECTIVE_OBJECTIVE_ID](der/DER1N_UPDATE_RECORD_OBJECTIVE_OBJECTIVE_ID)|[进展(UPDATE_RECORD)](module/Team/update_record)|1:N关系||
 
 
 </el-tab-pane>
@@ -30,7 +30,7 @@
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
-|[DER1N_OBJECTIVE_PERIOD_PERIOD_ID](der/DER1N_OBJECTIVE_PERIOD_PERIOD_ID)|[周期(PERIOD)](module/team/period)|1:N关系||
+|[DER1N_OBJECTIVE_PERIOD_PERIOD_ID](der/DER1N_OBJECTIVE_PERIOD_PERIOD_ID)|[周期(PERIOD)](module/Team/period)|1:N关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -50,13 +50,13 @@
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
-|[数据查询(DEFAULT)](module/team/objective/query/Default)|DEFAULT|是|否 |否 ||
-|[默认（全部数据）(VIEW)](module/team/objective/query/View)|VIEW|否|否 |否 ||
+|[数据查询(DEFAULT)](module/Team/objective/query/Default)|DEFAULT|是|否 |否 ||
+|[默认（全部数据）(VIEW)](module/Team/objective/query/View)|VIEW|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
-|[数据集(DEFAULT)](module/team/objective/dataset/Default)|DEFAULT|数据查询|是|||
+|[数据集(DEFAULT)](module/Team/objective/dataset/Default)|DEFAULT|数据查询|是|||
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -69,22 +69,22 @@
 
 ##### 导航
 <el-anchor >
-<el-anchor-link :href="`#/module/team/objective?id=属性`">
+<el-anchor-link :href="`#/module/Team/objective?id=属性`">
   属性
 </el-anchor-link>
-<el-anchor-link :href="`#/module/team/objective?id=关系`">
+<el-anchor-link :href="`#/module/Team/objective?id=关系`">
   关系
 </el-anchor-link>
-<el-anchor-link :href="`#/module/team/objective?id=行为`">
+<el-anchor-link :href="`#/module/Team/objective?id=行为`">
   行为
 </el-anchor-link>
-<el-anchor-link :href="`#/module/team/objective?id=数据查询`">
+<el-anchor-link :href="`#/module/Team/objective?id=数据查询`">
   数据查询
 </el-anchor-link>
-<el-anchor-link :href="`#/module/team/objective?id=数据集合`">
+<el-anchor-link :href="`#/module/Team/objective?id=数据集合`">
   数据集合
 </el-anchor-link>
-<el-anchor-link :href="`#/module/team/objective?id=搜索模式`">
+<el-anchor-link :href="`#/module/Team/objective?id=搜索模式`">
   搜索模式
 </el-anchor-link>
 </el-anchor>

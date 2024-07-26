@@ -17,7 +17,10 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
@@ -33,9 +36,12 @@
 ```json
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -55,9 +61,12 @@
 
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -97,9 +106,12 @@
 
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -158,7 +170,10 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
@@ -174,9 +189,12 @@
 ```json
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -196,9 +214,12 @@
 
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -231,7 +252,10 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
@@ -247,9 +271,12 @@
 ```json
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -287,7 +314,10 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
@@ -303,9 +333,12 @@ Integer
 ```json
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -325,9 +358,12 @@ Integer
 
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -360,7 +396,10 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
@@ -376,9 +415,12 @@ Integer
 ```json
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -398,9 +440,12 @@ Integer
 
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -438,7 +483,10 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
 |<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑名称|
@@ -454,9 +502,12 @@ Integer
 ```json
 {
   "dynamodelflag" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
+  "logictype" : null,
   "psdeid" : null,
   "psdelogicid" : null,
   "psdelogicname" : null,
@@ -517,9 +568,12 @@ Integer
 [
   {
     "dynamodelflag" : null,
+    "psdelogicnodes" : null,
+    "psdelogiclinks" : null,
     "codename" : null,
     "createdate" : null,
     "createman" : null,
+    "logictype" : null,
     "psdeid" : null,
     "psdelogicid" : null,
     "psdelogicname" : null,

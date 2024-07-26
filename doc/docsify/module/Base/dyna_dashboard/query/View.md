@@ -28,6 +28,10 @@
 
 > [!ATTENTION|label:存在长文本属性]
 >
+> `DESC(描述)`
+>
+> `EXAMPLE_CHART(示例图)`
+>
 > `MODEL(模型)`
 
 
@@ -42,12 +46,16 @@ SELECT
 t1.`APPID`,
 t1.`CREATEDATE`,
 t1.`CREATEMAN`,
+t1.`DESC`,
 t1.`DYNADASHBOARDID`,
 t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
 t1.`MODEL`,
 t1.`MODELID`,
 t1.`OWNER_ID`,
 t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,

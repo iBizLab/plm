@@ -8,11 +8,11 @@
 			const is_favorite = row.data.is_favorite;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
-					// 收藏
+					// 星标
 					if (action.uiActionId === 'add_favorite@product') {
 						action.visible = is_favorite == 0;
 					} else if (action.uiActionId === 'cancel_favorite@product') {
-						// 取消收藏
+						// 取消星标
 						action.visible = is_favorite != 0;
 					}
 				})

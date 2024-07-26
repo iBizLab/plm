@@ -14,17 +14,6 @@
   * opendata(预置打开数据逻辑)
 
 
-### 关联界面行为
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_数据导入栏](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_导出操作（Excel）](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_拷贝操作](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_导出数据模型](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_搜索栏](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_编辑操作](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_删除操作](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_新建操作](module/ProjMgmt/work_item_type#界面行为)
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_帮助操作](module/ProjMgmt/work_item_type#界面行为)
-
 ### 关联视图
   * [工作项类型(work_item_type_edit_view)](app/view/work_item_type_edit_view)
 

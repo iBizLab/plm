@@ -6,6 +6,7 @@
 |[团队管理员](security/GROUP_ADMIN.md)|GROUP_ADMIN|无||
 |[访问用户](security/AUTHOR_USERS.md)|AUTHOR_USERS|授权访问用户||
 |[默认管理员权限](security/ROLE_ADMIN.md)|ROLE_ADMIN|管理员默认||
+|[匿名用户](security/ANON_USERS.md)|ANON_USERS|授权访问用户||
 |[默认用户权限](security/ROLE_USERS.md)|ROLE_USERS|用户默认||
 
 
@@ -19,6 +20,7 @@
 <th>团队管理员col150</th>
 <th>访问用户col150</th>
 <th>默认管理员权限col150</th>
+<th>匿名用户col150</th>
 <th>默认用户权限col150</th>
 
 </tr>
@@ -26,9 +28,12 @@
 
 <tr>
 
-<td rowspan="14">统一资源</td>
+<td rowspan="19">统一资源</td>
 
 <td>产品管理</td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -52,6 +57,60 @@
 <tr>
 
 <td>产品管理_维护</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>协作空间</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>协作空间_维护</td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -81,6 +140,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -95,6 +157,60 @@
 <tr>
 
 <td>工时管理</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>效能度量</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>效能度量_维护</td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -121,6 +237,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -140,6 +259,9 @@
 <tr>
 
 <td>测试管理_维护</td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -166,6 +288,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -186,7 +311,35 @@
 
 <td>知识管理_维护</td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+<tr>
+
+<td>系统管理</td>
+<td align="center">
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -207,6 +360,9 @@
 <tr>
 
 <td>组织管理</td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -243,11 +399,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
 <tr>
 
 <td>项目管理</td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -271,6 +433,9 @@
 <tr>
 
 <td>项目管理_维护</td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -300,6 +465,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -314,6 +482,9 @@
 <tr>
 
 <td>项目集管理_维护</td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -350,6 +521,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -368,6 +542,38 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/Base/addon_role_member">组件权限成员(ADDON_ROLE_MEMBER)</a></td>
+
+<td><a href ="#/module/Base/addon_role_member#addon_role_member-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">
@@ -399,8 +605,12 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
+
 
 
 
@@ -425,32 +635,6 @@
 
 </td>
 <td align="center">
-<i class="fa fa-check"></i>
-
-</td>
-<td align="center">
-
-</td>
-
-</tr>
-
-
-
-
-
-
-  <tr>
-
-<td rowspan="1"><a href ="#/module/Base/deliverable">交付物(DELIVERABLE)</a></td>
-
-<td><a href ="#/module/Base/deliverable#deliverable-all_rw">全部数据（读写）</a></td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
 
 </td>
 <td align="center">
@@ -462,12 +646,21 @@
 </td>
 
 </tr>
+
+
+
+
+
+
 
   <tr>
 
 <td rowspan="2"><a href ="#/module/Base/department">部门(DEPARTMENT)</a></td>
 
 <td><a href ="#/module/Base/department#department-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -504,6 +697,9 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
 
@@ -512,6 +708,9 @@
 <td rowspan="2"><a href ="#/module/Base/dictionary_data">数据字典(DICTIONARY)</a></td>
 
 <td><a href ="#/module/Base/dictionary_data#dictionary_data-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -540,6 +739,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -557,9 +759,12 @@
 
   <tr>
 
-<td rowspan="1"><a href ="#/module/Base/dyna_dashboard">动态数据看板(DYNADASHBOARD)</a></td>
+<td rowspan="5"><a href ="#/module/Team/discuss_topic">话题(DISCUSS_TOPIC)</a></td>
 
-<td><a href ="#/module/Base/dyna_dashboard#dyna_dashboard-all_rw">全部数据（读写）</a></td>
+<td><a href ="#/module/Team/discuss_topic#discuss_topic-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -578,6 +783,104 @@
 </td>
 
 </tr>
+  <tr>
+
+<td><a href ="#/module/Team/discuss_topic#discuss_topic-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Team/discuss_topic#discuss_topic-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Team/discuss_topic#discuss_topic-user_r">只读用户（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Team/discuss_topic#discuss_topic-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+
 
 
 
@@ -586,6 +889,9 @@
 <td rowspan="1"><a href ="#/module/Base/extend_log">扩展日志(EXTEND_LOG)</a></td>
 
 <td><a href ="#/module/Base/extend_log#extend_log-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -620,6 +926,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -631,20 +940,23 @@
 
   <tr>
 
-<td rowspan="3"><a href ="#/module/Base/group">团队(GROUP)</a></td>
+<td rowspan="4"><a href ="#/module/Base/group">团队(GROUP)</a></td>
 
 <td><a href ="#/module/Base/group#group-admin_r">管理员（读）</a></td>
 <td align="center">
 
 </td>
 <td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
 <i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -655,6 +967,9 @@
   <tr>
 
 <td><a href ="#/module/Base/group#group-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -682,6 +997,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -693,6 +1011,31 @@
 </td>
 
 </tr>
+  <tr>
+
+<td><a href ="#/module/Base/group#group-user_r">团队成员（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
 
 
 
@@ -701,6 +1044,9 @@
 <td rowspan="2"><a href ="#/module/Base/insight">洞察力(INSIGHT)</a></td>
 
 <td><a href ="#/module/Base/insight#insight-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -729,6 +1075,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -745,9 +1094,137 @@
 
   <tr>
 
+<td rowspan="5"><a href ="#/module/Insight/insight_view">效能视图(INSIGHT_VIEW)</a></td>
+
+<td><a href ="#/module/Insight/insight_view#insight_view-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Insight/insight_view#insight_view-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Insight/insight_view#insight_view-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Insight/insight_view#insight_view-user_r">只读用户（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Insight/insight_view#insight_view-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+
+
+  <tr>
+
 <td rowspan="5"><a href ="#/module/TestMgmt/library">测试库(LIBRARY)</a></td>
 
 <td><a href ="#/module/TestMgmt/library#library-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -776,6 +1253,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -790,6 +1270,9 @@
   <tr>
 
 <td><a href ="#/module/TestMgmt/library#library-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -821,6 +1304,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -832,6 +1318,9 @@
   <tr>
 
 <td><a href ="#/module/TestMgmt/library#library-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -872,11 +1361,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
   <tr>
 
 <td><a href ="#/module/Base/login_log#login_log-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -907,6 +1402,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -923,6 +1421,9 @@
 <td rowspan="1"><a href ="#/module/extension/MSValueProxy">主状态值代理(MSVALUEPROXY)</a></td>
 
 <td><a href ="#/module/extension/MSValueProxy#msvalueproxy-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -963,11 +1464,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
   <tr>
 
 <td><a href ="#/module/Base/notify_setting#notify_setting-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -998,6 +1505,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1011,11 +1521,15 @@
 
 
 
+
   <tr>
 
 <td rowspan="5"><a href ="#/module/Base/portfolio">文件夹(PORTFOLIO)</a></td>
 
 <td><a href ="#/module/Base/portfolio#portfolio-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1037,6 +1551,9 @@
   <tr>
 
 <td><a href ="#/module/Base/portfolio#portfolio-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1073,11 +1590,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
   <tr>
 
 <td><a href ="#/module/Base/portfolio#portfolio-user_r">只读用户（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1099,6 +1622,9 @@
   <tr>
 
 <td><a href ="#/module/Base/portfolio#portfolio-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1134,6 +1660,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1145,6 +1674,9 @@
   <tr>
 
 <td><a href ="#/module/ProdMgmt/product#product-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1166,6 +1698,9 @@
   <tr>
 
 <td><a href ="#/module/ProdMgmt/product#product-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -1197,6 +1732,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1208,6 +1746,9 @@
   <tr>
 
 <td><a href ="#/module/ProdMgmt/product#product-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1247,6 +1788,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1258,6 +1802,9 @@
   <tr>
 
 <td><a href ="#/module/ProjMgmt/project#project-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1279,6 +1826,9 @@
   <tr>
 
 <td><a href ="#/module/ProjMgmt/project#project-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -1310,6 +1860,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1321,6 +1874,9 @@
   <tr>
 
 <td><a href ="#/module/ProjMgmt/project#project-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1356,6 +1912,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1374,6 +1933,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1387,11 +1949,18 @@
 </tr>
 
 
+
+
+
+
   <tr>
 
 <td rowspan="1"><a href ="#/module/extension/PSDEField">实体属性(PSDEFIELD)</a></td>
 
 <td><a href ="#/module/extension/PSDEField#psdefield-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1433,9 +2002,126 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
 
+
+
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/extension/PSDENotify">实体通知(PSDENOTIFY)</a></td>
+
+<td><a href ="#/module/extension/PSDENotify#psdenotify-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/extension/PSSysBICube">智能报表立方体(PSSYSBICUBE)</a></td>
+
+<td><a href ="#/module/extension/PSSysBICube#pssysbicube-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/extension/PSSysBICubeDimension">智能报表立方体维度(PSSYSBICUBEDIMENSION)</a></td>
+
+<td><a href ="#/module/extension/PSSysBICubeDimension#pssysbicubedimension-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/extension/PSSysBICubeMeasure">智能报表立方体指标(PSSYSBICUBEMEASURE)</a></td>
+
+<td><a href ="#/module/extension/PSSysBICubeMeasure#pssysbicubemeasure-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
 
 
@@ -1461,11 +2147,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
   <tr>
 
 <td><a href ="#/module/Base/recent#recent-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1501,36 +2193,6 @@
 
 </td>
 <td align="center">
-<i class="fa fa-check"></i>
-
-</td>
-<td align="center">
-
-</td>
-
-</tr>
-
-
-
-
-
-
-
-
-
-
-  <tr>
-
-<td rowspan="1"><a href ="#/module/TestMgmt/run">执行用例(RUN)</a></td>
-
-<td><a href ="#/module/TestMgmt/run#run-all_rw">全部数据（读写）</a></td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
 
 </td>
 <td align="center">
@@ -1542,6 +2204,18 @@
 </td>
 
 </tr>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1563,6 +2237,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1575,9 +2252,64 @@
 
   <tr>
 
+<td rowspan="2"><a href ="#/module/Wiki/shared_space">共享空间(SHARED_SPACE)</a></td>
+
+<td><a href ="#/module/Wiki/shared_space#shared_space-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/Wiki/shared_space#shared_space-user_r">只读用户（读）</a></td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+  <tr>
+
 <td rowspan="5"><a href ="#/module/Wiki/space">空间(SPACE)</a></td>
 
 <td><a href ="#/module/Wiki/space#space-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1606,6 +2338,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1620,6 +2355,9 @@
   <tr>
 
 <td><a href ="#/module/Wiki/space#space-all_w">全部数据（写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 <i class="fa fa-check"></i>
 
@@ -1651,6 +2389,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1672,6 +2413,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1690,11 +2434,15 @@
 
 
 
+
   <tr>
 
 <td rowspan="6"><a href ="#/module/ebsx/SysDepartment">部门(SYS_DEPT)</a></td>
 
 <td><a href ="#/module/ebsx/SysDepartment#sysdepartment-all_r">全部数据（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1730,11 +2478,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
   <tr>
 
 <td><a href ="#/module/ebsx/SysDepartment#sysdepartment-curdept_r">当前部门（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1770,11 +2524,17 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
   <tr>
 
 <td><a href ="#/module/ebsx/SysDepartment#sysdepartment-curorg_r">当前组织（读）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1810,6 +2570,9 @@
 <td align="center">
 
 </td>
+<td align="center">
+
+</td>
 
 </tr>
 
@@ -1828,6 +2591,10 @@
 
 </td>
 <td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -1838,6 +2605,9 @@
   <tr>
 
 <td><a href ="#/module/ebsx/SysEmployee#sysemployee-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1873,6 +2643,10 @@
 
 </td>
 <td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -1883,6 +2657,9 @@
   <tr>
 
 <td><a href ="#/module/ibizsysmgr/sys_person#sys_person-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1926,6 +2703,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -1937,6 +2717,9 @@
   <tr>
 
 <td><a href ="#/module/ProdMgmt/ticket_type#ticket_type-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1961,6 +2744,9 @@
 <td rowspan="1"><a href ="#/module/ProjMgmt/transition_history">流转记录(TRANSITION_HISTORY)</a></td>
 
 <td><a href ="#/module/ProjMgmt/transition_history#transition_history-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -1996,6 +2782,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -2017,6 +2806,10 @@
 
 </td>
 <td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
 
 </td>
 <td align="center">
@@ -2027,6 +2820,9 @@
   <tr>
 
 <td><a href ="#/module/Base/user#user-user_rw">当前用户（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -2064,6 +2860,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -2088,6 +2887,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -2099,6 +2901,9 @@
   <tr>
 
 <td><a href ="#/module/Base/workload_type#workload_type-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -2135,6 +2940,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -2146,6 +2954,9 @@
   <tr>
 
 <td><a href ="#/module/ProjMgmt/work_item_state#work_item_state-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
 <td align="center">
 
 </td>
@@ -2180,6 +2991,9 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
@@ -2198,10 +3012,41 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
 <i class="fa fa-check"></i>
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/ProjMgmt/work_item_wizard_detail">工作项操作向导明细(WORK_ITEM_WIZARD_DETAIL)</a></td>
+
+<td><a href ="#/module/ProjMgmt/work_item_wizard_detail#work_item_wizard_detail-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">

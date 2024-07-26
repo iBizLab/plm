@@ -20,9 +20,10 @@ state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#preparepar
 state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
 state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "传入参数" as DEBUGPARAM1  [[$./submit_review#debugparam1 {"传入参数"}]]
-state "准备参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"准备参数"}]]
 state "实体数据集" as DEDATASET1  [[$./submit_review#dedataset1 {"实体数据集"}]]
+state "准备参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"准备参数"}]]
 state "结束" as END1 <<end>> [[$./submit_review#end1 {"结束"}]]
+state "评审内容为空" as THROWEXCEPTION1  [[$./submit_review#throwexception1 {"评审内容为空"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./submit_review#loopsubcall1 {"循环子调用"}]] #green {
 state "获取测试用例ID" as PREPAREPARAM4  [[$./submit_review#prepareparam4 {"获取测试用例ID"}]]
 state "获取测试用例详情" as DEACTION2  [[$./submit_review#deaction2 {"获取测试用例详情"}]]
@@ -33,19 +34,20 @@ state "重置测试用例参数" as RESETPARAM1  [[$./submit_review#resetparam1 
 
 
 Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWSFCODE1
+DEBUGPARAM1 --> PREPAREPARAM3
+PREPAREPARAM3 --> DEDATASET1
+DEDATASET1 --> RAWSFCODE1 : [[$./submit_review#dedataset1-rawsfcode1{连接名称} 连接名称]]
 RAWSFCODE1 --> PREPAREPARAM1
 PREPAREPARAM1 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION1
-DEACTION1 --> PREPAREPARAM3
-PREPAREPARAM3 --> DEDATASET1
-DEDATASET1 --> LOOPSUBCALL1
+DEACTION1 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> PREPAREPARAM4
 PREPAREPARAM4 --> DEACTION2
 DEACTION2 --> PREPAREPARAM5
 PREPAREPARAM5 --> DEACTION3
 DEACTION3 --> RESETPARAM1
 LOOPSUBCALL1 --> END1
+DEDATASET1 --> THROWEXCEPTION1 : [[$./submit_review#dedataset1-throwexception1{连接名称} 连接名称]]
 
 
 @enduml
@@ -126,6 +128,13 @@ default_obj.set("submitted_at", new Date());
 
 
 循环参数`relation_page(relation分页数据)`，子循环参数使用`for_reltion(循环中的关联对象)`
+#### 评审内容为空 :id=THROWEXCEPTION1<sup class="footnote-symbol"> <font color=gray size=1>[抛出异常]</font></sup>
+
+
+
+> [!ATTENTION|label:抛出异常|icon:fa fa-warning]
+> 错误信息：请添加评审内容
+
 #### 获取测试用例ID :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -155,6 +164,14 @@ default_obj.set("submitted_at", new Date());
 
 
 重置参数```test_case(测试用例)```
+
+### 连接条件说明
+#### 连接名称 :id=DEDATASET1-RAWSFCODE1
+
+`relation_page(relation分页数据).size` NOTEQ `0`
+#### 连接名称 :id=DEDATASET1-THROWEXCEPTION1
+
+`relation_page(relation分页数据).size` EQ `0`
 
 
 ### 实体逻辑参数

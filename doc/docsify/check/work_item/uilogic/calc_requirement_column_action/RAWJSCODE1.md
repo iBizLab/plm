@@ -1,15 +1,17 @@
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-setTimeout(() => {
-	const rows = uiLogic.grid.state.rows;
+(async function() { 
+    const rows = uiLogic.grid.state.rows;
+    const app2 = ibiz.hub.getApp(context.srfappid);
+    const dataItems = await app2.codeList.get("plmweb.projmgmt__work_item_type", context, params);
 	if (rows && rows.length > 0) {
 		rows.forEach(row => {
 			const titleColumn = row.uiActionGroupStates.title;
 			const is_archived = row.data.is_archived;
             const type = row.data.work_item_type_id;
-            const newRowHiddenList = ['kanban_bug', 'kanban_issue', 'waterfall_bug', 'scrum_story'];
-            const changeParentHiddenList = ['scrum_epic', 'kanban_epic', 'kanban_issue'];
+            const codelistItem = dataItems.find(x => x.id === type);
+            const parentItems = dataItems.filter(x => x.data && x.data.includes(type));
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
 					// 归档
@@ -19,15 +21,19 @@ setTimeout(() => {
 						// 激活
 						action.disabled = is_archived === 0;
 					} else if (action.uiActionId === 'newrow_test@work_item') {
-						// 新建行
-						action.visible = !newRowHiddenList.includes(type);
+                        // 新建行
+                        action.visible = !!codelistItem.data;
+                        // 需求树表格上 用户故事不显示新建行
+                        if(type == 'scrum_story'){
+						    action.visible = false;
+                        }
 					} else if (action.uiActionId === 'change_parent@work_item') {
 						// 变更父工作项
-						action.visible = !changeParentHiddenList.includes(type);
+						action.visible = parentItems.length > 0;
 					}
 				})
 			}
 		})
 	}
-}, 1000);
+} )();
 ```

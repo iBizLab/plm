@@ -19,6 +19,8 @@
 |<el-row justify="space-between"><el-col :span="20">reviewer_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人类型|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人名称|
+|<el-row justify="space-between"><el-col :span="20">stage_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
+|<el-row justify="space-between"><el-col :span="20">order</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|顺序|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -31,6 +33,8 @@
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -49,6 +53,8 @@
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -87,6 +93,8 @@
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -144,6 +152,8 @@
 |<el-row justify="space-between"><el-col :span="20">reviewer_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人类型|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人名称|
+|<el-row justify="space-between"><el-col :span="20">stage_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
+|<el-row justify="space-between"><el-col :span="20">order</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|顺序|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -156,6 +166,8 @@
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -174,6 +186,8 @@
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -205,6 +219,8 @@
 |<el-row justify="space-between"><el-col :span="20">reviewer_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人类型|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人名称|
+|<el-row justify="space-between"><el-col :span="20">stage_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
+|<el-row justify="space-between"><el-col :span="20">order</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|顺序|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -217,6 +233,8 @@
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -253,6 +271,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">reviewer_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人类型|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人名称|
+|<el-row justify="space-between"><el-col :span="20">stage_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
+|<el-row justify="space-between"><el-col :span="20">order</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|顺序|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -265,6 +285,8 @@ Integer
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -283,6 +305,8 @@ Integer
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -314,6 +338,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">reviewer_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人类型|
 |<el-row justify="space-between"><el-col :span="20">reviewer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人|
 |<el-row justify="space-between"><el-col :span="20">reviewer_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审人名称|
+|<el-row justify="space-between"><el-col :span="20">stage_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
+|<el-row justify="space-between"><el-col :span="20">order</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigInteger|顺序|
 |<el-row justify="space-between"><el-col :span="20">guideline_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -326,6 +352,8 @@ Integer
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -344,6 +372,8 @@ Integer
   "reviewer_type" : null,
   "reviewer" : null,
   "reviewer_name" : null,
+  "stage_state" : null,
+  "order" : null,
   "create_man" : null,
   "create_time" : null,
   "guideline_id" : null,
@@ -375,6 +405,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_guideline_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|准则标识|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_stage_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审阶段状态|
 
 
 
@@ -387,6 +418,7 @@ Integer
   "n_guideline_id_eq" : null,
   "n_id_eq" : null,
   "n_name_like" : null,
+  "n_stage_state_eq" : null,
 }
 ```
 
@@ -398,6 +430,8 @@ Integer
     "reviewer_type" : null,
     "reviewer" : null,
     "reviewer_name" : null,
+    "stage_state" : null,
+    "order" : null,
     "create_man" : null,
     "create_time" : null,
     "guideline_id" : null,

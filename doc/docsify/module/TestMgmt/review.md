@@ -73,6 +73,32 @@
 |评审内容|CONTENTS|一对多动态对象|1048576|是||
 
 </el-tab-pane>
+<el-tab-pane label="BI查询属性组" name="field_group_bi_search_group">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|类别|CATEGORIES|长文本，长度1000|2000|是||
+|类别|CATEGORIES_NAME|长文本，长度1000|2000|是||
+|提交时间|SUBMITTED_AT|日期时间型||是||
+|完成时间|COMPLETED_AT|日期时间型||是||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|提交人|SUBMITTER_NAME|文本，可指定长度|100|是||
+|名称|NAME|文本，可指定长度|200|是||
+|提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_review_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|测试库名称|LIBRARY_NAME|外键值文本|200|是||
+|测试库标识|LIBRARY_ID|外键值|100|是||
+|流程准则标识|GUIDELINE_ID|外键值|100|是||
+|评审状态|STATE|[单项选择(文本值)](index/dictionary_index#test_case_state "用例评审状态")|60|是||
+|评审类型|TYPE|[单项选择(文本值)](index/dictionary_index#review_type "评审类型")|60|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+
+</el-tab-pane>
 
 </el-tabs>
 </el-row>
@@ -129,28 +155,37 @@
 |UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |添加评审内容|add_review_content|[实体处理逻辑](module/TestMgmt/review/logic/add_review_content "添加内容")|默认|不支持||||
 |变更评审内阶段|change_review_stage|[实体处理逻辑](module/TestMgmt/review/logic/change_review_stage "变更评审内阶段")|默认|不支持||||
+|完成评审|completed_review|[实体处理逻辑](module/TestMgmt/review/logic/completed_review "完成评审")|默认|不支持||||
+|填充当前阶段信息|fill_cureent_stage_info|[实体处理逻辑](module/TestMgmt/review/logic/get_current_stage_info "获取当前阶段信息")|默认|不支持||||
 |填充评审规则|fill_guideline|[实体处理逻辑](module/TestMgmt/review/logic/fill_guideline "填充评审规则")|默认|不支持||||
+|填充阶段评审人|fill_stage_reviewer|[实体处理逻辑](module/TestMgmt/review/logic/fill_stage_reviewer "填充阶段评审人")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
+|nothing|nothing|[实体处理逻辑](module/TestMgmt/review/logic/nothing "nothing")|默认|不支持||||
 |撤销评审|repeal_review|[实体处理逻辑](module/TestMgmt/review/logic/repeal_review "撤销评审")|默认|不支持||||
 |提交评审|submit_review|[实体处理逻辑](module/TestMgmt/review/logic/submit_review "提交评审")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[nothing](module/TestMgmt/review/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[全部提交](module/TestMgmt/review/logic/all_submit)|all_submit|无||未完成|
 |[创建后附加评审规则](module/TestMgmt/review/logic/add_guideline_after_created)|add_guideline_after_created|无||在创建评审后，自动获取规则的值并赋予|
 |[变更评审内阶段](module/TestMgmt/review/logic/change_review_stage)|change_review_stage|无|||
 |[填充评审规则](module/TestMgmt/review/logic/fill_guideline)|fill_guideline|无||填充评审规则|
+|[填充阶段评审人](module/TestMgmt/review/logic/fill_stage_reviewer)|fill_stage_reviewer|无|||
+|[完成评审](module/TestMgmt/review/logic/completed_review)|completed_review|无||完成评审，修改评审状态以及设置那些未评审用例的评审结果|
 |[待办数据](module/TestMgmt/review/logic/TodoData)|TodoData|无||测试|
 |[提交评审](module/TestMgmt/review/logic/submit_review)|submit_review|无||测试|
 |[撤销评审](module/TestMgmt/review/logic/repeal_review)|repeal_review|无||撤销评审，并重置评审结果|
 |[添加内容](module/TestMgmt/review/logic/add_review_content)|add_review_content|无||规划用例，将用例规划至评审内，生成正反向关联数据|
+|[获取当前阶段信息](module/TestMgmt/review/logic/get_current_stage_info)|get_current_stage_info|无||获取当前阶段信息，用于完成评审按钮使用|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/TestMgmt/review/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/TestMgmt/review/query/View)|VIEW|否|否 |否 ||
+|[BI查询(bi_search)](module/TestMgmt/review/query/bi_search)|bi_search|否|否 |否 ||
 |[我关注的(my_attention)](module/TestMgmt/review/query/my_attention)|my_attention|否|否 |否 |查询我关注的评审|
 |[我评审的(my_reviewed)](module/TestMgmt/review/query/my_reviewed)|my_reviewed|否|否 |否 ||
 
@@ -159,6 +194,7 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/review/dataset/Default)|DEFAULT|数据查询|是|||
 |[我的待办(MyTodo)](module/TestMgmt/review/dataset/MyTodo)|MyTodo|[实体逻辑](module/TestMgmt/review/logic/TodoData)|否|||
+|[BI查询(bi_search)](module/TestMgmt/review/dataset/bi_search)|bi_search|数据查询|否|||
 |[我关注的(my_attention)](module/TestMgmt/review/dataset/my_attention)|my_attention|数据查询|否||查询我关注的评审|
 |[我评审的(my_reviewed)](module/TestMgmt/review/dataset/my_reviewed)|my_reviewed|数据查询|否|||
 
@@ -182,11 +218,14 @@
 | 编辑 | toolbar_tree_exp_view_node8_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 撤销评审 | repeal_review | 撤销评审 |单项数据|<details><summary>后台调用</summary>[repeal_review](#行为)||
+| BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 提交评审 | submit_review | 提交评审 |单项数据|<details><summary>后台调用</summary>[submit_review](#行为)||
 | 设置类别 | set_category | 设置类别 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设置类别](app/view/review_set_category_option_view)</details>||
 | 添加评审内容 | add_review_content | 添加内容 |无数据|<details><summary>后台调用</summary>[add_review_content](#行为)||
 | 删除 | delete | 删除 |单项数据|<details><summary>后台调用</summary>[Remove](#行为)||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
+| BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
+| BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node10_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node9_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建类别 |单项数据|用户自定义||
@@ -194,11 +233,13 @@
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node10_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node8_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 打开完成评审视图 | open_complete_review | 完成评审 |无数据|<details><summary>后台调用</summary>[completed_review](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[删除类别或分组](module/TestMgmt/review/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
+|[刷新评审主视图](module/TestMgmt/review/uilogic/refresh_main_view)|refresh_main_view||
 |[批量删除评审用例临时数据](module/TestMgmt/review/uilogic/remove_batch_temp)|remove_batch_temp|获取评审所有临时用例并删除|
 |[提交评审](module/TestMgmt/review/uilogic/commit_review)|commit_review|提交评审|
 |[撤销评审](module/TestMgmt/review/uilogic/repeal_review)|repeal_review|将评审状态设置为已撤回|
@@ -207,6 +248,9 @@
 |[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[编辑类别或分组](module/TestMgmt/review/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 |[计算表格列行为状态(review)](module/TestMgmt/review/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组按钮的显示隐藏状态|
+|[门户全屏](module/TestMgmt/review/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户刷新](module/TestMgmt/review/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户编辑](module/TestMgmt/review/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

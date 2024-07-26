@@ -27,10 +27,13 @@
 |实体|PSDENAME|文本，可指定长度|100|是||
 |实体通知标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDENOTIFYID|全局唯一标识，文本类型，用户不可见|100|否||
 |实体通知名称|PSDENOTIFYNAME|文本，可指定长度|200|是||
+|通知目标|PSDENOTIFYTARGETS|一对多关系数据集合|1048576|否||
 |系统消息队列|PSSYSMSGQUEUEID|文本，可指定长度|100|否||
 |系统消息队列|PSSYSMSGQUEUENAME|文本，可指定长度|100|是||
 |系统消息模板|PSSYSMSGTEMPLID|文本，可指定长度|100|否||
 |系统消息模板|PSSYSMSGTEMPLNAME|文本，可指定长度|100|是||
+|后端模板插件|PSSYSSFPLUGINID|文本，可指定长度|100|是||
+|后端模板插件|PSSYSSFPLUGINNAME|文本，可指定长度|100|是||
 |附加任务模式|TASKMODE|单项选择(数值)||是||
 |定时触发模式|TIMERMODE|是否逻辑||否||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -62,12 +65,12 @@
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
 |应用|apply|用户自定义|默认|不支持||||
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#PSDENotify_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#PSDENotify_Update)|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -106,11 +109,7 @@
 |N_PSDENOTIFYID_EQ|实体通知标识|EQ||
 |N_PSDENOTIFYNAME_LIKE|实体通知名称|LIKE||
 |N_TASKMODE_EQ|附加任务模式|EQ||
-
-## 界面行为
-|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
-| --------| --------| -------- |------------|------------|------------|
-| 应用扩展模型 | apply | 应用 |单项数据（主键）|<details><summary>后台调用</summary>[apply](#行为)||
+|N_USERTAG_EQ|用户标识|EQ||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -136,9 +135,6 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSDENotify?id=搜索模式`">
   搜索模式
-</el-anchor-link>
-<el-anchor-link :href="`#/module/extension/PSDENotify?id=界面行为`">
-  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

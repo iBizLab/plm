@@ -98,7 +98,7 @@ PREPAREPARAM3 --> DEACTION1 : [[$./end_sprint#prepareparam3-deaction1{移动至�
 
 
 1. 将`for_sprint_temp(迭代循环临时变量).ID(标识)` 设置给  `work_item_filter(工作项过滤器).n_sprint_id_eq`
-2. 将`for_sprint_temp(迭代循环临时变量).PROJECT_ID(产品标识)` 设置给  `work_item_filter(工作项过滤器).n_project_id_eq`
+2. 将`for_sprint_temp(迭代循环临时变量).PROJECT_ID(项目标识)` 设置给  `work_item_filter(工作项过滤器).n_project_id_eq`
 
 #### 查询该迭代下未完成的工作项 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 

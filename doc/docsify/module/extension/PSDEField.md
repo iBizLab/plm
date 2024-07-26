@@ -9,6 +9,7 @@
 |建立时间|CREATEDATE|日期时间型|8|否||
 |建立人|CREATEMAN|文本，可指定长度|60|否||
 |属性类型|DEFTYPE|单项选择(数值)||否||
+|扩展模型|DYNAMODELFLAG|是否逻辑||是||
 |扩展标记|EXTENSION_TAG|文本，可指定长度|200|是||
 |扩展标记2|EXTENSION_TAG2|文本，可指定长度|200|是||
 |扩展标记3|EXTENSION_TAG3|文本，可指定长度|200|是||
@@ -35,13 +36,14 @@
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
+|应用|apply|用户自定义|默认|不支持||||
 |CheckKey|CheckKey|内置方法|默认|不支持||||
-|Create|Create|内置方法|默认|不支持||||
+|Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#PSDEField_Create)|||
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|[实体处理逻辑](module/extension/PSDEField/logic/GetDraft "GetDraft")|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#PSDEField_Update)|||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
@@ -83,6 +85,7 @@
 |N_DEFTYPE_EQ|属性类型|EQ||
 |N_FIELDTAG_EQ|属性标记|EQ||
 |N_FIELDTAG2_EQ|属性标记2|EQ||
+|N_LOGICNAME_LIKE|中文名称|LIKE||
 |N_PSDEFIELDID_EQ|实体属性标识|EQ||
 |N_PSDEFIELDNAME_LIKE|实体属性名称|LIKE||
 |N_PSDEID_EQ|实体|EQ||
@@ -102,6 +105,11 @@
 | --------| --------| -------- |------------|------------|------------|
 | 编辑属性 | edit_field | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[实体属性](app/view/psde_field_quick_cfg_view)</details>||
 | 删除属性 | remove_field | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[判断操作列是否禁用](module/extension/PSDEField/uilogic/judge_column_state)|judge_column_state|用于动态控制激活行为的禁用状态|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -130,6 +138,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSDEField?id=界面行为`">
   界面行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/extension/PSDEField?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

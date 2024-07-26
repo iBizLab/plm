@@ -6,11 +6,14 @@
 #### CAPTIONBAR(captionbar)
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
+#### 工具栏(toolbar)
 
+
+### 关联界面行为
+  * [需求(IDEA)](module/ProdMgmt/idea) : [选择模板](module/ProdMgmt/idea#界面行为)
 
 ### 关联视图
   * [需求选择树视图(idea_pick_up_tree_view)](app/view/idea_pick_up_tree_view)
-  * [产品(product_pick_up_view)](app/view/product_pick_up_view)
 
 <script>
  const { createApp } = Vue

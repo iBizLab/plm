@@ -45,7 +45,7 @@ entity "RELEASE\n项目发布" as RELEASE [[$../module/ProjMgmt/release {项目�
 entity "SPRINT\n迭代" as SPRINT [[$../module/ProjMgmt/sprint {迭代}]] {
         <&key> ID - 标识
         --
-        <&link-intact> PROJECT_ID - 产品标识
+        <&link-intact> PROJECT_ID - 项目标识
         <&link-intact> PID - 父标识
 }
 entity "STAGE\n发布阶段" as STAGE [[$../module/ProjMgmt/stage {发布阶段}]] {

@@ -39,7 +39,7 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
@@ -54,7 +54,7 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
 
 <script>
  const { createApp } = Vue

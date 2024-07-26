@@ -14,9 +14,6 @@
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [设置默认关注人](module/ProjMgmt/work_item/uilogic/set_default_attention)
 
-### 关联视图
-  * [话题(discuss_topic_pickup_view)](app/view/discuss_topic_pickup_view)
-
 <script>
  const { createApp } = Vue
   createApp({

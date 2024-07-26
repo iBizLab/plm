@@ -488,68 +488,6 @@ Integer
 
 
 
-## 定时清理最近访问数据
-
-<el-row>
-<div style="width: 80px">
-<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
-</div>
-<div style="margin-left:5px;width: calc(100% - 85px)">
-<el-alert title="/recents/{key}/recent_clean" type="info" :closable="false" ></el-alert>
-</div>
-</el-row>
-
-每天定时清理最近访问数据，每人每个访问类型数据只保留100条
-
-##### 路径参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|key|String|标识|
-
-
-
-##### 请求参数 {docsify-ignore}
-|字段col300|类型col150|备注col400|
-|---|---|----|
-|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
-|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
-|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
-|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
-|<el-row justify="space-between"><el-col :span="20">type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问类型|
-|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
-|<el-row justify="space-between"><el-col :span="20">recent_parent_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类名称|
-|<el-row justify="space-between"><el-col :span="20">recent_parent</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
-|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
-|<el-row justify="space-between"><el-col :span="20">recent_parent_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类编号|
-|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
-|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
-
-
-
-##### 请求示例： {docsify-ignore}
-```json
-{
-  "identifier" : null,
-  "owner_id" : null,
-  "owner_type" : null,
-  "owner_subtype" : null,
-  "type" : null,
-  "is_deleted" : null,
-  "recent_parent_name" : null,
-  "recent_parent" : null,
-  "show_identifier" : null,
-  "recent_parent_identifier" : null,
-  "create_man" : null,
-  "create_time" : null,
-  "id" : null,
-  "name" : null,
-  "update_man" : null,
-  "update_time" : null,
-}
-```
-
-
-
 ## 保存最近访问
 
 <el-row>
@@ -1645,6 +1583,73 @@ Integer
 </div>
 </el-row>
 权限标识：`NONE`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_recent_parent_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|访问父类|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_create_man_eq" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_owner_id_eq" : null,
+  "n_owner_subtype_eq" : null,
+  "n_recent_parent_eq" : null,
+  "n_show_identifier_like" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "owner_id" : null,
+    "owner_type" : null,
+    "owner_subtype" : null,
+    "type" : null,
+    "is_deleted" : null,
+    "recent_parent_name" : null,
+    "recent_parent" : null,
+    "show_identifier" : null,
+    "recent_parent_identifier" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 最近浏览_工作项(依赖)
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/recents/fetch_recent_work_item_dependency" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
 
 
 

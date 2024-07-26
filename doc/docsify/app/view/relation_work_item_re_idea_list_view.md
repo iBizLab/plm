@@ -1,9 +1,6 @@
 # 关联(relation_work_item_re_idea_list_view)  <!-- {docsify-ignore-all} -->
 
 
-show_identifier,title
-
-
 
 ## 控件
 #### CAPTIONBAR(captionbar)

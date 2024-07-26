@@ -28,9 +28,10 @@
 |产品标识|PRODUCT_ID|外键值|100|否||
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
+|工单数|REP_NUM|文本，可指定长度|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |解决方案|SOLUTION|[单项选择(文本值)](index/dictionary_index#solutions "工单解决方案")|60|是||
-|状态|STATE|单项选择(文本值)|60|是||
+|状态|STATE|单项选择(文本值)|60|否||
 |提交时间|SUBMITTED_AT|日期时间型||是||
 |提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
 |提交人|SUBMITTER_NAME|文本，可指定长度|100|是||
@@ -54,7 +55,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |标题|TITLE|文本，可指定长度|500|否||
-|状态|STATE|单项选择(文本值)|60|是||
+|状态|STATE|单项选择(文本值)|60|否||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
 
 </el-tab-pane>
@@ -65,6 +66,39 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |负责人|ASSIGNEE_NAME|外键值文本|100|是||
 |负责人标识|ASSIGNEE_ID|外键值|100|是||
+
+</el-tab-pane>
+<el-tab-pane label="BI查询属性组" name="field_group_bi_search_group">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|建立时间|CREATE_TIME|日期时间型||否||
+|提交时间|SUBMITTED_AT|日期时间型||是||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|名称|NAME|文本，可指定长度|200|是||
+|预计时间|ESTIMATED_AT|文本，可指定长度|100|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|渠道|CHANNEL|文本，可指定长度|100|是||
+|编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_ticket_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
+|标题|TITLE|文本，可指定长度|500|否||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|提交人|SUBMITTER_NAME|文本，可指定长度|100|是||
+|关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|负责人|ASSIGNEE_NAME|外键值文本|100|是||
+|客户|CUSTOMER_NAME|外键值文本|500|是||
+|客户标识|CUSTOMER_ID|外键值|100|是||
+|产品标识|PRODUCT_ID|外键值|100|否||
+|负责人标识|ASSIGNEE_ID|外键值|100|是||
+|类型|TYPE|单项选择(文本值)|100|是||
+|解决方案|SOLUTION|[单项选择(文本值)](index/dictionary_index#solutions "工单解决方案")|60|是||
+|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#ticket_priority "工单优先级")|60|是||
+|状态|STATE|单项选择(文本值)|60|否||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|所属产品|PRODUCT_NAME|外键值文本|200|是||
+|提交人标识|SUBMITTER_ID|文本，可指定长度|100|是||
+|标签|TAGS|长文本，长度1000|2000|是||
 
 </el-tab-pane>
 
@@ -144,6 +178,7 @@
 |[状态变更附加逻辑](module/ProdMgmt/ticket/logic/state_onchange)|state_onchange|属性逻辑||工单状态变更时触发相应的通知消息，同时生成流转记录|
 |[生成最近访问](module/ProdMgmt/ticket/logic/create_recent)|create_recent|无||在用户对工单数据进行了get或update操作时生成相应的访问记录|
 |[获取产品成员](module/ProdMgmt/ticket/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
+|[获取工单状态饼图](module/ProdMgmt/ticket/logic/get_ticket_state_pie)|get_ticket_state_pie|无||需求关联工单统计视图中的饼图进行使用|
 |[设置标签](module/ProdMgmt/ticket/logic/choose_tag)|choose_tag|无||设置工单标签，修改工单标签信息|
 |[负责人变更附加逻辑](module/ProdMgmt/ticket/logic/assignee_onchange)|assignee_onchange|属性逻辑||工单负责人变更时触发相应的通知消息|
 
@@ -230,6 +265,8 @@
 |[默认（全部数据）(VIEW)](module/ProdMgmt/ticket/query/View)|VIEW|否|否 |否 ||
 |[高级搜索(advanced_search)](module/ProdMgmt/ticket/query/advanced_search)|advanced_search|否|否 |否 ||
 |[已归档(archived)](module/ProdMgmt/ticket/query/archived)|archived|否|否 |否 ||
+|[BI反查(bi_detail)](module/ProdMgmt/ticket/query/bi_detail)|bi_detail|否|否 |否 ||
+|[BI查询(bi_search)](module/ProdMgmt/ticket/query/bi_search)|bi_search|否|否 |否 ||
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/ticket/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 ||
 |[普通工单(common)](module/ProdMgmt/ticket/query/common)|common|否|否 |否 |通用查询，非删除数据|
 |[客户未关联工单(customer_notre_ticket)](module/ProdMgmt/ticket/query/customer_notre_ticket)|customer_notre_ticket|否|否 |否 |查询未关联工单的数据；客户关联工单表格调用|
@@ -242,9 +279,12 @@
 |[正常状态(normal)](module/ProdMgmt/ticket/query/normal)|normal|否|否 |否 |非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/query/notify_assignee)|notify_assignee|否|否 |否 ||
+|[公开(public)](module/ProdMgmt/ticket/query/public)|public|否|否 |否 ||
+|[只读用户(reader)](module/ProdMgmt/ticket/query/reader)|reader|否|否 |否 ||
 |[最近浏览(recent_ticket)](module/ProdMgmt/ticket/query/recent_ticket)|recent_ticket|否|否 |否 ||
 |[当前标签下工单(ticket_re_product_tag)](module/ProdMgmt/ticket/query/ticket_re_product_tag)|ticket_re_product_tag|否|否 |否 |当前标签下工单表格视图调用|
 |[工单关联工单(ticket_relation_ticket)](module/ProdMgmt/ticket/query/ticket_relation_ticket)|ticket_relation_ticket|否|否 |否 ||
+|[工单统计(ticket_statistics)](module/ProdMgmt/ticket/query/ticket_statistics)|ticket_statistics|否|否 |否 |工单图表使用|
 |[工作项关联工单(work_item_relation_ticket)](module/ProdMgmt/ticket/query/work_item_relation_ticket)|work_item_relation_ticket|否|否 |否 ||
 
 ## 数据集合
@@ -253,6 +293,8 @@
 |[数据集(DEFAULT)](module/ProdMgmt/ticket/dataset/Default)|DEFAULT|数据查询|是|||
 |[高级搜索(advanced_search)](module/ProdMgmt/ticket/dataset/advanced_search)|advanced_search|数据查询|否|||
 |[已归档(archived)](module/ProdMgmt/ticket/dataset/archived)|archived|数据查询|否|||
+|[BI反查(bi_detail)](module/ProdMgmt/ticket/dataset/bi_detail)|bi_detail|数据查询|否|||
+|[BI查询(bi_search)](module/ProdMgmt/ticket/dataset/bi_search)|bi_search|数据查询|否|||
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/ticket/dataset/comment_notify_assignee)|comment_notify_assignee|数据查询|否|||
 |[普通工单(common)](module/ProdMgmt/ticket/dataset/common)|common|数据查询|否||通用查询，非删除数据|
 |[客户未关联工单(customer_notre_ticket)](module/ProdMgmt/ticket/dataset/customer_notre_ticket)|customer_notre_ticket|数据查询|否||查询未关联工单的数据；客户关联工单表格调用|
@@ -266,12 +308,26 @@
 |[正常状态(normal)](module/ProdMgmt/ticket/dataset/normal)|normal|数据查询|否||非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/dataset/notify_assignee)|notify_assignee|数据查询|否|||
+|[只读用户(reader)](module/ProdMgmt/ticket/dataset/reader)|reader|数据查询|否|||
 |[最近浏览(recent_ticket)](module/ProdMgmt/ticket/dataset/recent_ticket)|recent_ticket|数据查询|否|||
 |[当前标签下工单(ticket_re_product_tag)](module/ProdMgmt/ticket/dataset/ticket_re_product_tag)|ticket_re_product_tag|数据查询|否||当前标签下工单表格视图调用|
 |[工单关联工单(ticket_relation_ticket)](module/ProdMgmt/ticket/dataset/ticket_relation_ticket)|ticket_relation_ticket|数据查询|否|||
+|[工单状态饼图数据(ticket_state_pie_chart)](module/ProdMgmt/ticket/dataset/ticket_state_pie_chart)|ticket_state_pie_chart|数据查询|否||工单状态饼图数据<br>在需求关联工单统计视图中使用|
 |[工作项关联工单(work_item_relation_ticket)](module/ProdMgmt/ticket/dataset/work_item_relation_ticket)|work_item_relation_ticket|数据查询|否|||
 
 ## 数据权限
+
+##### 操作用户(读) :id=ticket-USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[只读用户(reader)](module/ProdMgmt/ticket#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ(产品(READ))`
+
+
 
 ##### 操作用户(写) :id=ticket-USER_W
 
@@ -342,26 +398,31 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 关联工单（工具栏） | toolbar_link_ticket | 关联工单 |无数据|用户自定义||
-| 新建工单（快速新建） | quick_new_ticket | 新建工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
-| 工单自定义导入 | ticket_custom_import_data | 导入 |无数据|<details><summary>打开数据导入视图</summary>[产品工单导入]()</details>||
 | 工单删除 | ticket_delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 确定 | panel_usr1226376706_button_okaction_click | 确定 |单项数据|用户自定义||
+| BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 工单恢复（工具栏） | ticket_recover_toolbar | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 添加工单（其他实体关联） | others_add_relation_ticket | 添加工单 |无数据|用户自定义||
-| 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 工单统计返回主表单 | back | 返回 |无数据|用户自定义|需求关联工单统计视图返回需求主表单|
 | 工单删除（工具栏） | toolbar_ticket_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 打开BI报表配置表单_工单占比 | open_bi_form_ticket_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
 | 激活（工具栏） | toolbar_activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
-| 关联产品需求（工具栏） | toolbar_link_product | 关联产品需求 |无数据|用户自定义||
-| 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
+| BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 设置标签 | choose_tag | 设置标签 |多项数据（主键）|<details><summary>后台调用</summary>[choose_tag](#行为)||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
+| BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
+| 工单归档（工具栏） | toolbar_ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 新建工单（快速新建） | quick_new_ticket | 新建工单 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
+| 工单自定义导入 | ticket_custom_import_data | 导入 |无数据|<details><summary>打开数据导入视图</summary>[产品工单导入]()</details>||
+| 分配负责人 | allocate_person | 分配负责人 |多项数据（主键）|<details><summary>后台调用</summary>[allocate_person](#行为)||
+| 工单恢复 | ticket_recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 关联产品需求（工具栏） | toolbar_link_product | 关联产品需求 |无数据|用户自定义||
+| 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 | 工单归档 | ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 激活 | activate | 激活 |多项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)|批操作工具栏上按钮调用；|
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
-| 工单归档（工具栏） | toolbar_ticket_archive | 归档 |多项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 显示下拉并展开数据（嵌入视图） | show_dorpdown_data | 显示下拉并展开数据 |无数据|用户自定义||
 | 客户取消关联工单 | customer_del_ticket | 取消关联 |单项数据|<details><summary>后台调用</summary>[customer_del_ticket](#行为)||
 
@@ -387,7 +448,11 @@
 |[获取工单总条数](module/ProdMgmt/ticket/uilogic/get_ticket_total)|get_ticket_total|获取工单的总条数信息|
 |[触发计数器刷新](module/ProdMgmt/ticket/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
 |[计算表格列行为状态](module/ProdMgmt/ticket/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制归档和激活行为的禁用状态|
+|[返回](module/ProdMgmt/ticket/uilogic/back)|back|查看工单统计视图后，返回主表单按钮使用|
 |[选择下拉框区域展示](module/ProdMgmt/ticket/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
+|[门户全屏](module/ProdMgmt/ticket/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户刷新](module/ProdMgmt/ticket/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户编辑](module/ProdMgmt/ticket/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[需求关联工单](module/ProdMgmt/ticket/uilogic/idea_relation_ticket)|idea_relation_ticket|值变更时触发，需求关联工单，调用处理逻辑生成正反向数据|
 
 ## 导入模式

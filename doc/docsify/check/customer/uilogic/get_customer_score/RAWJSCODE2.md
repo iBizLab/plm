@@ -1,0 +1,6 @@
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel8.state.visible=true;
+uiLogic.view.ctx.parent.controllersMap.get("form").details.grouppanel11.state.visible=false;
+```

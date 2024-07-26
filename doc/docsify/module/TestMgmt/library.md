@@ -123,6 +123,7 @@
 |[默认（全部数据）(VIEW)](module/TestMgmt/library/query/View)|VIEW|否|否 |否 ||
 |[管理员(admin)](module/TestMgmt/library/query/admin)|admin|否|否 |否 ||
 |[已归档(archived)](module/TestMgmt/library/query/archived)|archived|否|否 |否 ||
+|[当前测试库(cur_library)](module/TestMgmt/library/query/cur_library)|cur_library|否|否 |否 ||
 |[已删除(deleted)](module/TestMgmt/library/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/TestMgmt/library/query/favorite)|favorite|否|否 |否 ||
 |[查询星标（管理用户）(favorite_user)](module/TestMgmt/library/query/favorite_user)|favorite_user|否|否 |否 ||

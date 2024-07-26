@@ -21,3 +21,4 @@
 ### 数据查询
   * [查询星标(favorite)](module/TestMgmt/library/query/favorite)
   * [非星标测试库(unfavorite)](module/TestMgmt/library/query/unfavorite)
+  * [当前测试库(cur_library)](module/TestMgmt/library/query/cur_library)

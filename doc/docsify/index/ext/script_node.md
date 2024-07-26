@@ -1,9 +1,22 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[53]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[174]</font></sup>
 
+#### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+for(var i=0 ;i<addons.size;i++){
+    var addon = addons.get(i);
+    result.set(addon.get('ddon_type'),addon.get('is_enabled'));
+}
+```
 #### [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProdMgmt/baseline_idea/logic/baseline_comparison)
 
-节点：执行脚本代码
+节点：提取关联对象中的主键标识
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -21,7 +34,7 @@ if(for_temp_obj.get("target_id")){
 ```
 #### [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProdMgmt/baseline_idea/logic/baseline_comparison)
 
-节点：产品需求cur_version_ids
+节点：提取关联对象中的版本标识
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -37,9 +50,45 @@ if(idea_for_temp.get("cur_version_id")){
     idea_versions.set("version_id_in", version_id_in);
 }
 ```
+#### [基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)的处理逻辑[基线对比数据查询(baseline_comparison)](module/Wiki/baseline_page/logic/baseline_comparison)
+
+节点：提取关联对象中的主键标识
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var page_ids = logic.getParam("page_ids");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("target_id")){
+    var ids = page_ids.get("ids");
+    if(ids){
+        ids = ids + "," + for_temp_obj.get("target_id");
+    } else {
+        ids = for_temp_obj.get("target_id");
+    }
+    page_ids.set("ids", ids);
+}
+```
+#### [基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)的处理逻辑[基线对比数据查询(baseline_comparison)](module/Wiki/baseline_page/logic/baseline_comparison)
+
+节点：提取关联对象中的版本标识
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var page_versions = logic.getParam("page_versions");
+var page_for_temp = logic.getParam("page_for_temp");
+if(page_for_temp.get("cur_version_id")){
+    var version_id_in = page_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + page_for_temp.get("cur_version_id");
+    } else {
+        version_id_in = page_for_temp.get("cur_version_id");
+    }
+    page_versions.set("version_id_in", version_id_in);
+}
+```
 #### [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)的处理逻辑[基线对比数据查询(baseline_comparison)](module/TestMgmt/baseline_test_case/logic/baseline_comparison)
 
-节点：执行脚本代码
+节点：提取关联对象中的主键标识
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -57,7 +106,7 @@ if(for_temp_obj.get("target_id")){
 ```
 #### [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)的处理逻辑[基线对比数据查询(baseline_comparison)](module/TestMgmt/baseline_test_case/logic/baseline_comparison)
 
-节点：用例cur_version_ids
+节点：提取关联对象中的版本标识
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -75,7 +124,7 @@ if(test_case_for_temp.get("cur_version_id")){
 ```
 #### [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProjMgmt/baseline_work_item/logic/baseline_comparison)
 
-节点：执行脚本代码
+节点：提取关联对象中的主键标识
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -93,7 +142,7 @@ if(for_temp_obj.get("target_id")){
 ```
 #### [基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProjMgmt/baseline_work_item/logic/baseline_comparison)
 
-节点：工作项cur_version_ids
+节点：提取关联对象中的版本标识
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -136,26 +185,226 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 }
 
 ```
-#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[取消关联(del_relation)](module/ProdMgmt/idea/logic/del_relation)
+#### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/customer/logic/get_product_member)
 
-节点：拼接关联对象的主键
+节点：非只读权限
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
-// 获取正向关联对象的主键
-var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/customer/logic/get_product_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
 }
-// 获取反向关联对象的主键
-var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+```
+#### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/customer/logic/get_product_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/customer/logic/get_product_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [客户(CUSTOMER)](module/ProdMgmt/customer)的处理逻辑[获取需求中客户信息(get_idea_customer_info)](module/ProdMgmt/customer/logic/get_idea_customer_info)
+
+节点：计算分数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def list = logic.param("relation_page").getReal().content
+def result = logic.param("result").getReal()
+def score = 0
+def customer_num = list.size()
+def very_important = 0
+def very_important_precent = 0
+def important = 0
+def important_precent = 0
+def normal = 0
+def normal_precent = 0
+def unknown = 0
+def unknown_precent = 0
+def not_important = 0
+def not_important_precent = 0
+def score_precent = 0
+
+list.each{ item -> 
+    sys.info('level', item.get("level"))
+    switch(item.get("level")) {
+        case '10':
+            score += 3
+            very_important++
+            break
+        case '20':
+            score += 2
+            important++
+            break
+        case '30':
+            score += 1
+            normal++
+            break
+        case '40':
+            score += 0
+            not_important++
+            break
+        case '50':
+            score += 1
+            unknown++
+            break
+        default:
+            score += 0;
+    }
 }
+
+if (customer_num != 0) {
+    very_important_precent = very_important / customer_num
+    important_precent = important / customer_num
+    normal_precent = normal / customer_num
+    unknown_precent = unknown / customer_num
+    not_important_precent = not_important / customer_num
+    score_precent = score / (customer_num * 3)
+}
+
+result.set("score", score + "分")
+result.set("customer_num", customer_num)
+result.set("very_important", very_important)
+result.set("important", important)
+result.set("normal", normal)
+result.set("unknown", unknown)
+result.set("not_important", not_important)
+result.set("very_important_precent", very_important_precent)
+result.set("important_precent", important_precent)
+result.set("normal_precent", normal_precent)
+result.set("unknown_precent", unknown_precent)
+result.set("not_important_precent", not_important_precent)
+result.set("score_precent", score_precent)
+```
+#### [话题(DISCUSS_TOPIC)](module/Team/discuss_topic)的处理逻辑[获取快速新建话题集合(quick_create)](module/Team/discuss_topic/logic/quick_create)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)的处理逻辑[使用此模板(use_cur_template)](module/Base/dyna_dashboard/logic/use_cur_template)
+
+节点：生成报表
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_board = logic.getParam("new_board");
+var strModel = new_board.get("model");
+var modeljO = JSON.parse(strModel);
+var modeljArray = modeljO.model;
+var bireportids = [];
+var replaceIds ={};
+for(var i=0; i<modeljArray.length; i++){
+  var reportModel = modeljArray[i];
+  var portletid = reportModel.i;
+  var bireportid = portletid.substring(12).replace("__",".");
+  bireportids.push(bireportid);
+}
+var reportSearchContext = sys.filter("insight_report");
+var templReports = reportSearchContext.in("id",bireportids.join(",")).pageable(0,1000).select("is_system");
+for(var i=0; i<templReports.length; i++){
+    var bireport = templReports.get(i);
+    var orginId = bireport.get("id");
+    bireport.reset("id");
+    bireport.set("view_id",new_board.get("owner_id"));
+    bireport.set("is_system",0);
+    var newbireport = bireport.create();
+    replaceIds[orginId.replace(".","__").toLowerCase()] = newbireport.get("id").replace(".","__").toLowerCase();
+}
+for(var key in replaceIds){
+    var keyreg = new RegExp(key, "g");
+    strModel = strModel.replace(keyreg,replaceIds[key]);
+}
+new_board.set("model",strModel);
+```
+#### [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)的处理逻辑[更新看板部件模型(sync_portlet_model)](module/Base/dyna_dashboard/logic/sync_portlet_model)
+
+节点：更新看板部件模型
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam("default");
+var strModel = _default.get("model");
+var modeljO = JSON.parse(strModel);
+var modeljArray = modeljO.model;
+var biPortletIds = [];
+var replaceIds ={};
+var biPortletDigest ={};
+for(var i=0; i<modeljArray.length; i++){
+  var reportModel = modeljArray[i];
+  var dynamodelFlag =  reportModel.dynamodelFlag;
+  if(dynamodelFlag && dynamodelFlag == 1){
+    var portletId =  reportModel.portletId;
+    var portletDigest = reportModel.controlmodeldigest?reportModel.controlmodeldigest:"__needRefresh__";
+    biPortletIds.push(portletId);
+    biPortletDigest[portletId] = portletDigest;
+  }
+}
+var portletSearchContext = sys.filter("psappportlet");
+var viewPortlets = portletSearchContext.in("psappportletid",biPortletIds.join(",")).eq("pssysappid","plmweb").ne("dynamodelflag",0).pageable(0,200).select();
+for(var i=0; i<viewPortlets.length; i++){
+    var biPortlet = viewPortlets.get(i);
+    var biPortletId = biPortlet.get("psappportletid");
+    var curPortletDigest = biPortlet.get("controlmodeldigest");
+    if(biPortletDigest[biPortletId] && biPortletDigest[biPortletId] != curPortletDigest){
+        var  lastBIPortlet = biPortlet.last();
+        replaceIds[biPortletId] = lastBIPortlet;
+    }
+}
+for(var j=0; j<modeljArray.length; j++){
+  var dynamodelFlag =  reportModel.dynamodelFlag;    
+  if(dynamodelFlag != 1){
+      continue;
+  }
+  var reportModel2 = modeljArray[j];
+  var portletId2 = reportModel2.portletId;
+  reportModel2["orignModel"] = false;
+
+  if(replaceIds[portletId2] != null){
+        reportModel2.portletModel = JSON.parse(replaceIds[portletId2].get("controlmodel"))
+        reportModel2["orignModel"] = true;
+        reportModel2["controlmodeldigest"] = replaceIds[portletId2].get("controlmodeldigest");
+  }
+  if(reportModel2.portletModel.controlmodeldigest){
+        reportModel2["orignModel"] = true;
+  }
+}
+_default.set("model",JSON.stringify(modeljO));
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea)
 
-节点：执行脚本代码
+节点：获取所选需求的版本ID信息
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -169,6 +418,87 @@ if(for_temp_obj.get("cur_version_id")){
         version_id_in = for_temp_obj.get("cur_version_id");
     }
     idea_versions.set("version_id_in", version_id_in);
+}
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[获取客户分数(get_customer_score)](module/ProdMgmt/idea/logic/get_customer_score)
+
+节点：计算分数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def list = logic.param("relation_page").getReal().content
+def result = logic.param("result").getReal()
+def score = 0
+list.each{ item -> 
+    sys.info('level', item.get("level"))
+    switch(item.get("level")) {
+        case '10':
+            score += 3
+            break
+        case '20':
+            score += 2
+            break
+        case '30':
+            score += 1
+            break
+        case '40':
+            score += 0
+            break
+        case '50':
+            score += 1
+            break
+        default:
+            score += 0;
+    }
+}
+
+result.set("customer_score", score + "分") 
+if (list.size() != 0) {
+    result.set("customer_score_precent", score / (list.size() * 3))
+} else {
+    result.set("customer_score_precent", 0)
 }
 ```
 #### [需求(IDEA)](module/ProdMgmt/idea)的处理逻辑[计划内需求批删除(plan_delete_idea)](module/ProdMgmt/idea/logic/plan_delete_idea)
@@ -188,6 +518,354 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
     reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
 }
 
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[使用此模板(use_cur_template)](module/Insight/insight_report/logic/use_cur_template)
+
+节点：生成报表
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_board = logic.getParam("new_board");
+var strModel = new_board.get("model");
+var modeljO = JSON.parse(strModel);
+var modeljArray = modeljO.model;
+var bireportids = [];
+var replaceIds ={};
+for(var i=0; i<modeljArray.length; i++){
+  var reportModel = modeljArray[i];
+  var portletid = reportModel.i;
+  var bireportid = portletid.substring(12).replace("__",".");
+  bireportids.push(bireportid);
+}
+var reportSearchContext = sys.filter("insight_report");
+var templReports = reportSearchContext.in("id",bireportids.join(",")).pageable(0,1000).select();
+for(var i=0; i<templReports.length; i++){
+    var bireport = templReports.get(i);
+    var orginId = bireport.get("id");
+    bireport.reset("id");
+    bireport.set("view_id",new_board.get("owner_id"));
+    bireport.set("is_system",0);
+    bireport.create();
+    replaceIds[orginId.replace(".","__")] = bireport.get("id").replace(".","__");
+}
+for(var key in replaceIds){
+ strModel = strModel.replace(key,replaceIds[key]);
+}
+//类似forEach遍历
+new_board.set("model",strModel);
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[同步模板模型(sync_model)](module/Insight/insight_report/logic/sync_model)
+
+节点：dump模型
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var bireport = logic.getParam("bireport");
+var _default = logic.getParam("default");
+_default.set("template_model",bireport.dump());
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[复制报表(copy_report)](module/Insight/insight_report/logic/copy_report)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var target_board = logic.getParam("target_board");
+var new_report = logic.getParam("new_report");
+var strModel = target_board.get("model");
+var modeljO = JSON.parse(strModel);
+var modeljArray = modeljO.model;
+var bireportids = [];
+var replaceIds = {};
+//获取新建报表ID数据，同步生成仪表盘的模型数据
+var portletId = ("plmweb.uxbireport__") + (new_report.get("id").toLowerCase());
+var portletCodeName = ("uxbireport__") + (new_report.get("id").toLowerCase());
+var new_board_report = {};
+new_board_report.i = portletCodeName;
+new_board_report.portletId = portletId;
+new_board_report.portletCodeName = portletCodeName;
+
+
+
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[建立报表扩展模型(create_bi_report)](module/Insight/insight_report/logic/create_bi_report)
+
+节点：从模板初始化模型
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam("default");
+var bireport = logic.getParam("bireport");
+var templateModel = _default.get("template_model");
+if(templateModel != null){
+    bireport.from(templateModel);
+    bireport.reset("pssysbireportid");
+    bireport.reset("codename");
+}
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_report/logic/get_view_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_report/logic/get_view_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_report/logic/get_view_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[计算分组信息(calc_group_data)](module/Insight/insight_report/logic/calc_group_data)
+
+节点：转换参数
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var groupdata = logic.getParam('group_data');
+if( _default.get("group")!=null){
+    groupdata.set("groupname", _default.codeitem("group").text);
+    groupdata.set("groupcodename", _default.get("group"));
+}
+if( _default.get("id")!=null){
+    var appportletid = "plmweb.";
+    var appportletcodename = "uxbireport__"+_default.get("id").replace(".", "__");
+    appportletid = appportletid + appportletcodename;
+    groupdata.set("psappportletid",appportletid.toLowerCase());
+    groupdata.set("codename",appportletcodename.toLowerCase());
+    groupdata.set("psappportletname",_default.get("name"));
+    _default.set("ctrl_id",appportletid.toLowerCase());
+}
+
+```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[使用此模板(use_cur_template)](module/Insight/insight_view/logic/use_cur_template)
+
+节点：生成报表
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_board = logic.getParam("new_board");
+var strModel = new_board.get("model");
+var modeljO = JSON.parse(strModel);
+var modeljArray = modeljO.model;
+var bireportids = [];
+var replaceIds ={};
+for(var i=0; i<modeljArray.length; i++){
+  var reportModel = modeljArray[i];
+  var portletid = reportModel.i;
+  var bireportid = portletid.substring(12).replace("__",".");
+  bireportids.push(bireportid);
+}
+var reportSearchContext = sys.filter("insight_report");
+var templReports = reportSearchContext.in("id",bireportids.join(",")).pageable(0,1000).select("is_system");
+for(var i=0; i<templReports.length; i++){
+    var bireport = templReports.get(i);
+    var orginId = bireport.get("id");
+    bireport.reset("id");
+    bireport.set("view_id",new_board.get("owner_id"));
+    bireport.set("is_system",0);
+    var newbireport = bireport.create();
+    replaceIds[orginId.replace(".","__").toLowerCase()] = newbireport.get("id").replace(".","__").toLowerCase();
+}
+for(var key in replaceIds){
+    var keyreg = new RegExp(key, "g");
+    strModel = strModel.replace(keyreg,replaceIds[key]);
+}
+new_board.set("model",strModel);
+```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_view/logic/get_view_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_view/logic/get_view_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_view/logic/get_view_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[获取视图成员(get_view_member)](module/Insight/insight_view/logic/get_view_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[创建测试库流程准则(auto_create_guideline)](module/TestMgmt/library/logic/auto_create_guideline)
+
+节点：拼接guideline_ID
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var new_guideline = logic.getParam("new_guideline");
+var for_obj_guideline = logic.getParam("for_obj_guideline");
+new_guideline.set("id",new_guideline.get("scope_id")+"_"+for_obj_guideline.get("id"));
+```
+#### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[测试库组件权限计数器(library_addon_authority)](module/TestMgmt/library/logic/library_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
+#### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[获取快速新建测试库集合(quick_create)](module/TestMgmt/library/logic/quick_create)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[获取测试库成员(get_library_member_one)](module/TestMgmt/library/logic/get_library_member_one)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[获取测试库成员(get_library_member_one)](module/TestMgmt/library/logic/get_library_member_one)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[获取测试库成员(get_library_member_one)](module/TestMgmt/library/logic/get_library_member_one)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
 ```
 #### [测试库成员(LIBRARY_MEMBER)](module/TestMgmt/library_member)的处理逻辑[移除测试库成员通知(remove_library_member_notify)](module/TestMgmt/library_member/logic/remove_library_member_notify)
 
@@ -367,6 +1045,78 @@ datas.set("sevenday_active_count",sevenday_count);
 datas.set("sevenday_active_rate",sevenday_rate);
 
 ```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[添加共享页面非空间下成员(add_shared_page_member)](module/Base/member/logic/add_shared_page_member)
+
+节点：添加共享页面成员
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def choose_member = _default.get('choose_member')
+def choose_member_ids = _default.get('choose_member_ids')
+def member_ids = choose_member_ids.split(',')
+def member_names = choose_member.split(',')
+def member_runtime = sys.dataentity('member')
+if(_default.get('shared_page') != null){
+    member_ids.eachWithIndex { item, index ->
+        def newMember = member_runtime.entity()
+        newMember.set('owner_type', 'PAGE')
+        newMember.set('role_id', _default.get('check_type', 'reader'))
+        newMember.set('owner_subtype', 'SHARED')
+        newMember.set('owner_id', _default.get('shared_page'))
+        newMember.set('user_id', item) 
+        newMember.set('name', member_names[index])
+        member_runtime.save(newMember)
+    }
+
+}
+
+```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[选择资源成员（全局）(choose_resource_member)](module/Base/member/logic/choose_resource_member)
+
+节点：分页参数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def user_filter = logic.param('user_filter').getReal()
+user_filter.setPageable(_default.getPageable())
+
+```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[选择资源成员（全局）(choose_resource_member)](module/Base/member/logic/choose_resource_member)
+
+节点：根据团队成员的用户标识查询USER
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var group_page = logic.getParam("group_page");
+var user_filter = logic.getParam("user_filter");
+var user_ids = "";
+for (var i = 0; i < group_page.length; i++) {
+    if(i>0){
+        user_ids = user_ids+",";
+    }
+    var _group_member = group_page.get(i);
+    user_ids = user_ids + _group_member.get("user_id");
+}
+if(user_ids != ""){
+    user_filter.in("id",user_ids);
+}
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[共享设置(shared_setting)](module/Wiki/article_page/logic/shared_setting)
+
+节点：填充共享时间、共享人
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+if(_default.get('shared_by') == null){
+    _default.set('shared_by', sys.user.getUserid())
+}
+if(_default.get('shared_time') == null){
+    _default.set('shared_time', new java.sql.Timestamp(System.currentTimeMillis()))
+}
+```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[发布页面(publish_page)](module/Wiki/article_page/logic/publish_page)
 
 节点：设置发布时间
@@ -384,6 +1134,76 @@ defaultObj.set("publish_time", new Date());
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("publish_time", new Date());
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[基线规划页面数据查询(baseline_plan_page)](module/Wiki/article_page/logic/baseline_plan_page)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var page_versions = logic.getParam("page_versions");
+var for_temp_obj = logic.getParam("for_temp_obj");
+if(for_temp_obj.get("cur_version_id")){
+    var version_id_in = page_versions.get("version_id_in");
+    if(version_id_in){
+        version_id_in = version_id_in + "," + for_temp_obj.get("cur_version_id");
+    } else {
+        version_id_in = for_temp_obj.get("cur_version_id");
+    }
+    page_versions.set("version_id_in", version_id_in);
+}
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[校验共享访问密码(access_password)](module/Wiki/article_page/logic/access_password)
+
+节点：校验链接是否有效
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def check_page = logic.param('check_page').getReal()
+def expiration_date = check_page.get('expiration_date')
+_default.set('effective', 1)
+_default.set('check_access_password', 0)
+if(expiration_date != null){
+    java.time.LocalDateTime expirationDateTime = expiration_date.toLocalDateTime();
+    // 获取当前时间的 java.time.LocalDateTime 对象
+    def currentDateTime = java.time.LocalDateTime.now()
+    // 将 LocalDateTime 转换为 LocalDate
+    def currentDate = currentDateTime.toLocalDate()
+    def expirationDate = expirationDateTime.toLocalDate()
+    if (expirationDate.isBefore(currentDate)) {
+        // 超过有效期
+        _default.set('effective', 0)
+    }
+}
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[检验共享页面(check_shared)](module/Wiki/article_page/logic/check_shared)
+
+节点：检验是否有效
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def result = logic.param('result').getReal()
+result.set('id', _default.get('id'))
+result.set('effective', 1)
+result.set('check_access_pwd', 0)
+def expiration_date = _default.get('expiration_date')
+if(expiration_date != null){
+    java.time.LocalDateTime expirationDateTime = expiration_date.toLocalDateTime();
+    // 获取当前时间的 java.time.LocalDateTime 对象
+    def currentDateTime = java.time.LocalDateTime.now()
+    // 将 LocalDateTime 转换为 LocalDate
+    def currentDate = currentDateTime.toLocalDate()
+    def expirationDate = expirationDateTime.toLocalDate()
+    if (expirationDate.isBefore(currentDate)) {
+        // 超过有效期
+        result.set('effective', 0)
+    }
+}
+if(_default.get('access_password') != null){
+    result.set('check_access_pwd', 1)
+}
 ```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取历史版本(get_by_version)](module/Wiki/article_page/logic/get_by_version)
 
@@ -403,6 +1223,180 @@ if(id != null && id != ''){
     }
 }
 ```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取知识空间成员(get_space_member)](module/Wiki/article_page/logic/get_space_member)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[获取页面共享链接(shared_url)](module/Wiki/article_page/logic/shared_url)
+
+节点：拼接共享链接
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def plm_wiki = sys.param('plm_wiki','')
+if(_default.get('id') != null && plm_wiki != '') {
+    def _url = ''
+  if(_default.get('is_shared_subset') == '1'){
+      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_with_sub_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
+  } else {
+      _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_view/srfnavctx=%257B%2522shared_page%2522%253A%2522' + _default.get('id') + '%2522%257D'
+  }
+  _default.set('shared_page_url', _url)
+}
+```
+#### [文件夹(PORTFOLIO)](module/Base/portfolio)的处理逻辑[项目集组件权限计数器(portfolio_addon_authority)](module/Base/portfolio/logic/portfolio_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
+#### [文件夹(PORTFOLIO)](module/Base/portfolio)的处理逻辑[项目集资源成员设置(resource_member_setting)](module/Base/portfolio/logic/resource_member_setting)
+
+节点：判断此成员是否已加入资源
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def insert_members = logic.param('insert_members').getReal()
+def for_choose_obj = logic.param('for_choose_obj').getReal()
+insert_members.each { item ->
+    def user_id = item.user_id
+    if(user_id == for_choose_obj.get('user_id')){
+       for_choose_obj.set('already_exist', '1') 
+    }
+}
+
+
+```
+#### [文件夹(PORTFOLIO)](module/Base/portfolio)的处理逻辑[项目集资源成员设置(resource_member_setting)](module/Base/portfolio/logic/resource_member_setting)
+
+节点：资源成员绑定容量属性
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def resource_member = logic.param('resource_member').getReal()
+def day_capacity = logic.param('day_capacity').getReal()
+resource_member.set('day_capacity', day_capacity)
+```
+#### [文件夹(PORTFOLIO)](module/Base/portfolio)的处理逻辑[项目集资源成员设置(resource_member_setting)](module/Base/portfolio/logic/resource_member_setting)
+
+节点：资源成员绑定至组件
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def insert_members = logic.param('insert_members').getReal()
+def addon_resource = logic.param('addon_resource').getReal()
+addon_resource.set('members', insert_members)
+```
 #### [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)的处理逻辑[移除项目集成员通知(remove_project_set_member_notify)](module/Base/portfolio_member/logic/remove_project_set_member_notify)
 
 节点：获取当前操作时间
@@ -411,6 +1405,128 @@ if(id != null && id != ''){
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
+```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[产品组件权限计数器(product_addon_authority)](module/ProdMgmt/product/logic/product_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[获取产品成员(get_product_member_one)](module/ProdMgmt/product/logic/get_product_member_one)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [产品(PRODUCT)](module/ProdMgmt/product)的处理逻辑[获取快速新建产品集合(quick_create)](module/ProdMgmt/product/logic/quick_create)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
 ```
 #### [产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)的处理逻辑[移除产品成员通知(remove_product_member_notify)](module/ProdMgmt/product_member/logic/remove_product_member_notify)
 
@@ -421,6 +1537,293 @@ defaultObj.set("update_time", new Date());
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
 ```
+#### [产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)的处理逻辑[获取关联的工单数量(get_con_product_tag)](module/ProdMgmt/product_tag/logic/get_con_product_tag)
+
+节点：添加工单数量提醒内容
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var tag = logic.getParam("Default");
+var num = tag.get("num");
+tag.set("remind", "标签删除后不可恢复。共 " + num + " 个工单正在使用此标签，删除后会从对应事项中移除。");
+
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[scrum项目组件权限计数器(scrum_project_addon_authority)](module/ProjMgmt/project/logic/scrum_project_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[waterfall项目组件权限计数器(waterfall_project_addon_authority)](module/ProjMgmt/project/logic/waterfall_project_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[看板项目组件权限计数器(kanban_project_addon_authority)](module/ProjMgmt/project/logic/kanban_project_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取快速新建项目集合(quick_create)](module/ProjMgmt/project/logic/quick_create)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
 #### [项目(PROJECT)](module/ProjMgmt/project)的处理逻辑[获取项目进度(get_schedule)](module/ProjMgmt/project/logic/get_schedule)
 
 节点：计算项目进度
@@ -428,10 +1831,12 @@ defaultObj.set("update_time", new Date());
 
 ```javascript
 var project = logic.getParam("Default");
-var dividend = parseInt(project.get("dividend"));
-var divisor = parseInt(project.get("divisor"));
+var dividend = parseInt(project.get("completed_work_items"));
+var divisor = parseInt(project.get("all_work_items"));
 if(dividend != 0 && divisor != 0){
     project.set("schedule",  Math.round((dividend / divisor) * 100));
+} else {
+    project.set("schedule",  0);
 }
 ```
 #### [项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)的处理逻辑[移除项目成员通知(remove_project_member_notify)](module/ProjMgmt/project_member/logic/remove_project_member_notify)
@@ -442,6 +1847,17 @@ if(dividend != 0 && divisor != 0){
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
+```
+#### [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)的处理逻辑[获取关联的工作项(get_con_project_tag)](module/ProjMgmt/project_tag/logic/get_con_project_tag)
+
+节点：添加工作项数量提醒内容
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var work_item = logic.getParam("Default");
+var num = work_item.get("num");
+work_item.set("remind", "标签删除后不可恢复。共 " + num + " 个工作项正在使用此标签，删除后会从对应工作项中移除。");
+
 ```
 #### [实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)的处理逻辑[获取最后运行状态(get_last_run_info)](module/extension/PSDELogic/logic/get_last_run_info)
 
@@ -470,6 +1886,20 @@ defvar.set("failure_count",failure_count);
 defvar.set("success_per",success_per);
 defvar.set("total",total);
 ```
+#### [智能报表(PSSYSBIREPORT)](module/extension/PSSysBIReport)的处理逻辑[更新报表(update_report)](module/extension/PSSysBIReport/logic/update_report)
+
+节点：回写图表类型
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam("Default");
+var insight_report = logic.getParam("insight_report");
+var str_uimodel = _default.get("bireportuimodel");
+var uimodel = JSON.parse(str_uimodel);
+var chart_type = uimodel.selectChartType;
+insight_report.set("chart_type",chart_type);
+insight_report.set("template_model",_default.dump());
+```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[取消关联(del_relation)](module/Base/relation/logic/del_relation)
 
 节点：拼接关联对象的主键
@@ -478,13 +1908,13 @@ defvar.set("total",total);
 ```javascript
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null && forward_relation_obj.get("principal_type") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id") + '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null && reverse_relation_obj.get("principal_type") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_' + reverse_relation_obj.get("principal_type"));
 }
 ```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[工作项取消关联测试用例(work_item_del_relation_test_case)](module/Base/relation/logic/work_item_del_relation_test_case)
@@ -586,6 +2016,244 @@ if(relation_for_temp_obj.get("id") != null && relation_for_temp_obj.get("target_
     bug_relation_run.set("id", relation_for_temp_obj.get("target_id") + "_" + relation_for_temp_obj.get("principal_id"));
 }
 ```
+#### [项目发布(RELEASE)](module/ProjMgmt/release)的处理逻辑[修改发布当前阶段(change_stage)](module/ProjMgmt/release/logic/change_stage)
+
+节点：修改发布当前阶段
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def stage_transitions = logic.param('stage_transitions').getReal()
+def stages = logic.param('stages').getReal()
+def update_obj = logic.param('update_obj').getReal()
+
+def first_stage = logic.param('first_stage').getReal()
+def last_stage = logic.param('last_stage').getReal()
+def current_stage = logic.param('current_stage').getReal()
+def target_stage = logic.param('target_stage').getReal()
+
+first_stage = stages.min { it.get('p_sequence') }
+last_stage = stages.max { it.get('p_sequence') }
+//首阶段标识
+def first_stage_id = first_stage.get('id')
+//末阶段标识
+def last_stage_id = last_stage.get('id')
+//获取实体运行对象
+def stage_runtime = sys.dataentity('stage')
+def release_runtime = sys.dataentity('release')
+//循环处理
+stage_transitions.each { it ->
+    def stage_id = it.get('id')
+    if(it.get('target') == 1){
+        it.set('is_current', 1)
+        target_stage = it
+        if(first_stage_id != null){
+            if(first_stage_id == stage_id){
+                update_obj.set('start_at', it.get('operated_time'))
+            }
+        }
+        if(last_stage_id != null){
+            if(last_stage_id == stage_id){
+                update_obj.set('end_at', it.get('operated_time'))
+            }
+        }
+        update_obj.set('status', stage_id) 
+    }
+    if(it.get('current') == 1){
+        it.set('is_current', 0)
+        current_stage = it
+    }
+    //更新阶段
+    stage_runtime.update(it)
+}
+// 向前变动阶段时, 从当前阶段 -> 目标阶段 的中间阶段将操作时间置空
+if(target_stage.get('p_sequence') < current_stage.get('p_sequence')){
+    stages.each { it ->
+        if(it.get('p_sequence') > target_stage.get('p_sequence')){
+            // 构造阶段更新对象
+            def update_stage = stage_runtime.entity()
+            update_stage.set('id', it.get('id'))
+            if(current_stage.get('id') == last_stage_id){
+                if(it.get('p_sequence') < current_stage.get('p_sequence')){
+                    update_stage.set('operated_time', null)
+                    stage_runtime.update(update_stage)
+                }
+            } else {
+                if(it.get('p_sequence') <= current_stage.get('p_sequence')){
+                    update_stage.set('operated_time', null)
+                    stage_runtime.update(update_stage)
+                }
+            }
+        }
+    }
+}
+release_runtime.update(update_obj)
+
+```
+#### [项目发布(RELEASE)](module/ProjMgmt/release)的处理逻辑[新建后附加逻辑(after_create)](module/ProjMgmt/release/logic/after_create)
+
+节点：根据全局预定义阶段生成发布阶段
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def stages = logic.param('stages').getReal()
+def _default = logic.param('Default').getReal()
+def first_stage_id = _default.get('first_stage_id')
+def last_stage_id = _default.get('last_stage_id')
+//获取实体运行对象 参数实体名
+def stage_runtime = sys.dataentity('stage')
+def release_runtime = sys.dataentity('release')
+stages.each { it ->
+    //构造阶段对象
+    def new_stage = stage_runtime.entity()
+    new_stage.set('release_id', _default.get('id'))
+    new_stage.set('pid', it.get('id'))
+    new_stage.set('name', it.get('name'))
+    new_stage.set('type', it.get('type'))
+    new_stage.set('sequence', it.get('sequence'))
+    new_stage.set('is_current', 0)
+    if(it.get('id') == first_stage_id){
+        new_stage.set('is_current', 1)
+        new_stage.set('operated_time', _default.get('start_at'))
+    }
+    if(it.get('id') == last_stage_id){
+        new_stage.set('operated_time', _default.get('end_at'))
+    }
+    //新建发布
+    stage_runtime.create(new_stage)
+}
+
+
+
+
+```
+#### [项目发布(RELEASE)](module/ProjMgmt/release)的处理逻辑[获取修改阶段(change_draft)](module/ProjMgmt/release/logic/change_draft)
+
+节点：返回结果
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def first_stage = logic.param('first_stage').getReal()
+def last_stage = logic.param('last_stage').getReal()
+def current_stage = logic.param('current_stage').getReal()
+def target_stage = logic.param('target_stage').getReal()
+def stages = logic.param('stages').getReal()
+def stage_transitions = logic.param('stage_transitions').getReal()
+
+def current = _default.get('current_stage')
+def target = _default.get('target_stage')
+first_stage = stages.min { it.get('p_sequence') }
+last_stage = stages.max { it.get('p_sequence') }
+stages.each { it ->
+    if(it.get('id') == current){
+        it.set('current', 1)
+        current_stage = it
+    }
+    if(it.get('id') == target){
+        it.set('target', 1)
+        target_stage = it
+    }
+}
+
+// 向后变动阶段
+if(target_stage.get('p_sequence') > current_stage.get('p_sequence')){
+    target_stage.set('date_gt', current_stage.get('operated_time'))
+    // 若当前阶段未存在操作时间，目标阶段时间需大于首阶段时间
+    if(current_stage.get('operated_time') == null){
+        target_stage.set('date_gt', first_stage.get('operated_time'))
+    }
+    if(target_stage.get('id') != last_stage.get('id')){
+        target_stage.set('date_lt', last_stage.get('operated_time'))
+    }
+}
+// 向前变动阶段
+if(target_stage.get('p_sequence') < current_stage.get('p_sequence')){
+    target_stage.set('date_lt', last_stage.get('operated_time'))
+    if(target_stage.get('id') != first_stage.get('id')){
+        target_stage.set('date_gt', first_stage.get('operated_time'))
+    }
+}
+stage_transitions.add(current_stage)
+stage_transitions.add(target_stage)
+_default.set('stage_transitions', stage_transitions)
+
+```
+#### [项目发布(RELEASE)](module/ProjMgmt/release)的处理逻辑[迭代取消关联发布(del_relation)](module/ProjMgmt/release/logic/del_relation)
+
+节点：拼接关联对象的主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 获取正向关联对象的主键
+var forward_relation_obj = logic.getParam("forward_relation_obj");
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")  + '_sprint') ;
+}
+// 获取反向关联对象的主键
+var reverse_relation_obj = logic.getParam("reverse_relation_obj");
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_release');
+}
+```
+#### [评审(REVIEW)](module/TestMgmt/review)的处理逻辑[提交评审(submit_review)](module/TestMgmt/review/logic/submit_review)
+
+节点：设置提交时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var default_obj = logic.getParam("default");
+default_obj.set("submitted_at", new Date());
+```
+#### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[完成评审(complete_review)](module/TestMgmt/review_content/logic/complete_review)
+
+节点：完成时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("review_detail");
+defaultObj.set("COMPLETED_AT", new Date());
+```
+#### [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content)的处理逻辑[提交评审(submit_review)](module/TestMgmt/review_content/logic/submit_review)
+
+节点：设置提交时间
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var review_detail = logic.getParam("review_detail");
+review_detail.set("submitted_at", new Date());
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/run/logic/get_library_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/run/logic/get_library_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/run/logic/get_library_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[重置为未测(reset_not_test)](module/TestMgmt/run/logic/reset_not_test)
 
 节点：获取选中的用例ID
@@ -607,6 +2275,145 @@ if(id != null && id != ''){
     }
 }
 ```
+#### [共享空间(SHARED_SPACE)](module/Wiki/shared_space)的处理逻辑[校验共享访问密码(access_password)](module/Wiki/shared_space/logic/access_password)
+
+节点：校验链接是否有效
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def check_space = logic.param('check_space').getReal()
+def expiration_date = check_space.get('expiration_date')
+_default.set('effective', 1)
+_default.set('check_access_password', 0)
+if(expiration_date != null){
+    java.time.LocalDateTime expirationDateTime = expiration_date.toLocalDateTime();
+    // 获取当前时间的 java.time.LocalDateTime 对象
+    def currentDateTime = java.time.LocalDateTime.now()
+    // 将 LocalDateTime 转换为 LocalDate
+    def currentDate = currentDateTime.toLocalDate()
+    def expirationDate = expirationDateTime.toLocalDate()
+    if (expirationDate.isBefore(currentDate)) {
+        // 超过有效期
+        _default.set('effective', 0)
+    }
+}
+```
+#### [共享空间(SHARED_SPACE)](module/Wiki/shared_space)的处理逻辑[检验共享页面(check_shared)](module/Wiki/shared_space/logic/check_shared)
+
+节点：检验是否有效
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def result = logic.param('result').getReal()
+result.set('id', _default.get('id'))
+result.set('effective', 1)
+result.set('check_access_pwd', 0)
+def expiration_date = _default.get('expiration_date')
+if(expiration_date != null){
+    java.time.LocalDateTime expirationDateTime = expiration_date.toLocalDateTime();
+    // 获取当前时间的 java.time.LocalDateTime 对象
+    def currentDateTime = java.time.LocalDateTime.now()
+    // 将 LocalDateTime 转换为 LocalDate
+    def currentDate = currentDateTime.toLocalDate()
+    def expirationDate = expirationDateTime.toLocalDate()
+    if (expirationDate.isBefore(currentDate)) {
+        // 超过有效期
+        result.set('effective', 0)
+    }
+}
+if(_default.get('access_password') != null){
+    result.set('check_access_pwd', 1)
+}
+```
+#### [共享空间(SHARED_SPACE)](module/Wiki/shared_space)的处理逻辑[获取共享链接(shared_url)](module/Wiki/shared_space/logic/shared_url)
+
+节点：拼接共享链接
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def plm_wiki = sys.param('plm_wiki','')
+if(_default.get('id') != null && plm_wiki != '') {
+  def _url = plm_wiki + '/plmwiki/#/-/index/-/article_page_shared_tree_exp_view/srfnavctx=%257B%2522shared_space%2522%253A%2522' + _default.get('id') + '%2522%257D'
+  _default.set('shared_url', _url)
+}
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：管理员
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+defaultObj.set("user_role", "admin");
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：普通用户
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+defaultObj.set("user_role", "user");
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+defaultObj.set("user_role", "reader");
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", true);
+defaultObj.set("user_role", "reader");
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：普通用户
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+defaultObj.set("user_role", "user");
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[判断当前用户角色(recognize_cur_user_role)](module/Wiki/space/logic/recognize_cur_user_role)
+
+节点：管理员
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+defaultObj.set("user_role", "admin");
+```
 #### [空间(SPACE)](module/Wiki/space)的处理逻辑[取消关联(del_relation)](module/Wiki/space/logic/del_relation)
 
 节点：拼接正反关联对象的主键
@@ -616,14 +2423,102 @@ if(id != null && id != ''){
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id") + '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_' + reverse_relation_obj.get("principal_type"));
 }
 
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[开启共享(open_shared)](module/Wiki/space/logic/open_shared)
+
+节点：填充共享时间
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _shared_space = logic.param('shared_space').getReal()
+if(_shared_space.get('shared_time') == null){
+    _shared_space.set('shared_time', new java.sql.Timestamp(System.currentTimeMillis()))
+}
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[空间组件权限计数器(space_addon_authority)](module/Wiki/space/logic/space_addon_authority)
+
+节点：构建计数器结果
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam('Default');
+var addons = logic.getParam('addons');
+var result = logic.getParam('result');
+var cur_owner_addons = [];
+var predefine_addons = [];
+for (var i = 0; i < addons.getLength(); i++) {
+  var addon = addons.get(i);
+  if(addon.get("is_enabled") != 0){
+      addon.set("is_enabled",1);
+  }
+  if (addon.get("owner_id") != null) {
+    cur_owner_addons.push(addon);
+  } else {
+    predefine_addons.push(addon);
+  }
+}
+//初始化预置组件
+if (cur_owner_addons.length == 0) {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var predefine_addon = predefine_addons[i];
+    predefine_addon.reset("id");
+    predefine_addon.set("owner_id", _default.get("id"));
+    predefine_addon.create();
+    if (predefine_addon.get('is_enabled') == 0) {
+      result.set(predefine_addon.get('addon_type'),-1);
+    } else {
+      result.set(predefine_addon.get('addon_type'),0);
+    }
+  }
+} else {
+  for (var i = 0; i < predefine_addons.length; i++) {
+    var create_flag = true;
+    var predefine_addon = predefine_addons[i];
+    var predefine_addon_type = predefine_addon.get("addon_type");
+    for (var j = 0; j < cur_owner_addons.length; j++) {
+      var cur_owner_addon = cur_owner_addons[j];
+      var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        create_flag = false;
+      }
+    }
+    if (create_flag) {
+      predefine_addon.reset("id");
+      predefine_addon.set("owner_id", _default.get("id"));
+      predefine_addon.create();
+      cur_owner_addons.push(predefine_addon);
+    }
+  }
+  for (var i = 0; i < cur_owner_addons.length; i++) {
+    var delete_flag = true;
+    var cur_owner_addon = cur_owner_addons[i];
+    var cur_owner_addon_type = cur_owner_addon.get("addon_type");
+    for (var j = 0; j < predefine_addons.length; j++) {
+      var predefine_addon = predefine_addons[j];
+      var predefine_addon_type = predefine_addon.get("addon_type");
+      if (predefine_addon_type == cur_owner_addon_type) {
+        delete_flag = false;
+      }
+    }
+    if (cur_owner_addon.get('is_enabled') == 0) {
+      result.set(cur_owner_addon_type,-1);
+    } else {
+      result.set(cur_owner_addon_type,0);
+    }
+    if (delete_flag) {
+      cur_owner_addon.remove();
+      result.set(cur_owner_addon_type,-1);
+    }
+  }
+}
 ```
 #### [空间(SPACE)](module/Wiki/space)的处理逻辑[自动创建主页(auto_create_home_page)](module/Wiki/space/logic/auto_create_home_page)
 
@@ -666,6 +2561,51 @@ home_page.set("publish_content", "<p><span style=\"font-size: 19px;\"><strong>�
     + "<p><span style=\"color: rgb(140, 140, 140); font-size: 16px;\">2、为了使您的文档更有层次，建议使用左侧的页面树，定义好目录结构</span></p>"
     + "<p><br></p>");
 ```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取快速新建空间集合(quick_create)](module/Wiki/space/logic/quick_create)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取知识空间成员(get_space_member_one)](module/Wiki/space/logic/get_space_member_one)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取知识空间成员(get_space_member_one)](module/Wiki/space/logic/get_space_member_one)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [空间(SPACE)](module/Wiki/space)的处理逻辑[获取知识空间成员(get_space_member_one)](module/Wiki/space/logic/get_space_member_one)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
 #### [空间成员(SPACE_MEMBER)](module/Wiki/space_member)的处理逻辑[移除空间成员发送通知(remove_space_member_notify)](module/Wiki/space_member/logic/remove_space_member_notify)
 
 节点：获取当前操作时间
@@ -674,6 +2614,23 @@ home_page.set("publish_content", "<p><span style=\"font-size: 19px;\"><strong>�
 ```javascript
 var defaultObj = logic.getParam("default");
 defaultObj.set("update_time", new Date());
+```
+#### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[发布取消关联迭代(del_relation)](module/ProjMgmt/sprint/logic/del_relation)
+
+节点：拼接关联对象的主键
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+// 获取正向关联对象的主键
+var forward_relation_obj = logic.getParam("forward_relation_obj");
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id") + '_release');
+}
+// 获取反向关联对象的主键
+var reverse_relation_obj = logic.getParam("reverse_relation_obj");
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_sprint');
+}
 ```
 #### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[获取未完成的工作项数量(get_not_finish)](module/ProjMgmt/sprint/logic/get_not_finish)
 
@@ -686,21 +2643,60 @@ var not_finish_num = sprint.get("not_finish_num");
 sprint.set("remind", "该迭代仍有" + not_finish_num + "个工作项没有完成，将它们：");
 
 ```
-#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[取消关联(del_relation)](module/TestMgmt/test_case/logic/del_relation)
+#### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[获取概览基本信息统计数字(overview_num)](module/ProjMgmt/sprint/logic/overview_num)
 
-节点：拼接关联对象的主键
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+节点：计算迭代结束日期距离今天的天数
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
 
-```javascript
-// 获取正向关联对象的主键
-var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+```groovy
+def _default = logic.param('default').getReal()
+def daysDifference = 0
+if(_default.get('end_at') != null){
+    // 将 java.sql.Timestamp 转换为 java.time.LocalDateTime
+    java.time.LocalDateTime endDateTime = _default.get('end_at').toLocalDateTime();
+    java.time.LocalDateTime startDateTime = _default.get('start_at').toLocalDateTime();
+
+     // 获取当前时间的 java.time.LocalDateTime 对象
+    def currentDateTime = java.time.LocalDateTime.now()
+    // 将 LocalDateTime 转换为 LocalDate
+    def endDate = endDateTime.toLocalDate()
+    def startDate = startDateTime.toLocalDate()
+    def currentDate = currentDateTime.toLocalDate()
+    // 计算结束日期与今天的天数差
+    def enddaysDifference = endDate.toEpochDay() - currentDate.toEpochDay()
+    // 计算开始日期与今天的天数差
+    def startdaysDifference = currentDate.toEpochDay() - startDate.toEpochDay()
+    // 计算开始日期与结束日期的天数差
+    def betweenDifference = endDate.toEpochDay() - startDate.toEpochDay()
+    if(enddaysDifference < 0){
+        enddaysDifference = 0
+    }
+    if(startdaysDifference < 0){
+        startdaysDifference = 0
+    }
+    if(betweenDifference == 0){
+        betweenDifference = 1
+    }
+    if(enddaysDifference == 0){
+        // 日期已过比例
+        _default.set("past_days", 1)
+    } else {
+        if(startdaysDifference > 0 && betweenDifference > 0){
+            _default.set("past_days", startdaysDifference / betweenDifference)
+        }
+    }
+    // 剩余天数
+    _default.set("remaining_days", enddaysDifference)
 }
-// 获取反向关联对象的主键
-var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+def total_num = _default.get('all_work_items')
+def completed_num = _default.get('completed_work_items')
+def work_item_counts = completed_num + '/' + total_num
+_default.set('work_item_counts', work_item_counts)
+if(completed_num == 0 || total_num == 0){
+    // 工作项完成率
+    _default.set('work_item_complete_percent', 0)
+} else {
+    _default.set('work_item_complete_percent', completed_num / total_num)
 }
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[基线规划用例数据查询(baseline_plan_case)](module/TestMgmt/test_case/logic/baseline_plan_case)
@@ -721,22 +2717,106 @@ if(for_temp_obj.get("cur_version_id")){
     case_versions.set("version_id_in", version_id_in);
 }
 ```
-#### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[取消关联(del_relation)](module/ProdMgmt/ticket/logic/del_relation)
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[填充最近执行(fill_latest_executed)](module/TestMgmt/test_case/logic/fill_latest_executed)
 
-节点：拼接关联对象的主键
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param("Default").real;
+def _id = _default.get("id");
+def cur_version_id = _default.get("cur_version_id");
+def runDERuntime = sys.dataentity("RUN");
+def searchContextDTO = runDERuntime.createSearchContext();
+searchContextDTO.limit(1).count(false).eq("case_id",_id).nn("status").sort("executed_at,desc");
+def args = [searchContextDTO,"SRFVERSIONID",cur_version_id] as Object[];
+def page = runDERuntime.fetchDataSet("Default", null, args);
+_default.set("latest_executed", page.getContent());
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type)
+
+节点：执行脚本代码
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
-// 获取正向关联对象的主键
-var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+var version_pages_results = logic.getParam("version_pages_results");
+
+if (version_pages_results) {
+    var change_version = {};
+    var for_obj = logic.getParam("for_obj");
+    for (var i = 0; i < version_pages_results.length; i++) {
+        //新增只有to
+        if (i === 0) {
+            change_version["to"] = version_pages_results.get(i);
+        }
+    }
+
+    for_obj.set("change_version", change_version);
 }
-// 获取反向关联对象的主键
-var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var version_pages_results = logic.getParam("version_pages_results");
+if (version_pages_results) {
+    var change_version = {};
+    var for_obj = logic.getParam("for_obj");
+    for (var i = 0; i < version_pages_results.length; i++) {
+        if (i === 0) {
+            change_version["from"] = version_pages_results.get(i);
+            change_version["to"] = version_pages_results.get(i);
+            sys.info("进入1");
+        } else if (i === 1) {
+            change_version["from"] = version_pages_results.get(i);
+            sys.info("进入2");
+        }
+    }
+    for_obj.set("change_version", change_version);}
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
 }
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
 ```
 #### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[查询归档数据(get_archived_info)](module/ProdMgmt/ticket/logic/get_archived_info)
 
@@ -756,6 +2836,46 @@ get_infos.set("archived_info",print_info);
 
 
 ```
+#### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+null
+```
 #### [工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)的处理逻辑[获取关联的工单(get_con_ticket)](module/ProdMgmt/ticket_type/logic/get_con_ticket)
 
 节点：添加工单数量提醒内容
@@ -766,6 +2886,54 @@ var ticket = logic.getParam("Default");
 var ticket_num = ticket.get("ticket_num");
 ticket.set("remind", "该工单类型关联了" + ticket_num + "个工单，请先将对应的工单变更为其他工单类型再删除。");
 ticket.set("disabled",1)
+```
+#### [企业用户(USER)](module/Base/user)的处理逻辑[统计过滤(report_flag_filter)](module/Base/user/logic/report_flag_filter)
+
+节点：填充user过滤器ni参数
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var storage_page = logic.getParam("storage_page");
+var user_filter = logic.getParam("Default");
+var user_ids = "";
+ for (var i = 0; i < storage_page.length; i++) {
+     if(i>0){
+         user_ids = user_ids+",";
+     }
+     var _storage = storage_page.get(i);
+     user_ids = user_ids + _storage.get("owner_id");
+ }
+if(user_ids != ""){
+    user_filter.ni("id",user_ids);
+}
+```
+#### [企业用户(USER)](module/Base/user)的处理逻辑[非空间下成员(not_space_mmeber)](module/Base/user/logic/not_space_mmeber)
+
+节点：填充user过滤器ni参数
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var space_members = logic.getParam("space_members");
+var shared_page_members = logic.getParam("shared_page_members");
+var user_filter = logic.getParam("Default");
+var user_ids = "";
+for (var i = 0; i < space_members.length; i++) {
+    if(i>0){
+        user_ids = user_ids+",";
+    }
+    var space_member = space_members.get(i);
+    user_ids = user_ids + space_member.get("user_id");
+}
+for (var i = 0; i < shared_page_members.length; i++) {
+    if(user_ids != ""){
+        user_ids = user_ids+",";
+    }
+    var shared_page_member = shared_page_members.get(i);
+    user_ids = user_ids + shared_page_member.get("user_id");
+}
+if(user_ids != ""){
+    user_filter.ni("id",user_ids);
+}
 ```
 #### [版本(VERSION)](module/Base/version)的处理逻辑[新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name)
 
@@ -849,23 +3017,6 @@ if(principal_type == 'TEST_CASE'){
 }
 
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[取消关联(del_relation)](module/ProjMgmt/work_item/logic/del_relation)
-
-节点：拼接关联对象的主键
-<p class="panel-title"><b>执行代码[JavaScript]</b></p>
-
-```javascript
-// 获取正向关联对象的主键
-var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
-}
-// 获取反向关联对象的主键
-var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
-}
-```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[基线规划工作项数据查询(baseline_plan_work_item)](module/ProjMgmt/work_item/logic/baseline_plan_work_item)
 
 节点：执行脚本代码
@@ -884,16 +3035,96 @@ if(for_temp_obj.get("cur_version_id")){
     work_item_versions.set("version_id_in", version_id_in);
 }
 ```
-#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[移出基线(shift_out_baseline)](module/ProjMgmt/work_item/logic/shift_out_baseline)
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项完成趋势(complete_trend)](module/ProjMgmt/work_item/logic/complete_trend)
 
-节点：获取关联对象主键
+节点：统计七天内的完成/未完成数量
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def result_list = logic.param('result_list').getReal()
+def result_page = logic.param('result_page').getReal()
+def work_item = logic.param('work_item').getReal()
+
+// 七天前未完成数量
+def not_completed = work_item.get('seven_ago_not_completed')
+def completed = work_item.get('seven_ago_completed')
+
+def dateFormatter = new java.text.SimpleDateFormat("yyyy-MM-dd")
+def calendar = java.util.Calendar.getInstance()
+
+// 获取当前日期
+def endDate = calendar.time
+
+// 获取6天前的日期
+calendar.add(Calendar.DAY_OF_MONTH, -6)
+def startDate = calendar.time
+
+// 生成日期列表
+def datesInRange = []
+calendar.time = startDate // 重置日历到起始日期
+
+while (calendar.time <= endDate) {
+    def rep_date = dateFormatter.format(calendar.time)
+    def rep_obj = sys.entity('work_item')
+    rep_obj.set('rep_date', rep_date) 
+    result_list.add(rep_obj)
+    calendar.add(java.util.Calendar.DATE, 1)
+}
+result_list.each { it ->
+    def rep_date = dateFormatter.format(new Date(it.get('rep_date').time))
+    result_page.each { item ->
+        def state_type = item.get('state_type')
+        if(state_type != null){
+            if(state_type == 'completed' && item.get('completed_at') != null){
+                def completed_at = dateFormatter.format(new Date(item.get('completed_at').time))
+                if(completed_at == rep_date){
+                    completed++
+                    not_completed--
+                }   
+            } else if(state_type != 'completed' && item.get('create_time') != null){
+                def create_time = dateFormatter.format(new Date(item.get('create_time').time))
+                if(create_time == rep_date){
+                    not_completed++
+                }
+            }
+        }
+    }
+    it.set('rep_value1', not_completed)
+    it.set('rep_value2', completed)
+}
+
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[新建工作项前校验父子工作项类型(before_create_check_type)](module/ProjMgmt/work_item/logic/before_create_check_type)
+
+节点：判断父子工作项类型是否正确
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+// 父工作项的下级工作项范围
+def parent_work_item = logic.param('parent_work_item').getReal()
+def work_item_sub_type = parent_work_item.get('work_item_sub_type')
+// 新建工作项的类型
+def _default = logic.param('default').getReal()
+_default.set('check_type', 0)
+def child_type = _default.get('work_item_type_id')
+if(work_item_sub_type != null && child_type != null){
+    if(work_item_sub_type.contains(child_type)){
+        _default.set('check_type', 1)
+    }
+}
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[状态类型变更附加逻辑(state_type_onchange)](module/ProjMgmt/work_item/logic/state_type_onchange)
+
+节点：完成时间设置为当前时间
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
-var relation = logic.getParam("relation");
-if(relation.get("principal_id") != null && relation.get("target_id") != null){
-    relation.set("id", relation.get("principal_id") + "_" + relation.get("target_id"));
-}
+var _default = logic.getParam('Default');
+var update_obj = logic.getParam('update_obj');
+update_obj.set('id', _default.get('id'));
+update_obj.set('completed_at', new Date());
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取测试计划对应项目(work_item_test_plan_project)](module/ProjMgmt/work_item/logic/work_item_test_plan_project)
 
@@ -906,6 +3137,58 @@ var test_plan = logic.getParam("test_plan");
 if(test_plan.get("project_type") != null){
     Default.set("work_item_type_id", test_plan.get("project_type") + "_bug");
 }
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[获取项目成员(get_project_member)](module/ProjMgmt/work_item/logic/get_project_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[设置初始排序值(set_sequence)](module/ProjMgmt/work_item/logic/set_sequence)
+
+节点：处理初始排序值
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal() 
+def _sequence = _default.get('sequence')
+_default.set('sequence', _sequence*100)
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[设置缺陷类型(set_type_bug)](module/ProjMgmt/work_item/logic/set_type_bug)
 
@@ -930,6 +3213,358 @@ var entry_page = logic.getParam("entry_page");
 if(entry_page.getReal().numberOfElements > 0){
     defaultObj.set("entry_id", entry_page.get(0).get("id"));
 }
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[资源分配(resource_assignment)](module/ProjMgmt/work_item/logic/resource_assignment)
+
+节点：获取MEMBERS中的USER_ID
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def addon_resource = logic.param('addon_resource').getReal()
+// 获取查询过滤器对象
+def filter = logic.param('default').getReal()
+def setting_model = addon_resource.get('setting_model')
+if(!setting_model.isEmpty()){
+    // JSON字符串转换
+    def json = new groovy.json.JsonSlurper().parseText(setting_model)
+    // 获取members属性
+    def members = json.members
+    // 循环members，将user_id拼至过滤器的n_assignee_id_in过滤项中
+    members.each { item ->
+        def user_id = item.user_id
+        if(!user_id.isEmpty()){
+            def assignee_ids = filter.get('n_assignee_id_in')
+            if(assignee_ids.isEmpty()){
+                filter.set('n_assignee_id_in', user_id)
+            } else {
+                filter.set('n_assignee_id_in', assignee_ids + ',' + user_id)
+            }
+        }
+    }
+}
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[资源成员设置（全局）(resource_member_setting)](module/ProjMgmt/work_item/logic/resource_member_setting)
+
+节点：判断此成员是否已加入至资源
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def insert_members = logic.param('insert_members').getReal()
+def for_choose_obj = logic.param('for_choose_obj').getReal()
+insert_members.each { item ->
+    def user_id = item.user_id
+    if(user_id == for_choose_obj.get('user_id')){
+       for_choose_obj.set('already_exist', '1') 
+    }
+}
+
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[资源成员设置（全局）(resource_member_setting)](module/ProjMgmt/work_item/logic/resource_member_setting)
+
+节点：资源成员绑定容量属性
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def resource_member = logic.param('resource_member').getReal()
+def day_capacity = logic.param('day_capacity').getReal()
+resource_member.set('day_capacity', day_capacity)
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[资源成员设置（全局）(resource_member_setting)](module/ProjMgmt/work_item/logic/resource_member_setting)
+
+节点：资源成员绑定至组件
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def insert_members = logic.param('insert_members').getReal()
+def addon_resource = logic.param('addon_resource').getReal()
+addon_resource.set('members', insert_members)
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[迭代成员贡献度(sprint_contribution)](module/ProjMgmt/work_item/logic/sprint_contribution)
+
+节点：计算统计数字
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_obj = logic.param('for_obj').getReal()
+// 工作项类型统计
+def work_item_type = for_obj.get('work_item_type_id')
+// scrum_story scrum_task scrum_bug 用户故事/任务/缺陷 使用rep_value统计字段
+for_obj.set('rep_value1', 0)
+for_obj.set('rep_value2', 0)
+for_obj.set('rep_value3', 0)
+if(work_item_type == 'scrum_story'){
+    for_obj.set('rep_value1', 1)
+}
+if(work_item_type == 'scrum_task'){
+    for_obj.set('rep_value2', 1)
+}
+if(work_item_type == 'scrum_bug'){
+    for_obj.set('rep_value3', 1)
+}
+// 工作项工时统计
+if(for_obj.get('estimated_workload') == null ){
+    for_obj.set('estimated_workload', 0)
+}
+if(for_obj.get('actual_workload') == null ){
+    for_obj.set('actual_workload', 0)
+}
+// 统计结果列表变量
+def result_list = logic.param('result_list').getReal()
+def assignee_id = for_obj.get('assignee_id')
+if(assignee_id != null){
+    def exists = result_list.any { it.assignee_id == assignee_id }
+    if(exists){
+        result_list.each { item ->
+            if(item.get('assignee_id') == assignee_id){
+                item.set('rep_num', item.get('rep_num') + for_obj.get('rep_num'))
+                item.set('estimated_workload', item.get('estimated_workload') + for_obj.get('estimated_workload'))
+                item.set('actual_workload', item.get('actual_workload') + for_obj.get('actual_workload'))
+                item.set('rep_value1', item.get('rep_value1') + for_obj.get('rep_value1'))
+                item.set('rep_value2', item.get('rep_value2') + for_obj.get('rep_value2'))
+                item.set('rep_value3', item.get('rep_value3') + for_obj.get('rep_value3'))
+            }
+        }
+    } else {
+        result_list.add(for_obj)
+    }
+}
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[需求数量燃尽图(require_burn_out)](module/ProjMgmt/work_item/logic/require_burn_out)
+
+节点：根据迭代日期，计算统计数量
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def change_page = logic.param('change_page').getReal()
+def work_item_page = logic.param('work_item_page').getReal()
+def sprint = logic.param('sprint').getReal()
+def result_list = logic.param('result_list').getReal()
+
+
+def startDate = new Date(sprint.get('start_at').time)
+def endDate = new Date(sprint.get('end_at').time)
+
+def dateFormatter = new java.text.SimpleDateFormat("yyyy-MM-dd")
+def calendar = java.util.Calendar.getInstance()
+calendar.time = startDate
+// 从开始到结束的所有日期
+while (!calendar.time.after(endDate)) {
+    def rep_date = dateFormatter.format(calendar.time)
+    def rep_obj = sys.entity('work_item')    
+    rep_obj.set('rep_date', rep_date)
+    result_list.add(rep_obj)
+    calendar.add(java.util.Calendar.DATE, 1)
+}
+
+// 计算开始迭代时的移入工作项数量
+def begin_count = 0
+change_page.each { it ->
+    // 迭代未开始 移入的记录
+    if(it.get('type') == '1' && it.get('sprint_status') == '1'){
+        begin_count++
+    }
+    if(it.get('type') == '2' && it.get('sprint_status') == '1' ){
+        begin_count--
+    }
+}
+def rep_num = begin_count
+result_list.eachWithIndex { item, index ->
+    def rep_date = dateFormatter.format(new Date(item.get('rep_date').time))
+    if(begin_count > 0){
+        // 计算递减步长
+        def decrementStep = begin_count / (result_list.size() - 1)
+        // 理想线 根据日期 从开始日期 逐天递减
+        def rep_value1 =  begin_count - (decrementStep * index)        
+        def formattedValue = String.format('%.2f', rep_value1)
+        item.set('rep_value1', formattedValue)
+    } else {
+        item.set('rep_value1', 0)
+    }
+    if(index == 0){
+        item.set('rep_value1', begin_count)
+    }
+    item.set('rep_value2', rep_num)
+    work_item_page.each { it ->
+        if(it.get('completed_at') != null){
+            // 工作项完成时间
+            def completed_at = dateFormatter.format(new Date(it.get('completed_at').time))
+            if(completed_at == rep_date){
+                rep_num--
+                if(rep_num < 0){
+                    rep_num = 0
+                }
+                item.set('rep_value2', rep_num)
+            }  
+        }    
+    }
+    change_page.each { it ->
+        if(it.get('create_time') != null){
+           // 移入移出迭代时间
+            def change_date = dateFormatter.format(new Date(it.get('create_time').time))
+            if(change_date == rep_date){
+                // 迭代开始后 移入的记录
+                if(it.get('type') == '1' && it.get('sprint_status') == '2'){
+                    rep_num++
+                    item.set('rep_value2', rep_num)
+                }
+                if(it.get('type') == '2' && it.get('sprint_status') == '2'){
+                    rep_num--
+                    if(rep_num < 0){
+                        rep_num = 0
+                    }
+                    item.set('rep_value2', rep_num)
+                }
+            } 
+        }
+    }
+}
+
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[项目资源成员设置(project_resource_setting)](module/ProjMgmt/work_item/logic/project_resource_setting)
+
+节点：判断此成员是否已加入至资源
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def insert_members = logic.param('insert_members').getReal()
+def for_choose_obj = logic.param('for_choose_obj').getReal()
+insert_members.each { item ->
+    def user_id = item.user_id
+    if(user_id == for_choose_obj.get('user_id')){
+       for_choose_obj.set('already_exist', '1') 
+    }
+}
+
+
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[项目资源成员设置(project_resource_setting)](module/ProjMgmt/work_item/logic/project_resource_setting)
+
+节点：资源成员绑定容量属性
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def resource_member = logic.param('resource_member').getReal()
+def day_capacity = logic.param('day_capacity').getReal()
+resource_member.set('day_capacity', day_capacity)
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[项目资源成员设置(project_resource_setting)](module/ProjMgmt/work_item/logic/project_resource_setting)
+
+节点：资源成员绑定至组件
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def insert_members = logic.param('insert_members').getReal()
+def addon_resource = logic.param('addon_resource').getReal()
+addon_resource.set('members', insert_members)
+```
+#### [工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard)的处理逻辑[变更工作项类型(change)](module/ProjMgmt/work_item_wizard/logic/change)
+
+节点：处理子工作项所属父级
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp = logic.param('for_temp').getReal()
+def child_work_item_types = for_temp.get('child_work_item_types')
+//获取实体运行对象 参数实体名
+def work_item_runtime = sys.dataentity('work_item')
+
+child_work_item_types.each { it ->
+    def target_parent = it.get('target_parent')
+    if(it.get('influence_child_ids') != null){
+        def work_item_filter = work_item_runtime.filter()
+        work_item_filter.in('id', it.get('influence_child_ids'))
+        def childs = work_item_filter.select('')
+        childs.each { item ->
+            def update_entity = work_item_runtime.entity()
+            update_entity.set('id', item.get('id'))
+            if (target_parent != null) {
+               update_entity.set('pid', target_parent) 
+            } else {
+               update_entity.set('pid', null)
+            }
+            //更新子工作项的所属父级
+            work_item_runtime.update(update_entity)
+        }       
+    }   
+}
+```
+#### [工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard)的处理逻辑[填充操作明细属性(fill_details)](module/ProjMgmt/work_item_wizard/logic/fill_details)
+
+节点：封装属性
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('default').getReal()
+def project_id = _default.get('project_id')
+def project_runtime = sys.dataentity('project')
+def entity_runtime = sys.dataentity('work_item_wizard_detail')
+def work_item_runtime = sys.dataentity('work_item')
+def work_item_type_runtime = sys.dataentity('work_item_type')
+def project = project_runtime.get(project_id);
+def details = entity_runtime.list()
+def work_items = logic.param('work_items').getReal()
+def influence_ids = ''
+
+work_items.each { item ->
+    if(influence_ids != ''){
+        influence_ids = influence_ids + ',' + item.get('id')
+    } else {
+        influence_ids = item.get('id')
+    }
+    def work_item_wizard_detail = sys.entity('work_item_wizard_detail')
+    work_item_wizard_detail.set('origin_type', item.get('work_item_type_id'))
+    def work_item_type_filter = work_item_type_runtime.filter()
+    work_item_type_filter.eq('project_type', project.get('type'))
+    work_item_type_filter.ne('id', item.get('work_item_type_id'))
+    def choose_types = work_item_type_filter.select('')
+    if(choose_types.size() > 0){
+        work_item_wizard_detail.set('target_type', choose_types.get(0).get('id'))
+    }
+    work_item_wizard_detail.set('id', item.get('id'))
+    work_item_wizard_detail.set('wizard_id', _default.get('id'))
+    work_item_wizard_detail.set('origin_state', item.get('state'))
+    work_item_wizard_detail.set('target_state', '10')
+    work_item_wizard_detail.set('project_id', item.get('project_id'))
+    work_item_wizard_detail.set('title', item.get('title'))
+    work_item_wizard_detail.set('assignee_name', item.get('assignee_name'))
+    work_item_wizard_detail.set('priority', item.get('priority'))
+    work_item_wizard_detail.set('influence', 1)
+    // 子工作项
+    def child_filter = sys.filter('work_item')
+    child_filter.eq('pid', item.get('id'))
+    def childs = child_filter.select('')
+    work_item_wizard_detail.set('influence_childs', 0)
+    if(childs.size() > 0){
+        work_item_wizard_detail.set('influence_childs', childs.size())
+        def child_work_item_types = work_item_runtime.list()
+        def childItems = childs.groupBy { it.get('work_item_type_id') }
+        childItems.each { work_item_type_id, itemList ->
+            def child_work_item = sys.entity('work_item')
+            def influence_child_ids = ''
+            child_work_item.set('child_work_item_type', work_item_type_id)
+            itemList.each { it ->
+                if(influence_child_ids != ''){
+                    influence_child_ids = influence_child_ids + ',' + it.get('id')
+                } else {
+                    influence_child_ids = it.get('id')
+                }
+            }
+            child_work_item.set('influence_child_ids', influence_child_ids)
+            child_work_item.set('parent_title', work_item_wizard_detail.get('title'))
+            child_work_item.set('influence', itemList.size())
+            child_work_item.set('id', work_item_type_id)
+            child_work_item.set('parent_origin_type', item.get('work_item_type_id'))
+            child_work_item_types.add(child_work_item)
+        }
+        work_item_wizard_detail.set('child_work_item_types', child_work_item_types)
+    }
+    details.add(work_item_wizard_detail)
+}
+_default.set('details', details)
+_default.set('influence_ids', influence_ids)
 ```
 
 

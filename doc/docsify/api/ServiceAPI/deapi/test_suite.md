@@ -400,6 +400,73 @@ Integer
 
 ```
 
+## 当前测试库用例模块
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/test_suites/fetch_cur_test_suite" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_library_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库标识|
+|<el-row justify="space-between"><el-col :span="20">n_library_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">n_library_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_library_id_eq" : null,
+  "n_library_name_eq" : null,
+  "n_library_name_like" : null,
+  "n_name_like" : null,
+  "n_pid_eq" : null,
+  "n_pname_eq" : null,
+  "n_pname_like" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "sequence" : null,
+    "suites" : null,
+    "is_leaf" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "library_id" : null,
+    "library_name" : null,
+    "name" : null,
+    "pid" : null,
+    "pname" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
 ## 数据集
 
 <el-row>
@@ -1045,6 +1112,40 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
 |<el-row justify="space-between"><el-col :span="20">pname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+
+
+
+## 根据测试库当前测试库用例模块
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/libraries/{pkey}/test_suites/fetch_cur_test_suite" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|测试库主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_library_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库标识|
+|<el-row justify="space-between"><el-col :span="20">n_library_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">n_library_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库名称|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_pname_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_pname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 
 
 

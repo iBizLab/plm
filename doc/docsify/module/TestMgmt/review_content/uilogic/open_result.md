@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_result#begin {开始}]]
-state "绑定父视图及表单" as PREPAREJSPARAM1  [[$./open_result#preparejsparam1 {绑定父视图及表单}]]
 state "注入脚本代码" as RAWJSCODE2  [[$./open_result#rawjscode2 {注入脚本代码}]]
+state "绑定父视图及表单" as PREPAREJSPARAM1  [[$./open_result#preparejsparam1 {绑定父视图及表单}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -63,7 +63,7 @@ uiLogic.parent_form.control.details.review_results.state.visible=true;
 | --------| --------| --------  | --------   |
 |父表单|parent_form|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
+|父视图|parent_view|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
-|父视图|parent_view|数据对象||
 |选择的内容|choosed_content|数据对象||

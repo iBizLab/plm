@@ -15,13 +15,14 @@
 
 
 ### 关联界面行为
-  * [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag) : [删除标签](module/ProjMgmt/project_tag#界面行为)
   * [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag) : [表格界面_新建操作](module/ProjMgmt/project_tag#界面行为)
   * [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag) : [编辑标签](module/ProjMgmt/project_tag#界面行为)
+  * [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag) : [删除标签](module/ProjMgmt/project_tag#界面行为)
 
 ### 关联视图
   * [新建标签(project_tag_new_option_view)](app/view/project_tag_new_option_view)
   * [编辑标签(project_tag_option_view)](app/view/project_tag_option_view)
+  * [确认删除(project_tag_project_tag_confirm_remove_view)](app/view/project_tag_project_tag_confirm_remove_view)
   * [项目标签(project_tag_redirect_view)](app/view/project_tag_redirect_view)
 
 <script>

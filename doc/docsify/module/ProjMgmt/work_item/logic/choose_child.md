@@ -21,6 +21,7 @@ state "绑定参数" as BINDPARAM1  [[$./choose_child#bindparam1 {"绑定参数"
 state "循环子调用" as LOOPSUBCALL1  [[$./choose_child#loopsubcall1 {"循环子调用"}]] #green {
 state "重新建立参数" as RENEWPARAM1  [[$./choose_child#renewparam1 {"重新建立参数"}]]
 state "填充需要更新的父工作项标识" as PREPAREPARAM1  [[$./choose_child#prepareparam1 {"填充需要更新的父工作项标识"}]]
+state "更新子工作项的父标识" as DEACTION3  [[$./choose_child#deaction3 {"更新子工作项的父标识"}]]
 }
 
 
@@ -30,6 +31,7 @@ DEACTION2 --> BINDPARAM1
 BINDPARAM1 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> RENEWPARAM1
 RENEWPARAM1 --> PREPAREPARAM1
+PREPAREPARAM1 --> DEACTION3
 
 
 @enduml
@@ -78,6 +80,12 @@ RENEWPARAM1 --> PREPAREPARAM1
 
 1. 将`parent_work_item(父工作项).ID(标识)` 设置给  `update_obj(更新对象).PID(父标识)`
 2. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `update_obj(更新对象).ID(标识)`
+
+#### 更新子工作项的父标识 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`update_obj(更新对象)`
 
 
 

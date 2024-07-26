@@ -16,6 +16,8 @@
 * `onMounted`
 ```javascript
 view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;
+// 关联类型 设置默认值
+view.layoutPanel.panelItems.choose_type.setDataValue('relates');
 
 // 初始化默认隐藏表格
 view.layoutPanel.panelItems.grid.state.keepAlive = true;
@@ -39,7 +41,7 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
@@ -50,11 +52,11 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 
 ### 关联界面逻辑
   * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_work_item_change)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [工作项关联工作项值变更](module/ProjMgmt/work_item/uilogic/relation_self_change)
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
 
 <script>
  const { createApp } = Vue

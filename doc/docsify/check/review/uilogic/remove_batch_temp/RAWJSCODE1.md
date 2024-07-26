@@ -2,6 +2,7 @@
 
 ```javascript
 return (async function() { 
+    console.log('遍历临时数据删除')
     // 获取所有临时数据
     const serviceUtil = ibiz.hub.getApp(context.srfappid).deService;
     const service = await serviceUtil.getService(context, 'plmweb.review_content');

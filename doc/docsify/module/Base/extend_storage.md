@@ -26,6 +26,24 @@
   * `所属数据标识(OWNER_ID)`
   * `名称(NAME)`
 
+###### 索引
+
+<el-row>
+<el-tabs v-model="show_index">
+
+<el-tab-pane label="EXTEND_STORAGE" name="index_EXTEND_STORAGE">
+
+|    中文名col150 | 属性名称col200           | 包含属性col100 | 排序方向col100 | 索引长度col100 | 备注col600 |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|名称|NAME|false|升序|-1||
+|所属数据标识|OWNER_ID|false|升序|-1||
+|所属数据对象|OWNER_TYPE|false|升序|-1||
+
+</el-tab-pane>
+
+</el-tabs>
+</el-row>
+
 ## 行为
 | 中文名col200    | 代码名col150    | 类型col150    | 事务col100   | 批处理col100   | 附加操作col100  | 插件col150    |  备注col300  |
 | -------- |---------- |----------- |:----:|:----:|---------| ----- | ----- |
@@ -96,7 +114,7 @@
       return {
 
 
-
+show_index:'index_EXTEND_STORAGE',
       }
     },
     methods: {

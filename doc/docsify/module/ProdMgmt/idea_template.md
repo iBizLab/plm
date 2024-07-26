@@ -1,9 +1,13 @@
 # 需求模板(idea_template)  <!-- {docsify-ignore-all} -->
 
 
+记录产品的需求模版相关信息。
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|类别路径|CATEGORIES|外键值附加数据|2000|是||
 |类别标识|CATEGORY_ID|外键值|100|是||
 |名称|CATEGORY_NAME|外键值文本|200|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
@@ -12,7 +16,10 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |产品|PRODUCT_ID|外键值|100|是||
+|产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |产品名称|PRODUCT_NAME|外键值文本|200|是||
+|子产品标识|SECTION_ID|外键值附加数据|100|是||
+|子产品名称|SECTION_NAME|外键值附加数据|200|是||
 |标题|TITLE|文本，可指定长度|500|否||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -66,11 +73,12 @@
 |N_PRODUCT_ID_EQ|产品|EQ||
 |N_PRODUCT_NAME_EQ|产品名称|EQ||
 |N_PRODUCT_NAME_LIKE|产品名称|LIKE||
+|N_TITLE_LIKE|标题|LIKE||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 编辑模板 | template_edit | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求模板](app/view/idea_template_edit_view)</details>||
+| 编辑模板 | template_edit | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[模板](app/view/idea_template_edit_view)</details>||
 | 删除模板 | template_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

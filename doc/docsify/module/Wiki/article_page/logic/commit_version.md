@@ -17,12 +17,14 @@ hide empty description
 state "开始" as Begin <<start>> [[$./commit_version#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./commit_version#end1 {"结束"}]]
 state "准备版本信息" as PREPARE_PARAM1  [[$./commit_version#prepare_param1 {"准备版本信息"}]]
+state "重置版本信息" as PREPAREPARAM2  [[$./commit_version#prepareparam2 {"重置版本信息"}]]
 state "建立版本" as COMMIT_VERSION  [[$./commit_version#commit_version {"建立版本"}]]
 
 
 Begin --> PREPARE_PARAM1 : [[$./commit_version#begin-prepare_param1{已发布} 已发布]]
 PREPARE_PARAM1 --> COMMIT_VERSION : [[$./commit_version#prepare_param1-commit_version{连接名称} 连接名称]]
-COMMIT_VERSION --> END1
+COMMIT_VERSION --> PREPAREPARAM2
+PREPAREPARAM2 --> END1
 
 
 @enduml
@@ -40,7 +42,7 @@ COMMIT_VERSION --> END1
 
 
 
-*- N/A*
+返回 `Default(传入变量)`
 
 #### 准备版本信息 :id=PREPARE_PARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -48,6 +50,13 @@ COMMIT_VERSION --> END1
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `version(版本).OWNER_ID(所属数据标识)`
 2. 将`PAGE` 设置给  `version(版本).OWNER_TYPE(所属数据对象)`
+
+#### 重置版本信息 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`无值（NONE）` 设置给  `Default(传入变量).CUR_VERSION_ID(当前版本标识)`
+2. 将`无值（NONE）` 设置给  `Default(传入变量).CUR_VERSION_NAME(当前版本名称)`
 
 #### 建立版本 :id=COMMIT_VERSION<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

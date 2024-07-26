@@ -119,7 +119,7 @@ PREPAREPARAM4 --> DEACTION3
 
 1. 将`for_temp_obj(循环临时变量).TARGET_ID(关联目标标识)` 设置给  `version(版本).OWNER_ID(所属数据标识)`
 2. 将`TEST_CASE` 设置给  `version(版本).OWNER_TYPE(所属数据对象)`
-3. 将`设立基线创建版本` 设置给  `version(版本).NAME(名称)`
+3. 将`设立基线创建版本` 设置给  `version(版本).DESCRIPTION(描述)`
 
 #### 创建新版本 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

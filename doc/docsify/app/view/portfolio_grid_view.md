@@ -18,21 +18,12 @@
 
 
 ### 关联界面行为
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_拷贝操作](module/Base/portfolio#界面行为)
+  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [设置星标](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [项目集成员](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [更多设置（项目集）](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_数据导入栏](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_帮助操作](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_新建操作](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_删除操作](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [新开窗口（项目集）](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_导出数据模型](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_编辑操作](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [项目集信息](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_导出操作（Excel）](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [设置星标](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [取消星标](module/Base/portfolio#界面行为)
-  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [表格界面_搜索栏](module/Base/portfolio#界面行为)
+  * [文件夹(PORTFOLIO)](module/Base/portfolio) : [新开窗口（项目集）](module/Base/portfolio#界面行为)
   * [文件夹(PORTFOLIO)](module/Base/portfolio) : [编辑基本信息（项目集）](module/Base/portfolio#界面行为)
 
 ### 关联界面逻辑

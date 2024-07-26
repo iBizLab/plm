@@ -45,9 +45,11 @@ DEACTION3 --> END1
 
 
 1. 将`Default(传入变量).principal_id` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
-3. 将`Default(传入变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).principal_type` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+3. 将`Default(传入变量).target_type` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+4. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
+5. 将`Default(传入变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+6. 将`Default(传入变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
 
 #### 拼接正反关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -59,12 +61,12 @@ DEACTION3 --> END1
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id") + '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_' + reverse_relation_obj.get("principal_type"));
 }
 
 ```

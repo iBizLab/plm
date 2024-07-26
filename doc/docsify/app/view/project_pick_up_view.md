@@ -1,4 +1,4 @@
-# 项目(project_pick_up_view)  <!-- {docsify-ignore-all} -->
+# 选择项目(project_pick_up_view)  <!-- {docsify-ignore-all} -->
 
 
 系统自动添加
@@ -11,7 +11,7 @@
 
 
 ### 关联视图
-  * [项目(project_pick_up_grid_view)](app/view/project_pick_up_grid_view)
+  * [选择项目(project_pick_up_grid_view)](app/view/project_pick_up_grid_view)
 
 <script>
  const { createApp } = Vue

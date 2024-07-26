@@ -10,6 +10,8 @@
 
 
 ### 关联视图
+  * [测试库组件(addon_library_setting_grid_view)](app/view/addon_library_setting_grid_view)
+  * [评审配置(guideline_library_all_grid_view)](app/view/guideline_library_all_grid_view)
   * [高级设置(library_advanced_setting_edit_view)](app/view/library_advanced_setting_edit_view)
   * [基本信息(library_base_info_edit_view)](app/view/library_base_info_edit_view)
   * [测试库成员(library_member_config_grid_view)](app/view/library_member_config_grid_view)

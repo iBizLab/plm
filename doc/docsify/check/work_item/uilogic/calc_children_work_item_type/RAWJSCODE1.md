@@ -1,19 +1,17 @@
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-const type = uiLogic.type.split('_')[1] || '';
-// 任务类型与缺陷类型无子工作项
-if (!type || type === 'task' || type === 'bug') {
-    return;
+const type = uiLogic.type || '';
+const codelistItem = uiLogic.codelistitems.find(x => x.id === type);
+
+if (codelistItem && codelistItem.data) {
+    uiLogic.children_type = codelistItem.data;
+    uiLogic.default.srfUserData = {
+        pickerData: uiLogic.children_type,
+        codelistTag: 'plmweb.projmgmt__work_item_type',
+        pickerField: 'work_item_type_id',
+        defaultValue: uiLogic.children_type.split(',')[0]
+    };
 }
-const list = ['epic', 'feature', 'story', 'task', 'bug'];
-const index = list.findIndex(x => x === type);
-if (index === 0) {
-    uiLogic.children_type = `kanban_${list[1]}`;
-} else if (index === 1) {
-    uiLogic.children_type = `kanban_${list[2]}`;
-} else if (index === 2) {
-    uiLogic.children_type = `kanban_task,kanban_bug`;
-    // uiLogic.children_type = `kanban_task`;
-}
+
 ```

@@ -10,17 +10,12 @@
 |[项目管理](module/ProjMgmt)|ProjMgmt||主要包含项目相关业务实体的管理，如：项目、项目集、工作项、迭代、发布等。|
 |[测试管理](module/TestMgmt)|TestMgmt||主要包含测试相关的业务实体的管理，如：测试库、测试计划、测试用例、执行用例等。|
 |[知识管理](module/Wiki)|Wiki||主要包含知识空间相关业务实体的管理，如：空间、页面等。|
-|[协作空间](module/team)|team|||
+|[协作空间](module/Team)|Team||主要包含话题相关业务实体的管理，如讨论 、话题等。|
+|[效能度量](module/Insight)|Insight||主要包含效能度量相关业务实体的管理，如仪表盘、报表等。|
 |[全文检索](module/FTR)|FTR||全文检索相关业务实体管理。|
 |[系统管理](module/ibizsysmgr)|ibizsysmgr|ibizsysmgr[^ibizsysmgr]|部门及人员业务实体的映射。|
 |[ebsx系统管理](module/ebsx)|ebsx|ebsx模型组[^ebsx]||
 |[模型扩展](module/extension)|extension|||
-
-#### 工作流
-
-|  中文名col200      |   代码名col200  |  引擎类型col150 |  版本数量col100   |  备注col350  |
-|  --------   |------------  |  :-----:   |  -----   |  -------- |
-|[用例评审](workflow/case_review_flow.md)|case_review_flow|Java Activiti|1|测试用|
 
 
 #### 服务接口
@@ -28,6 +23,7 @@
 |  中文名col200      |   代码名col200 |   备注col600  |
 |  --------   |------------  |  -----   |
 |[ServiceAPI](api/ServiceAPI/ServiceAPI)|ServiceAPI||
+|[_dynamodelapi](api/_dynamodelapi/_dynamodelapi)|_dynamodelapi||
 
 #### 对接外部接口
 
@@ -42,9 +38,10 @@
 |  中文名col200      |   代码名col200  |   备注col600  |
 |  --------   |------------ |  -----   |
 |[<i class="fa-solid fa-desktop"></i>产品生命周期管理系统](app/plmweb)|plmweb||
+|[<i class="fa-solid fa-desktop"></i>产品生命周期管理系统](app/plmwiki)|plmwiki||
 
 
-#### 国际化支持此
+#### 国际化支持
 
 |  中文名col200      |   代码名col200  |   资源项col100    |   备注col500  |
 |  --------   |------------ |  ----- |  :-----:   |

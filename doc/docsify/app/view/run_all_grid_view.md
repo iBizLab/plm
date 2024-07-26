@@ -14,20 +14,17 @@
 
 
 ### 关联界面行为
-  * [执行用例(RUN)](module/TestMgmt/run) : [选择用例](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [移出](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [设置执行人](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [用户实体界面行为1](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [设置执行结果](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [设置执行人](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [选择用例](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [移出](module/TestMgmt/run#界面行为)
 
 ### 关联视图
   * [执行用例(run_main_view)](app/view/run_main_view)
   * [执行用例(run_set_run_status_option_view)](app/view/run_set_run_status_option_view)
   * [执行人(run_setting_actual_executor_view)](app/view/run_setting_actual_executor_view)
-  * [用例(test_case_mpick_up_view)](app/view/test_case_mpick_up_view)
+  * [选择用例(test_case_mpick_up_view2_review)](app/view/test_case_mpick_up_view2_review)
   * [用例(test_case_test_plan_re_test_case_prickup_view)](app/view/test_case_test_plan_re_test_case_prickup_view)
 
 <script>

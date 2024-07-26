@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_requirement_column_action#begin {开始}]]
+state "动态显示界面行为" as RAWJSCODE1  [[$./calc_requirement_column_action#rawjscode1 {动态显示界面行为}]]
 state "结束" as END1 <<end>> [[$./calc_requirement_column_action#end1 {结束}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./calc_requirement_column_action#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -34,7 +34,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 动态显示界面行为 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -61,8 +61,12 @@ RAWJSCODE1 --> END1
 						// 激活
 						action.disabled = is_archived === 0;
 					} else if (action.uiActionId === 'newrow_test@work_item') {
-						// 新建行
-						action.visible = !!codelistItem.data;
+                        // 新建行
+                        action.visible = !!codelistItem.data;
+                        // 需求树表格上 用户故事不显示新建行
+                        if(type == 'scrum_story'){
+						    action.visible = false;
+                        }
 					} else if (action.uiActionId === 'change_parent@work_item') {
 						// 变更父工作项
 						action.visible = parentItems.length > 0;
@@ -85,5 +89,5 @@ RAWJSCODE1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格|Grid|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

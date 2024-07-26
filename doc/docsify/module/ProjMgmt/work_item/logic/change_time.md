@@ -53,7 +53,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 
-1. 将`for_temp_obj(循环临时变量).END_AT(结束时间)` 设置给  `Default(传入变量).END_AT(结束时间)`
+1. 将`for_temp_obj(循环临时变量).END_AT(截止时间)` 设置给  `Default(传入变量).END_AT(截止时间)`
 2. 将`for_temp_obj(循环临时变量).START_AT(开始时间)` 设置给  `Default(传入变量).START_AT(开始时间)`
 
 #### 修改时间 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>

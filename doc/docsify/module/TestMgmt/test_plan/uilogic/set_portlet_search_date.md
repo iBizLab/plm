@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_portlet_search_date#begin {开始}]]
-state "设置默认时间" as RAWJSCODE2  [[$./set_portlet_search_date#rawjscode2 {设置默认时间}]]
-state "获取门户控制器" as PREPAREJSPARAM1  [[$./set_portlet_search_date#preparejsparam1 {获取门户控制器}]]
 state "结束" as END1 <<end>> [[$./set_portlet_search_date#end1 {结束}]]
+state "获取门户控制器" as PREPAREJSPARAM1  [[$./set_portlet_search_date#preparejsparam1 {获取门户控制器}]]
+state "设置默认时间" as RAWJSCODE2  [[$./set_portlet_search_date#rawjscode2 {设置默认时间}]]
 state "设置门户参数" as RAWJSCODE3  [[$./set_portlet_search_date#rawjscode3 {设置门户参数}]]
 
 
@@ -96,7 +96,7 @@ if (daily_tendencies) {
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |默认时间|defaultDate|数据对象||
-|每日测试门户|daily_test|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|每日执行门户|daily_tendencies|数据对象||
 |部件|dashboard|当前部件对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|每日测试门户|daily_test|数据对象||
+|每日执行门户|daily_tendencies|数据对象||

@@ -18,6 +18,7 @@
 |序号|SEQUENCE|数值||是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|可见范围|VISIBILITY|单项选择(文本值)|60|否||
 
 
 ## 关系
@@ -59,6 +60,8 @@
 |[数据查询(DEFAULT)](module/Base/group/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/group/query/View)|VIEW|否|否 |否 ||
 |[无分组(no_section)](module/Base/group/query/no_section)|no_section|否|否 |否 ||
+|[公开(public)](module/Base/group/query/public)|public|否|否 |否 ||
+|[团队成员(user)](module/Base/group/query/user)|user|否|否 |否 ||
 |[团队管理员(user_group_admin)](module/Base/group/query/user_group_admin)|user_group_admin|否|否 |否 ||
 
 ## 数据集合
@@ -67,6 +70,7 @@
 |[数据集(DEFAULT)](module/Base/group/dataset/Default)|DEFAULT|数据查询|是|||
 |[无分组(no_section)](module/Base/group/dataset/no_section)|no_section|数据查询|否|||
 |[团队默认读取(reader)](module/Base/group/dataset/reader)|reader|数据查询|否|||
+|[团队成员(user)](module/Base/group/dataset/user)|user|数据查询|否|||
 |[团队管理员(user_group_admin)](module/Base/group/dataset/user_group_admin)|user_group_admin|数据查询|否|||
 
 ## 数据权限
@@ -110,6 +114,18 @@
 
 
 
+##### 团队成员（读） :id=group-USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[团队成员(user)](module/Base/group#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -119,6 +135,7 @@
 |N_SECTION_ID_EQ|分组标识|EQ||
 |N_SECTION_NAME_EQ|所属分组|EQ||
 |N_SECTION_NAME_LIKE|所属分组|LIKE||
+|N_VISIBILITY_EQ|可见范围|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

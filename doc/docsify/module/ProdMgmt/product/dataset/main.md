@@ -21,3 +21,4 @@
 ### 数据查询
   * [查询星标(favorite)](module/ProdMgmt/product/query/favorite)
   * [未星标产品(unfavorite)](module/ProdMgmt/product/query/unfavorite)
+  * [当前产品(cur_product)](module/ProdMgmt/product/query/cur_product)

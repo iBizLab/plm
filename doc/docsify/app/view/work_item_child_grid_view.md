@@ -39,22 +39,22 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加控件显示](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [取消关联（子工作项）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加控件显示](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联子工作项表格行为列状态](module/ProjMgmt/work_item/uilogic/relation_child_grid_action)
 
 ### 关联视图
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
 
 <script>
  const { createApp } = Vue

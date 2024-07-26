@@ -6,13 +6,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -30,5 +34,5 @@ t1.`UPDATE_TIME`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
 ```

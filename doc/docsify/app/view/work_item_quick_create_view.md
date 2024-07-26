@@ -56,7 +56,6 @@
 
 ### 关联视图
   * [看板(board_pick_up_view)](app/view/board_pick_up_view)
-  * [项目(project_pick_up_view)](app/view/project_pick_up_view)
   * [选择工作项(work_item_change_parent_pick_up_view)](app/view/work_item_change_parent_pick_up_view)
 
 <script>

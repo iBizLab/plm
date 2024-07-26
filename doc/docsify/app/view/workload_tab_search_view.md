@@ -4,7 +4,7 @@
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-#### 分页导航面板(tabexppanel)
+#### 数据关系分页部件(tabexppanel)
 
 
 ### 关联视图

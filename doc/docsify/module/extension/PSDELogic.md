@@ -19,6 +19,8 @@
 |扩展标记2|EXTENSION_TAG2|文本，可指定长度|200|是||
 |扩展标记3|EXTENSION_TAG3|文本，可指定长度|200|是||
 |扩展标记4|EXTENSION_TAG4|文本，可指定长度|200|是||
+|失败率|FAILURE_PER|数值||是||
+|失败率|FAILURE_RATE|数值||是||
 |忽略异常|IGNOREEXCEPTION|是否逻辑||是||
 |最后运行时间|LAST_START_AT|日期时间型||是||
 |最后运行状态|LAST_STATE|[单项选择(文本值)](index/dictionary_index#log_state "日志状态")|200|是||
@@ -37,6 +39,8 @@
 |逻辑节点|PSDELOGICNODES|一对多关系数据集合|1048576|是||
 |逻辑参数|PSDELOGICPARAMS|一对多动态对象|1048576|是||
 |实体|PSDENAME|文本，可指定长度|100|是||
+|成功率|SUCCESS_PER|数值||是||
+|成功率|SUCCESS_RATE|数值||是||
 |线程模式|THREADMODE|文本，可指定长度|100|是||
 |定时触发策略|TIMERPOLICY|文本，可指定长度|100|是||
 |更新时间|UPDATEDATE|日期时间型|8|否||
@@ -46,6 +50,7 @@
 |用户标记3|USERTAG3|文本，可指定长度|50|是||
 |用户标记4|USERTAG4|文本，可指定长度|50|是||
 |启用|VALIDFLAG|是否逻辑||是||
+|WebHook地址|WEBHOOKURL|长文本，没有长度限制|1048576|是||
 
 
 ###### 属性组
@@ -114,18 +119,32 @@
 |应用|apply|用户自定义|默认|不支持||||
 |CheckKey|CheckKey|内置方法|默认|不支持||||
 |Create|Create|内置方法|默认|不支持||||
+|CreateTemp|CreateTemp|内置方法|默认|不支持||||
+|CreateTempMajor|CreateTempMajor|内置方法|默认|不支持||||
+|禁用|disable|用户自定义|默认|不支持||||
+|启用|enable|用户自定义|默认|不支持||||
 |Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#PSDELogic_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
+|GetDraftTemp|GetDraftTemp|内置方法|默认|不支持||||
+|GetDraftTempMajor|GetDraftTempMajor|内置方法|默认|不支持||||
+|GetTemp|GetTemp|内置方法|默认|不支持||||
+|GetTempMajor|GetTempMajor|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
+|RemoveTemp|RemoveTemp|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|UpdateTemp|UpdateTemp|内置方法|默认|不支持||||
+|UpdateTempMajor|UpdateTempMajor|内置方法|默认|不支持||||
 |从模板建立规则|create_by_template|[实体处理逻辑](module/extension/PSDELogic/logic/create_by_template "从模板建立规则")|默认|不支持||||
 |获取最后运行信息|get_last_run_info|[实体处理逻辑](module/extension/PSDELogic/logic/get_last_run_info "获取最后运行状态")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[WebHook地址](module/extension/PSDELogic/logic/WebHook)|WebHook|属性逻辑|||
 |[从模板建立规则](module/extension/PSDELogic/logic/create_by_template)|create_by_template|无||从模板建立规则|
+|[切换启用状态](module/extension/PSDELogic/logic/valid)|valid|属性逻辑|||
+|[失败率计算](module/extension/PSDELogic/logic/failure_per)|failure_per|属性逻辑|||
 |[获取最后运行状态](module/extension/PSDELogic/logic/get_last_run_info)|get_last_run_info|无||获取最后运行状态|
 
 ## 数据查询

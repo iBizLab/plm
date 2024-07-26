@@ -21,7 +21,7 @@ state "循环子调用" as LOOPSUBCALL1  [[$./others_relation_work_item#loopsubc
 state "重新建立参数" as RENEWPARAM1  [[$./others_relation_work_item#renewparam1 {"重新建立参数"}]]
 state "重新建立参数" as RENEWPARAM2  [[$./others_relation_work_item#renewparam2 {"重新建立参数"}]]
 state "填充需要的属性值" as PREPAREPARAM1  [[$./others_relation_work_item#prepareparam1 {"填充需要的属性值"}]]
-state "存在owner_id" as PREPAREPARAM2  [[$./others_relation_work_item#prepareparam2 {"存在owner_id"}]]
+state "存在关联类型" as PREPAREPARAM2  [[$./others_relation_work_item#prepareparam2 {"存在关联类型"}]]
 state "重复或关联" as PREPAREPARAM3  [[$./others_relation_work_item#prepareparam3 {"重复或关联"}]]
 state "结果" as PREPAREPARAM4  [[$./others_relation_work_item#prepareparam4 {"结果"}]]
 state "原因" as PREPAREPARAM5  [[$./others_relation_work_item#prepareparam5 {"原因"}]]
@@ -49,7 +49,7 @@ PREPAREPARAM2 --> PREPAREPARAM6 : [[$./others_relation_work_item#prepareparam2-p
 PREPAREPARAM6 --> DEACTION1
 PREPAREPARAM2 --> PREPAREPARAM7 : [[$./others_relation_work_item#prepareparam2-prepareparam7{被阻塞} 被阻塞]]
 PREPAREPARAM7 --> DEACTION1
-PREPAREPARAM1 --> DEACTION1 : [[$./others_relation_work_item#prepareparam1-deaction1{其他实体关联工作项} 其他实体关联工作项]]
+PREPAREPARAM1 --> DEACTION1 : [[$./others_relation_work_item#prepareparam1-deaction1{工作项关联其他实体} 工作项关联其他实体]]
 LOOPSUBCALL1 --> END1
 
 
@@ -89,21 +89,19 @@ LOOPSUBCALL1 --> END1
 
 
 1. 将`Default(传入变量).principal_id` 设置给  `forward_relation_obj(正向关系对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
+2. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
 3. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关系对象).TARGET_ID(关联目标标识)`
 4. 将`Default(传入变量).target_type` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
 5. 将`Default(传入变量).principal_type` 设置给  `reverse_relation_obj(反向关系对象).TARGET_TYPE(关联目标类型)`
 6. 将`Default(传入变量).principal_type` 设置给  `forward_relation_obj(正向关系对象).PRINCIPAL_TYPE(关联主体类型)`
 7. 将`Default(传入变量).target_type` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
-8. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `forward_relation_obj(正向关系对象).TARGET_ID(关联目标标识)`
+8. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `forward_relation_obj(正向关系对象).TARGET_ID(关联目标标识)`
 
-#### 存在owner_id :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 存在关联类型 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-1. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `forward_relation_obj(正向关系对象).TARGET_ID(关联目标标识)`
-2. 将`Default(传入变量).relation_type` 设置给  `forward_relation_obj(正向关系对象).RELATION_TYPE(关联类型)`
-3. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
+1. 将`Default(传入变量).relation_type` 设置给  `forward_relation_obj(正向关系对象).RELATION_TYPE(关联类型)`
 
 #### 重复或关联 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -133,7 +131,7 @@ LOOPSUBCALL1 --> END1
 
 
 
-1. 将`causes` 设置给  `reverse_relation_obj(反向关系对象).RELATION_TYPE(关联类型)`
+1. 将`blocks` 设置给  `reverse_relation_obj(反向关系对象).RELATION_TYPE(关联类型)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -163,7 +161,7 @@ LOOPSUBCALL1 --> END1
 `selectdata(关联列表).size` GT `0`
 #### 工作项关联工作项 :id=PREPAREPARAM1-PREPAREPARAM2
 
-`for_temp_obj(循环临时变量).owner_id` ISNOTNULL
+`Default(传入变量).relation_type` ISNOTNULL
 #### 关联类型为重复或关联 :id=PREPAREPARAM2-PREPAREPARAM3
 
 (`forward_relation_obj(正向关系对象).RELATION_TYPE(关联类型)` EQ `duplicates` OR `forward_relation_obj(正向关系对象).RELATION_TYPE(关联类型)` EQ `relates`)
@@ -179,9 +177,9 @@ LOOPSUBCALL1 --> END1
 #### 被阻塞 :id=PREPAREPARAM2-PREPAREPARAM7
 
 `forward_relation_obj(正向关系对象).RELATION_TYPE(关联类型)` EQ `is_blocked_by`
-#### 其他实体关联工作项 :id=PREPAREPARAM1-DEACTION1
+#### 工作项关联其他实体 :id=PREPAREPARAM1-DEACTION1
 
-`for_temp_obj(循环临时变量).owner_id` ISNULL
+`Default(传入变量).relation_type` ISNULL
 
 
 ### 实体逻辑参数

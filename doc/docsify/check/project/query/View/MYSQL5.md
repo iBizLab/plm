@@ -1,8 +1,10 @@
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -14,6 +16,7 @@ t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
 t1.`NAME`,
+t1.`NOTICE`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,

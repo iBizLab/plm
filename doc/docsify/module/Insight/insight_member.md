@@ -50,6 +50,14 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|变更角色|change_role|[实体处理逻辑](module/Insight/insight_member/logic/change_role "变更角色")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/Insight/insight_member/logic/nothing "无操作")|默认|不支持||||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[变更角色](module/Insight/insight_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[无操作](module/Insight/insight_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -73,6 +81,12 @@
 |N_ROLE_ID_EQ|角色|EQ||
 |N_USER_ID_EQ|用户标识|EQ||
 
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
+| 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
@@ -92,6 +106,9 @@
 <el-anchor-link :href="`#/module/Insight/insight_member?id=行为`">
   行为
 </el-anchor-link>
+<el-anchor-link :href="`#/module/Insight/insight_member?id=处理逻辑`">
+  处理逻辑
+</el-anchor-link>
 <el-anchor-link :href="`#/module/Insight/insight_member?id=数据查询`">
   数据查询
 </el-anchor-link>
@@ -100,6 +117,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Insight/insight_member?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Insight/insight_member?id=界面行为`">
+  界面行为
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Insight/insight_member?id=界面逻辑`">
   界面逻辑

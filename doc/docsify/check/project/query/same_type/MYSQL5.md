@@ -24,5 +24,5 @@ t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from project t2 where  t1.`type` = t2.`type` and t2.id = #{ctx.webcontext.project})  AND  t1.`ID` <> #{ctx.webcontext.project} )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from project t2 where  t1.`type` = t2.`type` and t2.id = #{ctx.webcontext.project}) )
 ```

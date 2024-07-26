@@ -21,3 +21,4 @@
 ### 数据查询
   * [查询星标(favorite)](module/ProjMgmt/project/query/favorite)
   * [非星标项目(unfavorite)](module/ProjMgmt/project/query/unfavorite)
+  * [当前项目(cur_project)](module/ProjMgmt/project/query/cur_project)

@@ -40,7 +40,7 @@ DEDATASET1 --> END1
 
 
 
-1. 将`1000` 设置给  `Default(传入变量).size`
+1. 将`10000` 设置给  `Default(传入变量).size`
 
 #### 查询我登记的工作项工时 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 

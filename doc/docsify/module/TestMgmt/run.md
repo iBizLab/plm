@@ -10,6 +10,7 @@
 |实际工时|ACTUAL_WORKLOAD|数值||是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|bi测试计划名称|BI_PLAN_NAME|文本，可指定长度|200|是||
 |测试用例标识|CASE_ID|外键值|100|是||
 |名称|CASE_NAME|外键值文本|200|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
@@ -21,8 +22,10 @@
 |执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |编号|IDENTIFIER|外键值附加数据|100|是||
+|是否最新|IS_NEWEST|是否逻辑||是||
 |重要程度|LEVEL|[外键值附加数据](index/dictionary_index#test_case_level "用例重要程度")|60|是||
 |测试库标识|LIBRARY_ID|外键值附加数据|100|是||
+|测试库编号|LIBRARY_IDENTIFIER|外键值附加数据|15|是||
 |所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
 |维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
 |名称|NAME|文本，可指定长度|200|是||
@@ -30,6 +33,9 @@
 |测试计划标识|PLAN_ID|外键值|100|是||
 |测试计划|PLAN_NAME|外键值文本|200|是||
 |前置条件|PRECONDITION|外键值附加数据|2000|是||
+|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
+|关联缺陷数|RELATION_TOTAL_BUG|数值||是||
+|关联执行结果数|RELATION_TOTAL_HISTORY|数值||是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |备注|REMARK|长文本，长度1000|2000|是||
 |结果附件|RUN_ATTACHMENT|一对多关系数据集合|1048576|是||
@@ -56,6 +62,46 @@
 <el-row>
 <el-tabs v-model="show_field_group">
 
+<el-tab-pane label="BI查询属性组" name="field_group_bi_search_group">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|是否最新|IS_NEWEST|是否逻辑||是||
+|执行时间|EXECUTED_AT|日期时间型||是||
+|建立时间|CREATE_TIME|日期时间型||否||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|名称|NAME|文本，可指定长度|200|是||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|执行人标识|EXECUTOR_ID|文本，可指定长度|100|是||
+|当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
+|工时进度|WORKLOAD_SCHEDULE|数值||是||
+|剩余工时|REMAINING_WORKLOAD|数值||是||
+|关联执行结果数|RELATION_TOTAL_HISTORY|数值||是||
+|关联缺陷数|RELATION_TOTAL_BUG|数值||是||
+|预估工时|ESTIMATED_WORKLOAD|数值||是||
+|实际工时|ACTUAL_WORKLOAD|数值||是||
+|所属测试库|LIBRARY_NAME|外键值附加数据|200|是||
+|用例类型|TYPE|[外键值附加数据](index/dictionary_index#test_case_type "用例类型")|60|是||
+|重要程度|LEVEL|[外键值附加数据](index/dictionary_index#test_case_level "用例重要程度")|60|是||
+|评审状态|STATE|[外键值附加数据](index/dictionary_index#case_state "用例状态")|60|是||
+|维护人|MAINTENANCE_NAME|外键值附加数据|200|是||
+|测试类型|TEST_TYPE|[外键值附加数据](index/dictionary_index#test_case_test_type "测试类型")|60|是||
+|编号|IDENTIFIER|外键值附加数据|100|是||
+|测试库标识|LIBRARY_ID|外键值附加数据|100|是||
+|标题|TITLE|外键值附加数据|500|是||
+|所属模块|SUITE_NAME|外键值附加数据|200|是||
+|名称|CASE_NAME|外键值文本|200|是||
+|测试计划|PLAN_NAME|外键值文本|200|是||
+|测试计划标识|PLAN_ID|外键值|100|是||
+|测试用例标识|CASE_ID|外键值|100|是||
+|执行结果|STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|60|是||
+|优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|bi测试计划名称|BI_PLAN_NAME|文本，可指定长度|200|是||
+
+</el-tab-pane>
 <el-tab-pane label="执行人" name="field_group_executor">
 
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
@@ -147,7 +193,7 @@
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
 | --------  | :----:    | ---- |----- |
-|版本数据存储|VERSIONSTORAGE|[附加数据版本(VERSION_DATA)](module/Base/version_data)||
+|版本数据存储|版本数据存储|[附加数据版本(VERSION_DATA)](module/Base/version_data)||
 |实体通知设置|通知设置|[通知设置(SYSTEM_EXTENSION_NOTIFY_SETTING)](module/extension/system_extension_notify_setting)||
 |审计|数据审计|[活动(ACTIVITY)](module/Base/activity)||
 
@@ -157,6 +203,8 @@
 |[数据查询(DEFAULT)](module/TestMgmt/run/query/Default)|DEFAULT|是|否 |否 ||
 |[执行结果分布(ImplementationResults)](module/TestMgmt/run/query/ImplementationResults)|ImplementationResults|否|否 |否 ||
 |[默认（全部数据）(VIEW)](module/TestMgmt/run/query/View)|VIEW|否|否 |否 ||
+|[BI反查(bi_detail)](module/TestMgmt/run/query/bi_detail)|bi_detail|否|否 |否 ||
+|[BI查询(bi_search)](module/TestMgmt/run/query/bi_search)|bi_search|否|否 |否 ||
 |[评论通知执行人(comment_notify_executor)](module/TestMgmt/run/query/comment_notify_executor)|comment_notify_executor|否|否 |否 ||
 |[当前项目用例(cur_library)](module/TestMgmt/run/query/cur_library)|cur_library|否|否 |否 ||
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/run/query/dailyTendencies)|dailyTendencies|否|否 |否 ||
@@ -164,12 +212,16 @@
 |[当前模块下用例(normal)](module/TestMgmt/run/query/normal)|normal|否|否 |否 ||
 |[测试计划内执行历史(plan_run_history)](module/TestMgmt/run/query/plan_run_history)|plan_run_history|否|否 |否 ||
 |[优先级分布(priorityDistributions)](module/TestMgmt/run/query/priorityDistributions)|priorityDistributions|否|否 |否 ||
+|[公开(public)](module/TestMgmt/run/query/public)|public|否|否 |否 ||
+|[只读用户(reader)](module/TestMgmt/run/query/reader)|reader|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/run/dataset/Default)|DEFAULT|数据查询|是|||
 |[执行结果分布(ImplementationResults)](module/TestMgmt/run/dataset/ImplementationResults)|ImplementationResults|数据查询|否|||
+|[BI反查(bi_detail)](module/TestMgmt/run/dataset/bi_detail)|bi_detail|数据查询|否|||
+|[BI查询(bi_search)](module/TestMgmt/run/dataset/bi_search)|bi_search|数据查询|否|||
 |[用例成员分布(casePerson)](module/TestMgmt/run/dataset/casePerson)|casePerson|数据查询|否|||
 |[测试用例获取最新执行结果(case_latest_executed)](module/TestMgmt/run/dataset/case_latest_executed)|case_latest_executed|[实体逻辑](module/TestMgmt/run/logic/case_latest_executed)|否|||
 |[评论通知执行人(comment_notify_executor)](module/TestMgmt/run/dataset/comment_notify_executor)|comment_notify_executor|数据查询|否|||
@@ -179,6 +231,7 @@
 |[当前模块下用例(normal)](module/TestMgmt/run/dataset/normal)|normal|数据查询|否|||
 |[测试计划内执行历史(plan_run_history)](module/TestMgmt/run/dataset/plan_run_history)|plan_run_history|数据查询|否|||
 |[优先级分布(priorityDistributions)](module/TestMgmt/run/dataset/priorityDistributions)|priorityDistributions|数据查询|否|||
+|[只读用户(reader)](module/TestMgmt/run/dataset/reader)|reader|数据查询|否|||
 
 ## 数据权限
 
@@ -194,6 +247,18 @@
 * `UPDATE`
 * `CREATE`
 * `DELETE`
+
+
+
+##### 操作角色(读) :id=run-USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[只读用户(reader)](module/TestMgmt/run#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
 
 
 
@@ -232,6 +297,7 @@
 |N_PLAN_ID_EQ|测试计划标识|EQ||
 |N_PLAN_NAME_EQ|测试计划|EQ||
 |N_PLAN_NAME_LIKE|测试计划|LIKE||
+|N_PRIORITY_EQ|优先级|EQ||
 |N_STATUS_EQ|执行结果|EQ||
 |N_STATUS_ISNOTNULL|执行结果|ISNOTNULL||
 |N_SUITE_ID_EQ|用例模块标识|EQ||
@@ -242,10 +308,13 @@
 | 记录执行结果 | add_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 全部通过 | all_pass | 全部通过 |无数据|用户自定义||
 | 移出 | delete_run | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 打开选项操作视图（门户）（测试） | open_optview_portlet | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_test_option_view)</details>||
 | 设置执行人 | open_setting_actual_executor | 设置执行人 |多项数据（主键）|<details><summary>后台调用</summary>[set_executor](#行为)||
 | 打开选项操作视图（门户）（执行结果） | open_optview_Implementationresults | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_implementationresults_option_view)</details>||
 | 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
+| BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
+| BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
 | 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
@@ -263,6 +332,9 @@
 |[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
 |[获取执行结果总条数](module/TestMgmt/run/uilogic/get_run_result_total)|get_run_result_total|获取执行结果的总条数信息|
 |[触发计数器刷新(run)](module/TestMgmt/run/uilogic/refresh_counter_run)|refresh_counter_run|关联数据变更后，触发计数器刷新|
+|[门户全屏](module/TestMgmt/run/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户刷新](module/TestMgmt/run/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户编辑](module/TestMgmt/run/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -313,7 +385,7 @@
     data() {
       return {
 show_der:'major',
-show_field_group:'field_group_executor',
+show_field_group:'field_group_bi_search_group',
 
       }
     },

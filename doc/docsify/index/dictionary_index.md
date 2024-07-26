@@ -1,5 +1,155 @@
 # 数据字典  <!-- {docsify-ignore-all} -->
 
+##### BI图表类型 :id=bi_chart_type2
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|NUMBER|数字|number||
+|MULTI_SERIES_COL|多系列柱状图|multi_series_col||
+|STACK_COL|堆叠柱状图|stack_col||
+|ZONE_COL|分区柱状图|zone_col||
+|MULTI_SERIES_BAR|多系列条形图|multi_series_bar||
+|STACK_BAR|堆积条形图|stack_bar||
+|MULTI_SERIES_LINE|多系列折线图|multi_series_line||
+|ZONE_LINE|分区折线图|zone_line||
+|AREA|面积图|area||
+|GRID|表格|grid||
+|CROSSTABLE|交叉表|crosstable||
+|PIE|饼图|pie||
+|RADAR|雷达图|radar||
+|GAUGE|仪表盘|gauge||
+|SCATTER|散点图|scatter||
+
+##### BI报表_人员类型 :id=bi_form_man_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|成员|item_10||
+|20|部门|item_20||
+|30|团队|item_30||
+
+##### BI报表_工作项 :id=bi_form_item
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|状态类型|item_10||
+|20|状态|item_20||
+
+##### BI报表_工作项状态类型 :id=bi_form_work_item_state_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|completed|已完成|completed||
+|closed|已关闭|closed||
+
+##### BI报表_工作项缺陷 :id=bi_form_item_bug
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|严重程度|item_10||
+|20|优先级|item_20||
+
+##### BI报表_工单占比 :id=bi_form_ticket
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|优先级|item_10||
+|20|状态|item_20||
+|30|工单类型|item_30||
+|40|渠道|item_40||
+|50|解决方案|item_50||
+
+##### BI报表_时间单位 :id=bi_form_time_unit
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|day|天|day||
+|week|周|week||
+|month|月|month||
+|quarter|季度|quarter||
+|year|年|year||
+
+##### BI报表_用例 :id=bi_form_case
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|重要程度|item_10||
+|20|用例状态|item_20||
+|30|用例类型|item_30||
+
+##### BI报表_计算规则 :id=bi_form_calculate_rule
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|求和|item_10||
+|20|平均值|item_20||
+|30|最大值|item_30||
+|40|最小值|item_40||
+
+##### BI报表_计算规则累加 :id=bi_form_calculate_rule_add
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|求和|item_10||
+|20|平均值|item_20||
+|30|最大值|item_30||
+|40|最小值|item_40||
+|50|累加|item_50||
+|60|累减|item_60||
+
+##### BI报表_需求占比 :id=bi_form_idea_ratio
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|优先级|item_10||
+|20|状态|item_20||
+|30|需求来源|item_30||
+|40|需求类型|item_40||
+
+##### BI报表类型 :id=bi_chart_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|数字图表|item_10||
+|20|多系列柱状图|item_20||
+|30|堆积柱状图|item_30||
+|40|分区柱状图|item_40||
+|50|多系列折线图|item_50||
+|60|堆积条形图|item_60||
+|70|饼图|item_70||
+|80|表格|item_80||
+|90|雷达图|item_90||
+|100|仪表盘|item_100||
+|110|散点图|item_110||
+|120|分区折线图|item_120||
+|130|多系列条形图|item_130||
+|140|面积图|item_140||
+|150|交叉表|item_150||
+
 ##### 严重程度 :id=severity
 
 
@@ -10,6 +160,56 @@
 |20|严重|item_20||
 |30|一般|item_30||
 |40|建议|item_40||
+
+##### 主状态逻辑设计呈现模式 :id=MSLogicDesignMode
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|table|表格|table||
+|graph|流程|graph||
+
+##### 云实体主状态逻辑处理节点类型(设计) :id=DELogicNodeType_MS
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|base|基础|base||
+
+##### 云实体关系属性影射类型 :id=DERDERMapType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|SUM|合计|sum||
+|AVG|平均|avg||
+|MAX|最大值|max||
+|MIN|最小值|min||
+|COUNT|计数|count||
+|EXISTS|存在|exists|从实体存在，1表示存在，0表示不存在|
+|NOTEXISTS|不存在|notexists|从实体不存在，1表示不存在，0表示存在|
+|USER|用户自定义|user||
+|USER2|用户自定义2|user2||
+|USER3|用户自定义3|user3||
+|USER4|用户自定义4|user4||
+
+##### 云平台门户部件类型 :id=PortletType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|LIST|实体列表|list||
+|CHART|实体图表|chart||
+|VIEW|系统视图|view||
+|REPORT|实体报表|report|嵌入实体报表部件|
+|HTML|网页部件|html||
+|ACTIONBAR|操作栏|actionbar||
+|TOOLBAR|工具栏|toolbar||
+|CUSTOM|自定义|custom||
 
 ##### 产品需求高级搜索属性 :id=idea_advanced_search_field
 
@@ -67,16 +267,96 @@
 |30|重要通知|item_30||
 |40|关注|item_40||
 
+##### 关联类型 :id=relation_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|duplicates|重复|duplicates||
+|causes|原因|causes||
+|is_caused_by|结果|is_caused_by||
+|blocks|阻塞|blocks||
+|is_blocked_by|被阻塞|is_blocked_by||
+|relates|关联|relates||
+|replica|副本|replica||
+|copy|拷贝|copy||
+
+##### 前后置任务类型（依赖） :id=job_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|前置任务|item_1||
+|2|前置任务|item_2||
+|3|前置任务|item_3||
+|4|前置任务|item_4||
+|5|后置任务|item_5||
+|6|后置任务|item_6||
+|7|后置任务|item_7||
+|8|后置任务|item_8||
+
+##### 前置任务-依赖类型 :id=front_dependency_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|开始后才开始 本任务|item_1||
+|2|开始后才结束 本任务|item_2||
+|3|结束后才开始 本任务|item_3||
+|4|结果后才结束 本任务|item_4||
+
+##### 历史版本 :id=history_version_list
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|all|全部版本|all||
+|named_list|命名版本|named_list||
+
+##### 可供选择的属性变更 :id=enable_field_change
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|ProjMgmt.work_item.state|变更工作项状态|projmgmt_work_item_state||
+|ProjMgmt.work_item.*|变更工作项属性|item_3||
+
 ##### 可供选择的触发器 :id=enable_action
 
 
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|ProjMgmt.work_item.create:AFTER|创建工作项|projmgmt_work_item_create_after||
-|ProjMgmt.project.update:AFTER|更新项目信息|projmgmt_project_update_after||
-|TestMgmt.run.save_run_history.AFTER|更新执行用例|testmgmt_run_save_run_history_after||
-|Base.member.create:AFTER|创建团队成员|base_member_create_after||
+|product|产品|product||
+|project|项目|project||
+|library|测试库|library||
+|wiki|空间|wiki||
+|base|基础|base||
+
+##### 后置任务-依赖类型 :id=rear_dependency_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|5|本任务 开始后才开始|item_5||
+|6|本任务 开始后才结束|item_6||
+|7|本任务 结束后才开始|item_7||
+|8|本任务 结束后才结束|item_8||
+
+##### 启停状态 :id=user_report_flag
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|开启|item_1||
+|0|停止|item_0||
 
 ##### 团队角色类型 :id=user_group_role_type
 
@@ -97,6 +377,15 @@
 |2|设立完成|item_2||
 |3|规划快照|item_3||
 
+##### 基线类型 :id=baseline_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|principal|基线|principal||
+|plan|快照|plan||
+
 ##### 复现概率 :id=reproduction_probability
 
 
@@ -107,6 +396,24 @@
 |20|大概率复现|item_20||
 |30|小概率复现|item_30||
 |40|仅出现一次|item_40||
+
+##### 多维分析指标类别 :id=BIMeasureType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|COMMON|常规|common||
+|CALCULATED|动态计算|calculated||
+
+##### 多维分析维度类别 :id=BIDimensionType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|COMMON|常规|common||
+|CALCULATED|动态计算|calculated||
 
 ##### 字典目录 :id=dictionary_catalog
 
@@ -129,6 +436,15 @@
 |completed|已完成|completed||
 |closed|已关闭|closed||
 
+##### 完成评审-评审状态（通过/拒绝） :id=complete_review_state_passordenial
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|全部标记为通过|item_10||
+|20|全部标记为拒绝|item_20||
+
 ##### 实体通知目标类型 :id=DENotifyTargetType
 
 
@@ -138,6 +454,32 @@
 |EVENTDATAFIELD|属性|eventdatafield||
 |DSTUSER|成员|dstuser||
 |DSTDEPARTMENT|部门|dstdepartment||
+
+##### 实体逻辑处理节点类型(设计) :id=DELogicNodeType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|BaseEvent|基础事件|baseevent||
+|ParamAction|参数操作|paramaction||
+|GeneralProcess|常规处理|generalprocess||
+|DBProcess|数据库操作|dbprocess||
+|WFProcess|工作流处理|wfprocess||
+|Advanced|高级|advanced||
+
+##### 实体逻辑处理节点类型(设计)3 :id=DELogicNodeType3
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|BaseEvent|基础事件|baseevent||
+|ParamAction|参数操作|paramaction||
+|GeneralProcess|常规处理|generalprocess||
+|DBProcess|数据库操作|dbprocess||
+|WFProcess|工作流处理|wfprocess||
+|Advanced|高级|advanced||
 
 ##### 客户等级 :id=customer_level
 
@@ -166,6 +508,20 @@
 |70|游戏|item_70||
 |80|金融|item_80||
 |90|其他|item_90||
+
+##### 工作日 :id=weekday
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|星期一|item_1||
+|2|星期二|item_2||
+|3|星期三|item_3||
+|4|星期四|item_4||
+|5|星期五|item_5||
+|6|星期六|item_6||
+|0|星期日|item_0||
 
 ##### 工作项状态类型 :id=state_type
 
@@ -236,7 +592,18 @@
 |n_identifier_like|编号|n_identifier_like||
 |n_description_like|描述|n_description_like||
 
-##### 所属类型（空间） :id=space_scope_type
+##### 成员类型 :id=member_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|成员|item_1||
+|2|团队|item_2||
+|3|部门|item_3||
+|4|角色|item_4||
+
+##### 所属类型（包含个人） :id=user_scope_type
 
 
 
@@ -274,6 +641,41 @@
 | --------   |------------|------------|------------|
 |0|未应用|item_0||
 |1|已应用|item_1||
+
+##### 报表_数据集 :id=report_group
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|工作项|item_10||
+|20|发布|item_20||
+|30|迭代|item_30||
+|40|项目|item_40||
+|50|测试用例|item_50||
+|60|执行用例|item_60||
+|70|测试计划|item_70||
+|80|工单|item_80||
+|90|产品需求|item_90||
+|100|工时|item_100||
+
+##### 报表_数据集BI :id=report_group_bi
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|BIScheme.work_item|工作项|bischeme_work_item||
+|BIScheme.release|发布|bischeme_release||
+|BIScheme.sprint|迭代|bischeme_sprint||
+|BIScheme.project|项目|bischeme_project||
+|BIScheme.test_case|测试用例|bischeme_test_case||
+|BIScheme.run|执行用例|bischeme_run||
+|BIScheme.test_plan|测试计划|bischeme_test_plan||
+|BIScheme.ticket|工单|bischeme_ticket||
+|BIScheme.idea|产品需求|bischeme_idea||
+|BIScheme.workload|工时|bischeme_workload||
+|BIScheme.review|测试评审|bischeme_review||
 
 ##### 报表类型 :id=report_type
 
@@ -360,6 +762,74 @@
 |SUCCESS|成功|success||
 |FAILURE|失败|failure||
 
+##### 是否包含删除 :id=contains_delete
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1,0|包含|item_1||
+|0|不包含|item_0||
+
+##### 是否包含归档 :id=contains_archive
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1,0|包含|item_1||
+|0|不包含|item_0||
+
+##### 智能报表报表指标引用类型 :id=BIReportItemMSRefType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|NONE|无|none||
+|YEARERLIER|同比|yearerlier||
+|PERIODEARLIER|环比|periodearlier||
+|RATIO|占比|ratio||
+
+##### 智能报表报表项放置位置 :id=BIReportItemPlacement
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|NONE|无|none||
+|ROWHEADER|行头|rowheader||
+|COLHEADER|列头|colheader||
+
+##### 智能报表报表项放置类型 :id=BIReportItemPlaceType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|VISIBLE|默认显示|visible||
+|INVISIBLE|默认隐藏|invisible||
+|FROZEN|固定|frozen||
+
+##### 智能报表报表项类型 :id=BIReportItemType
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|MEASURE|指标|measure||
+|DIMENSION|维度|dimension||
+|USER|用户自定义|user||
+
+##### 最终评审结果 :id=final_stage_results
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|通过|item_1||
+|0|不通过|item_0||
+
 ##### 最近使用 :id=recent_use
 
 
@@ -410,6 +880,16 @@
 |test_case|用例|test_case||
 |work_item|工作项|work_item||
 |page|页面|page||
+
+##### 核心产品功能状态 :id=product_func_state
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|0|未安装|not_install||
+|1|已安装|Installed||
+|2|已禁用|disabled||
 
 ##### 模板分组 :id=stenci_type
 
@@ -513,11 +993,12 @@
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|10|待评审|item_10||
+|10|待提交|item_10||
 |20|评审中|item_20||
 |30|通过|item_30||
 |40|不通过|item_40||
 |50|已撤回|item_50||
+|60|已完成|item_60||
 
 ##### 用例重要程度 :id=test_case_level
 
@@ -550,7 +1031,27 @@
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
 |ProjMgmt.work_item.create:AFTER|创建工作项|projmgmt_work_item_create_after||
-|ProjMgmt.project.update:AFTER|更新项目信息|projmgmt_project_update_after||
+|ProjMgmt.work_item.delete:AFTER|删除工作项|projmgmt_work_item_delete_after||
+|ProjMgmt.work_item.archive:AFTER|归档工作项|projmgmt_work_item_archive_after||
+
+##### 空间共享状态 :id=space_shared_status
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|0|未共享|item_0||
+|1|全部页面共享|item_1||
+|2|部分页面共享|item_2||
+
+##### 空间共享页面范围 :id=space_shared_scope
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|全部页面|item_1||
+|2|自定义页面|item_2||
 
 ##### 索引类型 :id=index_type
 
@@ -575,6 +1076,26 @@
 |sprint_id|迭代|sprint_id||
 |REAPPEAR_PROBABILITY|复现概率|reappear_probability||
 
+##### 自动化规则类型 :id=auto_flow_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|EVENTHOOK|事件处理|eventhook||
+|FIELDCHANGEHOOK|属性变化处理|fieldchangehook||
+|WEBHOOK|收到WebHook|webhook||
+
+##### 规划快照类型 :id=plan_snapshot_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|基线|item_1||
+|2|基线|item_2||
+|3|快照|item_3||
+
 ##### 角色类型 :id=role_type
 
 
@@ -584,6 +1105,25 @@
 |admin|管理员|admin||
 |user|普通成员|user||
 |reader|只读成员|reader||
+
+##### 讨论状态 :id=discuss_status
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|0|已关闭|item_0||
+|1|进行中|item_1||
+
+##### 评审人类型 :id=reviewer_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|由评审发起人自由指定|item_10||
+|20|指定评审人|item_20||
+|30|指定团队|item_30||
 
 ##### 评审内容变更类型 :id=review_change_type
 
@@ -595,14 +1135,23 @@
 |1|修改|item_1||
 |2|删除|item_2||
 
+##### 评审状态（通过/拒绝） :id=review_state_passordenial
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|3|通过|item_3||
+|4|拒绝|item_4||
+
 ##### 评审类型 :id=review_type
 
 
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|10|用例评审|item_10||
-|20|基线评审|item_20||
+|TEST_CASE|用例评审|test_case||
+|BASELINE|基线评审|baseline||
 
 ##### 评审结果 :id=review_result
 
@@ -610,9 +1159,20 @@
 
 | 值col150        |    文本col150    |   代码名col150    |  备注col800     |
 | --------   |------------|------------|------------|
-|2|未评审|item_2||
+|1|未评审|item_1||
+|2|评审中|item_2||
 |3|通过|item_3||
 |4|拒绝|item_4||
+
+##### 评审阶段状态 :id=stage_state
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|未开始|item_10||
+|20|进行中|item_20||
+|30|已完成|item_30||
 
 ##### 评论主体类型 :id=principal_type
 
@@ -624,6 +1184,15 @@
 |idea|需求|idea||
 |test_case|用例|test_case||
 
+##### 迭代变更类型 :id=sprint_alteration_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|移入|item_1||
+|2|移出|item_2||
+
 ##### 迭代状态 :id=sprint_status
 
 
@@ -633,6 +1202,51 @@
 |1|未开始|item_1||
 |2|进行中|item_2||
 |3|已完成|item_3||
+
+##### 选择依赖 :id=choose_dependency
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|1|开始后才开始|item_1||
+|2|开始后才结束|item_2||
+|3|结束后才开始|item_3||
+|4|结束后才结束|item_4||
+
+##### 选择关联类型 :id=choose_relation_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|duplicates|重复|duplicates||
+|relates|关联|relates||
+|causes|原因|causes||
+|is_caused_by|结果|is_caused_by||
+|blocks|阻塞|blocks||
+|is_blocked_by|被阻塞|is_blocked_by||
+
+##### 选择前后置任务 :id=choose_job_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|front|前置任务|front||
+|after|后置任务|after||
+
+##### 通用重要程度 :id=common_level
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|10|非常重要|item_10||
+|20|重要|item_20||
+|30|一般|item_30||
+|40|不重要|item_40||
+|50|未知|item_50||
 
 ##### 通知人员属性 :id=notify_field
 
@@ -690,6 +1304,7 @@
 |WEBHOOK|WebHook|webhook|WEB钩子|
 |EVENTHOOK|事件处理|eventhook||
 |TIMERTASK|定时作业|timertask|后台定时作业|
+|FIELDCHANGEHOOK|属性变化处理|fieldchangehook||
 |USER|用户自定义|user||
 |USER2|用户自定义2|user2||
 |USER3|用户自定义3|user3||
@@ -752,6 +1367,25 @@
 |20|功能需求|item_20||
 |30|安全需求|item_30||
 |40|体验优化|item_40||
+
+##### 非空间成员查看共享页面类型 :id=shared_page_check_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|reader|仅查看|reader||
+|user|可编辑|user||
+
+##### 页面共享类型 :id=shared_page_type
+
+
+
+| 值col150        |    文本col150    |   代码名col150    |  备注col800     |
+| --------   |------------|------------|------------|
+|0|未共享|item_0||
+|1|仅自身页面共享|item_1||
+|2|同时共享子页面|item_2||
 
 ##### 页面类型 :id=page_type
 

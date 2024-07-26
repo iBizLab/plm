@@ -14,17 +14,6 @@
   * opendata(预置打开数据逻辑)
 
 
-### 关联界面行为
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_数据导入栏](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_导出操作（Excel）](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_新建操作](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_删除操作](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_拷贝操作](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_帮助操作](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_编辑操作](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_导出数据模型](module/Base/parameter#界面行为)
-  * [系统参数(PARAMETER)](module/Base/parameter) : [表格界面_搜索栏](module/Base/parameter#界面行为)
-
 ### 关联视图
   * [系统参数(parameter_edit_view)](app/view/parameter_edit_view)
 

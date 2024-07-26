@@ -14,8 +14,8 @@
 
 
 ### 关联界面行为
-  * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [表格界面_新建操作_通用](module/Wiki/space_member#界面行为)
   * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [表格界面_删除操作](module/Wiki/space_member#界面行为)
+  * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [表格界面_新建操作_通用](module/Wiki/space_member#界面行为)
   * [空间成员(SPACE_MEMBER)](module/Wiki/space_member) : [设置角色](module/Wiki/space_member#界面行为)
 
 ### 关联视图

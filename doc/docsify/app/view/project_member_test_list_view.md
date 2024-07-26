@@ -15,7 +15,7 @@
 
 ### 关联视图
   * [项目成员(project_member_edit_view)](app/view/project_member_edit_view)
-  * [项目(project_mpick_up_view)](app/view/project_mpick_up_view)
+  * [选择项目(project_mpick_up_view)](app/view/project_mpick_up_view)
   * [选择成员(user_choose_mpick_up_view)](app/view/user_choose_mpick_up_view)
 
 <script>

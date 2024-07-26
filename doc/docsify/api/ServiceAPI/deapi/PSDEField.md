@@ -16,9 +16,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
+|<el-row justify="space-between"><el-col :span="20">fieldtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记|
+|<el-row justify="space-between"><el-col :span="20">fieldtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记2|
 |<el-row justify="space-between"><el-col :span="20">length</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|长度|
 |<el-row justify="space-between"><el-col :span="20">logicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|中文名称|
 |<el-row justify="space-between"><el-col :span="20">psdefieldid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体属性标识|
@@ -28,6 +31,10 @@
 |<el-row justify="space-between"><el-col :span="20">psdatatypeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">psdatatypename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">precision2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|浮点精度|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
 |<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
@@ -38,11 +45,14 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -54,6 +64,10 @@
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -66,11 +80,14 @@
 ```json
 
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -82,6 +99,10 @@
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -114,11 +135,14 @@
 ```json
 
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -130,6 +154,10 @@
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -181,9 +209,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
+|<el-row justify="space-between"><el-col :span="20">fieldtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记|
+|<el-row justify="space-between"><el-col :span="20">fieldtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记2|
 |<el-row justify="space-between"><el-col :span="20">length</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|长度|
 |<el-row justify="space-between"><el-col :span="20">logicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|中文名称|
 |<el-row justify="space-between"><el-col :span="20">psdefieldid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体属性标识|
@@ -193,6 +224,10 @@
 |<el-row justify="space-between"><el-col :span="20">psdatatypeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">psdatatypename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">precision2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|浮点精度|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
 |<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
@@ -203,11 +238,14 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -219,6 +257,10 @@
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -231,11 +273,14 @@
 ```json
 
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -247,6 +292,10 @@
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -272,9 +321,12 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
+|<el-row justify="space-between"><el-col :span="20">fieldtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记|
+|<el-row justify="space-between"><el-col :span="20">fieldtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记2|
 |<el-row justify="space-between"><el-col :span="20">length</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|长度|
 |<el-row justify="space-between"><el-col :span="20">logicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|中文名称|
 |<el-row justify="space-between"><el-col :span="20">psdefieldid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体属性标识|
@@ -284,6 +336,10 @@
 |<el-row justify="space-between"><el-col :span="20">psdatatypeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">psdatatypename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">precision2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|浮点精度|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
 |<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
@@ -294,11 +350,14 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -310,6 +369,10 @@
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -340,9 +403,12 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
 |<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
 |<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
+|<el-row justify="space-between"><el-col :span="20">fieldtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记|
+|<el-row justify="space-between"><el-col :span="20">fieldtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记2|
 |<el-row justify="space-between"><el-col :span="20">length</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|长度|
 |<el-row justify="space-between"><el-col :span="20">logicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|中文名称|
 |<el-row justify="space-between"><el-col :span="20">psdefieldid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体属性标识|
@@ -352,6 +418,10 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdatatypeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">psdatatypename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
 |<el-row justify="space-between"><el-col :span="20">precision2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|浮点精度|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
 |<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
 |<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
 |<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
@@ -362,11 +432,14 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -378,6 +451,10 @@ Integer
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -390,11 +467,14 @@ Integer
 ```json
 
 {
+  "dynamodelflag" : null,
   "allowempty" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
   "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
   "length" : null,
   "logicname" : null,
   "psdefieldid" : null,
@@ -406,6 +486,10 @@ Integer
   "precision2" : null,
   "updatedate" : null,
   "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
   "extension_tag" : null,
   "extension_tag2" : null,
   "extension_tag3" : null,
@@ -413,6 +497,89 @@ Integer
 }
 
 ```
+
+## 应用
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/psdefields/{key}/apply" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|实体属性标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">allowempty</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|允许空值|
+|<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码名称|
+|<el-row justify="space-between"><el-col :span="20">deftype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|Integer|属性类型|
+|<el-row justify="space-between"><el-col :span="20">fieldtag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记|
+|<el-row justify="space-between"><el-col :span="20">fieldtag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记2|
+|<el-row justify="space-between"><el-col :span="20">length</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|长度|
+|<el-row justify="space-between"><el-col :span="20">logicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|中文名称|
+|<el-row justify="space-between"><el-col :span="20">psdefieldid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体属性标识|
+|<el-row justify="space-between"><el-col :span="20">psdefieldname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体属性名称|
+|<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">psdatatypeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
+|<el-row justify="space-between"><el-col :span="20">psdatatypename</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|数据类型|
+|<el-row justify="space-between"><el-col :span="20">precision2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|浮点精度|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
+|<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
+|<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
+|<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
+|<el-row justify="space-between"><el-col :span="20">extension_tag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记4|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "dynamodelflag" : null,
+  "allowempty" : null,
+  "codename" : null,
+  "createdate" : null,
+  "createman" : null,
+  "deftype" : null,
+  "fieldtag" : null,
+  "fieldtag2" : null,
+  "length" : null,
+  "logicname" : null,
+  "psdefieldid" : null,
+  "psdefieldname" : null,
+  "psdeid" : null,
+  "psdename" : null,
+  "psdatatypeid" : null,
+  "psdatatypename" : null,
+  "precision2" : null,
+  "updatedate" : null,
+  "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
+  "extension_tag" : null,
+  "extension_tag2" : null,
+  "extension_tag3" : null,
+  "extension_tag4" : null,
+}
+```
+
+
 
 ## 数据集
 
@@ -432,11 +599,22 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">n_deftype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|属性类型|
+|<el-row justify="space-between"><el-col :span="20">n_fieldtag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记2|
+|<el-row justify="space-between"><el-col :span="20">n_fieldtag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|属性标记|
+|<el-row justify="space-between"><el-col :span="20">n_logicname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|中文名称|
 |<el-row justify="space-between"><el-col :span="20">n_psdefieldid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体属性标识|
 |<el-row justify="space-between"><el-col :span="20">n_psdefieldname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体属性名称|
 |<el-row justify="space-between"><el-col :span="20">n_psdeid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">n_psdename_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">n_psdename_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">n_usertag2_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_usertag2_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">n_usertag3_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">n_usertag3_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">n_usertag4_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
+|<el-row justify="space-between"><el-col :span="20">n_usertag4_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
+|<el-row justify="space-between"><el-col :span="20">n_usertag_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">n_usertag_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 
 
 
@@ -447,11 +625,22 @@ Integer
   "size" : 20,
   "sort" : null,
   "n_deftype_eq" : null,
+  "n_fieldtag2_eq" : null,
+  "n_fieldtag_eq" : null,
+  "n_logicname_like" : null,
   "n_psdefieldid_eq" : null,
   "n_psdefieldname_like" : null,
   "n_psdeid_eq" : null,
   "n_psdename_eq" : null,
   "n_psdename_like" : null,
+  "n_usertag2_eq" : null,
+  "n_usertag2_noteq" : null,
+  "n_usertag3_eq" : null,
+  "n_usertag3_noteq" : null,
+  "n_usertag4_eq" : null,
+  "n_usertag4_noteq" : null,
+  "n_usertag_eq" : null,
+  "n_usertag_noteq" : null,
 }
 ```
 
@@ -460,11 +649,14 @@ Integer
 ```json
 [
   {
+    "dynamodelflag" : null,
     "allowempty" : null,
     "codename" : null,
     "createdate" : null,
     "createman" : null,
     "deftype" : null,
+    "fieldtag" : null,
+    "fieldtag2" : null,
     "length" : null,
     "logicname" : null,
     "psdefieldid" : null,
@@ -476,6 +668,10 @@ Integer
     "precision2" : null,
     "updatedate" : null,
     "updateman" : null,
+    "usertag" : null,
+    "usertag2" : null,
+    "usertag3" : null,
+    "usertag4" : null,
     "extension_tag" : null,
     "extension_tag2" : null,
     "extension_tag3" : null,

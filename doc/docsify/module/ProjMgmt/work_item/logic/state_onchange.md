@@ -47,7 +47,7 @@ DEACTION1 --> END1
 
 
 
-1. 将`last.STATE(状态)` 设置给  `transition_history(流转对象).FROM_STATE(源状态)`
+1. 将`Last(last).STATE(状态)` 设置给  `transition_history(流转对象).FROM_STATE(源状态)`
 2. 将`Default(传入变量).STATE(状态)` 设置给  `transition_history(流转对象).TO_STATE(目标状态)`
 3. 将`Default(传入变量).UPDATE_MAN(更新人)` 设置给  `transition_history(流转对象).CREATE_MAN(建立人)`
 4. 将`Default(传入变量).ID(标识)` 设置给  `transition_history(流转对象).OWNER_ID(所属数据标识)`
@@ -73,5 +73,5 @@ DEACTION1 --> END1
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
-|last|last|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|last|Last|最后数据变量|||
 |流转对象|transition_history|数据对象|[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history.md)||

@@ -21,6 +21,7 @@
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">level</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|级别|
+|<el-row justify="space-between"><el-col :span="20">debug_info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试日志信息|
 |<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|日志信息|
 |<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|起始时间|
 |<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
@@ -39,6 +40,7 @@
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -63,6 +65,7 @@
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -107,6 +110,7 @@
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -170,6 +174,7 @@
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">level</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|级别|
+|<el-row justify="space-between"><el-col :span="20">debug_info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试日志信息|
 |<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|日志信息|
 |<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|起始时间|
 |<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
@@ -188,6 +193,7 @@
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -212,6 +218,7 @@
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -249,6 +256,7 @@
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">level</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|级别|
+|<el-row justify="space-between"><el-col :span="20">debug_info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试日志信息|
 |<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|日志信息|
 |<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|起始时间|
 |<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
@@ -267,6 +275,7 @@
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -309,6 +318,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">level</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|级别|
+|<el-row justify="space-between"><el-col :span="20">debug_info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试日志信息|
 |<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|日志信息|
 |<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|起始时间|
 |<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
@@ -327,6 +337,7 @@ Integer
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -351,6 +362,7 @@ Integer
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -388,6 +400,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
 |<el-row justify="space-between"><el-col :span="20">category</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">level</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|级别|
+|<el-row justify="space-between"><el-col :span="20">debug_info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|调试日志信息|
 |<el-row justify="space-between"><el-col :span="20">info</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|日志信息|
 |<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|起始时间|
 |<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
@@ -406,6 +419,7 @@ Integer
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -430,6 +444,7 @@ Integer
   "owner_subtype" : null,
   "category" : null,
   "level" : null,
+  "debug_info" : null,
   "info" : null,
   "start_at" : null,
   "end_at" : null,
@@ -492,6 +507,7 @@ Integer
     "owner_subtype" : null,
     "category" : null,
     "level" : null,
+    "debug_info" : null,
     "info" : null,
     "start_at" : null,
     "end_at" : null,
@@ -554,6 +570,7 @@ Integer
     "owner_subtype" : null,
     "category" : null,
     "level" : null,
+    "debug_info" : null,
     "info" : null,
     "start_at" : null,
     "end_at" : null,

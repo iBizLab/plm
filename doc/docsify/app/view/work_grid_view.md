@@ -17,17 +17,6 @@
   * opendata(预置打开数据逻辑)
 
 
-### 关联界面行为
-  * [工作(WORK)](module/Base/work) : [表格界面_搜索栏](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_帮助操作](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_新建操作](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_编辑操作](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_导出操作（Excel）](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_拷贝操作](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_导出数据模型](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_删除操作](module/Base/work#界面行为)
-  * [工作(WORK)](module/Base/work) : [表格界面_数据导入栏](module/Base/work#界面行为)
-
 ### 关联视图
   * [工作(work_edit_view)](app/view/work_edit_view)
 

@@ -53,6 +53,7 @@
 |标题|TITLE|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|继承属性|100|否||
 |更新时间|UPDATE_TIME|继承属性||否||
+|工作项类型|WORK_ITEM_TYPE_ID|文本，可指定长度|100|是||
 
 <p class="panel-title"><b>联合主键</b></p>
 

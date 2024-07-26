@@ -56,6 +56,7 @@
 |[DER1N_MEMBER_USER_USER_ID](der/DER1N_MEMBER_USER_USER_ID)|[企业用户(USER)](module/Base/user)|1:N关系||
 |[DERCUSTOM_MEMBER_COMMON_FLOW](der/DERCUSTOM_MEMBER_COMMON_FLOW)|[通用规则(COMMON_FLOW)](module/Base/common_flow)|自定义关系||
 |[DERCUSTOM_MEMBER_GROUP_OWNER_ID](der/DERCUSTOM_MEMBER_GROUP_OWNER_ID)|[团队(GROUP)](module/Base/group)|自定义关系||
+|[DERCUSTOM_MEMBER_PAGE_OWNER_ID](der/DERCUSTOM_MEMBER_PAGE_OWNER_ID)|[页面(PAGE)](module/Wiki/article_page)|自定义关系||
 |[DERCUSTOM_MEMBER_PROJECT_OWNER_ID](der/DERCUSTOM_MEMBER_PROJECT_OWNER_ID)|[项目(PROJECT)](module/ProjMgmt/project)|自定义关系||
 
 </el-tab-pane>
@@ -72,6 +73,7 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|添加共享页面非空间下成员|add_shared_page_member|[实体处理逻辑](module/Base/member/logic/add_shared_page_member "添加共享页面非空间下成员")|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Base/member/logic/change_role "变更角色")|默认|不支持||||
 |新建成员|create_member|[实体处理逻辑](module/Base/member/logic/create_member "新建成员")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Base/member/logic/nothing "无操作")|默认|不支持||||
@@ -82,6 +84,7 @@
 |[变更角色](module/Base/member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建成员](module/Base/member/logic/create_member)|create_member|无||批量新建团队成员|
 |[无操作](module/Base/member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[添加共享页面非空间下成员](module/Base/member/logic/add_shared_page_member)|add_shared_page_member|无||添加共享页面非空间下成员|
 |[获取当前项目下资源成员](module/Base/member/logic/cur_project_resource)|cur_project_resource|无||获取当前项目下资源成员|
 |[获取当前项目集下资源成员](module/Base/member/logic/cur_portfolio_resource)|cur_portfolio_resource|无||获取当前项目集下资源成员|
 |[获取资源成员（全局）](module/Base/member/logic/resource_member)|resource_member|无||获取资源成员（全局）|
@@ -94,6 +97,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/member/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/member/query/View)|VIEW|否|否 |否 ||
+|[共享页面_非空间成员(shared_page_member)](module/Base/member/query/shared_page_member)|shared_page_member|否|否 |否 ||
 |[团队管理员(user_group_admin)](module/Base/member/query/user_group_admin)|user_group_admin|否|否 |否 ||
 
 ## 数据集合
@@ -106,6 +110,7 @@
 |[获取当前项目集下资源成员(cur_portfolio_resource)](module/Base/member/dataset/cur_portfolio_resource)|cur_portfolio_resource|[实体逻辑](module/Base/member/logic/cur_portfolio_resource)|否|||
 |[获取当前项目下资源成员(cur_project_resource)](module/Base/member/dataset/cur_project_resource)|cur_project_resource|[实体逻辑](module/Base/member/logic/cur_project_resource)|否|||
 |[获取资源成员（全局）(resource_member)](module/Base/member/dataset/resource_member)|resource_member|[实体逻辑](module/Base/member/logic/resource_member)|否|||
+|[共享页面_非空间成员(shared_page_member)](module/Base/member/dataset/shared_page_member)|shared_page_member|数据查询|否|||
 |[团队管理员(user_group_admin)](module/Base/member/dataset/user_group_admin)|user_group_admin|数据查询|否|||
 
 ## 数据权限
@@ -140,8 +145,15 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 删除页面共享成员 | del_shared_member | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 添加页面共享成员 | add_shared_mmeber | 添加 |无数据|用户自定义||
 | 设置 | open_role_edit_view | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 添加成员 | add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[create_member](#行为)||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[添加页面共享成员](module/Base/member/uilogic/add_shared_member)|add_shared_member|添加页面共享成员：非空间下成员|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -173,6 +185,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Base/member?id=界面行为`">
   界面行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Base/member?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

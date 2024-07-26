@@ -10,7 +10,6 @@
 
 ### 关联视图
   * [客户(customer_pick_up_view)](app/view/customer_pick_up_view)
-  * [产品(product_pick_up_view)](app/view/product_pick_up_view)
 
 <script>
  const { createApp } = Vue

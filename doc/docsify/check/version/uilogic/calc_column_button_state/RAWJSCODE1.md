@@ -13,7 +13,7 @@ if (rows && rows.length > 0) {
 			Object.values(titleColumn).forEach(action => {
 				if (action.uiActionId === 'restore@version') {
                     // 版本标识为当前版本标识，禁用恢复版本
-					action.disabled = version_id == cur_version_id;
+					action.disabled = uiLogic.ctx.srfreadonly || version_id == cur_version_id;
 				}
 			})
 		}

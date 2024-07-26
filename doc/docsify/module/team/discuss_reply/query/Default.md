@@ -24,7 +24,11 @@
 
 <p class="panel-title"><b>查询列级别</b></p>
 
-* `默认（全部查询列）`
+* `全部数据`
+
+> [!ATTENTION|label:存在长文本属性]
+>
+> `CONTENT(回复内容)`
 
 
 
@@ -35,6 +39,7 @@
 
 ```sql
 SELECT
+t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,

@@ -19,7 +19,6 @@
 
 ### 关联视图
   * [文件夹(portfolio_project_show_view)](app/view/portfolio_project_show_view)
-  * [文件夹(portfolio_redirect_view)](app/view/portfolio_redirect_view)
 
 <script>
  const { createApp } = Vue

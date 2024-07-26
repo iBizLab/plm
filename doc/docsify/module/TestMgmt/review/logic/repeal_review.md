@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./repeal_review#begin {"开始"}]]
+state "清空提交人、状态、时间" as PREPAREPARAM1  [[$./repeal_review#prepareparam1 {"清空提交人、状态、时间"}]]
 state "绑定阶段" as PREPAREPARAM2  [[$./repeal_review#prepareparam2 {"绑定阶段"}]]
 state "获取评审内容" as DEDATASET1  [[$./repeal_review#dedataset1 {"获取评审内容"}]]
-state "清空提交人、状态、时间" as PREPAREPARAM1  [[$./repeal_review#prepareparam1 {"清空提交人、状态、时间"}]]
 state "更新评审" as DEACTION1  [[$./repeal_review#deaction1 {"更新评审"}]]
 state "结束" as END1 <<end>> [[$./repeal_review#end1 {"结束"}]]
 state "循环阶段数据" as LOOPSUBCALL1  [[$./repeal_review#loopsubcall1 {"循环阶段数据"}]] #green {

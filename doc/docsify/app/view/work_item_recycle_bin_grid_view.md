@@ -17,8 +17,8 @@
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [恢复](module/ProjMgmt/work_item#界面行为)
 
 ### 关联视图
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
 
 <script>
  const { createApp } = Vue

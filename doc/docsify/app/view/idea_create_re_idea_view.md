@@ -10,7 +10,6 @@
 
 ### 关联视图
   * [需求选择树视图(idea_pick_up_tree_view)](app/view/idea_pick_up_tree_view)
-  * [产品(product_pick_up_view)](app/view/product_pick_up_view)
 
 <script>
  const { createApp } = Vue

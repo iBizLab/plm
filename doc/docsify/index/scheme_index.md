@@ -17,6 +17,35 @@
 |OPPERSONNAME|操作人|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 组件(ADDON)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ADDON_TYPE|组件类型|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_ENABLED|启用|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|ORDER_VALUE|排序|INT|是||||
+|OWNER_ID|所属标识|VARCHAR|是|100|||
+|OWNER_SUBTYPE|所属子类型|VARCHAR|是|100|||
+|OWNER_TYPE|所属类型|VARCHAR|是|100|||
+|SETTING_MODEL|配置模型|TEXT|是|1048576|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 组件权限成员(ADDON_ROLE_MEMBER)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ADDON_ID|组件标识|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|TYPE|成员类型|INT|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USER_OBJ_ID|用户对象标识|VARCHAR|是|100|||
 #### 附件(ATTACHMENT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -62,6 +91,7 @@
 |OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
 |OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
 |STATUS|状态|VARCHAR|是|60|||
+|TYPE|基线类型|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 看板(BOARD)
@@ -92,6 +122,7 @@
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_LEAF|是否叶子节点|INT|是||||
+|IS_LEAF2|是否叶子节点2|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |OWNER_ID|所属数据标识|VARCHAR|是|100|||
 |OWNER_SUBTYPE|所属对象子类型|VARCHAR|是|100|||
@@ -166,16 +197,21 @@
 #### 讨论(DISCUSS_POST)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CONTENT|讨论内容|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|HEAT|热度|INT|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_DELETED|是否已删除|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
+|STATUS|状态|VARCHAR|是|60|||
 |TOPIC_ID|话题标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 讨论回复(DISCUSS_REPLY)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CONTENT|回复内容|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
@@ -188,20 +224,47 @@
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IDENTIFIER|话题标识|VARCHAR|是|100|||
+|IS_ARCHIVED|是否已归档|INT|是||||
+|IS_DELETED|是否已删除|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
+|SCOPE_ID|所属对象|VARCHAR|是|100|||
+|SCOPE_TYPE|所属|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|VISIBILITY|可见范围|VARCHAR|是|60|||
 #### 动态数据看板(DYNADASHBOARD)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
 |APPID|应用标识|VARCHAR|是|100|||
 |CREATEDATE|建立时间|DATETIME|是|8|||
 |CREATEMAN|建立人|VARCHAR|是|60|||
-|DYNADASHBOARDID<i class="fa fa-key"></i>|动态数据看板标识|VARCHAR|否|100|||
+|DESC|描述|TEXT|是|1048576|||
+|DYNADASHBOARDID<i class="fa fa-key"></i>|动态数据看板标识|VARCHAR|否|200|||
 |DYNADASHBOARDNAME|动态数据看板名称|VARCHAR|是|200|||
+|EXAMPLE_CHART|示例图|TEXT|是|1048576|||
+|IS_SYSTEM|是否系统类型|INT|是||||
 |MODEL|模型|TEXT|是|1048576|||
 |MODELID|模型标识|VARCHAR|是|100|||
+|OWNER_ID|所属数据标识|VARCHAR|是|100|||
+|OWNER_TYPE|所属数据类型|VARCHAR|是|100|||
+|SEQUENCES|序号|DECIMAL|是||||
+|TYPE|看板类型|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|USERID|用户标识|VARCHAR|是|100|||
+#### 动态应用菜单(DYNA_APPMENU)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|APPID|应用标识|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|MODEL|模型|TEXT|是|1048576|||
+|MODELID|模型标识|VARCHAR|是|100|||
+|NAME|名称|VARCHAR|是|200|||
 |OWNER_ID|所属数据标识|VARCHAR|是|100|||
 |OWNER_TYPE|所属数据类型|VARCHAR|是|100|||
 |TYPE|看板类型|VARCHAR|是|100|||
@@ -228,6 +291,7 @@
 |CATEGORY|类别|VARCHAR|是|100|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|DEBUG_INFO|调试日志信息|TEXT|是|1048576|||
 |ELAPSED_TIME|持续时间|INT|是|11|||
 |END_AT|结束时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
@@ -277,6 +341,7 @@
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_ENABLED|是否启用|INT|是|100|||
 |NAME|名称|VARCHAR|是|200|||
 |OBJECT_TYPE|对象类型|VARCHAR|是|100|||
 |REVIEW_ACTION_RULE|评审后置动作|TEXT|是|1048576|||
@@ -320,6 +385,21 @@
 |TITLE|标题|VARCHAR|是|500|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 需求模板(IDEA_TEMPLATE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CATEGORY_ID|类别标识|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DESCRIPTION|描述|TEXT|是|1048576|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|ID2|标识2|VARCHAR|是|100|||
+|NAME|名称|VARCHAR|是|200|||
+|PRODUCT_ID|产品|VARCHAR|是|100|||
+|SUITE|模块|VARCHAR|是|100|||
+|TITLE|标题|VARCHAR|是|500|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 洞察力(INSIGHT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -334,6 +414,39 @@
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |VIEW_URL|报表呈现视图|TEXT|是|1048576|||
+#### 效能报表(INSIGHT_REPORT)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CATEGORIES|类别|VARCHAR|是|2000|||
+|CHART_TYPE|图表类型|VARCHAR|是|60|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DESC|描述|TEXT|是|1048576|||
+|GROUP|组别|VARCHAR|是|60|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_SYSTEM|是否系统类型|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|REPORT_TYPE|报表类型|VARCHAR|是|100|||
+|TEMPLATE_MODEL|模板模型|TEXT|是|1048576|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VIEW_ID|视图标识|VARCHAR|是|100|||
+#### 效能视图(INSIGHT_VIEW)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DESCRIPTION|描述|VARCHAR|是|2000|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IDENTIFIER|视图标识|VARCHAR|是|100|||
+|IS_ARCHIVED|是否已归档|INT|是||||
+|IS_DELETED|是否已删除|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|SCOPE_ID|所属对象|VARCHAR|是|100|||
+|SCOPE_TYPE|所属|VARCHAR|是|60|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VISIBILITY|可见范围|VARCHAR|是|60|||
 #### 关键结果(KEY_RESULT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -400,19 +513,26 @@
 #### 页面(PAGE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACCESS_PASSWORD|访问密码|VARCHAR|是|100|||
 |CATEGORIES|类别路径|VARCHAR|是|2000|||
 |CONTENT|正文|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |CUR_VERSION_ID|当前版本标识|VARCHAR|是|100|||
 |CUR_VERSION_NAME|当前版本名称|VARCHAR|是|100|||
+|DATA|数据|TEXT|是|1048576|||
+|EXPIRATION_DATE|共享有效期|DATETIME|是||||
 |FORMAT_TYPE|正文格式|VARCHAR|是|60|||
+|ICON|图标|VARCHAR|是|500|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IDENTIFIER|编号|VARCHAR|是|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
 |IS_DELETED|是否已删除|INT|是||||
 |IS_LEAF|是否叶子节点|INT|是||||
+|IS_LOCK|是否锁定|INT|是||||
 |IS_PUBLISHED|是否发布|INT|是||||
+|IS_SHARED|是否开启共享|VARCHAR|是|60|||
+|IS_SHARED_SUBSET|是否同时共享子页面|VARCHAR|是|60|||
 |NAME|名称|VARCHAR|是|200|||
 |PARENT_ID|父页面标识|VARCHAR|是|100|||
 |PUBLISHED|发布状态|INT|是||||
@@ -421,6 +541,8 @@
 |PUBLISH_NAME|发布主题|VARCHAR|是|200|||
 |PUBLISH_TIME|发布时间|DATETIME|是||||
 |SEQUENCE|序号|DECIMAL|是||||
+|SHARED_BY|共享人|VARCHAR|是|100|||
+|SHARED_TIME|共享时间|DATETIME|是||||
 |SPACE_ID|空间标识|VARCHAR|是|100|||
 |TYPE|类型|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
@@ -567,6 +689,7 @@
 |IS_DELETED|是否已删除|INT|是||||
 |IS_LOCAL_CONFIGURE|是否本地配置|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
+|NOTICE|公告|TEXT|是|1048576|||
 |SCOPE_ID|所属对象|VARCHAR|是|100|||
 |SCOPE_TYPE|所属|VARCHAR|是|60|||
 |START_AT|开始时间|DATETIME|是||||
@@ -601,7 +724,6 @@
 |END_AT|发布时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
-|PROGRESS|发布进度|DECIMAL|是||||
 |PROJECT_ID|项目标识|VARCHAR|是|100|||
 |START_AT|开始时间|DATETIME|是||||
 |STATUS|状态|VARCHAR|是|60|||
@@ -641,11 +763,13 @@
 |CREATE_TIME|建立时间|DATETIME|是||||
 |CUR_VERSION_ID|当前版本标识|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|LEVEL|重要程度|VARCHAR|是|60|||
 |NAME|名称|VARCHAR|是|200|||
 |OWNER_TYPE|所属数据对象|VARCHAR|是|100|||
 |PARENT_VERSION_ID|父对象版本标识|VARCHAR|是|100|||
 |PRINCIPAL_ID|关联主体标识|VARCHAR|是|100|||
 |PRINCIPAL_TYPE|关联主体类型|VARCHAR|是|100|||
+|RELATION_TYPE|关联类型|VARCHAR|是|100|||
 |TARGET_ID|关联目标标识|VARCHAR|是|100|||
 |TARGET_TYPE|关联目标类型|VARCHAR|是|100|||
 |TARGET_VERSION_ID|目标对象版本标识|VARCHAR|是|100|||
@@ -681,6 +805,7 @@
 |CHANGE_VERSION|变更版本|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|FINAL_STAGE_RESULTS|最终评审结果|VARCHAR|是|60|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
 |REVIEW_RESULT|评审结果|VARCHAR|是|60|||
@@ -696,6 +821,7 @@
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
 |RESULT_STATE|状态|INT|是||||
+|SEQUENCES|顺序|INT|是||||
 |STAGE_ID|阶段标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
@@ -706,12 +832,16 @@
 |CASE_ID|测试用例标识|VARCHAR|是|100|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|CUR_VERSION_ID|当前版本标识|VARCHAR|是|100|||
 |EXECUTED_AT|执行时间|DATETIME|是||||
 |EXECUTOR_ID|执行人标识|VARCHAR|是|100|||
 |EXECUTOR_NAME|执行人|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_NEWEST|是否最新|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
+|PARENT_VERSION_ID|父对象版本标识|VARCHAR|是|100|||
 |PLAN_ID|测试计划标识|VARCHAR|是|100|||
+|PRIORITY|优先级|VARCHAR|是|60|||
 |REMARK|备注|VARCHAR|是|2000|||
 |STATUS|执行结果|VARCHAR|是|60|||
 |STEPS|步骤|TEXT|是|1048576|||
@@ -761,17 +891,25 @@
 #### 空间(SPACE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACCESS_PASSWORD|访问密码|VARCHAR|是|100|||
 |CATEGORY_ID|分类|VARCHAR|是|100|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |DESCRIPTION|描述|VARCHAR|是|2000|||
+|EXPIRATION_DATE|共享链接有效期|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IDENTIFIER|空间标识|VARCHAR|是|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
 |IS_DELETED|是否已删除|INT|是||||
+|IS_SHARED|是否开启共享|VARCHAR|是|60|||
 |NAME|名称|VARCHAR|是|200|||
 |SCOPE_ID|所属对象|VARCHAR|是|100|||
 |SCOPE_TYPE|所属|VARCHAR|是|60|||
+|SHARED_BY|共享人|VARCHAR|是|100|||
+|SHARED_PAGES|共享页面标识|TEXT|是|1048576|||
+|SHARED_TIME|共享时间|DATETIME|是||||
+|SHOW_LOGO|共享展示图标|VARCHAR|是|100|||
+|SHOW_TITLE|共享展示标题|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |VISIBILITY|可见范围|VARCHAR|是|60|||
@@ -805,14 +943,33 @@
 |STATUS|状态|VARCHAR|是|60|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
-#### 发布阶段(STAGE)
+#### 迭代变更(SPRINT_ALTERATION)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
+|SPRINT_ID|迭代标识|VARCHAR|是|100|||
+|SPRINT_STATUS|迭代状态|VARCHAR|是|60|||
+|TYPE|类型|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|WORK_ITEM_ID|工作项标识|VARCHAR|是|100|||
+#### 发布阶段(STAGE)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|COLOR|颜色|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_CURRENT|是否发布当前阶段|INT|是||||
+|NAME|名称|VARCHAR|是|200|||
+|OPERATED_TIME|操作时间|DATETIME|是||||
+|PID|父级标识|VARCHAR|是|100|||
 |RELEASE_ID|项目发布标识|VARCHAR|是|100|||
+|SEQUENCE|排序|DECIMAL|是||||
+|TYPE|阶段类型|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 页面模板(STENCIL)
@@ -936,6 +1093,7 @@
 |IDENTIFIER|编号|VARCHAR|是|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
 |IS_DELETED|是否已删除|INT|是||||
+|LEVEL|重要程度|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |PRIORITY|优先级|VARCHAR|是|60|||
 |PRODUCT_ID|产品标识|VARCHAR|是|100|||
@@ -998,6 +1156,7 @@
 |SEQUENCE|序号|DECIMAL|是||||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|VISIBILITY|可见范围|VARCHAR|是|60|||
 #### 项目发布(VERSION)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -1008,6 +1167,7 @@
 |FILTER|过滤属性|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IDENTIFIER|版本|DECIMAL|是|10|||
+|IS_NAMED|是否命名|INT|是||||
 |MANUAL|手动提交|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |OWNER_ID|所属数据标识|VARCHAR|是|100|||
@@ -1108,6 +1268,7 @@
 |REAPPEAR_PROBABILITY|复现概率|VARCHAR|是|60|||
 |RELEASE_ID|项目发布标识|VARCHAR|是|100|||
 |RISK|风险|VARCHAR|是|60|||
+|SEQUENCE|序号|DECIMAL|是||||
 |SEVERITY|严重程度|VARCHAR|是|60|||
 |SPRINT_ID|迭代标识|VARCHAR|是|100|||
 |START_AT|开始时间|DATETIME|是||||
@@ -1181,6 +1342,7 @@
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|IS_SYSTEM|是否系统类型|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |SEQUENCE|序号|DECIMAL|是||||
 |STYLE|样式表|VARCHAR|是|100|||
@@ -1199,8 +1361,11 @@
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_SYSTEM|是否归属系统|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
+|ORGIN_STATE|原始状态|VARCHAR|是|100|||
+|PROJECT_ID|项目标识|VARCHAR|是|100|||
 |PROJECT_TYPE|项目类型|VARCHAR|是|60|||
 |SEQUENCE|序号|DECIMAL|是||||
+|SUB_TYPE|下级类型|VARCHAR|是|200|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 ### db2

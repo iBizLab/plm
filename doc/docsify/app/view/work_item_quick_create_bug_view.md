@@ -9,7 +9,7 @@
 
 
 ### 关联视图
-  * [项目(project_pick_up_view)](app/view/project_pick_up_view)
+  * [选择项目(project_pick_up_view)](app/view/project_pick_up_view)
   * [工作项(work_item_pick_up_view)](app/view/work_item_pick_up_view)
 
 <script>

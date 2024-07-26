@@ -79,6 +79,7 @@
 |Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#review_content_Update)|||
 |添加评审内容|add_review_content|[实体处理逻辑](module/TestMgmt/review_content/logic/add_review_content "添加内容")|默认|不支持||||
 |完成评审|complete_review|[实体处理逻辑](module/TestMgmt/review_content/logic/complete_review "完成评审")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/TestMgmt/review_content/logic/nothing "无操作")|默认|不支持||||
 |规划用例|program_test_case|[实体处理逻辑](module/TestMgmt/review_content/logic/program_test_case "规划用例")|默认|不支持||||
 |评审内容条数|review_content_total|[实体处理逻辑](module/TestMgmt/review_content/logic/review_content_total "评审结果条数")|默认|不支持||||
 |设置评审结果|set_review_result|[实体处理逻辑](module/TestMgmt/review_content/logic/set_review_result "设置评审结果")|默认|不支持||||
@@ -93,12 +94,14 @@
 |[完成评审](module/TestMgmt/review_content/logic/complete_review)|complete_review|无||完成评审，判断是否为最终阶段，如果是变更评审的状态|
 |[开始评审](module/TestMgmt/review_content/logic/start_review)|start_review|无||开启当前阶段评审|
 |[提交评审](module/TestMgmt/review_content/logic/submit_review)|submit_review|无||测试|
+|[无操作](module/TestMgmt/review_content/logic/nothing)|nothing|无|||
 |[添加内容](module/TestMgmt/review_content/logic/add_review_content)|add_review_content|无||添加内容，生成正反向关联数据|
 |[生成最终评审结果](module/TestMgmt/review_content/logic/generate_review_result_finally)|generate_review_result_finally|无||评审完成后生成最终的评审结果|
 |[生成评审结果](module/TestMgmt/review_content/logic/generate_review_results)|generate_review_results|无||创建后自动生成评审结果|
+|[获取评审结果列表](module/TestMgmt/review_content/logic/get_review_context_list)|get_review_context_list|无||根据评审id和阶段id，获取评审数据列表<br>需要给default传入评审id（review_id）和阶段id（stage_id）|
 |[规划用例](module/TestMgmt/review_content/logic/program_test_case)|program_test_case|无||规划用例，将用例规划至评审内，生成正反向关联数据|
-|[设置评审结果](module/TestMgmt/review_content/logic/set_review_result)|set_review_result|无||待删除|
-|[设置评审结果（批）](module/TestMgmt/review_content/logic/set_review_result_all)|set_review_result_all|无||测试|
+|[设置评审结果](module/TestMgmt/review_content/logic/set_review_result)|set_review_result|无||单条数据评审逻辑|
+|[设置评审结果（批）](module/TestMgmt/review_content/logic/set_review_result_all)|set_review_result_all|无||批量进行评审|
 |[评审结果条数](module/TestMgmt/review_content/logic/review_content_total)|review_content_total|无||查询评审结果总条数与已评审条数|
 
 ## 数据查询
@@ -158,11 +161,15 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 设置评审结果 | set_review_result | 设置评审结果 |单项数据（主键）|用户自定义||
-| 保存评审结果 | save_review_result | 完成评审 |无数据|用户自定义||
+| 移出用例 | remove_case | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 移出用例（无权限） | remove_case_all | 移出用例 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 评审内容版本比对 | review_content_version_comparison | 版本比对 |单项数据|用户自定义||
 | 返回 | back | 返回 |无数据|用户自定义||
 | 提交评审 | submit_review | 提交评审 |无数据|用户自定义||
-| 完成当前阶段评审 | complete_review | 完成评审 |无数据|用户自定义||
+| 完成当前阶段评审 | complete_review | 完成评审 |无数据|<details><summary>打开视图或向导（模态）</summary></details>||
+| 快速评审 | complete_review_quickly | 评审 |多项数据（主键）|<details><summary>后台调用</summary>[set_review_result_all](#行为)||
 | 开始当前阶段评审 | start_cur_stage_review | 开始评审 |无数据|用户自定义||
+| 返回 | panel_usr0612818719_button_calluilogic_click | 返回 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
@@ -173,7 +180,10 @@
 |[打开评审结果](module/TestMgmt/review_content/uilogic/open_result)|open_result||
 |[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|commit_review||
 |[获取评审内容总条数](module/TestMgmt/review_content/uilogic/get_review_content_total)|get_review_content_total|获取评审内容总条数|
+|[计算表格列行为状态(review)](module/TestMgmt/review_content/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组内界面行为的禁用状态|
+|[评审内容版本比对](module/TestMgmt/review_content/uilogic/review_content_version_comparison)|review_content_version_comparison||
 |[返回](module/TestMgmt/review_content/uilogic/back)|back|查看评审结果后，返回主表单按钮使用|
+|[返回（历史）](module/TestMgmt/review_content/uilogic/back_history)|back_history|查看评审历史后，返回测试用例主表单按钮使用|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

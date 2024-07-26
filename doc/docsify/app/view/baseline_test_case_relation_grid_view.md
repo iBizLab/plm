@@ -7,7 +7,7 @@
 #### 数据表格(grid)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
-#### 工具栏(toolbar)
+#### 工具栏(tabtoolbar)
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case) : [移出基线](module/TestMgmt/baseline_test_case#界面行为)
   * [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case) : [规划用例](module/TestMgmt/baseline_test_case#界面行为)
+  * [基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case) : [移出基线](module/TestMgmt/baseline_test_case#界面行为)
 
 ### 关联视图
   * [基线用例(baseline_test_case_edit_view)](app/view/baseline_test_case_edit_view)

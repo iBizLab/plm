@@ -1,6 +1,6 @@
 ## 设置评审结果（批） <!-- {docsify-ignore-all} -->
 
-   测试
+   批量进行评审
 
 ### 处理过程
 
@@ -15,38 +15,20 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_review_result_all#begin {"开始"}]]
-state "根据评审ID获取评审数据" as DEACTION3  [[$./set_review_result_all#deaction3 {"根据评审ID获取评审数据"}]]
-state "获取传入对象" as DEBUGPARAM1  [[$./set_review_result_all#debugparam1 {"获取传入对象"}]]
-state "获取当前阶段数据" as PREPAREPARAM4  [[$./set_review_result_all#prepareparam4 {"获取当前阶段数据"}]]
-state "获取评审ID" as PREPAREPARAM5  [[$./set_review_result_all#prepareparam5 {"获取评审ID"}]]
-state "循环阶段" as LOOPSUBCALL2  [[$./set_review_result_all#loopsubcall2 {"循环阶段"}]] #green {
-state "输出阶段" as DEBUGPARAM3  [[$./set_review_result_all#debugparam3 {"输出阶段"}]]
-state "设置评审内容ID" as PREPAREPARAM1  [[$./set_review_result_all#prepareparam1 {"设置评审内容ID"}]]
-state "获取评审内容" as DEACTION1  [[$./set_review_result_all#deaction1 {"获取评审内容"}]]
-state "获取评审结果" as PREPAREPARAM2  [[$./set_review_result_all#prepareparam2 {"获取评审结果"}]]
-state "调试逻辑参数" as DEBUGPARAM4  [[$./set_review_result_all#debugparam4 {"调试逻辑参数"}]]
-}
-state "循环结果" as LOOPSUBCALL1  [[$./set_review_result_all#loopsubcall1 {"循环结果"}]] #green {
-state "输出结果" as DEBUGPARAM2  [[$./set_review_result_all#debugparam2 {"输出结果"}]]
-state "设置结果" as PREPAREPARAM3  [[$./set_review_result_all#prepareparam3 {"设置结果"}]]
-state "更新结果" as DEACTION2  [[$./set_review_result_all#deaction2 {"更新结果"}]]
-}
+state "获取表单内容，添加过滤条件" as PREPAREPARAM1  [[$./set_review_result_all#prepareparam1 {"获取表单内容，添加过滤条件"}]]
+state "查询当前结果" as DEDATASET1  [[$./set_review_result_all#dedataset1 {"查询当前结果"}]]
+state "结束" as END1 <<end>> [[$./set_review_result_all#end1 {"结束"}]]
+state "绑定结果" as BINDPARAM1  [[$./set_review_result_all#bindparam1 {"绑定结果"}]]
+state "设置更新参数" as PREPAREPARAM2  [[$./set_review_result_all#prepareparam2 {"设置更新参数"}]]
+state "更新评审结果" as DEACTION1  [[$./set_review_result_all#deaction1 {"更新评审结果"}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREPARAM5
-PREPAREPARAM5 --> DEACTION3
-DEACTION3 --> PREPAREPARAM4
-PREPAREPARAM4 --> LOOPSUBCALL2
-LOOPSUBCALL2 --> DEBUGPARAM3
-DEBUGPARAM3 --> PREPAREPARAM1 : [[$./set_review_result_all#debugparam3-prepareparam1{连接名称} 连接名称]]
-PREPAREPARAM1 --> DEACTION1
-DEACTION1 --> PREPAREPARAM2
-PREPAREPARAM2 --> DEBUGPARAM4
-DEBUGPARAM4 --> LOOPSUBCALL1
-LOOPSUBCALL1 --> DEBUGPARAM2
-DEBUGPARAM2 --> PREPAREPARAM3
-PREPAREPARAM3 --> DEACTION2
+Begin --> PREPAREPARAM1
+PREPAREPARAM1 --> DEDATASET1
+DEDATASET1 --> BINDPARAM1
+BINDPARAM1 --> PREPAREPARAM2
+PREPAREPARAM2 --> DEACTION1
+DEACTION1 --> END1
 
 
 @enduml
@@ -60,103 +42,46 @@ PREPAREPARAM3 --> DEACTION2
 
 
 *- N/A*
-#### 获取传入对象 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+#### 获取表单内容，添加过滤条件 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
+1. 将`Default(传入变量).srfactionparam` 绑定给  `srfactionparam`
+2. 将`srfactionparam.0` 绑定给  `form_data(表单数据)`
+3. 将`Default(传入变量).ID(标识)` 设置给  `result_filter(评审结果过滤器).N_CONTENT_ID_EQ`
+4. 将`form_data(表单数据).cur_stage_id` 设置给  `result_filter(评审结果过滤器).N_STAGE_ID_EQ`
 
-
-#### 获取评审ID :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `review(评审对象).ID(标识)`
-
-#### 根据评审ID获取评审数据 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 查询当前结果 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 
-调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [Get](module/TestMgmt/review#行为) ，行为参数为`review(评审对象)`
+调用实体 [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md) 数据集合 [数据集(DEFAULT)](module/TestMgmt/review_result#数据集合) ，查询参数为`result_filter(评审结果过滤器)`
 
-#### 获取当前阶段数据 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+将执行结果返回给参数`stage_results(阶段结果)`
 
-
-
-1. 将`review(评审对象).STAGE(阶段)` 绑定给  `review_stages(评审阶段)`
-
-#### 循环阶段 :id=LOOPSUBCALL2<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
-循环参数`review_stages(评审阶段)`，子循环参数使用`stage(阶段)`
-#### 获取评审结果 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+*- N/A*
+
+#### 绑定结果 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
-1. 将`review_content(评审内容).stage_results(评审结果)` 绑定给  `stage_results(阶段结果)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`stage(阶段)`的详细信息
-
-
-#### 输出阶段 :id=DEBUGPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+绑定参数`stage_results(阶段结果)` 到 `review_result(结果)`
+#### 设置更新参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`stage(阶段)`的详细信息
+1. 将`form_data(表单数据).comment` 设置给  `review_result(结果).COMMENT(评审意见)`
+2. 将`form_data(表单数据).result_state` 设置给  `review_result(结果).RESULT_STATE(状态)`
 
-
-#### 设置评审内容ID :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`Default(传入变量).ID(标识)` 设置给  `review_content(评审内容).ID(标识)`
-
-#### 获取评审内容 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新评审结果 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
-调用实体 [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md) 行为 [Get](module/TestMgmt/review_content#行为) ，行为参数为`review_content(评审内容)`
-
-#### 循环结果 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
-
-
-
-循环参数`stage_results(阶段结果)`，子循环参数使用`for_result(子结果)`
-#### 输出结果 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`for_result(子结果)`的详细信息
-
-
-#### 设置结果 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`3` 设置给  `for_result(子结果).RESULT_STATE(状态)`
-
-#### 更新结果 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
-
-
-
-调用实体 [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md) 行为 [Update](module/TestMgmt/review_result#行为) ，行为参数为`for_result(子结果)`
-
-
-### 连接条件说明
-#### 连接名称 :id=DEBUGPARAM3-PREPAREPARAM1
-
-`stage(阶段).STAGE_STATE(评审阶段状态)` EQ `20`
-#### 连接名称 
-
+调用实体 [评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md) 行为 [Update](module/TestMgmt/review_result#行为) ，行为参数为`review_result(结果)`
 
 
 
@@ -165,9 +90,9 @@ PREPAREPARAM3 --> DEACTION2
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md)||
-|子结果|for_result|数据对象|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md)||
-|评审对象|review|数据对象|[评审(REVIEW)](module/TestMgmt/review.md)||
+|表单数据|form_data|数据对象|||
+|评审结果过滤器|result_filter|过滤器|||
 |评审内容|review_content|数据对象|[评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content.md)||
-|评审阶段|review_stages|数据对象列表|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
-|阶段|stage|数据对象|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
-|阶段结果|stage_results|数据对象列表|[评审阶段(REVIEW_STAGE)](module/TestMgmt/review_stage.md)||
+|结果|review_result|数据对象|[评审结果(REVIEW_RESULT)](module/TestMgmt/review_result.md)||
+|srfactionparam|srfactionparam|数据对象列表|||
+|阶段结果|stage_results|分页查询|||

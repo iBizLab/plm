@@ -14,17 +14,6 @@
   * opendata(预置打开数据逻辑)
 
 
-### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [表格界面_数据导入栏](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_删除操作](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_编辑操作](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_帮助操作](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_拷贝操作](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_导出数据模型](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_搜索栏](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_导出操作（Excel）](module/Base/relation#界面行为)
-  * [关联(RELATION)](module/Base/relation) : [表格界面_新建操作](module/Base/relation#界面行为)
-
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)
 

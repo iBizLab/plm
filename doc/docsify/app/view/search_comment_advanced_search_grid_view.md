@@ -19,9 +19,6 @@ viewParam.queryconds=["n_content_like"];
   * newdata(预置新建数据逻辑)
 
 
-### 关联界面行为
-  * [评论搜索(SEARCH_COMMENT)](module/Base/search_comment) : [打开所属主页视图](module/Base/search_comment#界面行为)
-
 ### 关联界面逻辑
   * [评论搜索(SEARCH_COMMENT)](module/Base/search_comment) : [打开详情视图](module/Base/search_comment/uilogic/open_main_view)
 

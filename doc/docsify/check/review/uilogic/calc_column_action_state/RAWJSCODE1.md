@@ -2,19 +2,25 @@
 
 ```javascript
 	const rows = uiLogic.grid.state.rows;
+    const ctx = uiLogic.ctx;
 	if (rows && rows.length > 0) {
 		rows.forEach(row => {
 			const titleColumn = row.uiActionGroupStates.name;
-			const is_favorite = row.data.is_favorite;
+			const cur_user = ctx.srfuserid;
+			const state = row.data.state;
+			const create_man = row.data.create_man;
 			if (titleColumn && Object.values(titleColumn).length > 0) {
 				Object.values(titleColumn).forEach(action => {
-					// 收藏
-					if (action.uiActionId === 'add_favorite@review') {
-						action.visible = is_favorite == 0;
-					} else if (action.uiActionId === 'cancel_favorite@review') {
-						// 取消收藏
-						action.visible = is_favorite != 0;
-					}
+                    action.visible = false;
+                    if(action.uiActionId === 'delete@review'&& create_man == cur_user){
+                        action.visible = true;
+                    }else if (action.uiActionId === 'repeal_review@review'&& create_man == cur_user && state == '20' ) {
+						action.visible = true;
+					} else if (action.uiActionId === 'submit_review@review'&& create_man == cur_user && (state == '10'||state == '50') ) {
+						action.visible = true;
+					}else if (action.uiActionId === 'set_category@review'&& create_man == cur_user){
+                        action.visible = true;
+                    }
 				})
 			}
 		})

@@ -18,7 +18,7 @@
 
 <p class="panel-title"><b>主排序属性</b></p>
 
-* `SHOW_IDENTIFIER(编号)` `DESC`
+* `UPDATE_TIME(更新时间)` `DESC`
 
 
 

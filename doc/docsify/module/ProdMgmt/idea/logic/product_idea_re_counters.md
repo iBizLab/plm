@@ -23,7 +23,7 @@ state "需求关联测试用例" as RAWSQLCALL5  [[$./product_idea_re_counters#r
 state "结束" as END1 <<end>> [[$./product_idea_re_counters#end1 {"结束"}]]
 state "设置需求主键" as PREPAREPARAM1  [[$./product_idea_re_counters#prepareparam1 {"设置需求主键"}]]
 state "获取产品需求当前版本" as DEACTION1  [[$./product_idea_re_counters#deaction1 {"获取产品需求当前版本"}]]
-state "查询所有计数" as RAWSQLCALL12  [[$./product_idea_re_counters#rawsqlcall12 {"查询所有计数"}]]
+state "合并查询计数器" as RAWSQLCALL12  [[$./product_idea_re_counters#rawsqlcall12 {"合并查询计数器"}]]
 state "产品需求版本" as RAWSQLCALL6  [[$./product_idea_re_counters#rawsqlcall6 {"产品需求版本"}]]
 state "需求关联客户" as RAWSQLCALL7  [[$./product_idea_re_counters#rawsqlcall7 {"需求关联客户"}]]
 state "需求关联需求" as RAWSQLCALL8  [[$./product_idea_re_counters#rawsqlcall8 {"需求关联需求"}]]
@@ -35,12 +35,8 @@ state "需求关联测试用例" as RAWSQLCALL11  [[$./product_idea_re_counters#
 Begin --> RAWSQLCALL6
 RAWSQLCALL6 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION1
-DEACTION1 --> RAWSQLCALL1 : [[$./product_idea_re_counters#deaction1-rawsqlcall1{当前版本} 当前版本]]
-RAWSQLCALL1 --> RAWSQLCALL2
-RAWSQLCALL2 --> RAWSQLCALL3
-RAWSQLCALL3 --> RAWSQLCALL4
-RAWSQLCALL4 --> RAWSQLCALL5
-RAWSQLCALL5 --> END1
+DEACTION1 --> RAWSQLCALL12 : [[$./product_idea_re_counters#deaction1-rawsqlcall12{当前版本} 当前版本]]
+RAWSQLCALL12 --> END1
 DEACTION1 --> RAWSQLCALL7 : [[$./product_idea_re_counters#deaction1-rawsqlcall7{历史版本} 历史版本]]
 RAWSQLCALL7 --> RAWSQLCALL8
 RAWSQLCALL8 --> RAWSQLCALL9
@@ -257,7 +253,7 @@ WHERE
 
 将执行结果返回给参数`idea(产品需求)`
 
-#### 查询所有计数 :id=RAWSQLCALL12<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 合并查询计数器 :id=RAWSQLCALL12<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
@@ -265,11 +261,11 @@ WHERE
 
 ```sql
 SELECT
-    SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_idea,
-    SUM(CASE WHEN t11.`TARGET_TYPE` = 'customer' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_customer,
-    SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_ticket,
-    SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_work_item,
-    SUM(CASE WHEN t11.`TARGET_TYPE` = 'test_case' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t5.IS_DELETED=0 THEN 1 ELSE 0 END) AS idea_re_test_case
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS idea_re_idea,
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'customer' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS idea_re_customer,
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t3.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS idea_re_ticket,
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS idea_re_work_item,
+    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'test_case' AND t11.`PRINCIPAL_TYPE` = 'idea' AND t5.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS idea_re_test_case
 FROM
     `RELATION` t11
 JOIN
@@ -455,7 +451,7 @@ WHERE
 
 
 ### 连接条件说明
-#### 当前版本 :id=DEACTION1-RAWSQLCALL1
+#### 当前版本 :id=DEACTION1-RAWSQLCALL12
 
 (`Default(传入变量).srfversionid` ISNULL OR (`Default(传入变量).srfversionid` ISNOTNULL AND ))
 #### 历史版本 :id=DEACTION1-RAWSQLCALL7

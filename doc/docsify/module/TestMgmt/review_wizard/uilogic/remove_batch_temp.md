@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_batch_temp#begin {开始}]]
-state "批量删除临时数据（临时）" as RAWJSCODE1  [[$./remove_batch_temp#rawjscode1 {批量删除临时数据（临时）}]]
 state "结束" as END1 <<end>> [[$./remove_batch_temp#end1 {结束}]]
+state "批量删除临时数据（临时）" as RAWJSCODE1  [[$./remove_batch_temp#rawjscode1 {批量删除临时数据（临时）}]]
 
 
 Begin --> RAWJSCODE1
@@ -55,6 +55,12 @@ return (async function() {
     // 遍历临时数据删除
     list.forEach(item => {
         service.local.delete(context, item.id);
+    })
+    const service2 = await serviceUtil.getService(context, 'plmweb.attention');
+    const list2 = service2.local.getList();
+    // 遍历临时数据删除
+    list2.forEach(item => {
+        service2.local.delete(context, item.id);
     })
     } 
 )();

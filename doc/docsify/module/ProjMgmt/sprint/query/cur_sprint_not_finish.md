@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`STATUS(状态)` NOTEQ `'3'` AND `PROJECT_ID(产品标识)` EQ `数据上下文.project`)
+(`STATUS(状态)` NOTEQ `'3'` AND `PROJECT_ID(项目标识)` EQ `数据上下文.project`)
 
 
 
@@ -40,9 +40,11 @@
 
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,

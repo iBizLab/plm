@@ -68,6 +68,8 @@
 |[默认（全部数据）(VIEW)](module/ProjMgmt/board/query/View)|VIEW|否|否 |否 ||
 |[当前项目看板（导入）(cur_board_upload)](module/ProjMgmt/board/query/cur_board_upload)|cur_board_upload|否|否 |否 ||
 |[当前项目下看板(cur_project_board)](module/ProjMgmt/board/query/cur_project_board)|cur_project_board|否|否 |否 ||
+|[公开(public)](module/ProjMgmt/board/query/public)|public|否|否 |否 ||
+|[只读用户(reader)](module/ProjMgmt/board/query/reader)|reader|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
@@ -75,6 +77,21 @@
 |[数据集(DEFAULT)](module/ProjMgmt/board/dataset/Default)|DEFAULT|数据查询|是|||
 |[当前项目看板（导入）(cur_board_upload)](module/ProjMgmt/board/dataset/cur_board_upload)|cur_board_upload|数据查询|否|||
 |[当前项目下看板(cur_project_board)](module/ProjMgmt/board/dataset/cur_project_board)|cur_project_board|数据查询|否|||
+|[只读用户(reader)](module/ProjMgmt/board/dataset/reader)|reader|数据查询|否|||
+
+## 数据权限
+
+##### 操作用户(读) :id=board-USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[只读用户(reader)](module/ProjMgmt/board#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+
+
+
 
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
@@ -119,6 +136,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/board?id=数据集合`">
   数据集合
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/board?id=数据权限`">
+  数据权限
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/board?id=搜索模式`">
   搜索模式

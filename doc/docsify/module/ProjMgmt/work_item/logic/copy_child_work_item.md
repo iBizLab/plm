@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./copy_child_work_item#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./copy_child_work_item#prepareparam1 {"准备参数"}]]
+state "准备主键数据" as PREPAREPARAM1  [[$./copy_child_work_item#prepareparam1 {"准备主键数据"}]]
 state "查询所有子工作项" as DEDATASET1  [[$./copy_child_work_item#dedataset1 {"查询所有子工作项"}]]
 state "获取复制前的父工作项" as DEACTION1  [[$./copy_child_work_item#deaction1 {"获取复制前的父工作项"}]]
 state "获取复制后的父工作项" as DEACTION2  [[$./copy_child_work_item#deaction2 {"获取复制后的父工作项"}]]
@@ -25,7 +25,7 @@ state "重置参数" as RESETPARAM2  [[$./copy_child_work_item#resetparam2 {"重
 state "填充新子工作项的属性" as PREPAREPARAM2  [[$./copy_child_work_item#prepareparam2 {"填充新子工作项的属性"}]]
 state "新建子工作项" as DEACTION3  [[$./copy_child_work_item#deaction3 {"新建子工作项"}]]
 state "重置参数" as RESETPARAM3  [[$./copy_child_work_item#resetparam3 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM6  [[$./copy_child_work_item#prepareparam6 {"准备参数"}]]
+state "准备关注人数据" as PREPAREPARAM6  [[$./copy_child_work_item#prepareparam6 {"准备关注人数据"}]]
 state "创建默认关注人" as DEACTION5  [[$./copy_child_work_item#deaction5 {"创建默认关注人"}]]
 state "递归调用" as DELOGIC1  [[$./copy_child_work_item#delogic1 {"递归调用"}]]
 }
@@ -65,7 +65,7 @@ DEACTION5 --> DELOGIC1 : [[$./copy_child_work_item#deaction5-delogic1{不存在�
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备主键数据 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -123,7 +123,7 @@ DEACTION5 --> DELOGIC1 : [[$./copy_child_work_item#deaction5-delogic1{不存在�
 5. 将`for_temp_obj(循环临时变量).TITLE(标题)` 设置给  `new_child(新建子工作项).TITLE(标题)`
 6. 将`for_temp_obj(循环临时变量).PRIORITY(优先级)` 设置给  `new_child(新建子工作项).PRIORITY(优先级)`
 7. 将`for_temp_obj(循环临时变量).START_AT(开始时间)` 设置给  `new_child(新建子工作项).START_AT(开始时间)`
-8. 将`for_temp_obj(循环临时变量).END_AT(结束时间)` 设置给  `new_child(新建子工作项).END_AT(结束时间)`
+8. 将`for_temp_obj(循环临时变量).END_AT(截止时间)` 设置给  `new_child(新建子工作项).END_AT(截止时间)`
 9. 将`for_temp_obj(循环临时变量).STATE(状态)` 设置给  `new_child(新建子工作项).STATE(状态)`
 10. 将`after_copy_parent(复制后的父工作项).ID(标识)` 设置给  `new_child(新建子工作项).PID(父标识)`
 
@@ -140,7 +140,7 @@ DEACTION5 --> DELOGIC1 : [[$./copy_child_work_item#deaction5-delogic1{不存在�
 
 
 重置参数```attention(关注)```
-#### 准备参数 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备关注人数据 :id=PREPAREPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

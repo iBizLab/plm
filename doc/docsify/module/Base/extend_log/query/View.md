@@ -28,6 +28,8 @@
 
 > [!ATTENTION|label:存在长文本属性]
 >
+> `DEBUG_INFO(调试日志信息)`
+>
 > `INFO(日志信息)`
 
 
@@ -42,6 +44,7 @@ SELECT
 t1.`CATEGORY`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DEBUG_INFO`,
 t1.`ELAPSED_TIME`,
 t1.`END_AT`,
 t1.`ID`,

@@ -1,5 +1,5 @@
 
-### 分组数据集合<sup class="footnote-symbol"> <font color=orange>[29]</font></sup>   <!-- {docsify-ignore-all} -->
+### 分组数据集合<sup class="footnote-symbol"> <font color=orange>[30]</font></sup>   <!-- {docsify-ignore-all} -->
 | 实体   | 数据集合  |
 | --------   |------------|
 |[认证日志(AUTH_LOG_ADMIN)](module/ebsx/auth_log_admin)|[排重用户(distinct_userid)](module/ebsx/auth_log_admin/dataset/distinct_userid)|
@@ -31,3 +31,4 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[kanban成员负荷报告(kanban_user_stat)](module/ProjMgmt/work_item/dataset/kanban_user_stat)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[我负责的（统计）(my_assignee_count)](module/ProjMgmt/work_item/dataset/my_assignee_count)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|[需求分组过滤(property_distribution)](module/ProjMgmt/work_item/dataset/property_distribution)|
+|[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|[原始状态分组(group_by_origin_state)](module/ProjMgmt/work_item_type/dataset/group_by_origin_state)|

@@ -9,6 +9,13 @@
 #### CAPTIONBAR(captionbar)
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
+
+##### 属性注入
+* `状态` 注入属性 `clearable`
+
+```javascript
+false
+```
 #### 工具栏(toolbar)
 
 

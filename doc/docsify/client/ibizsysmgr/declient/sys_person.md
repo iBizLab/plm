@@ -29,6 +29,8 @@
 |identification_number|String|identification_number|
 |postal_address|String|postal_address|
 |description|String|description|
+|status|String|status|
+|report_flag|Integer|report_flag|
 |mdepartment_name|String|mdepartment_name|
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
@@ -57,6 +59,8 @@
   "identification_number" : null,
   "postal_address" : null,
   "description" : null,
+  "status" : null,
+  "report_flag" : null,
   "mdepartment_name" : null,
   "dn" : null,
   "mdepartment_id" : null,
@@ -99,6 +103,8 @@
 |identification_number|String|identification_number|
 |postal_address|String|postal_address|
 |description|String|description|
+|status|String|status|
+|report_flag|Integer|report_flag|
 |mdepartment_name|String|mdepartment_name|
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
@@ -127,6 +133,8 @@
   "identification_number" : null,
   "postal_address" : null,
   "description" : null,
+  "status" : null,
+  "report_flag" : null,
   "mdepartment_name" : null,
   "dn" : null,
   "mdepartment_id" : null,
@@ -188,6 +196,8 @@
 |identification_number|String|identification_number|
 |postal_address|String|postal_address|
 |description|String|description|
+|status|String|status|
+|report_flag|Integer|report_flag|
 |mdepartment_name|String|mdepartment_name|
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
@@ -216,6 +226,8 @@
   "identification_number" : null,
   "postal_address" : null,
   "description" : null,
+  "status" : null,
+  "report_flag" : null,
   "mdepartment_name" : null,
   "dn" : null,
   "mdepartment_id" : null,
@@ -277,6 +289,8 @@
 |identification_number|String|identification_number|
 |postal_address|String|postal_address|
 |description|String|description|
+|status|String|status|
+|report_flag|Integer|report_flag|
 |mdepartment_name|String|mdepartment_name|
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
@@ -305,6 +319,8 @@
   "identification_number" : null,
   "postal_address" : null,
   "description" : null,
+  "status" : null,
+  "report_flag" : null,
   "mdepartment_name" : null,
   "dn" : null,
   "mdepartment_id" : null,
@@ -352,6 +368,8 @@
 |identification_number|String|identification_number|
 |postal_address|String|postal_address|
 |description|String|description|
+|status|String|status|
+|report_flag|Integer|report_flag|
 |mdepartment_name|String|mdepartment_name|
 |dn|String|dn|
 |mdepartment_id|String|Mdepartment_id|
@@ -380,6 +398,8 @@
   "identification_number" : null,
   "postal_address" : null,
   "description" : null,
+  "status" : null,
+  "report_flag" : null,
   "mdepartment_name" : null,
   "dn" : null,
   "mdepartment_id" : null,

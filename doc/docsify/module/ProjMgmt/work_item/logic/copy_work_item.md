@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./copy_work_item#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./copy_work_item#bindparam1 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM5  [[$./copy_work_item#prepareparam5 {"准备参数"}]]
+state "绑定界面数据" as BINDPARAM1  [[$./copy_work_item#bindparam1 {"绑定界面数据"}]]
+state "设置id" as PREPAREPARAM5  [[$./copy_work_item#prepareparam5 {"设置id"}]]
 state "结束" as END1 <<end>> [[$./copy_work_item#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./copy_work_item#loopsubcall1 {"循环子调用"}]] #green {
 state "获取工作项" as DEACTION4  [[$./copy_work_item#deaction4 {"获取工作项"}]]
@@ -32,7 +32,7 @@ state "准备参数去复制子工作项" as PREPAREPARAM6  [[$./copy_work_item#
 state "复制子工作项" as DELOGIC1  [[$./copy_work_item#delogic1 {"复制子工作项"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./copy_work_item#loopsubcall2 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM4  [[$./copy_work_item#prepareparam4 {"准备参数"}]]
+state "准备附件参数" as PREPAREPARAM4  [[$./copy_work_item#prepareparam4 {"准备附件参数"}]]
 state "创建附件" as DEACTION3  [[$./copy_work_item#deaction3 {"创建附件"}]]
 }
 
@@ -68,12 +68,12 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定界面数据 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选中数据对象)`
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置id :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -103,7 +103,7 @@ LOOPSUBCALL1 --> END1
 5. 将`temp_obj(临时变量).DESCRIPTION(描述)` 设置给  `new_work_item(新建工作项).DESCRIPTION(描述)`
 6. 将`temp_obj(临时变量).PRIORITY(优先级)` 设置给  `new_work_item(新建工作项).PRIORITY(优先级)`
 7. 将`temp_obj(临时变量).START_AT(开始时间)` 设置给  `new_work_item(新建工作项).START_AT(开始时间)`
-8. 将`temp_obj(临时变量).END_AT(结束时间)` 设置给  `new_work_item(新建工作项).END_AT(结束时间)`
+8. 将`temp_obj(临时变量).END_AT(截止时间)` 设置给  `new_work_item(新建工作项).END_AT(截止时间)`
 9. 将`temp_obj(临时变量).STATE(状态)` 设置给  `new_work_item(新建工作项).STATE(状态)`
 
 #### 创建工作项 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
@@ -181,7 +181,7 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`attachments(附件列表)`，子循环参数使用`attachment(附件)`
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备附件参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

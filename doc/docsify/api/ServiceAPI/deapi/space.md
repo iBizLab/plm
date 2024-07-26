@@ -17,6 +17,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -37,6 +38,7 @@
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -63,6 +65,7 @@
 
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -109,6 +112,7 @@
 
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -174,6 +178,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -194,6 +199,7 @@
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -220,6 +226,7 @@
 
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -264,6 +271,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -284,6 +292,7 @@
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -329,6 +338,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -349,6 +359,7 @@
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -394,6 +405,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -414,6 +426,7 @@
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -454,6 +467,7 @@
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -474,6 +488,7 @@
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -523,6 +538,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -543,6 +559,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -588,6 +605,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -608,6 +626,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -653,6 +672,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -673,6 +693,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -713,6 +734,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -733,6 +755,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -759,6 +782,7 @@ Integer
 
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -803,6 +827,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -823,6 +848,141 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
+  "visibility" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "members" : null,
+  "category_id" : null,
+  "category_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+
+## 移动空间
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/{key}/move_space" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
+|<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "identifier" : null,
+  "is_shared" : null,
+  "visibility" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "members" : null,
+  "category_id" : null,
+  "category_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+
+## 开启共享
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/{key}/open_shared" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
+|<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -868,6 +1028,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -888,6 +1049,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -914,6 +1076,7 @@ Integer
 
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -934,6 +1097,73 @@ Integer
 }
 
 ```
+
+## 判断当前用户角色
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/{key}/recognize_cur_user_role" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`NONE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
+|<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "identifier" : null,
+  "is_shared" : null,
+  "visibility" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "members" : null,
+  "category_id" : null,
+  "category_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
 
 ## 恢复
 
@@ -958,6 +1188,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -978,6 +1209,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -1018,6 +1250,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -1038,6 +1271,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -1064,6 +1298,7 @@ Integer
 
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -1084,6 +1319,73 @@ Integer
 }
 
 ```
+
+## 空间首页组件计数
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/{key}/space_index_addon_counter" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类路径|
+|<el-row justify="space-between"><el-col :span="20">scope_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">scope_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|成员|
+|<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "identifier" : null,
+  "is_shared" : null,
+  "visibility" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "categories" : null,
+  "scope_type" : null,
+  "scope_id" : null,
+  "members" : null,
+  "category_id" : null,
+  "category_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
 
 ## 取消星标
 
@@ -1108,6 +1410,7 @@ Integer
 |字段col300|类型col150|备注col400|
 |---|---|----|
 |<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|空间标识|
+|<el-row justify="space-between"><el-col :span="20">is_shared</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
@@ -1128,6 +1431,7 @@ Integer
 ```json
 {
   "identifier" : null,
+  "is_shared" : null,
   "visibility" : null,
   "description" : null,
   "is_archived" : null,
@@ -1171,6 +1475,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1188,6 +1493,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1201,6 +1507,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1232,7 +1539,7 @@ Integer
 <el-alert title="/spaces/fetch_archived" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 
 
@@ -1243,6 +1550,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1260,6 +1568,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1273,6 +1582,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1315,6 +1625,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1332,6 +1643,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1345,6 +1657,82 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
+    "visibility" : null,
+    "description" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "is_favorite" : null,
+    "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
+    "members" : null,
+    "category_id" : null,
+    "category_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 当前空间
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/fetch_current" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_category_id_eq" : null,
+  "n_category_name_eq" : null,
+  "n_category_name_like" : null,
+  "n_id_eq" : null,
+  "n_is_shared_eq" : null,
+  "n_name_like" : null,
+  "n_scope_id_eq" : null,
+  "n_scope_type_eq" : null,
+  "n_visibility_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1387,6 +1775,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1404,6 +1793,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1417,6 +1807,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1459,6 +1850,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1476,6 +1868,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1489,6 +1882,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1531,6 +1925,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1548,6 +1943,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1561,6 +1957,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1603,6 +2000,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1620,6 +2018,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1633,6 +2032,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1675,6 +2075,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1692,6 +2093,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1705,6 +2107,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1736,7 +2139,7 @@ Integer
 <el-alert title="/spaces/fetch_no_re_space" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
-权限标识：`NONE`
+权限标识：`READ`
 
 
 
@@ -1747,6 +2150,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1764,6 +2168,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1777,6 +2182,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1819,6 +2225,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1836,6 +2243,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1849,6 +2257,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1891,6 +2300,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1908,6 +2318,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1921,6 +2332,157 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
+    "visibility" : null,
+    "description" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "is_favorite" : null,
+    "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
+    "members" : null,
+    "category_id" : null,
+    "category_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 快速新建查询
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/fetch_quick" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_category_id_eq" : null,
+  "n_category_name_eq" : null,
+  "n_category_name_like" : null,
+  "n_id_eq" : null,
+  "n_is_shared_eq" : null,
+  "n_name_like" : null,
+  "n_scope_id_eq" : null,
+  "n_scope_type_eq" : null,
+  "n_visibility_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "is_shared" : null,
+    "visibility" : null,
+    "description" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "is_favorite" : null,
+    "categories" : null,
+    "scope_type" : null,
+    "scope_id" : null,
+    "members" : null,
+    "category_id" : null,
+    "category_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 快速新建查询（管理用户）
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/spaces/fetch_quick_user" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
+|<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
+|<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_category_id_eq" : null,
+  "n_category_name_eq" : null,
+  "n_category_name_like" : null,
+  "n_id_eq" : null,
+  "n_is_shared_eq" : null,
+  "n_name_like" : null,
+  "n_scope_id_eq" : null,
+  "n_scope_type_eq" : null,
+  "n_visibility_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -1963,6 +2525,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -1980,6 +2543,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -1993,6 +2557,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,
@@ -2035,6 +2600,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分类|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_is_shared_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否开启共享|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|空间名称|
 |<el-row justify="space-between"><el-col :span="20">n_scope_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象|
 |<el-row justify="space-between"><el-col :span="20">n_scope_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属|
@@ -2052,6 +2618,7 @@ Integer
   "n_category_name_eq" : null,
   "n_category_name_like" : null,
   "n_id_eq" : null,
+  "n_is_shared_eq" : null,
   "n_name_like" : null,
   "n_scope_id_eq" : null,
   "n_scope_type_eq" : null,
@@ -2065,6 +2632,7 @@ Integer
 [
   {
     "identifier" : null,
+    "is_shared" : null,
     "visibility" : null,
     "description" : null,
     "is_archived" : null,

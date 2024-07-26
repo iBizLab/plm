@@ -18,6 +18,7 @@
 |是否已归档|IS_ARCHIVED|是否逻辑||是||
 |是否已删除|IS_DELETED|是否逻辑||是||
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
+|是否开启共享|IS_SHARED|[单项选择(文本值)](index/dictionary_index#space_shared_status "空间共享状态")|60|是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |空间名称|NAME|文本，可指定长度|200|否||
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
@@ -83,6 +84,7 @@
 |移出分类|move_out_category|[实体处理逻辑](module/Wiki/space/logic/move_out_category "移出分类")|默认|不支持||||
 |移动空间|move_space|[实体处理逻辑](module/Wiki/space/logic/move_space "移动空间")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/space/logic/nothing "无操作")|默认|不支持||||
+|开启共享|open_shared|[实体处理逻辑](module/Wiki/space/logic/open_shared "开启共享")|默认|不支持||||
 |其他实体关联空间|other_re_space|[实体处理逻辑](module/Wiki/space/logic/other_re_space "其他实体关联空间")|默认|不支持||||
 |判断当前用户角色|recognize_cur_user_role|[实体处理逻辑](module/Wiki/space/logic/recognize_cur_user_role "判断当前用户角色")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Wiki/space/logic/recover "恢复")|默认|不支持||||
@@ -99,6 +101,7 @@
 |[取消关联](module/Wiki/space/logic/del_relation)|del_relation|无||空间取消关联数据（正反向关联数据同时删除）|
 |[取消星标](module/Wiki/space/logic/un_favorite)|un_favorite|无||空间取消星标|
 |[变更管理员角色](module/Wiki/space/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[开启共享](module/Wiki/space/logic/open_shared)|open_shared|无||空间开启共享|
 |[归档](module/Wiki/space/logic/archive)|archive|无||未归档空间数据的归档处理，修改空间的归档状态为已归档|
 |[恢复](module/Wiki/space/logic/recover)|recover|无||已删除状态空间数据的恢复，修改空间的是否删除属性值，并恢复访问记录|
 |[无操作](module/Wiki/space/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -128,6 +131,7 @@
 |[管理员(admin)](module/Wiki/space/query/admin)|admin|否|否 |否 ||
 |[已归档(archived)](module/Wiki/space/query/archived)|archived|否|否 |否 ||
 |[目录下空间(category_space)](module/Wiki/space/query/category_space)|category_space|否|否 |否 ||
+|[当前空间(cur_space)](module/Wiki/space/query/cur_space)|cur_space|否|否 |否 ||
 |[当前空间(current)](module/Wiki/space/query/current)|current|否|否 |否 ||
 |[已删除(deleted)](module/Wiki/space/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/Wiki/space/query/favorite)|favorite|否|否 |否 ||
@@ -173,9 +177,10 @@
 <p class="panel-title"><b>数据能力</b></p>
 
 * `READ`
-* `SUBDATA`
-* `UPDATE`
+* `SHARED`
 * `DELETE`
+* `UPDATE`
+* `SUBDATA`
 
 
 
@@ -187,11 +192,12 @@
 
 <p class="panel-title"><b>数据能力</b></p>
 
+* `SHARED`
 * `CREATE`
 * `SUBDATA`
 * `READ`
-* `UPDATE`
 * `DELETE`
+* `UPDATE`
 
 
 
@@ -246,6 +252,7 @@
 |N_CATEGORY_NAME_EQ|分类|EQ||
 |N_CATEGORY_NAME_LIKE|分类|LIKE||
 |N_ID_EQ|标识|EQ||
+|N_IS_SHARED_EQ|是否开启共享|EQ||
 |N_NAME_LIKE|空间名称|LIKE||
 |N_SCOPE_ID_EQ|所属对象|EQ||
 |N_SCOPE_TYPE_EQ|所属|EQ||
@@ -255,29 +262,32 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 新建目录 | create_category | 新建目录 |无数据|用户自定义||
-| 打开空间主页面 | open_space_index | 打开空间主页面 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[空间](app/view/space_index_view)</details>||
-| 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 编辑空间基本信息 | edit_space_info | 编辑基本信息 |单项数据（主键）|用户自定义||
-| 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 取消关联（其他实体关联） | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)|其他实体关联需求表格、需求关联需求表格上界面行为组调用；|
-| 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
-| 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
-| 打开空间配置 | open_space_setting | 空间配置 |无数据|用户自定义||
 | 更多设置 | more_setting | 更多设置 |单项数据（主键）|用户自定义||
-| 打开空间导航页 | open_space_exp_page | 打开空间导航页 |无数据|<details><summary>打开顶级视图</summary>[知识管理](app/view/space_tree_exp_view)</details>||
 | 查看空间信息 | space_info | 空间信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[空间信息](app/view/space_info_view)</details>||
 | 产品关联空间 | product_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_choose_option_view)</details>||
+| 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 项目关联空间 | project_relation_space | 添加关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_choose_option_view)</details>||
+| 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 开启共享 | open_shared | 开启共享 |单项数据（主键）|<details><summary>后台调用</summary>[open_shared](#行为)||
+| 空间共享设置 | space_shared_setting | 共享设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[共享空间](app/view/shared_space_setting_view)</details>||
+| 新开窗口（空间） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;*</details>||
+| 打开空间主页面 | open_space_index | 打开空间主页面 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[空间](app/view/space_index_view)</details>||
+| 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
+| 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
+| 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
+| 打开空间配置 | open_space_setting | 空间配置 |无数据|用户自定义||
+| 打开空间导航页 | open_space_exp_page | 打开空间导航页 |无数据|<details><summary>打开顶级视图</summary>[知识管理](app/view/space_tree_exp_view)</details>||
 | 移出分类 | move_out_category | 移出分类 |多项数据（主键）|<details><summary>后台调用</summary>[move_out_category](#行为)||
 | 查看空间成员 | open_space_member | 空间成员 |单项数据（主键）|用户自定义||
-| 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 移动空间 | move_space | 移动空间 |单项数据（主键）|<details><summary>后台调用</summary>[move_space](#行为)||
 | 打开新建空间 | open_new_space | 打开新建空间 |单项数据|<details><summary>打开顶级视图</summary>[空间](app/view/space_index_view)</details>||
 | 新建空间 | create_space | 新建空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建空间](app/view/space_create_wizard_view)</details>||
-| 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
-| 新开窗口（空间） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;*</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

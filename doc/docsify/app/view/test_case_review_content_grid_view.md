@@ -14,17 +14,6 @@
   * opendata(预置打开数据逻辑)
 
 
-### 关联界面行为
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_帮助操作](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_数据导入栏](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_搜索栏](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_删除操作](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_编辑操作](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_导出操作（Excel）](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_新建操作](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_拷贝操作](module/TestMgmt/test_case#界面行为)
-  * [用例(TEST_CASE)](module/TestMgmt/test_case) : [表格界面_导出数据模型](module/TestMgmt/test_case#界面行为)
-
 ### 关联视图
   * [用例(test_case_edit_view)](app/view/test_case_edit_view)
   * [用例(test_case_redirect_view)](app/view/test_case_redirect_view)

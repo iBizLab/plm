@@ -19,13 +19,13 @@
 
 ### 关联界面行为
   * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_新建操作_通用](module/Base/portfolio_member#界面行为)
-  * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_删除操作](module/Base/portfolio_member#界面行为)
   * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [设置角色](module/Base/portfolio_member#界面行为)
+  * [文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member) : [表格界面_删除操作](module/Base/portfolio_member#界面行为)
 
 ### 关联视图
   * [文件夹成员(portfolio_member_edit_view)](app/view/portfolio_member_edit_view)
   * [设置角色(portfolio_member_role_edit_view)](app/view/portfolio_member_role_edit_view)
-  * [文件夹(portfolio_mpick_up_view)](app/view/portfolio_mpick_up_view)
+  * [选择项目集(portfolio_mpick_up_view)](app/view/portfolio_mpick_up_view)
   * [选择成员(user_choose_mpick_up_view)](app/view/user_choose_mpick_up_view)
 
 <script>

@@ -51,11 +51,13 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Team/discuss_member/logic/change_role "变更角色")|默认|不支持||||
+|无操作|nothing|[实体处理逻辑](module/Team/discuss_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[变更角色](module/Team/discuss_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[无操作](module/Team/discuss_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

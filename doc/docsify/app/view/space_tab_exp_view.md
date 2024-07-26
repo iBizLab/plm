@@ -8,6 +8,7 @@
 
 
 ### 关联视图
+  * [共享空间(shared_space_shared_grid_view)](app/view/shared_space_shared_grid_view)
   * [空间管理(space_archived_grid_view)](app/view/space_archived_grid_view)
   * [空间管理(space_deleted_grid_view)](app/view/space_deleted_grid_view)
   * [空间管理(space_in_progress_grid_view)](app/view/space_in_progress_grid_view)

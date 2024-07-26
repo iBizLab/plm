@@ -16,6 +16,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队头像|
@@ -29,6 +30,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -48,6 +50,7 @@
 ```json
 
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -87,6 +90,7 @@
 ```json
 
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -145,6 +149,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队头像|
@@ -158,6 +163,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -177,6 +183,7 @@
 ```json
 
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -209,6 +216,7 @@
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队头像|
@@ -222,6 +230,7 @@
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -259,6 +268,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队头像|
@@ -272,6 +282,7 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -291,6 +302,7 @@ Integer
 ```json
 
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -323,6 +335,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">visibility</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|可见范围|
 |<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队头像|
@@ -336,6 +349,7 @@ Integer
 ##### 请求示例： {docsify-ignore}
 ```json
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -355,6 +369,7 @@ Integer
 ```json
 
 {
+  "visibility" : null,
   "sequence" : null,
   "description" : null,
   "avatar" : null,
@@ -392,6 +407,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
 |<el-row justify="space-between"><el-col :span="20">n_section_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
 |<el-row justify="space-between"><el-col :span="20">n_section_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
 
@@ -406,6 +422,7 @@ Integer
   "n_section_id_eq" : null,
   "n_section_name_eq" : null,
   "n_section_name_like" : null,
+  "n_visibility_eq" : null,
 }
 ```
 
@@ -414,6 +431,7 @@ Integer
 ```json
 [
   {
+    "visibility" : null,
     "sequence" : null,
     "description" : null,
     "avatar" : null,
@@ -451,6 +469,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
 |<el-row justify="space-between"><el-col :span="20">n_section_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
 |<el-row justify="space-between"><el-col :span="20">n_section_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
 
@@ -465,6 +484,7 @@ Integer
   "n_section_id_eq" : null,
   "n_section_name_eq" : null,
   "n_section_name_like" : null,
+  "n_visibility_eq" : null,
 }
 ```
 
@@ -473,6 +493,131 @@ Integer
 ```json
 [
   {
+    "visibility" : null,
+    "sequence" : null,
+    "description" : null,
+    "avatar" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "section_id" : null,
+    "section_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 团队默认读取
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/groups/fetch_reader" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`NONE`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队名称|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
+|<el-row justify="space-between"><el-col :span="20">n_section_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_section_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_section_id_eq" : null,
+  "n_section_name_eq" : null,
+  "n_section_name_like" : null,
+  "n_visibility_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "visibility" : null,
+    "sequence" : null,
+    "description" : null,
+    "avatar" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "section_id" : null,
+    "section_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 团队成员
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/groups/fetch_user" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|团队名称|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
+|<el-row justify="space-between"><el-col :span="20">n_section_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_section_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_section_id_eq" : null,
+  "n_section_name_eq" : null,
+  "n_section_name_like" : null,
+  "n_visibility_eq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "visibility" : null,
     "sequence" : null,
     "description" : null,
     "avatar" : null,
@@ -510,6 +655,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
 |<el-row justify="space-between"><el-col :span="20">n_section_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
 |<el-row justify="space-between"><el-col :span="20">n_section_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属分组|
+|<el-row justify="space-between"><el-col :span="20">n_visibility_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|可见范围|
 
 
 
@@ -524,6 +670,7 @@ Integer
   "n_section_id_eq" : null,
   "n_section_name_eq" : null,
   "n_section_name_like" : null,
+  "n_visibility_eq" : null,
 }
 ```
 
@@ -532,6 +679,7 @@ Integer
 ```json
 [
   {
+    "visibility" : null,
     "sequence" : null,
     "description" : null,
     "avatar" : null,

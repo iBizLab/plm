@@ -35,9 +35,7 @@
   * `ASSIGNEE_ID(负责人)`
   * `ASSIGNEE_NAME(负责人)`
   * `PRIORITY(优先级)`
-  * `END_AT(结束时间)`
   * `PID(父标识)`
-  * `START_AT(开始时间)`
   * `TOP_ID(顶级工作项标识)`
   * `PROJECT_ID(项目)`
   * `IS_ARCHIVED(是否已归档)`
@@ -52,6 +50,10 @@
   * `BACKLOG_FROM(需求来源)`
   * `RISK(风险)`
   * `SPRINT_NAME(迭代名称)`
+  * `CUR_VERSION_ID(当前版本标识)`
+  * `END_AT(截止时间)`
+  * `START_AT(开始时间)`
+  * `STATE_TYPE(工作项状态类型)`
 
 
 
@@ -72,6 +74,7 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`IDENTIFIER`,
@@ -81,25 +84,27 @@ t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
-t21.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RISK`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t31.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
 t1.`START_AT`,
 t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` 
-LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
-LEFT JOIN `WORK_ITEM_TYPE` t41 ON t1.`WORK_ITEM_TYPE_ID` = t41.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t51 ON t1.`WORK_ITEM_TYPE_ID` = t51.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t41.`GROUP` = 'bug' )
+WHERE ( t1.`IS_DELETED` = 0  AND  t51.`GROUP` = 'bug' )
 ```
 
 </el-dialog>

@@ -55,13 +55,14 @@ LOOPSUBCALL1 --> END1
 
 
 
-1. 将`temp_obj(循环临时变量).ID(标识)` 设置给  `Default(传入变量).SPRINT_ID(迭代标识)`
+1. 将`temp_obj(循环临时变量).ID(标识)` 设置给  `update_obj(工作项更新对象).SPRINT_ID(迭代标识)`
+2. 将`Default(传入变量).ID(标识)` 设置给  `update_obj(工作项更新对象).ID(标识)`
 
 #### 移入迭代 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
-调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`Default(传入变量)`
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [Update](module/ProjMgmt/work_item#行为) ，行为参数为`update_obj(工作项更新对象)`
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
@@ -76,5 +77,8 @@ LOOPSUBCALL1 --> END1
 |    中文名   |    代码名    |  数据类型    |  实体   |备注 |
 | --------| --------| -------- | -------- | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||
+|移入变更记录|shift_in|数据对象|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)||
+|移除变更记录|shift_out|数据对象|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)||
 |选择数据列表|srfactionparam|数据对象列表|[迭代(SPRINT)](module/ProjMgmt/sprint.md)||
 |循环临时变量|temp_obj|数据对象|[迭代(SPRINT)](module/ProjMgmt/sprint.md)||
+|工作项更新对象|update_obj|数据对象|[工作项(WORK_ITEM)](module/ProjMgmt/work_item.md)||

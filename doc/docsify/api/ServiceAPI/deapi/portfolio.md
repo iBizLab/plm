@@ -488,6 +488,67 @@ Integer
 
 ```
 
+## 项目集首页组件计数
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/portfolios/{key}/portfolio_index_addon_counter" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目集标识|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|项目集成员|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目集名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "state" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "identifier" : null,
+  "description" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "members" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+
 ## 恢复项目集
 
 <el-row>
@@ -560,6 +621,85 @@ Integer
 </div>
 </el-row>
 权限标识：`NONE`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|开始时间|
+|<el-row justify="space-between"><el-col :span="20">end_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|结束时间|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目集标识|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">is_favorite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|是否星标|
+|<el-row justify="space-between"><el-col :span="20">members</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|项目集成员|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|项目集名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "state" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "identifier" : null,
+  "description" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "members" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "state" : null,
+  "start_at" : null,
+  "end_at" : null,
+  "identifier" : null,
+  "description" : null,
+  "is_deleted" : null,
+  "is_favorite" : null,
+  "members" : null,
+  "assignee_name" : null,
+  "assignee_id" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
+
+## 项目资源成员设置
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/portfolios/resource_setting" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
 
 
 

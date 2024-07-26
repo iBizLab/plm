@@ -18,7 +18,7 @@
 
 <p class="panel-title"><b>主排序属性</b></p>
 
-* `CREATE_TIME(建立时间)` `ASC`
+* `SEQUENCE(排序)` `ASC`
 
 
 

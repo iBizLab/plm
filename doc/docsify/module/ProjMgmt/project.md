@@ -7,9 +7,11 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|全部工作项数|ALL_WORK_ITEMS|数值||是||
 |负责人标识|ASSIGNEE_ID|文本，可指定长度|100|是||
 |负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
 |主题色|COLOR|文本，可指定长度|100|是||
+|已完成工作项数|COMPLETED_WORK_ITEMS|数值||是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |描述|DESCRIPTION|长文本，长度1000|2000|是||
@@ -22,10 +24,13 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |是否本地配置|IS_LOCAL_CONFIGURE|是否逻辑||是||
 |成员|MEMBERS|一对多关系数据集合|1048576|是||
 |项目名称|NAME|文本，可指定长度|200|否||
+|公告|NOTICE|长文本，没有长度限制|1048576|是||
+|进度|SCHEDULE|数值||是||
 |所属对象|SCOPE_ID|文本，可指定长度|100|是||
 |所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
 |开始时间|START_AT|日期型||是||
 |状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
+|临时|TEMP|文本，可指定长度|100|是||
 |类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
@@ -37,6 +42,33 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 <el-row>
 <el-tabs v-model="show_field_group">
 
+<el-tab-pane label="BI查询属性组" name="field_group_bi_search_group">
+
+|    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
+| --------   |------------| -----  | -----  | :----: | -------- |
+|是否已归档|IS_ARCHIVED|是否逻辑||是||
+|是否已删除|IS_DELETED|是否逻辑||是||
+|更新时间|UPDATE_TIME|日期时间型||否||
+|建立时间|CREATE_TIME|日期时间型||否||
+|开始时间|START_AT|日期型||是||
+|结束时间|END_AT|日期型||是||
+|负责人|ASSIGNEE_NAME|文本，可指定长度|100|是||
+|负责人标识|ASSIGNEE_ID|文本，可指定长度|100|是||
+|所属对象|SCOPE_ID|文本，可指定长度|100|是||
+|项目名称|NAME|文本，可指定长度|200|否||
+|建立人|CREATE_MAN|文本，可指定长度|100|否||
+|项目标识|IDENTIFIER|文本，可指定长度|100|否||
+|更新人|UPDATE_MAN|文本，可指定长度|100|否||
+|已完成工作项数|COMPLETED_WORK_ITEMS|数值||是||
+|全部工作项数|ALL_WORK_ITEMS|数值||是||
+|进度|SCHEDULE|数值||是||
+|可见范围|VISIBILITY|单项选择(文本值)|60|否||
+|所属|SCOPE_TYPE|[单项选择(文本值)](index/dictionary_index#scope_type "所属类型（通用）")|60|是||
+|类型|TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
+|状态|STATE|[单项选择(文本值)](index/dictionary_index#project_state "项目状态")|60|是||
+|标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+
+</el-tab-pane>
 <el-tab-pane label="重定向属性组" name="field_group_redirctDEFGroup">
 
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
@@ -79,6 +111,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[DER1N_ENTRY_PROJECT_PROJECT_ID](der/DER1N_ENTRY_PROJECT_PROJECT_ID)|[看板栏(ENTRY)](module/ProjMgmt/entry)|1:N关系||
 |[DER1N_PROGRESS_PROJECT_PROJECT_ID](der/DER1N_PROGRESS_PROJECT_PROJECT_ID)|[项目进度(PROGRESS)](module/ProjMgmt/progress)|1:N关系||
 |[DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID](der/DER1N_PROJECT_MEMBER_PROJECT_PROJECT_ID)|[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|1:N关系||
+|[DER1N_PSDELOGICNODE_PROJECT_PROJECT_ID](der/DER1N_PSDELOGICNODE_PROJECT_PROJECT_ID)|[实体处理逻辑节点(PSDELOGICNODE)](module/extension/PSDELogicNode)|1:N关系||
 |[DER1N_RELEASE_PROJECT_PROJECT_ID](der/DER1N_RELEASE_PROJECT_PROJECT_ID)|[项目发布(RELEASE)](module/ProjMgmt/release)|1:N关系||
 |[DER1N_SPRINT_PROJECT_PROJECT_ID](der/DER1N_SPRINT_PROJECT_PROJECT_ID)|[迭代(SPRINT)](module/ProjMgmt/sprint)|1:N关系||
 |[DER1N_SWIMLANE_PROJECT_PROJECT_ID](der/DER1N_SWIMLANE_PROJECT_PROJECT_ID)|[泳道(SWIMLANE)](module/ProjMgmt/swimlane)|1:N关系||
@@ -186,7 +219,10 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[默认（全部数据）(VIEW)](module/ProjMgmt/project/query/View)|VIEW|否|否 |否 ||
 |[管理员(admin)](module/ProjMgmt/project/query/admin)|admin|否|否 |否 ||
 |[已归档(archived)](module/ProjMgmt/project/query/archived)|archived|否|否 |否 ||
+|[BI反查(bi_detail)](module/ProjMgmt/project/query/bi_detail)|bi_detail|否|否 |否 ||
+|[BI查询(bi_search)](module/ProjMgmt/project/query/bi_search)|bi_search|否|否 |否 ||
 |[选择项目(choose_project)](module/ProjMgmt/project/query/choose_project)|choose_project|否|否 |否 ||
+|[当前项目(cur_project)](module/ProjMgmt/project/query/cur_project)|cur_project|否|否 |否 ||
 |[当前项目(current)](module/ProjMgmt/project/query/current)|current|否|否 |否 ||
 |[已删除(deleted)](module/ProjMgmt/project/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProjMgmt/project/query/favorite)|favorite|否|否 |否 ||
@@ -207,6 +243,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[数据集(DEFAULT)](module/ProjMgmt/project/dataset/Default)|DEFAULT|数据查询|是|||
 |[管理员(admin)](module/ProjMgmt/project/dataset/admin)|admin|数据查询|否|||
 |[已归档(archived)](module/ProjMgmt/project/dataset/archived)|archived|数据查询|否|||
+|[BI反查(bi_detail)](module/ProjMgmt/project/dataset/bi_detail)|bi_detail|数据查询|否|||
+|[BI查询(bi_search)](module/ProjMgmt/project/dataset/bi_search)|bi_search|数据查询|否|||
 |[选择项目(choose_project)](module/ProjMgmt/project/dataset/choose_project)|choose_project|数据查询|否|||
 |[当前项目(current)](module/ProjMgmt/project/dataset/current)|current|数据查询|否|||
 |[已删除(deleted)](module/ProjMgmt/project/dataset/deleted)|deleted|数据查询|否|||
@@ -329,11 +367,14 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 项目成员 | open_project_member | 项目成员 |单项数据（主键）|用户自定义||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 打开项目主视图（scrum） | open_project_main_view_scrum | 打开项目主视图（scrum） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_scrum_main_view)</details>||
+| BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
 | 打开项目主视图（kanban） | open_project_main_view_kanban | 打开项目主视图（kanban） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_kanban_main_view)</details>||
 | 打开项目导航页 | open_project_exp_view | 打开项目导航页 |无数据|<details><summary>打开顶级视图</summary>[项目管理](app/view/project_tree_exp_view)</details>||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
-| 项目关联空间 | project_relation_space | 项目关联空间 |无数据|<details><summary>打开视图或向导（模态）</summary>[关联空间](app/view/space_choose_option_view)</details>||
+| BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
+| 编辑公告 | edit_notice | 编辑公告 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑公告](app/view/project_notice_edit_view)</details>||
+| BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 回收站 | open_deleted_project | 回收站 |单项数据（主键）|用户自定义||
 | 新建项目 | create_project | 新建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_view)</details>||
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
@@ -347,6 +388,8 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 移动项目 | move_project | 移动项目 |单项数据（主键）|<details><summary>后台调用</summary>[project_move](#行为)||
+| 打开BI报表配置表单_项目_风险占比 | open_bi_form_project_risk_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
+| 反查打开项目 | bi_open_project | 打开项目 |单项数据|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
 | 根据类型打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
@@ -359,6 +402,9 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[根据类型跳转项目主视图](module/ProjMgmt/project/uilogic/open_project_main_view)|open_project_main_view|判断类型跳转不同的项目主视图|
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
+|[门户全屏](module/ProjMgmt/project/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户刷新](module/ProjMgmt/project/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
+|[门户编辑](module/ProjMgmt/project/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
 |[项目关联空间](module/ProjMgmt/project/uilogic/project_relation_space)|project_relation_space|调用后台关联逻辑，项目关联空间并生成正反关联数据|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -410,7 +456,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
     data() {
       return {
 show_der:'major',
-show_field_group:'field_group_redirctDEFGroup',
+show_field_group:'field_group_bi_search_group',
 
       }
     },

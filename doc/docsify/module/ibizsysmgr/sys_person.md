@@ -25,6 +25,7 @@
 |移动电话|MOBILE|文本，可指定长度|100|是||
 |地址|POSTAL_ADDRESS|文本，可指定长度|500|是||
 |统计|REPORT_FLAG|是否逻辑||是||
+|状态|STATUS|文本，可指定长度|100|是||
 |联系电话|TELEPHONE_NUMBER|文本，可指定长度|100|是||
 |职位|TITLE|文本，可指定长度|100|是||
 |uid/loginname|UID|文本，可指定长度|100|是||

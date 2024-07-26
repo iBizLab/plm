@@ -21,3 +21,4 @@
 ### 数据查询
   * [查询星标(favorite)](module/Wiki/space/query/favorite)
   * [非星标空间(unfavorite)](module/Wiki/space/query/unfavorite)
+  * [当前空间(cur_space)](module/Wiki/space/query/cur_space)

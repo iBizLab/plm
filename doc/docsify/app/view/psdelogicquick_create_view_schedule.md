@@ -1,4 +1,4 @@
-# 实体处理逻辑(psdelogicquick_create_view_schedule)  <!-- {docsify-ignore-all} -->
+# 新建规则(psdelogicquick_create_view_schedule)  <!-- {docsify-ignore-all} -->
 
 
 

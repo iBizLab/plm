@@ -71,10 +71,18 @@
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_RESULT_STATE_EQ|状态|EQ||
+|N_STAGE_ID_EQ|阶段标识|EQ||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 通过（单条） | pass | 通过 |单项数据|用户自定义||
+| 拒绝（单条） | decline | 拒绝 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[拒绝](module/TestMgmt/review_result/uilogic/refuse)|refuse||
 |[通过](module/TestMgmt/review_result/uilogic/pass)|pass||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
@@ -101,6 +109,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_result?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/review_result?id=界面行为`">
+  界面行为
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/review_result?id=界面逻辑`">
   界面逻辑

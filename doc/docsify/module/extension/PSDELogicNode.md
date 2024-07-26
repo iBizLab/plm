@@ -4,10 +4,28 @@
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
+|代码名称|CODENAME|文本，可指定长度|60|否||
+|内容|CONTENT|文本，可指定长度|100|是||
+|逻辑节点类型|LOGICNODETYPE|[单项选择(文本值)](index/dictionary_index#DELogicNodeType3 "实体逻辑处理节点类型(设计)3")|40|否||
+|排序属性|ORDERVALUE|整型||是||
+|循环后续处理|PARALLELOUTPUT|是否逻辑||是||
+|参数1|PARAM1|文本，可指定长度|100|是||
+|参数10|PARAM10|是否逻辑||是||
+|参数11|PARAM11|文本，可指定长度|100|是||
+|参数12|PARAM12|文本，可指定长度|100|是||
+|参数13|PARAM13|文本，可指定长度|100|是||
+|参数7|PARAM7|整型||是||
+|参数8|PARAM8|整型||是||
+|参数9|PARAM9|是否逻辑||是||
+|项目标识|PROJECT_ID|外键值|100|是||
+|项目名称|PROJECT_NAME|外键值文本|200|是||
 |实体处理逻辑|PSDELOGICID|外键值|100|否||
 |实体处理逻辑|PSDELOGICNAME|外键值文本|200|否||
 |实体处理逻辑节点标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|PSDELOGICNODEID|全局唯一标识，文本类型，用户不可见|100|否||
 |逻辑处理名称|PSDELOGICNODENAME|文本，可指定长度|200|否||
+|标题|TITLE|文本，可指定长度|100|是||
+|工作项类型|WORK_ITEM_TYPE_ID|文本，可指定长度|100|是||
+|工作项类型|WORK_ITEM_TYPE_NAME|文本，可指定长度|100|是||
 
 
 ## 关系
@@ -27,7 +45,9 @@
 
 |  名称col350   | 主实体col200   | 关系类型col200   |    备注col500  |
 | -------- |---------- |-----------|----- |
+|[DER1N_PSDELOGICNODE_PROJECT_PROJECT_ID](der/DER1N_PSDELOGICNODE_PROJECT_PROJECT_ID)|[项目(PROJECT)](module/ProjMgmt/project)|1:N关系||
 |[DER1N_PSDELOGICNODE_PSDELOGIC_PSDELOGICID](der/DER1N_PSDELOGICNODE_PSDELOGIC_PSDELOGICID)|[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|1:N关系||
+|[DERCUSTOM_PSDELOGICNODE_PSDEMSLOGIC_PSDELOGICID](der/DERCUSTOM_PSDELOGICNODE_PSDEMSLOGIC_PSDELOGICID)|[实体主状态迁移逻辑(PSDEMSLOGIC)](module/extension/PSDEMSLogic)|自定义关系||
 
 </el-tab-pane>
 </el-tabs>
@@ -68,11 +88,20 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_LOGICNODETYPE_EQ|逻辑节点类型|EQ||
+|N_PROJECT_ID_EQ|项目标识|EQ||
+|N_PROJECT_NAME_EQ|项目名称|EQ||
+|N_PROJECT_NAME_LIKE|项目名称|LIKE||
 |N_PSDELOGICID_EQ|实体处理逻辑|EQ||
 |N_PSDELOGICNAME_EQ|实体处理逻辑|EQ||
 |N_PSDELOGICNAME_LIKE|实体处理逻辑|LIKE||
 |N_PSDELOGICNODEID_EQ|实体处理逻辑节点标识|EQ||
 |N_PSDELOGICNODENAME_LIKE|逻辑处理名称|LIKE||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 添加状态 | addStatus | 添加状态 |无数据|<details><summary>打开视图或向导（模态）</summary>[实体处理逻辑节点](app/view/psdelogicnodequickcreateview_msnode2)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -95,6 +124,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSDELogicNode?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/extension/PSDELogicNode?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

@@ -12,7 +12,12 @@
   * opendata(预置打开数据逻辑)
 
 
+### 关联界面行为
+  * [测试库(LIBRARY)](module/TestMgmt/library) : [返回](module/TestMgmt/library#界面行为)
+
 ### 关联视图
+  * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
+  * [评审配置(guideline_all_grid_view)](app/view/guideline_all_grid_view)
   * [测试库管理(library_archived_grid_view)](app/view/library_archived_grid_view)
   * [测试库管理(library_config_tab_exp_view)](app/view/library_config_tab_exp_view)
   * [测试库管理(library_deleted_grid_view)](app/view/library_deleted_grid_view)

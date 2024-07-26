@@ -8,7 +8,7 @@
 
 
 ### 关联视图
-  * [实体属性(psde_field_grid_view)](app/view/psde_field_grid_view)
+  * [组件设置(addon_no_name_setting_grid_view)](app/view/addon_no_name_setting_grid_view)
   * [工作项配置(work_item_type_global_setting_view_scrum)](app/view/work_item_type_global_setting_view_scrum)
 
 <script>

@@ -162,6 +162,7 @@
 ##### 序列使用清单
 
 > [评审(REVIEW)](module/TestMgmt/review.md) `编号(IDENTIFIER)` <br>
+> [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md) `编号(IDENTIFIER)` <br>
 
 
 

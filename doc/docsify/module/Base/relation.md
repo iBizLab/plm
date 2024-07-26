@@ -13,14 +13,17 @@
 |客户|CUSTOMER|外键值对象|1048576|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |产品需求|IDEA|外键值对象|1048576|是||
+|前后置任务|JOB_TYPE|[单项选择(文本值)](index/dictionary_index#choose_job_type "选择前后置任务")|200|是||
+|重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#common_level "通用重要程度")|60|是||
 |名称|NAME|文本，可指定长度|200|是||
 |所属数据对象|OWNER_TYPE|文本，可指定长度|100|是||
 |父对象版本标识|PARENT_VERSION_ID|文本，可指定长度|100|是||
-|关联主体标识|PRINCIPAL_ID|文本，可指定长度|100|是||
-|关联主体类型|PRINCIPAL_TYPE|文本，可指定长度|100|是||
+|关联主体标识|PRINCIPAL_ID|文本，可指定长度|100|否||
+|关联主体类型|PRINCIPAL_TYPE|文本，可指定长度|100|否||
+|源工作项|PRINCIPAL_WORK_ITEM|外键值对象|1048576|是||
 |关联类型|RELATION_TYPE|文本，可指定长度|100|是||
 |目标对象负责人|TARGET_ASSIGNEE|文本，可指定长度|100|是||
-|关联目标标识|TARGET_ID|文本，可指定长度|100|是||
+|关联目标标识|TARGET_ID|文本，可指定长度|100|否||
 |目标对象编号|TARGET_IDENTIFIER|文本，可指定长度|100|是||
 |目标对象父标识|TARGET_PARENT_ID|文本，可指定长度|100|是||
 |目标对象优先级|TARGET_PRIORITY|文本，可指定长度|100|是||
@@ -38,6 +41,7 @@
 
   * `关联主体标识(PRINCIPAL_ID)`
   * `关联目标标识(TARGET_ID)`
+  * `关联主体类型(PRINCIPAL_TYPE)`
 
 ###### 索引
 
@@ -110,6 +114,7 @@
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
+|添加依赖|add_dependency|[实体处理逻辑](module/Base/relation/logic/add_dependency "工作项添加依赖")|默认|不支持||||
 |取消关联|del_relation|[实体处理逻辑](module/Base/relation/logic/del_relation "取消关联")|默认|不支持||||
 |规划用例|program_test_case|[实体处理逻辑](module/Base/relation/logic/program_test_case "规划用例")|默认|不支持||||
 |执行用例取消关联缺陷|run_del_relation_bug|[实体处理逻辑](module/Base/relation/logic/run_del_relation_bug "执行用例取消关联缺陷")|默认|不支持||||
@@ -119,8 +124,10 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[区分前后置任务](module/Base/relation/logic/differentiate_job_type)|differentiate_job_type|无||工作项依赖：区分前后置任务|
 |[取消关联](module/Base/relation/logic/del_relation)|del_relation|无||工作项取消关联数据（正反向关联数据同时删除）|
 |[工作项取消关联测试用例](module/Base/relation/logic/work_item_del_relation_test_case)|work_item_del_relation_test_case|无||1.工作项取消关联对应测试用例 2.判断是缺陷类型工作项时检验是否需删除执行用例关联|
+|[工作项添加依赖](module/Base/relation/logic/add_dependency)|add_dependency|无||工作项添加依赖|
 |[执行用例取消关联缺陷](module/Base/relation/logic/run_del_relation_bug)|run_del_relation_bug|无||1.执行用例取消关联缺陷 2.对应测试用例取消关联缺陷|
 |[测试用例取消关联缺陷](module/Base/relation/logic/test_case_del_relation_bug)|test_case_del_relation_bug|无||1.测试用例取消关联缺陷 2.对应执行用例取消关联缺陷|
 |[规划用例](module/Base/relation/logic/program_test_case)|program_test_case|无||规划用例，将用例规划至评审内，生成正反向关联数据|
@@ -128,7 +135,7 @@
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
 | --------  | :----:    | ---- |----- |
-|版本数据存储|VERSIONSTORAGE|[附加数据版本(VERSION_DATA)](module/Base/version_data)||
+|版本数据存储|版本数据存储|[附加数据版本(VERSION_DATA)](module/Base/version_data)||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -137,6 +144,7 @@
 |[默认（全部数据）(VIEW)](module/Base/relation/query/View)|VIEW|否|否 |否 ||
 |[全部数据(all)](module/Base/relation/query/all)|all|否|否 |否 ||
 |[基线下的工作项(baseline_relation_work_item)](module/Base/relation/query/baseline_relation_work_item)|baseline_relation_work_item|否|否 |否 ||
+|[工作项依赖(dependency_work_items)](module/Base/relation/query/dependency_work_items)|dependency_work_items|否|否 |否 ||
 |[测试用例下存在执行用例关联缺陷(exists_run_relation_bug)](module/Base/relation/query/exists_run_relation_bug)|exists_run_relation_bug|否|否 |否 ||
 |[需求关联客户(idea_re_customer)](module/Base/relation/query/idea_re_customer)|idea_re_customer|否|否 |否 ||
 |[需求关联需求(idea_re_idea)](module/Base/relation/query/idea_re_idea)|idea_re_idea|否|否 |否 ||
@@ -166,6 +174,8 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/relation/dataset/Default)|DEFAULT|数据查询|是|||
 |[全部数据(all)](module/Base/relation/dataset/all)|all|数据查询|否|||
+|[工作项依赖(dependency)](module/Base/relation/dataset/dependency)|dependency|[实体逻辑](module/Base/relation/logic/differentiate_job_type)|否||工作项依赖|
+|[工作项依赖(dependency_work_items)](module/Base/relation/dataset/dependency_work_items)|dependency_work_items|数据查询|否|||
 |[测试用例下存在执行用例关联缺陷(exists_run_relation_bug)](module/Base/relation/dataset/exists_run_relation_bug)|exists_run_relation_bug|数据查询|否|||
 |[需求关联客户(idea_re_customer)](module/Base/relation/dataset/idea_re_customer)|idea_re_customer|数据查询|否|||
 |[需求关联需求(idea_re_idea)](module/Base/relation/dataset/idea_re_idea)|idea_re_idea|数据查询|否|||
@@ -212,6 +222,8 @@
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
 |N_ID_EQ|标识|EQ||
+|N_JOB_TYPE_EQ|前后置任务|EQ||
+|N_LEVEL_EQ|重要程度|EQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_PRINCIPAL_ID_EQ|关联主体标识|EQ||
 |N_PRINCIPAL_TYPE_EQ|关联主体类型|EQ||
@@ -222,17 +234,25 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 添加依赖关系 | add_dependency | 添加依赖关系 |单项数据|用户自定义||
 | 测试用例取消关联缺陷 | test_case_del_relation_bug | 取消关联 |单项数据|<details><summary>后台调用</summary>[test_case_del_relation_bug](#行为)||
 | 添加关联 | add_relation | 添加关联 |无数据|用户自定义||
 | 取消关联 | del_relation | 取消关联 |单项数据|<details><summary>后台调用</summary>[del_relation](#行为)||
 | 工作项取消关联测试用例 | work_item_del_relation_test_case | 取消关联 |单项数据|<details><summary>后台调用</summary>[work_item_del_relation_case](#行为)||
+| 依赖类型变更 | dependency_change | 依赖类型变更 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary></details>||
 | 执行用例取消关联缺陷 | run_del_relation_bug | 取消关联 |单项数据|<details><summary>后台调用</summary>[run_del_relation_bug](#行为)||
+| 取消依赖 | del_dependency | 取消依赖 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 打开依赖工作项主视图 | open_dependency | 打开依赖工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[依赖列表视图加载完成](module/Base/relation/uilogic/dependency_load_success)|dependency_load_success|依赖列表视图加载完成|
+|[依赖类型值变更](module/Base/relation/uilogic/dependency_onchange)|dependency_onchange|依赖类型值变更|
 |[取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)|del_relation_disabled|用于动态取消关联按钮的启用(target_priority列绑定的界面行为组)|
-|[触发计数器刷新](module/Base/relation/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
+|[工作项添加依赖关系](module/Base/relation/uilogic/add_dependency)|add_dependency|工作项添加依赖关系|
+|[打开依赖工作项](module/Base/relation/uilogic/open_dependency)|open_dependency|打开依赖工作项主视图|
+|[触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新<br>并且刷新表单|
 |[选择下拉框区域展示](module/Base/relation/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

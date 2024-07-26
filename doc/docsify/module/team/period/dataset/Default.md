@@ -19,4 +19,4 @@
 
 
 ### 数据查询
-  * [数据查询(DEFAULT)](module/team/period/query/Default)
+  * [数据查询(DEFAULT)](module/Team/period/query/Default)

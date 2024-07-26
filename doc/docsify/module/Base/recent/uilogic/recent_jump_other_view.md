@@ -15,21 +15,24 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recent_jump_other_view#begin {开始}]]
-state "重定向跳转" as DEUIACTION1  [[$./recent_jump_other_view#deuiaction1 {重定向跳转}]]
+state "工作项" as PREPAREJSPARAM7  [[$./recent_jump_other_view#preparejsparam7 {工作项}]]
+state "获取选中数据详情" as RAWJSCODE1  [[$./recent_jump_other_view#rawjscode1 {获取选中数据详情}]]
 state "测试类" as PREPAREJSPARAM8  [[$./recent_jump_other_view#preparejsparam8 {测试类}]]
-state "工单" as PREPAREJSPARAM5  [[$./recent_jump_other_view#preparejsparam5 {工单}]]
-state "测试用例" as PREPAREJSPARAM9  [[$./recent_jump_other_view#preparejsparam9 {测试用例}]]
 state "项目类" as PREPAREJSPARAM6  [[$./recent_jump_other_view#preparejsparam6 {项目类}]]
 state "清空父类标识" as PREPAREJSPARAM10  [[$./recent_jump_other_view#preparejsparam10 {清空父类标识}]]
-state "工作项" as PREPAREJSPARAM7  [[$./recent_jump_other_view#preparejsparam7 {工作项}]]
 state "获取选中卡片" as PREPAREJSPARAM1  [[$./recent_jump_other_view#preparejsparam1 {获取选中卡片}]]
 state "需求" as PREPAREJSPARAM4  [[$./recent_jump_other_view#preparejsparam4 {需求}]]
-state "页面" as PREPAREJSPARAM12  [[$./recent_jump_other_view#preparejsparam12 {页面}]]
-state "知识类" as PREPAREJSPARAM11  [[$./recent_jump_other_view#preparejsparam11 {知识类}]]
-state "获取选中数据详情" as RAWJSCODE1  [[$./recent_jump_other_view#rawjscode1 {获取选中数据详情}]]
-state "产品类" as PREPAREJSPARAM3  [[$./recent_jump_other_view#preparejsparam3 {产品类}]]
 state "结束" as END1 <<end>> [[$./recent_jump_other_view#end1 {结束}]]
+state "页面" as PREPAREJSPARAM12  [[$./recent_jump_other_view#preparejsparam12 {页面}]]
+state "实体行为" as DEACTION1  [[$./recent_jump_other_view#deaction1 {实体行为}]]
+state "产品类" as PREPAREJSPARAM3  [[$./recent_jump_other_view#preparejsparam3 {产品类}]]
 state "获取选中表格行" as PREPAREJSPARAM2  [[$./recent_jump_other_view#preparejsparam2 {获取选中表格行}]]
+state "重定向跳转" as DEUIACTION1  [[$./recent_jump_other_view#deuiaction1 {重定向跳转}]]
+state "工单" as PREPAREJSPARAM5  [[$./recent_jump_other_view#preparejsparam5 {工单}]]
+state "打开工作项主视图" as DEUIACTION2  [[$./recent_jump_other_view#deuiaction2 {打开工作项主视图}]]
+state "填充项目标识" as PREPAREJSPARAM13  [[$./recent_jump_other_view#preparejsparam13 {填充项目标识}]]
+state "测试用例" as PREPAREJSPARAM9  [[$./recent_jump_other_view#preparejsparam9 {测试用例}]]
+state "知识类" as PREPAREJSPARAM11  [[$./recent_jump_other_view#preparejsparam11 {知识类}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./recent_jump_other_view#begin-preparejsparam1{最近使用} 最近使用]]
@@ -45,7 +48,10 @@ PREPAREJSPARAM5 --> DEUIACTION1
 RAWJSCODE1 --> PREPAREJSPARAM6 : [[$./recent_jump_other_view#rawjscode1-preparejsparam6{父类型为项目} 父类型为项目]]
 PREPAREJSPARAM6 --> DEUIACTION1 : [[$./recent_jump_other_view#preparejsparam6-deuiaction1{最近访问数据（打开父）} 最近访问数据（打开父）]]
 PREPAREJSPARAM6 --> PREPAREJSPARAM7 : [[$./recent_jump_other_view#preparejsparam6-preparejsparam7{子类型为工作项} 子类型为工作项]]
-PREPAREJSPARAM7 --> DEUIACTION1
+PREPAREJSPARAM7 --> DEACTION1
+DEACTION1 --> PREPAREJSPARAM13
+PREPAREJSPARAM13 --> DEUIACTION2
+DEUIACTION2 --> END1
 RAWJSCODE1 --> PREPAREJSPARAM8 : [[$./recent_jump_other_view#rawjscode1-preparejsparam8{父类型为测试库} 父类型为测试库]]
 PREPAREJSPARAM8 --> DEUIACTION1 : [[$./recent_jump_other_view#preparejsparam8-deuiaction1{最近访问数据（打开父）} 最近访问数据（打开父）]]
 PREPAREJSPARAM8 --> PREPAREJSPARAM9 : [[$./recent_jump_other_view#preparejsparam8-preparejsparam9{子类型为测试用例} 子类型为测试用例]]
@@ -134,31 +140,18 @@ if (selecteddata.length > 0) {
 2. 将`空值（NULL）` 设置给  `ctx(上下文参数).product`
 3. 将`空值（NULL）` 设置给  `ctx(上下文参数).project`
 
-#### 获取选中表格行 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`grid(表格部件参数).state` 设置给  `STATE(state)`
-2. 将`STATE(state).selectedData` 设置给  `selectedData(选中数据（数组）)`
-
 #### 测试用例 :id=PREPAREJSPARAM9<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`selectobj(选中数据).owner_id` 设置给  `ctx(上下文参数).test_case`
 
-#### 项目类 :id=PREPAREJSPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 获取选中表格行 :id=PREPAREJSPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-1. 将`selectobj(选中数据).recent_parent` 设置给  `ctx(上下文参数).project`
-2. 将`selectobj(选中数据).owner_subtype` 设置给  `ctx(上下文参数).owner_subtype`
-
-#### 工作项 :id=PREPAREJSPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`selectobj(选中数据).owner_id` 设置给  `ctx(上下文参数).work_item`
+1. 将`grid(表格部件参数).state` 设置给  `STATE(state)`
+2. 将`STATE(state).selectedData` 设置给  `selectedData(选中数据（数组）)`
 
 #### 知识类 :id=PREPAREJSPARAM11<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -172,6 +165,41 @@ if (selecteddata.length > 0) {
 
 
 1. 将`selectobj(选中数据).owner_id` 设置给  `ctx(上下文参数).article_page`
+
+#### 打开工作项主视图 :id=DEUIACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体界面行为调用]</font></sup>
+
+
+
+调用实体 [最近访问(RECENT)](module/Base/recent.md) 界面行为 [打开工作项主视图](module/Base/recent#界面行为) ，行为参数为`work_item(工作项)`
+
+#### 填充项目标识 :id=PREPAREJSPARAM13<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`selectobj(选中数据).recent_parent` 设置给  `work_item(工作项).project_id`
+
+#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+
+
+
+调用实体 [工作项(WORK_ITEM)](module/ProjMgmt/work_item.md) 行为 [获取工作项类型(work_item_type_id)](module/ProjMgmt/work_item#行为) ，行为参数为`work_item(工作项)`
+
+将执行结果返回给参数`work_item(工作项)`
+
+#### 工作项 :id=PREPAREJSPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`selectobj(选中数据).owner_id` 设置给  `ctx(上下文参数).work_item`
+2. 将`selectobj(选中数据).owner_id` 设置给  `work_item_filter(工作项过滤器).n_id_eq`
+3. 将`selectobj(选中数据).owner_id` 设置给  `work_item(工作项).id`
+
+#### 项目类 :id=PREPAREJSPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+
+
+
+1. 将`selectobj(选中数据).recent_parent` 设置给  `ctx(上下文参数).project`
+2. 将`selectobj(选中数据).owner_subtype` 设置给  `ctx(上下文参数).owner_subtype`
 
 ### 连接条件说明
 #### 最近使用 :id=Begin-PREPAREJSPARAM1
@@ -225,12 +253,15 @@ if (selecteddata.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|表格部件参数|grid|部件对象||
-|当前部件对象|this_obj|当前部件对象||
+|当前视图|cur_view|当前视图对象||
+|工作项过滤器|work_item_filter|过滤器||
 |选中数据（数组）|selectedData|简单数据列表||
-|卡片参数|DATAVIEW|部件对象||
+|当前部件对象|this_obj|当前部件对象||
+|上下文参数|ctx|导航视图参数绑定参数||
 |state|STATE|数据对象||
 |选中数据|selectobj|数据对象||
-|当前视图|cur_view|当前视图对象||
+|表格部件参数|grid|部件对象||
+|卡片参数|DATAVIEW|部件对象||
+|工作项|work_item|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|上下文参数|ctx|导航视图参数绑定参数||
+|工作项分页结果对象|work_item_page|分页查询||

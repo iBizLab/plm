@@ -24,6 +24,7 @@
 |<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
 |<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
 |<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
 |<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
 |<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
 |<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
@@ -31,8 +32,13 @@
 |<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
 |<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
-|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
 |<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
 |<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
@@ -42,7 +48,7 @@
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
@@ -67,6 +73,7 @@
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -74,6 +81,11 @@
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -116,6 +128,7 @@
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -123,6 +136,11 @@
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -185,6 +203,7 @@
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -192,6 +211,11 @@
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -273,6 +297,7 @@
 |<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
 |<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
 |<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
 |<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
 |<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
 |<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
@@ -280,8 +305,13 @@
 |<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
 |<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
-|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
 |<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
 |<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
@@ -291,7 +321,7 @@
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
@@ -316,6 +346,7 @@
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -323,6 +354,11 @@
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -365,6 +401,7 @@
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -372,6 +409,11 @@
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -427,6 +469,7 @@
 |<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
 |<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
 |<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
 |<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
 |<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
 |<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
@@ -434,8 +477,13 @@
 |<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
 |<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
-|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
 |<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
 |<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
@@ -445,7 +493,7 @@
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
@@ -470,6 +518,7 @@
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -477,6 +526,11 @@
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -537,6 +591,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
 |<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
 |<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
 |<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
 |<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
 |<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
@@ -544,8 +599,13 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
 |<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
-|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
 |<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
 |<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
@@ -555,7 +615,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
@@ -580,6 +640,7 @@ Integer
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -587,6 +648,11 @@ Integer
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -629,6 +695,7 @@ Integer
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -636,6 +703,11 @@ Integer
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -691,6 +763,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
 |<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
 |<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
 |<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
 |<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
 |<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
@@ -698,8 +771,13 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
 |<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
-|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
 |<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
 |<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
@@ -709,7 +787,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
@@ -734,6 +812,7 @@ Integer
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -741,6 +820,11 @@ Integer
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -783,6 +867,7 @@ Integer
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -790,6 +875,11 @@ Integer
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -850,6 +940,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
 |<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
 |<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
 |<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
 |<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
 |<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
@@ -857,8 +948,13 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
 |<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
 |<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
 |<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
-|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
 |<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
 |<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
@@ -868,7 +964,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
 |<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
 |<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
@@ -893,6 +989,7 @@ Integer
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -900,6 +997,257 @@ Integer
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
+  "codename" : null,
+  "createdate" : null,
+  "createman" : null,
+  "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
+  "logictype" : null,
+  "memo" : null,
+  "ordervalue" : null,
+  "psdeid" : null,
+  "psdelogicid" : null,
+  "psdelogicname" : null,
+  "psdename" : null,
+  "updatedate" : null,
+  "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
+  "validflag" : null,
+  "extension_tag" : null,
+  "extension_tag2" : null,
+  "extension_tag3" : null,
+  "extension_tag4" : null,
+}
+```
+
+
+
+## 禁用
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/psdelogics/{key}/disable" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|实体处理逻辑标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">applyflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展状态|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdeactionid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定行为|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdeactionname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定行为|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
+|<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
+|<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
+|<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
+|<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
+|<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
+|<el-row justify="space-between"><el-col :span="20">last_start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|最后运行时间|
+|<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
+|<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
+|<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
+|<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
+|<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
+|<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
+|<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
+|<el-row justify="space-between"><el-col :span="20">extension_tag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记4|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "applyflag" : null,
+  "attachtopsdeactionid" : null,
+  "attachtopsdeactionname" : null,
+  "dynamodelflag" : null,
+  "attachtopsdedatasetid" : null,
+  "attachtopsdedatasetname" : null,
+  "timerpolicy" : null,
+  "last_state" : null,
+  "eventmodel" : null,
+  "events" : null,
+  "ignoreexception" : null,
+  "threadmode" : null,
+  "last_start_at" : null,
+  "psdelogicparams" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
+  "codename" : null,
+  "createdate" : null,
+  "createman" : null,
+  "logicsubtype" : null,
+  "logictag" : null,
+  "logictag2" : null,
+  "logictag3" : null,
+  "logictag4" : null,
+  "logictype" : null,
+  "memo" : null,
+  "ordervalue" : null,
+  "psdeid" : null,
+  "psdelogicid" : null,
+  "psdelogicname" : null,
+  "psdename" : null,
+  "updatedate" : null,
+  "updateman" : null,
+  "usertag" : null,
+  "usertag2" : null,
+  "usertag3" : null,
+  "usertag4" : null,
+  "validflag" : null,
+  "extension_tag" : null,
+  "extension_tag2" : null,
+  "extension_tag3" : null,
+  "extension_tag4" : null,
+}
+```
+
+
+
+## 启用
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/psdelogics/{key}/enable" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|实体处理逻辑标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">applyflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展状态|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdeactionid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定行为|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdeactionname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定行为|
+|<el-row justify="space-between"><el-col :span="20">dynamodelflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|扩展模型|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
+|<el-row justify="space-between"><el-col :span="20">attachtopsdedatasetname</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|附加到指定数据集|
+|<el-row justify="space-between"><el-col :span="20">timerpolicy</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|定时触发策略|
+|<el-row justify="space-between"><el-col :span="20">last_state</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|最后运行状态|
+|<el-row justify="space-between"><el-col :span="20">eventmodel</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|事件模型|
+|<el-row justify="space-between"><el-col :span="20">events</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|监控事件|
+|<el-row justify="space-between"><el-col :span="20">ignoreexception</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|忽略异常|
+|<el-row justify="space-between"><el-col :span="20">threadmode</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|线程模式|
+|<el-row justify="space-between"><el-col :span="20">last_start_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|最后运行时间|
+|<el-row justify="space-between"><el-col :span="20">psdelogicparams</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑参数|
+|<el-row justify="space-between"><el-col :span="20">psdelogicnodes</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑节点|
+|<el-row justify="space-between"><el-col :span="20">psdelogiclinks</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|逻辑连接|
+|<el-row justify="space-between"><el-col :span="20">webhookurl</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|WebHook地址|
+|<el-row justify="space-between"><el-col :span="20">success_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">success_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|成功率|
+|<el-row justify="space-between"><el-col :span="20">failure_per</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">failure_rate</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|失败率|
+|<el-row justify="space-between"><el-col :span="20">codename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|代码标识|
+|<el-row justify="space-between"><el-col :span="20">logicsubtype</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|逻辑子类|
+|<el-row justify="space-between"><el-col :span="20">logictag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记|
+|<el-row justify="space-between"><el-col :span="20">logictag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记2|
+|<el-row justify="space-between"><el-col :span="20">logictag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记3|
+|<el-row justify="space-between"><el-col :span="20">logictag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑标记4|
+|<el-row justify="space-between"><el-col :span="20">logictype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑类型|
+|<el-row justify="space-between"><el-col :span="20">memo</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|备注|
+|<el-row justify="space-between"><el-col :span="20">ordervalue</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|附加次序|
+|<el-row justify="space-between"><el-col :span="20">psdeid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">psdelogicid</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|实体处理逻辑标识|
+|<el-row justify="space-between"><el-col :span="20">psdelogicname</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|规则名称|
+|<el-row justify="space-between"><el-col :span="20">psdename</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
+|<el-row justify="space-between"><el-col :span="20">usertag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记|
+|<el-row justify="space-between"><el-col :span="20">usertag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记2|
+|<el-row justify="space-between"><el-col :span="20">usertag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记3|
+|<el-row justify="space-between"><el-col :span="20">usertag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户标记4|
+|<el-row justify="space-between"><el-col :span="20">validflag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|启用|
+|<el-row justify="space-between"><el-col :span="20">extension_tag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记|
+|<el-row justify="space-between"><el-col :span="20">extension_tag2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记2|
+|<el-row justify="space-between"><el-col :span="20">extension_tag3</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记3|
+|<el-row justify="space-between"><el-col :span="20">extension_tag4</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|扩展标记4|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "applyflag" : null,
+  "attachtopsdeactionid" : null,
+  "attachtopsdeactionname" : null,
+  "dynamodelflag" : null,
+  "attachtopsdedatasetid" : null,
+  "attachtopsdedatasetname" : null,
+  "timerpolicy" : null,
+  "last_state" : null,
+  "eventmodel" : null,
+  "events" : null,
+  "ignoreexception" : null,
+  "threadmode" : null,
+  "last_start_at" : null,
+  "psdelogicparams" : null,
+  "psdelogicnodes" : null,
+  "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -963,6 +1311,7 @@ Integer
   "attachtopsdedatasetname" : null,
   "timerpolicy" : null,
   "last_state" : null,
+  "eventmodel" : null,
   "events" : null,
   "ignoreexception" : null,
   "threadmode" : null,
@@ -970,6 +1319,11 @@ Integer
   "psdelogicparams" : null,
   "psdelogicnodes" : null,
   "psdelogiclinks" : null,
+  "webhookurl" : null,
+  "success_per" : null,
+  "success_rate" : null,
+  "failure_per" : null,
+  "failure_rate" : null,
   "codename" : null,
   "createdate" : null,
   "createman" : null,
@@ -1024,7 +1378,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_logicsubtype_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|逻辑子类|
 |<el-row justify="space-between"><el-col :span="20">n_psdeid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">n_psdelogicid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体处理逻辑标识|
-|<el-row justify="space-between"><el-col :span="20">n_psdelogicname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_psdelogicname_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|规则名称|
 |<el-row justify="space-between"><el-col :span="20">n_psdename_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 |<el-row justify="space-between"><el-col :span="20">n_psdename_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实体|
 
@@ -1062,6 +1416,7 @@ Integer
     "attachtopsdedatasetname" : null,
     "timerpolicy" : null,
     "last_state" : null,
+    "eventmodel" : null,
     "events" : null,
     "ignoreexception" : null,
     "threadmode" : null,
@@ -1069,6 +1424,11 @@ Integer
     "psdelogicparams" : null,
     "psdelogicnodes" : null,
     "psdelogiclinks" : null,
+    "webhookurl" : null,
+    "success_per" : null,
+    "success_rate" : null,
+    "failure_per" : null,
+    "failure_rate" : null,
     "codename" : null,
     "createdate" : null,
     "createman" : null,

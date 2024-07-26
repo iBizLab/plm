@@ -77,7 +77,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[删除基线前附加逻辑](module/Base/baseline/logic/before_remove)|before_remove|无||删除基线前，删除基线关联数据|
 |[删除类别](module/Base/baseline/logic/delete_categories)|delete_categories|无||当类别删除时修改迭代的类别属性|
-|[基线操作标识业务计算逻辑](module/Base/baseline/logic/oppriv_logic)|oppriv_logic|DEOPPRIV|||
+|[基线操作标识业务计算逻辑](module/Base/baseline/logic/oppriv_logic)|oppriv_logic|实体操作标识计算逻辑|||
 |[填充类别文本](module/Base/baseline/logic/fill_categories_name)|fill_categories_name|无||填充类别对应文本|
 |[新建规划快照](module/Base/baseline/logic/create_plan_snapshot)|create_plan_snapshot|无||新建规划快照|
 |[无操作](module/Base/baseline/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|

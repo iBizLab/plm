@@ -7,7 +7,7 @@
 #### 数据表格(grid)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
-#### 工具栏(toolbar)
+#### 工具栏(tabtoolbar)
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)
@@ -21,7 +21,7 @@
 ### 关联视图
   * [基线工作项(baseline_work_item_edit_view)](app/view/baseline_work_item_edit_view)
   * [工作项(work_item_baseline_mpick_up_view)](app/view/work_item_baseline_mpick_up_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
 
 <script>
  const { createApp } = Vue

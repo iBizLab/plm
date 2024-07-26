@@ -26,6 +26,10 @@
 
 * `默认（全部查询列）`
 
+> [!ATTENTION|label:存在长文本属性]
+>
+> `EXAMPLE_CHART(示例图)`
+
 
 
 
@@ -40,9 +44,12 @@ t1.`CREATEDATE`,
 t1.`CREATEMAN`,
 t1.`DYNADASHBOARDID`,
 t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
 t1.`MODELID`,
 t1.`OWNER_ID`,
 t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,

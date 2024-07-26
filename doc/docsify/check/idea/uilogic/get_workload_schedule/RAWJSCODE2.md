@@ -3,8 +3,9 @@
 ```javascript
 const form = uiLogic.form.details;
 const srfreadonly = context.srfreadonly;
-if(srfreadonly == true){
+if(srfreadonly === true || srfreadonly === 'true'){
     form.grouppanel4.state.visible=false;
+    form.button3.state.visible=false;
     form.grouppanel5.state.actionGroupState.u3a6466f.visible=false;
 }
 ```

@@ -1,6 +1,7 @@
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
+uiLogic.comment = uiLogic.view.layoutPanel.panelItems.container_singledata.panelItems.field_textbox.editor;
 const _app = ibiz.hub.getApp(context.srfappid);
 _app.codeList.get('SysOperator', context, params).then(items => {
 	const create_man = uiLogic.default.create_man;

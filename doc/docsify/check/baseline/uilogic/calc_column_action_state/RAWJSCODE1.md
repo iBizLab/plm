@@ -2,6 +2,7 @@
 
 ```javascript
 const rows = uiLogic.grid.state.rows;
+const srfreadonly = context.srfreadonly;
 if (rows && rows.length > 0) {
 	rows.forEach(row => {
 		const titleColumn = row.uiActionGroupStates.name;
@@ -16,6 +17,9 @@ if (rows && rows.length > 0) {
 					action.visible = status == '1';
 				}
                 if (action.uiActionId === 'set_complete_product@baseline') {
+					action.visible = status == '1';
+				}
+                if (action.uiActionId === 'set_complete_space@baseline') {
 					action.visible = status == '1';
 				}
 			})

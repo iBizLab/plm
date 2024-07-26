@@ -1,6 +1,9 @@
 # 流程准则(guideline)  <!-- {docsify-ignore-all} -->
 
 
+记录评审流程准则相关信息。
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -82,7 +85,12 @@
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
 |Save|Save|内置方法|默认|不支持||||
-|Update|Update|内置方法|默认|不支持||||
+|Update|Update|内置方法|默认|不支持|[附加操作](index/action_logic_index#guideline_Update)|||
+
+## 处理逻辑
+| 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
+| -------- |---------- |----------- |------------|----------|
+|[生成阶段排序值](module/TestMgmt/guideline/logic/fill_stage_order)|fill_stage_order|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -146,6 +154,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/guideline?id=行为`">
   行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/TestMgmt/guideline?id=处理逻辑`">
+  处理逻辑
 </el-anchor-link>
 <el-anchor-link :href="`#/module/TestMgmt/guideline?id=数据查询`">
   数据查询

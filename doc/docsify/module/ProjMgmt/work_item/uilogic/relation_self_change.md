@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./relation_self_change#begin {开始}]]
-state "获取选中列表" as RAWJSCODE2  [[$./relation_self_change#rawjscode2 {获取选中列表}]]
-state "触发计数器刷新" as RAWJSCODE3  [[$./relation_self_change#rawjscode3 {触发计数器刷新}]]
-state "表格刷新" as VIEWCTRLINVOKE1  [[$./relation_self_change#viewctrlinvoke1 {表格刷新}]]
-state "进行关联操作" as DEACTION1  [[$./relation_self_change#deaction1 {进行关联操作}]]
 state "绑定表格部件" as PREPAREJSPARAM1  [[$./relation_self_change#preparejsparam1 {绑定表格部件}]]
+state "表格刷新" as VIEWCTRLINVOKE1  [[$./relation_self_change#viewctrlinvoke1 {表格刷新}]]
+state "触发计数器刷新" as RAWJSCODE3  [[$./relation_self_change#rawjscode3 {触发计数器刷新}]]
+state "获取选中列表" as RAWJSCODE2  [[$./relation_self_change#rawjscode2 {获取选中列表}]]
+state "进行关联操作" as DEACTION1  [[$./relation_self_change#deaction1 {进行关联操作}]]
 state "隐藏下拉框并清空下拉框内容" as RAWJSCODE1  [[$./relation_self_change#rawjscode1 {隐藏下拉框并清空下拉框内容}]]
 
 
@@ -123,8 +123,8 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|视图对象|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格对象|grid|部件对象||
-|传入后台对象|dto|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|视图对象|view|当前视图对象||
 |viewctx|viewctx|导航视图参数绑定参数||
+|传入后台对象|dto|数据对象||

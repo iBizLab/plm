@@ -15,7 +15,6 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./publish_page#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./publish_page#debugparam1 {"调试逻辑参数"}]]
 state "设置发布信息" as PREPAREPARAM1  [[$./publish_page#prepareparam1 {"设置发布信息"}]]
 state "准备参数" as PREPAREPARAM5  [[$./publish_page#prepareparam5 {"准备参数"}]]
 state "设置发布时间" as RAWSFCODE1  [[$./publish_page#rawsfcode1 {"设置发布时间"}]]
@@ -25,8 +24,7 @@ state "保存发布页面信息" as DEACTION2  [[$./publish_page#deaction2 {"保
 state "结束" as END2 <<end>> [[$./publish_page#end2 {"结束"}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWSFCODE1
+Begin --> RAWSFCODE1
 RAWSFCODE1 --> PREPAREPARAM1
 PREPAREPARAM1 --> PREPAREPARAM4 : [[$./publish_page#prepareparam1-prepareparam4{第一次保存} 第一次保存]]
 PREPAREPARAM4 --> PREPAREPARAM2
@@ -48,14 +46,6 @@ PREPAREPARAM5 --> PREPAREPARAM2 : [[$./publish_page#prepareparam5-prepareparam2{
 
 
 *- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 设置发布时间 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 

@@ -29,6 +29,8 @@
 > [!ATTENTION|label:存在长文本属性]
 >
 > `DESC(描述)`
+>
+> `TEMPLATE_MODEL(模板模型)`
 
 
 
@@ -46,11 +48,15 @@ t1.`CREATE_TIME`,
 t1.`DESC`,
 t1.`GROUP`,
 t1.`ID`,
+t1.`IS_SYSTEM`,
 t1.`NAME`,
+t1.`TEMPLATE_MODEL`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
-t1.`VIEW_ID`
+t1.`VIEW_ID`,
+t11.`NAME` AS `VIEW_NAME`
 FROM `INSIGHT_REPORT` t1 
+LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID` 
 
 
 ```

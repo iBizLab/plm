@@ -9,12 +9,11 @@
 
 
 ### 关联界面行为
-  * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_取消](module/ProdMgmt/ticket#界面行为)
   * [工单(TICKET)](module/ProdMgmt/ticket) : [确定](module/ProdMgmt/ticket#界面行为)
+  * [工单(TICKET)](module/ProdMgmt/ticket) : [视图_取消](module/ProdMgmt/ticket#界面行为)
 
 ### 关联视图
   * [客户(customer_pick_up_view)](app/view/customer_pick_up_view)
-  * [产品(product_pick_up_view)](app/view/product_pick_up_view)
 
 <script>
  const { createApp } = Vue

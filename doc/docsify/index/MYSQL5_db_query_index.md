@@ -42,6 +42,208 @@ FROM `ACTIVITY` t1
 ```
 
 
+## [组件(ADDON)](module/Base/addon.md) :id=addon
+
+#### 数据查询(DEFAULT) :id=addon-Default
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=addon-View
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`SETTING_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+```
+
+#### 当前所有者(cur_owner) :id=addon-cur_owner
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+WHERE ( t1.`OWNER_ID` = #{ctx.datacontext.owner_id} )
+```
+
+#### 预定义组件(predefine) :id=addon-predefine
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+WHERE ( t1.`OWNER_ID` IS NULL )
+```
+
+#### 实体数据关系界面组（同步）(PSMODEL_SYNC) :id=addon-psmodel_sync
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+WHERE ( t1.`OWNER_ID` IS NULL )
+```
+
+
+## [资源组件(ADDON_RESOURCE)](module/Base/addon_resource.md) :id=addon_resource
+
+#### 数据查询(DEFAULT) :id=addon_resource-Default
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`SETTING_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=addon_resource-View
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`SETTING_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+```
+
+#### 资源组件(all) :id=addon_resource-all
+```sql
+SELECT
+t1.`ADDON_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ADDON` t1 
+
+WHERE ( t1.`OWNER_TYPE` = 'all'  AND  t1.`ADDON_TYPE` = 'resource' )
+```
+
+
+## [组件权限成员(ADDON_ROLE_MEMBER)](module/Base/addon_role_member.md) :id=addon_role_member
+
+#### 数据查询(DEFAULT) :id=addon_role_member-Default
+```sql
+SELECT
+t1.`ADDON_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_OBJ_ID`
+FROM `ADDON_ROLE_MEMBER` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=addon_role_member-View
+```sql
+SELECT
+t1.`ADDON_ID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_OBJ_ID`
+FROM `ADDON_ROLE_MEMBER` t1 
+
+```
+
+
 ## [页面(PAGE)](module/Wiki/article_page.md) :id=article_page
 
 #### 数据查询(DEFAULT) :id=article_page-Default
@@ -53,13 +255,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -82,20 +288,26 @@ LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID`
 #### 默认（全部数据）(VIEW) :id=article_page-View
 ```sql
 SELECT
+t1.`ACCESS_PASSWORD`,
 t1.`CATEGORIES`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
+t1.`EXPIRATION_DATE`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -103,7 +315,10 @@ t1.`PUBLISH_CONTENT`,
 t1.`PUBLISH_MAN`,
 t1.`PUBLISH_NAME`,
 t1.`PUBLISH_TIME`,
+CASE WHEN EXISTS (SELECT 1 FROM ( select id from page where is_shared = '1' ) AS ids WHERE FIND_IN_SET(ids.id, REPLACE(t1.`CATEGORIES`, '/', ','))) THEN 1 ELSE 0 END AS `READ_SHARED`,
 t1.`SEQUENCE`,
+t1.`SHARED_BY`,
+t1.`SHARED_TIME`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPACE_ID`,
 t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
@@ -125,13 +340,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -152,6 +371,67 @@ LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID`
 WHERE ( t1.`IS_DELETED` = 0  AND  exists(select 1 from space t2, space_member t3 where t1.space_id = t2.id and t2.id = t3.space_id and t3.user_id = #{ctx.sessioncontext.srfpersonid})  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`TYPE` = '1' )
 ```
 
+#### 全部共享页面查询(all_shared_pages) :id=article_page-all_shared_pages
+```sql
+SELECT
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PUBLISH_NAME`,
+t1.`SHARED_BY`,
+t1.`SHARED_TIME`,
+t1.`SPACE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+
+WHERE ( t1.`IS_SHARED` = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
+```
+
+#### 基线选择页面(baseline_choose_page) :id=article_page-baseline_choose_page
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`CUR_VERSION_NAME`,
+t1.`FORMAT_TYPE`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LEAF`,
+t1.`IS_LOCK`,
+t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISHED`,
+t1.`PUBLISH_MAN`,
+t1.`PUBLISH_NAME`,
+t1.`PUBLISH_TIME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE NOT(EXISTS(SELECT * FROM `RELATION` t21 
+ WHERE 
+ t1.`ID` = t21.`TARGET_ID`  AND  ( t21.`PRINCIPAL_ID` = #{ctx.webcontext.baseline}  AND  t21.`TARGET_TYPE` = 'page'  AND  t21.`PRINCIPAL_TYPE` = 'baseline' ) )) AND ( t1.`IS_DELETED` = 0 )
+```
+
 #### 子页面(child_page) :id=article_page-child_page
 ```sql
 SELECT
@@ -161,13 +441,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -188,6 +472,20 @@ LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID`
 WHERE ( t1.`PARENT_ID` IS NOT NULL  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
+#### 选择共享页面(choose_shared) :id=article_page-choose_shared
+```sql
+SELECT
+t1.`ICON`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISH_NAME`,
+t1.`SPACE_ID`
+FROM `PAGE` t1 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
+```
+
 #### 草稿页面(draft_page) :id=article_page-draft_page
 ```sql
 SELECT
@@ -197,13 +495,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -233,13 +535,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -269,13 +575,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -305,13 +615,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -341,13 +655,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -377,13 +695,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -401,7 +723,7 @@ t1.`UPDATE_TIME`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
 ```
 
 #### 仅页面(only_page) :id=article_page-only_page
@@ -413,13 +735,17 @@ t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`CUR_VERSION_NAME`,
 t1.`FORMAT_TYPE`,
+t1.`ICON`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LEAF`,
+t1.`IS_LOCK`,
 t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
 t1.`NAME`,
 t1.`PARENT_ID`,
 t1.`PUBLISHED`,
@@ -438,6 +764,200 @@ FROM `PAGE` t1
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`TYPE` = '1' )
+```
+
+#### 共享页面(shared_page) :id=article_page-shared_page
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`CUR_VERSION_NAME`,
+t1.`FORMAT_TYPE`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LEAF`,
+t1.`IS_LOCK`,
+t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISHED`,
+t1.`PUBLISH_MAN`,
+t1.`PUBLISH_NAME`,
+t1.`PUBLISH_TIME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE ( t1.`IS_SHARED` = '1'  AND  t1.`ID` = #{ctx.webcontext.shared_page}  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
+```
+
+#### 共享自读权限(shared_reader) :id=article_page-shared_reader
+```sql
+SELECT
+t1.`ID`,
+t1.`IS_SHARED`,
+CASE WHEN EXISTS (SELECT 1 FROM ( select id from page where is_shared = '1' ) AS ids WHERE FIND_IN_SET(ids.id, REPLACE(t1.`CATEGORIES`, '/', ','))) THEN 1 ELSE 0 END AS `READ_SHARED`
+FROM `PAGE` t1 
+
+WHERE ( ( t1.`IS_SHARED` = '1'  OR  CASE WHEN EXISTS (SELECT 1 FROM ( select id from page where is_shared = '1' ) AS ids WHERE FIND_IN_SET(ids.id, REPLACE(t1.`CATEGORIES`, '/', ','))) THEN 1 ELSE 0 END = '1' )  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`IS_DELETED` = 0 )
+```
+
+#### 共享搜索页面(shared_search) :id=article_page-shared_search
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`CUR_VERSION_NAME`,
+t1.`FORMAT_TYPE`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LEAF`,
+t1.`IS_LOCK`,
+t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISHED`,
+t1.`PUBLISH_MAN`,
+t1.`PUBLISH_NAME`,
+t1.`PUBLISH_TIME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`TYPE` = '1'  AND  t1.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.shared_page},'%') )
+```
+
+#### 共享子页面(shared_sub_pages) :id=article_page-shared_sub_pages
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`CUR_VERSION_NAME`,
+t1.`FORMAT_TYPE`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LEAF`,
+t1.`IS_LOCK`,
+t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISHED`,
+t1.`PUBLISH_MAN`,
+t1.`PUBLISH_NAME`,
+t1.`PUBLISH_TIME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE ( t1.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.shared_page},'%')  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
+```
+
+#### 与我共享(shared_with_me) :id=article_page-shared_with_me
+```sql
+SELECT
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PUBLISH_NAME`,
+t1.`SHARED_BY`,
+t1.`SHARED_TIME`,
+t1.`SPACE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  t11.`OWNER_TYPE` = 'PAGE'  AND  t11.`OWNER_SUBTYPE` = 'SHARED'  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfuserid} ) ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`IS_SHARED` = '1' )
+```
+
+#### 与我共享编辑权限(shared_with_me_edit) :id=article_page-shared_with_me_edit
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`CUR_VERSION_NAME`,
+t1.`FORMAT_TYPE`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LEAF`,
+t1.`IS_LOCK`,
+t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISHED`,
+t1.`PUBLISH_MAN`,
+t1.`PUBLISH_NAME`,
+t1.`PUBLISH_TIME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t21 
+ WHERE 
+ t1.`ID` = t21.`OWNER_ID`  AND  t21.`OWNER_TYPE` = 'PAGE'  AND  t21.`OWNER_SUBTYPE` = 'SHARED'  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`ROLE_ID` = 'user' ) ) AND ( t1.`IS_SHARED` = '1'  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`IS_DELETED` = 0 )
 ```
 
 
@@ -656,6 +1176,7 @@ t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`STATUS`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `BASELINE` t1 
@@ -677,10 +1198,57 @@ t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`STATUS`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `BASELINE` t1 
 
+```
+
+#### 基线查询(baseline) :id=baseline-baseline
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BASELINE` t1 
+
+WHERE ( ( t1.`STATUS` = '1'  OR  t1.`STATUS` = '2' ) )
+```
+
+#### 规划快照(snapshot) :id=baseline-snapshot
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BASELINE` t1 
+
+WHERE ( t1.`TYPE` = 'plan'  AND  t1.`OWNER_TYPE` = 'PROJECT'  AND  t1.`OWNER_ID` = #{ctx.webcontext.owner_id} )
 ```
 
 
@@ -714,6 +1282,21 @@ FROM `BOARD` t1
 
 ```
 
+#### 当前项目看板（导入）(cur_board_upload) :id=board-cur_board_upload
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BOARD` t1 
+
+WHERE ( t1.`PROJECT_ID` = #{ctx.datacontext.unknown} )
+```
+
 #### 当前项目下看板(cur_project_board) :id=board-cur_project_board
 ```sql
 SELECT
@@ -727,6 +1310,40 @@ t1.`UPDATE_TIME`
 FROM `BOARD` t1 
 
 WHERE ( t1.`ID` <> #{ctx.webcontext.project} )
+```
+
+#### 公开(public) :id=board-public
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BOARD` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE ( t11.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=board-reader
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BOARD` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
+ WHERE 
+ t11.`ID` = t21.`PROJECT_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 
@@ -771,6 +1388,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -794,6 +1413,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -809,6 +1430,84 @@ LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID`
 
 ```
 
+#### 检查名称是否重复(check_name) :id=category-check_name
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PID`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `CATEGORY` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( <choose><when test="ctx.datacontext.id !=null ">  t1.`ID` <> #{ctx.datacontext.id}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.datacontext.name !=null ">  t1.`NAME` = #{ctx.datacontext.name}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.datacontext.owner_id !=null ">  t1.`OWNER_ID` = #{ctx.datacontext.owner_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`OWNER_TYPE` = #{ctx.datacontext.owner_type}  AND  <choose><when test="ctx.datacontext.owner_subtype !=null ">  t1.`OWNER_SUBTYPE` = #{ctx.datacontext.owner_subtype}  </when><otherwise>1=1</otherwise></choose> )
+```
+
+#### 通用类别（代码表）(common_categories) :id=category-common_categories
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PID`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `CATEGORY` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( <choose><when test="ctx.webcontext.product !=null ">  t1.`OWNER_ID` = #{ctx.webcontext.product}  </when><otherwise>1=1</otherwise></choose>  AND  <choose><when test="ctx.webcontext.project !=null ">  t1.`OWNER_ID` = #{ctx.webcontext.project}  </when><otherwise>1=1</otherwise></choose> )
+```
+
+#### 当前产品需求类别(cur_product_idea_category) :id=category-cur_product_idea_category
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PID`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `CATEGORY` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( t1.`OWNER_TYPE` = 'product'  AND  t1.`OWNER_SUBTYPE` = 'idea'  AND  t1.`OWNER_ID` = #{ctx.datacontext.product} )
+```
+
 #### 无分组的类别（且父标识不为空）(no_section) :id=category-no_section
 ```sql
 SELECT
@@ -817,6 +1516,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -841,6 +1542,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -865,6 +1568,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -889,6 +1594,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -913,6 +1620,8 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`IS_LEAF`,
+t1.`IS_LEAF2`,
+case when t1.`IS_LEAF`+t1.`IS_LEAF2`=2 then 1 else 0 end AS `LEAF_FLAG`,
 t1.`NAME`,
 t1.`OWNER_ID`,
 t1.`OWNER_SUBTYPE`,
@@ -1016,7 +1725,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -1045,7 +1753,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -1085,7 +1792,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -1117,7 +1823,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -1149,7 +1854,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -1344,42 +2048,259 @@ WHERE ( t1.`CATALOG` = 'ticket_state' )
 ```
 
 
-## [讨论(DISCUSS_POST)](module/team/discuss_post.md) :id=discuss_post
+## [协作成员(DISCUSS_MEMBER)](module/Team/discuss_member.md) :id=discuss_member
+
+#### 数据查询(DEFAULT) :id=discuss_member-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `MEMBER` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=discuss_member-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `MEMBER` t1 
+
+```
+
+
+## [讨论(DISCUSS_POST)](module/Team/discuss_post.md) :id=discuss_post
 
 #### 数据查询(DEFAULT) :id=discuss_post-Default
 ```sql
 SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`HEAT`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`NAME`,
+t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
 
 ```
 
 #### 默认（全部数据）(VIEW) :id=discuss_post-View
 ```sql
 SELECT
+t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`HEAT`,
 t1.`ID`,
+t1.`IS_DELETED`,
 t1.`NAME`,
+t1.`STATUS`,
 t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
 
 ```
 
+#### 已删除(deleted) :id=discuss_post-deleted
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
 
-## [讨论回复(DISCUSS_REPLY)](module/team/discuss_reply.md) :id=discuss_reply
+WHERE ( t1.`IS_DELETED` = 1 )
+```
+
+#### 我关注的(my_attention) :id=discuss_post-my_attention
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `ATTENTION` t21 
+ WHERE 
+ t1.`ID` = t21.`OWNER_ID`  AND  t21.`OWNER_TYPE` = 'DISCUSS_POST'  AND  t21.`OWNER_SUBTYPE` = 'DISCUSS_POST'  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`TYPE` IN ('20','30','40') ) )
+```
+
+#### 我发起的(my_create) :id=discuss_post-my_create
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
+#### 我回复的(my_reply) :id=discuss_post-my_reply
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `DISCUSS_REPLY` t21 
+ WHERE 
+ t1.`ID` = t21.`POST_ID`  AND  ( t21.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
+#### 正常状态讨论(normal) :id=discuss_post-normal
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0 )
+```
+
+#### 公开(public) :id=discuss_post-public
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE ( t11.`VISIBILITY` = 'public' ) AND ( t1.`IS_DELETED` = 0 )
+```
+
+#### 只读用户(reader) :id=discuss_post-reader
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t21 
+ WHERE 
+ t11.`ID` = t21.`OWNER_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`OWNER_TYPE` = 'DISCUSS' ) ) AND ( t1.`IS_DELETED` = 0 )
+```
+
+#### 最新讨论(recent) :id=discuss_post-recent
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) <= 30  AND  exists(select 1 from `member` t2 where t1.topic_id = t2.owner_id and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )
+```
+
+
+## [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply.md) :id=discuss_reply
 
 #### 数据查询(DEFAULT) :id=discuss_reply-Default
 ```sql
 SELECT
+t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -1394,6 +2315,7 @@ FROM `DISCUSS_REPLY` t1
 #### 默认（全部数据）(VIEW) :id=discuss_reply-View
 ```sql
 SELECT
+t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
@@ -1405,18 +2327,60 @@ FROM `DISCUSS_REPLY` t1
 
 ```
 
+#### 我的回复(my_reply) :id=discuss_reply-my_reply
+```sql
+SELECT
+t1.`CONTENT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`POST_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_REPLY` t1 
 
-## [话题(DISCUSS_TOPIC)](module/team/discuss_topic.md) :id=discuss_topic
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from discuss_post t2, discuss_topic t3 where t2.topic_id = t3.id 
+ and t1.post_id = t2.id and t3.id = #{ctx.webcontext.discuss_topic}) )
+```
+
+#### 最新回复(recent) :id=discuss_reply-recent
+```sql
+SELECT
+t1.`CONTENT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`POST_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_REPLY` t1 
+
+WHERE ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) <= 30  AND  exists(select 1 from `discuss_post` t2, `member` t3 where t1.post_id = t2.id and t2.topic_id = t3.owner_id and t3.user_id = #{ctx.sessioncontext.srfpersonid})  AND  exists(select 1 from discuss_post t2, discuss_topic t3 where t2.topic_id = t3.id 
+ and t1.post_id = t2.id and t3.id = #{ctx.webcontext.discuss_topic}) )
+```
+
+
+## [话题(DISCUSS_TOPIC)](module/Team/discuss_topic.md) :id=discuss_topic
 
 #### 数据查询(DEFAULT) :id=discuss_topic-Default
 ```sql
 SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
 t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
 FROM `DISCUSS_TOPIC` t1 
 
 ```
@@ -1426,11 +2390,423 @@ FROM `DISCUSS_TOPIC` t1
 SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
 t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
 FROM `DISCUSS_TOPIC` t1 
+
+```
+
+#### 管理员(admin) :id=discuss_topic-admin
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'admin'  AND  t11.`OWNER_TYPE` = 'DISCUSS' ) )
+```
+
+#### 已归档(archived) :id=discuss_topic-archived
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
+```
+
+#### 已归档星标话题(archived_favorite) :id=discuss_topic-archived_favorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+```
+
+#### 已归档未星标话题(archived_unfavorite) :id=discuss_topic-archived_unfavorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 当前话题(cur_discuss_topic) :id=discuss_topic-cur_discuss_topic
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`ID` = #{ctx.webcontext.discuss_topic} )
+```
+
+#### 已删除(deleted) :id=discuss_topic-deleted
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_DELETED` = 1 )
+```
+
+#### 星标话题(favorite) :id=discuss_topic-favorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+```
+
+#### 星标话题（管理用户）(favorite_user) :id=discuss_topic-favorite_user
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`OWNER_TYPE` = 'DISCUSS' ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+```
+
+#### 团队话题(group) :id=discuss_topic-group
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.`SCOPE_TYPE` = 'user_group' )
+```
+
+#### 正常状态话题(normal) :id=discuss_topic-normal
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+```
+
+#### 组织话题(org) :id=discuss_topic-org
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.`SCOPE_TYPE` = 'organization' )
+```
+
+#### 公开(public) :id=discuss_topic-public
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=discuss_topic-reader
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader'  AND  t11.`OWNER_TYPE` = 'DISCUSS' ) )
+```
+
+#### 未星标话题(unfavorite) :id=discuss_topic-unfavorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 未星标话题（管理用户）(unfavorite_user) :id=discuss_topic-unfavorite_user
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`OWNER_TYPE` = 'DISCUSS' ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 操作用户(user) :id=discuss_topic-user
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `DISCUSS_TOPIC` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'user'  AND  t11.`OWNER_TYPE` = 'DISCUSS' ) )
+```
+
+
+## [动态应用菜单(DYNA_APPMENU)](module/Base/dyna_appmenu.md) :id=dyna_appmenu
+
+#### 数据查询(DEFAULT) :id=dyna_appmenu-Default
+```sql
+SELECT
+t1.`APPID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`MODELID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USERID`
+FROM `DYNA_APPMENU` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=dyna_appmenu-View
+```sql
+SELECT
+t1.`APPID`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`MODEL`,
+t1.`MODELID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USERID`
+FROM `DYNA_APPMENU` t1 
 
 ```
 
@@ -1445,9 +2821,12 @@ t1.`CREATEDATE`,
 t1.`CREATEMAN`,
 t1.`DYNADASHBOARDID`,
 t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
 t1.`MODELID`,
 t1.`OWNER_ID`,
 t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
@@ -1462,12 +2841,78 @@ SELECT
 t1.`APPID`,
 t1.`CREATEDATE`,
 t1.`CREATEMAN`,
+t1.`DESC`,
 t1.`DYNADASHBOARDID`,
 t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
 t1.`MODEL`,
 t1.`MODELID`,
 t1.`OWNER_ID`,
 t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USERID`
+FROM `DYNADASHBOARD` t1 
+
+```
+
+#### 示例图(example_chart) :id=dyna_dashboard-example_chart
+```sql
+SELECT
+t1.`APPID`,
+t1.`DESC`,
+t1.`DYNADASHBOARDID`,
+t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
+t1.`MODELID`,
+t1.`SEQUENCES`,
+t1.`TYPE`
+FROM `DYNADASHBOARD` t1 
+
+WHERE ( t1.`IS_SYSTEM` = 1 )
+```
+
+#### 系统仪表盘(is_system) :id=dyna_dashboard-is_system
+```sql
+SELECT
+t1.`APPID`,
+t1.`CREATEDATE`,
+t1.`CREATEMAN`,
+t1.`DYNADASHBOARDID`,
+t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
+t1.`MODELID`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USERID`
+FROM `DYNADASHBOARD` t1 
+
+WHERE ( t1.`IS_SYSTEM` = 1 )
+```
+
+#### 正常数据(normal) :id=dyna_dashboard-normal
+```sql
+SELECT
+t1.`APPID`,
+t1.`CREATEDATE`,
+t1.`CREATEMAN`,
+t1.`DYNADASHBOARDID`,
+t1.`DYNADASHBOARDNAME`,
+t1.`EXAMPLE_CHART`,
+t1.`IS_SYSTEM`,
+t1.`MODELID`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCES`,
 t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
@@ -1546,6 +2991,7 @@ SELECT
 t1.`CATEGORY`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`DEBUG_INFO`,
 t1.`ELAPSED_TIME`,
 t1.`END_AT`,
 t1.`ID`,
@@ -1660,7 +3106,8 @@ t1.`SECTION_ID`,
 t11.`NAME` AS `SECTION_NAME`,
 t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
 FROM `USER_GROUP` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -1679,7 +3126,8 @@ t1.`SECTION_ID`,
 t11.`NAME` AS `SECTION_NAME`,
 t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
 FROM `USER_GROUP` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -1698,11 +3146,56 @@ t1.`SECTION_ID`,
 t11.`NAME` AS `SECTION_NAME`,
 t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
 FROM `USER_GROUP` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
 WHERE ( t1.`SECTION_ID` IS NULL )
+```
+
+#### 公开(public) :id=group-public
+```sql
+SELECT
+t1.`AVATAR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `USER_GROUP` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE ( t1.`VISIBILITY` = 'public' )
+```
+
+#### 团队成员(user) :id=group-user
+```sql
+SELECT
+t1.`AVATAR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`NAME`,
+t1.`SECTION_ID`,
+t11.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `USER_GROUP` t1 
+LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t21 
+ WHERE 
+ t1.`ID` = t21.`OWNER_ID`  AND  t21.`OWNER_TYPE` = 'GROUP'  AND  t21.`OWNER_SUBTYPE` = 'GROUP'  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`OWNER_TYPE` = 'GROUP' ) )
 ```
 
 #### 团队管理员(user_group_admin) :id=group-user_group_admin
@@ -1718,7 +3211,8 @@ t1.`SECTION_ID`,
 t11.`NAME` AS `SECTION_NAME`,
 t1.`SEQUENCE`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
 FROM `USER_GROUP` t1 
 LEFT JOIN `SECTION` t11 ON t1.`SECTION_ID` = t11.`ID` 
 
@@ -1736,8 +3230,12 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_ENABLED`,
 t1.`NAME`,
 t1.`OBJECT_TYPE`,
+t1.`REVIEW_ACTION_RULE`,
+t1.`REVIEW_RULE`,
+t1.`REVIEW_STAGE`,
 t1.`SCOPE_ID`,
 t1.`SUBJECT_TYPE`,
 t1.`UPDATE_MAN`,
@@ -1752,6 +3250,7 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_ENABLED`,
 t1.`NAME`,
 t1.`OBJECT_TYPE`,
 t1.`REVIEW_ACTION_RULE`,
@@ -1763,6 +3262,66 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `GUIDELINE` t1 
 
+```
+
+#### 基础准则(base) :id=guideline-base
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OBJECT_TYPE`,
+t1.`REVIEW_ACTION_RULE`,
+t1.`REVIEW_RULE`,
+t1.`REVIEW_STAGE`,
+t1.`SCOPE_ID`,
+t1.`SUBJECT_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `GUIDELINE` t1 
+
+WHERE ( t1.`SCOPE_ID` IS NULL )
+```
+
+#### 正常状态(normal) :id=guideline-normal
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OBJECT_TYPE`,
+t1.`SCOPE_ID`,
+t1.`SUBJECT_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `GUIDELINE` t1 
+
+WHERE ( t1.`IS_ENABLED` = 1 )
+```
+
+#### 测试库下流程准则(under_library) :id=guideline-under_library
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_ENABLED`,
+t1.`NAME`,
+t1.`OBJECT_TYPE`,
+t1.`REVIEW_ACTION_RULE`,
+t1.`REVIEW_RULE`,
+t1.`REVIEW_STAGE`,
+t1.`SCOPE_ID`,
+t1.`SUBJECT_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `GUIDELINE` t1 
+
+WHERE ( t1.`SCOPE_ID` = #{ctx.webcontext.library} )
 ```
 
 
@@ -1846,6 +3405,11 @@ t1.`REAL_AT`,
 t1.`REAL_AT_FROM`,
 t1.`REAL_AT_GRANULARITY`,
 t1.`REAL_AT_TO`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='CUSTOMER') AS `RELATION_TOTAL_CUSTOMER`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='IDEA') AS `RELATION_TOTAL_IDEA`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TEST_CASE') AS `RELATION_TOTAL_TEST_CASE`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TICKET') AS `RELATION_TOTAL_TICKET`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='WORK_ITEM') AS `RELATION_TOTAL_WORK_ITEM`,
 t21.`SECTION_ID`,
 t31.`NAME` AS `SECTION_NAME`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -1973,6 +3537,97 @@ WHERE NOT(EXISTS(SELECT * FROM `RELATION` t41
  t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`TARGET_TYPE` = 'idea'  AND  t41.`PRINCIPAL_TYPE` = 'baseline'  AND  t41.`PRINCIPAL_ID` = #{ctx.webcontext.baseline} ) )) AND ( t1.`IS_DELETED` = 0  AND  ( <choose><when test="ctx.webcontext.category_id !=null ">  t1.`CATEGORY_ID` = #{ctx.webcontext.category_id}  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test="ctx.webcontext.category_id !=null ">  t21.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.category_id},'%')  </when><otherwise>1=1</otherwise></choose> ) )
 ```
 
+#### BI反查(bi_detail) :id=idea-bi_detail
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=idea-bi_search
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t31.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_TO`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='CUSTOMER') AS `RELATION_TOTAL_CUSTOMER`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='IDEA') AS `RELATION_TOTAL_IDEA`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TEST_CASE') AS `RELATION_TOTAL_TEST_CASE`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TICKET') AS `RELATION_TOTAL_TICKET`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='WORK_ITEM') AS `RELATION_TOTAL_WORK_ITEM`,
+t11.`SECTION_ID`,
+t21.`NAME` AS `SECTION_NAME`,
+concat(t31.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+LEFT JOIN `SECTION` t21 ON t11.`SECTION_ID` = t21.`ID` 
+LEFT JOIN `PRODUCT` t31 ON t1.`PRODUCT_ID` = t31.`ID` 
+
+```
+
 #### 评论通知负责人(comment_notify_assignee) :id=idea-comment_notify_assignee
 ```sql
 SELECT
@@ -2076,55 +3731,6 @@ LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID`
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 1 )
-```
-
-#### 产品需求关联需求(idea_relation_idea) :id=idea-idea_relation_idea
-```sql
-SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
-t21.`CATEGORIES`,
-t1.`CATEGORY_ID`,
-t21.`NAME` AS `CATEGORY_NAME`,
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
-t1.`ID`,
-t1.`IDEA_FROM`,
-t1.`IDEA_TYPE`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
-t1.`NAME`,
-t1.`PLAN_AT`,
-t1.`PLAN_AT_FROM`,
-t1.`PLAN_AT_GRANULARITY`,
-t1.`PLAN_AT_TO`,
-t1.`PRIORITY`,
-t1.`PRODUCT_ID`,
-t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
-t11.`NAME` AS `PRODUCT_NAME`,
-t1.`PROGRESS`,
-t1.`REAL_AT`,
-t1.`REAL_AT_FROM`,
-t1.`REAL_AT_GRANULARITY`,
-t1.`REAL_AT_TO`,
-t21.`SECTION_ID`,
-t31.`NAME` AS `SECTION_NAME`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`STATE`,
-t1.`SUITE`,
-t1.`TITLE`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `IDEA` t1 
-LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
-LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
-LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
-
-WHERE EXISTS(SELECT * FROM `RELATION` t41 
- WHERE 
- t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`TARGET_TYPE` = 'idea'  AND  t41.`PRINCIPAL_TYPE` = 'idea' ) ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 #### 我负责的产品需求(my_assign) :id=idea-my_assign
@@ -2424,6 +4030,102 @@ WHERE EXISTS(SELECT * FROM `RELATION` t41
  t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`TARGET_TYPE` = 'idea'  AND  t41.`PRINCIPAL_TYPE` = 'product_plan' ) ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
+#### 公开(public) :id=idea-public
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE ( t11.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=idea-reader
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
+ WHERE 
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
 #### 最近浏览(recent_idea) :id=idea-recent_idea
 ```sql
 SELECT
@@ -2471,151 +4173,58 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   ) )
 ```
 
-#### 测试用例关联需求(test_case_relation) :id=idea-test_case_relation
+
+## [需求模板(IDEA_TEMPLATE)](module/ProdMgmt/idea_template.md) :id=idea_template
+
+#### 数据查询(DEFAULT) :id=idea_template-Default
 ```sql
 SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
 t21.`CATEGORIES`,
 t1.`CATEGORY_ID`,
 t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
 t1.`ID`,
-t1.`IDEA_FROM`,
-t1.`IDEA_TYPE`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
 t1.`NAME`,
-t1.`PLAN_AT`,
-t1.`PLAN_AT_FROM`,
-t1.`PLAN_AT_GRANULARITY`,
-t1.`PLAN_AT_TO`,
-t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
-t1.`PROGRESS`,
-t1.`REAL_AT`,
-t1.`REAL_AT_FROM`,
-t1.`REAL_AT_GRANULARITY`,
-t1.`REAL_AT_TO`,
 t21.`SECTION_ID`,
 t31.`NAME` AS `SECTION_NAME`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`STATE`,
-t1.`SUITE`,
 t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
-FROM `IDEA` t1 
+FROM `IDEA_TEMPLATE` t1 
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
-WHERE EXISTS(SELECT * FROM `RELATION` t41 
- WHERE 
- t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`TARGET_TYPE` = 'idea'  AND  t41.`PRINCIPAL_TYPE` = 'test_case' ) ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
-#### 工单关联需求(ticket_relation_idea) :id=idea-ticket_relation_idea
+#### 默认（全部数据）(VIEW) :id=idea_template-View
 ```sql
 SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
 t21.`CATEGORIES`,
 t1.`CATEGORY_ID`,
 t21.`NAME` AS `CATEGORY_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
+t1.`DESCRIPTION`,
 t1.`ID`,
-t1.`IDEA_FROM`,
-t1.`IDEA_TYPE`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
 t1.`NAME`,
-t1.`PLAN_AT`,
-t1.`PLAN_AT_FROM`,
-t1.`PLAN_AT_GRANULARITY`,
-t1.`PLAN_AT_TO`,
-t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
-t1.`PROGRESS`,
-t1.`REAL_AT`,
-t1.`REAL_AT_FROM`,
-t1.`REAL_AT_GRANULARITY`,
-t1.`REAL_AT_TO`,
 t21.`SECTION_ID`,
 t31.`NAME` AS `SECTION_NAME`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`STATE`,
-t1.`SUITE`,
 t1.`TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
-FROM `IDEA` t1 
+FROM `IDEA_TEMPLATE` t1 
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
-WHERE EXISTS(SELECT * FROM `RELATION` t41 
- WHERE 
- t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`TARGET_TYPE` = 'idea'  AND  t41.`PRINCIPAL_TYPE` = 'ticket' ) ) AND ( t1.`IS_DELETED` = 0 )
-```
-
-#### 工作项关联需求(work_item_relation_idea) :id=idea-work_item_relation_idea
-```sql
-SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
-t21.`CATEGORIES`,
-t1.`CATEGORY_ID`,
-t21.`NAME` AS `CATEGORY_NAME`,
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
-t1.`ID`,
-t1.`IDEA_FROM`,
-t1.`IDEA_TYPE`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
-t1.`NAME`,
-t1.`PLAN_AT`,
-t1.`PLAN_AT_FROM`,
-t1.`PLAN_AT_GRANULARITY`,
-t1.`PLAN_AT_TO`,
-t1.`PRIORITY`,
-t1.`PRODUCT_ID`,
-t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
-t11.`NAME` AS `PRODUCT_NAME`,
-t1.`PROGRESS`,
-t1.`REAL_AT`,
-t1.`REAL_AT_FROM`,
-t1.`REAL_AT_GRANULARITY`,
-t1.`REAL_AT_TO`,
-t21.`SECTION_ID`,
-t31.`NAME` AS `SECTION_NAME`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`STATE`,
-t1.`SUITE`,
-t1.`TITLE`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
-FROM `IDEA` t1 
-LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
-LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
-LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
-
-WHERE EXISTS(SELECT * FROM `RELATION` t41 
- WHERE 
- t1.`ID` = t41.`TARGET_ID`  AND  ( t41.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t41.`TARGET_TYPE` = 'idea'  AND  t41.`PRINCIPAL_TYPE` = 'work_item' ) ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 
@@ -2674,7 +4283,363 @@ FROM `INSIGHT` t1
 ```
 
 
-## [关键结果(KEY_RESULT)](module/team/key_result.md) :id=key_result
+## [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member.md) :id=insight_member
+
+#### 数据查询(DEFAULT) :id=insight_member-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `MEMBER` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=insight_member-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `MEMBER` t1 
+
+```
+
+
+## [效能报表(INSIGHT_REPORT)](module/Insight/insight_report.md) :id=insight_report
+
+#### 数据查询(DEFAULT) :id=insight_report-Default
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CHART_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESC`,
+t1.`GROUP`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VIEW_ID`,
+t11.`NAME` AS `VIEW_NAME`
+FROM `INSIGHT_REPORT` t1 
+LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=insight_report-View
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CHART_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESC`,
+t1.`GROUP`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`TEMPLATE_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VIEW_ID`,
+t11.`NAME` AS `VIEW_NAME`
+FROM `INSIGHT_REPORT` t1 
+LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID` 
+
+```
+
+#### 模板报表(is_system) :id=insight_report-is_system
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CHART_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESC`,
+t1.`GROUP`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`TEMPLATE_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VIEW_ID`,
+t11.`NAME` AS `VIEW_NAME`
+FROM `INSIGHT_REPORT` t1 
+LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID` 
+
+WHERE ( t1.`IS_SYSTEM` = 1 )
+```
+
+#### 正常数据(normal) :id=insight_report-normal
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CHART_TYPE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESC`,
+t1.`GROUP`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VIEW_ID`,
+t11.`NAME` AS `VIEW_NAME`
+FROM `INSIGHT_REPORT` t1 
+LEFT JOIN `INSIGHT_VIEW` t11 ON t1.`VIEW_ID` = t11.`ID` 
+
+```
+
+
+## [效能视图(INSIGHT_VIEW)](module/Insight/insight_view.md) :id=insight_view
+
+#### 数据查询(DEFAULT) :id=insight_view-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=insight_view-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+```
+
+#### 管理员(admin) :id=insight_view-admin
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'admin'  AND  t11.`OWNER_TYPE` = 'INSIGHT' ) )
+```
+
+#### 已删除(deleted) :id=insight_view-deleted
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE ( t1.`IS_DELETED` = 1 )
+```
+
+#### 星标页面(favorite) :id=insight_view-favorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+```
+
+#### 正常状态(normal) :id=insight_view-normal
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+```
+
+#### 公开(public) :id=insight_view-public
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE ( t1.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=insight_view-reader
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader'  AND  t11.`OWNER_TYPE` = 'INSIGHT' ) )
+```
+
+#### 非星标(unfavorite) :id=insight_view-unfavorite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 操作用户(user) :id=insight_view-user
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `INSIGHT_VIEW` t1 
+
+WHERE EXISTS(SELECT * FROM `MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`OWNER_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'user'  AND  t11.`OWNER_TYPE` = 'INSIGHT' ) )
+```
+
+
+## [关键结果(KEY_RESULT)](module/Team/key_result.md) :id=key_result
 
 #### 数据查询(DEFAULT) :id=key_result-Default
 ```sql
@@ -2799,6 +4764,29 @@ FROM `LIBRARY` t1
 WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
 ```
 
+#### 当前测试库(cur_library) :id=library-cur_library
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `LIBRARY` t1 
+
+WHERE ( t1.`ID` = #{ctx.webcontext.library} )
+```
+
 #### 已删除(deleted) :id=library-deleted
 ```sql
 SELECT
@@ -2843,6 +4831,31 @@ t1.`VISIBILITY`
 FROM `LIBRARY` t1 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+```
+
+#### 查询星标（管理用户）(favorite_user) :id=library-favorite_user
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `LIBRARY` t1 
+
+WHERE EXISTS(SELECT * FROM `LIBRARY_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`LIBRARY_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
 ```
 
 #### 正常状态(normal) :id=library-normal
@@ -2937,6 +4950,54 @@ FROM `LIBRARY` t1
 WHERE EXISTS(SELECT * FROM `LIBRARY_MEMBER` t11 
  WHERE 
  t1.`ID` = t11.`LIBRARY_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
+```
+
+#### 非星标测试库(unfavorite) :id=library-unfavorite
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `LIBRARY` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 非星标测试库（管理用户）(unfavorite_user) :id=library-unfavorite_user
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `LIBRARY` t1 
+
+WHERE EXISTS(SELECT * FROM `LIBRARY_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`LIBRARY_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
 ```
 
 #### 普通成员(user) :id=library-user
@@ -3064,6 +5125,25 @@ FROM `MEMBER` t1
 
 ```
 
+#### 共享页面_非空间成员(shared_page_member) :id=member-shared_page_member
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `MEMBER` t1 
+
+WHERE ( t1.`OWNER_ID` = #{ctx.webcontext.shared_page}  AND  t1.`OWNER_TYPE` = 'PAGE'  AND  t1.`OWNER_SUBTYPE` = 'SHARED' )
+```
+
 #### 团队管理员(user_group_admin) :id=member-user_group_admin
 ```sql
 SELECT
@@ -3075,7 +5155,7 @@ WHERE ( t1.`ROLE_ID` = 'admin'  AND  t1.`OWNER_TYPE` = 'GROUP' )
 ```
 
 
-## [目标(OBJECTIVE)](module/team/objective.md) :id=objective
+## [目标(OBJECTIVE)](module/Team/objective.md) :id=objective
 
 #### 数据查询(DEFAULT) :id=objective-Default
 ```sql
@@ -3102,6 +5182,43 @@ t1.`PERIOD_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `OBJECTIVE` t1 
+
+```
+
+
+## [页面版本(PAGE_VERSION)](module/Wiki/page_version.md) :id=page_version
+
+#### 数据查询(DEFAULT) :id=page_version-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DATA`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_NAMED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `version` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=page_version-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DATA`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_NAMED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `version` t1 
 
 ```
 
@@ -3135,7 +5252,7 @@ FROM `PARAMETER` t1
 ```
 
 
-## [周期(PERIOD)](module/team/period.md) :id=period
+## [周期(PERIOD)](module/Team/period.md) :id=period
 
 #### 数据查询(DEFAULT) :id=period-Default
 ```sql
@@ -3556,6 +5673,29 @@ FROM `PRODUCT` t1
 WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
 ```
 
+#### 当前产品(cur_product) :id=product-cur_product
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PRODUCT` t1 
+
+WHERE ( t1.`ID` = #{ctx.webcontext.product} )
+```
+
 #### 已删除(deleted) :id=product-deleted
 ```sql
 SELECT
@@ -3600,6 +5740,31 @@ t1.`VISIBILITY`
 FROM `PRODUCT` t1 
 
 WHERE ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+```
+
+#### 查询星标（管理用户）(favorite_user) :id=product-favorite_user
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PRODUCT` t1 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`PRODUCT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
 #### 正常状态(normal) :id=product-normal
@@ -3671,6 +5836,54 @@ FROM `PRODUCT` t1
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t11 
  WHERE 
  t1.`ID` = t11.`PRODUCT_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
+```
+
+#### 未星标产品(unfavorite) :id=product-unfavorite
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PRODUCT` t1 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 未星标产品（管理用户）(unfavorite_user) :id=product-unfavorite_user
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PRODUCT` t1 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`PRODUCT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
 ```
 
 #### 操作用户(user) :id=product-user
@@ -3768,7 +5981,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`END_AT`,
@@ -3790,7 +6002,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`END_AT`,
@@ -3812,7 +6023,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`END_AT`,
@@ -3835,7 +6045,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`END_AT`,
@@ -3858,7 +6067,6 @@ SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
-t1.`CATEGORIES_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`END_AT`,
@@ -3908,6 +6116,23 @@ t1.`UPDATE_TIME`
 FROM `PRODUCT_TAG` t1 
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 
+```
+
+#### 当前项目标签(cur_product_tag) :id=product_tag-cur_product_tag
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PRODUCT_ID`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PRODUCT_TAG` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+
+WHERE ( t1.`PRODUCT_ID` = #{ctx.datacontext.product} )
 ```
 
 
@@ -4015,9 +6240,11 @@ FROM `PROJECT` t1
 #### 默认（全部数据）(VIEW) :id=project-View
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`COLOR`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -4029,6 +6256,7 @@ t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
 t1.`IS_LOCAL_CONFIGURE`,
 t1.`NAME`,
+t1.`NOTICE`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
 t1.`START_AT`,
@@ -4103,6 +6331,62 @@ FROM `PROJECT` t1
 WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
 ```
 
+#### BI反查(bi_detail) :id=project-bi_detail
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+
+```
+
+#### BI查询(bi_search) :id=project-bi_search
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND PROJECT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND PROJECT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+
+```
+
 #### 选择项目(choose_project) :id=project-choose_project
 ```sql
 SELECT
@@ -4131,6 +6415,36 @@ t1.`VISIBILITY`
 FROM `PROJECT` t1 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  not exists(select 1 from `work` t2 where t1.id = t2.principal_id and t2.portfolio_id = #{ctx.webcontext.portfolio_id}) )
+```
+
+#### 当前项目(cur_project) :id=project-cur_project
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+
+WHERE ( t1.`ID` = #{ctx.webcontext.project} )
 ```
 
 #### 当前项目(current) :id=project-current
@@ -4221,6 +6535,38 @@ t1.`VISIBILITY`
 FROM `PROJECT` t1 
 
 WHERE ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+```
+
+#### 查询星标（管理用户）(favorite_user) :id=project-favorite_user
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 正常状态(normal) :id=project-normal
@@ -4315,7 +6661,7 @@ WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11
  t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t11.`ROLE_ID` = 'reader' ) )
 ```
 
-#### 相同类型工作项(same_type) :id=project-same_type
+#### 相同类型项目(same_type) :id=project-same_type
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
@@ -4342,7 +6688,7 @@ t1.`UPDATE_TIME`,
 t1.`VISIBILITY`
 FROM `PROJECT` t1 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from project t2 where  t1.`type` = t2.`type` and t2.id = #{ctx.webcontext.project})  AND  t1.`ID` <> #{ctx.webcontext.project} )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from project t2 where  t1.`type` = t2.`type` and t2.id = #{ctx.webcontext.project}) )
 ```
 
 #### 项目集下的项目(under_project_portfolio) :id=project-under_project_portfolio
@@ -4374,6 +6720,68 @@ FROM `PROJECT` t1
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from `work` t2 where t2.principal_id = t1.id and t2.portfolio_id = #{ctx.webcontext.n_portfolio_id_eq
 }) )
+```
+
+#### 非星标项目(unfavorite) :id=project-unfavorite
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
+```
+
+#### 非星标项目（管理用户）(unfavorite_user) :id=project-unfavorite_user
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LOCAL_CONFIGURE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PROJECT` t1 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`PROJECT_ID`  AND  ( t11.`ROLE_ID` <> 'reader'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0' )
 ```
 
 #### 操作用户(user) :id=project-user
@@ -4871,7 +7279,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.is_deleted = 0)  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id})  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id} )
+WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.is_deleted = 0)  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id} and principal_type <> 'dependency')  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id} )
 ```
 
 #### 最近浏览工作项且不含缺陷(recent_work_item_and_nobug) :id=recent-recent_work_item_and_nobug
@@ -4922,6 +7330,30 @@ FROM `RECENT` t1
 WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id}  AND  not exists(select 1 from relation t2 where t2.target_id = t1.owner_id and t2.principal_id = #{ctx.webcontext.principal_id} )  AND  exists(SELECT 1 FROM work_item t3,work_item_type t4 where t3.id = t1.owner_id and t3.is_deleted =0 and t3.WORK_ITEM_TYPE_ID = t4.ID and t4.`group` =  'bug') )
 ```
 
+#### 最近浏览_依赖工作项(recent_work_item_dependency) :id=recent-recent_work_item_dependency
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`RECENT_PARENT`,
+t1.`RECENT_PARENT_IDENTIFIER`,
+t1.`RECENT_PARENT_NAME`,
+concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RECENT` t1 
+
+WHERE ( t1.`OWNER_TYPE` = 'project'  AND  t1.`OWNER_SUBTYPE` = 'work_item'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from work_item t3 where t1.owner_id = t3.id and t3.project_id = #{ctx.webcontext.project} and t3.is_deleted = 0)  AND  t1.`OWNER_ID` <> #{ctx.webcontext.principal_id}  AND  not exists(select  1 from relation t3 where (t1.owner_id = t3.principal_id or  t1.owner_id = t3.target_id) and t3.principal_type = 'dependency') )
+```
+
 #### 本人最新访问(user) :id=recent-user
 ```sql
 SELECT
@@ -4956,11 +7388,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -4977,11 +7411,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -4998,11 +7434,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5019,11 +7457,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5034,6 +7474,30 @@ FROM `RELATION` t1
 WHERE ( t1.`PRINCIPAL_ID` = #{ctx.webcontext.baseline}  AND  t1.`PRINCIPAL_TYPE` = 'baseline'  AND  t1.`TARGET_TYPE` = 'work_item' )
 ```
 
+#### 工作项依赖(dependency_work_items) :id=relation-dependency_work_items
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+
+WHERE ( ( exists(select 1 from work_item t2 where t1.principal_id = t2.id and t1.principal_id = #{ctx.webcontext.principal_id} and t2.is_deleted = 0)  OR  exists(select 1 from work_item t2 where t1.target_id= t2.id and t1.target_id= #{ctx.webcontext.principal_id} and t2.is_deleted = 0) )  AND  t1.`PRINCIPAL_TYPE` = 'dependency' )
+```
+
 #### 测试用例下存在执行用例关联缺陷(exists_run_relation_bug) :id=relation-exists_run_relation_bug
 ```sql
 SELECT
@@ -5041,11 +7505,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5063,11 +7529,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5077,7 +7545,7 @@ FROM `RELATION` t1
 LEFT JOIN `CUSTOMER` t11 ON t1.`TARGET_ID` = t11.`ID` 
 
 
-WHERE ( t1.`PRINCIPAL_TYPE` = 'idea'  AND  t1.`TARGET_TYPE` = 'customer'  AND  t1.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`PRINCIPAL_TYPE` = 'idea'  AND  t1.`TARGET_TYPE` = 'customer'  AND  t1.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} )
 ```
 
 #### 需求关联需求(idea_re_idea) :id=relation-idea_re_idea
@@ -5087,11 +7555,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5111,11 +7581,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5135,11 +7607,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5159,11 +7633,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5183,11 +7659,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5205,11 +7683,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5232,11 +7712,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5257,11 +7739,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5281,11 +7765,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5306,11 +7792,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5331,11 +7819,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5355,11 +7845,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5380,11 +7872,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5402,11 +7896,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5426,11 +7922,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5450,11 +7948,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5474,11 +7974,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5498,11 +8000,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5522,11 +8026,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5546,11 +8052,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5570,11 +8078,13 @@ t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`ID`,
+t1.`LEVEL`,
 t1.`NAME`,
 t1.`OWNER_TYPE`,
 t1.`PARENT_VERSION_ID`,
 t1.`PRINCIPAL_ID`,
 t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
 t1.`TARGET_ID`,
 t1.`TARGET_TYPE`,
 t1.`TARGET_VERSION_ID`,
@@ -5591,16 +8101,17 @@ WHERE ( t1.`PRINCIPAL_TYPE` = 'work_item'  AND  ( t1.`TARGET_TYPE` = 'run'  OR  
 #### 数据查询(DEFAULT) :id=release-Default
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`NAME`,
-t1.`PROGRESS`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
 t1.`START_AT`,
@@ -5615,16 +8126,17 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 #### 默认（全部数据）(VIEW) :id=release-View
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`NAME`,
-t1.`PROGRESS`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
 t1.`START_AT`,
@@ -5636,19 +8148,97 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 ```
 
-#### 未完成的发布(not_finish) :id=release-not_finish
+#### BI反查(bi_detail) :id=release-bi_detail
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`NAME`,
-t1.`PROGRESS`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=release-bi_search
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+```
+
+#### 选择发布关联(choose_relese_relation) :id=release-choose_relese_relation
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE NOT(EXISTS(SELECT * FROM `RELATION` t21 
+ WHERE 
+ t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_TYPE` = 'sprint'  AND  t21.`TARGET_ID` = #{ctx.webcontext.sprint}  AND  t21.`PRINCIPAL_TYPE` = 'release' ) ))
+```
+
+#### 未已发布(not_published) :id=release-not_published
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
 t1.`START_AT`,
@@ -5660,7 +8250,63 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 
 WHERE NOT(EXISTS(SELECT * FROM `WORK_ITEM` t21 
  WHERE 
- t1.`ID` = t21.`RELEASE_ID`  AND  ( t21.`ID` <> #{ctx.webcontext.work_item} ) )) AND ( t1.`STATUS` <> '30' )
+ t1.`ID` = t21.`RELEASE_ID`  AND  ( t21.`ID` = #{ctx.webcontext.work_item} ) )) AND ( not exists(select 1 from `stage` s1, `stage` s2 where t1.`STATUS`  = s1.`id` and s1.`pid` = s2.`id` and s2.`TYPE` = 'published' and s1.`RELEASE_ID`= t1.`id`) )
+```
+
+#### 只读用户(reader) :id=release-reader
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
+ WHERE 
+ t11.`ID` = t21.`PROJECT_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
+#### 迭代关联发布(sprint_relation) :id=release-sprint_relation
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND RELEASE_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND RELEASE_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PROJECT_RELEASE` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t21 
+ WHERE 
+ t1.`ID` = t21.`PRINCIPAL_ID`  AND  ( t21.`TARGET_ID` = #{ctx.webcontext.sprint}  AND  t21.`TARGET_TYPE` = 'sprint'  AND  t21.`PRINCIPAL_TYPE` = 'release' ) )
 ```
 
 
@@ -5725,6 +8371,92 @@ LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID`
 
 ```
 
+#### BI查询(bi_search) :id=review-bi_search
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`GUIDELINE_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`LIBRARY_ID`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `REVIEW` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
+
+```
+
+#### 我关注的(my_attention) :id=review-my_attention
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`GUIDELINE_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`LIBRARY_ID`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `REVIEW` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `ATTENTION` t21 
+ WHERE 
+ t1.`ID` = t21.`OWNER_ID`  AND  t21.`OWNER_TYPE` = 'REVIEW'  AND  t21.`OWNER_SUBTYPE` = 'REVIEW'  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`TYPE` IN ('20','30','40') ) )
+```
+
+#### 我评审的(my_reviewed) :id=review-my_reviewed
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`GUIDELINE_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`LIBRARY_ID`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `REVIEW` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
+
+WHERE ( t1.`STAGE` LIKE CONCAT('%',#{ctx.sessioncontext.srfpersonid},'%') )
+```
+
 
 ## [评审内容扩展(REVIEW_CONTENT_EXTEND)](module/TestMgmt/review_content_extend.md) :id=review_content_extend
 
@@ -5734,6 +8466,7 @@ SELECT
 t1.`CHANGE_TYPE`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`FINAL_STAGE_RESULTS`,
 t1.`ID`,
 t1.`NAME`,
 t1.`UPDATE_MAN`,
@@ -5749,6 +8482,7 @@ t1.`CHANGE_TYPE`,
 t1.`CHANGE_VERSION`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`FINAL_STAGE_RESULTS`,
 t1.`ID`,
 t1.`NAME`,
 t1.`UPDATE_MAN`,
@@ -5770,9 +8504,11 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`RESULT_STATE`,
+t1.`SEQUENCES`,
 t1.`STAGE_ID`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = t1.`CONTENT_ID`  AND t3.state = '20') THEN 1 ELSE 0 END AS result) AS `WHETHER_REVIEW`
 FROM `REVIEW_RESULT` t1 
 
 ```
@@ -5787,10 +8523,70 @@ t1.`CREATE_TIME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`RESULT_STATE`,
+t1.`SEQUENCES`,
 t1.`STAGE_ID`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+(SELECT CASE WHEN EXISTS (SELECT 1 FROM review_content_extend t1 JOIN relation t2 ON t2.id = t1.id JOIN review t3 ON t3.id = t2.PRINCIPAL_ID  WHERE t1.id = t1.`CONTENT_ID`  AND t3.state = '20') THEN 1 ELSE 0 END AS result) AS `WHETHER_REVIEW`
 FROM `REVIEW_RESULT` t1 
+
+```
+
+
+## [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard.md) :id=review_wizard
+
+#### 数据查询(DEFAULT) :id=review_wizard-Default
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`GUIDELINE_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`LIBRARY_ID`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `REVIEW` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=review_wizard-View
+```sql
+SELECT
+t1.`ACTION_RULE`,
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`GUIDELINE_ID`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`LIBRARY_ID`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`RULE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STAGE`,
+t1.`STATE`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `REVIEW` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
 
 ```
 
@@ -5800,23 +8596,29 @@ FROM `REVIEW_RESULT` t1
 #### 数据查询(DEFAULT) :id=run-Default
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -5839,23 +8641,29 @@ LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID`
 #### 执行结果分布(ImplementationResults) :id=run-ImplementationResults
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -5878,23 +8686,124 @@ LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID`
 #### 默认（全部数据）(VIEW) :id=run-View
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
+(SELECT count(1) FROM relation t2 inner join work_item t3 on t3.id = t2.TARGET_ID and  t3.IS_DELETED = 0 inner join work_item_type t4 on t4.ID = t3.WORK_ITEM_TYPE_ID and t4.`GROUP` = 'bug' where t1.id = t2.PRINCIPAL_ID AND t2.TARGET_TYPE = 'work_item') AS `RELATION_TOTAL_BUG`,
+(select count(1) from run_history where run_id = t1.`ID`) AS `RELATION_TOTAL_HISTORY`,
+t1.`REMARK`,
+t11.`STATE`,
+t1.`STATUS`,
+t1.`STEPS`,
+t31.`SUITES`,
+t11.`SUITE_ID`,
+t31.`NAME` AS `SUITE_NAME`,
+t11.`TEST_TYPE`,
+t11.`TITLE`,
+t11.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RUN` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`CASE_ID` = t11.`ID` 
+LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID` 
+LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
+LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
+
+```
+
+#### BI反查(bi_detail) :id=run-bi_detail
+```sql
+SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
+t1.`CASE_ID`,
+t11.`NAME` AS `CASE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`EXECUTED_AT`,
+t1.`EXECUTOR_ID`,
+t1.`EXECUTOR_NAME`,
+t1.`ID`,
+t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
+t11.`LEVEL`,
+t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t41.`NAME` AS `LIBRARY_NAME`,
+t11.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
+t1.`PLAN_ID`,
+t21.`NAME` AS `PLAN_NAME`,
+t11.`PRECONDITION`,
+t1.`PRIORITY`,
+t1.`REMARK`,
+t11.`STATE`,
+t1.`STATUS`,
+t31.`SUITES`,
+t11.`SUITE_ID`,
+t31.`NAME` AS `SUITE_NAME`,
+t11.`TEST_TYPE`,
+t11.`TITLE`,
+t11.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RUN` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`CASE_ID` = t11.`ID` 
+LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID` 
+LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
+LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=run-bi_search
+```sql
+SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
+t1.`CASE_ID`,
+t11.`NAME` AS `CASE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`EXECUTED_AT`,
+t1.`EXECUTOR_ID`,
+t1.`EXECUTOR_NAME`,
+t1.`ID`,
+t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
+t11.`LEVEL`,
+t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t41.`NAME` AS `LIBRARY_NAME`,
+t11.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
+t1.`PLAN_ID`,
+t21.`NAME` AS `PLAN_NAME`,
+t11.`PRECONDITION`,
+t1.`PRIORITY`,
+(SELECT count(1) FROM relation t2 inner join work_item t3 on t3.id = t2.TARGET_ID and  t3.IS_DELETED = 0 inner join work_item_type t4 on t4.ID = t3.WORK_ITEM_TYPE_ID and t4.`GROUP` = 'bug' where t1.id = t2.PRINCIPAL_ID AND t2.TARGET_TYPE = 'work_item') AS `RELATION_TOTAL_BUG`,
+(select count(1) from run_history where run_id = t1.`ID`) AS `RELATION_TOTAL_HISTORY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -5929,23 +8838,29 @@ WHERE ( exists (select 1 from comment t2 where t1.ID = t2.PRINCIPAL_ID and t2.ID
 #### 当前项目用例(cur_library) :id=run-cur_library
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -5968,23 +8883,29 @@ LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID`
 #### 每日执行用例趋势(dailyTendencies) :id=run-dailyTendencies
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -6007,23 +8928,29 @@ LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID`
 #### 每日测试次数统计(everydayTest) :id=run-everydayTest
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -6046,23 +8973,29 @@ LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID`
 #### 当前模块下用例(normal) :id=run-normal
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -6086,23 +9019,29 @@ WHERE ( ( <choose><when test="ctx.webcontext.suite_id !=null ">  t11.`SUITE_ID` 
 #### 测试计划内执行历史(plan_run_history) :id=run-plan_run_history
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -6120,29 +9059,35 @@ LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID`
 LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
 LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
 
-WHERE ( t1.`STATUS` IS NOT NULL  AND  t1.`CASE_ID` = #{ctx.webcontext.unknown} )
+WHERE ( t1.`STATUS` IS NOT NULL )
 ```
 
 #### 优先级分布(priorityDistributions) :id=run-priorityDistributions
 ```sql
 SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`EXECUTED_AT`,
 t1.`EXECUTOR_ID`,
 t1.`EXECUTOR_NAME`,
 t1.`ID`,
 t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
 t11.`LEVEL`,
 t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t41.`NAME` AS `LIBRARY_NAME`,
 t11.`MAINTENANCE_NAME`,
 t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
 t11.`PRECONDITION`,
+t1.`PRIORITY`,
 t1.`REMARK`,
 t11.`STATE`,
 t1.`STATUS`,
@@ -6160,6 +9105,100 @@ LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID`
 LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
 LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
 
+```
+
+#### 公开(public) :id=run-public
+```sql
+SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
+t1.`CASE_ID`,
+t11.`NAME` AS `CASE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`EXECUTED_AT`,
+t1.`EXECUTOR_ID`,
+t1.`EXECUTOR_NAME`,
+t1.`ID`,
+t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
+t11.`LEVEL`,
+t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t41.`NAME` AS `LIBRARY_NAME`,
+t11.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
+t1.`PLAN_ID`,
+t21.`NAME` AS `PLAN_NAME`,
+t11.`PRECONDITION`,
+t1.`PRIORITY`,
+t1.`REMARK`,
+t11.`STATE`,
+t1.`STATUS`,
+t31.`SUITES`,
+t11.`SUITE_ID`,
+t31.`NAME` AS `SUITE_NAME`,
+t11.`TEST_TYPE`,
+t11.`TITLE`,
+t11.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RUN` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`CASE_ID` = t11.`ID` 
+LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID` 
+LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
+LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
+
+WHERE ( t41.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=run-reader
+```sql
+SELECT
+concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
+t1.`CASE_ID`,
+t11.`NAME` AS `CASE_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`EXECUTED_AT`,
+t1.`EXECUTOR_ID`,
+t1.`EXECUTOR_NAME`,
+t1.`ID`,
+t11.`IDENTIFIER`,
+t1.`IS_NEWEST`,
+t11.`LEVEL`,
+t21.`LIBRARY_ID`,
+t41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t41.`NAME` AS `LIBRARY_NAME`,
+t11.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PARENT_VERSION_ID`,
+t1.`PLAN_ID`,
+t21.`NAME` AS `PLAN_NAME`,
+t11.`PRECONDITION`,
+t1.`PRIORITY`,
+t1.`REMARK`,
+t11.`STATE`,
+t1.`STATUS`,
+t31.`SUITES`,
+t11.`SUITE_ID`,
+t31.`NAME` AS `SUITE_NAME`,
+t11.`TEST_TYPE`,
+t11.`TITLE`,
+t11.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RUN` t1 
+LEFT JOIN `TEST_CASE` t11 ON t1.`CASE_ID` = t11.`ID` 
+LEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID` 
+LEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` 
+LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` 
+
+WHERE EXISTS(SELECT * FROM `LIBRARY_MEMBER` t51 
+ WHERE 
+ t41.`ID` = t51.`LIBRARY_ID`  AND  ( t51.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 
@@ -6487,6 +9526,44 @@ FROM `SECTION` t1
 
 ```
 
+#### 检查名称是否重复(check_name) :id=section-check_name
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SECTION` t1 
+
+WHERE ( t1.`ID` <> #{ctx.datacontext.id}  AND  t1.`NAME` = #{ctx.datacontext.name}  AND  t1.`OWNER_ID` = #{ctx.datacontext.owner_id}  AND  t1.`OWNER_TYPE` = #{ctx.datacontext.owner_type}  AND  t1.`OWNER_SUBTYPE` = #{ctx.datacontext.owner_subtype} )
+```
+
+#### 需求子产品(idea_section) :id=section-idea_section
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`SEQUENCE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SECTION` t1 
+
+WHERE ( t1.`OWNER_SUBTYPE` = 'idea' )
+```
+
 #### 产品排期分组(this_product_section) :id=section-this_product_section
 ```sql
 SELECT
@@ -6540,6 +9617,84 @@ FROM `SEQUENCE_GENERATOR` t1
 ```
 
 
+## [共享空间(SHARED_SPACE)](module/Wiki/shared_space.md) :id=shared_space
+
+#### 数据查询(DEFAULT) :id=shared_space-Default
+```sql
+SELECT
+t1.`ACCESS_PASSWORD`,
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_TYPE`,
+t1.`SHARED_BY`,
+t1.`SHARED_PAGES`,
+t1.`SHARED_TIME`,
+t1.`SHOW_LOGO`,
+t1.`SHOW_TITLE`
+FROM `SPACE` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=shared_space-View
+```sql
+SELECT
+t1.`ACCESS_PASSWORD`,
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_TYPE`,
+t1.`SHARED_BY`,
+t1.`SHARED_PAGES`,
+t1.`SHARED_TIME`,
+t1.`SHOW_LOGO`,
+t1.`SHOW_TITLE`
+FROM `SPACE` t1 
+
+```
+
+#### 管理员(admin) :id=shared_space-admin
+```sql
+SELECT
+t1.`ACCESS_PASSWORD`,
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_TYPE`,
+t1.`SHARED_BY`,
+t1.`SHARED_PAGES`,
+t1.`SHARED_TIME`,
+t1.`SHOW_LOGO`,
+t1.`SHOW_TITLE`
+FROM `SPACE` t1 
+
+WHERE ( exists(select 1 from `space_member` t2 where t2.`SPACE_ID` = t1.`ID` and 
+t2.ROLE_ID = 'admin' and t2.USER_ID = #{ctx.sessioncontext.srfpersonid}) )
+```
+
+#### 共享空间(shared) :id=shared_space-shared
+```sql
+SELECT
+t1.`ACCESS_PASSWORD`,
+t1.`EXPIRATION_DATE`,
+t1.`ID`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_TYPE`,
+t1.`SHARED_BY`,
+t1.`SHARED_PAGES`,
+t1.`SHARED_TIME`,
+t1.`SHOW_LOGO`,
+t1.`SHOW_TITLE`
+FROM `SPACE` t1 
+
+WHERE ( t1.`IS_SHARED` <> '0' )
+```
+
+
 ## [空间(SPACE)](module/Wiki/space.md) :id=space
 
 #### 数据查询(DEFAULT) :id=space-Default
@@ -6556,6 +9711,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6581,6 +9737,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6606,6 +9763,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6634,6 +9792,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6660,6 +9819,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6670,6 +9830,59 @@ FROM `SPACE` t1
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  ( t1.`CATEGORY_ID` = #{ctx.webcontext.category_id}  OR  t11.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.category_id},'%') ) )
+```
+
+#### 当前空间(cur_space) :id=space-cur_space
+```sql
+SELECT
+t11.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `SPACE` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+
+```
+
+#### 当前空间(current) :id=space-current
+```sql
+SELECT
+t11.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `SPACE` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+
+WHERE ( <choose><when test="ctx.webcontext.space !=null ">  t1.`ID` = #{ctx.webcontext.space}  </when><otherwise>1=1</otherwise></choose> )
 ```
 
 #### 已删除(deleted) :id=space-deleted
@@ -6686,6 +9899,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6712,6 +9926,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6722,6 +9937,35 @@ FROM `SPACE` t1
 LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
 
 WHERE ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
+```
+
+#### 查询星标（管理用户）(favorite_user) :id=space-favorite_user
+```sql
+SELECT
+t11.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `SPACE` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `SPACE_MEMBER` t21 
+ WHERE 
+ t1.`ID` = t21.`SPACE_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
 #### 未存在目录中的空间(no_category_space) :id=space-no_category_space
@@ -6738,6 +9982,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6764,6 +10009,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6792,6 +10038,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6818,6 +10065,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6846,6 +10094,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6872,6 +10121,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6884,6 +10134,62 @@ LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID`
 WHERE EXISTS(SELECT * FROM `SPACE_MEMBER` t21 
  WHERE 
  t1.`ID` = t21.`SPACE_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`ROLE_ID` = 'reader' ) )
+```
+
+#### 非星标空间(unfavorite) :id=space-unfavorite
+```sql
+SELECT
+t11.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `SPACE` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0'  AND  t1.`IS_ARCHIVED` = 0 )
+```
+
+#### 非星标空间（管理用户）(unfavorite_user) :id=space-unfavorite_user
+```sql
+SELECT
+t11.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `SPACE` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+
+WHERE EXISTS(SELECT * FROM `SPACE_MEMBER` t21 
+ WHERE 
+ t1.`ID` = t21.`SPACE_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0'  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
 #### 操作用户(user) :id=space-user
@@ -6900,6 +10206,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
 t1.`NAME`,
 t1.`SCOPE_ID`,
 t1.`SCOPE_TYPE`,
@@ -6981,9 +10288,11 @@ WHERE ( t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid}  AND  t1.`SPACE_ID` = 
 #### 数据查询(DEFAULT) :id=sprint-Default
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -7007,9 +10316,11 @@ LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID`
 #### 默认（全部数据）(VIEW) :id=sprint-View
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -7030,6 +10341,86 @@ LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID`
 
 ```
 
+#### 主表格查询(all) :id=sprint-all
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+```
+
+#### BI反查(bi_detail) :id=sprint-bi_detail
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=sprint-bi_search
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+```
+
 #### 移动至(choose_move) :id=sprint-choose_move
 ```sql
 select null as id, '待分配工作项' as name
@@ -7040,12 +10431,74 @@ from `sprint` `t1`
 WHERE (`id` <> #{ctx.webcontext.sprint_id} and `status` <>  '3' )
 ```
 
-#### 未结束的迭代(not_finish) :id=sprint-not_finish
+#### 选择关联的迭代(choose_sprint_relation) :id=sprint-choose_sprint_relation
 ```sql
 SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+WHERE NOT(EXISTS(SELECT * FROM `RELATION` t31 
+ WHERE 
+ t1.`ID` = t31.`PRINCIPAL_ID`  AND  ( t31.`TARGET_TYPE` = 'release'  AND  t31.`PRINCIPAL_TYPE` = 'sprint'  AND  t31.`TARGET_ID` = #{ctx.webcontext.release} ) ))
+```
+
+#### 当前项目迭代且未完成(cur_sprint_not_finish) :id=sprint-cur_sprint_not_finish
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+WHERE ( t1.`STATUS` <> '3'  AND  t1.`PROJECT_ID` = #{ctx.datacontext.project} )
+```
+
+#### 未结束的迭代(not_finish) :id=sprint-not_finish
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
@@ -7069,35 +10522,328 @@ WHERE NOT(EXISTS(SELECT * FROM `WORK_ITEM` t31
  t1.`ID` = t31.`SPRINT_ID`  AND  ( t31.`ID` = #{ctx.webcontext.work_item} ) )) AND ( t1.`STATUS` <> '3' )
 ```
 
+#### 公开(public) :id=sprint-public
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+WHERE ( t21.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=sprint-reader
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t31 
+ WHERE 
+ t21.`ID` = t31.`PROJECT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
+#### 发布关联迭代(release_relation) :id=sprint-release_relation
+```sql
+SELECT
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND SPRINT_ID = t1.`ID`) AS `ALL_WORK_ITEMS`,
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+(SELECT count(1) FROM work_item WHERE IS_DELETED = '0' AND `STATE` in (select ID from work_item_state where TYPE = 'completed') AND SPRINT_ID = t1.`ID`) AS `COMPLETED_WORK_ITEMS`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`PROJECT_ID`,
+t21.`NAME` AS `PROJECT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SPRINT` t1 
+LEFT JOIN `SPRINT` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT` t21 ON t1.`PROJECT_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t31 
+ WHERE 
+ t1.`ID` = t31.`PRINCIPAL_ID`  AND  ( t31.`PRINCIPAL_TYPE` = 'sprint'  AND  t31.`TARGET_TYPE` = 'release'  AND  t31.`TARGET_ID` = #{ctx.webcontext.release} ) )
+```
+
+
+## [迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md) :id=sprint_alteration
+
+#### 数据查询(DEFAULT) :id=sprint_alteration-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t11.`IS_DELETED`,
+t1.`NAME`,
+t1.`SPRINT_ID`,
+t21.`NAME` AS `SPRINT_NAME`,
+t1.`SPRINT_STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t11.`COMPLETED_AT` AS `WORK_ITEM_COMPLETED_AT`,
+t1.`WORK_ITEM_ID`,
+t11.`PRIORITY` AS `WORK_ITEM_PRIORITY`,
+t11.`TITLE` AS `WORK_ITEM_TITLE`
+FROM `SPRINT_ALTERATION` t1 
+LEFT JOIN `WORK_ITEM` t11 ON t1.`WORK_ITEM_ID` = t11.`ID` 
+LEFT JOIN `SPRINT` t21 ON t1.`SPRINT_ID` = t21.`ID` 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=sprint_alteration-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t11.`IS_DELETED`,
+t1.`NAME`,
+t1.`SPRINT_ID`,
+t21.`NAME` AS `SPRINT_NAME`,
+t1.`SPRINT_STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t11.`COMPLETED_AT` AS `WORK_ITEM_COMPLETED_AT`,
+t1.`WORK_ITEM_ID`,
+t11.`PRIORITY` AS `WORK_ITEM_PRIORITY`,
+t11.`TITLE` AS `WORK_ITEM_TITLE`
+FROM `SPRINT_ALTERATION` t1 
+LEFT JOIN `WORK_ITEM` t11 ON t1.`WORK_ITEM_ID` = t11.`ID` 
+LEFT JOIN `SPRINT` t21 ON t1.`SPRINT_ID` = t21.`ID` 
+
+```
+
+#### 工作项迭代变更记录(change) :id=sprint_alteration-change
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t11.`IS_DELETED`,
+t1.`NAME`,
+t1.`SPRINT_ID`,
+t21.`NAME` AS `SPRINT_NAME`,
+t1.`SPRINT_STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t11.`COMPLETED_AT` AS `WORK_ITEM_COMPLETED_AT`,
+t1.`WORK_ITEM_ID`,
+t11.`PRIORITY` AS `WORK_ITEM_PRIORITY`,
+t11.`TITLE` AS `WORK_ITEM_TITLE`
+FROM `SPRINT_ALTERATION` t1 
+LEFT JOIN `WORK_ITEM` t11 ON t1.`WORK_ITEM_ID` = t11.`ID` 
+LEFT JOIN `SPRINT` t21 ON t1.`SPRINT_ID` = t21.`ID` 
+
+```
+
 
 ## [发布阶段(STAGE)](module/ProjMgmt/stage.md) :id=stage
 
 #### 数据查询(DEFAULT) :id=stage-Default
 ```sql
 SELECT
+t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_CURRENT`,
 t1.`NAME`,
+t1.`OPERATED_TIME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t11.`COLOR` AS `P_COLOR`,
+t11.`SEQUENCE` AS `P_SEQUENCE`,
+t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `STAGE` t1 
+LEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` 
 
 ```
 
 #### 默认（全部数据）(VIEW) :id=stage-View
 ```sql
 SELECT
+t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_CURRENT`,
 t1.`NAME`,
+t1.`OPERATED_TIME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t11.`COLOR` AS `P_COLOR`,
+t11.`SEQUENCE` AS `P_SEQUENCE`,
+t11.`TYPE` AS `P_TYPE`,
 t1.`RELEASE_ID`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `STAGE` t1 
+LEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` 
 
+```
+
+#### 当前项目下的发布阶段(cur_project) :id=stage-cur_project
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_CURRENT`,
+t1.`NAME`,
+t1.`OPERATED_TIME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t11.`COLOR` AS `P_COLOR`,
+t11.`SEQUENCE` AS `P_SEQUENCE`,
+t11.`TYPE` AS `P_TYPE`,
+t1.`RELEASE_ID`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `STAGE` t1 
+LEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t21 ON t1.`RELEASE_ID` = t21.`ID` 
+
+WHERE ( t21.`PROJECT_ID` = #{ctx.webcontext.project} )
+```
+
+#### 发布所属阶段(cur_stage) :id=stage-cur_stage
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_CURRENT`,
+t1.`NAME`,
+t1.`OPERATED_TIME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t11.`COLOR` AS `P_COLOR`,
+t11.`SEQUENCE` AS `P_SEQUENCE`,
+t11.`TYPE` AS `P_TYPE`,
+t1.`RELEASE_ID`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `STAGE` t1 
+LEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` 
+
+WHERE ( t1.`RELEASE_ID` = #{ctx.datacontext.release} )
+```
+
+#### 发布所属阶段(owner) :id=stage-owner
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_CURRENT`,
+t1.`NAME`,
+t1.`OPERATED_TIME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t11.`COLOR` AS `P_COLOR`,
+t11.`SEQUENCE` AS `P_SEQUENCE`,
+t11.`TYPE` AS `P_TYPE`,
+t1.`RELEASE_ID`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `STAGE` t1 
+LEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` 
+
+WHERE ( t1.`ID` = #{ctx.datacontext.owner_id} )
+```
+
+#### 全局级发布阶段(system) :id=stage-system
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_CURRENT`,
+t1.`NAME`,
+t1.`OPERATED_TIME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t11.`COLOR` AS `P_COLOR`,
+t11.`SEQUENCE` AS `P_SEQUENCE`,
+t11.`TYPE` AS `P_TYPE`,
+t1.`RELEASE_ID`,
+t1.`SEQUENCE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `STAGE` t1 
+LEFT JOIN `STAGE` t11 ON t1.`PID` = t11.`ID` 
+
+WHERE ( t1.`RELEASE_ID` IS NULL )
 ```
 
 
@@ -7490,6 +11236,68 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 WHERE NOT(EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
  t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`TARGET_TYPE` = 'test_case'  AND  t31.`PRINCIPAL_TYPE` = 'baseline'  AND  t31.`PRINCIPAL_ID` = #{ctx.webcontext.baseline} ) )) AND ( t1.`IS_DELETED` = 0  AND  ( <choose><when test="ctx.webcontext.suite_id !=null ">  t11.`SUITES` LIKE CONCAT('%',#{ctx.webcontext.suite_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test="ctx.webcontext.suite_id !=null ">  t1.`SUITE_ID` = #{ctx.webcontext.suite_id}  </when><otherwise>1=1</otherwise></choose> ) )
+```
+
+#### BI反查(bi_detail) :id=test_case-bi_detail
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PRECONDITION`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=test_case-bi_search
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE_ID`,
+t1.`TEST_LIBRARY_ID`,
+t11.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`
+FROM `TEST_CASE` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`TEST_LIBRARY_ID` = t11.`ID` 
+
 ```
 
 #### 用例成员分布(casePerson) :id=test_case-casePerson
@@ -8133,6 +11941,82 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 
 ```
 
+#### 公开(public) :id=test_case-public
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PRECONDITION`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE ( t21.`VISIBILITY` = 'private' )
+```
+
+#### 只读用户(reader) :id=test_case-reader
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`LEVEL`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t1.`MAINTENANCE_ID`,
+t1.`MAINTENANCE_NAME`,
+t1.`NAME`,
+t1.`PRECONDITION`,
+t1.`REVIEW_RESULT_STATE`,
+concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t11.`SUITES`,
+t1.`SUITE_ID`,
+t11.`NAME` AS `SUITE_NAME`,
+t1.`TEST_LIBRARY_ID`,
+t21.`NAME` AS `TEST_LIBRARY_NAME`,
+t1.`TEST_TYPE`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_CASE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `LIBRARY_MEMBER` t31 
+ WHERE 
+ t21.`ID` = t31.`LIBRARY_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
 #### 最近浏览(recent_test_case) :id=test_case-recent_test_case
 ```sql
 SELECT
@@ -8417,6 +12301,74 @@ LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID`
 
 ```
 
+#### BI反查(bi_detail) :id=test_plan-bi_detail
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`LIBRARY_ID`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`RELEASE_ID`,
+t41.`NAME` AS `RELEASE_NAME`,
+t1.`SPRINT_ID`,
+t31.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_PLAN` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID` 
+LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=test_plan-bi_search
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`LIBRARY_ID`,
+t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t21.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`RELEASE_ID`,
+t41.`NAME` AS `RELEASE_NAME`,
+t1.`SPRINT_ID`,
+t31.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATUS`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_PLAN` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID` 
+LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
+
+```
+
 #### 我负责的(my_assignee) :id=test_plan-my_assignee
 ```sql
 SELECT
@@ -8685,6 +12637,29 @@ LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID`
 
 ```
 
+#### 当前测试库用例模块(cur_test_suite) :id=test_suite-cur_test_suite
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_LEAF`,
+t1.`LIBRARY_ID`,
+t21.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`PID`,
+t11.`NAME` AS `PNAME`,
+t1.`SEQUENCE`,
+t1.`SUITES`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TEST_SUITE` t1 
+LEFT JOIN `TEST_SUITE` t11 ON t1.`PID` = t11.`ID` 
+LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID` 
+
+WHERE ( t1.`LIBRARY_ID` = #{ctx.datacontext.library} )
+```
+
 #### 无父类(no_parent) :id=test_suite-no_parent
 ```sql
 SELECT
@@ -8777,6 +12752,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -8815,6 +12791,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -8868,6 +12845,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -8884,6 +12862,80 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 1 )
+```
+
+#### BI反查(bi_detail) :id=ticket-bi_detail
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=ticket-bi_search
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t11.`NAME` AS `CUSTOMER_NAME`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t21.`NAME` AS `PRODUCT_NAME`,
+t1.`SOLUTION`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `CUSTOMER` t11 ON t1.`CUSTOMER_ID` = t11.`ID` 
+LEFT JOIN `PRODUCT` t21 ON t1.`PRODUCT_ID` = t21.`ID` 
+
 ```
 
 #### 评论通知负责人(comment_notify_assignee) :id=ticket-comment_notify_assignee
@@ -8918,6 +12970,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -8957,6 +13010,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -8996,6 +13050,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9035,6 +13090,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9074,6 +13130,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9115,6 +13172,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9154,6 +13212,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9193,6 +13252,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9232,6 +13292,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9271,6 +13332,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9302,6 +13364,88 @@ FROM `TICKET` t1
 WHERE ( t1.`ID` = #{ctx.webcontext.id}  AND  t1.`ASSIGNEE_ID` <> #{ctx.sessioncontext.srfpersonid} )
 ```
 
+#### 公开(public) :id=ticket-public
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE ( t11.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=ticket-reader
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
+ WHERE 
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
 #### 最近浏览(recent_ticket) :id=ticket-recent_ticket
 ```sql
 SELECT
@@ -9323,6 +13467,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9362,6 +13507,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9401,6 +13547,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9419,6 +13566,48 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 WHERE EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
  t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'ticket' ) ) AND ( t1.`IS_DELETED` = 0 )
+```
+
+#### 工单统计(ticket_statistics) :id=ticket-ticket_statistics
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `RELATION` t31 
+ WHERE 
+ t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea' ) ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 #### 工作项关联工单(work_item_relation_ticket) :id=ticket-work_item_relation_ticket
@@ -9442,6 +13631,7 @@ t1.`PRIORITY`,
 t1.`PRODUCT_ID`,
 t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
 t11.`NAME` AS `PRODUCT_NAME`,
+1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
 t1.`STATE`,
@@ -9553,7 +13743,7 @@ FROM `TRANSITION_HISTORY` t1
 ```
 
 
-## [进展(UPDATE_RECORD)](module/team/update_record.md) :id=update_record
+## [进展(UPDATE_RECORD)](module/Team/update_record.md) :id=update_record
 
 #### 数据查询(DEFAULT) :id=update_record-Default
 ```sql
@@ -9596,6 +13786,7 @@ t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
+t1.`IS_NAMED`,
 t1.`MANUAL`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -9616,6 +13807,7 @@ t1.`DATA`,
 t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
+t1.`IS_NAMED`,
 t1.`MANUAL`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -9627,6 +13819,27 @@ FROM `VERSION` t1
 
 ```
 
+#### 命名版本(name_version) :id=version-name_version
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_NAMED`,
+t1.`MANUAL`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_TYPE`,
+t1.`RESTORABLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `VERSION` t1 
+
+WHERE ( t1.`IS_NAMED` = 1 )
+```
+
 #### 所属对象版本(owner) :id=version-owner
 ```sql
 SELECT
@@ -9635,6 +13848,7 @@ t1.`CREATE_TIME`,
 t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
+t1.`IS_NAMED`,
 t1.`MANUAL`,
 t1.`NAME`,
 t1.`OWNER_ID`,
@@ -9757,14 +13971,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -9779,16 +13993,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -9796,9 +14014,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -9807,12 +14027,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 ```
 
@@ -9824,7 +14044,7 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
@@ -9832,7 +14052,7 @@ t1.`CUR_VERSION_ID`,
 t1.`DESCRIPTION`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -9847,16 +14067,24 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='IDEA') AS `RELATION_TOTAL_IDEA`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TEST_CASE') AS `RELATION_TOTAL_TEST_CASE`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TICKET') AS `RELATION_TOTAL_TICKET`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='WORK_ITEM') AS `RELATION_TOTAL_WORK_ITEM`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -9864,9 +14092,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -9875,27 +14105,85 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 ```
 
 #### 高级搜索(advanced_search) :id=work_item-advanced_search
 ```sql
 SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
 t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
 t1.`STATE`,
-t1.`TITLE`
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  exists(select 1 from project t2, project_member t3 where t1.project_id = t2.id and t2.id = t3.project_id and t3.user_id = #{ctx.sessioncontext.srfpersonid}) )
 ```
@@ -9908,14 +14196,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -9930,16 +14218,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -9947,9 +14239,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -9958,12 +14252,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 1  AND  t1.`IS_DELETED` = 0 )
 ```
@@ -9990,7 +14284,7 @@ WHERE NOT(EXISTS(SELECT * FROM `RELATION` t21
  t1.`ID` = t21.`TARGET_ID`  AND  ( t21.`PRINCIPAL_ID` = #{ctx.webcontext.baseline}  AND  t21.`TARGET_TYPE` = 'work_item'  AND  t21.`PRINCIPAL_TYPE` = 'baseline' ) )) AND ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_DELETED` = 0 )
 ```
 
-#### 缺陷工作项(bug) :id=work_item-bug
+#### BI反查(bi_detail) :id=work_item-bi_detail
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
@@ -9998,14 +14292,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10020,16 +14314,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10037,9 +14335,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10048,12 +14348,140 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=work_item-bi_search
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t41.`NAME` AS `ENTRY_NAME`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`JOB_TYPE`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`REAPPEAR_PROBABILITY`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='IDEA') AS `RELATION_TOTAL_IDEA`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TEST_CASE') AS `RELATION_TOTAL_TEST_CASE`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TICKET') AS `RELATION_TOTAL_TICKET`,
+(SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='WORK_ITEM') AS `RELATION_TOTAL_WORK_ITEM`,
+t1.`RELEASE_ID`,
+t61.`NAME` AS `RELEASE_NAME`,
+t1.`RISK`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t51.`NAME` AS `SPRINT_NAME`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `ENTRY` t41 ON t1.`ENTRY_ID` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
+
+```
+
+#### 缺陷工作项(bug) :id=work_item-bug
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t21.`GROUP` = 'bug' )
 ```
@@ -10066,14 +14494,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10088,16 +14516,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10105,9 +14537,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10116,12 +14550,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug' )
 ```
@@ -10134,14 +14568,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10156,16 +14590,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10173,9 +14611,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10184,12 +14624,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> ) )
 ```
@@ -10213,14 +14653,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10235,16 +14675,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10252,9 +14696,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10263,14 +14709,88 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  t1.`PROJECT_ID` = #{ctx.webcontext.project_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( t1.`PID` <> #{ctx.webcontext.principal_id}  OR  t1.`PID` IS NULL ) )
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  t1.`PROJECT_ID` = #{ctx.webcontext.project_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( t1.`PID` <> #{ctx.webcontext.principal_id}  OR  t1.`PID` IS NULL ) )
+```
+
+#### 选择依赖(choose_dependency) :id=work_item-choose_dependency
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`ID` <> #{ctx.webcontext.principal_id}  AND  ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  ( <choose><when test="ctx.webcontext.query_attention !=null ">  exists(select 1 from attention t2 where t1.ID = t2.owner_id and t2.user_id =#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  not exists(select 1 from `relation` t2 where (t1.id = t2.principal_id or t1.id = t2.target_id) and t2.principal_type = 'dependency') )
 ```
 
 #### 评论通知负责人(comment_notify_assignee) :id=work_item-comment_notify_assignee
@@ -10292,6 +14812,7 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`IDENTIFIER`,
@@ -10301,22 +14822,24 @@ t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
-t21.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RISK`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t31.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
 t1.`START_AT`,
 t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` 
-LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0 )
 ```
@@ -10329,6 +14852,7 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`IDENTIFIER`,
@@ -10338,25 +14862,27 @@ t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
-t21.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RISK`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t31.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
 t1.`START_AT`,
 t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` 
-LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
-LEFT JOIN `WORK_ITEM_TYPE` t41 ON t1.`WORK_ITEM_TYPE_ID` = t41.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t51 ON t1.`WORK_ITEM_TYPE_ID` = t51.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t41.`GROUP` = 'bug' )
+WHERE ( t1.`IS_DELETED` = 0  AND  t51.`GROUP` = 'bug' )
 ```
 
 #### 已删除(deleted) :id=work_item-deleted
@@ -10367,14 +14893,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10389,16 +14915,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10406,9 +14936,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10417,84 +14949,14 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 1 )
-```
-
-#### 需求关联工作项(idea_relation_work_item) :id=work_item-idea_relation_work_item
-```sql
-SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
-t1.`BACKLOG_FROM`,
-t1.`BACKLOG_TYPE`,
-t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
-t1.`COMPLETED_AT`,
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
-t1.`END_AT`,
-t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
-t1.`ENTRY_POSITION`,
-t1.`ENTRY_STATUS`,
-t1.`ID`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
-t1.`IS_LEAF`,
-t1.`JOB_TYPE`,
-t1.`PID`,
-t1.`PRIORITY`,
-t1.`PROJECT_ID`,
-t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
-t11.`NAME` AS `PROJECT_NAME`,
-t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
-t1.`REAPPEAR_PROBABILITY`,
-t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
-1 AS `REP_NUM`,
-t1.`RISK`,
-t1.`SEVERITY`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
-t1.`START_AT`,
-t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
-t1.`SWIMLANE_ID`,
-t1.`TAGS`,
-t1.`TITLE`,
-t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`,
-t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
-t1.`WORK_ITEM_TYPE_ID`,
-t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
-t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
-FROM `WORK_ITEM` t1 
-LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
-
-WHERE EXISTS(SELECT * FROM `RELATION` t101 
- WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`TARGET_TYPE` = 'work_item'  AND  t101.`PRINCIPAL_TYPE` = 'idea' ) ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 #### 看板工作项(kanban_work_item) :id=work_item-kanban_work_item
@@ -10505,14 +14967,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10527,16 +14989,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10544,9 +15010,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10555,12 +15023,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`BOARD_ID` IS NOT NULL  AND  t1.`ENTRY_ID` IS NOT NULL )
 ```
@@ -10573,14 +15041,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10595,16 +15063,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10612,9 +15084,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10623,14 +15097,88 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`WORK_ITEM_TYPE_ID` = 'waterfall_milestone' )
+```
+
+#### 移动工作项(move_work_item) :id=work_item-move_work_item
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t1.`PROJECT_ID` = #{ctx.datacontext.project_id} )
 ```
 
 #### 我负责的(my_assignee) :id=work_item-my_assignee
@@ -10641,14 +15189,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10663,16 +15211,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10680,9 +15232,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10691,12 +15245,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
@@ -10709,14 +15263,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10731,16 +15285,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10748,9 +15306,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10759,12 +15319,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  exists(select 1 from `attention` t2 where t2.owner_id = t1.id and t2.`type` in ('20', '30', '40') and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )
 ```
@@ -10777,14 +15337,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10799,16 +15359,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10816,9 +15380,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10827,12 +15393,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
 ```
@@ -10845,14 +15411,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10867,16 +15433,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10884,9 +15454,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10895,12 +15467,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  <choose><when test="ctx.webcontext.my_join !=null ">  exists(select 1 from `attention` t2 where t1.id = t2.owner_id and t2.user_id = #{ctx.sessioncontext.srfpersonid}) </when><otherwise>1=1</otherwise></choose> )
 ```
@@ -10913,14 +15485,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -10935,16 +15507,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -10952,9 +15528,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -10963,12 +15541,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.`STATE` <> '40' )
 ```
@@ -10981,14 +15559,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11003,16 +15581,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11020,9 +15602,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11031,12 +15615,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101 
  WHERE 
@@ -11051,14 +15635,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11073,16 +15657,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11090,9 +15678,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11101,12 +15691,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
@@ -11119,14 +15709,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11141,16 +15731,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11158,9 +15752,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11169,12 +15765,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101 
  WHERE 
@@ -11189,14 +15785,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11211,16 +15807,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11228,9 +15828,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11239,12 +15841,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101 
  WHERE 
@@ -11259,14 +15861,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11281,16 +15883,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11298,9 +15904,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11309,12 +15917,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE NOT(EXISTS(SELECT * FROM `RELATION` t101 
  WHERE 
@@ -11340,14 +15948,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11362,16 +15970,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11379,9 +15991,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11390,14 +16004,202 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
+```
+
+#### 新建规划快照时查询工作项(plan_snapshot) :id=work_item-plan_snapshot
+```sql
+SELECT
+t1.`CUR_VERSION_ID`,
+t1.`ID`
+FROM `WORK_ITEM` t1 
+
+WHERE ( t1.`IS_DELETED` = 0 )
+```
+
+#### 项目资源分配(project_resource) :id=work_item-project_resource
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`END_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`START_AT`,
+t1.`STATE`,
+t1.`TITLE`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  (t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}
+and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )
+```
+
+#### 公开(public) :id=work_item-public
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t11.`VISIBILITY` = 'public' )
+```
+
+#### 只读用户(reader) :id=work_item-reader
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t101 
+ WHERE 
+ t11.`ID` = t101.`PROJECT_ID`  AND  ( t101.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 #### 最近浏览(recent_work_item) :id=work_item-recent_work_item
@@ -11408,14 +16210,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11430,16 +16232,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11447,9 +16253,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11458,12 +16266,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   ) )
 ```
@@ -11476,6 +16284,7 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`IDENTIFIER`,
@@ -11485,24 +16294,26 @@ t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
-t21.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RISK`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t31.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
 t1.`START_AT`,
 t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` 
-LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  t1.`RELEASE_ID` = #{ctx.webcontext.release_id} )
+WHERE ( t1.`IS_DELETED` = 0 )
 ```
 
 #### 项目发布规划工作项(release_plan) :id=work_item-release_plan
@@ -11513,14 +16324,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11535,16 +16346,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11552,9 +16367,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11563,14 +16380,88 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( ( <choose><when test="ctx.webcontext.query_recent !=null ">  exists(select 1 from recent t2 where t1.ID = t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )</when><otherwise>1=1</otherwise></choose> )  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0  AND  ( t1.`RELEASE_ID` <> #{ctx.webcontext.release_id}  OR  t1.`RELEASE_ID` IS NULL ) )
+```
+
+#### 发布工作项统计(release_work_item_chart) :id=work_item-release_work_item_chart
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`RELEASE_ID` = #{ctx.webcontext.release} )
 ```
 
 #### 需求工作项(requirement) :id=work_item-requirement
@@ -11581,6 +16472,7 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ID`,
 t1.`IDENTIFIER`,
@@ -11590,28 +16482,30 @@ t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`NAME` AS `PROJECT_NAME`,
-t21.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
 t1.`RISK`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t31.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
 t1.`START_AT`,
 t1.`STATE`,
+t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM` t21 ON t1.`PID` = t21.`ID` 
-LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
-LEFT JOIN `WORK_ITEM_TYPE` t41 ON t1.`WORK_ITEM_TYPE_ID` = t41.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t21 ON t1.`STATE` = t21.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t51 ON t1.`WORK_ITEM_TYPE_ID` = t51.`ID` 
 
-WHERE ( t41.`GROUP` = 'requirement'  AND  t1.`IS_DELETED` = 0 )
+WHERE ( t51.`GROUP` = 'requirement'  AND  t1.`IS_DELETED` = 0 )
 ```
 
-#### 资源分配(resource_assignment) :id=work_item-resource_assignment
+#### 资源分配(resource) :id=work_item-resource
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
@@ -11619,14 +16513,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11641,16 +16535,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11658,9 +16556,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11669,86 +16569,17 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtand}
-AND #{ctx.webcontext.n_date_scope_ltand}  OR  t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtand}
-AND #{ctx.webcontext.n_date_scope_ltand} )  AND  t1.`ASSIGNEE_ID` IS NOT NULL )
-```
-
-#### 执行用例关联缺陷(run_relation_bug) :id=work_item-run_relation_bug
-```sql
-SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
-t1.`BACKLOG_FROM`,
-t1.`BACKLOG_TYPE`,
-t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
-t1.`COMPLETED_AT`,
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
-t1.`END_AT`,
-t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
-t1.`ENTRY_POSITION`,
-t1.`ENTRY_STATUS`,
-t1.`ID`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
-t1.`IS_LEAF`,
-t1.`JOB_TYPE`,
-t1.`PID`,
-t1.`PRIORITY`,
-t1.`PROJECT_ID`,
-t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
-t11.`NAME` AS `PROJECT_NAME`,
-t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
-t1.`REAPPEAR_PROBABILITY`,
-t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
-1 AS `REP_NUM`,
-t1.`RISK`,
-t1.`SEVERITY`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
-t1.`START_AT`,
-t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
-t1.`SWIMLANE_ID`,
-t1.`TAGS`,
-t1.`TITLE`,
-t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`,
-t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
-t1.`WORK_ITEM_TYPE_ID`,
-t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
-t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
-FROM `WORK_ITEM` t1 
-LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
-
-WHERE EXISTS(SELECT * FROM `RELATION` t101 
- WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`TARGET_TYPE` = 'bug'  AND  t101.`PRINCIPAL_ID` = #{ctx.webcontext.run}  AND  ( t101.`PRINCIPAL_TYPE` = 'run'  OR  t101.`PRINCIPAL_TYPE` = 'test_case' ) ) ) AND ( t1.`IS_DELETED` = 0 )
+WHERE ( t1.`IS_DELETED` = 0  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  (t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}
+and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )
 ```
 
 #### 用户故事（normal）(scrum_story_normal) :id=work_item-scrum_story_normal
@@ -11759,14 +16590,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11781,16 +16612,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11798,9 +16633,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11809,17 +16646,17 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`WORK_ITEM_TYPE_ID` LIKE '%story%' )
 ```
 
-#### 测试用例关联缺陷(test_case_relation_bug) :id=work_item-test_case_relation_bug
+#### 七天内创建或完成的工作项(seven_days) :id=work_item-seven_days
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
@@ -11827,14 +16664,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11849,16 +16686,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11866,9 +16707,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11877,19 +16720,17 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE EXISTS(SELECT * FROM `RELATION` t101 
- WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`PRINCIPAL_TYPE` = 'test_case'  AND  t101.`TARGET_TYPE` = 'bug' ) ) AND ( t1.`IS_DELETED` = 0 )
+WHERE ( ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) < 7  OR  DATEDIFF(sysdate(),t1.`COMPLETED_AT`) < 7 )  AND  t1.`IS_DELETED` = 0 )
 ```
 
-#### 测试用例关联工作项(test_case_relation_work_item) :id=work_item-test_case_relation_work_item
+#### 迭代下完成的工作项(sprint_completed) :id=work_item-sprint_completed
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
@@ -11897,14 +16738,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11919,16 +16760,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -11936,9 +16781,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -11947,16 +16794,88 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE EXISTS(SELECT * FROM `RELATION` t101 
- WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`TARGET_TYPE` = 'work_item'  AND  t101.`PRINCIPAL_TYPE` = 'test_case' ) ) AND ( t1.WORK_ITEM_TYPE_ID not like '%bug%'  AND  t1.`IS_DELETED` = 0 )
+WHERE ( t1.`COMPLETED_AT` IS NOT NULL  AND  t31.`TYPE` = 'completed' )
+```
+
+#### 迭代工作项统计(sprint_work_item_chart) :id=work_item-sprint_work_item_chart
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`BACKLOG_FROM`,
+t1.`BACKLOG_TYPE`,
+t1.`BOARD_ID`,
+t81.`NAME` AS `BOARD_NAME`,
+t1.`COMPLETED_AT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`END_AT`,
+t1.`ENTRY_ID`,
+t71.`NAME` AS `ENTRY_NAME`,
+t1.`ENTRY_POSITION`,
+t1.`ENTRY_STATUS`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`IS_LEAF`,
+t1.`JOB_TYPE`,
+t1.`PID`,
+t1.`PRIORITY`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t61.`TITLE` AS `PTITLE`,
+t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t1.`RELEASE_ID`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
+1 AS `REP_NUM`,
+t1.`RISK`,
+t1.`SEQUENCE`,
+t1.`SEVERITY`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPRINT_ID`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
+t1.`START_AT`,
+t1.`STATE`,
+t31.`TYPE` AS `STATE_TYPE`,
+t1.`SWIMLANE_ID`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TOP_ID`,
+t91.`TITLE` AS `TOP_TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
+t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
+t1.`WORK_ITEM_TYPE_ID`,
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
+t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`SPRINT_ID` = #{ctx.webcontext.sprint} )
 ```
 
 #### 测试计划关联缺陷(test_plan_relation_bug) :id=work_item-test_plan_relation_bug
@@ -11967,14 +16886,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -11989,16 +16908,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -12006,9 +16929,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -12017,16 +16942,15 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
             EXISTS (
-                -- 与计划ID关联的RUN的WORK_ITEM
                     SELECT 1
                     FROM `relation` rel
                              INNER JOIN `RUN` ru ON ru.`ID` = rel.`PRINCIPAL_ID`
@@ -12037,7 +16961,6 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
                       AND rel.`PRINCIPAL_TYPE` = 'run'
                 )
             OR EXISTS (
-                -- 直接与计划ID关联的WORK_ITEM
                     SELECT 1
                     FROM `relation` r
                     WHERE
@@ -12049,76 +16972,6 @@ WHERE ( t1.`IS_DELETED` = 0  AND  t21.`GROUP` = 'bug'  AND  (
         ) )
 ```
 
-#### 工单关联工作项(ticket_relation_work_item) :id=work_item-ticket_relation_work_item
-```sql
-SELECT
-t1.`ASSIGNEE_ID`,
-t1.`ASSIGNEE_NAME`,
-t1.`BACKLOG_FROM`,
-t1.`BACKLOG_TYPE`,
-t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
-t1.`COMPLETED_AT`,
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
-t1.`END_AT`,
-t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
-t1.`ENTRY_POSITION`,
-t1.`ENTRY_STATUS`,
-t1.`ID`,
-t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
-t1.`IS_LEAF`,
-t1.`JOB_TYPE`,
-t1.`PID`,
-t1.`PRIORITY`,
-t1.`PROJECT_ID`,
-t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
-t11.`NAME` AS `PROJECT_NAME`,
-t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
-t1.`REAPPEAR_PROBABILITY`,
-t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
-1 AS `REP_NUM`,
-t1.`RISK`,
-t1.`SEVERITY`,
-concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
-t1.`START_AT`,
-t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
-t1.`SWIMLANE_ID`,
-t1.`TAGS`,
-t1.`TITLE`,
-t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`,
-t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
-t1.`WORK_ITEM_TYPE_ID`,
-t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
-t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
-FROM `WORK_ITEM` t1 
-LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
-LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
-
-WHERE EXISTS(SELECT * FROM `RELATION` t101 
- WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t101.`TARGET_TYPE` = 'work_item'  AND  t101.`PRINCIPAL_TYPE` = 'ticket' ) ) AND ( t1.`IS_DELETED` = 0 )
-```
-
 #### 顶层数据查询(top) :id=work_item-top
 ```sql
 SELECT
@@ -12127,14 +16980,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -12149,16 +17002,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -12166,9 +17023,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -12177,12 +17036,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`PID` IS NULL  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
@@ -12195,14 +17054,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -12217,16 +17076,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -12234,9 +17097,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -12245,12 +17110,12 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0 )
 ```
@@ -12263,14 +17128,14 @@ t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
+t81.`NAME` AS `BOARD_NAME`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
 t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
+t71.`NAME` AS `ENTRY_NAME`,
 t1.`ENTRY_POSITION`,
 t1.`ENTRY_STATUS`,
 t1.`ID`,
@@ -12285,16 +17150,20 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
+t61.`TITLE` AS `PTITLE`,
 t1.`REAPPEAR_PROBABILITY`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
+t51.`NAME` AS `RELEASE_NAME`,
+t51.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
+t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
+t41.`NAME` AS `SPRINT_NAME`,
+t41.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
 t31.`TYPE` AS `STATE_TYPE`,
@@ -12302,9 +17171,11 @@ t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
+t91.`TITLE` AS `TOP_TITLE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`,
+t21.`ORGIN_STATE` AS `WORK_ITEM_ORIGIN_STATE`,
+t21.`SUB_TYPE` AS `WORK_ITEM_SUB_TYPE`,
 t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
 t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
@@ -12313,90 +17184,79 @@ FROM `WORK_ITEM` t1
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
 LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
+LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
+LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
+LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
+LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  ( exists (select 1 from `work` t2, project t3 where t1.PROJECT_ID = t3.id and t2.PRINCIPAL_ID = t3.id 
 and t2.PRINCIPAL_TYPE = 'project' and t2.PORTFOLIO_ID =#{ctx.webcontext.portfolio_id})  OR  exists (select 1 from project t2 where t1.PROJECT_ID = t2.id and t2.IS_ARCHIVED = 0 and t2.IS_DELETED  = 0)
 and exists (select 1 from `work` a1, `work` a2 where a1.PORTFOLIO_ID  = a2.PRINCIPAL_ID   and a1.PRINCIPAL_ID = t1.project_id and a2.PORTFOLIO_ID = #{ctx.webcontext.portfolio_id}) ) )
 ```
 
-#### 工作项关联工作项(work_item_relation_work_item) :id=work_item-work_item_relation_work_item
+#### 项目集工作下的资源工作项(under_work_resource) :id=work_item-under_work_resource
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
-t1.`BACKLOG_FROM`,
-t1.`BACKLOG_TYPE`,
-t1.`BOARD_ID`,
-t61.`NAME` AS `BOARD_NAME`,
-t1.`COMPLETED_AT`,
-t1.`CREATE_MAN`,
-t1.`CREATE_TIME`,
-t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
-t1.`ENTRY_ID`,
-t51.`NAME` AS `ENTRY_NAME`,
-t1.`ENTRY_POSITION`,
-t1.`ENTRY_STATUS`,
 t1.`ID`,
 t1.`IDENTIFIER`,
-t1.`IS_ARCHIVED`,
-t1.`IS_DELETED`,
-t1.`IS_LEAF`,
-t1.`JOB_TYPE`,
-t1.`PID`,
-t1.`PRIORITY`,
 t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t41.`TITLE` AS `PTITLE`,
-t1.`REAPPEAR_PROBABILITY`,
-t1.`RELEASE_ID`,
-t91.`NAME` AS `RELEASE_NAME`,
-1 AS `REP_NUM`,
-t1.`RISK`,
-t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
-t1.`SPRINT_ID`,
-t81.`NAME` AS `SPRINT_NAME`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
-t1.`SWIMLANE_ID`,
-t1.`TAGS`,
 t1.`TITLE`,
-t1.`TOP_ID`,
-t71.`TITLE` AS `TOP_TITLE`,
-t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`,
-t21.`GROUP` AS `WORK_ITEM_TYPE_GROUP`,
 t1.`WORK_ITEM_TYPE_ID`,
-t21.`NAME` AS `WORK_ITEM_TYPE_NAME`,
-t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
+t21.`NAME` AS `WORK_ITEM_TYPE_NAME`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `WORK_ITEM` t41 ON t1.`PID` = t41.`ID` 
-LEFT JOIN `ENTRY` t51 ON t1.`ENTRY_ID` = t51.`ID` 
-LEFT JOIN `BOARD` t61 ON t1.`BOARD_ID` = t61.`ID` 
-LEFT JOIN `WORK_ITEM` t71 ON t1.`TOP_ID` = t71.`ID` 
-LEFT JOIN `SPRINT` t81 ON t1.`SPRINT_ID` = t81.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t91 ON t1.`RELEASE_ID` = t91.`ID` 
 
-WHERE EXISTS(SELECT * FROM `RELATION` t101 
- WHERE 
- t1.`ID` = t101.`TARGET_ID`  AND  ( t101.`TARGET_TYPE` = 'work_item'  AND  t101.`PRINCIPAL_TYPE` = 'work_item'  AND  t101.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id} ) ) AND ( t1.`IS_DELETED` = 0 )
+WHERE ( t1.`IS_DELETED` = 0  AND  ( exists (select 1 from `work` t2, project t3 where t1.PROJECT_ID = t3.id and t2.PRINCIPAL_ID = t3.id 
+and t2.PRINCIPAL_TYPE = 'project' and t2.PORTFOLIO_ID =#{ctx.webcontext.portfolio_id})  OR  exists (select 1 from project t2 where t1.PROJECT_ID = t2.id and t2.IS_ARCHIVED = 0 and t2.IS_DELETED  = 0)
+and exists (select 1 from `work` a1, `work` a2 where a1.PORTFOLIO_ID  = a2.PRINCIPAL_ID   and a1.PRINCIPAL_ID = t1.project_id and a2.PORTFOLIO_ID = #{ctx.webcontext.portfolio_id}) )  AND  ( t1.START_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  t1.END_AT BETWEEN #{ctx.webcontext.n_date_scope_gtandeq}
+AND #{ctx.webcontext.n_date_scope_ltandeq}  OR  (t1.start_at <= #{ctx.webcontext.n_date_scope_gtandeq}
+and t1.end_at >= #{ctx.webcontext.n_date_scope_ltandeq}) ) )
+```
+
+#### 获取指定工作项的类型(work_item_type) :id=work_item-work_item_type
+```sql
+SELECT
+t1.`ID`,
+t1.`WORK_ITEM_TYPE_ID`
+FROM `WORK_ITEM` t1 
+
 ```
 
 
 ## [工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state.md) :id=work_item_state
+
+#### BI报表(BI_FORM) :id=work_item_state-BI_FORM
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`SEQUENCE`,
+t1.`STYLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`WORK_ITEM_TYPE_ID`
+FROM `WORK_ITEM_STATE` t1 
+
+WHERE ( ( t1.`TYPE` = 'closed'  OR  t1.`TYPE` = 'completed' ) )
+```
 
 #### 数据查询(DEFAULT) :id=work_item_state-Default
 ```sql
@@ -12405,6 +17265,7 @@ t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_SYSTEM`,
 t1.`NAME`,
 t1.`SEQUENCE`,
 t1.`STYLE`,
@@ -12423,6 +17284,7 @@ t1.`COLOR`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`ID`,
+t1.`IS_SYSTEM`,
 t1.`NAME`,
 t1.`SEQUENCE`,
 t1.`STYLE`,
@@ -12448,8 +17310,11 @@ t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
 t1.`PROJECT_TYPE`,
 t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `WORK_ITEM_TYPE` t1 
@@ -12467,8 +17332,79 @@ t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
 t1.`PROJECT_TYPE`,
 t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORK_ITEM_TYPE` t1 
+
+```
+
+#### 选择变更工作项类型(choose_target_type) :id=work_item_type-choose_target_type
+```sql
+SELECT
+t1.`CODE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`GROUP`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
+t1.`PROJECT_TYPE`,
+t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORK_ITEM_TYPE` t1 
+
+WHERE ( exists(select 1 from `project` t2 where t2.`TYPE` = t1.`PROJECT_TYPE` and t2.`ID` = #{ctx.webcontext.project_id} and t1.`ID` <> #{ctx.webcontext.origin_type}) )
+```
+
+#### 当前项目工作项类型(cur_project_type) :id=work_item_type-cur_project_type
+```sql
+SELECT
+t1.`CODE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`GROUP`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
+t1.`PROJECT_TYPE`,
+t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORK_ITEM_TYPE` t1 
+
+WHERE ( `PROJECT_TYPE` = (select type from project where id=#{ctx.datacontext.project}) )
+```
+
+#### 原始状态分组(group_by_origin_state) :id=work_item_type-group_by_origin_state
+```sql
+SELECT
+t1.`CODE`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`GROUP`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IS_SYSTEM`,
+t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
+t1.`PROJECT_TYPE`,
+t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `WORK_ITEM_TYPE` t1 
@@ -12486,8 +17422,11 @@ t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
 t1.`PROJECT_TYPE`,
 t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `WORK_ITEM_TYPE` t1 
@@ -12506,8 +17445,11 @@ t1.`ICON`,
 t1.`ID`,
 t1.`IS_SYSTEM`,
 t1.`NAME`,
+t1.`ORGIN_STATE`,
+t1.`PROJECT_ID`,
 t1.`PROJECT_TYPE`,
 t1.`SEQUENCE`,
+t1.`SUB_TYPE`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `WORK_ITEM_TYPE` t1 
@@ -12561,6 +17503,57 @@ t1.`PRINCIPAL_TYPE`,
 t1.`RECENT_PARENT`,
 t1.`RECENT_PARENT_IDENTIFIER`,
 t1.`RECENT_PARENT_NAME`,
+t1.`REGISTER_DATE`,
+concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`TYPE_ID`,
+t11.`NAME` AS `TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORKLOAD` t1 
+LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
+
+```
+
+#### BI反查(bi_detail) :id=workload-bi_detail
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DURATION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RECENT_PARENT`,
+t1.`RECENT_PARENT_IDENTIFIER`,
+t1.`RECENT_PARENT_NAME`,
+t1.`REGISTER_DATE`,
+concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`TYPE_ID`,
+t11.`NAME` AS `TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORKLOAD` t1 
+LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
+
+```
+
+#### BI查询(bi_search) :id=workload-bi_search
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DURATION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RECENT_PARENT`,
 t1.`REGISTER_DATE`,
 concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`TYPE_ID`,
@@ -12876,6 +17869,45 @@ FROM `WORKLOAD` t1
 LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
 
 WHERE ( <choose><when test="ctx.webcontext.type_id !=null ">  t1.`TYPE_ID` = #{ctx.webcontext.type_id}  </when><otherwise>t1.`TYPE_ID` is null</otherwise></choose> )
+```
+
+#### 团队维度日历链接(user_group_link) :id=workload-user_group_link
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DURATION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RECENT_PARENT`,
+t1.`RECENT_PARENT_IDENTIFIER`,
+t1.`RECENT_PARENT_NAME`,
+t1.`REGISTER_DATE`,
+concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`TYPE_ID`,
+t11.`NAME` AS `TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORKLOAD` t1 
+LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
+
+WHERE ( exists(select 1 from `user_group` t2, `member` t3 where t1.create_man = t3.user_id and t2.id = t3.owner_id and t3.owner_type = 'GROUP' and t2.id = #{ctx.webcontext.user_group_id}) )
+```
+
+#### 团队工时(user_group_workload) :id=workload-user_group_workload
+```sql
+select t2.ID as `principal_id`,
+t2.NAME,  
+t1.DURATION,
+t1.register_date,
+t1.ID
+from `workload` t1,  `user_group` t2
+WHERE exists (select 1 from `member` t3 where t3.USER_ID = t1.CREATE_MAN and t2.id = t3.OWNER_ID  and t3.OWNER_TYPE = 'GROUP')
 ```
 
 #### 工作项工时(work_item_workload) :id=workload-work_item_workload

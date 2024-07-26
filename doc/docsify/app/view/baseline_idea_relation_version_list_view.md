@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [版本对比（基线列表）](module/ProdMgmt/baseline_idea#界面行为)
   * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [返回](module/ProdMgmt/baseline_idea#界面行为)
+  * [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea) : [版本对比（基线列表）](module/ProdMgmt/baseline_idea#界面行为)
 
 ### 关联视图
   * [基线需求(baseline_idea_edit_view)](app/view/baseline_idea_edit_view)

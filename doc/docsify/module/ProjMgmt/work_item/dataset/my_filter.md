@@ -18,7 +18,7 @@
 
 <p class="panel-title"><b>主排序属性</b></p>
 
-* `IDENTIFIER(编号)` `DESC`
+* `CREATE_TIME(建立时间)` `DESC`
 
 
 

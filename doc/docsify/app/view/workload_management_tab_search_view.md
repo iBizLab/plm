@@ -4,7 +4,7 @@
 
 ## 控件
 #### CAPTIONBAR(captionbar)
-#### 分页导航面板(tabexppanel)
+#### 数据关系分页部件(tabexppanel)
 
 
 ### 关联视图
@@ -16,6 +16,7 @@
   * [工时(workload_management_product_grid_view)](app/view/workload_management_product_grid_view)
   * [工时(workload_management_project_grid_view)](app/view/workload_management_project_grid_view)
   * [工时(workload_management_work_type_grid_view)](app/view/workload_management_work_type_grid_view)
+  * [工时(workload_user_group_grid_view)](app/view/workload_user_group_grid_view)
 
 <script>
  const { createApp } = Vue

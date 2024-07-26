@@ -8,7 +8,7 @@ t1.`IDENTIFIER`,
 t1.`TAGS`,
 t1.`TITLE`,
 t1.`TYPE`
-FROM `SEARCH_HUB` t1 
+FROM `` t1 
 
 
 ```

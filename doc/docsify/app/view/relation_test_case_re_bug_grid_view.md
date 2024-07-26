@@ -39,14 +39,14 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [测试用例取消关联缺陷](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
   * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
@@ -54,7 +54,7 @@ view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 
 ### 关联视图
   * [关联(relation_edit_view)](app/view/relation_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
+  * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
 
 <script>
  const { createApp } = Vue

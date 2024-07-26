@@ -12,7 +12,11 @@
   * opendata(预置打开数据逻辑)
 
 
+### 关联界面行为
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [返回](module/ProdMgmt/product#界面行为)
+
 ### 关联视图
+  * [组件设置(addon_setting_grid_view)](app/view/addon_setting_grid_view)
   * [状态管理(dictionary_data_idea_state_grid_view)](app/view/dictionary_data_idea_state_grid_view)
   * [状态管理(dictionary_data_ticket_state_grid_view)](app/view/dictionary_data_ticket_state_grid_view)
   * [需求配置(idea_config_tab_exp_view)](app/view/idea_config_tab_exp_view)

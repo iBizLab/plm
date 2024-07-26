@@ -11,6 +11,7 @@
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
+|是否系统类型|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
 |序号|SEQUENCE|数值||否||
 |样式表|STYLE|文本，可指定长度|100|是||
@@ -62,12 +63,14 @@
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
+|[BI报表(BI_FORM)](module/ProjMgmt/work_item_state/query/BI_FORM)|BI_FORM|否|否 |否 |类型为已完成或者已关闭|
 |[数据查询(DEFAULT)](module/ProjMgmt/work_item_state/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/work_item_state/query/View)|VIEW|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
+|[BI报表数据集(BI_FORM)](module/ProjMgmt/work_item_state/dataset/BI_FORM)|BI_FORM|数据查询|否||类型为已完成或者已关闭的工作项状态|
 |[数据集(DEFAULT)](module/ProjMgmt/work_item_state/dataset/Default)|DEFAULT|数据查询|是|||
 
 ## 数据权限
@@ -108,6 +111,17 @@
 |N_TYPE_EQ|状态类型|EQ||
 |N_WORK_ITEM_TYPE_ID_EQ|工作项类型标识|EQ||
 
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 编辑状态 | edit | 编辑状态 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑状态](app/view/work_item_state_update_view)</details>||
+| 删除状态 | del | 删除状态 |单项数据|<details><summary>后台调用</summary>[Remove](#行为)||
+
+## 界面逻辑
+|  中文名col200 | 代码名col150 | 备注col900 |
+| --------|--------|--------|
+|[系统工作项状态隐藏操作列](module/ProjMgmt/work_item_state/uilogic/cal_is_system)|cal_is_system|系统工作项状态隐藏操作列|
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -135,6 +149,12 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_state?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item_state?id=界面行为`">
+  界面行为
+</el-anchor-link>
+<el-anchor-link :href="`#/module/ProjMgmt/work_item_state?id=界面逻辑`">
+  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

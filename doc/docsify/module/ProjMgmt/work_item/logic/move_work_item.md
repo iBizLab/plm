@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./move_work_item#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./move_work_item#bindparam1 {"绑定参数"}]]
+state "绑定传入的列表参数" as BINDPARAM1  [[$./move_work_item#bindparam1 {"绑定传入的列表参数"}]]
 state "结束" as END1 <<end>> [[$./move_work_item#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./move_work_item#loopsubcall1 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM3  [[$./move_work_item#prepareparam3 {"准备参数"}]]
+state "设置移动参数" as PREPAREPARAM3  [[$./move_work_item#prepareparam3 {"设置移动参数"}]]
 state "填充父工作项的标识" as PREPAREPARAM5  [[$./move_work_item#prepareparam5 {"填充父工作项的标识"}]]
 state "获取选中父工作项" as DEACTION2  [[$./move_work_item#deaction2 {"获取选中父工作项"}]]
 state "填充父工作项标识" as PREPAREPARAM2  [[$./move_work_item#prepareparam2 {"填充父工作项标识"}]]
@@ -64,7 +64,7 @@ LOOPSUBCALL1 --> END1
 
 将执行结果返回给参数`parent_work_item(父工作项)`
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定传入的列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -80,7 +80,7 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`srfactionparam(选中项目)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置移动参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -89,8 +89,7 @@ LOOPSUBCALL1 --> END1
 3. 将`空值（NULL）` 设置给  `Default(传入变量).BOARD_ID(看板标识)`
 4. 将`空值（NULL）` 设置给  `Default(传入变量).ENTRY_ID(看板栏标识)`
 5. 将`空值（NULL）` 设置给  `Default(传入变量).SWIMLANE_ID(泳道标识)`
-6. 将`空值（NULL）` 设置给  `Default(传入变量).TOP_ID(顶级工作项标识)`
-7. 将`空值（NULL）` 设置给  `Default(传入变量).PID(父标识)`
+6. 将`空值（NULL）` 设置给  `Default(传入变量).PID(父标识)`
 
 #### 执行更新 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

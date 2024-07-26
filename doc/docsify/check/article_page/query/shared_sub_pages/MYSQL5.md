@@ -1,0 +1,38 @@
+```sql
+SELECT
+t1.`CATEGORIES`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`CUR_VERSION_NAME`,
+t1.`FORMAT_TYPE`,
+t1.`ICON`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_LEAF`,
+t1.`IS_LOCK`,
+t1.`IS_PUBLISHED`,
+t1.`IS_SHARED`,
+t1.`IS_SHARED_SUBSET`,
+t1.`NAME`,
+t1.`PARENT_ID`,
+t1.`PUBLISHED`,
+t1.`PUBLISH_MAN`,
+t1.`PUBLISH_NAME`,
+t1.`PUBLISH_TIME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PAGE` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE ( t1.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.shared_page},'%')  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1 )
+```

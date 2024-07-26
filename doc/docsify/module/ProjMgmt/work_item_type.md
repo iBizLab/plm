@@ -15,6 +15,7 @@
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否系统类型|IS_SYSTEM|是否逻辑||是||
 |名称|NAME|文本，可指定长度|200|是||
+|原始状态|ORGIN_STATE|文本，可指定长度|100|是||
 |项目标识|PROJECT_ID|外键值|100|是||
 |项目类型|PROJECT_TYPE|[单项选择(文本值)](index/dictionary_index#project_type "项目类型")|60|是||
 |序号|SEQUENCE|数值||是||
@@ -68,7 +69,9 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/ProjMgmt/work_item_type/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProjMgmt/work_item_type/query/View)|VIEW|否|否 |否 ||
+|[选择变更工作项类型(choose_target_type)](module/ProjMgmt/work_item_type/query/choose_target_type)|choose_target_type|否|否 |否 ||
 |[当前项目工作项类型(cur_project_type)](module/ProjMgmt/work_item_type/query/cur_project_type)|cur_project_type|否|否 |否 |数据上下文过滤，非瀑布项目|
+|[原始状态分组(group_by_origin_state)](module/ProjMgmt/work_item_type/query/group_by_origin_state)|group_by_origin_state|否|否 |否 ||
 |[项目工作项类型(project_work_item_type)](module/ProjMgmt/work_item_type/query/project_work_item_type)|project_work_item_type|否|否 |否 ||
 |[非缺陷的工作项类型(project_work_item_type_not_bug)](module/ProjMgmt/work_item_type/query/project_work_item_type_not_bug)|project_work_item_type_not_bug|否|否 |否 ||
 
@@ -76,7 +79,9 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProjMgmt/work_item_type/dataset/Default)|DEFAULT|数据查询|是|||
+|[选择变更工作项类型(choose_target_type)](module/ProjMgmt/work_item_type/dataset/choose_target_type)|choose_target_type|数据查询|否|||
 |[当前项目工作项类型(cur_project_type)](module/ProjMgmt/work_item_type/dataset/cur_project_type)|cur_project_type|数据查询|否||数据上下文过滤，非瀑布项目|
+|[原始状态分组(group_by_origin_state)](module/ProjMgmt/work_item_type/dataset/group_by_origin_state)|group_by_origin_state|数据查询|否|||
 |[项目工作项类型(project_work_item_type)](module/ProjMgmt/work_item_type/dataset/project_work_item_type)|project_work_item_type|数据查询|否|||
 |[非缺陷的工作项类型(project_work_item_type_not_bug)](module/ProjMgmt/work_item_type/dataset/project_work_item_type_not_bug)|project_work_item_type_not_bug|数据查询|否|||
 
@@ -127,8 +132,8 @@
 | 配置 | panel_usr1229905828_button_link1_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
 | 配置 | panel_usr12299058218_button_link3_click | 通知配置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[通知配置](app/view/psde_notify_tab_exp_view)</details>||
 | 配置 | panel_usr12299058218_form_cfg_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
-| 配置 | panel_usr1229905828_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdelogicmslogicdesign_modal)</details>||
-| 配置 | panel_usr12299058218_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdelogicmslogicdesign_modal)</details>||
+| 配置 | panel_usr1229905828_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdemslogicmslogicdesign_modal)</details>||
+| 配置 | panel_usr12299058218_button_link_click | 设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[设计](app/view/psdemslogicmslogicdesign_modal)</details>||
 | 新建工作项类型 | create_type | 新建工作项类型 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项类型](app/view/work_item_type_global_create_view)</details>||
 | 配置 | panel_usr1229905828_button_link3_click | 通知配置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[通知配置](app/view/psde_notify_tab_exp_view)</details>||
 

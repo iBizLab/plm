@@ -89,8 +89,9 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[取消统计](module/Base/user/logic/cancel_report_flag)|cancel_report_flag|无||取消用户统计状态|
-|[统计过滤](module/Base/user/logic/report_flag_filter)|report_flag_filter|无|||
+|[统计过滤](module/Base/user/logic/report_flag_filter)|report_flag_filter|无||排除非统计用户|
 |[设置统计](module/Base/user/logic/set_report_flag)|set_report_flag|无||更新用户统计状态|
+|[非空间下成员](module/Base/user/logic/not_space_mmeber)|not_space_mmeber|无||非空间下成员|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -104,6 +105,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/user/dataset/Default)|DEFAULT|数据查询|是|||
+|[非空间下成员(not_space_mmeber)](module/Base/user/dataset/not_space_mmeber)|not_space_mmeber|[实体逻辑](module/Base/user/logic/not_space_mmeber)|否|||
 |[未分配部门(unassigned_dept)](module/Base/user/dataset/unassigned_dept)|unassigned_dept|数据查询|否|||
 |[当前用户(user)](module/Base/user/dataset/user)|user|数据查询|否|||
 |[工时统计(workload)](module/Base/user/dataset/workload)|workload|[实体逻辑](module/Base/user/logic/report_flag_filter)|否|||
@@ -173,7 +175,7 @@
 | 主题设置 | theme_setting | 主题设置 |无数据|用户自定义||
 | 修改密码（表单） | chang_pas | 确认 |无数据|用户自定义||
 | 打开日志列表 | open_log_list | 打开日志列表 |无数据|<details><summary>打开顶级视图</summary>[PLM系统更新日志](app/view/article_page_updated_logs)</details>||
-| 取消统计 | cancel_report_flag | 取消统计 |多项数据（主键）|<details><summary>后台调用</summary>[cancel_report_flag](#行为)||
+| 停止统计 | cancel_report_flag | 停止统计 |多项数据（主键）|<details><summary>后台调用</summary>[cancel_report_flag](#行为)||
 | 开启统计 | set_report_flag | 开启统计 |多项数据（主键）|<details><summary>后台调用</summary>[set_report_flag](#行为)||
 
 ## 界面逻辑

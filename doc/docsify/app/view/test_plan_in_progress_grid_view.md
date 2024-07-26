@@ -1,4 +1,4 @@
-# 测试计划(test_plan_in_progress_grid_view)  <!-- {docsify-ignore-all} -->
+# 进行中的(test_plan_in_progress_grid_view)  <!-- {docsify-ignore-all} -->
 
 
 
@@ -14,10 +14,10 @@
 
 
 ### 关联界面行为
-  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [打开测试库首页](module/TestMgmt/test_plan#界面行为)
+  * [测试计划(TEST_PLAN)](module/TestMgmt/test_plan) : [关联跳转测试计划主视图](module/TestMgmt/test_plan#界面行为)
 
 ### 关联视图
-  * [测试库(library_redirect_view)](app/view/library_redirect_view)
+  * [测试计划(test_plan_redirect_view)](app/view/test_plan_redirect_view)
   * [编辑测试计划(test_plan_update_option_view)](app/view/test_plan_update_option_view)
 
 <script>

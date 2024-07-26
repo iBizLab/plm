@@ -5,14 +5,17 @@
 ## 控件
 #### CAPTIONBAR(captionbar)
 #### 数据表格(grid)
-
-##### 部件逻辑
-* `onLoadSuccess` : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
 #### 搜索栏(searchbar)
 #### 搜索表单(searchform)
 #### 工具栏(toolbar)
 
 ## 视图界面逻辑
+* `onMounted`
+```javascript
+view.layoutPanel.panelItems.choose_level.setDataValue('50');
+```
+  * [获取客户分数](module/ProdMgmt/customer/uilogic/get_customer_score)
+  * [获取客户分数(初始化使用)](module/ProdMgmt/customer/uilogic/get_customer_score_2)
 * `onMounted`
 ```javascript
 view.layoutPanel.panelItems.choose_data.state.visible = view.context.srfshowchoose || false;
@@ -39,18 +42,19 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [取消关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [查看客户统计信息](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
-  * [关联(RELATION)](module/Base/relation) : [取消关联行为是否启用](module/Base/relation/uilogic/del_relation_disabled)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)
+  * [关联(RELATION)](module/Base/relation) : [触发计数器刷新及表格刷新](module/Base/relation/uilogic/refresh_counter)
 
 ### 关联视图
   * [客户(customer_main_view)](app/view/customer_main_view)

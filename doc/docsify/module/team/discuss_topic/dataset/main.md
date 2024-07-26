@@ -21,3 +21,4 @@
 ### 数据查询
   * [星标话题(favorite)](module/Team/discuss_topic/query/favorite)
   * [未星标话题(unfavorite)](module/Team/discuss_topic/query/unfavorite)
+  * [当前话题(cur_discuss_topic)](module/Team/discuss_topic/query/cur_discuss_topic)

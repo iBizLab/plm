@@ -16,14 +16,14 @@
 
 
 ### 关联界面行为
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [产品信息](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [取消星标](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [产品成员](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [编辑基本信息](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [新开窗口（产品）](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [设置星标](module/ProdMgmt/product#界面行为)
-  * [产品(PRODUCT)](module/ProdMgmt/product) : [更多设置](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [编辑基本信息](module/ProdMgmt/product#界面行为)
   * [产品(PRODUCT)](module/ProdMgmt/product) : [回收站](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [产品信息](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [更多设置](module/ProdMgmt/product#界面行为)
+  * [产品(PRODUCT)](module/ProdMgmt/product) : [设置星标](module/ProdMgmt/product#界面行为)
 
 ### 关联界面逻辑
   * [产品(PRODUCT)](module/ProdMgmt/product) : [计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)
@@ -36,7 +36,7 @@
   * [产品成员(product_member_config_grid_view)](app/view/product_member_config_grid_view)
   * [产品(product_recover_tab_exp_view)](app/view/product_recover_tab_exp_view)
   * [产品配置(product_setting_view)](app/view/product_setting_view)
-  * [产品信息(product_show_eidt_view)](app/view/product_show_eidt_view)
+  * [产品信息(product_show_edit_view)](app/view/product_show_edit_view)
   * [标签管理(product_tag_tag_grid_view)](app/view/product_tag_tag_grid_view)
   * [工单(ticket_recover_grid_view)](app/view/ticket_recover_grid_view)
 

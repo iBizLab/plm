@@ -130,6 +130,7 @@
 |[默认（全部数据）(VIEW)](module/ProdMgmt/product/query/View)|VIEW|否|否 |否 ||
 |[管理员(admin)](module/ProdMgmt/product/query/admin)|admin|否|否 |否 ||
 |[已归档(archived)](module/ProdMgmt/product/query/archived)|archived|否|否 |否 ||
+|[当前产品(cur_product)](module/ProdMgmt/product/query/cur_product)|cur_product|否|否 |否 ||
 |[已删除(deleted)](module/ProdMgmt/product/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProdMgmt/product/query/favorite)|favorite|否|否 |否 ||
 |[查询星标（管理用户）(favorite_user)](module/ProdMgmt/product/query/favorite_user)|favorite_user|否|否 |否 ||
@@ -146,6 +147,7 @@
 |[数据集(DEFAULT)](module/ProdMgmt/product/dataset/Default)|DEFAULT|数据查询|是|||
 |[管理员(admin)](module/ProdMgmt/product/dataset/admin)|admin|数据查询|否|||
 |[已归档(archived)](module/ProdMgmt/product/dataset/archived)|archived|数据查询|否|||
+|[当前产品(cur_product)](module/ProdMgmt/product/dataset/cur_product)|cur_product|数据查询|否|||
 |[已删除(deleted)](module/ProdMgmt/product/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/ProdMgmt/product/dataset/favorite)|favorite|数据查询|否|||
 |[主表格查询(main)](module/ProdMgmt/product/dataset/main)|main|数据查询|否|||

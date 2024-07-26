@@ -1,7 +1,7 @@
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
--- 需求关联客户
+-- 产品关联需求
 SELECT
 	count( t.id ) AS idea_total 
 FROM

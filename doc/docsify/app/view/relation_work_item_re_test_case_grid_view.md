@@ -39,14 +39,14 @@ if (form) {
 view.layoutPanel.panelItems.button_calluilogic1.state.visible = false
 view.layoutPanel.panelItems.button_calluilogic.state.visible = false
 ```
-  * [获取需求总条数](module/ProdMgmt/idea/uilogic/get_idea_total)
+  * [获取表格总条数](module/ProdMgmt/idea/uilogic/get_grid_total)
   * newdata(预置新建数据逻辑)
   * opendata(预置打开数据逻辑)
 
 
 ### 关联界面行为
-  * [关联(RELATION)](module/Base/relation) : [工作项取消关联测试用例](module/Base/relation#界面行为)
   * [关联(RELATION)](module/Base/relation) : [添加关联](module/Base/relation#界面行为)
+  * [关联(RELATION)](module/Base/relation) : [工作项取消关联测试用例](module/Base/relation#界面行为)
 
 ### 关联界面逻辑
   * [用例(TEST_CASE)](module/TestMgmt/test_case) : [工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)

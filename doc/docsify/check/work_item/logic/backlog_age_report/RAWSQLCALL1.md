@@ -35,8 +35,8 @@ FROM (
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.BACKLOG_TYPE, ?)) -- 需求类型
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.PRIORITY, ?)) -- 优先级
       AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.BACKLOG_FROM, ?)) -- 需求来源
-      AND ((? IS NULL OR ? = '') OR T1.IS_ARCHIVED = ?) -- 是否归档
-      AND ((? IS NULL OR ? = '') OR T1.IS_DELETED = ?) -- 是否删除
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.IS_ARCHIVED, ?)) -- 是否归档
+      AND ((? IS NULL OR ? = '') OR FIND_IN_SET(T1.IS_DELETED, ?)) -- 是否删除
     GROUP BY filter_type
 ) AS T1 ON T1.filter_type = time_ranges.filter_type
 GROUP BY time_ranges.filter_type
@@ -64,11 +64,11 @@ ORDER BY time_ranges.filter_type ASC;
 17. `Default(传入变量).N_BACKLOG_FROM_EQ`
 18. `Default(传入变量).N_BACKLOG_FROM_EQ`
 19. `Default(传入变量).N_BACKLOG_FROM_EQ`
-20. `Default(传入变量).N_IS_ARCHIVED_EQ`
-21. `Default(传入变量).N_IS_ARCHIVED_EQ`
-22. `Default(传入变量).N_IS_ARCHIVED_EQ`
-23. `Default(传入变量).N_IS_DELETED_EQ`
-24. `Default(传入变量).N_IS_DELETED_EQ`
-25. `Default(传入变量).N_IS_DELETED_EQ`
+20. `Default(传入变量).n_is_archived_in`
+21. `Default(传入变量).n_is_archived_in`
+22. `Default(传入变量).n_is_archived_in`
+23. `Default(传入变量).N_IS_DELETED_IN`
+24. `Default(传入变量).N_IS_DELETED_IN`
+25. `Default(传入变量).N_IS_DELETED_IN`
 
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`

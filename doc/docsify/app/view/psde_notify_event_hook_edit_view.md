@@ -6,6 +6,7 @@
 #### CAPTIONBAR(captionbar)
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
+#### 搜索栏(searchbar)
 
 
 <script>
