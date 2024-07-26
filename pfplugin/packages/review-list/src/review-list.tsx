@@ -135,18 +135,12 @@ export const ReviewListControl = defineComponent({
         return data.srfkey === item.srfkey;
       });
       const itemClass = [ns.b('item'), ns.is('active', findIndex !== -1)];
-      const tempCtx = {};
-      Object.assign(tempCtx, context);
-      const state = c.customRevType.some(key => key === item[c.revTypeField]);
-      if (!state) {
-        Object.assign(tempCtx, { srfreadonly: true });
-      }
       return (
         <iBizControlShell
           class={itemClass}
           data={item}
           modelData={modelData}
-          context={tempCtx}
+          context={context}
           params={params}
           onClick={(): Promise<void> => c.onRowClick(item)}
           onDblclick={(): Promise<void> => c.onDbRowClick(item)}

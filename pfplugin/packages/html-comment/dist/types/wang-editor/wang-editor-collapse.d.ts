@@ -4,8 +4,8 @@ import type { IDomEditor } from '@wangeditor/editor';
 import { HtmlCommentController } from '../html-comment.controller';
 declare const IBizHtmlCollapse: import("vue").DefineComponent<{
     value: StringConstructor;
-    controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<HtmlCommentController>, undefined, undefined>;
-    data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
+    controller: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<HtmlCommentController>, undefined, undefined>;
+    data: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<IData>, undefined, undefined>;
     disabled: {
         type: BooleanConstructor;
     };
@@ -58,16 +58,10 @@ declare const IBizHtmlCollapse: import("vue").DefineComponent<{
     collapse: Ref<boolean>;
     changeFullScreenState: () => void;
     renderPreview: () => JSX.Element;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    change: (_value: unknown, _name?: string | undefined) => boolean;
-    blur: (_event?: IData | undefined) => boolean;
-    focus: (_event?: IData | undefined) => boolean;
-    enter: (_event?: IData | undefined) => boolean;
-    infoTextChange: (_text: string) => boolean;
-}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("link" | "blur" | "change" | "focus" | "enter" | "infoTextChange")[], "link" | "blur" | "change" | "focus" | "enter" | "infoTextChange", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     value: StringConstructor;
-    controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<HtmlCommentController>, undefined, undefined>;
-    data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
+    controller: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<HtmlCommentController>, undefined, undefined>;
+    data: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<IData>, undefined, undefined>;
     disabled: {
         type: BooleanConstructor;
     };
@@ -87,11 +81,12 @@ declare const IBizHtmlCollapse: import("vue").DefineComponent<{
         required: boolean;
     };
 }>> & {
-    onChange?: ((_value: unknown, _name?: string | undefined) => any) | undefined;
-    onFocus?: ((_event?: IData | undefined) => any) | undefined;
-    onBlur?: ((_event?: IData | undefined) => any) | undefined;
-    onEnter?: ((_event?: IData | undefined) => any) | undefined;
-    onInfoTextChange?: ((_text: string) => any) | undefined;
+    onChange?: ((...args: any[]) => any) | undefined;
+    onFocus?: ((...args: any[]) => any) | undefined;
+    onBlur?: ((...args: any[]) => any) | undefined;
+    onEnter?: ((...args: any[]) => any) | undefined;
+    onLink?: ((...args: any[]) => any) | undefined;
+    onInfoTextChange?: ((...args: any[]) => any) | undefined;
 }, {
     disabled: boolean;
     readonly: boolean;

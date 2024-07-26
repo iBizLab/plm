@@ -1,4 +1,4 @@
-import { DataChangeEvent, EditFormController, IDataAbilityParams } from '@ibiz-template/runtime';
+import { DataChangeEvent, EditFormController, FormController, FormGroupPanelController, IDataAbilityParams } from '@ibiz-template/runtime';
 import { IDEFormDetail } from '@ibiz/model-core';
 export declare class FormDataComparisonController extends EditFormController {
     /**
@@ -92,6 +92,14 @@ export declare class FormDataComparisonController extends EditFormController {
      */
     newDruipartData: IData;
     protected onMounted(): Promise<void>;
+    /**
+     * 初始化表单成员控制器
+     *
+     * @author lxm
+     * @date 2022-08-24 21:08:48
+     * @protected
+     */
+    protected initDetailControllers(details?: IDEFormDetail[], form?: FormController, parent?: FormGroupPanelController | undefined): Promise<void>;
     /**
      *   获取版本数据
      *
@@ -209,6 +217,7 @@ export declare class FormDataComparisonController extends EditFormController {
         modified: string[];
         deleted: string[];
     };
+    addPrefixToKeys(obj: any, prefix: any): any;
     /**
      * 部件加载数据行为
      *

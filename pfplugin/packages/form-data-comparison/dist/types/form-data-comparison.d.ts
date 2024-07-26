@@ -45,7 +45,9 @@ export declare const FormDataComparison: import("vue").DefineComponent<{
     renderDruipart: (item: IData, data: IData, version: string) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }> | null;
-    renderMdctrl: (item: IData, data: IData) => JSX.Element;
+    renderMdctrl: (item: IData, type: string, _data: IData, componentP: string) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+        [key: string]: any;
+    }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     modelData: {
         type: PropType<IDEEditForm>;

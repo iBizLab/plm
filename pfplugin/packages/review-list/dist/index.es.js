@@ -1,11 +1,11 @@
 import './style.css';
-var F = Object.defineProperty;
-var k = (r, e, t) => e in r ? F(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
-var d = (r, e, t) => (k(r, typeof e != "symbol" ? e + "" : e, t), t);
-import { ListController as x, registerControlProvider as O, ControlType as M } from "@ibiz-template/runtime";
-import { useNamespace as D, useControlController as j, withInstall as N } from "@ibiz-template/vue3-util";
-import { defineComponent as S, createVNode as s, computed as $, resolveComponent as m, isVNode as U, withDirectives as _, resolveDirective as q, createTextVNode as T } from "vue";
-import { isArray as Z, isNil as Y } from "lodash-es";
+var R = Object.defineProperty;
+var E = (r, e, t) => e in r ? R(r, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : r[e] = t;
+var d = (r, e, t) => (E(r, typeof e != "symbol" ? e + "" : e, t), t);
+import { ListController as k, registerControlProvider as x, ControlType as M } from "@ibiz-template/runtime";
+import { useNamespace as A, useControlController as O, withInstall as j } from "@ibiz-template/vue3-util";
+import { defineComponent as D, createVNode as a, computed as N, resolveComponent as m, isVNode as $, withDirectives as _, resolveDirective as q, createTextVNode as I } from "vue";
+import { isArray as Z, isNil as U } from "lodash-es";
 import { RuntimeError as G } from "@ibiz-template/core";
 function H(r) {
   function e(i) {
@@ -97,8 +97,8 @@ d(f, "calcColorPhoto", (e) => {
   const u = "#".concat(i.toString(16).padStart(2, "0")).concat(l.toString(16).padStart(2, "0")).concat(p.toString(16).padStart(2, "0"));
   return u === "#FFFFFF" && f.getThemeVar() || u;
 });
-let v = f;
-const J = /* @__PURE__ */ S({
+let b = f;
+const Y = /* @__PURE__ */ D({
   name: "Avatar",
   props: {
     label: {
@@ -114,25 +114,25 @@ const J = /* @__PURE__ */ S({
     }
   },
   setup(r) {
-    const e = D("custom-avatar");
+    const e = A("custom-avatar");
     return {
       ns: e,
-      renderAvatar: () => r.img ? s("img", {
+      renderAvatar: () => r.img ? a("img", {
         class: e.e("user-avatar"),
         src: r.img
-      }, null) : s("div", {
+      }, null) : a("div", {
         class: e.e("default-avatar"),
-        style: "background-color: ".concat(v.calcColorPhoto(r.label))
-      }, [v.calcTextPhoto(r.label)])
+        style: "background-color: ".concat(b.calcColorPhoto(r.label))
+      }, [b.calcTextPhoto(r.label)])
     };
   },
   render() {
-    return s("div", {
+    return a("div", {
       class: this.ns.b()
     }, [this.renderAvatar()]);
   }
 });
-class Q extends x {
+class J extends k {
   constructor() {
     super(...arguments);
     /**
@@ -157,10 +157,6 @@ class Q extends x {
      */
     d(this, "revTypeField", "reviewer_type");
     /**
-     * 由评审人发起自由指定的状态值
-     */
-    d(this, "customRevType", ["10"]);
-    /**
      * 用户信息
      *
      * @public
@@ -174,7 +170,7 @@ class Q extends x {
     const t = this.params[this.userIdField];
     if (this.operatorMap.size > 0 && t) {
       const n = this.operatorMap.get(t);
-      n && n.data && (this.userInfo = n.data, Object.assign(this.userInfo, {
+      n && n.data && n.data[this.avatarField] && (this.userInfo = n.data, Object.assign(this.userInfo, {
         avatar: this.parseAvatar(n.data[this.avatarField])
       }));
     }
@@ -186,7 +182,7 @@ class Q extends x {
    */
   initCtrlParams() {
     const { ctrlParams: t = {} } = this.model.controlParam;
-    t.USERIDFIELD && (this.userIdField = t.USERIDFIELD), t.AVATARFIELD && (this.avatarField = t.AVATARFIELD), t.REVTYPEFIELD && (this.revTypeField = t.REVTYPEFIELD), t.CUSTOMREVTYPE && (this.customRevType = JSON.parse(t.CUSTOMREVTYPE));
+    t.USERIDFIELD && (this.userIdField = t.USERIDFIELD), t.AVATARFIELD && (this.avatarField = t.AVATARFIELD), t.REVTYPEFIELD && (this.revTypeField = t.REVTYPEFIELD);
   }
   /**
    * 解析头像数据
@@ -226,34 +222,34 @@ class Q extends x {
     );
   }
 }
-function A(r) {
-  return typeof r == "function" || Object.prototype.toString.call(r) === "[object Object]" && !U(r);
+function P(r) {
+  return typeof r == "function" || Object.prototype.toString.call(r) === "[object Object]" && !$(r);
 }
-const W = () => s("svg", {
+const Q = () => a("svg", {
   viewBox: "0 0 16 16",
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   width: "1em",
   focusable: "false",
   fill: "rgb(255, 117, 117)"
-}, [s("g", {
+}, [a("g", {
   "stroke-width": "1",
   "fill-rule": "evenodd"
-}, [s("path", {
+}, [a("path", {
   d: "M0 8c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm6-3a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6z"
-}, null)])]), K = () => s("svg", {
+}, null)])]), W = () => a("svg", {
   viewBox: "0 0 16 16",
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   width: "1em",
   focusable: "false"
-}, [s("g", {
+}, [a("g", {
   id: "arrtips/play-circle-fill",
   "stroke-width": "1",
   "fill-rule": "evenodd"
-}, [s("path", {
+}, [a("path", {
   d: "M0 8c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm11.26.432a.5.5 0 0 0 0-.864l-4.508-2.63A.5.5 0 0 0 6 5.372v5.258a.5.5 0 0 0 .752.432l4.508-2.63z"
-}, null)])]), y = /* @__PURE__ */ S({
+}, null)])]), C = /* @__PURE__ */ D({
   name: "IBizReviewListControl",
   props: {
     modelData: {
@@ -304,95 +300,93 @@ const W = () => s("svg", {
     }
   },
   setup(r) {
-    const e = j((...a) => new Q(...a)), t = D("control-review-".concat(e.model.controlType.toLowerCase())), {
+    const e = O((...s) => new J(...s)), t = A("control-review-".concat(e.model.controlType.toLowerCase())), {
       onPageChange: n,
       onPageRefresh: i,
       onPageSizeChange: l
-    } = H(e), p = $(() => e.model.enablePagingBar === !0 ? !0 : e.state.items.length >= e.state.total || e.state.isLoading || e.state.total <= e.state.size), u = () => s("div", {
+    } = H(e), p = N(() => e.model.enablePagingBar === !0 ? !0 : e.state.items.length >= e.state.total || e.state.isLoading || e.state.total <= e.state.size), u = () => a("div", {
       class: t.b("custom-item")
-    }, [s("div", {
+    }, [a("div", {
       class: t.be("custom-item", "icon")
-    }, [K()]), s("div", {
+    }, [W()]), a("div", {
       class: t.be("custom-item", "caption")
-    }, [T("提交评审")]), s("div", {
+    }, [I("提交评审")]), a("div", {
       class: t.be("custom-item", "avatar")
-    }, [e.userInfo ? s(J, {
+    }, [e.userInfo ? a(Y, {
       label: e.userInfo.text,
       img: e.userInfo.avatar,
       readOnly: !0
-    }, null) : ""])]), h = () => s("div", {
+    }, null) : ""])]), h = () => a("div", {
       class: [t.b("custom-item"), t.is("last-item", !0)]
-    }, [s("div", {
+    }, [a("div", {
       class: t.be("custom-item", "icon")
-    }, [W()]), s("div", {
+    }, [Q()]), a("div", {
       class: t.be("custom-item", "caption")
-    }, [T("完成评审")])]), g = () => s("div", {
+    }, [I("完成评审")])]), g = () => a("div", {
       class: t.b("dropdown-arrow"),
       style: ""
-    }, [s("div", {
+    }, [a("div", {
       class: t.be("dropdown-arrow", "vertical-line")
-    }, null), s("div", {
+    }, null), a("div", {
       class: t.be("dropdown-arrow", "arrow-down")
-    }, null)]), I = (a, o) => {
+    }, null)]), w = (s, o) => {
       const {
         context: c,
-        params: b
-      } = e, B = e.state.selectedData.findIndex((w) => w.srfkey === a.srfkey), E = [t.b("item"), t.is("active", B !== -1)], C = {};
-      return Object.assign(C, c), e.customRevType.some((w) => w === a[e.revTypeField]) || Object.assign(C, {
-        srfreadonly: !0
-      }), s(m("iBizControlShell"), {
-        class: E,
-        data: a,
+        params: v
+      } = e, S = e.state.selectedData.findIndex((F) => F.srfkey === s.srfkey), T = [t.b("item"), t.is("active", S !== -1)];
+      return a(m("iBizControlShell"), {
+        class: T,
+        data: s,
         modelData: o,
-        context: C,
-        params: b,
-        onClick: () => e.onRowClick(a),
-        onDblclick: () => e.onDbRowClick(a)
+        context: c,
+        params: v,
+        onClick: () => e.onRowClick(s),
+        onDblclick: () => e.onDbRowClick(s)
       }, null);
-    }, P = (a) => {
-      const o = e.state.selectedData.findIndex((b) => b.srfkey === a.srfkey), c = [t.b("item"), t.is("active", o !== -1)];
-      return s("div", {
+    }, y = (s) => {
+      const o = e.state.selectedData.findIndex((v) => v.srfkey === s.srfkey), c = [t.b("item"), t.is("active", o !== -1)];
+      return a("div", {
         class: c,
-        key: a.srfkey,
-        onClick: () => e.onRowClick(a),
-        onDblclick: () => e.onDbRowClick(a)
-      }, ["".concat(Y(a.srfmajortext) ? "" : a.srfmajortext)]);
-    }, L = (a) => {
+        key: s.srfkey,
+        onClick: () => e.onRowClick(s),
+        onDblclick: () => e.onDbRowClick(s)
+      }, ["".concat(U(s.srfmajortext) ? "" : s.srfmajortext)]);
+    }, L = (s) => {
       const o = r.modelData.itemLayoutPanel;
-      return s(m("el-collapse-item"), {
-        title: a.caption,
+      return a(m("el-collapse-item"), {
+        title: s.caption,
         class: t.be("group-content", "item")
       }, {
-        default: () => [a.children.length > 0 ? a.children.map((c) => o ? I(c, o) : P(c)) : s("div", {
+        default: () => [s.children.length > 0 ? s.children.map((c) => o ? w(c, o) : y(c)) : a("div", {
           class: t.bem("group-content", "item", "empty")
         }, [ibiz.i18n.t("app.noData")])]
       });
-    }, R = () => {
+    }, z = () => {
       if (e.model.enableGroup && !e.state.isSimple)
-        return s(m("el-collapse"), {
+        return a(m("el-collapse"), {
           class: [t.b("group-content"), t.b("content")]
         }, {
           default: () => {
             var o;
-            return [(o = e.state.groups) == null ? void 0 : o.map((c) => s("div", {
+            return [(o = e.state.groups) == null ? void 0 : o.map((c) => a("div", {
               class: [t.b("scroll-item")]
             }, [L(c)]))];
           }
         });
-      const a = r.modelData.itemLayoutPanel;
-      return _(s("div", {
+      const s = r.modelData.itemLayoutPanel;
+      return _(a("div", {
         class: [t.b("scroll"), t.b("content")],
         "infinite-scroll-distance": 10,
         "infinite-scroll-disabled": p.value
-      }, [u(), g(), e.state.items.map((o) => s("div", {
+      }, [u(), g(), e.state.items.map((o) => a("div", {
         class: [t.b("scroll-item")]
-      }, [a ? I(o, a) : P(o), g()])), h()]), [[q("infinite-scroll"), () => e.loadMore()]]);
-    }, z = () => {
+      }, [s ? w(o, s) : y(o), g()])), h()]), [[q("infinite-scroll"), () => e.loadMore()]]);
+    }, B = () => {
       var o;
-      const a = (o = e.model.controls) == null ? void 0 : o.find((c) => c.name === "".concat(e.model.name, "_quicktoolbar"));
-      if (a)
-        return s(m("iBizToolbarControl"), {
-          modelData: a,
+      const s = (o = e.model.controls) == null ? void 0 : o.find((c) => c.name === "".concat(e.model.name, "_quicktoolbar"));
+      if (s)
+        return a(m("iBizToolbarControl"), {
+          modelData: s,
           context: e.context,
           params: e.params
         }, null);
@@ -400,29 +394,29 @@ const W = () => s("svg", {
     return {
       c: e,
       ns: t,
-      renderListContent: R,
+      renderListContent: z,
       renderNoData: () => {
-        let a;
+        let s;
         const {
           isLoaded: o
         } = e.state;
         if (o)
-          return o && s(m("iBizNoData"), {
+          return o && a(m("iBizNoData"), {
             class: t.b("content"),
             text: e.model.emptyText,
             emptyTextLanguageRes: e.model.emptyTextLanguageRes
-          }, A(a = z()) ? a : {
-            default: () => [a]
+          }, P(s = B()) ? s : {
+            default: () => [s]
           });
       },
       renderBatchToolBar: () => {
         var o;
-        const a = (o = e.model.controls) == null ? void 0 : o.find((c) => c.name === "".concat(e.model.name, "_batchtoolbar"));
-        if (a)
-          return s("div", {
+        const s = (o = e.model.controls) == null ? void 0 : o.find((c) => c.name === "".concat(e.model.name, "_batchtoolbar"));
+        if (s)
+          return a("div", {
             class: t.b("batchtoolbar")
-          }, [s(m("iBizToolbarControl"), {
-            modelData: a,
+          }, [a(m("iBizToolbarControl"), {
+            modelData: s,
             context: e.context,
             params: e.params
           }, null)]);
@@ -437,7 +431,7 @@ const W = () => s("svg", {
       enablePagingBar: r
     } = this.c.model;
     let e = null;
-    return this.c.state.isCreated && (e = [this.c.state.items.length > 0 ? this.renderListContent() : this.renderNoData(), this.renderBatchToolBar(), r ? s(m("iBizPagination"), {
+    return this.c.state.isCreated && (e = [this.c.state.items.length > 0 ? this.renderListContent() : this.renderNoData(), this.renderBatchToolBar(), r ? a(m("iBizPagination"), {
       class: this.ns.e("pagination"),
       total: this.c.state.total,
       curPage: this.c.state.curPage,
@@ -446,34 +440,34 @@ const W = () => s("svg", {
       onChange: this.onPageChange,
       onPageSizeChange: this.onPageSizeChange,
       onPageRefresh: this.onPageRefresh
-    }, null) : null]), s(m("iBizControlBase"), {
+    }, null) : null]), a(m("iBizControlBase"), {
       class: [this.ns.is("enable-page", !!r)],
       controller: this.c
-    }, A(e) ? e : {
+    }, P(e) ? e : {
       default: () => [e]
     });
   }
 });
-class X {
+class K {
   constructor() {
     d(this, "component", "IBizReviewListControl");
   }
 }
-const V = N(
-  y,
+const X = j(
+  C,
   function(r) {
-    r.component(y.name, y), O(
+    r.component(C.name, C), x(
       "".concat(M.LIST, "_RENDER_REVIEW_LIST"),
-      () => new X()
+      () => new K()
     );
   }
-), ce = {
+), ie = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(r) {
-    r.use(V);
+    r.use(X);
   }
 };
 export {
-  V as IBizReviewListControl,
-  ce as default
+  X as IBizReviewListControl,
+  ie as default
 };

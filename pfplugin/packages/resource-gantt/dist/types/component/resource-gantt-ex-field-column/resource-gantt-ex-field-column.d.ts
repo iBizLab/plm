@@ -26,6 +26,15 @@ export declare const ResourceGanttExFieldColumn: import("vue").DefineComponent<{
         required: true;
         default: () => void;
     };
+    ganttPosition: {
+        type: PropType<IParams>;
+        required: true;
+        default: () => void;
+    };
+    virtualTableVal: {
+        type: PropType<IData[]>;
+        default: () => never[];
+    };
     dateRange: {
         type: ObjectConstructor;
         required: true;
@@ -49,6 +58,8 @@ export declare const ResourceGanttExFieldColumn: import("vue").DefineComponent<{
     tooltip: import("vue").ComputedRef<any>;
     calcMergeClass: import("vue").ComputedRef<string>;
     calcMergeStyle: import("vue").ComputedRef<{}>;
+    columnRef: import("vue").Ref<any>;
+    contentStyle: import("vue").Ref<IParams>;
     onInfoTextChange: (text: string) => void;
     onTextClick: (event: MouseEvent) => void;
     onActionClick: (detail: IUIActionGroupDetail, event: MouseEvent) => Promise<void>;
@@ -77,6 +88,15 @@ export declare const ResourceGanttExFieldColumn: import("vue").DefineComponent<{
         required: true;
         default: () => void;
     };
+    ganttPosition: {
+        type: PropType<IParams>;
+        required: true;
+        default: () => void;
+    };
+    virtualTableVal: {
+        type: PropType<IData[]>;
+        default: () => never[];
+    };
     dateRange: {
         type: ObjectConstructor;
         required: true;
@@ -94,6 +114,8 @@ export declare const ResourceGanttExFieldColumn: import("vue").DefineComponent<{
     capacityConfig: IParams;
     dateRange: Record<string, any>;
     groupConfig: IData;
+    ganttPosition: IParams;
+    virtualTableVal: IData[];
     level: number;
     isTopFirstIndex: boolean;
 }, {}>;

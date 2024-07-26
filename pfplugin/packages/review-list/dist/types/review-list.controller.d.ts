@@ -22,10 +22,6 @@ export declare class ReviewListController extends ListController {
      */
     revTypeField: string;
     /**
-     * 由评审人发起自由指定的状态值
-     */
-    customRevType: string[];
-    /**
      * 用户信息
      *
      * @public

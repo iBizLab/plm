@@ -47,7 +47,6 @@ export const FormDataComparison = defineComponent({
       (...args) => new FormDataComparisonController(...args),
       { excludePropsKeys: ['data'] },
     );
-
     /**
      *   基础版本
      */
@@ -287,33 +286,29 @@ export const FormDataComparison = defineComponent({
      * @param {IData} data
      * @return {*}
      */
-    const renderMdctrl = (item: IData, data: IData) => {
-      const controller = c.formMDCtrls.find(ite => item.codeName === ite.name)!;
-      const cloneController = clone(controller);
-      const { codeName } = item;
-      if (item.contentType === 'REPEATER') {
-        return (
-          <div>
-            {data[codeName] &&
-              data[codeName].map((itemi: IData) => {
-                return (
-                  <div>
-                    {item.deformDetails &&
-                      item.deformDetails.map((item2: IData) => {
-                        return <div>{itemi[item2.codeName]}</div>;
-                      })}
-                  </div>
-                );
-              })}
-          </div>
-        );
+    const renderMdctrl = (
+      item: IData,
+      type: string,
+      _data: IData,
+      componentP: string,
+    ) => {
+      let controller = null;
+      if (type === 'old') {
+        controller = c.formMDCtrls.find(ite => item.codeName === ite.name)!;
+      } else if (type === 'new') {
+        controller = c.formMDCtrls.find(
+          ite => `new_${item.codeName}` === ite.name,
+        )!;
       }
-      return (
-        <iBizFormMDCtrl
-          modelData={cloneController.model}
-          controller={cloneController}
-        ></iBizFormMDCtrl>
-      );
+      const cloneController = clone(controller);
+      let component = 'iBizFormMDCtrl';
+      if (componentP) {
+        component = componentP;
+      }
+      return h(resolveComponent(component), {
+        controller: cloneController,
+        modelData: cloneController!.model,
+      });
     };
 
     return {
@@ -460,7 +455,9 @@ export const FormDataComparison = defineComponent({
                             {itemi.detailType === 'MDCTRL' &&
                               this.renderMdctrl(
                                 itemi.oldItem,
+                                'old',
                                 this.c.baseResData,
+                                itemi.component,
                               )}
                           </div>
                           <div class={this.ns.e('mid-content-item')}>
@@ -478,7 +475,9 @@ export const FormDataComparison = defineComponent({
                             {itemi.detailType === 'MDCTRL' &&
                               this.renderMdctrl(
                                 itemi.newItem,
+                                'new',
                                 this.c.compareResData,
+                                itemi.component,
                               )}
                           </div>
                         </div>

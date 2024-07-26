@@ -21,7 +21,7 @@ export declare const IBizGridEditColumn: import("@ibiz-template/vue3-util").Type
     onInfoTextChange: (text: string) => void;
     onActionClick: (detail: import("@ibiz/model-core").IUIActionGroupDetail, event: MouseEvent) => Promise<void>;
     renderActions: () => IData[];
-    CustomHtml: import("vue").ComputedRef<string | undefined>;
+    CustomHtml: import("vue").ComputedRef<Promise<string | undefined>>;
     fieldValue: import("vue").ComputedRef<any>;
     formatValue: import("vue").ComputedRef<string>;
     tooltip: import("vue").ComputedRef<string | undefined>;

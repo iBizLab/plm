@@ -22,7 +22,6 @@ import type { IDomEditor } from '@wangeditor/editor';
 import { createUUID, getCookie } from 'qx-util';
 import { isNil } from 'ramda';
 import {
-  getEditorEmits,
   getHtmlProps,
   useClickOutside,
   useNamespace,
@@ -46,7 +45,7 @@ type InsertFnType = (_url: string, _alt: string, _href: string) => void;
 const IBizHtmlCollapse = defineComponent({
   name: 'IBizHtmlCollapse',
   props: getHtmlProps<HtmlCommentController>(),
-  emits: getEditorEmits(),
+  emits: ['change', 'blur', 'focus', 'enter', 'infoTextChange', 'link'],
   setup(props, { emit }) {
     const ns = useNamespace('html');
 
@@ -401,6 +400,11 @@ const IBizHtmlCollapse = defineComponent({
           parseLinkUrl: customParseLinkUrl, // 也支持 async 函数
         },
       },
+      hoverbarKeys: {
+        link: {
+          menuKeys: ['editLink', 'unLink', 'customViewLink'],
+        },
+      },
     };
 
     // 组件销毁时，也及时销毁编辑器，重要！
@@ -531,10 +535,7 @@ const IBizHtmlCollapse = defineComponent({
     const handleEmit = (): void => {
       let emitValue = valueHtml.value;
       // 去除用户标记
-      emitValue = emitValue
-        .replace(presRegex, '')
-        .replaceAll('class="rich-html-table"', '')
-        .replace(/<table/g, '<table class="rich-html-table"');
+      emitValue = emitValue.replace(presRegex, '');
       // 绘制模式为JSON
       if (c.renderMode === 'JSON') {
         const editor = editorRef.value;
@@ -557,7 +558,7 @@ const IBizHtmlCollapse = defineComponent({
       c.onCreated(editorRef.value, props.data, toolbarConfig);
       const html = c.parseNode(valueHtml.value);
       editor.setHtml(html);
-
+      c.onLineEditing(editorRef.value);
       let modalUtil: ModalUtil;
       // 模态打开
       editor.on('modalOrPanelShow', modalOrPanel => {
@@ -569,6 +570,7 @@ const IBizHtmlCollapse = defineComponent({
           modalUtil.destroy();
         }
       });
+
       // 点击AI聊天
       editor.on('aiClick', () => {
         onClickAI();
@@ -581,7 +583,7 @@ const IBizHtmlCollapse = defineComponent({
       handleExpand(editor);
       setImageHook(editor);
       // wangEditor初始值抛空字符串给后台
-      let emitValue = html === '<p><br></p>' ? '' : html;
+      const emitValue = html === '<p><br></p>' ? '' : html;
       if (
         emitValue === props.value ||
         (emitValue === '' && isNil(props.value))
@@ -589,9 +591,6 @@ const IBizHtmlCollapse = defineComponent({
         return;
       }
       // 修复初始化有值编辑器也会抛值导致表单脏值检查异常问题
-      emitValue = emitValue
-        .replaceAll('class="rich-html-table"', '')
-        .replace(/<table/g, '<table class="rich-html-table"');
       if (!hasEnableEdit.value && editor.isFocused()) {
         if (c.emitMode === 'AUTOMATIC') {
           debounceEmit();
@@ -767,10 +766,7 @@ const IBizHtmlCollapse = defineComponent({
       readonlyState.value = true;
       editorRef.value.disable();
       // 去除用户标记
-      const value = valueHtml.value
-        .replace(presRegex, '')
-        .replaceAll('class="rich-html-table"', '')
-        .replace(/<table/g, '<table class="rich-html-table"');
+      const value = valueHtml.value.replace(presRegex, '');
       if (c.renderMode !== 'JSON') {
         emit('change', value);
       }
@@ -823,6 +819,7 @@ const IBizHtmlCollapse = defineComponent({
             <i
               class='fa fa-compress'
               aria-hidden='true'
+              title='缩小'
               onClick={() => changeFullScreenState()}
             ></i>
           );
@@ -831,6 +828,7 @@ const IBizHtmlCollapse = defineComponent({
           <i
             class='fa fa-expand'
             aria-hidden='true'
+            title='放大'
             onClick={() => changeFullScreenState()}
           ></i>
         );
@@ -847,6 +845,7 @@ const IBizHtmlCollapse = defineComponent({
               <i
                 class='fa fa-edit'
                 aria-hidden='true'
+                title='编辑'
                 onClick={() => changeEditState()}
               ></i>
             ) : null}
@@ -959,12 +958,10 @@ const IBizHtmlCollapse = defineComponent({
           ) {
             if (newVal == null) {
               valueHtml.value = '';
-            } else if (!valueHtml.value) {
-              if (c.renderMode === 'JSON') {
-                valueHtml.value = c.jsonToHtml(newVal) as string;
-              } else {
-                valueHtml.value = newVal as string;
-              }
+            } else if (c.renderMode === 'JSON') {
+              valueHtml.value = c.jsonToHtml(newVal) as string;
+            } else {
+              valueHtml.value = newVal as string;
             }
             if (isBackFill.value) {
               if (editorRef.value) {

@@ -1,8 +1,8 @@
 import { App } from 'vue';
 export declare const IBizRoutePicker: import("@ibiz-template/vue3-util").TypeWithInstall<import("vue").DefineComponent<{
     value: (ObjectConstructor | ArrayConstructor | StringConstructor | NumberConstructor)[];
-    controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<import("./route-picker.controller").RoutePickerController>, undefined, undefined>;
-    data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
+    controller: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<import("./route-picker.controller").RoutePickerController>, undefined, undefined>;
+    data: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<IData>, undefined, undefined>;
     disabled: {
         type: BooleanConstructor;
     };
@@ -48,8 +48,8 @@ export declare const IBizRoutePicker: import("@ibiz-template/vue3-util").TypeWit
     infoTextChange: (_text: string) => boolean;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     value: (ObjectConstructor | ArrayConstructor | StringConstructor | NumberConstructor)[];
-    controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<import("./route-picker.controller").RoutePickerController>, undefined, undefined>;
-    data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
+    controller: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<import("./route-picker.controller").RoutePickerController>, undefined, undefined>;
+    data: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<IData>, undefined, undefined>;
     disabled: {
         type: BooleanConstructor;
     };

@@ -3,7 +3,11 @@ import { PropType, computed, defineComponent, ref, watch } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
 import './total-progress.scss';
 import { TreeGridExRowState } from '@ibiz-template/runtime';
-import { calcWorkItemCount } from '../../utils/capacity-calc';
+import {
+  calcEstimatedWorkload,
+  calcRemainingWorkload,
+  calcWorkItemCount,
+} from '../../utils/capacity-calc';
 import { isWorkDay } from '../../utils/common';
 
 export const TotalProgress = defineComponent({
@@ -13,16 +17,8 @@ export const TotalProgress = defineComponent({
       type: TreeGridExRowState,
       required: true,
     },
-    weekdays: {
-      type: Array as PropType<Array<number>>,
-      default: () => [],
-    },
-    dayCapacity: {
-      type: Number,
-      default: 0,
-    },
-    capacityCalc: {
-      type: Object,
+    capacityConfig: {
+      type: Object as PropType<IParams>,
       required: true,
       default: () => {},
     },
@@ -40,11 +36,42 @@ export const TotalProgress = defineComponent({
       return (numerator.value / denominator.value) * 100;
     });
 
-    const handleWorkItemCount = (
-      dayCapacity: number,
+    /**
+     * 根据容量计算方式类型计算显示值
+     */
+    const onCapacityCalc = (
+      capacityConfig: IParams,
+      currentDate: Date,
       children: IData[],
+    ): number => {
+      switch (capacityConfig.calcType) {
+        case 'WORKITEMCOUNT':
+          return calcWorkItemCount(currentDate, children);
+        case 'ESTIMATEDWORKLOAD':
+          return calcEstimatedWorkload(
+            capacityConfig.weekdays,
+            currentDate,
+            children,
+            capacityConfig.fieldName,
+          );
+        case 'REMAININGWORKLOAD':
+          return calcRemainingWorkload(
+            capacityConfig.weekdays,
+            currentDate,
+            children,
+            capacityConfig.fieldName,
+          );
+        default:
+          return 0;
+      }
+    };
+
+    const handleCount = (
+      capacityConfig: IParams,
+      children: IData[],
+      dateRange: IParams,
     ): IData => {
-      const { start, end } = props.dateRange;
+      const { start, end } = dateRange;
       let totalDay = 0;
       let totalCount = 0;
       let temDenominator = 0;
@@ -53,36 +80,27 @@ export const TotalProgress = defineComponent({
 
         // 遍历日期
         while (currentDate <= new Date(end)) {
-          if (isWorkDay(currentDate, props.weekdays)) {
+          if (isWorkDay(currentDate, props.capacityConfig.weekdays)) {
             totalDay += 1;
-            totalCount += calcWorkItemCount(currentDate, children);
+            const val = onCapacityCalc(capacityConfig, currentDate, children);
+            totalCount = Math.round((totalCount + val) * 10) / 10;
           }
           // 将日期增加一天
           currentDate.setDate(currentDate.getDate() + 1);
         }
-        temDenominator = totalDay * dayCapacity;
+        temDenominator = totalDay * capacityConfig.dayCapacity;
       }
       return { numerator: totalCount, denominator: temDenominator };
     };
-    /**
-     * 根据容量计算方式类型计算显示值
-     */
-    const onCapacityCalc = (): IData => {
-      switch (props.capacityCalc.calcType) {
-        case 'WORKITEMCOUNT':
-          return handleWorkItemCount(
-            props.dayCapacity,
-            props.row.data._children!,
-          );
-        default:
-          return { numerator: 0, denominator: 0 };
-      }
-    };
 
     watch(
-      () => props.row,
+      [() => props.row, () => props.capacityConfig],
       () => {
-        const tempVal = onCapacityCalc();
+        const tempVal = handleCount(
+          props.capacityConfig,
+          props.row.data._children || [],
+          props.dateRange,
+        );
         numerator.value = tempVal.numerator;
         denominator.value = tempVal.denominator;
       },

@@ -58,7 +58,7 @@
     background: getCssVar(color, primary);
     border-radius: 50%;
 
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -95,7 +95,9 @@
       }
     }
 
-    button[data-menu-key='attachments'],button[data-menu-key='codesnippet'],button[data-menu-key='page'] {
+    button[data-menu-key='attachments'],
+    button[data-menu-key='codesnippet'],
+    button[data-menu-key='page'] {
       svg {
         width: 28px;
         height: 28px;
@@ -164,6 +166,10 @@
     }
   }
 
+  a span {
+    display: contents;
+  }
+
   .#{bem(html-toolbar)} {
     display: flex;
     background-color: var(--ibiz-color-bg-1);
@@ -185,28 +191,6 @@
 
   .w-e-text-container .w-e-scroll > div {
     overflow: hidden;
-  }
-
-  // 插入表格样式
-  .rich-html-table {
-    width: 100% !important;
-    border-collapse: collapse;
-
-    th {
-      height: 49px;
-      min-height: 49px;
-      padding: 8px;
-      background-color: #F3F3F3;
-      border: 1px solid lightgray;
-    }
-
-    td {
-      height: 49px;
-      min-height: 49px;
-      padding: 8px;
-      empty-cells: show;
-      border: 1px solid lightgray;
-    }
   }
 
   .w-e-bar-bottom .w-e-select-list {
@@ -270,7 +254,7 @@
 @include b('html-editor-readonly') {
   @include when(allow-collapse) {
     @include b('html-editor') {
-      height: auto!important;
+      height: auto !important;
       overflow: hidden;
     }
 
@@ -314,20 +298,20 @@
       margin: auto;
     }
 
-  .el-image-viewer__mask {
+    .el-image-viewer__mask {
       position: fixed;
       width: 100vw;
       height: 100vh;
       cursor: zoom-out;
       opacity: 0.7;
-  }
+    }
 
-  .el-image-viewer__close {
+    .el-image-viewer__close {
       top: -32px;
       right: -36px;
       width: 32px;
       height: 32px;
-  }
+    }
   }
 }
 
@@ -343,12 +327,27 @@
 // 格式刷样式
 @include b(html) {
   .w-e-text-container.is-paint-format {
-    cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAYAAACTQC2+AAAABGdBTUEAALGPC/xhBQAAATtJREFUSA3dlTFLA0EQhU+jlSkEG63EYGdlZZFG7QUbSyG/QP/C/Q0rqzQWQX+BwUKwtrexEFRQtFSI35NZWDa3soOHhQ8eM/v2zWw2N9xVVVUdwXUYoFxaq5il2wa8hvtG5dJaxYx16xFvLN8i3lmehiFC6Y94wbsTGsxZosajKA/7aewjrKZiyTocJO9DSYHT82r+YXyQs0eRfYBrD/Y1DB58OMyfeM/hrWq8N9qlZkmFBXiPPd6D7ikWUxwjrKWirTeJkzDeNYttKIxhDUuxiFGjfAnfMkUX3hs19emYqFt9P48mU6zVLEQPFjCfwgk8gyuwEd6pS5t0EQYmHhCXLZ8Kvz1oqmFO+H8HxVOXfZC5vwNd46y3xbx5ni1mQ4+dJ6NyDw4xX0GN9484YfcRhg+fcmmt408+5V99wSyVTWN94gAAAABJRU5ErkJggg==") 5 10,text;
+    cursor:
+      url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAYAAACTQC2+AAAABGdBTUEAALGPC/xhBQAAATtJREFUSA3dlTFLA0EQhU+jlSkEG63EYGdlZZFG7QUbSyG/QP/C/Q0rqzQWQX+BwUKwtrexEFRQtFSI35NZWDa3soOHhQ8eM/v2zWw2N9xVVVUdwXUYoFxaq5il2wa8hvtG5dJaxYx16xFvLN8i3lmehiFC6Y94wbsTGsxZosajKA/7aewjrKZiyTocJO9DSYHT82r+YXyQs0eRfYBrD/Y1DB58OMyfeM/hrWq8N9qlZkmFBXiPPd6D7ikWUxwjrKWirTeJkzDeNYttKIxhDUuxiFGjfAnfMkUX3hs19emYqFt9P48mU6zVLEQPFjCfwgk8gyuwEd6pS5t0EQYmHhCXLZ8Kvz1oqmFO+H8HxVOXfZC5vwNd46y3xbx5ni1mQ4+dJ6NyDw4xX0GN9484YfcRhg+fcmmt408+5V99wSyVTWN94gAAAABJRU5ErkJggg==')
+        5 10,
+      text;
   }
 
   .w-e-bar-item button[data-menu-key='paintformat'].active {
     background-color: getCssVar(color, primary, light, default);
     border-radius: getCssVar(spacing, extra, tight);
+  }
+}
+
+// 工具栏样式
+@include b(html-toolbar) {
+  .w-e-bar-item {
+    .disabled {
+      svg {
+        fill: var(--w-e-toolbar-disabled-color);
+        stroke: var(--w-e-toolbar-disabled-color) !important;
+      }
+    }
   }
 }
 
@@ -387,6 +386,26 @@ mention-elem::part(name) {
     .w-e-drop-panel {
       margin: 0;
     }
+
+    table {
+      width: 100% !important;
+      border-collapse: collapse;
+
+      th {
+        height: getCssVar('height-control', 'large');
+        min-height: getCssVar('height-control', 'large');
+        padding: getCssVar('spacing', 'tight');
+        border: 1px solid getCssVar(color, border);
+      }
+
+      td {
+        height: getCssVar('height-control', 'large');
+        min-height: getCssVar('height-control', 'large');
+        padding: getCssVar('spacing', 'tight');
+        empty-cells: show;
+        border: 1px solid getCssVar(color, border);
+      }
+    }
   }
 }
 
@@ -399,23 +418,23 @@ personnel-marker-elem {
 }
 
 personnel-marker-elem::part(box) {
-z-index: 9999;
-display: inline;
-width: 1px;
-color: #FFF;
+  z-index: 9999;
+  display: inline;
+  width: 1px;
+  color: #fff;
 }
 
 personnel-marker-elem::part(name) {
-position: absolute;
-top: -100%;
-left: -2px;
-display: inline-block;
-width: auto;
-padding: 2px 5px;
-font-size: 12px;
-line-height: normal;
-white-space: nowrap;
-border-radius: 2px;
+  position: absolute;
+  top: -100%;
+  left: -2px;
+  display: inline-block;
+  width: auto;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: normal;
+  white-space: nowrap;
+  border-radius: 2px;
 }
 
 personnel-marker-elem::part(line) {
@@ -427,11 +446,17 @@ personnel-marker-elem::part(line) {
 }
 
 div.ibiz-html {
-  .w-e-scroll>div {
+  .w-e-scroll > div {
     background-color: var(--ibiz-color-bg-1);
   }
 
   .ibiz-html-content {
     background-color: var(--ibiz-color-bg-1);
   }
+}
+
+
+// 表情
+emoji-elem {
+margin: 0 1px !important;
 }

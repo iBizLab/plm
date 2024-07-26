@@ -249,6 +249,15 @@ export const WorkloadTableControl = defineComponent({
       calcTableWidth();
     };
 
+    c.evt.on('onLoadSuccess', () => {
+      if (ganttWrapRef.value) {
+        ganttWrapRef.value.addEventListener('scroll', handleGanttScroll);
+      }
+      if (tableWrapRef.value) {
+        tableWrapRef.value.addEventListener('scroll', handleTableScroll);
+      }
+    });
+
     // 绘制批操作工具栏
     const renderBatchToolBar = (): VNode | undefined => {
       const batchToolbar = c.model.controls?.find(item => {
@@ -282,14 +291,6 @@ export const WorkloadTableControl = defineComponent({
 
     onMounted(() => {
       calcTableWidth(true);
-      setTimeout(() => {
-        if (ganttWrapRef.value) {
-          ganttWrapRef.value.addEventListener('scroll', handleGanttScroll);
-        }
-        if (tableWrapRef.value) {
-          tableWrapRef.value.addEventListener('scroll', handleTableScroll);
-        }
-      }, 300);
     });
 
     onUnmounted(() => {

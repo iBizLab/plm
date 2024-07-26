@@ -295,7 +295,7 @@ class pt extends et {
     if (e === "user" && this.currentNumber < this.total) {
       const u = await this.getServiceData(e, s, m);
       if (u)
-        return this.page += 1, this.currentNumber < 0 && (this.currentNumber += 1), this.currentNumber += this.size, this.total = u.total ? Number(u.total) : Number(u.headers["x-total"]), u.data.forEach((o) => {
+        return this.page += 1, this.currentNumber < 0 && (this.currentNumber += 1), this.currentNumber += this.size, this.total = (u.total ? Number(u.total) : Number(u.headers["x-total"])) || 0, u.data.forEach((o) => {
           Object.keys(this.userFilterMap).forEach((h) => {
             o[h] = o[this.userFilterMap[h]];
           });
@@ -303,7 +303,7 @@ class pt extends et {
     } else if (e === "department" && this.deptcurrentNumber < this.depttotal) {
       const u = await this.getServiceData(e, s, m);
       if (u)
-        return this.deptpage += 1, this.deptcurrentNumber < 0 && (this.deptcurrentNumber += 1), this.deptcurrentNumber += this.size, this.depttotal = u.total ? Number(u.total) : Number(u.headers["x-total"]), u.data.forEach((o) => {
+        return this.deptpage += 1, this.deptcurrentNumber < 0 && (this.deptcurrentNumber += 1), this.deptcurrentNumber += this.size, this.depttotal = (u.total ? Number(u.total) : Number(u.headers["x-total"])) || 0, u.data.forEach((o) => {
           Object.keys(this.deptFilterMap).forEach((h) => {
             o[h] = o[this.deptFilterMap[h]];
           });
@@ -389,17 +389,17 @@ class pt extends et {
     this.sort && !Object.is(this.sort, "") && Object.assign(h, { sort: this.sort }), Object.assign(h, { size: this.size }), m && Object.assign(h, m);
     const b = lt(o, h);
     let g = "";
-    const P = this.fill(this.userUrl, u, o, e).replaceAll(
+    const M = this.fill(this.userUrl, u, o, e).replaceAll(
       "//",
       "/"
     ), I = this.fill(this.deptUrl, u, o, e).replaceAll(
       "//",
       "/"
     );
-    this.copyUserUrl = P, this.copyDeptUrl = I;
+    this.copyUserUrl = M, this.copyDeptUrl = I;
     let v = "post";
     const f = {};
-    if (s === "user" ? (g = P, v = this.userMethod.toLowerCase(), v === "get" ? Object.assign(f, { method: v, params: b }) : Object.assign(f, { method: v, data: b })) : (g = I, v = this.deptMethod.toLowerCase(), v === "get" ? Object.assign(f, { method: v, params: b }) : Object.assign(f, { method: v, data: b })), g)
+    if (s === "user" ? (g = M, v = this.userMethod.toLowerCase(), v === "get" ? Object.assign(f, { method: v, params: b }) : Object.assign(f, { method: v, data: b })) : (g = I, v = this.deptMethod.toLowerCase(), v === "get" ? Object.assign(f, { method: v, params: b }) : Object.assign(f, { method: v, data: b })), g)
       return await ibiz.net.request(g, f);
     throw new H(this.model, "请配置数据接口地址");
   }
@@ -553,21 +553,21 @@ const mt = /* @__PURE__ */ pe({
   setup(r, {
     emit: p
   }) {
-    const s = ce("virtual-list"), e = S(36), m = S(), u = S([]), o = S(0), h = S(0), b = S(0), g = S(0), P = () => {
+    const s = ce("virtual-list"), e = S(36), m = S(), u = S([]), o = S(0), h = S(0), b = S(0), g = S(0), M = () => {
       h.value = Math.floor(g.value / r.itemHeight), b.value = h.value + r.showNum, u.value = r.items.slice(h.value, b.value);
       const f = g.value - g.value % r.itemHeight;
       o.value = f;
     }, I = () => {
-      g.value = m.value.scrollTop, P(), v(e.value, g.value);
-    }, v = (f, M) => {
-      p("scrollEvent", f, M);
+      g.value = m.value.scrollTop, M(), v(e.value, g.value);
+    }, v = (f, P) => {
+      p("scrollEvent", f, P);
     };
     return he(() => {
       setTimeout(() => {
         scroll();
       }, 1e3);
     }), w(() => r.items, () => {
-      e.value = r.itemHeight * r.items.length, P();
+      e.value = r.itemHeight * r.items.length, M();
     }, {
       immediate: !0,
       deep: !0
@@ -612,9 +612,9 @@ class ft {
   static calcSelItemRenderNum(p, s) {
     let e = 0;
     if (s && (p == null ? void 0 : p.length) > 0) {
-      const m = (s == null ? void 0 : s.offsetWidth) || 0, u = window.getComputedStyle(s), o = parseInt(u.marginLeft, 10), h = parseInt(u.marginRight, 10), b = parseInt(u.paddingLeft, 10), g = parseInt(u.paddingRight, 10), P = o + h + b + g, I = 30, v = 28, f = 8, M = (v + f) * p.length;
-      m - P - I - M < 0 && (e = Math.floor(
-        (m - P - I) / (v + f)
+      const m = (s == null ? void 0 : s.offsetWidth) || 0, u = window.getComputedStyle(s), o = parseInt(u.marginLeft, 10), h = parseInt(u.marginRight, 10), b = parseInt(u.paddingLeft, 10), g = parseInt(u.paddingRight, 10), M = o + h + b + g, I = 30, v = 28, f = 8, P = (v + f) * p.length;
+      m - M - I - P < 0 && (e = Math.floor(
+        (m - M - I) / (v + f)
       ), e -= 1);
     }
     return e;
@@ -630,7 +630,7 @@ const W = /* @__PURE__ */ pe({
   setup(r, {
     emit: p
   }) {
-    const s = ce("picker-dropdown"), e = r.controller, m = S(""), u = S([]), o = S([]), h = S(""), b = S(!1), g = S(!1), P = S(""), I = S([]), v = S("user"), f = S([]), M = S(!1), x = S(!1), D = S(!1), Z = S(""), K = S(), U = S(), G = S();
+    const s = ce("picker-dropdown"), e = r.controller, m = S(""), u = S([]), o = S([]), h = S(""), b = S(!1), g = S(!1), M = S(""), I = S([]), v = S("user"), f = S([]), P = S(!1), x = S(!1), D = S(!1), Z = S(""), K = S(), U = S(), G = S();
     let N;
     const $ = S(), X = S([]);
     let j = 0;
@@ -672,7 +672,7 @@ const W = /* @__PURE__ */ pe({
         Object.assign(i, {
           id: (t = e.context) == null ? void 0 : t.srfuserid,
           name: (a = e.context) == null ? void 0 : a.srfusername
-        }), e.multiple ? f.value.push(i) : f.value.length === 0 && (f.value = [i]), L();
+        }), e.multiple ? f.value.findIndex((c) => c.id === i[e.deptFilterMap.id]) < 0 && f.value.push(i) : f.value.length === 0 && (f.value = [i]), L();
       }
     }, q = () => {
       N != null && N.value && N.value.hide(), U.value && U.value.hide();
@@ -735,7 +735,7 @@ const W = /* @__PURE__ */ pe({
         e.isAddSymbol && (l = l.map((c) => "'".concat(c, "'"))), p("change", l.join(e.separator));
       }
     }, Ee = async (t) => {
-      console.log("选中数据", t), P.value && (v.value === "user" ? u.value.unshift(t) : o.value.unshift(t));
+      console.log("选中数据", t), M.value && (v.value === "user" ? u.value.unshift(t) : o.value.unshift(t));
       const a = {};
       if (Object.assign(a, t), v.value === "user") {
         Object.assign(a, {
@@ -782,18 +782,18 @@ const W = /* @__PURE__ */ pe({
         l > -1 ? u.value.splice(l, 1, i) : u.value.push(i);
       });
     }, T = async (t = !1) => {
-      if (P.value)
+      if (M.value)
         return;
-      M.value = !0;
+      P.value = !0;
       const a = {};
       v.value === "department" ? a.page = e.deptpage : a.page = e.page;
       try {
         const i = await e.loadMore(r.data, v.value, a);
         i && (v.value === "user" ? u.value.length === 0 ? u.value = i.data : ye(i.data, e.userFilterMap.id) : o.value.length === 0 ? o.value = i.data : o.value.push(...i.data));
       } catch (i) {
-        M.value = !1;
+        P.value = !1;
       }
-      M.value = !1;
+      P.value = !1;
     }, ee = (t) => {
       const {
         dataItems: a
@@ -812,7 +812,7 @@ const W = /* @__PURE__ */ pe({
       t === !1 && p("blur");
     });
     const te = async (t) => {
-      M.value = !0;
+      P.value = !0;
       try {
         const a = {};
         Object.assign(a, {
@@ -828,21 +828,21 @@ const W = /* @__PURE__ */ pe({
           Object.keys(e.deptFilterMap).forEach((c) => {
             l[c] = l[e.deptFilterMap[c]];
           });
-        }), I.value = i.data, M.value = !1);
+        }), I.value = i.data, P.value = !1);
       } catch (a) {
-        M.value = !1;
+        P.value = !1;
       }
     }, ae = (t) => {
       if (v.value !== t) {
-        if (v.value = t, P.value) {
-          te(P.value);
+        if (v.value = t, M.value) {
+          te(M.value);
           return;
         }
         v.value === "user" && u.value.length === 0 && (e.resetUserState(), T()), v.value === "department" && o.value.length === 0 && (e.resetDeptState(), T());
       }
-    }, Pe = (t) => {
+    }, Me = (t) => {
       e.isShowNameText() || t.stopPropagation();
-    }, Me = () => {
+    }, Pe = () => {
       const t = document.documentElement;
       return t ? getComputedStyle(t).getPropertyValue("--ibiz-color-primary") : null;
     }, Ae = (t) => /[\u4E00-\u9FA5]/.test(t), Ie = (t) => /[\u4e00-\u9fa5]+.*[a-zA-Z]+|[a-zA-Z]+.*[\u4e00-\u9fa5]+/.test(t), B = (t) => {
@@ -857,7 +857,7 @@ const W = /* @__PURE__ */ pe({
           a += Ze.toString(16);
         }
       const i = String(a).substring(0, 6), l = parseInt(i.substring(0, 2), 16), c = parseInt(i.substring(2, 4), 16), y = parseInt(i.substring(4, 6), 16), E = "#".concat(l.toString(16).padStart(2, "0")).concat(c.toString(16).padStart(2, "0")).concat(y.toString(16).padStart(2, "0"));
-      return E === "#FFFFFF" && Me() || E;
+      return E === "#FFFFFF" && Pe() || E;
     }, Fe = (t) => {
       clearTimeout($.value), $.value = setTimeout(() => {
         !t && t !== 0 ? T() : te(t), clearTimeout($.value);
@@ -865,8 +865,8 @@ const W = /* @__PURE__ */ pe({
     }, Te = () => n(C("el-input"), {
       class: s.be("select-modal", "search-input"),
       ref: K,
-      modelValue: P.value,
-      "onUpdate:modelValue": (t) => P.value = t,
+      modelValue: M.value,
+      "onUpdate:modelValue": (t) => M.value = t,
       placeholder: "搜索",
       onInput: (t) => Fe(t),
       onKeydown: ge
@@ -996,10 +996,10 @@ const W = /* @__PURE__ */ pe({
         reference: () => se(t),
         default: () => Re(t, a)
       });
-    }, $e = (t) => P.value ? I.value : t, k = (t) => {
+    }, $e = (t) => M.value ? I.value : t, k = (t) => {
       t.preventDefault(), t.stopPropagation();
     }, ze = (t, a) => {
-      x.value && (v.value === "user" ? t - a < 305 && (M.value || T()) : t - a < 250 && (M.value || T()));
+      x.value && (v.value === "user" ? t - a < 305 && (P.value || T()) : t - a < 250 && (P.value || T()));
     }, ie = (t) => {
       var c, y;
       const a = ((c = e.model.uiactionGroup) == null ? void 0 : c.uiactionGroupDetails) || [], i = $e(t), l = (y = e.deACMode) == null ? void 0 : y.itemLayoutPanel;
@@ -1036,7 +1036,7 @@ const W = /* @__PURE__ */ pe({
       onPointerdown: k,
       onPointerup: k,
       onClick: k
-    }, [Te(), De(), v.value === "user" ? ie(u.value) : Be()]), [[ot("loading"), M.value]]), re = () => n("div", {
+    }, [Te(), De(), v.value === "user" ? ie(u.value) : Be()]), [[ot("loading"), P.value]]), re = () => n("div", {
       class: [s.b("no-select-value"), s.is("readonly", r.readonly || r.disabled)]
     }, [n("img", {
       src: "".concat(V.dir("assets/images/svg/member.svg")),
@@ -1138,7 +1138,7 @@ const W = /* @__PURE__ */ pe({
       refValue: h,
       curValue: m,
       valueText: A,
-      loading: M,
+      loading: P,
       items: u,
       personelSelRef: G,
       onClear: ee,
@@ -1152,7 +1152,7 @@ const W = /* @__PURE__ */ pe({
       renderReadState: Je,
       onPopShow: He,
       onPageHide: We,
-      handleClick: Pe,
+      handleClick: Me,
       showFormDefaultContent: me,
       modelVisible: D
     };

@@ -3,13 +3,11 @@ import { withInstall } from '@ibiz-template/vue3-util';
 import { App } from 'vue';
 import { ResourceGanttControl } from './resource-gantt';
 import { ResourceGanttProvider } from './resource-gantt.provider';
-import { IBizPanelResourceState } from './component';
-// import { TopLevelCell } from './component';
+import { IBizPanelResourceState, IBizResourceDropdownList } from './component';
 
 export const IBizResourceGanttControl = withInstall(
   ResourceGanttControl,
   function (v: App) {
-    // v.component(TopLevelCell.name, TopLevelCell);
     v.component(ResourceGanttControl.name!, ResourceGanttControl);
     registerControlProvider(
       'TREE_RENDER_RESOURCE_GANTT',
@@ -23,5 +21,6 @@ export default {
   install(app: App) {
     app.use(IBizResourceGanttControl);
     app.use(IBizPanelResourceState);
+    app.use(IBizResourceDropdownList);
   },
 };

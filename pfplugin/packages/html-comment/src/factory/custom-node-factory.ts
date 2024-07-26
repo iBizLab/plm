@@ -9,6 +9,7 @@ import { INodeController } from '../interface/node-interface';
 import { MarkerController } from '../marker';
 import { MenTionController } from '../mention';
 import { PageController } from '../page';
+import { EmojiController } from '../emoji';
 
 export class CustomNodeFactory {
   /**
@@ -40,6 +41,7 @@ export class CustomNodeFactory {
     'attachments',
     'codesnippet',
     'page',
+    'emoji',
   ];
 
   /**
@@ -54,6 +56,7 @@ export class CustomNodeFactory {
     this.registerMap.set('attachments', AttachmentsController);
     this.registerMap.set('codesnippet', CodeSnippetController);
     this.registerMap.set('page', PageController);
+    this.registerMap.set('emoji', EmojiController);
     this.presetNodes.forEach(type => {
       this.registerPlugin({
         type,
@@ -129,5 +132,6 @@ export class CustomNodeFactory {
     this.registerMap.delete('attachments');
     this.registerMap.delete('codesnippet');
     this.registerMap.delete('page');
+    this.registerMap.delete('emoji');
   }
 }

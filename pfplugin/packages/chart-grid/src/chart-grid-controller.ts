@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-loop-func */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -7,6 +8,17 @@ import { ChartController, CodeListItem } from '@ibiz-template/runtime';
 
 export class ChartGridController extends ChartController {
   public cloneOrginSeries: any = null;
+
+  /**
+   * 初始化图表
+   *
+   * @author tony001
+   * @date 2024-07-24 16:07:08
+   * @param {any} chart
+   */
+  initChart(chart: any): void {
+    this.chart = chart;
+  }
 
   /**
    * 根据数据计算最终的options

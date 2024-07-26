@@ -11,6 +11,10 @@ import {
 } from '@ibiz-template/runtime';
 import { isNotNil } from 'ramda';
 import './resource-gantt-ex-field-column.scss';
+import {
+  getElementOffsetTop,
+  getElementDistanceToBottom,
+} from '../../utils/common';
 import { IBizResourceActionToolbar, TotalProgress } from '../index';
 
 export const ResourceGanttExFieldColumn = defineComponent({
@@ -30,16 +34,8 @@ export const ResourceGanttExFieldColumn = defineComponent({
     column: {
       type: Object as PropType<IData>,
     },
-    weekdays: {
-      type: Array as PropType<number[]>,
-      default: () => [],
-    },
-    dayCapacity: {
-      type: Number,
-      default: 0,
-    },
-    capacityCalc: {
-      type: Object,
+    capacityConfig: {
+      type: Object as PropType<IParams>,
       required: true,
       default: () => {},
     },
@@ -47,6 +43,15 @@ export const ResourceGanttExFieldColumn = defineComponent({
       type: Object as PropType<IData>,
       required: true,
       default: () => {},
+    },
+    ganttPosition: {
+      type: Object as PropType<IParams>,
+      required: true,
+      default: () => {},
+    },
+    virtualTableVal: {
+      type: Array as PropType<IData[]>,
+      default: () => [],
     },
     dateRange: {
       type: Object,
@@ -57,10 +62,16 @@ export const ResourceGanttExFieldColumn = defineComponent({
       type: Number,
       default: 0,
     },
+    isTopFirstIndex: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
     const ns = useNamespace('tree-grid-ex-field-column');
     const ns2 = useNamespace('resource-gantt-ex-field-column');
+    const columnRef = ref();
+    const contentStyle = ref<IParams>({});
 
     const nodeColumn = computed(() => {
       return props.controller.nodeColumnControllerMap.get(
@@ -155,6 +166,13 @@ export const ResourceGanttExFieldColumn = defineComponent({
     };
 
     /**
+     * 判断虚拟表格内是否有值
+     */
+    const isVirtual = (key: string) => {
+      return props.virtualTableVal.find((item: IData) => item.data._id === key);
+    };
+
+    /**
      * 检查当前行数据在父行的子数组中是否是第一次出现
      * @param {TreeGridExRowState} parentRow - 父行数据
      * @param {TreeGridExRowState} row - 当前行数据
@@ -175,9 +193,60 @@ export const ResourceGanttExFieldColumn = defineComponent({
             item._deData[groupConfig.groupField] ===
               row.data._deData[groupConfig.groupField],
         );
+        // 如果虚拟表格内没有 则没有绘制
+        if (findItem && !isVirtual(findItem._id)) {
+          // 拿虚拟表格内第一个项目值进行判断
+          const virtualItem = props.virtualTableVal.find(
+            (item: IData) =>
+              row.data &&
+              item.data._deData &&
+              row.data._deData &&
+              item.data._deData[groupConfig.groupField] ===
+                row.data._deData[groupConfig.groupField],
+          );
+          return virtualItem && row.data._id === virtualItem.data._id;
+        }
         return findItem && row.data._id === findItem._id;
       }
       return false;
+    };
+
+    /**
+     * 计算项目ID在父行的子数组中对比虚拟表格出现的次数
+     */
+    const calcVirtuallyCount = (
+      parentRow: TreeGridExRowState,
+      row: TreeGridExRowState,
+      groupConfig: IData,
+    ) => {
+      const { data } = parentRow;
+      if (data && data._children && data._children.length > 1) {
+        const index = data._children.findIndex(
+          (item: IData) =>
+            row.data &&
+            item._deData &&
+            row.data._deData &&
+            item._deData[groupConfig.groupField] ===
+              row.data._deData[groupConfig.groupField] &&
+            row.data._id === item._id,
+        );
+        if (index !== -1 && isFirst(parentRow, row, props.groupConfig)) {
+          const children = data._children.slice(index);
+          return children.reduce((count: number, item: IData) => {
+            if (
+              row.data &&
+              item._deData &&
+              row.data._deData &&
+              item._deData[groupConfig.groupField] ===
+                row.data._deData[groupConfig.groupField]
+            ) {
+              return count + 1;
+            }
+            return count;
+          }, 0);
+        }
+      }
+      return 0;
     };
 
     /**
@@ -186,7 +255,7 @@ export const ResourceGanttExFieldColumn = defineComponent({
      * @param {TreeGridExRowState} row - 当前行数据
      * @returns {number} - 项目ID出现的次数
      */
-    const calcProjectTCount = (
+    const calcProjectCount = (
       parentRow: TreeGridExRowState,
       row: TreeGridExRowState,
       groupConfig: IData,
@@ -209,6 +278,50 @@ export const ResourceGanttExFieldColumn = defineComponent({
       return 0;
     };
 
+    function findParentWithClass(element: HTMLElement, className: string) {
+      let el = element;
+      // 遍历DOM树直到找到匹配的节点或到达根节点
+      while (el && el.nodeType === 1) {
+        // 确保element是元素节点
+        if (el.classList.contains(className)) {
+          // 如果当前元素具有指定的类名，则返回该元素
+          return el;
+        }
+        // 否则，继续向上查找父节点
+        el = el.parentNode as HTMLElement;
+      }
+      // 如果没有找到匹配的节点，则返回null
+      return null;
+    }
+
+    const calcContentStyle = () => {
+      contentStyle.value = {};
+      if (columnRef.value) {
+        const el = findParentWithClass(columnRef.value, 'xg-table-row');
+        if (el) {
+          const { ganttPosition } = props;
+          const rowHeight = 46;
+          let rowTop = getElementOffsetTop(el);
+          let bottom = getElementDistanceToBottom(el);
+          if (rowTop < ganttPosition.top + rowHeight) {
+            rowTop = ganttPosition.top + rowHeight;
+          }
+          if (bottom < ganttPosition.bottom) {
+            bottom = ganttPosition.bottom;
+          }
+          const viewportHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          const height = viewportHeight - rowTop - bottom;
+          // top定位
+          const top = height / 2 + rowTop - rowHeight / 2;
+          // 总的顶部定位大于行顶部定位，总的行高大于甘特图高度
+          if (top > rowTop) {
+            contentStyle.value = { position: 'fixed', top: `${top}px` };
+          }
+        }
+      }
+    };
+
     /**
      * 计算合并单元格的类名
      * @returns {string} - 合并单元格的类名
@@ -219,7 +332,7 @@ export const ResourceGanttExFieldColumn = defineComponent({
       if (
         level > 1 &&
         parentRow &&
-        calcProjectTCount(parentRow, row, props.groupConfig) > 1
+        calcProjectCount(parentRow, row, props.groupConfig) > 1
       ) {
         className = isFirst(parentRow, row, props.groupConfig)
           ? 'first-index'
@@ -235,13 +348,20 @@ export const ResourceGanttExFieldColumn = defineComponent({
     const calcMergeStyle = computed(() => {
       const tempStyle = {};
       const { level, parentRow, row } = props;
-      if (level && level > 1 && parentRow) {
-        const count = calcProjectTCount(parentRow, row, props.groupConfig);
+      if (
+        level &&
+        level > 1 &&
+        parentRow &&
+        parentRow.data._children &&
+        parentRow.data._children.length > 1
+      ) {
+        const count = calcVirtuallyCount(parentRow, row, props.groupConfig);
         if (count > 1) {
           const rowHeight = 46; // 每行的高度
-          const totalBorderWidth = 5; // 父元素边框总宽度
+          const totalBorderWidth = 20; // 父元素边框总宽度
           const tempHeight = rowHeight * count - totalBorderWidth;
           Object.assign(tempStyle, { height: `${tempHeight}px` });
+          calcContentStyle();
         }
       }
       return tempStyle;
@@ -257,6 +377,8 @@ export const ResourceGanttExFieldColumn = defineComponent({
       tooltip,
       calcMergeClass,
       calcMergeStyle,
+      columnRef,
+      contentStyle,
       onInfoTextChange,
       onTextClick,
       onActionClick,
@@ -287,9 +409,10 @@ export const ResourceGanttExFieldColumn = defineComponent({
     } else {
       content = (
         <span
-          class={this.ns.e('text')}
+          class={[this.ns.e('text'), this.ns2.e('text')]}
           title={this.tooltip}
           onClick={this.onTextClick}
+          style={this.contentStyle}
         >
           {this.showText}
         </span>
@@ -321,15 +444,14 @@ export const ResourceGanttExFieldColumn = defineComponent({
       progress = (
         <TotalProgress
           row={this.row}
-          weekdays={this.weekdays}
-          dayCapacity={this.dayCapacity}
-          capacityCalc={this.capacityCalc}
+          capacityConfig={this.capacityConfig}
           dateRange={this.dateRange}
         />
       );
     }
     return (
       <div
+        ref='columnRef'
         class={[
           this.ns.b(),
           this.ns2.b(),
@@ -340,6 +462,7 @@ export const ResourceGanttExFieldColumn = defineComponent({
           this.row?.data._children && this.row?.data._children?.length === 0
             ? 'no-children'
             : '',
+          this.isTopFirstIndex ? 'top-first-index' : '',
           this.calcMergeClass,
         ]}
         style={this.calcMergeStyle}

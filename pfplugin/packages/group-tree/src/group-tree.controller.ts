@@ -360,9 +360,9 @@ export class GroupTreeController<
         }
       }
       await this.updateDeNodeData([nodeData as ITreeNodeData]);
+      // 通知实体数据变更
+      this.emitDEDataChange('update', nodeData._deData!);
     }
-    // 通知实体数据变更
-    this.emitDEDataChange('update', nodeData._deData!);
     this.state.editingNodeKey = null;
     this.state.editingNodeText = null;
     this.state.editingNodeDefault = null;

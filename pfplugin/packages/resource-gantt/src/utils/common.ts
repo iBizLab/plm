@@ -125,15 +125,74 @@ const getCapacityConfig = (rowState: IParams, capacityVal: string) => {
     capacityVal,
     rowState.data && rowState.data._deData ? rowState.data._deData : {},
   );
-  const configVal = JSON.parse(capacityConfig);
+  let configVal: IParams = {};
+  try {
+    configVal = JSON.parse(capacityConfig);
+  } catch (error) {
+    configVal = {};
+  }
+
   if (configVal.weekdays) {
-    weekdays = configVal.weekdays.split('').map((item: string) => Number(item));
+    weekdays = configVal.weekdays
+      .split(',')
+      .map((item: string) => Number(item));
   }
   if (configVal.dayCapacityVal) {
     dayCapacity = Number(configVal.dayCapacityVal);
   }
-  return { weekdays, dayCapacity };
+  Object.assign(configVal, { weekdays, dayCapacity });
+  return configVal;
 };
+
+/**
+ * 判断当前时间是否在时间范围中
+ */
+const isInDateRange = (checkDate: Dayjs, startDate: Dayjs, endDate: Dayjs) => {
+  return (
+    (checkDate.isAfter(startDate) || checkDate.isSame(startDate)) &&
+    (checkDate.isBefore(endDate) || checkDate.isSame(endDate))
+  );
+};
+
+/**
+ * 计算平均值并且均分余数 例11.3除以5返回[2.3,2.3,2.3,2.2,2.2]
+ */
+const splitTotal = (total: number, divisor: number): number[] => {
+  // 计算每个部分的基础值，保留一位小数
+  const baseValue = Math.floor((total / divisor) * 10) / 10;
+  // 计算余数
+  const remainder = Math.round((total - baseValue * divisor) * 10) / 10;
+
+  // 初始化结果数组
+  const result = new Array(divisor).fill(baseValue);
+  let distributedRemainder = 0;
+
+  // 将余数分配给部分，确保总和最接近目标值
+  for (let i = 0; distributedRemainder < remainder; i++) {
+    result[i] = Math.round((result[i] + 0.1) * 10) / 10;
+    distributedRemainder = Math.round((distributedRemainder + 0.1) * 10) / 10;
+  }
+  return result;
+};
+
+/**
+ * 获取距离窗口顶部的距离
+ */
+function getElementOffsetTop(el: HTMLElement) {
+  const rect = el.getBoundingClientRect();
+  return rect.top;
+}
+
+/**
+ * 获取距离窗口底部部的距离
+ */
+function getElementDistanceToBottom(el: HTMLElement) {
+  const rect = el.getBoundingClientRect();
+  const viewportHeight =
+    window.innerHeight || document.documentElement.clientHeight;
+  const subtracted = rect.top + rect.height;
+  return viewportHeight - subtracted;
+}
 
 export {
   getWeekday,
@@ -142,5 +201,9 @@ export {
   isTimeSame,
   isWorkDay,
   isBetweenDates,
+  isInDateRange,
+  splitTotal,
   getCapacityConfig,
+  getElementOffsetTop,
+  getElementDistanceToBottom,
 };

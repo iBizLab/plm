@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { defineComponent, PropType, computed } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
 import {
@@ -27,11 +28,11 @@ export const GanttColumns = defineComponent({
     const ns = useNamespace('gantt-column');
     const c = props.controller;
 
-    let navContext: IData = {};
-    let navParam: IData = {};
+    const navContext: IData = {};
+    const navParam: IData = {};
     const openView: string = c.model.controlParam?.ctrlParams?.OPENVIEW;
     if (c.model.controlParam?.ctrlParams) {
-      const ctrlParams = c.model.controlParam.ctrlParams;
+      const { ctrlParams } = c.model.controlParam;
       Object.keys(ctrlParams).forEach(p => {
         if (p.toUpperCase().startsWith('SRFNAVPARAM.')) {
           const [, k] = p.split('.');
@@ -57,8 +58,8 @@ export const GanttColumns = defineComponent({
      * @param data
      */
     const calcNavParam = (data: IData) => {
-      let context = c.context.clone();
-      let params = { ...c.params };
+      const context = c.context.clone();
+      const params = { ...c.params };
       if (Object.keys(navContext).length > 0) {
         const navData = convertNavData(navContext, data, c.params, c.context);
         Object.assign(context, navData);
@@ -75,7 +76,7 @@ export const GanttColumns = defineComponent({
       column: IDate,
       event: MouseEvent,
     ): Promise<void> => {
-      let stopPropagation =
+      const stopPropagation =
         (rowState.data[column.date] && panel.value) || openView;
       if (stopPropagation) {
         event.stopPropagation();
@@ -94,15 +95,17 @@ export const GanttColumns = defineComponent({
       }
     };
 
-    const renderNodePanel = (item: IData): JSX.Element => {
-      return (
-        <iBizControlShell
-          data={item}
-          modelData={panel.value}
-          context={c.context}
-          params={c.params}
-        ></iBizControlShell>
-      );
+    const renderNodePanel = (item: IData): JSX.Element | undefined => {
+      if (panel.value) {
+        return (
+          <iBizControlShell
+            data={item}
+            modelData={panel.value}
+            context={c.context}
+            params={c.params}
+          ></iBizControlShell>
+        );
+      }
     };
 
     const renderHeader = (column: IDate): JSX.Element => {
@@ -134,7 +137,7 @@ export const GanttColumns = defineComponent({
               'time',
               ns.is('today', column.isToday),
               ns.is('weekend', column.isWeekend),
-              ns.is('clickable', openView ? true : false),
+              ns.is('clickable', !!openView),
             ]}
             onClick={e => onClick(rowState, column, e)}
           >

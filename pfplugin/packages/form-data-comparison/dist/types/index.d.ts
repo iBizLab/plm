@@ -42,7 +42,9 @@ export declare const IBizFormDataComparison: import("@ibiz-template/vue3-util").
     renderDruipart: (item: IData, data: IData, version: string) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
         [key: string]: any;
     }> | null;
-    renderMdctrl: (item: IData, data: IData) => JSX.Element;
+    renderMdctrl: (item: IData, type: string, _data: IData, componentP: string) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
+        [key: string]: any;
+    }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     modelData: {
         type: import("vue").PropType<import("@ibiz/model-core").IDEEditForm>;

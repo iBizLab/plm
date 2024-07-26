@@ -7,7 +7,7 @@ import { TabExpSelect } from './tab-exp-select';
 export const IBizTabExpSelectControl = withInstall(
   TabExpSelect,
   function (v: App) {
-    v.component(TabExpSelect.name, TabExpSelect);
+    v.component(TabExpSelect.name!, TabExpSelect);
     registerControlProvider(
       'CUSTOM_TAB_EXP_SELECT',
       () => new TabExpSelectProvider(),

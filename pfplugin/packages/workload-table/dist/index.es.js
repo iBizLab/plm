@@ -248,11 +248,11 @@ const Pn = /* @__PURE__ */ J({
   },
   setup(h) {
     var x, b, m;
-    const i = A("gantt-column"), n = h.controller;
-    let u = {}, g = {};
-    const z = (b = (x = n.model.controlParam) == null ? void 0 : x.ctrlParams) == null ? void 0 : b.OPENVIEW;
+    const i = A("gantt-column"), n = h.controller, u = {}, g = {}, z = (b = (x = n.model.controlParam) == null ? void 0 : x.ctrlParams) == null ? void 0 : b.OPENVIEW;
     if ((m = n.model.controlParam) != null && m.ctrlParams) {
-      const d = n.model.controlParam.ctrlParams;
+      const {
+        ctrlParams: d
+      } = n.model.controlParam;
       Object.keys(d).forEach((q) => {
         if (q.toUpperCase().startsWith("SRFNAVPARAM.")) {
           const [, r] = q.split(".");
@@ -274,7 +274,7 @@ const Pn = /* @__PURE__ */ J({
         r.renderType === "LAYOUTPANEL" && r.id === "gantt_column" && (d = r.layoutPanel);
       }), d;
     }), t = (d) => {
-      let q = n.context.clone(), r = {
+      const q = n.context.clone(), r = {
         ...n.params
       };
       if (Object.keys(u).length > 0) {
@@ -299,12 +299,15 @@ const Pn = /* @__PURE__ */ J({
         }));
         ibiz.commands.execute(cn.TAG, z, E, S);
       }
-    }, o = (d) => f(p("iBizControlShell"), {
-      data: d,
-      modelData: j.value,
-      context: n.context,
-      params: n.params
-    }, null), y = (d) => f("div", {
+    }, o = (d) => {
+      if (j.value)
+        return f(p("iBizControlShell"), {
+          data: d,
+          modelData: j.value,
+          context: n.context,
+          params: n.params
+        }, null);
+    }, y = (d) => f("div", {
       class: [i.e("header"), i.e("column")]
     }, [f("div", {
       class: ["time", i.is("today", d.isToday), i.is("weekend", d.isWeekend)]

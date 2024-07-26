@@ -3,6 +3,12 @@
   position: relative;
   width: 100%;
   height: 100%;
+  padding: 0;
+  padding-left: var(--ibiz-tree-grid-ex-field-column-cell-padding);
+
+  @include e(text) {
+    max-width: 238px;
+  }
 
   &:hover {
     .#{bem('action-toolbar')} {
@@ -128,6 +134,28 @@
       .cell-box {
         height: auto !important;
       }
+    }
+  }
+
+  // 修复低分辨率左侧表格计算虚拟表格时，第一个节点会被隐藏，导致border不显示
+  .xg-table-row.xg-row {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: none;
+
+    &:has(.top-first-index) {
+      border-top: none;
+    }
+  }
+
+  .xg-table-body {
+    &::after {
+      position: absolute;
+      bottom: 0;
+      z-index: 100;
+      display: inline-block;
+      width: 100%;
+      content: '';
+      border-top: 1px solid #e5e5e5;
     }
   }
 }

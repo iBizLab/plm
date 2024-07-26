@@ -42,7 +42,7 @@ export const defaultToolbars = [
     menuKeys: ['indent', 'delIndent'],
   },
   '|',
-  'emotion',
+  'emoji',
   'insertLink',
   {
     key: 'group-image',

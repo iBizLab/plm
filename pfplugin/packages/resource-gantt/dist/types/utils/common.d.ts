@@ -43,5 +43,21 @@ declare const isWorkDay: (date: Date, weekdays: number[]) => boolean;
 /**
  * 获取容量计算内容
  */
-declare const getCapacityConfig: (rowState: IParams, capacityVal: string) => any;
-export { getWeekday, formatDate, isToday, isTimeSame, isWorkDay, isBetweenDates, getCapacityConfig, };
+declare const getCapacityConfig: (rowState: IParams, capacityVal: string) => IParams;
+/**
+ * 判断当前时间是否在时间范围中
+ */
+declare const isInDateRange: (checkDate: Dayjs, startDate: Dayjs, endDate: Dayjs) => boolean;
+/**
+ * 计算平均值并且均分余数 例11.3除以5返回[2.3,2.3,2.3,2.2,2.2]
+ */
+declare const splitTotal: (total: number, divisor: number) => number[];
+/**
+ * 获取距离窗口顶部的距离
+ */
+declare function getElementOffsetTop(el: HTMLElement): number;
+/**
+ * 获取距离窗口底部部的距离
+ */
+declare function getElementDistanceToBottom(el: HTMLElement): number;
+export { getWeekday, formatDate, isToday, isTimeSame, isWorkDay, isBetweenDates, isInDateRange, splitTotal, getCapacityConfig, getElementOffsetTop, getElementDistanceToBottom, };

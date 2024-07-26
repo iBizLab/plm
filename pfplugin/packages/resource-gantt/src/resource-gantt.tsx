@@ -48,7 +48,10 @@ import {
   isWorkDay,
   getCapacityConfig,
   dynamicMatch,
+  getElementDistanceToBottom,
+  getElementOffsetTop,
 } from './utils/common';
+import { useSlider } from './resource-gantt-control.util';
 
 export const ResourceGanttControl = defineComponent({
   name: 'IBizResourceGanttControl',
@@ -79,7 +82,14 @@ export const ResourceGanttControl = defineComponent({
     const searchFilterValue = ref();
 
     // 滑块移动
-    const sliderMove = ref(false);
+    const sliderMove = ref(true);
+    const {
+      handleEmitMove,
+      handleSetStart,
+      handleSetEnd,
+      handleSliderLeft,
+      handleSliderWidth,
+    } = useSlider();
 
     const ganttId = ref();
     ganttId.value = createUUID();
@@ -89,6 +99,24 @@ export const ResourceGanttControl = defineComponent({
     // const IBizTopLevelCell = resolveComponent('TopLevelCell');
 
     let forbidClick: boolean = false;
+
+    const ganttPosition = ref({top: 0, bottom: 0});
+    const virtualTableVal = ref<IData[]>([]);
+
+    const handleGanttPosition = () => {
+      Object.assign(ganttPosition.value, {top: 0, bottom: 0});
+      if (ganttBoxRef.value && ganttBoxRef.value?.$el) {
+        const rowTop = getElementOffsetTop(ganttBoxRef.value?.$el);
+        const bottom = getElementDistanceToBottom(
+          ganttBoxRef.value?.$el,
+        );
+        Object.assign(ganttPosition.value, { top: rowTop, bottom });
+      }
+    }
+    const onVirtualTableChange = (val: IData[]) => {
+      virtualTableVal.value = val;
+      handleGanttPosition();
+    };
 
     const selection: IGanttNodeData[] = [];
 
@@ -527,7 +555,7 @@ export const ResourceGanttControl = defineComponent({
               const rowState = c.getRowState(row._id);
               if (rowState) {
                 if (codeName === 'name') {
-                  const { weekdays, dayCapacity } = getCapacityConfig(
+                  const capacityConfig = getCapacityConfig(
                     rowState,
                     c.state.capacityConfig,
                   );
@@ -535,19 +563,25 @@ export const ResourceGanttControl = defineComponent({
                   if (row._parent) {
                     parentRowState = c.getRowState(row._parent._id);
                   }
+                  const isTopFirstIndex =
+                    data.value && data.value[0]
+                      ? data.value[0]._id === rowState.data._id
+                      : false;
+                  handleGanttPosition();
                   return (
                     <ResourceGanttExFieldColumn
                       controller={columnC}
-                      weekdays={weekdays}
-                      dayCapacity={dayCapacity}
-                      capacityCalc={c.state.capacityCalc}
+                      capacityConfig={capacityConfig}
                       dateRange={c.state.dateRange as IParams}
                       groupConfig={c.state.groupConfig}
                       row={rowState}
                       parentRow={parentRowState}
                       column={column}
                       level={level}
+                      isTopFirstIndex={isTopFirstIndex}
                       key={rowState.data._uuid + codeName}
+                      ganttPosition={ganttPosition.value}
+                      virtualTableVal={virtualTableVal.value}
                     />
                   );
                 }
@@ -579,6 +613,11 @@ export const ResourceGanttControl = defineComponent({
           resize-right={c.state.sliderDraggable}
           move-by-unit={true}
           slider-limit={c.state.sliderLimit}
+          emit-move={handleEmitMove}
+          set-start={handleSetStart}
+          set-end={handleSetEnd}
+          slider-left={handleSliderLeft}
+          slider-width={handleSliderWidth}
         >
           {{
             content: ({
@@ -641,21 +680,19 @@ export const ResourceGanttControl = defineComponent({
     const renderGanttCell = (cellData: IData) => {
       if (cellData.level === 1) {
         const rowState: IParams = c.getRowState(cellData.row._id) || {};
-        const { weekdays, dayCapacity } = getCapacityConfig(
+        const capacityConfig = getCapacityConfig(
           rowState,
           c.state.capacityConfig,
         );
 
-        if (isWorkDay(cellData.column.date, weekdays)) {
+        if (isWorkDay(cellData.column.date, capacityConfig.weekdays)) {
           const tempData = {};
           Object.assign(tempData, { ...cellData, row: rowState });
           return (
             <TopLevelCell
               cellData={tempData}
               showText={c.state.showCapacity!}
-              capacityCalc={c.state.capacityCalc}
-              weekdays={weekdays}
-              dayCapacity={dayCapacity}
+              capacityConfig={capacityConfig}
               onCellClick={onCellClick}
             />
           );
@@ -707,6 +744,7 @@ export const ResourceGanttControl = defineComponent({
       renderGanttTitle,
       onSliderMove,
       renderNoData,
+      onVirtualTableChange,
     };
   },
   render() {
@@ -740,6 +778,7 @@ export const ResourceGanttControl = defineComponent({
           showWeekdays={this.c.state.showWeekdays}
           locale={this.locale}
           header-height={46}
+          preload={23}
           showCheckbox={!this.c.state.singleSelect}
           showToday={false}
           showWeekend={false}
@@ -749,6 +788,7 @@ export const ResourceGanttControl = defineComponent({
           onRowDblClick={this.onNodeDbClick}
           onRowChecked={this.onCheck}
           onMoveSlider={this.onSliderMove}
+          onVirtualTableChange={this.onVirtualTableChange}
           primaryColor={this.ganttStyle.primaryColor}
           headerStyle={{ textColor: this.ganttStyle.textColor }}
         >

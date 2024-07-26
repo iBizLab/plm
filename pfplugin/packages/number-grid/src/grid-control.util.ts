@@ -338,6 +338,7 @@ export function useAppGridBase(
     columns: TableColumnCtx<IData>[];
     data: IData[];
   }) => string[];
+  headerDragend: (newWidth: number, oldWidth: number, column: IData) => void;
 } {
   const { controlParam } = props.modelData;
 
@@ -462,7 +463,37 @@ export function useAppGridBase(
       return c.state.aggResult[item.property];
     });
   };
-  return { tableData, renderColumns, defaultSort, summaryMethod };
+
+  /**
+   * 表格列拖动
+   *
+   * @return {*}
+   */
+  const headerDragend = (
+    newWidth: number,
+    oldWidth: number,
+    column: IData,
+  ): void => {
+    const { property } = column;
+    const columnC = c.columns[property!];
+    if (columnC.isAdaptiveColumn) {
+      columnC.isAdaptiveColumn = false;
+      columnC.model.width = newWidth;
+      const index = renderColumns.value.findIndex(renderColumn => {
+        const renderColumnC = c.columns[renderColumn.codeName!];
+        return renderColumnC.isAdaptiveColumn;
+      });
+      c.hasAdaptiveColumn = index !== -1;
+    }
+  };
+
+  return {
+    tableData,
+    renderColumns,
+    defaultSort,
+    summaryMethod,
+    headerDragend,
+  };
 }
 
 export function usePagination(c: IMDControlController): {

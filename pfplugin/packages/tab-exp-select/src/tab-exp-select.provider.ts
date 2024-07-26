@@ -8,5 +8,5 @@ import { IControlProvider } from '@ibiz-template/runtime';
  * @implements {IControlProvider}
  */
 export class TabExpSelectProvider implements IControlProvider {
-  component: string = 'TabExpSelect';
+  component: string = 'IBizTabExpSelect';
 }

@@ -1,11 +1,11 @@
-var j = Object.defineProperty;
-var k = (o, l, t) => l in o ? j(o, l, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[l] = t;
-var P = (o, l, t) => (k(o, typeof l != "symbol" ? l + "" : l, t), t);
-import { ControlController as q, Srfuf as K, calcItemVisibleByCounter as E, calcItemVisible as U, calcNavParams as F, hasSubRoute as V, CounterService as H, registerControlProvider as X } from "@ibiz-template/runtime";
-import { route2routePath as w, routePath2string as x, useControlController as J, useNamespace as Q, getNestedRoutePath as M, onRouteChange as Y, withInstall as Z } from "@ibiz-template/vue3-util";
-import { ref as N, watch as z, watchEffect as tt, onUnmounted as W, defineComponent as et, reactive as st, createVNode as h, resolveComponent as I, createTextVNode as at } from "vue";
-import { useRouter as ot, useRoute as A } from "vue-router";
-class rt extends q {
+var G = Object.defineProperty;
+var j = (o, l, t) => l in o ? G(o, l, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[l] = t;
+var P = (o, l, t) => (j(o, typeof l != "symbol" ? l + "" : l, t), t);
+import { ControlController as k, Srfuf as q, calcItemVisibleByCounter as E, calcItemVisible as K, calcNavParams as U, hasSubRoute as V, CounterService as F, registerControlProvider as H } from "@ibiz-template/runtime";
+import { route2routePath as w, routePath2string as x, useControlController as X, useNamespace as J, getNestedRoutePath as M, onRouteChange as Q, withInstall as Y } from "@ibiz-template/vue3-util";
+import { ref as N, watch as z, watchEffect as Z, onUnmounted as W, defineComponent as tt, reactive as et, createVNode as h, resolveComponent as b, createTextVNode as st } from "vue";
+import { useRouter as at, useRoute as A } from "vue-router";
+class ot extends k {
   constructor() {
     super(...arguments);
     /**
@@ -60,7 +60,7 @@ class rt extends q {
    * @type {boolean}
    */
   get isCreate() {
-    return this.getData()[0].srfuf !== K.UPDATE;
+    return this.getData()[0].srfuf !== q.UPDATE;
   }
   /**
    * 获取数据
@@ -181,7 +181,7 @@ class rt extends q {
   async calcPermitted(t) {
     var r;
     let s = !0;
-    const a = (r = this.getData()) != null && r.length ? this.getData()[0] : void 0, e = await U(
+    const a = (r = this.getData()) != null && r.length ? this.getData()[0] : void 0, e = await K(
       t,
       this.context,
       this.params,
@@ -242,10 +242,10 @@ class rt extends q {
         ));
         const {
           enableMode: c,
-          dataAccessAction: u,
+          dataAccessAction: d,
           testAppDELogicId: n,
-          testScriptCode: d,
-          counterId: f,
+          testScriptCode: u,
+          counterId: m,
           counterMode: p
         } = r[0] || {};
         a.push({
@@ -254,10 +254,10 @@ class rt extends q {
           sysImage: e.sysImage,
           visible: !1,
           enableMode: c,
-          dataAccessAction: u,
+          dataAccessAction: d,
           testAppDELogicId: n,
-          testScriptCode: d,
-          counterId: f,
+          testScriptCode: u,
+          counterId: m,
           counterMode: p
         });
       }
@@ -318,8 +318,8 @@ class rt extends q {
       context: this.context,
       params: this.params,
       data: this.getData()[0]
-    }, { resultContext: i, resultParams: c } = F(e, r), u = Object.assign(this.context.clone(), i), n = { ...this.params, ...c };
-    return { context: u, params: n };
+    }, { resultContext: i, resultParams: c } = U(e, r), d = Object.assign(this.context.clone(), i), n = { ...this.params, ...c };
+    return { context: d, params: n };
   }
   /**
    * 打开导航占位视图
@@ -361,10 +361,10 @@ class rt extends q {
       const i = w(this.router.currentRoute.value);
       if (this.routeDepth && i.pathNodes[this.routeDepth - 2]) {
         i.pathNodes = i.pathNodes.slice(0, this.routeDepth - 1);
-        const u = x(i).split("/");
-        if (u && u.length) {
+        const d = x(i).split("/");
+        if (d && d.length) {
           const n = localStorage.getItem(
-            "".concat(this.storagePrefix, "_").concat(a, "_").concat(u[u.length - 1])
+            "".concat(this.storagePrefix, "_").concat(a, "_").concat(d[d.length - 1])
           );
           n && (s = n);
         }
@@ -376,8 +376,8 @@ class rt extends q {
       i && i.srfnav && (s = i.srfnav);
     }
     if (s) {
-      const i = !!this.routeDepth && V(this.routeDepth), { visible: c, defaultVisibleItem: u } = this.getItemVisibleState(s);
-      !c && u ? (s = u.tag, this.handleSelectChange(s)) : this.handleSelectChange(s, i), this.state.defaultItem = s;
+      const i = !!this.routeDepth && V(this.routeDepth), { visible: c, defaultVisibleItem: d } = this.getItemVisibleState(s);
+      !c && d ? (s = d.tag, this.handleSelectChange(s)) : this.handleSelectChange(s, i), this.state.defaultItem = s;
     }
   }
   /**
@@ -407,7 +407,7 @@ class rt extends q {
       const a = w(this.router.currentRoute.value);
       this.routeDepth && (a.pathNodes = a.pathNodes.slice(0, this.routeDepth - 1));
       const e = x(a);
-      this.counter = await H.getCounterByRef(
+      this.counter = await F.getCounterByRef(
         s,
         this.context,
         e ? { srfcustomtag: e, ...this.params } : { ...this.params }
@@ -427,42 +427,42 @@ class rt extends q {
   }
 }
 const S = "ibiz";
-function it(o, l, t) {
+function rt(o, l, t) {
   let s = null, a = 0;
-  const e = N([]), r = N([]), i = (d, f = {}) => {
+  const e = N([]), r = N([]), i = (u, m = {}) => {
     let p = 0;
-    const m = document.createElement("div"), v = document.createElement("div");
-    return v.innerHTML = d, Object.assign(v.style, f), Object.assign(m.style, {
+    const v = document.createElement("div"), g = document.createElement("div");
+    return g.innerHTML = u, Object.assign(g.style, m), Object.assign(v.style, {
       width: "auto",
       position: "absolute",
       left: "-9999px"
-    }), m.appendChild(v), document.body.appendChild(m), p = m.offsetWidth, document.body.removeChild(m), p;
+    }), v.appendChild(g), document.body.appendChild(v), p = v.offsetWidth, document.body.removeChild(v), p;
   }, c = () => {
-    const { drBarItems: d, showMore: f } = o.state;
-    if (!l.value || !f || d.length === 0) {
-      e.value = d, r.value = [];
+    const { drBarItems: u, showMore: m } = o.state;
+    if (!l.value || !m || u.length === 0) {
+      e.value = u, r.value = [];
       return;
     }
-    const m = l.value.$el.offsetWidth;
-    let v = 0, g = -1;
-    d.forEach((b, D) => {
-      if (g === -1) {
-        const O = b.caption || "", C = b.counterId ? t[b.counterId] : null, y = "var(--".concat(S, "-font-size-header-6)");
-        if (C != null && !(!C && C !== 0) && !(b.counterMode === 1 && C <= 0)) {
-          const T = {
+    const v = l.value.$el.offsetWidth;
+    let g = 0;
+    e.value = [], r.value = [], u.forEach((f, I) => {
+      if (f.visible) {
+        const D = f.caption || "", C = f.counterId ? t[f.counterId] : null, y = "var(--".concat(S, "-font-size-header-6)");
+        if (C != null && !(!C && C !== 0) && !(f.counterMode === 1 && C <= 0)) {
+          const L = {
             marginLeft: "var(--".concat(S, "-spacing-tight)"),
             padding: "0 var(--".concat(S, "-spacing-extra-tight)"),
             minWidth: "20px",
             fontSize: "var(--".concat(S, "-font-size-small)")
-          }, G = i(String(C), T);
-          v += G;
+          }, T = i(String(C), L);
+          g += T;
         }
-        const $ = i(O, {
-          padding: D === 0 ? "0 20px 0 0" : "0 20px",
+        const O = i(D, {
+          padding: I === 0 ? "0 20px 0 0" : "0 20px",
           fontSize: y
         });
-        v += $;
-        const _ = {
+        g += O;
+        const $ = {
           padding: "0 0 0 20px",
           fontSize: y
         };
@@ -471,17 +471,17 @@ function it(o, l, t) {
           fontSize: y
         });
         B = B > 16 ? B : 16;
-        const L = i("更多 ", _) + B;
-        v + L > m && (g = D);
+        const _ = i("更多 ", $) + B;
+        g + _ > v ? r.value.push(f) : e.value.push(f);
       }
-    }), g !== -1 ? (e.value = d.slice(0, g), r.value = d.slice(g)) : (e.value = d, r.value = []);
-  }, u = () => {
+    });
+  }, d = () => {
     if (window.ResizeObserver) {
-      const d = l.value.$el;
-      d && (s = new ResizeObserver((f) => {
-        const { width: p } = f[0].contentRect;
+      const u = l.value.$el;
+      u && (s = new ResizeObserver((m) => {
+        const { width: p } = m[0].contentRect;
         p !== a && (c(), a = p);
-      }), s.observe(d));
+      }), s.observe(u));
     }
   };
   z(
@@ -491,19 +491,19 @@ function it(o, l, t) {
     },
     { deep: !0 }
   );
-  const n = tt(() => {
-    l.value && u();
+  const n = Z(() => {
+    l.value && d();
   });
   return W(() => {
     s && s.disconnect(), n();
   }), { visibleItems: e, moreItems: r };
 }
-function nt(o) {
+function it(o) {
   const l = o.view.modal.routeDepth;
   if (l) {
     const t = A();
     let s;
-    Y(({
+    Q(({
       currentKey: a,
       fullPath: e
     }) => {
@@ -521,7 +521,7 @@ function nt(o) {
     }, l);
   }
 }
-const R = /* @__PURE__ */ et({
+const R = /* @__PURE__ */ tt({
   name: "IBizDRBarExControl",
   props: {
     modelData: {
@@ -553,10 +553,10 @@ const R = /* @__PURE__ */ et({
     }
   },
   setup() {
-    const o = J((...n) => new rt(...n)), l = Q("control-".concat(o.model.controlType.toLowerCase(), "-ex")), t = ot(), s = N(), a = st({}), {
+    const o = X((...n) => new ot(...n)), l = J("control-".concat(o.model.controlType.toLowerCase(), "-ex")), t = at(), s = N(), a = et({}), {
       visibleItems: e,
       moreItems: r
-    } = it(o, s, a), i = (n) => {
+    } = rt(o, s, a), i = (n) => {
       Object.assign(a, n);
     };
     o.evt.on("onCreated", () => {
@@ -566,19 +566,19 @@ const R = /* @__PURE__ */ et({
       (n = o.counter) == null || n.offChange(i);
     }), o.setRouter(t);
     const c = A();
-    return nt(o), z(() => t.currentRoute.value, (n, d) => {
-      var f, p;
+    return it(o), z(() => t.currentRoute.value, (n, u) => {
+      var m, p;
       if (o.routeDepth && o.navPos) {
         const {
-          pathNodes: m
-        } = w(n), {
           pathNodes: v
-        } = w(d), g = M(d, o.routeDepth + 1), b = M(c, o.routeDepth + 1);
-        if (g === b)
+        } = w(n), {
+          pathNodes: g
+        } = w(u), f = M(u, o.routeDepth + 1), I = M(c, o.routeDepth + 1);
+        if (f === I)
           return;
-        const D = ((f = m[o.routeDepth + 1]) == null ? void 0 : f.viewName) === "route-modal" || ((p = v[o.routeDepth + 1]) == null ? void 0 : p.viewName) === "route-modal";
-        b && !D && o.navPos.openView({
-          key: b,
+        const D = ((m = v[o.routeDepth + 1]) == null ? void 0 : m.viewName) === "route-modal" || ((p = g[o.routeDepth + 1]) == null ? void 0 : p.viewName) === "route-modal";
+        I && !D && o.navPos.openView({
+          key: I,
           isRoutePushed: !1,
           context: o.context.clone(),
           params: {
@@ -594,13 +594,13 @@ const R = /* @__PURE__ */ et({
       visibleItems: e,
       counterData: a,
       handleSelect: (n) => {
-        var p, m, v;
-        if (!o.state.drBarItems.find((g) => g.tag === n))
+        var p, v, g;
+        if (!o.state.drBarItems.find((f) => f.tag === n))
           return;
-        const f = (p = o.model.dedrctrlItems) == null ? void 0 : p.find((g) => g.dedrbarGroupId === n);
-        if (f) {
-          const b = (m = w(c).pathNodes[o.routeDepth]) == null ? void 0 : m.viewName, D = (v = f.appViewId) == null ? void 0 : v.split(".")[1];
-          if (D && b && D === b)
+        const m = (p = o.model.dedrctrlItems) == null ? void 0 : p.find((f) => f.dedrbarGroupId === n);
+        if (m) {
+          const I = (v = w(c).pathNodes[o.routeDepth]) == null ? void 0 : v.viewName, D = (g = m.appViewId) == null ? void 0 : g.split(".")[1];
+          if (D && I && D === I)
             return;
         }
         o.handleSelectChange(n);
@@ -612,7 +612,7 @@ const R = /* @__PURE__ */ et({
       isCreated: o,
       defaultItem: l,
       isCalculatedPermission: t
-    } = this.c.state, s = this.moreItems.find((e) => e.tag === l) || {}, a = h(I("el-dropdown"), {
+    } = this.c.state, s = this.moreItems.find((e) => e.tag === l) || {}, a = h(b("el-dropdown"), {
       trigger: "click",
       class: this.ns.b("more-dropdown"),
       "popper-class": this.ns.b("more-dropdown-popper")
@@ -620,7 +620,7 @@ const R = /* @__PURE__ */ et({
       default: () => h("div", {
         class: this.ns.be("more-dropdown", "link"),
         onClick: (e) => e.stopPropagation()
-      }, [h("span", null, [at("更多 ")]), h("svg", {
+      }, [h("span", null, [st("更多 ")]), h("svg", {
         viewBox: "0 0 16 16",
         xmlns: "http://www.w3.org/2000/svg",
         height: "1em",
@@ -631,8 +631,8 @@ const R = /* @__PURE__ */ et({
       }, [h("path", {
         d: "M7.978 11.997l-.005.006L2.3 6.33l.83-.831 4.848 4.848L12.826 5.5l.83.83-5.673 5.673-.005-.006z"
       }, null)])])]),
-      dropdown: () => h(I("el-dropdown-menu"), null, {
-        default: () => this.moreItems.map((e) => h(I("el-dropdown-item"), {
+      dropdown: () => h(b("el-dropdown-menu"), null, {
+        default: () => this.moreItems.map((e) => h(b("el-dropdown-item"), {
           class: [l === e.tag ? this.ns.be("more-dropdown-popper", "current") : ""],
           onClick: () => this.handleSelect(e.tag)
         }, {
@@ -641,7 +641,7 @@ const R = /* @__PURE__ */ et({
           }, [h("span", {
             class: this.ns.bem("more-dropdown-popper", "label", "text"),
             title: e.caption || ""
-          }, [e.caption || ""]), e.counterId && this.counterData[e.counterId] != null && h(I("iBizBadge"), {
+          }, [e.caption || ""]), e.counterId && this.counterData[e.counterId] != null && h(b("iBizBadge"), {
             class: this.ns.bem("more-dropdown-popper", "label", "counter"),
             value: this.counterData[e.counterId],
             counterMode: e.counterMode
@@ -649,12 +649,12 @@ const R = /* @__PURE__ */ et({
         }))
       })
     });
-    return h(I("iBizControlBase"), {
+    return h(b("iBizControlBase"), {
       ref: "controlRef",
       controller: this.c,
       class: [this.ns.b(), this.moreItems.length > 0 ? this.ns.b("more") : ""]
     }, {
-      default: () => [o && t && !!l && h(I("el-tabs"), {
+      default: () => [o && t && !!l && h(b("el-tabs"), {
         modelValue: l,
         onTabClick: (e, r) => {
           this.handleSelect(e.paneName);
@@ -662,7 +662,7 @@ const R = /* @__PURE__ */ et({
       }, {
         default: () => [this.visibleItems.map((e) => {
           if (e.visible)
-            return h(I("el-tab-pane"), {
+            return h(b("el-tab-pane"), {
               label: e.caption,
               name: e.tag
             }, {
@@ -670,13 +670,13 @@ const R = /* @__PURE__ */ et({
                 class: this.ns.b("pane-label")
               }, [h("span", {
                 class: this.ns.be("pane-label", "text")
-              }, [e.caption || ""]), e.counterId && this.counterData[e.counterId] != null && h(I("iBizBadge"), {
+              }, [e.caption || ""]), e.counterId && this.counterData[e.counterId] != null && h(b("iBizBadge"), {
                 class: this.ns.be("pane-label", "counter"),
                 value: this.counterData[e.counterId],
                 counterMode: e.counterMode
               }, null)])
             });
-        }), this.moreItems.length > 0 && h(I("el-tab-pane"), {
+        }), this.moreItems.length > 0 && h(b("el-tab-pane"), {
           label: "",
           name: s.tag
         }, {
@@ -686,24 +686,24 @@ const R = /* @__PURE__ */ et({
     });
   }
 });
-class lt {
+class nt {
   constructor() {
     P(this, "component", "IBizDRBarExControl");
   }
 }
-const ct = Z(
+const lt = Y(
   R,
   function(o) {
-    o.component(R.name, R), X("CUSTOM_DRBAR_EX", () => new lt());
+    o.component(R.name, R), H("CUSTOM_DRBAR_EX", () => new nt());
   }
-), vt = {
+), mt = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(o) {
-    o.use(ct);
+    o.use(lt);
   }
 };
 export {
-  rt as DRBarExController,
-  ct as IBizDRBarExControl,
-  vt as default
+  ot as DRBarExController,
+  lt as IBizDRBarExControl,
+  mt as default
 };

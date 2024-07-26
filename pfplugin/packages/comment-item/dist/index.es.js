@@ -1,83 +1,92 @@
 import './style.css';
-var N = Object.defineProperty;
-var D = (o, n, t) => n in o ? N(o, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[n] = t;
-var d = (o, n, t) => (D(o, typeof n != "symbol" ? n + "" : n, t), t);
-import { EditorController as F, ScriptFactory as H, registerEditorProvider as O } from "@ibiz-template/runtime";
-import { getRawProps as _, getEditorEmits as q, useNamespace as B, withInstall as J } from "@ibiz-template/vue3-util";
-import { defineComponent as U, ref as m, computed as b, watch as k, createVNode as u, resolveComponent as L, nextTick as f } from "vue";
-const y = /* @__PURE__ */ U({
+var H = Object.defineProperty;
+var N = (o, r, t) => r in o ? H(o, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[r] = t;
+var p = (o, r, t) => (N(o, typeof r != "symbol" ? r + "" : r, t), t);
+import { EditorController as $, ScriptFactory as D, registerEditorProvider as F } from "@ibiz-template/runtime";
+import { getRawProps as O, getEditorEmits as U, useNamespace as _, withInstall as q } from "@ibiz-template/vue3-util";
+import { defineComponent as B, ref as d, computed as b, watch as A, createVNode as u, resolveComponent as j, nextTick as f } from "vue";
+const y = /* @__PURE__ */ B({
   name: "CommentItemRawItem",
-  props: _(),
-  emits: q(),
+  props: O(),
+  emits: U(),
   setup(o) {
-    var R, g, T, S;
-    const n = B("raw"), t = o.controller, r = t.model, l = m(""), C = m(""), a = m(), p = m(), h = m([]);
-    let w = "TEXT", c = "";
-    r.contentType && (w = r.contentType), (R = r.editorParams) != null && R.contenttype && (w = (g = r.editorParams) == null ? void 0 : g.contenttype), (T = r.editorParams) != null && T.template && (c = r.editorParams.template.replaceAll("//n", "\n")), (S = r.editorParams) != null && S.TEMPLATE && (c = r.editorParams.TEMPLATE.replaceAll("//n", "\n"));
-    const A = b(() => !!(o.controlParams && o.controlParams.editmode === "hover"));
-    k(() => o.value, async (e, i) => {
-      if (e !== i && ((typeof e == "string" || typeof e == "number") && (l.value = e), c && e)) {
-        let s = null;
-        if (typeof e == "string")
-          try {
-            s = JSON.parse(e);
-          } catch (v) {
-            ibiz.log.error("JSON字符串转换错误");
-          }
-        l.value = await ibiz.util.hbs.render(c, s || e);
+    var P, R, T, S;
+    const r = _("raw"), t = o.controller, n = t.model, a = d(""), C = d(""), m = d(), h = d(), w = d([]);
+    let v = "TEXT", l = "";
+    n.contentType && (v = n.contentType), (P = n.editorParams) != null && P.contenttype && (v = (R = n.editorParams) == null ? void 0 : R.contenttype), (T = n.editorParams) != null && T.template && (l = n.editorParams.template.replaceAll("//n", "\n")), (S = n.editorParams) != null && S.TEMPLATE && (l = n.editorParams.TEMPLATE.replaceAll("//n", "\n"));
+    const k = b(() => !!(o.controlParams && o.controlParams.editmode === "hover")), L = (e) => e.replaceAll(/{"emoji":"(.+?)"}/g, (i, s) => {
+      const c = decodeURIComponent(atob(s));
+      return '<span class="emoji-tag">'.concat(c, "</span>");
+    }).replaceAll(/<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g, (i, s) => {
+      const c = decodeURIComponent(atob(s));
+      return "<span data-w-e-type=\"emoji\" class='emoji'>".concat(c, "</span>");
+    });
+    A(() => o.value, async (e, i) => {
+      if (e !== i) {
+        if ((typeof e == "string" || typeof e == "number") && (a.value = e), l && e) {
+          let s = null;
+          if (typeof e == "string")
+            try {
+              s = JSON.parse(e);
+            } catch (c) {
+              ibiz.log.error("JSON字符串转换错误");
+            }
+          a.value = await ibiz.util.hbs.render(l, s || e);
+        }
+        a.value = L(a.value ? "".concat(a.value) : "");
       }
     }, {
       immediate: !0
     });
     const I = b(() => t.scriptCode ? o.controller.getPanelItemCustomHtml(t.scriptCode, {
-      content: l.value
-    }) : ""), M = async (e) => {
-      if (C.value = e, h.value = [e], await f(), a.value) {
+      content: a.value
+    }) : ""), x = async (e) => {
+      if (C.value = e, w.value = [e], await f(), m.value) {
         const {
           container: i
-        } = a.value.$refs;
+        } = m.value.$refs;
         i && i.children[0].click();
       }
-    }, x = async () => {
-      await f(), p.value && p.value.querySelectorAll("img").forEach((i) => {
+    }, M = async () => {
+      await f(), h.value && h.value.querySelectorAll("img").forEach((i) => {
         i.onclick = (s) => {
-          const v = s.target;
-          v && M(v.src);
+          const c = s.target;
+          c && x(c.src);
         };
       });
-    }, E = (e) => {
-      if (a.value) {
+    }, g = (e) => {
+      if (m.value) {
         const {
           container: i
-        } = a.value.$refs;
+        } = m.value.$refs;
         if (i) {
           const s = i.querySelector(".el-image-viewer__wrapper");
-          s == null || s[e]("keydown", P);
+          s == null || s[e]("keydown", E);
         }
       }
-    }, P = async (e) => {
-      (e.key === "Escape" || e.keyCode === 27) && (e.stopPropagation(), e.preventDefault(), await f(), E("removeEventListener"), h.value = []);
+    }, E = async (e) => {
+      (e.key === "Escape" || e.keyCode === 27) && (e.stopPropagation(), e.preventDefault(), await f(), g("removeEventListener"), w.value = []);
     }, z = async () => {
-      await f(), E("addEventListener");
+      await f(), g("addEventListener");
     };
-    return k(() => I, () => {
-      x();
+    return A(() => I, () => {
+      M();
     }, {
       immediate: !0
     }), {
-      ns: n,
+      ns: r,
       c: t,
-      rawRef: p,
-      previewRef: a,
-      content: l,
+      rawRef: h,
+      previewRef: m,
+      content: a,
       previewUrl: C,
-      type: w,
-      template: c,
+      type: v,
+      template: l,
       htmlCode: I,
-      showFormDefaultContent: A,
-      previewSrcList: h,
+      showFormDefaultContent: k,
+      previewSrcList: w,
       onShow: z,
-      handleKeyPress: P
+      handleKeyPress: E
     };
   },
   render() {
@@ -87,11 +96,11 @@ const y = /* @__PURE__ */ U({
       ref: "rawRef",
       class: this.ns.e("script"),
       innerHTML: this.htmlCode
-    }, null) : this.content && u(L("iBizRawItem"), {
+    }, null) : this.content && u(j("iBizRawItem"), {
       class: this.ns.b("content"),
       content: this.content,
       type: this.type
-    }, null), u(L("el-image"), {
+    }, null), u(j("el-image"), {
       class: this.ns.e("preview"),
       ref: "previewRef",
       "zoom-rate": 1.1,
@@ -103,7 +112,7 @@ const y = /* @__PURE__ */ U({
     }, null)]);
   }
 });
-class $ extends F {
+class J extends $ {
   constructor() {
     super(...arguments);
     /**
@@ -112,7 +121,7 @@ class $ extends F {
      * @type {string}
      * @memberof CommentItemRawItemEditorController
      */
-    d(this, "scriptCode", "");
+    p(this, "scriptCode", "");
   }
   async onInit() {
     await super.onInit();
@@ -127,42 +136,42 @@ class $ extends F {
    * @return {*}  {(string | undefined)}
    * @memberof CommentItemRawItemEditorController
    */
-  getPanelItemCustomHtml(t, r) {
+  getPanelItemCustomHtml(t, n) {
     if (t)
-      return H.execScriptFn({ data: r || {} }, t, {
+      return D.execScriptFn({ data: n || {} }, t, {
         singleRowReturn: !0,
         isAsync: !1
       });
   }
 }
-class j {
+class K {
   constructor() {
-    d(this, "formEditor", "CommentItemRawItem");
-    d(this, "gridEditor", "CommentItemRawItem");
+    p(this, "formEditor", "CommentItemRawItem");
+    p(this, "gridEditor", "CommentItemRawItem");
   }
-  async createController(n, t) {
-    const r = new $(
-      n,
+  async createController(r, t) {
+    const n = new J(
+      r,
       t
     );
-    return await r.init(), r;
+    return await n.init(), n;
   }
 }
-const K = J(
+const W = q(
   y,
   function(o) {
-    o.component(y.name, y), O(
+    o.component(y.name, y), F(
       "RAW_COMMENT_ITEM",
-      () => new j()
+      () => new K()
     );
   }
-), Y = {
+), Z = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(o) {
-    o.use(K);
+    o.use(W);
   }
 };
 export {
-  K as IBizCommentItemRawItem,
-  Y as default
+  W as IBizCommentItemRawItem,
+  Z as default
 };

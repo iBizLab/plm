@@ -29,11 +29,6 @@ export class ReviewListController extends ListController {
   public revTypeField = 'reviewer_type';
 
   /**
-   * 由评审人发起自由指定的状态值
-   */
-  public customRevType = ['10'];
-
-  /**
    * 用户信息
    *
    * @public
@@ -53,7 +48,7 @@ export class ReviewListController extends ListController {
     // 提交人员存在
     if (this.operatorMap.size > 0 && userId) {
       const tempVal = this.operatorMap.get(userId);
-      if (tempVal && tempVal.data) {
+      if (tempVal && tempVal.data && tempVal.data[this.avatarField]) {
         this.userInfo = tempVal.data;
         Object.assign(this.userInfo, {
           avatar: this.parseAvatar(tempVal.data[this.avatarField]),
@@ -77,9 +72,6 @@ export class ReviewListController extends ListController {
     }
     if (ctrlParams.REVTYPEFIELD) {
       this.revTypeField = ctrlParams.REVTYPEFIELD;
-    }
-    if (ctrlParams.CUSTOMREVTYPE) {
-      this.customRevType = JSON.parse(ctrlParams.CUSTOMREVTYPE);
     }
   }
 

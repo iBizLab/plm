@@ -1,29 +1,29 @@
 import './style.css';
 var kt = Object.defineProperty;
-var Mt = (a, t, e) => t in a ? kt(a, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : a[t] = e;
-var r = (a, t, e) => (Mt(a, typeof t != "symbol" ? t + "" : t, e), e);
-import { defineComponent as ke, ref as g, shallowRef as ot, watch as le, onBeforeUnmount as Ee, onMounted as ze, nextTick as U, createVNode as p, resolveComponent as V, createTextVNode as j, onUnmounted as xt, computed as lt, withDirectives as ct, resolveDirective as De, h as dt, defineAsyncComponent as Pt } from "vue";
-import { ScriptFactory as J, convertNavData as Re, EditorController as Lt, ControllerEvent as Tt, getDeACMode as At, registerEditorProvider as Ht } from "@ibiz-template/runtime";
-import { getHtmlProps as tt, getEditorEmits as st, useNamespace as Me, useClickOutside as Ft, withInstall as Nt } from "@ibiz-template/vue3-util";
-import { Editor as ut, Toolbar as ht } from "@wangeditor/editor-for-vue";
-import { SlateEditor as oe, SlateElement as mt, SlateRange as Ue, SlateTransforms as Oe, SlateNode as Ie, SlateText as we, Boot as z, DomEditor as Y, createEditor as Ot } from "@wangeditor/editor";
-import { getCookie as ft, createUUID as Se } from "qx-util";
-import { isNil as pt } from "ramda";
-import { CoreConst as vt, debounce as gt, awaitTimeout as It, RuntimeError as ne, listenJSEvent as Be, NOOP as G, downloadFileFromBlob as Dt } from "@ibiz-template/core";
-import { ElMessageBox as yt } from "element-plus";
-import { debounce as bt, toNumber as Rt } from "lodash-es";
-class Ct {
+var Mt = (i, t, e) => t in i ? kt(i, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : i[t] = e;
+var o = (i, t, e) => (Mt(i, typeof t != "symbol" ? t + "" : t, e), e);
+import { defineComponent as ue, ref as g, shallowRef as ct, watch as de, onBeforeUnmount as ke, onMounted as Be, nextTick as z, createVNode as f, resolveComponent as $, createTextVNode as K, onUnmounted as xt, computed as dt, withDirectives as ut, resolveDirective as Re, h as nt, defineAsyncComponent as Lt } from "vue";
+import { ScriptFactory as q, convertNavData as Ue, EditorController as Pt, ControllerEvent as Tt, getDeACMode as Ht, registerEditorProvider as Ft } from "@ibiz-template/runtime";
+import { getHtmlProps as it, useNamespace as he, useClickOutside as Nt, getEditorEmits as At, withInstall as It } from "@ibiz-template/vue3-util";
+import { Editor as ht, Toolbar as mt } from "@wangeditor/editor-for-vue";
+import { SlateEditor as ce, SlateElement as ft, SlateRange as ze, SlateTransforms as Oe, SlateNode as De, SlateText as Se, Boot as D, DomEditor as V, createEditor as Ot } from "@wangeditor/editor";
+import { getCookie as pt, createUUID as Me } from "qx-util";
+import { isNil as vt } from "ramda";
+import { CoreConst as gt, debounce as yt, awaitTimeout as Dt, RuntimeError as ne, listenJSEvent as xe, NOOP as _, strToBase64 as Rt, base64ToStr as Ut, downloadFileFromBlob as zt } from "@ibiz-template/core";
+import { ElMessageBox as wt } from "element-plus";
+import { debounce as Ct, toNumber as $t } from "lodash-es";
+class bt {
   constructor(t, e) {
     /**
      * 模态实例
      * @memberof ModalUtil
      */
-    r(this, "modalOrPanel");
+    o(this, "modalOrPanel");
     /**
      * 富文本Ref
      * @memberof ModalUtil
      */
-    r(this, "htmlRef");
+    o(this, "htmlRef");
     this.modalOrPanel = t, this.htmlRef = e, this.calcModalPosition(), window.addEventListener("resize", this.handleResize.bind(this));
   }
   /**
@@ -33,11 +33,11 @@ class Ct {
   calcModalPosition() {
     if (!["dropPanel", "selectList"].includes(this.modalOrPanel.type))
       return;
-    const { $elem: e } = this.modalOrPanel, s = e[0], n = this.htmlRef.$el, i = n.querySelector(".w-e-bar"), l = s.previousElementSibling, d = l.getAttribute("data-menu-key"), u = s.parentNode.parentNode.parentNode;
-    if (!["bgColor", "color", "headerSelect"].includes(d) || !n || !i || !l || u.getAttribute("data-w-e-toolbar") === "true")
+    const { $elem: e } = this.modalOrPanel, s = e[0], n = this.htmlRef.$el, a = n.querySelector(".w-e-bar"), l = s.previousElementSibling, d = l.getAttribute("data-menu-key"), u = s.parentNode.parentNode.parentNode;
+    if (!["bgColor", "color", "headerSelect"].includes(d) || !n || !a || !l || u.getAttribute("data-w-e-toolbar") === "true")
       return;
-    const m = s.clientWidth, S = s.clientHeight, k = i.clientHeight, M = l.getBoundingClientRect(), F = M.bottom, A = M.right, N = M.top, O = M.left, y = "".concat(N + k, "px"), b = "".concat(O, "px"), C = "".concat(F - S - k, "px"), w = "".concat(A - m, "px"), P = { position: "fixed", left: b, top: y }, B = window.innerWidth, I = window.innerHeight;
-    B - O < m && Object.assign(P, { left: w }), I - N - k < S && Object.assign(P, { top: C }), Object.assign(s.style, { top: "", bottom: "", left: "", right: "" }), Object.assign(s.style, P);
+    const m = s.clientWidth, E = s.clientHeight, k = a.clientHeight, M = l.getBoundingClientRect(), N = M.bottom, H = M.right, A = M.top, I = M.left, y = "".concat(A + k, "px"), w = "".concat(I, "px"), C = "".concat(N - E - k, "px"), b = "".concat(H - m, "px"), x = { position: "fixed", left: w, top: y }, B = window.innerWidth, O = window.innerHeight;
+    B - I < m && Object.assign(x, { left: b }), O - A - k < E && Object.assign(x, { top: C }), Object.assign(s.style, { top: "", bottom: "", left: "", right: "" }), Object.assign(s.style, x);
   }
   /**
    * 监听窗口变化
@@ -54,20 +54,20 @@ class Ct {
     window.removeEventListener("resize", this.handleResize);
   }
 }
-const wt = /* @__PURE__ */ ke({
+const $e = /* @__PURE__ */ ue({
   name: "IBizHtmlContent",
-  props: tt(),
-  emits: st(),
-  setup(a, {
+  props: it(),
+  emits: ["change", "blur", "focus", "enter", "infoTextChange", "link"],
+  setup(i, {
     emit: t
   }) {
-    const e = Me("html"), s = a.controller, n = g(), i = g({});
+    const e = he("html"), s = i.controller, n = g(), a = g({});
     let l = null, d = 0;
-    const u = g(), f = g(), m = ot(), S = g(), k = g(""), M = g({
-      Authorization: "Bearer ".concat(ft(vt.TOKEN))
-    }), F = g(""), A = g(""), N = g(!0), O = g(!1), y = g(!1), b = g(!1), C = g(!1), w = g(""), P = g([]), B = g(!1), I = s.model;
-    I.editorParams && (I.editorParams.enableEdit && (O.value = !0, y.value = !0, N.value = s.toBoolean(I.editorParams.enableEdit) && !a.readonly && !a.disabled), I.editorParams.enableFullScreen && (b.value = s.toBoolean(I.editorParams.enableFullScreen)));
-    const K = (c) => {
+    const u = g(), p = g(), m = ct(), E = g(), k = g(""), M = g({
+      Authorization: "Bearer ".concat(pt(gt.TOKEN))
+    }), N = g(""), H = g(""), A = g(!0), I = g(!1), y = g(!1), w = g(!1), C = g(!1), b = g(""), x = g([]), B = g(!1), O = s.model;
+    O.editorParams && (O.editorParams.enableEdit && (I.value = !0, y.value = !0, A.value = s.toBoolean(O.editorParams.enableEdit) && !i.readonly && !i.disabled), O.editorParams.enableFullScreen && (w.value = s.toBoolean(O.editorParams.enableFullScreen)));
+    const Z = (c) => {
       if (!m.value)
         return;
       const {
@@ -76,22 +76,22 @@ const wt = /* @__PURE__ */ ke({
       v && (m.value.setHtml(v), m.value.focus(!0), t("focus"));
     }, X = () => {
       m.value && (m.value.blur(), m.value.setHtml(""));
-    }, ae = () => {
+    }, oe = () => {
       m.value && (m.value.focus(!0), t("focus"));
     };
-    s.evt.on("setHtml", K), s.evt.on("clear", X), s.evt.on("onSetReply", ae), le(() => a.data, (c) => {
+    s.evt.on("setHtml", Z), s.evt.on("clear", X), s.evt.on("onSetReply", oe), de(() => i.data, (c) => {
       if (c) {
         const v = ibiz.util.file.calcFileUpDownUrl(s.context, s.params, c);
-        F.value = v.uploadUrl, A.value = v.downloadUrl;
+        N.value = v.uploadUrl, H.value = v.downloadUrl;
       }
     }, {
       immediate: !0,
       deep: !0
     });
-    const _ = (c, v) => {
+    const W = (c, v) => {
       if (v)
         return !0;
-    }, ue = (c) => c, ee = {
+    }, me = (c) => c, ee = {
       toolbarKeys: [{
         key: "group-add-style",
         // 必填，要以 group 开头
@@ -108,17 +108,17 @@ const wt = /* @__PURE__ */ ke({
         iconSvg: '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fit="" height="1em" width="1em" preserveAspectRatio="xMidYMid meet" focusable="false"><g id="ahdeditor/color-tt" stroke-width="1" fill-rule="evenodd"><path id="ahdsecondary-color" d="M1.999 15.011h11.998V13.81H1.999z"></path><path d="M6.034 7.59h4.104L8.086 2.297 6.034 7.59zm-.465 1.2l-1.437 3.707H2.845L7.301 1h1.287l-.001.004h.286l4.454 11.492h-1.288L10.603 8.79H5.569z" id="ahd合并形状"></path></g></svg>',
         // 可选
         menuKeys: ["bold", "italic", "underline", "through", "code", "numberedList", "bulletedList", "insertLink"]
-      }, "codeBlock", "mention", "marker", "emotion"]
+      }, "codeBlock", "mention", "marker", "emoji"]
     };
     s.chatCompletion && ee.toolbarKeys.push("aichart");
-    const ie = {
+    const re = {
       placeholder: s.placeHolder,
-      readOnly: O.value ? y.value : a.readonly,
+      readOnly: I.value ? y.value : i.readonly,
       MENU_CONF: {
         // 图片上传
         uploadImage: {
           // 上传地址
-          server: F.value,
+          server: N.value,
           // form-data fieldName ，默认值 'wangeditor-uploaded-image'
           fieldName: "file",
           // 单个文件的最大体积限制，默认为 2M
@@ -149,182 +149,187 @@ const wt = /* @__PURE__ */ ke({
             console.log("".concat(c.name, " 上传失败"), v);
           },
           // 上传错误，或者触发 timeout 超时
-          onError(c, v, x) {
-            console.log("".concat(c.name, " 上传出错"), v, x);
+          onError(c, v, L) {
+            console.log("".concat(c.name, " 上传出错"), v, L);
           },
           // 自定义插入图片
           async customInsert(c, v) {
-            const x = A.value.replace("%fileId%", c.id), H = c.filename;
-            v(x, H, "");
+            const L = H.value.replace("%fileId%", c.id), F = c.filename;
+            v(L, F, "");
           }
         },
         // 插入链接
         insertLink: {
-          checkLink: _,
+          checkLink: W,
           // 也支持 async 函数
-          parseLinkUrl: ue
+          parseLinkUrl: me
           // 也支持 async 函数
         },
         // 更新链接
         editLink: {
-          checkLink: _,
+          checkLink: W,
           // 也支持 async 函数
-          parseLinkUrl: ue
+          parseLinkUrl: me
           // 也支持 async 函数
         }
+      },
+      hoverbarKeys: {
+        link: {
+          menuKeys: ["editLink", "unLink", "customViewLink"]
+        }
       }
-    }, $e = async (c) => {
+    }, je = async (c) => {
       const v = c.src;
       if (y.value)
-        q(v);
+        J(v);
       else {
-        const x = oe.nodes(m.value, {
-          match: (H) => !!(mt.isElement(H) && H.type === "image"),
+        const L = ce.nodes(m.value, {
+          match: (F) => !!(ft.isElement(F) && F.type === "image"),
           universal: !0
         });
-        if (x)
-          for (const H of x) {
-            const [o] = H;
-            o.type === "image" && v.endsWith(o.src) && q(o.src);
+        if (L)
+          for (const F of L) {
+            const [r] = F;
+            r.type === "image" && v.endsWith(r.src) && J(r.src);
           }
       }
-    }, q = async (c) => {
-      if (w.value = c, P.value = [c], await U(), S.value) {
+    }, J = async (c) => {
+      if (b.value = c, x.value = [c], await z(), E.value) {
         const {
           container: v
-        } = S.value.$refs;
+        } = E.value.$refs;
         v && v.children[0].click();
       }
-    }, xe = (c) => {
+    }, Le = (c) => {
       const v = c.getEditableContainer();
-      v && v.querySelectorAll("img").forEach((H) => {
-        H.onclick = (o) => {
-          const h = o.target;
-          h && $e(h);
+      v && v.querySelectorAll("img").forEach((F) => {
+        F.onclick = (r) => {
+          const h = r.target;
+          h && je(h);
         };
       });
-    }, he = (c) => {
-      if (S.value) {
+    }, fe = (c) => {
+      if (E.value) {
         const {
           container: v
-        } = S.value.$refs;
+        } = E.value.$refs;
         if (v) {
-          const x = v.querySelector(".el-image-viewer__wrapper");
-          x == null || x[c]("keydown", Ve);
+          const L = v.querySelector(".el-image-viewer__wrapper");
+          L == null || L[c]("keydown", Ve);
         }
       }
     }, Ve = async (c) => {
-      (c.key === "Escape" || c.keyCode === 27) && (c.stopPropagation(), c.preventDefault(), await U(), he("removeEventListener"), P.value = []);
+      (c.key === "Escape" || c.keyCode === 27) && (c.stopPropagation(), c.preventDefault(), await z(), fe("removeEventListener"), x.value = []);
     }, Pe = async () => {
-      await U(), he("addEventListener");
+      await z(), fe("addEventListener");
     };
-    let me;
-    const Le = async () => {
+    let pe;
+    const Te = async () => {
       var c;
       if (s.deService) {
-        const v = await import("@ibiz-template-plugin/ai-chat"), x = v.chat || v.default.chat;
-        me = x;
-        const H = x.create({
+        const v = await import("@ibiz-template-plugin/ai-chat"), L = v.chat || v.default.chat;
+        pe = L;
+        const F = L.create({
           question: async (h) => {
             var T;
-            const E = Se();
-            return await ((T = s.deService) == null ? void 0 : T.aiChatSse((L) => {
-              if (ibiz.log.info("aiChatSse", L), L.actionstate === 20 && L.actionresult)
-                H.addMessage({
-                  messageid: E,
-                  state: L.actionstate,
+            const S = Me();
+            return await ((T = s.deService) == null ? void 0 : T.aiChatSse((P) => {
+              if (ibiz.log.info("aiChatSse", P), P.actionstate === 20 && P.actionresult)
+                F.addMessage({
+                  messageid: S,
+                  state: P.actionstate,
                   type: "DEFAULT",
                   role: "ASSISTANT",
-                  content: L.actionresult
+                  content: P.actionresult
                 });
-              else if (L.actionstate === 30 && L.actionresult) {
-                const $ = JSON.parse(L.actionresult), {
-                  choices: D
-                } = $;
-                D && D.length > 0 && H.replaceMessage({
-                  messageid: E,
-                  state: L.actionstate,
+              else if (P.actionstate === 30 && P.actionresult) {
+                const j = JSON.parse(P.actionresult), {
+                  choices: R
+                } = j;
+                R && R.length > 0 && F.replaceMessage({
+                  messageid: S,
+                  state: P.actionstate,
                   type: "DEFAULT",
                   role: "ASSISTANT",
-                  content: D[0].content || ""
+                  content: R[0].content || ""
                 });
               } else
-                L.actionstate === 40 && H.replaceMessage({
-                  messageid: E,
-                  state: L.actionstate,
+                P.actionstate === 40 && F.replaceMessage({
+                  messageid: S,
+                  state: P.actionstate,
                   type: "ERROR",
                   role: "ASSISTANT",
-                  content: L.actionresult
+                  content: P.actionresult
                 });
             }, s.context, {}, {
               messages: h
-            })), H.addMessage({
-              messageid: E,
+            })), F.addMessage({
+              messageid: S,
               state: 10,
               type: "DEFAULT",
               role: "ASSISTANT",
               content: ""
             }), !0;
           },
-          action: (h, E) => {
-            h === "backfill" && (t("change", E.content), B.value = !0);
+          action: (h, S) => {
+            h === "backfill" && (t("change", S.content), B.value = !0);
           },
           closed: () => {
-            m.value && a.value && m.value && m.value.focus(!0);
+            m.value && i.value && m.value && m.value.focus(!0);
           }
-        }), o = await ((c = s.deService) == null ? void 0 : c.aiChatHistory(s.context, {}));
-        o.data && Array.isArray(o.data) && o.data.forEach((h) => {
-          const E = {
-            messageid: Se(),
+        }), r = await ((c = s.deService) == null ? void 0 : c.aiChatHistory(s.context, {}));
+        r.data && Array.isArray(r.data) && r.data.forEach((h) => {
+          const S = {
+            messageid: Me(),
             state: 30,
             type: "DEFAULT",
             role: h.role,
             content: h.content
           };
-          H.addMessage(E);
+          F.addMessage(S);
         });
       }
     };
-    Ee(() => {
-      me && me.close();
+    ke(() => {
+      pe && pe.close();
       const c = m.value;
       c != null && c.destroy();
     });
-    const Te = (c) => {
+    const He = (c) => {
       m.value = c;
       let v;
-      c.on("modalOrPanelShow", (x) => {
-        v = new Ct(x, f.value);
+      c.on("modalOrPanelShow", (L) => {
+        v = new bt(L, p.value);
       }), c.on("modalOrPanelHide", () => {
         v && v.destroy();
       }), c.setHtml(k.value), c.on("aiClick", () => {
-        Le();
-      }), s.onCreated(m.value, a.data, ee), s.onLineEditing(m.value);
-    }, Ae = (c) => {
-      const v = c.getHtml();
-      xe(c);
-      let x = v === "<p><br></p>" ? "" : v;
-      x === a.value || x === "" && pt(a.value) || O.value || (x = x.replaceAll('class="rich-html-table"', "").replace(/<table/g, '<table class="rich-html-table"'), t("change", x), s.evt.emit("onChange", {
-        eventArg: x
-      }));
-    }, fe = (c) => {
-      s.evt.off("setHtml", K), s.evt.off("clear", X), s.evt.off("onSetReply", ae);
-    }, He = () => {
-      t("focus"), s.evt.emit("onFocus", {
-        eventArg: a.value
-      });
-    }, pe = () => {
-      t("blur"), s.evt.emit("onBlur", {
-        eventArg: a.value
-      });
-    }, ve = (c, v) => {
-      alert("【自定义提示】".concat(v, " - ").concat(c));
-    }, ge = (c, v, x) => {
-      x(!0);
+        Te();
+      }), s.onCreated(m.value, i.data, ee), s.onLineEditing(m.value);
     }, Fe = (c) => {
+      const v = c.getHtml();
+      Le(c);
+      const L = v === "<p><br></p>" ? "" : v;
+      L === i.value || L === "" && vt(i.value) || I.value || (t("change", L), s.evt.emit("onChange", {
+        eventArg: L
+      }));
+    }, ve = (c) => {
+      s.evt.off("setHtml", Z), s.evt.off("clear", X), s.evt.off("onSetReply", oe);
+    }, Ne = () => {
+      t("focus"), s.evt.emit("onFocus", {
+        eventArg: i.value
+      });
+    }, ge = () => {
+      t("blur"), s.evt.emit("onBlur", {
+        eventArg: i.value
+      });
+    }, ye = (c, v) => {
+      alert("【自定义提示】".concat(v, " - ").concat(c));
+    }, we = (c, v, L) => {
+      L(!0);
+    }, Ae = (c) => {
       const v = m.value;
       v != null && v.insertText(c);
-    }, Ne = () => {
+    }, Ie = () => {
       const c = m.value;
       c != null && console.log(c.getHtml());
     }, te = () => {
@@ -338,142 +343,147 @@ const wt = /* @__PURE__ */ ke({
         const c = n.value.offsetHeight;
         l = new ResizeObserver((v) => {
           const {
-            height: x
+            height: L
           } = v[0].contentRect;
-          if (x !== d) {
-            const H = {
+          if (L !== d) {
+            const F = {
               height: "".concat(c - v[0].contentRect.height, "px")
             };
-            i.value = e.cssVarBlock(H), d = x;
+            a.value = e.cssVarBlock(F), d = L;
           }
         }), l.observe(u.value.selector);
       }
-    }, je = () => {
+    }, Je = () => {
       var c, v;
-      if (a.value) {
-        const x = a.value.indexOf("</p>");
-        if (x >= 0) {
-          const H = (c = m.value.selection.anchor) == null ? void 0 : c.offset, o = (v = m.value.selection.anchor) == null ? void 0 : v.path;
-          H === 0 && o.length > 0 && o[0] === 0 && m.value.move(x - 3);
+      if (i.value) {
+        const L = i.value.indexOf("</p>");
+        if (L >= 0) {
+          const F = (c = m.value.selection.anchor) == null ? void 0 : c.offset, r = (v = m.value.selection.anchor) == null ? void 0 : v.path;
+          F === 0 && r.length > 0 && r[0] === 0 && m.value.move(L - 3);
         }
       }
-    }, Z = () => {
-      y.value = !y.value, y.value ? te() : (se(), m.value.focus(), je());
-    }, re = () => p("div", {
+    }, Q = () => {
+      y.value = !y.value, y.value ? te() : (se(), m.value.focus(), Je());
+    }, le = () => f("div", {
       class: e.be("message", "message-content")
-    }, [p("p", null, [j("确定要取消编辑吗？")]), p("p", {
+    }, [f("p", null, [K("确定要取消编辑吗？")]), f("p", {
       class: e.bem("message", "message-content", "message-tip")
-    }, [j("取消编辑将无法保存修改的内容，且不能找回。")])]), Je = () => {
-      a.value !== k.value ? yt({
+    }, [K("取消编辑将无法保存修改的内容，且不能找回。")])]), Ke = () => {
+      i.value !== k.value ? wt({
         title: "确认取消",
         type: "warning",
         customClass: e.b("message"),
-        message: re(),
+        message: le(),
         showCancelButton: !0,
         cancelButtonClass: e.be("message", "message-cancel"),
         confirmButtonClass: e.be("message", "message-comfire")
       }).then(() => {
-        if (a.value) {
-          const c = s.parseNode(a.value);
+        if (i.value) {
+          const c = s.parseNode(i.value);
           k.value = c;
         } else
           k.value = "";
-        Z();
+        Q();
       }).catch(() => {
         m.value.focus();
-      }) : Z();
-    }, Ke = () => {
+      }) : Q();
+    }, _e = () => {
       y.value = !0, m.value.disable();
-      const c = k.value.replaceAll('class="rich-html-table"', "").replace(/<table/g, '<table class="rich-html-table"');
+      const {
+        value: c
+      } = k;
       t("change", c), C.value && (C.value = !1);
-    }, ye = () => O.value ? p("div", {
+    }, Ce = () => I.value ? f("div", {
       class: [e.b("footer"), {
         [e.b("footer-dialog")]: C.value
       }]
-    }, [p("div", {
+    }, [f("div", {
       class: e.be("footer", "cancel"),
-      onClick: () => Je()
-    }, [j("取消")]), p("div", {
-      class: e.be("footer", "save"),
       onClick: () => Ke()
-    }, [j("保存")])]) : null, be = () => {
-      C.value = !C.value, U(() => {
+    }, [K("取消")]), f("div", {
+      class: e.be("footer", "save"),
+      onClick: () => _e()
+    }, [K("保存")])]) : null, be = () => {
+      C.value = !C.value, z(() => {
         y.value ? te() : (se(), m.value.focus());
       });
-    }, _e = () => b.value ? C.value ? p("i", {
+    }, Ze = () => w.value ? C.value ? f("i", {
       class: "fa fa-compress",
       "aria-hidden": "true",
+      title: "缩小",
       onClick: () => be()
-    }, null) : p("i", {
+    }, null) : f("i", {
       class: "fa fa-expand",
       "aria-hidden": "true",
+      title: "放大",
       onClick: () => be()
-    }, null) : null, Ze = () => O.value || b.value ? p("div", {
+    }, null) : null, We = () => I.value || w.value ? f("div", {
       class: e.b("custom-toolbar")
-    }, [O.value && N.value && y.value ? p("i", {
+    }, [I.value && A.value && y.value ? f("i", {
       class: "fa fa-edit",
       "aria-hidden": "true",
-      onClick: () => Z()
-    }, null) : null, _e()]) : null, We = () => {
+      title: "启用编辑",
+      onClick: () => Q()
+    }, null) : null, Ze()]) : null, Qe = () => {
       if (s.reply.value) {
-        const c = J.execScriptFn({
+        const c = q.execScriptFn({
           value: s.reply.value
         }, s.replyScript, {
           singleRowReturn: !0,
           isAsync: !1
         });
-        return p("div", {
+        return f("div", {
           class: e.b("reply")
-        }, [p("div", {
+        }, [f("div", {
           class: e.be("reply", "content"),
           innerHTML: c
-        }, null), p(V("ion-icon"), {
+        }, null), f($("ion-icon"), {
           name: "close-outline",
           onClick: () => s.removeReply()
         }, null)]);
       }
-    }, Ce = () => s.hidden.value ? null : p("div", {
+    }, Ee = () => s.hidden.value ? null : f("div", {
       class: e.b("content"),
       ref: "htmlContent",
-      style: i.value
-    }, [p(ut, {
+      style: a.value
+    }, [f(ht, {
       ref: "htmlRef",
       class: e.b("editor"),
       modelValue: k.value,
       "onUpdate:modelValue": (c) => k.value = c,
-      "default-config": ie,
+      "default-config": re,
       mode: "default",
-      onOnCreated: Te,
-      onOnChange: Ae,
-      onOnDestroyed: fe,
-      onOnFocus: He,
-      onOnBlur: pe,
-      oncustomAlert: ve,
-      oncustomPaste: ge
-    }, null), We(), p(ht, {
+      onOnCreated: He,
+      onOnChange: Fe,
+      onOnDestroyed: ve,
+      onOnFocus: Ne,
+      onOnBlur: ge,
+      oncustomAlert: ye,
+      oncustomPaste: we
+    }, null), Qe(), f(mt, {
       ref: "toolbarRef",
       editor: m.value,
       "default-config": ee,
       mode: "default",
       class: e.b("toolbar")
-    }, null)]), Qe = () => p(V("el-image"), {
+    }, null)]), Ye = () => f($("el-image"), {
       class: e.e("preview"),
       ref: "previewRef",
       "zoom-rate": 1.1,
-      src: w.value,
-      "preview-src-list": P.value,
+      src: b.value,
+      "preview-src-list": x.value,
       "hide-on-click-modal": !0,
       onShow: Pe,
       fit: "cover"
     }, null);
-    return ze(() => {
-      qe(), le(() => a.value, (c, v) => {
-        c !== v && (typeof a.value == "string" || c == null) && (c == null ? k.value = "" : k.value = c, B.value && (m.value && U(() => {
+    return Be(() => {
+      qe(), de(() => i.value, (c, v) => {
+        c !== v && (typeof i.value == "string" || c == null) && (c == null ? k.value = "" : k.value = c, B.value && (m.value && z(() => {
           m.value.focus(!0);
         }), B.value = !1));
       }, {
         immediate: !0
-      }), le(() => a.disabled, (c, v) => {
+      }), de(() => i.disabled, (c, v) => {
         c !== v && (c === !0 ? te() : se());
       }, {
         immediate: !0
@@ -481,60 +491,60 @@ const wt = /* @__PURE__ */ ke({
     }), {
       ns: e,
       editorRef: m,
-      previewRef: S,
+      previewRef: E,
       mode: "default",
       valueHtml: k,
       toolbarConfig: ee,
-      editorConfig: ie,
-      handleCreated: Te,
-      handleChange: Ae,
-      handleDestroyed: fe,
-      handleFocus: He,
-      handleBlur: pe,
-      customAlert: ve,
-      customPaste: ge,
-      insertText: Fe,
-      printHtml: Ne,
+      editorConfig: re,
+      handleCreated: He,
+      handleChange: Fe,
+      handleDestroyed: ve,
+      handleFocus: Ne,
+      handleBlur: ge,
+      customAlert: ye,
+      customPaste: we,
+      insertText: Ae,
+      printHtml: Ie,
       disable: te,
       enable: se,
-      renderHeaserToolbar: Ze,
-      renderEditorContent: Ce,
-      renderFooter: ye,
+      renderHeaserToolbar: We,
+      renderEditorContent: Ee,
+      renderFooter: Ce,
       htmlContent: n,
-      hasEnableEdit: O,
-      cssVars: i,
+      hasEnableEdit: I,
+      cssVars: a,
       toolbarRef: u,
-      htmlRef: f,
+      htmlRef: p,
       isFullScreen: C,
       readonlyState: y,
       changeFullScreenState: be,
-      renderPreview: Qe
+      renderPreview: Ye
     };
   },
   render() {
-    return this.isFullScreen ? p(V("el-dialog"), {
+    return this.isFullScreen ? f($("el-dialog"), {
       modelValue: this.isFullScreen,
-      "onUpdate:modelValue": (a) => this.isFullScreen = a,
+      "onUpdate:modelValue": (i) => this.isFullScreen = i,
       width: "80%",
       top: "10vh",
       class: this.ns.b("dialog-full-screen"),
       onClose: () => this.changeFullScreenState()
     }, {
-      default: () => [p("div", {
+      default: () => [f("div", {
         class: [this.ns.b(), {
           [this.ns.b("editor-readonly")]: this.readonlyState
         }]
       }, [this.renderHeaserToolbar(), this.renderEditorContent(), this.hasEnableEdit && !this.readonlyState ? this.renderFooter() : null])]
-    }) : p("div", {
+    }) : f("div", {
       class: [this.ns.b(), {
         [this.ns.b("editor-readonly")]: this.readonlyState
       }]
     }, [this.renderHeaserToolbar(), this.renderEditorContent(), this.renderPreview(), this.hasEnableEdit && !this.readonlyState ? this.renderFooter() : null]);
   }
-}), Ut = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), Bt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: wt
-}, Symbol.toStringTag, { value: "Module" })), zt = [
+  default: $e
+}, Symbol.toStringTag, { value: "Module" })), jt = [
   "headerSelect",
   "blockquote",
   "|",
@@ -575,7 +585,7 @@ const wt = /* @__PURE__ */ ke({
     menuKeys: ["indent", "delIndent"]
   },
   "|",
-  "emotion",
+  "emoji",
   "insertLink",
   {
     key: "group-image",
@@ -595,122 +605,122 @@ const wt = /* @__PURE__ */ ke({
   "|",
   "undo",
   "redo"
-], Ge = /<span class='personnel-marker'>(.*?)<\/span>/, Bt = /* @__PURE__ */ ke({
+], Xe = /<span class='personnel-marker'>(.*?)<\/span>/, st = /* @__PURE__ */ ue({
   name: "IBizHtmlCollapse",
-  props: tt(),
-  emits: st(),
-  setup(a, {
+  props: it(),
+  emits: ["change", "blur", "focus", "enter", "infoTextChange", "link"],
+  setup(i, {
     emit: t
   }) {
-    const e = Me("html"), s = a.controller, n = g(), i = g({});
+    const e = he("html"), s = i.controller, n = g(), a = g({});
     let l = null, d = 0;
-    const u = g(), f = ot(), m = g(), S = g(), k = g(), M = g(""), F = g({
-      Authorization: "Bearer ".concat(ft(vt.TOKEN))
-    }), A = g(""), N = g(""), O = g(!0), y = g(!1), b = g(!1), C = g(!1), w = g(!1), P = g(!0), B = g(!1), I = g(""), K = g(!1);
+    const u = g(), p = ct(), m = g(), E = g(), k = g(), M = g(""), N = g({
+      Authorization: "Bearer ".concat(pt(gt.TOKEN))
+    }), H = g(""), A = g(""), I = g(!0), y = g(!1), w = g(!1), C = g(!1), b = g(!1), x = g(!0), B = g(!1), O = g(""), Z = g(!1);
     let X;
-    const ae = g([]), _ = s.model;
-    _.editorParams && (_.editorParams.enableEdit && (y.value = !0, b.value = !0, O.value = s.toBoolean(_.editorParams.enableEdit) && !a.readonly && !a.disabled), _.editorParams.enableFullScreen && (C.value = s.toBoolean(_.editorParams.enableFullScreen))), a.readonly && (y.value = !1, b.value = !0), le(() => a.data, (o) => {
-      if (o) {
-        const h = ibiz.util.file.calcFileUpDownUrl(s.context, s.params, o, s.editorParams);
-        A.value = h.uploadUrl, N.value = h.downloadUrl;
+    const oe = g([]), W = s.model;
+    W.editorParams && (W.editorParams.enableEdit && (y.value = !0, w.value = !0, I.value = s.toBoolean(W.editorParams.enableEdit) && !i.readonly && !i.disabled), W.editorParams.enableFullScreen && (C.value = s.toBoolean(W.editorParams.enableFullScreen))), i.readonly && (y.value = !1, w.value = !0), de(() => i.data, (r) => {
+      if (r) {
+        const h = ibiz.util.file.calcFileUpDownUrl(s.context, s.params, r, s.editorParams);
+        H.value = h.uploadUrl, A.value = h.downloadUrl;
       }
     }, {
       immediate: !0,
       deep: !0
     });
-    const ue = (o, h) => {
+    const me = (r, h) => {
       if (h)
         return !0;
-    }, ee = (o) => o;
-    Ee(() => {
-      const o = f.value;
-      o != null && o.destroy();
+    }, ee = (r) => r;
+    ke(() => {
+      const r = p.value;
+      r != null && r.destroy();
     });
-    let ie;
-    const $e = async () => {
-      var o;
+    let re;
+    const je = async () => {
+      var r;
       if (s.deService) {
-        const h = await import("@ibiz-template-plugin/ai-chat"), E = h.chat || h.default.chat;
-        ie = E;
-        const T = E.create({
-          question: async ($) => {
-            var nt;
-            const D = Se();
-            return await ((nt = s.deService) == null ? void 0 : nt.aiChatSse((R) => {
-              if (ibiz.log.info("aiChatSse", R), R.actionstate === 20 && R.actionresult)
+        const h = await import("@ibiz-template-plugin/ai-chat"), S = h.chat || h.default.chat;
+        re = S;
+        const T = S.create({
+          question: async (j) => {
+            var at;
+            const R = Me();
+            return await ((at = s.deService) == null ? void 0 : at.aiChatSse((U) => {
+              if (ibiz.log.info("aiChatSse", U), U.actionstate === 20 && U.actionresult)
                 T.addMessage({
-                  messageid: D,
-                  state: R.actionstate,
+                  messageid: R,
+                  state: U.actionstate,
                   type: "DEFAULT",
                   role: "ASSISTANT",
-                  content: R.actionresult
+                  content: U.actionresult
                 });
-              else if (R.actionstate === 30 && R.actionresult) {
-                const St = JSON.parse(R.actionresult), {
-                  choices: Ye
+              else if (U.actionstate === 30 && U.actionresult) {
+                const St = JSON.parse(U.actionresult), {
+                  choices: Ge
                 } = St;
-                Ye && Ye.length > 0 && T.replaceMessage({
-                  messageid: D,
-                  state: R.actionstate,
+                Ge && Ge.length > 0 && T.replaceMessage({
+                  messageid: R,
+                  state: U.actionstate,
                   type: "DEFAULT",
                   role: "ASSISTANT",
-                  content: Ye[0].content || ""
+                  content: Ge[0].content || ""
                 });
               } else
-                R.actionstate === 40 && T.replaceMessage({
-                  messageid: D,
-                  state: R.actionstate,
+                U.actionstate === 40 && T.replaceMessage({
+                  messageid: R,
+                  state: U.actionstate,
                   type: "ERROR",
                   role: "ASSISTANT",
-                  content: R.actionresult
+                  content: U.actionresult
                 });
             }, s.context, {}, {
-              messages: $
+              messages: j
             })), T.addMessage({
-              messageid: D,
+              messageid: R,
               state: 10,
               type: "DEFAULT",
               role: "ASSISTANT",
               content: ""
             }), !0;
           },
-          action: ($, D) => {
-            $ === "backfill" && (y.value ? M.value = D.content : t("change", D.content), K.value = !0);
+          action: (j, R) => {
+            j === "backfill" && (y.value ? M.value = R.content : t("change", R.content), Z.value = !0);
           },
           closed: () => {
-            f.value && f.value.focus(!0);
+            p.value && p.value.focus(!0);
           }
-        }), L = await ((o = s.deService) == null ? void 0 : o.aiChatHistory(s.context, {}));
-        L.data && Array.isArray(L.data) && L.data.forEach(($) => {
-          const D = {
-            messageid: Se(),
+        }), P = await ((r = s.deService) == null ? void 0 : r.aiChatHistory(s.context, {}));
+        P.data && Array.isArray(P.data) && P.data.forEach((j) => {
+          const R = {
+            messageid: Me(),
             state: 30,
             type: "DEFAULT",
-            role: $.role,
-            content: $.content
+            role: j.role,
+            content: j.content
           };
-          T.addMessage(D);
+          T.addMessage(R);
         });
       }
-    }, q = {
-      toolbarKeys: zt
+    }, J = {
+      toolbarKeys: jt
     };
-    s.chatCompletion && (q.insertKeys = {
+    s.chatCompletion && (J.insertKeys = {
       index: 60,
       keys: ["|", "aichart"]
-    }), s.insertKeys.length > 0 && q.toolbarKeys && s.insertKeys.forEach((o) => {
-      o.keys && o.keys.forEach((h, E) => {
-        q.toolbarKeys.includes(h) || q.toolbarKeys.splice(o.index + E, 0, h);
+    }), s.insertKeys.length > 0 && J.toolbarKeys && s.insertKeys.forEach((r) => {
+      r.keys && r.keys.forEach((h, S) => {
+        J.toolbarKeys.includes(h) || J.toolbarKeys.splice(r.index + S, 0, h);
       });
     });
-    const xe = {
+    const Le = {
       placeholder: s.placeHolder,
-      readOnly: y.value ? b.value : a.readonly,
+      readOnly: y.value ? w.value : i.readonly,
       MENU_CONF: {
         // 图片上传
         uploadImage: {
           // 上传地址
-          server: A.value,
+          server: H.value,
           // form-data fieldName ，默认值 'wangeditor-uploaded-image'
           fieldName: "file",
           // 单个文件的最大体积限制，默认为 2M
@@ -721,200 +731,205 @@ const wt = /* @__PURE__ */ ke({
           // 选择文件时的类型限制，默认为 ['image/*'] 。如不想限制，则设置为 []
           allowedFileTypes: [],
           // 自定义增加 http  header
-          headers: F.value,
+          headers: N.value,
           // 跨域是否传递 cookie ，默认为 false
           withCredentials: !0,
           // 上传之前触发
-          onBeforeUpload(o) {
-            return o;
+          onBeforeUpload(r) {
+            return r;
           },
           // 上传进度的回调函数
-          onProgress(o) {
-            console.log("progress", o);
+          onProgress(r) {
+            console.log("progress", r);
           },
           // 单个文件上传成功之后
-          onSuccess(o, h) {
-            console.log("".concat(o.name, " 上传成功"), h);
+          onSuccess(r, h) {
+            console.log("".concat(r.name, " 上传成功"), h);
           },
           // 单个文件上传失败
-          onFailed(o, h) {
-            console.log("".concat(o.name, " 上传失败"), h);
+          onFailed(r, h) {
+            console.log("".concat(r.name, " 上传失败"), h);
           },
           // 上传错误，或者触发 timeout 超时
-          onError(o, h, E) {
-            console.log("".concat(o.name, " 上传出错"), h, E);
+          onError(r, h, S) {
+            console.log("".concat(r.name, " 上传出错"), h, S);
           },
           // 自定义插入图片
-          async customInsert(o, h) {
-            const E = N.value.replace("%fileId%", o.id), T = o.filename;
-            h(E, T, "");
+          async customInsert(r, h) {
+            const S = A.value.replace("%fileId%", r.id), T = r.filename;
+            h(S, T, "");
           }
         },
         // 插入链接
         insertLink: {
-          checkLink: ue,
+          checkLink: me,
           // 也支持 async 函数
           parseLinkUrl: ee
           // 也支持 async 函数
         },
         // 更新链接
         editLink: {
-          checkLink: ue,
+          checkLink: me,
           // 也支持 async 函数
           parseLinkUrl: ee
           // 也支持 async 函数
         }
-      }
-    };
-    Ee(() => {
-      const o = f.value;
-      o != null && o.destroy();
-    });
-    const he = async (o) => {
-      if (s.maxHeight) {
-        const h = o.getEditableContainer();
-        B.value = h.offsetHeight > s.maxHeight;
-      }
-    }, Ve = async (o) => {
-      const h = o.src;
-      if (b.value)
-        Pe(h);
-      else {
-        const E = oe.nodes(f.value, {
-          match: (T) => !!(mt.isElement(T) && T.type === "image"),
-          universal: !0
-        });
-        if (E)
-          for (const T of E) {
-            const [L] = T;
-            L.type === "image" && h.endsWith(L.src) && Pe(L.src);
-          }
-      }
-    }, Pe = async (o) => {
-      if (I.value = o, ae.value = [o], await U(), S.value) {
-        const {
-          container: h
-        } = S.value.$refs;
-        h && h.children[0].click();
-      }
-    }, me = (o) => {
-      const h = o.getEditableContainer();
-      h && h.querySelectorAll("img").forEach((T) => {
-        T.onload = () => {
-          he(o);
-        }, T.onclick = (L) => {
-          const $ = L.target;
-          $ && Ve($);
-        };
-      });
-    }, Le = (o) => {
-      if (S.value) {
-        const {
-          container: h
-        } = S.value.$refs;
-        if (h) {
-          const E = h.querySelector(".el-image-viewer__wrapper");
-          E == null || E[o]("keydown", Te);
+      },
+      hoverbarKeys: {
+        link: {
+          menuKeys: ["editLink", "unLink", "customViewLink"]
         }
       }
-    }, Te = async (o) => {
-      (o.key === "Escape" || o.keyCode === 27) && (o.stopPropagation(), o.preventDefault(), await U(), Le("removeEventListener"), ae.value = []);
-    }, Ae = async () => {
-      await U(), Le("addEventListener");
-    }, fe = () => {
-      let o = M.value;
-      if (o = o.replace(Ge, "").replaceAll('class="rich-html-table"', "").replace(/<table/g, '<table class="rich-html-table"'), s.renderMode === "JSON") {
-        const h = f.value;
-        o = s.toJson(h.children);
+    };
+    ke(() => {
+      const r = p.value;
+      r != null && r.destroy();
+    });
+    const fe = async (r) => {
+      if (s.maxHeight) {
+        const h = r.getEditableContainer();
+        B.value = h.offsetHeight > s.maxHeight;
       }
-      a.value !== o && t("change", o);
-    }, He = gt(fe, s.saveInterval), pe = (o) => {
-      f.value = o, s.onCreated(f.value, a.data, q);
+    }, Ve = async (r) => {
+      const h = r.src;
+      if (w.value)
+        Pe(h);
+      else {
+        const S = ce.nodes(p.value, {
+          match: (T) => !!(ft.isElement(T) && T.type === "image"),
+          universal: !0
+        });
+        if (S)
+          for (const T of S) {
+            const [P] = T;
+            P.type === "image" && h.endsWith(P.src) && Pe(P.src);
+          }
+      }
+    }, Pe = async (r) => {
+      if (O.value = r, oe.value = [r], await z(), E.value) {
+        const {
+          container: h
+        } = E.value.$refs;
+        h && h.children[0].click();
+      }
+    }, pe = (r) => {
+      const h = r.getEditableContainer();
+      h && h.querySelectorAll("img").forEach((T) => {
+        T.onload = () => {
+          fe(r);
+        }, T.onclick = (P) => {
+          const j = P.target;
+          j && Ve(j);
+        };
+      });
+    }, Te = (r) => {
+      if (E.value) {
+        const {
+          container: h
+        } = E.value.$refs;
+        if (h) {
+          const S = h.querySelector(".el-image-viewer__wrapper");
+          S == null || S[r]("keydown", He);
+        }
+      }
+    }, He = async (r) => {
+      (r.key === "Escape" || r.keyCode === 27) && (r.stopPropagation(), r.preventDefault(), await z(), Te("removeEventListener"), oe.value = []);
+    }, Fe = async () => {
+      await z(), Te("addEventListener");
+    }, ve = () => {
+      let r = M.value;
+      if (r = r.replace(Xe, ""), s.renderMode === "JSON") {
+        const h = p.value;
+        r = s.toJson(h.children);
+      }
+      i.value !== r && t("change", r);
+    }, Ne = yt(ve, s.saveInterval), ge = (r) => {
+      p.value = r, s.onCreated(p.value, i.data, J);
       const h = s.parseNode(M.value);
-      o.setHtml(h), s.onLineEditing(f.value);
-      let E;
-      o.on("modalOrPanelShow", (T) => {
-        E = new Ct(T, m.value);
-      }), o.on("modalOrPanelHide", () => {
-        E && E.destroy();
-      }), o.on("aiClick", () => {
-        $e();
+      r.setHtml(h), s.onLineEditing(p.value);
+      let S;
+      r.on("modalOrPanelShow", (T) => {
+        S = new bt(T, m.value);
+      }), r.on("modalOrPanelHide", () => {
+        S && S.destroy();
+      }), r.on("aiClick", () => {
+        je();
       });
-    }, ve = (o) => {
-      const h = o.getHtml().replace(Ge, "");
-      he(o), me(o);
-      let E = h === "<p><br></p>" ? "" : h;
-      E === a.value || E === "" && pt(a.value) || (E = E.replaceAll('class="rich-html-table"', "").replace(/<table/g, '<table class="rich-html-table"'), !y.value && o.isFocused() && (s.emitMode === "AUTOMATIC" ? He() : fe()), s.evt.emit("onChange", {
-        eventArg: E
+    }, ye = (r) => {
+      const h = r.getHtml().replace(Xe, "");
+      fe(r), pe(r);
+      const S = h === "<p><br></p>" ? "" : h;
+      S === i.value || S === "" && vt(i.value) || (!y.value && r.isFocused() && (s.emitMode === "AUTOMATIC" ? Ne() : ve()), s.evt.emit("onChange", {
+        eventArg: S
       }));
-    }, ge = (o) => {
-    }, Fe = (o) => {
+    }, we = (r) => {
+    }, Ae = (r) => {
       t("focus"), s.evt.emit("onFocus", {
-        eventArg: a.value
+        eventArg: i.value
       });
-    }, Ne = (o) => {
+    }, Ie = (r) => {
       t("blur"), s.evt.emit("onBlur", {
-        eventArg: a.value
+        eventArg: i.value
       });
-    }, te = (o, h) => {
-      alert("【自定义提示】".concat(h, " - ").concat(o));
-    }, se = (o, h, E) => {
-      E(!0);
-    }, qe = (o) => {
-      const h = f.value;
-      h != null && h.insertText(o);
-    }, je = () => {
-      f.value != null;
-    }, Z = () => {
-      const o = f.value;
-      o != null && o.disable();
-    }, re = () => {
-      const o = f.value;
-      o != null && o.enable();
+    }, te = (r, h) => {
+      alert("【自定义提示】".concat(h, " - ").concat(r));
+    }, se = (r, h, S) => {
+      S(!0);
+    }, qe = (r) => {
+      const h = p.value;
+      h != null && h.insertText(r);
     }, Je = () => {
-      It(0, () => {
+      p.value != null;
+    }, Q = () => {
+      const r = p.value;
+      r != null && r.disable();
+    }, le = () => {
+      const r = p.value;
+      r != null && r.enable();
+    }, Ke = () => {
+      Dt(0, () => {
         if (n.value && u.value) {
-          const o = n.value.offsetHeight;
+          const r = n.value.offsetHeight;
           l = new ResizeObserver((h) => {
             const {
-              height: E
+              height: S
             } = h[0].contentRect;
-            if (E !== d) {
+            if (S !== d) {
               const T = {
-                height: "".concat(o - h[0].contentRect.height, "px")
+                height: "".concat(r - h[0].contentRect.height, "px")
               };
-              i.value = e.cssVarBlock(T), d = E;
+              a.value = e.cssVarBlock(T), d = S;
             }
           }), l.observe(u.value.selector);
         }
       });
-    }, Ke = () => {
-      var o, h;
-      if (a.value) {
-        const E = a.value.indexOf("</p>");
-        if (E >= 0) {
-          const T = (o = f.value.selection.anchor) == null ? void 0 : o.offset, L = (h = f.value.selection.anchor) == null ? void 0 : h.path;
-          T === 0 && L.length > 0 && L[0] === 0 && f.value.move(E - 3);
+    }, _e = () => {
+      var r, h;
+      if (i.value) {
+        const S = i.value.indexOf("</p>");
+        if (S >= 0) {
+          const T = (r = p.value.selection.anchor) == null ? void 0 : r.offset, P = (h = p.value.selection.anchor) == null ? void 0 : h.path;
+          T === 0 && P.length > 0 && P[0] === 0 && p.value.move(S - 3);
         }
       }
-    }, ye = () => {
-      if (b.value = !b.value, !b.value)
-        re(), f.value.focus(), Ke(), P.value = !0;
+    }, Ce = () => {
+      if (w.value = !w.value, !w.value)
+        le(), p.value.focus(), _e(), x.value = !0;
       else {
         if (m.value) {
           const {
-            box: o
+            box: r
           } = m.value.$refs;
-          o.scroll(0, 0);
+          r.scroll(0, 0);
         }
-        Z();
+        Q();
       }
-    }, be = () => p("div", {
+    }, be = () => f("div", {
       class: e.be("message", "message-content")
-    }, [p("p", null, [j("确定要取消编辑吗？")]), p("p", {
+    }, [f("p", null, [K("确定要取消编辑吗？")]), f("p", {
       class: e.bem("message", "message-content", "message-tip")
-    }, [j("取消编辑将无法保存修改的内容，且不能找回。")])]), _e = () => {
-      a.value !== M.value ? yt({
+    }, [K("取消编辑将无法保存修改的内容，且不能找回。")])]), Ze = () => {
+      i.value !== M.value ? wt({
         title: "确认取消",
         type: "warning",
         customClass: e.b("message"),
@@ -923,170 +938,173 @@ const wt = /* @__PURE__ */ ke({
         cancelButtonClass: e.be("message", "message-cancel"),
         confirmButtonClass: e.be("message", "message-comfire")
       }).then(() => {
-        if (a.value) {
-          const o = s.parseNode(a.value);
-          M.value = o;
+        if (i.value) {
+          const r = s.parseNode(i.value);
+          M.value = r;
         } else
           M.value = "";
-        ye();
+        Ce();
       }).catch(() => {
-        f.value.focus();
-      }) : ye();
-    }, Ze = () => {
-      b.value = !0, f.value.disable();
-      const o = M.value.replace(Ge, "").replaceAll('class="rich-html-table"', "").replace(/<table/g, '<table class="rich-html-table"');
-      s.renderMode !== "JSON" && t("change", o), w.value && (w.value = !1);
-    }, We = () => y.value && s.emitMode !== "AUTOMATIC" ? p("div", {
+        p.value.focus();
+      }) : Ce();
+    }, We = () => {
+      w.value = !0, p.value.disable();
+      const r = M.value.replace(Xe, "");
+      s.renderMode !== "JSON" && t("change", r), b.value && (b.value = !1);
+    }, Qe = () => y.value && s.emitMode !== "AUTOMATIC" ? f("div", {
       class: [e.b("footer"), {
-        [e.b("footer-dialog")]: w.value
+        [e.b("footer-dialog")]: b.value
       }]
-    }, [p("div", {
+    }, [f("div", {
       class: e.be("footer", "cancel"),
-      onClick: () => _e()
-    }, [j("取消")]), p("div", {
-      class: e.be("footer", "save"),
       onClick: () => Ze()
-    }, [j("保存")])]) : null, Ce = () => {
-      w.value = !w.value, P.value = !w.value, U(() => {
-        b.value ? Z() : (re(), f.value.focus());
+    }, [K("取消")]), f("div", {
+      class: e.be("footer", "save"),
+      onClick: () => We()
+    }, [K("保存")])]) : null, Ee = () => {
+      b.value = !b.value, x.value = !b.value, z(() => {
+        w.value ? Q() : (le(), p.value.focus());
       });
-    }, Qe = () => C.value ? w.value ? p("i", {
+    }, Ye = () => C.value ? b.value ? f("i", {
       class: "fa fa-compress",
       "aria-hidden": "true",
-      onClick: () => Ce()
-    }, null) : p("i", {
+      title: "缩小",
+      onClick: () => Ee()
+    }, null) : f("i", {
       class: "fa fa-expand",
       "aria-hidden": "true",
-      onClick: () => Ce()
-    }, null) : null, c = () => y.value || C.value ? p("div", {
+      title: "放大",
+      onClick: () => Ee()
+    }, null) : null, c = () => y.value || C.value ? f("div", {
       class: e.b("custom-toolbar")
-    }, [y.value && O.value && b.value ? p("i", {
+    }, [y.value && I.value && w.value ? f("i", {
       class: "fa fa-edit",
       "aria-hidden": "true",
-      onClick: () => ye()
-    }, null) : null, Qe()]) : null, v = () => B.value ? P.value ? p("div", {
+      title: "编辑",
+      onClick: () => Ce()
+    }, null) : null, Ye()]) : null, v = () => B.value ? x.value ? f("div", {
       class: e.e("toggle"),
       onClick: () => {
-        P.value = !P.value;
+        x.value = !x.value;
       }
-    }, [j("展开更多 "), p(V("ion-icon"), {
+    }, [K("展开更多 "), f($("ion-icon"), {
       name: "arrow-down-outline"
-    }, null)]) : p("div", {
+    }, null)]) : f("div", {
       class: e.e("toggle"),
       onClick: () => {
-        P.value = !P.value;
+        x.value = !x.value;
       }
-    }, [j("收起更多 "), p(V("ion-icon"), {
+    }, [K("收起更多 "), f($("ion-icon"), {
       name: "arrow-up-outline"
-    }, null)]) : null, x = () => {
-      const o = {
-        ...i.value
+    }, null)]) : null, L = () => {
+      const r = {
+        ...a.value
       };
-      return P.value && s.maxHeight && Object.assign(o, {
+      return x.value && s.maxHeight && Object.assign(r, {
         maxHeight: "".concat(s.maxHeight, "px")
-      }), p("div", {
-        class: [e.b("content"), e.is("readonly", b.value)],
+      }), f("div", {
+        class: [e.b("content"), e.is("readonly", w.value)],
         ref: "htmlContent",
-        style: o
-      }, [p(ht, {
+        style: r
+      }, [f(mt, {
         ref: "toolbarRef",
-        editor: f.value,
-        "default-config": q,
+        editor: p.value,
+        "default-config": J,
         mode: "default",
         class: e.b("toolbar")
-      }, null), p(ut, {
+      }, null), f(ht, {
         ref: "htmlRef",
         class: e.b("editor"),
         modelValue: M.value,
         "onUpdate:modelValue": (h) => M.value = h,
-        "default-config": xe,
+        "default-config": Le,
         mode: "default",
-        onOnCreated: pe,
-        onOnChange: ve,
-        onOnDestroyed: ge,
-        onOnFocus: Fe,
-        onOnBlur: Ne,
+        onOnCreated: ge,
+        onOnChange: ye,
+        onOnDestroyed: we,
+        onOnFocus: Ae,
+        onOnBlur: Ie,
         oncustomAlert: te,
         oncustomPaste: se
       }, null)]);
-    }, H = () => p(V("el-image"), {
+    }, F = () => f($("el-image"), {
       class: e.e("preview"),
       ref: "previewRef",
       "zoom-rate": 1.1,
-      src: I.value,
-      "preview-src-list": ae.value,
+      src: O.value,
+      "preview-src-list": oe.value,
       "hide-on-click-modal": !0,
-      onShow: Ae,
+      onShow: Fe,
       fit: "cover"
     }, null);
-    return ze(() => {
-      k.value && (X = Ft(k, async () => {
-        f.value && f.value.emit("clickOutside");
-      })), Je(), le(() => a.value, (o, h) => {
-        o !== h && (typeof a.value == "string" || o == null) && (o == null ? M.value = "" : M.value || (s.renderMode === "JSON" ? M.value = s.jsonToHtml(o) : M.value = o), K.value && (f.value && U(() => {
-          f.value.focus(!0);
-        }), K.value = !1));
+    return Be(() => {
+      k.value && (X = Nt(k, async () => {
+        p.value && p.value.emit("clickOutside");
+      })), Ke(), de(() => i.value, (r, h) => {
+        r !== h && (typeof i.value == "string" || r == null) && (r == null ? M.value = "" : s.renderMode === "JSON" ? M.value = s.jsonToHtml(r) : M.value = r, Z.value && (p.value && z(() => {
+          p.value.focus(!0);
+        }), Z.value = !1));
       }, {
         immediate: !0
-      }), le(() => a.disabled, (o, h) => {
-        o !== h && (o === !0 ? Z() : re());
+      }), de(() => i.disabled, (r, h) => {
+        r !== h && (r === !0 ? Q() : le());
       }, {
         immediate: !0
       });
     }), xt(() => {
-      l && l.disconnect(), X && X.stop && X.stop(), ie && ie.close();
+      l && l.disconnect(), X && X.stop && X.stop(), re && re.close();
     }), {
       ns: e,
-      editorRef: f,
-      previewRef: S,
+      editorRef: p,
+      previewRef: E,
       containerRef: k,
       htmlRef: m,
       mode: "default",
       valueHtml: M,
-      toolbarConfig: q,
-      editorConfig: xe,
-      handleCreated: pe,
-      handleChange: ve,
-      handleDestroyed: ge,
-      handleFocus: Fe,
-      handleBlur: Ne,
+      toolbarConfig: J,
+      editorConfig: Le,
+      handleCreated: ge,
+      handleChange: ye,
+      handleDestroyed: we,
+      handleFocus: Ae,
+      handleBlur: Ie,
       customAlert: te,
       customPaste: se,
       insertText: qe,
-      printHtml: je,
-      disable: Z,
-      enable: re,
+      printHtml: Je,
+      disable: Q,
+      enable: le,
       renderHeaserToolbar: c,
-      renderEditorContent: x,
+      renderEditorContent: L,
       renderToggle: v,
-      renderFooter: We,
+      renderFooter: Qe,
       htmlContent: n,
       hasEnableEdit: y,
-      cssVars: i,
+      cssVars: a,
       toolbarRef: u,
-      isFullScreen: w,
-      readonlyState: b,
-      collapse: P,
-      changeFullScreenState: Ce,
-      renderPreview: H
+      isFullScreen: b,
+      readonlyState: w,
+      collapse: x,
+      changeFullScreenState: Ee,
+      renderPreview: F
     };
   },
   render() {
-    return this.isFullScreen ? p(V("el-dialog"), {
+    return this.isFullScreen ? f($("el-dialog"), {
       modelValue: this.isFullScreen,
-      "onUpdate:modelValue": (a) => this.isFullScreen = a,
+      "onUpdate:modelValue": (i) => this.isFullScreen = i,
       width: "80%",
       top: "10vh",
       class: this.ns.b("dialog-full-screen"),
       onClose: () => this.changeFullScreenState()
     }, {
-      default: () => [p("div", {
+      default: () => [f("div", {
         ref: "containerRef",
         class: [this.ns.b(), this.ns.b("collapse"), {
           [this.ns.b("editor-readonly")]: this.readonlyState
         }]
       }, [this.renderHeaserToolbar(), this.renderEditorContent(), this.hasEnableEdit && !this.readonlyState ? this.renderFooter() : null])]
-    }) : p("div", {
+    }) : f("div", {
       ref: "containerRef",
       class: [this.ns.b(), this.ns.is("allow-collapse", !0), {
         [this.ns.b("editor-readonly")]: this.readonlyState
@@ -1094,7 +1112,7 @@ const wt = /* @__PURE__ */ ke({
     }, [this.renderHeaserToolbar(), this.renderEditorContent(), this.readonlyState ? this.renderToggle() : null, this.hasEnableEdit && !this.readonlyState ? this.renderFooter() : null, this.renderPreview()]);
   }
 });
-class ce {
+class ie {
   /**
    * 获取主题
    * @returns
@@ -1132,10 +1150,10 @@ class ce {
       if (this.isChineseCharacter(t))
         e = t.charCodeAt(u) + ((e << 5) - e), e = e & e;
       else {
-        const f = t.charCodeAt(u);
-        e += f.toString(16);
+        const p = t.charCodeAt(u);
+        e += p.toString(16);
       }
-    const s = String(e).substring(0, 6), n = parseInt(s.substring(0, 2), 16), i = parseInt(s.substring(2, 4), 16), l = parseInt(s.substring(4, 6), 16), d = "#".concat(n.toString(16).padStart(2, "0")).concat(i.toString(16).padStart(2, "0")).concat(l.toString(16).padStart(2, "0"));
+    const s = String(e).substring(0, 6), n = parseInt(s.substring(0, 2), 16), a = parseInt(s.substring(2, 4), 16), l = parseInt(s.substring(4, 6), 16), d = "#".concat(n.toString(16).padStart(2, "0")).concat(a.toString(16).padStart(2, "0")).concat(l.toString(16).padStart(2, "0"));
     return d === "#FFFFFF" && this.getThemeVar() || d;
   }
   /**
@@ -1148,46 +1166,64 @@ class ce {
       return t;
     if (t && t.toString().length >= 2) {
       if (this.hasChineseAndEnglish(t)) {
-        const i = t.split("").find((d) => /[a-zA-Z]/.test(d)) || "", l = t.split("").find((d) => /[\u4E00-\u9FA5]/.test(d)) || "";
-        return "".concat(i).concat(l).toLowerCase();
+        const a = t.split("").find((d) => /[a-zA-Z]/.test(d)) || "", l = t.split("").find((d) => /[\u4E00-\u9FA5]/.test(d)) || "";
+        return "".concat(a).concat(l).toLowerCase();
       }
-      return /[a-zA-Z]/.test(t) ? t.split("").filter((i) => /[a-zA-Z]/.test(i)).slice(0, 2).join("").toUpperCase() : /[\u4E00-\u9FA5]/.test(t) ? t.split("").filter((i) => /[\u4E00-\u9FA5]/.test(i)).slice(-2).join("") : t.replaceAll(" ", "").substring(0, 2);
+      return /[a-zA-Z]/.test(t) ? t.split("").filter((a) => /[a-zA-Z]/.test(a)).slice(0, 2).join("").toUpperCase() : /[\u4E00-\u9FA5]/.test(t) ? t.split("").filter((a) => /[\u4E00-\u9FA5]/.test(a)).slice(-2).join("") : t.replaceAll(" ", "").substring(0, 2);
     }
   }
+  /**
+   * 解析emoji表情
+   *
+   * @param {string} value
+   * @return {*}  {string}
+   */
+  static getEmojiCustomHtml(t) {
+    return t.replaceAll(/{"emoji":"(.+?)"}/g, (e, s) => {
+      const n = decodeURIComponent(atob(s));
+      return '<span class="emoji-tag">'.concat(n, "</span>");
+    }).replaceAll(
+      /<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g,
+      (e, s) => {
+        const n = decodeURIComponent(atob(s));
+        return "<span data-w-e-type=\"emoji\" class='emoji'>".concat(n, "</span>");
+      }
+    );
+  }
 }
-function at(a, t) {
-  a.data == null && (a.data = {});
-  const e = a.data;
+function ot(i, t) {
+  i.data == null && (i.data = {});
+  const e = i.data;
   e.style == null && (e.style = {}), Object.assign(e.style, t);
 }
-function $t(a, t) {
-  const { backgroundColor: e, bgColor: s } = a;
+function Vt(i, t) {
+  const { backgroundColor: e, bgColor: s } = i;
   let n = t;
-  return e && at(n, { backgroundColor: e }), s && at(n, { backgroundColor: s }), n;
+  return e && ot(n, { backgroundColor: e }), s && ot(n, { backgroundColor: s }), n;
 }
-class W {
+class Y {
   /**
    * 添加标记
    * @param editor 编辑器
    * @param op 标记信息
    */
   static addMarks(t, e) {
-    const { selection: s, mark: n } = e, i = (d, u) => {
-      if (!we.isText(d))
+    const { selection: s, mark: n } = e, a = (d, u) => {
+      if (!Se.isText(d))
         return !1;
-      const [f, m] = oe.parent(t, u);
-      return !t.isVoid(f);
+      const [p, m] = ce.parent(t, u);
+      return !t.isVoid(p);
     };
-    if (Ue.isExpanded(s))
+    if (ze.isExpanded(s))
       Oe.setNodes(t, n, {
-        match: i,
+        match: a,
         at: s,
         split: !0,
         voids: !0
       });
     else {
       const d = {
-        ...oe.marks(t) || {},
+        ...ce.marks(t) || {},
         ...n
       };
       t.marks = d;
@@ -1199,21 +1235,21 @@ class W {
    * @param op 标记信息
    */
   static removeMarks(t, e) {
-    const { selection: s, keys: n } = e, i = (d, u) => {
-      if (!we.isText(d))
+    const { selection: s, keys: n } = e, a = (d, u) => {
+      if (!Se.isText(d))
         return !1;
-      const [f, m] = oe.parent(t, u);
-      return !t.isVoid(f);
+      const [p, m] = ce.parent(t, u);
+      return !t.isVoid(p);
     };
-    if (Ue.isExpanded(s))
+    if (ze.isExpanded(s))
       Oe.unsetNodes(t, n, {
-        match: i,
+        match: a,
         at: s,
         split: !0,
         voids: !0
       });
     else {
-      const d = { ...oe.marks(t) || {} };
+      const d = { ...ce.marks(t) || {} };
       n.forEach((u) => {
         delete d[u];
       }), t.marks = d;
@@ -1225,34 +1261,34 @@ class W {
    * @param options
    */
   static movePersNode(t, e) {
-    const { param: s, node: n } = e, { id: i, cursor: l, preCursor: d } = s, { position: u, newPosition: f, selectionRange: m } = l;
+    const { param: s, node: n } = e, { id: a, cursor: l, preCursor: d } = s, { position: u, newPosition: p, selectionRange: m } = l;
     if (!m && (d != null && d.selectionRange)) {
-      const S = d.selectionRange;
+      const E = d.selectionRange;
       this.removeMarks(t, {
         keys: ["backgroundColor"],
         selection: {
-          anchor: this.calcPointByOffset(t, S.anchor),
-          focus: this.calcPointByOffset(t, S.focus)
+          anchor: this.calcPointByOffset(t, E.anchor),
+          focus: this.calcPointByOffset(t, E.focus)
         }
       });
     }
     if (u) {
-      const k = Ie.parent(t, u.path).children.findIndex((M) => M.id === i);
+      const k = De.parent(t, u.path).children.findIndex((M) => M.id === a);
       k > -1 && Oe.removeNodes(t, { at: [u.path[0], k] });
     }
-    if (f) {
+    if (p) {
       m && this.addMarks(t, {
         mark: {
-          backgroundColor: ce.stringToHexColor(i)
+          backgroundColor: ie.stringToHexColor(a)
         },
         selection: {
           anchor: this.calcPointByOffset(t, m.anchor),
           focus: this.calcPointByOffset(t, m.focus)
         }
       });
-      const S = this.calcPointByOffset(t, f);
+      const E = this.calcPointByOffset(t, p);
       Oe.insertNodes(t, [n], {
-        at: S
+        at: E
       });
     }
   }
@@ -1262,12 +1298,12 @@ class W {
    * @param item
    */
   static calcPointByOffset(t, e) {
-    const s = Ie.parent(t, e.path);
-    let n = 0, i = 0;
+    const s = De.parent(t, e.path);
+    let n = 0, a = 0;
     s.children.forEach((d, u) => {
-      we.isText(d) && i < e.offset && (i += d.text.length || 1, n = u);
+      Se.isText(d) && a < e.offset && (a += d.text.length || 1, n = u);
     });
-    const l = s.children[n].text.length - (i - e.offset);
+    const l = s.children[n].text.length - (a - e.offset);
     return { path: [e.path[0], n], offset: l };
   }
   /**
@@ -1277,25 +1313,25 @@ class W {
    */
   static calcOffsetByPoint(t, e) {
     let s = e.offset;
-    const n = Ie.parent(t, e.path), i = Ie.get(t, e.path);
-    return we.isText(i) && i.text.length === 0 && s === 0 && (s = 1), n.children.forEach((l, d) => {
-      we.isText(l) && d < e.path[1] && (s += l.text.length || 1);
+    const n = De.parent(t, e.path), a = De.get(t, e.path);
+    return Se.isText(a) && a.text.length === 0 && s === 0 && (s = 1), n.children.forEach((l, d) => {
+      Se.isText(l) && d < e.path[1] && (s += l.text.length || 1);
     }), s;
   }
 }
-const Xe = /* @__PURE__ */ ke({
+const et = /* @__PURE__ */ ue({
   name: "HtmlComment",
-  props: tt(),
-  emits: st(),
-  setup(a, {
+  props: it(),
+  emits: At(),
+  setup(i, {
     emit: t
   }) {
-    const e = Me("html-comment"), s = a.controller, n = g(), i = g(), l = g(!1), d = () => {
+    const e = he("html-comment"), s = i.controller, n = g(), a = g(), l = g(!1), d = () => {
       s.collapsed.value = !1, t("focus");
     }, u = (k) => {
       t("change", k), k && s.collapsed.value && (s.collapsed.value = !1);
-    }, f = () => {
-      if (t("blur"), a.value)
+    }, p = () => {
+      if (t("blur"), i.value)
         return null;
       s.collapsed.value = !0;
     }, m = () => {
@@ -1305,31 +1341,31 @@ const Xe = /* @__PURE__ */ ke({
       ns: e,
       c: s,
       comment: n,
-      editorRef: i,
+      editorRef: a,
       onChange: u,
       onFocus: d,
-      onBlur: f,
+      onBlur: p,
       renderAvatar: () => {
         if (s.userAvatar && !l.value) {
-          const F = JSON.parse(s.userAvatar);
-          if (F.length === 0)
+          const N = JSON.parse(s.userAvatar);
+          if (N.length === 0)
             return null;
           const {
-            downloadUrl: A
-          } = ibiz.util.file.calcFileUpDownUrl(s.context, s.params, a.data, s.editorParams), N = A.replace("%fileId%", F[0].id);
-          return p("div", {
+            downloadUrl: H
+          } = ibiz.util.file.calcFileUpDownUrl(s.context, s.params, i.data, s.editorParams), A = H.replace("%fileId%", N[0].id);
+          return f("div", {
             class: e.e("avatar-name")
-          }, [p("img", {
-            src: N,
+          }, [f("img", {
+            src: A,
             alt: "",
             onError: m
           }, null)]);
         }
-        const k = ce.stringToHexColor(s.context.srfusername), M = ce.avatarName(s.context.srfusername);
-        return s.context.srfusername ? p("div", {
+        const k = ie.stringToHexColor(s.context.srfusername), M = ie.avatarName(s.context.srfusername);
+        return s.context.srfusername ? f("div", {
           class: e.e("avatar-name"),
           style: "background: ".concat(k, ";")
-        }, [M]) : p(V("el-avatar"), {
+        }, [M]) : f($("el-avatar"), {
           class: e.e("avatar"),
           src: "./assets/images/user-avatar.png"
         }, null);
@@ -1337,7 +1373,7 @@ const Xe = /* @__PURE__ */ ke({
     };
   },
   render() {
-    return this.c.mode === "default" ? p(Bt, {
+    return this.c.mode === "default" ? f(st, {
       controller: this.c,
       data: this.data,
       value: this.value,
@@ -1345,13 +1381,13 @@ const Xe = /* @__PURE__ */ ke({
       onChange: this.onChange,
       onFocus: this.onFocus,
       onBlur: this.onBlur
-    }, null) : p("div", {
+    }, null) : f("div", {
       ref: "comment",
       class: [this.ns.b(), this.ns.is("collapse", this.c.collapsed.value)],
       style: {
         height: "".concat(this.c.collapsed.value ? this.c.minHeight : this.c.maxHeight, "px")
       }
-    }, [this.renderAvatar(), p(wt, {
+    }, [this.renderAvatar(), f($e, {
       controller: this.c,
       data: this.data,
       value: this.value,
@@ -1361,44 +1397,44 @@ const Xe = /* @__PURE__ */ ke({
     }, null)]);
   }
 });
-function it(a, t, e, s, n) {
-  const i = t === void 0 ? void 0 : t.key;
-  return { sel: a, data: t, children: e, text: s, elm: n, key: i };
+function rt(i, t, e, s, n) {
+  const a = t === void 0 ? void 0 : t.key;
+  return { sel: i, data: t, children: e, text: s, elm: n, key: a };
 }
-const rt = Array.isArray;
-function et(a) {
-  return typeof a == "string" || typeof a == "number" || a instanceof String || a instanceof Number;
+const lt = Array.isArray;
+function tt(i) {
+  return typeof i == "string" || typeof i == "number" || i instanceof String || i instanceof Number;
 }
-function Et(a, t, e) {
-  if (a.ns = "http://www.w3.org/2000/svg", e !== "foreignObject" && t !== void 0)
+function Et(i, t, e) {
+  if (i.ns = "http://www.w3.org/2000/svg", e !== "foreignObject" && t !== void 0)
     for (let s = 0; s < t.length; ++s) {
       const n = t[s];
       if (typeof n == "string")
         continue;
-      const i = n.data;
-      i !== void 0 && Et(i, n.children, n.sel);
+      const a = n.data;
+      a !== void 0 && Et(a, n.children, n.sel);
     }
 }
-function de(a, t, e) {
-  let s = {}, n, i, l;
-  if (e !== void 0 ? (t !== null && (s = t), rt(e) ? n = e : et(e) ? i = e.toString() : e && e.sel && (n = [e])) : t != null && (rt(t) ? n = t : et(t) ? i = t.toString() : t && t.sel ? n = [t] : s = t), n !== void 0)
+function ae(i, t, e) {
+  let s = {}, n, a, l;
+  if (e !== void 0 ? (t !== null && (s = t), lt(e) ? n = e : tt(e) ? a = e.toString() : e && e.sel && (n = [e])) : t != null && (lt(t) ? n = t : tt(t) ? a = t.toString() : t && t.sel ? n = [t] : s = t), n !== void 0)
     for (l = 0; l < n.length; ++l)
-      et(n[l]) && (n[l] = it(void 0, void 0, void 0, n[l], void 0));
-  return a[0] === "s" && a[1] === "v" && a[2] === "g" && (a.length === 3 || a[3] === "." || a[3] === "#") && Et(s, n, a), it(a, s, n, i, void 0);
+      tt(n[l]) && (n[l] = rt(void 0, void 0, void 0, n[l], void 0));
+  return i[0] === "s" && i[1] === "v" && i[2] === "g" && (i.length === 3 || i[3] === "." || i[3] === "#") && Et(s, n, i), rt(i, s, n, a, void 0);
 }
-function Vt(a) {
-  const { script: t = "", data: e = {} } = a, s = J.execScriptFn({ data: e }, t, {
+function qt(i) {
+  const { script: t = "", data: e = {} } = i, s = q.execScriptFn({ data: e }, t, {
     singleRowReturn: !0,
     isAsync: !1
   });
   return "".concat(s);
 }
-const qt = {
+const Jt = {
   type: "attachments",
-  elemToHtml: Vt
+  elemToHtml: qt
 };
-function jt(a) {
-  const t = decodeURIComponent(a.getAttribute("data-value") || ""), e = JSON.parse(t);
+function Kt(i) {
+  const t = decodeURIComponent(i.getAttribute("data-value") || ""), e = JSON.parse(t);
   return {
     type: "attachments",
     script: e.script,
@@ -1406,16 +1442,16 @@ function jt(a) {
     children: [{ text: "" }]
   };
 }
-const Jt = {
+const _t = {
   selector: 'span[data-w-e-type="attachments"]',
-  parseElemHtml: jt
+  parseElemHtml: Kt
 };
-function Kt(a) {
-  const { data: t = {} } = a, e = {
+function Zt(i) {
+  const { data: t = {} } = i, e = {
     name: "".concat(t.name),
     id: t.id
   };
-  return de(
+  return ae(
     "mention-elem",
     {
       dataset: { value: JSON.stringify(e) },
@@ -1427,15 +1463,15 @@ function Kt(a) {
     []
   );
 }
-const _t = {
+const Wt = {
   type: "attachments",
-  renderElem: Kt
+  renderElem: Zt
 };
-class Zt {
+class Qt {
   constructor() {
-    r(this, "title", "本地文件");
-    r(this, "tag", "button");
-    r(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="36px" viewBox="0 0 36 36" version="1.1">\n    <title>附件</title>\n    <g id="附件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n        <g id="icon">\n            <rect id="矩形" stroke="#EEEEEE" fill="#FFFFFF" x="0.5" y="0.5" width="35" height="35" rx="4"/>\n            <g id="编组-28" transform="translate(2.997929, 8.001508)">\n                <path d="M13.9611058,12.6330155 C13.9611058,14.5460163 12.4108408,16.0968098 10.498492,16.0968098 C8.58614322,16.0968098 7.03587822,14.5460163 7.03590808,12.6393438 L7.03590808,12.6393438 L6.98338468,7.07669061 C6.97992133,6.70644889 7.27712693,6.40347538 7.64724246,6.39998034 C8.017358,6.39648531 8.32022824,6.69379224 8.32372209,7.06403396 L8.32372209,7.06403396 L8.37624485,12.6330155 C8.37624485,13.8054998 9.32640727,14.7559862 10.498492,14.7559862 C11.6705768,14.7559862 12.6207392,13.8054998 12.6207392,12.6330155 L12.6207392,12.6330155 L12.6207392,6.46506253 C12.6207392,4.69957562 11.0562006,3.24725012 9.10227678,3.24725012 C7.148353,3.24725012 5.58381437,4.69957562 5.58381437,6.46506253 L5.58381437,6.46506253 L5.58381437,12.8655397 C5.58381437,15.5621365 7.78332719,17.7497339 10.498492,17.7497339 C13.2136568,17.7497339 15.4131697,15.5621365 15.4131697,12.8655397 L15.4131697,12.8655397 L15.4131697,7.10001026 C15.4131697,6.72975204 15.713221,6.42959845 16.083353,6.42959845 C16.453485,6.42959845 16.7535363,6.72975204 16.7535363,7.10001026 L16.7535363,7.10001026 L16.7535363,12.8655397 C16.7535363,16.3043913 13.9521943,19.0905575 10.498492,19.0905575 C7.04478976,19.0905575 4.24344774,16.3043913 4.24344774,12.8655397 L4.24344774,12.8655397 L4.24344774,6.46506253 C4.24344774,3.93573556 6.42955024,1.90642651 9.10227678,1.90642651 C11.7750033,1.90642651 13.9611058,3.93573556 13.9611058,6.46506253 L13.9611058,6.46506253 Z" id="形状结合" fill="#DDDDDD" transform="translate(10.498492, 10.498492) rotate(-315.000000) translate(-10.498492, -10.498492) "/>\n                <path d="M21.6662931,9.87797441 L24.6096402,9.87797441 C24.9410111,9.87797441 25.2096402,10.1466036 25.2096402,10.4779744 C25.2096402,10.8093453 24.9410111,11.0779744 24.6096402,11.0779744 L21.6662931,11.0779744 C21.3349223,11.0779744 21.0662931,10.8093453 21.0662931,10.4779744 C21.0662931,10.1466036 21.3349223,9.87797441 21.6662931,9.87797441 Z" id="矩形备份-74" fill="#73D897"/>\n                <path d="M21.6662931,4.29120933 L27.4020707,4.29120933 C27.7334415,4.29120933 28.0020707,4.55983848 28.0020707,4.89120933 C28.0020707,5.22258018 27.7334415,5.49120933 27.4020707,5.49120933 L21.6662931,5.49120933 C21.3349223,5.49120933 21.0662931,5.22258018 21.0662931,4.89120933 C21.0662931,4.55983848 21.3349223,4.29120933 21.6662931,4.29120933 Z" id="矩形备份-75" fill="#6698FF"/>\n                <path d="M21.6662931,15.4647395 L27.4020707,15.4647395 C27.7334415,15.4647395 28.0020707,15.7333686 28.0020707,16.0647395 C28.0020707,16.3961103 27.7334415,16.6647395 27.4020707,16.6647395 L21.6662931,16.6647395 C21.3349223,16.6647395 21.0662931,16.3961103 21.0662931,16.0647395 C21.0662931,15.7333686 21.3349223,15.4647395 21.6662931,15.4647395 Z" id="矩形备份-77" fill="#FF7575"/>\n            </g>\n        </g>\n    </g>\n</svg>');
+    o(this, "title", "本地文件");
+    o(this, "tag", "button");
+    o(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="36px" viewBox="0 0 36 36" version="1.1">\n    <title>附件</title>\n    <g id="附件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n        <g id="icon">\n            <rect id="矩形" stroke="#EEEEEE" fill="#FFFFFF" x="0.5" y="0.5" width="35" height="35" rx="4"/>\n            <g id="编组-28" transform="translate(2.997929, 8.001508)">\n                <path d="M13.9611058,12.6330155 C13.9611058,14.5460163 12.4108408,16.0968098 10.498492,16.0968098 C8.58614322,16.0968098 7.03587822,14.5460163 7.03590808,12.6393438 L7.03590808,12.6393438 L6.98338468,7.07669061 C6.97992133,6.70644889 7.27712693,6.40347538 7.64724246,6.39998034 C8.017358,6.39648531 8.32022824,6.69379224 8.32372209,7.06403396 L8.32372209,7.06403396 L8.37624485,12.6330155 C8.37624485,13.8054998 9.32640727,14.7559862 10.498492,14.7559862 C11.6705768,14.7559862 12.6207392,13.8054998 12.6207392,12.6330155 L12.6207392,12.6330155 L12.6207392,6.46506253 C12.6207392,4.69957562 11.0562006,3.24725012 9.10227678,3.24725012 C7.148353,3.24725012 5.58381437,4.69957562 5.58381437,6.46506253 L5.58381437,6.46506253 L5.58381437,12.8655397 C5.58381437,15.5621365 7.78332719,17.7497339 10.498492,17.7497339 C13.2136568,17.7497339 15.4131697,15.5621365 15.4131697,12.8655397 L15.4131697,12.8655397 L15.4131697,7.10001026 C15.4131697,6.72975204 15.713221,6.42959845 16.083353,6.42959845 C16.453485,6.42959845 16.7535363,6.72975204 16.7535363,7.10001026 L16.7535363,7.10001026 L16.7535363,12.8655397 C16.7535363,16.3043913 13.9521943,19.0905575 10.498492,19.0905575 C7.04478976,19.0905575 4.24344774,16.3043913 4.24344774,12.8655397 L4.24344774,12.8655397 L4.24344774,6.46506253 C4.24344774,3.93573556 6.42955024,1.90642651 9.10227678,1.90642651 C11.7750033,1.90642651 13.9611058,3.93573556 13.9611058,6.46506253 L13.9611058,6.46506253 Z" id="形状结合" fill="#DDDDDD" transform="translate(10.498492, 10.498492) rotate(-315.000000) translate(-10.498492, -10.498492) "/>\n                <path d="M21.6662931,9.87797441 L24.6096402,9.87797441 C24.9410111,9.87797441 25.2096402,10.1466036 25.2096402,10.4779744 C25.2096402,10.8093453 24.9410111,11.0779744 24.6096402,11.0779744 L21.6662931,11.0779744 C21.3349223,11.0779744 21.0662931,10.8093453 21.0662931,10.4779744 C21.0662931,10.1466036 21.3349223,9.87797441 21.6662931,9.87797441 Z" id="矩形备份-74" fill="#73D897"/>\n                <path d="M21.6662931,4.29120933 L27.4020707,4.29120933 C27.7334415,4.29120933 28.0020707,4.55983848 28.0020707,4.89120933 C28.0020707,5.22258018 27.7334415,5.49120933 27.4020707,5.49120933 L21.6662931,5.49120933 C21.3349223,5.49120933 21.0662931,5.22258018 21.0662931,4.89120933 C21.0662931,4.55983848 21.3349223,4.29120933 21.6662931,4.29120933 Z" id="矩形备份-75" fill="#6698FF"/>\n                <path d="M21.6662931,15.4647395 L27.4020707,15.4647395 C27.7334415,15.4647395 28.0020707,15.7333686 28.0020707,16.0647395 C28.0020707,16.3961103 27.7334415,16.6647395 27.4020707,16.6647395 L21.6662931,16.6647395 C21.3349223,16.6647395 21.0662931,16.3961103 21.0662931,16.0647395 C21.0662931,15.7333686 21.3349223,15.4647395 21.6662931,15.4647395 Z" id="矩形备份-77" fill="#FF7575"/>\n            </g>\n        </g>\n    </g>\n</svg>');
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -1454,18 +1490,18 @@ class Zt {
     throw new ne("暂未支持上传本地文件！");
   }
 }
-const Wt = {
+const Yt = {
   key: "attachments",
   factory() {
-    return new Zt();
+    return new Qt();
   }
-}, Qt = {
-  renderElems: [_t],
-  elemsToHtml: [qt],
-  parseElemsHtml: [Jt],
-  menus: [Wt]
+}, Gt = {
+  renderElems: [Wt],
+  elemsToHtml: [Jt],
+  parseElemsHtml: [_t],
+  menus: [Yt]
 };
-class Yt {
+class Xt {
   /**
    * Creates an instance of AttachmentsController.
    * @param {IData} option
@@ -1478,54 +1514,54 @@ class Yt {
      * @type {IEditor}
      * @memberof AttachmentsController
      */
-    r(this, "model");
+    o(this, "model");
     /**
      * 上下文
      *
      * @type {IContext}
      */
-    r(this, "context");
+    o(this, "context");
     /**
      * 视图参数
      *
      * @type {IParams}
      */
-    r(this, "params");
+    o(this, "params");
     /**
      * 表单数据
      *
      * @type {IData}
      * @memberof AttachmentsController
      */
-    r(this, "data", {});
+    o(this, "data", {});
     /**
      * 编辑器示例
      *
      * @type {IDomEditor}
      * @memberof AttachmentsController
      */
-    r(this, "editor");
+    o(this, "editor");
     /**
      * 编辑器参数
      *
      * @type {IData}
      * @memberof AttachmentsController
      */
-    r(this, "editorParams");
+    o(this, "editorParams");
     /**
      * 用户数据
      *
      * @type {IData[]}
      * @memberof AttachmentsController
      */
-    r(this, "items", []);
+    o(this, "items", []);
     /**
      * 编辑器事件
      *
      * @type {ControllerEvent<commentEvent>}
      * @memberof AttachmentsController
      */
-    r(this, "evt");
+    o(this, "evt");
     /**
      * 是否正在执行
      *
@@ -1533,11 +1569,11 @@ class Yt {
      * @type {boolean}
      * @memberof AttachmentsController
      */
-    r(this, "execting", !1);
+    o(this, "execting", !1);
     this.registerNode();
   }
   registerNode() {
-    window.attachmentsIsRegiter || (z.registerModule(Qt), window.attachmentsIsRegiter = !0);
+    window.attachmentsIsRegiter || (D.registerModule(Gt), window.attachmentsIsRegiter = !0);
   }
   /**
    * 初始化
@@ -1574,19 +1610,19 @@ class Yt {
     return t;
   }
 }
-function Gt(a) {
-  const { script: t = "", data: e = {} } = a, s = J.execScriptFn({ data: e }, t, {
+function es(i) {
+  const { script: t = "", data: e = {} } = i, s = q.execScriptFn({ data: e }, t, {
     singleRowReturn: !0,
     isAsync: !1
   });
   return "".concat(s);
 }
-const Xt = {
+const ts = {
   type: "codesnippet",
-  elemToHtml: Gt
+  elemToHtml: es
 };
-function es(a) {
-  const t = decodeURIComponent(a.getAttribute("data-value") || ""), e = JSON.parse(t);
+function ss(i) {
+  const t = decodeURIComponent(i.getAttribute("data-value") || ""), e = JSON.parse(t);
   return {
     type: "codesnippet",
     script: e.script,
@@ -1594,16 +1630,16 @@ function es(a) {
     children: [{ text: "" }]
   };
 }
-const ts = {
+const ns = {
   selector: 'span[data-w-e-type="codesnippet"]',
-  parseElemHtml: es
+  parseElemHtml: ss
 };
-function ss(a) {
-  const { data: t = {} } = a, e = {
+function is(i) {
+  const { data: t = {} } = i, e = {
     name: "".concat(t.name),
     id: t.id
   };
-  return de(
+  return ae(
     "mention-elem",
     {
       dataset: { value: JSON.stringify(e) },
@@ -1615,15 +1651,15 @@ function ss(a) {
     []
   );
 }
-const ns = {
+const as = {
   type: "CodeSnippet",
-  renderElem: ss
+  renderElem: is
 };
-class as {
+class os {
   constructor() {
-    r(this, "title", "代码段");
-    r(this, "tag", "button");
-    r(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="36px" viewBox="0 0 36 36" version="1.1">\n  <title>代码段</title>\n  <g id="代码段" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n      <g id="icon备份">\n          <rect id="矩形" stroke="#EEEEEE" fill="#FFFFFF" x="0.5" y="0.5" width="35" height="35" rx="4"/>\n          <path d="M24.6642225,18.8794824 L27.6075695,18.8794824 C27.9389404,18.8794824 28.2075695,19.1481115 28.2075695,19.4794824 C28.2075695,19.8108532 27.9389404,20.0794824 27.6075695,20.0794824 L24.6642225,20.0794824 C24.3328516,20.0794824 24.0642225,19.8108532 24.0642225,19.4794824 C24.0642225,19.1481115 24.3328516,18.8794824 24.6642225,18.8794824 Z" id="矩形备份-74" fill="#73D897"/>\n          <path d="M24.6642225,13.2927173 L30.4,13.2927173 C30.7313708,13.2927173 31,13.5613465 31,13.8927173 C31,14.2240882 30.7313708,14.4927173 30.4,14.4927173 L24.6642225,14.4927173 C24.3328516,14.4927173 24.0642225,14.2240882 24.0642225,13.8927173 C24.0642225,13.5613465 24.3328516,13.2927173 24.6642225,13.2927173 Z" id="矩形备份-75" fill="#6698FF"/>\n          <path d="M24.6642225,24.4662475 L30.4,24.4662475 C30.7313708,24.4662475 31,24.7348766 31,25.0662475 C31,25.3976183 30.7313708,25.6662475 30.4,25.6662475 L24.6642225,25.6662475 C24.3328516,25.6662475 24.0642225,25.3976183 24.0642225,25.0662475 C24.0642225,24.7348766 24.3328516,24.4662475 24.6642225,24.4662475 Z" id="矩形备份-77" fill="#FF7575"/>\n          <g id="1.Base基础/1.icon图标/11.editor/header-1" transform="translate(5.000000, 11.000000)" fill="#DDDDDD">\n              <path d="M4.68266589,2.39258039 L1.51032474,7.44797324 L5.01586095,12.7216272 L4.05994646,13.3212428 L0.126424153,7.40475416 L3.68603474,1.72997946 L4.68266589,2.39258039 Z M11.3173341,12.6697762 L14.4896753,7.61438339 L10.984139,2.34072939 L11.9400535,1.7411138 L15.8735758,7.65760247 L12.3139653,13.3323772 L11.3173341,12.6697762 Z M8.86596086,1.31248434 L10.0376294,1.55020137 L7.19605832,13.6243456 L6.0243898,13.3866286 L8.86596086,1.31248434 Z" id="形状结合"/>\n          </g>\n      </g>\n  </g>\n</svg>');
+    o(this, "title", "代码段");
+    o(this, "tag", "button");
+    o(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="36px" viewBox="0 0 36 36" version="1.1">\n  <title>代码段</title>\n  <g id="代码段" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n      <g id="icon备份">\n          <rect id="矩形" stroke="#EEEEEE" fill="#FFFFFF" x="0.5" y="0.5" width="35" height="35" rx="4"/>\n          <path d="M24.6642225,18.8794824 L27.6075695,18.8794824 C27.9389404,18.8794824 28.2075695,19.1481115 28.2075695,19.4794824 C28.2075695,19.8108532 27.9389404,20.0794824 27.6075695,20.0794824 L24.6642225,20.0794824 C24.3328516,20.0794824 24.0642225,19.8108532 24.0642225,19.4794824 C24.0642225,19.1481115 24.3328516,18.8794824 24.6642225,18.8794824 Z" id="矩形备份-74" fill="#73D897"/>\n          <path d="M24.6642225,13.2927173 L30.4,13.2927173 C30.7313708,13.2927173 31,13.5613465 31,13.8927173 C31,14.2240882 30.7313708,14.4927173 30.4,14.4927173 L24.6642225,14.4927173 C24.3328516,14.4927173 24.0642225,14.2240882 24.0642225,13.8927173 C24.0642225,13.5613465 24.3328516,13.2927173 24.6642225,13.2927173 Z" id="矩形备份-75" fill="#6698FF"/>\n          <path d="M24.6642225,24.4662475 L30.4,24.4662475 C30.7313708,24.4662475 31,24.7348766 31,25.0662475 C31,25.3976183 30.7313708,25.6662475 30.4,25.6662475 L24.6642225,25.6662475 C24.3328516,25.6662475 24.0642225,25.3976183 24.0642225,25.0662475 C24.0642225,24.7348766 24.3328516,24.4662475 24.6642225,24.4662475 Z" id="矩形备份-77" fill="#FF7575"/>\n          <g id="1.Base基础/1.icon图标/11.editor/header-1" transform="translate(5.000000, 11.000000)" fill="#DDDDDD">\n              <path d="M4.68266589,2.39258039 L1.51032474,7.44797324 L5.01586095,12.7216272 L4.05994646,13.3212428 L0.126424153,7.40475416 L3.68603474,1.72997946 L4.68266589,2.39258039 Z M11.3173341,12.6697762 L14.4896753,7.61438339 L10.984139,2.34072939 L11.9400535,1.7411138 L15.8735758,7.65760247 L12.3139653,13.3323772 L11.3173341,12.6697762 Z M8.86596086,1.31248434 L10.0376294,1.55020137 L7.19605832,13.6243456 L6.0243898,13.3866286 L8.86596086,1.31248434 Z" id="形状结合"/>\n          </g>\n      </g>\n  </g>\n</svg>');
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -1642,18 +1678,18 @@ class as {
     throw new ne("暂未支持上传代码段！");
   }
 }
-const is = {
+const rs = {
   key: "codesnippet",
   factory() {
-    return new as();
+    return new os();
   }
-}, rs = {
-  renderElems: [ns],
-  elemsToHtml: [Xt],
-  parseElemsHtml: [ts],
-  menus: [is]
+}, ls = {
+  renderElems: [as],
+  elemsToHtml: [ts],
+  parseElemsHtml: [ns],
+  menus: [rs]
 };
-class os {
+class cs {
   /**
    * Creates an instance of CodeSnippetController.
    * @param {IData} option
@@ -1666,54 +1702,54 @@ class os {
      * @type {IEditor}
      * @memberof CodeSnippetController
      */
-    r(this, "model");
+    o(this, "model");
     /**
      * 上下文
      *
      * @type {IContext}
      */
-    r(this, "context");
+    o(this, "context");
     /**
      * 视图参数
      *
      * @type {IParams}
      */
-    r(this, "params");
+    o(this, "params");
     /**
      * 表单数据
      *
      * @type {IData}
      * @memberof CodeSnippetController
      */
-    r(this, "data", {});
+    o(this, "data", {});
     /**
      * 编辑器示例
      *
      * @type {IDomEditor}
      * @memberof CodeSnippetController
      */
-    r(this, "editor");
+    o(this, "editor");
     /**
      * 编辑器参数
      *
      * @type {IData}
      * @memberof CodeSnippetController
      */
-    r(this, "editorParams");
+    o(this, "editorParams");
     /**
      * 用户数据
      *
      * @type {IData[]}
      * @memberof CodeSnippetController
      */
-    r(this, "items", []);
+    o(this, "items", []);
     /**
      * 编辑器事件
      *
      * @type {ControllerEvent<commentEvent>}
      * @memberof CodeSnippetController
      */
-    r(this, "evt");
+    o(this, "evt");
     /**
      * 是否正在执行
      *
@@ -1721,11 +1757,11 @@ class os {
      * @type {boolean}
      * @memberof CodeSnippetController
      */
-    r(this, "execting", !1);
+    o(this, "execting", !1);
     this.registerNode();
   }
   registerNode() {
-    window.codesnippetIsRegiter || (z.registerModule(rs), window.codesnippetIsRegiter = !0);
+    window.codesnippetIsRegiter || (D.registerModule(ls), window.codesnippetIsRegiter = !0);
   }
   /**
    * 初始化
@@ -1762,19 +1798,19 @@ class os {
     return t;
   }
 }
-function ls(a) {
-  const { script: t = "", data: e = {} } = a, s = J.execScriptFn({ data: e }, t, {
+function ds(i) {
+  const { script: t = "", data: e = {} } = i, s = q.execScriptFn({ data: e }, t, {
     singleRowReturn: !0,
     isAsync: !1
   });
   return "".concat(s);
 }
-const cs = {
+const us = {
   type: "marker",
-  elemToHtml: ls
+  elemToHtml: ds
 };
-function ds(a) {
-  const t = decodeURIComponent(a.getAttribute("data-value") || ""), e = JSON.parse(t);
+function hs(i) {
+  const t = decodeURIComponent(i.getAttribute("data-value") || ""), e = JSON.parse(t);
   return {
     type: "marker",
     script: e.script,
@@ -1782,13 +1818,13 @@ function ds(a) {
     children: [{ text: "" }]
   };
 }
-const us = {
+const ms = {
   selector: 'span[data-w-e-type="marker"]',
-  parseElemHtml: ds
+  parseElemHtml: hs
 };
-function hs(a) {
-  const { data: t = {} } = a;
-  return de(
+function fs(i) {
+  const { data: t = {} } = i;
+  return ae(
     "mention-elem",
     {
       dataset: { value: JSON.stringify(t) },
@@ -1800,15 +1836,15 @@ function hs(a) {
     []
   );
 }
-const ms = {
+const ps = {
   type: "marker",
-  renderElem: hs
+  renderElem: fs
 };
-let fs = class {
+let vs = class {
   constructor() {
-    r(this, "title", "提及工作项");
-    r(this, "tag", "button");
-    r(this, "iconSvg", '<svg t="1706259772097" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6854" width="200" height="200"><path d="M929.28 625.664l-234.496 0.512 24.064-229.888 210.432-0.512c20.992 0 38.4-17.408 38.4-38.4s-17.408-38.4-38.4-38.4H727.04l29.184-275.456c2.048-20.992-13.312-39.936-34.304-41.984-20.992-2.048-39.936 13.312-41.984 34.304L650.24 318.976l-232.448 0.512 29.184-275.456c2.048-20.992-13.312-39.936-34.304-41.984-20.992-2.048-39.936 13.312-41.984 34.304l-29.696 283.648-246.272 0.512c-20.992 0-38.4 17.408-38.4 38.4s17.408 38.4 38.4 38.4l238.08-0.512-24.064 229.888-214.016 0.512c-20.992 0-38.4 17.408-38.4 38.4s17.408 38.4 38.4 38.4l205.824-0.512-29.184 276.992c-2.048 20.992 13.312 39.936 34.304 41.984h4.096c19.456 0 35.84-14.848 37.888-34.304l30.208-285.184 232.448-0.512-29.184 277.504c-2.048 20.992 13.312 39.936 34.304 41.984h4.096c19.456 0 35.84-14.848 38.4-34.304l30.208-285.184 242.688-0.512c20.992 0 38.4-17.408 38.4-38.4-1.536-20.992-18.944-37.888-39.936-37.888z m-544.256 0.512l24.064-229.888 232.448-0.512-24.064 229.888-232.448 0.512z" fill="#979797" p-id="6855"></path></svg>');
+    o(this, "title", "提及工作项");
+    o(this, "tag", "button");
+    o(this, "iconSvg", '<svg t="1706259772097" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6854" width="200" height="200"><path d="M929.28 625.664l-234.496 0.512 24.064-229.888 210.432-0.512c20.992 0 38.4-17.408 38.4-38.4s-17.408-38.4-38.4-38.4H727.04l29.184-275.456c2.048-20.992-13.312-39.936-34.304-41.984-20.992-2.048-39.936 13.312-41.984 34.304L650.24 318.976l-232.448 0.512 29.184-275.456c2.048-20.992-13.312-39.936-34.304-41.984-20.992-2.048-39.936 13.312-41.984 34.304l-29.696 283.648-246.272 0.512c-20.992 0-38.4 17.408-38.4 38.4s17.408 38.4 38.4 38.4l238.08-0.512-24.064 229.888-214.016 0.512c-20.992 0-38.4 17.408-38.4 38.4s17.408 38.4 38.4 38.4l205.824-0.512-29.184 276.992c-2.048 20.992 13.312 39.936 34.304 41.984h4.096c19.456 0 35.84-14.848 37.888-34.304l30.208-285.184 232.448-0.512-29.184 277.504c-2.048 20.992 13.312 39.936 34.304 41.984h4.096c19.456 0 35.84-14.848 38.4-34.304l30.208-285.184 242.688-0.512c20.992 0 38.4-17.408 38.4-38.4-1.536-20.992-18.944-37.888-39.936-37.888z m-544.256 0.512l24.064-229.888 232.448-0.512-24.064 229.888-232.448 0.512z" fill="#979797" p-id="6855"></path></svg>');
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -1827,18 +1863,18 @@ let fs = class {
     t.insertText("#");
   }
 };
-const ps = {
+const gs = {
   key: "marker",
   factory() {
-    return new fs();
+    return new vs();
   }
-}, vs = {
-  renderElems: [ms],
-  elemsToHtml: [cs],
-  parseElemsHtml: [us],
-  menus: [ps]
+}, ys = {
+  renderElems: [ps],
+  elemsToHtml: [us],
+  parseElemsHtml: [ms],
+  menus: [gs]
 };
-const gs = /* @__PURE__ */ ke({
+const ws = /* @__PURE__ */ ue({
   name: "MenTion",
   props: {
     controller: {
@@ -1849,167 +1885,42 @@ const gs = /* @__PURE__ */ ke({
       type: Object
     }
   },
-  setup(a) {
-    const t = Me("mention"), e = a.controller, s = g(!1), n = g([]);
-    let i = G;
-    const l = g({}), d = g(0), u = g([]), f = (C) => {
+  setup(i) {
+    const t = he("mention"), e = i.controller, s = g(!1), n = g([]);
+    let a = _;
+    const l = g({}), d = g(0), u = g([]), p = (C) => {
       const {
-        eventArg: w
+        eventArg: b
       } = C;
-      if (w) {
-        !w.includes("@") && e.overlay && e.execting && e.overlay.dismiss();
-        const P = w.match(new RegExp("(?<=\\@)([^\\@&^{]*?)(?=\\<)", "g")) || [];
-        e.execting && (P.length === 0 && e.overlay.dismiss(), e.query = P.pop() || "", e.query && /\s$/.test(e.query) ? e.overlay.dismiss() : e.query && F({
+      if (b) {
+        !b.includes("@") && e.overlay && e.execting && e.overlay.dismiss();
+        const x = b.match(new RegExp("(?<=\\@)([^\\@&^{]*?)(?=\\<)", "g")) || [];
+        e.execting && (x.length === 0 && e.overlay.dismiss(), e.query = x.pop() || "", e.query && /\s$/.test(e.query) ? e.overlay.dismiss() : e.query && N({
           isInitialLoad: !0
         }));
       } else
         e.overlay && e.execting && e.overlay.dismiss();
     }, m = () => {
-      e.evt && e.evt.on("onChange", f);
-    }, S = (C = {}) => {
-      s.value = !0, e.getUsers(C).then((w) => {
-        (w.status !== 200 || !w.data) && (s.value = !1), w.headers["x-total"] && (d.value = Number(w.headers["x-total"])), C.isLoadMore === !0 ? n.value.push(...e.toUIData(w.data)) : (n.value = e.toUIData(w.data), n.value.length > 0 && (l.value = n.value[0])), s.value = !1;
+      e.evt && e.evt.on("onChange", p);
+    }, E = (C = {}) => {
+      s.value = !0, e.getUsers(C).then((b) => {
+        (b.status !== 200 || !b.data) && (s.value = !1), b.headers["x-total"] && (d.value = Number(b.headers["x-total"])), C.isLoadMore === !0 ? n.value.push(...e.toUIData(b.data)) : (n.value = e.toUIData(b.data), n.value.length > 0 && (l.value = n.value[0])), s.value = !1;
       }).catch(() => {
         s.value = !1;
       });
     }, k = () => {
-      S({
+      E({
         isLoadMore: !0
       });
-    }, M = lt(() => n.value.length >= d.value || s.value || d.value <= e.size), F = bt(S, 300, {
+    }, M = dt(() => n.value.length >= d.value || s.value || d.value <= e.size), N = Ct(E, 300, {
       leading: !0
     });
-    m(), S({
+    m(), E({
       isInitialLoad: !0
     });
-    const A = (C) => {
-      let w = n.value.findIndex((P) => P.id === l.value.id);
+    const H = (C) => {
+      let b = n.value.findIndex((x) => x.id === l.value.id);
       switch (C) {
-        case "up":
-          w--, (w === -1 || w === -2) && (w = n.value.length - 1), l.value = n.value[w];
-          break;
-        case "down":
-          w++, w === n.value.length && (w = 0), l.value = n.value[w];
-          break;
-        case "enter":
-          N(l.value);
-          break;
-      }
-    }, N = (C) => {
-      var w;
-      if (a.modal) {
-        const P = {
-          ok: !0,
-          data: [C]
-        };
-        (w = a.modal) == null || w.dismiss(P);
-      }
-    }, O = (C) => {
-      if (!C)
-        return null;
-      const w = JSON.parse(C);
-      if (w.length === 0)
-        return null;
-      const {
-        downloadUrl: P
-      } = ibiz.util.file.calcFileUpDownUrl(e.context, e.params, e.editorParams);
-      return P.replace("%fileId%", w[0].id);
-    }, y = (C) => {
-      u.value.push(C);
-    }, b = (C) => {
-      const w = C.name, P = ce.stringToHexColor(w), B = ce.avatarName(w);
-      let I = "";
-      if (e.operatorMap.has(C.id)) {
-        const K = e.operatorMap.get(C.id);
-        K.data.iconurl && (I = O(K.data.iconurl) || "");
-      }
-      return p("div", {
-        class: [t.e("item"), t.is("active", C.id === l.value.id)],
-        onClick: () => N(C)
-      }, [p("div", {
-        class: t.e("avatar"),
-        style: "background: ".concat(P, ";")
-      }, [I && !u.value.includes(I) ? p("img", {
-        src: I,
-        onError: () => y(I)
-      }, null) : B]), p("div", {
-        class: t.e("name"),
-        title: w
-      }, [w])]);
-    };
-    return ze(() => {
-      i = Be(window, "keyup", (C) => {
-        C.keyCode === 40 ? A("down") : C.keyCode === 38 ? A("up") : C.keyCode === 13 && A("enter");
-      });
-    }), Ee(() => {
-      i !== G && i(), e.evt.off("onChange", f);
-    }), {
-      ns: t,
-      items: n,
-      loading: s,
-      isLodeMoreDisabled: M,
-      renderItem: b,
-      loadMore: k
-    };
-  },
-  render() {
-    return ct(p("div", {
-      "infinite-scroll-distance": 10,
-      "infinite-scroll-disabled": this.isLodeMoreDisabled,
-      "infinite-scroll-immediate": !1,
-      class: this.ns.b()
-    }, [this.items.map((a) => this.renderItem(a)), this.items.length === 0 && p(V("iBizNoData"), {
-      text: "暂未用户数据"
-    }, null)]), [[De("infinite-scroll"), () => this.loadMore()], [De("loading"), this.loading]]);
-  }
-});
-const ys = /* @__PURE__ */ ke({
-  name: "Marker",
-  props: {
-    controller: {
-      type: Object,
-      required: !0
-    },
-    modal: {
-      type: Object
-    }
-  },
-  setup(a) {
-    const t = Me("marker"), e = a.controller, s = g(!1), n = g([]);
-    let i = G;
-    const l = g({}), d = g(0), u = (y) => {
-      const {
-        eventArg: b
-      } = y;
-      if (b) {
-        !b.includes("#") && e.overlay && e.execting && e.overlay.dismiss();
-        const C = /<svg((.|[\t\r\f\n\s])+?)<\/svg>/g, P = b.replace(C, "").match(new RegExp("(?<=\\#)([^\\#&^{]*?)(?=\\<)", "g")) || [];
-        e.execting && (P.length === 0 && e.overlay.dismiss(), e.query = P.pop() || "", e.query && /\s$/.test(e.query) ? e.overlay.dismiss() : e.query && M({
-          isInitialLoad: !0
-        }));
-      } else
-        e.overlay && e.execting && e.overlay.dismiss();
-    }, f = () => {
-      e.evt && e.evt.on("onChange", u);
-    }, m = (y = {}) => {
-      s.value = !0, e.load(y).then((b) => {
-        (b.status !== 200 || !b.data) && (s.value = !1), b.headers["x-total"] && (d.value = Number(b.headers["x-total"])), y.isLoadMore === !0 ? n.value.push(...e.toUIData(b.data)) : (n.value = e.toUIData(b.data), n.value.length > 0 && (l.value = n.value[0])), s.value = !1;
-      }).catch(() => {
-        s.value = !1;
-      });
-    }, S = () => {
-      m({
-        isLoadMore: !0
-      });
-    }, k = lt(() => n.value.length >= d.value || s.value || d.value <= e.size), M = bt(m, 300, {
-      leading: !0
-    });
-    f(), m({
-      isInitialLoad: !0
-    });
-    const F = (y) => {
-      let b = n.value.findIndex((C) => C.id === l.value.id);
-      switch (y) {
         case "up":
           b--, (b === -1 || b === -2) && (b = n.value.length - 1), l.value = n.value[b];
           break;
@@ -2020,63 +1931,220 @@ const ys = /* @__PURE__ */ ke({
           A(l.value);
           break;
       }
-    }, A = (y) => {
+    }, A = (C) => {
       var b;
-      if (a.modal) {
+      if (i.modal) {
+        const x = {
+          ok: !0,
+          data: [C]
+        };
+        (b = i.modal) == null || b.dismiss(x);
+      }
+    }, I = (C) => {
+      if (!C)
+        return null;
+      const b = JSON.parse(C);
+      if (b.length === 0)
+        return null;
+      const {
+        downloadUrl: x
+      } = ibiz.util.file.calcFileUpDownUrl(e.context, e.params, e.editorParams);
+      return x.replace("%fileId%", b[0].id);
+    }, y = (C) => {
+      u.value.push(C);
+    }, w = (C) => {
+      const b = C.name, x = ie.stringToHexColor(b), B = ie.avatarName(b);
+      let O = "";
+      if (e.operatorMap.has(C.id)) {
+        const Z = e.operatorMap.get(C.id);
+        Z.data.iconurl && (O = I(Z.data.iconurl) || "");
+      }
+      return f("div", {
+        class: [t.e("item"), t.is("active", C.id === l.value.id)],
+        onClick: () => A(C)
+      }, [f("div", {
+        class: t.e("avatar"),
+        style: "background: ".concat(x, ";")
+      }, [O && !u.value.includes(O) ? f("img", {
+        src: O,
+        onError: () => y(O)
+      }, null) : B]), f("div", {
+        class: t.e("name"),
+        title: b
+      }, [b])]);
+    };
+    return Be(() => {
+      a = xe(window, "keyup", (C) => {
+        C.keyCode === 40 ? H("down") : C.keyCode === 38 ? H("up") : C.keyCode === 13 && H("enter");
+      });
+    }), ke(() => {
+      a !== _ && a(), e.evt.off("onChange", p);
+    }), {
+      ns: t,
+      items: n,
+      loading: s,
+      isLodeMoreDisabled: M,
+      renderItem: w,
+      loadMore: k
+    };
+  },
+  render() {
+    return ut(f("div", {
+      "infinite-scroll-distance": 10,
+      "infinite-scroll-disabled": this.isLodeMoreDisabled,
+      "infinite-scroll-immediate": !1,
+      class: this.ns.b()
+    }, [this.items.map((i) => this.renderItem(i)), this.items.length === 0 && f($("iBizNoData"), {
+      text: "暂无用户数据"
+    }, null)]), [[Re("infinite-scroll"), () => this.loadMore()], [Re("loading"), this.loading]]);
+  }
+});
+const Cs = /* @__PURE__ */ ue({
+  name: "Marker",
+  props: {
+    controller: {
+      type: Object,
+      required: !0
+    },
+    modal: {
+      type: Object
+    }
+  },
+  setup(i) {
+    const t = he("marker"), e = i.controller, s = g(!1), n = g([]);
+    let a = _;
+    const l = g({}), d = g(0), u = (y) => {
+      const {
+        eventArg: w
+      } = y;
+      if (w) {
+        !w.includes("#") && e.overlay && e.execting && e.overlay.dismiss();
+        const C = /<svg((.|[\t\r\f\n\s])+?)<\/svg>/g, x = w.replace(C, "").match(new RegExp("(?<=\\#)([^\\#&^{]*?)(?=\\<)", "g")) || [];
+        e.execting && (x.length === 0 && e.overlay.dismiss(), e.query = x.pop() || "", e.query && /\s$/.test(e.query) ? e.overlay.dismiss() : e.query && M({
+          isInitialLoad: !0
+        }));
+      } else
+        e.overlay && e.execting && e.overlay.dismiss();
+    }, p = () => {
+      e.evt && e.evt.on("onChange", u);
+    }, m = (y = {}) => {
+      s.value = !0, e.load(y).then((w) => {
+        (w.status !== 200 || !w.data) && (s.value = !1), w.headers["x-total"] && (d.value = Number(w.headers["x-total"])), y.isLoadMore === !0 ? n.value.push(...e.toUIData(w.data)) : (n.value = e.toUIData(w.data), n.value.length > 0 && (l.value = n.value[0])), s.value = !1;
+      }).catch(() => {
+        s.value = !1;
+      });
+    }, E = () => {
+      m({
+        isLoadMore: !0
+      });
+    }, k = dt(() => n.value.length >= d.value || s.value || d.value <= e.size), M = Ct(m, 300, {
+      leading: !0
+    });
+    p(), m({
+      isInitialLoad: !0
+    });
+    const N = (y) => {
+      let w = n.value.findIndex((C) => C.id === l.value.id);
+      switch (y) {
+        case "up":
+          w--, (w === -1 || w === -2) && (w = n.value.length - 1), l.value = n.value[w];
+          break;
+        case "down":
+          w++, w === n.value.length && (w = 0), l.value = n.value[w];
+          break;
+        case "enter":
+          H(l.value);
+          break;
+      }
+    }, H = (y) => {
+      var w;
+      if (i.modal) {
         const C = {
           ok: !0,
           data: [y]
         };
-        (b = a.modal) == null || b.dismiss(C);
+        (w = i.modal) == null || w.dismiss(C);
       }
-    }, N = (y, b) => {
+    }, A = (y, w) => {
       if (e.quoteCodelistMap.has(y)) {
         const C = e.quoteCodelistMap.get(y);
-        return p(V("iBizCodeList"), {
+        return f($("iBizCodeList"), {
           codeListItems: C.codeListItems,
           codeList: C.codeList,
-          value: b
+          value: w
         }, null);
       }
-      return b;
-    }, O = (y) => p("div", {
+      return w;
+    }, I = (y) => f("div", {
       class: [t.e("item"), t.is("active", y.id === l.value.id)],
-      onClick: () => A(y)
-    }, [p("div", {
+      onClick: () => H(y)
+    }, [f("div", {
       class: t.e("type")
-    }, [N("type", y.type)]), p("div", {
+    }, [A("type", y.type)]), f("div", {
       class: t.e("identifier")
-    }, [N("identifier", y.identifier)]), p("div", {
+    }, [A("identifier", y.identifier)]), f("div", {
       class: t.e("name"),
       title: y.name
-    }, [N("name", y.name)])]);
-    return ze(() => {
-      i = Be(window, "keyup", (y) => {
-        y.keyCode === 40 ? F("down") : y.keyCode === 38 ? F("up") : y.keyCode === 13 && F("enter");
+    }, [A("name", y.name)])]);
+    return Be(() => {
+      a = xe(window, "keyup", (y) => {
+        y.keyCode === 40 ? N("down") : y.keyCode === 38 ? N("up") : y.keyCode === 13 && N("enter");
       });
-    }), Ee(() => {
-      i !== G && i(), e.evt.off("onChange", u);
+    }), ke(() => {
+      a !== _ && a(), e.evt.off("onChange", u);
     }), {
       ns: t,
       items: n,
       loading: s,
       isLodeMoreDisabled: k,
-      renderItem: O,
-      loadMore: S
+      renderItem: I,
+      loadMore: E
     };
   },
   render() {
-    return ct(p("div", {
+    return ut(f("div", {
       "infinite-scroll-distance": 10,
       "infinite-scroll-disabled": this.isLodeMoreDisabled,
       "infinite-scroll-immediate": !1,
       class: this.ns.b()
-    }, [this.items.map((a) => this.renderItem(a)), this.items.length === 0 && p(V("iBizNoData"), {
-      text: "暂未用户数据"
-    }, null)]), [[De("infinite-scroll"), () => this.loadMore()], [De("loading"), this.loading]]);
+    }, [this.items.map((i) => this.renderItem(i)), this.items.length === 0 && f($("iBizNoData"), {
+      text: "暂无用户数据"
+    }, null)]), [[Re("infinite-scroll"), () => this.loadMore()], [Re("loading"), this.loading]]);
   }
 });
-class bs {
+const bs = /* @__PURE__ */ ue({
+  name: "IBizHtmlEmoji",
+  props: {
+    modal: {
+      type: Object,
+      required: !0
+    }
+  },
+  setup(i) {
+    return {
+      ns: he("html-emoji"),
+      onSelect: (s) => {
+        const n = {
+          ok: !0,
+          data: [{
+            emoji: Rt(s.data)
+          }]
+        };
+        i.modal.dismiss(n);
+      }
+    };
+  },
+  render() {
+    return f("div", {
+      class: this.ns.b()
+    }, [f($("iBizEmojiSelect"), {
+      dark: !0,
+      continuousList: !0,
+      onSelect: this.onSelect
+    }, null)]);
+  }
+});
+class Es {
   /**
    * Creates an instance of MarkerController.
    * @param {IData} option
@@ -2089,44 +2157,44 @@ class bs {
      * @type {IEditor}
      * @memberof MarkerController
      */
-    r(this, "model");
+    o(this, "model");
     /**
      * 上下文
      *
      * @type {IContext}
      */
-    r(this, "context");
+    o(this, "context");
     /**
      * 视图参数
      *
      * @type {IParams}
      */
-    r(this, "params");
+    o(this, "params");
     /**
      * 表单数据
      *
      * @type {IData}
      * @memberof MarkerController
      */
-    r(this, "data", {});
+    o(this, "data", {});
     /**
      * 编辑器示例
      *
      * @type {IDomEditor}
      * @memberof MarkerController
      */
-    r(this, "editor");
+    o(this, "editor");
     /**
      * 引用请求url
      *
      * @type {string}
      * @memberof MarkerController
      */
-    r(this, "quoteUrl", "");
+    o(this, "quoteUrl", "");
     /**
      * 人员UI转化
      */
-    r(this, "quoteFieldMap", {
+    o(this, "quoteFieldMap", {
       id: "id",
       name: "name"
     });
@@ -2136,63 +2204,63 @@ class bs {
      * @type {IData}
      * @memberof MarkerController
      */
-    r(this, "quoteCodelistMap", /* @__PURE__ */ new Map());
+    o(this, "quoteCodelistMap", /* @__PURE__ */ new Map());
     /**
      * 请求方法
      *
      * @type {('post' | 'get')}
      * @memberof MarkerController
      */
-    r(this, "quoteMethod", "post");
+    o(this, "quoteMethod", "post");
     /**
      * 请求参数
      *
      * @type {IData}
      * @memberof MarkerController
      */
-    r(this, "quoteParams", {});
+    o(this, "quoteParams", {});
     /**
      * 转换脚本
      *
      * @type {string}
      * @memberof MenTionController
      */
-    r(this, "quoteScript", "`#{id=${data.id},name=${data.name},identifier=${data.identifier},icon=${data.icon}}`");
+    o(this, "quoteScript", "`#{id=${data.id},name=${data.name},identifier=${data.identifier},icon=${data.icon}}`");
     /**
      * 逆转换脚本
      *
      * @type {string}
      * @memberof MenTionController
      */
-    r(this, "quoteInScript", "value.replaceAll(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})");
+    o(this, "quoteInScript", "value.replaceAll(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g,(x, id, name, identifier, icon) => {return controller.getNodeInfo({ id, name, identifier, icon })})");
     /**
      * 编辑器参数
      *
      * @type {IData}
      * @memberof MarkerController
      */
-    r(this, "editorParams");
+    o(this, "editorParams");
     /**
      * 用户数据
      *
      * @type {IData[]}
      * @memberof MarkerController
      */
-    r(this, "items", []);
+    o(this, "items", []);
     /**
      * 气泡容器
      *
      * @type {IOverlayPopoverContainer}
      * @memberof MarkerController
      */
-    r(this, "overlay", null);
+    o(this, "overlay", null);
     /**
      * 编辑器事件
      *
      * @type {ControllerEvent<commentEvent>}
      * @memberof MarkerController
      */
-    r(this, "evt");
+    o(this, "evt");
     /**
      * 是否正在执行
      *
@@ -2200,49 +2268,49 @@ class bs {
      * @type {boolean}
      * @memberof MarkerController
      */
-    r(this, "execting", !1);
+    o(this, "execting", !1);
     /**
      * 搜索字段
      *
      * @type {string}
      * @memberof MarkerController
      */
-    r(this, "query", "");
+    o(this, "query", "");
     /**
      * 当前页
      *
      * @type {number}
      * @memberof MarkerController
      */
-    r(this, "curPage", 0);
+    o(this, "curPage", 0);
     /**
      * 分页条数
      *
      * @type {number}
      * @memberof MarkerController
      */
-    r(this, "size", 20);
+    o(this, "size", 20);
     /**
      * 预定义阻止捕获事件code
      *
      * @type {number[]}
      * @memberof MarkerController
      */
-    r(this, "presetPreventEvents", [13, 38, 40]);
+    o(this, "presetPreventEvents", [13, 38, 40]);
     /**
      * 预定义阻止冒泡事件code
      *
      * @type {number[]}
      * @memberof MarkerController
      */
-    r(this, "presetPreventPropEvents", [27]);
+    o(this, "presetPreventPropEvents", [27]);
     /**
      * 删除回调
      *
      * @type {NOOP}
      * @memberof MarkerController
      */
-    r(this, "cleanup", G);
+    o(this, "cleanup", _);
     this.registerNode();
   }
   /**
@@ -2255,24 +2323,24 @@ class bs {
    */
   markerPlugin(t) {
     const { insertText: e, isInline: s, isVoid: n } = t;
-    return t.insertText = (i) => {
+    return t.insertText = (a) => {
       if (!this.editor) {
-        e(i);
+        e(a);
         return;
       }
       if (!this.editor.isFocused()) {
-        e(i);
+        e(a);
         return;
       }
-      if (Y.getSelectedElems(t).some((u) => t.isVoid(u))) {
-        e(i);
+      if (V.getSelectedElems(t).some((u) => t.isVoid(u))) {
+        e(a);
         return;
       }
-      i === "#" && !this.execting && (this.query = "", this.showModal()), e(i);
-    }, t.isInline = (i) => Y.getNodeType(i) === "marker" ? !0 : s(i), t.isVoid = (i) => Y.getNodeType(i) === "marker" ? !0 : n(i), t;
+      a === "#" && !this.execting && (this.query = "", this.showModal()), e(a);
+    }, t.isInline = (a) => V.getNodeType(a) === "marker" ? !0 : s(a), t.isVoid = (a) => V.getNodeType(a) === "marker" ? !0 : n(a), t;
   }
   registerNode() {
-    window.markerIsRegiter || (z.registerModule(vs), window.markerIsRegiter = !0), z.registerPlugin(this.markerPlugin.bind(this));
+    window.markerIsRegiter || (D.registerModule(ys), window.markerIsRegiter = !0), D.registerPlugin(this.markerPlugin.bind(this));
   }
   /**
    * 初始化
@@ -2284,26 +2352,26 @@ class bs {
     if (this.model = e.model, this.context = e.context, this.params = e.params, this.evt = e.evt, this.data = e.data, this.editor = t, this.editorParams = this.model.editorParams, this.editorParams) {
       const {
         QUOTEURL: n,
-        QUOTEFIELDMAP: i,
+        QUOTEFIELDMAP: a,
         QUOTEMETHOD: l,
         QUOTESCRIPT: d,
         QUOTEINSCRIPT: u,
-        QUOTEPARAMS: f,
+        QUOTEPARAMS: p,
         QUOTECODELISTMAP: m
       } = this.editorParams;
-      if (n && (this.quoteUrl = n), i && (this.quoteFieldMap = JSON.parse(i)), l && (this.quoteMethod = l.toLowerCase()), f && (this.quoteParams = JSON.parse(f)), d && (this.quoteScript = d), u && (this.quoteInScript = u), m) {
-        const S = JSON.parse(m);
-        this.setCodeListMap(S);
+      if (n && (this.quoteUrl = n), a && (this.quoteFieldMap = JSON.parse(a)), l && (this.quoteMethod = l.toLowerCase()), p && (this.quoteParams = JSON.parse(p)), d && (this.quoteScript = d), u && (this.quoteInScript = u), m) {
+        const E = JSON.parse(m);
+        this.setCodeListMap(E);
       }
     }
     const s = this.editor.getEditableContainer();
-    s && (this.cleanup = Be(s, "keydown", (n) => {
-      var i;
-      this.execting && this.presetPreventEvents.includes(n.keyCode) && n.preventDefault(), this.execting && this.presetPreventPropEvents.includes(n.keyCode) && (n.stopPropagation(), (i = this.overlay) == null || i.dismiss());
+    s && (this.cleanup = xe(s, "keydown", (n) => {
+      var a;
+      this.execting && this.presetPreventEvents.includes(n.keyCode) && n.preventDefault(), this.execting && this.presetPreventPropEvents.includes(n.keyCode) && (n.stopPropagation(), (a = this.overlay) == null || a.dismiss());
     }));
   }
   onDestroyed() {
-    this.cleanup !== G && this.cleanup(), this.overlay && this.overlay.dismiss();
+    this.cleanup !== _ && this.cleanup(), this.overlay && this.overlay.dismiss();
   }
   // 设置代码表map
   async setCodeListMap(t) {
@@ -2332,12 +2400,12 @@ class bs {
       if (s)
         return s;
       for (let n = 0; n < t.length; n++) {
-        const i = this.findCodeListItem(
+        const a = this.findCodeListItem(
           t[n].children,
           e
         );
-        if (i)
-          return i;
+        if (a)
+          return a;
       }
     }
   }
@@ -2384,7 +2452,7 @@ class bs {
    * @memberof MarkerController
    */
   parseNode(t) {
-    return J.execScriptFn(
+    return q.execScriptFn(
       { value: t, controller: this },
       this.quoteInScript,
       {
@@ -2403,12 +2471,12 @@ class bs {
    * @memberof MarkerController
    */
   handlePublicParams(t, e, s) {
-    const { navigateContexts: n, navigateParams: i } = this.model;
+    const { navigateContexts: n, navigateParams: a } = this.model;
     let l = {};
-    n && t && (l = Re(n, t, s, e));
+    n && t && (l = Ue(n, t, s, e));
     const d = Object.assign(e.clone(), l);
     let u = {};
-    return i && t && (u = Re(i, t, s, e)), { context: d, params: u };
+    return a && t && (u = Ue(a, t, s, e)), { context: d, params: u };
   }
   /**
    * 获取工作项信息
@@ -2422,9 +2490,9 @@ class bs {
       this.data,
       this.context,
       this.params
-    ), n = t.isInitialLoad === !0, i = t.isLoadMore === !0;
-    n ? this.curPage = 0 : i && (this.curPage += 1);
-    const l = J.execScriptFn(
+    ), n = t.isInitialLoad === !0, a = t.isLoadMore === !0;
+    n ? this.curPage = 0 : a && (this.curPage += 1);
+    const l = q.execScriptFn(
       { data: this.data, context: e, params: s },
       this.quoteUrl,
       {
@@ -2476,7 +2544,7 @@ class bs {
     return this.execting = !1, e.data || [];
   }
   createOverlayView() {
-    return (t) => dt(ys, {
+    return (t) => nt(Cs, {
       controller: this,
       modal: t
     });
@@ -2497,19 +2565,19 @@ class bs {
     return { codeList: s, codeListItems: n };
   }
 }
-function Cs(a) {
-  const { script: t = "", data: e = {} } = a, s = J.execScriptFn({ data: e }, t, {
+function Ss(i) {
+  const { script: t = "", data: e = {} } = i, s = q.execScriptFn({ data: e }, t, {
     singleRowReturn: !0,
     isAsync: !1
   });
   return "".concat(s);
 }
-const ws = {
+const ks = {
   type: "mention",
-  elemToHtml: Cs
+  elemToHtml: Ss
 };
-function Es(a) {
-  const t = decodeURIComponent(a.getAttribute("data-value") || ""), e = JSON.parse(t);
+function Ms(i) {
+  const t = decodeURIComponent(i.getAttribute("data-value") || ""), e = JSON.parse(t);
   return {
     type: "mention",
     script: e.script,
@@ -2517,16 +2585,16 @@ function Es(a) {
     children: [{ text: "" }]
   };
 }
-const Ss = {
+const xs = {
   selector: 'span[data-w-e-type="mention"]',
-  parseElemHtml: Es
+  parseElemHtml: Ms
 };
-function ks(a) {
-  const { data: t = {} } = a, e = {
+function Ls(i) {
+  const { data: t = {} } = i, e = {
     name: "@".concat(t.name),
     id: t.id
   };
-  return de(
+  return ae(
     "mention-elem",
     {
       dataset: { value: JSON.stringify(e) },
@@ -2538,15 +2606,15 @@ function ks(a) {
     []
   );
 }
-const Ms = {
+const Ps = {
   type: "mention",
-  renderElem: ks
+  renderElem: Ls
 };
-class xs {
+class Ts {
   constructor() {
-    r(this, "title", "提及成员");
-    r(this, "tag", "button");
-    r(this, "iconSvg", '<svg t="1705979200437" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4218" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M23.7 555c0-339.3 247-550 533.8-550 295.6 0 442.8 165.9 442.8 401.6 0 210.8-93.5 361.7-237 361.7-63.6 0-108.5-26.2-137.2-78.6-48.6 51.1-96 79.8-174.6 79.8-116 0-178.4-77.3-178.4-193.3 0-209.5 131-323 251.9-323 64.9 0 102.3 24.9 122.2 68.6l11.2-58.6 114.7 1.2L727 510.1c-7.5 36.2-11.2 63.6-11.2 81.1 0 44.9 22.5 71.1 56.1 71.1 63.6 0 106-89.8 106-243.2 0-205.8-114.7-300.6-323-300.6-220.8 0-405.4 163.4-405.4 436.5 0 238.2 132.2 350.5 390.4 350.5 94.8 0 174.6-12.5 255.7-36.2v109.8c-88.6 26.2-177.1 39.9-263.2 39.9-329.1 0-508.7-168.4-508.7-464z m585-44.9c3.7-20 6.2-39.9 6.2-53.6 0-56.1-15-96-83.6-96-83.6 0-133.5 108.5-133.5 212 0 44.9 13.7 88.6 77.3 88.6 73.7-0.1 114.9-57.4 133.6-151z" fill="#333333" p-id="4219"></path></svg>');
+    o(this, "title", "提及成员");
+    o(this, "tag", "button");
+    o(this, "iconSvg", '<svg t="1705979200437" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4218" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M23.7 555c0-339.3 247-550 533.8-550 295.6 0 442.8 165.9 442.8 401.6 0 210.8-93.5 361.7-237 361.7-63.6 0-108.5-26.2-137.2-78.6-48.6 51.1-96 79.8-174.6 79.8-116 0-178.4-77.3-178.4-193.3 0-209.5 131-323 251.9-323 64.9 0 102.3 24.9 122.2 68.6l11.2-58.6 114.7 1.2L727 510.1c-7.5 36.2-11.2 63.6-11.2 81.1 0 44.9 22.5 71.1 56.1 71.1 63.6 0 106-89.8 106-243.2 0-205.8-114.7-300.6-323-300.6-220.8 0-405.4 163.4-405.4 436.5 0 238.2 132.2 350.5 390.4 350.5 94.8 0 174.6-12.5 255.7-36.2v109.8c-88.6 26.2-177.1 39.9-263.2 39.9-329.1 0-508.7-168.4-508.7-464z m585-44.9c3.7-20 6.2-39.9 6.2-53.6 0-56.1-15-96-83.6-96-83.6 0-133.5 108.5-133.5 212 0 44.9 13.7 88.6 77.3 88.6 73.7-0.1 114.9-57.4 133.6-151z" fill="#333333" p-id="4219"></path></svg>');
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -2565,18 +2633,18 @@ class xs {
     t.insertText("@");
   }
 }
-const Ps = {
+const Hs = {
   key: "mention",
   factory() {
-    return new xs();
+    return new Ts();
   }
-}, Ls = {
-  renderElems: [Ms],
-  elemsToHtml: [ws],
-  parseElemsHtml: [Ss],
-  menus: [Ps]
+}, Fs = {
+  renderElems: [Ps],
+  elemsToHtml: [ks],
+  parseElemsHtml: [xs],
+  menus: [Hs]
 };
-class Ts {
+class Ns {
   /**
    * Creates an instance of MenTionController.
    * @param {IData} option
@@ -2588,51 +2656,51 @@ class Ts {
      *
      * @memberof MenTionController
      */
-    r(this, "operatorMap", /* @__PURE__ */ new Map());
+    o(this, "operatorMap", /* @__PURE__ */ new Map());
     /**
      * 模型
      *
      * @type {IEditor}
      * @memberof MenTionController
      */
-    r(this, "model");
+    o(this, "model");
     /**
      * 上下文
      *
      * @type {IContext}
      */
-    r(this, "context");
+    o(this, "context");
     /**
      * 视图参数
      *
      * @type {IParams}
      */
-    r(this, "params");
+    o(this, "params");
     /**
      * 表单数据
      *
      * @type {IData}
      * @memberof MenTionController
      */
-    r(this, "data", {});
+    o(this, "data", {});
     /**
      * 编辑器示例
      *
      * @type {IDomEditor}
      * @memberof MenTionController
      */
-    r(this, "editor");
+    o(this, "editor");
     /**
      * 用户请求url
      *
      * @type {string}
      * @memberof MenTionController
      */
-    r(this, "userUrl", "");
+    o(this, "userUrl", "");
     /**
      * 人员UI转化
      */
-    r(this, "userFieldMap", {
+    o(this, "userFieldMap", {
       id: "id",
       name: "name"
     });
@@ -2642,49 +2710,49 @@ class Ts {
      * @type {('post' | 'get')}
      * @memberof MenTionController
      */
-    r(this, "userMethod", "post");
+    o(this, "userMethod", "post");
     /**
      * 转换脚本
      *
      * @type {string}
      * @memberof MenTionController
      */
-    r(this, "userScript", "`@{userid=${data.id},name=${data.name}}`");
+    o(this, "userScript", "`@{userid=${data.id},name=${data.name}}`");
     /**
      * 逆转换脚本
      *
      * @type {string}
      * @memberof MenTionController
      */
-    r(this, "userInScript", "value.replaceAll(/@{userid=(.+?),name=(.+?)}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})");
+    o(this, "userInScript", "value.replaceAll(/@{userid=(.+?),name=(.+?)}/g,(x, id, name) => {return controller.getNodeInfo({ id, name })})");
     /**
      * 编辑器参数
      *
      * @type {IData}
      * @memberof MenTionController
      */
-    r(this, "editorParams");
+    o(this, "editorParams");
     /**
      * 用户数据
      *
      * @type {IData[]}
      * @memberof MenTionController
      */
-    r(this, "items", []);
+    o(this, "items", []);
     /**
      * 气泡容器
      *
      * @type {IOverlayPopoverContainer}
      * @memberof MenTionController
      */
-    r(this, "overlay", null);
+    o(this, "overlay", null);
     /**
      * 编辑器事件
      *
      * @type {ControllerEvent<commentEvent>}
      * @memberof MenTionController
      */
-    r(this, "evt");
+    o(this, "evt");
     /**
      * 是否正在执行
      *
@@ -2692,49 +2760,49 @@ class Ts {
      * @type {boolean}
      * @memberof MenTionController
      */
-    r(this, "execting", !1);
+    o(this, "execting", !1);
     /**
      * 搜索字段
      *
      * @type {string}
      * @memberof MenTionController
      */
-    r(this, "query", "");
+    o(this, "query", "");
     /**
      * 当前页
      *
      * @type {number}
      * @memberof MenTionController
      */
-    r(this, "curPage", 0);
+    o(this, "curPage", 0);
     /**
      * 分页条数
      *
      * @type {number}
      * @memberof MenTionController
      */
-    r(this, "size", 20);
+    o(this, "size", 20);
     /**
      * 预定义阻止捕获事件code
      *
      * @type {number[]}
      * @memberof MenTionController
      */
-    r(this, "presetPreventEvents", [13, 38, 40]);
+    o(this, "presetPreventEvents", [13, 38, 40]);
     /**
      * 预定义阻止冒泡事件code
      *
      * @type {number[]}
      * @memberof MenTionController
      */
-    r(this, "presetPreventPropEvents", [27]);
+    o(this, "presetPreventPropEvents", [27]);
     /**
      * 删除回调
      *
      * @type {NOOP}
      * @memberof MenTionController
      */
-    r(this, "cleanup", G);
+    o(this, "cleanup", _);
     this.registerNode();
   }
   /**
@@ -2747,24 +2815,24 @@ class Ts {
    */
   mentionPlugin(t) {
     const { insertText: e, isInline: s, isVoid: n } = t;
-    return t.insertText = (i) => {
+    return t.insertText = (a) => {
       if (!this.editor) {
-        e(i);
+        e(a);
         return;
       }
       if (!this.editor.isFocused()) {
-        e(i);
+        e(a);
         return;
       }
-      if (Y.getSelectedElems(t).some((u) => t.isVoid(u))) {
-        e(i);
+      if (V.getSelectedElems(t).some((u) => t.isVoid(u))) {
+        e(a);
         return;
       }
-      i === "@" && !this.execting && (this.query = "", this.showModal()), e(i);
-    }, t.isInline = (i) => Y.getNodeType(i) === "mention" ? !0 : s(i), t.isVoid = (i) => Y.getNodeType(i) === "mention" ? !0 : n(i), t;
+      a === "@" && !this.execting && (this.query = "", this.showModal()), e(a);
+    }, t.isInline = (a) => V.getNodeType(a) === "mention" ? !0 : s(a), t.isVoid = (a) => V.getNodeType(a) === "mention" ? !0 : n(a), t;
   }
   registerNode() {
-    window.mentionIsRegiter || (z.registerModule(Ls), window.mentionIsRegiter = !0), z.registerPlugin(this.mentionPlugin.bind(this));
+    window.mentionIsRegiter || (D.registerModule(Fs), window.mentionIsRegiter = !0), D.registerPlugin(this.mentionPlugin.bind(this));
   }
   /**
    * 初始化
@@ -2774,13 +2842,13 @@ class Ts {
    */
   async init(t, e) {
     if (this.model = e.model, this.context = e.context, this.params = e.params, this.evt = e.evt, this.data = e.data, this.editor = t, this.editorParams = this.model.editorParams, this.editorParams) {
-      const { USERURL: n, USERFIELDMAP: i, USERMETHOD: l, USERSCRIPT: d, USERINSCRIPT: u } = this.editorParams;
-      n && (this.userUrl = n), i && (this.userFieldMap = JSON.parse(i)), l && (this.userMethod = l.toLowerCase()), d && (this.userScript = d), u && (this.userInScript = u);
+      const { USERURL: n, USERFIELDMAP: a, USERMETHOD: l, USERSCRIPT: d, USERINSCRIPT: u } = this.editorParams;
+      n && (this.userUrl = n), a && (this.userFieldMap = JSON.parse(a)), l && (this.userMethod = l.toLowerCase()), d && (this.userScript = d), u && (this.userInScript = u);
     }
     const s = this.editor.getEditableContainer();
-    s && (this.cleanup = Be(s, "keydown", (n) => {
-      var i;
-      this.execting && this.presetPreventEvents.includes(n.keyCode) && n.preventDefault(), this.execting && this.presetPreventPropEvents.includes(n.keyCode) && (n.stopPropagation(), (i = this.overlay) == null || i.dismiss());
+    s && (this.cleanup = xe(s, "keydown", (n) => {
+      var a;
+      this.execting && this.presetPreventEvents.includes(n.keyCode) && n.preventDefault(), this.execting && this.presetPreventPropEvents.includes(n.keyCode) && (n.stopPropagation(), (a = this.overlay) == null || a.dismiss());
     })), await this.getOperatorUserList();
   }
   /**
@@ -2800,7 +2868,7 @@ class Ts {
     );
   }
   onDestroyed() {
-    this.cleanup !== G && this.cleanup(), this.overlay && this.overlay.dismiss();
+    this.cleanup !== _ && this.cleanup(), this.overlay && this.overlay.dismiss();
   }
   // 显示弹框
   showModal() {
@@ -2853,7 +2921,7 @@ class Ts {
    * @memberof MenTionController
    */
   parseNode(t) {
-    return J.execScriptFn(
+    return q.execScriptFn(
       { value: t, controller: this },
       this.userInScript,
       {
@@ -2872,12 +2940,12 @@ class Ts {
    * @memberof MenTionController
    */
   handlePublicParams(t, e, s) {
-    const { navigateContexts: n, navigateParams: i } = this.model;
+    const { navigateContexts: n, navigateParams: a } = this.model;
     let l = {};
-    n && t && (l = Re(n, t, s, e));
+    n && t && (l = Ue(n, t, s, e));
     const d = Object.assign(e.clone(), l);
     let u = {};
-    return i && t && (u = Re(i, t, s, e)), { context: d, params: u };
+    return a && t && (u = Ue(a, t, s, e)), { context: d, params: u };
   }
   /**
    * 获取用户信息
@@ -2891,9 +2959,9 @@ class Ts {
       this.data,
       this.context,
       this.params
-    ), n = t.isInitialLoad === !0, i = t.isLoadMore === !0;
-    n ? this.curPage = 0 : i && (this.curPage += 1);
-    const l = J.execScriptFn(
+    ), n = t.isInitialLoad === !0, a = t.isLoadMore === !0;
+    n ? this.curPage = 0 : a && (this.curPage += 1);
+    const l = q.execScriptFn(
       { data: this.data, context: e, params: s },
       this.userUrl,
       {
@@ -2944,25 +3012,25 @@ class Ts {
     return this.execting = !1, e.data || [];
   }
   createOverlayView() {
-    return (t) => dt(gs, {
+    return (t) => nt(ws, {
       controller: this,
       modal: t
     });
   }
 }
-function As(a) {
-  const { script: t = "", data: e = {} } = a, s = J.execScriptFn({ data: e }, t, {
+function As(i) {
+  const { script: t = "", data: e = {} } = i, s = q.execScriptFn({ data: e }, t, {
     singleRowReturn: !0,
     isAsync: !1
   });
   return "".concat(s);
 }
-const Hs = {
+const Is = {
   type: "page",
   elemToHtml: As
 };
-function Fs(a) {
-  const t = decodeURIComponent(a.getAttribute("data-value") || ""), e = JSON.parse(t);
+function Os(i) {
+  const t = decodeURIComponent(i.getAttribute("data-value") || ""), e = JSON.parse(t);
   return {
     type: "page",
     script: e.script,
@@ -2970,16 +3038,16 @@ function Fs(a) {
     children: [{ text: "" }]
   };
 }
-const Ns = {
+const Ds = {
   selector: 'span[data-w-e-type="page"]',
-  parseElemHtml: Fs
+  parseElemHtml: Os
 };
-function Os(a) {
-  const { data: t = {} } = a, e = {
+function Rs(i) {
+  const { data: t = {} } = i, e = {
     name: "".concat(t.name),
     id: t.id
   };
-  return de(
+  return ae(
     "mention-elem",
     {
       dataset: { value: JSON.stringify(e) },
@@ -2991,15 +3059,15 @@ function Os(a) {
     []
   );
 }
-const Is = {
+const Us = {
   type: "Page",
-  renderElem: Os
+  renderElem: Rs
 };
-class Ds {
+class zs {
   constructor() {
-    r(this, "title", "页面");
-    r(this, "tag", "button");
-    r(this, "iconSvg", '<svg t="1707293566679" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6103" width="200" height="200"><path d="M288 512l256 0C561.92 512 576 497.92 576 480 576 462.08 561.92 448 544 448l-256 0C270.08 448 256 462.08 256 480 256 497.92 270.08 512 288 512zM768 64 192 64C121.6 64 64 121.6 64 192l0 576c0 70.4 57.6 128 128 128l576 0c70.4 0 128-57.6 128-128L896 192C896 121.6 838.4 64 768 64zM832 768c0 35.2-28.8 64-64 64L192 832c-35.2 0-64-28.8-64-64L128 192c0-35.2 28.8-64 64-64l576 0c35.2 0 64 28.8 64 64L832 768zM672 256l-384 0C270.08 256 256 270.08 256 288 256 305.92 270.08 320 288 320l384 0C689.92 320 704 305.92 704 288 704 270.08 689.92 256 672 256zM608 640l-320 0C270.08 640 256 654.08 256 672l0 0C256 689.92 270.08 704 288 704l320 0c17.92 0 32-14.08 32-32l0 0C640 654.08 625.92 640 608 640z" p-id="6104"></path></svg>');
+    o(this, "title", "页面");
+    o(this, "tag", "button");
+    o(this, "iconSvg", '<svg t="1707293566679" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6103" width="200" height="200"><path d="M288 512l256 0C561.92 512 576 497.92 576 480 576 462.08 561.92 448 544 448l-256 0C270.08 448 256 462.08 256 480 256 497.92 270.08 512 288 512zM768 64 192 64C121.6 64 64 121.6 64 192l0 576c0 70.4 57.6 128 128 128l576 0c70.4 0 128-57.6 128-128L896 192C896 121.6 838.4 64 768 64zM832 768c0 35.2-28.8 64-64 64L192 832c-35.2 0-64-28.8-64-64L128 192c0-35.2 28.8-64 64-64l576 0c35.2 0 64 28.8 64 64L832 768zM672 256l-384 0C270.08 256 256 270.08 256 288 256 305.92 270.08 320 288 320l384 0C689.92 320 704 305.92 704 288 704 270.08 689.92 256 672 256zM608 640l-320 0C270.08 640 256 654.08 256 672l0 0C256 689.92 270.08 704 288 704l320 0c17.92 0 32-14.08 32-32l0 0C640 654.08 625.92 640 608 640z" p-id="6104"></path></svg>');
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -3018,18 +3086,18 @@ class Ds {
     throw new ne("暂未支持上传页面！");
   }
 }
-const Rs = {
+const $s = {
   key: "page",
   factory() {
-    return new Ds();
+    return new zs();
   }
-}, Us = {
-  renderElems: [Is],
-  elemsToHtml: [Hs],
-  parseElemsHtml: [Ns],
-  menus: [Rs]
+}, Bs = {
+  renderElems: [Us],
+  elemsToHtml: [Is],
+  parseElemsHtml: [Ds],
+  menus: [$s]
 };
-class zs {
+class js {
   /**
    * Creates an instance of PageController.
    * @param {IData} option
@@ -3042,54 +3110,54 @@ class zs {
      * @type {IEditor}
      * @memberof PageController
      */
-    r(this, "model");
+    o(this, "model");
     /**
      * 上下文
      *
      * @type {IContext}
      */
-    r(this, "context");
+    o(this, "context");
     /**
      * 视图参数
      *
      * @type {IParams}
      */
-    r(this, "params");
+    o(this, "params");
     /**
      * 表单数据
      *
      * @type {IData}
      * @memberof PageController
      */
-    r(this, "data", {});
+    o(this, "data", {});
     /**
      * 编辑器示例
      *
      * @type {IDomEditor}
      * @memberof PageController
      */
-    r(this, "editor");
+    o(this, "editor");
     /**
      * 编辑器参数
      *
      * @type {IData}
      * @memberof PageController
      */
-    r(this, "editorParams");
+    o(this, "editorParams");
     /**
      * 用户数据
      *
      * @type {IData[]}
      * @memberof PageController
      */
-    r(this, "items", []);
+    o(this, "items", []);
     /**
      * 编辑器事件
      *
      * @type {ControllerEvent<commentEvent>}
      * @memberof PageController
      */
-    r(this, "evt");
+    o(this, "evt");
     /**
      * 是否正在执行
      *
@@ -3097,11 +3165,11 @@ class zs {
      * @type {boolean}
      * @memberof PageController
      */
-    r(this, "execting", !1);
+    o(this, "execting", !1);
     this.registerNode();
   }
   registerNode() {
-    window.pageIsRegiter || (z.registerModule(Us), window.pageIsRegiter = !0);
+    window.pageIsRegiter || (D.registerModule(Bs), window.pageIsRegiter = !0);
   }
   /**
    * 初始化
@@ -3138,7 +3206,253 @@ class zs {
     return t;
   }
 }
-class Q {
+const Vs = {
+  type: "emoji",
+  renderElem: (i) => {
+    const { data: t = {} } = i;
+    return ae(
+      "emoji-elem",
+      {
+        dataset: { value: t.emoji ? Ut(t.emoji) : "" },
+        props: {
+          contentEditable: !1
+          // 不可编辑
+        }
+      },
+      []
+    );
+  }
+}, qs = {
+  type: "emoji",
+  elemToHtml: (i) => {
+    const { data: t } = i;
+    return "<span data-w-e-type=\"emoji\" class='emoji'>".concat(t.emoji, "</span>");
+  }
+}, Js = {
+  selector: 'span[data-w-e-type="emoji"]',
+  parseElemHtml: (i) => ({
+    data: {
+      emoji: i.innerHTML
+    },
+    type: "emoji",
+    children: [{ text: "" }]
+  })
+};
+class Ks {
+  /**
+   * Creates an instance of EmojiButtonMenu.
+   * @memberof EmojiButtonMenu
+   */
+  constructor() {
+    /**
+     * 标题
+     *
+     * @memberof EmojiButtonMenu
+     */
+    o(this, "title", "表情");
+    /**
+     * 菜单类型
+     *
+     * @memberof EmojiButtonMenu
+     */
+    o(this, "tag", "button");
+    /**
+     * 菜单图标
+     *
+     * @memberof EmojiButtonMenu
+     */
+    o(this, "iconSvg", "<svg viewBox='0 0 1040 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1490' width='1em' height='1em' stroke='var(--w-e-toolbar-color)' > <path stroke-width='38' d='M512.075261 1024A511.774217 511.774217 0 1 1 730.482434 48.769072a37.630457 37.630457 0 1 1-32.061149 68.035867 436.513303 436.513303 0 1 0 250.468323 395.270322 37.630457 37.630457 0 0 1 75.260914 0 512.526826 512.526826 0 0 1-512.075261 511.924739z' p-id='1491' ></path> <path stroke-width='38' d='M333.857416 344.0929a57.348817 57.348817 0 1 0 57.348817 57.348817 57.499339 57.499339 0 0 0-57.348817-57.348817zM686.53006 344.0929a57.348817 57.348817 0 1 0 57.348817 57.348817 57.348817 57.348817 0 0 0-57.348817-57.348817zM515.236219 783.165074c-162.864619 0-262.359547-141.942084-262.359547-219.159782a30.104366 30.104366 0 0 1 60.208731 0c0 48.618551 76.314567 158.951051 202.150816 158.951051s193.571072-134.114949 193.571072-158.951051a30.104366 30.104366 0 0 1 60.208731 0c0 54.488902-90.012054 219.159782-253.779803 219.159782zM1009.549904 207.720123h-67.132735V139.985301a30.104366 30.104366 0 1 0-60.208732 0v67.734822h-67.734822a30.104366 30.104366 0 0 0-30.104366 30.104366 30.104366 30.104366 0 0 0 30.104366 30.104366h67.734822v67.734823a30.104366 30.104366 0 0 0 60.208732 0v-67.734823h67.734823a30.104366 30.104366 0 0 0 30.104365-30.104366 30.104366 30.104366 0 0 0-30.706453-30.104366z' p-id='1492' ></path> </svg>");
+  }
+  /**
+   * 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
+   *
+   * @return {*}  {boolean}
+   * @memberof EmojiButtonMenu
+   */
+  isActive() {
+    return !1;
+  }
+  /**
+   * 获取菜单执行时的 value ，用不到则返回空 字符串或 false
+   *
+   * @return {*}  {(string | boolean)}
+   * @memberof EmojiButtonMenu
+   */
+  getValue() {
+    return !1;
+  }
+  /**
+   * 菜单是否需要禁用（如选中 H1 ，“引用”菜单被禁用），用不到则返回 false
+   *
+   * @return {*}  {boolean}
+   * @memberof EmojiButtonMenu
+   */
+  isDisabled() {
+    return !1;
+  }
+  /**
+   * 点击菜单时触发的函数
+   *
+   * @param {IDomEditor} editor
+   * @memberof EmojiButtonMenu
+   */
+  exec(t) {
+    t.emit("openEmojiSelect");
+  }
+}
+const _s = {
+  key: "emoji",
+  factory() {
+    return new Ks();
+  }
+}, Zs = {
+  renderElems: [Vs],
+  elemsToHtml: [qs],
+  parseElemsHtml: [Js],
+  menus: [_s]
+};
+class Ws {
+  /**
+   * Creates an instance of EmojiController.
+   * @param {IData} option
+   * @memberof EmojiController
+   */
+  constructor() {
+    /**
+     * 编辑器示例
+     *
+     * @type {IDomEditor}
+     * @memberof EmojiController
+     */
+    o(this, "editor");
+    /**
+     * 气泡容器
+     *
+     * @type {IOverlayPopoverContainer}
+     * @memberof EmojiController
+     */
+    o(this, "overlay", null);
+    /**
+     * 预定义阻止捕获事件code
+     *
+     * @type {number[]}
+     * @memberof EmojiController
+     */
+    o(this, "presetPreventEvents", [13, 38, 40]);
+    /**
+     * 预定义阻止冒泡事件code
+     *
+     * @type {number[]}
+     * @memberof EmojiController
+     */
+    o(this, "presetPreventPropEvents", [27]);
+    /**
+     * 删除回调
+     *
+     * @type {NOOP}
+     * @memberof EmojiController
+     */
+    o(this, "cleanup", _);
+    this.registerNode();
+  }
+  /**
+   * 声明' :'插件
+   *
+   * @template T
+   * @param {T} editor
+   * @return {*}
+   * @memberof EmojiController
+   */
+  emojiPlugin(t) {
+    const { isInline: e, isVoid: s } = t;
+    return t.isInline = (n) => V.getNodeType(n) === "emoji" ? !0 : e(n), t.isVoid = (n) => V.getNodeType(n) === "emoji" ? !0 : s(n), t;
+  }
+  registerNode() {
+    window.emojiIsRegiter || (D.registerModule(Zs), window.emojiIsRegiter = !0), D.registerPlugin(this.emojiPlugin.bind(this));
+  }
+  /**
+   * 初始化
+   *
+   * @param {IDomEditor} editor
+   * @memberof EmojiController
+   */
+  async init(t) {
+    this.editor = t, this.listenEvent();
+  }
+  /**
+   * 监听事件
+   *
+   * @private
+   * @memberof EmojiController
+   */
+  listenEvent() {
+    const t = this.editor.getEditableContainer();
+    this.editor.on("openEmojiSelect", () => this.openEmojiSelect()), this.cleanup = xe(t, "keydown", (e) => {
+      var s;
+      this.overlay && this.presetPreventEvents.includes(e.keyCode) && e.preventDefault(), this.overlay && this.presetPreventPropEvents.includes(e.keyCode) && (e.stopPropagation(), (s = this.overlay) == null || s.dismiss());
+    });
+  }
+  /**
+   * 打开表情选择
+   *
+   * @memberof EmojiController
+   */
+  async openEmojiSelect() {
+    const t = document.getSelection(), { focusNode: e } = t;
+    e && (this.overlay = ibiz.overlay.createPopover(
+      (s) => nt(bs, {
+        controller: this,
+        modal: s
+      }),
+      void 0,
+      {
+        width: "auto",
+        noArrow: !0,
+        autoClose: !0,
+        placement: "bottom-start"
+      }
+    ), await this.overlay.present(e.parentNode), this.overlay.onWillDismiss().then((s) => {
+      var l;
+      const n = s, a = (l = n.data) == null ? void 0 : l[0];
+      n.ok && a && this.addEmojiNode(a), this.overlay = null;
+    }));
+  }
+  /**
+   * 添加表情
+   *
+   * @param {string} data
+   * @memberof EmojiController
+   */
+  addEmojiNode(t) {
+    const e = {
+      data: t,
+      type: "emoji",
+      children: [{ text: "" }]
+    };
+    this.editor.restoreSelection(), this.editor.insertNode(e), this.editor.move(1);
+  }
+  /**
+   * 解析emoji节点
+   *
+   * @param {string} value
+   * @return {*}
+   * @memberof EmojiController
+   */
+  parseNode(t) {
+    return q.execScriptFn(
+      { value: t, controller: this },
+      'value.replaceAll(/\\{\\"\\emoji\\":\\"(.+?)\\"\\}/g,(x, emoji) => {return \'<span data-w-e-type="emoji" class="emoji">\'+emoji+\'</span>\'})',
+      {
+        singleRowReturn: !0,
+        isAsync: !1
+      }
+    );
+  }
+  onDestroyed() {
+    this.cleanup !== _ && this.cleanup(), this.overlay && this.overlay.dismiss();
+  }
+}
+class G {
   /**
    * 初始化
    *
@@ -3146,7 +3460,7 @@ class Q {
    * @memberof CustomNodeFactory
    */
   static init(t) {
-    this.registerMap.set("mention", Ts), this.registerMap.set("marker", bs), this.registerMap.set("attachments", Yt), this.registerMap.set("codesnippet", os), this.registerMap.set("page", zs), this.presetNodes.forEach((e) => {
+    this.registerMap.set("mention", Ns), this.registerMap.set("marker", Es), this.registerMap.set("attachments", Xt), this.registerMap.set("codesnippet", cs), this.registerMap.set("page", js), this.registerMap.set("emoji", Ws), this.presetNodes.forEach((e) => {
       this.registerPlugin({
         type: e,
         id: "".concat(e).concat(t)
@@ -3165,8 +3479,8 @@ class Q {
       return this.customNodeMap.get(s);
     const n = this.registerMap.get(e);
     if (n) {
-      const i = new n();
-      return this.customNodeMap.set(s, i), i;
+      const a = new n();
+      return this.customNodeMap.set(s, a), a;
     }
   }
   /**
@@ -3204,7 +3518,7 @@ class Q {
       this.unregisterPlugin({
         id: "".concat(e).concat(t)
       });
-    }), this.registerMap.delete("mention"), this.registerMap.delete("marker"), this.registerMap.delete("attachments"), this.registerMap.delete("codesnippet"), this.registerMap.delete("page");
+    }), this.registerMap.delete("mention"), this.registerMap.delete("marker"), this.registerMap.delete("attachments"), this.registerMap.delete("codesnippet"), this.registerMap.delete("page"), this.registerMap.delete("emoji");
   }
 }
 /**
@@ -3214,26 +3528,27 @@ class Q {
  * @type {IData}
  * @memberof CustomNodeFactory
  */
-r(Q, "customNodeMap", /* @__PURE__ */ new Map()), /**
+o(G, "customNodeMap", /* @__PURE__ */ new Map()), /**
  * 预置注册表
  *
  * @type {Map<string, any>}
  * @memberof CustomNodeFactory
  */
-r(Q, "registerMap", /* @__PURE__ */ new Map()), /**
+o(G, "registerMap", /* @__PURE__ */ new Map()), /**
  * 预置注册节点
  *
  * @static
  * @memberof CustomNodeFactory
  */
-r(Q, "presetNodes", [
+o(G, "presetNodes", [
   "mention",
   "marker",
   "attachments",
   "codesnippet",
-  "page"
+  "page",
+  "emoji"
 ]);
-class Bs extends HTMLElement {
+class Qs extends HTMLElement {
   // 监听的 attr
   static get observedAttributes() {
     return ["data-value"];
@@ -3242,25 +3557,25 @@ class Bs extends HTMLElement {
     if (t === "data-value") {
       if (s && e === s)
         return;
-      const n = JSON.parse(s), i = this.attachShadow({ mode: "open" }), l = i.ownerDocument;
+      const n = JSON.parse(s), a = this.attachShadow({ mode: "open" }), l = a.ownerDocument;
       if (n.icon) {
         const u = l.createElement("span");
-        u.part.add("svg"), u.innerHTML = n.icon, i.appendChild(u);
+        u.part.add("svg"), u.innerHTML = n.icon, a.appendChild(u);
       }
       if (n.identifier) {
         const u = l.createElement("span");
-        u.part.add("identifier"), u.innerHTML = n.identifier, i.appendChild(u);
+        u.part.add("identifier"), u.innerHTML = n.identifier, a.appendChild(u);
       }
       if (n.name) {
         const u = l.createElement("span");
-        u.part.add("name"), u.innerHTML = n.name, i.appendChild(u);
+        u.part.add("name"), u.innerHTML = n.name, a.appendChild(u);
       }
       const d = l.createElement("style");
-      d.innerHTML = "\n      svg {\n        height: 1em;\n        width: 1em;\n      }\n    ", i.appendChild(d);
+      d.innerHTML = "\n      svg {\n        height: 1em;\n        width: 1em;\n      }\n    ", a.appendChild(d);
     }
   }
 }
-class $s extends HTMLElement {
+class Ys extends HTMLElement {
   // 监听的 attr
   static get observedAttributes() {
     return ["data-value"];
@@ -3269,31 +3584,45 @@ class $s extends HTMLElement {
     if (t === "data-value") {
       if (s && e === s)
         return;
-      const n = JSON.parse(s), i = this.attachShadow({ mode: "open" }), l = i.ownerDocument, d = l.createElement("div");
+      const n = JSON.parse(s), a = this.attachShadow({ mode: "open" }), l = a.ownerDocument, d = l.createElement("div");
       d.part.add("box"), d.classList.add("personnel-marker_box");
       let u = "";
       if (n.name) {
-        u = ce.stringToHexColor(n.name);
-        const S = l.createElement("div");
-        S.part.add("name"), S.classList.add("personnel-marker_name"), S.style.backgroundColor = u, S.innerHTML = n.name, d.appendChild(S);
+        u = ie.stringToHexColor(n.name);
+        const E = l.createElement("div");
+        E.part.add("name"), E.classList.add("personnel-marker_name"), E.style.backgroundColor = u, E.innerHTML = n.name, d.appendChild(E);
       }
-      const f = l.createElement("div");
-      f.part.add("line"), f.classList.add("personnel-marker_line"), f.style.backgroundColor = u, d.appendChild(f), i.appendChild(d);
+      const p = l.createElement("div");
+      p.part.add("line"), p.classList.add("personnel-marker_line"), p.style.backgroundColor = u, d.appendChild(p), a.appendChild(d);
       const m = l.createElement("style");
       d.appendChild(m);
     }
   }
 }
-class Vs {
+class Gs extends HTMLElement {
+  // 监听的 attr
+  static get observedAttributes() {
+    return ["data-value"];
+  }
+  attributeChangedCallback(t, e, s) {
+    if (t === "data-value") {
+      if (s && e === s)
+        return;
+      const n = this.attachShadow({ mode: "open" }), l = n.ownerDocument.createElement("span");
+      l.innerHTML = s, l.part.add("box"), l.classList.add("emoji-elem_box"), n.appendChild(l);
+    }
+  }
+}
+class Xs {
   constructor() {
-    r(this, "title", "格式刷");
-    r(this, "tag", "button");
-    r(this, "fragment", []);
-    r(this, "format", {});
-    r(this, "editor", null);
-    r(this, "excting", !1);
-    r(this, "iconSvg", '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fit="" height="1em" width="1em" preserveAspectRatio="xMidYMid meet" focusable="false"><g id="aqseditor/paintformat" stroke-width="1" fill-rule="evenodd"><path d="M3 5.24h10V2H3v3.24zM13.299 1H2.701A.701.701 0 0 0 2 1.701v3.838c0 .387.314.701.701.701h6.236L7.621 7.438h-.002v2.233h-.768v5.184L9.404 13.1V9.671h-.585V7.97l1.9-1.73h2.58A.701.701 0 0 0 14 5.539V1.701A.701.701 0 0 0 13.299 1z" id="aqsFill-1"></path></g></svg>');
-    r(this, "setPaintFormat", () => {
+    o(this, "title", "格式刷");
+    o(this, "tag", "button");
+    o(this, "fragment", []);
+    o(this, "format", {});
+    o(this, "editor", null);
+    o(this, "excting", !1);
+    o(this, "iconSvg", '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fit="" height="1em" width="1em" preserveAspectRatio="xMidYMid meet" focusable="false"><g id="aqseditor/paintformat" stroke-width="1" fill-rule="evenodd"><path d="M3 5.24h10V2H3v3.24zM13.299 1H2.701A.701.701 0 0 0 2 1.701v3.838c0 .387.314.701.701.701h6.236L7.621 7.438h-.002v2.233h-.768v5.184L9.404 13.1V9.671h-.585V7.97l1.9-1.73h2.58A.701.701 0 0 0 14 5.539V1.701A.701.701 0 0 0 13.299 1z" id="aqsFill-1"></path></g></svg>');
+    o(this, "setPaintFormat", () => {
       if (!this.editor)
         return;
       const t = this.editor.getSelectionText();
@@ -3302,8 +3631,8 @@ class Vs {
         this.editor.insertNode(e), this.excting || this.clearFormat();
       }
     });
-    r(this, "onPaintFormat", gt(this.setPaintFormat, 500, !1));
-    r(this, "throttleHandle", this.throttle(this.handle, 300));
+    o(this, "onPaintFormat", yt(this.setPaintFormat, 500, !1));
+    o(this, "throttleHandle", this.throttle(this.handle, 300));
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -3359,38 +3688,38 @@ class Vs {
     this.throttleHandle(t);
   }
 }
-const qs = {
+const en = {
   key: "paintformat",
   factory() {
-    return new Vs();
+    return new Xs();
   }
 };
-function js(a) {
-  const { data: t = {} } = a;
+function tn(i) {
+  const { data: t = {} } = i;
   return "<span class='personnel-marker'>".concat(t == null ? void 0 : t.name, "</span>");
 }
-const Js = {
+const sn = {
   type: "personnel-marker",
-  elemToHtml: js
+  elemToHtml: tn
 };
-function Ks(a) {
-  const t = decodeURIComponent(a.getAttribute("data-value") || "");
+function nn(i) {
+  const t = decodeURIComponent(i.getAttribute("data-value") || "");
   return {
     type: "personnel-marker",
     data: JSON.parse(t),
     children: [{ text: "" }]
   };
 }
-const _s = {
+const an = {
   selector: 'span[data-w-e-type="personnel-marker"]',
-  parseElemHtml: Ks
+  parseElemHtml: nn
 };
-function Zs(a) {
-  const { data: t = {} } = a, e = {
+function on(i) {
+  const { data: t = {} } = i, e = {
     name: "".concat(t.name),
     id: t.id
   };
-  return de(
+  return ae(
     "personnel-marker-elem",
     {
       dataset: { value: JSON.stringify(e) },
@@ -3402,33 +3731,33 @@ function Zs(a) {
     []
   );
 }
-const Ws = {
+const rn = {
   type: "personnel-marker",
-  renderElem: Zs
-}, Qs = {
-  renderElems: [Ws],
-  elemsToHtml: [Js],
-  parseElemsHtml: [_s]
-}, Ys = (a) => {
-  const { isInline: t, isVoid: e, deleteBackward: s } = a;
-  return a.deleteBackward = (n) => {
-    const { selection: i } = a;
-    if (i && i.focus.offset === 0) {
-      const [l, d] = i.focus.path;
-      let u = d, f = l, m = !1;
-      d === 0 && l !== 0 ? (f = f - 1, m = !0) : d > 0 && (u = u - 1);
-      const S = a.children[f].children[m ? a.children[f].children.length - 1 : u];
-      (S == null ? void 0 : S.type) === "personnel-marker" && a.moveReverse(1);
+  renderElem: on
+}, ln = {
+  renderElems: [rn],
+  elemsToHtml: [sn],
+  parseElemsHtml: [an]
+}, cn = (i) => {
+  const { isInline: t, isVoid: e, deleteBackward: s } = i;
+  return i.deleteBackward = (n) => {
+    const { selection: a } = i;
+    if (a && a.focus.offset === 0) {
+      const [l, d] = a.focus.path;
+      let u = d, p = l, m = !1;
+      d === 0 && l !== 0 ? (p = p - 1, m = !0) : d > 0 && (u = u - 1);
+      const E = i.children[p].children[m ? i.children[p].children.length - 1 : u];
+      (E == null ? void 0 : E.type) === "personnel-marker" && i.moveReverse(1);
     }
     s(n);
-  }, a.isInline = (n) => Y.getNodeType(n) === "personnel-marker" ? !0 : t(n), a.isVoid = (n) => Y.getNodeType(n) === "personnel-marker" ? !1 : e(n), a;
+  }, i.isInline = (n) => V.getNodeType(n) === "personnel-marker" ? !0 : t(n), i.isVoid = (n) => V.getNodeType(n) === "personnel-marker" ? !1 : e(n), i;
 };
-class Gs {
+class dn {
   constructor() {
     // TS 语法
-    r(this, "title", "AI询问");
-    r(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"> <text x="0" y="13" font-size="16" fill="black">AI</text></svg>');
-    r(this, "tag", "button");
+    o(this, "title", "AI询问");
+    o(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" version="1.1"> <text x="0" y="13" font-size="16" fill="black">AI</text></svg>');
+    o(this, "tag", "button");
   }
   // 菜单是否需要激活（如选中加粗文本，“加粗”菜单会激活），用不到则返回 false
   isActive(t) {
@@ -3447,7 +3776,53 @@ class Gs {
     t.emit("aiClick");
   }
 }
-class Xs extends Lt {
+function un(i) {
+  const { url: t, children: e } = i;
+  let s = "_blank";
+  return t.startsWith("./#/") && (s = "_self"), '<a href="'.concat(t, '" target="').concat(s, '">').concat(e[0].text, "</a>");
+}
+const hn = {
+  type: "link",
+  elemToHtml: un
+};
+class mn {
+  constructor() {
+    o(this, "title", "查看连接");
+    o(this, "iconSvg", '<svg viewBox="0 0 1024 1024"><path d="M924.402464 1023.068211H0.679665V99.345412h461.861399v98.909208H99.596867v725.896389h725.896389V561.206811h98.909208z" p-id="10909"></path><path d="M930.805104 22.977336l69.965436 69.965436-453.492405 453.492404-69.965435-69.901489z" p-id="10910"></path><path d="M1022.464381 304.030081h-98.917201V99.345412H709.230573V0.428211h313.233808z"></path></svg>');
+    o(this, "tag", "button");
+  }
+  getSelectedLinkElem(t) {
+    const e = V.getSelectedNodeByType(t, "link");
+    return e == null ? null : e;
+  }
+  getValue(t) {
+    const e = this.getSelectedLinkElem(t);
+    return e && e.url || "";
+  }
+  isActive() {
+    return !1;
+  }
+  isDisabled(t) {
+    return t.selection == null || this.getSelectedLinkElem(t) == null;
+  }
+  exec(t, e) {
+    if (!this.isDisabled(t)) {
+      if (!e || typeof e != "string")
+        throw new Error("打开链接失败, 路径为 '".concat(e, "'"));
+      e.toString().startsWith("./#/") ? window.open("".concat(window.location.pathname).concat(e.slice(1)), "_self") : window.open(e, "_blank");
+    }
+  }
+}
+const fn = {
+  key: "customViewLink",
+  factory() {
+    return new mn();
+  }
+}, pn = {
+  menus: [fn],
+  elemsToHtml: [hn]
+};
+class vn extends Pt {
   constructor() {
     super(...arguments);
     /**
@@ -3456,130 +3831,130 @@ class Xs extends Lt {
      * @type {string}
      * @memberof HtmlCommentController
      */
-    r(this, "userAvatar", "");
+    o(this, "userAvatar", "");
     /**
      * 上传参数
      */
-    r(this, "uploadParams");
+    o(this, "uploadParams");
     /**
      * 下载参数
      */
-    r(this, "exportParams");
+    o(this, "exportParams");
     /**
      * 最小高度
      *
      * @type {number}
      * @memberof HtmlCommentController
      */
-    r(this, "minHeight", 48);
+    o(this, "minHeight", 48);
     /**
      * 最大高度
      *
      * @type {number}
      * @memberof HtmlCommentController
      */
-    r(this, "maxHeight", 315);
+    o(this, "maxHeight", 315);
     /**
      * 是否折叠
      *
      * @type {Ref<boolean>}
      * @memberof HtmlCommentController
      */
-    r(this, "collapsed", g(!0));
+    o(this, "collapsed", g(!0));
     /**
      * 是否隐藏
      *
      * @type {Ref<boolean>}
      * @memberof HtmlCommentController
      */
-    r(this, "hidden", g(!1));
+    o(this, "hidden", g(!1));
     /**
      * 回复
      *
      * @type {string}
      * @memberof HtmlCommentController
      */
-    r(this, "reply", g(""));
+    o(this, "reply", g(""));
     /**
      * 回复脚本
      *
      * @type {string}
      * @memberof HtmlCommentController
      */
-    r(this, "replyScript", "");
+    o(this, "replyScript", "");
     /**
      * 编辑器模式
      *
      * @type {('comment' | 'default')}
      * @memberof HtmlCommentController
      */
-    r(this, "mode", "comment");
+    o(this, "mode", "comment");
     /**
      * 插入工具栏项
      *
      * @type {IData[]}
      * @memberof HtmlCommentController
      */
-    r(this, "insertKeys", []);
+    o(this, "insertKeys", []);
     /**
      * 绘制模式
      *
      * @type {IData[]}
      * @memberof HtmlCommentController
      */
-    r(this, "renderMode", "HTML");
+    o(this, "renderMode", "HTML");
     /**
      * 保存间隔
      *
      * @type {IData[]}
      * @memberof HtmlCommentController
      */
-    r(this, "saveInterval", 3e3);
+    o(this, "saveInterval", 3e3);
     /**
      * 抛值模式
      *
      * @type {IData[]}
      * @memberof HtmlCommentController
      */
-    r(this, "emitMode", "BUTTON");
+    o(this, "emitMode", "BUTTON");
     /**
      * 唯一标识
      *
      * @type {string}
      * @memberof HtmlCommentController
      */
-    r(this, "uuid", Se());
+    o(this, "uuid", Me());
     /**
      * 实时编辑（协同编辑）
      */
-    r(this, "enableRealtime", !1);
+    o(this, "enableRealtime", !1);
     /**
      * 编辑器实例
      */
-    r(this, "editor");
+    o(this, "editor");
     /**
      * 是否在处理中
      */
-    r(this, "processing", g(!1));
+    o(this, "processing", g(!1));
     /**
      * 用户标记数据map
      */
-    r(this, "persMarkMap", /* @__PURE__ */ new Map());
+    o(this, "persMarkMap", /* @__PURE__ */ new Map());
     /**
      * 消息信息
      */
-    r(this, "msg");
+    o(this, "msg");
     /**
      * 是否已监听
      */
-    r(this, "hasSubscribe", !1);
+    o(this, "hasSubscribe", !1);
     /**
      * 应用实体服务
      *
      * @type {IAppDEService}
      * @memberof HtmlCommentController
      */
-    r(this, "deService");
+    o(this, "deService");
     /**
      * 自填模式
      *
@@ -3587,7 +3962,7 @@ class Xs extends Lt {
      * @date 2023-10-12 10:10:52
      * @type {IAppDEACMode}
      */
-    r(this, "deACMode");
+    o(this, "deACMode");
     /**
      * AI 聊天自填模式
      *
@@ -3595,8 +3970,8 @@ class Xs extends Lt {
      * @date 2023-10-12 10:10:37
      * @type {boolean}
      */
-    r(this, "chatCompletion", !1);
-    r(this, "evt", new Tt(
+    o(this, "chatCompletion", !1);
+    o(this, "evt", new Tt(
       this.getEventArgs.bind(this)
     ));
   }
@@ -3613,7 +3988,7 @@ class Xs extends Lt {
   async onInit() {
     await super.onInit(), await this.getCurrentUserAvatar();
     const { model: e } = this;
-    if (e.appDEACModeId && (this.deACMode = await At(
+    if (e.appDEACModeId && (this.deACMode = await Ht(
       e.appDEACModeId,
       e.appDataEntityId,
       this.context.srfappid
@@ -3621,40 +3996,40 @@ class Xs extends Lt {
       const {
         uploadParams: s,
         exportParams: n,
-        MINHEIGHT: i,
+        MINHEIGHT: a,
         MAXHEIGHT: l,
         REPLYSCRIPT: d,
         MODE: u,
-        INSERTKEYS: f,
+        INSERTKEYS: p,
         RENDERMODE: m,
-        SAVEINTERVAL: S,
+        SAVEINTERVAL: E,
         EMITMODE: k,
         DEFAULTCOLLAPSE: M,
-        ENABLEREALTIME: F
+        ENABLEREALTIME: N
       } = this.editorParams;
       if (s)
         try {
           this.uploadParams = JSON.parse(s);
-        } catch (A) {
+        } catch (H) {
           ibiz.log.error(
             "编辑器[".concat(ibiz.log.error(
-              A
+              H
             ), "]编辑器参数 uploadParams 非 json 格式")
           );
         }
       if (n)
         try {
           this.exportParams = JSON.parse(n);
-        } catch (A) {
+        } catch (H) {
           ibiz.log.error(
             "编辑器[".concat(ibiz.log.error(
-              A
+              H
             ), "]编辑器参数 exportParams 非 json 格式")
           );
         }
-      i && (this.minHeight = Number(i)), l && (this.maxHeight = Number(l)), d && (this.replyScript = d), u && (this.mode = u.toLowerCase()), f && (this.insertKeys = JSON.parse(f)), m && (this.renderMode = m), S && (this.saveInterval = Rt(S)), k && (this.emitMode = k), M && (this.collapsed.value = !Object.is(M, "TRUE") && !Object.is(M, "true")), F && (this.enableRealtime = Object.is(F, "TRUE") || Object.is(F, "true"));
+      a && (this.minHeight = Number(a)), l && (this.maxHeight = Number(l)), d && (this.replyScript = d), u && (this.mode = u.toLowerCase()), p && (this.insertKeys = JSON.parse(p)), m && (this.renderMode = m), E && (this.saveInterval = $t(E)), k && (this.emitMode = k), M && (this.collapsed.value = !Object.is(M, "TRUE") && !Object.is(M, "true")), N && (this.enableRealtime = Object.is(N, "TRUE") || Object.is(N, "true"));
     }
-    Q.init(this.uuid), this.evt.on("onChange", () => {
+    G.init(this.uuid), this.evt.on("onChange", () => {
       if (this.parent.form)
         return;
       const s = ibiz.uiDomainManager.get(this.context.srfsessionid);
@@ -3668,15 +4043,15 @@ class Xs extends Lt {
    * @memberof HtmlCommentController
    */
   registerCustomElem() {
-    window.customElements.get("mention-elem") || window.customElements.define("mention-elem", Bs), window.customElements.get("personnel-marker-elem") || window.customElements.define(
+    window.customElements.get("mention-elem") || window.customElements.define("mention-elem", Qs), window.customElements.get("personnel-marker-elem") || window.customElements.define(
       "personnel-marker-elem",
-      $s
-    ), window.paintFormatIsRegiter || (z.registerMenu(qs), window.paintFormatIsRegiter = !0), window.personnelMarkerIsRegiter || (z.registerModule(Qs), window.personnelMarkerIsRegiter = !0), z.registerRenderStyle((e, s) => $t(e, s)), z.registerPlugin(Ys), window.aichartRegister || (z.registerMenu({
+      Ys
+    ), window.customElements.get("emoji-elem") || window.customElements.define("emoji-elem", Gs), window.paintFormatIsRegiter || (D.registerMenu(en), window.paintFormatIsRegiter = !0), window.personnelMarkerIsRegiter || (D.registerModule(ln), window.personnelMarkerIsRegiter = !0), D.registerRenderStyle((e, s) => Vt(e, s)), D.registerPlugin(cn), window.aichartRegister || (D.registerMenu({
       key: "aichart",
       factory() {
-        return new Gs();
+        return new dn();
       }
-    }), window.aichartRegister = !0);
+    }), window.aichartRegister = !0), window.customLinkIsRegiter || (D.registerModule(pn), window.customLinkIsRegiter = !0);
   }
   /**
    * 初始化
@@ -3685,7 +4060,7 @@ class Xs extends Lt {
    * @memberof HtmlCommentController
    */
   onCreated(e, s, n) {
-    Q.getPluginsById(this.uuid).forEach((l) => {
+    G.getPluginsById(this.uuid).forEach((l) => {
       l.init(e, {
         model: this.model,
         data: s,
@@ -3788,12 +4163,12 @@ class Xs extends Lt {
     const { apply: s } = e;
     e.apply = (n) => {
       if (s(n), this.enableRealtime && !this.processing.value) {
-        const i = { ...n };
+        const a = { ...n };
         if (n.type === "set_selection") {
           const l = this.handleCursor(n);
-          Object.assign(i, { cursor: l });
+          Object.assign(a, { cursor: l });
         }
-        ibiz.markOpenData.send(this.msg.deName, this.msg.srfkey, "EDIT", i);
+        ibiz.markOpenData.send(this.msg.deName, this.msg.srfkey, "EDIT", a);
       }
     };
   }
@@ -3806,23 +4181,23 @@ class Xs extends Lt {
     const s = {};
     e.properties && (s.position = {
       path: e.properties.focus.path,
-      offset: W.calcOffsetByPoint(this.editor, e.properties.focus)
+      offset: Y.calcOffsetByPoint(this.editor, e.properties.focus)
     }), e.newProperties && (s.newPosition = {
       path: e.newProperties.focus.path,
-      offset: W.calcOffsetByPoint(
+      offset: Y.calcOffsetByPoint(
         this.editor,
         e.newProperties.focus
       )
     });
     const { selection: n } = this.editor;
-    return !Ue.isRange(e.newProperties) && !Ue.isRange(e.properties) && n && (s.selectionRange = {
+    return !ze.isRange(e.newProperties) && !ze.isRange(e.properties) && n && (s.selectionRange = {
       anchor: {
         path: n.anchor.path,
-        offset: W.calcOffsetByPoint(this.editor, n.anchor)
+        offset: Y.calcOffsetByPoint(this.editor, n.anchor)
       },
       focus: {
         path: n.focus.path,
-        offset: W.calcOffsetByPoint(this.editor, n.focus)
+        offset: Y.calcOffsetByPoint(this.editor, n.focus)
       }
     }), s;
   }
@@ -3832,9 +4207,9 @@ class Xs extends Lt {
    * @memberof HtmlCollapseController
    */
   onDestroyed() {
-    Q.getPluginsById(this.uuid).forEach((s) => {
+    G.getPluginsById(this.uuid).forEach((s) => {
       s.onDestroyed();
-    }), Q.destroy(this.uuid), this.enableRealtime && ibiz.markOpenData.unsubscribe(
+    }), G.destroy(this.uuid), this.enableRealtime && ibiz.markOpenData.unsubscribe(
       this.msg.deName,
       this.msg.srfkey,
       this.markOpenDataCallback
@@ -3860,8 +4235,8 @@ class Xs extends Lt {
    */
   parseNode(e) {
     let s = e;
-    return Q.getPluginsById(this.uuid).forEach((i) => {
-      s = i.parseNode(s);
+    return G.getPluginsById(this.uuid).forEach((a) => {
+      s = a.parseNode(s);
     }), s;
   }
   /**
@@ -3871,7 +4246,7 @@ class Xs extends Lt {
    * @memberof HtmlCommentController
    */
   async setValue(e) {
-    this.collapsed.value = !1, this.hidden.value = !0, await U(), this.hidden.value = !1, await U();
+    this.collapsed.value = !1, this.hidden.value = !0, await z(), this.hidden.value = !1, await z();
     const s = this.parseNode(e);
     this.evt.emit("setHtml", {
       eventArg: s
@@ -3884,7 +4259,9 @@ class Xs extends Lt {
    * @memberof HtmlCommentController
    */
   setReply(e) {
-    this.reply.value = "".concat(e.name, ": ").concat(e.content), this.evt.emit("onSetReply", {
+    this.reply.value = ie.getEmojiCustomHtml(
+      "".concat(e.name, ": ").concat(e.content)
+    ), this.evt.emit("onSetReply", {
       eventArg: this.reply.value
     });
   }
@@ -3929,7 +4306,7 @@ class Xs extends Lt {
         throw new ne("下载文件失败");
       if (s.data) {
         const n = e.name;
-        Dt(s.data, n);
+        zt(s.data, n);
       } else
         throw new ne("文件流数据不存在");
     });
@@ -3990,8 +4367,8 @@ class Xs extends Lt {
       data: { name: s },
       children: [{ text: "" }],
       id: s
-    }, i = (l = this.persMarkMap.get(s)) == null ? void 0 : l.cursor;
-    Object.assign(e, { preCursor: i }), W.movePersNode(this.editor, {
+    }, a = (l = this.persMarkMap.get(s)) == null ? void 0 : l.cursor;
+    Object.assign(e, { preCursor: a }), Y.movePersNode(this.editor, {
       node: n,
       param: e
     }), this.persMarkMap.set(s, e);
@@ -4001,12 +4378,12 @@ class Xs extends Lt {
    * @param item
    */
   setPersSelectionMark(e) {
-    const { persMarkData: s, mark: n } = e, i = s.cursor.selectionRange;
-    i && W.addMarks(this.editor, {
+    const { persMarkData: s, mark: n } = e, a = s.cursor.selectionRange;
+    a && Y.addMarks(this.editor, {
       mark: n,
       selection: {
-        anchor: W.calcPointByOffset(this.editor, i.anchor),
-        focus: W.calcPointByOffset(this.editor, i.focus)
+        anchor: Y.calcPointByOffset(this.editor, a.anchor),
+        focus: Y.calcPointByOffset(this.editor, a.focus)
       }
     });
   }
@@ -4016,7 +4393,7 @@ class Xs extends Lt {
    * @memberof HtmlCommentController
    */
   async getCurrentUserAvatar() {
-    var n, i;
+    var n, a;
     const e = await ibiz.hub.getApp(this.context.srfappid);
     let s = [];
     if (s = await e.codeList.get(
@@ -4025,7 +4402,7 @@ class Xs extends Lt {
       this.params
     ), this.context.srfuserid) {
       const l = s.filter((d) => d.value === this.context.srfuserid);
-      l && l.length > 0 && (this.userAvatar = ((i = (n = l[0]) == null ? void 0 : n.data) == null ? void 0 : i.iconurl) || "");
+      l && l.length > 0 && (this.userAvatar = ((a = (n = l[0]) == null ? void 0 : n.data) == null ? void 0 : a.iconurl) || "");
     }
   }
   /**
@@ -4040,31 +4417,32 @@ class Xs extends Lt {
       return e.view;
   }
 }
-class en {
+class gn {
   constructor() {
-    r(this, "formEditor", "HtmlComment");
-    r(this, "gridEditor", "HtmlComment");
+    o(this, "formEditor", "HtmlComment");
+    o(this, "gridEditor", "HtmlComment");
   }
   async createController(t, e) {
-    const s = new Xs(t, e);
+    const s = new vn(t, e);
     return await s.init(), s;
   }
 }
-const tn = Nt(Xe, function(a) {
-  a.component(Xe.name, Xe), Ht(
+const yn = It(et, function(i) {
+  i.component(st.name, st), i.component($e.name, $e), i.component(et.name, et), Ft(
     "EDITOR_CUSTOMSTYLE_COMMENT",
-    () => new en()
+    () => new gn()
   );
-}), pn = {
+}), Fn = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
-  install(a) {
-    a.use(tn), a.component(
+  install(i) {
+    i.use(yn), i.component(
       "IBizHtmlContent",
-      Pt(() => Promise.resolve().then(() => Ut))
+      Lt(() => Promise.resolve().then(() => Bt))
     );
   }
 };
 export {
-  tn as IBizHtmlComment,
-  pn as default
+  yn as IBizHtmlComment,
+  Fn as default
 };
+//# sourceMappingURL=index.es.js.map

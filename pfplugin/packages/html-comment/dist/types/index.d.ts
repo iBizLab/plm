@@ -1,8 +1,8 @@
 import { App } from 'vue';
 export declare const IBizHtmlComment: import("@ibiz-template/vue3-util").TypeWithInstall<import("vue").DefineComponent<{
     value: StringConstructor;
-    controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<import("./html-comment.controller").HtmlCommentController>, undefined, undefined>;
-    data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
+    controller: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<import("./html-comment.controller").HtmlCommentController>, undefined, undefined>;
+    data: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<IData>, undefined, undefined>;
     disabled: {
         type: BooleanConstructor;
     };
@@ -38,8 +38,8 @@ export declare const IBizHtmlComment: import("@ibiz-template/vue3-util").TypeWit
     infoTextChange: (_text: string) => boolean;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     value: StringConstructor;
-    controller: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<import("./html-comment.controller").HtmlCommentController>, undefined, undefined>;
-    data: import("@ibiz-template/vue3-util").RequiredProp<import("vue").PropType<IData>, undefined, undefined>;
+    controller: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<import("./html-comment.controller").HtmlCommentController>, undefined, undefined>;
+    data: import("@ibiz-template/vue3-util").RequiredProp<import("@vue/runtime-core").PropType<IData>, undefined, undefined>;
     disabled: {
         type: BooleanConstructor;
     };

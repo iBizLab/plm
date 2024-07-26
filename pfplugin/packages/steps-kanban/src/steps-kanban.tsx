@@ -25,12 +25,14 @@ import {
 } from '@ibiz-template/runtime';
 import { NOOP, listenJSEvent } from '@ibiz-template/core';
 import { StepsKanbanController } from './steps-kanban.controller';
+import VirtualDraggable from './components/virtual-draggable';
 import './steps-kanban.scss';
 
 export const StepsKanbanControl = defineComponent({
   name: 'IBizStepsKanbanControl',
   components: {
     draggable,
+    'virtual-draggable': VirtualDraggable,
   },
   props: {
     modelData: { type: Object as PropType<IDEKanban>, required: true },
@@ -467,9 +469,11 @@ export const StepsKanbanControl = defineComponent({
           <div class={ns.b('split')}>
             <div class={ns.be('split', 'left')}>
               <div class={ns.be('split', 'header')}>进行中</div>
-              <draggable
+              <virtual-draggable
                 class={ns.be('group', 'draggable')}
-                modelValue={runing.children}
+                items={runing.children}
+                count={c.visiableLength}
+                itemSize={c.groupItemSize}
                 group={c.model.id}
                 itemKey='srfkey'
                 disabled={disabled.value || readonly.value}
@@ -494,14 +498,16 @@ export const StepsKanbanControl = defineComponent({
                     );
                   },
                 }}
-              </draggable>
+              </virtual-draggable>
               {renderQuickToolBar(group)}
             </div>
             <div class={ns.be('split', 'right')}>
               <div class={ns.be('split', 'header')}>已完成</div>
-              <draggable
+              <virtual-draggable
                 class={ns.be('group', 'draggable')}
-                modelValue={finish.children}
+                items={finish.children}
+                count={c.visiableLength}
+                itemSize={c.groupItemSize}
                 group={c.model.id}
                 itemKey='srfkey'
                 disabled={disabled.value || readonly.value}
@@ -526,16 +532,18 @@ export const StepsKanbanControl = defineComponent({
                     );
                   },
                 }}
-              </draggable>
+              </virtual-draggable>
               {renderQuickToolBar(group)}
             </div>
           </div>
         );
       }
       return [
-        <draggable
+        <virtual-draggable
           class={ns.be('group', 'draggable')}
-          modelValue={group.children}
+          items={group.children}
+          count={c.visiableLength}
+          itemSize={c.groupItemSize}
           group={c.model.id}
           itemKey='srfkey'
           disabled={disabled.value || readonly.value}
@@ -552,7 +560,7 @@ export const StepsKanbanControl = defineComponent({
               return <div class={ns.be('group', 'list')}>{renderNoData()}</div>;
             },
           }}
-        </draggable>,
+        </virtual-draggable>,
         renderQuickToolBar(group),
       ];
     };

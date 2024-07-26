@@ -176,7 +176,7 @@ export const RoutePicker = defineComponent({
           }
         }
       });
-      
+
       // 清空下拉选实例监听的键盘事件 enter、space、down
       if (dropDown.value) {
         dropDown.value.triggerKeys = [];
@@ -289,7 +289,7 @@ export const RoutePicker = defineComponent({
       if (c.enableCache) {
         localStorage.setItem(
           `routePick-${c.context.srfuserid}-${curPath}`,
-          data.id,
+          data.id || data.srfkey,
         );
       }
     };
@@ -299,7 +299,7 @@ export const RoutePicker = defineComponent({
         const id = localStorage.getItem(
           `routePick-${c.context.srfuserid}-${curPath}`,
         );
-        return items.value.find(item => item.id === id);
+        return items.value.find(item => item.id === id || item.srfkey === id);
       }
     };
 

@@ -1,7 +1,10 @@
 export { SearchSvg } from './search';
-export { CapacitySvg } from './capacity';
 export { PersonalSvg } from './personal';
 export { ExpandSvg } from './expand';
 export { RetractSvg } from './retract';
 export { VerticalSvg } from './vertical';
 export { CloseSvg } from './close';
+export { ClockSvg } from './clock';
+export { HourglassSvg } from './hourglass';
+export { TaskSvg } from './task';
+export { CorrectSvg } from './correct';

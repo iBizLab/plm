@@ -87,14 +87,6 @@ interface IResourceGanttState extends IGanttState {
   showWeekdays: number[];
 
   /**
-   * 容量计算切换值
-   *
-   * @type {ICapacityCalc}
-   * @memberof IResourceGanttState
-   */
-  capacityCalc: ICapacityCalc;
-
-  /**
    * 容量设置
    *
    * @type {string}
@@ -204,12 +196,9 @@ export class ResourceGanttController extends GanttController {
     this.state.showCapacity = true;
     this.state.onlyTopNodes = false;
     this.state.showWeekdays = [];
-    this.state.capacityCalc = {
+    this.state.capacityConfig = JSON.stringify({
       calcType: 'WORKITEMCOUNT',
       fieldName: '',
-    };
-    // eslint-disable-next-line prettier/prettier, no-template-curly-in-string
-    this.state.capacityConfig = JSON.stringify({
       weekdays: '${weekday}',
       dayCapacityVal: '${day_capacity.work_item_count}',
     });
@@ -304,7 +293,7 @@ export class ResourceGanttController extends GanttController {
    * @memberof ResourceGanttController
    */
   capacityCalcChange(params: ICapacityCalc) {
-    this.state.capacityCalc = params;
+    this.state.capacityConfig = JSON.stringify(params);
   }
 
   /**

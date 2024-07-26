@@ -1,13 +1,13 @@
 import './style.css';
-var te = Object.defineProperty;
-var ne = (d, n, t) => n in d ? te(d, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[n] = t;
-var M = (d, n, t) => (ne(d, typeof n != "symbol" ? n + "" : n, t), t);
-import { useControlController as oe, useNamespace as le, withInstall as re } from "@ibiz-template/vue3-util";
-import { KanbanController as se, registerControlProvider as ae } from "@ibiz-template/runtime";
-import { defineComponent as ie, ref as R, computed as P, onMounted as ce, onBeforeUnmount as de, createVNode as o, resolveComponent as i, createTextVNode as S } from "vue";
-import N from "vuedraggable";
-import { listenJSEvent as ue, NOOP as V } from "@ibiz-template/core";
-class he extends se {
+var ne = Object.defineProperty;
+var oe = (d, n, t) => n in d ? ne(d, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : d[n] = t;
+var T = (d, n, t) => (oe(d, typeof n != "symbol" ? n + "" : n, t), t);
+import { useControlController as se, useNamespace as re, withInstall as ie } from "@ibiz-template/vue3-util";
+import { KanbanController as le, calcDeCodeNameById as ae, registerControlProvider as ce } from "@ibiz-template/runtime";
+import { defineComponent as de, ref as P, computed as U, onMounted as ue, onBeforeUnmount as he, createVNode as o, resolveComponent as a, createTextVNode as B } from "vue";
+import K from "vuedraggable";
+import { RuntimeModelError as Q, clone as pe, listenJSEvent as me, NOOP as X } from "@ibiz-template/core";
+class fe extends le {
   constructor() {
     super(...arguments);
     /**
@@ -15,14 +15,14 @@ class he extends se {
      *
      * @memberof StepsKanbanController
      */
-    M(this, "splitMap", /* @__PURE__ */ new Map());
+    T(this, "splitMap", /* @__PURE__ */ new Map());
     /**
      * 步骤分组标识
      *
      * @type {(string | number)}
      * @memberof StepsKanbanController
      */
-    M(this, "splitGroupKey", "");
+    T(this, "splitGroupKey", "");
   }
   /**
    * 处理数据分组
@@ -47,35 +47,115 @@ class he extends se {
       }
     }
   }
+  /**
+   * 拖拽变更事件处理回调
+   * @author lxm
+   * @date 2023-09-11 04:12:58
+   * @param {IDragChangeInfo} info
+   * @return {*}  {Promise<void>}
+   */
   async onDragChange(t, h) {
+    var L;
     if (!this.enableEditGroup && t.from !== t.to) {
-      ibiz.message.warning("当前看板不允许调整分组！");
+      ibiz.message.warning(
+        ibiz.i18n.t("runtime.controller.control.kanban.adjustmentsGroup")
+      );
       return;
     }
-    const p = this.model.minorSortDir === "ASC", { from: u, to: x, fromIndex: w, toIndex: B } = t, k = this.model.groupAppDEFieldId, f = this.model.minorSortAppDEFieldId, v = [];
-    let I = this.state.groups.find((a) => a.key === u), m = this.state.groups.find((a) => a.key === x);
-    if (I || (I = this.splitMap.get(u)), m || (m = this.splitMap.get(x)), !this.enableEditOrder) {
+    const { from: p, to: u, fromIndex: y, toIndex: M } = t, v = this.model.groupAppDEFieldId, g = this.model.minorSortAppDEFieldId;
+    let w = this.state.groups.find((l) => l.key === p), D = this.state.groups.find((l) => l.key === u);
+    if (w || (w = this.splitMap.get(p)), D || (D = this.splitMap.get(u)), !this.enableEditOrder) {
       if (t.from === t.to) {
-        ibiz.message.warning("当前看板不允许调整次序");
+        ibiz.message.warning(
+          ibiz.i18n.t("runtime.controller.control.kanban.noAllowReorder")
+        );
         return;
       }
-      const a = I.children[w];
-      return a[k] = t.to, this.updateChangedItems([a]);
+      const l = w.children[y];
+      return l[v] = t.to, this.filterGroupField([l], v), this.updateChangedItems([l]);
     }
-    const g = (a) => a + (100 - a % 100), D = [...m.children], G = [...m.children], F = I.children[w];
+    const $ = [...D.children];
+    if (!((L = this.model.moveControlAction) == null ? void 0 : L.appDEMethodId))
+      throw new Q(
+        this.model,
+        ibiz.i18n.t("runtime.controller.common.md.noMoveDataCconfig")
+      );
+    this.state.updating = !0;
+    const E = (l, k, b, m, I) => {
+      let O = {};
+      const N = m[k];
+      if (N)
+        O = {
+          srftargetkey: N.srfkey,
+          srfmovetype: k < m.length - 1 || I ? "MOVEBEFORE" : "MOVEAFTER"
+        };
+      else {
+        let _ = [];
+        if (m.length > 0 && (_ = m), _.length > 0) {
+          const z = _.reduce((A, S) => {
+            const x = A[g] > S[g];
+            return x && A[this.dataEntity.keyAppDEFieldId] !== b.srfkey ? A : !x && S[this.dataEntity.keyAppDEFieldId] !== b.srfkey ? S : A;
+          });
+          z && z[this.dataEntity.keyAppDEFieldId] !== b.srfkey && (O = {
+            srftargetkey: z.srfkey,
+            srfmovetype: "MOVEAFTER"
+          });
+        }
+      }
+      return O;
+    }, f = pe(w.children[y]);
     if (t.from !== t.to) {
-      let a = t.to;
-      h && (a = t.to.split("_")[0]), F[k] = a, G.splice(B, 0, F);
-    } else
-      G.splice(w, 1), G.splice(B, 0, F);
-    const T = I.children.splice(w, 1);
-    m.children.splice(B, 0, ...T), p || (D.reverse(), G.reverse());
-    let b, A = [], $;
-    G.forEach((a, y) => {
-      b === void 0 ? (a !== D[y] || h && y === w) && (D[y] ? b = D[y][f] || 100 : b = y === 0 ? 100 : g(D[y - 1][f]), a[f] = b, v.push(a)) : (b >= a[f] ? (A.length > 0 && (A.forEach((K) => {
-        K[f] = g($), v.push(K), $ = K[f];
-      }), b = $, $ = 0, A = []), a[f] = g(b), v.push(a)) : (A.length === 0 && ($ = b), A.push(a)), b = a[f]);
-    }), this.filterGroupField(v, k), this.updateChangedItems(v);
+      let l = t.to;
+      h && (l = t.to.split("_")[0]), f[v] = l;
+    }
+    const R = w.children.splice(y, 1);
+    if (D.children.splice(M, 0, ...R), t.from !== t.to) {
+      f[v] = t.to;
+      const l = ibiz.hub.getApp(this.model.appId), k = ae(this.model.appDataEntityId), b = this.context.clone();
+      b[k] = f.srfkey, this.filterGroupField([f], v);
+      try {
+        await l.deService.exec(
+          this.model.appDataEntityId,
+          "update",
+          b,
+          f
+        );
+        const m = this.state.items.findIndex(
+          (I) => I.srfkey === f[this.dataEntity.keyAppDEFieldId]
+        );
+        m !== -1 && this.state.items.splice(m, 1, f);
+      } catch (m) {
+        throw this.state.updating = !1, new Q(
+          this.model,
+          ibiz.i18n.t("runtime.controller.common.md.changeGroupError")
+        );
+      }
+    }
+    const V = E(
+      y,
+      M,
+      f,
+      $,
+      t.from !== t.to
+    );
+    try {
+      const { ok: l, result: k } = await this.moveOrderItem(
+        f,
+        V
+      );
+      l && (Array.isArray(k) && k.length > 0 ? k.forEach((b) => {
+        const m = this.state.items.findIndex(
+          (I) => I.srfkey === b[this.dataEntity.keyAppDEFieldId]
+        );
+        m !== -1 && (this.state.items[m][g] = b[g]);
+      }) : await this.refresh());
+    } catch (l) {
+      this.state.updating = !1, this.actionNotification("MOVEERROR", {
+        error: l
+      });
+    } finally {
+      await this.afterLoad({}, this.state.items), this.state.updating = !1;
+    }
   }
   /**
    * 过滤分组属性
@@ -91,10 +171,10 @@ class he extends se {
     });
   }
 }
-const j = /* @__PURE__ */ ie({
+const q = /* @__PURE__ */ de({
   name: "IBizStepsKanbanControl",
   components: {
-    draggable: N
+    draggable: K
   },
   props: {
     modelData: {
@@ -126,100 +206,100 @@ const j = /* @__PURE__ */ ie({
     }
   },
   setup(d) {
-    var U, q, W;
-    const n = oe((...e) => new he(...e)), t = le("control-".concat(n.model.controlType.toLowerCase())), h = R(), p = R(!1), u = P(() => !n.state.draggable || n.state.updating), x = P(() => n.context.srfreadonly === !0 || n.context.srfreadonly === "true"), w = P(() => n.state.batching ? n.state.selectGroupKey : ""), B = (U = n.model.controls) == null ? void 0 : U.find((e) => e.name === "".concat(n.model.name, "_quicktoolbar") || e.name === "".concat(n.model.name, "_groupquicktoolbar")), k = (q = n.model.controls) == null ? void 0 : q.find((e) => e.name === "".concat(n.model.name, "_batchtoolbar")), f = ((W = n.model.groupSysCss) == null ? void 0 : W.cssName) || "", v = R({});
-    let I = V;
-    const m = {};
+    var W, H, J;
+    const n = se((...e) => new fe(...e)), t = re("control-".concat(n.model.controlType.toLowerCase())), h = P(), p = P(!1), u = U(() => !n.state.draggable || n.state.updating), y = U(() => n.context.srfreadonly === !0 || n.context.srfreadonly === "true"), M = U(() => n.state.batching ? n.state.selectGroupKey : ""), v = (W = n.model.controls) == null ? void 0 : W.find((e) => e.name === "".concat(n.model.name, "_quicktoolbar") || e.name === "".concat(n.model.name, "_groupquicktoolbar")), g = (H = n.model.controls) == null ? void 0 : H.find((e) => e.name === "".concat(n.model.name, "_batchtoolbar")), w = ((J = n.model.groupSysCss) == null ? void 0 : J.cssName) || "", D = P({});
+    let $ = X;
+    const G = {};
     switch (n.model.groupLayout) {
       case "ROW":
-        m.width = "".concat(n.model.groupWidth || 300, "px"), m.height = "100%";
+        G.width = "".concat(n.model.groupWidth || 300, "px"), G.height = "100%";
         break;
       case "COLUMN":
-        m.width = "100%", m.height = "".concat(n.model.groupHeight || 500, "px");
+        G.width = "100%", G.height = "".concat(n.model.groupHeight || 500, "px");
         break;
     }
-    const g = (e) => {
+    const E = (e) => {
       e.stopPropagation();
-    }, D = (e, l) => {
-      g(l);
+    }, f = (e, s) => {
+      E(s);
       const r = String(e.key);
-      v.value[r] = !v.value[r];
-    }, G = (e, l) => (g(l), n.onRowClick(e)), F = (e, l) => (g(l), n.onDbRowClick(e)), T = (e, l) => (g(e), n.onClickNew(e, l)), b = (e, l) => {
+      D.value[r] = !D.value[r];
+    }, R = (e, s) => (E(s), n.onRowClick(e)), V = (e, s) => (E(s), n.onDbRowClick(e)), L = (e, s) => (E(e), n.onClickNew(e, s)), l = (e, s) => {
       const r = e.selectedData || [];
-      l ? r.forEach((s) => {
-        n.onRowClick(s);
+      s ? r.forEach((i) => {
+        n.onRowClick(i);
       }) : e.children.filter((c) => !r.includes(c)).forEach((c) => {
         n.onRowClick(c);
       });
-    }, A = (e) => n.groupCodeListItems.find((l) => l.value === e);
-    ce(() => {
-      I = ue(window, "resize", () => {
+    }, k = (e) => n.groupCodeListItems.find((s) => s.value === e);
+    ue(() => {
+      $ = me(window, "resize", () => {
         p.value = n.getFullscreen();
       });
-    }), de(() => {
-      I !== V && I();
+    }), he(() => {
+      $ !== X && $();
     });
-    const $ = (e, l) => {
+    const b = (e, s) => {
       const {
         context: r,
-        params: s
+        params: i
       } = n;
-      return o(i("iBizControlShell"), {
+      return o(a("iBizControlShell"), {
         data: e,
-        modelData: l,
+        modelData: s,
         context: r,
-        params: s
+        params: i
       }, null);
-    }, a = (e, l) => {
+    }, m = (e, s) => {
       var r;
-      return o(i("iBizActionToolbar"), {
+      return o(a("iBizActionToolbar"), {
         class: t.bem("item", "bottom", "actions"),
         "action-details": (r = n.getOptItemModel().deuiactionGroup) == null ? void 0 : r.uiactionGroupDetails,
         "actions-state": n.getOptItemAction(e),
-        onActionClick: (s, c) => n.onGroupActionClick(s, e, c, l)
+        onActionClick: (i, c) => n.onGroupActionClick(i, e, c, s)
       }, null);
-    }, y = (e) => {
-      if (B)
-        return o(i("iBizControlShell"), {
+    }, I = (e) => {
+      if (v)
+        return o(a("iBizControlShell"), {
           class: t.e("quicktoolbar"),
           modelData: {
-            ...B,
-            name: "".concat(B.name, "_").concat(e.key)
+            ...v,
+            name: "".concat(v.name, "_").concat(e.key)
           },
           context: n.context,
           params: n.params
         }, null);
-    }, K = (e) => {
-      if (k)
+    }, O = (e) => {
+      if (g)
         return o("div", {
           class: t.be("batch", "toolbar")
-        }, [o(i("iBizControlShell"), {
+        }, [o(a("iBizControlShell"), {
           modelData: {
-            ...k,
-            name: "".concat(k.name, "_").concat(e.key)
+            ...g,
+            name: "".concat(g.name, "_").concat(e.key)
           },
           context: n.context,
           params: n.params
         }, null)]);
-    }, H = (e) => {
-      const l = e.selectedData || [], r = l.length === e.children.length, s = l.length > 0 && l.length < e.children.length;
+    }, N = (e) => {
+      const s = e.selectedData || [], r = s.length === e.children.length, i = s.length > 0 && s.length < e.children.length;
       return o("div", {
         class: t.be("batch", "check")
-      }, [o(i("el-checkbox"), {
+      }, [o(a("el-checkbox"), {
         "model-value": r,
-        indeterminate: s,
-        onChange: () => b(e, r)
+        indeterminate: i,
+        onChange: () => l(e, r)
       }, {
-        default: () => [S("全选")]
+        default: () => [B("全选")]
       }), o("span", {
         class: t.be("batch", "info")
-      }, [S("已选择"), o("span", null, [l.length]), S("条数据")])]);
-    }, J = (e) => {
-      if (w.value === e.key)
+      }, [B("已选择"), o("span", null, [s.length]), B("条数据")])]);
+    }, _ = (e) => {
+      if (M.value === e.key)
         return o("div", {
           class: t.b("batch")
-        }, [K(e), H(e)]);
-    }, Q = (e, l) => [o("div", {
+        }, [O(e), N(e)]);
+    }, z = (e, s) => [o("div", {
       class: t.be("item", "top")
     }, [o("div", {
       class: t.bem("item", "top", "title")
@@ -227,204 +307,204 @@ const j = /* @__PURE__ */ ie({
       class: t.bem("item", "top", "description")
     }, [e.content])]), n.getOptItemModel() ? o("div", {
       class: t.be("item", "bottom")
-    }, [a(e, l)]) : null], O = (e, l) => {
-      const r = n.state.selectedData.findIndex((_) => _.srfkey === e.srfkey), s = [t.b("item"), t.is("selected", r !== -1), t.is("disabled", u.value)], c = {};
+    }, [m(e, s)]) : null], A = (e, s) => {
+      const r = n.state.selectedData.findIndex((F) => F.srfkey === e.srfkey), i = [t.b("item"), t.is("selected", r !== -1), t.is("disabled", u.value)], c = {};
       n.model.cardWidth && (c.width = "".concat(n.model.cardWidth, "px")), n.model.cardHeight && (c.height = "".concat(n.model.cardHeight, "px"));
       const C = d.modelData.itemLayoutPanel;
-      return o(i("el-card"), {
+      return o(a("el-card"), {
         shadow: "hover",
-        class: s,
+        class: i,
         "body-style": c,
-        onClick: (_) => G(e, _),
-        onDblclick: (_) => F(e, _)
+        onClick: (F) => R(e, F),
+        onDblclick: (F) => V(e, F)
       }, {
-        default: () => [C ? $(e, C) : Q(e, l)]
+        default: () => [C ? b(e, C) : z(e, s)]
       });
-    }, E = () => {
+    }, S = () => {
       if (n.state.isLoaded)
-        return o(i("iBizNoData"), {
+        return o(a("iBizNoData"), {
           text: n.model.emptyText,
           emptyTextLanguageRes: n.model.emptyTextLanguageRes
         }, null);
     };
-    let L = null;
-    const z = (e, l, r, s) => {
-      const c = s || l.key;
+    let x = null;
+    const j = (e, s, r, i) => {
+      const c = i || s.key;
       if (e.moved && n.onDragChange({
         from: c,
         to: c,
         fromIndex: e.moved.oldIndex,
         toIndex: e.moved.newIndex
-      }), e.added && (L = {
+      }), e.added && (x = {
         to: c,
         toIndex: e.added.newIndex
       }, r)) {
         const {
           id: C
-        } = e.added.element, _ = l.children.find((ee) => ee.id === C);
-        _.entry_status = r;
+        } = e.added.element, F = s.children.find((te) => te.id === C);
+        F.entry_status = r;
       }
-      e.removed && (L && (L.from = c, L.fromIndex = e.removed.oldIndex, n.onDragChange(L, r)), L = null);
-    }, X = () => {
+      e.removed && (x && (x.from = c, x.fromIndex = e.removed.oldIndex, n.onDragChange(x, r)), x = null);
+    }, Y = () => {
       const e = h.value.$el;
       p.value = n.onFullScreen(e);
-    }, Y = (e) => {
-      const l = n.model.groupUIActionGroup && e.groupActionGroupState || k;
-      return w.value === e.key ? o("span", {
+    }, Z = (e) => {
+      const s = n.model.groupUIActionGroup && e.groupActionGroupState || g;
+      return M.value === e.key ? o("span", {
         class: t.be("group", "header-right"),
-        onClick: (r) => g(r)
-      }, [o(i("el-button"), {
+        onClick: (r) => E(r)
+      }, [o(a("el-button"), {
         text: !0,
         onClick: () => n.closeBatch()
       }, {
-        default: () => [S("完成")]
+        default: () => [B("完成")]
       })]) : o("span", {
         class: t.be("group", "header-right"),
-        onClick: (r) => g(r)
-      }, [n.enableNew && !x.value && o(i("el-button"), {
+        onClick: (r) => E(r)
+      }, [n.enableNew && !y.value && o(a("el-button"), {
         class: t.be("group", "header-new"),
         text: !0,
         circle: !0,
         onClick: (r) => {
-          T(r, e.key);
+          L(r, e.key);
         }
       }, {
-        default: () => [o(i("ion-icon"), {
+        default: () => [o(a("ion-icon"), {
           name: "add-outline",
           title: "新建"
         }, null)]
-      }), l && !x.value && o(i("el-dropdown"), {
+      }), s && !y.value && o(a("el-dropdown"), {
         class: t.be("group", "header-actions"),
         trigger: "click",
         teleported: !1
       }, {
-        default: () => o("span", null, [S("···")]),
+        default: () => o("span", null, [B("···")]),
         dropdown: () => o("div", {
           class: t.be("group", "actions-dropdown")
-        }, [n.model.groupUIActionGroup && e.groupActionGroupState && o(i("iBizActionToolbar"), {
+        }, [n.model.groupUIActionGroup && e.groupActionGroupState && o(a("iBizActionToolbar"), {
           actionDetails: n.model.groupUIActionGroup.uiactionGroupDetails,
           actionsState: e.groupActionGroupState,
-          onActionClick: (r, s) => {
-            n.onGroupToolbarClick(r, s, e);
+          onActionClick: (r, i) => {
+            n.onGroupToolbarClick(r, i, e);
           }
-        }, null), k && o(i("el-button"), {
+        }, null), g && o(a("el-button"), {
           size: "small",
           onClick: () => {
             n.openBatch(e.key);
           }
         }, {
-          default: () => [o(i("ion-icon"), {
+          default: () => [o(a("ion-icon"), {
             name: "checkmark-sharp"
-          }, null), S("批量操作")]
+          }, null), B("批量操作")]
         })])
       })]);
-    }, Z = (e) => {
+    }, ee = (e) => {
       if (n.splitGroupKey === e.key) {
-        const l = n.splitMap.get("".concat(e.key, "_runing")), r = n.splitMap.get("".concat(e.key, "_finish"));
+        const s = n.splitMap.get("".concat(e.key, "_runing")), r = n.splitMap.get("".concat(e.key, "_finish"));
         return o("div", {
           class: t.b("split")
         }, [o("div", {
           class: t.be("split", "left")
         }, [o("div", {
           class: t.be("split", "header")
-        }, [S("进行中")]), o(N, {
+        }, [B("进行中")]), o(K, {
           class: t.be("group", "draggable"),
-          modelValue: l.children,
+          modelValue: s.children,
           group: n.model.id,
           itemKey: "srfkey",
-          disabled: u.value || x.value,
-          onChange: (s) => z(s, e, "1", "".concat(e.key, "_runing"))
+          disabled: u.value || y.value,
+          onChange: (i) => j(i, e, "1", "".concat(e.key, "_runing"))
         }, {
           item: ({
-            element: s
-          }) => O(s, e),
-          header: () => l.children.length ? null : o("div", {
+            element: i
+          }) => A(i, e),
+          header: () => s.children.length ? null : o("div", {
             class: [t.be("group", "list"), t.is("empty", !0)]
-          }, [E()])
-        }), y(e)]), o("div", {
+          }, [S()])
+        }), I(e)]), o("div", {
           class: t.be("split", "right")
         }, [o("div", {
           class: t.be("split", "header")
-        }, [S("已完成")]), o(N, {
+        }, [B("已完成")]), o(K, {
           class: t.be("group", "draggable"),
           modelValue: r.children,
           group: n.model.id,
           itemKey: "srfkey",
-          disabled: u.value || x.value,
-          onChange: (s) => z(s, e, "2", "".concat(e.key, "_finish"))
+          disabled: u.value || y.value,
+          onChange: (i) => j(i, e, "2", "".concat(e.key, "_finish"))
         }, {
           item: ({
-            element: s
-          }) => O(s, e),
+            element: i
+          }) => A(i, e),
           header: () => r.children.length ? null : o("div", {
             class: [t.be("group", "list"), t.is("empty", !0)]
-          }, [E()])
-        }), y(e)])]);
+          }, [S()])
+        }), I(e)])]);
       }
-      return [o(N, {
+      return [o(K, {
         class: t.be("group", "draggable"),
         modelValue: e.children,
         group: n.model.id,
         itemKey: "srfkey",
-        disabled: u.value || x.value,
-        onChange: (l) => z(l, e)
+        disabled: u.value || y.value,
+        onChange: (s) => j(s, e)
       }, {
         item: ({
-          element: l
-        }) => O(l, e),
+          element: s
+        }) => A(s, e),
         header: () => e.children.length ? null : o("div", {
           class: t.be("group", "list")
-        }, [E()])
-      }), y(e)];
+        }, [S()])
+      }), I(e)];
     };
     return {
       c: n,
       ns: t,
       isFull: p,
       kanban: h,
-      onFullScreen: X,
+      onFullScreen: Y,
       renderGroup: (e) => {
-        const l = A(e.key), r = v.value[String(e.key)], s = n.model.groupLayout === "COLUMN", c = {
-          ...m
+        const s = k(e.key), r = D.value[String(e.key)], i = n.model.groupLayout === "COLUMN", c = {
+          ...G
         };
-        if (r && (c.height = "50px"), l.data === 1) {
-          const C = m.width.slice(0, -2);
+        if (r && (c.height = "50px"), s.data === 1) {
+          const C = G.width.slice(0, -2);
           c.width = "".concat(Number(C) * 2, "px");
         }
-        return !r || s ? o("div", {
-          class: [t.b("group"), t.is("collapse", r), f],
+        return !r || i ? o("div", {
+          class: [t.b("group"), t.is("collapse", r), w],
           style: c
         }, [o("div", {
           class: t.be("group", "header"),
           style: {
             borderTopColor: e.color || "transparent"
           },
-          onClick: (C) => D(e, C)
+          onClick: (C) => f(e, C)
         }, [o("div", {
           class: t.be("group", "header-left")
-        }, [o(i("ion-icon"), {
+        }, [o(a("ion-icon"), {
           name: "caret-down-sharp"
         }, null), o("span", {
           class: [t.be("group", "header-caption"), t.is("badge", !!e.color)],
           style: {
             backgroundColor: e.color
           }
-        }, ["".concat(e.caption).concat(e.children.length ? " · ".concat(e.children.length) : "")])]), Y(e)]), J(e), o("div", {
+        }, ["".concat(e.caption).concat(e.children.length ? " · ".concat(e.children.length) : "")])]), Z(e)]), _(e), o("div", {
           class: [t.be("group", "list"), t.is("empty", !e.children.length)]
-        }, [Z(e)])]) : o("div", {
-          class: [t.b("group"), t.is("collapse", r), f]
+        }, [ee(e)])]) : o("div", {
+          class: [t.b("group"), t.is("collapse", r), w]
         }, [o("div", {
           class: t.be("group", "header"),
           style: {
             borderTopColor: e.color || "transparent"
           },
-          onClick: (C) => D(e, C)
+          onClick: (C) => f(e, C)
         }, [o("span", {
           class: [t.be("group", "header-caption"), t.is("badge", !!e.color)],
           style: {
             backgroundColor: e.color
           }
-        }, ["".concat(e.caption).concat(e.children.length ? " · ".concat(e.children.length) : "")]), o(i("ion-icon"), {
+        }, ["".concat(e.caption).concat(e.children.length ? " · ".concat(e.children.length) : "")]), o(a("ion-icon"), {
           name: "caret-forward-sharp"
         }, null)])]);
       }
@@ -436,7 +516,7 @@ const j = /* @__PURE__ */ ie({
       groups: d,
       isCreated: n
     } = this.c.state;
-    return n ? o(i("iBizControlBase"), {
+    return n ? o(a("iBizControlBase"), {
       ref: "kanban",
       controller: this.c,
       class: [this.ns.m((t = this.modelData.groupLayout) == null ? void 0 : t.toLowerCase()), this.ns.is("full", this.isFull), this.ns.is("plugin", !0)]
@@ -446,34 +526,34 @@ const j = /* @__PURE__ */ ie({
       }, [d.length > 0 && d.map((h) => this.renderGroup(h))]), d.length > 0 && o("div", {
         class: this.ns.e("full-btn"),
         onClick: this.onFullScreen
-      }, [this.isFull ? o(i("ion-icon"), {
+      }, [this.isFull ? o(a("ion-icon"), {
         name: "contract-outline"
-      }, null) : o(i("ion-icon"), {
+      }, null) : o(a("ion-icon"), {
         name: "expand-outline"
       }, null)])]
     }) : null;
   }
 });
-class pe {
+class be {
   constructor() {
-    M(this, "component", "IBizStepsKanbanControl");
+    T(this, "component", "IBizStepsKanbanControl");
   }
 }
-const me = re(
-  j,
+const ye = ie(
+  q,
   function(d) {
-    d.component(j.name, j), ae(
+    d.component(q.name, q), ce(
       "CUSTOM_STEPS_KANBAN",
-      () => new pe()
+      () => new be()
     );
   }
-), Ie = {
+), De = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
   install(d) {
-    d.use(me);
+    d.use(ye);
   }
 };
 export {
-  me as IBizStepsKanbanControl,
-  Ie as default
+  ye as IBizStepsKanbanControl,
+  De as default
 };

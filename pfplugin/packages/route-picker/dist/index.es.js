@@ -4,7 +4,7 @@ var ee = (r, n, i) => n in r ? Z(r, n, { enumerable: !0, configurable: !0, writa
 var u = (r, n, i) => (ee(r, typeof n != "symbol" ? n + "" : n, i), i);
 import { EditorController as te, ButtonContainerState as oe, getDeACMode as ie, calcDeCodeNameById as ae, UIActionButtonState as se, UIActionUtil as ne, openRedirectView as re, registerEditorProvider as ce } from "@ibiz-template/runtime";
 import { parseRouteViewData as le, getDataPickerProps as de, getEditorEmits as ue, useNamespace as pe, getNestedRoutePath as he, renderString as fe, route2routePath as j, routePath2string as U, withInstall as me } from "@ibiz-template/vue3-util";
-import { RuntimeModelError as ve, listenJSEvent as ye, NOOP as F, IBizContext as G } from "@ibiz-template/core";
+import { RuntimeModelError as ye, listenJSEvent as ve, NOOP as F, IBizContext as G } from "@ibiz-template/core";
 import { mergeDeepLeft as Ce } from "ramda";
 import { defineComponent as Ee, ref as g, computed as z, watch as P, onMounted as we, onBeforeUnmount as De, onActivated as ge, createVNode as p, resolveComponent as C } from "vue";
 import { useRoute as xe, useRouter as Ae } from "vue-router";
@@ -165,15 +165,15 @@ class Ne extends te {
       this.params
     ), d = {};
     this.sort && !Object.is(this.sort, "") && Object.assign(d, { sort: this.sort }), i && Object.assign(d, { query: i }), Object.assign(d, { size: 1e3 });
-    const v = Ce(m, d);
+    const y = Ce(m, d);
     if (this.interfaceName)
       return await ibiz.hub.getApp(this.context.srfappid).deService.exec(
         this.model.appDataEntityId,
         this.interfaceName,
         s,
-        v
+        y
       );
-    throw new ve(this.model, "请配置实体和实体数据集");
+    throw new ye(this.model, "请配置实体和实体数据集");
   }
   /**
    * 计算回填数据
@@ -245,13 +245,13 @@ const S = /* @__PURE__ */ Ee({
   setup(r, {
     emit: n
   }) {
-    const i = pe("route-picker"), e = r.controller, s = xe(), m = Ae(), d = g(""), v = g({}), y = g({}), c = g([]), D = g("");
+    const i = pe("route-picker"), e = r.controller, s = xe(), m = Ae(), d = g(""), y = g({}), v = g({}), c = g([]), D = g("");
     let A = "", I = !1;
     const M = () => {
-      v.value = c.value.find((t) => t[e.textName] === d.value) || {};
+      y.value = c.value.find((t) => t[e.textName] === d.value) || {};
     }, E = z(() => {
       var t, o, a;
-      return (a = (o = (t = y.value) == null ? void 0 : t.popperRef) == null ? void 0 : o.popperRef) == null ? void 0 : a.contentRef;
+      return (a = (o = (t = v.value) == null ? void 0 : t.popperRef) == null ? void 0 : o.popperRef) == null ? void 0 : a.contentRef;
     });
     P(() => r.value, (t) => {
       var o;
@@ -261,19 +261,19 @@ const S = /* @__PURE__ */ Ee({
     });
     const O = (t = 0) => {
       if (E.value) {
-        const o = E.value.querySelector(".ibiz-route-picker__dropdown-list"), a = c.value.findIndex((h) => h[e.keyName] === v.value[e.keyName]);
+        const o = E.value.querySelector(".ibiz-route-picker__dropdown-list"), a = c.value.findIndex((h) => h[e.keyName] === y.value[e.keyName]);
         o && a > -1 && setTimeout(() => {
           const h = o.offsetHeight, l = Math.floor(h / 38);
           a + 1 > l ? o.scrollTop = 38 * (a + 1 - l) : o.scrollTop = 0;
         }, t);
       }
     };
-    P(() => v.value, () => {
+    P(() => y.value, () => {
       O();
     });
     const L = () => {
       var t, o, a;
-      y.value && ((t = y.value) != null && t.popperRef) && ((a = (o = y.value) == null ? void 0 : o.popperRef) == null || a.hide());
+      v.value && ((t = v.value) != null && t.popperRef) && ((a = (o = v.value) == null ? void 0 : o.popperRef) == null || a.hide());
     }, H = () => {
       D.value || x(D.value);
     }, $ = (t) => {
@@ -285,23 +285,23 @@ const S = /* @__PURE__ */ Ee({
     let N = F;
     we(() => {
       const t = he(s, e.routeDepth);
-      A = t.substring(0, t.lastIndexOf("/")), N = ye(window, "keyup", (o) => {
+      A = t.substring(0, t.lastIndexOf("/")), N = ve(window, "keyup", (o) => {
         I && (o.keyCode === 27 && L(), o.keyCode === 40 ? k("down") : o.keyCode === 38 ? k("up") : o.keyCode === 13 && k("enter"));
-      }), y.value && (y.value.triggerKeys = []), E.value && E.value.addEventListener("keydown", K, !0);
+      }), v.value && (v.value.triggerKeys = []), E.value && E.value.addEventListener("keydown", K, !0);
     }), De(() => {
       N !== F && N(), E.value && E.value.removeEventListener("keydown", K);
     });
     const k = (t) => {
-      let o = c.value.findIndex((a) => a[e.keyName] === v.value[e.keyName]);
+      let o = c.value.findIndex((a) => a[e.keyName] === y.value[e.keyName]);
       switch (t) {
         case "up":
-          o--, (o === -1 || o === -2) && (o = c.value.length - 1), v.value = c.value[o];
+          o--, (o === -1 || o === -2) && (o = c.value.length - 1), y.value = c.value[o];
           break;
         case "down":
-          o++, o === c.value.length && (o = 0), v.value = c.value[o];
+          o++, o === c.value.length && (o = 0), y.value = c.value[o];
           break;
         case "enter":
-          w(v.value, !1);
+          w(y.value, !1);
           break;
       }
     }, _ = async (t, o = !1) => {
@@ -335,11 +335,11 @@ const S = /* @__PURE__ */ Ee({
         path: l
       }) : ibiz.openView.push(l);
     }, q = (t) => {
-      e.enableCache && localStorage.setItem("routePick-".concat(e.context.srfuserid, "-").concat(A), t.id);
+      e.enableCache && localStorage.setItem("routePick-".concat(e.context.srfuserid, "-").concat(A), t.id || t.srfkey);
     }, X = () => {
       if (e.enableCache) {
         const t = localStorage.getItem("routePick-".concat(e.context.srfuserid, "-").concat(A));
-        return c.value.find((o) => o.id === t);
+        return c.value.find((o) => o.id === t || o.srfkey === t);
       }
     }, w = async (t, o, a = !1) => {
       L();
@@ -384,14 +384,14 @@ const S = /* @__PURE__ */ Ee({
     }, J = (t) => {
       w(t, !1);
     }, Q = () => {
-      y.value && y.value.handleClose();
+      v.value && v.value.handleClose();
     };
     return {
       ns: i,
       c: e,
-      dropDown: y,
+      dropDown: v,
       curValue: d,
-      curSelect: v,
+      curSelect: y,
       valueText: T,
       items: c,
       query: D,

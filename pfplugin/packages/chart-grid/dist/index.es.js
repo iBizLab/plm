@@ -43900,6 +43900,16 @@ class gX extends BL {
     qh(this, "cloneOrginSeries", null);
   }
   /**
+   * 初始化图表
+   *
+   * @author tony001
+   * @date 2024-07-24 16:07:08
+   * @param {any} chart
+   */
+  initChart(t) {
+    this.chart = t;
+  }
+  /**
    * 根据数据计算最终的options
    * 并刷新echarts
    * @author lxm

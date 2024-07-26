@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { defineComponent, PropType } from 'vue';
 import { useNamespace } from '@ibiz-template/vue3-util';
-import { calcWorkItemCount } from '../../utils/capacity-calc';
+import {
+  calcEstimatedWorkload,
+  calcRemainingWorkload,
+  calcWorkItemCount,
+} from '../../utils/capacity-calc';
 import './top-level-cell.scss';
 
 export const TopLevelCell = defineComponent({
@@ -17,18 +21,9 @@ export const TopLevelCell = defineComponent({
       required: true,
       default: true,
     },
-    capacityCalc: {
-      type: Object,
-      required: true,
+    capacityConfig: {
+      type: Object as PropType<IParams>,
       default: () => {},
-    },
-    weekdays: {
-      type: Array as PropType<Array<number>>,
-      default: () => [],
-    },
-    dayCapacity: {
-      type: Number,
-      default: 0,
     },
   },
   emits: ['cellClick'],
@@ -97,9 +92,23 @@ export const TopLevelCell = defineComponent({
      */
     const onCapacityCalc = () => {
       const { column, row } = props.cellData;
-      switch (props.capacityCalc.calcType) {
+      switch (props.capacityConfig.calcType) {
         case 'WORKITEMCOUNT':
           return calcWorkItemCount(column.date, row.data._children);
+        case 'ESTIMATEDWORKLOAD':
+          return calcEstimatedWorkload(
+            props.capacityConfig.weekdays,
+            column.date,
+            row.data._children,
+            props.capacityConfig.fieldName,
+          );
+        case 'REMAININGWORKLOAD':
+          return calcRemainingWorkload(
+            props.capacityConfig.weekdays,
+            column.date,
+            row.data._children,
+            props.capacityConfig.fieldName,
+          );
         default:
           break;
       }
@@ -112,8 +121,9 @@ export const TopLevelCell = defineComponent({
         return '';
       }
       const num = onCapacityCalc() || 0;
-      const style = calcStyle(num, props.dayCapacity);
-      const className = calcClassName(num, props.dayCapacity);
+
+      const style = calcStyle(num, props.capacityConfig.dayCapacity);
+      const className = calcClassName(num, props.capacityConfig.dayCapacity);
       return (
         <div class={[ns.e('caption'), ...className]} onClick={e => onClick(e)}>
           {props.showText ? (

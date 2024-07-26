@@ -59,7 +59,7 @@ export function renderColumn(
   renderColumns: IDEGridColumn[],
   index: number,
 ): VNode | null {
-  const { codeName: columnName, width } = model;
+  const { codeName: columnName } = model;
   const columnC = c.columns[columnName!];
   const columnState = c.state.columnStates.find(
     item => item.key === columnName,
@@ -83,6 +83,17 @@ export function renderColumn(
     index < toNumber((c as IParams)?.expandColumnIndex)
   ) {
     type = '';
+  }
+
+  let { width } = model;
+  const { hideHeader } = c.model;
+  if (
+    c.model.enableCustomized &&
+    !hideHeader &&
+    width &&
+    index === renderColumns.length - 1
+  ) {
+    width += 20;
   }
   // 表格列自定义
   return (
@@ -435,8 +446,13 @@ export const NumberGridControl = defineComponent({
       return null;
     };
 
-    const { tableData, renderColumns, defaultSort, summaryMethod } =
-      useAppGridBase(c, props as IGridProps);
+    const {
+      tableData,
+      renderColumns,
+      defaultSort,
+      summaryMethod,
+      headerDragend,
+    } = useAppGridBase(c, props as IGridProps);
 
     const { renderPopover } = useRowEditPopover(tableRef, c);
 
@@ -559,6 +575,7 @@ export const NumberGridControl = defineComponent({
       handleHeaderCellClassName,
       renderNoData,
       summaryMethod,
+      headerDragend,
       renderPopover,
       defaultSort,
       renderBatchToolBar,
@@ -603,6 +620,7 @@ export const NumberGridControl = defineComponent({
             onRowDblclick={this.onDbRowClick}
             onSortChange={this.onSortChange}
             onExpandChange={this.onExpandChange}
+            onHeaderDragend={this.headerDragend}
             tooltip-effect={'light'}
             default-expand-all={this.c.defaultExpandAll}
             tree-props={{ children: '_children', hasChildren: '_hasChildren' }}

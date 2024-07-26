@@ -20,11 +20,7 @@ import {
 import type { IDomEditor } from '@wangeditor/editor';
 import { createUUID, getCookie } from 'qx-util';
 import { isNil } from 'ramda';
-import {
-  getEditorEmits,
-  getHtmlProps,
-  useNamespace,
-} from '@ibiz-template/vue3-util';
+import { getHtmlProps, useNamespace } from '@ibiz-template/vue3-util';
 import {
   CoreConst,
   IChatMessage,
@@ -40,7 +36,7 @@ type InsertFnType = (_url: string, _alt: string, _href: string) => void;
 const IBizHtmlContent = defineComponent({
   name: 'IBizHtmlContent',
   props: getHtmlProps<HtmlCommentController>(),
-  emits: getEditorEmits(),
+  emits: ['change', 'blur', 'focus', 'enter', 'infoTextChange', 'link'],
   setup(props, { emit }) {
     const ns = useNamespace('html');
 
@@ -231,7 +227,7 @@ const IBizHtmlContent = defineComponent({
         'codeBlock',
         'mention',
         'marker',
-        'emotion',
+        'emoji',
       ],
     };
     if (c.chatCompletion) {
@@ -314,6 +310,11 @@ const IBizHtmlContent = defineComponent({
         editLink: {
           checkLink: customCheckLinkFn, // 也支持 async 函数
           parseLinkUrl: customParseLinkUrl, // 也支持 async 函数
+        },
+      },
+      hoverbarKeys: {
+        link: {
+          menuKeys: ['editLink', 'unLink', 'customViewLink'],
         },
       },
     };
@@ -554,6 +555,7 @@ const IBizHtmlContent = defineComponent({
       });
 
       c.onCreated(editorRef.value, props.data, toolbarConfig);
+      c.onLineEditing(editorRef.value);
     };
     // 编辑器内容、选区变化时的回调函数
     const handleChange = (editor: IDomEditor) => {
@@ -561,7 +563,7 @@ const IBizHtmlContent = defineComponent({
       const html = editor.getHtml();
       setImageHook(editor);
       // wangEditor初始值抛空字符串给后台
-      let emitValue = html === '<p><br></p>' ? '' : html;
+      const emitValue = html === '<p><br></p>' ? '' : html;
       if (
         emitValue === props.value ||
         (emitValue === '' && isNil(props.value))
@@ -570,9 +572,6 @@ const IBizHtmlContent = defineComponent({
       }
       // 修复初始化有值编辑器也会抛值导致表单脏值检查异常问题
       if (!hasEnableEdit.value) {
-        emitValue = emitValue
-          .replaceAll('class="rich-html-table"', '')
-          .replace(/<table/g, '<table class="rich-html-table"');
         emit('change', emitValue);
         c.evt.emit('onChange', {
           eventArg: emitValue,
@@ -737,9 +736,7 @@ const IBizHtmlContent = defineComponent({
     const save = () => {
       readonlyState.value = true;
       editorRef.value.disable();
-      const value = valueHtml.value
-        .replaceAll('class="rich-html-table"', '')
-        .replace(/<table/g, '<table class="rich-html-table"');
+      const { value } = valueHtml;
       emit('change', value);
       if (isFullScreen.value) {
         isFullScreen.value = false;
@@ -789,6 +786,7 @@ const IBizHtmlContent = defineComponent({
             <i
               class='fa fa-compress'
               aria-hidden='true'
+              title='缩小'
               onClick={() => changeFullScreenState()}
             ></i>
           );
@@ -797,6 +795,7 @@ const IBizHtmlContent = defineComponent({
           <i
             class='fa fa-expand'
             aria-hidden='true'
+            title='放大'
             onClick={() => changeFullScreenState()}
           ></i>
         );
@@ -813,6 +812,7 @@ const IBizHtmlContent = defineComponent({
               <i
                 class='fa fa-edit'
                 aria-hidden='true'
+                title='启用编辑'
                 onClick={() => changeEditState()}
               ></i>
             ) : null}

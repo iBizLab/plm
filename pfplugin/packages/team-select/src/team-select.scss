@@ -1,0 +1,432 @@
+/* stylelint-disable selector-class-pattern */
+@include b('team-select') {
+  width: 100%;
+  @include e('popover') {
+    // width: 128px;
+    background-color: #fff;
+
+    &.el-popper.el-dropdown__popper {
+      .el-dropdown-menu {
+        background-color: #fff;
+      }
+
+      .el-scrollbar {
+        .el-dropdown__list {
+          background-color: #fff;
+
+          .el-dropdown-menu__item {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  @include e(dropdown-input) {
+    width: 100%;
+  }
+
+  @include e(dropdown) {
+    width: 100%;
+  }
+
+  @include e(search-input) {
+    .el-input__prefix {
+      position: absolute;
+    }
+
+    .el-input__wrapper {
+      justify-content: flex-start;
+    }
+
+    &:hover {
+      &.hasValue {
+        .#{bem('team-select',search-delete)} {
+          display: flex;
+        }
+        .#{bem('team-select','search-arrow')} {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include e('search-delete') {
+    display: none;
+
+    &:hover {
+      fill: #ff7575;
+    }
+  }
+
+  @include e(dropdown-input-suffix) {
+    display: flex;
+  }
+
+  @include e(dropdown-input-prefix) {
+    z-index: -1;
+    pointer-events: none;
+
+    &.dark {
+      .ibiz-team-select-select-modal__personel-list--text-img {
+        filter: brightness(70%);
+      }
+
+      .ibiz-team-select-select-modal__personel-list--text-label {
+        color: #aab2bd;
+      }
+    }
+  }
+
+  @include e('popover-item') {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center space-between;
+    align-items: center;
+    height: getCssVar('height-control', 'large');
+    padding: 0 getCssVar('spacing', 'base-loose');
+    cursor: pointer;
+    background: #fff;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+  }
+
+  @include e('popover-item-content') {
+    padding: getCssVar('spacing', 'tight') 0 getCssVar('spacing', 'tight')
+      getCssVar('spacing', 'base-loose');
+  }
+
+  @include e(popover-item-left) {
+    margin-right: getCssVar('spacing', 'tight');
+  }
+  @include e(popover-item-center) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+  }
+  @include e(popover-item-name) {
+    font-size: getCssVar('font-size', 'base');
+    color: #333;
+  }
+
+  @include e(search-arrow) {
+    &.isopen {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include e(popover-content) {
+    &.el-popover.el-popper {
+      height: 317px;
+      padding: getCssVar('spacing', 'none');
+      margin: getCssVar('spacing', 'base-tight');
+      overflow: auto;
+    }
+
+    &.team {
+      &.el-popover.el-popper {
+        height: auto;
+        max-height: 297px;
+      }
+    }
+  }
+
+  // 团队
+  @include e('collapse') {
+    &.el-collapse {
+      border: 0;
+    }
+  }
+
+  @include e('collapse-item') {
+    &.el-collapse-item {
+      .el-collapse-item__header {
+        display: flex;
+        flex-flow: row-reverse nowrap;
+        place-content: center flex-end;
+        align-items: center;
+        border-bottom: 0;
+
+        .el-collapse-item__arrow {
+          margin-right: getCssVar('spacing', 'base-tight');
+          margin-left: getCssVar('spacing', 'none');
+        }
+      }
+
+      .el-collapse-item__wrap {
+        border-bottom: 0;
+
+        .el-collapse-item__content {
+          padding-bottom: getCssVar('spacing', 'none');
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+
+  @include e(noteamItem) {
+    padding-left: 6px;
+  }
+
+  @include e('collapse-item-checkbox-wrapper') {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+  }
+
+  @include e('collapse-item-checkbox') {
+    margin-right: 6px !important;
+
+    &.el-checkbox--large {
+      .el-checkbox__inner {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  @include e('search-romate-item') {
+    padding-left: 20px;
+  }
+
+  @include e(personnel-team) {
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+  }
+
+  @include e(personnel-team-svg) {
+    margin-right: 6px;
+  }
+
+  @include e(no-team){
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    align-items: center;
+    height: 300px;
+    font-size: 20px;
+  }
+
+  // 成员
+  @include b('team-select-select-modal') {
+    @include e('search-input') {
+      .el-input__suffix img {
+        width: 14px;
+        height: 14px;
+        font-size: getCssVar('font-size', 'regular');
+      }
+    }
+
+    @include e('select') {
+      display: flex;
+      gap: getCssVar('spacing', 'tight');
+      height: getCssVar('height-control', 'default');
+      margin-top: getCssVar('spacing', 'base');
+
+      @include when('no-solider-tab') {
+        justify-content: end;
+        margin-top: getCssVar('spacing', 'none');
+      }
+    }
+
+    @include e('select-state') {
+      position: relative;
+      display: flex;
+      flex: auto;
+      flex-grow: 1;
+      align-items: center;
+      background-color: #{getCssVar(color, fill, 1)};
+
+      @include m('select-slider') {
+        position: absolute;
+        top: 2px;
+        z-index: 1;
+        width: 50%;
+        height: 28px;
+        background-color: #{getCssVar(color, bg, 1)};
+        transition: all 0.8s ease;
+
+        &.is-left {
+          left: 1px;
+        }
+
+        &.is-right {
+          left: calc(50% - 2px);
+        }
+      }
+
+      @include m('select-personel') {
+        position: relative;
+        z-index: 2;
+        width: 50%;
+        height: 100%;
+        line-height: getCssVar('height-control', 'default');
+        text-align: center;
+        cursor: pointer;
+        background-color: transparent;
+      }
+
+      @include m('select-department') {
+        z-index: 2;
+        width: 50%;
+        height: 100%;
+        line-height: getCssVar('height-control', 'default');
+        text-align: center;
+        cursor: pointer;
+        background-color: transparent;
+      }
+    }
+
+    @include e('actions') {
+      flex: auto;
+      flex-grow: 0;
+      line-height: getCssVar('height-control', 'default');
+      cursor: pointer;
+    }
+
+    @include e('personel-list') {
+      overflow: auto;
+
+      @include m('item') {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 36px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #{getCssVar(color, bg, 0)};
+        }
+
+        &.is-selected {
+          background-color: #{getCssVar(color, bg, 0)};
+        }
+
+        &.isShowPadding {
+          padding: 0 10px;
+
+          .ibiz-team-select-select-modal__personel-list--text-label {
+            width: auto;
+            overflow: unset;
+            text-overflow: unset;
+            white-space: unset;
+          }
+        }
+
+        /* stylelint-disable-next-line no-descending-specificity */
+        .ibiz-team-select-select-modal__personel-list--text-label {
+          width: 58px;
+          overflow: hidden;
+          text-align: left;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      @include m('item-team') {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 36px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #{getCssVar(color, bg, 0)};
+        }
+
+        &.is-selected {
+          background-color: #{getCssVar(color, bg, 0)};
+        }
+      }
+
+      @include m('icon') {
+        color: #{getCssVar(color, primary, active)};
+      }
+
+      @include m('text') {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: left;
+      }
+
+      @include m('text-img') {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        line-height: 24px;
+        color: #{getCssVar(color, primary, active, text)};
+        text-align: center;
+        background-color: #{getCssVar(color, primary, active)};
+        border-radius: 50%;
+      }
+
+      @include m('avatar') {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      @include m('myself') {
+        padding: 0 5px;
+        font-size: 0.8em;
+        background-color: #{getCssVar(color, border)};
+        border-radius: 16px;
+      }
+    }
+
+    @include e('personel-list-user') {
+      height: 295px;
+      margin-top: 16px;
+
+      @include when('no-solider-tab') {
+        margin-top: 0;
+      }
+    }
+
+    @include e('loadmore') {
+      width: 100%;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    @include e('deptpersonel') {
+      height: 295px;
+      overflow: hidden;
+
+      @include m('dept') {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        height: 40px;
+        cursor: pointer;
+
+        .collapse-icon {
+          display: inline-block;
+          width: 14px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+
+      @include m('dept-person') {
+        height: 255px;
+        overflow: hidden;
+      }
+    }
+
+    @include e('personel-list-department') {
+      height: 240px;
+    }
+  }
+}

@@ -18,16 +18,24 @@ import { route2routePath, routePath2string } from '@ibiz-template/vue3-util';
 import { IDEDRBar, IDEDRBarItem } from '@ibiz/model-core';
 import { Router } from 'vue-router';
 
+interface IDRBarExState extends IDRBarState {
+  /**
+   * 是否显示更多
+   * @type {boolean}
+   */
+  showMore: boolean;
+}
+
 /**
  * 数据关系栏控制器
  *
  * @export
  * @class DRBarExController
- * @extends {ControlController<IDEDRBar, IDRBarState, IDRBarEvent>}
+ * @extends {ControlController<IDEDRBar, IDRBarExState, IDRBarEvent>}
  * @implements {IDRBarExController}
  */
 export class DRBarExController
-  extends ControlController<IDEDRBar, IDRBarState, IDRBarEvent>
+  extends ControlController<IDEDRBar, IDRBarExState, IDRBarEvent>
   implements IDRBarController
 {
   /**
@@ -121,6 +129,7 @@ export class DRBarExController
     this.state.drBarItems = [];
     this.state.srfnav = '';
     this.state.hideEditItem = !!this.model.hideEditItem;
+    this.state.showMore = false;
   }
 
   /**
@@ -133,6 +142,19 @@ export class DRBarExController
     await super.onCreated();
     this.initDRBarItems();
     await this.initCounter();
+  }
+
+  /**
+   * 部件参数解析
+   *
+   * @protected
+   * @memberof ControlController
+   */
+  protected handleControlParams(): void {
+    super.handleControlParams();
+    if (this.controlParams.showmore) {
+      this.state.showMore = this.controlParams.showmore === 'true';
+    }
   }
 
   /**

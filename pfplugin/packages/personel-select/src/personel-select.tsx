@@ -207,14 +207,19 @@ export const PersonelSelect = defineComponent({
      */
     const handleCurrentUserShow = () => {
       if (c.defaultSelCurUser) {
-        const tempItem = {};
+        const tempItem: IParams = {};
         Object.assign(tempItem, {
           id: c.context?.srfuserid,
           name: c.context?.srfusername,
         });
         // 区分单多选
         if (c.multiple) {
-          multipleSelect.value.push(tempItem);
+          const index = multipleSelect.value.findIndex((select: IData) => {
+            return select.id === tempItem[c.deptFilterMap.id];
+          });
+          if (index < 0) {
+            multipleSelect.value.push(tempItem);
+          }
         } else if (multipleSelect.value.length === 0) {
           multipleSelect.value = [tempItem];
         }
@@ -589,6 +594,13 @@ export const PersonelSelect = defineComponent({
     watch(popoverRef, newVal => {
       if (props.autoFocus && newVal) {
         modelVisible.value = true;
+      }
+    });
+
+    watch(modelVisible, newVal => {
+      // popover关闭时;
+      if (newVal === false) {
+        emit('blur');
       }
     });
 

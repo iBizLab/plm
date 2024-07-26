@@ -76,7 +76,7 @@ export class HtmlUtil {
    * @param text
    * @returns
    */
-  public static avatarName(text: string) {
+  public static avatarName(text: string): string | void {
     if (text && text.toString().length < 2) {
       return text;
     }
@@ -120,5 +120,26 @@ export class HtmlUtil {
       }
       return text.replaceAll(' ', '').substring(0, 2);
     }
+  }
+
+  /**
+   * 解析emoji表情
+   *
+   * @param {string} value
+   * @return {*}  {string}
+   */
+  public static getEmojiCustomHtml(value: string): string {
+    return value
+      .replaceAll(/{"emoji":"(.+?)"}/g, (x, emoji) => {
+        const tempVal = decodeURIComponent(atob(emoji));
+        return `<span class="emoji-tag">${tempVal}</span>`;
+      })
+      .replaceAll(
+        /<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g,
+        (x, emoji) => {
+          const tempVal = decodeURIComponent(atob(emoji));
+          return `<span data-w-e-type="emoji" class='emoji'>${tempVal}</span>`;
+        },
+      );
   }
 }

@@ -7,13 +7,21 @@ import {
   onRouteChange,
   getNestedRoutePath,
 } from '@ibiz-template/vue3-util';
-import { defineComponent, onUnmounted, PropType, reactive, watch } from 'vue';
+import {
+  defineComponent,
+  onUnmounted,
+  PropType,
+  reactive,
+  ref,
+  watch,
+} from 'vue';
 import { IDEDRBar } from '@ibiz/model-core';
 import { useRoute, useRouter } from 'vue-router';
-import { IControlProvider } from '@ibiz-template/runtime';
+import { IControlProvider, IDRBarItemsState } from '@ibiz-template/runtime';
 import { DRBarExController } from './drbar-ex.controller';
 import { TabsPaneContext } from 'element-plus';
 import './drbar-ex.scss';
+import { useAppDrBar } from './drbar-ex-control.util';
 
 export function useWatchRouteChange(c: DRBarExController): void {
   const depth = c.view.modal.routeDepth;
@@ -43,13 +51,17 @@ export const DRBarExControl = defineComponent({
     showMode: { type: String, default: 'vertical' },
     hideEditItem: { type: Boolean, default: undefined },
   },
-  setup(props) {
+  setup() {
     const c = useControlController((...args) => new DRBarExController(...args));
     const ns = useNamespace(`control-${c.model.controlType!.toLowerCase()}-ex`);
     const router = useRouter();
+    const controlRef = ref();
 
     const counterData = reactive<IData>({});
-    const fn = (counter: IData) => {
+
+    const { visibleItems, moreItems } = useAppDrBar(c, controlRef, counterData);
+
+    const fn = (counter: IData): void => {
       Object.assign(counterData, counter);
     };
     c.evt.on('onCreated', () => {
@@ -120,16 +132,108 @@ export const DRBarExControl = defineComponent({
     return {
       c,
       ns,
+      moreItems,
+      controlRef,
+      visibleItems,
       counterData,
       handleSelect,
     };
   },
   render() {
-    const { isCreated, drBarItems, defaultItem, isCalculatedPermission } =
-      this.c.state;
-
+    const { isCreated, defaultItem, isCalculatedPermission } = this.c.state;
+    const moreTab =
+      this.moreItems.find((tab: IDRBarItemsState) => tab.tag === defaultItem) ||
+      {};
+    const more = (
+      <el-dropdown
+        trigger='click'
+        class={this.ns.b('more-dropdown')}
+        popper-class={this.ns.b('more-dropdown-popper')}
+      >
+        {{
+          default: () => {
+            return (
+              <div
+                class={this.ns.be('more-dropdown', 'link')}
+                onClick={e => e.stopPropagation()}
+              >
+                <span>更多 </span>
+                <svg
+                  viewBox='0 0 16 16'
+                  xmlns='http://www.w3.org/2000/svg'
+                  height='1em'
+                  width='1em'
+                >
+                  <g stroke-width='1' fill-rule='evenodd'>
+                    <path d='M7.978 11.997l-.005.006L2.3 6.33l.83-.831 4.848 4.848L12.826 5.5l.83.83-5.673 5.673-.005-.006z'></path>
+                  </g>
+                </svg>
+              </div>
+            );
+          },
+          dropdown: () => {
+            return (
+              <el-dropdown-menu>
+                {{
+                  default: () => {
+                    return this.moreItems.map((item: IData) => {
+                      return (
+                        <el-dropdown-item
+                          class={[
+                            defaultItem === item.tag
+                              ? this.ns.be('more-dropdown-popper', 'current')
+                              : '',
+                          ]}
+                          onClick={() => this.handleSelect(item.tag as string)}
+                        >
+                          <span
+                            class={[
+                              this.ns.be('more-dropdown-popper', 'label'),
+                            ]}
+                          >
+                            <span
+                              class={this.ns.bem(
+                                'more-dropdown-popper',
+                                'label',
+                                'text',
+                              )}
+                              title={item.caption || ''}
+                            >
+                              {item.caption || ''}
+                            </span>
+                            {item.counterId &&
+                              this.counterData[item.counterId] != null && (
+                                <iBizBadge
+                                  class={this.ns.bem(
+                                    'more-dropdown-popper',
+                                    'label',
+                                    'counter',
+                                  )}
+                                  value={this.counterData[item.counterId]}
+                                  counterMode={item.counterMode}
+                                />
+                              )}
+                          </span>
+                        </el-dropdown-item>
+                      );
+                    });
+                  },
+                }}
+              </el-dropdown-menu>
+            );
+          },
+        }}
+      </el-dropdown>
+    );
     return (
-      <iBizControlBase controller={this.c} class={this.ns.b()}>
+      <iBizControlBase
+        ref='controlRef'
+        controller={this.c}
+        class={[
+          this.ns.b(),
+          this.moreItems.length > 0 ? this.ns.b('more') : '',
+        ]}
+      >
         {isCreated && isCalculatedPermission && !!defaultItem && (
           <el-tabs
             modelValue={defaultItem}
@@ -137,7 +241,7 @@ export const DRBarExControl = defineComponent({
               this.handleSelect(pane.paneName as string);
             }}
           >
-            {drBarItems.map(item => {
+            {this.visibleItems.map((item: IDRBarItemsState) => {
               if (!item.visible) {
                 return;
               }
@@ -165,6 +269,13 @@ export const DRBarExControl = defineComponent({
                 </el-tab-pane>
               );
             })}
+            {this.moreItems.length > 0 && (
+              <el-tab-pane label='' name={moreTab.tag}>
+                {{
+                  label: () => more,
+                }}
+              </el-tab-pane>
+            )}
           </el-tabs>
         )}
       </iBizControlBase>

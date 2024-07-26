@@ -26,15 +26,16 @@ import { createUUID } from 'qx-util';
 import { toNumber } from 'lodash-es';
 import { CustomNodeFactory } from './factory/custom-node-factory';
 import { commentEvent } from './html-comment.event';
-import { MentionElem, PersonnelMarkerElem } from './custom-elem';
+import { EmojiElem, MentionElem, PersonnelMarkerElem } from './custom-elem';
 import { paintFormatMenu } from './paint-format/paint-format-menu';
 import {
   personnelMarkerModule,
   personnelMarkerPlugin,
 } from './personnel-marker/personnel-marker-node-module';
 import { ICursor, IPersMarkData, Message } from './interface';
-import { renderStyle, SlateUtil } from './utils';
+import { HtmlUtil, renderStyle, SlateUtil } from './utils';
 import { AIMenu } from './ai/ai-modules';
+import CustomViewLinkModule from './link/link-node-module';
 
 /**
  * html框编辑器控制器
@@ -356,6 +357,9 @@ export class HtmlCommentController extends EditorController<IHtml> {
         PersonnelMarkerElem,
       );
     }
+    if (!window.customElements.get('emoji-elem')) {
+      window.customElements.define('emoji-elem', EmojiElem);
+    }
     if (!(window as IData).paintFormatIsRegiter) {
       Boot.registerMenu(paintFormatMenu);
       (window as IData).paintFormatIsRegiter = true;
@@ -379,6 +383,10 @@ export class HtmlCommentController extends EditorController<IHtml> {
       });
       (window as IData).aichartRegister = true;
     }
+    if (!(window as IData).customLinkIsRegiter) {
+      Boot.registerModule(CustomViewLinkModule);
+      (window as IData).customLinkIsRegiter = true;
+    }
   }
 
   /**
@@ -388,8 +396,6 @@ export class HtmlCommentController extends EditorController<IHtml> {
    * @memberof HtmlCommentController
    */
   public onCreated(editor: IDomEditor, data: IData, toolbarConfig: IData) {
-    this.editor = editor;
-    this.onLineEditing(editor, data);
     const controllers = CustomNodeFactory.getPluginsById(this.uuid);
     controllers.forEach(controller => {
       controller.init(editor, {
@@ -520,7 +526,8 @@ export class HtmlCommentController extends EditorController<IHtml> {
    * @param editor
    * @param item
    */
-  private onLineEditing(editor: IDomEditor, item: IData) {
+  onLineEditing(editor: IDomEditor) {
+    this.editor = editor;
     const { apply } = editor;
     editor.apply = operation => {
       apply(operation);
@@ -653,7 +660,9 @@ export class HtmlCommentController extends EditorController<IHtml> {
    * @memberof HtmlCommentController
    */
   public setReply(data: IData) {
-    this.reply.value = `${data.name}: ${data.content}`;
+    this.reply.value = HtmlUtil.getEmojiCustomHtml(
+      `${data.name}: ${data.content}`,
+    );
     this.evt.emit('onSetReply', {
       eventArg: this.reply.value,
     });

@@ -156,6 +156,27 @@ export const AnchoHtmlNavBar = defineComponent({
         );
     };
 
+    /**
+     * 解析emoji表情
+     *
+     * @param {string} value
+     * @return {*}  {string}
+     */
+    const getEmojiCustomHtml = (value: string): string => {
+      return value
+        .replaceAll(/{"emoji":"(.+?)"}/g, (x, emoji) => {
+          const tempVal = decodeURIComponent(atob(emoji));
+          return `<span class="emoji-tag">${tempVal}</span>`;
+        })
+        .replaceAll(
+          /<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g,
+          (x, emoji) => {
+            const tempVal = decodeURIComponent(atob(emoji));
+            return `<span data-w-e-type="emoji" class='emoji'>${tempVal}</span>`;
+          },
+        );
+    };
+
     // 转换各类值操作
     const convertValue = (): void => {
       // 图片类型
@@ -192,6 +213,7 @@ export const AnchoHtmlNavBar = defineComponent({
             .replace(/&gt;/g, '>')
             .replace(/&amp;nbsp;/g, ' ')
             .replace(/&nbsp;/g, ' ');
+          rawItemText.value = getEmojiCustomHtml(rawItemText.value);
           rawItemText.value = getPanelItemCustomHtml(rawItemText.value);
         }
       }

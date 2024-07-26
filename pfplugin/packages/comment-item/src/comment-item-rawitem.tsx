@@ -63,6 +63,27 @@ export const CommentItemRawItem = defineComponent({
       return false;
     });
 
+    /**
+     * 解析emoji表情
+     *
+     * @param {string} value
+     * @return {*}  {string}
+     */
+    const getEmojiCustomHtml = (value: string): string => {
+      return value
+        .replaceAll(/{"emoji":"(.+?)"}/g, (x, emoji) => {
+          const tempVal = decodeURIComponent(atob(emoji));
+          return `<span class="emoji-tag">${tempVal}</span>`;
+        })
+        .replaceAll(
+          /<span data-w-e-type="emoji" class='emoji'>(.+?)<\/span>/g,
+          (x, emoji) => {
+            const tempVal = decodeURIComponent(atob(emoji));
+            return `<span data-w-e-type="emoji" class='emoji'>${tempVal}</span>`;
+          },
+        );
+    };
+
     watch(
       () => props.value,
       async (newVal, oldVal) => {
@@ -84,6 +105,9 @@ export const CommentItemRawItem = defineComponent({
               (obj || newVal) as IData,
             );
           }
+          content.value = getEmojiCustomHtml(
+            content.value ? `${content.value}` : '',
+          );
         }
       },
       {

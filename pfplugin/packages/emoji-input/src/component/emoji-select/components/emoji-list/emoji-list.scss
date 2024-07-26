@@ -1,0 +1,26 @@
+@include b('emoji-list') {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 getCssVar('spacing', 'tight');
+  padding-bottom: getCssVar('spacing', 'tight');
+
+  ::-webkit-scrollbar {
+    width: rem(4px);
+    margin-right: -4px;
+    overflow: hidden;
+    border-radius: rem(4px);
+  }
+
+  @include e('container') {
+    height: 100%;
+    max-height: 24vh;
+    padding: 0 getCssVar('spacing', 'extra-tight');
+    overflow-y: scroll;
+  }
+
+  @include m('grid-emojis') {
+    display: grid;
+    justify-items: center;
+  }
+}

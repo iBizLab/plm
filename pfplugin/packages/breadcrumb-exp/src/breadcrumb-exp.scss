@@ -1,0 +1,52 @@
+@include b(breadcrumb-exp) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+@include b(breadcrumb-exp-item) {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  margin-right: getCssVar('spacing', 'tight');
+  font-size: getCssVar('font-size', 'regular');
+  color: getCssVar(color, text, 3);
+
+  &:hover {
+    .#{bem('breadcrumb-exp-item-content')} {
+      color: getCssVar(color, primary);
+    }
+  }
+
+  @include e(icon) {
+    padding: getCssVar('spacing', 'extra-tight');
+    margin-right: getCssVar('spacing', 'extra-tight');
+  }
+
+  @include e(separator) {
+    margin-left: getCssVar('spacing', 'tight');
+  }
+
+  @include when(active) {
+    color: getCssVar(color, text, 0);
+
+    .#{bem('breadcrumb-exp-item-content')} {
+      cursor: auto;
+    }
+
+    &:hover {
+      .#{bem('breadcrumb-exp-item-content')} {
+        color: getCssVar(color, text, 0);
+      }
+    }
+  }
+}
+
+@include b(breadcrumb-exp-item-content) {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  cursor: pointer;
+}

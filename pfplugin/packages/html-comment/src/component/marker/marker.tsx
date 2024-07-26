@@ -216,7 +216,7 @@ export const Marker = defineComponent({
           return this.renderItem(user);
         })}
         {this.items.length === 0 && (
-          <iBizNoData text={'暂未用户数据'}></iBizNoData>
+          <iBizNoData text={'暂无用户数据'}></iBizNoData>
         )}
       </div>
     );

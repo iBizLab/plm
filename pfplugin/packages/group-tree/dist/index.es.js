@@ -3,8 +3,8 @@ var he = Object.defineProperty;
 var pe = (e, N, n) => N in e ? he(e, N, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[N] = n;
 var O = (e, N, n) => (pe(e, typeof N != "symbol" ? N + "" : N, n), n);
 import { TreeController as Ne, getChildNodeRSs as _e, calcDeCodeNameById as Z, handleAllSettled as me, Srfuf as ye, getControlPanel as De, registerControlProvider as ve } from "@ibiz-template/runtime";
-import { useControlController as ge, useNamespace as ee, withInstall as Ie } from "@ibiz-template/vue3-util";
-import { ref as z, defineComponent as xe, computed as te, reactive as we, watch as ne, nextTick as Ee, resolveComponent as I, onMounted as be, onUnmounted as Ce, withDirectives as Te, createVNode as h, resolveDirective as Me, isVNode as Re, createTextVNode as oe } from "vue";
+import { useControlController as Ie, useNamespace as ee, withInstall as ge } from "@ibiz-template/vue3-util";
+import { ref as z, defineComponent as xe, computed as te, reactive as we, watch as ne, nextTick as Ee, resolveComponent as g, onMounted as be, onUnmounted as Ce, withDirectives as Te, createVNode as h, resolveDirective as Me, isVNode as Re, createTextVNode as oe } from "vue";
 import { createUUID as ie } from "qx-util";
 import { debounce as ae } from "lodash-es";
 import { RuntimeError as V, RuntimeModelError as se } from "@ibiz-template/core";
@@ -230,9 +230,9 @@ class Ae extends Ne {
           re(n._deData[a]) && (n._deData[a] = this.state.editingNodeDefault[a]);
         });
       }
-      await this.updateDeNodeData([n]);
+      await this.updateDeNodeData([n]), this.emitDEDataChange("update", n._deData);
     }
-    this.emitDEDataChange("update", n._deData), this.state.editingNodeKey = null, this.state.editingNodeText = null, this.state.editingNodeDefault = null;
+    this.state.editingNodeKey = null, this.state.editingNodeText = null, this.state.editingNodeDefault = null;
   }
   /**
    * 删除树节点
@@ -359,14 +359,14 @@ class Ae extends Ne {
       if (!R)
         throw new se(T, "缺少配置排序属性");
       const v = R.toLowerCase(), _ = j === "ASC", D = [...r._children].filter(
-        (g) => g._nodeType === "DE"
+        (I) => I._nodeType === "DE"
       );
       _ || D.reverse();
-      const w = (g) => g + (100 - g % 100), C = (g) => g[v] || 0;
+      const w = (I) => I + (100 - I % 100), C = (I) => I[v] || 0;
       let E;
-      D.forEach((g, S) => {
-        const A = g._deData;
-        E === void 0 ? g === n && (S === 0 ? E = 100 : E = w(C(D[S - 1]._deData)), A[v] = E, a.indexOf(g) === -1 && a.push(g)) : (E >= C(A) && (A[v] = w(E), a.push(g)), E = C(A));
+      D.forEach((I, S) => {
+        const A = I._deData;
+        E === void 0 ? I === n && (S === 0 ? E = 100 : E = w(C(D[S - 1]._deData)), A[v] = E, a.indexOf(I) === -1 && a.push(I)) : (E >= C(A) && (A[v] = w(E), a.push(I)), E = C(A));
       });
     }
     await this.updateDeNodeData(a), this._evt.emit("onAfterNodeDrop", { isChangedParent: M }), this.refreshNodeChildren(o, s), this.state.selectedData = [];
@@ -518,7 +518,7 @@ const G = /* @__PURE__ */ xe({
     }
   },
   setup() {
-    const e = ge((...t) => new Ae(...t)), N = te(() => e.context.srfreadonly === !0 || e.context.srfreadonly === "true"), n = we({});
+    const e = Ie((...t) => new Ae(...t)), N = te(() => e.context.srfreadonly === !0 || e.context.srfreadonly === "true"), n = we({});
     e.evt.on("onCreated", () => {
       e.counter && e.counter.onChange((t) => {
         Object.assign(n, t);
@@ -618,7 +618,7 @@ const G = /* @__PURE__ */ xe({
         _ = i.default, _.default && !_.showContextMenu && (_ = _.default);
       });
     });
-    const D = I("IBizRawItem"), w = I("IBizIcon"), C = (t, i, l, u) => {
+    const D = g("IBizRawItem"), w = g("IBizIcon"), C = (t, i, l, u) => {
       const p = [];
       return t.forEach((c) => {
         var Y;
@@ -669,12 +669,12 @@ const G = /* @__PURE__ */ xe({
         customClass: o.b("context-menu"),
         items: c
       });
-    }, g = (t, i) => {
+    }, I = (t, i) => {
       var u, p;
       if (!((p = (u = t == null ? void 0 : t.decontextMenu) == null ? void 0 : u.detoolbarItems) != null && p.length))
         return;
       const l = e.contextMenuInfos[t.id];
-      return l.clickTBUIActionItem && l.onlyOneActionItem ? null : h(I("iBizContextMenuControl"), {
+      return l.clickTBUIActionItem && l.onlyOneActionItem ? null : h(g("iBizContextMenuControl"), {
         modelData: t.decontextMenu,
         groupLevelKeys: [50, 100],
         nodeModel: t,
@@ -736,7 +736,7 @@ const G = /* @__PURE__ */ xe({
           class: o.em("counter", "box")
         }, [h("span", {
           class: o.e("dot")
-        }, [oe("·")]), h(I("iBizBadge"), {
+        }, [oe("·")]), h(g("iBizBadge"), {
           class: o.e("counter"),
           value: i
         }, null)]);
@@ -746,7 +746,7 @@ const G = /* @__PURE__ */ xe({
     }, [h("div", {
       class: o.be("filter", "header"),
       onClick: le
-    }, [h(I("ion-icon"), {
+    }, [h(g("ion-icon"), {
       name: "arrow-back-outline"
     }, null), oe("返回")])]) : null, X = (t) => {
       var l, u;
@@ -769,7 +769,7 @@ const G = /* @__PURE__ */ xe({
       }, [(l = e.state.newingNodeModel) != null && l.sysImage ? h(w, {
         class: o.be("node", "icon"),
         icon: (u = e.state.newingNodeModel) == null ? void 0 : u.sysImage
-      }, null) : null, h(I("el-input"), {
+      }, null) : null, h(g("el-input"), {
         modelValue: e.state.newingNodeText,
         "onUpdate:modelValue": (p) => e.state.newingNodeText = p,
         ref: "treeNodeTextInputRef",
@@ -795,7 +795,7 @@ const G = /* @__PURE__ */ xe({
       onNodeDbClick: v,
       onNodeContextmenu: E,
       loadData: j,
-      renderContextMenu: g,
+      renderContextMenu: I,
       renderCounter: J,
       updateNodeExpand: S,
       onInput: de,
@@ -807,7 +807,7 @@ const G = /* @__PURE__ */ xe({
         class: [o.b("content"), o.is("filter", e.isFilter.value)]
       }, [fe(), h("div", {
         class: [o.b("tree-box"), o.is("filter", e.isFilter.value)]
-      }, [h(I("el-tree"), {
+      }, [h(g("el-tree"), {
         ref: "treeRef",
         key: f.value,
         class: [d.b("tree"), o.is("list-tree", e.renderMode === "listTree")],
@@ -848,12 +848,12 @@ const G = /* @__PURE__ */ xe({
             return null;
           const l = e.getNodeModel(i._nodeId);
           if (e.state.editingNodeKey === i._id && !N.value)
-            return console.log(555, N.value), h("div", {
+            return h("div", {
               class: [o.b("node"), (c = l.sysCss) == null ? void 0 : c.cssName]
             }, [i._icon ? h(w, {
               class: o.be("node", "icon"),
               icon: i._icon
-            }, null) : null, h(I("el-input"), {
+            }, null) : null, h(g("el-input"), {
               modelValue: e.state.editingNodeText,
               "onUpdate:modelValue": (m) => e.state.editingNodeText = m,
               ref: "treeNodeTextInputRef",
@@ -867,7 +867,7 @@ const G = /* @__PURE__ */ xe({
             }, null)]);
           const u = De(l);
           let p;
-          return u ? p = h(I("iBizControlShell"), {
+          return u ? p = h(g("iBizControlShell"), {
             data: i,
             modelData: u,
             context: e.context,
@@ -885,26 +885,26 @@ const G = /* @__PURE__ */ xe({
             onClick: (m) => L(i, m),
             onContextmenu: (m) => E(i, m),
             class: [o.b("node"), o.is("hidden", Object.is(e.hiddenNodeId, i._nodeId) && !e.isFilter.value), i._leaf ? o.be("node", "item") : o.be("node", "group"), (b = l.sysCss) == null ? void 0 : b.cssName]
-          }, [p, J(l), g(l, i)]), X(i)];
+          }, [p, J(l), I(l, i)]), X(i)];
         }
       }), X()])])
     };
   },
   render() {
     const e = {
-      searchbar: () => this.c.enableQuickSearch ? h(I("el-input"), {
+      searchbar: () => this.c.enableQuickSearch ? h(g("el-input"), {
         "model-value": this.c.state.query,
         class: this.ns.b("quick-search"),
         placeholder: this.c.state.placeHolder,
         onInput: this.onInput
       }, {
-        prefix: () => h(I("ion-icon"), {
+        prefix: () => h(g("ion-icon"), {
           class: this.ns.e("search-icon"),
           name: "search"
         }, null)
       }) : null
     };
-    this.c.bottomToolbar && (e.toolbar = () => h(I("iBizControlShell"), {
+    this.c.bottomToolbar && (e.toolbar = () => h(g("iBizControlShell"), {
       modelData: this.c.bottomToolbar,
       context: this.c.context,
       params: this.c.params
@@ -913,7 +913,7 @@ const G = /* @__PURE__ */ xe({
     return e[N] = () => {
       if (this.c.state.isLoaded && this.treeRefreshKey)
         return this.renderTree();
-    }, Te(h(I("iBizControlBase"), {
+    }, Te(h(g("iBizControlBase"), {
       ref: "treeviewRef",
       controller: this.c
     }, Oe(e) ? e : {
@@ -926,7 +926,7 @@ class Ke {
     O(this, "component", "IBizGroupTreeControl");
   }
 }
-const Ge = Ie(
+const Ge = ge(
   G,
   function(e) {
     e.component(G.name, G), ve(

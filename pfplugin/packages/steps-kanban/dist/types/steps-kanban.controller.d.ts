@@ -19,6 +19,13 @@ export declare class StepsKanbanController extends KanbanController {
      * @memberof StepsKanbanController
      */
     handleDataGroup(): Promise<void>;
+    /**
+     * 拖拽变更事件处理回调
+     * @author lxm
+     * @date 2023-09-11 04:12:58
+     * @param {IDragChangeInfo} info
+     * @return {*}  {Promise<void>}
+     */
     onDragChange(info: IDragChangeInfo, split?: string | number): Promise<void>;
     /**
      * 过滤分组属性

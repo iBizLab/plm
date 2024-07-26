@@ -1,23 +1,23 @@
 import './style.css';
-var Ne = Object.defineProperty;
-var Re = (o, e, t) => e in o ? Ne(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : o[e] = t;
-var q = (o, e, t) => (Re(o, typeof e != "symbol" ? e + "" : e, t), t);
-import { TreeGridExRowState as ie, TreeGridExFieldColumnController as Ee, GanttService as Le, getChildNodeRSs as $, getRootNode as Oe, handleAllSettled as ee, getTreeNode as te, GanttDataSetNodeData as Ve, GanttController as Ae, calcDeCodeNameById as ne, Srfuf as Me, TreeGridExNotifyState as ze, isValueChange as Pe, registerPanelItemProvider as Be, registerControlProvider as je } from "@ibiz-template/runtime";
-import { useNamespace as V, PanelRawItemController as Ge, withInstall as re, useControlController as Fe } from "@ibiz-template/vue3-util";
-import { defineComponent as B, createVNode as i, ref as k, computed as N, watch as le, createTextVNode as $e, resolveComponent as x, isVNode as qe, getCurrentInstance as We, onMounted as He, withDirectives as Ye, resolveDirective as Ue, h as Ke } from "vue";
-import { createUUID as Qe } from "qx-util";
-import S from "dayjs";
-import { isObject as Je } from "lodash-es";
-import { isNotNil as Xe } from "ramda";
-import { ModelError as Ze, RuntimeError as ae, awaitTimeout as et } from "@ibiz-template/core";
-function tt(o, e, t) {
-  const a = S(o), s = S(e), n = S(t);
-  if (!(a instanceof S) || !(s instanceof S) || !(n instanceof S))
+var Qt = Object.defineProperty;
+var Jt = (n, e, t) => e in n ? Qt(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
+var J = (n, e, t) => (Jt(n, typeof e != "symbol" ? e + "" : e, t), t);
+import { TreeGridExRowState as yt, TreeGridExFieldColumnController as Zt, GanttService as Xt, getChildNodeRSs as Z, getRootNode as te, handleAllSettled as ut, getTreeNode as ht, GanttDataSetNodeData as ee, GanttController as ae, calcDeCodeNameById as ft, Srfuf as ne, TreeGridExNotifyState as oe, isValueChange as se, registerPanelItemProvider as Ct, registerControlProvider as re } from "@ibiz-template/runtime";
+import { useNamespace as G, PanelRawItemController as wt, withInstall as at, useControlController as ie } from "@ibiz-template/vue3-util";
+import { defineComponent as Y, createVNode as r, ref as R, computed as P, watch as vt, createTextVNode as le, resolveComponent as O, isVNode as ce, onMounted as Dt, getCurrentInstance as de, withDirectives as ue, resolveDirective as he, h as fe } from "vue";
+import { createUUID as me } from "qx-util";
+import p from "dayjs";
+import { isObject as pe } from "lodash-es";
+import { isNotNil as ge } from "ramda";
+import { ModelError as ye, RuntimeError as mt, awaitTimeout as Ce } from "@ibiz-template/core";
+function we(n, e, t) {
+  const o = p(n), s = p(e), a = p(t);
+  if (!(o instanceof p) || !(s instanceof p) || !(a instanceof p))
     throw new Error("All arguments must be dayjs objects");
-  return a.isAfter(s) && a.isBefore(n) || a.isSame(s) || a.isSame(n);
+  return o.isAfter(s) && o.isBefore(a) || o.isSame(s) || o.isSame(a);
 }
-const nt = (o) => {
-  const e = new Date(o), t = S(e).day();
+const ve = (n) => {
+  const e = new Date(n), t = p(e).day();
   return [
     "星期日",
     "星期一",
@@ -27,36 +27,102 @@ const nt = (o) => {
     "星期五",
     "星期六"
   ][t];
-}, at = (o, e) => S(o).format(e), ot = (o) => {
-  const e = new Date(o), t = S(e), a = S();
-  return t.isSame(a, "day");
-}, st = (o, e, t) => S(o).isSame(S(e), t), Y = (o, e) => o.replace(/\${(.*?)}/g, (t, a) => {
-  const [s, n] = a.split("."), c = e[s] || "";
-  return Je(c) ? c[n] ? c[n] : "" : c;
-}), ce = (o, e) => {
-  const a = S(o).day();
-  return e.includes(a);
-}, oe = (o, e) => {
-  let t = [], a = 0;
-  const s = Y(
+}, De = (n, e) => p(n).format(e), be = (n) => {
+  const e = new Date(n), t = p(e), o = p();
+  return t.isSame(o, "day");
+}, _e = (n, e, t) => p(n).isSame(p(e), t), nt = (n, e) => n.replace(/\${(.*?)}/g, (t, o) => {
+  const [s, a] = o.split("."), l = e[s] || "";
+  return pe(l) ? l[a] ? l[a] : "" : l;
+}), ot = (n, e) => {
+  const o = p(n).day();
+  return e.includes(o);
+}, pt = (n, e) => {
+  let t = [], o = 0;
+  const s = nt(
     e,
-    o.data && o.data._deData ? o.data._deData : {}
+    n.data && n.data._deData ? n.data._deData : {}
   );
-  let n;
+  let a = {};
   try {
-    n = JSON.parse(s);
-  } catch (c) {
-    n = {};
+    a = JSON.parse(s);
+  } catch (l) {
+    a = {};
   }
-  return n.weekdays && (t = n.weekdays.split("").map((c) => Number(c))), n.dayCapacityVal && (a = Number(n.dayCapacityVal)), Object.assign(n, { weekdays: t, dayCapacity: a }), n;
-}, de = (o, e = []) => {
-  const t = S(o).startOf("day");
-  return e.filter((a) => {
-    const s = a._beginDataItemValue ? S(a._beginDataItemValue).startOf("day") : null, n = a._endDataItemValue ? S(a._endDataItemValue).startOf("day") : null;
-    return s && n && s.isAfter(n) ? !1 : !s && n && t.isSame(n, "day") || s && !n && t.isSame(s, "day") || s && n && tt(t, s, n);
-  }).length;
+  return a.weekdays && (t = a.weekdays.split(",").map((l) => Number(l))), a.dayCapacityVal && (o = Number(a.dayCapacityVal)), Object.assign(a, { weekdays: t, dayCapacity: o }), a;
+}, bt = (n, e, t) => (n.isAfter(e) || n.isSame(e)) && (n.isBefore(t) || n.isSame(t)), _t = (n, e) => {
+  const t = Math.floor(n / e * 10) / 10, o = Math.round((n - t * e) * 10) / 10, s = new Array(e).fill(t);
+  let a = 0;
+  for (let l = 0; a < o; l++)
+    s[l] = Math.round((s[l] + 0.1) * 10) / 10, a = Math.round((a + 0.1) * 10) / 10;
+  return s;
 };
-const it = /* @__PURE__ */ B({
+function xt(n) {
+  return n.getBoundingClientRect().top;
+}
+function It(n) {
+  const e = n.getBoundingClientRect(), t = window.innerHeight || document.documentElement.clientHeight, o = e.top + e.height;
+  return t - o;
+}
+const St = (n, e = []) => {
+  const t = p(n).startOf("day");
+  return e.filter((o) => {
+    const s = o._beginDataItemValue ? p(o._beginDataItemValue).startOf("day") : null, a = o._endDataItemValue ? p(o._endDataItemValue).startOf("day") : null;
+    return s && a && s.isAfter(a) ? !1 : !s && a && t.isSame(a, "day") || s && !a && t.isSame(s, "day") || s && a && we(t, s, a);
+  }).length;
+}, Tt = (n, e, t) => {
+  const o = new Date(n), s = new Date(e), a = [];
+  for (let l = new Date(o); l <= s; l.setDate(l.getDate() + 1))
+    ot(l, t) && a.push(new Date(l));
+  return a;
+}, kt = (n, e, t = [], o = "") => {
+  let s = 0;
+  const a = p(e).startOf("day");
+  return t.filter(
+    (i) => bt(
+      a,
+      p(i._beginDataItemValue).startOf("day"),
+      p(i._endDataItemValue).startOf("day")
+    )
+  ).forEach((i) => {
+    const d = p(i._beginDataItemValue).startOf("day"), c = p(i._endDataItemValue).startOf("day"), m = Tt(
+      new Date(d.format("YYYY-MM-DD")),
+      new Date(c.format("YYYY-MM-DD")),
+      n
+    ), f = m.length, h = i._deData[o] ? Number(i._deData[o]) : 0;
+    if (f > 0 && h > 0) {
+      const w = _t(h, f), D = m.findIndex(
+        (E) => p(E).startOf("day").isSame(a)
+      ), g = D !== -1 ? w[D] : 0;
+      s = Math.round((s + g) * 10) / 10;
+    }
+  }), s;
+}, Ot = (n, e, t = [], o = "") => {
+  let s = 0;
+  const a = p(e).startOf("day"), l = p(/* @__PURE__ */ new Date()).startOf("day");
+  return a.isBefore(l) ? 0 : (t.filter(
+    (d) => bt(
+      a,
+      p(d._beginDataItemValue).startOf("day"),
+      p(d._endDataItemValue).startOf("day")
+    )
+  ).forEach((d) => {
+    let c = p(d._beginDataItemValue).startOf("day");
+    const m = p(d._endDataItemValue).startOf("day");
+    c.isBefore(l) && (c = l);
+    const f = Tt(
+      new Date(c.format("YYYY-MM-DD")),
+      new Date(m.format("YYYY-MM-DD")),
+      n
+    ), h = f.length, w = d._deData[o] ? Number(d._deData[o]) : 0;
+    if (h > 0 && w > 0) {
+      const D = _t(w, h), g = f.findIndex(
+        (I) => p(I).startOf("day").isSame(a)
+      ), E = g !== -1 ? D[g] : 0;
+      s = Math.round((s + E) * 10) / 10;
+    }
+  }), s);
+};
+const xe = /* @__PURE__ */ Y({
   name: "TopLevelCell",
   props: {
     cellData: {
@@ -77,64 +143,68 @@ const it = /* @__PURE__ */ B({
     }
   },
   emits: ["cellClick"],
-  setup(o, {
+  setup(n, {
     emit: e
   }) {
-    const t = V("top-level-cell"), a = (h) => {
-      h.stopPropagation(), e("cellClick", o.cellData);
-    }, s = (h, C, m = 100) => {
-      const y = h / C * m, D = m - y;
-      return "polygon(0px ".concat(D, "%, 100% ").concat(D, "%, 100% ").concat(m, "%, 0px ").concat(m, "%)");
-    }, n = (h, C) => {
-      const m = {};
-      return h < C && Object.assign(m, {
-        "clip-path": s(h, C)
-      }), m;
-    }, c = (h, C) => {
-      let m = [];
-      return h === 0 ? [] : (h > C && (m = [t.em("caption", "exceed")]), h === C && (m = [t.em("caption", "saturation")]), h < C && (m = [t.em("caption", "standard")]), m);
-    }, l = () => {
+    const t = G("top-level-cell"), o = (c) => {
+      c.stopPropagation(), e("cellClick", n.cellData);
+    }, s = (c, m, f = 100) => {
+      const h = c / m * f, w = f - h;
+      return "polygon(0px ".concat(w, "%, 100% ").concat(w, "%, 100% ").concat(f, "%, 0px ").concat(f, "%)");
+    }, a = (c, m) => {
+      const f = {};
+      return c < m && Object.assign(f, {
+        "clip-path": s(c, m)
+      }), f;
+    }, l = (c, m) => {
+      let f = [];
+      return c === 0 ? [] : (c > m && (f = [t.em("caption", "exceed")]), c === m && (f = [t.em("caption", "saturation")]), c < m && (f = [t.em("caption", "standard")]), f);
+    }, i = () => {
       const {
-        column: h,
-        row: C
-      } = o.cellData;
-      switch (o.capacityConfig.calcType) {
+        column: c,
+        row: m
+      } = n.cellData;
+      switch (n.capacityConfig.calcType) {
         case "WORKITEMCOUNT":
-          return de(h.date, C.data._children);
+          return St(c.date, m.data._children);
+        case "ESTIMATEDWORKLOAD":
+          return kt(n.capacityConfig.weekdays, c.date, m.data._children, n.capacityConfig.fieldName);
+        case "REMAININGWORKLOAD":
+          return Ot(n.capacityConfig.weekdays, c.date, m.data._children, n.capacityConfig.fieldName);
       }
     };
     return {
       ns: t,
       renderContent: () => {
         const {
-          column: h
-        } = o.cellData;
-        if (!h)
+          column: c
+        } = n.cellData;
+        if (!c)
           return "";
-        const C = l() || 0, m = n(C, o.capacityConfig.dayCapacity), y = c(C, o.capacityConfig.dayCapacity);
-        return i("div", {
-          class: [t.e("caption"), ...y],
-          onClick: (D) => a(D)
-        }, [o.showText ? i("span", {
+        const m = i() || 0, f = a(m, n.capacityConfig.dayCapacity), h = l(m, n.capacityConfig.dayCapacity);
+        return r("div", {
+          class: [t.e("caption"), ...h],
+          onClick: (w) => o(w)
+        }, [n.showText ? r("span", {
           class: [t.em("caption", "text")]
-        }, [String(C)]) : "", i("div", {
+        }, [String(m)]) : "", r("div", {
           class: [t.em("caption", "bkg")],
-          style: m
+          style: f
         }, null)]);
       }
     };
   },
   render() {
-    return i("div", {
+    return r("div", {
       class: this.ns.b()
     }, [this.renderContent()]);
   }
 });
-const rt = /* @__PURE__ */ B({
+const Ie = /* @__PURE__ */ Y({
   name: "TotalProgress",
   props: {
     row: {
-      type: ie,
+      type: yt,
       required: !0
     },
     capacityConfig: {
@@ -150,66 +220,73 @@ const rt = /* @__PURE__ */ B({
       }
     }
   },
-  setup(o) {
-    const e = V("total-progress"), t = k(0), a = k(0), s = N(() => t.value / a.value * 100), n = (l, d) => {
+  setup(n) {
+    const e = G("total-progress"), t = R(0), o = R(0), s = P(() => t.value / o.value * 100), a = (i, d, c) => {
+      switch (i.calcType) {
+        case "WORKITEMCOUNT":
+          return St(d, c);
+        case "ESTIMATEDWORKLOAD":
+          return kt(i.weekdays, d, c, i.fieldName);
+        case "REMAININGWORKLOAD":
+          return Ot(i.weekdays, d, c, i.fieldName);
+        default:
+          return 0;
+      }
+    }, l = (i, d, c) => {
       const {
-        start: h,
-        end: C
-      } = o.dateRange;
-      let m = 0, y = 0, D = 0;
+        start: m,
+        end: f
+      } = c;
+      let h = 0, w = 0, D = 0;
       if (d.length > 0) {
-        const I = new Date(h);
-        for (; I <= new Date(C); )
-          ce(I, o.capacityConfig.weekdays) && (m += 1, y += de(I, d)), I.setDate(I.getDate() + 1);
-        D = m * l;
+        const g = new Date(m);
+        for (; g <= new Date(f); ) {
+          if (ot(g, n.capacityConfig.weekdays)) {
+            h += 1;
+            const E = a(i, g, d);
+            w = Math.round((w + E) * 10) / 10;
+          }
+          g.setDate(g.getDate() + 1);
+        }
+        D = h * i.dayCapacity;
       }
       return {
-        numerator: y,
+        numerator: w,
         denominator: D
       };
-    }, c = () => {
-      switch (o.capacityConfig.calcType) {
-        case "WORKITEMCOUNT":
-          return n(o.capacityConfig.dayCapacity, o.row.data._children);
-        default:
-          return {
-            numerator: 0,
-            denominator: 0
-          };
-      }
     };
-    return le(() => o.row, () => {
-      const l = c();
-      t.value = l.numerator, a.value = l.denominator;
+    return vt([() => n.row, () => n.capacityConfig], () => {
+      const i = l(n.capacityConfig, n.row.data._children || [], n.dateRange);
+      t.value = i.numerator, o.value = i.denominator;
     }, {
       immediate: !0,
       deep: !0
     }), {
       ns: e,
       numerator: t,
-      denominator: a,
+      denominator: o,
       percentage: s
     };
   },
   render() {
-    return i("div", {
+    return r("div", {
       class: this.ns.b()
-    }, [i("span", {
+    }, [r("span", {
       class: this.ns.e("caption")
-    }, [this.numerator, $e(" / "), this.denominator]), i(x("el-progress"), {
+    }, [this.numerator, le(" / "), this.denominator]), r(O("el-progress"), {
       percentage: this.percentage
     }, null)]);
   }
 });
-const lt = /* @__PURE__ */ B({
+const Se = /* @__PURE__ */ Y({
   name: "IBizResourceGanttExFieldColumn",
   props: {
     controller: {
-      type: Ee,
+      type: Zt,
       required: !0
     },
     row: {
-      type: ie,
+      type: yt,
       required: !0
     },
     parentRow: {
@@ -230,6 +307,16 @@ const lt = /* @__PURE__ */ B({
       default: () => {
       }
     },
+    ganttPosition: {
+      type: Object,
+      required: !0,
+      default: () => {
+      }
+    },
+    virtualTableVal: {
+      type: Array,
+      default: () => []
+    },
     dateRange: {
       type: Object,
       required: !0,
@@ -245,82 +332,124 @@ const lt = /* @__PURE__ */ B({
       default: !1
     }
   },
-  setup(o) {
-    const e = V("tree-grid-ex-field-column"), t = V("resource-gantt-ex-field-column"), a = N(() => o.controller.nodeColumnControllerMap.get(o.row.data._nodeId)), s = N(() => o.row.data._nodeType !== "DE" && o.controller.isFirstShowColumn ? o.row.data._text : o.row.data[o.controller.name]), n = k(""), c = (b) => {
-      n.value = b;
-    }, l = N(() => {
-      const b = a.value;
-      return b ? b.nodeEditItem ? void 0 : b.codeList ? n.value : b.formatValue(s.value) + (b.unitName || "") : s.value;
-    }), d = N(() => {
-      if (o.controller.treeGrid.overflowMode === "ellipsis" && Xe(s.value) && s.value !== "")
-        return l.value;
-    }), h = N(() => s.value && a.value && (a.value.isLinkColumn || a.value.hasClickAction)), C = (b) => {
-      var p;
-      (p = a.value) == null || p.onTextClick(o.row, b);
-    }, m = async (b, p) => {
-      var _;
-      await ((_ = a.value) == null ? void 0 : _.onActionClick(b, o.row, p));
-    }, y = (b, p, _) => {
+  setup(n) {
+    const e = G("tree-grid-ex-field-column"), t = G("resource-gantt-ex-field-column"), o = R(), s = R({}), a = P(() => n.controller.nodeColumnControllerMap.get(n.row.data._nodeId)), l = P(() => n.row.data._nodeType !== "DE" && n.controller.isFirstShowColumn ? n.row.data._text : n.row.data[n.controller.name]), i = R(""), d = (v) => {
+      i.value = v;
+    }, c = P(() => {
+      const v = a.value;
+      return v ? v.nodeEditItem ? void 0 : v.codeList ? i.value : v.formatValue(l.value) + (v.unitName || "") : l.value;
+    }), m = P(() => {
+      if (n.controller.treeGrid.overflowMode === "ellipsis" && ge(l.value) && l.value !== "")
+        return c.value;
+    }), f = P(() => l.value && a.value && (a.value.isLinkColumn || a.value.hasClickAction)), h = (v) => {
+      var y;
+      (y = a.value) == null || y.onTextClick(n.row, v);
+    }, w = async (v, y) => {
+      var b;
+      await ((b = a.value) == null ? void 0 : b.onActionClick(v, n.row, y));
+    }, D = (v) => n.virtualTableVal.find((y) => y.data._id === v), g = (v, y, b) => {
       const {
-        data: T
-      } = b;
-      if (T && T._children && T._children.length > 1) {
-        const E = T._children.find((R) => p.data && R._deData && p.data._deData && R._deData[_.groupField] === p.data._deData[_.groupField]);
-        return E && p.data._id === E._id;
+        data: S
+      } = v;
+      if (S && S._children && S._children.length > 1) {
+        const N = S._children.find((T) => y.data && T._deData && y.data._deData && T._deData[b.groupField] === y.data._deData[b.groupField]);
+        if (N && !D(N._id)) {
+          const T = n.virtualTableVal.find((z) => y.data && z.data._deData && y.data._deData && z.data._deData[b.groupField] === y.data._deData[b.groupField]);
+          return T && y.data._id === T.data._id;
+        }
+        return N && y.data._id === N._id;
       }
       return !1;
-    }, D = (b, p, _) => {
+    }, E = (v, y, b) => {
       const {
-        data: T
-      } = b;
-      return T && T._children && T._children.length > 1 ? T._children.reduce((E, R) => p.data && R._deData && p.data._deData && R._deData[_.groupField] === p.data._deData[_.groupField] ? E + 1 : E, 0) : 0;
-    }, I = N(() => {
-      let b = "";
+        data: S
+      } = v;
+      if (S && S._children && S._children.length > 1) {
+        const N = S._children.findIndex((T) => y.data && T._deData && y.data._deData && T._deData[b.groupField] === y.data._deData[b.groupField] && y.data._id === T._id);
+        if (N !== -1 && g(v, y, n.groupConfig))
+          return S._children.slice(N).reduce((z, A) => y.data && A._deData && y.data._deData && A._deData[b.groupField] === y.data._deData[b.groupField] ? z + 1 : z, 0);
+      }
+      return 0;
+    }, I = (v, y, b) => {
       const {
-        parentRow: p,
-        row: _,
-        level: T
-      } = o;
-      return T > 1 && p && D(p, _, o.groupConfig) > 1 && (b = y(p, _, o.groupConfig) ? "first-index" : "no-first-index"), b;
-    }), v = N(() => {
-      const b = {}, {
-        level: p,
-        parentRow: _,
-        row: T
-      } = o;
-      if (p && p > 1 && _) {
-        const E = D(_, T, o.groupConfig);
-        if (E > 1) {
-          const F = 46 * E - 5;
-          Object.assign(b, {
-            height: "".concat(F, "px")
+        data: S
+      } = v;
+      return S && S._children && S._children.length > 1 ? S._children.reduce((N, T) => y.data && T._deData && y.data._deData && T._deData[b.groupField] === y.data._deData[b.groupField] ? N + 1 : N, 0) : 0;
+    };
+    function M(v, y) {
+      let b = v;
+      for (; b && b.nodeType === 1; ) {
+        if (b.classList.contains(y))
+          return b;
+        b = b.parentNode;
+      }
+      return null;
+    }
+    const B = () => {
+      if (s.value = {}, o.value) {
+        const v = M(o.value, "xg-table-row");
+        if (v) {
+          const {
+            ganttPosition: y
+          } = n, b = 46;
+          let S = xt(v), N = It(v);
+          S < y.top + b && (S = y.top + b), N < y.bottom && (N = y.bottom);
+          const A = ((window.innerHeight || document.documentElement.clientHeight) - S - N) / 2 + S - b / 2;
+          A > S && (s.value = {
+            position: "fixed",
+            top: "".concat(A, "px")
           });
         }
       }
-      return b;
+    }, V = P(() => {
+      let v = "";
+      const {
+        parentRow: y,
+        row: b,
+        level: S
+      } = n;
+      return S > 1 && y && I(y, b, n.groupConfig) > 1 && (v = g(y, b, n.groupConfig) ? "first-index" : "no-first-index"), v;
+    }), L = P(() => {
+      const v = {}, {
+        level: y,
+        parentRow: b,
+        row: S
+      } = n;
+      if (y && y > 1 && b && b.data._children && b.data._children.length > 1) {
+        const N = E(b, S, n.groupConfig);
+        if (N > 1) {
+          const A = 46 * N - 20;
+          Object.assign(v, {
+            height: "".concat(A, "px")
+          }), B();
+        }
+      }
+      return v;
     });
     return {
       ns: e,
       ns2: t,
       nodeColumn: a,
-      fieldValue: s,
-      showText: l,
-      clickable: h,
-      tooltip: d,
-      calcMergeClass: I,
-      calcMergeStyle: v,
-      onInfoTextChange: c,
-      onTextClick: C,
-      onActionClick: m
+      fieldValue: l,
+      showText: c,
+      clickable: f,
+      tooltip: m,
+      calcMergeClass: V,
+      calcMergeStyle: L,
+      columnRef: o,
+      contentStyle: s,
+      onInfoTextChange: d,
+      onTextClick: h,
+      onActionClick: w
     };
   },
   render() {
-    var a, s, n, c, l, d, h;
-    let o = null;
-    (a = this.nodeColumn) != null && a.nodeEditItem ? o = i(x("iBizTreeGridExEditColumn"), {
+    var o, s, a, l, i, d, c;
+    let n = null;
+    (o = this.nodeColumn) != null && o.nodeEditItem ? n = r(O("iBizTreeGridExEditColumn"), {
       controller: this.nodeColumn,
       row: this.row
-    }, null) : (s = this.nodeColumn) != null && s.codeList ? o = i(x("iBizCodeList"), {
+    }, null) : (s = this.nodeColumn) != null && s.codeList ? n = r(O("iBizCodeList"), {
       class: this.ns.e("text"),
       codeListItems: this.nodeColumn.codeListItems,
       codeList: this.nodeColumn.codeList,
@@ -328,15 +457,16 @@ const lt = /* @__PURE__ */ B({
       onClick: this.onTextClick,
       onInfoTextChange: this.onInfoTextChange,
       title: this.tooltip
-    }, null) : o = i("span", {
-      class: this.ns.e("text"),
+    }, null) : n = r("span", {
+      class: [this.ns.e("text"), this.ns2.e("text")],
       title: this.tooltip,
-      onClick: this.onTextClick
+      onClick: this.onTextClick,
+      style: this.contentStyle
     }, [this.showText]);
     let e;
-    this.$slots.actions ? e = this.$slots.actions() : this.row.columnActionsStates[this.controller.name] && (e = i(ft, {
+    this.$slots.actions ? e = this.$slots.actions() : this.row.columnActionsStates[this.controller.name] && (e = r(ze, {
       class: this.ns.e("toolbar"),
-      actionDetails: (n = this.nodeColumn) == null ? void 0 : n.nodeColumn.deuiactionGroup.uiactionGroupDetails,
+      actionDetails: (a = this.nodeColumn) == null ? void 0 : a.nodeColumn.deuiactionGroup.uiactionGroupDetails,
       actionsState: this.row.columnActionsStates[this.controller.name],
       mode: "dropdown",
       popperClass: this.ns2.b("popper"),
@@ -344,65 +474,107 @@ const lt = /* @__PURE__ */ B({
       onActionClick: this.onActionClick
     }, null));
     let t = null;
-    return this.level === 1 && (t = i(rt, {
+    return this.level === 1 && (t = r(Ie, {
       row: this.row,
       capacityConfig: this.capacityConfig,
       dateRange: this.dateRange
-    }, null)), i("div", {
-      class: [this.ns.b(), this.ns2.b(), this.clickable && this.ns.m("clickable"), this.ns.m(this.controller.treeGrid.overflowMode), (c = this.controller.model.cellSysCss) == null ? void 0 : c.cssName, this.ns.is("has-action", !!e), (l = this.row) != null && l.data._children && ((h = (d = this.row) == null ? void 0 : d.data._children) == null ? void 0 : h.length) === 0 ? "no-children" : "", this.isTopFirstIndex ? "top-first-index" : "", this.calcMergeClass],
+    }, null)), r("div", {
+      ref: "columnRef",
+      class: [this.ns.b(), this.ns2.b(), this.clickable && this.ns.m("clickable"), this.ns.m(this.controller.treeGrid.overflowMode), (l = this.controller.model.cellSysCss) == null ? void 0 : l.cssName, this.ns.is("has-action", !!e), (i = this.row) != null && i.data._children && ((c = (d = this.row) == null ? void 0 : d.data._children) == null ? void 0 : c.length) === 0 ? "no-children" : "", this.isTopFirstIndex ? "top-first-index" : "", this.calcMergeClass],
       style: this.calcMergeStyle
-    }, [i("div", {
+    }, [r("div", {
       class: [this.ns.b("text-container"), this.ns2.b("text-container")]
-    }, [o]), e, t]);
+    }, [n]), e, t]);
   }
-}), se = () => i("svg", {
+}), gt = () => r("svg", {
   viewBox: "0 0 16 16",
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   width: "1em",
   focusable: "false"
-}, [i("g", {
+}, [r("g", {
   "stroke-width": "1",
   "fill-rule": "evenodd"
-}, [i("path", {
+}, [r("path", {
   d: "M6.751 12.303A5.557 5.557 0 0 1 1.2 6.751C1.2 3.691 3.69 1.2 6.751 1.2a5.558 5.558 0 0 1 5.551 5.551 5.557 5.557 0 0 1-5.551 5.552M6.751 0a6.751 6.751 0 1 0 4.309 11.949l3.855 3.855a.6.6 0 1 0 .849-.849l-3.854-3.853A6.751 6.751 0 0 0 6.751 0"
-}, null)])]), ct = () => i("svg", {
+}, null)])]), Te = () => r("svg", {
   viewBox: "0 0 16 16",
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   width: "1em",
   focusable: "false"
-}, [i("g", {
+}, [r("g", {
   "stroke-width": "1",
   "fill-rule": "evenodd"
-}, [i("g", {
+}, [r("g", {
   transform: "translate(3.347 1.67)"
-}, [i("path", {
+}, [r("path", {
   d: "M8.31 4.544l-3.858-3.01L.757 4.537 0 3.606 4.435 0l4.613 3.598-.738.946zM.778 7.934l3.805 3.077L8.33 8.074l.74.944-4.497 3.528-4.55-3.679.755-.933z"
-}, null)])])]), dt = () => i("svg", {
+}, null)])])]), ke = () => r("svg", {
   viewBox: "0 0 16 16",
   xmlns: "http://www.w3.org/2000/svg",
   height: "1em",
   width: "1em",
   focusable: "false"
-}, [i("g", {
+}, [r("g", {
   "stroke-width": "1",
   "fill-rule": "evenodd"
-}, [i("g", {
+}, [r("g", {
   transform: "translate(3.347 1.67)"
-}, [i("path", {
+}, [r("path", {
   d: "M.738 0l3.858 3.01L8.291.008l.757.93-4.435 3.606L0 .946.738 0zM8.31 12.544l-3.858-3.01-3.695 3.003L0 11.606 4.435 8l4.613 3.598-.738.946z"
-}, null)])])]), ut = () => i("svg", {
+}, null)])])]), Oe = () => r("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 1024 1024",
   height: "1em",
   width: "1em",
   "data-v-6fbb019e": ""
-}, [i("path", {
+}, [r("path", {
   fill: "currentColor",
   d: "M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"
-}, null)]);
-class ht extends Le {
+}, null)]), Ee = () => r("svg", {
+  viewBox: "0 0 16 16",
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "1em",
+  width: "1em"
+}, [r("g", {
+  "stroke-width": "1",
+  "fill-rule": "evenodd"
+}, [r("path", {
+  d: "M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm0-1.2A6.8 6.8 0 1 0 8 1.2a6.8 6.8 0 0 0 0 13.6zm.017-10V8.42H11.7v1.2H6.817V4.8h1.2z"
+}, null)])]), Re = () => r("svg", {
+  viewBox: "0 0 16 16",
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "1em",
+  width: "1em"
+}, [r("g", {
+  "stroke-width": "1",
+  "fill-rule": "evenodd"
+}, [r("path", {
+  d: "M13.9940802,1 L13.9940802,2.2 L13.2624694,2.20103326 C12.93604,4.83947485 11.5126604,7.09238002 9.63519201,7.94035881 C11.5358297,8.8013205 12.9480925,11.1932677 13.2658805,13.8999459 L13.9940802,13.9 L13.9940802,15.1 L2.00217741,15.1 L2.00217741,13.9 L2.73926874,13.9002831 C3.07603558,11.2316386 4.55055745,8.86884631 6.45182913,7.97728733 C4.5311544,7.16123279 3.06895466,4.87984542 2.73753056,2.20103326 L2.00217741,2.2 L2.00217741,1 L13.9940802,1 Z M8.09238129,8.79975967 C6.27968763,8.79975967 4.50087608,10.8991568 4.003456,13.5719701 L3.95733333,13.85 L12.0513333,13.85 L12.0453334,13.8079643 C11.6544503,11.0697148 10.0166737,8.92538307 8.2486894,8.80508513 L8.09238129,8.79975967 Z M12.0446667,2.25 L3.95366667,2.25 L3.96063026,2.29291849 C4.36564997,4.94375371 6.02387547,6.97732036 7.834965,7.09464882 L8,7.1 C9.81589788,7.1 11.5127277,5.15179966 11.9963879,2.54700205 L12.0446667,2.25 Z"
+}, null)])]), Ne = () => r("svg", {
+  viewBox: "0 0 16 16",
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "1em",
+  width: "1em"
+}, [r("g", {
+  "stroke-width": "1",
+  "fill-rule": "evenodd"
+}, [r("path", {
+  d: "M12.777 13.107V3.88a.621.621 0 0 0-.621-.62h-.76v.216a.977.977 0 0 1-.975.978h-4.9a.978.978 0 0 1-.977-.978v-.216H3.82a.62.62 0 0 0-.62.62v9.226c0 .341.278.62.62.62h8.336a.621.621 0 0 0 .62-.62zM5.744 3.255h4.453V2.2H5.744v1.054zm6.412-1.194c1.004 0 1.82.817 1.82 1.82v9.226a1.821 1.821 0 0 1-1.82 1.819H3.82A1.822 1.822 0 0 1 2 13.105V3.88c0-1.002.817-1.82 1.82-1.82h.724v-.084c0-.538.438-.976.977-.976h4.9c.538 0 .975.438.975.976v.085h.76zm-1.77 4.782a.6.6 0 0 1 .833.863l-3.688 3.562c-.002.003-.002.006-.005.009a.601.601 0 0 1-.849-.004L4.748 9.326a.599.599 0 1 1 .852-.844l1.511 1.524 3.274-3.163z"
+}, null)])]), Le = () => r("svg", {
+  viewBox: "0 0 16 16",
+  xmlns: "http://www.w3.org/2000/svg",
+  height: "1em",
+  width: "1em"
+}, [r("g", {
+  "stroke-width": "1",
+  "fill-rule": "evenodd"
+}, [r("path", {
+  d: "M6.012 11.201L1.313 6.832l-.817.879 5.54 5.15 9.304-9.163-.842-.855z"
+}, null)])]);
+class Ve extends Xt {
   /**
    * 通过节点类型加载节点数据
    *
@@ -415,82 +587,82 @@ class ht extends Le {
    * @param {ResourceGanttFetchOpts} opts
    * @return {*}  {Promise<IGanttNodeData[]>}
    */
-  async fetchNodeDatasByType(e, t, a, s) {
-    const n = $(this.model, {
+  async fetchNodeDatasByType(e, t, o, s) {
+    const a = Z(this.model, {
       parentId: e.id,
       hasQuery: s.hasQuery
-    }).length === 0, c = { ...s, leaf: n };
-    let l = [];
-    if (!a && !this.model.rootVisible)
-      l = [await this.getStaticGanttNodeData(
+    }).length === 0, l = { ...s, leaf: a };
+    let i = [];
+    if (!o && !this.model.rootVisible)
+      i = [await this.getStaticGanttNodeData(
         e,
         t,
-        a,
-        c
+        o,
+        l
       )];
     else
       switch (e.treeNodeType) {
         case "STATIC":
-          l = [await this.getStaticGanttNodeData(
+          i = [await this.getStaticGanttNodeData(
             e,
             t,
-            a,
-            c
+            o,
+            l
           )];
           break;
         case "DE":
-          l = await this.getDEGanttNodeDatas(
+          i = await this.getDEGanttNodeDatas(
             e,
             t,
-            a,
-            c
+            o,
+            l
           );
           break;
         case "CODELIST":
-          l = await this.getCodeListGanttNodeDatas(
+          i = await this.getCodeListGanttNodeDatas(
             e,
             t,
-            a,
-            c
+            o,
+            l
           );
           break;
         default:
-          throw new Ze(
+          throw new ye(
             e,
             ibiz.i18n.t("runtime.controller.control.gantt.noSupport", {
               treeNodeType: e.treeNodeType
             })
           );
       }
-    const { expandFirstOnly: d, expanded: h, rootNode: C } = e, m = C && !this.model.rootVisible;
-    if (!n)
-      if (a && !a._parent) {
-        l = await Promise.all(l);
-        const y = await this.fetchAllChildNodes(l, s);
-        l.forEach(async (D) => {
-          const I = await this.fetchCustomChildNodes(
-            D,
+    const { expandFirstOnly: d, expanded: c, rootNode: m } = e, f = m && !this.model.rootVisible;
+    if (!a)
+      if (o && !o._parent) {
+        i = await Promise.all(i);
+        const h = await this.fetchAllChildNodes(i, s);
+        i.forEach(async (w) => {
+          const D = await this.fetchCustomChildNodes(
+            w,
             s,
-            y || []
+            h || []
           );
-          D._children = I;
+          w._children = D;
         });
       } else
         await Promise.all(
-          l.map(async (y, D) => {
-            if (h && // 全展开合只展开首节点expanded都为true
-            (!d || d && D === 0) || m) {
-              const I = await this.fetchChildNodes(
-                y,
+          i.map(async (h, w) => {
+            if (c && // 全展开合只展开首节点expanded都为true
+            (!d || d && w === 0) || f) {
+              const D = await this.fetchChildNodes(
+                h,
                 s
               );
-              y._children = I;
+              h._children = D;
             }
           })
         );
-    return l == null || l.forEach((y) => {
-      y._beginDataItemValue || (y._beginDataItemValue = y._endDataItemValue), y._endDataItemValue || (y._endDataItemValue = y._beginDataItemValue);
-    }), l = this.groupSort(l || [], s.groupField), l;
+    return i == null || i.forEach((h) => {
+      h._beginDataItemValue || (h._beginDataItemValue = h._endDataItemValue), h._endDataItemValue || (h._endDataItemValue = h._beginDataItemValue), h._endDataItemValue && (h._endDataItemValue = "".concat(h._endDataItemValue, " 23:59:59"));
+    }), i = this.groupSort(i || [], s.groupField), i;
   }
   /**
    * 获取自定义
@@ -499,19 +671,19 @@ class ht extends Le {
    * @param {ResourceGanttFetchOpts} opts
    * @param {(IGanttNodeData[])} allChildrenNodes
    */
-  fetchCustomChildNodes(e, t, a) {
+  fetchCustomChildNodes(e, t, o) {
     let s = [];
-    if (e && a.length > 0) {
-      const { hasQuery: n } = t, l = $(this.model, {
+    if (e && o.length > 0) {
+      const { hasQuery: a } = t, i = Z(this.model, {
         parentId: e._nodeId,
-        hasQuery: n
-      })[0], { parentFilter: d } = l || {};
-      a.forEach((h) => {
-        d && h._deData && e._value === h._deData[d] && (h._parent = e, s.push(h));
+        hasQuery: a
+      })[0], { parentFilter: d } = i || {};
+      o.forEach((c) => {
+        d && c._deData && e._value === c._deData[d] && (c._parent = e, s.push(c));
       });
     }
-    return s == null || s.forEach((n) => {
-      n._beginDataItemValue || (n._beginDataItemValue = n._endDataItemValue), n._endDataItemValue || (n._endDataItemValue = n._beginDataItemValue);
+    return s == null || s.forEach((a) => {
+      a._beginDataItemValue || (a._beginDataItemValue = a._endDataItemValue), a._endDataItemValue || (a._endDataItemValue = a._beginDataItemValue), a._endDataItemValue && (a._endDataItemValue = "".concat(a._endDataItemValue, " 23:59:59"));
     }), s = this.groupSort(
       s || [],
       t.groupField
@@ -525,36 +697,36 @@ class ht extends Le {
    * @return {*}  {(Promise<IGanttNodeData[] | undefined>)}
    */
   async fetchChildNodes(e, t) {
-    const { hasQuery: a } = t;
+    const { hasQuery: o } = t;
     let s = [];
     if (e) {
-      const n = $(this.model, {
+      const a = Z(this.model, {
         parentId: e._nodeId,
-        hasQuery: a
+        hasQuery: o
       });
-      if (n.length === 0)
+      if (a.length === 0)
         return;
-      (await ee(
-        n.map(async (l) => {
-          const d = te(
+      (await ut(
+        a.map(async (i) => {
+          const d = ht(
             this.model,
-            l.childDETreeNodeId
+            i.childDETreeNodeId
           );
           return this.fetchNodeDatasByType(
             d,
-            l,
+            i,
             e,
             t
           );
         }),
         !1
-      )).forEach((l) => {
-        s.push(...l);
+      )).forEach((i) => {
+        s.push(...i);
       });
     } else {
-      const n = Oe(this.model);
+      const a = te(this.model);
       s = await this.fetchNodeDatasByType(
-        n,
+        a,
         void 0,
         void 0,
         t
@@ -569,14 +741,14 @@ class ht extends Le {
    * @param {string} groupField
    */
   groupSort(e, t) {
-    const a = {};
+    const o = {};
     let s = 0;
-    return e.forEach((n) => {
-      const c = n._deData && n._deData[t] ? n._deData[t] : "";
-      c in a || (a[c] = s, s += 1);
-    }), e.sort((n, c) => {
-      const l = n._deData && n._deData[t] ? a[n._deData[t]] : -1, d = c._deData && c._deData[t] ? a[c._deData[t]] : -1;
-      return l - d;
+    return e.forEach((a) => {
+      const l = a._deData && a._deData[t] ? a._deData[t] : "";
+      l in o || (o[l] = s, s += 1);
+    }), e.sort((a, l) => {
+      const i = a._deData && a._deData[t] ? o[a._deData[t]] : -1, d = l._deData && l._deData[t] ? o[l._deData[t]] : -1;
+      return i - d;
     }), e;
   }
   /**
@@ -586,8 +758,8 @@ class ht extends Le {
    */
   getFilterNodes(e) {
     const t = [];
-    return e.forEach((a) => {
-      a._value && t.push(a._value);
+    return e.forEach((o) => {
+      o._value && t.push(o._value);
     }), t.join(",");
   }
   /**
@@ -598,28 +770,28 @@ class ht extends Le {
    * @return {*}  {(Promise<IGanttNodeData[] | undefined>)}
    */
   async fetchAllChildNodes(e, t) {
-    const { hasQuery: a } = t, s = [], n = { ...e[0] }, c = $(this.model, {
-      parentId: n._nodeId,
-      hasQuery: a
+    const { hasQuery: o } = t, s = [], a = { ...e[0] }, l = Z(this.model, {
+      parentId: a._nodeId,
+      hasQuery: o
     });
-    return c.length === 0 ? void 0 : ((await ee(
-      c.map(async (d) => {
-        const h = te(
+    return l.length === 0 ? void 0 : ((await ut(
+      l.map(async (d) => {
+        const c = ht(
           this.model,
           d.childDETreeNodeId
         );
-        d.parentFilter && Object.assign(n, {
+        d.parentFilter && Object.assign(a, {
           _value: this.getFilterNodes(e)
         });
-        const C = $(this.model, {
-          parentId: h.id,
+        const m = Z(this.model, {
+          parentId: c.id,
           hasQuery: t.hasQuery
-        }).length === 0, m = { ...t, leaf: C };
+        }).length === 0, f = { ...t, leaf: m };
         return this.getCustomDEGanttNodeDatas(
-          h,
+          c,
           d,
-          n,
-          m
+          a,
+          f
         );
       }),
       !1
@@ -637,8 +809,8 @@ class ht extends Le {
    * @param {TreeFetchOpts} opts
    * @return {*}  {Promise<IGanttNodeData[]>}
    */
-  async getCustomDEGanttNodeDatas(e, t, a, s) {
-    const { appDEDataSetId: n, appDataEntityId: c } = e, { context: l, params: d, navContext: h, navParams: C } = t ? this.getNodeRSFilterParams(t, a, s) : {
+  async getCustomDEGanttNodeDatas(e, t, o, s) {
+    const { appDEDataSetId: a, appDataEntityId: l } = e, { context: i, params: d, navContext: c, navParams: m } = t ? this.getNodeRSFilterParams(t, o, s) : {
       context: s.context,
       params: s.params,
       navContext: {},
@@ -647,35 +819,35 @@ class ht extends Le {
     d.size = e.maxSize || 1e3, e.sortAppDEFieldId && Object.assign(d, {
       sort: "".concat(e.sortAppDEFieldId.toLowerCase(), ",").concat(e.sortDir ? e.sortDir.toLowerCase() : "asc")
     });
-    const m = t ? t.parentFilter : "";
-    m && d["n_".concat(m.toLowerCase(), "_eq")] && (Object.assign(d, {
-      ["n_".concat(m.toLowerCase(), "_in")]: d["n_".concat(m.toLowerCase(), "_eq")]
-    }), delete d["n_".concat(m.toLowerCase(), "_eq")]);
-    const y = await this.app.deService.exec(
-      c,
-      n,
+    const f = t ? t.parentFilter : "";
+    f && d["n_".concat(f.toLowerCase(), "_eq")] && (Object.assign(d, {
+      ["n_".concat(f.toLowerCase(), "_in")]: d["n_".concat(f.toLowerCase(), "_eq")]
+    }), delete d["n_".concat(f.toLowerCase(), "_eq")]);
+    const h = await this.app.deService.exec(
       l,
+      a,
+      i,
       d
     );
-    return y.data.length ? y.data.map((I, v) => {
-      const b = this.calcExpand(e, v);
-      return new Ve(this.model, e, a, {
-        data: I,
+    return h.data.length ? h.data.map((D, g) => {
+      const E = this.calcExpand(e, g);
+      return new ee(this.model, e, o, {
+        data: D,
         leaf: !!s.leaf,
-        navContext: h,
-        navParams: C,
-        defaultExpand: b
+        navContext: c,
+        navParams: m,
+        defaultExpand: E
       });
     }) : [];
   }
 }
-class ue extends Ae {
+class Et extends ae {
   constructor() {
     super(...arguments);
     /**
      * 初始加载
      */
-    q(this, "isInitialLoad", !0);
+    J(this, "isInitialLoad", !0);
   }
   get _evt() {
     return this.evt;
@@ -688,7 +860,7 @@ class ue extends Ae {
    * @memberof GanttController
    */
   async initService() {
-    this.service = new ht(this.model), await this.service.init(this.context);
+    this.service = new Ve(this.model), await this.service.init(this.context);
   }
   initState() {
     super.initState(), this.state.showCapacity = !0, this.state.onlyTopNodes = !1, this.state.showWeekdays = [], this.state.capacityConfig = JSON.stringify({
@@ -769,16 +941,16 @@ class ue extends Ae {
   calcDataRange() {
     const t = this.view.getController("searchform");
     if (t) {
-      const { data: a } = t.state;
+      const { data: o } = t.state;
       this.state.dateRange = {
-        start: a.n_date_scope_gtandeq,
-        end: a.n_date_scope_ltandeq
+        start: o.n_date_scope_gtandeq,
+        end: o.n_date_scope_ltandeq
       };
     } else {
-      const a = /* @__PURE__ */ new Date();
+      const o = /* @__PURE__ */ new Date();
       this.state.dateRange = {
-        start: S(a.getTime() - 6048e5).format("YYYY-MM-DD"),
-        end: S(a).format("YYYY-MM-DD")
+        start: p(o.getTime() - 6048e5).format("YYYY-MM-DD"),
+        end: p(o).format("YYYY-MM-DD")
       };
     }
   }
@@ -791,8 +963,8 @@ class ue extends Ae {
    */
   getNodeDataByNodeId(t) {
     return this.state.items.filter((s) => s._nodeId === t).map((s) => {
-      let n = {};
-      return s._deData && (n = { ...s._deData, srfkey: s._deData.srfkey }), n;
+      let a = {};
+      return s._deData && (a = { ...s._deData, srfkey: s._deData.srfkey }), a;
     });
   }
   /**
@@ -813,13 +985,13 @@ class ue extends Ae {
    * @memberof TreeController
    */
   async loadNodes(t) {
-    const a = await this.getFetchParams(), s = !!a.query;
+    const o = await this.getFetchParams(), s = !!o.query;
     this.state.isLoading = !this.isInitialLoad;
-    let n;
+    let a;
     try {
-      n = await this.service.fetchChildNodes(t, {
+      a = await this.service.fetchChildNodes(t, {
         context: this.context.clone(),
-        params: a,
+        params: o,
         hasQuery: s,
         groupField: this.state.groupConfig.groupField,
         defaultExpandedKeys: this.state.expandedKeys
@@ -827,7 +999,7 @@ class ue extends Ae {
     } finally {
       this.state.isLoading = !1;
     }
-    return t ? t._children = n : this.state.rootNodes = n, await this.afterLoadNodes(n), n;
+    return t ? t._children = a : this.state.rootNodes = a, await this.afterLoadNodes(a), a;
   }
   /**
    * 开始加载
@@ -845,16 +1017,16 @@ class ue extends Ae {
    */
   async openData({
     data: t,
-    context: a,
+    context: o,
     params: s
   }) {
-    var C, m;
-    const n = t[0], c = this.getNodeModel(n._nodeId), { appDataEntityId: l } = c, d = ne(l);
-    a[d.toLowerCase()] = (C = n._deData) == null ? void 0 : C.srfkey;
-    const h = await ((m = this.viewScheduler) == null ? void 0 : m.triggerCustom(
-      "".concat(c.id.toLowerCase(), "_opendata"),
+    var m, f;
+    const a = t[0], l = this.getNodeModel(a._nodeId), { appDataEntityId: i } = l, d = ft(i);
+    o[d.toLowerCase()] = (m = a._deData) == null ? void 0 : m.srfkey;
+    const c = await ((f = this.viewScheduler) == null ? void 0 : f.triggerCustom(
+      "".concat(l.id.toLowerCase(), "_opendata"),
       {
-        context: a,
+        context: o,
         params: s,
         data: t,
         event: void 0,
@@ -862,14 +1034,14 @@ class ue extends Ae {
         ctrl: this
       }
     ));
-    if (h === -1)
+    if (c === -1)
       throw new Error(
         ibiz.i18n.t("runtime.controller.control.calendar.missingViewLogic", {
-          itemType: c.id.toLowerCase()
+          itemType: l.id.toLowerCase()
         })
       );
     return {
-      cancel: !h.ok
+      cancel: !c.ok
     };
   }
   /**
@@ -885,42 +1057,42 @@ class ue extends Ae {
       return;
     }
     if (t._nodeType !== "DE")
-      throw new ae(
+      throw new mt(
         ibiz.i18n.t("runtime.controller.control.gantt.nonentity")
       );
-    const a = this.state.rows[t._uuid];
-    if (!a)
-      throw new ae(
+    const o = this.state.rows[t._uuid];
+    if (!o)
+      throw new mt(
         ibiz.i18n.t("runtime.controller.common.md.rowData")
       );
-    if (!a.modified) {
+    if (!o.modified) {
       ibiz.log.debug(ibiz.i18n.t("runtime.controller.common.md.noChange"));
       return;
     }
-    if (a.processing) {
-      await et(500, this.save.bind(this), [t]);
+    if (o.processing) {
+      await Ce(500, this.save.bind(this), [t]);
       return;
     }
-    const s = this.getNodeModel(t._nodeId), { appDataEntityId: n } = s, c = t._deData.srfuf === Me.CREATE, l = ne(n), d = this.context.clone();
-    d[l] = t._deData.srfkey;
-    const h = Y(this.state.contextMap, t._deData || {}) || "{}";
-    Object.assign(d, JSON.parse(h));
-    const C = ibiz.hub.getApp(this.context.srfappid);
-    let m;
+    const s = this.getNodeModel(t._nodeId), { appDataEntityId: a } = s, l = t._deData.srfuf === ne.CREATE, i = ft(a), d = this.context.clone();
+    d[i] = t._deData.srfkey;
+    const c = nt(this.state.contextMap, t._deData || {}) || "{}";
+    Object.assign(d, JSON.parse(c));
+    const m = ibiz.hub.getApp(this.context.srfappid);
+    let f;
     try {
-      m = await C.deService.exec(
-        n,
-        c ? "create" : "update",
+      f = await m.deService.exec(
+        a,
+        l ? "create" : "update",
         d,
         t._deData
       );
-    } catch (y) {
-      throw await this.evt.emit("onSaveError", void 0), this.actionNotification("".concat(c ? "CREATE" : "UPDATE", "ERROR"), {
-        error: y,
-        data: a.data
-      }), y;
+    } catch (h) {
+      throw await this.evt.emit("onSaveError", void 0), this.actionNotification("".concat(l ? "CREATE" : "UPDATE", "ERROR"), {
+        error: h,
+        data: o.data
+      }), h;
     }
-    a.data._deData = m.data, a.modified = !1, this.gridStateNotify(a, ze.SAVE), await this.evt.emit("onSaveSuccess", void 0);
+    o.data._deData = f.data, o.modified = !1, this.gridStateNotify(o, oe.SAVE), await this.evt.emit("onSaveSuccess", void 0);
   }
   /**
    * 设置行属性的值
@@ -931,23 +1103,23 @@ class ue extends Ae {
    * @return {*}  {Promise<void>}
    * @memberof GanttController
    */
-  async setRowValue(t, a, s) {
-    const { beginDataItemName: n, endDataItemName: c } = this.model;
-    if (!(Object.prototype.hasOwnProperty.call(t.data, a) && !Pe(t.data[a], s)) && !((a === n || a === c) && st(t.data[a], s, "day"))) {
-      t.data[a] = s, a === n ? t.data._beginDataItemValue = s : a === c && (t.data._endDataItemValue = s), t.modified = !0, t.processing = !0;
+  async setRowValue(t, o, s) {
+    const { beginDataItemName: a, endDataItemName: l } = this.model;
+    if (!(Object.prototype.hasOwnProperty.call(t.data, o) && !se(t.data[o], s)) && !((o === a || o === l) && _e(t.data[o], s, "day"))) {
+      t.data[o] = s, o === a ? t.data._beginDataItemValue = s : o === l && (t.data._endDataItemValue = s), t.modified = !0, t.processing = !0;
       try {
-        await this.dataChangeNotify(t, [a]);
+        await this.dataChangeNotify(t, [o]);
       } finally {
         t.processing = !1;
       }
     }
   }
 }
-const pt = /* @__PURE__ */ B({
+const Me = /* @__PURE__ */ Y({
   name: "ResourceGanttColumnHead",
   props: {
     controller: {
-      type: ue,
+      type: Et,
       required: !0,
       default: () => {
       }
@@ -971,101 +1143,101 @@ const pt = /* @__PURE__ */ B({
     }
   },
   emits: ["expandAllChange", "headSearch"],
-  setup(o, {
+  setup(n, {
     emit: e
   }) {
-    const t = o.controller, a = V("resource-gantt-column-head"), s = k(!1), n = k(!1), c = k(""), l = N(() => o.titleData.label);
-    le(() => o.expandAll, (p) => {
-      s.value = p;
+    const t = n.controller, o = G("resource-gantt-column-head"), s = R(!1), a = R(!1), l = R(""), i = P(() => n.titleData.label);
+    vt(() => n.expandAll, (I) => {
+      s.value = I;
     }, {
       immediate: !0
     });
     const d = () => {
       s.value = !s.value, e("expandAllChange", s.value);
-    }, h = () => {
-      e("headSearch", c.value);
-    }, C = (p) => {
-      p.preventDefault(), p.stopPropagation(), n.value = !1, e("headSearch", "");
-    }, m = (p, _) => {
-      _.stopPropagation(), n.value = !0;
-    }, y = async (p, _) => {
-      await o.controller.doUIAction(p.uiactionId, {}, _, p.appId);
-    }, D = (p) => {
-      p.preventDefault(), p.stopPropagation();
-    }, I = () => i(x("el-input"), {
-      modelValue: c.value,
-      "onUpdate:modelValue": (p) => c.value = p,
-      class: a.b("search"),
-      onInput: h,
+    }, c = () => {
+      e("headSearch", l.value);
+    }, m = (I) => {
+      I.preventDefault(), I.stopPropagation(), a.value = !1, e("headSearch", "");
+    }, f = (I, M) => {
+      M.stopPropagation(), a.value = !0;
+    }, h = async (I, M) => {
+      await n.controller.doUIAction(I.uiactionId, {}, M, I.appId);
+    }, w = (I) => {
+      I.preventDefault(), I.stopPropagation();
+    }, D = () => r(O("el-input"), {
+      modelValue: l.value,
+      "onUpdate:modelValue": (I) => l.value = I,
+      class: o.b("search"),
+      onInput: c,
       placeholder: "搜索成员"
     }, {
-      prefix: () => i(se, null, null),
-      suffix: () => i(x("el-button"), {
-        class: a.be("search", "suffix"),
-        onClick: C
+      prefix: () => r(gt, null, null),
+      suffix: () => r(O("el-button"), {
+        class: o.be("search", "suffix"),
+        onClick: m
       }, {
-        default: () => [i(ut, null, null)]
+        default: () => [r(Oe, null, null)]
       })
-    }), v = () => {
-      var E, R;
-      const p = t.getNodeModel("root"), _ = t.state.selectedData;
-      if (!((R = (E = p == null ? void 0 : p.decontextMenu) == null ? void 0 : E.detoolbarItems) != null && R.length))
+    }), g = () => {
+      var V, L;
+      const I = t.getNodeModel("root"), M = t.state.selectedData;
+      if (!((L = (V = I == null ? void 0 : I.decontextMenu) == null ? void 0 : V.detoolbarItems) != null && L.length))
         return;
-      const T = t.contextMenuInfos[p.id];
-      return T.clickTBUIActionItem && T.onlyOneActionItem ? null : i(x("iBizContextMenuControl"), {
-        modelData: p.decontextMenu,
+      const B = t.contextMenuInfos[I.id];
+      return B.clickTBUIActionItem && B.onlyOneActionItem ? null : r(O("iBizContextMenuControl"), {
+        modelData: I.decontextMenu,
         groupLevelKeys: [50],
-        nodeModel: p,
-        nodeData: _,
+        nodeModel: I,
+        nodeData: M,
         context: t.context,
-        onActionClick: (G, F) => y(G, F)
+        onActionClick: (v, y) => h(v, y)
       }, null);
     };
     return {
       c: t,
-      ns: a,
-      label: l,
-      isHeadSearch: n,
+      ns: o,
+      label: i,
+      isHeadSearch: a,
       expand: s,
-      renderHeadSearch: I,
-      onColumnHeadClick: D,
+      renderHeadSearch: D,
+      onColumnHeadClick: w,
       onExpandAllChange: d,
-      renderContent: () => n.value ? I() : i("div", {
-        class: a.b("box")
-      }, [i("div", {
-        class: a.be("box", "left")
-      }, [i(x("el-button"), {
-        class: a.bem("box", "left", "icon"),
+      renderContent: () => a.value ? D() : r("div", {
+        class: o.b("box")
+      }, [r("div", {
+        class: o.be("box", "left")
+      }, [r(O("el-button"), {
+        class: o.bem("box", "left", "icon"),
         title: s.value ? "全部收起" : "全部展开",
         onClick: d
       }, {
-        default: () => [s.value ? i(dt, null, null) : i(ct, null, null)]
-      }), i("div", {
-        class: a.bem("box", "left", "caption")
-      }, [l.value])]), i("div", {
-        class: a.be("box", "right")
-      }, [i(x("el-button"), {
+        default: () => [s.value ? r(ke, null, null) : r(Te, null, null)]
+      }), r("div", {
+        class: o.bem("box", "left", "caption")
+      }, [i.value])]), r("div", {
+        class: o.be("box", "right")
+      }, [r(O("el-button"), {
         size: "small",
         title: "搜索成员",
-        class: [a.e("item")],
-        onClick: (p) => m("search_personal", p)
+        class: [o.e("item")],
+        onClick: (I) => f("search_personal", I)
       }, {
-        icon: () => i("div", {
-          class: a.e("icon")
-        }, [i(se, null, null)])
-      }), v()])])
+        icon: () => r("div", {
+          class: o.e("icon")
+        }, [r(gt, null, null)])
+      }), g()])])
     };
   },
   render() {
-    return i("div", {
+    return r("div", {
       class: this.ns.b()
     }, [this.renderContent()]);
   }
 });
-function mt(o) {
-  return typeof o == "function" || Object.prototype.toString.call(o) === "[object Object]" && !qe(o);
+function Ae(n) {
+  return typeof n == "function" || Object.prototype.toString.call(n) === "[object Object]" && !ce(n);
 }
-const ft = /* @__PURE__ */ B({
+const ze = /* @__PURE__ */ Y({
   name: "IBizResourceActionToolbar",
   props: {
     actionDetails: {
@@ -1092,82 +1264,82 @@ const ft = /* @__PURE__ */ B({
     popperClass: String
   },
   emits: ["actionClick"],
-  setup(o, {
+  setup(n, {
     emit: e
   }) {
-    var I;
-    const t = V("action-toolbar"), a = V("resource-action-toolbar"), s = k(), n = k(!1), c = k(!1);
-    (I = o.actionDetails) == null || I.forEach((v) => {
-      v.capLanguageRes && v.capLanguageRes.lanResTag && (v.caption = ibiz.i18n.t(v.capLanguageRes.lanResTag, v.caption)), v.tooltipLanguageRes && v.tooltipLanguageRes.lanResTag && (v.tooltip = ibiz.i18n.t(v.tooltipLanguageRes.lanResTag, v.tooltip));
+    var D;
+    const t = G("action-toolbar"), o = G("resource-action-toolbar"), s = R(), a = R(!1), l = R(!1);
+    (D = n.actionDetails) == null || D.forEach((g) => {
+      g.capLanguageRes && g.capLanguageRes.lanResTag && (g.caption = ibiz.i18n.t(g.capLanguageRes.lanResTag, g.caption)), g.tooltipLanguageRes && g.tooltipLanguageRes.lanResTag && (g.tooltip = ibiz.i18n.t(g.tooltipLanguageRes.lanResTag, g.tooltip));
     });
-    const l = (v) => {
-      c.value = v;
-    }, d = async (v, b) => {
-      b.stopPropagation(), o.mode === "buttons" ? n.value = !1 : s.value && s.value.handleClose(), e("actionClick", v, b);
-    }, h = k([]), C = k([]);
-    o.actionDetails && o.actionDetails.forEach((v) => {
-      o.groupLevelKeys.findIndex((b) => b === v.actionLevel) !== -1 ? C.value.push(v) : h.value.push(v);
+    const i = (g) => {
+      l.value = g;
+    }, d = async (g, E) => {
+      E.stopPropagation(), n.mode === "buttons" ? a.value = !1 : s.value && s.value.handleClose(), e("actionClick", g, E);
+    }, c = R([]), m = R([]);
+    n.actionDetails && n.actionDetails.forEach((g) => {
+      n.groupLevelKeys.findIndex((E) => E === g.actionLevel) !== -1 ? m.value.push(g) : c.value.push(g);
     });
-    const m = k(), y = (v) => {
+    const f = R(), h = (g) => {
       const {
-        actionLevel: b
-      } = v;
-      return [t.e("item"), t.is("disabled", !1), t.em("item", "level-".concat(b))];
-    }, D = o.zIndex;
+        actionLevel: E
+      } = g;
+      return [t.e("item"), t.is("disabled", !1), t.em("item", "level-".concat(E))];
+    }, w = n.zIndex;
     return {
       ns: t,
-      ns2: a,
+      ns2: o,
       dropdownRef: s,
-      popoverIndex: D,
-      expandDetails: h,
-      groupDetails: C,
-      groupButtonRef: m,
-      popoverVisible: n,
-      dropdownVisible: c,
+      popoverIndex: w,
+      expandDetails: c,
+      groupDetails: m,
+      groupButtonRef: f,
+      popoverVisible: a,
+      dropdownVisible: l,
       handleClick: d,
-      calcActionItemClass: y,
-      onVisibleChange: l
+      calcActionItemClass: h,
+      onVisibleChange: i
     };
   },
   render() {
     var s;
-    const o = this.actionDetails || [], e = (n) => i(x("el-divider"), {
+    const n = this.actionDetails || [], e = (a) => r(O("el-divider"), {
       class: this.ns.e("separator"),
       "border-style": "double",
-      direction: n ? "vertical" : "horizontal"
-    }, null), t = (n, c = !0) => n.map((l) => this.actionsState[l.id].visible ? [l.addSeparator && e(c), i(x("el-button"), {
+      direction: a ? "vertical" : "horizontal"
+    }, null), t = (a, l = !0) => a.map((i) => this.actionsState[i.id].visible ? [i.addSeparator && e(l), r(O("el-button"), {
       text: !0,
       size: "small",
-      onClick: (d) => this.handleClick(l, d),
-      title: l.tooltip,
-      disabled: this.actionsState[l.id].disabled,
-      class: this.calcActionItemClass(l)
+      onClick: (d) => this.handleClick(i, d),
+      title: i.tooltip,
+      disabled: this.actionsState[i.id].disabled,
+      class: this.calcActionItemClass(i)
     }, {
-      default: () => [i("div", {
+      default: () => [r("div", {
         class: this.ns.em("item", "icon")
-      }, [l.showIcon && l.sysImage && i(x("iBizIcon"), {
-        icon: l.sysImage
-      }, null)]), i("div", {
+      }, [i.showIcon && i.sysImage && r(O("iBizIcon"), {
+        icon: i.sysImage
+      }, null)]), r("div", {
         class: this.ns.em("item", "label")
-      }, [l.showCaption ? l.caption : ""])]
-    })] : null), a = () => {
-      let n;
+      }, [i.showCaption ? i.caption : ""])]
+    })] : null), o = () => {
+      let a;
       if (this.groupDetails.length === 0 || !(this.groupDetails.findIndex((d) => this.actionsState[d.id].visible === !0) !== -1))
         return null;
-      const l = this.groupDetails.findIndex((d) => this.actionsState[d.id].disabled === !1) === -1;
-      return [i(x("el-button"), {
+      const i = this.groupDetails.findIndex((d) => this.actionsState[d.id].disabled === !1) === -1;
+      return [r(O("el-button"), {
         size: "small",
         text: !0,
-        disabled: l,
+        disabled: i,
         ref: "groupButtonRef",
         class: [this.ns.e("item"), this.ns.is("expand", this.popoverVisible)]
       }, {
-        icon: () => i(x("ion-icon"), {
+        icon: () => r(O("ion-icon"), {
           class: this.ns.e("icon"),
           name: "ellipsis-vertical-outline",
           title: ibiz.i18n.t("component.actionToolbar.more")
         }, null)
-      }), i(x("el-popover"), {
+      }), r(O("el-popover"), {
         placement: "bottom-start",
         "virtual-ref": this.groupButtonRef,
         trigger: "click",
@@ -1176,47 +1348,47 @@ const ft = /* @__PURE__ */ B({
         "popper-class": this.ns.e("popover"),
         "virtual-triggering": !0,
         "popper-style": "z-index:".concat(this.popoverIndex)
-      }, mt(n = t(this.groupDetails, !1)) ? n : {
-        default: () => [n]
+      }, Ae(a = t(this.groupDetails, !1)) ? a : {
+        default: () => [a]
       })];
     };
     if ((s = this.actionsState) != null && s.visible)
-      return this.mode === "buttons" ? i("div", {
+      return this.mode === "buttons" ? r("div", {
         class: [this.ns.b(), this.ns.m("buttons")],
-        onClick: (n) => n.stopPropagation()
-      }, [t(this.expandDetails), a()]) : i(x("el-dropdown"), {
+        onClick: (a) => a.stopPropagation()
+      }, [t(this.expandDetails), o()]) : r(O("el-dropdown"), {
         ref: "dropdownRef",
-        onCommand: (n) => this.handleClick(n, new MouseEvent("click")),
+        onCommand: (a) => this.handleClick(a, new MouseEvent("click")),
         trigger: "click",
         class: [this.ns.b(), this.ns.m("dropdown"), this.dropdownVisible ? this.ns2.e("open") : ""],
         placement: "bottom-start",
         "popper-class": this.popperClass,
         onVisibleChange: this.onVisibleChange
       }, {
-        default: () => i("span", {
+        default: () => r("span", {
           class: this.ns.e("caption")
-        }, [this.caption, i(x("ion-icon"), {
+        }, [this.caption, r(O("ion-icon"), {
           class: this.ns.e("caption-icon"),
           name: "ellipsis-vertical-outline"
         }, null)]),
-        dropdown: () => i(x("el-dropdown-menu"), null, {
-          default: () => [o.length > 0 && o.map((n) => this.actionsState[n.id].visible ? i(x("el-dropdown-item"), {
+        dropdown: () => r(O("el-dropdown-menu"), null, {
+          default: () => [n.length > 0 && n.map((a) => this.actionsState[a.id].visible ? r(O("el-dropdown-item"), {
             class: [this.ns.e("item"), this.ns.is("disabled", !1)],
-            title: n.tooltip,
-            disabled: this.actionsState[n.id].disabled,
-            command: n
+            title: a.tooltip,
+            disabled: this.actionsState[a.id].disabled,
+            command: a
           }, {
-            default: () => [n.showIcon && n.sysImage && i(x("iBizIcon"), {
-              icon: n.sysImage
-            }, null), n.showCaption ? n.caption : ""]
+            default: () => [a.showIcon && a.sysImage && r(O("iBizIcon"), {
+              icon: a.sysImage
+            }, null), a.showCaption ? a.caption : ""]
           }) : null)]
         })
       });
   }
 });
-class he extends Ge {
-}
-const W = /* @__PURE__ */ B({
+let Rt = class extends wt {
+};
+const X = /* @__PURE__ */ Y({
   name: "IBizPanelResourceState",
   props: {
     modelData: {
@@ -1224,12 +1396,12 @@ const W = /* @__PURE__ */ B({
       required: !0
     },
     controller: {
-      type: he,
+      type: Rt,
       required: !0
     }
   },
-  setup(o) {
-    const e = V("panel-rawitem"), t = V("panel-resource-state"), a = k(""), s = [{
+  setup(n) {
+    const e = G("panel-rawitem"), t = G("panel-resource-state"), o = R(""), s = [{
       tag: "standard",
       name: "标准"
     }, {
@@ -1239,31 +1411,31 @@ const W = /* @__PURE__ */ B({
       tag: "exceed",
       name: "超出"
     }], {
-      rawItem: n
-    } = o.modelData;
-    n && n.cssStyle && (a.value = n.cssStyle);
-    const c = N(() => {
+      rawItem: a
+    } = n.modelData;
+    a && a.cssStyle && (o.value = a.cssStyle);
+    const l = P(() => {
       const {
         id: d
-      } = o.modelData, h = [e.b(), t.b(), e.m(d)];
-      return h.push(...o.controller.containerClass), h;
+      } = n.modelData, c = [e.b(), t.b(), e.m(d)];
+      return c.push(...n.controller.containerClass), c;
     });
     return {
       ns: e,
-      classArr: c,
-      tempStyle: a,
-      renderContent: () => s.map((d) => i("div", {
+      classArr: l,
+      tempStyle: o,
+      renderContent: () => s.map((d) => r("div", {
         class: [t.e("content"), t.e(d.tag)]
-      }, [i("div", {
+      }, [r("div", {
         class: [t.em("content", "star")]
-      }, null), i("div", {
+      }, null), r("div", {
         class: t.em("content", "caption")
       }, [d.name])]))
     };
   },
   render() {
     if (this.controller.state.visible)
-      return i("div", {
+      return r("div", {
         class: this.classArr,
         style: this.tempStyle,
         onClick: () => {
@@ -1272,21 +1444,266 @@ const W = /* @__PURE__ */ B({
       }, [this.renderContent()]);
   }
 });
-class gt {
+let Be = class {
   constructor() {
-    q(this, "component", "IBizPanelResourceState");
+    J(this, "component", "IBizPanelResourceState");
   }
-  async createController(e, t, a) {
-    const s = new he(e, t, a);
+  async createController(e, t, o) {
+    const s = new Rt(e, t, o);
+    return await s.init(), s;
+  }
+};
+const Pe = at(
+  X,
+  function(n) {
+    n.component(X.name, X), Ct("CUSTOM_RESOURCE_STATE", () => new Be());
+  }
+);
+class Nt extends wt {
+}
+const tt = /* @__PURE__ */ Y({
+  name: "IBizResourceDropdownList",
+  props: {
+    modelData: {
+      type: Object,
+      required: !0
+    },
+    controller: {
+      type: Nt,
+      required: !0
+    }
+  },
+  setup(n) {
+    const e = G("dropdown"), t = G("resource-dropdown-list"), o = n.controller, s = R(""), a = R({}), l = R([]), i = [{
+      label: "容量计算"
+    }, {
+      calcType: "WORKITEMCOUNT",
+      weekdays: "${weekday}",
+      dayCapacityVal: "${day_capacity.work_item_count}",
+      label: "工作项数量",
+      icon: Ne
+    }, {
+      calcType: "ESTIMATEDWORKLOAD",
+      weekdays: "${weekday}",
+      dayCapacityVal: "${day_capacity.estimated_workload}",
+      fieldName: "estimated_workload",
+      label: "预估工时",
+      icon: Ee
+    }, {
+      calcType: "REMAININGWORKLOAD",
+      weekdays: "${weekday}",
+      dayCapacityVal: "${day_capacity.remaining_workload}",
+      fieldName: "remaining_workload",
+      label: "剩余工时",
+      icon: Re
+    }], {
+      rawItem: d
+    } = n.modelData;
+    d && d.cssStyle && (s.value = d.cssStyle);
+    const c = P(() => {
+      const {
+        id: h
+      } = n.modelData, w = [e.b(), t.b(), e.m(h)];
+      return w.push(...n.controller.containerClass), w;
+    });
+    Dt(() => {
+      l.value = i, a.value = i[1];
+    });
+    const m = (h) => {
+      a.value = h;
+      const w = {};
+      Object.assign(w, h), delete w.icon, n.controller.panel.panelItems && n.controller.panel.panelItems.gantt && n.controller.panel.panelItems.gantt.control.capacityCalcChange(w);
+    };
+    return {
+      ns: e,
+      ns2: t,
+      c: o,
+      curValue: a,
+      items: l,
+      classArr: c,
+      tempStyle: s,
+      handleItemClick: m,
+      renderContent: () => r(O("el-dropdown"), {
+        trigger: "click",
+        class: t.b("dropdown"),
+        "popper-class": t.b("dropdown-popper")
+      }, {
+        default: () => r("span", {
+          class: t.be("dropdown", "content")
+        }, [a.value.icon && r("span", {
+          class: t.bem("dropdown", "content", "icon")
+        }, [a.value.icon()]), r("span", {
+          class: t.bem("dropdown", "content", "text")
+        }, [a.value.label])]),
+        dropdown: () => r(O("el-dropdown-menu"), null, {
+          default: () => l.value.map((h) => r(O("el-dropdown-item"), {
+            onClick: () => m(h)
+          }, {
+            default: () => [r("div", {
+              class: t.be("dropdown-popper", "content")
+            }, [h.icon && r("span", {
+              class: t.bem("dropdown-popper", "content", "icon")
+            }, [h.icon()]), r("span", {
+              class: t.bem("dropdown-popper", "content", "text")
+            }, [h.label]), a.value.calcType === h.calcType && r("span", {
+              class: t.bem("dropdown-popper", "content", "correct")
+            }, [Le()])])]
+          }))
+        })
+      })
+    };
+  },
+  render() {
+    return r("div", {
+      class: this.classArr,
+      style: this.tempStyle
+    }, [this.renderContent()]);
+  }
+});
+class je {
+  constructor() {
+    J(this, "component", "IBizResourceDropdownList");
+  }
+  async createController(e, t, o) {
+    const s = new Nt(e, t, o);
     return await s.init(), s;
   }
 }
-const Ct = re(
-  W,
-  function(o) {
-    o.component(W.name, W), Be("CUSTOM_RESOURCE_STATE", () => new gt());
+const Ge = at(
+  tt,
+  function(n) {
+    n.component(tt.name, tt), Ct(
+      "CUSTOM_RESOURCE_DROPDOWN_LIST",
+      () => new je()
+    );
   }
-), H = /* @__PURE__ */ B({
+);
+function $e() {
+  const n = R(!1), e = (c) => {
+    const { startDate: m, endDate: f, dateRange: h, sliderLimit: w } = c;
+    let D = p(m.date), g = p(f.date);
+    const E = g.diff(D, "hour");
+    if (D.diff(D.startOf("day"), "hour") < 12) {
+      if (D = D.startOf("day"), g = g.subtract(1, "day").startOf("day"), w && h) {
+        const M = p(h.end).startOf("day").add(1, "day").subtract(1, "second"), B = p(h.start).startOf("day");
+        (p(f.date).isAfter(M) || p(f.date).isSame(M)) && (g = M), (p(m.date).isBefore(B) || p(m.date).isSame(B)) && (D = B);
+      }
+      E === 24 && (g = D);
+    } else
+      g = g.startOf("day"), D = D.add(1, "day").startOf("day"), E === 24 && (D = g);
+    return g = g.add(1, "day").startOf("day").subtract(1, "second"), { start: D, end: g };
+  }, t = (c) => {
+    const { startDate: m, endDate: f } = c;
+    let h = p(m.date), w = p(f.date);
+    return h = h.startOf("day"), w = w.startOf("day").add(1, "day").subtract(1, "second"), { start: h, end: w };
+  }, o = (c, m) => ({
+    curDate: p(c),
+    rangeStart: p(m.start).startOf("day"),
+    rangeEnd: p(m.end).startOf("day").add(1, "day").subtract(1, "second")
+  }), s = (c, m) => {
+    const { startDate: f, endDate: h } = c, w = f.clone(), D = h.clone();
+    let g;
+    n.value ? g = e(c) : g = t(c), n.value = !1, w.setDate(p(g.start)), D.setDate(p(g.end)), m({
+      startDate: w,
+      endDate: D,
+      unit: "hour"
+    });
+  }, a = (c, m) => {
+    const {
+      x: f,
+      type: h,
+      startDate: w,
+      endDate: D,
+      sliderLimit: g,
+      dateRange: E,
+      ganttColumnWidth: I,
+      currentMillisecond: M
+    } = c;
+    let B;
+    n.value = !0;
+    const V = w.getOffset(f / I * M).clone();
+    h === "resize" && (n.value = !1);
+    let L = 0;
+    if (g && E) {
+      const { rangeStart: v, rangeEnd: y } = o(w.date, E), b = D.getOffset(
+        f / I * M
+      ), S = p(D.date), N = p(w.date);
+      let T = p(V.date), z = p(b.date);
+      if (h === "resize") {
+        const A = S.subtract(1, "day").add(1, "second");
+        T.isAfter(A) && (V.setDate(A.toDate()), T = p(V.date)), T.isAfter(y.startOf("day")) && (V.setDate(y.startOf("day").toDate()), T = p(V.date));
+      } else {
+        if (N.isBefore(v.add(1, "day"), "day") && S.isAfter(y.subtract(1, "day"), "day"))
+          return f;
+        z.isAfter(y) && (b.setDate(y.toDate()), z = p(b.date));
+        const A = S.diff(N, "second"), W = z.diff(T, "second"), F = z.subtract(A, "second");
+        L = z.add(1, "second").valueOf() - F.valueOf(), W > 0 && W <= A && F.isAfter(v) && (V.setDate(F.toDate()), T = p(V.date));
+      }
+      T.isBefore(v) && V.setDate(v.toDate());
+    }
+    return (V.compareTo(D.getOffset(-864e5)) === "r" || L > 0) && h !== "resize" && (B = V.getOffset(L > 0 ? L : 864e5)), m({
+      startDate: V,
+      endDate: B,
+      unit: "hour"
+    }), f;
+  }, l = (c, m) => {
+    const {
+      x: f,
+      type: h,
+      startDate: w,
+      endDate: D,
+      sliderLimit: g,
+      dateRange: E,
+      ganttColumnWidth: I,
+      currentMillisecond: M
+    } = c;
+    n.value = !0;
+    let B = 0, V;
+    const L = D.getOffset(f / I * M).clone();
+    if (h === "resize" && (n.value = !1), g && E) {
+      const { rangeStart: v, rangeEnd: y } = o(D.date, E), b = w.getOffset(
+        f / I * M
+      ), S = p(w.date), N = p(D.date);
+      let T = p(L.date);
+      const z = p(b.date);
+      if (h === "resize") {
+        const A = S.add(1, "day").subtract(1, "second");
+        T.isBefore(A) && (L.setDate(A), T = p(L.date)), T.isBefore(
+          v.startOf("day").add(1, "day").subtract(1, "second")
+        ) && (L.setDate(
+          v.startOf("day").add(1, "day").subtract(1, "second").toDate()
+        ), T = p(L.date));
+      } else {
+        if (S.isBefore(v.add(1, "day"), "day") && N.isAfter(y.subtract(1, "day"), "day") || z.isBefore(v))
+          return f;
+        const A = N.diff(S, "second"), W = T.diff(z, "second"), F = z.add(A + 1, "second");
+        B = F.valueOf() - z.valueOf(), W > 0 && W <= A && F.isBefore(y) && (L.setDate(F), T = p(L.date));
+      }
+      T.isAfter(y) && L.setDate(y);
+    }
+    return L.compareTo(w.getOffset(864e5)) === "l" && h !== "resize" && (V = L.getOffset(B > 0 ? -B : -864e5)), m({
+      startDate: V,
+      endDate: L,
+      unit: "hour"
+    }), f;
+  };
+  function i(c) {
+    const { startDate: m, ganttHeader: f, currentMillisecond: h, ganttColumnWidth: w } = c;
+    return m.intervalTo(f.start) / h * w;
+  }
+  function d(c) {
+    const { startDate: m, endDate: f, currentMillisecond: h, ganttColumnWidth: w } = c;
+    return f.intervalTo(m) / h * w;
+  }
+  return {
+    handleEmitMove: s,
+    handleSetStart: a,
+    handleSetEnd: l,
+    handleSliderLeft: i,
+    handleSliderWidth: d
+  };
+}
+const et = /* @__PURE__ */ Y({
   name: "IBizResourceGanttControl",
   props: {
     modelData: {
@@ -1317,331 +1734,362 @@ const Ct = re(
       default: void 0
     }
   },
-  setup(o) {
-    var X;
-    const e = Fe((...r) => new ue(...r)), t = k(), a = k(), s = k(!1), n = V("control-".concat(e.model.controlType.toLowerCase())), c = V("control-resource-gantt"), l = k(), d = k(!1), h = k();
-    h.value = Qe();
-    const C = x("IBizRawItem"), m = x("IBizIcon");
-    let y = !1;
-    const D = [], I = ["blue", "light-blue", "blue-cyan", "pink", "purple", "violet", "indigo", "cyan", "teal", "green", "light-green", "lime", "yellow", "amber", "orange", "grey", "sky-blue"], v = (X = We()) == null ? void 0 : X.appContext.app;
-    He(() => {
-      (() => import("@ibiz-template-plugin/gantt"))().then((u) => {
-        const g = u.default;
-        v == null || v.use(g), s.value = !0;
+  setup(n) {
+    var ct;
+    const e = ie((...u) => new Et(...u)), t = R(), o = R(), s = R(!1), a = G("control-".concat(e.model.controlType.toLowerCase())), l = G("control-resource-gantt"), i = R(), d = R(!0), {
+      handleEmitMove: c,
+      handleSetStart: m,
+      handleSetEnd: f,
+      handleSliderLeft: h,
+      handleSliderWidth: w
+    } = $e(), D = R();
+    D.value = me();
+    const g = O("IBizRawItem"), E = O("IBizIcon");
+    let I = !1;
+    const M = R({
+      top: 0,
+      bottom: 0
+    }), B = R([]), V = () => {
+      var u, C, x;
+      if (Object.assign(M.value, {
+        top: 0,
+        bottom: 0
+      }), o.value && ((u = o.value) != null && u.$el)) {
+        const _ = xt((C = o.value) == null ? void 0 : C.$el), j = It((x = o.value) == null ? void 0 : x.$el);
+        Object.assign(M.value, {
+          top: _,
+          bottom: j
+        });
+      }
+    }, L = (u) => {
+      B.value = u, V();
+    }, v = [], y = ["blue", "light-blue", "blue-cyan", "pink", "purple", "violet", "indigo", "cyan", "teal", "green", "light-green", "lime", "yellow", "amber", "orange", "grey", "sky-blue"], b = (ct = de()) == null ? void 0 : ct.appContext.app;
+    Dt(() => {
+      (() => import("@ibiz-template-plugin/gantt"))().then((C) => {
+        const x = C.default;
+        b == null || b.use(x), s.value = !0;
       });
     });
-    const b = (r) => {
-      const u = document.documentElement;
-      return getComputedStyle(u).getPropertyValue(r);
-    }, p = N(() => {
-      var u, g;
+    const S = (u) => {
+      const C = document.documentElement;
+      return getComputedStyle(C).getPropertyValue(u);
+    }, N = P(() => {
+      var C, x;
       return {
-        primaryColor: ((u = e.state.ganttStyle) == null ? void 0 : u.primaryColor) || b("--ibiz-color-bg-0"),
-        textColor: ((g = e.state.ganttStyle) == null ? void 0 : g.textColor) || b("--ibiz-color-text-2")
+        primaryColor: ((C = e.state.ganttStyle) == null ? void 0 : C.primaryColor) || S("--ibiz-color-bg-0"),
+        textColor: ((x = e.state.ganttStyle) == null ? void 0 : x.textColor) || S("--ibiz-color-text-2")
       };
-    }), _ = N(() => {
-      var u;
-      const r = {};
-      return (u = e.model.detreeNodes) == null || u.forEach((g, f) => {
-        const L = f % I.length;
-        r[g.id] = "rgba(".concat(b("--ibiz-".concat(I[L], "-0")), ", 1)");
-      }), r;
-    }), T = () => {
-      var u;
-      let r = e.state.rootNodes;
-      return e.model.rootVisible || (r = ((u = e.state.rootNodes[0]) == null ? void 0 : u._children) || []), r.map((g) => {
-        const f = {};
-        return Object.assign(f, g), f._children && (f._children = null), f;
+    }), T = P(() => {
+      var C;
+      const u = {};
+      return (C = e.model.detreeNodes) == null || C.forEach((x, _) => {
+        const j = _ % y.length;
+        u[x.id] = "rgba(".concat(S("--ibiz-".concat(y[j], "-0")), ", 1)");
+      }), u;
+    }), z = () => {
+      var C;
+      let u = e.state.rootNodes;
+      return e.model.rootVisible || (u = ((C = e.state.rootNodes[0]) == null ? void 0 : C._children) || []), u.map((x) => {
+        const _ = {};
+        return Object.assign(_, x), _._children && (_._children = null), _;
       });
-    }, E = N(() => e.state.isLoaded ? e.state.isLoading : !1), R = N(() => {
-      var r, u;
-      return e.state.onlyTopNodes ? T() : e.model.rootVisible ? e.state.rootNodes : (u = (r = e.state.rootNodes[0]) == null ? void 0 : r._children) == null ? void 0 : u.filter((g) => !l.value || g.name.includes(l.value));
-    }), G = N(() => {
-      const r = [];
-      return e.state.columnStates.forEach((u) => {
-        var f;
-        const g = (f = e.columns[u.key]) == null ? void 0 : f.model;
-        !u.hidden && g && r.push(g);
-      }), r;
-    }), F = N(() => ibiz.i18n.getLang().toLowerCase()), pe = (r, u) => {
-      if (r)
-        D.push(u);
+    }, A = P(() => e.state.isLoaded ? e.state.isLoading : !1), W = P(() => {
+      var u, C;
+      return e.state.onlyTopNodes ? z() : e.model.rootVisible ? e.state.rootNodes : (C = (u = e.state.rootNodes[0]) == null ? void 0 : u._children) == null ? void 0 : C.filter((x) => !i.value || x.name.includes(i.value));
+    }), F = P(() => {
+      const u = [];
+      return e.state.columnStates.forEach((C) => {
+        var _;
+        const x = (_ = e.columns[C.key]) == null ? void 0 : _.model;
+        !C.hidden && x && u.push(x);
+      }), u;
+    }), Lt = P(() => ibiz.i18n.getLang().toLowerCase()), Vt = (u, C) => {
+      if (u)
+        v.push(C);
       else {
-        const g = D.findIndex((f) => f._id === u._id);
-        g > -1 && D.splice(g, 1);
+        const x = v.findIndex((_) => _._id === C._id);
+        x > -1 && v.splice(x, 1);
       }
-      e.setSelection(D);
-    }, U = (r, u) => {
-      if (y || d.value) {
+      e.setSelection(v);
+    }, st = (u, C) => {
+      if (I || d.value) {
         d.value = !1;
         return;
       }
-      e.onTreeNodeClick(r, u), y = !0, setTimeout(() => {
-        y = !1;
+      e.onTreeNodeClick(u, C), I = !0, setTimeout(() => {
+        I = !1;
       }, 200);
-    }, K = (r) => {
-      e.onDbTreeNodeClick(r);
-    }, me = (r) => {
-      e.onExpandChange(r, !0), r && !r._children && e.refreshNodeChildren(r);
-    }, fe = (r) => {
-      e.onExpandChange(r, !1);
+    }, rt = (u) => {
+      e.onDbTreeNodeClick(u);
+    }, Mt = (u) => {
+      e.onExpandChange(u, !0), u && !u._children && e.refreshNodeChildren(u);
+    }, At = (u) => {
+      e.onExpandChange(u, !1);
     };
-    e.evt.on("onNewRow", (r) => {
+    e.evt.on("onNewRow", (u) => {
       if (t.value) {
-        const u = r.row.data;
-        t.value.setExpand(u);
+        const C = u.row.data;
+        t.value.setExpand(C);
       }
     });
-    const Q = () => {
-      var r;
-      (r = t.value) == null || r.fullscreenChange();
+    const it = () => {
+      var u;
+      (u = t.value) == null || u.fullscreenChange();
     };
-    e._evt.on("onFullscreenChange", (r) => {
-      Q();
+    e._evt.on("onFullscreenChange", (u) => {
+      it();
     });
-    const ge = (r) => {
-      l.value = r;
-    }, Ce = (r) => {
-      e.state.expandAll = r;
-    }, ye = (r) => {
-      console.log("抛值内容", r);
-    }, be = (r) => {
-      var f;
-      const u = (f = r[0]) == null ? void 0 : f.row, g = {
-        begin: u._beginDataItemValue ? S(u._beginDataItemValue).format("YYYY-MM-DD HH:mm:ss") : void 0,
-        end: u._endDataItemValue ? S(u._endDataItemValue).format("YYYY-MM-DD HH:mm:ss") : void 0
+    const zt = (u) => {
+      i.value = u;
+    }, Bt = (u) => {
+      e.state.expandAll = u;
+    }, Pt = (u) => {
+      console.log("抛值内容", u);
+    }, jt = (u) => {
+      var _;
+      const C = (_ = u[0]) == null ? void 0 : _.row, x = {
+        begin: C._beginDataItemValue ? p(C._beginDataItemValue).format("YYYY-MM-DD HH:mm:ss") : void 0,
+        end: C._endDataItemValue ? p(C._endDataItemValue).format("YYYY-MM-DD HH:mm:ss") : void 0
       };
-      d.value = !0, e.modifyNodeTime(u, g);
-    }, J = (r, u, g, f) => {
-      const L = [];
-      return r.forEach((w) => {
-        var z;
-        if (w.itemType === "SEPERATOR") {
-          L.push({
+      d.value = !0, e.modifyNodeTime(C, x);
+    }, lt = (u, C, x, _) => {
+      const j = [];
+      return u.forEach((k) => {
+        var U;
+        if (k.itemType === "SEPERATOR") {
+          j.push({
             divided: "self"
           });
           return;
         }
-        const M = f[w.id];
-        if (M && !M.visible)
+        const q = _[k.id];
+        if (q && !q.visible)
           return;
-        const O = {};
-        if (w.showCaption && w.caption && (O.label = w.caption), w.sysImage && w.showIcon && (O.icon = i(m, {
-          icon: w.sysImage
-        }, null)), w.itemType === "DEUIACTION") {
-          O.disabled = M.disabled, O.clickClose = !0;
+        const $ = {};
+        if (k.showCaption && k.caption && ($.label = k.caption), k.sysImage && k.showIcon && ($.icon = r(E, {
+          icon: k.sysImage
+        }, null)), k.itemType === "DEUIACTION") {
+          $.disabled = q.disabled, $.clickClose = !0;
           const {
-            uiactionId: A
-          } = w;
-          A && (O.onClick = () => {
-            e.doUIAction(A, u, g, w.appId);
+            uiactionId: H
+          } = k;
+          H && ($.onClick = () => {
+            e.doUIAction(H, C, x, k.appId);
           });
-        } else if (w.itemType === "RAWITEM") {
+        } else if (k.itemType === "RAWITEM") {
           const {
-            rawItem: A
-          } = w;
-          A && (O.label = i(C, {
-            rawItem: w
+            rawItem: H
+          } = k;
+          H && ($.label = r(g, {
+            rawItem: k
           }, null));
         } else
-          w.itemType === "ITEMS" && (z = w.detoolbarItems) != null && z.length && (O.children = J(w.detoolbarItems, u, g, f));
-        L.push(O);
-      }), L;
+          k.itemType === "ITEMS" && (U = k.detoolbarItems) != null && U.length && ($.children = lt(k.detoolbarItems, C, x, _));
+        j.push($);
+      }), j;
     };
-    let j;
+    let Q;
     e.evt.on("onMounted", () => {
-      Object.values(e.contextMenus).length > 0 && (() => import("@imengyu/vue3-context-menu"))().then((u) => {
-        j = u.default, j.default && !j.showContextMenu && (j = j.default);
+      Object.values(e.contextMenus).length > 0 && (() => import("@imengyu/vue3-context-menu"))().then((C) => {
+        Q = C.default, Q.default && !Q.showContextMenu && (Q = Q.default);
       });
     });
-    const we = async (r, u) => {
-      u.stopPropagation(), u.preventDefault();
-      const g = e.getNodeModel(r._nodeId);
-      if (!(g != null && g.decontextMenu))
+    const Gt = async (u, C) => {
+      C.stopPropagation(), C.preventDefault();
+      const x = e.getNodeModel(u._nodeId);
+      if (!(x != null && x.decontextMenu))
         return;
-      const f = e.contextMenus[g.decontextMenu.id];
-      if (!f.model.detoolbarItems)
+      const _ = e.contextMenus[x.decontextMenu.id];
+      if (!_.model.detoolbarItems)
         return;
-      await f.calcButtonState(r._deData || (r.srfkey ? r : void 0), g.appDataEntityId);
-      const L = f.state.buttonsState, w = J(f.model.detoolbarItems, r, u, L);
-      w.length && j.showContextMenu({
-        x: u.x,
-        y: u.y,
-        customClass: n.b("context-menu"),
-        items: w
+      await _.calcButtonState(u._deData || (u.srfkey ? u : void 0), x.appDataEntityId);
+      const j = _.state.buttonsState, k = lt(_.model.detoolbarItems, u, C, j);
+      k.length && Q.showContextMenu({
+        x: C.x,
+        y: C.y,
+        customClass: a.b("context-menu"),
+        items: k
       });
-    }, ve = () => {
+    }, $t = () => {
       const {
-        isLoaded: r
+        isLoaded: u
       } = e.state;
-      return r && i(x("iBizNoData"), {
+      return u && r(O("iBizNoData"), {
         text: e.model.emptyText,
         emptyTextLanguageRes: e.model.emptyTextLanguageRes
       }, null);
-    }, xe = (r, u) => {
+    }, Wt = (u, C) => {
       const {
-        caption: g,
-        codeName: f,
-        width: L,
-        headerSysCss: w,
-        align: M
-      } = r, O = e.columns[f];
-      return i(x("x-gantt-column"), {
-        label: g,
-        prop: f,
-        width: L && L > 30 ? L : 30,
-        center: (M == null ? void 0 : M.toLowerCase()) === "center"
+        caption: x,
+        codeName: _,
+        width: j,
+        headerSysCss: k,
+        align: q
+      } = u, $ = e.columns[_];
+      return r(O("x-gantt-column"), {
+        label: x,
+        prop: _,
+        width: j && j > 30 ? j : 30,
+        center: (q == null ? void 0 : q.toLowerCase()) === "center"
       }, {
-        title: (z) => {
+        title: (U) => {
           const {
-            label: A
-          } = z;
-          return f === "name" ? i(pt, {
-            key: f,
-            model: r,
+            label: H
+          } = U;
+          return _ === "name" ? r(Me, {
+            key: _,
+            model: u,
             controller: e,
-            titleData: z,
+            titleData: U,
             expandAll: e.state.expandAll,
-            class: w == null ? void 0 : w.cssName,
-            onExpandAllChange: Ce,
-            onHeadSearch: ge
-          }, null) : i("div", {
-            class: w == null ? void 0 : w.cssName
-          }, [A]);
+            class: k == null ? void 0 : k.cssName,
+            onExpandAllChange: Bt,
+            onHeadSearch: zt
+          }, null) : r("div", {
+            class: k == null ? void 0 : k.cssName
+          }, [H]);
         },
-        default: (z) => {
+        default: (U) => {
           const {
-            row: A,
-            column: Ie,
-            level: _e
-          } = z, P = e.getRowState(A._id);
-          if (P) {
-            if (f === "name") {
-              const ke = oe(P, e.state.capacityConfig);
-              let Z;
-              A._parent && (Z = e.getRowState(A._parent._id));
-              const Te = R.value && R.value[0] ? R.value[0]._id === P.data._id : !1;
-              return i(lt, {
-                controller: O,
-                capacityConfig: ke,
+            row: H,
+            column: Ht,
+            level: Yt
+          } = U, K = e.getRowState(H._id);
+          if (K) {
+            if (_ === "name") {
+              const Ut = pt(K, e.state.capacityConfig);
+              let dt;
+              H._parent && (dt = e.getRowState(H._parent._id));
+              const Kt = W.value && W.value[0] ? W.value[0]._id === K.data._id : !1;
+              return V(), r(Se, {
+                controller: $,
+                capacityConfig: Ut,
                 dateRange: e.state.dateRange,
                 groupConfig: e.state.groupConfig,
-                row: P,
-                parentRow: Z,
-                column: Ie,
-                level: _e,
-                isTopFirstIndex: Te,
-                key: P.data._uuid + f
+                row: K,
+                parentRow: dt,
+                column: Ht,
+                level: Yt,
+                isTopFirstIndex: Kt,
+                key: K.data._uuid + _,
+                ganttPosition: M.value,
+                virtualTableVal: B.value
               }, null);
             }
-            const Se = x(e.providers[f].component);
-            return Ke(Se, {
-              controller: O,
-              row: P,
-              key: P.data._uuid + f
+            const qt = O(e.providers[_].component);
+            return fe(qt, {
+              controller: $,
+              row: K,
+              key: K.data._uuid + _
             });
           }
           return null;
         }
       });
-    }, De = () => i(x("x-gantt-slider"), {
+    }, Ft = () => r(O("x-gantt-slider"), {
       "allow-link": !1,
       move: e.state.sliderDraggable,
       "resize-left": e.state.sliderDraggable,
       "resize-right": e.state.sliderDraggable,
       "move-by-unit": !0,
-      "slider-limit": e.state.sliderLimit
+      "slider-limit": e.state.sliderLimit,
+      "emit-move": c,
+      "set-start": m,
+      "set-end": f,
+      "slider-left": h,
+      "slider-width": w
     }, {
       content: ({
-        row: r,
-        level: u,
-        left: g
+        row: u,
+        level: C,
+        left: x
       }) => {
-        if (u !== 1) {
-          const f = Y(e.state.sliderShowContent, r._deData || {}).replace(/^"(.*?)"$/, "$1"), L = g < 0 ? "".concat(-g, "px") : "";
-          return i("div", {
-            class: [n.e("slider"), c.e("slider")],
+        if (C !== 1) {
+          const _ = nt(e.state.sliderShowContent, u._deData || {}).replace(/^"(.*?)"$/, "$1"), j = x < 0 ? "".concat(-x, "px") : "";
+          return r("div", {
+            class: [a.e("slider"), l.e("slider")],
             style: {
-              background: _.value[r._nodeId]
+              background: T.value[u._nodeId]
             },
-            onClick: (w) => U(r, w),
-            onDblclick: () => K(r),
-            onContextmenu: (w) => we(r, w)
-          }, [f && i("div", {
-            class: c.em("slider", "caption"),
+            onClick: (k) => st(u, k),
+            onDblclick: () => rt(u),
+            onContextmenu: (k) => Gt(u, k)
+          }, [_ && r("div", {
+            class: l.em("slider", "caption"),
             style: {
-              marginLeft: L
+              marginLeft: j
             },
-            title: f,
-            innerHTML: f
+            title: _,
+            innerHTML: _
           }, null)]);
         }
       }
     });
     return {
       c: e,
-      ns: n,
-      ns2: c,
-      fullscreenChange: Q,
+      ns: a,
+      ns2: l,
+      fullscreenChange: it,
       ganttRef: t,
-      ganttBoxRef: a,
+      ganttBoxRef: o,
       isInited: s,
-      ganttId: h,
-      data: R,
-      locale: F,
-      columns: G,
-      onCheck: pe,
-      loading: E,
-      ganttStyle: p,
-      onNodeClick: U,
-      onNodeDbClick: K,
-      onNodeExpand: me,
-      onNodeCollapse: fe,
+      ganttId: D,
+      data: W,
+      locale: Lt,
+      columns: F,
+      onCheck: Vt,
+      loading: A,
+      ganttStyle: N,
+      onNodeClick: st,
+      onNodeDbClick: rt,
+      onNodeExpand: Mt,
+      onNodeCollapse: At,
       renderContent: () => {
-        const r = G.value.map((g, f) => xe(g)), u = De();
-        return [...r, u];
+        const u = F.value.map((x, _) => Wt(x)), C = Ft();
+        return [...u, C];
       },
-      renderGanttCell: (r) => {
-        if (r.level === 1) {
-          const u = e.getRowState(r.row._id) || {}, g = oe(u, e.state.capacityConfig);
-          if (ce(r.column.date, g.weekdays)) {
-            const f = {};
-            return Object.assign(f, {
-              ...r,
-              row: u
-            }), i(it, {
-              cellData: f,
+      renderGanttCell: (u) => {
+        if (u.level === 1) {
+          const C = e.getRowState(u.row._id) || {}, x = pt(C, e.state.capacityConfig);
+          if (ot(u.column.date, x.weekdays)) {
+            const _ = {};
+            return Object.assign(_, {
+              ...u,
+              row: C
+            }), r(xe, {
+              cellData: _,
               showText: e.state.showCapacity,
-              capacityConfig: g,
-              onCellClick: ye
+              capacityConfig: x,
+              onCellClick: Pt
             }, null);
           }
         }
       },
-      renderGanttTitle: (r) => {
+      renderGanttTitle: (u) => {
         const {
-          column: u
-        } = r, g = nt(u.date), f = at(u.date, "MM/DD");
-        return i("div", {
-          class: [n.b("column-title"), ot(u.date) ? n.be("column-title", "today") : ""]
-        }, [i("div", {
-          class: n.be("column-title", "top")
-        }, [g]), i("div", {
-          class: n.be("column-title", "bottom")
-        }, [f])]);
+          column: C
+        } = u, x = ve(C.date), _ = De(C.date, "MM/DD");
+        return r("div", {
+          class: [a.b("column-title"), be(C.date) ? a.be("column-title", "today") : ""]
+        }, [r("div", {
+          class: a.be("column-title", "top")
+        }, [x]), r("div", {
+          class: a.be("column-title", "bottom")
+        }, [_])]);
       },
-      onSliderMove: be,
-      renderNoData: ve
+      onSliderMove: jt,
+      renderNoData: $t,
+      onVirtualTableChange: L
     };
   },
   render() {
-    var o;
-    return this.isInited ? Ye(i(x("iBizControlBase"), {
+    var n;
+    return this.isInited ? ue(r(O("iBizControlBase"), {
       ref: "ganttBoxRef",
       controller: this.c,
-      class: [this.ns.b(), this.ns2.b(), (o = this.data) != null && o.length ? "" : this.ns.m("empty")]
+      class: [this.ns.b(), this.ns2.b(), (n = this.data) != null && n.length ? "" : this.ns.m("empty")]
     }, {
-      default: () => [i(x("x-gantt"), {
+      default: () => [r(O("x-gantt"), {
         ref: "ganttRef",
         id: this.ganttId,
         "data-id": "_id",
@@ -1657,6 +2105,7 @@ const Ct = re(
         showWeekdays: this.c.state.showWeekdays,
         locale: this.locale,
         "header-height": 46,
+        preload: 23,
         showCheckbox: !this.c.state.singleSelect,
         showToday: !1,
         showWeekend: !1,
@@ -1666,6 +2115,7 @@ const Ct = re(
         onRowDblClick: this.onNodeDbClick,
         onRowChecked: this.onCheck,
         onMoveSlider: this.onSliderMove,
+        onVirtualTableChange: this.onVirtualTableChange,
         primaryColor: this.ganttStyle.primaryColor,
         headerStyle: {
           textColor: this.ganttStyle.textColor
@@ -1676,29 +2126,29 @@ const Ct = re(
         ganttTitle: (e) => this.renderGanttTitle(e),
         empty: () => this.renderNoData()
       })]
-    }), [[Ue("loading"), this.loading]]) : null;
+    }), [[he("loading"), this.loading]]) : null;
   }
 });
-class yt {
+class We {
   constructor() {
-    q(this, "component", "IBizResourceGanttControl");
+    J(this, "component", "IBizResourceGanttControl");
   }
 }
-const bt = re(
-  H,
-  function(o) {
-    o.component(H.name, H), je(
+const Fe = at(
+  et,
+  function(n) {
+    n.component(et.name, et), re(
       "TREE_RENDER_RESOURCE_GANTT",
-      () => new yt()
+      () => new We()
     );
   }
-), Lt = {
+), sa = {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
-  install(o) {
-    o.use(bt), o.use(Ct);
+  install(n) {
+    n.use(Fe), n.use(Pe), n.use(Ge);
   }
 };
 export {
-  bt as IBizResourceGanttControl,
-  Lt as default
+  Fe as IBizResourceGanttControl,
+  sa as default
 };

@@ -8,15 +8,23 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable default-case */
 
+import { RuntimeModelError } from '@ibiz-template/core';
 import {
   ControlVO,
   DataChangeEvent,
   EditFormController,
+  FormController,
+  FormGroupPanelController,
+  FormItemController,
+  FormMDCtrlController,
   FormNotifyState,
   IDataAbilityParams,
   ScriptFactory,
   calcDeCodeNameById,
+  findChildFormDetails,
+  getFormDetailProvider,
   hasDeCodeName,
+  isFormDataContainer,
 } from '@ibiz-template/runtime';
 import { IDEFormDetail, IDEFormItem } from '@ibiz/model-core';
 import { clone } from 'lodash-es';
@@ -131,12 +139,84 @@ export class FormDataComparisonController extends EditFormController {
 
     // 由表单模型计算表格模型
     if (this.model.deformPages && this.model.deformPages[0].deformDetails) {
-      this.calcGridData(this.model.deformPages[0].deformDetails);
+      await this.calcGridData(this.model.deformPages[0].deformDetails);
     }
     // 如果外面没有配置默认不加载的话，默认部件自己加载,simple模式不加载
     if (!this.state.isSimple && this.state.loadDefault) {
       this.load();
     }
+  }
+
+  /**
+   * 初始化表单成员控制器
+   *
+   * @author lxm
+   * @date 2022-08-24 21:08:48
+   * @protected
+   */
+  protected async initDetailControllers(
+    details: IDEFormDetail[] = this.model.deformPages!,
+    form: FormController = this,
+    parent: FormGroupPanelController | undefined = undefined,
+  ): Promise<void> {
+    await Promise.all(
+      details.map(async detail => {
+        // 生成表单成员控制器
+        const detailProvider = await getFormDetailProvider(detail, this.model);
+        if (!detailProvider) {
+          return;
+        }
+        if (form.details[detail.id!]) {
+          throw new RuntimeModelError(
+            detail,
+            ibiz.i18n.t(
+              'runtime.controller.control.form.initializationException',
+              {
+                id: detail.id,
+                detailType: detail.detailType,
+              },
+            ),
+          );
+        }
+        form.providers[detail.id!] = detailProvider;
+        const detailController = await detailProvider.createController(
+          detail,
+          form,
+          parent,
+        );
+        form.details[detail.id!] = detailController;
+        if (detail.detailType === 'FORMITEM') {
+          form.formItems.push(detailController as FormItemController);
+        }
+        if (detail.detailType === 'MDCTRL') {
+          form.formMDCtrls.push(detailController as FormMDCtrlController);
+          const id = detail.id!;
+          const detailControllerNew = await detailProvider.createController(
+            { ...detail, ...{ id: `new_${id}` } },
+            form,
+            parent,
+          );
+          form.details[`new_${id}`] = detailControllerNew;
+          console.log('detailController', detailController, detail);
+          form.formMDCtrls.push(detailControllerNew as FormMDCtrlController);
+        }
+
+        // 数据容器的子不递归了
+        if (isFormDataContainer(detail)) {
+          return;
+        }
+
+        // 有子成员的生成子控制器
+        const childDetails = findChildFormDetails(detail);
+        if (childDetails.length) {
+          await this.initDetailControllers(
+            childDetails,
+            form,
+            detailController as FormGroupPanelController,
+          );
+        }
+      }),
+    );
   }
 
   /**
@@ -345,7 +425,7 @@ export class FormDataComparisonController extends EditFormController {
    */
   calcGroupPanel(data: IDEFormDetail[]) {
     const arr: IData[] = [];
-    data.forEach(item => {
+    data.forEach(async item => {
       if ((item as IDEFormItem).hidden === true) {
         return;
       }
@@ -368,12 +448,23 @@ export class FormDataComparisonController extends EditFormController {
         });
       }
       if (item.detailType === 'MDCTRL') {
+        let component = '';
+        if (item.sysPFPluginId) {
+          const detailProvider = await getFormDetailProvider(
+            item as IDEFormDetail,
+            this.model,
+          );
+          if (detailProvider) {
+            component = detailProvider.component;
+          }
+        }
         arr.push({
           detailType: item.detailType,
           caption: item.caption,
           name: item.codeName,
           oldItem: item,
           newItem: item,
+          component,
         });
       }
     });
@@ -389,7 +480,7 @@ export class FormDataComparisonController extends EditFormController {
    * @return {*}
    */
   calcGridData(data: IDEFormDetail[]) {
-    data.forEach(item => {
+    data.forEach(async item => {
       if ((item as IDEFormItem).hidden === true) {
         return;
       }
@@ -405,7 +496,7 @@ export class FormDataComparisonController extends EditFormController {
       if (item.detailType === 'GROUPPANEL') {
         let slot = null;
         if ((item as IData).deformDetails) {
-          slot = this.calcGroupPanel((item as IData).deformDetails);
+          slot = await this.calcGroupPanel((item as IData).deformDetails);
         }
         this.gridData.push({
           detailType: item.detailType,
@@ -579,6 +670,15 @@ export class FormDataComparisonController extends EditFormController {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addPrefixToKeys(obj: any, prefix: any) {
+    // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-explicit-any
+    return Object.keys(obj).reduce((newObj: any, key) => {
+      newObj[prefix + key] = obj[key];
+      return newObj;
+    }, {});
+  }
+
   /**
    * 部件加载数据行为
    *
@@ -628,6 +728,7 @@ export class FormDataComparisonController extends EditFormController {
         context,
         Object.assign(queryParams, { srfversionid: baseversion }),
       );
+      console.log('res', res);
       compareRes = await this.service.get(
         context,
         Object.assign(queryParams, { srfversionid: compareversion }),
@@ -646,13 +747,14 @@ export class FormDataComparisonController extends EditFormController {
     }
 
     this.state.modified = false;
-    this.state.data = res.data;
-
+    const xx = clone(compareRes.data);
+    const newPrefixedObj = this.addPrefixToKeys(xx, 'new_');
+    this.state.data = { ...res.data, ...newPrefixedObj };
     this.baseResData = res.data;
     this.compareResData = compareRes.data;
 
     // 缓存旧数据
-    this.oldData = this.data.clone();
+    this.oldData = this.data;
     this.formStateNotify(FormNotifyState.LOAD);
 
     await this.evt.emit('onLoadSuccess', { args: res.data });

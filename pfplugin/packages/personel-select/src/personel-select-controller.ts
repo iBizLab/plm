@@ -467,9 +467,8 @@ export class PersonelSelectController extends EditorController<IPicker> {
           this.currentNumber += 1;
         }
         this.currentNumber += this.size;
-        this.total = res.total
-          ? Number(res.total)
-          : Number(res.headers['x-total']);
+        this.total =
+          (res.total ? Number(res.total) : Number(res.headers['x-total'])) || 0;
         res.data.forEach((item: IData) => {
           Object.keys(this.userFilterMap).forEach((key: string) => {
             item[key] = item[this.userFilterMap[key]];
@@ -488,9 +487,8 @@ export class PersonelSelectController extends EditorController<IPicker> {
           this.deptcurrentNumber += 1;
         }
         this.deptcurrentNumber += this.size;
-        this.depttotal = res.total
-          ? Number(res.total)
-          : Number(res.headers['x-total']);
+        this.depttotal =
+          (res.total ? Number(res.total) : Number(res.headers['x-total'])) || 0;
         res.data.forEach((item: IData) => {
           Object.keys(this.deptFilterMap).forEach((key: string) => {
             item[key] = item[this.deptFilterMap[key]];

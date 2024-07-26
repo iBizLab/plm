@@ -751,7 +751,6 @@ export const GroupTreeControl = defineComponent({
                     c.state.editingNodeKey === nodeData._id &&
                     !readonly.value
                   ) {
-                    console.log(555, readonly.value);
                     return (
                       <div class={[ns.b('node'), nodeModel.sysCss?.cssName]}>
                         {nodeData._icon ? (

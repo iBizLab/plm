@@ -27,5 +27,12 @@ export declare class HtmlUtil {
      * @param text
      * @returns
      */
-    static avatarName(text: string): string | undefined;
+    static avatarName(text: string): string | void;
+    /**
+     * 解析emoji表情
+     *
+     * @param {string} value
+     * @return {*}  {string}
+     */
+    static getEmojiCustomHtml(value: string): string;
 }
