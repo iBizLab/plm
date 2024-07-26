@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.extension.service.logic.psdelogicget_last_run_info" isClosed="false" isExecutable="true" name="extension_psdelogic_get_last_run_info_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.extension.service.logic.psdelogicget_last_run_info">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="psdelogicget_last_run_infodefault" type="entity"/>
+                                <tns:metaData express="new HashMap()" name="psdelogicget_last_run_infocontext" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_log()" name="psdelogicget_last_run_infolog_statistics" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_log()" name="psdelogicget_last_run_infologic_log" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_log()" name="psdelogicget_last_run_infologic_log_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_log()" name="psdelogicget_last_run_infologic_log_filter2" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_log()" name="psdelogicget_last_run_infologs" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDELogicService))" name="psdelogicservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_logService))" name="extend_logservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.extension.service.IPSDELogicService))" name="iBzSysPsdelogicDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="psdelogicget_last_run_infodefault" type="cn.ibizlab.plm.core.extension.domain.PSDELogic" />
+                            <tns:global identifier="psdelogicget_last_run_infolog_statistics" type="cn.ibizlab.plm.core.base.domain.extend_log" />
+                            <tns:global identifier="psdelogicget_last_run_infologic_log" type="cn.ibizlab.plm.core.base.domain.extend_log" />
+                            <tns:global identifier="psdelogicget_last_run_infologic_log_filter" type="cn.ibizlab.plm.core.base.domain.extend_log" />
+                            <tns:global identifier="psdelogicget_last_run_infologic_log_filter2" type="cn.ibizlab.plm.core.base.domain.extend_log" />
+                            <tns:global identifier="psdelogicget_last_run_infologs" type="cn.ibizlab.plm.core.base.domain.extend_log" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infoprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置上下文"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infodeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取逻辑内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infoprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="过滤参数设置"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infodedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取日志"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infobindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取最后一次日志信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infoprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infoend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end2_end" name="end"/>
+                        <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infoprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="过滤参数设置"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infoend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_infodedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取成功失败条数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="psdelogicget_last_run_inforawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="计算值"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_bindparam1" sourceRef="gateway-dedataset1" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $psdelogicget_last_run_infodefault:PSDELogic();
+                                            $psdelogicget_last_run_infocontext:Map();
+                                            $psdelogicget_last_run_infolog_statistics:extend_log();
+                                            $psdelogicget_last_run_infologic_log:extend_log();
+                                            $psdelogicget_last_run_infologic_log_filter:extend_log();
+                                            $psdelogicget_last_run_infologic_log_filter2:extend_log();
+                                            $psdelogicget_last_run_infologs:extend_log();
+                                    eval($psdelogicget_last_run_infodefault==psdelogicget_last_run_infodefault && $psdelogicget_last_run_infolog_statistics==psdelogicget_last_run_infolog_statistics && $psdelogicget_last_run_infologic_log==psdelogicget_last_run_infologic_log && $psdelogicget_last_run_infologic_log_filter==psdelogicget_last_run_infologic_log_filter && $psdelogicget_last_run_infologic_log_filter2==psdelogicget_last_run_infologic_log_filter2 && $psdelogicget_last_run_infologs==psdelogicget_last_run_infologs);
+                                eval((RuleUtils.test($psdelogicget_last_run_infologs.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_end2" sourceRef="gateway-dedataset1" targetRef="end2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $psdelogicget_last_run_infodefault:PSDELogic();
+                                            $psdelogicget_last_run_infocontext:Map();
+                                            $psdelogicget_last_run_infolog_statistics:extend_log();
+                                            $psdelogicget_last_run_infologic_log:extend_log();
+                                            $psdelogicget_last_run_infologic_log_filter:extend_log();
+                                            $psdelogicget_last_run_infologic_log_filter2:extend_log();
+                                            $psdelogicget_last_run_infologs:extend_log();
+                                    eval($psdelogicget_last_run_infodefault==psdelogicget_last_run_infodefault && $psdelogicget_last_run_infolog_statistics==psdelogicget_last_run_infolog_statistics && $psdelogicget_last_run_infologic_log==psdelogicget_last_run_infologic_log && $psdelogicget_last_run_infologic_log_filter==psdelogicget_last_run_infologic_log_filter && $psdelogicget_last_run_infologic_log_filter2==psdelogicget_last_run_infologic_log_filter2 && $psdelogicget_last_run_infologs==psdelogicget_last_run_infologs);
+                                eval((RuleUtils.test($psdelogicget_last_run_infologs.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam3" sourceRef="bindparam1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_prepareparam4" sourceRef="prepareparam3" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_dedataset2" sourceRef="prepareparam4" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset2_rawsfcode1" sourceRef="dedataset2" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_end1" sourceRef="rawsfcode1" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+        </process>
+    </definitions>

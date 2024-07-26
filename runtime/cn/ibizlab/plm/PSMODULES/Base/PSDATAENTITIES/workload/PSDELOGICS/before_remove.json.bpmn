@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.workloadbefore_remove" isClosed="false" isExecutable="true" name="base_workload_before_remove_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.workloadbefore_remove">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="workloadbefore_removedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadbefore_removeactual" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadbefore_removeestimated" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadbefore_removeestimated_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadbefore_removefilter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadbefore_removeremaining" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.extend_storage()" name="workloadbefore_removeremaining_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.workload()" name="workloadbefore_removetotal_register" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="workloadservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iextend_storageService))" name="extend_storageservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IworkloadService))" name="iBzSysWorkloadDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="workloadbefore_removedefault" type="cn.ibizlab.plm.core.base.domain.workload" />
+                            <tns:global identifier="workloadbefore_removeactual" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadbefore_removeestimated" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadbefore_removeestimated_page" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadbefore_removefilter" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadbefore_removeremaining" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadbefore_removeremaining_page" type="cn.ibizlab.plm.core.base.domain.extend_storage" />
+                            <tns:global identifier="workloadbefore_removetotal_register" type="cn.ibizlab.plm.core.base.domain.workload" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取工时明细"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removerawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="获取已登记工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removeprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备查询过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取预估工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定预估工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removeprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removededataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="获取剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removebindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="计算剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="更新剩余工时"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removeprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="workloadbefore_removedeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="更新实际工时"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                    <sequenceFlow id="begin_deaction1" sourceRef="begin" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_rawsqlcall2" sourceRef="deaction1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_prepareparam1" sourceRef="rawsqlcall2" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_prepareparam2" sourceRef="gateway-dedataset1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadbefore_removedefault:workload();
+                                            $workloadbefore_removeactual:extend_storage();
+                                            $workloadbefore_removeestimated:extend_storage();
+                                            $workloadbefore_removeestimated_page:extend_storage();
+                                            $workloadbefore_removefilter:extend_storage();
+                                            $workloadbefore_removeremaining:extend_storage();
+                                            $workloadbefore_removeremaining_page:extend_storage();
+                                            $workloadbefore_removetotal_register:workload();
+                                    eval($workloadbefore_removedefault==workloadbefore_removedefault && $workloadbefore_removeactual==workloadbefore_removeactual && $workloadbefore_removeestimated==workloadbefore_removeestimated && $workloadbefore_removeestimated_page==workloadbefore_removeestimated_page && $workloadbefore_removefilter==workloadbefore_removefilter && $workloadbefore_removeremaining==workloadbefore_removeremaining && $workloadbefore_removeremaining_page==workloadbefore_removeremaining_page && $workloadbefore_removetotal_register==workloadbefore_removetotal_register);
+                                eval((RuleUtils.test($workloadbefore_removeestimated_page.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_bindparam1" sourceRef="gateway-dedataset1" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadbefore_removedefault:workload();
+                                            $workloadbefore_removeactual:extend_storage();
+                                            $workloadbefore_removeestimated:extend_storage();
+                                            $workloadbefore_removeestimated_page:extend_storage();
+                                            $workloadbefore_removefilter:extend_storage();
+                                            $workloadbefore_removeremaining:extend_storage();
+                                            $workloadbefore_removeremaining_page:extend_storage();
+                                            $workloadbefore_removetotal_register:workload();
+                                    eval($workloadbefore_removedefault==workloadbefore_removedefault && $workloadbefore_removeactual==workloadbefore_removeactual && $workloadbefore_removeestimated==workloadbefore_removeestimated && $workloadbefore_removeestimated_page==workloadbefore_removeestimated_page && $workloadbefore_removefilter==workloadbefore_removefilter && $workloadbefore_removeremaining==workloadbefore_removeremaining && $workloadbefore_removeremaining_page==workloadbefore_removeremaining_page && $workloadbefore_removetotal_register==workloadbefore_removetotal_register);
+                                eval((RuleUtils.test($workloadbefore_removeestimated_page.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_prepareparam2" sourceRef="bindparam1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset2" sourceRef="prepareparam2" targetRef="dedataset2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset2_bindparam2" sourceRef="gateway-dedataset2" targetRef="bindparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadbefore_removedefault:workload();
+                                            $workloadbefore_removeactual:extend_storage();
+                                            $workloadbefore_removeestimated:extend_storage();
+                                            $workloadbefore_removeestimated_page:extend_storage();
+                                            $workloadbefore_removefilter:extend_storage();
+                                            $workloadbefore_removeremaining:extend_storage();
+                                            $workloadbefore_removeremaining_page:extend_storage();
+                                            $workloadbefore_removetotal_register:workload();
+                                    eval($workloadbefore_removedefault==workloadbefore_removedefault && $workloadbefore_removeactual==workloadbefore_removeactual && $workloadbefore_removeestimated==workloadbefore_removeestimated && $workloadbefore_removeestimated_page==workloadbefore_removeestimated_page && $workloadbefore_removefilter==workloadbefore_removefilter && $workloadbefore_removeremaining==workloadbefore_removeremaining && $workloadbefore_removeremaining_page==workloadbefore_removeremaining_page && $workloadbefore_removetotal_register==workloadbefore_removetotal_register);
+                                eval((RuleUtils.test($workloadbefore_removeremaining_page.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset2_rawsfcode1" sourceRef="gateway-dedataset2" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadbefore_removedefault:workload();
+                                            $workloadbefore_removeactual:extend_storage();
+                                            $workloadbefore_removeestimated:extend_storage();
+                                            $workloadbefore_removeestimated_page:extend_storage();
+                                            $workloadbefore_removefilter:extend_storage();
+                                            $workloadbefore_removeremaining:extend_storage();
+                                            $workloadbefore_removeremaining_page:extend_storage();
+                                            $workloadbefore_removetotal_register:workload();
+                                    eval($workloadbefore_removedefault==workloadbefore_removedefault && $workloadbefore_removeactual==workloadbefore_removeactual && $workloadbefore_removeestimated==workloadbefore_removeestimated && $workloadbefore_removeestimated_page==workloadbefore_removeestimated_page && $workloadbefore_removefilter==workloadbefore_removefilter && $workloadbefore_removeremaining==workloadbefore_removeremaining && $workloadbefore_removeremaining_page==workloadbefore_removeremaining_page && $workloadbefore_removetotal_register==workloadbefore_removetotal_register);
+                                eval((RuleUtils.test($workloadbefore_removeremaining_page.get("size"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_rawsfcode1" sourceRef="bindparam2" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction2" sourceRef="rawsfcode1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_prepareparam3" sourceRef="gateway-deaction2" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadbefore_removedefault:workload();
+                                            $workloadbefore_removeactual:extend_storage();
+                                            $workloadbefore_removeestimated:extend_storage();
+                                            $workloadbefore_removeestimated_page:extend_storage();
+                                            $workloadbefore_removefilter:extend_storage();
+                                            $workloadbefore_removeremaining:extend_storage();
+                                            $workloadbefore_removeremaining_page:extend_storage();
+                                            $workloadbefore_removetotal_register:workload();
+                                    eval($workloadbefore_removedefault==workloadbefore_removedefault && $workloadbefore_removeactual==workloadbefore_removeactual && $workloadbefore_removeestimated==workloadbefore_removeestimated && $workloadbefore_removeestimated_page==workloadbefore_removeestimated_page && $workloadbefore_removefilter==workloadbefore_removefilter && $workloadbefore_removeremaining==workloadbefore_removeremaining && $workloadbefore_removeremaining_page==workloadbefore_removeremaining_page && $workloadbefore_removetotal_register==workloadbefore_removetotal_register);
+                                eval((RuleUtils.test($workloadbefore_removeactual.get("decimalValue"),"EQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_deaction3" sourceRef="gateway-deaction2" targetRef="deaction3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $workloadbefore_removedefault:workload();
+                                            $workloadbefore_removeactual:extend_storage();
+                                            $workloadbefore_removeestimated:extend_storage();
+                                            $workloadbefore_removeestimated_page:extend_storage();
+                                            $workloadbefore_removefilter:extend_storage();
+                                            $workloadbefore_removeremaining:extend_storage();
+                                            $workloadbefore_removeremaining_page:extend_storage();
+                                            $workloadbefore_removetotal_register:workload();
+                                    eval($workloadbefore_removedefault==workloadbefore_removedefault && $workloadbefore_removeactual==workloadbefore_removeactual && $workloadbefore_removeestimated==workloadbefore_removeestimated && $workloadbefore_removeestimated_page==workloadbefore_removeestimated_page && $workloadbefore_removefilter==workloadbefore_removefilter && $workloadbefore_removeremaining==workloadbefore_removeremaining && $workloadbefore_removeremaining_page==workloadbefore_removeremaining_page && $workloadbefore_removetotal_register==workloadbefore_removetotal_register);
+                                eval((RuleUtils.test($workloadbefore_removeactual.get("decimalValue"),"NOTEQ","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction3" sourceRef="prepareparam3" targetRef="deaction3">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset2" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset2_gateway-dedataset2_gatewayline" sourceRef="dedataset2" targetRef="gateway-dedataset2"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset2_end_line" sourceRef="gateway-dedataset2" targetRef="gateway-dedataset2_end"/>
+                            <endEvent id="gateway-dedataset2_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction2" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction2_gateway-deaction2_gatewayline" sourceRef="deaction2" targetRef="gateway-deaction2"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction2_end_line" sourceRef="gateway-deaction2" targetRef="gateway-deaction2_end"/>
+                            <endEvent id="gateway-deaction2_end" name="end"/>
+        </process>
+    </definitions>

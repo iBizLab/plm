@@ -1,0 +1,73 @@
+package cn.ibizlab.plm.team.logic.discuss_replylogic.del_reply;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.team.domain.discuss_reply discuss_replydel_replydefault;
+                    global cn.ibizlab.plm.core.team.service.Idiscuss_replyService discuss_replyservice;
+        global cn.ibizlab.plm.core.team.service.Idiscuss_replyService iBzSysDiscuss_replyDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "discuss_replydel_replybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[计算此回复下的评论条数]
+            rule "rawsqlcall2"
+            ruleflow-group "discuss_replydel_replyrawsqlcall2"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",discuss_replydel_replydefault.get("id"));
+    String strSql="select count(1) as comment_num from `comment` where principal_id = #{et.param0} and principal_type = 'DISCUSS_REPLY'";
+                        java.util.List<JSONObject> entities=iBzSysDiscuss_replyDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                    for (Map.Entry entry : entity.entrySet()) {
+                                    discuss_replydel_replydefault.set(String.valueOf(entry.getKey()),entry.getValue());
+                                    }
+                            }
+                        update(discuss_replydel_replydefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[热度降低]
+            rule "rawsqlcall3"
+            ruleflow-group "discuss_replydel_replyrawsqlcall3"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",discuss_replydel_replydefault.get("comment_num"));
+        param.put("param1",discuss_replydel_replydefault.get("id"));
+    String strSql="update discuss_post t1 set t1.heat = t1.heat - ((2 * #{et.param0}) + 5)   where exists(select 1 from discuss_reply t2 where t1.id = t2.post_id and t2.id = #{et.param1})";
+                        iBzSysDiscuss_replyDefaultService.execute(strSql,param);//SQL调用
+                        update(discuss_replydel_replydefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除回复下的评论数据]
+            rule "rawsqlcall1"
+            ruleflow-group "discuss_replydel_replyrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",discuss_replydel_replydefault.get("id"));
+    String strSql="delete from `comment` where principal_id = #{et.param0} and principal_type = 'DISCUSS_REPLY'";
+                        iBzSysDiscuss_replyDefaultService.execute(strSql,param);//SQL调用
+                        update(discuss_replydel_replydefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[删除回复]
+            rule "deaction1"
+            ruleflow-group "discuss_replydel_replydeaction1"
+            when
+            then
+                        discuss_replyservice.remove(discuss_replydel_replydefault.getId());
+                        update(discuss_replydel_replydefault);//更新fact中变量值
+            end

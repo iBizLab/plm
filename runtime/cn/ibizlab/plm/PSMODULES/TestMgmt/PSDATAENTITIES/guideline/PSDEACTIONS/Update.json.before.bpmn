@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.extensions.service.logic.before" isClosed="false" isExecutable="true" name="testmgmt_guideline_update_beforeLogic" processType="Private" tns:packageName="cn.ibizlab.plm.core.extensions.service.logic.before">
+            <extensionElements>
+                <tns:import name="java.util.Map"/>
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                <tns:import name="cn.ibizlab.plm.core.testmgmt.domain.guideline"/>
+            </extensionElements>
+                <startEvent id="begin" isInterrupting="true"/>
+                <endEvent id="prepareparam1_end" name="end"/>
+                            <callActivity activiti:exclusive="true" calledElement="cn.ibizlab.plm.core.testmgmt.service.logic.guidelinefill_stage_order" id="4F5C5E70-30F3-4873-BB4C-D87F3E6E9823" name="fill_stage_order.json.bpmn"/>
+                        <sequenceFlow id="begin_4F5C5E70-30F3-4873-BB4C-D87F3E6E9823" sourceRef="begin" targetRef="4F5C5E70-30F3-4873-BB4C-D87F3E6E9823"/>
+                            <sequenceFlow id="4F5C5E70-30F3-4873-BB4C-D87F3E6E9823_prepareparam1_end" sourceRef="4F5C5E70-30F3-4873-BB4C-D87F3E6E9823" targetRef="prepareparam1_end"/>
+        </process>
+    </definitions>

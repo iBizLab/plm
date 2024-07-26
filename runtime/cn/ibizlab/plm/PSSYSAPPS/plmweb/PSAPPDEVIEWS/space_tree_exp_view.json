@@ -1,0 +1,1594 @@
+{
+  "accUserMode" : 2,
+  "getCapPSLanguageRes" : {
+    "lanResTag" : "PAGE.CAPTION.SPACE.TREE_EXP_VIEW"
+  },
+  "caption" : "知识管理",
+  "codeName" : "space_tree_exp_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_tree_exp_view.json",
+  "name" : "spacetree_exp_view",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+  },
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Wiki.json"
+  },
+  "getPSAppViewEngines" : [ {
+    "engineCat" : "VIEW",
+    "engineType" : "TreeExpView",
+    "name" : "engine"
+  } ],
+  "getPSAppViewLogics" : [ {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "newdata",
+    "getPSAppUILogic" : {
+      "actionAfterWizard" : "DEFAULT",
+      "logicType" : "PREDEFINED",
+      "name" : "新建数据",
+      "viewLogicType" : "APP_NEWDATA",
+      "batchAddOnly" : false,
+      "enableBatchAdd" : false,
+      "enableWizardAdd" : false
+    }
+  }, {
+    "logicTrigger" : "CUSTOM",
+    "logicType" : "APPUILOGIC",
+    "name" : "opendata",
+    "getPSAppUILogic" : {
+      "logicType" : "PREDEFINED",
+      "name" : "打开数据",
+      "viewLogicType" : "APP_OPENDATA",
+      "editMode" : true
+    }
+  } ],
+  "getPSControls" : [ {
+    "codeName" : "tree_exp_view_treeexpbar",
+    "controlType" : "TREEEXPBAR",
+    "name" : "treeexpbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSAppViewRefs" : [ {
+      "name" : "EXPITEM:node_13",
+      "parentDataJO" : {
+        "srfparentdefname" : "category_id"
+      },
+      "realTitle" : "全部空间",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.SPACE.GRID_VIEW_ALL"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_category_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_14",
+      "parentDataJO" : {
+        "srfparentdefname" : "category_id"
+      },
+      "realTitle" : "全部空间",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.SPACE.GRID_VIEW_ALL"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_category_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_15",
+      "realTitle" : "归档空间表格",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_is_archived_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_3",
+      "realTitle" : "全部空间",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.SPACE.GRID_VIEW_ALL"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_all_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_4",
+      "realTitle" : "组织空间",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.SPACE.GRID_VIEW_ORG"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_org_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_5",
+      "realTitle" : "团队空间",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.SPACE.GRID_VIEW_TEAM"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_team_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_6",
+      "realTitle" : "个人空间",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.SPACE.GRID_VIEW_ONESELF"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_person_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_7",
+      "realTitle" : "最近访问页面表格",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/recent_recent_page_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_8",
+      "realTitle" : "与我共享",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_shared_with_me_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    }, {
+      "name" : "EXPITEM:node_9",
+      "realTitle" : "我收藏的页面",
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_my_favorite_page_grid_view.json",
+        "viewType" : "DEGRIDVIEW"
+      }
+    } ],
+    "getPSControlHandler" : {
+      "enableDEFieldPrivilege" : false,
+      "id" : "treeexpbar"
+    },
+    "getPSControlParam" : {
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "TREEEXPBAR"
+    },
+    "getPSControls" : [ {
+      "codeName" : "tree_exp_view_tree_view",
+      "controlStyle" : "LIST_TREE",
+      "controlType" : "TREEVIEW",
+      "getCreatePSControlAction" : {
+        "modelref" : true,
+        "id" : "create",
+        "actionName" : "Create",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "CREATE",
+        "name" : "create",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "create"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        }
+      },
+      "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space/PSTREEVIEWS/tree_exp_view_tree_view.json",
+      "getFetchPSControlAction" : {
+        "modelref" : true,
+        "id" : "fetch",
+        "actionType" : "DEDATASET",
+        "name" : "fetch",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        }
+      },
+      "getGetPSControlAction" : {
+        "modelref" : true,
+        "id" : "load",
+        "actionName" : "Get",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "READ",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "get"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        }
+      },
+      "hookEventNames" : [ "SELECTIONCHANGE", "LOAD" ],
+      "logicName" : "知识导航视图_树视图",
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+      },
+      "getPSControlHandler" : {
+        "getPSHandlerActions" : [ {
+          "actionName" : "Get",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "READ",
+          "name" : "load",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "get"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          }
+        }, {
+          "actionName" : "Create",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "CREATE",
+          "name" : "create",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "create"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          }
+        }, {
+          "actionName" : "Update",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "UPDATE",
+          "name" : "update",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "update"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          }
+        }, {
+          "actionName" : "Remove",
+          "actionType" : "DEACTION",
+          "dataAccessAction" : "DELETE",
+          "name" : "remove",
+          "getPSAppDEMethod" : {
+            "modelref" : true,
+            "id" : "remove"
+          },
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          }
+        }, {
+          "actionType" : "DEDATASET",
+          "name" : "fetch",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          }
+        } ],
+        "userDRAction" : "READ",
+        "enableDEFieldPrivilege" : false,
+        "id" : "树视图处理器"
+      },
+      "getPSControlLogics" : [ {
+        "eventNames" : "SELECTIONCHANGE",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_selectionchange"
+      }, {
+        "eventNames" : "LOAD",
+        "logicTag" : "treeexpbar_tree",
+        "logicType" : "CUSTOM",
+        "name" : "treeexpbar_load"
+      } ],
+      "getPSControlParam" : {
+        "autoLoad" : true,
+        "showBusyIndicator" : true,
+        "id" : "treeexpbar_tree"
+      },
+      "getPSControls" : [ {
+        "codeName" : "tree_exp_view_node2_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "空间配置树节点菜单",
+        "name" : "node_2_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_2_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "actionLevel" : 200,
+          "caption" : "空间配置",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_2_cm_deuiaction1"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "NONE",
+            "caption" : "空间配置",
+            "codeName" : "open_space_setting",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_config_tree_exp_view.json",
+              "viewType" : "DETREEEXPVIEW"
+            },
+            "frontProcessType" : "OTHER",
+            "fullCodeName" : "space_open_space_setting",
+            "name" : "打开空间配置",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+            },
+            "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/space_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode%3Anode_4/space_tab_exp_view/srfnav=tab_exp_view_is_running/space_in_progress_grid_view/-`",
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_space_setting",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_space_setting@space"
+          },
+          "tooltip" : "空间配置",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true,
+          "showIcon" : true
+        } ],
+        "modelid" : "e333e8ea09cf1253bbd904d3299d5651",
+        "modeltype" : "PSDETOOLBAR"
+      }, {
+        "codeName" : "tree_exp_view_node11_cm",
+        "controlType" : "CONTEXTMENU",
+        "logicName" : "收藏的空间工具栏",
+        "name" : "node_11_cm",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        },
+        "getPSControlParam" : {
+          "id" : "node_11_cm"
+        },
+        "getPSDEToolbarItems" : [ {
+          "actionLevel" : 200,
+          "caption" : "打开星标产品",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction1",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_11_cm_deuiaction1"
+          },
+          "getPSSysImage" : { },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "打开空间主页面",
+            "codeName" : "open_space_index",
+            "getFrontPSAppView" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_index_view.json",
+              "viewType" : "DEINDEXVIEW"
+            },
+            "frontProcessType" : "WIZARD",
+            "fullCodeName" : "space_open_space_index",
+            "name" : "打开空间主页面",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+            },
+            "getPSSysImage" : { },
+            "timeout" : 60000,
+            "uIActionMode" : "FRONT",
+            "uIActionTag" : "open_space_index",
+            "uIActionType" : "DEUIACTION",
+            "id" : "open_space_index@space"
+          },
+          "tooltip" : "打开星标产品",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : false,
+          "showIcon" : true
+        }, {
+          "actionLevel" : 250,
+          "caption" : "取消星标",
+          "groupExtractMode" : "ITEM",
+          "itemType" : "DEUIACTION",
+          "name" : "deuiaction2",
+          "noPrivDisplayMode" : 2,
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "node_11_cm_deuiaction2"
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "取消星标",
+            "codeName" : "cancel_favorite",
+            "fullCodeName" : "space_cancel_favorite",
+            "name" : "取消星标",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "un_favorite"
+            },
+            "getPSAppDEUILogic" : {
+              "modelref" : true,
+              "id" : "refresh_current_grid"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+            },
+            "getPSNavigateParams" : [ {
+              "key" : "owner_id",
+              "name" : "owner_id",
+              "value" : "space",
+              "rawValue" : false
+            } ],
+            "getPSSysImage" : {
+              "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+            },
+            "refreshMode" : 2,
+            "timeout" : 60000,
+            "tooltip" : "取消星标",
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "cancel_favorite",
+            "uIActionType" : "DEUIACTION",
+            "uILogicAttachMode" : "AFTER",
+            "enableConfirm" : true,
+            "reloadData" : true,
+            "id" : "cancel_favorite@space"
+          },
+          "tooltip" : "取消星标",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : false,
+          "showIcon" : true
+        } ],
+        "modelid" : "89eb12b3ff4ab287ff42773049b2dc0c",
+        "modeltype" : "PSDETOOLBAR"
+      } ],
+      "getPSDETreeNodeRSs" : [ {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "name" : "默认根节点 - 空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_14"
+        },
+        "name" : "次级分类 - 次级分类",
+        "getParentPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "pid"
+        },
+        "getParentPSDER1N" : {
+          "codeName" : "category",
+          "dERType" : "DER1N",
+          "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/category/PSDERS/DER1N_CATEGORY_CATEGORY_PID.json",
+          "fKeyName" : "FA2D986FD6567BF543",
+          "logicName" : "父类别",
+          "getMajorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+          },
+          "masterOrder" : -1,
+          "masterRS" : 48,
+          "minorCodeName" : "parent_categories",
+          "getMinorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+          },
+          "minorServiceCodeName" : "parent_categories",
+          "name" : "DER1N_CATEGORY_CATEGORY_PID",
+          "orderValue" : 100,
+          "getPSDER1NDEFieldMaps" : [ {
+            "codeName" : "Usr0205594687",
+            "getMajorPSDEField" : {
+              "name" : "IS_LEAF",
+              "codeName" : "is_leaf"
+            },
+            "mapType" : "NOTEXISTS",
+            "name" : "是否叶子节点"
+          } ],
+          "getPSPickupDEField" : {
+            "name" : "PID",
+            "codeName" : "Pid"
+          },
+          "pickupDEFName" : "PID",
+          "removeActionType" : 2,
+          "removeOrder" : 0,
+          "serviceCodeName" : "category",
+          "enableFKey" : true,
+          "recursiveRS" : true
+        },
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_14"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_13"
+        },
+        "name" : "分类 - 顶级分类",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_12"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_14"
+        },
+        "name" : "顶级分类 - 次级分类",
+        "getParentPSAppDEField" : {
+          "name" : "PID",
+          "codeName" : "pid"
+        },
+        "getParentPSDER1N" : {
+          "codeName" : "category",
+          "dERType" : "DER1N",
+          "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/category/PSDERS/DER1N_CATEGORY_CATEGORY_PID.json",
+          "fKeyName" : "FA2D986FD6567BF543",
+          "logicName" : "父类别",
+          "getMajorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+          },
+          "masterOrder" : -1,
+          "masterRS" : 48,
+          "minorCodeName" : "parent_categories",
+          "getMinorPSDataEntity" : {
+            "modelref" : true,
+            "path" : "PSMODULES/Base/PSDATAENTITIES/category.json"
+          },
+          "minorServiceCodeName" : "parent_categories",
+          "name" : "DER1N_CATEGORY_CATEGORY_PID",
+          "orderValue" : 100,
+          "getPSDER1NDEFieldMaps" : [ {
+            "codeName" : "Usr0205594687",
+            "getMajorPSDEField" : {
+              "name" : "IS_LEAF",
+              "codeName" : "is_leaf"
+            },
+            "mapType" : "NOTEXISTS",
+            "name" : "是否叶子节点"
+          } ],
+          "getPSPickupDEField" : {
+            "name" : "PID",
+            "codeName" : "Pid"
+          },
+          "pickupDEFName" : "PID",
+          "removeActionType" : 2,
+          "removeOrder" : 0,
+          "serviceCodeName" : "category",
+          "enableFKey" : true,
+          "recursiveRS" : true
+        },
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_13"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_11"
+        },
+        "name" : "星标 - 星标_空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_10"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_3"
+        },
+        "name" : "空间 - 全部空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_7"
+        },
+        "name" : "页面 - 最近访问",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_4"
+        },
+        "name" : "空间 - 组织空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_8"
+        },
+        "name" : "页面 - 与我共享",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_5"
+        },
+        "name" : "空间 - 团队空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_9"
+        },
+        "name" : "页面 - 我的收藏",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_1"
+        },
+        "name" : "默认根节点 - 页面",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_6"
+        },
+        "name" : "空间 - 个人空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_12"
+        },
+        "name" : "默认根节点 - 分类",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_10"
+        },
+        "name" : "默认根节点 - 星标",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_15"
+        },
+        "name" : "默认根节点 - 归档空间",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      }, {
+        "getChildPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "node_2"
+        },
+        "name" : "默认根节点 - 配置中心",
+        "getParentPSDETreeNode" : {
+          "modelref" : true,
+          "id" : "ROOT"
+        },
+        "parentValueLevel" : 1,
+        "searchMode" : 3
+      } ],
+      "getPSDETreeNodes" : [ {
+        "counterMode" : 0,
+        "name" : "默认根节点",
+        "nodeType" : "ROOT",
+        "nodeValue" : "root",
+        "text" : "默认根节点",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : true,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "ROOT"
+      }, {
+        "counterMode" : 0,
+        "name" : "空间",
+        "nodeType" : "node",
+        "text" : "空间",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node"
+      }, {
+        "counterMode" : 0,
+        "name" : "页面",
+        "nodeType" : "node_1",
+        "text" : "页面",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_1"
+      }, {
+        "counterMode" : 0,
+        "name" : "星标",
+        "nodeType" : "node_10",
+        "text" : "星标",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_10"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "maxSize" : -1,
+        "name" : "星标_空间",
+        "nodeType" : "node_11",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_favorite"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "tree_exp_view_node11_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "收藏的空间工具栏",
+          "name" : "node_11_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_11_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "actionLevel" : 200,
+            "caption" : "打开星标产品",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_11_cm_deuiaction1"
+            },
+            "getPSSysImage" : { },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "打开空间主页面",
+              "codeName" : "open_space_index",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_index_view.json",
+                "viewType" : "DEINDEXVIEW"
+              },
+              "frontProcessType" : "WIZARD",
+              "fullCodeName" : "space_open_space_index",
+              "name" : "打开空间主页面",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+              },
+              "getPSSysImage" : { },
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_space_index",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_space_index@space"
+            },
+            "tooltip" : "打开星标产品",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : false,
+            "showIcon" : true
+          }, {
+            "actionLevel" : 250,
+            "caption" : "取消星标",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction2",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_11_cm_deuiaction2"
+            },
+            "getPSSysImage" : {
+              "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "SINGLEKEY",
+              "caption" : "取消星标",
+              "codeName" : "cancel_favorite",
+              "fullCodeName" : "space_cancel_favorite",
+              "name" : "取消星标",
+              "getPSAppDEMethod" : {
+                "modelref" : true,
+                "id" : "un_favorite"
+              },
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "refresh_current_grid"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+              },
+              "getPSNavigateParams" : [ {
+                "key" : "owner_id",
+                "name" : "owner_id",
+                "value" : "space",
+                "rawValue" : false
+              } ],
+              "getPSSysImage" : {
+                "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"16\" height=\"16\">\n  <path d=\"M14.53135,6.20219551 C14.77745,6.23794551 14.87565,6.54033551 14.69765,6.71389551 L11.56645,9.76604551 L12.30565,14.0757255 C12.34765,14.3208255 12.09045,14.5077255 11.87035,14.3920255 L8,12.3572255 L4.12966,14.3920255 C3.90957,14.5077255 3.65234,14.3208255 3.69437,14.0757255 L4.43354,9.76604551 L1.30237,6.71389551 C1.12431,6.54033551 1.22256,6.23794551 1.46863,6.20219551 L5.79581,5.57341551 L7.73098,1.65232551 C7.84103,1.42934551 8.15898,1.42935551 8.26902,1.65232551 L10.20415,5.57341551 L14.53135,6.20219551 Z\" fill-opacity=\".9\" fill=\"#FFB31A\" fill-rule=\"nonzero\"></path>\n</svg>"
+              },
+              "refreshMode" : 2,
+              "timeout" : 60000,
+              "tooltip" : "取消星标",
+              "uIActionMode" : "BACKEND",
+              "uIActionTag" : "cancel_favorite",
+              "uIActionType" : "DEUIACTION",
+              "uILogicAttachMode" : "AFTER",
+              "enableConfirm" : true,
+              "reloadData" : true,
+              "id" : "cancel_favorite@space"
+            },
+            "tooltip" : "取消星标",
+            "uIActionTarget" : "SINGLEKEY",
+            "showCaption" : false,
+            "showIcon" : true
+          } ],
+          "modelid" : "89eb12b3ff4ab287ff42773049b2dc0c",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 24 24\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <defs>\n    <path d=\"M7.38014822,4.26970473e-06 C7.67907467,-0.000828796 7.96590669,0.120273995 8.17671195,0.336324208 L10.4843108,2.68866756 C10.5264166,2.73193339 10.5837821,2.7561828 10.6435672,2.75598809 L19.6007905,2.75598809 C20.22264,2.75670003 20.7265743,3.27040575 20.7272727,3.9043129 L20.7272727,16.3062207 C20.7265743,16.9401278 20.2226399,17.4538335 19.6007905,17.4545455 L1.12648221,17.4545455 C0.504632781,17.4538335 0.000698402716,16.9401278 0,16.3062207 L0,1.14833339 C0.000698391078,0.514426247 0.504632772,0.00072052842 1.12648221,4.26970473e-06 L7.38014822,4.26970473e-06 Z M9.58629261,5.41965554 L9.55992543,5.42453835 C9.43199574,5.44797585 9.3314098,5.54758523 9.3079723,5.67551491 L9.15367543,6.50949929 C8.80308949,6.64231179 8.47789418,6.83078835 8.18687855,7.07004616 L7.38707386,6.78586648 C7.26500355,6.74289773 7.1282848,6.77903054 7.04430043,6.87863991 L7.0267223,6.89914773 C6.68687855,7.30051491 6.4251598,7.75363991 6.24840199,8.24582741 L6.23961293,8.27121804 C6.19566761,8.39328835 6.23180043,8.5300071 6.33043324,8.61496804 L6.97789418,9.16770241 C6.94762074,9.35129616 6.9329723,9.53879616 6.9329723,9.7253196 C6.9329723,9.9128196 6.94762074,10.1003196 6.97789418,10.2829368 L6.33043324,10.8356712 C6.23180043,10.9196555 6.19566761,11.0563743 6.23961293,11.1794212 L6.24840199,11.2048118 C6.4251598,11.6969993 6.68687855,12.1511009 7.0267223,12.5514915 L7.04430043,12.5719993 C7.1282848,12.6706321 7.26402699,12.7077415 7.38707386,12.6647727 L8.18687855,12.380593 C8.47789418,12.6198509 8.80308949,12.809304 9.15367543,12.9411399 L9.3079723,13.7751243 C9.3314098,13.903054 9.43199574,14.0026634 9.55992543,14.0261009 L9.58629261,14.0309837 C9.84117543,14.0768821 10.1019176,14.1003196 10.3626598,14.1003196 C10.623402,14.1003196 10.8851207,14.0768821 11.139027,14.0309837 L11.1653942,14.0261009 C11.2933239,14.0026634 11.3939098,13.903054 11.4173473,13.7751243 L11.5706676,12.9450462 C11.9241832,12.8122337 12.2513317,12.6237571 12.5443004,12.3825462 L13.3382457,12.6647727 C13.4603161,12.7077415 13.5970348,12.6716087 13.6810192,12.5719993 L13.6985973,12.5514915 C14.0384411,12.1501243 14.3001598,11.6969993 14.4769176,11.2048118 L14.4857067,11.1794212 C14.529652,11.059304 14.4935192,10.9225852 14.3948864,10.8376243 L13.7552379,10.2907493 C13.7855114,10.1052024 13.8011364,9.91574929 13.8011364,9.72629616 C13.8011364,9.53684304 13.7855114,9.34738991 13.7552379,9.16184304 L14.3948864,8.61496804 C14.4935192,8.53098366 14.529652,8.39426491 14.4857067,8.27121804 L14.4769176,8.24582741 C14.3001598,7.75266335 14.0384411,7.29953835 13.6985973,6.89914773 L13.6810192,6.87863991 C13.5970348,6.7800071 13.4612926,6.74289773 13.3382457,6.78586648 L12.5443004,7.06809304 C12.2513317,6.82785866 11.9241832,6.63840554 11.5706676,6.50559304 L11.4173473,5.67551491 C11.3939098,5.54758523 11.2933239,5.44797585 11.1653942,5.42453835 L11.139027,5.41965554 C10.6302379,5.32785866 10.0950817,5.32785866 9.58629261,5.41965554 Z M10.7776989,6.07981179 L10.9525036,7.02707741 L11.3245739,7.16672585 C11.6048473,7.2721946 11.8655895,7.42258523 12.0989879,7.61399148 L12.4056286,7.8659446 L13.3118786,7.54465554 C13.4778942,7.76828835 13.6165661,8.00949929 13.7278942,8.26340554 L12.998402,8.88742898 L13.0618786,9.27707741 C13.0862926,9.42453835 13.0989879,9.57590554 13.0989879,9.72727273 C13.0989879,9.87863991 13.0862926,10.0300071 13.0618786,10.177468 L12.9974254,10.5690696 L13.7269176,11.193093 C13.6165661,11.4479759 13.4769176,11.6882102 13.310902,11.911843 L12.404652,11.590554 L12.0980114,11.8425071 C11.8646129,12.0339134 11.6048473,12.184304 11.3235973,12.2897727 L10.951527,12.4294212 L10.7767223,13.3766868 C10.5023082,13.4079368 10.2220348,13.4079368 9.94664418,13.3766868 L9.77183949,12.427468 L9.40269886,12.2858665 C9.12437855,12.1803977 8.86558949,12.0300071 8.63414418,11.8395774 L8.32750355,11.5866477 L7.41539418,11.9108665 C7.24937855,11.6872337 7.11070668,11.4460227 6.99937855,11.1921165 L7.73668324,10.5622337 L7.67320668,10.1716087 C7.64976918,10.0261009 7.63707386,9.87571023 7.63707386,9.72727273 C7.63707386,9.57785866 7.64879261,9.4284446 7.67320668,9.28293679 L7.73668324,8.89231179 L6.99937855,8.26242898 C7.10973011,8.00754616 7.24937855,7.76731179 7.41539418,7.54367898 L8.32750355,7.86789773 L8.63414418,7.61496804 C8.86558949,7.42453835 9.12437855,7.27414773 9.40269886,7.16867898 L9.77281605,7.02903054 L9.94762074,6.07981179 C10.2220348,6.04856179 10.5023082,6.04856179 10.7776989,6.07981179 Z M10.3636364,7.91086648 C9.41441761,7.91086648 8.64488636,8.68039773 8.64488636,9.62961648 C8.64488636,10.5788352 9.41441761,11.3483665 10.3636364,11.3483665 C11.3128551,11.3483665 12.0823864,10.5788352 12.0823864,9.62961648 C12.0823864,8.68039773 11.3128551,7.91086648 10.3636364,7.91086648 Z M10.3636364,8.53586648 C10.6556286,8.53586648 10.9300426,8.64914773 11.1370739,8.85617898 C11.3431286,9.06321023 11.4573864,9.33762429 11.4573864,9.62961648 C11.4573864,9.92160866 11.3431286,10.1960227 11.1370739,10.403054 C10.9300426,10.6091087 10.6556286,10.7233665 10.3636364,10.7233665 C10.0716442,10.7233665 9.79723011,10.6091087 9.59019886,10.403054 C9.38414418,10.1960227 9.26988636,9.92160866 9.26988636,9.62961648 C9.26988636,9.33762429 9.38414418,9.06321023 9.59019886,8.85617898 C9.79723011,8.64914773 10.0716442,8.53586648 10.3636364,8.53586648 Z\" id=\"g5qm67ur8__8jp2bspmga\"></path>\n  </defs>\n  <use fill=\"#56AAFC\" fill-rule=\"nonzero\" xlink:href=\"#g5qm67ur8__8jp2bspmga\" transform=\"translate(1.6364 3.2727)\"></use>\n</svg>"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_11"
+      }, {
+        "counterMode" : 0,
+        "name" : "分类",
+        "nodeType" : "node_12",
+        "text" : "分类",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : true,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_12"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getLeafFlagPSAppDEField" : {
+          "name" : "IS_LEAF",
+          "codeName" : "is_leaf"
+        },
+        "maxSize" : -1,
+        "name" : "顶级分类",
+        "navFilter" : "category_id",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_category_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_13",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_space_category_top"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf114@FontAwesome",
+          "cssClass" : "fa fa-folder-o"
+        },
+        "sortDir" : "ASC",
+        "getSortPSAppDEField" : {
+          "name" : "SEQUENCE",
+          "codeName" : "sequence"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_13"
+      }, {
+        "counterMode" : 0,
+        "getIdPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getLeafFlagPSAppDEField" : {
+          "name" : "IS_LEAF",
+          "codeName" : "is_leaf"
+        },
+        "maxSize" : -1,
+        "name" : "次级分类",
+        "navFilter" : "category_id",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_category_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_14",
+        "getPSAppDEDataSet" : {
+          "modelref" : true,
+          "id" : "fetch_space_category"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/category.json"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf114@FontAwesome",
+          "cssClass" : "fa fa-folder-o"
+        },
+        "sortDir" : "ASC",
+        "getSortPSAppDEField" : {
+          "name" : "SEQUENCE",
+          "codeName" : "sequence"
+        },
+        "getTextPSAppDEField" : {
+          "name" : "NAME",
+          "codeName" : "name"
+        },
+        "treeNodeType" : "DE",
+        "hasPSDETreeNodeRSs" : true,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_14"
+      }, {
+        "counterMode" : 0,
+        "name" : "归档空间",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_is_archived_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_15",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon design-iconfont\" viewBox=\"0 0 1024 1024\" width=\"128\" height=\"128\">\n  <path d=\"M820 120.016C815.888 98.784 794.928 64 764 64H232c-30.928 0-50.768 35.536-56 56.016L64 596.272V876A84 84 0 0 0 148 960h728A84 84 0 0 0 960 876V596.272L820 120.016zM271.344 144h456.16c14.832 0 26.832 11.584 26.832 25.904L864.016 544H673.84c-28.288 0-26.832 40.384-26.832 40.384v77.712c0 14.32-12 25.904-26.832 25.904H405.504c-14.816 0-26.832-11.584-26.832-25.904v-77.712S378.672 544 351.84 544H160l84.512-374.096c0-14.32 12-25.904 26.832-25.904z m44.64 480v84c0 30.896 25.088 60 56.016 60h280c30.928 0 56-29.104 56-60V624H880v208c0 30.896-33.072 48-64 48H208c-30.928 0-64-17.104-64-48V624h172zM512 199.2a36.72 36.72 0 0 1 36.736 36.72l-0.016 224.064 80.96-80.944a36.736 36.736 0 0 1 49.824-1.952l2.112 1.952c14.336 14.352 14.336 37.6 0 51.936l-143.648 143.632a36.704 36.704 0 0 1-51.936 0L342.4 430.976a36.72 36.72 0 1 1 51.936-51.936l80.928 80.928V235.92c0-19.44 15.12-35.344 34.24-36.64z\" fill=\"#F6C659\"></path>\n</svg>"
+        },
+        "text" : "归档空间",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_15"
+      }, {
+        "accUserMode" : 4,
+        "accessKey" : "BASE",
+        "counterMode" : 0,
+        "name" : "配置中心",
+        "nodeType" : "node_2",
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        },
+        "getPSDEContextMenu" : {
+          "codeName" : "tree_exp_view_node2_cm",
+          "controlType" : "CONTEXTMENU",
+          "logicName" : "空间配置树节点菜单",
+          "name" : "node_2_cm",
+          "getPSAppDataEntity" : {
+            "modelref" : true,
+            "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+          },
+          "getPSControlParam" : {
+            "id" : "node_2_cm"
+          },
+          "getPSDEToolbarItems" : [ {
+            "actionLevel" : 200,
+            "caption" : "空间配置",
+            "groupExtractMode" : "ITEM",
+            "itemType" : "DEUIACTION",
+            "name" : "deuiaction1",
+            "noPrivDisplayMode" : 2,
+            "getPSAppViewUIAction" : {
+              "modelref" : true,
+              "id" : "node_2_cm_deuiaction1"
+            },
+            "getPSUIAction" : {
+              "actionTarget" : "NONE",
+              "caption" : "空间配置",
+              "codeName" : "open_space_setting",
+              "getFrontPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_config_tree_exp_view.json",
+                "viewType" : "DETREEEXPVIEW"
+              },
+              "frontProcessType" : "OTHER",
+              "fullCodeName" : "space_open_space_setting",
+              "name" : "打开空间配置",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+              },
+              "scriptCode" : "window.location.hash=`/-/index/-/management_tab_exp_view/srfnav=config/space_config_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode%3Anode_4/space_tab_exp_view/srfnav=tab_exp_view_is_running/space_in_progress_grid_view/-`",
+              "timeout" : 60000,
+              "uIActionMode" : "FRONT",
+              "uIActionTag" : "open_space_setting",
+              "uIActionType" : "DEUIACTION",
+              "id" : "open_space_setting@space"
+            },
+            "tooltip" : "空间配置",
+            "uIActionTarget" : "NONE",
+            "showCaption" : true,
+            "showIcon" : true
+          } ],
+          "modelid" : "e333e8ea09cf1253bbd904d3299d5651",
+          "modeltype" : "PSDETOOLBAR"
+        },
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"dydnnkk8m__design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8.00016594,11 C6.34331179,11 5.00016594,9.65685463 5.00016594,8 C5.00016594,6.34314585 6.34331179,5 8.00016594,5 C9.65702009,5 11.0001659,6.34314585 11.0001659,8 C11.0001659,9.65685463 9.65702009,11 8.00016594,11 Z M8.00016594,10 C6.8955965,10 6.00016594,9.10456944 6.00016594,8 C6.00016594,6.89543056 6.8955965,6 8.00016594,6 C9.10473537,6 10.0001659,6.89543056 10.0001659,8 C10.0001659,9.10456944 9.10473537,10 8.00016594,10 Z M14.0623436,4.625 L14.0623436,11.375 L8.00016594,14.75 L1.93798828,11.375 L1.93798828,4.625 L8.00016594,1.25 L14.0623436,4.625 Z M8.00016594,2.39453006 L13.0623436,5.21279955 L13.0623436,10.7872009 L8.00016594,13.6054697 L2.93798828,10.7872009 L2.93798828,5.21279955 L8.00016594,2.39453006 Z\" fill-opacity=\".9\" fill-rule=\"evenodd\" fill=\"#56AAFC\"></path>\n</svg>"
+        },
+        "text" : "配置中心",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_2"
+      }, {
+        "counterMode" : 0,
+        "name" : "全部空间",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_all_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_3",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"zfaoqr8zf__design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8.25,4.75 C8.25,6.40685415 9.59314585,7.75 11.25,7.75 C12.9068546,7.75 14.25,6.40685415 14.25,4.75 C14.25,3.09314585 12.9068546,1.75 11.25,1.75 C9.59314585,1.75 8.25,3.09314585 8.25,4.75 Z M11.25,6.75 C12.3545694,6.75 13.25,5.85456944 13.25,4.75 C13.25,3.64543068 12.3545694,2.75 11.25,2.75 C10.1454306,2.75 9.25,3.64543068 9.25,4.75 C9.25,5.85456944 10.1454306,6.75 11.25,6.75 Z M3,2 L6.5,2 C7.05228472,2 7.5,2.44771528 7.5,3 L7.5,6.5 C7.5,7.05228472 7.05228472,7.5 6.5,7.5 L3,7.5 C2.44771528,7.5 2,7.05228472 2,6.5 L2,3 C2,2.44771528 2.44771528,2 3,2 Z M6.5,3 L6.5,6.5 L3,6.5 L3,3 L6.5,3 Z M3,8.5 L6.5,8.5 C7.05228472,8.5 7.5,8.94771528 7.5,9.5 L7.5,13 C7.5,13.5522842 7.05228472,14 6.5,14 L3,14 C2.44771528,14 2,13.5522842 2,13 L2,9.5 C2,8.94771528 2.44771528,8.5 3,8.5 Z M6.5,9.5 L6.5,13 L3,13 L3,9.5 L6.5,9.5 Z M9.5,8.5 L13,8.5 C13.5522842,8.5 14,8.94771528 14,9.5 L14,13 C14,13.5522842 13.5522842,14 13,14 L9.5,14 C8.94771528,14 8.5,13.5522842 8.5,13 L8.5,9.5 C8.5,8.94771528 8.94771528,8.5 9.5,8.5 Z M9.5,9.5 L13,9.5 L13,13 L9.5,13 L9.5,9.5 Z\" fill-opacity=\".89999998\" fill-rule=\"evenodd\" fill=\"#56AAFC\"></path>\n</svg>",
+          "height" : 20,
+          "width" : 20
+        },
+        "text" : "全部空间",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_3"
+      }, {
+        "counterMode" : 0,
+        "name" : "组织空间",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_org_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_4",
+        "getPSNavigateContexts" : [ {
+          "key" : "SCOPE_TYPE",
+          "name" : "SCOPE_TYPE",
+          "value" : "organization",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M14.1875,10 L12.5625,10 L12.5625,7.625 C12.5625,7.55625 12.50625,7.5 12.4375,7.5 L8.5625,7.5 L8.5625,6 L10.25,6 C10.3875,6 10.5,5.8875 10.5,5.75 L10.5,1.25 C10.5,1.1125 10.3875,1 10.25,1 L5.75,1 C5.6125,1 5.5,1.1125 5.5,1.25 L5.5,5.75 C5.5,5.8875 5.6125,6 5.75,6 L7.4375,6 L7.4375,7.5 L3.5625,7.5 C3.49375,7.5 3.4375,7.55625 3.4375,7.625 L3.4375,10 L1.8125,10 C1.675,10 1.5625,10.1125 1.5625,10.25 L1.5625,14.75 C1.5625,14.8875 1.675,15 1.8125,15 L6.3125,15 C6.45,15 6.5625,14.8875 6.5625,14.75 L6.5625,10.25 C6.5625,10.1125 6.45,10 6.3125,10 L4.5625,10 L4.5625,8.625 L11.4375,8.625 L11.4375,10 L9.6875,10 C9.55,10 9.4375,10.1125 9.4375,10.25 L9.4375,14.75 C9.4375,14.8875 9.55,15 9.6875,15 L14.1875,15 C14.325,15 14.4375,14.8875 14.4375,14.75 L14.4375,10.25 C14.4375,10.1125 14.325,10 14.1875,10 Z M5.375,11.1875 L5.375,13.8125 L2.75,13.8125 L2.75,11.1875 L5.375,11.1875 Z M6.6875,4.8125 L6.6875,2.1875 L9.3125,2.1875 L9.3125,4.8125 L6.6875,4.8125 Z M13.25,13.8125 L10.625,13.8125 L10.625,11.1875 L13.25,11.1875 L13.25,13.8125 Z\" fill=\"#FCC430\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "组织空间",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_4"
+      }, {
+        "counterMode" : 0,
+        "name" : "团队空间",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_team_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_5",
+        "getPSNavigateContexts" : [ {
+          "key" : "SCOPE_TYPE",
+          "name" : "SCOPE_TYPE",
+          "value" : "user_group",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M12.878125,10.9359375 C12.48125,10.5390625 12.0234375,10.221875 11.528125,9.9921875 C12.2359375,9.41875 12.6875,8.54375 12.6875,7.5625 C12.6875,5.83125 11.24375,4.4109375 9.5125,4.4375 C7.8078125,4.4640625 6.434375,5.853125 6.434375,7.5625 C6.434375,8.54375 6.8875,9.41875 7.59375,9.9921875 C7.0984375,10.221875 6.6421875,10.5375 6.24375,10.9359375 C5.390625,11.790625 4.90625,12.91875 4.87496822,14.121875 C4.8734375,14.1921875 4.9296875,14.25 5,14.25 L5.875,14.25 C5.9421875,14.25 5.9984375,14.196875 6,14.1296875 C6.0296875,13.2234375 6.396875,12.375 7.0421875,11.73125 C7.715625,11.0578125 8.6109375,10.6875 9.5625,10.6875 C10.5140625,10.6875 11.409375,11.0578125 12.0828125,11.73125 C12.7265625,12.375 13.09375,13.2234375 13.125,14.1296875 C13.1265625,14.196875 13.1828125,14.25 13.25,14.25 L14.125,14.25 C14.1953125,14.25 14.2515625,14.1921875 14.2500318,14.121875 C14.21875,12.91875 13.734375,11.790625 12.878125,10.9359375 Z M9.5625,9.5625 C9.028125,9.5625 8.525,9.3546875 8.1484375,8.9765625 C7.765625,8.59375 7.55625,8.084375 7.5625,7.5421875 C7.5671875,7.0296875 7.771875,6.534375 8.1296875,6.1671875 C8.5046875,5.7828125 9.00625,5.56875 9.5421875,5.5625 C10.071875,5.5578125 10.5859375,5.7640625 10.9640625,6.134375 C11.3515625,6.5140625 11.5640625,7.021875 11.5640625,7.5625 C11.5640625,8.096875 11.35625,8.5984375 10.978125,8.9765625 C10.6,9.3546875 10.096875,9.5625 9.5625,9.5625 L9.5625,9.5625 Z M5.6484375,7.975 C5.634375,7.8390625 5.6265625,7.7015625 5.6265625,7.5625 C5.6265625,7.3140625 5.65,7.071875 5.69375,6.8359375 C5.7046875,6.7796875 5.675,6.721875 5.6234375,6.6984375 C5.4109375,6.603125 5.215625,6.471875 5.046875,6.30625 C4.64375,5.9125 4.4265625,5.3796875 4.4421875,4.815625 C4.45625,4.3140625 4.6578125,3.8375 5.009375,3.478125 C5.3953125,3.0828125 5.9140625,2.8671875 6.465625,2.8734375 C6.9640625,2.878125 7.4453125,3.0703125 7.809375,3.4109375 C7.9328125,3.5265625 8.0390625,3.6546875 8.128125,3.7921875 C8.159375,3.840625 8.2203125,3.8609375 8.2734375,3.8421875 C8.5484375,3.746875 8.8390625,3.6796875 9.1375,3.6484375 C9.225,3.6390625 9.275,3.5453125 9.2359375,3.4671875 C8.728125,2.4625 7.690625,1.76875 6.490625,1.75 C4.7578125,1.7234375 3.3140625,3.14375 3.3140625,4.8734375 C3.3140625,5.8546875 3.765625,6.7296875 4.4734375,7.303125 C3.9765625,7.5328125 3.51875,7.85 3.121875,8.246875 C2.265625,9.1015625 1.78125,10.2296875 1.74996822,11.434375 C1.7484375,11.5046875 1.8046875,11.5625 1.875,11.5625 L2.7515625,11.5625 C2.81875,11.5625 2.875,11.509375 2.8765625,11.4421875 C2.90625,10.5359375 3.2734375,9.6875 3.91875,9.04375 C4.378125,8.584375 4.940625,8.265625 5.5546875,8.1109375 C5.615625,8.0953125 5.65625,8.0375 5.6484375,7.975 L5.6484375,7.975 Z\" fill=\"#42D175\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "团队空间",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_5"
+      }, {
+        "counterMode" : 0,
+        "name" : "个人空间",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/space_person_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_6",
+        "getPSNavigateContexts" : [ {
+          "key" : "SCOPE_TYPE",
+          "name" : "SCOPE_TYPE",
+          "value" : "user",
+          "rawValue" : true
+        } ],
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M13.4140625,11.93125 C13.11875,11.23125 12.69375,10.603125 12.1546875,10.0640625 C11.615625,9.525 10.9875,9.1015625 10.2875,8.8046875 C10.28125,8.8015625 10.275,8.8 10.26875,8.796875 C11.2421875,8.09375 11.875,6.9484375 11.875,5.65625 C11.875,3.515625 10.140625,1.78125 8,1.78125 C5.859375,1.78125 4.125,3.515625 4.125,5.65625 C4.125,6.9484375 4.7578125,8.09375 5.73125,8.7984375 C5.725,8.8015625 5.71875,8.803125 5.7125,8.80625 C5.0125,9.1015625 4.384375,9.525 3.8453125,10.065625 C3.30625,10.6046875 2.8828125,11.2328125 2.5859375,11.9328125 C2.2953125,12.6171875 2.140625,13.34375 2.12496822,14.090625 C2.1234375,14.1609375 2.1796875,14.21875 2.25,14.21875 L3.1875,14.21875 C3.25625,14.21875 3.3109375,14.1640625 3.3125,14.096875 C3.34375,12.890625 3.828125,11.7609375 4.684375,10.9046875 C5.5703125,10.01875 6.746875,9.53125 8,9.53125 C9.253125,9.53125 10.4296875,10.01875 11.315625,10.9046875 C12.171875,11.7609375 12.65625,12.890625 12.6875,14.096875 C12.6890625,14.165625 12.74375,14.21875 12.8125,14.21875 L13.75,14.21875 C13.8203125,14.21875 13.8765625,14.1609375 13.8750318,14.090625 C13.859375,13.34375 13.7046875,12.6171875 13.4140625,11.93125 Z M8,8.34375 C7.2828125,8.34375 6.6078125,8.0640625 6.1,7.55625 C5.5921875,7.0484375 5.3125,6.3734375 5.3125,5.65625 C5.3125,4.9390625 5.5921875,4.2640625 6.1,3.75625 C6.6078125,3.2484375 7.2828125,2.96875 8,2.96875 C8.7171875,2.96875 9.3921875,3.2484375 9.9,3.75625 C10.4078125,4.2640625 10.6875,4.9390625 10.6875,5.65625 C10.6875,6.3734375 10.4078125,7.0484375 9.9,7.55625 C9.3921875,8.0640625 8.7171875,8.34375 8,8.34375 Z\" fill=\"#FF877B\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "个人空间",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_6"
+      }, {
+        "counterMode" : 0,
+        "name" : "最近访问",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/recent_recent_page_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_7",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M8,1 C4.134375,1 1,4.134375 1,8 C1,11.865625 4.134375,15 8,15 C11.865625,15 15,11.865625 15,8 C15,4.134375 11.865625,1 8,1 Z M8,13.8125 C4.790625,13.8125 2.1875,11.209375 2.1875,8 C2.1875,4.790625 4.790625,2.1875 8,2.1875 C11.209375,2.1875 13.8125,4.790625 13.8125,8 C13.8125,11.209375 11.209375,13.8125 8,13.8125 Z M10.7296875,9.978125 L8.5015625,8.3671875 L8.5015625,4.5 C8.5015625,4.43125 8.4453125,4.375 8.3765625,4.375 L7.625,4.375 C7.55625,4.375 7.5,4.43125 7.5,4.5 L7.5,8.803125 C7.5,8.84375 7.51875,8.88125 7.5515625,8.9046875 L10.1359375,10.7890625 C10.1921875,10.8296875 10.2703125,10.8171875 10.3109375,10.7625 L10.7578125,10.153125 C10.7984375,10.0953125 10.7859375,10.0171875 10.7296875,9.978125 L10.7296875,9.978125 Z\" fill=\"#9A7EF4\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "最近访问",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : false,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_7"
+      }, {
+        "counterMode" : 0,
+        "name" : "与我共享",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_shared_with_me_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_8",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <path d=\"M13.9375,12.0625 L12.6875,12.0625 L12.6875,10.8125 C12.6875,10.74375 12.63125,10.6875 12.5625,10.6875 L11.8125,10.6875 C11.74375,10.6875 11.6875,10.74375 11.6875,10.8125 L11.6875,12.0625 L10.4375,12.0625 C10.36875,12.0625 10.3125,12.11875 10.3125,12.1875 L10.3125,12.9375 C10.3125,13.00625 10.36875,13.0625 10.4375,13.0625 L11.6875,13.0625 L11.6875,14.3125 C11.6875,14.38125 11.74375,14.4375 11.8125,14.4375 L12.5625,14.4375 C12.63125,14.4375 12.6875,14.38125 12.6875,14.3125 L12.6875,13.0625 L13.9375,13.0625 C14.00625,13.0625 14.0625,13.00625 14.0625,12.9375 L14.0625,12.1875 C14.0625,12.11875 14.00625,12.0625 13.9375,12.0625 Z M5.8359375,7.7875 C5.821875,7.6515625 5.8140625,7.5140625 5.8140625,7.375 C5.8140625,7.1265625 5.8375,6.884375 5.88125,6.6484375 C5.8921875,6.5921875 5.8625,6.534375 5.8109375,6.5109375 C5.5984375,6.415625 5.403125,6.284375 5.234375,6.11875 C4.83125,5.725 4.6140625,5.1921875 4.6296875,4.628125 C4.64375,4.1265625 4.8453125,3.65 5.196875,3.290625 C5.5828125,2.8953125 6.1015625,2.6796875 6.653125,2.6859375 C7.1515625,2.690625 7.6328125,2.8828125 7.996875,3.2234375 C8.1203125,3.3390625 8.2265625,3.4671875 8.315625,3.6046875 C8.346875,3.653125 8.4078125,3.6734375 8.4609375,3.6546875 C8.7359375,3.559375 9.0265625,3.4921875 9.325,3.4609375 C9.4125,3.4515625 9.4625,3.3578125 9.4234375,3.2796875 C8.915625,2.275 7.878125,1.58125 6.678125,1.5625 C4.946875,1.5359375 3.503125,2.95625 3.503125,4.6875 C3.503125,5.66875 3.9546875,6.54375 4.6625,7.1171875 C4.165625,7.346875 3.7078125,7.6640625 3.3109375,8.0609375 C2.4546875,8.915625 1.9703125,10.04375 1.93903072,11.2484375 C1.9375,11.31875 1.99375,11.3765625 2.0640625,11.3765625 L2.940625,11.3765625 C3.0078125,11.3765625 3.0640625,11.3234375 3.065625,11.25625 C3.0953125,10.35 3.4625,9.5015625 4.1078125,8.8578125 C4.5671875,8.3984375 5.1296875,8.0796875 5.74375,7.925 C5.803125,7.9078125 5.84375,7.85 5.8359375,7.7875 L5.8359375,7.7875 Z M12.875,7.375 C12.875,5.665625 11.5015625,4.2765625 9.7984375,4.25 C8.0671875,4.2234375 6.625,5.64375 6.625,7.375 C6.625,8.35625 7.078125,9.23125 7.784375,9.8046875 C7.2890625,10.034375 6.8328125,10.35 6.434375,10.7484375 C5.578125,11.603125 5.09375,12.73125 5.06246822,13.934375 C5.0609375,14.0046875 5.1171875,14.0625 5.1875,14.0625 L6.0625,14.0625 C6.1296875,14.0625 6.1859375,14.009375 6.1875,13.9421875 C6.2171875,13.0359375 6.584375,12.1875 7.2296875,11.54375 C7.903125,10.8703125 8.796875,10.5 9.75,10.5 C11.475,10.5 12.875,9.1015625 12.875,7.375 Z M11.1640625,8.7890625 C10.7859375,9.1671875 10.284375,9.375 9.75,9.375 C9.215625,9.375 8.7140625,9.1671875 8.3359375,8.7890625 C7.953125,8.40625 7.7453125,7.896875 7.75,7.3546875 C7.7546875,6.8421875 7.959375,6.346875 8.3171875,5.9796875 C8.6921875,5.5953125 9.19375,5.38125 9.7296875,5.375 C10.259375,5.3703125 10.7734375,5.5765625 11.1515625,5.946875 C11.5390625,6.3265625 11.7515625,6.834375 11.7515625,7.375 C11.75,7.909375 11.5421875,8.4109375 11.1640625,8.7890625 L11.1640625,8.7890625 Z\" fill=\"#5CCFFF\" fill-rule=\"nonzero\"></path>\n</svg>"
+        },
+        "text" : "与我共享",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : true,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_8"
+      }, {
+        "counterMode" : 0,
+        "name" : "我的收藏",
+        "getNavPSAppView" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_my_favorite_page_grid_view.json",
+          "viewType" : "DEGRIDVIEW"
+        },
+        "nodeType" : "node_9",
+        "getPSSysImage" : {
+          "rawContent" : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" class=\"design-iconfont\" width=\"18\" height=\"18\">\n  <g fill=\"#F6C659\" fill-rule=\"nonzero\">\n    <path d=\"M8,1 C4.134375,1 1,4.134375 1,8 C1,11.865625 4.134375,15 8,15 C11.865625,15 15,11.865625 15,8 C15,4.134375 11.865625,1 8,1 Z M8,13.8125 C4.790625,13.8125 2.1875,11.209375 2.1875,8 C2.1875,4.790625 4.790625,2.1875 8,2.1875 C11.209375,2.1875 13.8125,4.790625 13.8125,8 C13.8125,11.209375 11.209375,13.8125 8,13.8125 Z\"></path>\n    <path d=\"M7.5295078,2.94190234 C7.65897299,2.68297194 7.97357518,2.57658473 8.2326324,2.70447388 C8.33616834,2.75542013 8.41997049,2.83922228 8.47085272,2.94262826 L9.76537422,5.56738629 L12.6633702,5.98945009 C12.951458,6.03225095 13.1507318,6.29913552 13.1066955,6.58449445 C13.0903712,6.69876512 13.0366525,6.80407069 12.9539315,6.88513659 L10.8563742,8.92838629 L11.3528971,11.8147483 C11.3966515,12.0685238 11.2499485,12.3108363 11.0163783,12.3961071 L10.9249199,12.420438 C10.8108987,12.4402678 10.6927199,12.4217889 10.591524,12.3679244 L7.99937422,11.0053863 L5.4091279,12.3675796 C5.18157883,12.4886474 4.90456402,12.4236846 4.75133142,12.2280026 L4.70000986,12.1486024 C4.64578921,12.0467333 4.62731034,11.9285544 4.64708299,11.8148638 L5.14237422,8.92838629 L3.04599044,6.88506045 C2.86133196,6.70476398 2.83761673,6.42292606 2.97678923,6.21573793 L3.03661807,6.14188571 C3.11741368,6.05944122 3.22271926,6.00572258 3.33662984,5.98945009 L6.23337422,5.56738629 L7.5295078,2.94190234 Z M7.99937422,4.57338629 L7.02826381,6.54294046 L6.91532721,6.62500247 L4.74037422,6.94038629 L6.31409723,8.47502888 L6.35721265,8.60779962 L5.98437422,10.7723863 L7.93020467,9.75043034 L8.06974024,9.7504014 L10.0143742,10.7713863 L9.64278735,8.60662774 L9.68593882,8.47382187 L11.2583742,6.94038629 L9.08467279,6.62500247 L8.97173619,6.54294046 L7.99937422,4.57338629 Z\"></path>\n  </g>\n</svg>"
+        },
+        "text" : "我的收藏",
+        "treeNodeType" : "STATIC",
+        "hasPSDETreeNodeRSs" : false,
+        "appendPNodeId" : false,
+        "disableSelect" : false,
+        "enableCheck" : true,
+        "enableEditData" : false,
+        "enableNewData" : false,
+        "enableQuickCreate" : false,
+        "enableQuickSearch" : false,
+        "enableRemoveData" : false,
+        "enableViewData" : false,
+        "expandFirstOnly" : false,
+        "expanded" : false,
+        "rootNode" : false,
+        "selectFirstOnly" : false,
+        "selected" : false,
+        "id" : "node_9"
+      } ],
+      "getPSSysPFPlugin" : {
+        "pluginType" : "TREE_RENDER",
+        "pluginCode" : "LIST_TREE",
+        "runtimeObject" : true
+      },
+      "getRemovePSControlAction" : {
+        "modelref" : true,
+        "id" : "remove",
+        "actionName" : "Remove",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "DELETE",
+        "name" : "remove",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "remove"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        }
+      },
+      "treeGridMode" : 0,
+      "getUpdatePSControlAction" : {
+        "modelref" : true,
+        "id" : "update",
+        "actionName" : "Update",
+        "actionType" : "DEACTION",
+        "dataAccessAction" : "UPDATE",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "update"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+        }
+      },
+      "enableRootSelect" : false,
+      "outputIconDefault" : true,
+      "rootVisible" : false,
+      "name" : "treeexpbar_tree",
+      "modelid" : "2d8885646386662be5b85b9748f43f6e",
+      "modeltype" : "PSDETREEVIEW"
+    } ],
+    "xDataControlName" : "treeexpbar_tree",
+    "enableCounter" : true,
+    "enableSearch" : false,
+    "showTitleBar" : true,
+    "modelid" : "9b1d3b38778e703c7cd26e0edd15e409_treeexpbar",
+    "modeltype" : "PSEXPBAR"
+  }, {
+    "controlType" : "SEARCHBAR",
+    "name" : "searchbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSControlParam" : {
+      "id" : "searchbar"
+    },
+    "quickGroupCount" : -1,
+    "quickSearchMode" : 1,
+    "quickSearchWidth" : 0,
+    "enableFilter" : false,
+    "enableGroup" : false,
+    "enableQuickSearch" : true,
+    "mobileSearchBar" : false
+  }, {
+    "getCapPSLanguageRes" : {
+      "lanResTag" : "PAGE.CAPTION.SPACE.TREE_EXP_VIEW"
+    },
+    "caption" : "知识管理",
+    "codeName" : "tree_exp_view_captionbar",
+    "controlType" : "CAPTIONBAR",
+    "name" : "captionbar",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSControlParam" : { }
+  } ],
+  "getPSDEViewCodeName" : "tree_exp_view",
+  "getPSDEViewId" : "c8766b6e660dec2079f4a6dbaeafb0b3",
+  "getPSViewLayoutPanel" : {
+    "codeName" : "layoutpanel",
+    "controlStyle" : "APPDETREEEXPVIEW",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "name" : "layoutpanel",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/space.json"
+    },
+    "getPSControlParam" : { },
+    "layoutBodyOnly" : true,
+    "layoutPanel" : true,
+    "useDefaultLayout" : true
+  },
+  "title" : "知识管理",
+  "getTitlePSLanguageRes" : {
+    "lanResTag" : "PAGE.TITLE.SPACE.TREE_EXP_VIEW"
+  },
+  "viewStyle" : "DEFAULT",
+  "viewType" : "DETREEEXPVIEW",
+  "enableDP" : true,
+  "enableFilter" : true,
+  "enableQuickSearch" : true,
+  "enableSearch" : true,
+  "showDataInfoBar" : true,
+  "modelid" : "9b1d3b38778e703c7cd26e0edd15e409",
+  "modeltype" : "PSAPPDEVIEW"
+}

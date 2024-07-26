@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaidea_move" isClosed="false" isExecutable="true" name="prodmgmt_idea_idea_move_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.ideaidea_move">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="ideaidea_movedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaidea_movefor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="ideaidea_moveid" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaidea_movenew_idea" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaidea_movesrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.idea()" name="ideaidea_movetemp_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="ideaservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IideaService))" name="iBzSysIdeaDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="ideaidea_movedefault" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaidea_movefor_temp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaidea_movenew_idea" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaidea_movesrfactionparam" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+                            <tns:global identifier="ideaidea_movetemp_obj" type="cn.ibizlab.plm.core.prodmgmt.domain.idea" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_movebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="获取表单数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_movebindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="获取ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_moveloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_movedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取需求信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_moveprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填入移动产品ID，置空ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_moveprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="填入模块"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaidea_movedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="修改需要移动的需求"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_bindparam2" sourceRef="bindparam1" targetRef="bindparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_loopsubcall1" sourceRef="bindparam2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_deaction2" sourceRef="loopsubcall1" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction2_prepareparam1" sourceRef="deaction2" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_prepareparam2" sourceRef="gateway-prepareparam1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaidea_movedefault:idea();
+                                            $ideaidea_movefor_temp_obj:idea();
+                                            $ideaidea_moveid:Map();
+                                            $ideaidea_movenew_idea:idea();
+                                            $ideaidea_movesrfactionparam:idea();
+                                            $ideaidea_movetemp_obj:idea();
+                                    eval($ideaidea_movedefault==ideaidea_movedefault && $ideaidea_movefor_temp_obj==ideaidea_movefor_temp_obj && $ideaidea_movenew_idea==ideaidea_movenew_idea && $ideaidea_movesrfactionparam==ideaidea_movesrfactionparam && $ideaidea_movetemp_obj==ideaidea_movetemp_obj);
+                                eval((RuleUtils.test($ideaidea_movefor_temp_obj.get("categoryId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $ideaidea_movedefault:idea();
+                                            $ideaidea_movefor_temp_obj:idea();
+                                            $ideaidea_moveid:Map();
+                                            $ideaidea_movenew_idea:idea();
+                                            $ideaidea_movesrfactionparam:idea();
+                                            $ideaidea_movetemp_obj:idea();
+                                    eval($ideaidea_movedefault==ideaidea_movedefault && $ideaidea_movefor_temp_obj==ideaidea_movefor_temp_obj && $ideaidea_movenew_idea==ideaidea_movenew_idea && $ideaidea_movesrfactionparam==ideaidea_movesrfactionparam && $ideaidea_movetemp_obj==ideaidea_movetemp_obj);
+                                eval((RuleUtils.test($ideaidea_movefor_temp_obj.get("categoryId"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>

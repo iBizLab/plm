@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.runrun_re_counters" isClosed="false" isExecutable="true" name="testmgmt_run_run_re_counters_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.runrun_re_counters">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="runrun_re_countersdefault" type="entity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.IrunService))" name="iBzSysRunDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="runrun_re_countersdefault" type="cn.ibizlab.plm.core.testmgmt.domain.run" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall1" id="rawsqlcall1" implementation="http://www.jboss.org/drools/rule" name="测试用例关联产品需求"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall2" id="rawsqlcall2" implementation="http://www.jboss.org/drools/rule" name="测试用例关联工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall3" id="rawsqlcall3" implementation="http://www.jboss.org/drools/rule" name="执行用例关联缺陷"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall5" id="rawsqlcall5" implementation="http://www.jboss.org/drools/rule" name="执行用例结果附件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall4" id="rawsqlcall4" implementation="http://www.jboss.org/drools/rule" name="测试用例执行历史"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="runrun_re_countersrawsqlcall6" id="rawsqlcall6" implementation="http://www.jboss.org/drools/rule" name="合并查询计数器"/>
+                        <endEvent id="rawsqlcall6_end" name="end"/>
+                        <sequenceFlow id="rawsqlcall6_end_line" sourceRef="rawsqlcall6" targetRef="rawsqlcall6_end"/>
+                    <sequenceFlow id="begin_rawsqlcall1" sourceRef="begin" targetRef="rawsqlcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall1_rawsqlcall2" sourceRef="rawsqlcall1" targetRef="rawsqlcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall2_rawsqlcall3" sourceRef="rawsqlcall2" targetRef="rawsqlcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall3_rawsqlcall5" sourceRef="rawsqlcall3" targetRef="rawsqlcall5">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall5_rawsqlcall4" sourceRef="rawsqlcall5" targetRef="rawsqlcall4">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsqlcall4_end1" sourceRef="rawsqlcall4" targetRef="end1">
+                    </sequenceFlow>
+        </process>
+    </definitions>

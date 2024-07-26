@@ -1,0 +1,418 @@
+{
+  "getAllPSPanelFields" : [ {
+    "id" : "update_man",
+    "viewFieldName" : "update_man"
+  }, {
+    "id" : "update_time",
+    "viewFieldName" : "update_time"
+  }, {
+    "id" : "is_archived",
+    "hidden" : true,
+    "viewFieldName" : "is_archived"
+  }, {
+    "id" : "is_deleted",
+    "hidden" : true,
+    "viewFieldName" : "is_deleted"
+  } ],
+  "codeName" : "usr0523724008",
+  "controlType" : "PANEL",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item/PSPANELS/usr0523724008.json",
+  "layoutMode" : "Flex",
+  "logicName" : "归档工作项提示布局面板",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+  },
+  "getPSLayout" : {
+    "layout" : "FLEX"
+  },
+  "getPSSysCss" : {
+    "cssName" : "activate_button"
+  },
+  "getRootPSPanelItems" : [ {
+    "itemStyle" : "DEFAULT",
+    "itemType" : "CONTAINER",
+    "name" : "page_container",
+    "getPSLayout" : {
+      "dir" : "column",
+      "layout" : "FLEX"
+    },
+    "getPSLayoutPos" : {
+      "grow" : -1,
+      "layout" : "FLEX"
+    },
+    "getPSPanelItems" : [ {
+      "caption" : "单项数据容器",
+      "dataName" : "srfactiveviewdata",
+      "dataRegionType" : "SINGLEDATA",
+      "dataSourceType" : "VIEWSESSIONPARAM",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "container_singledata",
+      "getPSLayout" : {
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "container",
+        "getPSLayout" : {
+          "align" : "flex-start",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "图片",
+          "contentType" : "IMAGE",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_image",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingRight" : "OUTERSMALL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "IMAGE",
+            "name" : "static_image",
+            "getPSSysImage" : {
+              "glyph" : "xf071@FontAwesome",
+              "cssClass" : "fa fa-warning"
+            },
+            "predefinedType" : "STATIC_IMAGE"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf071@FontAwesome",
+            "cssClass" : "fa fa-warning"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "update_man",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "update_man",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/SysOperator.json"
+            },
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "update_man",
+          "convertToCodeItemText" : true
+        }, {
+          "caption" : "文本",
+          "contentType" : "RAW",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_text",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingLeft" : "INNERSMALL",
+            "spacingRight" : "INNERSMALL"
+          },
+          "getPSRawItem" : {
+            "caption" : "于",
+            "contentType" : "RAW",
+            "name" : "static_text",
+            "predefinedType" : "STATIC_TEXT",
+            "renderMode" : "TEXT"
+          },
+          "rawContent" : "于",
+          "showCaption" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "FIELD",
+          "name" : "update_time",
+          "getPSEditor" : {
+            "editorType" : "SPAN",
+            "name" : "update_time",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC",
+            "renderMode" : "TEXT_DYNAMIC",
+            "enableLinkView" : false
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "update_time"
+        }, {
+          "caption" : "文本",
+          "contentType" : "RAW",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_text1",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingLeft" : "INNERSMALL",
+            "spacingRight" : "INNERSMALL"
+          },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "面板成员[static_text1][面板显示]逻辑",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "EQ",
+              "dstModelField" : "is_archived",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "1"
+            }, {
+              "condOp" : "EQ",
+              "dstModelField" : "is_deleted",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "0"
+            } ],
+            "relatedItemNames" : [ "is_archived", "is_deleted" ],
+            "notMode" : false
+          } ],
+          "getPSRawItem" : {
+            "caption" : "归档了工作项",
+            "contentType" : "RAW",
+            "name" : "static_text1",
+            "predefinedType" : "STATIC_TEXT",
+            "renderMode" : "TEXT"
+          },
+          "rawContent" : "归档了工作项",
+          "showCaption" : true
+        }, {
+          "caption" : "文本",
+          "contentType" : "RAW",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "static_text2",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX",
+            "spacingLeft" : "INNERSMALL",
+            "spacingRight" : "INNERSMALL"
+          },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "面板成员[static_text2][面板显示]逻辑",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "EQ",
+              "dstModelField" : "is_deleted",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "1"
+            } ],
+            "relatedItemNames" : [ "is_deleted" ],
+            "notMode" : false
+          } ],
+          "getPSRawItem" : {
+            "caption" : "删除了工作项",
+            "contentType" : "RAW",
+            "name" : "static_text2",
+            "predefinedType" : "STATIC_TEXT",
+            "renderMode" : "TEXT"
+          },
+          "rawContent" : "删除了工作项",
+          "showCaption" : true
+        }, {
+          "actionType" : "UIACTION",
+          "buttonStyle" : "DEFAULT",
+          "caption" : "激活",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "BUTTON",
+          "name" : "button_calluilogic",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "panel_button_calluilogic"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "面板成员[button_calluilogic][面板显示]逻辑",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "EQ",
+              "dstModelField" : "is_archived",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "1"
+            }, {
+              "condOp" : "EQ",
+              "dstModelField" : "is_deleted",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "0"
+            } ],
+            "relatedItemNames" : [ "is_archived", "is_deleted" ],
+            "notMode" : false
+          } ],
+          "getPSSysImage" : {
+            "cssClass" : "key"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "MULTIKEY",
+            "caption" : "激活",
+            "codeName" : "toolbar_activate",
+            "confirmMsg" : "确认激活？",
+            "dataAccessAction" : "SUBDATA",
+            "dialogResult" : "OK",
+            "fullCodeName" : "work_item_toolbar_activate",
+            "name" : "激活（工具栏）",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "activate"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSDEOPPriv" : {
+              "modelref" : true,
+              "id" : "SUBDATA"
+            },
+            "getPSSysImage" : {
+              "cssClass" : "key"
+            },
+            "successMsg" : "激活成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "toolbar_activate",
+            "uIActionType" : "DEUIACTION",
+            "closeEditView" : true,
+            "closePopupView" : true,
+            "enableConfirm" : true,
+            "id" : "toolbar_activate@work_item"
+          },
+          "tooltip" : "激活",
+          "uIActionTarget" : "MULTIKEY",
+          "showCaption" : true
+        }, {
+          "actionType" : "UIACTION",
+          "buttonStyle" : "DEFAULT",
+          "caption" : "恢复",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "BUTTON",
+          "name" : "button_calluilogic1",
+          "getPSAppViewUIAction" : {
+            "modelref" : true,
+            "id" : "panel_button_calluilogic1"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItemGroupLogics" : [ {
+            "groupOP" : "AND",
+            "logicCat" : "PANELVISIBLE",
+            "logicType" : "GROUP",
+            "name" : "面板成员[button_calluilogic1][面板显示]逻辑",
+            "getPSPanelItemLogics" : [ {
+              "condOp" : "EQ",
+              "dstModelField" : "is_deleted",
+              "logicType" : "SINGLE",
+              "name" : "逻辑项",
+              "value" : "1"
+            } ],
+            "relatedItemNames" : [ "is_deleted" ],
+            "notMode" : false
+          } ],
+          "getPSSysImage" : {
+            "glyph" : "xf021@FontAwesome",
+            "cssClass" : "fa fa-refresh"
+          },
+          "getPSUIAction" : {
+            "actionTarget" : "SINGLEKEY",
+            "caption" : "恢复",
+            "codeName" : "recover_toolbar",
+            "confirmMsg" : "确认恢复？",
+            "dialogResult" : "OK",
+            "fullCodeName" : "work_item_recover_toolbar",
+            "name" : "恢复(工具栏)",
+            "getPSAppDEMethod" : {
+              "modelref" : true,
+              "id" : "recover"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/work_item.json"
+            },
+            "getPSSysImage" : {
+              "glyph" : "xf021@FontAwesome",
+              "cssClass" : "fa fa-refresh"
+            },
+            "successMsg" : "恢复成功",
+            "timeout" : 60000,
+            "uIActionMode" : "BACKEND",
+            "uIActionTag" : "recover_toolbar",
+            "uIActionType" : "DEUIACTION",
+            "closeEditView" : true,
+            "closePopupView" : true,
+            "enableConfirm" : true,
+            "id" : "recover_toolbar@work_item"
+          },
+          "tooltip" : "恢复",
+          "uIActionTarget" : "SINGLEKEY",
+          "showCaption" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemType" : "FIELD",
+          "name" : "is_archived",
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "is_archived",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "is_archived",
+          "hidden" : true
+        }, {
+          "caption" : "文本(动态)",
+          "itemType" : "FIELD",
+          "name" : "is_deleted",
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "is_deleted",
+            "predefinedType" : "FIELD_TEXT_DYNAMIC"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "viewFieldName" : "is_deleted",
+          "hidden" : true
+        } ]
+      } ],
+      "predefinedType" : "CONTAINER_SINGLEDATA"
+    } ]
+  } ],
+  "layoutPanel" : true,
+  "modelid" : "DDF9E944-1471-497A-A67A-18BA8E81B658",
+  "modeltype" : "PSSYSVIEWPANEL"
+}

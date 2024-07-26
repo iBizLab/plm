@@ -1,0 +1,139 @@
+package cn.ibizlab.plm.testmgmt.logic.reviewlogic.get_current_stage_info;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewget_current_stage_infodefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewget_current_stage_infofilter;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewget_current_stage_infofor_stage_obj;
+                global java.util.Map reviewget_current_stage_infoinfo;
+                global cn.ibizlab.plm.core.testmgmt.domain.review reviewget_current_stage_inforeview_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewget_current_stage_infostage_list;
+                global cn.ibizlab.plm.core.testmgmt.domain.review_stage reviewget_current_stage_infostage_obj;
+                    global cn.ibizlab.plm.core.testmgmt.service.IreviewService reviewservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IreviewService iBzSysReviewDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "reviewget_current_stage_infobegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[实体行为]
+            rule "deaction2"
+            ruleflow-group "reviewget_current_stage_infodeaction2"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(reviewservice.get(reviewget_current_stage_inforeview_obj.getId()),reviewget_current_stage_inforeview_obj);
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "reviewget_current_stage_infoloopsubcall1"
+            when
+            then
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "reviewget_current_stage_infoprepareparam3"
+            when
+            then
+                            reviewget_current_stage_inforeview_obj.set("id",reviewget_current_stage_infodefault.get("review_id"));
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "reviewget_current_stage_infoprepareparam4"
+            when
+            then
+                            reviewget_current_stage_infostage_list.set("",reviewget_current_stage_inforeview_obj.get("stage"));
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取未完成的评审内容数量]
+            rule "rawsqlcall1"
+            ruleflow-group "reviewget_current_stage_inforawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",reviewget_current_stage_infodefault.get("review_id"));
+        param.put("param1",reviewget_current_stage_infodefault.get("stage_id"));
+    String strSql="SELECT 	sum( result ) as case_number FROM 	( 	SELECT 	CASE 			 		WHEN 			t1.RESULT_STATE = 1 THEN 				1 ELSE 0  			END result  FROM 	review_result t1 	LEFT JOIN relation t2 ON t2.PRINCIPAL_ID = #{et.param0} WHERE 	t1.CONTENT_ID = t2.ID  	AND t1.STAGE_ID = #{et.param1}  	) t";
+                        java.util.List<JSONObject> entities=iBzSysReviewDefaultService.select(strSql,param);//SQL调用
+                            if(entities.size()>0){
+                            JSONObject entity=entities.get(0);
+                                reviewget_current_stage_infoinfo.putAll(entity);
+                            }
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置返回结果]
+            rule "prepareparam6"
+            ruleflow-group "reviewget_current_stage_infoprepareparam6"
+            when
+            then
+                            reviewget_current_stage_infoinfo.set("stage_name1",reviewget_current_stage_infofor_stage_obj.get("name"));
+                            reviewget_current_stage_infoinfo.set("stage_name2",reviewget_current_stage_infofor_stage_obj.get("name"));
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewget_current_stage_infoend1"
+            when
+            then
+                        update(reviewget_current_stage_infodefault);//更新fact中变量值
+                        update(reviewget_current_stage_infofilter);//更新fact中变量值
+                        update(reviewget_current_stage_infofor_stage_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infoinfo);//更新fact中变量值
+                        update(reviewget_current_stage_inforeview_obj);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_list);//更新fact中变量值
+                        update(reviewget_current_stage_infostage_obj);//更新fact中变量值
+            end

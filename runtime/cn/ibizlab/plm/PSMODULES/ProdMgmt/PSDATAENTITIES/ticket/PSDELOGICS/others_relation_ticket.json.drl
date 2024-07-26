@@ -1,0 +1,132 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.others_relation_ticket;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketothers_relation_ticketdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketothers_relation_ticketfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation ticketothers_relation_ticketforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.relation ticketothers_relation_ticketreverse_relation_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketothers_relation_ticketselectdata;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IticketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketothers_relation_ticketbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "ticketothers_relation_ticketbindparam1"
+            when
+            then
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ticketothers_relation_ticketloopsubcall1"
+            when
+            then
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam1"
+            ruleflow-group "ticketothers_relation_ticketrenewparam1"
+            when
+            then
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重新建立参数]
+            rule "renewparam2"
+            ruleflow-group "ticketothers_relation_ticketrenewparam2"
+            when
+            then
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充需要的属性值]
+            rule "prepareparam1"
+            ruleflow-group "ticketothers_relation_ticketprepareparam1"
+            when
+            then
+                            ticketothers_relation_ticketforward_relation_obj.set("principalid",ticketothers_relation_ticketdefault.get("principal_id"));
+                            ticketothers_relation_ticketforward_relation_obj.set("level",ticketothers_relation_ticketdefault.get("level"));
+                            ticketothers_relation_ticketreverse_relation_obj.set("principalid",ticketothers_relation_ticketfor_temp_obj.get("owner_id"));
+                            ticketothers_relation_ticketreverse_relation_obj.set("targetid",ticketothers_relation_ticketdefault.get("principal_id"));
+                            ticketothers_relation_ticketreverse_relation_obj.set("principaltype",ticketothers_relation_ticketdefault.get("target_type"));
+                            ticketothers_relation_ticketreverse_relation_obj.set("targettype",ticketothers_relation_ticketdefault.get("principal_type"));
+                            ticketothers_relation_ticketforward_relation_obj.set("principaltype",ticketothers_relation_ticketdefault.get("principal_type"));
+                            ticketothers_relation_ticketforward_relation_obj.set("targettype",ticketothers_relation_ticketdefault.get("target_type"));
+                            ticketothers_relation_ticketforward_relation_obj.set("targetid",ticketothers_relation_ticketfor_temp_obj.get("owner_id"));
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "ticketothers_relation_ticketend1"
+            when
+            then
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction1"
+            ruleflow-group "ticketothers_relation_ticketdeaction1"
+            when
+            then
+                        relationservice.save(ticketothers_relation_ticketforward_relation_obj);
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction2"
+            ruleflow-group "ticketothers_relation_ticketdeaction2"
+            when
+            then
+                        relationservice.save(ticketothers_relation_ticketreverse_relation_obj);
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.relationadd_dependency" isClosed="false" isExecutable="true" name="base_relation_add_dependency_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.relationadd_dependency">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="relationadd_dependencydefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationadd_dependencydependency" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationadd_dependencyfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="relationadd_dependencyselectdata" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="iBzSysRelationDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="relationadd_dependencydefault" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="relationadd_dependencydependency" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="relationadd_dependencyfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="relationadd_dependencyselectdata" type="cn.ibizlab.plm.core.base.domain.relation" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencybindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencydeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="添加依赖"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_bindparam1" sourceRef="gateway-begin" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $relationadd_dependencydefault:relation();
+                                            $relationadd_dependencydependency:relation();
+                                            $relationadd_dependencyfor_temp_obj:relation();
+                                            $relationadd_dependencyselectdata:relation();
+                                    eval($relationadd_dependencydefault==relationadd_dependencydefault && $relationadd_dependencydependency==relationadd_dependencydependency && $relationadd_dependencyfor_temp_obj==relationadd_dependencyfor_temp_obj && $relationadd_dependencyselectdata==relationadd_dependencyselectdata);
+                                eval((RuleUtils.test($relationadd_dependencydefault.get("principalId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_loopsubcall1" sourceRef="gateway-bindparam1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $relationadd_dependencydefault:relation();
+                                            $relationadd_dependencydependency:relation();
+                                            $relationadd_dependencyfor_temp_obj:relation();
+                                            $relationadd_dependencyselectdata:relation();
+                                    eval($relationadd_dependencydefault==relationadd_dependencydefault && $relationadd_dependencydependency==relationadd_dependencydependency && $relationadd_dependencyfor_temp_obj==relationadd_dependencyfor_temp_obj && $relationadd_dependencyselectdata==relationadd_dependencyselectdata);
+                                eval((RuleUtils.test($relationadd_dependencyselectdata.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-renewparam1_prepareparam2" sourceRef="gateway-renewparam1" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $relationadd_dependencydefault:relation();
+                                            $relationadd_dependencydependency:relation();
+                                            $relationadd_dependencyfor_temp_obj:relation();
+                                            $relationadd_dependencyselectdata:relation();
+                                    eval($relationadd_dependencydefault==relationadd_dependencydefault && $relationadd_dependencydependency==relationadd_dependencydependency && $relationadd_dependencyfor_temp_obj==relationadd_dependencyfor_temp_obj && $relationadd_dependencyselectdata==relationadd_dependencyselectdata);
+                                eval((RuleUtils.test($relationadd_dependencydefault.get("relationType"),"EQ","after")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-renewparam1_prepareparam1" sourceRef="gateway-renewparam1" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $relationadd_dependencydefault:relation();
+                                            $relationadd_dependencydependency:relation();
+                                            $relationadd_dependencyfor_temp_obj:relation();
+                                            $relationadd_dependencyselectdata:relation();
+                                    eval($relationadd_dependencydefault==relationadd_dependencydefault && $relationadd_dependencydependency==relationadd_dependencydependency && $relationadd_dependencyfor_temp_obj==relationadd_dependencyfor_temp_obj && $relationadd_dependencyselectdata==relationadd_dependencyselectdata);
+                                eval((RuleUtils.test($relationadd_dependencydefault.get("relationType"),"EQ","front")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-bindparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam1_gateway-bindparam1_gatewayline" sourceRef="bindparam1" targetRef="gateway-bindparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam1_end_line" sourceRef="gateway-bindparam1" targetRef="gateway-bindparam1_end"/>
+                            <endEvent id="gateway-bindparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-renewparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-renewparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="renewparam1_gateway-renewparam1_gatewayline" sourceRef="renewparam1" targetRef="gateway-renewparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-renewparam1_end_line" sourceRef="gateway-renewparam1" targetRef="gateway-renewparam1_end"/>
+                            <endEvent id="gateway-renewparam1_end" name="end"/>
+        </process>
+    </definitions>

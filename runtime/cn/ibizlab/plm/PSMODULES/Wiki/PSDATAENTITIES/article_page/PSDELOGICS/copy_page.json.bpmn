@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.wiki.service.logic.article_pagecopy_page" isClosed="false" isExecutable="true" name="wiki_article_page_copy_page_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.wiki.service.logic.article_pagecopy_page">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="article_pagecopy_pagedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.attachment()" name="article_pagecopy_pageattachment" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.attachment()" name="article_pagecopy_pageattachments" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagecopy_pagechild_data" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pagecopy_pagefor_tmp_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagecopy_pageis_child" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagecopy_pagepage_id" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.wiki.domain.article_page()" name="article_pagecopy_pagepage_obj" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagecopy_pagesrfactionparam" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagecopy_pagetarget_page_id" type="refentity"/>
+                                <tns:metaData express="new HashMap()" name="article_pagecopy_pagetarget_space_id" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="article_pageservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IattachmentService))" name="attachmentservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.wiki.service.Iarticle_pageService))" name="iBzSysArticle_pageDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="article_pagecopy_pagedefault" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagecopy_pageattachment" type="cn.ibizlab.plm.core.base.domain.attachment" />
+                            <tns:global identifier="article_pagecopy_pageattachments" type="cn.ibizlab.plm.core.base.domain.attachment" />
+                            <tns:global identifier="article_pagecopy_pagefor_tmp_obj" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+                            <tns:global identifier="article_pagecopy_pagepage_obj" type="cn.ibizlab.plm.core.wiki.domain.article_page" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置待复制页面ID"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pagebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定视图数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置待复制页面数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pagedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取待复制的页面"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置待保存的页面"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pagedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存页面"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置附件数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pagedeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="新建附件数据"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pageprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备子页面复制参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="article_pagecopy_pagedelogic1" id="delogic1" implementation="http://www.jboss.org/drools/rule" name="实体处理逻辑"/>
+                        <endEvent id="delogic1_end" name="end"/>
+                        <sequenceFlow id="delogic1_end_line" sourceRef="delogic1" targetRef="delogic1_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_bindparam1" sourceRef="prepareparam1" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam3" sourceRef="deaction1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_loopsubcall2" sourceRef="gateway-deaction2" targetRef="loopsubcall2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagecopy_pagedefault:article_page();
+                                            $article_pagecopy_pageattachment:attachment();
+                                            $article_pagecopy_pageattachments:attachment();
+                                            $article_pagecopy_pagechild_data:Map();
+                                            $article_pagecopy_pagefor_tmp_obj:article_page();
+                                            $article_pagecopy_pageis_child:Map();
+                                            $article_pagecopy_pagepage_id:Map();
+                                            $article_pagecopy_pagepage_obj:article_page();
+                                            $article_pagecopy_pagesrfactionparam:Map();
+                                            $article_pagecopy_pagetarget_page_id:Map();
+                                            $article_pagecopy_pagetarget_space_id:Map();
+                                    eval($article_pagecopy_pagedefault==article_pagecopy_pagedefault && $article_pagecopy_pageattachment==article_pagecopy_pageattachment && $article_pagecopy_pageattachments==article_pagecopy_pageattachments && $article_pagecopy_pagefor_tmp_obj==article_pagecopy_pagefor_tmp_obj && $article_pagecopy_pagepage_obj==article_pagecopy_pagepage_obj && );
+                                eval((RuleUtils.test($article_pagecopy_pageattachments.get(""),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_prepareparam5" sourceRef="gateway-deaction2" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagecopy_pagedefault:article_page();
+                                            $article_pagecopy_pageattachment:attachment();
+                                            $article_pagecopy_pageattachments:attachment();
+                                            $article_pagecopy_pagechild_data:Map();
+                                            $article_pagecopy_pagefor_tmp_obj:article_page();
+                                            $article_pagecopy_pageis_child:Map();
+                                            $article_pagecopy_pagepage_id:Map();
+                                            $article_pagecopy_pagepage_obj:article_page();
+                                            $article_pagecopy_pagesrfactionparam:Map();
+                                            $article_pagecopy_pagetarget_page_id:Map();
+                                            $article_pagecopy_pagetarget_space_id:Map();
+                                    eval($article_pagecopy_pagedefault==article_pagecopy_pagedefault && $article_pagecopy_pageattachment==article_pagecopy_pageattachment && $article_pagecopy_pageattachments==article_pagecopy_pageattachments && $article_pagecopy_pagefor_tmp_obj==article_pagecopy_pagefor_tmp_obj && $article_pagecopy_pagepage_obj==article_pagecopy_pagepage_obj && );
+                                eval((RuleUtils.test($article_pagecopy_pageis_child.get(""),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-loopsubcall2_prepareparam5" sourceRef="gateway-loopsubcall2" targetRef="prepareparam5">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $article_pagecopy_pagedefault:article_page();
+                                            $article_pagecopy_pageattachment:attachment();
+                                            $article_pagecopy_pageattachments:attachment();
+                                            $article_pagecopy_pagechild_data:Map();
+                                            $article_pagecopy_pagefor_tmp_obj:article_page();
+                                            $article_pagecopy_pageis_child:Map();
+                                            $article_pagecopy_pagepage_id:Map();
+                                            $article_pagecopy_pagepage_obj:article_page();
+                                            $article_pagecopy_pagesrfactionparam:Map();
+                                            $article_pagecopy_pagetarget_page_id:Map();
+                                            $article_pagecopy_pagetarget_space_id:Map();
+                                    eval($article_pagecopy_pagedefault==article_pagecopy_pagedefault && $article_pagecopy_pageattachment==article_pagecopy_pageattachment && $article_pagecopy_pageattachments==article_pagecopy_pageattachments && $article_pagecopy_pagefor_tmp_obj==article_pagecopy_pagefor_tmp_obj && $article_pagecopy_pagepage_obj==article_pagecopy_pagepage_obj && );
+                                eval((RuleUtils.test($article_pagecopy_pageis_child.get(""),"EQ","1")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_prepareparam4" sourceRef="loopsubcall2" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction3" sourceRef="prepareparam4" targetRef="deaction3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam5_delogic1" sourceRef="prepareparam5" targetRef="delogic1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-deaction2" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction2_gateway-deaction2_gatewayline" sourceRef="deaction2" targetRef="gateway-deaction2"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction2_end_line" sourceRef="gateway-deaction2" targetRef="gateway-deaction2_end"/>
+                            <endEvent id="gateway-deaction2_end" name="end"/>
+                            <exclusiveGateway id="gateway-loopsubcall2" name="Gateway" gatewayDirection="Diverging" default="gateway-loopsubcall2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="loopsubcall2_gateway-loopsubcall2_gatewayline" sourceRef="loopsubcall2" targetRef="gateway-loopsubcall2"></sequenceFlow>
+                            <sequenceFlow id="gateway-loopsubcall2_end_line" sourceRef="gateway-loopsubcall2" targetRef="gateway-loopsubcall2_end"/>
+                            <endEvent id="gateway-loopsubcall2_end" name="end"/>
+        </process>
+    </definitions>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.baselineset_complete_project" isClosed="false" isExecutable="true" name="base_baseline_set_complete_project_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.baselineset_complete_project">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="baselineset_complete_projectdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselineset_complete_projectfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselineset_complete_projectrelation_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.relation()" name="baselineset_complete_projectrelation_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.version()" name="baselineset_complete_projectversion" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="baselineset_complete_projectwork_item" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IbaselineService))" name="baselineservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IrelationService))" name="relationservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IversionService))" name="versionservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IbaselineService))" name="iBzSysBaselineDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="baselineset_complete_projectdefault" type="cn.ibizlab.plm.core.base.domain.baseline" />
+                            <tns:global identifier="baselineset_complete_projectfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="baselineset_complete_projectrelation_filter" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="baselineset_complete_projectrelation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
+                            <tns:global identifier="baselineset_complete_projectversion" type="cn.ibizlab.plm.core.base.domain.version" />
+                            <tns:global identifier="baselineset_complete_projectwork_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置基线状态为完成状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新基线状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备关联查询过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取基线下关联的工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置工作项参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置版本参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="填充工作项对象主键标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="填充版本属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="baselineset_complete_projectdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="创建新版本"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baselineset_complete_projectdefault:baseline();
+                                            $baselineset_complete_projectfor_temp_obj:relation();
+                                            $baselineset_complete_projectrelation_filter:relation();
+                                            $baselineset_complete_projectrelation_page:relation();
+                                            $baselineset_complete_projectversion:version();
+                                            $baselineset_complete_projectwork_item:work_item();
+                                    eval($baselineset_complete_projectdefault==baselineset_complete_projectdefault && $baselineset_complete_projectfor_temp_obj==baselineset_complete_projectfor_temp_obj && $baselineset_complete_projectrelation_filter==baselineset_complete_projectrelation_filter && $baselineset_complete_projectrelation_page==baselineset_complete_projectrelation_page && $baselineset_complete_projectversion==baselineset_complete_projectversion && $baselineset_complete_projectwork_item==baselineset_complete_projectwork_item);
+                                eval((RuleUtils.test($baselineset_complete_projectrelation_page.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam1" sourceRef="loopsubcall1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_resetparam2" sourceRef="resetparam1" targetRef="resetparam2">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam2_prepareparam3" sourceRef="resetparam2" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-deaction2_prepareparam4" sourceRef="gateway-deaction2" targetRef="prepareparam4">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $baselineset_complete_projectdefault:baseline();
+                                            $baselineset_complete_projectfor_temp_obj:relation();
+                                            $baselineset_complete_projectrelation_filter:relation();
+                                            $baselineset_complete_projectrelation_page:relation();
+                                            $baselineset_complete_projectversion:version();
+                                            $baselineset_complete_projectwork_item:work_item();
+                                    eval($baselineset_complete_projectdefault==baselineset_complete_projectdefault && $baselineset_complete_projectfor_temp_obj==baselineset_complete_projectfor_temp_obj && $baselineset_complete_projectrelation_filter==baselineset_complete_projectrelation_filter && $baselineset_complete_projectrelation_page==baselineset_complete_projectrelation_page && $baselineset_complete_projectversion==baselineset_complete_projectversion && $baselineset_complete_projectwork_item==baselineset_complete_projectwork_item);
+                                eval((RuleUtils.test($baselineset_complete_projectwork_item.get("curVersionId"),"EQ","target_version_id")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction3" sourceRef="prepareparam4" targetRef="deaction3">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-deaction2" name="Gateway" gatewayDirection="Diverging" default="gateway-deaction2_end_line"></exclusiveGateway>
+                            <sequenceFlow id="deaction2_gateway-deaction2_gatewayline" sourceRef="deaction2" targetRef="gateway-deaction2"></sequenceFlow>
+                            <sequenceFlow id="gateway-deaction2_end_line" sourceRef="gateway-deaction2" targetRef="gateway-deaction2_end"/>
+                            <endEvent id="gateway-deaction2_end" name="end"/>
+        </process>
+    </definitions>

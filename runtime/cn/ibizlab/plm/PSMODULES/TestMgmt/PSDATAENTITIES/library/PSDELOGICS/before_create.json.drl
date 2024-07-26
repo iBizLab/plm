@@ -1,0 +1,63 @@
+package cn.ibizlab.plm.testmgmt.logic.librarylogic.before_create;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library librarybefore_createdefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member librarybefore_createmember;
+                global cn.ibizlab.plm.core.testmgmt.domain.library_member librarybefore_createmembers;
+        global cn.ibizlab.plm.core.testmgmt.service.IlibraryService iBzSysLibraryDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "librarybefore_createbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定members]
+            rule "bindparam1"
+            ruleflow-group "librarybefore_createbindparam1"
+            when
+            then
+                        update(librarybefore_createdefault);//更新fact中变量值
+                        update(librarybefore_createmember);//更新fact中变量值
+                        update(librarybefore_createmembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "librarybefore_createend1"
+            when
+            then
+                        update(librarybefore_createdefault);//更新fact中变量值
+                        update(librarybefore_createmember);//更新fact中变量值
+                        update(librarybefore_createmembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "librarybefore_createloopsubcall1"
+            when
+            then
+                        update(librarybefore_createdefault);//更新fact中变量值
+                        update(librarybefore_createmember);//更新fact中变量值
+                        update(librarybefore_createmembers);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置id]
+            rule "prepareparam1"
+            ruleflow-group "librarybefore_createprepareparam1"
+            when
+            then
+                                librarybefore_createmember.set("id",null);
+                        update(librarybefore_createdefault);//更新fact中变量值
+                        update(librarybefore_createmember);//更新fact中变量值
+                        update(librarybefore_createmembers);//更新fact中变量值
+            end

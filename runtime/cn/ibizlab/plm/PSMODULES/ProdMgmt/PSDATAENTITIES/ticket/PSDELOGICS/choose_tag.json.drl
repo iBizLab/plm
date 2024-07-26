@@ -1,0 +1,65 @@
+package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.choose_tag;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketchoose_tagdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketchoose_tagfor_temp_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket ticketchoose_tagsrfactionparam;
+                    global cn.ibizlab.plm.core.prodmgmt.service.IticketService ticketservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IticketService iBzSysTicketDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ticketchoose_tagbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "ticketchoose_tagbindparam1"
+            when
+            then
+                        update(ticketchoose_tagdefault);//更新fact中变量值
+                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
+                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更工单标签信息]
+            rule "deaction1"
+            ruleflow-group "ticketchoose_tagdeaction1"
+            when
+            then
+                        ticketservice.update(ticketchoose_tagdefault);
+                        update(ticketchoose_tagdefault);//更新fact中变量值
+                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
+                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "ticketchoose_tagloopsubcall1"
+            when
+            then
+                        update(ticketchoose_tagdefault);//更新fact中变量值
+                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
+                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置工单标签信息]
+            rule "prepareparam2"
+            ruleflow-group "ticketchoose_tagprepareparam2"
+            when
+            then
+                            ticketchoose_tagdefault.set("tags",ticketchoose_tagfor_temp_obj.get("tags"));
+                        update(ticketchoose_tagdefault);//更新fact中变量值
+                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
+                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
+            end

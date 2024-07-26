@@ -1,0 +1,226 @@
+{
+  "accUserMode" : 0,
+  "codeName" : "scrum_back_log_app_data_upload_view",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPUTILVIEWS/scrum_back_log_app_data_upload_view.json",
+  "memo" : "Scrum需求自定义导入视图",
+  "name" : "ScrumBackLogAppDataUploadView",
+  "getPSAppModule" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Ungroup.json"
+  },
+  "getPSSysCss" : {
+    "cssName" : "data-upload-view"
+  },
+  "getPSViewLayoutPanel" : {
+    "codeName" : "usr0423811806",
+    "controlType" : "VIEWLAYOUTPANEL",
+    "hookEventNames" : [ "ONCLICK" ],
+    "layoutMode" : "FLEX",
+    "logicName" : "ScrumBackLogAppDataUploadView",
+    "memo" : "数据导入视图",
+    "name" : "layoutpanel",
+    "getPSControlLogics" : [ {
+      "eventNames" : "onClick",
+      "itemName" : "dowmload_button",
+      "logicTag" : "layoutpanel",
+      "logicType" : "SCRIPT",
+      "name" : "logic_download",
+      "scriptCode" : "view.downloadTemplate()"
+    }, {
+      "eventNames" : "onClick",
+      "itemName" : "upload_raw",
+      "logicTag" : "layoutpanel",
+      "logicType" : "SCRIPT",
+      "name" : "logic_upload",
+      "scriptCode" : "view.selectAndImport()"
+    } ],
+    "getPSControlParam" : { },
+    "getPSLayout" : {
+      "layout" : "FLEX"
+    },
+    "getRootPSPanelItems" : [ {
+      "itemStyle" : "DEFAULT",
+      "itemType" : "CONTAINER",
+      "name" : "page_container",
+      "getPSLayout" : {
+        "layout" : "FLEX"
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX",
+        "spacingBottom" : "OUTERSMALL",
+        "spacingLeft" : "OUTERSMALL",
+        "spacingRight" : "OUTERSMALL",
+        "spacingTop" : "OUTERSMALL"
+      },
+      "getPSPanelItems" : [ {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_header",
+        "getPSLayout" : {
+          "align" : "space-between",
+          "dir" : "row",
+          "layout" : "FLEX",
+          "vAlign" : "center"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "下载模板描述",
+          "contentType" : "HTML",
+          "htmlContent" : "<p>下载模板</p>\n<p>下载需求导入模板，按照以下规则填写导入数据。</p>",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "download_description",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "content" : "<p>下载模板</p>\n<p>下载需求导入模板，按照以下规则填写导入数据。</p>",
+            "contentType" : "HTML",
+            "name" : "download_description",
+            "predefinedType" : "STATIC_TEXT"
+          },
+          "showCaption" : true
+        }, {
+          "actionType" : "NONE",
+          "buttonStyle" : "PRIMARY",
+          "caption" : "下载模板",
+          "itemStyle" : "PRIMARY",
+          "itemType" : "BUTTON",
+          "name" : "dowmload_button",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSSysImage" : {
+            "glyph" : "xf019@FontAwesome",
+            "cssClass" : "fa fa-download"
+          },
+          "tooltip" : "下载模板",
+          "uIActionTarget" : "NONE",
+          "showCaption" : true
+        } ]
+      }, {
+        "caption" : "容器",
+        "itemStyle" : "DEFAULT",
+        "itemType" : "CONTAINER",
+        "name" : "view_content",
+        "getPSLayout" : {
+          "layout" : "FLEX"
+        },
+        "getPSLayoutPos" : {
+          "grow" : -1,
+          "layout" : "FLEX"
+        },
+        "getPSPanelItems" : [ {
+          "caption" : "滚动条容器",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "CONTAINER",
+          "name" : "container_scroll",
+          "getPSLayout" : {
+            "layout" : "BORDER"
+          },
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSPanelItems" : [ {
+            "caption" : "面板容器",
+            "itemStyle" : "DEFAULT",
+            "itemType" : "CONTAINER",
+            "name" : "container_scroll_main",
+            "getPSLayout" : {
+              "layout" : "BORDER"
+            },
+            "getPSLayoutPos" : {
+              "layout" : "BORDER",
+              "layoutPos" : "CENTER"
+            },
+            "getPSPanelItems" : [ {
+              "caption" : "模板规则",
+              "contentType" : "HTML",
+              "htmlContent" : "<table style=\"border-collapse: collapse; width: 100%; height: 381px;\" border=\"1\">\n<tbody>\n<tr style=\"height: 21px;\">\n<td style=\"width: 49.5098%; height: 21px;\">属性（带\"<span class=\"text-danger ng-star-inserted\">*</span>\"的为必填项）</td>\n<td style=\"width: 49.5098%; height: 21px;\">填写规则</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">工作项类型<span class=\"text-danger ng-star-inserted\">*</span></td>\n<td style=\"width: 49.5098%; height: 30px;\"><span class=\"text-danger ng-star-inserted\">必填项，</span>可选值：史诗、特性、用户故事。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr>\n<td style=\"width: 49.5098%;\">标题<span class=\"text-danger ng-star-inserted\">*</span></td>\n<td style=\"width: 49.5098%;\"><span class=\"text-danger ng-star-inserted\">必填项，</span>不可为空。存在父子关系时，按照子工作项标题在前加&ldquo;&rarr;&rdquo;；二级子工作项标题前加&ldquo;&rarr;&rarr;&rdquo;的格式填写，并且子工作项跟随父工作项。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">状态</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写需求状态：可选值为当前工作项类型可选的状态，为空时默认为初始状态。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">负责人</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写团队成员的姓名，若团队中有重名的成员默认随机选择其中一位成员。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">开始时间</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写格式为 YYYY-MM-DD TT:TT，如&ldquo;1945-09-02 09:00&rdquo;，具体时刻可选填。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">结束时间</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写格式为 YYYY-MM-DD TT:TT，如&ldquo;1949-10-01 14:00&rdquo;，具体时刻可选填。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">描述</td>\n<td style=\"width: 49.5098%; height: 30px;\">文本。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">关注人</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写团队成员的姓名，若团队中有重名的成员默认随机选择其中一位成员，填写多个值时，请用\"，\"隔开。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">优先级</td>\n<td style=\"width: 49.5098%; height: 30px;\">可选值：最高、较高、普通、较低、最低</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">标签</td>\n<td style=\"width: 49.5098%; height: 30px;\">标签支持多个导入，需要导入系统内存在的标签，并使用&ldquo;，&rdquo;隔开。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">风险</td>\n<td style=\"width: 49.5098%; height: 30px;\">可选值：高、中、低。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">需求来源</td>\n<td style=\"width: 49.5098%; height: 30px;\">可选值：产品规划、用户反馈、内部需求、竞品调研、其他。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr>\n<td style=\"width: 49.5098%;\">需求类型</td>\n<td style=\"width: 49.5098%;\">可选值：技术需求、功能需求、安全需求、体验优化。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr>\n<td style=\"width: 49.5098%;\">迭代</td>\n<td style=\"width: 49.5098%;\">仅用户故事填写有效，只能填写项目中未完成的迭代。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n</tbody>\n</table>",
+              "itemStyle" : "DEFAULT",
+              "itemType" : "RAWITEM",
+              "name" : "template_rule",
+              "getPSLayoutPos" : {
+                "layout" : "BORDER",
+                "layoutPos" : "CENTER"
+              },
+              "getPSRawItem" : {
+                "content" : "<table style=\"border-collapse: collapse; width: 100%; height: 381px;\" border=\"1\">\n<tbody>\n<tr style=\"height: 21px;\">\n<td style=\"width: 49.5098%; height: 21px;\">属性（带\"<span class=\"text-danger ng-star-inserted\">*</span>\"的为必填项）</td>\n<td style=\"width: 49.5098%; height: 21px;\">填写规则</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">工作项类型<span class=\"text-danger ng-star-inserted\">*</span></td>\n<td style=\"width: 49.5098%; height: 30px;\"><span class=\"text-danger ng-star-inserted\">必填项，</span>可选值：史诗、特性、用户故事。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr>\n<td style=\"width: 49.5098%;\">标题<span class=\"text-danger ng-star-inserted\">*</span></td>\n<td style=\"width: 49.5098%;\"><span class=\"text-danger ng-star-inserted\">必填项，</span>不可为空。存在父子关系时，按照子工作项标题在前加&ldquo;&rarr;&rdquo;；二级子工作项标题前加&ldquo;&rarr;&rarr;&rdquo;的格式填写，并且子工作项跟随父工作项。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">状态</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写需求状态：可选值为当前工作项类型可选的状态，为空时默认为初始状态。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">负责人</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写团队成员的姓名，若团队中有重名的成员默认随机选择其中一位成员。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">开始时间</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写格式为 YYYY-MM-DD TT:TT，如&ldquo;1945-09-02 09:00&rdquo;，具体时刻可选填。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">结束时间</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写格式为 YYYY-MM-DD TT:TT，如&ldquo;1949-10-01 14:00&rdquo;，具体时刻可选填。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">描述</td>\n<td style=\"width: 49.5098%; height: 30px;\">文本。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">关注人</td>\n<td style=\"width: 49.5098%; height: 30px;\">填写团队成员的姓名，若团队中有重名的成员默认随机选择其中一位成员，填写多个值时，请用\"，\"隔开。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">优先级</td>\n<td style=\"width: 49.5098%; height: 30px;\">可选值：最高、较高、普通、较低、最低</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">标签</td>\n<td style=\"width: 49.5098%; height: 30px;\">标签支持多个导入，需要导入系统内存在的标签，并使用&ldquo;，&rdquo;隔开。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">风险</td>\n<td style=\"width: 49.5098%; height: 30px;\">可选值：高、中、低。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr style=\"height: 30px;\">\n<td style=\"width: 49.5098%; height: 30px;\">需求来源</td>\n<td style=\"width: 49.5098%; height: 30px;\">可选值：产品规划、用户反馈、内部需求、竞品调研、其他。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr>\n<td style=\"width: 49.5098%;\">需求类型</td>\n<td style=\"width: 49.5098%;\">可选值：技术需求、功能需求、安全需求、体验优化。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n<tr>\n<td style=\"width: 49.5098%;\">迭代</td>\n<td style=\"width: 49.5098%;\">仅用户故事填写有效，只能填写项目中未完成的迭代。</td>\n<td style=\"width: 9.59885%;\">&nbsp;</td>\n</tr>\n</tbody>\n</table>",
+                "contentType" : "HTML",
+                "name" : "template_rule",
+                "predefinedType" : "STATIC_LABEL"
+              },
+              "showCaption" : true
+            } ],
+            "predefinedType" : "CONTAINER_SCROLL_MAIN",
+            "showCaption" : true
+          } ],
+          "predefinedType" : "CONTAINER_SCROLL"
+        }, {
+          "caption" : "上传文件描述",
+          "contentType" : "HTML",
+          "htmlContent" : "<p>上传文件</p>\n<p>上传需要导入的 Excel 文件，上传文件的表头字段名必须与对应需求属性一致，仅支持 xls 、 xlsx 。</p>",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "upload_description",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "content" : "<p>上传文件</p>\n<p>上传需要导入的 Excel 文件，上传文件的表头字段名必须与对应需求属性一致，仅支持 xls 、 xlsx 。</p>",
+            "contentType" : "HTML",
+            "name" : "upload_description",
+            "predefinedType" : "STATIC_TEXT"
+          },
+          "showCaption" : true
+        }, {
+          "caption" : "文本",
+          "contentType" : "HTML",
+          "htmlContent" : "<p>点击此处&nbsp; &lt;a&gt;<a>上传文件&lt;/a&gt;</a></p>",
+          "itemStyle" : "DEFAULT",
+          "itemType" : "RAWITEM",
+          "name" : "upload_raw",
+          "getPSLayoutPos" : {
+            "grow" : -1,
+            "layout" : "FLEX"
+          },
+          "getPSRawItem" : {
+            "content" : "<p>点击此处&nbsp; &lt;a&gt;<a>上传文件&lt;/a&gt;</a></p>",
+            "contentType" : "HTML",
+            "name" : "upload_raw",
+            "predefinedType" : "STATIC_TEXT"
+          },
+          "showCaption" : true
+        } ],
+        "predefinedType" : "CONTAINER"
+      } ]
+    } ],
+    "layoutBodyOnly" : false,
+    "layoutPanel" : true,
+    "useDefaultLayout" : false,
+    "viewProxyMode" : true,
+    "modelid" : "30F873F3-5E3F-4462-935B-C0082DA1535A",
+    "modeltype" : "PSSYSVIEWLAYOUTPANEL",
+    "getPSControls" : [ {
+      "codeName" : "captionbar",
+      "controlType" : "CAPTIONBAR",
+      "name" : "captionbar",
+      "getPSControlParam" : { }
+    } ]
+  },
+  "title" : "Scrum需求应用数据导入视图",
+  "viewStyle" : "DEFAULT",
+  "viewType" : "APPDATAUPLOADVIEW",
+  "enableDP" : false,
+  "modelid" : "1F71395C-76E9-40FB-90C4-3FA58D46C102",
+  "modeltype" : "PSAPPUTILVIEW"
+}

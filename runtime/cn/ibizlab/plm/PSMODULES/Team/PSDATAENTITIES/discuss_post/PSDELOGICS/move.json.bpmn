@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.team.service.logic.discuss_postmove" isClosed="false" isExecutable="true" name="team_discuss_post_move_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.team.service.logic.discuss_postmove">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="discuss_postmovedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.team.domain.discuss_post()" name="discuss_postmovefor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.team.domain.discuss_post()" name="discuss_postmovesrfactionparam" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.team.domain.discuss_post()" name="discuss_postmoveupdate_obj" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.team.service.Idiscuss_postService))" name="discuss_postservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.team.service.Idiscuss_postService))" name="iBzSysDiscuss_postDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="discuss_postmovedefault" type="cn.ibizlab.plm.core.team.domain.discuss_post" />
+                            <tns:global identifier="discuss_postmovefor_temp_obj" type="cn.ibizlab.plm.core.team.domain.discuss_post" />
+                            <tns:global identifier="discuss_postmovesrfactionparam" type="cn.ibizlab.plm.core.team.domain.discuss_post" />
+                            <tns:global identifier="discuss_postmoveupdate_obj" type="cn.ibizlab.plm.core.team.domain.discuss_post" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmovebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定界面数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmoveloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmoveprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充移动到的话题标识"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="discuss_postmovedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="执行更新"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam1" sourceRef="loopsubcall1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_deaction1" sourceRef="gateway-prepareparam1" targetRef="deaction1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $discuss_postmovedefault:discuss_post();
+                                            $discuss_postmovefor_temp_obj:discuss_post();
+                                            $discuss_postmovesrfactionparam:discuss_post();
+                                            $discuss_postmoveupdate_obj:discuss_post();
+                                    eval($discuss_postmovedefault==discuss_postmovedefault && $discuss_postmovefor_temp_obj==discuss_postmovefor_temp_obj && $discuss_postmovesrfactionparam==discuss_postmovesrfactionparam && $discuss_postmoveupdate_obj==discuss_postmoveupdate_obj);
+                                eval((RuleUtils.test($discuss_postmoveupdate_obj.get("topicId"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>
