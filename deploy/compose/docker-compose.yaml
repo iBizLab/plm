@@ -7,7 +7,7 @@ networks:
 services:
   #mysql
   mysql:
-    image: ibizlab/mysql:5.7.plm.20240611
+    image: ibizlab/mysql:5.7.plm.20240726
     ports:
     - "30006:3306"  
     environment:
@@ -120,7 +120,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #ibiz-ebsx-allinone
   ibiz-ebsx-allinone:
-    image: ibizlab/ibiz-ebsx-allinone-rt:8.1.0.530.240627
+    image: ibizlab/ibiz-ebsx-allinone-rt:8.1.0.547.240726
     environment:
     - SPRING_CLOUD_NACOS_DISCOVERY_IP=nacos.ibizcloud.cn
     - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=nacos.ibizcloud.cn:30048          
@@ -202,7 +202,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #plmweb
   plmweb:
-    image: ibizlab/ibiz-cloud-web-runner:9.0.7.23.plm.240611
+    image: ibizlab/ibiz-cloud-web-runner:9.0.7.34.plm.240726
     ports:
     - 30250:80
     networks:
@@ -217,7 +217,7 @@ services:
     - "nacos.ibizcloud.cn:${IPADDR}"
   #plmservice
   plmservice:
-    image: ibizlab/ibiz-service-runner:8.1.0.534.2
+    image: ibizlab/ibiz-service-runner:8.1.0.548.3
     ports:
     - "30251:30251"
     networks:
