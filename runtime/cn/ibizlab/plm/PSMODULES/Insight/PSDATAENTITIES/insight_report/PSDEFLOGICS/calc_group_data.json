@@ -1,0 +1,88 @@
+{
+  "codeName" : "calc_group_data",
+  "dEFLogicMode" : "COMPUTE",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEFLOGICS/calc_group_data.json",
+  "logicName" : "计算分组信息",
+  "logicSubType" : "DEFIELD",
+  "name" : "计算分组信息",
+  "getPSDEField" : {
+    "name" : "GROUP_DATA",
+    "codeName" : "group_data"
+  },
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 110,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 160,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 838,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "group_data"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 292
+  }, {
+    "code" : "var _default = logic.getParam('Default');\r\nvar groupdata = logic.getParam('group_data');\r\nif( _default.get(\"group\")!=null){\r\n    groupdata.set(\"groupname\", _default.codeitem(\"group\").text);\r\n    groupdata.set(\"groupcodename\", _default.get(\"group\"));\r\n}\r\nif( _default.get(\"id\")!=null){\r\n    var appportletid = \"plmweb.\";\r\n    var appportletcodename = \"uxbireport__\"+_default.get(\"id\").replace(\".\", \"__\");\r\n    appportletid = appportletid + appportletcodename;\r\n    groupdata.set(\"psappportletid\",appportletid.toLowerCase());\r\n    groupdata.set(\"codename\",appportletcodename.toLowerCase());\r\n    groupdata.set(\"psappportletname\",_default.get(\"name\"));\r\n    _default.set(\"ctrl_id\",appportletid.toLowerCase());\r\n}\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "JavaScript",
+    "leftPos" : 459,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "转换参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 300
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "group_data",
+    "logicName" : "group_data",
+    "name" : "group_data",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Insight/PSDATAENTITIES/insight_report.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

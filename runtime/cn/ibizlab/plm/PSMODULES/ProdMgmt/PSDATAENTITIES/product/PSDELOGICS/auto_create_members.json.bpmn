@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.prodmgmt.service.logic.productauto_create_members" isClosed="false" isExecutable="true" name="prodmgmt_product_auto_create_members_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.prodmgmt.service.logic.productauto_create_members">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="productauto_create_membersdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="productauto_create_membersmember" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="productauto_create_membersmember_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="productauto_create_membersmember_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.prodmgmt.domain.product_member()" name="productauto_create_membersproduct_member" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.ImemberService))" name="memberservice" type="service"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService))" name="product_memberservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.prodmgmt.service.IproductService))" name="iBzSysProductDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="productauto_create_membersdefault" type="cn.ibizlab.plm.core.prodmgmt.domain.product" />
+                            <tns:global identifier="productauto_create_membersmember" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="productauto_create_membersmember_obj" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="productauto_create_membersmember_page" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="productauto_create_membersproduct_member" type="cn.ibizlab.plm.core.prodmgmt.domain.product_member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备查询参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询用户数据"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="生成用户数据"/>
+                        <endEvent id="deaction3_end" name="end"/>
+                        <sequenceFlow id="deaction3_end_line" sourceRef="deaction3" targetRef="deaction3_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="productauto_create_membersend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam2" sourceRef="gateway-begin" targetRef="prepareparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $productauto_create_membersdefault:product();
+                                            $productauto_create_membersmember:member();
+                                            $productauto_create_membersmember_obj:member();
+                                            $productauto_create_membersmember_page:member();
+                                            $productauto_create_membersproduct_member:product_member();
+                                    eval($productauto_create_membersdefault==productauto_create_membersdefault && $productauto_create_membersmember==productauto_create_membersmember && $productauto_create_membersmember_obj==productauto_create_membersmember_obj && $productauto_create_membersmember_page==productauto_create_membersmember_page && $productauto_create_membersproduct_member==productauto_create_membersproduct_member);
+                                eval((RuleUtils.test($productauto_create_membersdefault.get("scopeType"),"EQ","user_group")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam1" sourceRef="loopsubcall1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_end1" sourceRef="loopsubcall1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_prepareparam4" sourceRef="resetparam1" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam4_deaction3" sourceRef="prepareparam4" targetRef="deaction3">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+        </process>
+    </definitions>

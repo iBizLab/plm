@@ -1,0 +1,52 @@
+package cn.ibizlab.plm.testmgmt.logic.librarylogic.archive;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.library libraryarchivedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.library libraryarchiveupdate_obj;
+                    global cn.ibizlab.plm.core.testmgmt.service.IlibraryService libraryservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IlibraryService iBzSysLibraryDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "libraryarchivebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置归档状态]
+            rule "prepareparam1"
+            ruleflow-group "libraryarchiveprepareparam1"
+            when
+            then
+                            libraryarchiveupdate_obj.set("isarchived","1");
+                            libraryarchiveupdate_obj.set("id",libraryarchivedefault.get("id"));
+                        update(libraryarchivedefault);//更新fact中变量值
+                        update(libraryarchiveupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新归档状态]
+            rule "deaction1"
+            ruleflow-group "libraryarchivedeaction1"
+            when
+            then
+                        libraryservice.update(libraryarchiveupdate_obj);
+                        update(libraryarchivedefault);//更新fact中变量值
+                        update(libraryarchiveupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "libraryarchiveend1"
+            when
+            then
+                        update(libraryarchivedefault);//更新fact中变量值
+                        update(libraryarchiveupdate_obj);//更新fact中变量值
+            end

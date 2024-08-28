@@ -1,0 +1,59 @@
+package cn.ibizlab.plm.testmgmt.logic.test_caselogic.choose_case_template;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case test_casechoose_case_templatedefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case_template test_casechoose_case_templatechoosed_data;
+                global java.util.Map test_casechoose_case_templatefor_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case_template test_casechoose_case_templatesrfactionparam;
+                    global cn.ibizlab.plm.core.testmgmt.service.Itest_case_templateService test_case_templateservice;
+        global cn.ibizlab.plm.core.testmgmt.service.Itest_caseService iBzSysTest_caseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "test_casechoose_case_templatebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "test_casechoose_case_templateend1"
+            when
+            then
+                        update(test_casechoose_case_templatedefault);//更新fact中变量值
+                        update(test_casechoose_case_templatechoosed_data);//更新fact中变量值
+                        update(test_casechoose_case_templatefor_obj);//更新fact中变量值
+                        update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取选中数据id]
+            rule "prepareparam1"
+            ruleflow-group "test_casechoose_case_templateprepareparam1"
+            when
+            then
+                            test_casechoose_case_templatechoosed_data.set("id",test_casechoose_case_templatedefault.get("choosed_data"));
+                        update(test_casechoose_case_templatedefault);//更新fact中变量值
+                        update(test_casechoose_case_templatechoosed_data);//更新fact中变量值
+                        update(test_casechoose_case_templatefor_obj);//更新fact中变量值
+                        update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取选中模板详情]
+            rule "deaction1"
+            ruleflow-group "test_casechoose_case_templatedeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(test_case_templateservice.get(test_casechoose_case_templatechoosed_data.getId()),test_casechoose_case_templatechoosed_data);
+                        update(test_casechoose_case_templatedefault);//更新fact中变量值
+                        update(test_casechoose_case_templatechoosed_data);//更新fact中变量值
+                        update(test_casechoose_case_templatefor_obj);//更新fact中变量值
+                        update(test_casechoose_case_templatesrfactionparam);//更新fact中变量值
+            end

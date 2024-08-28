@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.testmgmt.service.logic.test_planoppriv_logic" isClosed="false" isExecutable="true" name="testmgmt_test_plan_oppriv_logic_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.testmgmt.service.logic.test_planoppriv_logic">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="test_planoppriv_logicdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.testmgmt.domain.test_plan()" name="test_planoppriv_logicoppriv" type="refentity"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.testmgmt.service.Itest_planService))" name="iBzSysTest_planDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="test_planoppriv_logicdefault" type="cn.ibizlab.plm.core.testmgmt.domain.test_plan" />
+                            <tns:global identifier="test_planoppriv_logicoppriv" type="cn.ibizlab.plm.core.testmgmt.domain.test_plan" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_planoppriv_logicprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="不允许修改"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="test_planoppriv_logicend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
+                        <endEvent id="end1_end" name="end"/>
+                        <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                    <sequenceFlow id="gateway-begin_prepareparam1" sourceRef="gateway-begin" targetRef="prepareparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_planoppriv_logicdefault:test_plan();
+                                            $test_planoppriv_logicoppriv:test_plan();
+                                    eval($test_planoppriv_logicdefault==test_planoppriv_logicdefault && $test_planoppriv_logicoppriv==test_planoppriv_logicoppriv);
+                                eval((RuleUtils.test($test_planoppriv_logicdefault.get("status"),"EQ","completed")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-begin_end1" sourceRef="gateway-begin" targetRef="end1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $test_planoppriv_logicdefault:test_plan();
+                                            $test_planoppriv_logicoppriv:test_plan();
+                                    eval($test_planoppriv_logicdefault==test_planoppriv_logicdefault && $test_planoppriv_logicoppriv==test_planoppriv_logicoppriv);
+                                eval((RuleUtils.test($test_planoppriv_logicdefault.get("status"),"NOTEQ","completed")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_end1" sourceRef="prepareparam1" targetRef="end1">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+        </process>
+    </definitions>

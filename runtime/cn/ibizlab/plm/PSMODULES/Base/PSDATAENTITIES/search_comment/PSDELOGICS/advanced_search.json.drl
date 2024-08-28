@@ -1,0 +1,347 @@
+package cn.ibizlab.plm.base.logic.search_commentlogic.advanced_search;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.search_comment search_commentadvanced_searchdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.customer search_commentadvanced_searchcustomer;
+                global cn.ibizlab.plm.core.base.domain.search_comment search_commentadvanced_searchfor_temp_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea search_commentadvanced_searchidea;
+                global cn.ibizlab.plm.core.wiki.domain.article_page search_commentadvanced_searchpage;
+                global cn.ibizlab.plm.core.base.domain.search_comment search_commentadvanced_searchresult_page;
+                global cn.ibizlab.plm.core.testmgmt.domain.run search_commentadvanced_searchrun;
+                global cn.ibizlab.plm.core.testmgmt.domain.test_case search_commentadvanced_searchtest_case;
+                global cn.ibizlab.plm.core.prodmgmt.domain.ticket search_commentadvanced_searchticket;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item search_commentadvanced_searchwork_item;
+                    global cn.ibizlab.plm.core.base.service.Isearch_commentService search_commentservice;
+        global cn.ibizlab.plm.core.base.service.Isearch_commentService iBzSysSearch_commentDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "search_commentadvanced_searchbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "search_commentadvanced_searchbindparam1"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充工作项展示属性]
+            rule "prepareparam1"
+            ruleflow-group "search_commentadvanced_searchprepareparam1"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principalidentifier",search_commentadvanced_searchwork_item.get("showidentifier"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchwork_item.get("projectid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchwork_item.get("projectname"));
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchwork_item.get("title"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[关联查询]
+            rule "dedataset1"
+            ruleflow-group "search_commentadvanced_searchdedataset1"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam2"
+            ruleflow-group "search_commentadvanced_searchbindparam2"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充产品需求展示属性]
+            rule "prepareparam2"
+            ruleflow-group "search_commentadvanced_searchprepareparam2"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principalidentifier",search_commentadvanced_searchidea.get("showidentifier"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchidea.get("productid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchidea.get("productname"));
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchidea.get("title"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "search_commentadvanced_searchloopsubcall1"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam3"
+            ruleflow-group "search_commentadvanced_searchbindparam3"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充工单展示属性]
+            rule "prepareparam3"
+            ruleflow-group "search_commentadvanced_searchprepareparam3"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchticket.get("title"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchticket.get("productid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchticket.get("productname"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalidentifier",search_commentadvanced_searchticket.get("showidentifier"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam4"
+            ruleflow-group "search_commentadvanced_searchbindparam4"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充客户展示属性]
+            rule "prepareparam4"
+            ruleflow-group "search_commentadvanced_searchprepareparam4"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchcustomer.get("name"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchcustomer.get("productid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchcustomer.get("productname"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam5"
+            ruleflow-group "search_commentadvanced_searchbindparam5"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充测试用例展示属性]
+            rule "prepareparam5"
+            ruleflow-group "search_commentadvanced_searchprepareparam5"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principalidentifier",search_commentadvanced_searchtest_case.get("showidentifier"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchtest_case.get("testlibraryid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchtest_case.get("title"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchtest_case.get("testlibraryname"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "search_commentadvanced_searchend1"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam6"
+            ruleflow-group "search_commentadvanced_searchbindparam6"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充页面展示属性]
+            rule "prepareparam6"
+            ruleflow-group "search_commentadvanced_searchprepareparam6"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchpage.get("name"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchpage.get("spaceid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchpage.get("spacename"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalidentifier",search_commentadvanced_searchpage.get("showidentifier"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam7"
+            ruleflow-group "search_commentadvanced_searchbindparam7"
+            when
+            then
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充执行用例展示属性]
+            rule "prepareparam7"
+            ruleflow-group "search_commentadvanced_searchprepareparam7"
+            when
+            then
+                            search_commentadvanced_searchfor_temp_obj.set("principaltitle",search_commentadvanced_searchrun.get("title"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentid",search_commentadvanced_searchrun.get("libraryid"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalparentname",search_commentadvanced_searchrun.get("libraryname"));
+                            search_commentadvanced_searchfor_temp_obj.set("principalidentifier",search_commentadvanced_searchrun.get("identifier"));
+                            search_commentadvanced_searchfor_temp_obj.set("case_id",search_commentadvanced_searchrun.get("caseid"));
+                        update(search_commentadvanced_searchdefault);//更新fact中变量值
+                        update(search_commentadvanced_searchcustomer);//更新fact中变量值
+                        update(search_commentadvanced_searchfor_temp_obj);//更新fact中变量值
+                        update(search_commentadvanced_searchidea);//更新fact中变量值
+                        update(search_commentadvanced_searchpage);//更新fact中变量值
+                        update(search_commentadvanced_searchresult_page);//更新fact中变量值
+                        update(search_commentadvanced_searchrun);//更新fact中变量值
+                        update(search_commentadvanced_searchtest_case);//更新fact中变量值
+                        update(search_commentadvanced_searchticket);//更新fact中变量值
+                        update(search_commentadvanced_searchwork_item);//更新fact中变量值
+            end

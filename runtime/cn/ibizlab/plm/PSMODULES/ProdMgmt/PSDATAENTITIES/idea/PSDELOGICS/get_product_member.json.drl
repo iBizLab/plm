@@ -1,0 +1,148 @@
+package cn.ibizlab.plm.prodmgmt.logic.idealogic.get_product_member;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.prodmgmt.domain.idea ideaget_product_memberdefault;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member ideaget_product_memberfilter;
+                global java.util.Map ideaget_product_memberfor_obj;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member ideaget_product_membermembers;
+                global java.util.Map ideaget_product_memberuser;
+                    global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService product_memberservice;
+        global cn.ibizlab.plm.core.prodmgmt.service.IideaService iBzSysIdeaDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "ideaget_product_memberbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "ideaget_product_memberdebugparam1"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "ideaget_product_memberrawsfcode3"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode4"
+            ruleflow-group "ideaget_product_memberrawsfcode4"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "ideaget_product_memberend2"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取产品id并设置过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "ideaget_product_memberprepareparam2"
+            when
+            then
+                            ideaget_product_memberfilter.set("n_product_id_eq",ideaget_product_memberdefault.get("productid"));
+                                ideaget_product_memberfilter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为产品成员]
+            rule "dedataset3"
+            ruleflow-group "ideaget_product_memberdedataset3"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "ideaget_product_memberprepareparam5"
+            when
+            then
+                            ideaget_product_memberfor_obj.set("",ideaget_product_membermembers.get("0"));
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "ideaget_product_memberrawsfcode1"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[非只读权限]
+            rule "rawsfcode2"
+            ruleflow-group "ideaget_product_memberrawsfcode2"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "ideaget_product_memberend6"
+            when
+            then
+                        update(ideaget_product_memberdefault);//更新fact中变量值
+                        update(ideaget_product_memberfilter);//更新fact中变量值
+                        update(ideaget_product_memberfor_obj);//更新fact中变量值
+                        update(ideaget_product_membermembers);//更新fact中变量值
+                        update(ideaget_product_memberuser);//更新fact中变量值
+            end

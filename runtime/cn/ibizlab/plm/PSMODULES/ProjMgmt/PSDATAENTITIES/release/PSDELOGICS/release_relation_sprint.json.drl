@@ -1,0 +1,131 @@
+package cn.ibizlab.plm.projmgmt.logic.releaselogic.release_relation_sprint;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.release releaserelease_relation_sprintdefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.sprint releaserelease_relation_sprintfor_temp_obj;
+                global cn.ibizlab.plm.core.base.domain.relation releaserelease_relation_sprintforward_relation_obj;
+                global cn.ibizlab.plm.core.base.domain.relation releaserelease_relation_sprintreverse_relation_obj;
+                global cn.ibizlab.plm.core.projmgmt.domain.sprint releaserelease_relation_sprintselectdata;
+                    global cn.ibizlab.plm.core.base.service.IrelationService relationservice;
+        global cn.ibizlab.plm.core.projmgmt.service.IreleaseService iBzSysReleaseDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "releaserelease_relation_sprintbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "releaserelease_relation_sprintbindparam1"
+            when
+            then
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "releaserelease_relation_sprintloopsubcall1"
+            when
+            then
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置反向关系参数]
+            rule "resetparam1"
+            ruleflow-group "releaserelease_relation_sprintresetparam1"
+            when
+            then
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置正向关系参数]
+            rule "resetparam2"
+            ruleflow-group "releaserelease_relation_sprintresetparam2"
+            when
+            then
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "releaserelease_relation_sprintprepareparam1"
+            when
+            then
+                            releaserelease_relation_sprintforward_relation_obj.set("principalid",releaserelease_relation_sprintdefault.get("principal_id"));
+                            releaserelease_relation_sprintreverse_relation_obj.set("principalid",releaserelease_relation_sprintfor_temp_obj.get("id"));
+                            releaserelease_relation_sprintforward_relation_obj.set("targetid",releaserelease_relation_sprintfor_temp_obj.get("id"));
+                            releaserelease_relation_sprintreverse_relation_obj.set("targetid",releaserelease_relation_sprintdefault.get("principal_id"));
+                            releaserelease_relation_sprintreverse_relation_obj.set("principaltype","sprint");
+                            releaserelease_relation_sprintreverse_relation_obj.set("targettype","release");
+                            releaserelease_relation_sprintforward_relation_obj.set("principaltype","release");
+                            releaserelease_relation_sprintforward_relation_obj.set("targettype","sprint");
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "releaserelease_relation_sprintend1"
+            when
+            then
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成反向关联数据]
+            rule "deaction1"
+            ruleflow-group "releaserelease_relation_sprintdeaction1"
+            when
+            then
+                        relationservice.save(releaserelease_relation_sprintreverse_relation_obj);
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[生成正向关联数据]
+            rule "deaction2"
+            ruleflow-group "releaserelease_relation_sprintdeaction2"
+            when
+            then
+                        relationservice.save(releaserelease_relation_sprintforward_relation_obj);
+                        update(releaserelease_relation_sprintdefault);//更新fact中变量值
+                        update(releaserelease_relation_sprintfor_temp_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintforward_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintreverse_relation_obj);//更新fact中变量值
+                        update(releaserelease_relation_sprintselectdata);//更新fact中变量值
+            end

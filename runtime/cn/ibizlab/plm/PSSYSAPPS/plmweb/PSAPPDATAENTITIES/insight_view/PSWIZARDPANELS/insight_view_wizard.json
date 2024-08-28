@@ -1,0 +1,1940 @@
+{
+  "codeName" : "insight_view_wizard",
+  "controlType" : "WIZARDPANEL",
+  "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view/PSWIZARDPANELS/insight_view_wizard.json",
+  "getFinishPSControlAction" : {
+    "modelref" : true,
+    "id" : "finish",
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "name" : "finish",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+    }
+  },
+  "getInitPSControlAction" : {
+    "modelref" : true,
+    "id" : "init",
+    "actionName" : "CreateTemp",
+    "actionType" : "DEACTION",
+    "name" : "init",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "CreateTemp"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+    }
+  },
+  "logicName" : "视图新建向导",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+  },
+  "getPSDEEditForms" : [ {
+    "codeName" : "wizard_create",
+    "controlType" : "FORM",
+    "defaultLabelWidth" : 130,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view/PSFORMS/wizard_create.json",
+    "formFuncMode" : "WIZARDFORM",
+    "getGetPSControlAction" : {
+      "modelref" : true,
+      "id" : "load",
+      "actionName" : "GetTemp",
+      "actionType" : "DEACTION",
+      "name" : "load",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "GetTemp"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+      }
+    },
+    "hookEventNames" : [ "ONLOADSUCCESS", "SAVE", "LOAD" ],
+    "logicName" : "新建表单",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "GetTemp",
+        "actionType" : "DEACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "GetTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+        }
+      }, {
+        "actionName" : "UpdateTemp",
+        "actionType" : "DEACTION",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "UpdateTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "wizardpanel_form_fill_info"
+    },
+    "getPSControlLogics" : [ {
+      "eventNames" : "onLoadSuccess",
+      "logicTag" : "wizardpanel_form_fill_info",
+      "logicType" : "APPDEUILOGIC",
+      "name" : "logic",
+      "getPSAppDEUILogic" : {
+        "modelref" : true,
+        "id" : "remove_batch_temp"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+      }
+    }, {
+      "eventNames" : "SAVE",
+      "logicTag" : "wizardpanel_form_fill_info",
+      "logicType" : "CUSTOM",
+      "name" : "wizardpanel_formsave"
+    }, {
+      "eventNames" : "LOAD",
+      "logicTag" : "wizardpanel_form_fill_info",
+      "logicType" : "CUSTOM",
+      "name" : "wizardpanel_formload"
+    } ],
+    "getPSControlParam" : {
+      "getPSDEWizardForm" : {
+        "modelref" : true,
+        "id" : "fill_info"
+      },
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "wizardpanel_form_fill_info"
+    },
+    "getPSDEFormItems" : [ {
+      "id" : "srfupdatedate",
+      "hidden" : true,
+      "dataType" : 5,
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      }
+    }, {
+      "id" : "srforikey",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfkey",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "id" : "srfmajortext",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "id" : "srftempmode",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfuf",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfdeid",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfsourcekey",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "scope_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_ID",
+        "codeName" : "scope_id"
+      }
+    }, {
+      "id" : "scope_type",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_TYPE",
+        "codeName" : "scope_type"
+      }
+    }, {
+      "id" : "name",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "id" : "visibility",
+      "dataType" : 25,
+      "createDV" : "private",
+      "updateDV" : "private",
+      "getPSAppDEField" : {
+        "name" : "VISIBILITY",
+        "codeName" : "visibility"
+      }
+    }, {
+      "id" : "identifier",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      }
+    }, {
+      "id" : "description",
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      }
+    }, {
+      "id" : "id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    } ],
+    "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.INSIGHT_VIEW.WIZARD_CREATE.FORMPAGE.FORMPAGE1"
+      },
+      "caption" : "基本信息",
+      "codeName" : "formpage1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMPAGE",
+      "name" : "formpage1",
+      "getPSDEFormDetails" : [ {
+        "codeName" : "grouppanel1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem2",
+          "contentType" : "IMAGE",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem2",
+          "getPSLayoutPos" : {
+            "colLG" : 14,
+            "colLGOffset" : 5,
+            "colMD" : 14,
+            "colMDOffset" : 5,
+            "colSM" : 14,
+            "colSMOffset" : 5,
+            "colXS" : 14,
+            "colXSOffset" : 5,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "IMAGE",
+            "name" : "rawitem2",
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"274px\" height=\"205px\" viewBox=\"0 0 274 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>新建视图</title>\n    <defs>\n        <rect id=\"path-1\" x=\"0\" y=\"0\" width=\"274\" height=\"205\"></rect>\n        <filter x=\"-13.7%\" y=\"-18.3%\" width=\"127.4%\" height=\"136.6%\" filterUnits=\"objectBoundingBox\" id=\"filter-2\">\n            <feMorphology radius=\"2.5\" operator=\"erode\" in=\"SourceAlpha\" result=\"shadowSpreadOuter1\"></feMorphology>\n            <feOffset dx=\"0\" dy=\"0\" in=\"shadowSpreadOuter1\" result=\"shadowOffsetOuter1\"></feOffset>\n            <feGaussianBlur stdDeviation=\"15\" in=\"shadowOffsetOuter1\" result=\"shadowBlurOuter1\"></feGaussianBlur>\n            <feColorMatrix values=\"0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0\" type=\"matrix\" in=\"shadowBlurOuter1\"></feColorMatrix>\n        </filter>\n    </defs>\n    <g id=\"新建视图\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"图\">\n            <g id=\"矩形\">\n                <use fill=\"black\" fill-opacity=\"1\" filter=\"url(#filter-2)\" xlink:href=\"#path-1\"></use>\n                <use fill=\"#FFFFFF\" fill-rule=\"evenodd\" xlink:href=\"#path-1\"></use>\n            </g>\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"8\" y=\"39\" width=\"259\" height=\"158\"></rect>\n            <g id=\"折线图\" transform=\"translate(14.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <g id=\"折线\" transform=\"translate(13.183555, 15.000000)\">\n                    <polyline id=\"路径-5\" stroke=\"#6698FF\" stroke-width=\"2\" points=\"5.35643352e-15 39 15.886846 30.0990566 31.5232138 30.0990566 47.1058387 2 62.0606225 30.0990566 78.2106966 8.98113208 94 2\"></polyline>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"16.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"31.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"46.8164452\" cy=\"3\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"61.8164452\" cy=\"29\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"78.8164452\" cy=\"9\" r=\"2.5\"></circle>\n                </g>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"折线图\" transform=\"translate(141.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"12.25\" y=\"34.1875\" width=\"4.15178571\" height=\"21.3125\"></rect>\n                <polygon id=\"矩形备份\" fill=\"#6698FF\" points=\"28.0267857 24.5 32.1785714 24.5 32.1785714 55.5 28.0267857 55.5\"></polygon>\n                <polygon id=\"矩形备份-3\" fill=\"#6698FF\" points=\"42.8348214 36.9553571 46.9866071 36.9553571 46.9866071 55.5 42.8348214 55.5\"></polygon>\n                <polygon id=\"矩形备份-4\" fill=\"#6698FF\" points=\"57.9196429 41.1071429 62.0714286 41.1071429 62.0714286 55.5 57.9196429 55.5\"></polygon>\n                <polygon id=\"矩形备份-5\" fill=\"#6698FF\" points=\"73.28125 50.7946429 77.4330357 50.7946429 77.4330357 55.5 73.28125 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"88.3660714 38.3392857 92.5178571 38.3392857 92.5178571 55.5 88.3660714 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"103.589286 42.4910714 107.741071 42.4910714 107.741071 55.5 103.589286 55.5\"></polygon>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"数字图表\" transform=\"translate(14.000000, 121.369231)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <text id=\"64114\" font-family=\"EurostileLT-Condensed, Eurostile LT Condensed\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"30.52\" y=\"40.6307692\">64114</tspan>\n                </text>\n                <text id=\"个\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"73.672\" y=\"39.6307692\"> </tspan>\n                    <tspan x=\"79\" y=\"39.6307692\" font-size=\"6\">个</tspan>\n                </text>\n            </g>\n            <g id=\"饼图\" transform=\"translate(140.666667, 121.369231)\">\n                <rect id=\"矩形备份\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <g id=\"图示\" transform=\"translate(74.333333, 16.649118)\" fill-rule=\"nonzero\">\n                    <g id=\"编组\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#348FE4\"></path>\n                        <text id=\"P13-Insight\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.17241379\" y=\"4\">P13 Insight</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 8.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#88DEA6\"></path>\n                        <text id=\"P11-Flow\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P11 Flow</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 16.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#7585A2\"></path>\n                        <text id=\"P10-Goals\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.18390805\" y=\"4\">P10 Goals</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 25.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FFD475\"></path>\n                        <text id=\"P04-Wiki\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P04 Wiki</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 33.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FF7575\"></path>\n                        <text id=\"P08-Prophet\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.16091954\" y=\"4\">P08 Prophet</tspan>\n                        </text>\n                    </g>\n                </g>\n                <g id=\"编组\" transform=\"translate(19.333333, 14.630769)\" fill-rule=\"nonzero\" stroke=\"#FFFFFF\" stroke-width=\"0.5\">\n                    <path d=\"M20.5002975,20.4998989 L39.5094036,12.8271333 C36.3808175,5.07552196 28.8591731,0 20.5002975,0 L20.5002975,20.4998989 Z\" id=\"路径\" fill=\"#348FE4\"></path>\n                    <path d=\"M20.5002984,20.4998995 L34.9597479,35.0310298 C40.801799,29.2173391 42.5941393,20.4700976 39.5094036,12.8271333 L20.5002984,20.4998995 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#73D897\"></path>\n                    <path d=\"M20.5002982,20.4999006 L17.613742,40.7955407 C23.9797949,41.7010263 30.4018262,39.566825 34.9597479,35.0310298 L20.5002982,20.4999006 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#5D7092\"></path>\n                    <path d=\"M20.5002974,20.4999009 L0.0901845304,18.5919153 C-0.927880163,29.4832244 6.78437004,39.2552079 17.613742,40.7955407 L20.5002974,20.4999009 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#FFCD5D\"></path>\n                    <path d=\"M20.5002975,20.4998998 L20.5002975,0 C9.91812519,0 1.07509774,8.05526247 0.0901845304,18.5919153 L20.5002975,20.4998998 Z\" id=\"路径\" fill=\"#FF7575\"></path>\n                </g>\n            </g>\n            <rect id=\"矩形\" fill=\"#FE6158\" x=\"14\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-3\" fill=\"#FFC431\" x=\"29\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-4\" fill=\"#29CC40\" x=\"44\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-26\" fill=\"#F3F3F3\" x=\"229\" y=\"11\" width=\"30\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-21\" fill=\"#F3F3F3\" x=\"0\" y=\"30\" width=\"274\" height=\"1\"></rect>\n        </g>\n    </g>\n</svg>"
+            },
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"274px\" height=\"205px\" viewBox=\"0 0 274 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>新建视图</title>\n    <defs>\n        <rect id=\"path-1\" x=\"0\" y=\"0\" width=\"274\" height=\"205\"></rect>\n        <filter x=\"-13.7%\" y=\"-18.3%\" width=\"127.4%\" height=\"136.6%\" filterUnits=\"objectBoundingBox\" id=\"filter-2\">\n            <feMorphology radius=\"2.5\" operator=\"erode\" in=\"SourceAlpha\" result=\"shadowSpreadOuter1\"></feMorphology>\n            <feOffset dx=\"0\" dy=\"0\" in=\"shadowSpreadOuter1\" result=\"shadowOffsetOuter1\"></feOffset>\n            <feGaussianBlur stdDeviation=\"15\" in=\"shadowOffsetOuter1\" result=\"shadowBlurOuter1\"></feGaussianBlur>\n            <feColorMatrix values=\"0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0\" type=\"matrix\" in=\"shadowBlurOuter1\"></feColorMatrix>\n        </filter>\n    </defs>\n    <g id=\"新建视图\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"图\">\n            <g id=\"矩形\">\n                <use fill=\"black\" fill-opacity=\"1\" filter=\"url(#filter-2)\" xlink:href=\"#path-1\"></use>\n                <use fill=\"#FFFFFF\" fill-rule=\"evenodd\" xlink:href=\"#path-1\"></use>\n            </g>\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"8\" y=\"39\" width=\"259\" height=\"158\"></rect>\n            <g id=\"折线图\" transform=\"translate(14.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <g id=\"折线\" transform=\"translate(13.183555, 15.000000)\">\n                    <polyline id=\"路径-5\" stroke=\"#6698FF\" stroke-width=\"2\" points=\"5.35643352e-15 39 15.886846 30.0990566 31.5232138 30.0990566 47.1058387 2 62.0606225 30.0990566 78.2106966 8.98113208 94 2\"></polyline>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"16.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"31.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"46.8164452\" cy=\"3\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"61.8164452\" cy=\"29\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"78.8164452\" cy=\"9\" r=\"2.5\"></circle>\n                </g>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"折线图\" transform=\"translate(141.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"12.25\" y=\"34.1875\" width=\"4.15178571\" height=\"21.3125\"></rect>\n                <polygon id=\"矩形备份\" fill=\"#6698FF\" points=\"28.0267857 24.5 32.1785714 24.5 32.1785714 55.5 28.0267857 55.5\"></polygon>\n                <polygon id=\"矩形备份-3\" fill=\"#6698FF\" points=\"42.8348214 36.9553571 46.9866071 36.9553571 46.9866071 55.5 42.8348214 55.5\"></polygon>\n                <polygon id=\"矩形备份-4\" fill=\"#6698FF\" points=\"57.9196429 41.1071429 62.0714286 41.1071429 62.0714286 55.5 57.9196429 55.5\"></polygon>\n                <polygon id=\"矩形备份-5\" fill=\"#6698FF\" points=\"73.28125 50.7946429 77.4330357 50.7946429 77.4330357 55.5 73.28125 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"88.3660714 38.3392857 92.5178571 38.3392857 92.5178571 55.5 88.3660714 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"103.589286 42.4910714 107.741071 42.4910714 107.741071 55.5 103.589286 55.5\"></polygon>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"数字图表\" transform=\"translate(14.000000, 121.369231)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <text id=\"64114\" font-family=\"EurostileLT-Condensed, Eurostile LT Condensed\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"30.52\" y=\"40.6307692\">64114</tspan>\n                </text>\n                <text id=\"个\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"73.672\" y=\"39.6307692\"> </tspan>\n                    <tspan x=\"79\" y=\"39.6307692\" font-size=\"6\">个</tspan>\n                </text>\n            </g>\n            <g id=\"饼图\" transform=\"translate(140.666667, 121.369231)\">\n                <rect id=\"矩形备份\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <g id=\"图示\" transform=\"translate(74.333333, 16.649118)\" fill-rule=\"nonzero\">\n                    <g id=\"编组\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#348FE4\"></path>\n                        <text id=\"P13-Insight\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.17241379\" y=\"4\">P13 Insight</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 8.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#88DEA6\"></path>\n                        <text id=\"P11-Flow\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P11 Flow</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 16.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#7585A2\"></path>\n                        <text id=\"P10-Goals\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.18390805\" y=\"4\">P10 Goals</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 25.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FFD475\"></path>\n                        <text id=\"P04-Wiki\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P04 Wiki</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 33.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FF7575\"></path>\n                        <text id=\"P08-Prophet\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.16091954\" y=\"4\">P08 Prophet</tspan>\n                        </text>\n                    </g>\n                </g>\n                <g id=\"编组\" transform=\"translate(19.333333, 14.630769)\" fill-rule=\"nonzero\" stroke=\"#FFFFFF\" stroke-width=\"0.5\">\n                    <path d=\"M20.5002975,20.4998989 L39.5094036,12.8271333 C36.3808175,5.07552196 28.8591731,0 20.5002975,0 L20.5002975,20.4998989 Z\" id=\"路径\" fill=\"#348FE4\"></path>\n                    <path d=\"M20.5002984,20.4998995 L34.9597479,35.0310298 C40.801799,29.2173391 42.5941393,20.4700976 39.5094036,12.8271333 L20.5002984,20.4998995 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#73D897\"></path>\n                    <path d=\"M20.5002982,20.4999006 L17.613742,40.7955407 C23.9797949,41.7010263 30.4018262,39.566825 34.9597479,35.0310298 L20.5002982,20.4999006 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#5D7092\"></path>\n                    <path d=\"M20.5002974,20.4999009 L0.0901845304,18.5919153 C-0.927880163,29.4832244 6.78437004,39.2552079 17.613742,40.7955407 L20.5002974,20.4999009 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#FFCD5D\"></path>\n                    <path d=\"M20.5002975,20.4998998 L20.5002975,0 C9.91812519,0 1.07509774,8.05526247 0.0901845304,18.5919153 L20.5002975,20.4998998 Z\" id=\"路径\" fill=\"#FF7575\"></path>\n                </g>\n            </g>\n            <rect id=\"矩形\" fill=\"#FE6158\" x=\"14\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-3\" fill=\"#FFC431\" x=\"29\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-4\" fill=\"#29CC40\" x=\"44\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-26\" fill=\"#F3F3F3\" x=\"229\" y=\"11\" width=\"30\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-21\" fill=\"#F3F3F3\" x=\"0\" y=\"30\" width=\"274\" height=\"1\"></rect>\n        </g>\n    </g>\n</svg>"
+          },
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "codeName" : "rawitem1",
+          "contentType" : "HTML",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "htmlContent" : "<h2 class=\"template-name\" style=\"margin: 0 0 6px; padding-left: 40px;\"><strong>视图</strong></h2>\n<div class=\"template-desc\" style=\"padding: 0 40px; margin-bottom: 16px;\"><span style=\"color: #95a5a6;\">视图是集成数据和分析数据的报表集合，添加丰富的度量报表，让企业研发效能可量化、可视化、可分析。</span></div>\n<div class=\"template-tips\">\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">丰富的度量报表，满足数据统计需要</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">支持跨项目的数据统计与分析</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">反映研发效能改进的关键点</li>\n</ul>\n</div>\n</div>",
+          "name" : "rawitem1",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "content" : "<h2 class=\"template-name\" style=\"margin: 0 0 6px; padding-left: 40px;\"><strong>视图</strong></h2>\n<div class=\"template-desc\" style=\"padding: 0 40px; margin-bottom: 16px;\"><span style=\"color: #95a5a6;\">视图是集成数据和分析数据的报表集合，添加丰富的度量报表，让企业研发效能可量化、可视化、可分析。</span></div>\n<div class=\"template-tips\">\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">丰富的度量报表，满足数据统计需要</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">支持跨项目的数据统计与分析</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">反映研发效能改进的关键点</li>\n</ul>\n</div>\n</div>",
+            "contentType" : "HTML",
+            "name" : "rawitem1",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.INSIGHT_VIEW.WIZARD_CREATE.GROUPPANEL.GROUP1"
+        },
+        "caption" : "视图基本信息",
+        "codeName" : "group1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "group1",
+        "getPSDEFormDetails" : [ {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.SCOPE_ID"
+          },
+          "caption" : "所属对象",
+          "codeName" : "scope_id",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_id",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_ID",
+            "codeName" : "scope_id"
+          },
+          "getPSEditor" : {
+            "editorType" : "HIDDEN",
+            "name" : "scope_id"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "hidden" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.SCOPE_TYPE"
+          },
+          "caption" : "所属",
+          "codeName" : "scope_type",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "scope_type",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "SCOPE_TYPE",
+            "codeName" : "scope_type"
+          },
+          "getPSEditor" : {
+            "editorParams" : {
+              "AC" : "TRUE",
+              "fillMap" : "{\"user\":\"user\",\"user_group\":\"user_group\",\"organization\":\"organization\"}",
+              "enablePerson" : "true",
+              "PICKUPVIEW" : "TRUE"
+            },
+            "editorStyle" : "TEAM_PICKER",
+            "editorType" : "PICKER",
+            "handlerType" : "PickupText",
+            "name" : "scope_type",
+            "getPSAppDEACMode" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "getPSAppDEDataSet" : {
+              "modelref" : true,
+              "id" : "fetch_default"
+            },
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+            },
+            "getPSEditorItems" : [ {
+              "name" : "scope_id"
+            } ],
+            "getPSSysPFPlugin" : {
+              "pluginType" : "EDITOR_CUSTOMSTYLE",
+              "pluginCode" : "TEAM_PICKER",
+              "runtimeObject" : true
+            },
+            "valueItemName" : "scope_id",
+            "enableAC" : true,
+            "enablePickupView" : true,
+            "forceSelection" : true,
+            "showTrigger" : true,
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "valueItemName" : "scope_id",
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "CONTROL.DEFORM.INSIGHT_VIEW.WIZARD_CREATE.FORMITEM.NAME"
+          },
+          "caption" : "视图名称",
+          "codeName" : "name",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "name",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "NAME",
+            "codeName" : "name"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 200,
+            "name" : "name",
+            "placeHolder" : "输入视图名称"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.VISIBILITY"
+          },
+          "caption" : "可见范围",
+          "codeName" : "visibility",
+          "createDV" : "private",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "visibility",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "VISIBILITY",
+            "codeName" : "visibility"
+          },
+          "getPSEditor" : {
+            "editorType" : "DROPDOWNLIST",
+            "name" : "visibility",
+            "getPSAppCodeList" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/visibility.json"
+            },
+            "singleSelect" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "updateDV" : "private",
+          "allowEmpty" : false,
+          "needCodeListConfig" : true,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.INSIGHT_VIEW.IDENTIFIER"
+          },
+          "caption" : "视图标识",
+          "codeName" : "identifier",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "identifier",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "IDENTIFIER",
+            "codeName" : "identifier"
+          },
+          "getPSEditor" : {
+            "editorType" : "TEXTBOX",
+            "maxLength" : 15,
+            "name" : "identifier",
+            "getPSSysValueRule" : {
+              "codeName" : "UsrValueRule0312488358",
+              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPVALUERULES/UsrValueRule0312488358.json",
+              "name" : "大写字母和数字",
+              "regExCode" : "^[A-Z0-9]{1,15}$",
+              "ruleInfo" : "请填写大写字母和数字",
+              "ruleType" : "REGEX",
+              "uniqueTag" : "UsrValueRule0312488358",
+              "enableFront" : true
+            },
+            "placeHolder" : "大写字母和数字，15个字符范围内"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : false,
+          "showCaption" : true
+        }, {
+          "getCapPSLanguageRes" : {
+            "lanResTag" : "DEF.LNAME.DESCRIPTION"
+          },
+          "caption" : "描述",
+          "codeName" : "description",
+          "dataType" : 25,
+          "detailStyle" : "DEFAULT",
+          "detailType" : "FORMITEM",
+          "enableCond" : 3,
+          "ignoreInput" : 0,
+          "itemHeight" : 220.0,
+          "labelPos" : "TOP",
+          "labelWidth" : 130,
+          "name" : "description",
+          "noPrivDisplayMode" : 1,
+          "getPSAppDEField" : {
+            "name" : "DESCRIPTION",
+            "codeName" : "description"
+          },
+          "getPSEditor" : {
+            "editorHeight" : 200.0,
+            "editorParams" : {
+              "HEIGHT" : "200"
+            },
+            "editorType" : "TEXTAREA_10",
+            "maxLength" : 2000,
+            "name" : "description",
+            "placeHolder" : "输入视图描述",
+            "showMaxLength" : true
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "allowEmpty" : true,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "caption" : "标识",
+        "codeName" : "id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "id"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      } ],
+      "getPSLayout" : {
+        "childColLG" : 12,
+        "childColMD" : 12,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false
+    } ],
+    "getPSDEWizardForm" : {
+      "formTag" : "fill_info",
+      "goFinishEnableScriptCode" : "data.scope_type !== \"organization\"",
+      "goNextEnableScriptCode" : "data.scope_type === \"organization\"",
+      "name" : "fill_info",
+      "getPSDEFormName" : "新建表单",
+      "getPSDEWizardStep" : {
+        "modelref" : true,
+        "id" : "视图信息"
+      },
+      "stepActions" : [ "NEXT", "FINISH" ],
+      "stepTag" : "fill_info",
+      "firstForm" : true
+    },
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "tabHeaderPos" : "TOP",
+    "getUpdatePSControlAction" : {
+      "modelref" : true,
+      "id" : "update",
+      "actionName" : "UpdateTemp",
+      "actionType" : "DEACTION",
+      "name" : "update",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "UpdateTemp"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+      }
+    },
+    "noTabHeader" : true,
+    "name" : "wizardpanel_form_fill_info",
+    "modelid" : "172EEB4B-A35D-400C-8656-1246D9A4AF7B",
+    "modeltype" : "PSDEFORM_EDITFORM"
+  }, {
+    "codeName" : "wizard_member_bind",
+    "controlType" : "FORM",
+    "defaultLabelWidth" : 130,
+    "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view/PSFORMS/wizard_member_bind.json",
+    "formFuncMode" : "WIZARDFORM",
+    "getGetPSControlAction" : {
+      "modelref" : true,
+      "id" : "load",
+      "actionName" : "GetTemp",
+      "actionType" : "DEACTION",
+      "name" : "load",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "GetTemp"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+      }
+    },
+    "hookEventNames" : [ "SAVE", "LOAD" ],
+    "logicName" : "成员绑定",
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+    },
+    "getPSControlHandler" : {
+      "getPSHandlerActions" : [ {
+        "actionName" : "GetTemp",
+        "actionType" : "DEACTION",
+        "name" : "load",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "GetTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+        }
+      }, {
+        "actionName" : "UpdateTemp",
+        "actionType" : "DEACTION",
+        "name" : "update",
+        "getPSAppDEMethod" : {
+          "modelref" : true,
+          "id" : "UpdateTemp"
+        },
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+        }
+      } ],
+      "enableDEFieldPrivilege" : false,
+      "id" : "wizardpanel_form_bind_member"
+    },
+    "getPSControlLogics" : [ {
+      "eventNames" : "SAVE",
+      "logicTag" : "wizardpanel_form_bind_member",
+      "logicType" : "CUSTOM",
+      "name" : "wizardpanel_formsave"
+    }, {
+      "eventNames" : "LOAD",
+      "logicTag" : "wizardpanel_form_bind_member",
+      "logicType" : "CUSTOM",
+      "name" : "wizardpanel_formload"
+    } ],
+    "getPSControlParam" : {
+      "getPSDEWizardForm" : {
+        "modelref" : true,
+        "id" : "bind_member"
+      },
+      "autoLoad" : true,
+      "showBusyIndicator" : true,
+      "id" : "wizardpanel_form_bind_member"
+    },
+    "getPSDEFormItems" : [ {
+      "id" : "srfupdatedate",
+      "hidden" : true,
+      "dataType" : 5,
+      "getPSAppDEField" : {
+        "name" : "UPDATE_TIME",
+        "codeName" : "update_time"
+      }
+    }, {
+      "id" : "srforikey",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfkey",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    }, {
+      "id" : "srfmajortext",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "id" : "srftempmode",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfuf",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfdeid",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "srfsourcekey",
+      "hidden" : true,
+      "dataType" : 25
+    }, {
+      "id" : "scope_id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "SCOPE_ID",
+        "codeName" : "scope_id"
+      }
+    }, {
+      "id" : "visibility",
+      "hidden" : true,
+      "dataType" : 25,
+      "createDV" : "private",
+      "updateDV" : "private",
+      "getPSAppDEField" : {
+        "name" : "VISIBILITY",
+        "codeName" : "visibility"
+      }
+    }, {
+      "id" : "name",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "NAME",
+        "codeName" : "name"
+      }
+    }, {
+      "id" : "identifier",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "IDENTIFIER",
+        "codeName" : "identifier"
+      }
+    }, {
+      "id" : "description",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "DESCRIPTION",
+        "codeName" : "description"
+      }
+    }, {
+      "id" : "id",
+      "hidden" : true,
+      "dataType" : 25,
+      "getPSAppDEField" : {
+        "name" : "ID",
+        "codeName" : "id"
+      }
+    } ],
+    "getPSDEFormPages" : [ {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "CONTROL.DEFORM.INSIGHT_VIEW.WIZARD_MEMBER_BIND.FORMPAGE.FORMPAGE1"
+      },
+      "caption" : "基本信息",
+      "codeName" : "formpage1",
+      "detailStyle" : "DEFAULT",
+      "detailType" : "FORMPAGE",
+      "name" : "formpage1",
+      "getPSDEFormDetails" : [ {
+        "codeName" : "grouppanel1",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel1",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "rawitem1",
+          "contentType" : "IMAGE",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "name" : "rawitem1",
+          "getPSLayoutPos" : {
+            "colLG" : 14,
+            "colLGOffset" : 5,
+            "colMD" : 14,
+            "colMDOffset" : 5,
+            "colSM" : 14,
+            "colSMOffset" : 5,
+            "colXS" : 14,
+            "colXSOffset" : 5,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "contentType" : "IMAGE",
+            "name" : "rawitem1",
+            "getPSSysImage" : {
+              "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"274px\" height=\"205px\" viewBox=\"0 0 274 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>新建视图</title>\n    <defs>\n        <rect id=\"path-1\" x=\"0\" y=\"0\" width=\"274\" height=\"205\"></rect>\n        <filter x=\"-13.7%\" y=\"-18.3%\" width=\"127.4%\" height=\"136.6%\" filterUnits=\"objectBoundingBox\" id=\"filter-2\">\n            <feMorphology radius=\"2.5\" operator=\"erode\" in=\"SourceAlpha\" result=\"shadowSpreadOuter1\"></feMorphology>\n            <feOffset dx=\"0\" dy=\"0\" in=\"shadowSpreadOuter1\" result=\"shadowOffsetOuter1\"></feOffset>\n            <feGaussianBlur stdDeviation=\"15\" in=\"shadowOffsetOuter1\" result=\"shadowBlurOuter1\"></feGaussianBlur>\n            <feColorMatrix values=\"0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0\" type=\"matrix\" in=\"shadowBlurOuter1\"></feColorMatrix>\n        </filter>\n    </defs>\n    <g id=\"新建视图\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"图\">\n            <g id=\"矩形\">\n                <use fill=\"black\" fill-opacity=\"1\" filter=\"url(#filter-2)\" xlink:href=\"#path-1\"></use>\n                <use fill=\"#FFFFFF\" fill-rule=\"evenodd\" xlink:href=\"#path-1\"></use>\n            </g>\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"8\" y=\"39\" width=\"259\" height=\"158\"></rect>\n            <g id=\"折线图\" transform=\"translate(14.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <g id=\"折线\" transform=\"translate(13.183555, 15.000000)\">\n                    <polyline id=\"路径-5\" stroke=\"#6698FF\" stroke-width=\"2\" points=\"5.35643352e-15 39 15.886846 30.0990566 31.5232138 30.0990566 47.1058387 2 62.0606225 30.0990566 78.2106966 8.98113208 94 2\"></polyline>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"16.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"31.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"46.8164452\" cy=\"3\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"61.8164452\" cy=\"29\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"78.8164452\" cy=\"9\" r=\"2.5\"></circle>\n                </g>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"折线图\" transform=\"translate(141.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"12.25\" y=\"34.1875\" width=\"4.15178571\" height=\"21.3125\"></rect>\n                <polygon id=\"矩形备份\" fill=\"#6698FF\" points=\"28.0267857 24.5 32.1785714 24.5 32.1785714 55.5 28.0267857 55.5\"></polygon>\n                <polygon id=\"矩形备份-3\" fill=\"#6698FF\" points=\"42.8348214 36.9553571 46.9866071 36.9553571 46.9866071 55.5 42.8348214 55.5\"></polygon>\n                <polygon id=\"矩形备份-4\" fill=\"#6698FF\" points=\"57.9196429 41.1071429 62.0714286 41.1071429 62.0714286 55.5 57.9196429 55.5\"></polygon>\n                <polygon id=\"矩形备份-5\" fill=\"#6698FF\" points=\"73.28125 50.7946429 77.4330357 50.7946429 77.4330357 55.5 73.28125 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"88.3660714 38.3392857 92.5178571 38.3392857 92.5178571 55.5 88.3660714 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"103.589286 42.4910714 107.741071 42.4910714 107.741071 55.5 103.589286 55.5\"></polygon>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"数字图表\" transform=\"translate(14.000000, 121.369231)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <text id=\"64114\" font-family=\"EurostileLT-Condensed, Eurostile LT Condensed\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"30.52\" y=\"40.6307692\">64114</tspan>\n                </text>\n                <text id=\"个\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"73.672\" y=\"39.6307692\"> </tspan>\n                    <tspan x=\"79\" y=\"39.6307692\" font-size=\"6\">个</tspan>\n                </text>\n            </g>\n            <g id=\"饼图\" transform=\"translate(140.666667, 121.369231)\">\n                <rect id=\"矩形备份\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <g id=\"图示\" transform=\"translate(74.333333, 16.649118)\" fill-rule=\"nonzero\">\n                    <g id=\"编组\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#348FE4\"></path>\n                        <text id=\"P13-Insight\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.17241379\" y=\"4\">P13 Insight</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 8.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#88DEA6\"></path>\n                        <text id=\"P11-Flow\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P11 Flow</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 16.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#7585A2\"></path>\n                        <text id=\"P10-Goals\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.18390805\" y=\"4\">P10 Goals</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 25.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FFD475\"></path>\n                        <text id=\"P04-Wiki\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P04 Wiki</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 33.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FF7575\"></path>\n                        <text id=\"P08-Prophet\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.16091954\" y=\"4\">P08 Prophet</tspan>\n                        </text>\n                    </g>\n                </g>\n                <g id=\"编组\" transform=\"translate(19.333333, 14.630769)\" fill-rule=\"nonzero\" stroke=\"#FFFFFF\" stroke-width=\"0.5\">\n                    <path d=\"M20.5002975,20.4998989 L39.5094036,12.8271333 C36.3808175,5.07552196 28.8591731,0 20.5002975,0 L20.5002975,20.4998989 Z\" id=\"路径\" fill=\"#348FE4\"></path>\n                    <path d=\"M20.5002984,20.4998995 L34.9597479,35.0310298 C40.801799,29.2173391 42.5941393,20.4700976 39.5094036,12.8271333 L20.5002984,20.4998995 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#73D897\"></path>\n                    <path d=\"M20.5002982,20.4999006 L17.613742,40.7955407 C23.9797949,41.7010263 30.4018262,39.566825 34.9597479,35.0310298 L20.5002982,20.4999006 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#5D7092\"></path>\n                    <path d=\"M20.5002974,20.4999009 L0.0901845304,18.5919153 C-0.927880163,29.4832244 6.78437004,39.2552079 17.613742,40.7955407 L20.5002974,20.4999009 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#FFCD5D\"></path>\n                    <path d=\"M20.5002975,20.4998998 L20.5002975,0 C9.91812519,0 1.07509774,8.05526247 0.0901845304,18.5919153 L20.5002975,20.4998998 Z\" id=\"路径\" fill=\"#FF7575\"></path>\n                </g>\n            </g>\n            <rect id=\"矩形\" fill=\"#FE6158\" x=\"14\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-3\" fill=\"#FFC431\" x=\"29\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-4\" fill=\"#29CC40\" x=\"44\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-26\" fill=\"#F3F3F3\" x=\"229\" y=\"11\" width=\"30\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-21\" fill=\"#F3F3F3\" x=\"0\" y=\"30\" width=\"274\" height=\"1\"></rect>\n        </g>\n    </g>\n</svg>"
+            },
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "getPSSysImage" : {
+            "rawContent" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg width=\"274px\" height=\"205px\" viewBox=\"0 0 274 205\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <title>新建视图</title>\n    <defs>\n        <rect id=\"path-1\" x=\"0\" y=\"0\" width=\"274\" height=\"205\"></rect>\n        <filter x=\"-13.7%\" y=\"-18.3%\" width=\"127.4%\" height=\"136.6%\" filterUnits=\"objectBoundingBox\" id=\"filter-2\">\n            <feMorphology radius=\"2.5\" operator=\"erode\" in=\"SourceAlpha\" result=\"shadowSpreadOuter1\"></feMorphology>\n            <feOffset dx=\"0\" dy=\"0\" in=\"shadowSpreadOuter1\" result=\"shadowOffsetOuter1\"></feOffset>\n            <feGaussianBlur stdDeviation=\"15\" in=\"shadowOffsetOuter1\" result=\"shadowBlurOuter1\"></feGaussianBlur>\n            <feColorMatrix values=\"0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0\" type=\"matrix\" in=\"shadowBlurOuter1\"></feColorMatrix>\n        </filter>\n    </defs>\n    <g id=\"新建视图\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">\n        <g id=\"图\">\n            <g id=\"矩形\">\n                <use fill=\"black\" fill-opacity=\"1\" filter=\"url(#filter-2)\" xlink:href=\"#path-1\"></use>\n                <use fill=\"#FFFFFF\" fill-rule=\"evenodd\" xlink:href=\"#path-1\"></use>\n            </g>\n            <rect id=\"矩形\" fill=\"#FAFAFA\" x=\"8\" y=\"39\" width=\"259\" height=\"158\"></rect>\n            <g id=\"折线图\" transform=\"translate(14.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <g id=\"折线\" transform=\"translate(13.183555, 15.000000)\">\n                    <polyline id=\"路径-5\" stroke=\"#6698FF\" stroke-width=\"2\" points=\"5.35643352e-15 39 15.886846 30.0990566 31.5232138 30.0990566 47.1058387 2 62.0606225 30.0990566 78.2106966 8.98113208 94 2\"></polyline>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"16.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"31.8164452\" cy=\"30\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"46.8164452\" cy=\"3\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"61.8164452\" cy=\"29\" r=\"2.5\"></circle>\n                    <circle id=\"椭圆形\" stroke=\"#FFFFFF\" fill=\"#6698FF\" cx=\"78.8164452\" cy=\"9\" r=\"2.5\"></circle>\n                </g>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"折线图\" transform=\"translate(141.000000, 45.000000)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <line x1=\"5.75\" y1=\"14\" x2=\"113.75\" y2=\"14\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"28\" x2=\"113.75\" y2=\"28\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <line x1=\"5.75\" y1=\"42\" x2=\"113.75\" y2=\"42\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n                <rect id=\"矩形\" fill=\"#6698FF\" x=\"12.25\" y=\"34.1875\" width=\"4.15178571\" height=\"21.3125\"></rect>\n                <polygon id=\"矩形备份\" fill=\"#6698FF\" points=\"28.0267857 24.5 32.1785714 24.5 32.1785714 55.5 28.0267857 55.5\"></polygon>\n                <polygon id=\"矩形备份-3\" fill=\"#6698FF\" points=\"42.8348214 36.9553571 46.9866071 36.9553571 46.9866071 55.5 42.8348214 55.5\"></polygon>\n                <polygon id=\"矩形备份-4\" fill=\"#6698FF\" points=\"57.9196429 41.1071429 62.0714286 41.1071429 62.0714286 55.5 57.9196429 55.5\"></polygon>\n                <polygon id=\"矩形备份-5\" fill=\"#6698FF\" points=\"73.28125 50.7946429 77.4330357 50.7946429 77.4330357 55.5 73.28125 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"88.3660714 38.3392857 92.5178571 38.3392857 92.5178571 55.5 88.3660714 55.5\"></polygon>\n                <polygon id=\"矩形备份-6\" fill=\"#6698FF\" points=\"103.589286 42.4910714 107.741071 42.4910714 107.741071 55.5 103.589286 55.5\"></polygon>\n                <line x1=\"5.75\" y1=\"56\" x2=\"113.75\" y2=\"56\" id=\"直线-2\" stroke=\"#EEEEEE\" stroke-width=\"0.5\" stroke-linecap=\"square\"></line>\n            </g>\n            <g id=\"数字图表\" transform=\"translate(14.000000, 121.369231)\">\n                <rect id=\"矩形\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <text id=\"64114\" font-family=\"EurostileLT-Condensed, Eurostile LT Condensed\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"30.52\" y=\"40.6307692\">64114</tspan>\n                </text>\n                <text id=\"个\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"16\" font-weight=\"normal\" fill=\"#333333\">\n                    <tspan x=\"73.672\" y=\"39.6307692\"> </tspan>\n                    <tspan x=\"79\" y=\"39.6307692\" font-size=\"6\">个</tspan>\n                </text>\n            </g>\n            <g id=\"饼图\" transform=\"translate(140.666667, 121.369231)\">\n                <rect id=\"矩形备份\" fill=\"#FFFFFF\" x=\"0\" y=\"0\" width=\"120.333333\" height=\"69.6307692\"></rect>\n                <g id=\"图示\" transform=\"translate(74.333333, 16.649118)\" fill-rule=\"nonzero\">\n                    <g id=\"编组\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#348FE4\"></path>\n                        <text id=\"P13-Insight\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.17241379\" y=\"4\">P13 Insight</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 8.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#88DEA6\"></path>\n                        <text id=\"P11-Flow\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P11 Flow</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 16.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#7585A2\"></path>\n                        <text id=\"P10-Goals\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.18390805\" y=\"4\">P10 Goals</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 25.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FFD475\"></path>\n                        <text id=\"P04-Wiki\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.20689655\" y=\"4\">P04 Wiki</tspan>\n                        </text>\n                    </g>\n                    <g id=\"编组\" transform=\"translate(0.000000, 33.481651)\">\n                        <path d=\"M0,2.94954128 C0,3.50689287 0.437422946,3.9587156 0.977011494,3.9587156 C1.51660004,3.9587156 1.95402299,3.50689287 1.95402299,2.94954128 C1.95402299,2.3921897 1.51660004,1.94036697 0.977011494,1.94036697 C0.437422946,1.94036697 0,2.3921897 0,2.94954128\" id=\"路径\" fill=\"#FF7575\"></path>\n                        <text id=\"P08-Prophet\" font-family=\"PingFangSC-Regular, PingFang SC\" font-size=\"3.4\" font-weight=\"normal\" fill=\"#888888\">\n                            <tspan x=\"3.16091954\" y=\"4\">P08 Prophet</tspan>\n                        </text>\n                    </g>\n                </g>\n                <g id=\"编组\" transform=\"translate(19.333333, 14.630769)\" fill-rule=\"nonzero\" stroke=\"#FFFFFF\" stroke-width=\"0.5\">\n                    <path d=\"M20.5002975,20.4998989 L39.5094036,12.8271333 C36.3808175,5.07552196 28.8591731,0 20.5002975,0 L20.5002975,20.4998989 Z\" id=\"路径\" fill=\"#348FE4\"></path>\n                    <path d=\"M20.5002984,20.4998995 L34.9597479,35.0310298 C40.801799,29.2173391 42.5941393,20.4700976 39.5094036,12.8271333 L20.5002984,20.4998995 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#73D897\"></path>\n                    <path d=\"M20.5002982,20.4999006 L17.613742,40.7955407 C23.9797949,41.7010263 30.4018262,39.566825 34.9597479,35.0310298 L20.5002982,20.4999006 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#5D7092\"></path>\n                    <path d=\"M20.5002974,20.4999009 L0.0901845304,18.5919153 C-0.927880163,29.4832244 6.78437004,39.2552079 17.613742,40.7955407 L20.5002974,20.4999009 Z\" id=\"路径\" fill-opacity=\"0.85\" fill=\"#FFCD5D\"></path>\n                    <path d=\"M20.5002975,20.4998998 L20.5002975,0 C9.91812519,0 1.07509774,8.05526247 0.0901845304,18.5919153 L20.5002975,20.4998998 Z\" id=\"路径\" fill=\"#FF7575\"></path>\n                </g>\n            </g>\n            <rect id=\"矩形\" fill=\"#FE6158\" x=\"14\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-3\" fill=\"#FFC431\" x=\"29\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-4\" fill=\"#29CC40\" x=\"44\" y=\"11\" width=\"8\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-26\" fill=\"#F3F3F3\" x=\"229\" y=\"11\" width=\"30\" height=\"8\" rx=\"4\"></rect>\n            <rect id=\"矩形-copy-21\" fill=\"#F3F3F3\" x=\"0\" y=\"30\" width=\"274\" height=\"1\"></rect>\n        </g>\n    </g>\n</svg>"
+          },
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "codeName" : "rawitem2",
+          "contentType" : "HTML",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "RAWITEM",
+          "htmlContent" : "<h2 class=\"template-name\" style=\"margin: 0 0 6px; padding-left: 40px;\"><strong>视图</strong></h2>\n<div class=\"template-desc\" style=\"padding: 0 40px; margin-bottom: 16px;\"><span style=\"color: #95a5a6;\">视图是集成数据和分析数据的报表集合，添加丰富的度量报表，让企业研发效能可量化、可视化、可分析。</span></div>\n<div class=\"template-tips\">\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">丰富的度量报表，满足数据统计需要</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">支持跨项目的数据统计与分析</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">反映研发效能改进的关键点</li>\n</ul>\n</div>\n</div>",
+          "name" : "rawitem2",
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSRawItem" : {
+            "content" : "<h2 class=\"template-name\" style=\"margin: 0 0 6px; padding-left: 40px;\"><strong>视图</strong></h2>\n<div class=\"template-desc\" style=\"padding: 0 40px; margin-bottom: 16px;\"><span style=\"color: #95a5a6;\">视图是集成数据和分析数据的报表集合，添加丰富的度量报表，让企业研发效能可量化、可视化、可分析。</span></div>\n<div class=\"template-tips\">\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">丰富的度量报表，满足数据统计需要</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">支持跨项目的数据统计与分析</li>\n</ul>\n</div>\n<div class=\"template-tip ng-star-inserted\" style=\"padding-left: 40px; margin-bottom: 12px;\">\n<ul>\n<li style=\"color: #95a5a6;\">反映研发效能改进的关键点</li>\n</ul>\n</div>\n</div>",
+            "contentType" : "HTML",
+            "name" : "rawitem2",
+            "rawItemHeight" : -1.0,
+            "rawItemWidth" : -1.0
+          },
+          "rawItemHeight" : -1.0,
+          "rawItemWidth" : -1.0,
+          "showCaption" : true
+        }, {
+          "codeName" : "grouppanel2",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "GROUPPANEL",
+          "name" : "grouppanel2",
+          "getPSDEFormDetails" : [ {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.SCOPE_ID"
+            },
+            "caption" : "所属对象",
+            "codeName" : "scope_id",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "scope_id",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "SCOPE_ID",
+              "codeName" : "scope_id"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "scope_id",
+              "getPSEditorItems" : [ {
+                "name" : "scope_id",
+                "getPSAppDEACMode" : {
+                  "modelref" : true,
+                  "id" : "Default"
+                },
+                "getPSAppDEDataSet" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/group.json"
+                }
+              } ]
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "valueItemName" : "scope_id",
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.VISIBILITY"
+            },
+            "caption" : "可见范围",
+            "codeName" : "visibility",
+            "createDV" : "private",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "visibility",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "VISIBILITY",
+              "codeName" : "visibility"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "visibility"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "updateDV" : "private",
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.NAME"
+            },
+            "caption" : "名称",
+            "codeName" : "name",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "name",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "NAME",
+              "codeName" : "name"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "name"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.INSIGHT_VIEW.IDENTIFIER"
+            },
+            "caption" : "视图标识",
+            "codeName" : "identifier",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "identifier",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "IDENTIFIER",
+              "codeName" : "identifier"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "identifier"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          }, {
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "DEF.LNAME.DESCRIPTION"
+            },
+            "caption" : "描述",
+            "codeName" : "description",
+            "dataType" : 25,
+            "detailStyle" : "DEFAULT",
+            "detailType" : "FORMITEM",
+            "enableCond" : 3,
+            "ignoreInput" : 0,
+            "labelPos" : "LEFT",
+            "labelWidth" : 130,
+            "name" : "description",
+            "noPrivDisplayMode" : 1,
+            "getPSAppDEField" : {
+              "name" : "DESCRIPTION",
+              "codeName" : "description"
+            },
+            "getPSEditor" : {
+              "editorType" : "HIDDEN",
+              "name" : "description"
+            },
+            "getPSLayoutPos" : {
+              "colMD" : 24,
+              "layout" : "TABLE_24COL"
+            },
+            "allowEmpty" : true,
+            "hidden" : true
+          } ],
+          "getPSLayout" : {
+            "childColMD" : 24,
+            "columnCount" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "layout" : "TABLE_24COL"
+          },
+          "infoGroupMode" : false,
+          "showCaption" : false
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "CONTROL.DEFORM.INSIGHT_VIEW.WIZARD_MEMBER_BIND.GROUPPANEL.GROUP1"
+        },
+        "caption" : "视图基本信息",
+        "codeName" : "grouppanel3",
+        "detailStyle" : "DEFAULT",
+        "detailType" : "GROUPPANEL",
+        "name" : "grouppanel3",
+        "getPSDEFormDetails" : [ {
+          "codeName" : "druipart1",
+          "contentHeight" : 500.0,
+          "dRItemTag" : "UsrDRItem0516336986",
+          "detailStyle" : "DEFAULT",
+          "detailType" : "DRUIPART",
+          "height" : 500.0,
+          "name" : "druipart1",
+          "getPSAppView" : {
+            "accUserMode" : 2,
+            "getCapPSLanguageRes" : {
+              "lanResTag" : "PAGE.CAPTION.INSIGHT_MEMBER.ASSIGNED_GRID_VIEW"
+            },
+            "caption" : "视图成员",
+            "codeName" : "insight_member_assigned_grid_view",
+            "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_assigned_grid_view.json",
+            "gridRowActiveMode" : 0,
+            "name" : "insight_memberassigned_grid_view",
+            "getPSAppDataEntity" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+            },
+            "getPSAppModule" : {
+              "modelref" : true,
+              "path" : "PSSYSAPPS/plmweb/PSAPPMODULES/Insight.json"
+            },
+            "getPSAppViewEngines" : [ {
+              "engineCat" : "VIEW",
+              "engineType" : "GridView",
+              "name" : "engine"
+            } ],
+            "getPSAppViewLogics" : [ {
+              "eventNames" : "onCreated",
+              "logicTrigger" : "VIEWEVENT",
+              "logicType" : "APPDEUILOGIC",
+              "name" : "LOGIC",
+              "getPSAppDEUILogic" : {
+                "modelref" : true,
+                "id" : "create_default_temp_members"
+              },
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              }
+            }, {
+              "logicTrigger" : "CUSTOM",
+              "logicType" : "APPUILOGIC",
+              "name" : "newdata",
+              "getPSAppUILogic" : {
+                "actionAfterWizard" : "DEFAULT",
+                "getBatchAddPSAppViews" : [ {
+                  "openMode" : "POPUPMODAL",
+                  "refMode" : "USER",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+                    "viewType" : "DEMPICKUPVIEW2"
+                  }
+                } ],
+                "logicType" : "PREDEFINED",
+                "name" : "新建数据",
+                "getNewDataPSAppView" : {
+                  "openMode" : "POPUPMODAL",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_edit_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                },
+                "getPSAppUILogicRefViews" : [ {
+                  "openMode" : "POPUPMODAL",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_edit_view.json",
+                    "viewType" : "DEEDITVIEW"
+                  }
+                }, {
+                  "openMode" : "POPUPMODAL",
+                  "refMode" : "USER",
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+                    "viewType" : "DEMPICKUPVIEW2"
+                  }
+                } ],
+                "viewLogicType" : "APP_NEWDATA",
+                "batchAddOnly" : false,
+                "enableBatchAdd" : true,
+                "enableWizardAdd" : false
+              }
+            }, {
+              "logicTrigger" : "CUSTOM",
+              "logicType" : "APPUILOGIC",
+              "name" : "opendata",
+              "getPSAppUILogic" : {
+                "logicType" : "PREDEFINED",
+                "name" : "打开数据",
+                "getOpenDataPSAppView" : {
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_redirect_view.json",
+                    "viewType" : "DEREDIRECTVIEW"
+                  }
+                },
+                "getPSAppUILogicRefViews" : [ {
+                  "getRefPSAppView" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_redirect_view.json",
+                    "viewType" : "DEREDIRECTVIEW"
+                  }
+                } ],
+                "viewLogicType" : "APP_OPENDATA",
+                "editMode" : true
+              }
+            } ],
+            "getPSAppViewParams" : [ {
+              "key" : "PROPERTYMAP",
+              "name" : "PROPERTYMAP",
+              "value" : "display_name:name"
+            } ],
+            "getPSAppViewRefs" : [ {
+              "name" : "EDITDATA",
+              "realTitle" : "效能成员数据重定向视图",
+              "getRealTitlePSLanguageRes" : {
+                "lanResTag" : "PAGE.TITLE.INSIGHT_MEMBER.REDIRECTVIEW"
+              },
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_redirect_view.json",
+                "viewType" : "DEREDIRECTVIEW"
+              }
+            }, {
+              "name" : "NEWDATA",
+              "openMode" : "POPUPMODAL",
+              "realOpenMode" : "POPUPMODAL",
+              "realTitle" : "效能成员编辑视图",
+              "getRealTitlePSLanguageRes" : {
+                "lanResTag" : "PAGE.TITLE.INSIGHT_MEMBER.EDITVIEW"
+              },
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/insight_member_edit_view.json",
+                "viewType" : "DEEDITVIEW"
+              }
+            }, {
+              "name" : "MPICKUPVIEW:INSIGHT_VIEW"
+            }, {
+              "name" : "MPICKUPVIEW:USER",
+              "realOpenMode" : "POPUPMODAL",
+              "realTitle" : "选择成员",
+              "getRefPSAppView" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/user_choose_mpick_up_view.json",
+                "viewType" : "DEMPICKUPVIEW2"
+              }
+            } ],
+            "getPSControls" : [ {
+              "codeName" : "assigned_grid_view_toolbar",
+              "controlType" : "TOOLBAR",
+              "logicName" : "效能成员绑定_工具栏",
+              "name" : "toolbar",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "getPSControlParam" : {
+                "id" : "TOOLBAR"
+              },
+              "getPSDEToolbarItems" : [ {
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "TBB.TEXT.*.NEW"
+                },
+                "caption" : "添加成员",
+                "groupExtractMode" : "ITEM",
+                "itemType" : "DEUIACTION",
+                "name" : "deuiaction1",
+                "noPrivDisplayMode" : 2,
+                "getPSAppViewUIAction" : {
+                  "modelref" : true,
+                  "id" : "toolbar_deuiaction1"
+                },
+                "getPSSysImage" : {
+                  "glyph" : "xf067@FontAwesome",
+                  "cssClass" : "fa fa-plus"
+                },
+                "getPSUIAction" : {
+                  "getCapPSLanguageRes" : {
+                    "lanResTag" : "TBB.TEXT.*.NEW"
+                  },
+                  "caption" : "新建",
+                  "codeName" : "New",
+                  "fullCodeName" : "New",
+                  "name" : "表格界面_新建操作",
+                  "getPSSysImage" : {
+                    "glyph" : "xf0f6@FontAwesome",
+                    "cssClass" : "fa fa-file-text-o"
+                  },
+                  "predefinedType" : "GRIDVIEW_NEWACTION",
+                  "timeout" : 60000,
+                  "getTooltipPSLanguageRes" : {
+                    "lanResTag" : "TBB.TOOLTIP.*.NEW"
+                  },
+                  "uIActionMode" : "SYS",
+                  "uIActionTag" : "New",
+                  "uIActionType" : "DEUIACTION"
+                },
+                "tooltip" : "添加成员",
+                "getTooltipPSLanguageRes" : {
+                  "lanResTag" : "TBB.TOOLTIP.*.NEW"
+                },
+                "showCaption" : true,
+                "showIcon" : true
+              } ],
+              "toolbarStyle" : "USER",
+              "xDataControlName" : "grid",
+              "modelid" : "78EBD6E9-70DA-4D6D-93D9-56133E58F5E0",
+              "modeltype" : "PSDETOOLBAR"
+            }, {
+              "aggMode" : "NONE",
+              "codeName" : "assigned_grid_view_grid",
+              "columnEnableFilter" : 2,
+              "columnEnableLink" : 2,
+              "controlType" : "GRID",
+              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member/PSGRIDS/assigned_grid_view_grid.json",
+              "getFetchPSControlAction" : {
+                "modelref" : true,
+                "id" : "fetch",
+                "actionType" : "DEDATASET",
+                "name" : "fetch",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "fetch_default"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                }
+              },
+              "groupMode" : "NONE",
+              "logicName" : "效能成员绑定_表格",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "getPSControlHandler" : {
+                "getPSHandlerActions" : [ {
+                  "actionName" : "Get",
+                  "actionType" : "DEACTION",
+                  "dataAccessAction" : "READ",
+                  "name" : "load",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "get"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionName" : "Create",
+                  "actionType" : "DEACTION",
+                  "dataAccessAction" : "CREATE",
+                  "name" : "create",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "create"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionName" : "Update",
+                  "actionType" : "DEACTION",
+                  "dataAccessAction" : "UPDATE",
+                  "name" : "update",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "update"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionName" : "Remove",
+                  "actionType" : "DEACTION",
+                  "dataAccessAction" : "DELETE",
+                  "name" : "remove",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "remove"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionName" : "GetDraft",
+                  "actionType" : "DEACTION",
+                  "dataAccessAction" : "CREATE",
+                  "name" : "loaddraft",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "get_draft"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionType" : "DEDATASET",
+                  "name" : "fetch",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "fetch_default"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                } ],
+                "userDRAction" : "READ",
+                "enableDEFieldPrivilege" : false,
+                "id" : "数据表格处理器"
+              },
+              "getPSControlParam" : {
+                "autoLoad" : true,
+                "showBusyIndicator" : true,
+                "id" : "GRID"
+              },
+              "getPSDEGridColumns" : [ {
+                "align" : "LEFT",
+                "cLConvertMode" : "NONE",
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "CONTROL.DEGRID.INSIGHT_MEMBER.ASSIGNED_GRID_VIEW_GRID.DEFGRIDCOLUMN.NAME"
+                },
+                "caption" : "姓名",
+                "codeName" : "name",
+                "columnType" : "DEFGRIDCOLUMN",
+                "dataItemName" : "name",
+                "excelCaption" : "姓名",
+                "name" : "name",
+                "noPrivDisplayMode" : 1,
+                "getPSAppDEField" : {
+                  "name" : "NAME",
+                  "codeName" : "name"
+                },
+                "width" : 200,
+                "widthUnit" : "STAR",
+                "enableSort" : true
+              }, {
+                "align" : "CENTER",
+                "caption" : "操作",
+                "codeName" : "uagridcolumn1",
+                "columnType" : "UAGRIDCOLUMN",
+                "name" : "uagridcolumn1",
+                "noPrivDisplayMode" : 1,
+                "getPSDEUIActionGroup" : {
+                  "codeName" : "Usr0702314164",
+                  "name" : "效能成员配置",
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  },
+                  "getPSUIActionGroupDetails" : [ {
+                    "detailType" : "DEUIACTION",
+                    "name" : "u179f60c",
+                    "getPSSysImage" : {
+                      "glyph" : "xf014@FontAwesome",
+                      "cssClass" : "fa fa-trash-o"
+                    },
+                    "getPSUIAction" : {
+                      "actionTarget" : "SINGLEKEY",
+                      "caption" : "移除成员",
+                      "codeName" : "remove_member",
+                      "confirmMsg" : "确认删除该成员？",
+                      "fullCodeName" : "insight_member_remove_member",
+                      "name" : "移除成员",
+                      "getPSAppDEMethod" : {
+                        "modelref" : true,
+                        "id" : "remove"
+                      },
+                      "getPSAppDataEntity" : {
+                        "modelref" : true,
+                        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                      },
+                      "refreshMode" : 1,
+                      "successMsg" : "删除成功",
+                      "timeout" : 60000,
+                      "uIActionMode" : "BACKEND",
+                      "uIActionTag" : "remove_member",
+                      "uIActionType" : "DEUIACTION",
+                      "enableConfirm" : true,
+                      "reloadData" : true,
+                      "id" : "remove_member@insight_member"
+                    },
+                    "addSeparator" : false,
+                    "showCaption" : false,
+                    "showIcon" : true
+                  } ],
+                  "uniqueTag" : "insight_member__Usr0702314164"
+                },
+                "width" : 100,
+                "widthUnit" : "PX",
+                "enableSort" : false
+              } ],
+              "getPSDEGridDataItems" : [ {
+                "dataType" : 25,
+                "name" : "name",
+                "getPSAppDEField" : {
+                  "name" : "NAME",
+                  "codeName" : "name"
+                }
+              }, {
+                "dataType" : 25,
+                "name" : "srfkey",
+                "getPSAppDEField" : {
+                  "name" : "ID",
+                  "codeName" : "id"
+                }
+              }, {
+                "dataType" : 25,
+                "name" : "srfdataaccaction",
+                "getPSAppDEField" : {
+                  "name" : "ID",
+                  "codeName" : "id"
+                },
+                "dataAccessAction" : true
+              }, {
+                "dataType" : 25,
+                "name" : "user_id",
+                "getPSAppDEField" : {
+                  "name" : "USER_ID",
+                  "codeName" : "user_id"
+                }
+              }, {
+                "dataType" : 25,
+                "name" : "owner_id",
+                "getPSAppDEField" : {
+                  "name" : "OWNER_ID",
+                  "codeName" : "owner_id"
+                }
+              }, {
+                "dataType" : 25,
+                "name" : "srfmajortext",
+                "getPSAppDEField" : {
+                  "name" : "NAME",
+                  "codeName" : "name"
+                }
+              } ],
+              "getPSDEGridEditItems" : [ {
+                "caption" : "标识",
+                "codeName" : "srfkey",
+                "enableCond" : 3,
+                "ignoreInput" : 0,
+                "name" : "srfkey",
+                "getPSAppDEField" : {
+                  "name" : "ID",
+                  "codeName" : "id"
+                },
+                "getPSEditor" : {
+                  "editorType" : "HIDDEN",
+                  "name" : "srfkey"
+                },
+                "allowEmpty" : true
+              } ],
+              "pagingSize" : 20,
+              "getRemovePSControlAction" : {
+                "actionName" : "Remove",
+                "actionType" : "DEACTION",
+                "dataAccessAction" : "DELETE",
+                "name" : "remove",
+                "getPSAppDEMethod" : {
+                  "modelref" : true,
+                  "id" : "remove"
+                },
+                "getPSAppDataEntity" : {
+                  "modelref" : true,
+                  "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                }
+              },
+              "sortMode" : "REMOTE",
+              "hasWFDataItems" : false,
+              "enableColFilter" : false,
+              "enableCustomized" : true,
+              "enableGroup" : false,
+              "enablePagingBar" : false,
+              "enableRowEdit" : false,
+              "enableRowEditOrder" : false,
+              "enableRowNew" : false,
+              "forceFit" : false,
+              "hideHeader" : false,
+              "noSort" : false,
+              "singleSelect" : true,
+              "name" : "grid",
+              "modelid" : "0EC96688-E56C-4413-8A19-18FA11BB6F28",
+              "modeltype" : "PSDEGRID"
+            }, {
+              "codeName" : "assigned_grid_view_search_form",
+              "controlType" : "SEARCHFORM",
+              "defaultLabelWidth" : 130,
+              "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member/PSSEARCHFORMS/assigned_grid_view_search_form.json",
+              "logicName" : "效能成员绑定_搜索表单",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "getPSControlHandler" : {
+                "getPSHandlerActions" : [ {
+                  "actionType" : "FILTERACTION",
+                  "name" : "load",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "FilterGet"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionType" : "FILTERACTION",
+                  "name" : "loaddraft",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "FilterGetDraft"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                }, {
+                  "actionType" : "FILTERACTION",
+                  "name" : "search",
+                  "getPSAppDEMethod" : {
+                    "modelref" : true,
+                    "id" : "FilterSearch"
+                  },
+                  "getPSAppDataEntity" : {
+                    "modelref" : true,
+                    "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+                  }
+                } ],
+                "enableDEFieldPrivilege" : false,
+                "id" : "搜索表单处理器"
+              },
+              "getPSControlParam" : {
+                "autoLoad" : true,
+                "showBusyIndicator" : true,
+                "id" : "SEARCHFORM"
+              },
+              "getPSDEFormPages" : [ {
+                "getCapPSLanguageRes" : {
+                  "lanResTag" : "CONTROL.DEFORM.INSIGHT_MEMBER.ASSIGNED_GRID_VIEW_SEARCHFORM.FORMPAGE.FORMPAGE1"
+                },
+                "caption" : "常规条件",
+                "codeName" : "formpage1",
+                "detailStyle" : "DEFAULT",
+                "detailType" : "FORMPAGE",
+                "name" : "formpage1",
+                "getPSLayout" : {
+                  "childColMD" : 24,
+                  "columnCount" : 24,
+                  "layout" : "TABLE_24COL"
+                },
+                "infoGroupMode" : false
+              } ],
+              "getPSLayout" : {
+                "childColMD" : 24,
+                "columnCount" : 24,
+                "layout" : "TABLE_24COL"
+              },
+              "searchButtonStyle" : "DEFAULT",
+              "tabHeaderPos" : "TOP",
+              "enableAdvanceSearch" : false,
+              "enableAutoSearch" : false,
+              "enableFilterSave" : false,
+              "noTabHeader" : true,
+              "name" : "searchform",
+              "modelid" : "BA6BAF3C-87C5-46B6-A0FB-0D52DD41514C",
+              "modeltype" : "PSDEFORM_SEARCHFORM"
+            }, {
+              "controlType" : "SEARCHBAR",
+              "name" : "searchbar",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "getPSControlParam" : {
+                "id" : "searchbar"
+              },
+              "quickGroupCount" : -1,
+              "quickSearchMode" : 0,
+              "quickSearchWidth" : 0,
+              "enableFilter" : false,
+              "enableGroup" : false,
+              "enableQuickSearch" : false,
+              "mobileSearchBar" : false
+            }, {
+              "getCapPSLanguageRes" : {
+                "lanResTag" : "PAGE.CAPTION.INSIGHT_MEMBER.ASSIGNED_GRID_VIEW"
+              },
+              "caption" : "视图成员",
+              "codeName" : "assigned_grid_view_captionbar",
+              "controlType" : "CAPTIONBAR",
+              "name" : "captionbar",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "getPSControlParam" : { }
+            } ],
+            "getPSDEViewCodeName" : "assigned_grid_view",
+            "getPSDEViewId" : "3BC2CB00-0067-4F55-8328-20B6A3187F02",
+            "getPSViewLayoutPanel" : {
+              "codeName" : "layoutpanel",
+              "controlStyle" : "APPDEGRIDVIEW",
+              "controlType" : "VIEWLAYOUTPANEL",
+              "name" : "layoutpanel",
+              "getPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "getPSControlParam" : { },
+              "layoutBodyOnly" : true,
+              "layoutPanel" : true,
+              "useDefaultLayout" : true
+            },
+            "title" : "视图成员",
+            "getTitlePSLanguageRes" : {
+              "lanResTag" : "PAGE.TITLE.INSIGHT_MEMBER.ASSIGNED_GRID_VIEW"
+            },
+            "viewStyle" : "DEFAULT",
+            "viewType" : "DEGRIDVIEW",
+            "xDataControlName" : "grid",
+            "enableDP" : true,
+            "enableExport" : true,
+            "enableFilter" : true,
+            "enableImport" : true,
+            "enableRowEdit" : false,
+            "enableSearch" : true,
+            "rowEditDefault" : false,
+            "showCaptionBar" : false,
+            "modelid" : "3aecf8ad74bab2d8e96376a1d75d4f4f",
+            "modeltype" : "PSAPPDEVIEW",
+            "getPSAppDERSPaths" : [ [ {
+              "actionRSMode" : 1,
+              "codeName" : "insight_members",
+              "dataRSMode" : 0,
+              "majorDECodeName" : "user",
+              "majorDEName" : "USER",
+              "getMajorPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/user.json"
+              },
+              "minorDECodeName" : "insight_member",
+              "minorDEName" : "INSIGHT_MEMBER",
+              "getMinorPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "name" : "DER1N_INSIGHT_MEMBER_USER_USER_ID",
+              "getParentPSAppDEField" : {
+                "name" : "USER_ID",
+                "codeName" : "user_id"
+              },
+              "rSMode" : 2
+            } ], [ {
+              "actionRSMode" : 1,
+              "codeName" : "insight_members",
+              "dataRSMode" : 0,
+              "majorDECodeName" : "insight_view",
+              "majorDEName" : "INSIGHT_VIEW",
+              "getMajorPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+              },
+              "minorDECodeName" : "insight_member",
+              "minorDEName" : "INSIGHT_MEMBER",
+              "getMinorPSAppDataEntity" : {
+                "modelref" : true,
+                "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_member.json"
+              },
+              "name" : "DER1N_INSIGHT_MEMBER_INSIGHT_VIEW_OWNER_ID",
+              "getParentPSAppDEField" : {
+                "name" : "OWNER_ID",
+                "codeName" : "owner_id"
+              },
+              "rSMode" : 2
+            } ] ]
+          },
+          "getPSLayoutPos" : {
+            "colMD" : 24,
+            "height" : 500,
+            "heightMode" : "PX",
+            "layout" : "TABLE_24COL"
+          },
+          "parentDataJO" : {
+            "SRFPARENTTYPE" : "DER1N",
+            "srfparentdename" : "INSIGHT_VIEW",
+            "srfparentmode" : "DER1N_INSIGHT_MEMBER_INSIGHT_VIEW_OWNER_ID",
+            "srfparentdefname" : "OWNER_ID",
+            "SRFDER1NID" : "DER1N_INSIGHT_MEMBER_INSIGHT_VIEW_OWNER_ID"
+          },
+          "needSave" : false,
+          "refreshItemsSetParamOnly" : false,
+          "showCaption" : true
+        } ],
+        "getPSLayout" : {
+          "childColMD" : 24,
+          "columnCount" : 24,
+          "layout" : "TABLE_24COL"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "infoGroupMode" : false,
+        "showCaption" : false
+      }, {
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "DEF.LNAME.ID"
+        },
+        "caption" : "标识",
+        "codeName" : "id",
+        "dataType" : 25,
+        "detailStyle" : "DEFAULT",
+        "detailType" : "FORMITEM",
+        "enableCond" : 3,
+        "ignoreInput" : 0,
+        "labelPos" : "LEFT",
+        "labelWidth" : 130,
+        "name" : "id",
+        "noPrivDisplayMode" : 1,
+        "getPSAppDEField" : {
+          "name" : "ID",
+          "codeName" : "id"
+        },
+        "getPSEditor" : {
+          "editorType" : "HIDDEN",
+          "name" : "id"
+        },
+        "getPSLayoutPos" : {
+          "colLG" : 12,
+          "colMD" : 12,
+          "layout" : "TABLE_24COL"
+        },
+        "allowEmpty" : true,
+        "hidden" : true
+      } ],
+      "getPSLayout" : {
+        "childColLG" : 12,
+        "childColMD" : 12,
+        "columnCount" : 24,
+        "layout" : "TABLE_24COL"
+      },
+      "infoGroupMode" : false
+    } ],
+    "getPSDEWizardForm" : {
+      "formTag" : "bind_member",
+      "name" : "bind_member",
+      "getPSDEFormName" : "成员绑定",
+      "getPSDEWizardStep" : {
+        "modelref" : true,
+        "id" : "视图成员"
+      },
+      "stepActions" : [ "PREV", "FINISH" ],
+      "stepTag" : "bind_member",
+      "firstForm" : false
+    },
+    "getPSLayout" : {
+      "childColMD" : 24,
+      "columnCount" : 24,
+      "layout" : "TABLE_24COL"
+    },
+    "tabHeaderPos" : "TOP",
+    "getUpdatePSControlAction" : {
+      "modelref" : true,
+      "id" : "update",
+      "actionName" : "UpdateTemp",
+      "actionType" : "DEACTION",
+      "name" : "update",
+      "getPSAppDEMethod" : {
+        "modelref" : true,
+        "id" : "UpdateTemp"
+      },
+      "getPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+      }
+    },
+    "noTabHeader" : true,
+    "name" : "wizardpanel_form_bind_member",
+    "modelid" : "9107BACB-3A32-4EF7-90D3-B0275C2A1280",
+    "modeltype" : "PSDEFORM_EDITFORM"
+  } ],
+  "getPSDEWizard" : {
+    "codeName" : "insight_view_wizard",
+    "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_view/PSDEWIZARDS/insight_view_wizard.json",
+    "getFirstPSDEWizardForm" : {
+      "modelref" : true,
+      "id" : "fill_info"
+    },
+    "name" : "视图新建向导",
+    "nextCaption" : "下一步",
+    "getPSDEWizardForms" : [ {
+      "formTag" : "fill_info",
+      "goFinishEnableScriptCode" : "data.scope_type !== \"organization\"",
+      "goNextEnableScriptCode" : "data.scope_type === \"organization\"",
+      "name" : "fill_info",
+      "getPSDEFormName" : "新建表单",
+      "getPSDEWizardStep" : {
+        "modelref" : true,
+        "id" : "视图信息"
+      },
+      "stepActions" : [ "NEXT", "FINISH" ],
+      "stepTag" : "fill_info",
+      "firstForm" : true
+    }, {
+      "formTag" : "bind_member",
+      "name" : "bind_member",
+      "getPSDEFormName" : "成员绑定",
+      "getPSDEWizardStep" : {
+        "modelref" : true,
+        "id" : "视图成员"
+      },
+      "stepActions" : [ "PREV", "FINISH" ],
+      "stepTag" : "bind_member",
+      "firstForm" : false
+    } ],
+    "getPSDEWizardSteps" : [ {
+      "name" : "视图信息",
+      "stepTag" : "fill_info",
+      "title" : "视图信息",
+      "enableLink" : false
+    }, {
+      "name" : "视图成员",
+      "stepTag" : "bind_member",
+      "title" : "视图成员",
+      "enableLink" : false
+    } ],
+    "wizardStyle" : "DEFAULT",
+    "stateWizard" : false
+  },
+  "wizardStyle" : "DEFAULT",
+  "showActionBar" : true,
+  "showStepBar" : true,
+  "modelid" : "345E484B-1964-4D64-B4FA-AE7133ED0006",
+  "modeltype" : "PSDEWIZARDPANEL"
+}

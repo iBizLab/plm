@@ -1,0 +1,256 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.recognize_cur_user_role;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space spacerecognize_cur_user_roledefault;
+                global java.util.Map spacerecognize_cur_user_rolefor_obj;
+                global cn.ibizlab.plm.core.wiki.domain.space_member spacerecognize_cur_user_rolemembers;
+                global cn.ibizlab.plm.core.prodmgmt.domain.product_member spacerecognize_cur_user_roleproduct_filter;
+                global cn.ibizlab.plm.core.projmgmt.domain.project_member spacerecognize_cur_user_roleproject_filter;
+                global java.util.Map spacerecognize_cur_user_roleuser;
+                    global cn.ibizlab.plm.core.prodmgmt.service.Iproduct_memberService product_memberservice;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iproject_memberService project_memberservice;
+        global cn.ibizlab.plm.core.wiki.service.IspaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spacerecognize_cur_user_rolebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[获取产品id并设置过滤参数]
+            rule "prepareparam6"
+            ruleflow-group "spacerecognize_cur_user_roleprepareparam6"
+            when
+            then
+                            spacerecognize_cur_user_roleproduct_filter.set("n_product_id_eq",spacerecognize_cur_user_roledefault.get("product"));
+                                spacerecognize_cur_user_roleproduct_filter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为产品成员]
+            rule "dedataset2"
+            ruleflow-group "spacerecognize_cur_user_rolededataset2"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end2"
+            ruleflow-group "spacerecognize_cur_user_roleend2"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取项目id并设置过滤参数]
+            rule "prepareparam2"
+            ruleflow-group "spacerecognize_cur_user_roleprepareparam2"
+            when
+            then
+                            spacerecognize_cur_user_roleproject_filter.set("n_project_id_eq",spacerecognize_cur_user_roledefault.get("project"));
+                                spacerecognize_cur_user_roleproject_filter.set("n_user_id_eq",curuser.getSessionParams().get("srfpersonid"));
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[查询当前用户是否为项目成员]
+            rule "dedataset3"
+            ruleflow-group "spacerecognize_cur_user_rolededataset3"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam4"
+            ruleflow-group "spacerecognize_cur_user_roleprepareparam4"
+            when
+            then
+                                spacerecognize_cur_user_roledefault.set("srfreadonly",null);
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam5"
+            ruleflow-group "spacerecognize_cur_user_roleprepareparam5"
+            when
+            then
+                            spacerecognize_cur_user_rolefor_obj.set("",spacerecognize_cur_user_rolemembers.get("0"));
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode1"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode1"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[判断系统管理员身份]
+            rule "rawsfcode3"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode3"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[只读权限]
+            rule "rawsfcode4"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode4"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[返回系统管理员权限]
+            rule "prepareparam3"
+            ruleflow-group "spacerecognize_cur_user_roleprepareparam3"
+            when
+            then
+                            spacerecognize_cur_user_roledefault.set("user_role","sys_admin");
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[普通用户]
+            rule "rawsfcode6"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode6"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定用户数据到for_obj]
+            rule "prepareparam7"
+            ruleflow-group "spacerecognize_cur_user_roleprepareparam7"
+            when
+            then
+                            spacerecognize_cur_user_rolefor_obj.set("",spacerecognize_cur_user_rolemembers.get("0"));
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[管理员]
+            rule "rawsfcode5"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode5"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[管理员]
+            rule "rawsfcode2"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode2"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[普通用户]
+            rule "rawsfcode7"
+            ruleflow-group "spacerecognize_cur_user_rolerawsfcode7"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end6"
+            ruleflow-group "spacerecognize_cur_user_roleend6"
+            when
+            then
+                        update(spacerecognize_cur_user_roledefault);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolefor_obj);//更新fact中变量值
+                        update(spacerecognize_cur_user_rolemembers);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproduct_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleproject_filter);//更新fact中变量值
+                        update(spacerecognize_cur_user_roleuser);//更新fact中变量值
+            end

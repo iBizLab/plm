@@ -1,0 +1,228 @@
+{
+  "codeName" : "plan_compar_ative_analysis",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDELOGICS/plan_compar_ative_analysis.json",
+  "logicName" : "测试计划对比分析",
+  "memo" : "报表测试计划对比分析数据源",
+  "name" : "测试计划对比分析",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 200,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 770,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 200
+  }, {
+    "codeName" : "RAWSQLCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result"
+    },
+    "leftPos" : 484,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "直接SQL调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[n_status_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_status_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_status_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_status_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_status_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_status_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[N_TEST_LIBRARY_ID_EQ]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "N_TEST_LIBRARY_ID_EQ",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_plan_name_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_plan_name_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_plan_name_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_plan_name_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_plan_name_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_plan_name_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executor_id_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executor_id_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executor_id_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executor_id_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executor_id_eq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executor_id_eq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executed_at_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executed_at_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executed_at_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executed_at_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executed_at_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executed_at_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executed_at_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executed_at_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executed_at_gtandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executed_at_gtandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "name" : "Default[n_executed_at_ltandeq]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "n_executed_at_ltandeq",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "\r\nSELECT\r\n    tp.ID AS filter_type,\r\n    tp.Name AS TestPlanName,\r\n    COUNT(r.ID) AS TotalRuns, -- 执行用例数量\r\n    COALESCE(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END), 0) AS ExecutedRuns, -- 已执行用例数量\r\n    COALESCE(SUM(CASE WHEN r.status = '10' THEN 1 ELSE 0 END), 0) AS PassedRuns, -- 通过的用例数量\r\n    -- 测试执行率：已执行用例数量 / 执行用例数量（\r\n    CONCAT(COALESCE(ROUND(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(r.ID), 0), 2), 0.00), '%') AS ExecutionRate,\r\n    -- 测试通过率：通过的用例数量 / 已执行用例数量\r\n    CONCAT(COALESCE(ROUND(SUM(CASE WHEN r.status = '10' THEN 1 ELSE 0 END) * 100.0 / NULLIF(SUM(CASE WHEN r.status IS NOT NULL THEN 1 ELSE 0 END), 0), 2), 0.00), '%') AS PassRate\r\nFROM\r\n    test_plan tp\r\n        LEFT JOIN run r ON tp.ID = r.plan_id AND ((? IS NULL OR ? = '') OR FIND_IN_SET(r.STATUS, ?))\r\n        LEFT JOIN test_case tc ON r.case_id = tc.ID\r\nWHERE\r\n        tc.TEST_LIBRARY_ID = ?\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(PLAN_ID, ?))\r\n  AND ((? IS NULL OR ? = '') OR FIND_IN_SET(EXECUTOR_ID, ?))\r\n  AND ((? IS NULL OR ? = '' OR ? IS NULL OR ? = '') OR EXECUTED_AT BETWEEN ? and ? )\r\nGROUP BY\r\n    tp.ID\r\nORDER BY\r\n    tp.ID;",
+    "topPos" : 208,
+    "fillDstLogicParam" : true
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "result",
+    "logicName" : "结果",
+    "name" : "结果",
+    "entityListParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

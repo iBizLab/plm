@@ -1,0 +1,868 @@
+{
+  "codeName" : "advanced_search",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/search_attachment/PSDELOGICS/advanced_search.json",
+  "logicName" : "高级搜索",
+  "memo" : "高级搜索，用于填充所属相关信息字段",
+  "name" : "高级搜索",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 200,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 90,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "work_item"
+    },
+    "leftPos" : 630,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      }
+    } ],
+    "srcFieldName" : "work_item",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 130
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 870,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充工作项展示属性",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "work_item[SHOW_IDENTIFIER] ==> for_temp_obj[OWNER_IDENTIFIER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SHOW_IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "work_item[PROJECT_ID] ==> for_temp_obj[OWNER_PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PROJECT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "work_item[PROJECT_NAME] ==> for_temp_obj[OWNER_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PROJECT_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "work_item[TITLE] ==> for_temp_obj[OWNER_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "work_item"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 130
+  }, {
+    "codeName" : "DEDATASET1",
+    "getDstPSDEDataSet" : {
+      "modelref" : true,
+      "id" : "relation"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/search_attachment.json"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "DEDATASET",
+    "name" : "关联查询",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "topPos" : 300
+  }, {
+    "codeName" : "BINDPARAM2",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "idea"
+    },
+    "leftPos" : 630,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      }
+    } ],
+    "srcFieldName" : "idea",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 300
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 870,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充产品需求展示属性",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "idea[SHOW_IDENTIFIER] ==> for_temp_obj[OWNER_IDENTIFIER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SHOW_IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "idea[PRODUCT_ID] ==> for_temp_obj[OWNER_PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRODUCT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "idea[PRODUCT_NAME] ==> for_temp_obj[OWNER_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRODUCT_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "idea[TITLE] ==> for_temp_obj[OWNER_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "idea"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 300
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM1"
+      },
+      "name" : "工作项",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[OWNER_TYPE] 等于(=) WORK_ITEM",
+          "paramValue" : "WORK_ITEM"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      }
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM2"
+      },
+      "name" : "产品需求",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[OWNER_TYPE] 等于(=) IDEA",
+          "paramValue" : "IDEA"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      },
+      "name" : "工单",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[OWNER_TYPE] 等于(=) TICKET",
+          "paramValue" : "TICKET"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM4"
+      },
+      "name" : "客户",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[OWNER_TYPE] 等于(=) CUSTOMER",
+          "paramValue" : "CUSTOMER"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM5"
+      },
+      "name" : "测试用例",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[OWNER_TYPE] 等于(=) TEST_CASE",
+          "paramValue" : "TEST_CASE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    }, {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM6"
+      },
+      "name" : "页面",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "EQ",
+          "dstFieldName" : "OWNER_TYPE",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "for_temp_obj"
+          },
+          "logicType" : "SINGLE",
+          "name" : "for_temp_obj[OWNER_TYPE] 等于(=) PAGE",
+          "paramValue" : "PAGE"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "topPos" : 437,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "BINDPARAM3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "ticket"
+    },
+    "leftPos" : 630,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM3"
+      }
+    } ],
+    "srcFieldName" : "ticket",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 462
+  }, {
+    "codeName" : "PREPAREPARAM3",
+    "leftPos" : 870,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充工单展示属性",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "ticket[TITLE] ==> for_temp_obj[OWNER_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ticket"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "ticket[PRODUCT_ID] ==> for_temp_obj[OWNER_PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRODUCT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ticket"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "ticket[PRODUCT_NAME] ==> for_temp_obj[OWNER_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRODUCT_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ticket"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "ticket[SHOW_IDENTIFIER] ==> for_temp_obj[OWNER_IDENTIFIER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SHOW_IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "ticket"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 462
+  }, {
+    "codeName" : "BINDPARAM4",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "customer"
+    },
+    "leftPos" : 630,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM4"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM4"
+      }
+    } ],
+    "srcFieldName" : "customer",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 593
+  }, {
+    "codeName" : "PREPAREPARAM4",
+    "leftPos" : 870,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充客户展示属性",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "customer[NAME] ==> for_temp_obj[OWNER_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "customer"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "customer[PRODUCT_ID] ==> for_temp_obj[OWNER_PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRODUCT_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "customer"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "customer[PRODUCT_NAME] ==> for_temp_obj[OWNER_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "PRODUCT_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "customer"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 593
+  }, {
+    "codeName" : "BINDPARAM5",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "test_case"
+    },
+    "leftPos" : 630,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM5"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM5"
+      }
+    } ],
+    "srcFieldName" : "test_case",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 735
+  }, {
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 870,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充测试用例展示属性",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "test_case[SHOW_IDENTIFIER] ==> for_temp_obj[OWNER_IDENTIFIER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SHOW_IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "test_case[TEST_LIBRARY_ID] ==> for_temp_obj[OWNER_PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TEST_LIBRARY_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "test_case[TITLE] ==> for_temp_obj[OWNER_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TITLE",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "test_case[TEST_LIBRARY_NAME] ==> for_temp_obj[OWNER_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "TEST_LIBRARY_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "test_case"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 735
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 200,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
+      "modelref" : true,
+      "id" : "result_page"
+    },
+    "returnType" : "LOGICPARAM",
+    "topPos" : 795
+  }, {
+    "codeName" : "BINDPARAM6",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "leftPos" : 630,
+    "logicNodeType" : "BINDPARAM",
+    "name" : "绑定参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "BINDPARAM6"
+      }
+    } ],
+    "srcFieldName" : "PAGE",
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "topPos" : 899
+  }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 870,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "填充页面展示属性",
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_TITLE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "page[NAME] ==> for_temp_obj[OWNER_TITLE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "page[SPACE_ID] ==> for_temp_obj[OWNER_PARENT_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SPACE_ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "page[SPACE_NAME] ==> for_temp_obj[OWNER_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SPACE_NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "name" : "page[SHOW_IDENTIFIER] ==> for_temp_obj[OWNER_IDENTIFIER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "SHOW_IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "page"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 899
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/search_attachment.json"
+    },
+    "default" : true,
+    "filterParam" : true
+  }, {
+    "codeName" : "customer",
+    "logicName" : "客户",
+    "name" : "客户",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/customer.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "for_temp_obj",
+    "logicName" : "循环临时变量",
+    "name" : "循环临时变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/search_attachment.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "idea",
+    "logicName" : "产品需求",
+    "name" : "产品需求",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "page",
+    "logicName" : "页面",
+    "name" : "页面",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "result_page",
+    "logicName" : "分页查询结果变量",
+    "name" : "分页查询结果变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/search_attachment.json"
+    },
+    "entityPageParam" : true
+  }, {
+    "codeName" : "test_case",
+    "logicName" : "测试用例",
+    "name" : "测试用例",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/test_case.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "ticket",
+    "logicName" : "工单",
+    "name" : "工单",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "work_item",
+    "logicName" : "工作项",
+    "name" : "工作项",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
+    },
+    "entityParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

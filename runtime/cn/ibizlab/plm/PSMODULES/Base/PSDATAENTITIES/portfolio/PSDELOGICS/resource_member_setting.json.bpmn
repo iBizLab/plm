@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.base.service.logic.portfolioresource_member_setting" isClosed="false" isExecutable="true" name="base_portfolio_resource_member_setting_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.base.service.logic.portfolioresource_member_setting">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="portfolioresource_member_settingdefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.addon_resource()" name="portfolioresource_member_settingaddon_resource" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.addon_resource()" name="portfolioresource_member_settingaddon_resource_filter" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.addon_resource()" name="portfolioresource_member_settingaddon_resource_page" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.day_capacity()" name="portfolioresource_member_settingday_capacity" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="portfolioresource_member_settingfor_choose_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="portfolioresource_member_settingfor_temp_obj" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.resource_member()" name="portfolioresource_member_settinginsert_members" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.resource_member()" name="portfolioresource_member_settingresource_member" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.resource_member()" name="portfolioresource_member_settingresource_members" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.base.domain.member()" name="portfolioresource_member_settingsrfactionparam" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.Iaddon_resourceService))" name="addon_resourceservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.base.service.IportfolioService))" name="iBzSysPortfolioDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="portfolioresource_member_settingdefault" type="cn.ibizlab.plm.core.base.domain.portfolio" />
+                            <tns:global identifier="portfolioresource_member_settingaddon_resource" type="cn.ibizlab.plm.core.base.domain.addon_resource" />
+                            <tns:global identifier="portfolioresource_member_settingaddon_resource_filter" type="cn.ibizlab.plm.core.base.domain.addon_resource" />
+                            <tns:global identifier="portfolioresource_member_settingaddon_resource_page" type="cn.ibizlab.plm.core.base.domain.addon_resource" />
+                            <tns:global identifier="portfolioresource_member_settingday_capacity" type="cn.ibizlab.plm.core.projmgmt.domain.day_capacity" />
+                            <tns:global identifier="portfolioresource_member_settingfor_choose_obj" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="portfolioresource_member_settingfor_temp_obj" type="cn.ibizlab.plm.core.base.domain.member" />
+                            <tns:global identifier="portfolioresource_member_settinginsert_members" type="cn.ibizlab.plm.core.base.domain.resource_member" />
+                            <tns:global identifier="portfolioresource_member_settingresource_member" type="cn.ibizlab.plm.core.base.domain.resource_member" />
+                            <tns:global identifier="portfolioresource_member_settingresource_members" type="cn.ibizlab.plm.core.base.domain.resource_member" />
+                            <tns:global identifier="portfolioresource_member_settingsrfactionparam" type="cn.ibizlab.plm.core.base.domain.member" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置资源组件查询过滤器参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取此项目集下的资源组件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingbindparam3" id="bindparam3" implementation="http://www.jboss.org/drools/rule" name="绑定资源组件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingbindparam2" id="bindparam2" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingloopsubcall3" id="loopsubcall3" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingappendparam2" id="appendparam2" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam2_end" name="end"/>
+                        <sequenceFlow id="appendparam2_end_line" sourceRef="appendparam2" targetRef="appendparam2_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingrawsfcode4" id="rawsfcode4" implementation="http://www.jboss.org/drools/rule" name="判断此成员是否已加入资源"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充默认容量/工作日"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="资源成员绑定容量属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingappendparam1" id="appendparam1" implementation="http://www.jboss.org/drools/rule" name="附加到数组参数"/>
+                        <endEvent id="appendparam1_end" name="end"/>
+                        <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingrawsfcode3" id="rawsfcode3" implementation="http://www.jboss.org/drools/rule" name="资源成员绑定至组件"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="portfolioresource_member_settingdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存资源成员"/>
+                        <endEvent id="deaction2_end" name="end"/>
+                        <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
+                    <sequenceFlow id="gateway-begin_bindparam1" sourceRef="gateway-begin" targetRef="bindparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingdefault.get("portfolio_id"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam1_prepareparam3" sourceRef="gateway-bindparam1" targetRef="prepareparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingsrfactionparam.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_dedataset1" sourceRef="prepareparam3" targetRef="dedataset1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-dedataset1_bindparam3" sourceRef="gateway-dedataset1" targetRef="bindparam3">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingaddon_resource_page.get("size"),"GT","0")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam3_bindparam2" sourceRef="gateway-bindparam3" targetRef="bindparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingaddon_resource.get("members"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-bindparam3_loopsubcall1" sourceRef="gateway-bindparam3" targetRef="loopsubcall1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingaddon_resource.get("members"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam2_loopsubcall2" sourceRef="bindparam2" targetRef="loopsubcall2">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_loopsubcall3" sourceRef="loopsubcall2" targetRef="loopsubcall3">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall2_loopsubcall1" sourceRef="loopsubcall2" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall3_prepareparam4" sourceRef="loopsubcall3" targetRef="prepareparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam4_appendparam2" sourceRef="gateway-prepareparam4" targetRef="appendparam2">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingfor_temp_obj.get("userId"),"EQ","USER_ID")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode4" sourceRef="loopsubcall1" targetRef="rawsfcode4">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_rawsfcode3" sourceRef="loopsubcall1" targetRef="rawsfcode3">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-rawsfcode4_renewparam1" sourceRef="gateway-rawsfcode4" targetRef="renewparam1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $portfolioresource_member_settingdefault:portfolio();
+                                            $portfolioresource_member_settingaddon_resource:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_filter:addon_resource();
+                                            $portfolioresource_member_settingaddon_resource_page:addon_resource();
+                                            $portfolioresource_member_settingday_capacity:day_capacity();
+                                            $portfolioresource_member_settingfor_choose_obj:member();
+                                            $portfolioresource_member_settingfor_temp_obj:member();
+                                            $portfolioresource_member_settinginsert_members:resource_member();
+                                            $portfolioresource_member_settingresource_member:resource_member();
+                                            $portfolioresource_member_settingresource_members:resource_member();
+                                            $portfolioresource_member_settingsrfactionparam:member();
+                                    eval($portfolioresource_member_settingdefault==portfolioresource_member_settingdefault && $portfolioresource_member_settingaddon_resource==portfolioresource_member_settingaddon_resource && $portfolioresource_member_settingaddon_resource_filter==portfolioresource_member_settingaddon_resource_filter && $portfolioresource_member_settingaddon_resource_page==portfolioresource_member_settingaddon_resource_page && $portfolioresource_member_settingday_capacity==portfolioresource_member_settingday_capacity && $portfolioresource_member_settingfor_choose_obj==portfolioresource_member_settingfor_choose_obj && $portfolioresource_member_settingfor_temp_obj==portfolioresource_member_settingfor_temp_obj && $portfolioresource_member_settinginsert_members==portfolioresource_member_settinginsert_members && $portfolioresource_member_settingresource_member==portfolioresource_member_settingresource_member && $portfolioresource_member_settingresource_members==portfolioresource_member_settingresource_members && $portfolioresource_member_settingsrfactionparam==portfolioresource_member_settingsrfactionparam);
+                                eval((RuleUtils.test($portfolioresource_member_settingfor_choose_obj.get("already_exist"),"ISNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam1_rawsfcode2" sourceRef="prepareparam1" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_appendparam1" sourceRef="rawsfcode2" targetRef="appendparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode3_deaction2" sourceRef="rawsfcode3" targetRef="deaction2">
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
+                            <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>
+                            <sequenceFlow id="gateway-begin_end_line" sourceRef="gateway-begin" targetRef="gateway-begin_end"/>
+                            <endEvent id="gateway-begin_end" name="end"/>
+                            <exclusiveGateway id="gateway-bindparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam1_gateway-bindparam1_gatewayline" sourceRef="bindparam1" targetRef="gateway-bindparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam1_end_line" sourceRef="gateway-bindparam1" targetRef="gateway-bindparam1_end"/>
+                            <endEvent id="gateway-bindparam1_end" name="end"/>
+                            <exclusiveGateway id="gateway-dedataset1" name="Gateway" gatewayDirection="Diverging" default="gateway-dedataset1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="dedataset1_gateway-dedataset1_gatewayline" sourceRef="dedataset1" targetRef="gateway-dedataset1"></sequenceFlow>
+                            <sequenceFlow id="gateway-dedataset1_end_line" sourceRef="gateway-dedataset1" targetRef="gateway-dedataset1_end"/>
+                            <endEvent id="gateway-dedataset1_end" name="end"/>
+                            <exclusiveGateway id="gateway-bindparam3" name="Gateway" gatewayDirection="Diverging" default="gateway-bindparam3_end_line"></exclusiveGateway>
+                            <sequenceFlow id="bindparam3_gateway-bindparam3_gatewayline" sourceRef="bindparam3" targetRef="gateway-bindparam3"></sequenceFlow>
+                            <sequenceFlow id="gateway-bindparam3_end_line" sourceRef="gateway-bindparam3" targetRef="gateway-bindparam3_end"/>
+                            <endEvent id="gateway-bindparam3_end" name="end"/>
+                            <exclusiveGateway id="gateway-prepareparam4" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam4_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam4_gateway-prepareparam4_gatewayline" sourceRef="prepareparam4" targetRef="gateway-prepareparam4"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam4_end_line" sourceRef="gateway-prepareparam4" targetRef="gateway-prepareparam4_end"/>
+                            <endEvent id="gateway-prepareparam4_end" name="end"/>
+                            <exclusiveGateway id="gateway-rawsfcode4" name="Gateway" gatewayDirection="Diverging" default="gateway-rawsfcode4_end_line"></exclusiveGateway>
+                            <sequenceFlow id="rawsfcode4_gateway-rawsfcode4_gatewayline" sourceRef="rawsfcode4" targetRef="gateway-rawsfcode4"></sequenceFlow>
+                            <sequenceFlow id="gateway-rawsfcode4_end_line" sourceRef="gateway-rawsfcode4" targetRef="gateway-rawsfcode4_end"/>
+                            <endEvent id="gateway-rawsfcode4_end" name="end"/>
+        </process>
+    </definitions>

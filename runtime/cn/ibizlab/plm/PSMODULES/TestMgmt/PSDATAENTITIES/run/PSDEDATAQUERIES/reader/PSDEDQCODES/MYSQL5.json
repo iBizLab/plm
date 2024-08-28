@@ -1,0 +1,123 @@
+{
+  "dBType" : "MYSQL5",
+  "name" : "MySQL5",
+  "getPSDEDataQueryCodeConds" : [ {
+    "condType" : "CUSTOM",
+    "customCond" : "EXISTS(SELECT * FROM `LIBRARY_MEMBER` t51 \n WHERE \n t41.`ID` = t51.`LIBRARY_ID`  AND  ( t51.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )",
+    "name" : "查询条件"
+  } ],
+  "getPSDEDataQueryCodeExps" : [ {
+    "expression" : "t1.`STEPS`",
+    "name" : "STEPS"
+  }, {
+    "expression" : "concat(t41.`IDENTIFIER`,'-',t21.`NAME`)",
+    "name" : "BI_PLAN_NAME"
+  }, {
+    "expression" : "t1.`CASE_ID`",
+    "name" : "CASE_ID"
+  }, {
+    "expression" : "t11.`NAME`",
+    "name" : "CASE_NAME"
+  }, {
+    "expression" : "t1.`CREATE_MAN`",
+    "name" : "CREATE_MAN"
+  }, {
+    "expression" : "t1.`CREATE_TIME`",
+    "name" : "CREATE_TIME"
+  }, {
+    "expression" : "t1.`CUR_VERSION_ID`",
+    "name" : "CUR_VERSION_ID"
+  }, {
+    "expression" : "t1.`EXECUTED_AT`",
+    "name" : "EXECUTED_AT"
+  }, {
+    "expression" : "t1.`EXECUTOR_ID`",
+    "name" : "EXECUTOR_ID"
+  }, {
+    "expression" : "t1.`EXECUTOR_NAME`",
+    "name" : "EXECUTOR_NAME"
+  }, {
+    "expression" : "t1.`ID`",
+    "name" : "ID"
+  }, {
+    "expression" : "t11.`IDENTIFIER`",
+    "name" : "IDENTIFIER"
+  }, {
+    "expression" : "t1.`IS_NEWEST`",
+    "name" : "IS_NEWEST"
+  }, {
+    "expression" : "t11.`LEVEL`",
+    "name" : "LEVEL"
+  }, {
+    "expression" : "t21.`LIBRARY_ID`",
+    "name" : "LIBRARY_ID"
+  }, {
+    "expression" : "t41.`IDENTIFIER`",
+    "name" : "LIBRARY_IDENTIFIER"
+  }, {
+    "expression" : "t41.`NAME`",
+    "name" : "LIBRARY_NAME"
+  }, {
+    "expression" : "t11.`MAINTENANCE_NAME`",
+    "name" : "MAINTENANCE_NAME"
+  }, {
+    "expression" : "t1.`NAME`",
+    "name" : "NAME"
+  }, {
+    "expression" : "t1.`PARENT_VERSION_ID`",
+    "name" : "PARENT_VERSION_ID"
+  }, {
+    "expression" : "t1.`PLAN_ID`",
+    "name" : "PLAN_ID"
+  }, {
+    "expression" : "t21.`NAME`",
+    "name" : "PLAN_NAME"
+  }, {
+    "expression" : "t11.`PRECONDITION`",
+    "name" : "PRECONDITION"
+  }, {
+    "expression" : "t1.`PRIORITY`",
+    "name" : "PRIORITY"
+  }, {
+    "expression" : "DATEDIFF(CURDATE(), t1.`CREATE_TIME`)",
+    "name" : "RECENT_CREATE_DAYS"
+  }, {
+    "expression" : "t1.`REMARK`",
+    "name" : "REMARK"
+  }, {
+    "expression" : "concat(t41.`IDENTIFIER`,'-',t11.`IDENTIFIER`)",
+    "name" : "SHOW_IDENTIFIER"
+  }, {
+    "expression" : "t11.`STATE`",
+    "name" : "STATE"
+  }, {
+    "expression" : "t1.`STATUS`",
+    "name" : "STATUS"
+  }, {
+    "expression" : "t31.`SUITES`",
+    "name" : "SUITES"
+  }, {
+    "expression" : "t11.`SUITE_ID`",
+    "name" : "SUITE_ID"
+  }, {
+    "expression" : "t31.`NAME`",
+    "name" : "SUITE_NAME"
+  }, {
+    "expression" : "t11.`TEST_TYPE`",
+    "name" : "TEST_TYPE"
+  }, {
+    "expression" : "t11.`TITLE`",
+    "name" : "TITLE"
+  }, {
+    "expression" : "t11.`TYPE`",
+    "name" : "TYPE"
+  }, {
+    "expression" : "t1.`UPDATE_MAN`",
+    "name" : "UPDATE_MAN"
+  }, {
+    "expression" : "t1.`UPDATE_TIME`",
+    "name" : "UPDATE_TIME"
+  } ],
+  "queryCode" : "SELECT\nconcat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,\nt1.`CASE_ID`,\nt11.`NAME` AS `CASE_NAME`,\nt1.`CREATE_MAN`,\nt1.`CREATE_TIME`,\nt1.`CUR_VERSION_ID`,\nt1.`EXECUTED_AT`,\nt1.`EXECUTOR_ID`,\nt1.`EXECUTOR_NAME`,\nt1.`ID`,\nt11.`IDENTIFIER`,\nt1.`IS_NEWEST`,\nt11.`LEVEL`,\nt21.`LIBRARY_ID`,\nt41.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,\nt41.`NAME` AS `LIBRARY_NAME`,\nt11.`MAINTENANCE_NAME`,\nt1.`NAME`,\nt1.`PARENT_VERSION_ID`,\nt1.`PLAN_ID`,\nt21.`NAME` AS `PLAN_NAME`,\nt11.`PRECONDITION`,\nt1.`PRIORITY`,\nDATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,\nt1.`REMARK`,\nconcat(t41.`IDENTIFIER`,'-',t11.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,\nt11.`STATE`,\nt1.`STATUS`,\nt31.`SUITES`,\nt11.`SUITE_ID`,\nt31.`NAME` AS `SUITE_NAME`,\nt11.`TEST_TYPE`,\nt11.`TITLE`,\nt11.`TYPE`,\nt1.`UPDATE_MAN`,\nt1.`UPDATE_TIME`\nFROM `RUN` t1 \nLEFT JOIN `TEST_CASE` t11 ON t1.`CASE_ID` = t11.`ID` \nLEFT JOIN `TEST_PLAN` t21 ON t1.`PLAN_ID` = t21.`ID` \nLEFT JOIN `TEST_SUITE` t31 ON t11.`SUITE_ID` = t31.`ID` \nLEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID` \n",
+  "id" : "PSMODULES/TestMgmt/PSDATAENTITIES/run/PSDEDATAQUERIES/reader/PSDEDQCODES/MYSQL5.json"
+}

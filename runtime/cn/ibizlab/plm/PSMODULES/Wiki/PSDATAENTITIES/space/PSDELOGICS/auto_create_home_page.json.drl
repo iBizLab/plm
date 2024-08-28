@@ -1,0 +1,85 @@
+package cn.ibizlab.plm.wiki.logic.spacelogic.auto_create_home_page;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.wiki.domain.space spaceauto_create_home_pagedefault;
+                global cn.ibizlab.plm.core.wiki.domain.article_page spaceauto_create_home_pagehome_page;
+                    global cn.ibizlab.plm.core.wiki.service.Iarticle_pageService article_pageservice;
+        global cn.ibizlab.plm.core.wiki.service.IspaceService iBzSysSpaceDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "spaceauto_create_home_pagebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "spaceauto_create_home_pageend1"
+            when
+            then
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置主页相关参数]
+            rule "prepareparam1"
+            ruleflow-group "spaceauto_create_home_pageprepareparam1"
+            when
+            then
+                            spaceauto_create_home_pagehome_page.set("name","主页");
+                            spaceauto_create_home_pagehome_page.set("formattype","HTML");
+                                spaceauto_create_home_pagehome_page.set("publishman",curuser.getSessionParams().get("srfpersonid"));
+                            spaceauto_create_home_pagehome_page.set("publishname","主页");
+                            spaceauto_create_home_pagehome_page.set("ispublished","1");
+                            spaceauto_create_home_pagehome_page.set("id",spaceauto_create_home_pagedefault.get("id"));
+                            spaceauto_create_home_pagehome_page.set("spaceid",spaceauto_create_home_pagedefault.get("id"));
+                            spaceauto_create_home_pagehome_page.set("type","1");
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建主页]
+            rule "deaction1"
+            ruleflow-group "spaceauto_create_home_pagedeaction1"
+            when
+            then
+                        article_pageservice.create(spaceauto_create_home_pagehome_page);
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置发布时间]
+            rule "rawsfcode3"
+            ruleflow-group "spaceauto_create_home_pagerawsfcode3"
+            when
+            then
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置主页内容（content）]
+            rule "rawsfcode1"
+            ruleflow-group "spaceauto_create_home_pagerawsfcode1"
+            when
+            then
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置主页发布内容（publish_content）]
+            rule "rawsfcode2"
+            ruleflow-group "spaceauto_create_home_pagerawsfcode2"
+            when
+            then
+                        update(spaceauto_create_home_pagedefault);//更新fact中变量值
+                        update(spaceauto_create_home_pagehome_page);//更新fact中变量值
+            end

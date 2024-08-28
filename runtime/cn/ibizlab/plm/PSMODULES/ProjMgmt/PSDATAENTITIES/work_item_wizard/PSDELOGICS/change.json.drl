@@ -1,0 +1,114 @@
+package cn.ibizlab.plm.projmgmt.logic.work_item_wizardlogic.change;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard work_item_wizardchangedefault;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_item_wizardchangechild_work_item_types;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard_detail work_item_wizardchangedetails;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard_detail work_item_wizardchangefor_temp;
+                global cn.ibizlab.plm.core.projmgmt.domain.work_item work_item_wizardchangework_item;
+                    global cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService work_itemservice;
+        global cn.ibizlab.plm.core.projmgmt.service.Iwork_item_wizardService iBzSysWork_item_wizardDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "work_item_wizardchangebegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[抛出异常]
+            rule "throwexception1"
+            ruleflow-group "work_item_wizardchangethrowexception1"
+            when
+            then
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[绑定工作项变更操作列表]
+            rule "bindparam1"
+            ruleflow-group "work_item_wizardchangebindparam1"
+            when
+            then
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[处理子工作项所属父级]
+            rule "rawsfcode1"
+            ruleflow-group "work_item_wizardchangerawsfcode1"
+            when
+            then
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新工作项类型]
+            rule "deaction1"
+            ruleflow-group "work_item_wizardchangedeaction1"
+            when
+            then
+                        work_itemservice.update(work_item_wizardchangework_item);
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_item_wizardchangeloopsubcall1"
+            when
+            then
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[重置工作项对象]
+            rule "resetparam1"
+            ruleflow-group "work_item_wizardchangeresetparam1"
+            when
+            then
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充目标工作项类型]
+            rule "prepareparam1"
+            ruleflow-group "work_item_wizardchangeprepareparam1"
+            when
+            then
+                            work_item_wizardchangework_item.set("id",work_item_wizardchangefor_temp.get("id"));
+                                work_item_wizardchangework_item.set("pid",null);
+                            work_item_wizardchangework_item.set("workitemtypeid",work_item_wizardchangefor_temp.get("targettype"));
+                            work_item_wizardchangework_item.set("state",work_item_wizardchangefor_temp.get("targetstate"));
+                        update(work_item_wizardchangedefault);//更新fact中变量值
+                        update(work_item_wizardchangechild_work_item_types);//更新fact中变量值
+                        update(work_item_wizardchangedetails);//更新fact中变量值
+                        update(work_item_wizardchangefor_temp);//更新fact中变量值
+                        update(work_item_wizardchangework_item);//更新fact中变量值
+            end

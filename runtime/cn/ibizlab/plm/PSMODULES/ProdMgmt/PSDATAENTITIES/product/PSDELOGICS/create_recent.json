@@ -1,0 +1,252 @@
+{
+  "codeName" : "create_recent",
+  "defaultParamName" : "Default",
+  "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product/PSDELOGICS/create_recent.json",
+  "logicName" : "生成最近访问",
+  "memo" : "在用户对产品数据进行了get或update操作时生成相应的访问记录",
+  "name" : "生成最近访问",
+  "getPSDELogicNodes" : [ {
+    "codeName" : "Begin",
+    "leftPos" : 346,
+    "logicNodeType" : "BEGIN",
+    "name" : "开始",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "Begin"
+      }
+    } ],
+    "topPos" : 130,
+    "parallelOutput" : true
+  }, {
+    "codeName" : "PREPAREPARAM1",
+    "leftPos" : 306,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备最近访问参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "OWNER_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "Default[ID] ==> recent[OWNER_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "RECENT_PARENT_IDENTIFIER",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "Default[IDENTIFIER] ==> recent[RECENT_PARENT_IDENTIFIER]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "IDENTIFIER",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "RECENT_PARENT_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "Default[NAME] ==> recent[RECENT_PARENT_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "RECENT_PARENT",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "Default[ID] ==> recent[RECENT_PARENT]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "CREATE_MAN",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> recent[CREATE_MAN]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    }, {
+      "dstFieldName" : "TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "直接值[1] ==> recent[TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "Default[NAME] ==> recent[NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "NAME",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "OWNER_TYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "直接值[product] ==> recent[OWNER_TYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "product",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "OWNER_SUBTYPE",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "recent"
+      },
+      "name" : "直接值[product] ==> recent[OWNER_SUBTYPE]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "product",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 265
+  }, {
+    "codeName" : "DEACTION1",
+    "getDstPSDEAction" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEACTIONS/Save.json"
+    },
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "recent"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+    },
+    "leftPos" : 306,
+    "logicNodeType" : "DEACTION",
+    "name" : "保存最近访问",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      }
+    } ],
+    "topPos" : 356
+  }, {
+    "codeName" : "END1",
+    "leftPos" : 346,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "topPos" : 560
+  } ],
+  "getPSDELogicParams" : [ {
+    "codeName" : "Default",
+    "logicName" : "传入变量",
+    "name" : "传入变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product.json"
+    },
+    "default" : true,
+    "entityParam" : true
+  }, {
+    "codeName" : "product_ticket_param",
+    "logicName" : "产品工单类型变量",
+    "name" : "产品工单类型变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/product_ticket_type.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "recent",
+    "logicName" : "最近访问数据",
+    "name" : "最近访问数据",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "ticket_type_filter",
+    "logicName" : "工单类型过滤器",
+    "name" : "工单类型过滤器",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "filterParam" : true
+  }, {
+    "codeName" : "ticket_type_obj",
+    "logicName" : "工单类型变量",
+    "name" : "工单类型变量",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "entityParam" : true
+  }, {
+    "codeName" : "ticket_type_page",
+    "logicName" : "工单类型分页结果",
+    "name" : "工单类型分页结果",
+    "getParamPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/ticket_type.json"
+    },
+    "entityPageParam" : true
+  } ],
+  "getStartPSDELogicNode" : {
+    "modelref" : true,
+    "id" : "Begin"
+  },
+  "enableBackend" : true,
+  "enableFront" : false
+}

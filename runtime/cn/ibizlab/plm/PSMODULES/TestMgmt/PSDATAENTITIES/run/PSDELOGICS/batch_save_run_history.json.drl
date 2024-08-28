@@ -1,0 +1,130 @@
+package cn.ibizlab.plm.testmgmt.logic.runlogic.batch_save_run_history;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runbatch_save_run_historydefault;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runbatch_save_run_historyid;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runbatch_save_run_historyfor_temp_obj;
+                global cn.ibizlab.plm.core.testmgmt.domain.run_history runbatch_save_run_historyrun_history;
+                global cn.ibizlab.plm.core.testmgmt.domain.run runbatch_save_run_historysrfactionparam;
+                    global cn.ibizlab.plm.core.testmgmt.service.IrunService runservice;
+                    global cn.ibizlab.plm.core.testmgmt.service.Irun_historyService run_historyservice;
+        global cn.ibizlab.plm.core.testmgmt.service.IrunService iBzSysRunDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "runbatch_save_run_historybegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[绑定参数]
+            rule "bindparam1"
+            ruleflow-group "runbatch_save_run_historybindparam1"
+            when
+            then
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam3"
+            ruleflow-group "runbatch_save_run_historyprepareparam3"
+            when
+            then
+                            runbatch_save_run_historyid.set("id",runbatch_save_run_historydefault.get("id"));
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "runbatch_save_run_historyloopsubcall1"
+            when
+            then
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取执行用例详情]
+            rule "deaction1"
+            ruleflow-group "runbatch_save_run_historydeaction1"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(runservice.get(runbatch_save_run_historyid.getId()),runbatch_save_run_historyid);
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam1"
+            ruleflow-group "runbatch_save_run_historyprepareparam1"
+            when
+            then
+                            runbatch_save_run_historydefault.set("status",runbatch_save_run_historyfor_temp_obj.get("status"));
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[修改执行用例]
+            rule "deaction2"
+            ruleflow-group "runbatch_save_run_historydeaction2"
+            when
+            then
+                        runservice.update(runbatch_save_run_historydefault);
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[准备参数]
+            rule "prepareparam2"
+            ruleflow-group "runbatch_save_run_historyprepareparam2"
+            when
+            then
+                            runbatch_save_run_historyrun_history.set("",runbatch_save_run_historydefault.get(""));
+                                runbatch_save_run_historyrun_history.set("id",null);
+                            runbatch_save_run_historyrun_history.set("runid",runbatch_save_run_historydefault.get("id"));
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[创建执行结果]
+            rule "deaction3"
+            ruleflow-group "runbatch_save_run_historydeaction3"
+            when
+            then
+                        run_historyservice.create(runbatch_save_run_historyrun_history);
+                        update(runbatch_save_run_historydefault);//更新fact中变量值
+                        update(runbatch_save_run_historyid);//更新fact中变量值
+                        update(runbatch_save_run_historyfor_temp_obj);//更新fact中变量值
+                        update(runbatch_save_run_historyrun_history);//更新fact中变量值
+                        update(runbatch_save_run_historysrfactionparam);//更新fact中变量值
+            end

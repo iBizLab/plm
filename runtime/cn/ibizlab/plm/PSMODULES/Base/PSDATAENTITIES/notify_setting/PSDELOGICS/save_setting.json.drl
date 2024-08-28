@@ -1,0 +1,77 @@
+package cn.ibizlab.plm.base.logic.notify_settinglogic.save_setting;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.notify_setting notify_settingsave_settingdefault;
+                global cn.ibizlab.plm.core.base.domain.notify_setting notify_settingsave_settingcheck_obj;
+                global java.util.Map notify_settingsave_settingcontext;
+                    global cn.ibizlab.plm.core.base.service.Inotify_settingService notify_settingservice;
+        global cn.ibizlab.plm.core.base.service.Inotify_settingService iBzSysNotify_settingDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "notify_settingsave_settingbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[设置id]
+            rule "prepareparam1"
+            ruleflow-group "notify_settingsave_settingprepareparam1"
+            when
+            then
+                            notify_settingsave_settingcheck_obj.set("id",notify_settingsave_settingdefault.get("id"));
+                        update(notify_settingsave_settingdefault);//更新fact中变量值
+                        update(notify_settingsave_settingcheck_obj);//更新fact中变量值
+                        update(notify_settingsave_settingcontext);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取通知设置]
+            rule "deaction3"
+            ruleflow-group "notify_settingsave_settingdeaction3"
+            when
+            then
+                            cn.ibizlab.plm.util.helper.CachedBeanCopier.copy(notify_settingservice.get(notify_settingsave_settingcheck_obj.getId()),notify_settingsave_settingcheck_obj);
+                        update(notify_settingsave_settingdefault);//更新fact中变量值
+                        update(notify_settingsave_settingcheck_obj);//更新fact中变量值
+                        update(notify_settingsave_settingcontext);//更新fact中变量值
+            end
+
+            //逻辑处理节点[更新通知设置信息]
+            rule "deaction1"
+            ruleflow-group "notify_settingsave_settingdeaction1"
+            when
+            then
+                        notify_settingservice.update(notify_settingsave_settingdefault);
+                        update(notify_settingsave_settingdefault);//更新fact中变量值
+                        update(notify_settingsave_settingcheck_obj);//更新fact中变量值
+                        update(notify_settingsave_settingcontext);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "notify_settingsave_settingend1"
+            when
+            then
+                        update(notify_settingsave_settingdefault);//更新fact中变量值
+                        update(notify_settingsave_settingcheck_obj);//更新fact中变量值
+                        update(notify_settingsave_settingcontext);//更新fact中变量值
+            end
+
+            //逻辑处理节点[建立通知设置信息]
+            rule "deaction2"
+            ruleflow-group "notify_settingsave_settingdeaction2"
+            when
+            then
+                        notify_settingservice.create(notify_settingsave_settingdefault);
+                        update(notify_settingsave_settingdefault);//更新fact中变量值
+                        update(notify_settingsave_settingcheck_obj);//更新fact中变量值
+                        update(notify_settingsave_settingcontext);//更新fact中变量值
+            end

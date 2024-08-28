@@ -1,0 +1,41 @@
+package cn.ibizlab.plm.base.logic.portfoliologic.remove_from_project_set;
+        import java.util.Map;
+        import java.util.HashMap;
+        import com.alibaba.fastjson.JSONObject;
+        import org.springframework.util.StringUtils;
+        import org.springframework.util.ObjectUtils;
+        import cn.ibizlab.plm.util.errors.BadRequestAlertException;
+                global cn.ibizlab.plm.core.base.domain.portfolio portfolioremove_from_project_setdefault;
+        global cn.ibizlab.plm.core.base.service.IportfolioService iBzSysPortfolioDefaultService;
+        global cn.ibizlab.plm.util.security.AuthenticationUser curuser;
+
+
+    no-loop
+
+            //逻辑处理节点[开始]
+            rule "begin"
+            ruleflow-group "portfolioremove_from_project_setbegin"
+            when
+            then
+            end
+
+            //逻辑处理节点[从项目集中移除]
+            rule "rawsqlcall1"
+            ruleflow-group "portfolioremove_from_project_setrawsqlcall1"
+            when
+            then
+    Map param =new HashMap();
+        param.put("param0",portfolioremove_from_project_setdefault.get("portfolio_id"));
+        param.put("param1",portfolioremove_from_project_setdefault.get("id"));
+    String strSql="delete from `work` where PORTFOLIO_ID = #{et.param0} and PRINCIPAL_ID = #{et.param1}";
+                        iBzSysPortfolioDefaultService.execute(strSql,param);//SQL调用
+                        update(portfolioremove_from_project_setdefault);//更新fact中变量值
+            end
+
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "portfolioremove_from_project_setend1"
+            when
+            then
+                        update(portfolioremove_from_project_setdefault);//更新fact中变量值
+            end

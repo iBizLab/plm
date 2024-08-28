@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+        <process id="cn.ibizlab.plm.core.projmgmt.service.logic.work_item_wizardchange" isClosed="false" isExecutable="true" name="projmgmt_work_item_wizard_change_ruleFlow" processType="Private" tns:packageName="cn.ibizlab.plm.core.projmgmt.service.logic.work_item_wizardchange">
+            <extensionElements>
+                <tns:import name="java.util.Map" />
+                <tns:import name="org.springframework.util.StringUtils"/>
+                <tns:import name="cn.ibizlab.plm.util.helper.RuleUtils"/>
+                                <tns:metaData express="" name="work_item_wizardchangedefault" type="entity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_item_wizardchangechild_work_item_types" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard_detail()" name="work_item_wizardchangedetails" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard_detail()" name="work_item_wizardchangefor_temp" type="refentity"/>
+                                <tns:metaData express="new cn.ibizlab.plm.core.projmgmt.domain.work_item()" name="work_item_wizardchangework_item" type="refentity"/>
+                                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_itemService))" name="work_itemservice" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.SpringContextHolder).getBean(T(cn.ibizlab.plm.core.projmgmt.service.Iwork_item_wizardService))" name="iBzSysWork_item_wizardDefaultService" type="service"/>
+                    <tns:metaData express="T(cn.ibizlab.plm.util.security.AuthenticationUser).getAuthenticationUser()" name="curuser" type="session"/>
+                            <tns:global identifier="work_item_wizardchangedefault" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard" />
+                            <tns:global identifier="work_item_wizardchangechild_work_item_types" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+                            <tns:global identifier="work_item_wizardchangedetails" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard_detail" />
+                            <tns:global identifier="work_item_wizardchangefor_temp" type="cn.ibizlab.plm.core.projmgmt.domain.work_item_wizard_detail" />
+                            <tns:global identifier="work_item_wizardchangework_item" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
+            </extensionElements>
+                        <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangethrowexception1" id="throwexception1" implementation="http://www.jboss.org/drools/rule" name="抛出异常"/>
+                        <endEvent id="throwexception1_end" name="end"/>
+                        <sequenceFlow id="throwexception1_end_line" sourceRef="throwexception1" targetRef="throwexception1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定工作项变更操作列表"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangerawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="处理子工作项所属父级"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新工作项类型"/>
+                        <endEvent id="deaction1_end" name="end"/>
+                        <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangeloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangeresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置工作项对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_item_wizardchangeprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充目标工作项类型"/>
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction1" sourceRef="rawsfcode1" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam1" sourceRef="loopsubcall1" targetRef="resetparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="resetparam1_prepareparam1" sourceRef="resetparam1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_rawsfcode1" sourceRef="gateway-prepareparam1" targetRef="rawsfcode1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_item_wizardchangedefault:work_item_wizard();
+                                            $work_item_wizardchangechild_work_item_types:work_item();
+                                            $work_item_wizardchangedetails:work_item_wizard_detail();
+                                            $work_item_wizardchangefor_temp:work_item_wizard_detail();
+                                            $work_item_wizardchangework_item:work_item();
+                                    eval($work_item_wizardchangedefault==work_item_wizardchangedefault && $work_item_wizardchangechild_work_item_types==work_item_wizardchangechild_work_item_types && $work_item_wizardchangedetails==work_item_wizardchangedetails && $work_item_wizardchangefor_temp==work_item_wizardchangefor_temp && $work_item_wizardchangework_item==work_item_wizardchangework_item);
+                                eval((RuleUtils.test($work_item_wizardchangefor_temp.get("targetState"),"ISNOTNULL",""))&&(RuleUtils.test($work_item_wizardchangefor_temp.get("targetType"),"ISNOTNULL","")))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                    <sequenceFlow id="gateway-prepareparam1_throwexception1" sourceRef="gateway-prepareparam1" targetRef="throwexception1">
+                            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+                                            $work_item_wizardchangedefault:work_item_wizard();
+                                            $work_item_wizardchangechild_work_item_types:work_item();
+                                            $work_item_wizardchangedetails:work_item_wizard_detail();
+                                            $work_item_wizardchangefor_temp:work_item_wizard_detail();
+                                            $work_item_wizardchangework_item:work_item();
+                                    eval($work_item_wizardchangedefault==work_item_wizardchangedefault && $work_item_wizardchangechild_work_item_types==work_item_wizardchangechild_work_item_types && $work_item_wizardchangedetails==work_item_wizardchangedetails && $work_item_wizardchangefor_temp==work_item_wizardchangefor_temp && $work_item_wizardchangework_item==work_item_wizardchangework_item);
+                                eval(((RuleUtils.test($work_item_wizardchangefor_temp.get("targetType"),"ISNULL",""))||(RuleUtils.test($work_item_wizardchangefor_temp.get("targetState"),"ISNULL",""))))
+                                ]]>
+                            </conditionExpression>
+                    </sequenceFlow>
+                            <exclusiveGateway id="gateway-prepareparam1" name="Gateway" gatewayDirection="Diverging" default="gateway-prepareparam1_end_line"></exclusiveGateway>
+                            <sequenceFlow id="prepareparam1_gateway-prepareparam1_gatewayline" sourceRef="prepareparam1" targetRef="gateway-prepareparam1"></sequenceFlow>
+                            <sequenceFlow id="gateway-prepareparam1_end_line" sourceRef="gateway-prepareparam1" targetRef="gateway-prepareparam1_end"/>
+                            <endEvent id="gateway-prepareparam1_end" name="end"/>
+        </process>
+    </definitions>
