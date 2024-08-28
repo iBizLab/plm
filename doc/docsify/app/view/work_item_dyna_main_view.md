@@ -716,10 +716,6 @@ false
 
 ##### 部件逻辑
 * `onLoadSuccess` : [获取工作项工时进度](module/ProjMgmt/work_item/uilogic/get_workload_schedule)
-* `onChange`
-```
-console.log(view)
-```
 
 ##### 值规则
 * `start_at` : [开始时间](index/value_rule_index)
@@ -780,33 +776,23 @@ if (form) {
 
 
 ### 关联界面行为
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [归档(工具栏)](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [清空评论](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移动（表单中）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [发送评论](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联测试用例（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [复制工作项](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [激活（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [编辑界面_下一个记录](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工作项（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加实际工时](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [工具栏上传附件](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联需求（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工单（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [删除（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [编辑界面_上一个记录](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [打开项目主视图](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [添加实际工时](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [编辑界面_下一个记录](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [移动（表单中）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [最小化](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [删除（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [复制工作项](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工单（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [编辑界面_上一个记录](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联工作项（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关联测试用例（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [清空评论](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [工具栏上传附件](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [归档(工具栏)](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)

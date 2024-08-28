@@ -124,7 +124,7 @@ DEACTION5 --> DELOGIC1 : [[$./copy_child_work_item#deaction5-delogic1{不存在�
 6. 将`for_temp_obj(循环临时变量).PRIORITY(优先级)` 设置给  `new_child(新建子工作项).PRIORITY(优先级)`
 7. 将`for_temp_obj(循环临时变量).START_AT(开始时间)` 设置给  `new_child(新建子工作项).START_AT(开始时间)`
 8. 将`for_temp_obj(循环临时变量).END_AT(截止时间)` 设置给  `new_child(新建子工作项).END_AT(截止时间)`
-9. 将`for_temp_obj(循环临时变量).STATE(状态)` 设置给  `new_child(新建子工作项).STATE(状态)`
+9. 将`10` 设置给  `new_child(新建子工作项).STATE(状态)`
 10. 将`after_copy_parent(复制后的父工作项).ID(标识)` 设置给  `new_child(新建子工作项).PID(父标识)`
 
 #### 新建子工作项 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>

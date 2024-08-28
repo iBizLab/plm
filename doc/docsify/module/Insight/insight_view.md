@@ -64,6 +64,7 @@
 |变更管理员身份|change_admin_role|[实体处理逻辑](module/Insight/insight_view/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Insight/insight_view/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Insight/insight_view/logic/favorite "设置星标")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/Insight/insight_view/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Insight/insight_view/logic/nothing "无操作")|默认|不支持||||
 |判断是否需要选择模板|recognize_choose_template|[实体处理逻辑](module/Insight/insight_view/logic/recognize_choose_template "判断是否需要选择模板")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Insight/insight_view/logic/recover "恢复")|默认|不支持||||
@@ -79,6 +80,7 @@
 |[判断是否需要选择模板](module/Insight/insight_view/logic/recognize_choose_template)|recognize_choose_template|无|||
 |[取消星标](module/Insight/insight_view/logic/un_favorite)|un_favorite|无||取消视图星标|
 |[变更管理员角色](module/Insight/insight_view/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[填充BI报表默认值](module/Insight/insight_view/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[恢复](module/Insight/insight_view/logic/recover)|recover|无|||
 |[无操作](module/Insight/insight_view/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移动视图](module/Insight/insight_view/logic/view_move)|view_move|无||视图更多设置移动视图<br>|
@@ -205,7 +207,9 @@
 | 进行中_删除 | delete | 进行中_删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | 复制视图 | copy_view | 复制视图 |单项数据（主键）|用户自定义||
+| 过滤器编辑 | edit_filter | 编辑 |无数据|用户自定义||
 | 视图成员 | open_insight_member | 视图成员 |单项数据（主键）|用户自定义||
+| 过滤器高亮 | hight_light_filter | 显示生效报表 |无数据|用户自定义||
 | 打开视图导航页 | open_insight_view_exp_page | 打开视图导航页 |无数据|<details><summary>打开顶级视图</summary>[效能度量](app/view/insight_view_tree_exp_view)</details>||
 | 视图信息 | open_show_view | 视图信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[视图信息](app/view/insight_view_show_edit_view)</details>||
 | 新开窗口（视图） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/insight_view=${data.id}/insight_view_index_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.insight_view_all_grid_view%2540plmweb.insight_view.all_grid_view_grid%2522%257D;srfnav=usrdrgroup0517936766/insight_view_custom_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D*</details>||
@@ -219,6 +223,8 @@
 |[使用此模板](module/Insight/insight_view/uilogic/use_cur_template)|use_cur_template||
 |[批量删除视图成员临时数据](module/Insight/insight_view/uilogic/remove_batch_temp)|remove_batch_temp|获取视图内所有临时成员数据并删除|
 |[计算表格列行为状态(insight)](module/Insight/insight_view/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[过滤器门户编辑](module/Insight/insight_view/uilogic/filter_porlet_edit)|filter_porlet_edit||
+|[过滤器门户高亮](module/Insight/insight_view/uilogic/filter_porlet_hight_light)|filter_porlet_hight_light||
 |[选择模板](module/Insight/insight_view/uilogic/choose_template)|choose_template||
 |[通知刷新](module/Insight/insight_view/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 

@@ -20,8 +20,8 @@
 
 ### 关联界面行为
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建任务（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
-  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建缺陷（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建用户故事（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
+  * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [新建缺陷（kanban）（工具栏）](module/ProjMgmt/work_item#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [计算面板项行为状态](module/ProjMgmt/work_item/uilogic/calc_kanban_item_action_state)

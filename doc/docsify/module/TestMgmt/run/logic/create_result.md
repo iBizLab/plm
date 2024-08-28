@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_result#begin {"开始"}]]
+state "执行结果数据准备" as PREPAREPARAM5  [[$./create_result#prepareparam5 {"执行结果数据准备"}]]
 state "创建执行结果" as DEACTION6  [[$./create_result#deaction6 {"创建执行结果"}]]
 state "结束" as END3 <<end>> [[$./create_result#end3 {"结束"}]]
-state "执行结果数据准备" as PREPAREPARAM5  [[$./create_result#prepareparam5 {"执行结果数据准备"}]]
 state "执行用例数据准备" as PREPAREPARAM6  [[$./create_result#prepareparam6 {"执行用例数据准备"}]]
 state "更新执行用例" as DEACTION7  [[$./create_result#deaction7 {"更新执行用例"}]]
 

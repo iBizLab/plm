@@ -2,6 +2,7 @@
 | 主实体col200    | 从实体col200    | 关系名称col350    | 关系类型col150 | 关系模式col350   |
 | -------- | -------- |---------- |------------|------------|
 |[组件(ADDON)](module/Base/addon)|[组件权限成员(ADDON_ROLE_MEMBER)](module/Base/addon_role_member)|[DER1N_ADDON_ROLE_MEMBER_ADDON_ADDON_ID](der/DER1N_ADDON_ROLE_MEMBER_ADDON_ADDON_ID)|1:N关系|嵌套操作、|
+|[应用插件活动(ADDON_APPLICATION_ACTIVITY)](module/Base/addon_application_activity)|[应用插件活动(ADDON_APPLICATION_ACTIVITY)](module/Base/addon_application_activity)|[DER1N_ADDON_APPLICATION_ACTIVITY_ADDON_APPLICATION_ACTIVITY_PID](der/DER1N_ADDON_APPLICATION_ACTIVITY_ADDON_APPLICATION_ACTIVITY_PID)|1:N关系||
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|[资源组件成员(RESOURCE_MEMBER)](module/Base/resource_member)|[DER1N_RESOURCE_MEMBER_ADDON_RESOURCE_ADDON_ID](der/DER1N_RESOURCE_MEMBER_ADDON_RESOURCE_ADDON_ID)|1:N关系||
 |[基线(BASELINE)](module/Base/baseline)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|[DERCUSTOM_BASELINE_PAGE_BASELINE](der/DERCUSTOM_BASELINE_PAGE_BASELINE)|自定义关系|附属关系、数据访问控制、|
 |[基线(BASELINE)](module/Base/baseline)|[关联(RELATION)](module/Base/relation)|[DERCUSTOM_RELATION_BASELINE](der/DERCUSTOM_RELATION_BASELINE)|自定义关系||
@@ -67,6 +68,9 @@
 |[测试库(LIBRARY)](module/TestMgmt/library)|[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|[DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID](der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[用例模板(TEST_CASE_TEMPLATE)](module/TestMgmt/test_case_template)|[DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID](der/DER1N_TEST_CASE_TEMPLATE_LIBRARY_TEST_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
 |[测试库(LIBRARY)](module/TestMgmt/library)|[用例(TEST_CASE)](module/TestMgmt/test_case)|[DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID](der/DER1N_TEST_CASE_LIBRARY_TEST_LIBRARY_ID)|1:N关系|附属关系、数据访问控制、|
+|[部门(LOCAL_DEPARTMENT)](module/Base/local_department)|[部门(LOCAL_DEPARTMENT)](module/Base/local_department)|[DER1N_LOCAL_DEPARTMENT_LOCAL_DEPARTMENT_PARENT_ID](der/DER1N_LOCAL_DEPARTMENT_LOCAL_DEPARTMENT_PARENT_ID)|1:N关系||
+|[部门(LOCAL_DEPARTMENT)](module/Base/local_department)|[企业用户(LOCAL_USER)](module/Base/local_user)|[DER1N_LOCAL_USER_LOCAL_DEPARTMENT_DEPARTMENT_ID](der/DER1N_LOCAL_USER_LOCAL_DEPARTMENT_DEPARTMENT_ID)|1:N关系||
+|[企业用户(LOCAL_USER)](module/Base/local_user)|[部门(LOCAL_DEPARTMENT)](module/Base/local_department)|[DER1N_LOCAL_DEPARTMENT_LOCAL_USER_HEAD_ID](der/DER1N_LOCAL_DEPARTMENT_LOCAL_USER_HEAD_ID)|1:N关系||
 |[通知设置(NOTIFY_SETTING)](module/Base/notify_setting)|[通知事件(NOTIFY_EVENT)](module/extension/notify_event)|[DERCUSTOM_NOTIFY_EVENT_NOTIFY_SETTING](der/DERCUSTOM_NOTIFY_EVENT_NOTIFY_SETTING)|自定义关系|嵌套操作、|
 |[目标(OBJECTIVE)](module/Team/objective)|[关键结果(KEY_RESULT)](module/Team/key_result)|[DER1N_KEY_RESULT_OBJECTIVE_OBJECTIVE_ID](der/DER1N_KEY_RESULT_OBJECTIVE_OBJECTIVE_ID)|1:N关系||
 |[目标(OBJECTIVE)](module/Team/objective)|[进展(UPDATE_RECORD)](module/Team/update_record)|[DER1N_UPDATE_RECORD_OBJECTIVE_OBJECTIVE_ID](der/DER1N_UPDATE_RECORD_OBJECTIVE_OBJECTIVE_ID)|1:N关系||

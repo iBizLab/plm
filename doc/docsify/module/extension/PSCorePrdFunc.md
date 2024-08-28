@@ -123,11 +123,17 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
-|N_FUNCSTATE_NOTEQ|功能状态|NOTEQ||
 |N_FUNCSTATE_EQ|功能状态|EQ||
+|N_FUNCSTATE_NOTEQ|功能状态|NOTEQ||
 |N_PSCOREPRDFUNCID_EQ|核心产品功能标识|EQ||
 |N_PSCOREPRDFUNCNAME_LIKE|核心产品功能名称|LIKE||
 |N_PSCOREPRDID_EQ|核心产品|EQ||
+
+## 界面行为
+|  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
+| --------| --------| -------- |------------|------------|------------|
+| 禁用 | Uninstall | 禁用 |多项数据（主键）|<details><summary>后台调用</summary>[uninstall](#行为)||
+| 启用 | Install | 启用 |多项数据（主键）|<details><summary>后台调用</summary>[install](#行为)||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
@@ -150,6 +156,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/extension/PSCorePrdFunc?id=搜索模式`">
   搜索模式
+</el-anchor-link>
+<el-anchor-link :href="`#/module/extension/PSCorePrdFunc?id=界面行为`">
+  界面行为
 </el-anchor-link>
 </el-anchor>
 </div>

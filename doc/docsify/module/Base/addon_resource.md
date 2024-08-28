@@ -116,8 +116,8 @@
 | 打开默认资源 | open_default_resource | 打开默认资源 |单项数据|<details><summary>打开视图或向导（模态）</summary>[资源分配](app/view/work_item_resource_gantt_view)</details>||
 | 编辑资源 | edit_resource | 编辑资源 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑资源](app/view/addon_resource_quick_edit_view)</details>||
 | 删除资源 | del_resource | 删除资源 |单项数据（主键）|用户自定义||
-| 新建资源 | new_resource | 新建资源 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建资源](app/view/addon_resource_quick_create_view)</details>||
-| 资源管理 | resource_management | 资源管理 |无数据|<details><summary>打开视图或向导（模态）</summary>[资源管理](app/view/addon_resource_all_grid_view)</details>||
+| 新建资源视图 | new_resource | 新建资源视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建资源视图](app/view/addon_resource_quick_create_view)</details>||
+| 资源视图管理 | resource_management | 资源视图管理 |无数据|<details><summary>打开视图或向导（模态）</summary>[资源视图管理](app/view/addon_resource_all_grid_view)</details>||
 | 项目容量设置 | project_capacity | 打开项目容量 |无数据|用户自定义||
 | 打开新建资源 | open_new_resource | 打开新建资源 |单项数据|<details><summary>打开视图或向导（模态）</summary>[资源分配](app/view/work_item_resource_gantt_view)</details>||
 | 打开项目容量设置视图 | open_project_capacity | 容量设置 |无数据|<details><summary>打开视图或向导（模态）</summary>[容量设置](app/view/addon_resource_project_capacity_view)</details>||

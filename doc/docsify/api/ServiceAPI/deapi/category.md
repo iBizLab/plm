@@ -441,6 +441,93 @@ Integer
 
 ```
 
+## 移动需求
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/categories/{key}/move_order" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">owner_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">owner_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">owner_subtype</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">is_leaf</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点|
+|<el-row justify="space-between"><el-col :span="20">is_leaf2</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否叶子节点2|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">leaf_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|叶子节点标识|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">pid</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">section_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
+|<el-row justify="space-between"><el-col :span="20">section_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "owner_id" : null,
+  "sequence" : null,
+  "owner_type" : null,
+  "owner_subtype" : null,
+  "is_leaf" : null,
+  "is_leaf2" : null,
+  "categories" : null,
+  "leaf_flag" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "pid" : null,
+  "section_id" : null,
+  "section_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "owner_id" : null,
+  "sequence" : null,
+  "owner_type" : null,
+  "owner_subtype" : null,
+  "is_leaf" : null,
+  "is_leaf2" : null,
+  "categories" : null,
+  "leaf_flag" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "pid" : null,
+  "section_id" : null,
+  "section_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
+
 ## 保存类别
 
 <el-row>
@@ -762,6 +849,83 @@ Integer
 </div>
 <div style="margin-left:5px;width: calc(100% - 85px)">
 <el-alert title="/categories/fetch_default" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_owner_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据标识|
+|<el-row justify="space-between"><el-col :span="20">n_owner_subtype_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属对象子类型|
+|<el-row justify="space-between"><el-col :span="20">n_owner_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属数据对象|
+|<el-row justify="space-between"><el-col :span="20">n_pid_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_pid_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_pid_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|父标识|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|分组标识|
+|<el-row justify="space-between"><el-col :span="20">n_section_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_section_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_id_eq" : null,
+  "n_name_like" : null,
+  "n_owner_id_eq" : null,
+  "n_owner_subtype_eq" : null,
+  "n_owner_type_eq" : null,
+  "n_pid_eq" : null,
+  "n_pid_isnotnull" : null,
+  "n_pid_isnull" : null,
+  "n_section_id_eq" : null,
+  "n_section_name_eq" : null,
+  "n_section_name_like" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "owner_id" : null,
+    "sequence" : null,
+    "owner_type" : null,
+    "owner_subtype" : null,
+    "is_leaf" : null,
+    "is_leaf2" : null,
+    "categories" : null,
+    "leaf_flag" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "pid" : null,
+    "section_id" : null,
+    "section_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 无父类
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/categories/fetch_no_parent" type="info" :closable="false" ></el-alert>
 </div>
 </el-row>
 权限标识：`READ`

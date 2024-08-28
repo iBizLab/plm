@@ -14,5 +14,5 @@ t1.`UPDATE_TIME`
 FROM `DISCUSS_POST` t1 
 LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0 )
 ```

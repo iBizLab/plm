@@ -8,6 +8,7 @@
 | --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
 |[活动(ACTIVITY)](module/Base/activity)|activity|主实体|SQL|ACTIVITY|否|否|自控制|否|记录系统中用户或系统行为的日志，可以是实体属性更新、状态变更等。|
 |[组件(ADDON)](module/Base/addon)|addon|主实体|SQL|ADDON|是|否|附属主实体控制（未映射自控）|否|存储系统子产品中的组件信息，例如：客户、需求、工作项等|
+|[应用插件活动(ADDON_APPLICATION_ACTIVITY)](module/Base/addon_application_activity)|addon_application_activity|主实体|SQL|ADDON_APPLICATION_ACTIVITY|否|否|自控制|否|用于记录扩展插件应用的安装、卸载等活动|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|addon_resource|主实体|SQL|ADDON|否|否|附属主实体控制（未映射自控）|否|存储项目品管理中资源组件的数据|
 |[组件权限成员(ADDON_ROLE_MEMBER)](module/Base/addon_role_member)|addon_role_member|主实体|SQL|ADDON_ROLE_MEMBER|否|否|自控制|否|存储组件对应的成员|
 |[附件(ATTACHMENT)](module/Base/attachment)|attachment|动态附属实体|SQL|ATTACHMENT|否|否|自控制|否|与工作项或文档、需求等实体关联的文件，用于提供额外信息。|
@@ -16,6 +17,7 @@
 |[类别(CATEGORY)](module/Base/category)|category|主实体|SQL|CATEGORY|否|否|自控制|否|逻辑上用于分类存储其他实体的容器。|
 |[评论(COMMENT)](module/Base/comment)|comment|主实体|SQL|COMMENT|否|否|附属主实体控制|否|用于存储用户在需求、工单、工作项、页面、等内容上发布的评论。|
 |[通用规则(COMMON_FLOW)](module/Base/common_flow)|common_flow|主实体|无存储||否|否|自控制|否|用于存储通用规则|
+|[数据同步任务(DATA_SYNC_TASK)](module/Base/data_sync_task)|data_sync_task|主实体|SQL|DATA_SYNC_TASK|否|否|自控制|否|记录数据同步任务|
 |[交付物(DELIVERABLE)](module/Base/deliverable)|deliverable|主实体|SQL|ATTACHMENT|否|否|附属主实体控制|否|工作项中产出的具体成果物，包括文档、软件代码、报告等。|
 |[部门(DEPARTMENT)](module/Base/department)|department|主实体|无存储||否|否|自控制|否|用于查看和管理企业的部门信息。|
 |[数据字典(DICTIONARY)](module/Base/dictionary_data)|dictionary_data|主实体|SQL|DICTIONARY|否|否|自控制|否|用于记录基础数据字典。|
@@ -28,6 +30,8 @@
 |[团队(GROUP)](module/Base/group)|group|主实体|SQL|USER_GROUP|否|否|自控制|否|记录团队信息。|
 |[洞察力(INSIGHT)](module/Base/insight)|insight|主实体|SQL|INSIGHT|否|否|自控制|否|用于存储报表标识类型等，通过重定向视图导向对应的报表视图，可使用view://机制|
 |[岗位(JOB)](module/Base/job)|job|主实体|无存储||否|否|自控制|否|记录人员岗位信息。|
+|[部门(LOCAL_DEPARTMENT)](module/Base/local_department)|local_department|主实体|SQL|LOCAL_DEPARTMENT|否|否|自控制|否|部门本地化数据|
+|[企业用户(LOCAL_USER)](module/Base/local_user)|local_user|主实体|SQL|LOCAL_USER|否|否|自控制|否|企业用户本地化数据|
 |[登录日志(LOGIN_LOG)](module/Base/login_log)|login_log|主实体|无存储||否|否|自控制|否|存储员工登录信息|
 |[后台管理(MANAGEMENT)](module/Base/management)|management|主实体|无存储||否|否|自控制|否|用于后台管理界面展示。|
 |[成员(MEMBER)](module/Base/member)|member|主实体|SQL|MEMBER|是|否|附属主实体控制（未映射自控）|否|公共成员实体。|

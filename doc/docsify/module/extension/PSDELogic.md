@@ -198,6 +198,7 @@
 | 打开配置视图 | open_quick_cfg_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[实体处理逻辑](app/view/psdelogicquick_cfg_view)</details>||
 | 应用扩展模型 | apply | 应用 |单项数据（主键）|<details><summary>后台调用</summary>[apply](#行为)||
 | 新建自动化规则 | create_auto_flow | 自动化规则 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建规则](app/view/psdelogicquick_create_view_auto_flow)</details>||
+| 打开全部日志 | open_all_log | 全部日志 |无数据|<details><summary>打开视图或向导（模态）</summary>[全部日志](app/view/psde_logic_all_log_grid_view)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

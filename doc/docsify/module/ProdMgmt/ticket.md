@@ -28,6 +28,7 @@
 |产品标识|PRODUCT_ID|外键值|100|否||
 |产品标识|PRODUCT_IDENTIFIER|外键值附加数据|15|是||
 |所属产品|PRODUCT_NAME|外键值文本|200|是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |工单数|REP_NUM|文本，可指定长度|200|是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |解决方案|SOLUTION|[单项选择(文本值)](index/dictionary_index#solutions "工单解决方案")|60|是||
@@ -151,6 +152,7 @@
 |客户选择工单|customer_choose_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/customer_choose_ticket "客户选择工单")|默认|不支持||||
 |客户取消关联工单|customer_del_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/customer_del_ticket "客户取消关联工单")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProdMgmt/ticket/logic/delete "删除")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProdMgmt/ticket/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/ticket/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联工单|others_relation_ticket|[实体处理逻辑](module/ProdMgmt/ticket/logic/others_relation_ticket "其他实体关联工单")|默认|不支持||||
@@ -166,6 +168,7 @@
 |[其他实体关联工单](module/ProdMgmt/ticket/logic/others_relation_ticket)|others_relation_ticket|无||工单实体的关联操作，生成正向，反向关联数据|
 |[分配负责人](module/ProdMgmt/ticket/logic/allocate_person)|allocate_person|无||分配工单负责人，修改负责人属性|
 |[删除](module/ProdMgmt/ticket/logic/delete)|delete|无||工单数据的逻辑删除，修改工单的是否删除属性值|
+|[填充BI报表默认值](module/ProdMgmt/ticket/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[客户取消关联工单](module/ProdMgmt/ticket/logic/customer_del_ticket)|customer_del_ticket|无||客户取消关联工单操作|
 |[客户选择工单](module/ProdMgmt/ticket/logic/customer_choose_ticket)|customer_choose_ticket|无||客户选择工单操作|
 |[归档](module/ProdMgmt/ticket/logic/archive)|archive|无||未归档工单数据的归档处理，修改工单的归档状态为归档|
@@ -276,6 +279,7 @@
 |[我负责的(my_assign)](module/ProdMgmt/ticket/query/my_assign)|my_assign|否|否 |否 |首页我负责的工单表格调用|
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/query/my_attention)|my_attention|否|否 |否 ||
 |[我创建的(my_created)](module/ProdMgmt/ticket/query/my_created)|my_created|否|否 |否 ||
+|[过滤器默认查询(my_filter)](module/ProdMgmt/ticket/query/my_filter)|my_filter|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/ticket/query/normal)|normal|否|否 |否 |非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/query/not_exsists_relation)|not_exsists_relation|否|否 |否 ||
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/query/notify_assignee)|notify_assignee|否|否 |否 ||
@@ -305,6 +309,7 @@
 |[我负责的工单(my_assignee_count)](module/ProdMgmt/ticket/dataset/my_assignee_count)|my_assignee_count|数据查询|否||首页我负责的工单表格调用|
 |[我关注的工单(my_attention)](module/ProdMgmt/ticket/dataset/my_attention)|my_attention|数据查询|否|||
 |[我创建的(my_created)](module/ProdMgmt/ticket/dataset/my_created)|my_created|数据查询|否|||
+|[过滤器默认查询(my_filter)](module/ProdMgmt/ticket/dataset/my_filter)|my_filter|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/ticket/dataset/normal)|normal|数据查询|否||非归档，非删除数据|
 |[未关联的工单(not_exsists_relation)](module/ProdMgmt/ticket/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否|||
 |[工单通知负责人(notify_assignee)](module/ProdMgmt/ticket/dataset/notify_assignee)|notify_assignee|数据查询|否|||
@@ -316,6 +321,21 @@
 |[工作项关联工单(work_item_relation_ticket)](module/ProdMgmt/ticket/dataset/work_item_relation_ticket)|work_item_relation_ticket|数据查询|否|||
 
 ## 数据权限
+
+##### 全部数据（读写） :id=ticket-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `CREATE(产品(SUBDATA))`
+* `UPDATE(产品(SUBDATA))`
+* `READ(产品(READ))`
+
+
 
 ##### 操作用户(读) :id=ticket-USER_R
 
@@ -361,6 +381,7 @@
 |N_ASSIGNEE_ID_ISNULL|负责人标识|ISNULL||
 |N_ASSIGNEE_ID_NOTEQ|负责人标识|NOTEQ||
 |N_ASSIGNEE_ID_NOTIN|负责人标识|NOTIN||
+|N_ATTENTIONS_EXISTS__N_USER_ID_EQ|关注|EXISTS||
 |N_CREATE_MAN_EQ|建立人|EQ||
 |N_CREATE_MAN_IN|建立人|IN||
 |N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
@@ -386,6 +407,7 @@
 |N_PRODUCT_ID_ISNULL|产品标识|ISNULL||
 |N_PRODUCT_NAME_EQ|所属产品|EQ||
 |N_PRODUCT_NAME_LIKE|所属产品|LIKE||
+|N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
 |N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_SOLUTION_EQ|解决方案|EQ||
 |N_STATE_EQ|状态|EQ||
@@ -393,6 +415,8 @@
 |N_STATE_NOTIN|状态|NOTIN||
 |N_TAGS_LIKE|标签|LIKE||
 |N_TITLE_LIKE|标题|LIKE||
+|N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
+|N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

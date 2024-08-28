@@ -18,6 +18,40 @@
     <el-menu-item index="menuitem9" @click="itemClick('#/app/view/workload_management_view')"><i class="fa fa-clock-o"></i>工时管理</el-menu-item>
     <el-menu-item index="menuitem35" @click="itemClick('#/app/view/work_item_resource_gantt_view')">资源分配</el-menu-item>
     <el-menu-item index="menuitem8" @click="itemClick('#/app/view/flow_tab_exp_view')"><i class="fa fa-rocket"></i>自动化</el-menu-item>
+    <el-sub-menu index="menuitem17">
+      <template #title>测试菜单1725</template>
+    <el-menu-item index="menuitem12" @click="itemClick('#/app/view/psde_logic_test_auto_rules_grid_view')">自动规则测试</el-menu-item>
+    <el-menu-item index="menuitem20" @click="itemClick('#/app/view/library_grid_view')">测试库主数据56</el-menu-item>
+    <el-menu-item index="menuitem22" @click="itemClick('#/app/view/work_item_srcum_tree_grid_view')">树表测试</el-menu-item>
+    <el-menu-item index="menuitem30" @click="itemClick('#/app/view/work_item_work_item_testdyna')">测试动态视图</el-menu-item>
+    <el-menu-item index="menuitem52" @click="itemClick('#/app/view/test_plan_report_custom_view')">测试报告（测试）</el-menu-item>
+    <el-menu-item index="menuitem37" @click="itemClick('#/app/view/product_grid_view')">产品配置测试</el-menu-item>
+    <el-menu-item index="menuitem38" @click="itemClick('#/app/view/notify_setting_config_view')">通知列表（测试）</el-menu-item>
+    <el-menu-item index="menuitem39" @click="itemClick('#/app/view/article_page_log_list_view')">日志列表</el-menu-item>
+    <el-menu-item index="menuitem41" @click="itemClick('#/app/view/ticket_test_all_grid_view')">工单测试</el-menu-item>
+    <el-menu-item index="menuitem45" @click="itemClick('#/app/view/library_grid_view')">测试库配置测试</el-menu-item>
+    <el-menu-item index="menuitem46" @click="itemClick('#/app/view/space_grid_view')">测试功能_空间配置</el-menu-item>
+    <el-menu-item index="menuitem47" @click="itemClick('#/app/view/project_grid_view')">测试功能_项目配置</el-menu-item>
+    <el-menu-item index="menuitem48" @click="itemClick('#/app/view/portfolio_grid_view')">测试功能_项目集配置</el-menu-item>
+    <el-menu-item index="menuitem49" @click="itemClick('#/app/view/article_page_test_edit_view')">测试协同编辑</el-menu-item>
+    <el-menu-item index="menuitem51" @click="itemClick('#/app/view/recent_his_tab_exp_view')">测试功能_工作台</el-menu-item>
+    <el-menu-item index="menuitem16" @click="itemClick('#/app/view/dictionary_data_grid_view')">数据字典</el-menu-item>
+    <el-menu-item index="menuitem32" @click="itemClick('#/app/view/parameter_grid_view')">测试功能_系统参数</el-menu-item>
+    <el-menu-item index="menuitem10" @click="itemClick('#/app/view/search_hub_tab_search_view')">高级搜索</el-menu-item>
+    <el-menu-item index="menuitem11" @click="itemClick('#/app/view/activity_test_all_list_view')">活动列表测试</el-menu-item>
+    <el-menu-item index="menuitem14" @click="itemClick('#/app/view/login_log_active_members')">测试日志图表</el-menu-item>
+    <el-menu-item index="menuitem43" @click="itemClick('#/app/view/addon_setting_grid_view')">测试组件配置</el-menu-item>
+    <el-menu-item index="menuitem13" @click="itemClick('#/app/view/addon_resource_project_capacity_view')">容量设置</el-menu-item>
+    <el-menu-item index="menuitem36" @click="itemClick('#/app/view/work_item_project_resource_gantt_view')">资源分配甘特视图</el-menu-item>
+    <el-menu-item index="menuitem40" @click="itemClick('#/app/view/psde_logic_logic_design_custom')">逻辑设计自定义</el-menu-item>
+    <el-menu-item index="menuitem44" @click="itemClick('#/app/view/work_item_test_report_view')">智能报表</el-menu-item>
+    <el-menu-item index="menuitem50" @click="itemClick('#/app/view/sprint_alteration_log_grid_view')">迭代变更记录</el-menu-item>
+    <el-menu-item index="menuitem53" @click="itemClick('#/app/view/dyna_dashboard_test_dashboard_view')">报表门户部件</el-menu-item>
+    <el-menu-item index="menuitem54" @click="itemClick('#/app/view/psdems_logic_ms_logic_design_custom')">测试主状态逻辑</el-menu-item>
+    <el-menu-item index="menuitem55" @click="itemClick('#/app/view/ps_core_prd_func_tree_exp_view')">应用管理</el-menu-item>
+    <el-menu-item index="menuitem57" @click="itemClick('#/app/view/work_item_usr07302198_grid_view')">显示总计数（表格）</el-menu-item>
+    <el-menu-item index="menuitem56" @click="itemClick('#/app/view/article_page_test_grid_view')">页面导入测试</el-menu-item>
+    </el-sub-menu>
   </el-menu>
 </el-row>
 
@@ -35,11 +69,11 @@
 |[产品组件](app/view/addon_product_setting_grid_view)|addon_product_setting_grid_view|产品组件|实体表格视图|系统自动添加|
 |[项目组件](app/view/addon_project_setting_grid_view)|addon_project_setting_grid_view|项目组件|实体表格视图|系统自动添加|
 |[全局资源组件容量设置选项操作视图](app/view/addon_resource_all_capacity_view)|addon_resource_all_capacity_view|容量设置|实体选项操作视图||
-|[资源](app/view/addon_resource_all_grid_view)|addon_resource_all_grid_view|资源管理|实体表格视图||
+|[资源视图](app/view/addon_resource_all_grid_view)|addon_resource_all_grid_view|资源视图管理|实体表格视图||
 |[资源组件编辑视图](app/view/addon_resource_edit_view)|addon_resource_edit_view|资源组件|实体编辑视图|系统自动添加|
 |[项目资源组件容量设置](app/view/addon_resource_project_capacity_view)|addon_resource_project_capacity_view|容量设置|实体选项操作视图||
 |[项目集资源组件容量设置选项操作视图](app/view/addon_resource_project_set_capacity_view)|addon_resource_project_set_capacity_view|容量设置|实体选项操作视图||
-|[资源组件快速建立](app/view/addon_resource_quick_create_view)|addon_resource_quick_create_view|新建资源|实体选项操作视图||
+|[资源组件快速建立](app/view/addon_resource_quick_create_view)|addon_resource_quick_create_view|新建资源视图|实体选项操作视图||
 |[资源](app/view/addon_resource_quick_edit_view)|addon_resource_quick_edit_view|编辑资源|实体选项操作视图||
 |[资源组件数据重定向视图](app/view/addon_resource_redirect_view)|addon_resource_redirect_view|资源组件|实体数据重定向视图|系统自动添加|
 |[组件设置](app/view/addon_setting_grid_view)|addon_setting_grid_view|组件设置|实体表格视图||
@@ -56,6 +90,7 @@
 |[页面编辑视图](app/view/article_page_document_edit_view)|article_page_document_edit_view|页面|实体编辑视图||
 |[草稿展示编辑视图](app/view/article_page_draft_show_edit_view)|article_page_draft_show_edit_view|草稿|实体编辑视图||
 |[页面编辑视图](app/view/article_page_edit_view)|article_page_edit_view|页面|实体编辑视图|系统自动添加|
+|[页面筛选器](app/view/article_page_filter_grid_view)|article_page_filter_grid_view|页面|实体表格视图||
 |[帮助页面](app/view/article_page_help_tree_exp_view)|article_page_help_tree_exp_view|帮助页面|实体树导航视图||
 |[页面](app/view/article_page_help_view)|article_page_help_view|页面|实体编辑视图|系统自动添加|
 |[日志列表视图](app/view/article_page_log_list_view)|article_page_log_list_view|PLM系统更新日志|实体列表视图||
@@ -77,12 +112,14 @@
 |[页面实体自定义视图（展示）](app/view/article_page_show_custom_view)|article_page_show_custom_view|页面|实体自定义视图||
 |[更新日志](app/view/article_page_show_update_log_view)|article_page_show_update_log_view|更新|实体编辑视图||
 |[页面](app/view/article_page_show_version_view)|article_page_show_version_view|页面|实体编辑视图||
-|[页面](app/view/article_page_show_view)|article_page_show_view|页面|实体编辑视图||
+|[页面http://172.16.220.130:30080/mosdynamictool/mos-dynamic-mgr/assets/svg/design-save.svg](app/view/article_page_show_view)|article_page_show_view|页面|实体编辑视图||
 |[页面数据统计表格](app/view/article_page_statistical_grid_view)|article_page_statistical_grid_view|数据统计|实体表格视图||
 |[测试协同编辑视图](app/view/article_page_test_edit_view)|article_page_test_edit_view|测试协同编辑视图|实体编辑视图||
+|[测试页面导入](app/view/article_page_test_grid_view)|article_page_test_grid_view|测试页面导入|实体表格视图||
 |[空间页面](app/view/article_page_tree_exp_view)|article_page_tree_exp_view|空间页面|实体树导航视图||
 |[更新日志](app/view/article_page_updated_logs)|article_page_updated_logs|PLM系统更新日志|实体自定义视图||
 |[上传图标选项操作视图](app/view/article_page_upload_icon_option_view)|article_page_upload_icon_option_view|上传图标|实体选项操作视图||
+|[应用数据导入视图](app/view/article_page_upload_view)|article_page_upload_view|导入文档|应用数据导入视图||
 |[页面](app/view/article_page_with_version_view)|article_page_with_version_view|页面|实体编辑视图||
 |[附件编辑视图](app/view/attachment_edit_view)|attachment_edit_view|附件|实体编辑视图|系统自动添加|
 |[快速建立交付目标视图](app/view/attachment_quick_create_deliver_target_view)|attachment_quick_create_deliver_target_view|新建交付目标|实体选项操作视图||
@@ -271,6 +308,7 @@
 |[需求反查表格](app/view/idea_drill_detail_grid_view)|idea_drill_detail_grid_view|需求反查|实体表格视图||
 |[需求编辑视图](app/view/idea_edit_view)|idea_edit_view|需求|实体编辑视图|系统自动添加|
 |[需求表格视图](app/view/idea_grid_view)|idea_grid_view|需求|实体表格视图|系统自动添加|
+|[需求筛选器](app/view/idea_idea_filter_grid_view)|idea_idea_filter_grid_view|查询结果|实体表格视图||
 |[需求排期](app/view/idea_idea_re_plan_option_view)|idea_idea_re_plan_option_view|需求|实体选项操作视图||
 |[需求](app/view/idea_main_view)|idea_main_view|需求|实体编辑视图||
 |[需求移动视图](app/view/idea_move_option_view)|idea_move_option_view|移动需求|实体选项操作视图||
@@ -365,6 +403,7 @@
 |[测试库管理](app/view/library_deleted_grid_view)|library_deleted_grid_view|测试库管理|实体表格视图||
 |[测试库配置](app/view/library_details_setting_tree_exp_view)|library_details_setting_tree_exp_view|测试库配置|实体树导航视图||
 |[测试库编辑视图](app/view/library_edit_view)|library_edit_view|测试库|实体编辑视图|系统自动添加|
+|[测试库筛选器](app/view/library_filter_tab_exp_view)|library_filter_tab_exp_view|测试库|实体分页导航视图||
 |[测试库表格视图](app/view/library_grid_view)|library_grid_view|测试库|实体表格视图||
 |[测试库管理](app/view/library_in_progress_grid_view)|library_in_progress_grid_view|测试库管理|实体表格视图||
 |[测试库](app/view/library_index_view)|library_index_view|测试库|实体首页视图||
@@ -438,6 +477,7 @@
 |[产品管理](app/view/product_deleted_grid_view)|product_deleted_grid_view|产品管理|实体表格视图||
 |[产品详情配置](app/view/product_details_setting_view)|product_details_setting_view|产品详情配置|实体树导航视图||
 |[产品编辑视图](app/view/product_edit_view)|product_edit_view|产品|实体编辑视图|系统自动添加|
+|[筛选器](app/view/product_filter_tab_exp_view)|product_filter_tab_exp_view|产品|实体分页导航视图||
 |[产品表格视图](app/view/product_grid_view)|product_grid_view|产品|实体表格视图||
 |[产品管理](app/view/product_in_progress_grid_view)|product_in_progress_grid_view|产品管理|实体表格视图||
 |[产品](app/view/product_index_view)|product_index_view|产品|实体首页视图||
@@ -533,9 +573,9 @@
 |[主数据视图waterfall](app/view/project_waterfall_index_view)|project_waterfall_index_view|项目|实体首页视图||
 |[项目](app/view/project_waterfall_main_view)|project_waterfall_main_view|项目|实体分页导航视图||
 |[应用门户部件编辑视图](app/view/ps_app_portlet_edit_view)|ps_app_portlet_edit_view|应用门户部件|实体编辑视图||
-|[核心产品功能编辑视图](app/view/ps_core_prd_func_edit_view)|ps_core_prd_func_edit_view|核心产品功能|实体编辑视图|系统自动添加|
-|[已安装应用](app/view/ps_core_prd_func_installed_grid_view)|ps_core_prd_func_installed_grid_view|核心产品功能|实体表格视图||
-|[应用市场](app/view/ps_core_prd_func_market_application_view)|ps_core_prd_func_market_application_view|核心产品功能|实体数据视图||
+|[核心产品功能编辑视图](app/view/ps_core_prd_func_info_view)|ps_core_prd_func_info_view|核心产品功能|实体编辑视图|系统自动添加|
+|[已安装应用](app/view/ps_core_prd_func_installed_grid_view)|ps_core_prd_func_installed_grid_view|已安装应用|实体表格视图||
+|[应用市场](app/view/ps_core_prd_func_market_application_view)|ps_core_prd_func_market_application_view|应用市场|实体数据视图||
 |[核心产品功能数据重定向视图](app/view/ps_core_prd_func_redirect_view)|ps_core_prd_func_redirect_view|核心产品功能|实体数据重定向视图|系统自动添加|
 |[应用管理](app/view/ps_core_prd_func_tree_exp_view)|ps_core_prd_func_tree_exp_view|核心产品功能|实体树导航视图||
 |[应用](app/view/ps_core_prd_info_view)|ps_core_prd_info_view|应用|实体编辑视图||
@@ -553,6 +593,7 @@
 |[实体属性表格视图](app/view/psde_field_grid_view)|psde_field_grid_view|实体属性|实体表格视图|系统自动添加|
 |[实体属性编辑视图](app/view/psde_field_quick_cfg_view)|psde_field_quick_cfg_view|实体属性|实体编辑视图|系统自动添加|
 |[实体属性选项操作视图](app/view/psde_field_quick_create_view)|psde_field_quick_create_view|实体属性|实体选项操作视图||
+|[全部日志](app/view/psde_logic_all_log_grid_view)|psde_logic_all_log_grid_view|全部日志|实体表格视图||
 |[属性视图](app/view/psde_logic_design_edit_view)|psde_logic_design_edit_view|实体处理逻辑|实体编辑视图||
 |[逻辑设计](app/view/psde_logic_logic_design_custom)|psde_logic_logic_design_custom|逻辑设计|实体自定义视图||
 |[自定义节点(建立工作项)](app/view/psde_logic_node_design_view_create_work_item)|psde_logic_node_design_view_create_work_item|建立工作项|实体编辑视图||
@@ -703,6 +744,7 @@
 |[每日测试次数统计](app/view/run_daily_test_report_view)|run_daily_test_report_view|每日测试次数统计|实体图表视图||
 |[执行用例反查表格](app/view/run_drill_detail_grid_view)|run_drill_detail_grid_view|执行用例反查|实体表格视图||
 |[执行用例](app/view/run_edit_view)|run_edit_view|执行用例|实体编辑视图||
+|[执行用例筛选器](app/view/run_filter_grid_view)|run_filter_grid_view|执行用例|实体表格视图||
 |[执行历史](app/view/run_history_grid_view)|run_history_grid_view|执行用例|实体表格视图||
 |[执行结果关联执行用例编辑视图](app/view/run_history_re_run_edit_view)|run_history_re_run_edit_view|执行结果|实体编辑视图||
 |[执行结果选项操作视图](app/view/run_implementationresults_option_view)|run_implementationresults_option_view|编辑部件|实体选项操作视图||
@@ -829,6 +871,7 @@
 |[测试用例重要程度分布](app/view/test_case_degree_importance_report_view)|test_case_degree_importance_report_view|测试用例重要程度分布|实体图表视图||
 |[测试用例反查表格](app/view/test_case_drill_detail_grid_view)|test_case_drill_detail_grid_view|测试用例反查|实体表格视图||
 |[用例编辑视图](app/view/test_case_edit_view)|test_case_edit_view|用例|实体编辑视图|系统自动添加|
+|[测试用例筛选器](app/view/test_case_filter_grid_view)|test_case_filter_grid_view|用例|实体表格视图||
 |[执行结果分布](app/view/test_case_implementation_results_report_view)|test_case_implementation_results_report_view|执行结果分布|实体图表视图||
 |[用例](app/view/test_case_main_view)|test_case_main_view|用例|实体编辑视图|main|
 |[移动用例视图](app/view/test_case_move_case_option_view)|test_case_move_case_option_view|移动用例|实体选项操作视图||
@@ -918,6 +961,7 @@
 |[客户关联工单多项选择](app/view/ticket_customer_re_ticket_pick_up_view)|ticket_customer_re_ticket_pick_up_view|选择工单|实体多项数据选择视图（左右关系）||
 |[工单反查表格](app/view/ticket_drill_detail_grid_view)|ticket_drill_detail_grid_view|工单反查|实体表格视图||
 |[工单编辑视图](app/view/ticket_edit_view)|ticket_edit_view|工单|实体编辑视图|系统自动添加|
+|[工单筛选器](app/view/ticket_filter_grid_view)|ticket_filter_grid_view|查询结果|实体表格视图||
 |[工单表格视图](app/view/ticket_grid_view)|ticket_grid_view|工单|实体表格视图|系统自动添加|
 |[工单状态](app/view/ticket_idea_re_ticket_chart_view)|ticket_idea_re_ticket_chart_view|工单|实体图表视图|在“需求关联工单统计视图”中使用|
 |[产品关联工单多项选择视图](app/view/ticket_idea_re_ticket_pick_up_view)|ticket_idea_re_ticket_pick_up_view|工单|实体多项数据选择视图（左右关系）||
@@ -1024,7 +1068,7 @@
 |[工作项树表格视图（waterfall动态）](app/view/work_item_dyna_waterfall_tree_grid_view)|work_item_dyna_waterfall_tree_grid_view|工作项|实体树表格视图||
 |[工作项编辑视图](app/view/work_item_edit_view)|work_item_edit_view|工作项|实体编辑视图|系统自动添加|
 |[工作项](app/view/work_item_epic_main_view)|work_item_epic_main_view|工作项|实体编辑视图||
-|[筛选器表格视图](app/view/work_item_filter_grid_view)|work_item_filter_grid_view|查询结果|实体表格视图||
+|[筛选器表格视图](app/view/work_item_filter_grid_view)|work_item_filter_grid_view|工作项|实体表格视图||
 |[工作项甘特图](app/view/work_item_gantt_view)|work_item_gantt_view|工作项甘特图|实体甘特视图||
 |[工作项配置](app/view/work_item_global_setting_view)|work_item_global_setting_view|工作项配置|实体分页导航视图||
 |[工作项表格视图](app/view/work_item_grid_view)|work_item_grid_view|工作项|实体表格视图|系统自动添加|
@@ -1113,6 +1157,7 @@
 |[工作项类型数据重定向视图](app/view/work_item_type_redirect_view)|work_item_type_redirect_view|工作项类型|实体数据重定向视图|系统自动添加|
 |[工作项配置](app/view/work_item_type_setting_view_scrum)|work_item_type_setting_view_scrum|工作项类型|实体列表视图||
 |[项目集下工作项表格视图](app/view/work_item_under_work_grid_view)|work_item_under_work_grid_view|工作项|实体表格视图||
+|[测试无权限总数（表格）](app/view/work_item_usr07302198_grid_view)|work_item_usr07302198_grid_view|测试无权限总数（表格）|实体表格视图||
 |[工作项版本对比视图](app/view/work_item_version_comparison_view)|work_item_version_comparison_view|版本对比|实体编辑视图||
 |[全部缺陷](app/view/work_item_waterfall_bug_grid_view)|work_item_waterfall_bug_grid_view|全部缺陷|实体表格视图|系统自动添加|
 |[需求树表格视图（动态）](app/view/work_item_waterfall_require_tree_grid_view)|work_item_waterfall_require_tree_grid_view|全部需求|实体树表格视图||

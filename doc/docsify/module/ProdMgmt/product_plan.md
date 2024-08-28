@@ -16,8 +16,10 @@
 |计划结束|END_AT|日期型||是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |是否已删除|IS_DELETED|是否逻辑||是||
+|是否叶子节点|IS_LEAF|是否逻辑||是||
 |计划名称|NAME|文本，可指定长度|200|是||
 |产品标识|PRODUCT_ID|外键值|100|是||
+|序号|SEQUENCE|数值||是||
 |计划开始|START_AT|日期型||是||
 |类别|TYPE|长文本，长度1000|1000|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
@@ -107,10 +109,12 @@
 | 编辑 | edit_plan | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑计划](app/view/product_plan_edit_option_view)</details>||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 切换显示模式 | swtich_show_mode | 切换模式 |无数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[切换显示模式](module/ProdMgmt/product_plan/uilogic/switch_show_mode)|switch_show_mode|切换排期的显示模式|
 |[删除类别或分组](module/ProdMgmt/product_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/ProdMgmt/product_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/ProdMgmt/product_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|

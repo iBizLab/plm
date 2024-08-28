@@ -13,7 +13,7 @@
 |类别路径|CATEGORIES|长文本，长度1000|2000|是||
 |选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
 |选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
-|正文|CONTENT|长文本，没有长度限制|1048576|是||
+|正文|CONTENT|长文本，没有长度限制|16777215|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
@@ -34,11 +34,12 @@
 |主题|NAME|文本，可指定长度|200|否||
 |父页面标识|PARENT_ID|外键值|100|是||
 |发布状态|PUBLISHED|是否逻辑||是||
-|发布正文|PUBLISH_CONTENT|长文本，没有长度限制|1048576|是||
+|发布正文|PUBLISH_CONTENT|长文本，没有长度限制|16777215|是||
 |发布人|PUBLISH_MAN|文本，可指定长度|100|是||
 |发布主题|PUBLISH_NAME|文本，可指定长度|200|是||
 |发布时间|PUBLISH_TIME|日期时间型||是||
 |共享只读能力|READ_SHARED|是否逻辑|200|是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |序号|SEQUENCE|数值||是||
 |共享人|SHARED_BY|文本，可指定长度|100|是||
 |共享时间|SHARED_TIME|日期时间型||是||
@@ -94,14 +95,14 @@
 |是否星标|IS_FAVORITE|文本，可指定长度|200|是||
 |发布状态|PUBLISHED|是否逻辑||是||
 |发布主题|PUBLISH_NAME|文本，可指定长度|200|是||
-|发布正文|PUBLISH_CONTENT|长文本，没有长度限制|1048576|是||
+|发布正文|PUBLISH_CONTENT|长文本，没有长度限制|16777215|是||
 |发布人|PUBLISH_MAN|文本，可指定长度|100|是||
 |发布时间|PUBLISH_TIME|日期时间型||是||
 |是否发布|IS_PUBLISHED|是否逻辑||是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
 |是否已删除|IS_DELETED|是否逻辑||是||
-|正文|CONTENT|长文本，没有长度限制|1048576|是||
+|正文|CONTENT|长文本，没有长度限制|16777215|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |编号<sup class="footnote-symbol">[[序列]](index/sequence_index#seq_page_id)</sup>|IDENTIFIER|文本，可指定长度|100|是||
 |建立时间|CREATE_TIME|日期时间型||否||
@@ -205,6 +206,7 @@
 |设置星标|favorite|[实体处理逻辑](module/Wiki/article_page/logic/favorite "设置星标")|默认|不支持||||
 |获取草稿页面|get_draft_pages|[实体处理逻辑](module/Wiki/article_page/logic/get_draft_pages "获取草稿页面")|默认|不支持||||
 |锁定页面|lock_page|[实体处理逻辑](module/Wiki/article_page/logic/lock_page "锁定页面")|默认|不支持||||
+|移动需求|move_order|用户自定义|默认|不支持||||
 |移动页面|move_page|[实体处理逻辑](module/Wiki/article_page/logic/move_page "移动页面")|默认|不支持||||
 |根据模板新建草稿|new_draft_form_stencil|[实体处理逻辑](module/Wiki/article_page/logic/get_form_stencil "获取模板数据")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/article_page/logic/nothing "无操作")|默认|不支持||||
@@ -282,9 +284,12 @@
 |[主页(home_page)](module/Wiki/article_page/query/home_page)|home_page|否|否 |否 ||
 |[已删除页面(is_deleted)](module/Wiki/article_page/query/is_deleted)|is_deleted|否|否 |否 ||
 |[我的收藏(my_favorite_page)](module/Wiki/article_page/query/my_favorite_page)|my_favorite_page|否|否 |否 ||
+|[过滤器默认查询(my_filter)](module/Wiki/article_page/query/my_filter)|my_filter|否|否 |否 ||
 |[无父页面(no_parent_page)](module/Wiki/article_page/query/no_parent_page)|no_parent_page|否|否 |否 ||
 |[正常(normal)](module/Wiki/article_page/query/normal)|normal|否|否 |否 ||
 |[仅页面(only_page)](module/Wiki/article_page/query/only_page)|only_page|否|否 |否 |只查询页面。不包含分组及草稿|
+|[public](module/Wiki/article_page/query/public)|public|否|否 |否 ||
+|[reader](module/Wiki/article_page/query/reader)|reader|否|否 |否 ||
 |[共享页面(shared_page)](module/Wiki/article_page/query/shared_page)|shared_page|否|否 |否 ||
 |[共享自读权限(shared_reader)](module/Wiki/article_page/query/shared_reader)|shared_reader|否|否 |否 ||
 |[共享搜索页面(shared_search)](module/Wiki/article_page/query/shared_search)|shared_search|否|否 |否 ||
@@ -305,9 +310,11 @@
 |[主页(home_page)](module/Wiki/article_page/dataset/home_page)|home_page|数据查询|否|||
 |[已删除页面(is_deleted)](module/Wiki/article_page/dataset/is_deleted)|is_deleted|数据查询|否|||
 |[我的收藏(my_favorite_page)](module/Wiki/article_page/dataset/my_favorite_page)|my_favorite_page|数据查询|否|||
+|[过滤器默认查询(my_filter)](module/Wiki/article_page/dataset/my_filter)|my_filter|数据查询|否|||
 |[无父页面(no_parent_page)](module/Wiki/article_page/dataset/no_parent_page)|no_parent_page|数据查询|否|||
 |[正常(normal)](module/Wiki/article_page/dataset/normal)|normal|数据查询|否|||
 |[仅页面(only_page)](module/Wiki/article_page/dataset/only_page)|only_page|数据查询|否||只查询页面。不包含分组及草稿|
+|[reader](module/Wiki/article_page/dataset/reader)|reader|数据查询|否|||
 |[共享页面(shared_page)](module/Wiki/article_page/dataset/shared_page)|shared_page|数据查询|否|||
 |[共享只读用户(shared_reader)](module/Wiki/article_page/dataset/shared_reader)|shared_reader|数据查询|否|||
 |[共享搜索页面(shared_search)](module/Wiki/article_page/dataset/shared_search)|shared_search|数据查询|否|||
@@ -320,6 +327,21 @@
 |[共享空间查询顶层页面(space_shared_top)](module/Wiki/article_page/dataset/space_shared_top)|space_shared_top|[实体逻辑](module/Wiki/article_page/logic/space_shared_top)|否|||
 
 ## 数据权限
+
+##### 全部数据（读写） :id=article_page-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `DELETE`
+* `UPDATE`
+* `READ`
+* `CREATE`
+
+
 
 ##### 与我共享(写) :id=article_page-SHAERD_W
 
@@ -334,11 +356,23 @@
 
 
 
-##### 只读用户(读) :id=article_page-USER_R
+##### 只读共享(读) :id=article_page-SHARED_R
 
 <p class="panel-title"><b>数据范围</b></p>
 
 * `数据集合` ：[共享只读用户(shared_reader)](module/Wiki/article_page#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ(空间(READ))`
+
+
+
+##### 操作用户(读) :id=article_page-USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[reader](module/Wiki/article_page#数据集合)
 
 <p class="panel-title"><b>数据能力</b></p>
 
@@ -362,9 +396,15 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_ATTENTIONS_EXISTS__N_USER_ID_EQ|关注|EXISTS||
 |N_CATEGORIES_LIKE|类别路径|LIKE||
 |N_CONTENT_LIKE|正文|LIKE||
 |N_CREATE_MAN_EQ|建立人|EQ||
+|N_CREATE_MAN_IN|建立人|IN||
+|N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
+|N_CREATE_MAN_ISNULL|建立人|ISNULL||
+|N_CREATE_MAN_NOTEQ|建立人|NOTEQ||
+|N_CREATE_MAN_NOTIN|建立人|NOTIN||
 |N_CREATE_TIME_EQ|建立时间|EQ||
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
 |N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
@@ -374,6 +414,7 @@
 |N_ID_NOTEQ|标识|NOTEQ||
 |N_IDENTIFIER_EQ|编号|EQ||
 |N_IDENTIFIER_LIKE|编号|LIKE||
+|N_IS_ARCHIVED_EQ|是否已归档|EQ||
 |N_IS_DELETED_EQ|是否已删除|EQ||
 |N_IS_SHARED_EQ|是否开启共享|EQ||
 |N_IS_SHARED_SUBSET_EQ|是否同时共享子页面|EQ||
@@ -384,15 +425,21 @@
 |N_PUBLISH_MAN_EQ|发布人|EQ||
 |N_PUBLISH_TIME_GTANDEQ|发布时间|GTANDEQ||
 |N_PUBLISH_TIME_LTANDEQ|发布时间|LTANDEQ||
+|N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
+|N_SHOW_IDENTIFIER_EQ|编号|EQ||
+|N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_SPACE_ID_EQ|空间标识|EQ||
 |N_SPACE_NAME_EQ|空间名称|EQ||
 |N_SPACE_NAME_LIKE|空间名称|LIKE||
 |N_TYPE_EQ|类型|EQ||
+|N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
+|N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 上传图标 | upload_icon | 上传图标 |单项数据|<details><summary>打开视图或向导（模态）</summary>[上传图标](app/view/article_page_upload_icon_option_view)</details>||
+| 页面导入 | page_upload | 导入页面 |无数据|<details><summary>打开数据导入视图</summary>[多类型页面数据导入]()</details>||
 | 删除 | toolbar_tree_exp_view_draft_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node4_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 发布 | release | 发布 |单项数据|用户自定义||
@@ -480,6 +527,27 @@
 |[自动保存](module/Wiki/article_page/uilogic/auto_save)|auto_save|自动保存页面|
 |[获取模板](module/Wiki/article_page/uilogic/get_stencil_info)|get_stencil_info|测试。新建时获取模板信息|
 
+## 导入模式
+
+* **多类型页面数据导入**
+
+
+存储知识文档的页面，支持内容编辑和版本管理。
+
+
+<el-descriptions direction="vertical" :column="10" :size="size" border>
+<el-descriptions-item label="发布正文">-</el-descriptions-item>
+<el-descriptions-item label="类型">-</el-descriptions-item>
+<el-descriptions-item label="正文格式">-</el-descriptions-item>
+<el-descriptions-item label="空间名称">-</el-descriptions-item>
+<el-descriptions-item label="空间标识">-</el-descriptions-item>
+<el-descriptions-item label="父页面标识">-</el-descriptions-item>
+<el-descriptions-item label="主题">-</el-descriptions-item>
+<el-descriptions-item label="正文">-</el-descriptions-item>
+<el-descriptions-item label="是否发布">-</el-descriptions-item>
+<el-descriptions-item label="发布状态">-</el-descriptions-item>
+</el-descriptions>
+
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -516,6 +584,9 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/Wiki/article_page?id=界面逻辑`">
   界面逻辑
+</el-anchor-link>
+<el-anchor-link :href="`#/module/Wiki/article_page?id=导入模式`">
+  导入模式
 </el-anchor-link>
 </el-anchor>
 </div>

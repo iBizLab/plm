@@ -8,8 +8,8 @@
 | --------  |------------| -----   |  --------|  --------|  --------|    -------- | -------- | -------- |-------- |
 |[主状态值代理(MSVALUEPROXY)](module/extension/MSValueProxy)|MSValueProxy|主实体|无存储||否|否|自控制|否|用于主状态流转设计工具代理业务数据。|
 |[应用门户部件(PSAPPPORTLET)](module/extension/PSAppPortlet)|PSAppPortlet|主实体|无存储||否|否|自控制|否||
-|[核心产品(PSCOREPRD)](module/extension/PSCorePrd)|PSCorePrd|主实体|无存储||否|否|自控制|否||
-|[核心产品分类(PSCOREPRDCAT)](module/extension/PSCorePrdCat)|PSCorePrdCat|主实体|无存储||否|否|自控制|否||
+|[核心产品(PSCOREPRD)](module/extension/PSCorePrd)|PSCorePrd|主实体|无存储||否|否|自控制|否|管理查看应用市场产品|
+|[核心产品分类(PSCOREPRDCAT)](module/extension/PSCorePrdCat)|PSCorePrdCat|主实体|无存储||否|否|自控制|否|管理查看应用市场产品目录|
 |[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)|PSCorePrdFunc|主实体|无存储||否|是|自控制|否|插件管理|
 |[实体数据流逻辑(PSDEDATAFLOW)](module/extension/PSDEDataflow)|PSDEDataflow|主实体|无存储||否|否|自控制|否|实体数据流逻辑|
 |[实体属性(PSDEFIELD)](module/extension/PSDEField)|PSDEField|主实体|无存储||否|否|自控制|否||

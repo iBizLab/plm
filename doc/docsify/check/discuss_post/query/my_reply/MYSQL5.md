@@ -16,5 +16,5 @@ LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID`
 
 WHERE EXISTS(SELECT * FROM `DISCUSS_REPLY` t21 
  WHERE 
- t1.`ID` = t21.`POST_ID`  AND  ( t21.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} ) )
+ t1.`ID` = t21.`POST_ID`  AND  ( t21.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```

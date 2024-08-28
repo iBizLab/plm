@@ -58,6 +58,8 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -112,6 +114,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -172,6 +176,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -252,6 +258,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -351,6 +359,8 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -405,6 +415,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -465,6 +477,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -543,6 +557,8 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -597,6 +613,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -676,6 +694,8 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -730,6 +750,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -809,6 +831,8 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -863,6 +887,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -937,6 +963,8 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -991,6 +1019,8 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1069,6 +1099,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1123,6 +1155,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1183,6 +1217,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1261,6 +1297,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1315,6 +1353,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1396,6 +1436,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1476,6 +1518,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1557,6 +1601,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1630,6 +1676,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1684,6 +1732,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1744,6 +1794,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1824,6 +1876,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -1902,6 +1956,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -1956,6 +2012,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2035,6 +2093,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2089,6 +2149,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2168,6 +2230,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2222,6 +2286,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2301,6 +2367,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2355,6 +2423,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2434,6 +2504,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2488,6 +2560,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2502,6 +2576,204 @@ Integer
 ```
 
 
+
+## 移动需求
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ideas/{key}/move_order" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`UPDATE`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">suite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
+|<el-row justify="space-between"><el-col :span="20">plan_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间|
+|<el-row justify="space-between"><el-col :span="20">plan_at_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|计划开始时间|
+|<el-row justify="space-between"><el-col :span="20">plan_at_to</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|计划结束时间|
+|<el-row justify="space-between"><el-col :span="20">plan_at_granularity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">real_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实际时间|
+|<el-row justify="space-between"><el-col :span="20">real_at_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际开始时间|
+|<el-row justify="space-between"><el-col :span="20">real_at_to</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际结束时间|
+|<el-row justify="space-between"><el-col :span="20">real_at_granularity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">progress</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|进度|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">section_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品名称|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">section_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">idea_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">idea_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">relation_total_idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联产品需求数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工单数|
+|<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
+|<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
+|<el-row justify="space-between"><el-col :span="20">relation_total_work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工作项数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联测试用例数|
+|<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
+|<el-row justify="space-between"><el-col :span="20">relation_total_customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联客户数|
+|<el-row justify="space-between"><el-col :span="20">actual_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|实际工时|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
+|<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "identifier" : null,
+  "title" : null,
+  "state" : null,
+  "priority" : null,
+  "suite" : null,
+  "plan_at" : null,
+  "plan_at_from" : null,
+  "plan_at_to" : null,
+  "plan_at_granularity" : null,
+  "real_at" : null,
+  "real_at_from" : null,
+  "real_at_to" : null,
+  "real_at_granularity" : null,
+  "progress" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "assignee_name" : null,
+  "product_identifier" : null,
+  "assignee_id" : null,
+  "cur_version_id" : null,
+  "section_name" : null,
+  "attachments" : null,
+  "section_id" : null,
+  "attentions" : null,
+  "show_identifier" : null,
+  "categories" : null,
+  "idea_from" : null,
+  "idea_type" : null,
+  "relation_total_idea" : null,
+  "relation_total_ticket" : null,
+  "workload_schedule" : null,
+  "estimated_workload" : null,
+  "relation_total_work_item" : null,
+  "relation_total_test_case" : null,
+  "remaining_workload" : null,
+  "relation_total_customer" : null,
+  "actual_workload" : null,
+  "cur_version_name" : null,
+  "choose_version_id" : null,
+  "choose_version_name" : null,
+  "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
+  "category_id" : null,
+  "category_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "identifier" : null,
+  "title" : null,
+  "state" : null,
+  "priority" : null,
+  "suite" : null,
+  "plan_at" : null,
+  "plan_at_from" : null,
+  "plan_at_to" : null,
+  "plan_at_granularity" : null,
+  "real_at" : null,
+  "real_at_from" : null,
+  "real_at_to" : null,
+  "real_at_granularity" : null,
+  "progress" : null,
+  "description" : null,
+  "is_archived" : null,
+  "is_deleted" : null,
+  "assignee_name" : null,
+  "product_identifier" : null,
+  "assignee_id" : null,
+  "cur_version_id" : null,
+  "section_name" : null,
+  "attachments" : null,
+  "section_id" : null,
+  "attentions" : null,
+  "show_identifier" : null,
+  "categories" : null,
+  "idea_from" : null,
+  "idea_type" : null,
+  "relation_total_idea" : null,
+  "relation_total_ticket" : null,
+  "workload_schedule" : null,
+  "estimated_workload" : null,
+  "relation_total_work_item" : null,
+  "relation_total_test_case" : null,
+  "remaining_workload" : null,
+  "relation_total_customer" : null,
+  "actual_workload" : null,
+  "cur_version_name" : null,
+  "choose_version_id" : null,
+  "choose_version_name" : null,
+  "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
+  "category_id" : null,
+  "category_name" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "product_id" : null,
+  "product_name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
+```
 
 ## 其他实体关联需求
 
@@ -2567,6 +2839,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2621,6 +2895,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2681,6 +2957,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2759,6 +3037,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2813,6 +3093,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -2892,6 +3174,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -2946,6 +3230,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -3025,6 +3311,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3079,6 +3367,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -3153,6 +3443,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -3207,6 +3499,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -3267,6 +3561,8 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
+  "sequence" : null,
   "category_id" : null,
   "category_name" : null,
   "create_man" : null,
@@ -3307,6 +3603,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -3330,6 +3627,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -3353,6 +3651,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -3385,12 +3684,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3436,6 +3738,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -3459,6 +3762,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -3482,6 +3786,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -3514,12 +3819,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3570,6 +3878,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -3610,6 +3920,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -3633,6 +3944,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -3656,6 +3968,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -3688,12 +4001,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3744,6 +4060,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -3783,6 +4101,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -3806,6 +4125,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -3829,6 +4149,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -3861,12 +4182,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3917,6 +4241,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -3956,6 +4282,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -3979,6 +4306,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4002,6 +4330,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -4034,12 +4363,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4090,6 +4422,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -4129,6 +4463,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -4152,6 +4487,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4175,6 +4511,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -4207,12 +4544,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4293,6 +4633,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -4316,6 +4657,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4339,6 +4681,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -4371,12 +4714,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4418,6 +4764,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -4441,6 +4788,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4464,6 +4812,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -4496,12 +4845,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4552,6 +4904,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -4592,6 +4946,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -4615,6 +4970,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4638,6 +4994,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -4670,12 +5027,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4726,6 +5086,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -4766,6 +5128,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -4789,6 +5152,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4812,6 +5176,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -4844,12 +5209,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4900,6 +5268,189 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
+    "category_id" : null,
+    "category_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 移动需求数据
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ideas/fetch_move_idea" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_idea_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_idea_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_plan_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_assignee_id_eq" : null,
+  "n_assignee_id_in" : null,
+  "n_assignee_id_isnotnull" : null,
+  "n_assignee_id_isnull" : null,
+  "n_assignee_id_noteq" : null,
+  "n_assignee_id_notin" : null,
+  "n_assignee_name_eq" : null,
+  "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
+  "n_categories_like" : null,
+  "n_category_id_eq" : null,
+  "n_category_name_eq" : null,
+  "n_category_name_like" : null,
+  "n_create_man_eq" : null,
+  "n_create_man_in" : null,
+  "n_create_man_isnotnull" : null,
+  "n_create_man_isnull" : null,
+  "n_create_man_noteq" : null,
+  "n_create_man_notin" : null,
+  "n_create_time_eq" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
+  "n_description_like" : null,
+  "n_id_eq" : null,
+  "n_id_in" : null,
+  "n_id_noteq" : null,
+  "n_idea_from_eq" : null,
+  "n_idea_type_eq" : null,
+  "n_identifier_eq" : null,
+  "n_identifier_isnull" : null,
+  "n_identifier_like" : null,
+  "n_is_archived_eq" : null,
+  "n_is_deleted_eq" : null,
+  "n_name_like" : null,
+  "n_plan_at_granularity_eq" : null,
+  "n_priority_eq" : null,
+  "n_product_id_eq" : null,
+  "n_product_id_isnull" : null,
+  "n_product_name_eq" : null,
+  "n_product_name_like" : null,
+  "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
+  "n_section_id_eq" : null,
+  "n_show_identifier_like" : null,
+  "n_state_eq" : null,
+  "n_state_notin" : null,
+  "n_suite_eq" : null,
+  "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "title" : null,
+    "state" : null,
+    "priority" : null,
+    "suite" : null,
+    "plan_at" : null,
+    "plan_at_from" : null,
+    "plan_at_to" : null,
+    "plan_at_granularity" : null,
+    "real_at" : null,
+    "real_at_from" : null,
+    "real_at_to" : null,
+    "real_at_granularity" : null,
+    "progress" : null,
+    "description" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "assignee_name" : null,
+    "product_identifier" : null,
+    "assignee_id" : null,
+    "cur_version_id" : null,
+    "section_name" : null,
+    "attachments" : null,
+    "section_id" : null,
+    "attentions" : null,
+    "show_identifier" : null,
+    "categories" : null,
+    "idea_from" : null,
+    "idea_type" : null,
+    "relation_total_idea" : null,
+    "relation_total_ticket" : null,
+    "workload_schedule" : null,
+    "estimated_workload" : null,
+    "relation_total_work_item" : null,
+    "relation_total_test_case" : null,
+    "remaining_workload" : null,
+    "relation_total_customer" : null,
+    "actual_workload" : null,
+    "cur_version_name" : null,
+    "choose_version_id" : null,
+    "choose_version_name" : null,
+    "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -4940,6 +5491,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -4963,6 +5515,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -4986,6 +5539,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -5018,12 +5572,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5074,6 +5631,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -5114,6 +5673,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -5137,6 +5697,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -5160,6 +5721,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -5192,12 +5754,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5248,6 +5813,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -5288,6 +5855,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -5311,6 +5879,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -5334,6 +5903,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -5366,12 +5936,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5422,6 +5995,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -5462,6 +6037,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -5485,6 +6061,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -5508,6 +6085,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -5540,12 +6118,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5596,6 +6177,189 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
+    "category_id" : null,
+    "category_name" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "product_id" : null,
+    "product_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 过滤器默认查询
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/ideas/fetch_my_filter" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_idea_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_idea_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_plan_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_assignee_id_eq" : null,
+  "n_assignee_id_in" : null,
+  "n_assignee_id_isnotnull" : null,
+  "n_assignee_id_isnull" : null,
+  "n_assignee_id_noteq" : null,
+  "n_assignee_id_notin" : null,
+  "n_assignee_name_eq" : null,
+  "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
+  "n_categories_like" : null,
+  "n_category_id_eq" : null,
+  "n_category_name_eq" : null,
+  "n_category_name_like" : null,
+  "n_create_man_eq" : null,
+  "n_create_man_in" : null,
+  "n_create_man_isnotnull" : null,
+  "n_create_man_isnull" : null,
+  "n_create_man_noteq" : null,
+  "n_create_man_notin" : null,
+  "n_create_time_eq" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
+  "n_description_like" : null,
+  "n_id_eq" : null,
+  "n_id_in" : null,
+  "n_id_noteq" : null,
+  "n_idea_from_eq" : null,
+  "n_idea_type_eq" : null,
+  "n_identifier_eq" : null,
+  "n_identifier_isnull" : null,
+  "n_identifier_like" : null,
+  "n_is_archived_eq" : null,
+  "n_is_deleted_eq" : null,
+  "n_name_like" : null,
+  "n_plan_at_granularity_eq" : null,
+  "n_priority_eq" : null,
+  "n_product_id_eq" : null,
+  "n_product_id_isnull" : null,
+  "n_product_name_eq" : null,
+  "n_product_name_like" : null,
+  "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
+  "n_section_id_eq" : null,
+  "n_show_identifier_like" : null,
+  "n_state_eq" : null,
+  "n_state_notin" : null,
+  "n_suite_eq" : null,
+  "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "title" : null,
+    "state" : null,
+    "priority" : null,
+    "suite" : null,
+    "plan_at" : null,
+    "plan_at_from" : null,
+    "plan_at_to" : null,
+    "plan_at_granularity" : null,
+    "real_at" : null,
+    "real_at_from" : null,
+    "real_at_to" : null,
+    "real_at_granularity" : null,
+    "progress" : null,
+    "description" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "assignee_name" : null,
+    "product_identifier" : null,
+    "assignee_id" : null,
+    "cur_version_id" : null,
+    "section_name" : null,
+    "attachments" : null,
+    "section_id" : null,
+    "attentions" : null,
+    "show_identifier" : null,
+    "categories" : null,
+    "idea_from" : null,
+    "idea_type" : null,
+    "relation_total_idea" : null,
+    "relation_total_ticket" : null,
+    "workload_schedule" : null,
+    "estimated_workload" : null,
+    "relation_total_work_item" : null,
+    "relation_total_test_case" : null,
+    "remaining_workload" : null,
+    "relation_total_customer" : null,
+    "actual_workload" : null,
+    "cur_version_name" : null,
+    "choose_version_id" : null,
+    "choose_version_name" : null,
+    "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -5636,6 +6400,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -5659,6 +6424,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -5682,6 +6448,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -5714,12 +6481,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5770,6 +6540,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -5810,6 +6582,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -5833,6 +6606,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -5856,6 +6630,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -5888,12 +6663,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5944,6 +6722,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -5984,6 +6764,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -6007,6 +6788,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -6030,6 +6812,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -6062,12 +6845,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6109,6 +6895,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -6132,6 +6919,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -6155,6 +6943,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -6187,12 +6976,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6243,6 +7035,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -6282,6 +7076,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -6305,6 +7100,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -6328,6 +7124,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -6360,12 +7157,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6416,6 +7216,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -6456,6 +7258,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -6479,6 +7282,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -6502,6 +7306,7 @@ Integer
   "n_assignee_id_notin" : null,
   "n_assignee_name_eq" : null,
   "n_assignee_name_like" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_categories_like" : null,
   "n_category_id_eq" : null,
   "n_category_name_eq" : null,
@@ -6534,12 +7339,15 @@ Integer
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
   "n_real_at_granularity_eq" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_section_id_eq" : null,
   "n_show_identifier_like" : null,
   "n_state_eq" : null,
   "n_state_notin" : null,
   "n_suite_eq" : null,
   "n_title_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6590,6 +7398,8 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "sequence" : null,
     "category_id" : null,
     "category_name" : null,
     "create_man" : null,
@@ -6831,6 +7641,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -6948,6 +7760,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7023,6 +7837,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7098,6 +7914,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7173,6 +7991,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7247,6 +8067,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7321,6 +8143,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7396,6 +8220,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7533,6 +8359,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7629,6 +8457,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7704,6 +8534,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7779,6 +8611,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7854,6 +8688,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -7929,6 +8765,85 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
+|<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
+|<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">product_id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">product_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+
+
+
+## 根据产品移动需求
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/products/{pkey}/ideas/{key}/move_order" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|产品主键|
+|key|String|标识|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">state</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">priority</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">suite</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
+|<el-row justify="space-between"><el-col :span="20">plan_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间|
+|<el-row justify="space-between"><el-col :span="20">plan_at_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|计划开始时间|
+|<el-row justify="space-between"><el-col :span="20">plan_at_to</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|计划结束时间|
+|<el-row justify="space-between"><el-col :span="20">plan_at_granularity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">real_at</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|实际时间|
+|<el-row justify="space-between"><el-col :span="20">real_at_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际开始时间|
+|<el-row justify="space-between"><el-col :span="20">real_at_to</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Timestamp|实际结束时间|
+|<el-row justify="space-between"><el-col :span="20">real_at_granularity</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">progress</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|进度|
+|<el-row justify="space-between"><el-col :span="20">description</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">is_archived</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">is_deleted</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">assignee_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">product_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品标识|
+|<el-row justify="space-between"><el-col :span="20">assignee_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">cur_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本标识|
+|<el-row justify="space-between"><el-col :span="20">section_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品名称|
+|<el-row justify="space-between"><el-col :span="20">attachments</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|附件|
+|<el-row justify="space-between"><el-col :span="20">section_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
+|<el-row justify="space-between"><el-col :span="20">attentions</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Object|关注|
+|<el-row justify="space-between"><el-col :span="20">show_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">categories</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">idea_from</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">idea_type</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">relation_total_idea</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联产品需求数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_ticket</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工单数|
+|<el-row justify="space-between"><el-col :span="20">workload_schedule</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|工时进度|
+|<el-row justify="space-between"><el-col :span="20">estimated_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|预估工时|
+|<el-row justify="space-between"><el-col :span="20">relation_total_work_item</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联工作项数|
+|<el-row justify="space-between"><el-col :span="20">relation_total_test_case</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联测试用例数|
+|<el-row justify="space-between"><el-col :span="20">remaining_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|剩余工时|
+|<el-row justify="space-between"><el-col :span="20">relation_total_customer</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|关联客户数|
+|<el-row justify="space-between"><el-col :span="20">actual_workload</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|实际工时|
+|<el-row justify="space-between"><el-col :span="20">cur_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|当前版本名称|
+|<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
+|<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
+|<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -8004,6 +8919,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -8079,6 +8996,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -8154,6 +9073,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -8229,6 +9150,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -8303,6 +9226,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">sequence</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|BigDecimal|序号|
 |<el-row justify="space-between"><el-col :span="20">category_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">category_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -8343,6 +9268,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8366,6 +9292,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8406,6 +9333,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8429,6 +9357,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8469,6 +9398,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8492,6 +9422,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8532,6 +9463,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8555,6 +9487,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8595,6 +9528,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8618,6 +9552,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8658,6 +9593,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8681,6 +9617,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8721,6 +9658,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8744,6 +9682,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8784,6 +9723,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8807,6 +9747,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8847,6 +9788,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8870,6 +9812,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8910,6 +9853,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8933,6 +9877,72 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+
+
+
+## 根据产品移动需求数据
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/products/{pkey}/ideas/fetch_move_idea" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|产品主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_idea_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_idea_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_plan_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -8973,6 +9983,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -8996,6 +10007,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9036,6 +10048,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9059,6 +10072,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9099,6 +10113,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9122,6 +10137,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9162,6 +10178,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9185,6 +10202,72 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_suite_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+
+
+
+## 根据产品过滤器默认查询
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/products/{pkey}/ideas/fetch_my_filter" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|产品主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
+|<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_category_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_idea_from_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求来源|
+|<el-row justify="space-between"><el-col :span="20">n_idea_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|需求类型|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_plan_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_priority_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|优先级|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
+|<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9225,6 +10308,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9248,6 +10332,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9288,6 +10373,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9311,6 +10397,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9351,6 +10438,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9374,6 +10462,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9414,6 +10503,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9437,6 +10527,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9477,6 +10568,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9500,6 +10592,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
@@ -9540,6 +10633,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别路径|
 |<el-row justify="space-between"><el-col :span="20">n_category_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别标识|
 |<el-row justify="space-between"><el-col :span="20">n_category_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -9563,6 +10657,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_product_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_product_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属产品|
 |<el-row justify="space-between"><el-col :span="20">n_real_at_granularity_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|计划时间周期单位|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_section_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|子产品标识|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
 |<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|

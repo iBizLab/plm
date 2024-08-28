@@ -34,6 +34,25 @@
 |SETTING_MODEL|配置模型|TEXT|是|1048576|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 应用插件活动(ADDON_APPLICATION_ACTIVITY)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|ACTION|操作|VARCHAR|是|100|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DEBUG_INFO|调试日志信息|TEXT|是|1048576|||
+|ELAPSED_TIME|持续时间|INT|是|11|||
+|END_AT|结束时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|INFO|日志信息|TEXT|是|1048576|||
+|LEVEL|级别|VARCHAR|是|100|||
+|NAME|名称|VARCHAR|是|200|||
+|PID|父标识|VARCHAR|是|100|||
+|START_AT|起始时间|DATETIME|是||||
+|STATE|状态|VARCHAR|是|100|||
+|SYSTEM_ID|系统标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 组件权限成员(ADDON_ROLE_MEMBER)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -177,6 +196,15 @@
 |NAME|名称|VARCHAR|是|500|||
 |PRODUCT_ID|产品标识|VARCHAR|是|100|||
 |SCALE|规模|INT|是||||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 数据同步任务(DATA_SYNC_TASK)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 数据字典(DICTIONARY)
@@ -380,6 +408,7 @@
 |REAL_AT_FROM|实际开始时间|DATETIME|是||||
 |REAL_AT_GRANULARITY|计划时间周期单位|VARCHAR|是|60|||
 |REAL_AT_TO|实际结束时间|DATETIME|是||||
+|SEQUENCE|序号|DECIMAL|是||||
 |STATE|状态|VARCHAR|是|60|||
 |SUITE|模块|VARCHAR|是|100|||
 |TITLE|标题|VARCHAR|是|500|||
@@ -486,6 +515,34 @@
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 |USER_ID|用户标识|VARCHAR|是|100|||
+#### 部门(LOCAL_DEPARTMENT)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|HEAD_ID|部门负责人标识|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|PARENT_ID|父部门标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 企业用户(LOCAL_USER)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|AVATAR|头像|VARCHAR|是|500|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|DEPARTMENT_ID|部门标识|VARCHAR|是|100|||
+|DISPLAY_NAME|姓名|VARCHAR|是|200|||
+|EMAIL|邮箱|VARCHAR|是|100|||
+|EMPLOYEE_NUMBER|工号|VARCHAR|是|100|||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|MOBILE|手机号|VARCHAR|是|100|||
+|NAME|名称|VARCHAR|是|200|||
+|PASSWORD|密码|VARCHAR|是|200|||
+|STATUS|状态|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 成员(MEMBER)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -635,8 +692,10 @@
 |END_AT|计划结束|DATETIME|是||||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_DELETED|是否已删除|INT|是||||
+|IS_LEAF|是否叶子节点|INT|是||||
 |NAME|名称|VARCHAR|是|200|||
 |PRODUCT_ID|产品标识|VARCHAR|是|100|||
+|SEQUENCE|序号|DECIMAL|是||||
 |START_AT|计划开始|DATETIME|是||||
 |TYPE|类型|VARCHAR|是|1000|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||

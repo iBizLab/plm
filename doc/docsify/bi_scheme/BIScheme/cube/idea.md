@@ -35,17 +35,17 @@
 ##### 常规指标
 |    名称col200   | 代码名col150 |  聚合模式col150  | 属性col350      |  备注col500  |
 | --------  |------------| -----   |  --------|--------|
-|关联产品需求|z_relation_total_idea|合计|关联产品需求数(RELATION_TOTAL_IDEA)||
-|关联工作项|z_relation_total_work_item|合计|关联工作项数(RELATION_TOTAL_WORK_ITEM)||
-|关联工单|z_relation_total_ticket|合计|关联工单数(RELATION_TOTAL_TICKET)||
-|关联测试用例|z_relation_total_test_case|合计|关联测试用例数(RELATION_TOTAL_TEST_CASE)||
 |剩余工时|z_remaining_workload|合计|剩余工时(REMAINING_WORKLOAD)||
-|客户|z_relation_total_customer|合计|关联客户数(RELATION_TOTAL_CUSTOMER)||
 |登记工时|z_actual_workload|合计|实际工时(ACTUAL_WORKLOAD)||
 |预估工时|z_estimated_workload|合计|预估工时(ESTIMATED_WORKLOAD)||
 ##### 计算式指标
 |    名称col200   | 代码名col150  |  计算公式col500   |  备注col500  |
 | --------  |------------| -----   |  --------|
+|关联产品需求|z_relation_total_idea|(SELECT COUNT(1) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='IDEA')||
+|关联工作项|z_relation_total_work_item|(SELECT COUNT(1) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='WORK_ITEM')||
+|关联工单|z_relation_total_ticket|(SELECT COUNT(1) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='TICKET')||
+|关联测试用例|z_relation_total_test_case|(SELECT COUNT(1) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='TEST_CASE')||
+|客户|z_relation_total_customer|(SELECT COUNT(1) FROM RELATION s1 WHERE s1.PRINCIPAL_ID = dataresult.ID AND s1.TARGET_TYPE ='CUSTOMER')||
 |需求占比|idea_ratio|countif(multiif(param(code_type, '-1') = '10', priority in (params(priority, ('P0'))), param(code_type, '-1') = '20', state in (params(state, ('10'))), param(code_type, '-1') = '30', idea_from in (params(idea_from, ('10'))), param(code_type, '10') = '40', idea_type in (params(idea_type, ('10'))), priority in (params(priority, ('P0'))))) / if(count(id) = 0, 1, count(id))|统计不同属性产品需求的占比情况。<br>|
 |需求数量|idea_number|count(id)|统计不同维度下的产品需求数量。<br>|
 

@@ -1,4 +1,4 @@
-# 新建资源(addon_resource_quick_create_view)  <!-- {docsify-ignore-all} -->
+# 新建资源视图(addon_resource_quick_create_view)  <!-- {docsify-ignore-all} -->
 
 
 

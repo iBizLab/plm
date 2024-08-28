@@ -30,7 +30,9 @@
 
 ### 查询条件
 
-(`OWNER_TYPE(所属数据对象)` EQ `'space'` AND `OWNER_SUBTYPE(所属对象子类型)` EQ `'page'` AND `UPDATE_MAN(更新人)` EQ `用户上下文.srfpersonid` AND `exists(SELECT 1 FROM page t3 where t3.id = t1.owner_id and 
+(`OWNER_TYPE(所属数据对象)` EQ `'space'` AND `OWNER_SUBTYPE(所属对象子类型)` EQ `'page'` AND `UPDATE_MAN(更新人)` EQ `用户上下文.srfpersonid` AND `exists(SELECT 1 FROM page t3 
+inner join space t4 on t4.id = t3.space_id and t4.is_deleted = 0
+where t3.id = t1.owner_id and 
  t3.is_archived = 0 and t3.is_deleted =0)`)
 
 
@@ -59,7 +61,9 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`OWNER_TYPE` = 'space'  AND  t1.`OWNER_SUBTYPE` = 'page'  AND  t1.`UPDATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(SELECT 1 FROM page t3 where t3.id = t1.owner_id and 
+WHERE ( t1.`OWNER_TYPE` = 'space'  AND  t1.`OWNER_SUBTYPE` = 'page'  AND  t1.`UPDATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(SELECT 1 FROM page t3 
+inner join space t4 on t4.id = t3.space_id and t4.is_deleted = 0
+where t3.id = t1.owner_id and 
  t3.is_archived = 0 and t3.is_deleted =0) )
 ```
 

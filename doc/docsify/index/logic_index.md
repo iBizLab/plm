@@ -16,6 +16,7 @@
 |[获取视图消息](module/Base/addon/logic/get_view_msg)|get_view_msg|无|||
 
 
+
 ## [资源组件(ADDON_RESOURCE)](module/Base/addon_resource.md) :id=addon_resource
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -135,6 +136,7 @@
 
 
 
+
 ## [交付物(DELIVERABLE)](module/Base/deliverable.md) :id=deliverable
 
 | 中文名col200    | 代码名col200    | 子类型col150    | 插件col200    |  备注col500  |
@@ -232,6 +234,7 @@
 |[删除](module/ProdMgmt/idea/logic/delete)|delete|无||需求数据的逻辑删除，修改需求的是否删除属性值|
 |[变更需求状态](module/ProdMgmt/idea/logic/change_state)|change_state|无||产品需求状态变更触发相关通知|
 |[基线规划需求数据查询](module/ProdMgmt/idea/logic/baseline_plan_idea)|baseline_plan_idea|无||基线规划需求时，填充需求当前版本名称|
+|[填充BI报表默认值](module/ProdMgmt/idea/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -287,6 +290,7 @@
 |[判断是否需要选择模板](module/Insight/insight_view/logic/recognize_choose_template)|recognize_choose_template|无|||
 |[取消星标](module/Insight/insight_view/logic/un_favorite)|un_favorite|无||取消视图星标|
 |[变更管理员角色](module/Insight/insight_view/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[填充BI报表默认值](module/Insight/insight_view/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[恢复](module/Insight/insight_view/logic/recover)|recover|无|||
 |[无操作](module/Insight/insight_view/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移动视图](module/Insight/insight_view/logic/view_move)|view_move|无||视图更多设置移动视图<br>|
@@ -331,6 +335,8 @@
 |[新建测试库成员](module/TestMgmt/library_member/logic/create_library_member)|create_library_member|无||新建测试库成员|
 |[无操作](module/TestMgmt/library_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除测试库成员通知](module/TestMgmt/library_member/logic/remove_library_member_notify)|remove_library_member_notify|无||移除测试库成员时向对应用户发送通知消息|
+
+
 
 
 ## [登录日志(LOGIN_LOG)](module/Base/login_log.md) :id=login_log
@@ -512,6 +518,7 @@
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
@@ -888,6 +895,7 @@
 |[其他实体关联用例](module/TestMgmt/test_case/logic/others_relation_test_case)|others_relation_test_case|无||测试用例实体的关联操作，生成正向，反向关联数据|
 |[删除](module/TestMgmt/test_case/logic/delete)|delete|无||测试用例数据的逻辑删除，修改产品的是否删除属性值|
 |[基线规划用例数据查询](module/TestMgmt/test_case/logic/baseline_plan_case)|baseline_plan_case|无||基线规划用例时，填充用例当前版本名称|
+|[填充BI报表默认值](module/TestMgmt/test_case/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[填充最近执行](module/TestMgmt/test_case/logic/fill_latest_executed)|fill_latest_executed|无||填充最近执行|
 |[复制用例](module/TestMgmt/test_case/logic/copy_test_case)|copy_test_case|无||复制测试用例|
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
@@ -942,6 +950,7 @@
 |[其他实体关联工单](module/ProdMgmt/ticket/logic/others_relation_ticket)|others_relation_ticket|无||工单实体的关联操作，生成正向，反向关联数据|
 |[分配负责人](module/ProdMgmt/ticket/logic/allocate_person)|allocate_person|无||分配工单负责人，修改负责人属性|
 |[删除](module/ProdMgmt/ticket/logic/delete)|delete|无||工单数据的逻辑删除，修改工单的是否删除属性值|
+|[填充BI报表默认值](module/ProdMgmt/ticket/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[客户取消关联工单](module/ProdMgmt/ticket/logic/customer_del_ticket)|customer_del_ticket|无||客户取消关联工单操作|
 |[客户选择工单](module/ProdMgmt/ticket/logic/customer_choose_ticket)|customer_choose_ticket|无||客户选择工单操作|
 |[归档](module/ProdMgmt/ticket/logic/archive)|archive|无||未归档工单数据的归档处理，修改工单的归档状态为归档|
@@ -1006,6 +1015,7 @@
 |[删除工时记录前附加逻辑](module/Base/workload/logic/before_remove)|before_remove|无||更新动态存储中的剩余工时|
 |[团队下成员工时日历查询](module/Base/workload/logic/group_member_dimension)|group_member_dimension|无||通过团队标识，查询此团队下的成员工时日历|
 |[团队维度工时日历查询](module/Base/workload/logic/user_group_dimension)|user_group_dimension|无||工时管理菜单中工时日历：团队维度查询数据使用|
+|[填充BI报表默认值](module/Base/workload/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[工作类别维度工时日历查询](module/Base/workload/logic/type_of_dimension)|type_of_dimension|无||首页工作台工时日历：工作类型维度查询数据使用|
 |[工作类别维度管理工时日历查询](module/Base/workload/logic/type_of_management_dimension)|type_of_management_dimension|无||工时管理菜单中工时日历：工作类型维度查询数据使用|
 |[工作项维度工时日历查询](module/Base/workload/logic/work_item_dimension)|work_item_dimension|无||首页工作台工时日历：项目/工作项维度查询数据使用|
@@ -1037,6 +1047,7 @@
 |[变更状态](module/ProjMgmt/work_item/logic/change_state)|change_state|无||变更工作项状态|
 |[团队速度](module/ProjMgmt/work_item/logic/project_team_speed)|project_team_speed|无||团队速度报表数据源|
 |[基线规划工作项数据查询](module/ProjMgmt/work_item/logic/baseline_plan_work_item)|baseline_plan_work_item|无||基线规划工作项时，填充工作项当前版本名称|
+|[填充BI报表默认值](module/ProjMgmt/work_item/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[填充状态的类型](module/ProjMgmt/work_item/logic/fill_type_of_state)|fill_type_of_state|无||根据工作项状态的id获取对应的type值|
 |[复制子工作项](module/ProjMgmt/work_item/logic/copy_child_work_item)|copy_child_work_item|无||复制工作项时，同时复制子工作项|
 |[复制工作项](module/ProjMgmt/work_item/logic/copy_work_item)|copy_work_item|无||复制工作项到其他的同类型项目|

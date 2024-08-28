@@ -32,6 +32,7 @@
 |维护人|MAINTENANCE_NAME|外键值文本|100|是||
 |名称|NAME|文本，可指定长度|200|是||
 |前置条件|PRECONDITION|长文本，长度1000|2000|是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
 |执行结果|RUN_STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|200|是||
@@ -179,6 +180,7 @@
 |选择用例模板|choose_case_template|[实体处理逻辑](module/TestMgmt/test_case/logic/choose_case_template "选择用例模板")|默认|不支持||||
 |复制用例|copy_case|[实体处理逻辑](module/TestMgmt/test_case/logic/copy_test_case "复制用例")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/TestMgmt/test_case/logic/delete "删除")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/TestMgmt/test_case/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |获取基线名称|get_baseline_name|[实体处理逻辑](module/TestMgmt/test_case/logic/get_baseline_name "获取基线名称")|默认|不支持||||
 |移动用例|move_case|[实体处理逻辑](module/TestMgmt/test_case/logic/move_test_case "移动用例")|默认|不支持||||
@@ -198,6 +200,7 @@
 |[其他实体关联用例](module/TestMgmt/test_case/logic/others_relation_test_case)|others_relation_test_case|无||测试用例实体的关联操作，生成正向，反向关联数据|
 |[删除](module/TestMgmt/test_case/logic/delete)|delete|无||测试用例数据的逻辑删除，修改产品的是否删除属性值|
 |[基线规划用例数据查询](module/TestMgmt/test_case/logic/baseline_plan_case)|baseline_plan_case|无||基线规划用例时，填充用例当前版本名称|
+|[填充BI报表默认值](module/TestMgmt/test_case/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[填充最近执行](module/TestMgmt/test_case/logic/fill_latest_executed)|fill_latest_executed|无||填充最近执行|
 |[复制用例](module/TestMgmt/test_case/logic/copy_test_case)|copy_test_case|无||复制测试用例|
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
@@ -253,6 +256,7 @@
 |[我负责的测试用例(my_assign)](module/TestMgmt/test_case/query/my_assign)|my_assign|否|否 |否 ||
 |[我关注的测试用例(my_attention)](module/TestMgmt/test_case/query/my_attention)|my_attention|否|否 |否 ||
 |[我创建的测试用例(my_created)](module/TestMgmt/test_case/query/my_created)|my_created|否|否 |否 ||
+|[过滤器默认查询(my_filter)](module/TestMgmt/test_case/query/my_filter)|my_filter|否|否 |否 ||
 |[正常状态(normal)](module/TestMgmt/test_case/query/normal)|normal|否|否 |否 ||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/query/nosuite_test_case)|nosuite_test_case|否|否 |否 ||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/query/not_add_case)|not_add_case|否|否 |否 ||
@@ -291,6 +295,7 @@
 |[我负责的用例(my_assignee_count_test_case)](module/TestMgmt/test_case/dataset/my_assignee_count_test_case)|my_assignee_count_test_case|数据查询|否|||
 |[我关注的测试用例(my_attention)](module/TestMgmt/test_case/dataset/my_attention)|my_attention|数据查询|否|||
 |[我创建的测试用例(my_created)](module/TestMgmt/test_case/dataset/my_created)|my_created|数据查询|否|||
+|[过滤器默认查询(my_filter)](module/TestMgmt/test_case/dataset/my_filter)|my_filter|数据查询|否|||
 |[正常状态(normal)](module/TestMgmt/test_case/dataset/normal)|normal|数据查询|否|||
 |[无模块用例(nosuite_test_case)](module/TestMgmt/test_case/dataset/nosuite_test_case)|nosuite_test_case|数据查询|否|||
 |[未添加过的用例(not_add_case)](module/TestMgmt/test_case/dataset/not_add_case)|not_add_case|数据查询|否|||
@@ -306,6 +311,21 @@
 |[工作项关联测试用例(work_item_relation_test_case)](module/TestMgmt/test_case/dataset/work_item_relation_test_case)|work_item_relation_test_case|数据查询|否|||
 
 ## 数据权限
+
+##### 全部数据（读写） :id=test_case-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `CREATE`
+* `DELETE(测试库(SUBDATA))`
+* `UPDATE`
+* `READ`
+
+
 
 ##### 操作角色(读) :id=test_case-USER_R
 
@@ -343,6 +363,7 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_ATTENTIONS_EXISTS__N_USER_ID_EQ|关注|EXISTS||
 |N_CREATE_MAN_EQ|建立人|EQ||
 |N_CREATE_TIME_EQ|建立时间|EQ||
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
@@ -364,6 +385,7 @@
 |N_MAINTENANCE_ID_NOTIN|维护人|NOTIN||
 |N_MAINTENANCE_NAME_EQ|维护人|EQ||
 |N_NAME_LIKE|名称|LIKE||
+|N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
 |N_REVIEW_RESULT_STATE_EQ|评审结果|EQ||
 |N_RUN_STATUS_EQ|执行结果|EQ||
 |N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
@@ -383,6 +405,8 @@
 |N_TEST_TYPE_EQ|测试类型|EQ||
 |N_TITLE_LIKE|标题|LIKE||
 |N_TYPE_EQ|用例类型|EQ||
+|N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
+|N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

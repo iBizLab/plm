@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [空间(SPACE)](module/Wiki/space) : [视图_取消](module/Wiki/space#界面行为)
   * [空间(SPACE)](module/Wiki/space) : [视图_确定](module/Wiki/space#界面行为)
+  * [空间(SPACE)](module/Wiki/space) : [视图_取消](module/Wiki/space#界面行为)
 
 <script>
  const { createApp } = Vue

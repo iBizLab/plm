@@ -34,6 +34,13 @@
 
 
 
+### 查询连接
+* **LIBRARY相关N:1（INNER JOIN）DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID**<br>
+连接关系：[DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID](der/DER1N_TEST_PLAN_LIBRARY_LIBRARY_ID)<br>
+连接实体：[测试库](module/TestMgmt/library)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
+
+
 
 
 <el-dialog v-model="MYSQL5" title="MYSQL5">
@@ -69,7 +76,7 @@ LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID`
 LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
 
-WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t21.`IS_DELETED` = 0 ) AND ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 </el-dialog>

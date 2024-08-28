@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [设置角色](module/Insight/insight_member#界面行为)
   * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [表格界面_删除操作](module/Insight/insight_member#界面行为)
+  * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [设置角色](module/Insight/insight_member#界面行为)
   * [效能成员(INSIGHT_MEMBER)](module/Insight/insight_member) : [表格界面_新建操作](module/Insight/insight_member#界面行为)
 
 ### 关联视图

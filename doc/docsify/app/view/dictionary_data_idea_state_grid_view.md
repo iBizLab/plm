@@ -18,9 +18,9 @@
 
 
 ### 关联界面行为
+  * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [表格界面_编辑操作](module/Base/dictionary_data#界面行为)
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [新建状态](module/Base/dictionary_data#界面行为)
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [需求配置_删除](module/Base/dictionary_data#界面行为)
-  * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [表格界面_编辑操作](module/Base/dictionary_data#界面行为)
 
 ### 关联界面逻辑
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [判断操作列是否禁用](module/Base/dictionary_data/uilogic/judge_column_state)

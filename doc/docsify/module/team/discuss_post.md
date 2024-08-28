@@ -93,6 +93,7 @@
 |[我发起的(my_create)](module/Team/discuss_post/query/my_create)|my_create|否|否 |否 ||
 |[我回复的(my_reply)](module/Team/discuss_post/query/my_reply)|my_reply|否|否 |否 ||
 |[正常状态讨论(normal)](module/Team/discuss_post/query/normal)|normal|否|否 |否 ||
+|[父未删除(parent_not_deleted)](module/Team/discuss_post/query/parent_not_deleted)|parent_not_deleted|否|否 |否 ||
 |[公开(public)](module/Team/discuss_post/query/public)|public|否|否 |否 ||
 |[只读用户(reader)](module/Team/discuss_post/query/reader)|reader|否|否 |否 ||
 |[最新讨论(recent)](module/Team/discuss_post/query/recent)|recent|否|否 |否 |最新讨论|

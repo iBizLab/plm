@@ -558,6 +558,7 @@
 
 
 
+
   <tr>
 
 <td rowspan="1"><a href ="#/module/Base/addon_role_member">组件权限成员(ADDON_ROLE_MEMBER)</a></td>
@@ -646,6 +647,7 @@
 </td>
 
 </tr>
+
 
 
 
@@ -1339,6 +1341,8 @@
 </td>
 
 </tr>
+
+
 
 
   <tr>

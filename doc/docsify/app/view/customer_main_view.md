@@ -28,12 +28,12 @@ if (form) {
 
 
 ### 关联界面行为
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑界面_下一个记录](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除（工具栏）](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [清空评论](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑界面_上一个记录](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [发送评论](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [最小化](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除（工具栏）](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑界面_下一个记录](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [编辑界面_上一个记录](module/ProdMgmt/customer#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)

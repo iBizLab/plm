@@ -8,6 +8,7 @@
 
 
 
+
 ## [资源组件(ADDON_RESOURCE)](module/Base/addon_resource.md) :id=addon_resource
 
 |  中文名col200 | 代码名col200 | 备注col500 |
@@ -131,6 +132,7 @@
 |[返回](module/ProdMgmt/customer/uilogic/back)|back|查看客户统计信息后，返回主表单按钮使用|
 |[选择下拉框区域展示](module/ProdMgmt/customer/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[需求关联客户](module/ProdMgmt/customer/uilogic/idea_relation_customer)|idea_relation_customer|值变更时触发，需求关联客户，调用处理逻辑生成正反向数据|
+
 
 
 
@@ -305,6 +307,8 @@
 |[使用此模板](module/Insight/insight_view/uilogic/use_cur_template)|use_cur_template||
 |[批量删除视图成员临时数据](module/Insight/insight_view/uilogic/remove_batch_temp)|remove_batch_temp|获取视图内所有临时成员数据并删除|
 |[计算表格列行为状态(insight)](module/Insight/insight_view/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[过滤器门户编辑](module/Insight/insight_view/uilogic/filter_porlet_edit)|filter_porlet_edit||
+|[过滤器门户高亮](module/Insight/insight_view/uilogic/filter_porlet_hight_light)|filter_porlet_hight_light||
 |[选择模板](module/Insight/insight_view/uilogic/choose_template)|choose_template||
 |[通知刷新](module/Insight/insight_view/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 
@@ -327,6 +331,8 @@
 | --------|--------|------|
 |[新建测试库默认临时成员](module/TestMgmt/library_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到测试库临时成员内|
 |[跳转至成员设置](module/TestMgmt/library_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至测试库成员设置|
+
+
 
 
 ## [登录日志(LOGIN_LOG)](module/Base/login_log.md) :id=login_log
@@ -431,6 +437,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[切换显示模式](module/ProdMgmt/product_plan/uilogic/switch_show_mode)|switch_show_mode|切换排期的显示模式|
 |[删除类别或分组](module/ProdMgmt/product_plan/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/ProdMgmt/product_plan/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/ProdMgmt/product_plan/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
@@ -852,6 +859,7 @@
 
 |  中文名col200 | 代码名col200 | 备注col500 |
 | --------|--------|------|
+|[BI报表_工作项状态默认值](module/ProjMgmt/work_item/uilogic/bi_form_state_default)|bi_form_state_default||
 |[上传附件（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
 |[关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)|attention_personnel_update|获取关注人员信息，并根据类别更新|
 |[关联交付物（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_link_deliverable)|toolbar_link_deliverable|主视图工具栏上点击触发，切换分页，打开下拉菜单|
@@ -885,7 +893,7 @@
 |[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
 |[添加子工作项（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_add_child)|toolbar_add_child|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change||
+|[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[甘特删除行测试](module/ProjMgmt/work_item/uilogic/removerow_gantt)|removerow_gantt|甘特删除行测试|
 |[甘特新建行测试](module/ProjMgmt/work_item/uilogic/newrow_gantt)|newrow_gantt|甘特新建行测试|
 |[用例关联工作项](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|

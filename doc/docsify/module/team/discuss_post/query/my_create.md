@@ -30,8 +30,15 @@
 
 ### 查询条件
 
-(`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid`)
+(`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` AND `IS_DELETED(是否已删除)` EQ `'0'`)
 
+
+
+### 查询连接
+* **DISCUSS_TOPIC相关N:1（INNER JOIN）DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID**<br>
+连接关系：[DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID](der/DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID)<br>
+连接实体：[话题](module/Team/discuss_topic)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
 
 
 
@@ -54,7 +61,7 @@ t1.`UPDATE_TIME`
 FROM `DISCUSS_POST` t1 
 LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

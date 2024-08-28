@@ -7,12 +7,6 @@
 #### DATAINFOBAR(datainfobar)
 #### 编辑表单(form)
 
-##### 部件逻辑
-* `onLoadSuccess`
-```
-console.log('123333333223')
-```
-
 
 <script>
  const { createApp } = Vue

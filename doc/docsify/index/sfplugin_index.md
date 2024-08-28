@@ -14,6 +14,7 @@
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充测试用例版本数据(fill_version_data)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充工作项版本数据(fill_version_data)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
+|多类型页面数据导入|[页面(PAGE)](module/Wiki/article_page)|PSDEDataImportImpl|[PageDataImportRuntimeEx](#PageDataImportRuntimeEx)|页面导入使用|
 |version|[页面(PAGE)](module/Wiki/article_page)|PSDEUtilImpl|[DEVersionControlUtilRuntimeEx](#UsrSFPlugin0628633282)|排除新建模式行为自动建立版本|
 |版本数据存储|[关联(RELATION)](module/Base/relation)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)||
 |版本数据存储|[执行用例(RUN)](module/TestMgmt/run)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)||
@@ -399,6 +400,36 @@ public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
         }
         return strDefault;
     }
+
+}
+```
+### PageDataImportRuntimeEx :id=PageDataImportRuntimeEx
+页面导入使用
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport.PageDataImportRuntimeEx```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.dataimport
+
+import com.fasterxml.jackson.databind.JsonNode
+import groovy.transform.CompileStatic;
+import net.ibizsys.central.cloud.core.util.domain.V2ImportSchema;
+import net.ibizsys.central.plugin.poi.dataentity.dataimport.POIDEDataImportRuntime
+import net.ibizsys.central.util.IEntityDTO;
+import net.ibizsys.model.dataentity.dataimport.IPSDEDataImportItem;
+import net.ibizsys.model.dataentity.defield.IPSDEField;
+import net.ibizsys.runtime.dataentity.DataEntityRuntimeException;
+import net.ibizsys.runtime.util.IEntity;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+@CompileStatic
+public class PageDataImportRuntimeEx extends POIDEDataImportRuntime  {
+
 
 }
 ```
@@ -1427,13 +1458,13 @@ class MSLogicCodeListRuntimeEx extends DEMainStateCodeListRuntime {
                 IPSCodeItem baseCodeItem = null;
                 java.util.List<IPSCodeItem> psCodeItemList = new ArrayList<IPSCodeItem>();
                 List<IPSDEMSLogicNode> nextPSDEMSLogicNodeList = null;
+                List<IPSDEField> mainStatePSDEFieldList = this.getDataEntityRuntime().getPSDataEntity().getMainStatePSDEFields();
+                //提取代码项值，当前业务为状态值2
+                String strState = DataTypeUtils.getStringValue(this.getDataEntityRuntime().getFieldValue(iEntity, mainStatePSDEFieldList.get(1)), "");
                 try {
                     nextPSDEMSLogicNodeList = iDEMSLogicRuntime.getNextPSDEMSLogicNodes(iEntity);
                 }catch (Exception e) {
                     if(!ObjectUtils.isEmpty(basicCodeListRuntime)){
-                        List<IPSDEField> mainStatePSDEFieldList = this.getDataEntityRuntime().getPSDataEntity().getMainStatePSDEFields();
-                        //提取代码项值，当前业务为状态值2
-                        String strState = DataTypeUtils.getStringValue(this.getDataEntityRuntime().getFieldValue(iEntity, mainStatePSDEFieldList.get(1)), "");
                         if(basicCodeListRuntime instanceof DynamicCodeListRuntimeBase){
                             baseCodeItem = ((DynamicCodeListRuntimeBase)basicCodeListRuntime).getPSCodeItem(null,strState,true);
                         }else {
@@ -1446,15 +1477,20 @@ class MSLogicCodeListRuntimeEx extends DEMainStateCodeListRuntime {
                 if(!ObjectUtils.isEmpty(psDEMSLogicNodeList)) {
                     for(IPSDEMSLogicNode iPSDEMSLogicNode : psDEMSLogicNodeList) {
                         IPSCodeItem iPSCodeItem = null;
-                        if(nextPSDEMSLogicNodeList!=null) {
-                            if(nextPSDEMSLogicNodeList.contains(iPSDEMSLogicNode)) {
-                                iPSCodeItem = getPSCodeItemWithDefColor(iPSDEMSLogicNode, false , basicCodeListRuntime);
-                            }
-                            else {
-                                iPSCodeItem = getPSCodeItemWithDefColor(iPSDEMSLogicNode, true, basicCodeListRuntime);
-                            }
-                        }else {
+                        //无状态值时输出全部
+                        if(ObjectUtils.isEmpty(strState)){
                             iPSCodeItem = getPSCodeItemWithDefColor(iPSDEMSLogicNode, false, basicCodeListRuntime);
+                        }else {
+                            if(nextPSDEMSLogicNodeList!=null) {
+                                if(nextPSDEMSLogicNodeList.contains(iPSDEMSLogicNode)) {
+                                    iPSCodeItem = getPSCodeItemWithDefColor(iPSDEMSLogicNode, false , basicCodeListRuntime);
+                                }
+                                else {
+                                    iPSCodeItem = getPSCodeItemWithDefColor(iPSDEMSLogicNode, true, basicCodeListRuntime);
+                                }
+                            }else {
+                                iPSCodeItem = getPSCodeItemWithDefColor(iPSDEMSLogicNode, false, basicCodeListRuntime);
+                            }
                         }
                         psCodeItemList.add(iPSCodeItem);
                     }
@@ -1611,6 +1647,14 @@ public class DEVersionControlUtilRuntimeEx extends DEVersionControlUtilRuntime {
 
 
 ```net.ibizsys.central.plugin.extension.sysutil.SysDEBIReportProxyUtilRuntime```
+
+```groovy
+null
+```
+### SimpleSysExtensionUtilRuntime :id=sysextension
+
+
+```cn.ibizlab.central.plugin.groovy.sysutil.SimpleSysExtensionUtilRuntime```
 
 ```groovy
 null

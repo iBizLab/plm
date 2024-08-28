@@ -39,11 +39,7 @@ Begin --> RAWJSCODE1
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.change.sendCommand({
-    srfdecodename:'Run'
-},"OBJECTUPDATED")
-
-ibiz.mc.command.update.send({ srfdecodename: 'run'})
+ibiz.mc.command.update.send({ srfdecodename: 'run',srfkey: context.run})
 ```
 
 
@@ -52,8 +48,8 @@ ibiz.mc.command.update.send({ srfdecodename: 'run'})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|环境变量|hjbl|||
-|当前表格|grid|部件对象||
 |当前工具栏|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|环境变量|hjbl|||
 |APP|APP|应用程序变量||
+|当前表格|grid|部件对象||

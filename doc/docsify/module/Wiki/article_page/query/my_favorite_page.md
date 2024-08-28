@@ -34,6 +34,13 @@
 
 
 
+### 查询连接
+* **SPACE相关N:1（INNER JOIN）DER1N_PAGE_SPACE_SPACE_ID**<br>
+连接关系：[DER1N_PAGE_SPACE_SPACE_ID](der/DER1N_PAGE_SPACE_SPACE_ID)<br>
+连接实体：[空间](module/Wiki/space)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
+
+
 
 
 <el-dialog v-model="MYSQL5" title="MYSQL5">
@@ -63,6 +70,7 @@ t1.`PUBLISHED`,
 t1.`PUBLISH_MAN`,
 t1.`PUBLISH_NAME`,
 t1.`PUBLISH_TIME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`SEQUENCE`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SPACE_ID`,
@@ -74,7 +82,7 @@ t1.`UPDATE_TIME`
 FROM `PAGE` t1 
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
-WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1' )
 ```
 
 </el-dialog>

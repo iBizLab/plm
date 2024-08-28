@@ -1333,8 +1333,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -1356,13 +1356,15 @@ Integer
   "n_assignee_id_isnotnull" : null,
   "n_assignee_id_isnull" : null,
   "n_assignee_id_notin" : null,
-  "n_categorys_isnull" : null,
-  "n_categorys_like" : null,
+  "n_categories_isnull" : null,
+  "n_categories_like" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_create_man_isnotnull" : null,
   "n_create_man_isnull" : null,
   "n_create_man_notin" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
   "n_grade_id_eq" : null,
   "n_id_eq" : null,
   "n_industry_id_eq" : null,
@@ -1370,6 +1372,8 @@ Integer
   "n_product_id_eq" : null,
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -1407,8 +1411,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -1430,13 +1434,15 @@ Integer
   "n_assignee_id_isnotnull" : null,
   "n_assignee_id_isnull" : null,
   "n_assignee_id_notin" : null,
-  "n_categorys_isnull" : null,
-  "n_categorys_like" : null,
+  "n_categories_isnull" : null,
+  "n_categories_like" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_create_man_isnotnull" : null,
   "n_create_man_isnull" : null,
   "n_create_man_notin" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
   "n_grade_id_eq" : null,
   "n_id_eq" : null,
   "n_industry_id_eq" : null,
@@ -1444,6 +1450,8 @@ Integer
   "n_product_id_eq" : null,
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -1501,8 +1509,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -1524,13 +1532,15 @@ Integer
   "n_assignee_id_isnotnull" : null,
   "n_assignee_id_isnull" : null,
   "n_assignee_id_notin" : null,
-  "n_categorys_isnull" : null,
-  "n_categorys_like" : null,
+  "n_categories_isnull" : null,
+  "n_categories_like" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_create_man_isnotnull" : null,
   "n_create_man_isnull" : null,
   "n_create_man_notin" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
   "n_grade_id_eq" : null,
   "n_id_eq" : null,
   "n_industry_id_eq" : null,
@@ -1538,6 +1548,8 @@ Integer
   "n_product_id_eq" : null,
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -1595,8 +1607,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -1618,13 +1630,15 @@ Integer
   "n_assignee_id_isnotnull" : null,
   "n_assignee_id_isnull" : null,
   "n_assignee_id_notin" : null,
-  "n_categorys_isnull" : null,
-  "n_categorys_like" : null,
+  "n_categories_isnull" : null,
+  "n_categories_like" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_create_man_isnotnull" : null,
   "n_create_man_isnull" : null,
   "n_create_man_notin" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
   "n_grade_id_eq" : null,
   "n_id_eq" : null,
   "n_industry_id_eq" : null,
@@ -1632,6 +1646,8 @@ Integer
   "n_product_id_eq" : null,
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -1689,8 +1705,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -1712,13 +1728,15 @@ Integer
   "n_assignee_id_isnotnull" : null,
   "n_assignee_id_isnull" : null,
   "n_assignee_id_notin" : null,
-  "n_categorys_isnull" : null,
-  "n_categorys_like" : null,
+  "n_categories_isnull" : null,
+  "n_categories_like" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_create_man_isnotnull" : null,
   "n_create_man_isnull" : null,
   "n_create_man_notin" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
   "n_grade_id_eq" : null,
   "n_id_eq" : null,
   "n_industry_id_eq" : null,
@@ -1726,6 +1744,8 @@ Integer
   "n_product_id_eq" : null,
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -1783,8 +1803,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -1806,13 +1826,15 @@ Integer
   "n_assignee_id_isnotnull" : null,
   "n_assignee_id_isnull" : null,
   "n_assignee_id_notin" : null,
-  "n_categorys_isnull" : null,
-  "n_categorys_like" : null,
+  "n_categories_isnull" : null,
+  "n_categories_like" : null,
   "n_create_man_eq" : null,
   "n_create_man_in" : null,
   "n_create_man_isnotnull" : null,
   "n_create_man_isnull" : null,
   "n_create_man_notin" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
   "n_grade_id_eq" : null,
   "n_id_eq" : null,
   "n_industry_id_eq" : null,
@@ -1820,6 +1842,8 @@ Integer
   "n_product_id_eq" : null,
   "n_product_name_eq" : null,
   "n_product_name_like" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -2680,8 +2704,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -2720,8 +2744,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -2760,8 +2784,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -2800,8 +2824,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -2840,8 +2864,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|
@@ -2880,8 +2904,8 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
 |<el-row justify="space-between"><el-col :span="20">n_assignee_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|负责人标识|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
-|<el-row justify="space-between"><el-col :span="20">n_categorys_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
+|<el-row justify="space-between"><el-col :span="20">n_categories_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|类别|
 |<el-row justify="space-between"><el-col :span="20">n_grade_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|等级|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">n_industry_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|行业|

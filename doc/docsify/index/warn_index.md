@@ -1,7 +1,7 @@
 # 模型预警 <!-- {docsify-ignore-all} -->
 
 
-### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[118]</font></sup>
+### 处理逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[126]</font></sup>
 | 实体col200   | 处理逻辑col300  | 脚本模式col100  |
 | --------   |------------|----------|
 |[组件(ADDON)](module/Base/addon#处理逻辑)|[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority.md)|否|
@@ -18,6 +18,7 @@
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard#处理逻辑)|[使用此模板(use_cur_template)](module/Base/dyna_dashboard/logic/use_cur_template.md)|否|
 |[动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard#处理逻辑)|[更新看板部件模型(sync_portlet_model)](module/Base/dyna_dashboard/logic/sync_portlet_model.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[基线规划需求数据查询(baseline_plan_idea)](module/ProdMgmt/idea/logic/baseline_plan_idea.md)|否|
+|[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProdMgmt/idea/logic/fill_bi_form_default.md)|是|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[获取产品成员(get_product_member)](module/ProdMgmt/idea/logic/get_product_member.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[获取客户分数(get_customer_score)](module/ProdMgmt/idea/logic/get_customer_score.md)|否|
 |[需求(IDEA)](module/ProdMgmt/idea#处理逻辑)|[计划内需求批删除(plan_delete_idea)](module/ProdMgmt/idea/logic/plan_delete_idea.md)|否|
@@ -28,6 +29,7 @@
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#处理逻辑)|[获取视图成员(get_view_member)](module/Insight/insight_report/logic/get_view_member.md)|否|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#处理逻辑)|[计算分组信息(calc_group_data)](module/Insight/insight_report/logic/calc_group_data.md)|否|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#处理逻辑)|[使用此模板(use_cur_template)](module/Insight/insight_view/logic/use_cur_template.md)|否|
+|[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/Insight/insight_view/logic/fill_bi_form_default.md)|是|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#处理逻辑)|[获取视图成员(get_view_member)](module/Insight/insight_view/logic/get_view_member.md)|否|
 |[测试库(LIBRARY)](module/TestMgmt/library#处理逻辑)|[创建测试库流程准则(auto_create_guideline)](module/TestMgmt/library/logic/auto_create_guideline.md)|否|
 |[测试库(LIBRARY)](module/TestMgmt/library#处理逻辑)|[测试库组件权限计数器(library_addon_authority)](module/TestMgmt/library/logic/library_addon_authority.md)|否|
@@ -57,6 +59,7 @@
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag#处理逻辑)|[获取关联的工单数量(get_con_product_tag)](module/ProdMgmt/product_tag/logic/get_con_product_tag.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[scrum项目组件权限计数器(scrum_project_addon_authority)](module/ProjMgmt/project/logic/scrum_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[waterfall项目组件权限计数器(waterfall_project_addon_authority)](module/ProjMgmt/project/logic/waterfall_project_addon_authority.md)|否|
+|[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProjMgmt/project/logic/fill_bi_form_default.md)|是|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[看板项目组件权限计数器(kanban_project_addon_authority)](module/ProjMgmt/project/logic/kanban_project_addon_authority.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[获取快速新建项目集合(quick_create)](module/ProjMgmt/project/logic/quick_create.md)|否|
 |[项目(PROJECT)](module/ProjMgmt/project#处理逻辑)|[获取项目成员(get_project_member_one)](module/ProjMgmt/project/logic/get_project_member_one.md)|否|
@@ -95,9 +98,11 @@
 |[迭代(SPRINT)](module/ProjMgmt/sprint#处理逻辑)|[获取未完成的工作项数量(get_not_finish)](module/ProjMgmt/sprint/logic/get_not_finish.md)|否|
 |[迭代(SPRINT)](module/ProjMgmt/sprint#处理逻辑)|[获取概览基本信息统计数字(overview_num)](module/ProjMgmt/sprint/logic/overview_num.md)|否|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[基线规划用例数据查询(baseline_plan_case)](module/TestMgmt/test_case/logic/baseline_plan_case.md)|否|
+|[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/TestMgmt/test_case/logic/fill_bi_form_default.md)|是|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[填充最近执行(fill_latest_executed)](module/TestMgmt/test_case/logic/fill_latest_executed.md)|否|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type.md)|否|
 |[用例(TEST_CASE)](module/TestMgmt/test_case#处理逻辑)|[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member.md)|否|
+|[工单(TICKET)](module/ProdMgmt/ticket#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProdMgmt/ticket/logic/fill_bi_form_default.md)|是|
 |[工单(TICKET)](module/ProdMgmt/ticket#处理逻辑)|[查询归档数据(get_archived_info)](module/ProdMgmt/ticket/logic/get_archived_info.md)|否|
 |[工单(TICKET)](module/ProdMgmt/ticket#处理逻辑)|[获取产品成员(get_product_member)](module/ProdMgmt/ticket/logic/get_product_member.md)|否|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type#处理逻辑)|[获取关联的工单(get_con_ticket)](module/ProdMgmt/ticket_type/logic/get_con_ticket.md)|否|
@@ -105,8 +110,11 @@
 |[企业用户(USER)](module/Base/user#处理逻辑)|[非空间下成员(not_space_mmeber)](module/Base/user/logic/not_space_mmeber.md)|否|
 |[版本(VERSION)](module/Base/version#处理逻辑)|[新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name.md)|否|
 |[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove.md)|否|
+|[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/Base/workload/logic/fill_bi_form_default.md)|是|
 |[工时(WORKLOAD)](module/Base/workload#处理逻辑)|[获取已登记工时(get_register_workload)](module/Base/workload/logic/get_register_workload.md)|否|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[变更状态(change_state)](module/ProjMgmt/work_item/logic/change_state.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[基线规划工作项数据查询(baseline_plan_work_item)](module/ProjMgmt/work_item/logic/baseline_plan_work_item.md)|否|
+|[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[填充BI报表默认值(fill_bi_form_default)](module/ProjMgmt/work_item/logic/fill_bi_form_default.md)|是|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[工作项完成趋势(complete_trend)](module/ProjMgmt/work_item/logic/complete_trend.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[新建工作项前校验父子工作项类型(before_create_check_type)](module/ProjMgmt/work_item/logic/before_create_check_type.md)|否|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item#处理逻辑)|[状态类型变更附加逻辑(state_type_onchange)](module/ProjMgmt/work_item/logic/state_type_onchange.md)|否|
@@ -246,7 +254,7 @@
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[需求每日趋势(backlog_daily_trend)](module/ProjMgmt/work_item/logic/backlog_daily_trend.md)|
 |[工作项(WORK_ITEM)#处理逻辑](module/ProjMgmt/work_item)|[需求累计流图(backlog_accumulate_flow)](module/ProjMgmt/work_item/logic/backlog_accumulate_flow.md)|
 
-### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[306]</font></sup>
+### 界面逻辑中使用脚本<sup class="footnote-symbol"> <font color=orange>[308]</font></sup>
 | 实体col200   | 界面逻辑col300  |
 | --------   |------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource#界面逻辑)|[资源删除逻辑](module/Base/addon_resource/uilogic/resource_del)|
@@ -340,9 +348,11 @@
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#界面逻辑)|[通知刷新](module/Insight/insight_report/uilogic/refresh)|
 |[效能报表(INSIGHT_REPORT)](module/Insight/insight_report#界面逻辑)|[使用此模板](module/Insight/insight_report/uilogic/use_cur_template)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[计算表格列行为状态(insight)](module/Insight/insight_view/uilogic/calc_column_action_state)|
+|[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[过滤器门户编辑](module/Insight/insight_view/uilogic/filter_porlet_edit)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[通知刷新](module/Insight/insight_view/uilogic/notify_refresh)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[批量删除视图成员临时数据](module/Insight/insight_view/uilogic/remove_batch_temp)|
 |[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[使用此模板](module/Insight/insight_view/uilogic/use_cur_template)|
+|[效能视图(INSIGHT_VIEW)](module/Insight/insight_view#界面逻辑)|[过滤器门户高亮](module/Insight/insight_view/uilogic/filter_porlet_hight_light)|
 |[测试库(LIBRARY)](module/TestMgmt/library#界面逻辑)|[计算表格列行为状态(library)](module/TestMgmt/library/uilogic/calc_column_action_state)|
 |[测试库(LIBRARY)](module/TestMgmt/library#界面逻辑)|[通知刷新](module/TestMgmt/library/uilogic/notify_refresh)|
 |[测试库(LIBRARY)](module/TestMgmt/library#界面逻辑)|[批量删除测试库成员临时数据](module/TestMgmt/library/uilogic/remove_batch_temp)|
@@ -836,10 +846,10 @@
 ### 操作标识未配置映射<sup class="footnote-symbol"> <font color=orange>[5]</font></sup>
 | 实体col200   | 操作标识col300  |
 | --------   |------------|
-|[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
 |[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
-|[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[评论(COMMENT)](module/Base/comment.md)|READ<br>DELETE<br>UPDATE|
 |[执行用例结果附件(RUN_ATTACHMENT)](module/TestMgmt/run_attachment.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
+|[关注(ATTENTION)](module/Base/attention.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 |[页面版本(PAGE_VERSION)](module/Wiki/page_version.md)|CREATE<br>READ<br>DELETE<br>UPDATE|
 
 ### 除主键、主信息、预置属性外，不包含其他配置的表格<sup class="footnote-symbol"> <font color=orange>[27]</font></sup>
@@ -873,11 +883,11 @@
 |[工时类别(WORKLOAD_TYPE)](module/Base/workload_type)|主表格(main)|[工时类别(workload_type_pick_up_grid_view)](app/view/workload_type_pick_up_grid_view)|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|回收站_表格(recycle_bin_grid)|[工作项(work_item_case_re_bug_mpick_up_grid_view)](app/view/work_item_case_re_bug_mpick_up_grid_view)|
 
-### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[72]</font></sup>
+### 无搜索项的搜索表单<sup class="footnote-symbol"> <font color=orange>[71]</font></sup>
 | 实体col200   |   视图col400 | 搜索表单col400  |
 | --------   |------------|-----------|
 |[活动(ACTIVITY)](module/Base/activity)|全部活动列表（测试）_搜索表单(test_all_list_view_search_form)|[活动(activity_pick_up_grid_view)](app/view/activity_pick_up_grid_view)|
-|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|默认搜索表单(default)|[资源管理(addon_resource_all_grid_view)](app/view/addon_resource_all_grid_view)|
+|[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|默认搜索表单(default)|[资源视图管理(addon_resource_all_grid_view)](app/view/addon_resource_all_grid_view)|
 |[基线(BASELINE)](module/Base/baseline)|默认搜索表单(default)|[全部基线(baseline_library_grid_view)](app/view/baseline_library_grid_view)|
 |[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|默认搜索表单(default)|[基线对比(baseline_idea_comparison_grid_view)](app/view/baseline_idea_comparison_grid_view)|
 |[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|基线页面实体表格视图_搜索表单(relation_grid_view_search_form)|[基线页面(baseline_page_comparison_grid_view)](app/view/baseline_page_comparison_grid_view)|
@@ -910,12 +920,11 @@
 |[文件夹成员(PORTFOLIO_MEMBER)](module/Base/portfolio_member)|默认搜索表单(default)|[文件夹成员(portfolio_member_project_bind_member_grid_view)](app/view/portfolio_member_project_bind_member_grid_view)|
 |[产品(PRODUCT)](module/ProdMgmt/product)|默认搜索表单(default)|[全部产品(product_all_grid_view)](app/view/product_all_grid_view)|
 |[产品成员(PRODUCT_MEMBER)](module/ProdMgmt/product_member)|默认搜索表单(default)|[成员(product_member_assigned_grid_view)](app/view/product_member_assigned_grid_view)|
-|[排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)|默认搜索表单(default)|[全部计划(product_plan_all_grid_view)](app/view/product_plan_all_grid_view)|
 |[产品标签(PRODUCT_TAG)](module/ProdMgmt/product_tag)|默认搜索表单(default)|[产品标签(product_tag_grid_view)](app/view/product_tag_grid_view)|
 |[项目(PROJECT)](module/ProjMgmt/project)|项目看板视图_搜索表单(kanban_view_search_form)|[项目管理(project_archived_grid_view)](app/view/project_archived_grid_view)|
 |[项目成员(PROJECT_MEMBER)](module/ProjMgmt/project_member)|默认搜索表单(default)|[项目成员(project_member_assigned_grid_view)](app/view/project_member_assigned_grid_view)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|默认搜索表单(default)|[项目标签(project_tag_grid_view)](app/view/project_tag_grid_view)|
-|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)|应用市场_搜索表单(usr07158833_search_form)|[核心产品功能(ps_core_prd_func_installed_grid_view)](app/view/ps_core_prd_func_installed_grid_view)|
+|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)|应用市场_搜索表单(usr07158833_search_form)|[已安装应用(ps_core_prd_func_installed_grid_view)](app/view/ps_core_prd_func_installed_grid_view)|
 |[实体属性(PSDEFIELD)](module/extension/PSDEField)|默认搜索表单(default)|[属性管理(psde_field_data_extend_grid_view)](app/view/psde_field_data_extend_grid_view)|
 |[实体处理逻辑(PSDELOGIC)](module/extension/PSDELogic)|自动化规则逻辑表格视图_搜索表单(flow_grid_view_search_form)|[实体处理逻辑(psde_logic_test_auto_rules_grid_view)](app/view/psde_logic_test_auto_rules_grid_view)|
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|默认搜索表单(default)|[事件通知(psde_notify_event_hook_grid_view)](app/view/psde_notify_event_hook_grid_view)|
@@ -949,7 +958,7 @@
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|工时反查表格视图_搜索表单(usr07223309_search_form)|[工作项完成率(work_item_completed_drill_detail_grid_view)](app/view/work_item_completed_drill_detail_grid_view)|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|默认搜索表单(default)|[工作项配置(work_item_type_global_setting_view_kanban)](app/view/work_item_type_global_setting_view_kanban)|
 
-### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[64]</font></sup>
+### 除主键、主信息、预置属性外，不包含其他配置的表单<sup class="footnote-symbol"> <font color=orange>[63]</font></sup>
 | 实体col200   |   视图col400 |表单col400  |
 | --------   |------------|------------|
 |[资源组件(ADDON_RESOURCE)](module/Base/addon_resource)|容量设置表单(capacity_form)|[容量设置(addon_resource_all_capacity_view)](app/view/addon_resource_all_capacity_view)|
@@ -986,7 +995,6 @@
 |[项目(PROJECT)](module/ProjMgmt/project)|项目概览_表单(overview)|[高级设置(project_advanced_setting_edit_view)](app/view/project_advanced_setting_edit_view)|
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|项目标签确认删除_表单(project_tag_remove_view_form)|[项目标签(project_tag_edit_view)](app/view/project_tag_edit_view)|
 |[应用门户部件(PSAPPPORTLET)](module/extension/PSAppPortlet)|主编辑表单(main)|[应用门户部件(ps_app_portlet_edit_view)](app/view/ps_app_portlet_edit_view)|
-|[核心产品功能(PSCOREPRDFUNC)](module/extension/PSCorePrdFunc)|主编辑表单(main)|[核心产品功能(ps_core_prd_func_edit_view)](app/view/ps_core_prd_func_edit_view)|
 |[实体处理逻辑链接(PSDELOGICLINK)](module/extension/PSDELogicLink)|主编辑表单(main)|[逻辑设计(psde_logic_logic_design_custom)](app/view/psde_logic_logic_design_custom)|
 |[实体主状态迁移逻辑(PSDEMSLOGIC)](module/extension/PSDEMSLogic)|接口表单(api)|[主状态逻辑设计(psdems_logic_ms_logic_design_custom)](app/view/psdems_logic_ms_logic_design_custom)|
 |[实体通知(PSDENOTIFY)](module/extension/PSDENotify)|主编辑表单(main)|[实体通知(psde_notify_edit_view)](app/view/psde_notify_edit_view)|
@@ -1007,7 +1015,7 @@
 |[待办(SYS_TODO)](module/ebsx/SysTodo)|主编辑表单(main)|[待办(sys_todo_edit_view)](app/view/sys_todo_edit_view)|
 |[用例(TEST_CASE)](module/TestMgmt/test_case)|附件_表单(attachment_form)|[用例(test_case_bi_form_case_ratio_view)](app/view/test_case_bi_form_case_ratio_view)|
 |[测试计划(TEST_PLAN)](module/TestMgmt/test_plan)|主编辑表单(main)|[测试计划(test_plan_edit_view)](app/view/test_plan_edit_view)|
-|[工单(TICKET)](module/ProdMgmt/ticket)|需求关联工单统计视图_表单(idea_re_view_form)|[工单(ticket_bi_form_ticket_ratio)](app/view/ticket_bi_form_ticket_ratio)|
+|[工单(TICKET)](module/ProdMgmt/ticket)|BI报表配置_工单占比(bi_form_ticket_ratio)|[工单(ticket_bi_form_ticket_ratio)](app/view/ticket_bi_form_ticket_ratio)|
 |[工单类型(TICKET_TYPE)](module/ProdMgmt/ticket_type)|主编辑表单(main)|[确认删除(ticket_type_confirm_remove_view)](app/view/ticket_type_confirm_remove_view)|
 |[企业用户(USER)](module/Base/user)|主编辑表单(main)|[帐号设置(user_account_view)](app/view/user_account_view)|
 |[版本(VERSION)](module/Base/version)|主编辑表单(main)|[版本(version_edit_view)](app/view/version_edit_view)|

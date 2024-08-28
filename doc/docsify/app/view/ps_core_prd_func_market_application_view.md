@@ -1,4 +1,4 @@
-# 核心产品功能(ps_core_prd_func_market_application_view)  <!-- {docsify-ignore-all} -->
+# 应用市场(ps_core_prd_func_market_application_view)  <!-- {docsify-ignore-all} -->
 
 
 
@@ -15,7 +15,7 @@
 
 
 ### 关联视图
-  * [核心产品功能(ps_core_prd_func_edit_view)](app/view/ps_core_prd_func_edit_view)
+  * [核心产品功能(ps_core_prd_func_info_view)](app/view/ps_core_prd_func_info_view)
 
 <script>
  const { createApp } = Vue

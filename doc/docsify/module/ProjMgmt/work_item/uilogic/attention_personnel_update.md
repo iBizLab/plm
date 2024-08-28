@@ -15,26 +15,26 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./attention_personnel_update#begin {开始}]]
-state "讨论" as PREPAREJSPARAM9  [[$./attention_personnel_update#preparejsparam9 {讨论}]]
-state "获取关注人员" as PREPAREJSPARAM2  [[$./attention_personnel_update#preparejsparam2 {获取关注人员}]]
-state "测试用例" as PREPAREJSPARAM7  [[$./attention_personnel_update#preparejsparam7 {测试用例}]]
-state "工单" as PREPAREJSPARAM4  [[$./attention_personnel_update#preparejsparam4 {工单}]]
-state "保存关注人信息" as DEACTION7  [[$./attention_personnel_update#deaction7 {保存关注人信息}]]
-state "保存关注人数据" as DEACTION8  [[$./attention_personnel_update#deaction8 {保存关注人数据}]]
-state "保存关注人数据" as DEACTION5  [[$./attention_personnel_update#deaction5 {保存关注人数据}]]
-state "工作项" as PREPAREJSPARAM1  [[$./attention_personnel_update#preparejsparam1 {工作项}]]
-state "保存关注人数据" as DEACTION2  [[$./attention_personnel_update#deaction2 {保存关注人数据}]]
-state "结束" as END1 <<end>> [[$./attention_personnel_update#end1 {结束}]]
-state "页面" as PREPAREJSPARAM8  [[$./attention_personnel_update#preparejsparam8 {页面}]]
-state "实体行为" as DEACTION9  [[$./attention_personnel_update#deaction9 {实体行为}]]
-state "产品需求" as PREPAREJSPARAM3  [[$./attention_personnel_update#preparejsparam3 {产品需求}]]
-state "保存关注人数据" as DEACTION1  [[$./attention_personnel_update#deaction1 {保存关注人数据}]]
-state "保存关注人数据" as DEACTION4  [[$./attention_personnel_update#deaction4 {保存关注人数据}]]
 state "保存关注人数据" as DEACTION3  [[$./attention_personnel_update#deaction3 {保存关注人数据}]]
-state "评审" as PREPAREJSPARAM10  [[$./attention_personnel_update#preparejsparam10 {评审}]]
+state "保存关注人数据" as DEACTION5  [[$./attention_personnel_update#deaction5 {保存关注人数据}]]
+state "页面" as PREPAREJSPARAM8  [[$./attention_personnel_update#preparejsparam8 {页面}]]
+state "保存关注人信息" as DEACTION7  [[$./attention_personnel_update#deaction7 {保存关注人信息}]]
+state "实体行为" as DEACTION9  [[$./attention_personnel_update#deaction9 {实体行为}]]
+state "保存关注人数据" as DEACTION8  [[$./attention_personnel_update#deaction8 {保存关注人数据}]]
+state "产品需求" as PREPAREJSPARAM3  [[$./attention_personnel_update#preparejsparam3 {产品需求}]]
 state "客户" as PREPAREJSPARAM5  [[$./attention_personnel_update#preparejsparam5 {客户}]]
 state "保存关注人数据" as DEACTION6  [[$./attention_personnel_update#deaction6 {保存关注人数据}]]
+state "保存关注人数据" as DEACTION1  [[$./attention_personnel_update#deaction1 {保存关注人数据}]]
+state "获取关注人员" as PREPAREJSPARAM2  [[$./attention_personnel_update#preparejsparam2 {获取关注人员}]]
+state "工作项" as PREPAREJSPARAM1  [[$./attention_personnel_update#preparejsparam1 {工作项}]]
+state "评审" as PREPAREJSPARAM10  [[$./attention_personnel_update#preparejsparam10 {评审}]]
+state "测试用例" as PREPAREJSPARAM7  [[$./attention_personnel_update#preparejsparam7 {测试用例}]]
+state "保存关注人数据" as DEACTION4  [[$./attention_personnel_update#deaction4 {保存关注人数据}]]
+state "讨论" as PREPAREJSPARAM9  [[$./attention_personnel_update#preparejsparam9 {讨论}]]
+state "工单" as PREPAREJSPARAM4  [[$./attention_personnel_update#preparejsparam4 {工单}]]
+state "结束" as END1 <<end>> [[$./attention_personnel_update#end1 {结束}]]
 state "执行用例" as PREPAREJSPARAM6  [[$./attention_personnel_update#preparejsparam6 {执行用例}]]
+state "保存关注人数据" as DEACTION2  [[$./attention_personnel_update#deaction2 {保存关注人数据}]]
 
 
 Begin --> PREPAREJSPARAM2
@@ -216,7 +216,7 @@ DEACTION9 --> END1
 ```ctx(应用上下文).test_case``` ISNOTNULL AND ```ctx(应用上下文).run``` ISNULL
 #### 关注执行用例 :id=PREPAREJSPARAM2-PREPAREJSPARAM6
 
-```ctx(应用上下文).run``` ISNOTNULL AND ```ctx(应用上下文).test_case``` ISNOTNULL
+```ctx(应用上下文).run``` ISNOTNULL AND ```ctx(应用上下文).case_id``` ISNOTNULL
 #### 关注页面 :id=PREPAREJSPARAM2-PREPAREJSPARAM8
 
 ```ctx(应用上下文).article_page``` ISNOTNULL
@@ -232,8 +232,8 @@ DEACTION9 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|提交对象|commit_object|数据对象||
 |关注人容器对象|attention_container|数据对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|提交对象|commit_object|数据对象||
 |当前视图对象|view|当前视图对象||
 |应用上下文|ctx|导航视图参数绑定参数||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

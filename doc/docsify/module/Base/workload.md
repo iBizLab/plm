@@ -118,6 +118,7 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |登记工时并更新剩余工时|create_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/Base/workload/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |获取已登记工时|get_register_workload|[实体处理逻辑](module/Base/workload/logic/get_register_workload "获取已登记工时")|默认|不支持|||修改实际工时表单获取数据行为|
 |修改工时并更新剩余工时|update_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
 
@@ -130,6 +131,7 @@
 |[删除工时记录前附加逻辑](module/Base/workload/logic/before_remove)|before_remove|无||更新动态存储中的剩余工时|
 |[团队下成员工时日历查询](module/Base/workload/logic/group_member_dimension)|group_member_dimension|无||通过团队标识，查询此团队下的成员工时日历|
 |[团队维度工时日历查询](module/Base/workload/logic/user_group_dimension)|user_group_dimension|无||工时管理菜单中工时日历：团队维度查询数据使用|
+|[填充BI报表默认值](module/Base/workload/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[工作类别维度工时日历查询](module/Base/workload/logic/type_of_dimension)|type_of_dimension|无||首页工作台工时日历：工作类型维度查询数据使用|
 |[工作类别维度管理工时日历查询](module/Base/workload/logic/type_of_management_dimension)|type_of_management_dimension|无||工时管理菜单中工时日历：工作类型维度查询数据使用|
 |[工作项维度工时日历查询](module/Base/workload/logic/work_item_dimension)|work_item_dimension|无||首页工作台工时日历：项目/工作项维度查询数据使用|

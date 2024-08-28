@@ -30,11 +30,11 @@ for(var i=0; i<viewPortlets.length; i++){
     }
 }
 for(var j=0; j<modeljArray.length; j++){
-  var dynamodelFlag =  reportModel.dynamodelFlag;    
+  var reportModel2 = modeljArray[j];
+  var dynamodelFlag =  reportModel2.dynamodelFlag;    
   if(dynamodelFlag != 1){
       continue;
   }
-  var reportModel2 = modeljArray[j];
   var portletId2 = reportModel2.portletId;
   reportModel2["orignModel"] = false;
 

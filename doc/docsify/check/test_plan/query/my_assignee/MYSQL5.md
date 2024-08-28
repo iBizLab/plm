@@ -29,5 +29,5 @@ LEFT JOIN `LIBRARY` t21 ON t1.`LIBRARY_ID` = t21.`ID`
 LEFT JOIN `SPRINT` t31 ON t1.`SPRINT_ID` = t31.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID` 
 
-WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t21.`IS_DELETED` = 0 ) AND ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid} )
 ```

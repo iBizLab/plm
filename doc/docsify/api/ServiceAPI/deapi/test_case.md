@@ -52,6 +52,7 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -100,6 +101,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -154,6 +156,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -228,6 +231,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -321,6 +325,7 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -369,6 +374,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -423,6 +429,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -495,6 +502,7 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -543,6 +551,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -611,6 +620,7 @@
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -659,6 +669,7 @@
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -731,6 +742,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -779,6 +791,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -833,6 +846,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -905,6 +919,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -953,6 +968,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1026,6 +1042,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -1074,6 +1091,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1149,6 +1167,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1223,6 +1242,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1290,6 +1310,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -1338,6 +1359,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1392,6 +1414,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1464,6 +1487,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -1512,6 +1536,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1587,6 +1612,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1659,6 +1685,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -1707,6 +1734,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1761,6 +1789,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1833,6 +1862,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -1881,6 +1911,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -1954,6 +1985,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -2002,6 +2034,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2070,6 +2103,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -2118,6 +2152,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2172,6 +2207,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2244,6 +2280,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -2292,6 +2329,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2365,6 +2403,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -2413,6 +2452,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2486,6 +2526,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -2534,6 +2575,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2607,6 +2649,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -2655,6 +2698,7 @@ Integer
   "choose_version_id" : null,
   "choose_version_name" : null,
   "attentions_imp" : null,
+  "recent_create_days" : null,
   "create_man" : null,
   "create_time" : null,
   "id" : null,
@@ -2687,6 +2731,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -2704,6 +2749,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -2732,6 +2778,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -2753,6 +2800,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -2772,6 +2820,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -2816,6 +2866,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -2847,6 +2898,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -2864,6 +2916,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -2892,6 +2945,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -2913,6 +2967,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -2932,6 +2987,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -2976,6 +3033,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -3008,6 +3066,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3025,6 +3084,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3053,6 +3113,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -3074,6 +3135,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -3093,6 +3155,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3137,6 +3201,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -3168,6 +3233,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3185,6 +3251,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3213,6 +3280,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -3234,6 +3302,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -3253,6 +3322,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3297,6 +3368,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -3328,6 +3400,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3345,6 +3418,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3373,6 +3447,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -3394,6 +3469,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -3413,6 +3489,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3457,6 +3535,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -3488,6 +3567,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3505,6 +3585,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3533,6 +3614,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -3554,6 +3636,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -3573,6 +3656,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3629,6 +3714,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3646,6 +3732,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3674,6 +3761,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -3695,6 +3783,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -3714,6 +3803,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3758,6 +3849,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -3789,6 +3881,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3806,6 +3899,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3834,6 +3928,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -3855,6 +3950,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -3874,6 +3970,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -3918,6 +4016,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -3949,6 +4048,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -3966,6 +4066,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -3994,6 +4095,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4015,6 +4117,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4034,6 +4137,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4066,6 +4171,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -4083,6 +4189,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -4111,6 +4218,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4132,6 +4240,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4151,6 +4260,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4195,6 +4306,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -4226,6 +4338,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -4243,6 +4356,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -4271,6 +4385,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4292,6 +4407,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4311,6 +4427,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4355,6 +4473,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -4386,6 +4505,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -4403,6 +4523,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -4431,6 +4552,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4452,6 +4574,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4471,6 +4594,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4515,6 +4640,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -4546,6 +4672,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -4563,6 +4690,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -4591,6 +4719,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4612,6 +4741,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4631,6 +4761,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4675,6 +4807,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -4706,6 +4839,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -4723,6 +4857,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -4751,6 +4886,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4772,6 +4908,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4791,6 +4928,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4835,6 +4974,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -4866,6 +5006,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -4883,6 +5024,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -4911,6 +5053,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -4932,6 +5075,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -4951,6 +5095,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -4995,6 +5141,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5026,6 +5173,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -5043,6 +5191,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -5071,6 +5220,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -5092,6 +5242,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -5111,6 +5262,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5155,6 +5308,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5186,6 +5340,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -5203,6 +5358,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -5231,6 +5387,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -5252,6 +5409,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -5271,6 +5429,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5315,6 +5475,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5346,6 +5507,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -5363,6 +5525,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -5391,6 +5554,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -5412,6 +5576,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -5431,6 +5596,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5475,6 +5642,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5506,6 +5674,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -5523,6 +5692,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -5551,6 +5721,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -5572,6 +5743,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -5591,6 +5763,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5635,6 +5809,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5666,6 +5841,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -5683,6 +5859,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -5711,6 +5888,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -5732,6 +5910,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -5751,6 +5930,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5795,6 +5976,174 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
+    "create_man" : null,
+    "create_time" : null,
+    "id" : null,
+    "name" : null,
+    "suite_id" : null,
+    "suite_name" : null,
+    "test_library_id" : null,
+    "test_library_name" : null,
+    "update_man" : null,
+    "update_time" : null,
+  }
+]
+```
+
+## 过滤器默认查询
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/test_cases/fetch_my_filter" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_suite_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
+|<el-row justify="space-between"><el-col :span="20">n_suite_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
+|<el-row justify="space-between"><el-col :span="20">n_suite_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
+|<el-row justify="space-between"><el-col :span="20">n_suite_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属模块|
+|<el-row justify="space-between"><el-col :span="20">n_suite_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属模块|
+|<el-row justify="space-between"><el-col :span="20">n_suites_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块路径|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_plan_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划名称|
+|<el-row justify="space-between"><el-col :span="20">n_test_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试类型|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例类型|
+
+
+
+##### 请求示例： {docsify-ignore}
+```json
+{
+  "page" : 0,
+  "size" : 20,
+  "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
+  "n_create_man_eq" : null,
+  "n_create_time_eq" : null,
+  "n_create_time_gtandeq" : null,
+  "n_create_time_ltandeq" : null,
+  "n_description_like" : null,
+  "n_executor_name_eq" : null,
+  "n_id_eq" : null,
+  "n_id_in" : null,
+  "n_id_noteq" : null,
+  "n_identifier_eq" : null,
+  "n_identifier_isnull" : null,
+  "n_identifier_like" : null,
+  "n_is_archived_eq" : null,
+  "n_is_deleted_eq" : null,
+  "n_level_eq" : null,
+  "n_maintenance_id_eq" : null,
+  "n_maintenance_id_in" : null,
+  "n_maintenance_id_noteq" : null,
+  "n_maintenance_id_notin" : null,
+  "n_maintenance_name_eq" : null,
+  "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
+  "n_review_result_state_eq" : null,
+  "n_run_status_eq" : null,
+  "n_show_identifier_like" : null,
+  "n_state_eq" : null,
+  "n_state_notin" : null,
+  "n_suite_id_eq" : null,
+  "n_suite_id_isnotnull" : null,
+  "n_suite_id_isnull" : null,
+  "n_suite_name_eq" : null,
+  "n_suite_name_like" : null,
+  "n_suites_like" : null,
+  "n_test_library_id_eq" : null,
+  "n_test_library_id_isnull" : null,
+  "n_test_library_name_eq" : null,
+  "n_test_library_name_like" : null,
+  "n_test_plan_name_eq" : null,
+  "n_test_type_eq" : null,
+  "n_title_like" : null,
+  "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
+}
+```
+
+
+##### 响应示例： {docsify-ignore}
+```json
+[
+  {
+    "identifier" : null,
+    "title" : null,
+    "level" : null,
+    "type" : null,
+    "test_type" : null,
+    "description" : null,
+    "precondition" : null,
+    "is_archived" : null,
+    "is_deleted" : null,
+    "state" : null,
+    "steps" : null,
+    "cur_version_id" : null,
+    "maintenance_id" : null,
+    "maintenance_name" : null,
+    "test_plan_name" : null,
+    "executed_at" : null,
+    "executor_name" : null,
+    "run_status" : null,
+    "attachments" : null,
+    "suites" : null,
+    "target_library_id" : null,
+    "show_identifier" : null,
+    "library_identifier" : null,
+    "attentions" : null,
+    "workload_schedule" : null,
+    "estimated_workload" : null,
+    "target_template" : null,
+    "review_result_state" : null,
+    "remaining_workload" : null,
+    "latest_executed" : null,
+    "actual_workload" : null,
+    "steps_imp" : null,
+    "cur_version_name" : null,
+    "choose_version_id" : null,
+    "choose_version_name" : null,
+    "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5826,6 +6175,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -5843,6 +6193,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -5871,6 +6222,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -5892,6 +6244,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -5911,6 +6264,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -5955,6 +6310,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -5986,6 +6342,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6003,6 +6360,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6031,6 +6389,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -6052,6 +6411,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -6071,6 +6431,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6115,6 +6477,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -6146,6 +6509,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6163,6 +6527,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6191,6 +6556,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -6212,6 +6578,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -6231,6 +6598,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6275,6 +6644,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -6306,6 +6676,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6323,6 +6694,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6351,6 +6723,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -6372,6 +6745,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -6391,6 +6765,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6435,6 +6811,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -6466,6 +6843,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6483,6 +6861,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6511,6 +6890,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -6532,6 +6912,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -6551,6 +6932,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6595,6 +6978,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -6626,6 +7010,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6643,6 +7028,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6671,6 +7057,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -6692,6 +7079,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -6711,6 +7099,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6755,6 +7145,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -6786,6 +7177,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6803,6 +7195,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6831,6 +7224,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -6852,6 +7246,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -6871,6 +7266,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -6915,6 +7312,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -6946,6 +7344,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -6963,6 +7362,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -6991,6 +7391,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7012,6 +7413,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7031,6 +7433,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -7075,6 +7479,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -7106,6 +7511,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -7123,6 +7529,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -7151,6 +7558,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7172,6 +7580,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7191,6 +7600,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -7235,6 +7646,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -7266,6 +7678,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -7283,6 +7696,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -7311,6 +7725,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7332,6 +7747,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7351,6 +7767,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -7395,6 +7813,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -7426,6 +7845,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -7443,6 +7863,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -7471,6 +7892,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7492,6 +7914,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7511,6 +7934,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -7555,6 +7980,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -7586,6 +8012,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -7603,6 +8030,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -7631,6 +8059,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7652,6 +8081,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7671,6 +8101,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -7715,6 +8147,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -7746,6 +8179,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -7763,6 +8197,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -7791,6 +8226,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7812,6 +8248,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7831,6 +8268,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -7875,6 +8314,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -7906,6 +8346,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -7923,6 +8364,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -7951,6 +8393,7 @@ Integer
   "page" : 0,
   "size" : 20,
   "sort" : null,
+  "n_attentions_exists_n_user_id_eq" : null,
   "n_create_man_eq" : null,
   "n_create_time_eq" : null,
   "n_create_time_gtandeq" : null,
@@ -7972,6 +8415,7 @@ Integer
   "n_maintenance_id_notin" : null,
   "n_maintenance_name_eq" : null,
   "n_name_like" : null,
+  "n_recent_create_days_ltandeq" : null,
   "n_review_result_state_eq" : null,
   "n_run_status_eq" : null,
   "n_show_identifier_like" : null,
@@ -7991,6 +8435,8 @@ Integer
   "n_test_type_eq" : null,
   "n_title_like" : null,
   "n_type_eq" : null,
+  "n_update_time_gtandeq" : null,
+  "n_update_time_ltandeq" : null,
 }
 ```
 
@@ -8035,6 +8481,7 @@ Integer
     "choose_version_id" : null,
     "choose_version_name" : null,
     "attentions_imp" : null,
+    "recent_create_days" : null,
     "create_man" : null,
     "create_time" : null,
     "id" : null,
@@ -8270,6 +8717,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8381,6 +8829,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8450,6 +8899,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8518,6 +8968,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8586,6 +9037,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8655,6 +9107,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8724,6 +9177,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8834,6 +9288,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8903,6 +9358,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -8993,6 +9449,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9062,6 +9519,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9131,6 +9589,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9199,6 +9658,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9268,6 +9728,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9337,6 +9798,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9406,6 +9868,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9475,6 +9938,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">choose_version_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本标识|
 |<el-row justify="space-between"><el-col :span="20">choose_version_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|选择版本名称|
 |<el-row justify="space-between"><el-col :span="20">attentions_imp</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注人|
+|<el-row justify="space-between"><el-col :span="20">recent_create_days</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
 |<el-row justify="space-between"><el-col :span="20">suite_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
@@ -9507,6 +9971,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9524,6 +9989,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9569,6 +10035,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9586,6 +10053,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9631,6 +10099,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9648,6 +10117,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9693,6 +10163,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9710,6 +10181,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9755,6 +10227,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9772,6 +10245,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9817,6 +10291,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9834,6 +10309,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9879,6 +10355,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9896,6 +10373,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -9941,6 +10419,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -9958,6 +10437,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10003,6 +10483,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10020,6 +10501,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10065,6 +10547,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10082,6 +10565,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10127,6 +10611,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10144,6 +10629,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10189,6 +10675,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10206,6 +10693,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10251,6 +10739,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10268,6 +10757,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10313,6 +10803,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10330,6 +10821,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10375,6 +10867,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10392,6 +10885,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10437,6 +10931,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10454,6 +10949,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10499,6 +10995,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10516,6 +11013,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10561,6 +11059,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10578,6 +11077,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10623,6 +11123,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10640,6 +11141,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10685,6 +11187,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10702,6 +11205,71 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
+|<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
+|<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
+|<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_state_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
+|<el-row justify="space-between"><el-col :span="20">n_suite_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
+|<el-row justify="space-between"><el-col :span="20">n_suite_id_isnotnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
+|<el-row justify="space-between"><el-col :span="20">n_suite_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例模块标识|
+|<el-row justify="space-between"><el-col :span="20">n_suite_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属模块|
+|<el-row justify="space-between"><el-col :span="20">n_suite_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属模块|
+|<el-row justify="space-between"><el-col :span="20">n_suites_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|模块路径|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_id_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_library_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|所属测试库|
+|<el-row justify="space-between"><el-col :span="20">n_test_plan_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试计划名称|
+|<el-row justify="space-between"><el-col :span="20">n_test_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|测试类型|
+|<el-row justify="space-between"><el-col :span="20">n_title_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
+|<el-row justify="space-between"><el-col :span="20">n_type_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用例类型|
+
+
+
+## 根据测试库过滤器默认查询
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="POST" style="background-color: rgba(52, 143, 228, 0.1);color: #348fe4;" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/libraries/{pkey}/test_cases/fetch_my_filter" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|pkey|String|测试库主键|
+
+
+
+
+##### 请求参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
+|<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
+|<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
+|<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_isnull</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
+|<el-row justify="space-between"><el-col :span="20">n_is_archived_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已归档|
+|<el-row justify="space-between"><el-col :span="20">n_is_deleted_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|是否已删除|
+|<el-row justify="space-between"><el-col :span="20">n_level_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|重要程度|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_in</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_noteq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
+|<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10747,6 +11315,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10764,6 +11333,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10809,6 +11379,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10826,6 +11397,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10871,6 +11443,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10888,6 +11461,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10933,6 +11507,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -10950,6 +11525,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -10995,6 +11571,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11012,6 +11589,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11057,6 +11635,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11074,6 +11653,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11119,6 +11699,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11136,6 +11717,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11181,6 +11763,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11198,6 +11781,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11243,6 +11827,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11260,6 +11845,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11305,6 +11891,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11322,6 +11909,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11367,6 +11955,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11384,6 +11973,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11429,6 +12019,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11446,6 +12037,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11491,6 +12083,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11508,6 +12101,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|
@@ -11553,6 +12147,7 @@ Integer
 ##### 请求参数 {docsify-ignore}
 |字段col300|类型col150|备注col400|
 |---|---|----|
+|<el-row justify="space-between"><el-col :span="20">n_attentions_exists_n_user_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|关注|
 |<el-row justify="space-between"><el-col :span="20">n_description_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|描述|
 |<el-row justify="space-between"><el-col :span="20">n_executor_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行人|
 |<el-row justify="space-between"><el-col :span="20">n_id_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标识|
@@ -11570,6 +12165,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_id_notin</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_maintenance_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|维护人|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
+|<el-row justify="space-between"><el-col :span="20">n_recent_create_days_ltandeq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|最近创建日期|
 |<el-row justify="space-between"><el-col :span="20">n_review_result_state_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|评审结果|
 |<el-row justify="space-between"><el-col :span="20">n_run_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|执行结果|
 |<el-row justify="space-between"><el-col :span="20">n_show_identifier_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|编号|

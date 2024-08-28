@@ -31,5 +31,5 @@ LEFT JOIN `PROJECT_RELEASE` t41 ON t1.`RELEASE_ID` = t41.`ID`
 
 WHERE EXISTS(SELECT * FROM `RUN` t51 
  WHERE 
- t1.`ID` = t51.`PLAN_ID`  AND  ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+ t1.`ID` = t51.`PLAN_ID`  AND  ( t51.`EXECUTOR_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t21.`IS_DELETED` = 0 )
 ```

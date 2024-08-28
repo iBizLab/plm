@@ -1,5 +1,5 @@
 
-## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[429]</font></sup>
+## 使用脚本的界面逻辑节点<sup class="footnote-symbol"> <font color=orange>[431]</font></sup>
 
 #### [资源组件(ADDON_RESOURCE)](module/Base/addon_resource)的处理逻辑[资源删除逻辑(resource_del)](module/Base/addon_resource/uilogic/resource_del)
 
@@ -1623,6 +1623,17 @@ ibiz.mc.command.create.send({ srfdecodename: 'insight_report'})
 	}
 
 ```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[过滤器门户编辑(filter_porlet_edit)](module/Insight/insight_view/uilogic/filter_porlet_edit)
+
+节点：编辑门户
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+if (uiLogic.ctrl) {
+    const id = uiLogic.ctrl.model.id;
+    uiLogic.ctrl.dashboard.openFilterDesignPage({id})
+}
+```
 #### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[通知刷新(notify_refresh)](module/Insight/insight_view/uilogic/notify_refresh)
 
 节点：注入脚本代码
@@ -1678,6 +1689,16 @@ view.closeView();
 
 ```javascript
 ibiz.mc.command.update.send({ srfdecodename: 'insight_view', srfkey: context.insight_view})
+```
+#### [效能视图(INSIGHT_VIEW)](module/Insight/insight_view)的处理逻辑[过滤器门户高亮(filter_porlet_hight_light)](module/Insight/insight_view/uilogic/filter_porlet_hight_light)
+
+节点：编辑门户
+<p class="panel-title"><b>执行代码</b></p>
+
+```javascript
+if (uiLogic.ctrl) {
+    uiLogic.ctrl.showEffectiveCtrl()
+}
 ```
 #### [测试库(LIBRARY)](module/TestMgmt/library)的处理逻辑[计算表格列行为状态(library)(calc_column_action_state)](module/TestMgmt/library/uilogic/calc_column_action_state)
 
@@ -3085,11 +3106,7 @@ uiLogic.ctrl.refresh();
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-ibiz.mc.command.change.sendCommand({
-    srfdecodename:'Run'
-},"OBJECTUPDATED")
-
-ibiz.mc.command.update.send({ srfdecodename: 'run'})
+ibiz.mc.command.update.send({ srfdecodename: 'run',srfkey: context.run})
 ```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取实际工时(get_actual_workload)](module/TestMgmt/run/uilogic/get_actual_workload)
 
@@ -5050,11 +5067,8 @@ ibiz.mc.command.update.send({ srfdecodename: 'run'})
 ```javascript
 const selectedData = uiLogic.selecteddata;
 let needDisable = true;
-console.log(selectedData);
-
 if (selectedData && selectedData.length > 0) {
     const firstData = selectedData[0];
-
     for (let i = 0; i < selectedData.length; i++) {
         const curData = selectedData[i];
         const dataType = curData.work_item_type_id;
@@ -5065,8 +5079,18 @@ if (selectedData && selectedData.length > 0) {
             needDisable = false;
         }
     }
-    console.log(needDisable);
-
+    if(needDisable === true){
+        const cur_grid = uiLogic.cur_grid;
+        let detoolbar = uiLogic.detoolbar;
+        detoolbar = cur_grid.ctx.controllersMap.get("treegrid").batchToolbarController.state;
+        const detoolbarbutton = detoolbar.buttonsState.children;
+        for(let j = 0; j <detoolbarbutton.length;j++){
+            const toolitem = detoolbarbutton[j];
+            if (toolitem.uiActionId == "change_state@work_item"){
+                toolitem.disabled = true;
+            }
+        }
+    }
 }
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[计算子工作项类型(上下文)(calc_children_work_item_type_context)](module/ProjMgmt/work_item/uilogic/calc_children_work_item_type_context)

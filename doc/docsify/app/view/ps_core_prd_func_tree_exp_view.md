@@ -13,8 +13,8 @@
 
 
 ### 关联视图
-  * [核心产品功能(ps_core_prd_func_installed_grid_view)](app/view/ps_core_prd_func_installed_grid_view)
-  * [核心产品功能(ps_core_prd_func_market_application_view)](app/view/ps_core_prd_func_market_application_view)
+  * [已安装应用(ps_core_prd_func_installed_grid_view)](app/view/ps_core_prd_func_installed_grid_view)
+  * [应用市场(ps_core_prd_func_market_application_view)](app/view/ps_core_prd_func_market_application_view)
   * [核心产品(ps_core_prd_market_application_view)](app/view/ps_core_prd_market_application_view)
 
 <script>

@@ -34,11 +34,13 @@
 |测试计划|PLAN_NAME|外键值文本|200|是||
 |前置条件|PRECONDITION|外键值附加数据|2000|是||
 |优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |关联缺陷数|RELATION_TOTAL_BUG|数值||是||
 |关联执行结果数|RELATION_TOTAL_HISTORY|数值||是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |备注|REMARK|长文本，长度1000|2000|是||
 |结果附件|RUN_ATTACHMENT|一对多关系数据集合|1048576|是||
+|编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |评审状态|STATE|[外键值附加数据](index/dictionary_index#case_state "用例状态")|60|是||
 |执行结果|STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|60|是||
 |步骤|STEPS|一对多关系数据集合|1048576|是||
@@ -209,6 +211,7 @@
 |[当前项目用例(cur_library)](module/TestMgmt/run/query/cur_library)|cur_library|否|否 |否 ||
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/run/query/dailyTendencies)|dailyTendencies|否|否 |否 ||
 |[每日测试次数统计(everydayTest)](module/TestMgmt/run/query/everydayTest)|everydayTest|否|否 |否 ||
+|[过滤器默认查询(my_filter)](module/TestMgmt/run/query/my_filter)|my_filter|否|否 |否 ||
 |[当前模块下用例(normal)](module/TestMgmt/run/query/normal)|normal|否|否 |否 ||
 |[测试计划内执行历史(plan_run_history)](module/TestMgmt/run/query/plan_run_history)|plan_run_history|否|否 |否 ||
 |[优先级分布(priorityDistributions)](module/TestMgmt/run/query/priorityDistributions)|priorityDistributions|否|否 |否 ||
@@ -228,6 +231,7 @@
 |[测试用例计划对比分析(comparativeAnalysis)](module/TestMgmt/run/dataset/comparativeAnalysis)|comparativeAnalysis|[实体逻辑](module/TestMgmt/run/logic/plan_compar_ative_analysis)|否|||
 |[每日执行用例趋势(dailyTendencies)](module/TestMgmt/run/dataset/dailyTendencies)|dailyTendencies|[实体逻辑](module/TestMgmt/run/logic/run_daily_tendencies)|否|||
 |[每日测试次数统计(everydayTest)](module/TestMgmt/run/dataset/everydayTest)|everydayTest|[实体逻辑](module/TestMgmt/run/logic/run_everyday_test)|否|||
+|[过滤器默认查询(my_filter)](module/TestMgmt/run/dataset/my_filter)|my_filter|数据查询|否|||
 |[当前模块下用例(normal)](module/TestMgmt/run/dataset/normal)|normal|数据查询|否|||
 |[测试计划内执行历史(plan_run_history)](module/TestMgmt/run/dataset/plan_run_history)|plan_run_history|数据查询|否|||
 |[优先级分布(priorityDistributions)](module/TestMgmt/run/dataset/priorityDistributions)|priorityDistributions|数据查询|否|||
@@ -271,6 +275,7 @@
 ## 搜索模式
 |   搜索表达式col350   |    属性名col200    |    搜索模式col200        |备注col500  |
 | -------- |------------|------------|------|
+|N_ATTENTIONS_EXISTS__N_USER_ID_EQ|关注|EXISTS||
 |N_CASE_ID_EQ|测试用例标识|EQ||
 |N_CASE_NAME_EQ|名称|EQ||
 |N_CASE_NAME_LIKE|名称|LIKE||
@@ -293,19 +298,29 @@
 |N_EXECUTOR_NAME_EQ|执行人|EQ||
 |N_ID_EQ|标识|EQ||
 |N_LIBRARY_ID_EQ|测试库标识|EQ||
+|N_LIBRARY_NAME_EQ|所属测试库|EQ||
+|N_LIBRARY_NAME_LIKE|所属测试库|LIKE||
+|N_MAINTENANCE_NAME_EQ|维护人|EQ||
+|N_MAINTENANCE_NAME_ISNOTNULL|维护人|ISNOTNULL||
+|N_MAINTENANCE_NAME_ISNULL|维护人|ISNULL||
+|N_MAINTENANCE_NAME_NOTEQ|维护人|NOTEQ||
 |N_NAME_LIKE|名称|LIKE||
 |N_PLAN_ID_EQ|测试计划标识|EQ||
 |N_PLAN_NAME_EQ|测试计划|EQ||
 |N_PLAN_NAME_LIKE|测试计划|LIKE||
 |N_PRIORITY_EQ|优先级|EQ||
+|N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
+|N_SHOW_IDENTIFIER_EQ|编号|EQ||
+|N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_STATUS_EQ|执行结果|EQ||
 |N_STATUS_ISNOTNULL|执行结果|ISNOTNULL||
 |N_SUITE_ID_EQ|用例模块标识|EQ||
+|N_TITLE_EQ|标题|EQ||
+|N_TITLE_LIKE|标题|LIKE||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 记录执行结果 | add_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 全部通过 | all_pass | 全部通过 |无数据|用户自定义||
 | 移出 | delete_run | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
@@ -319,7 +334,9 @@
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
 | 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
 | 打开选项操作视图（门户）（成员执行） | open_optview_members_distribution | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_members_distribution_option_view)</details>||
+| 记录执行结果 | save_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 设置执行结果 | update_run_status | 设置执行结果 |多项数据（主键）|<details><summary>后台调用</summary>[batch_save_run_history](#行为)||
+| 记录执行结果并开启下一条 | save_run_history_and_next | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 
 ## 界面逻辑

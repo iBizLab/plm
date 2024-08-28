@@ -1,6 +1,6 @@
 ## 状态变更前逻辑 <!-- {docsify-ignore-all} -->
 
-   
+   检测变更状态前选中的数据是否为同一类型，不同则禁用
 
 ### 处理过程
 
@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./before_state_change#begin {开始}]]
-state "结束" as END1 <<end>> [[$./before_state_change#end1 {结束}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./before_state_change#preparejsparam1 {准备参数}]]
+state "获取选中数据" as PREPAREJSPARAM1  [[$./before_state_change#preparejsparam1 {获取选中数据}]]
 state "判断类型是否匹配" as RAWJSCODE1  [[$./before_state_change#rawjscode1 {判断类型是否匹配}]]
+state "结束" as END1 <<end>> [[$./before_state_change#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -41,7 +41,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 获取选中数据 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -56,11 +56,8 @@ RAWJSCODE1 --> END1
 ```javascript
 const selectedData = uiLogic.selecteddata;
 let needDisable = true;
-console.log(selectedData);
-
 if (selectedData && selectedData.length > 0) {
     const firstData = selectedData[0];
-
     for (let i = 0; i < selectedData.length; i++) {
         const curData = selectedData[i];
         const dataType = curData.work_item_type_id;
@@ -71,8 +68,18 @@ if (selectedData && selectedData.length > 0) {
             needDisable = false;
         }
     }
-    console.log(needDisable);
-
+    if(needDisable === true){
+        const cur_grid = uiLogic.cur_grid;
+        let detoolbar = uiLogic.detoolbar;
+        detoolbar = cur_grid.ctx.controllersMap.get("treegrid").batchToolbarController.state;
+        const detoolbarbutton = detoolbar.buttonsState.children;
+        for(let j = 0; j <detoolbarbutton.length;j++){
+            const toolitem = detoolbarbutton[j];
+            if (toolitem.uiActionId == "change_state@work_item"){
+                toolitem.disabled = true;
+            }
+        }
+    }
 }
 ```
 
@@ -83,8 +90,9 @@ if (selectedData && selectedData.length > 0) {
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|表格|treegrid|部件对象||
+|批操作工具栏|detoolbar|数据对象||
+|当前表格|cur_grid|当前部件对象||
 |view|view|当前视图对象||
 |选中数据|selecteddata|数据对象列表||
-|当前表格|cur_grid|当前部件对象||
-|批操作工具栏|detoolbar|数据对象||
+|表格|treegrid|部件对象||
+|视图参数|param|||

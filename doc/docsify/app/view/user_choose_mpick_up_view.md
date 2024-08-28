@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [企业用户(USER)](module/Base/user) : [视图_确定](module/Base/user#界面行为)
   * [企业用户(USER)](module/Base/user) : [视图_取消](module/Base/user#界面行为)
+  * [企业用户(USER)](module/Base/user) : [视图_确定](module/Base/user#界面行为)
 
 ### 关联视图
   * [用户选择(user_choose_pick_up_grid_view)](app/view/user_choose_pick_up_grid_view)

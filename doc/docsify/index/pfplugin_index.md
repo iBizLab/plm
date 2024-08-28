@@ -17,7 +17,7 @@
 
 运行对象：`IBizHtmlComment`
 
-远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.5`
+远程仓库：`@ibiz-template-plm/html-comment@0.0.3-alpha.34`
 
 ### LuckySheet编辑 :id=LUCKYSHEET
 
@@ -81,7 +81,7 @@
 
 运行对象：`AvatarUpload`
 
-远程仓库：`@ibiz-template-plm/avatar-upload@0.0.3-dev.73`
+远程仓库：`@ibiz-template-plm/avatar-upload@0.0.3-alpha.20`
 
 ### 人员选择 :id=PERSON_SELECT
 
@@ -126,7 +126,7 @@
 
 运行对象：`IBizGroupTreeControl`
 
-远程仓库：`@ibiz-template-plm/group-tree@0.0.3-dev.267`
+远程仓库：`@ibiz-template-plm/group-tree@0.0.3-alpha.22`
 
 ### 分页导航下拉 :id=TAB_EXP_SELECT
 
@@ -171,7 +171,7 @@
 
 运行对象：`ChartGrid`
 
-远程仓库：`@ibiz-template-plm/chart-grid@0.0.3-alpha.8`
+远程仓库：`@ibiz-template-plm/chart-grid@0.0.3-alpha.12`
 
 ### 基线比对表格插件 :id=BASELINECOMPARE
 
@@ -189,7 +189,7 @@
 
 运行对象：`IBizDRBarExControl`
 
-远程仓库：`@ibiz-template-plm/drbar-ex@0.0.3-dev.273`
+远程仓库：`@ibiz-template-plm/drbar-ex@0.0.3-alpha.41`
 
 ### 多选视图右侧列表插件 :id=SAMPLE_LIST
 
@@ -225,7 +225,16 @@
 
 运行对象：`IBizNumberGridControl`
 
-远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.1`
+远程仓库：`@ibiz-template-plugin/number-grid@0.0.3-alpha.11`
+
+### 搜索栏过滤条件编辑器 :id=SEARCH_BAR_FILTER_CONDITION
+
+
+插件标识：`SEARCH_BAR_FILTER_CONDITION`
+
+运行对象：`SEARCH_BAR_FILTER_CONDITION`
+
+远程仓库：`@ibiz-template-plm/search-bar-filter-condition@0.0.3-alpha.9`
 
 ### 数据选择（管理） :id=MANAGE
 
@@ -261,7 +270,7 @@
 
 运行对象：`SHOW_MODE_TOOLBAR_ITEM`
 
-远程仓库：`@ibiz-template-plm/show-mode-toolbar-item@0.0.3-dev.186`
+远程仓库：`@ibiz-template-plm/show-mode-toolbar-item@0.0.3-alpha.35`
 
 ### 树导航栏（默认展开指定节点） :id=TREEEXPBAR_DEFAULT_EXPAND
 
@@ -306,7 +315,7 @@
 
 运行对象：`IBizRepeaterGridCaseSteps`
 
-远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.3-dev.163`
+远程仓库：`@ibiz-template-plm/repeater-grid-case-steps@0.0.3-alpha.38`
 
 ### 直接内容表格列 :id=JSCODE_GRID_COLUMN
 
@@ -342,7 +351,7 @@
 
 运行对象：`IBizIdentifierTitle`
 
-远程仓库：`@ibiz-template-plm/identifier-title@0.0.2-dev.120`
+远程仓库：`@ibiz-template-plm/identifier-title@0.0.3-alpha.39`
 
 ### 编辑表单数据对比 :id=FORM_DATA_COMPARISON
 
@@ -369,7 +378,7 @@
 
 运行对象：`CustomLabelProvider`
 
-远程仓库：`@ibiz-template-plm/custom-label@0.0.2-dev.55`
+远程仓库：`@ibiz-template-plm/custom-label@0.0.3-alpha.12`
 
 ### 自定义用户信息 :id=CUSTOM_AUTH_USERINFO
 
@@ -469,7 +478,7 @@
 
 运行对象：`IBizResourceGanttControl`
 
-远程仓库：`@ibiz-template-plm/resource-gantt@0.0.3-alpha.5`
+远程仓库：`@ibiz-template-plm/resource-gantt@0.0.3-alpha.15`
 
 ### 路由drbar :id=ROUTE_DRBAR
 
@@ -523,7 +532,7 @@
 
 运行对象：`AnchoHtml`
 
-远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-dev.279`
+远程仓库：`@ibiz-template-plm/ancho-html@0.0.3-alpha.40`
 
 ### 阶段进度条 :id=STAGE_PROGRESS_BAR
 
@@ -559,7 +568,7 @@
 
 运行对象：`IBizProjectAttributes`
 
-远程仓库：`@ibiz-template-plm/project-attributes@0.0.3-alpha.0`
+远程仓库：`@ibiz-template-plm/project-attributes@0.0.3-alpha.39`
 
 
 

@@ -12,8 +12,9 @@ t1.`SPACE_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `PAGE` t1 
+LEFT JOIN `SPACE` t21 ON t1.`SPACE_ID` = t21.`ID` 
 
 WHERE EXISTS(SELECT * FROM `MEMBER` t11 
  WHERE 
- t1.`ID` = t11.`OWNER_ID`  AND  t11.`OWNER_TYPE` = 'PAGE'  AND  t11.`OWNER_SUBTYPE` = 'SHARED'  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfuserid} ) ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`IS_SHARED` = '1' )
+ t1.`ID` = t11.`OWNER_ID`  AND  t11.`OWNER_TYPE` = 'PAGE'  AND  t11.`OWNER_SUBTYPE` = 'SHARED'  AND  ( t11.`USER_ID` = #{ctx.sessioncontext.srfuserid} ) ) AND ( t21.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0  AND  t1.`IS_PUBLISHED` = 1  AND  t1.`IS_SHARED` = '1' )
 ```

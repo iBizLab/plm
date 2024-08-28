@@ -44,6 +44,7 @@
 |实际开始时间|REAL_AT_FROM|日期时间型||是||
 |计划时间周期单位|REAL_AT_GRANULARITY|单项选择(文本值)|60|是||
 |实际结束时间|REAL_AT_TO|日期时间型||是||
+|最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |关联客户数|RELATION_TOTAL_CUSTOMER|数值||是||
 |关联产品需求数|RELATION_TOTAL_IDEA|数值||是||
 |关联测试用例数|RELATION_TOTAL_TEST_CASE|数值||是||
@@ -52,6 +53,7 @@
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |子产品标识|SECTION_ID|外键值附加数据|100|是||
 |子产品名称|SECTION_NAME|外键值附加数据|200|是||
+|序号|SEQUENCE|数值||是||
 |编号|SHOW_IDENTIFIER|文本，可指定长度|200|是||
 |状态|STATE|单项选择(文本值)|60|否||
 |模块|SUITE|文本，可指定长度|100|是||
@@ -208,6 +210,7 @@
 |变更需求状态|change_state|[实体处理逻辑](module/ProdMgmt/idea/logic/change_state "变更需求状态")|默认|不支持||||
 |选择需求模板|choose_case_template|[实体处理逻辑](module/ProdMgmt/idea/logic/choose_case_template "选择需求模板")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProdMgmt/idea/logic/delete "删除")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProdMgmt/idea/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |获取基线名称|get_baseline_name|[实体处理逻辑](module/ProdMgmt/idea/logic/get_baseline_name "获取基线名称")|默认|不支持||||
 |获取客户分数|get_customer_score|[实体处理逻辑](module/ProdMgmt/idea/logic/get_customer_score "获取客户分数")|默认|不支持|||获取客户分数数据|
@@ -217,6 +220,7 @@
 |需求移动|idea_move|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_move "需求移动")|默认|不支持||||
 |需求排期|idea_re_plan|[实体处理逻辑](module/ProdMgmt/idea/logic/idea_re_plan "需求排期")|默认|不支持||||
 |需求只读用户判断|idea_readonly_recognize|[实体处理逻辑](module/ProdMgmt/idea/logic/get_product_member "获取产品成员")|默认|不支持||||
+|移动需求|move_order|用户自定义|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/idea/logic/nothing "无操作")|默认|不支持||||
 |其他实体关联需求|others_relation_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/others_relation_idea "其他实体关联需求")|默认|不支持||||
 |计划内批删除|plan_delete_idea|[实体处理逻辑](module/ProdMgmt/idea/logic/plan_delete_idea "计划内需求批删除")|默认|不支持||||
@@ -231,6 +235,7 @@
 |[删除](module/ProdMgmt/idea/logic/delete)|delete|无||需求数据的逻辑删除，修改需求的是否删除属性值|
 |[变更需求状态](module/ProdMgmt/idea/logic/change_state)|change_state|无||产品需求状态变更触发相关通知|
 |[基线规划需求数据查询](module/ProdMgmt/idea/logic/baseline_plan_idea)|baseline_plan_idea|无||基线规划需求时，填充需求当前版本名称|
+|[填充BI报表默认值](module/ProdMgmt/idea/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[归档](module/ProdMgmt/idea/logic/archive)|archive|无||未归档需求数据的归档处理，修改需求的归档状态为归档|
 |[恢复](module/ProdMgmt/idea/logic/recover)|recover|无||已删除状态需求数据的恢复，修改需求的是否删除属性值，并恢复访问记录|
 |[无操作](module/ProdMgmt/idea/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -342,9 +347,11 @@
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/query/comment_notify_assignee)|comment_notify_assignee|否|否 |否 |查询指定属性组；评论负责人|
 |[通用需求查询(common)](module/ProdMgmt/idea/query/common)|common|否|否 |否 |状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[已删除(deleted)](module/ProdMgmt/idea/query/deleted)|deleted|否|否 |否 |查询已删除的需求数据|
+|[移动需求(move_idea)](module/ProdMgmt/idea/query/move_idea)|move_idea|否|否 |否 ||
 |[我负责的产品需求(my_assign)](module/ProdMgmt/idea/query/my_assign)|my_assign|否|否 |否 |非归档数据，且负责人为当前登录人的数据|
 |[我关注的需求(my_attention)](module/ProdMgmt/idea/query/my_attention)|my_attention|否|否 |否 |查询我关注的需求（未归档、未删除）|
 |[我创建的(my_created)](module/ProdMgmt/idea/query/my_created)|my_created|否|否 |否 |首页我创建的需求表格调用|
+|[过滤器默认查询(my_filter)](module/ProdMgmt/idea/query/my_filter)|my_filter|否|否 |否 ||
 |[正常状态(normal)](module/ProdMgmt/idea/query/normal)|normal|否|否 |否 |状态非删除，如果上下文传递了子产品参数，查询当前子产品下的需求|
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/query/not_exsists_relation)|not_exsists_relation|否|否 |否 |多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/query/notify_assignee)|notify_assignee|否|否 |否 |查询指定属性组（负责人相关）|
@@ -366,10 +373,12 @@
 |[评论通知负责人(comment_notify_assignee)](module/ProdMgmt/idea/dataset/comment_notify_assignee)|comment_notify_assignee|数据查询|否||查询指定属性组；评论负责人|
 |[普通需求(common)](module/ProdMgmt/idea/dataset/common)|common|数据查询|否||状态非删除，如果上下文传递了类别参数，显示该类别下数据|
 |[已删除(deleted)](module/ProdMgmt/idea/dataset/deleted)|deleted|数据查询|否||查询已删除的需求数据|
+|[移动需求数据(move_idea)](module/ProdMgmt/idea/dataset/move_idea)|move_idea|数据查询|否|||
 |[我负责的产品需求(my_assign)](module/ProdMgmt/idea/dataset/my_assign)|my_assign|数据查询|否||非归档数据，且负责人为当前登录人的数据|
 |[我负责的需求(my_assignee_count)](module/ProdMgmt/idea/dataset/my_assignee_count)|my_assignee_count|数据查询|否||非归档数据，且负责人为当前登录人的数据|
 |[我关注的需求(my_attention)](module/ProdMgmt/idea/dataset/my_attention)|my_attention|数据查询|否||查询我关注的需求（未归档、未删除）|
 |[我创建的(my_created)](module/ProdMgmt/idea/dataset/my_created)|my_created|数据查询|否||首页我创建的需求表格调用|
+|[过滤器默认查询(my_filter)](module/ProdMgmt/idea/dataset/my_filter)|my_filter|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/idea/dataset/normal)|normal|数据查询|否||状态非删除，如果上下文传递了子产品参数，查询当前子产品下的需求|
 |[未关联的需求(not_exsists_relation)](module/ProdMgmt/idea/dataset/not_exsists_relation)|not_exsists_relation|数据查询|否||多项选择视图中右侧表格的数据来源；查询了未与当前主体关联的数据。|
 |[需求通知负责人(notify_assignee)](module/ProdMgmt/idea/dataset/notify_assignee)|notify_assignee|数据查询|否||查询指定属性组（负责人相关）|
@@ -378,6 +387,21 @@
 |[最近浏览(recent_idea)](module/ProdMgmt/idea/dataset/recent_idea)|recent_idea|数据查询|否||最近浏览的且未关联当前主体且非归档非删除的数据|
 
 ## 数据权限
+
+##### 全部数据（读写） :id=idea-ALL_RW
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `全部数据`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ(产品(READ))`
+* `DELETE(产品(SUBDATA))`
+* `CREATE`
+* `UPDATE(产品(SUBDATA))`
+
+
 
 ##### 操作用户(读) :id=idea-USER_R
 
@@ -425,6 +449,7 @@
 |N_ASSIGNEE_ID_NOTIN|负责人|NOTIN||
 |N_ASSIGNEE_NAME_EQ|负责人|EQ||
 |N_ASSIGNEE_NAME_LIKE|负责人|LIKE||
+|N_ATTENTIONS_EXISTS__N_USER_ID_EQ|关注|EXISTS||
 |N_CATEGORIES_LIKE|类别路径|LIKE||
 |N_CATEGORY_ID_EQ|类别标识|EQ||
 |N_CATEGORY_NAME_EQ|名称|EQ||
@@ -457,12 +482,15 @@
 |N_PRODUCT_NAME_EQ|所属产品|EQ||
 |N_PRODUCT_NAME_LIKE|所属产品|LIKE||
 |N_REAL_AT_GRANULARITY_EQ|计划时间周期单位|EQ||
+|N_RECENT_CREATE_DAYS_LTANDEQ|最近创建日期|LTANDEQ||
 |N_SECTION_ID_EQ|子产品标识|EQ||
 |N_SHOW_IDENTIFIER_LIKE|编号|LIKE||
 |N_STATE_EQ|状态|EQ||
 |N_STATE_NOTIN|状态|NOTIN||
 |N_SUITE_EQ|模块|EQ||
 |N_TITLE_LIKE|标题|LIKE||
+|N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
+|N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
@@ -493,6 +521,7 @@
 | 关联工作项（工具栏） | toolbar_link_work_item | 关联工作项 |无数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
 | 需求移动 | idea_move | 需求移动 |多项数据（主键）|<details><summary>后台调用</summary>[idea_move](#行为)|批操作工具栏上按钮调用|
+| 查看工单统计信息 | check_ticket_info | 查看工单信息 |无数据|用户自定义||
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)|批操作工具栏上按钮调用|

@@ -1,4 +1,9 @@
-# 工作项报表(work_item_bi_report)  <!-- {docsify-ignore-all} -->
+# 导入文档(article_page_upload_view)  <!-- {docsify-ignore-all} -->
+
+
+
+## 控件
+#### CAPTIONBAR(captionbar)
 
 
 <script>
@@ -6,9 +11,8 @@
   createApp({
     data() {
       return {
+
       }
-    },
-    methods: {
     }
   }).use(ElementPlus).mount('#app')
 </script>

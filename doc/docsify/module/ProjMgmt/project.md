@@ -163,6 +163,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |变更管理员角色|change_admin_role|[实体处理逻辑](module/ProjMgmt/project/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProjMgmt/project/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/ProjMgmt/project/logic/favorite "设置星标")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProjMgmt/project/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |获取主数据|get_major_data|用户自定义|默认|不支持|[附加操作](index/action_logic_index#project_get_major_data)|||
 |看板项目首页组件计数|kanban_index_addon_counter|[实体处理逻辑](module/ProjMgmt/project/logic/kanban_project_addon_authority "看板项目组件权限计数器")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProjMgmt/project/logic/nothing "无操作")|默认|不支持||||
@@ -185,6 +186,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|

@@ -22,8 +22,8 @@ view.layoutPanel.panelItems.grid.state.visible = false;
 
 
 ### 关联界面行为
-  * [版本(VERSION)](module/Base/version) : [需求版本对比](module/Base/version#界面行为)
   * [版本(VERSION)](module/Base/version) : [建立版本](module/Base/version#界面行为)
+  * [版本(VERSION)](module/Base/version) : [需求版本对比](module/Base/version#界面行为)
   * [版本(VERSION)](module/Base/version) : [恢复版本](module/Base/version#界面行为)
   * [版本(VERSION)](module/Base/version) : [编辑版本](module/Base/version#界面行为)
 

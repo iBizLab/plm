@@ -16,13 +16,13 @@
 
 ### 关联界面行为
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [添加回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除评论](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [删除](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [发表评论](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [移动](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开](module/Team/discuss_post#界面行为)
-  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [关闭](module/Team/discuss_post#界面行为)
   * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [清空回复](module/Team/discuss_post#界面行为)
+  * [讨论(DISCUSS_POST)](module/Team/discuss_post) : [打开](module/Team/discuss_post#界面行为)
 
 ### 关联界面逻辑
   * [工作项(WORK_ITEM)](module/ProjMgmt/work_item) : [关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)

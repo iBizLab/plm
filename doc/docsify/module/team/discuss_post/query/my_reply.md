@@ -28,12 +28,21 @@
 
 
 
+### 查询条件
+
+(`IS_DELETED(是否已删除)` EQ `'0'`)
+
+
 
 ### 查询连接
 * **DISCUSS_REPLY存在1:N（EXISTS (SELECT)）DER1N_DISCUSS_REPLY_DISCUSS_POST_POST_ID**<br>
 连接关系：[DER1N_DISCUSS_REPLY_DISCUSS_POST_POST_ID](der/DER1N_DISCUSS_REPLY_DISCUSS_POST_POST_ID)<br>
 连接实体：[讨论](module/Team/discuss_post)<br>
 连接条件：(`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid`)<br>
+* **DISCUSS_TOPIC相关N:1（INNER JOIN）DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID**<br>
+连接关系：[DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID](der/DER1N_DISCUSS_POST_DISCUSS_TOPIC_TOPIC_ID)<br>
+连接实体：[话题](module/Team/discuss_topic)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
 
 
 
@@ -58,7 +67,7 @@ LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID`
 
 WHERE EXISTS(SELECT * FROM `DISCUSS_REPLY` t21 
  WHERE 
- t1.`ID` = t21.`POST_ID`  AND  ( t21.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} ) )
+ t1.`ID` = t21.`POST_ID`  AND  ( t21.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

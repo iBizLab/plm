@@ -16,8 +16,8 @@
 
 ### 关联界面行为
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [表格界面_删除操作](module/Base/dictionary_data#界面行为)
-  * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [表格界面_编辑操作](module/Base/dictionary_data#界面行为)
   * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [新建阶段](module/Base/dictionary_data#界面行为)
+  * [数据字典(DICTIONARY)](module/Base/dictionary_data) : [表格界面_编辑操作](module/Base/dictionary_data#界面行为)
 
 ### 关联视图
   * [新建阶段(dictionary_data_global_create_view)](app/view/dictionary_data_global_create_view)

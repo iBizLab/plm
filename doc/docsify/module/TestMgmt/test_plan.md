@@ -287,6 +287,8 @@
 |N_CREATE_MAN_ISNOTNULL|建立人|ISNOTNULL||
 |N_CREATE_MAN_ISNULL|建立人|ISNULL||
 |N_CREATE_MAN_NOTIN|建立人|NOTIN||
+|N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
+|N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
 |N_ID_EQ|标识|EQ||
 |N_LIBRARY_ID_EQ|测试库标识|EQ||
 |N_LIBRARY_NAME_EQ|所属测试库|EQ||
@@ -303,6 +305,8 @@
 |N_SPRINT_NAME_LIKE|关联迭代|LIKE||
 |N_STATUS_EQ|状态|EQ||
 |N_TYPE_EQ|测试分类|EQ||
+|N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
+|N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |

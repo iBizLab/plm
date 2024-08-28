@@ -16,5 +16,5 @@ LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID`
 
 WHERE EXISTS(SELECT * FROM `ATTENTION` t21 
  WHERE 
- t1.`ID` = t21.`OWNER_ID`  AND  t21.`OWNER_TYPE` = 'DISCUSS_POST'  AND  t21.`OWNER_SUBTYPE` = 'DISCUSS_POST'  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`TYPE` IN ('20','30','40') ) )
+ t1.`ID` = t21.`OWNER_ID`  AND  t21.`OWNER_TYPE` = 'DISCUSS_POST'  AND  t21.`OWNER_SUBTYPE` = 'DISCUSS_POST'  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t21.`TYPE` IN ('20','30','40') ) ) AND ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```

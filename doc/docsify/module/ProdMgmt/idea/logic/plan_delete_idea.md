@@ -15,16 +15,20 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./plan_delete_idea#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM2  [[$./plan_delete_idea#debugparam2 {"调试逻辑参数"}]]
 state "填充正反关联对象的主要关联属性" as PREPAREPARAM1  [[$./plan_delete_idea#prepareparam1 {"填充正反关联对象的主要关联属性"}]]
 state "拼接正反关联对象的主键" as RAWSFCODE1  [[$./plan_delete_idea#rawsfcode1 {"拼接正反关联对象的主键"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./plan_delete_idea#debugparam1 {"调试逻辑参数"}]]
 state "删除正向关联" as DEACTION2  [[$./plan_delete_idea#deaction2 {"删除正向关联"}]]
 state "删除反向关联" as DEACTION3  [[$./plan_delete_idea#deaction3 {"删除反向关联"}]]
 state "结束" as END1 <<end>> [[$./plan_delete_idea#end1 {"结束"}]]
 
 
-Begin --> PREPAREPARAM1
+Begin --> DEBUGPARAM2
+DEBUGPARAM2 --> PREPAREPARAM1
 PREPAREPARAM1 --> RAWSFCODE1
-RAWSFCODE1 --> DEACTION2
+RAWSFCODE1 --> DEBUGPARAM1
+DEBUGPARAM1 --> DEACTION2
 DEACTION2 --> DEACTION3
 DEACTION3 --> END1
 
@@ -40,14 +44,24 @@ DEACTION3 --> END1
 
 
 *- N/A*
+#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
+
 #### 填充正反关联对象的主要关联属性 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).principal_id` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
-3. 将`Default(传入变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+2. 将`product_plan` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+3. 将`idea` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+4. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
+5. 将`Default(传入变量).ID(标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+6. 将`Default(传入变量).ID(标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
 
 #### 拼接正反关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -58,16 +72,23 @@ DEACTION3 --> END1
 ```javascript
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null && forward_relation_obj.get("principal_type") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id") + '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null && reverse_relation_obj.get("principal_type") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_' + reverse_relation_obj.get("principal_type"));
 }
-
 ```
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`forward_relation_obj(正向关联对象)`的详细信息
+
 
 #### 删除正向关联 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

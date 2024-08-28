@@ -19,12 +19,12 @@
 
 ### 关联界面行为
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [新开窗口（视图）](module/Insight/insight_view#界面行为)
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [复制视图](module/Insight/insight_view#界面行为)
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [取消星标](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [设置星标](module/Insight/insight_view#界面行为)
-  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [编辑基本信息](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [视图成员](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [更多设置](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [编辑基本信息](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [复制视图](module/Insight/insight_view#界面行为)
+  * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [取消星标](module/Insight/insight_view#界面行为)
   * [效能视图(INSIGHT_VIEW)](module/Insight/insight_view) : [视图信息](module/Insight/insight_view#界面行为)
 
 ### 关联界面逻辑

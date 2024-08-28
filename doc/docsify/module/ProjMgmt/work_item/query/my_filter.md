@@ -30,9 +30,15 @@
 
 ### 查询条件
 
-(`IS_DELETED(是否已删除)` EQ `'0'` AND `<choose><when test="ctx.webcontext.my_join !=null ">  exists(select 1 from `attention` t2 where t1.id = t2.owner_id and t2.user_id = #{ctx.sessioncontext.srfpersonid}) </when><otherwise>1=1</otherwise></choose>
-`)
+(`IS_DELETED(是否已删除)` EQ `'0'`)
 
+
+
+### 查询连接
+* **PROJECT相关N:1（INNER JOIN）DER1N_WORK_ITEM_PROJECT_PROJECT_ID**<br>
+连接关系：[DER1N_WORK_ITEM_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID)<br>
+连接实体：[项目](module/ProjMgmt/project)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
 
 
 
@@ -109,7 +115,7 @@ LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID`
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`IS_DELETED` = 0  AND  <choose><when test="ctx.webcontext.my_join !=null ">  exists(select 1 from `attention` t2 where t1.id = t2.owner_id and t2.user_id = #{ctx.sessioncontext.srfpersonid}) </when><otherwise>1=1</otherwise></choose> )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

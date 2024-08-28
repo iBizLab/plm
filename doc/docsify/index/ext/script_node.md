@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[174]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[175]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -383,11 +383,11 @@ for(var i=0; i<viewPortlets.length; i++){
     }
 }
 for(var j=0; j<modeljArray.length; j++){
-  var dynamodelFlag =  reportModel.dynamodelFlag;    
+  var reportModel2 = modeljArray[j];
+  var dynamodelFlag =  reportModel2.dynamodelFlag;    
   if(dynamodelFlag != 1){
       continue;
   }
-  var reportModel2 = modeljArray[j];
   var portletId2 = reportModel2.portletId;
   reportModel2["orignModel"] = false;
 
@@ -509,15 +509,14 @@ if (list.size() != 0) {
 ```javascript
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
-if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null && forward_relation_obj.get("principal_type") != null){
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id") + '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
-if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null && reverse_relation_obj.get("principal_type") != null){
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_' + reverse_relation_obj.get("principal_type"));
 }
-
 ```
 #### [效能报表(INSIGHT_REPORT)](module/Insight/insight_report)的处理逻辑[使用此模板(use_cur_template)](module/Insight/insight_report/logic/use_cur_template)
 
@@ -3016,6 +3015,19 @@ if(principal_type == 'TEST_CASE'){
     defaultObj.set("workload_kind", "测试用例");
 }
 
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[变更状态(change_state)](module/ProjMgmt/work_item/logic/change_state)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var _default = logic.getParam("default");
+var old_work_item_type_id = _default.get("work_item_type_id");
+
+var first_value = old_work_item_type_id.split(';')[0];
+
+_default.set("work_item_type_id", first_value);
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[基线规划工作项数据查询(baseline_plan_work_item)](module/ProjMgmt/work_item/logic/baseline_plan_work_item)
 

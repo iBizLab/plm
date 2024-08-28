@@ -14,5 +14,5 @@ t1.`UPDATE_TIME`
 FROM `DISCUSS_POST` t1 
 LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
 
-WHERE ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) <= 30  AND  exists(select 1 from `member` t2 where t1.topic_id = t2.owner_id and t2.user_id = #{ctx.sessioncontext.srfpersonid}) )
+WHERE ( t11.`IS_DELETED` = 0 ) AND ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) <= 30  AND  t1.`IS_DELETED` = 0 )
 ```

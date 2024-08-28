@@ -19,8 +19,7 @@ state "准备参数" as PREPAREJSPARAM1  [[$./deleted_visible#preparejsparam1 {�
 state "结束" as END1 <<end>> [[$./deleted_visible#end1 {结束}]]
 
 
-Begin --> PREPAREJSPARAM1 : [[$./deleted_visible#begin-preparejsparam1{连接名称} 连接名称]]
-PREPAREJSPARAM1 --> END1
+Begin --> END1 : [[$./deleted_visible#begin-end1{连接名称} 连接名称]]
 
 
 @enduml
@@ -48,16 +47,16 @@ PREPAREJSPARAM1 --> END1
 3. 将`true` 设置给  `viewmsg_pos_state(视图消息占位状态).visible`
 
 ### 连接条件说明
-#### 连接名称 :id=Begin-PREPAREJSPARAM1
+#### 连接名称 :id=Begin-END1
 
-```Default(传入变量).is_deleted``` EQ ```1``` AND ```Default(传入变量).is_deleted``` EQ ```1```
+```Default(传入变量).is_deleted``` EQ ```1```
 
 
 ### 实体逻辑参数
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|view|view|当前视图对象||
-|视图消息占位|viewmsg_pos|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|view|view|当前视图对象||
 |视图消息占位状态|viewmsg_pos_state|数据对象||
+|视图消息占位|viewmsg_pos|数据对象||

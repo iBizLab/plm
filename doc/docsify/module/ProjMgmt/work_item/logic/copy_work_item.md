@@ -104,7 +104,7 @@ LOOPSUBCALL1 --> END1
 6. 将`temp_obj(临时变量).PRIORITY(优先级)` 设置给  `new_work_item(新建工作项).PRIORITY(优先级)`
 7. 将`temp_obj(临时变量).START_AT(开始时间)` 设置给  `new_work_item(新建工作项).START_AT(开始时间)`
 8. 将`temp_obj(临时变量).END_AT(截止时间)` 设置给  `new_work_item(新建工作项).END_AT(截止时间)`
-9. 将`temp_obj(临时变量).STATE(状态)` 设置给  `new_work_item(新建工作项).STATE(状态)`
+9. 将`10` 设置给  `new_work_item(新建工作项).STATE(状态)`
 
 #### 创建工作项 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 

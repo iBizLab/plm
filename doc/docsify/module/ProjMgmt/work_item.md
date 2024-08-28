@@ -215,6 +215,8 @@
 |看板栏名称|ENTRY_NAME|外键值文本|200|是||
 |看板栏标识|ENTRY_ID|外键值|100|是||
 |原始状态|WORK_ITEM_ORIGIN_STATE|外键值附加数据|100|是||
+|看板名称|BOARD_NAME|外键值文本|200|是||
+|看板标识|BOARD_ID|外键值|100|是||
 
 </el-tab-pane>
 <el-tab-pane label="子工作项" name="field_group_child">
@@ -393,6 +395,7 @@
 |复制|copy|[实体处理逻辑](module/ProjMgmt/work_item/logic/copy_work_item "复制工作项")|默认|不支持||||
 |新建规划快照|create_plan_snapshot|[实体处理逻辑](module/ProjMgmt/work_item/logic/create_plan_snapshot "新建规划快照")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/ProjMgmt/work_item/logic/delete "删除")|默认|不支持||||
+|填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/ProjMgmt/work_item/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
 |填充状态的类型|fill_type_of_state|[实体处理逻辑](module/ProjMgmt/work_item/logic/fill_type_of_state "填充状态的类型")|默认|不支持||||
 |修复版本|fix_commit|[实体处理逻辑](module/ProjMgmt/work_item/logic/fix_commit "修复版本数据")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
@@ -430,6 +433,7 @@
 |[变更状态](module/ProjMgmt/work_item/logic/change_state)|change_state|无||变更工作项状态|
 |[团队速度](module/ProjMgmt/work_item/logic/project_team_speed)|project_team_speed|无||团队速度报表数据源|
 |[基线规划工作项数据查询](module/ProjMgmt/work_item/logic/baseline_plan_work_item)|baseline_plan_work_item|无||基线规划工作项时，填充工作项当前版本名称|
+|[填充BI报表默认值](module/ProjMgmt/work_item/logic/fill_bi_form_default)|fill_bi_form_default|无|||
 |[填充状态的类型](module/ProjMgmt/work_item/logic/fill_type_of_state)|fill_type_of_state|无||根据工作项状态的id获取对应的type值|
 |[复制子工作项](module/ProjMgmt/work_item/logic/copy_child_work_item)|copy_child_work_item|无||复制工作项时，同时复制子工作项|
 |[复制工作项](module/ProjMgmt/work_item/logic/copy_work_item)|copy_work_item|无||复制工作项到其他的同类型项目|
@@ -756,6 +760,7 @@
 |N_PID_EQ|父标识|EQ||
 |N_PRIORITY_EQ|优先级|EQ||
 |N_PROJECT_ID_EQ|项目|EQ||
+|N_PROJECT_ID_IN|项目|IN||
 |N_PROJECT_NAME_EQ|所属项目|EQ||
 |N_PROJECT_NAME_LIKE|所属项目|LIKE||
 |N_PTITLE_EQ|父工作项|EQ||
@@ -787,6 +792,8 @@
 |N_TOP_ID_IN|顶级工作项标识|IN||
 |N_TOP_TITLE_EQ|顶级工作项标题|EQ||
 |N_TOP_TITLE_LIKE|顶级工作项标题|LIKE||
+|N_UPDATE_TIME_GTANDEQ|更新时间|GTANDEQ||
+|N_UPDATE_TIME_LTANDEQ|更新时间|LTANDEQ||
 |N_WORK_ITEM_TYPE_GROUP_EQ|工作项类型分组|EQ||
 |N_WORK_ITEM_TYPE_ID_EQ|工作项类型|EQ||
 |N_WORK_ITEM_TYPE_ID_IN|工作项类型|IN||
@@ -897,6 +904,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[BI报表_工作项状态默认值](module/ProjMgmt/work_item/uilogic/bi_form_state_default)|bi_form_state_default||
 |[上传附件（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
 |[关注人员更新](module/ProjMgmt/work_item/uilogic/attention_personnel_update)|attention_personnel_update|获取关注人员信息，并根据类别更新|
 |[关联交付物（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_link_deliverable)|toolbar_link_deliverable|主视图工具栏上点击触发，切换分页，打开下拉菜单|
@@ -930,7 +938,7 @@
 |[添加子工作项值变更](module/ProjMgmt/work_item/uilogic/add_child_change)|add_child_change|子工作项值变更触发更新父标识|
 |[添加子工作项（工具栏）](module/ProjMgmt/work_item/uilogic/toolbar_add_child)|toolbar_add_child|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[添加附件数据](module/ProjMgmt/work_item/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
-|[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change||
+|[状态变更前逻辑](module/ProjMgmt/work_item/uilogic/before_state_change)|before_state_change|检测变更状态前选中的数据是否为同一类型，不同则禁用|
 |[甘特删除行测试](module/ProjMgmt/work_item/uilogic/removerow_gantt)|removerow_gantt|甘特删除行测试|
 |[甘特新建行测试](module/ProjMgmt/work_item/uilogic/newrow_gantt)|newrow_gantt|甘特新建行测试|
 |[用例关联工作项](module/ProjMgmt/work_item/uilogic/test_case_relation_work_item)|test_case_relation_work_item|值变更时触发，用例关联工作项，调用处理逻辑生成正反向数据|
