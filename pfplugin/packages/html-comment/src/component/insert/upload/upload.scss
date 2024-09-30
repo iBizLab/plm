@@ -1,0 +1,73 @@
+/* stylelint-disable selector-class-pattern */
+@include b('upload-custom') {
+  box-sizing: border-box;
+  width: 390px;
+  height: auto;
+  padding: 0 getCssVar('spacing', 'base') getCssVar('spacing', 'base');
+
+  @include e('top') {
+    display: block;
+    width: 100%;
+    font-size: getCssVar('font-size', 'header-4');
+    text-align: center;
+  }
+
+  @include e('center') {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: getCssVar('spacing', 'base');
+
+    @include m('upload') {
+      width: 100%;
+
+
+      .el-upload-dragger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 160px;
+      }
+
+      .el-progress--line {
+        top: 0;
+        right: 0;
+        padding: 0 getCssVar('spacing', 'tight');
+        padding-top: 1.3rem;
+        margin: 0 !important;
+      }
+
+      .el-progress__text {
+        position: absolute;
+        top: 0;
+        right: getCssVar('spacing', 'tight');
+        max-width: 38px;
+        line-height: 19px;
+        text-align: right;
+      }
+
+      .el-upload-list {
+        max-height: 20vh;
+        overflow: auto;
+      }
+
+      .el-upload-list__item {
+       min-height: 23px;
+      }
+
+    }
+  }
+
+  @include e('bottom') {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: getCssVar('spacing', 'base');
+  }
+}
+
+.el-overlay:has(.ibiz-upload-custom) .ibiz-modal{
+  overflow: hidden;
+  border-radius: getCssVar('border-radius', 'small');
+}

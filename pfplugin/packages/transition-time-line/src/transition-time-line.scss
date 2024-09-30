@@ -1,0 +1,94 @@
+@include b(transition-time-line) {
+/* stylelint-disable-next-line selector-class-pattern */
+.ibiz-row.ibiz-row--flex {
+  overflow: initial;
+}
+}
+
+@include b(transition-time-line-timeline-content) {
+  height: 100%;
+  padding-top: getCssVar('spacing', 'tight');
+  overflow: hidden;
+  @include e(current) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: rem(40px);
+    font-size: getCssVar('font-size', 'small');
+    line-height: rem(24px);
+    color: getCssVar(color , primary);
+    text-align: center;
+    background: var(--ibiz-color-primary-light-default);
+    border: none;
+    border-radius: rem(24px);
+  }
+  @include e(item-box) {
+    position: relative;
+    padding-left: rem(48px);
+
+    &.is-current .#{bem(panel-container--content_container)}::after {
+      width: 5px;
+      height: 5px;
+      background: getCssVar(color , primary);
+      border: 2px solid var(--ibiz-color-primary-light-default);
+    }
+
+    // 左侧状态样式
+    .#{bem(panel-container--state_container)} {
+      padding-right: getCssVar('spacing', 'base');
+    }
+
+    // 右侧样式
+    .#{bem(panel-container--content_container)} {
+      position: relative;
+      padding-left: getCssVar('spacing', 'base');
+
+      // 时间线定位
+      &::after{
+        position: absolute;
+        top: rem(8px);
+        left: -5px;
+        z-index: 2;
+        display: block;
+        width: 7px;
+        height: 7px;
+        content: '';
+        border: 1px solid getCssVar(color, border);
+        border-radius: 50%;
+      }
+
+      &::before {
+        position: absolute;
+        top: 17px;
+        left: -1px;
+        z-index: 1;
+        display: block;
+        width: rem(1px);
+        height: calc(100% - 9px);
+        content: '';
+        background: getCssVar(color, border);
+      }
+    }
+  }
+
+  @include when(not-show-current) {
+    @include e(current) {
+      display: none;
+    }
+    @include e(item-box) {
+      padding-left: getCssVar('spacing', 'base');
+    }
+    @include e(item-box) {
+      &.is-current .#{bem(panel-container--content_container)}::after {
+        width: 7px;
+        height: 7px;
+        background: none;
+        border: 1px solid getCssVar(color, border);
+      }
+    }
+  }
+}
+
+@include b(item) {
+  display: inline-block;
+}

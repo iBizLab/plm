@@ -1,0 +1,80 @@
+@include b(formula-elem) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: getCssVar('height-control', 'default');
+  font-size: getCssVar('font-size', 'header-6');
+  cursor: pointer;
+  background-color: getCssVar('color', 'disabled', 'bg');
+  border-radius: getCssVar('border-radius', 'small');
+  &.#{bem(formula-elem)} {
+    padding: getCssVar('spacing', 'extra-tight') getCssVar('width-icon', 'medium');
+    color: getCssVar('color', 'disabled', 'text');
+  }
+  @include m('readonly') {
+    pointer-events: none;
+  }
+}
+
+@include b(formula-elem-tool-popover) {
+  display: flex;
+  align-items: center;
+  padding: getCssVar('spacing', 'extra-tight');
+  box-shadow: 0 0 getCssVar('spacing', 'base') getCssVar(color, shadow);
+  @include e('item') {
+    padding: getCssVar('spacing', 'tight');
+    margin-right: getCssVar('spacing', 'extra-tight');
+    font-size: getCssVar('font-size', 'header-6');
+    cursor: pointer;
+    border-radius: getCssVar('border-radius', 'small');
+    @include m('content') {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: getCssVar('font-size', 'header-6');
+    }
+
+    @include when('delete') {
+      &:hover {
+        background-color: getCssVar(color, danger, light, default);
+
+        svg {
+          fill: getCssVar(color, danger);
+        }
+      }
+    }
+
+    &:last-child {
+      margin-right: getCssVar('spacing', 'none');
+    }
+
+    &:hover {
+      background-color: getCssVar('color', 'primary', light, default);
+
+      svg {
+        fill: getCssVar('color', 'primary');
+      }
+    }
+  }
+}
+
+@include b(formula-elem-edit-popover) {
+  width: auto;
+  padding: getCssVar('spacing', 'base') getCssVar('spacing', 'base-loose');
+  box-shadow: 0 0 getCssVar('spacing', 'base') getCssVar(color, shadow);
+  @include e(editor) {
+    width: auto;
+  }
+  @include e(confirm) {
+    display: flex;
+    justify-content: end;
+    margin-top: getCssVar('spacing', 'tight');
+  }
+}
+
+formula-elem {
+  display: inline-block;
+  width: auto;
+  margin: 0 1px !important;
+}
