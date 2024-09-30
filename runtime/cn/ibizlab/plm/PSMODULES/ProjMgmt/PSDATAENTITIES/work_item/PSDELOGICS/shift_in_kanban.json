@@ -30,7 +30,7 @@
     },
     "leftPos" : -90,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "绑定选择数据对象",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -106,62 +106,6 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 453
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 180,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEDATASET1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "BOARD_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "for_temp_obj[target_board_id] ==> Default[BOARD_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "target_board_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "sort",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "entry_filter"
-      },
-      "name" : "直接值[showorder,asc] ==> entry_filter[sort]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "showorder,asc",
-      "srcValueType" : "SRCVALUE"
-    }, {
-      "dstFieldName" : "n_board_id_eq",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "entry_filter"
-      },
-      "name" : "for_temp_obj[target_board_id] ==> entry_filter[n_board_id_eq]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "target_board_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "topPos" : 562
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -280,6 +224,62 @@
       "modelref" : true,
       "id" : "srfactionparam"
     },
+    "topPos" : 562
+  }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 180,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "准备看板过滤器参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEDATASET1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "BOARD_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "for_temp_obj[target_board_id] ==> Default[BOARD_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "target_board_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "sort",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "entry_filter"
+      },
+      "name" : "直接值[showorder,asc] ==> entry_filter[sort]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "showorder,asc",
+      "srcValueType" : "SRCVALUE"
+    }, {
+      "dstFieldName" : "n_board_id_eq",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "entry_filter"
+      },
+      "name" : "for_temp_obj[target_board_id] ==> entry_filter[n_board_id_eq]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "target_board_id",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "for_temp_obj"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
     "topPos" : 562
   } ],
   "getPSDELogicParams" : [ {

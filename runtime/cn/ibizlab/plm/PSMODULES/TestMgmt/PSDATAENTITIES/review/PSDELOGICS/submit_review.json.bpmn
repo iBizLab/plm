@@ -28,13 +28,13 @@
                             <tns:global identifier="reviewsubmit_reviewtest_case" type="cn.ibizlab.plm.core.testmgmt.domain.test_case" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置提交时间"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="设置提交人、状态"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段的状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="更新评审"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="传入参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置提交时间"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段的状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取关系信息"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置关系过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewsubmit_reviewend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -51,15 +51,15 @@
                         <sequenceFlow id="resetparam1_end_line" sourceRef="resetparam1" targetRef="resetparam1_end"/>
                     <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
-                    </sequenceFlow>
                     <sequenceFlow id="prepareparam1_prepareparam2" sourceRef="prepareparam1" targetRef="prepareparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_loopsubcall1" sourceRef="deaction1" targetRef="loopsubcall1">
                     </sequenceFlow>
                     <sequenceFlow id="debugparam1_prepareparam3" sourceRef="debugparam1" targetRef="prepareparam3">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset1_rawsfcode1" sourceRef="gateway-dedataset1" targetRef="rawsfcode1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

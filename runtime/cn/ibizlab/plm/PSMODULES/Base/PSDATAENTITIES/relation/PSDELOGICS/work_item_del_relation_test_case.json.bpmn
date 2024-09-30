@@ -26,21 +26,24 @@
                             <tns:global identifier="relationwork_item_del_relation_test_caserun_relation_page" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_casedebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充关联对象的主要关联属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caserawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接关联对象的主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_casedeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除工作项关联测试用例数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_casedeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="删除测试用例关联工作项数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备执行用例过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_casededataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询对应的执行用例存在关联此缺陷"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置执行用例关联缺陷参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caseresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置缺陷关联执行用例参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_caserawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="获取执行用例关联缺陷对象主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_casedeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="删除执行用例关联缺陷"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationwork_item_del_relation_test_casedeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="删除缺陷关联执行用例"/>
                         <endEvent id="deaction5_end" name="end"/>
                         <sequenceFlow id="deaction5_end_line" sourceRef="deaction5" targetRef="deaction5_end"/>
-                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
                     </sequenceFlow>

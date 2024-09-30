@@ -24,7 +24,7 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.others_relation_ticket;
             then
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定关联列表参数]
             rule "bindparam1"
             ruleflow-group "ticketothers_relation_ticketbindparam1"
             when
@@ -48,7 +48,7 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.others_relation_ticket;
                         update(ticketothers_relation_ticketselectdata);//更新fact中变量值
             end
 
-            //逻辑处理节点[重新建立参数]
+            //逻辑处理节点[重新建立正向关系对象]
             rule "renewparam1"
             ruleflow-group "ticketothers_relation_ticketrenewparam1"
             when
@@ -60,7 +60,7 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.others_relation_ticket;
                         update(ticketothers_relation_ticketselectdata);//更新fact中变量值
             end
 
-            //逻辑处理节点[重新建立参数]
+            //逻辑处理节点[重新建立反向关系对象]
             rule "renewparam2"
             ruleflow-group "ticketothers_relation_ticketrenewparam2"
             when
@@ -79,13 +79,11 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.others_relation_ticket;
             then
                             ticketothers_relation_ticketforward_relation_obj.set("principalid",ticketothers_relation_ticketdefault.get("principal_id"));
                             ticketothers_relation_ticketforward_relation_obj.set("level",ticketothers_relation_ticketdefault.get("level"));
-                            ticketothers_relation_ticketreverse_relation_obj.set("principalid",ticketothers_relation_ticketfor_temp_obj.get("owner_id"));
                             ticketothers_relation_ticketreverse_relation_obj.set("targetid",ticketothers_relation_ticketdefault.get("principal_id"));
                             ticketothers_relation_ticketreverse_relation_obj.set("principaltype",ticketothers_relation_ticketdefault.get("target_type"));
                             ticketothers_relation_ticketreverse_relation_obj.set("targettype",ticketothers_relation_ticketdefault.get("principal_type"));
                             ticketothers_relation_ticketforward_relation_obj.set("principaltype",ticketothers_relation_ticketdefault.get("principal_type"));
                             ticketothers_relation_ticketforward_relation_obj.set("targettype",ticketothers_relation_ticketdefault.get("target_type"));
-                            ticketothers_relation_ticketforward_relation_obj.set("targetid",ticketothers_relation_ticketfor_temp_obj.get("owner_id"));
                         update(ticketothers_relation_ticketdefault);//更新fact中变量值
                         update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
                         update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
@@ -96,6 +94,18 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.others_relation_ticket;
             //逻辑处理节点[结束]
             rule "end1"
             ruleflow-group "ticketothers_relation_ticketend1"
+            when
+            then
+                        update(ticketothers_relation_ticketdefault);//更新fact中变量值
+                        update(ticketothers_relation_ticketfor_temp_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketforward_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketreverse_relation_obj);//更新fact中变量值
+                        update(ticketothers_relation_ticketselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[移动端和pc端关联关系]
+            rule "rawsfcode1"
+            ruleflow-group "ticketothers_relation_ticketrawsfcode1"
             when
             then
                         update(ticketothers_relation_ticketdefault);//更新fact中变量值

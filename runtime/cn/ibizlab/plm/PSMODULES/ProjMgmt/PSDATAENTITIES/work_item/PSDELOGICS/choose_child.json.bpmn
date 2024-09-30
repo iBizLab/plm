@@ -20,11 +20,12 @@
                             <tns:global identifier="work_itemchoose_childupdate_obj" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置父工作项iD"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取父工作项内容"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定子工作项"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立更新对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="设置子工作项标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要更新的父工作项标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchoose_childdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="更新子工作项的父标识"/>
                         <endEvent id="deaction3_end" name="end"/>
@@ -39,7 +40,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
+                    <sequenceFlow id="renewparam1_rawsfcode1" sourceRef="renewparam1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction3" sourceRef="prepareparam1" targetRef="deaction3">
                     </sequenceFlow>

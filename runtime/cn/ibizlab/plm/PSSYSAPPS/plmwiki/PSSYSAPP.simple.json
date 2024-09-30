@@ -109,7 +109,7 @@
     "pluginCode" : "ANCHO_HTML",
     "pluginType" : "EDITOR_CUSTOMSTYLE",
     "rTObjectName" : "AnchoHtml",
-    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.40",
+    "rTObjectRepo" : "@ibiz-template-plm/ancho-html@0.0.3-alpha.52",
     "refMode" : "EDITORSTYPE",
     "runtimeObject" : true
   }, {
@@ -187,24 +187,26 @@
     "uIActionTag" : "CreateObject",
     "uIActionType" : "DEUIACTION"
   }, {
+    "actionTarget" : "SINGLEKEY",
     "getCapPSLanguageRes" : {
-      "lanResTag" : "TBB.TEXT.EDITVIEW.CLOSE"
+      "lanResTag" : "TBB.TEXT.*.EDIT"
     },
-    "caption" : "关闭",
-    "codeName" : "Exit",
-    "fullCodeName" : "Exit",
-    "name" : "编辑界面_退出操作",
+    "caption" : "编辑",
+    "codeName" : "Edit",
+    "fullCodeName" : "Edit",
+    "name" : "表格界面_编辑操作",
     "getPSSysImage" : {
-      "glyph" : "xf08b@FontAwesome",
-      "cssClass" : "fa fa-sign-out"
+      "glyph" : "xf044@FontAwesome",
+      "cssClass" : "fa fa-edit"
     },
-    "predefinedType" : "EDITVIEW_EXITACTION",
+    "predefinedType" : "GRIDVIEW_EDITACTION",
     "timeout" : 60000,
+    "tooltip" : "编辑",
     "getTooltipPSLanguageRes" : {
-      "lanResTag" : "TBB.TOOLTIP.EDITVIEW.CLOSE"
+      "lanResTag" : "TBB.TOOLTIP.*.EDIT"
     },
     "uIActionMode" : "SYS",
-    "uIActionTag" : "Exit",
+    "uIActionTag" : "Edit",
     "uIActionType" : "DEUIACTION"
   }, {
     "caption" : "完成",
@@ -216,6 +218,19 @@
     "uIActionMode" : "SYS",
     "uIActionTag" : "Finish",
     "uIActionType" : "DEUIACTION"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "界面行为支持获取编辑列",
+    "codeName" : "GET_EDITOR_COLUMN",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "GET_EDITOR_COLUMN",
+    "memo" : "该界面行为的标识固定为【GET_EDITOR_COLUMN】，同时，该界面行为是配置插件【表格列界面行为支持获取编辑列 】共同使用",
+    "name" : "界面行为支持获取编辑列",
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "GET_EDITOR_COLUMN",
+    "uIActionType" : "DEUIACTION",
+    "globalUIAction" : true
   }, {
     "caption" : "登录",
     "codeName" : "Login",
@@ -275,6 +290,20 @@
     "timeout" : 60000,
     "uIActionMode" : "SYS",
     "uIActionTag" : "PrevStep",
+    "uIActionType" : "DEUIACTION"
+  }, {
+    "caption" : "刷新",
+    "codeName" : "Refresh",
+    "fullCodeName" : "Refresh",
+    "name" : "表格界面_刷新操作",
+    "getPSSysImage" : {
+      "glyph" : "xf021@FontAwesome",
+      "cssClass" : "fa fa-refresh"
+    },
+    "predefinedType" : "GRIDVIEW_REFRESHACTION",
+    "timeout" : 60000,
+    "uIActionMode" : "SYS",
+    "uIActionTag" : "Refresh",
     "uIActionType" : "DEUIACTION"
   }, {
     "caption" : "移除全部",
@@ -346,6 +375,32 @@
     "uIActionMode" : "SYS",
     "uIActionTag" : "Yes",
     "uIActionType" : "DEUIACTION"
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "编辑",
+    "codeName" : "edit_filter",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "edit_filter",
+    "name" : "过滤器编辑",
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "edit_filter",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true
+  }, {
+    "actionTarget" : "NONE",
+    "caption" : "显示生效报表",
+    "codeName" : "hight_light_filter",
+    "frontProcessType" : "OTHER",
+    "fullCodeName" : "hight_light_filter",
+    "name" : "过滤器高亮",
+    "timeout" : 60000,
+    "uIActionMode" : "FRONT",
+    "uIActionTag" : "hight_light_filter",
+    "uIActionType" : "DEUIACTION",
+    "uILogicAttachMode" : "REPLACE",
+    "globalUIAction" : true
   } ],
   "cache" : {
     "getPSAppViews" : [ {
@@ -1129,7 +1184,7 @@
                     "editorParams" : {
                       "contenttype" : "HTML",
                       "TITLE" : "name",
-                      "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                      "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"type\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g,(match, id, name, identifier, type, icon) => { const tempIcon = icon.trim(); const params = JSON.stringify({ id, name, identifier, type, }); return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${tempIcon} ${identifier} ${name}</span>`;}).replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                     },
                     "editorStyle" : "ANCHO_HTML",
                     "editorType" : "RAW",
@@ -1154,6 +1209,7 @@
                   "detailType" : "FORMITEM",
                   "enableCond" : 0,
                   "ignoreInput" : 12,
+                  "itemHeight" : 1.0,
                   "labelPos" : "NONE",
                   "labelWidth" : 0,
                   "name" : "formitem1",
@@ -1190,6 +1246,7 @@
                     "notMode" : false
                   } ],
                   "getPSEditor" : {
+                    "editorHeight" : 1.0,
                     "editorType" : "MARKDOWN",
                     "maxLength" : 16777215,
                     "mode" : "EDIT",
@@ -2886,7 +2943,7 @@
                     "editorParams" : {
                       "contenttype" : "HTML",
                       "TITLE" : "name",
-                      "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                      "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"type\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g,(match, id, name, identifier, type, icon) => { const tempIcon = icon.trim(); const params = JSON.stringify({ id, name, identifier, type, }); return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${tempIcon} ${identifier} ${name}</span>`;}).replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                     },
                     "editorStyle" : "ANCHO_HTML",
                     "editorType" : "RAW",

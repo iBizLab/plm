@@ -24,6 +24,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="关联标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性值"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="存在关联类型"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemothers_relation_work_itemprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="重复或关联"/>
@@ -68,7 +69,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="renewparam1_renewparam2" sourceRef="renewparam1" targetRef="renewparam2">
                     </sequenceFlow>
-                    <sequenceFlow id="renewparam2_prepareparam1" sourceRef="renewparam2" targetRef="prepareparam1">
+                    <sequenceFlow id="renewparam2_rawsfcode1" sourceRef="renewparam2" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_prepareparam1" sourceRef="rawsfcode1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-prepareparam1_prepareparam2" sourceRef="gateway-prepareparam1" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[

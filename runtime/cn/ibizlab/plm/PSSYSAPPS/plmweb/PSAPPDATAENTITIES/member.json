@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CREATE",
     "codeName" : "add_shared_page_member",
@@ -2641,28 +2610,6 @@
       } ],
       "topPos" : 200
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "view"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 365
-    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -2693,25 +2640,39 @@
       } ],
       "topPos" : 719
     }, {
-      "codeName" : "THROWEXCEPTION1",
-      "errorCode" : 0,
-      "errorInfo" : "未选择用户",
-      "leftPos" : -28,
-      "logicNodeType" : "THROWEXCEPTION",
-      "name" : "抛出异常",
-      "topPos" : 357
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "view"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
+        }
+      } ],
+      "topPos" : 365
     }, {
       "code" : "view.layoutPanel.panelItems.choose_member.setDataValue(null);",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "添加页面共享成员",
       "topPos" : 860
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
+      "name" : "绑定当前分页",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2740,6 +2701,14 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 554
+    }, {
+      "codeName" : "THROWEXCEPTION1",
+      "errorCode" : 0,
+      "errorInfo" : "未选择用户",
+      "leftPos" : -28,
+      "logicNodeType" : "THROWEXCEPTION",
+      "name" : "抛出异常",
+      "topPos" : 357
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "ctx",
@@ -2747,16 +2716,16 @@
       "name" : "应用上下文变量",
       "navContextParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "view",
+      "name" : "view",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

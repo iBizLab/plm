@@ -142,9 +142,28 @@
       "modelref" : true,
       "id" : "reverse_relation_obj"
     },
-    "leftPos" : 836,
+    "leftPos" : 1050,
     "logicNodeType" : "RENEWPARAM",
     "name" : "重新建立参数",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RENEWPARAM2"
+      }
+    } ],
+    "topPos" : 150
+  }, {
+    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef reverse_relation_obj = logic.param('reverse_relation_obj').getReal()\r\n\r\ndef forward_relation_obj = logic.param('forward_relation_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 836,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "关联标识",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -153,10 +172,10 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "RENEWPARAM2"
+        "id" : "RAWSFCODE1"
       }
     } ],
-    "topPos" : 240
+    "topPos" : 225
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 836,
@@ -225,20 +244,6 @@
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "PRINCIPAL_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reverse_relation_obj"
-      },
-      "name" : "for_temp_obj[owner_id] ==> reverse_relation_obj[PRINCIPAL_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
@@ -313,22 +318,8 @@
       },
       "srcValue" : "idea",
       "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "TARGET_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "forward_relation_obj"
-      },
-      "name" : "for_temp_obj[owner_id] ==> forward_relation_obj[TARGET_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 334
+    "topPos" : 324
   }, {
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 1359,

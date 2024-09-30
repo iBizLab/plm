@@ -20,14 +20,15 @@
                             <tns:global identifier="ticketothers_relation_ticketselectdata" type="cn.ibizlab.plm.core.prodmgmt.domain.ticket" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定关联列表参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立正向关系对象"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立反向关系对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性值"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="移动端和PC端关联关系"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="生成正向关联数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ticketothers_relation_ticketdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
                         <endEvent id="deaction2_end" name="end"/>
@@ -64,7 +65,9 @@
                     </sequenceFlow>
                     <sequenceFlow id="renewparam2_prepareparam1" sourceRef="renewparam2" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction1" sourceRef="rawsfcode1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_deaction2" sourceRef="deaction1" targetRef="deaction2">
                     </sequenceFlow>

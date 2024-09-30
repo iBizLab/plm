@@ -108,8 +108,8 @@
     "id" : "psdelogicid",
     "hidden" : true,
     "dataType" : 25,
-    "createDVT" : "CONTEXT",
-    "createDV" : "psdelogicid",
+    "createDVT" : "APPDATA",
+    "createDV" : "psdelogic",
     "getPSAppDEField" : {
       "name" : "PSDELOGICID",
       "codeName" : "PSDELogicId"
@@ -212,8 +212,8 @@
         },
         "caption" : "实体处理逻辑",
         "codeName" : "psdelogicid",
-        "createDV" : "psdelogicid",
-        "createDVT" : "CONTEXT",
+        "createDV" : "psdelogic",
+        "createDVT" : "APPDATA",
         "dataType" : 25,
         "detailStyle" : "DEFAULT",
         "detailType" : "FORMITEM",
@@ -311,12 +311,26 @@
           "codeName" : "Param1"
         },
         "getPSEditor" : {
+          "editorParams" : {
+            "SRFNAVCTX.srfappdemapping" : "false",
+            "SRFNAVCTX.srfappmappingmap" : ""
+          },
           "editorType" : "DROPDOWNLIST",
           "name" : "param1",
           "getPSAppCodeList" : {
             "modelref" : true,
             "path" : "PSSYSAPPS/plmweb/PSAPPCODELISTS/ProjMgmt__work_item_state2.json"
           },
+          "getPSNavigateContexts" : [ {
+            "key" : "SRFAPPDEMAPPING",
+            "name" : "SRFAPPDEMAPPING",
+            "value" : "false",
+            "rawValue" : true
+          }, {
+            "key" : "SRFAPPMAPPINGMAP",
+            "name" : "SRFAPPMAPPINGMAP",
+            "rawValue" : true
+          } ],
           "singleSelect" : true
         },
         "getPSLayoutPos" : {

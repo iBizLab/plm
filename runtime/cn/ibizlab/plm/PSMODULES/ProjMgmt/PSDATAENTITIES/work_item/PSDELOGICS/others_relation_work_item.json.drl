@@ -72,19 +72,29 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.others_relation_work_item;
                         update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
             end
 
+            //逻辑处理节点[关联标识]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemothers_relation_work_itemrawsfcode1"
+            when
+            then
+                        update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemreverse_relation_obj);//更新fact中变量值
+                        update(work_itemothers_relation_work_itemselectdata);//更新fact中变量值
+            end
+
             //逻辑处理节点[填充需要的属性值]
             rule "prepareparam1"
             ruleflow-group "work_itemothers_relation_work_itemprepareparam1"
             when
             then
                             work_itemothers_relation_work_itemforward_relation_obj.set("principalid",work_itemothers_relation_work_itemdefault.get("principal_id"));
-                            work_itemothers_relation_work_itemreverse_relation_obj.set("principalid",work_itemothers_relation_work_itemfor_temp_obj.get("owner_id"));
                             work_itemothers_relation_work_itemreverse_relation_obj.set("targetid",work_itemothers_relation_work_itemdefault.get("principal_id"));
                             work_itemothers_relation_work_itemreverse_relation_obj.set("principaltype",work_itemothers_relation_work_itemdefault.get("target_type"));
                             work_itemothers_relation_work_itemreverse_relation_obj.set("targettype",work_itemothers_relation_work_itemdefault.get("principal_type"));
                             work_itemothers_relation_work_itemforward_relation_obj.set("principaltype",work_itemothers_relation_work_itemdefault.get("principal_type"));
                             work_itemothers_relation_work_itemforward_relation_obj.set("targettype",work_itemothers_relation_work_itemdefault.get("target_type"));
-                            work_itemothers_relation_work_itemforward_relation_obj.set("targetid",work_itemothers_relation_work_itemfor_temp_obj.get("owner_id"));
                         update(work_itemothers_relation_work_itemdefault);//更新fact中变量值
                         update(work_itemothers_relation_work_itemfor_temp_obj);//更新fact中变量值
                         update(work_itemothers_relation_work_itemforward_relation_obj);//更新fact中变量值

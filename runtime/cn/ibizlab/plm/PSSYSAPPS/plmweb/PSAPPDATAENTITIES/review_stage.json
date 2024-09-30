@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
     "actionType" : "BUILTIN",
@@ -1219,6 +1188,7 @@
     "codeName" : "choose_stage",
     "defaultParamName" : "Default",
     "logicName" : "选中阶段",
+    "memo" : "选中阶段",
     "name" : "选中阶段",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -1240,107 +1210,11 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "fill_stage_reviewer"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -682,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "review_info"
-      },
-      "topPos" : 208
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 60,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "context.curstage_id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "parent_view"
-        },
-        "name" : "Default[id] ==> parent_view[context.curstage_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "context.curstage_state",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "parent_view"
-        },
-        "name" : "Default[stage_state] ==> parent_view[context.curstage_state]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "stage_state",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 100
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "review_info"
-      },
-      "leftPos" : -446,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
+      "code" : "const cur_reviewer_id = uiLogic.parent_form.control.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.review_info.cur_reviewer_id);\r\n\r\nconst curstage_id = uiLogic.parent_form.control.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 475,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置选中值",
       "topPos" : 208
     }, {
       "codeName" : "PREPAREJSPARAM1",
@@ -1476,20 +1350,6 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "const cur_reviewer_id = uiLogic.parent_form.control.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.default.reviewer);\r\n\r\nconst curstage_id = uiLogic.parent_form.control.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);\r\n\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 295,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置选中值",
-      "topPos" : 100
-    }, {
-      "code" : "const cur_reviewer_id = uiLogic.parent_form.control.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.review_info.cur_reviewer_id);\r\n\r\nconst curstage_id = uiLogic.parent_form.control.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 475,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置选中值",
-      "topPos" : 208
-    }, {
       "codeName" : "PREPAREJSPARAM3",
       "leftPos" : 220,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -1543,6 +1403,94 @@
       "logicNodeType" : "RAWJSCODE",
       "name" : "取消选中值",
       "topPos" : 390
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "fill_stage_reviewer"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -682,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "review_info"
+      },
+      "topPos" : 208
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 60,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "context.curstage_id",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_view"
+        },
+        "name" : "Default[id] ==> parent_view[context.curstage_id]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "context.curstage_state",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "parent_view"
+        },
+        "name" : "Default[stage_state] ==> parent_view[context.curstage_state]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "stage_state",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 100
+    }, {
+      "code" : "const cur_reviewer_id = uiLogic.parent_form.control.details.cur_reviewer_id;\r\ncur_reviewer_id.setDataValue(uiLogic.default.reviewer);\r\n\r\nconst curstage_id = uiLogic.parent_form.control.details.curstage_id;\r\ncurstage_id.setDataValue(uiLogic.default.id);\r\n\r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 295,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置选中值",
+      "topPos" : 100
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -1556,6 +1504,11 @@
       "name" : "评审信息",
       "entityParam" : true
     }, {
+      "codeName" : "parent_form",
+      "logicName" : "父表单",
+      "name" : "父表单",
+      "entityParam" : true
+    }, {
       "codeName" : "list",
       "logicName" : "列表对象",
       "name" : "列表对象",
@@ -1566,20 +1519,15 @@
       "name" : "父视图对象",
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "parent_form",
-      "logicName" : "父表单",
-      "name" : "父表单",
-      "entityParam" : true
-    }, {
       "codeName" : "ctx",
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -1589,6 +1537,7 @@
     "codeName" : "set_stage_reviewer",
     "defaultParamName" : "Default",
     "logicName" : "变更阶段评审人",
+    "memo" : "变更阶段评审人",
     "name" : "变更阶段评审人",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -1694,25 +1643,25 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "ctx",
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
     }, {
+      "codeName" : "review",
+      "logicName" : "评审",
+      "name" : "评审",
+      "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "review",
-      "logicName" : "评审",
-      "name" : "评审",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {

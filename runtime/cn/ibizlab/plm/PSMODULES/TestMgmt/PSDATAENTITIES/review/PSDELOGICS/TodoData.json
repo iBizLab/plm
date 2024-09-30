@@ -24,14 +24,10 @@
     "topPos" : 118,
     "parallelOutput" : true
   }, {
-    "codeName" : "DEBUGPARAM3",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 195,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "传入参数",
+    "codeName" : "PREPAREPARAM5",
+    "leftPos" : 26,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置过滤器参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -40,8 +36,28 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM3"
+        "id" : "PREPAREPARAM5"
       }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "searchconds",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "空值（NULL） ==> Default[searchconds]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValueType" : "NULLVALUE"
+    }, {
+      "dstFieldName" : "N_BIZTYPE_EQ",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[review] ==> Default[N_BIZTYPE_EQ]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "review",
+      "srcValueType" : "SRCVALUE"
     } ],
     "topPos" : 126
   }, {
@@ -58,13 +74,13 @@
       "modelref" : true,
       "path" : "PSSYSMODELGROUPS/ebsx/PSMODULES/ebsx/PSDATAENTITIES/SysTodo.json"
     },
-    "leftPos" : 410,
+    "leftPos" : 270,
     "logicNodeType" : "DEDATASET",
     "name" : "查询待办数据",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "END1"
       },
       "name" : "待办数据为空",
       "getPSDELogicLinkGroupCond" : {
@@ -90,7 +106,7 @@
     }, {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM4"
+        "id" : "LOOPSUBCALL1"
       },
       "name" : "待办数据不为空",
       "getPSDELogicLinkGroupCond" : {
@@ -118,27 +134,6 @@
       "modelref" : true,
       "id" : "sq_todo_data"
     },
-    "topPos" : 126
-  }, {
-    "codeName" : "DEBUGPARAM4",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "sq_todo_data"
-    },
-    "leftPos" : 631,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "查询结果",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM4"
-      }
-    } ],
     "topPos" : 126
   }, {
     "codeName" : "LOOPSUBCALL1",
@@ -178,43 +173,6 @@
     "topPos" : 126,
     "parallelOutput" : true
   }, {
-    "codeName" : "PREPAREPARAM5",
-    "leftPos" : -4,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM5"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "searchconds",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "空值（NULL） ==> Default[searchconds]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValueType" : "NULLVALUE"
-    }, {
-      "dstFieldName" : "N_BIZTYPE_EQ",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[review] ==> Default[N_BIZTYPE_EQ]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "review",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 126
-  }, {
     "codeName" : "RENEWPARAM1",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -222,28 +180,7 @@
     },
     "leftPos" : 1150,
     "logicNodeType" : "RENEWPARAM",
-    "name" : "重新建立参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM5"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RENEWPARAM1"
-      }
-    } ],
-    "topPos" : 126
-  }, {
-    "codeName" : "DEBUGPARAM5",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "temp_todo_obj"
-    },
-    "leftPos" : 1150,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
+    "name" : "重新建立临时待办对象",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -252,10 +189,10 @@
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM5"
+        "id" : "RENEWPARAM1"
       }
     } ],
-    "topPos" : 207
+    "topPos" : 126
   }, {
     "codeName" : "BINDPARAM1",
     "getDstPSDELogicParam" : {
@@ -312,76 +249,18 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 290
+    "topPos" : 330
   }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
+    "codeName" : "END1",
+    "leftPos" : 310,
+    "logicNodeType" : "END",
+    "name" : "结束",
+    "getReturnParam" : {
       "modelref" : true,
-      "id" : "sq_data_page"
+      "id" : "sq_data"
     },
-    "leftPos" : 410,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
-    "topPos" : 350
-  }, {
-    "codeName" : "DEACTION2",
-    "getDstPSDEAction" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/CheckKey.json"
-    },
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "temp_sq_obj"
-    },
-    "getDstPSDataEntity" : {
-      "modelref" : true,
-      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
-    },
-    "leftPos" : 1150,
-    "logicNodeType" : "DEACTION",
-    "name" : "判断业务数据是否存在",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      },
-      "name" : "判断是否存在数据",
-      "getPSDELogicLinkGroupCond" : {
-        "groupOP" : "AND",
-        "logicType" : "GROUP",
-        "name" : "连接条件组",
-        "getPSDELogicLinkConds" : [ {
-          "condOP" : "NOTEQ",
-          "getDstLogicParam" : {
-            "modelref" : true,
-            "id" : "check_key_ret"
-          },
-          "logicType" : "SINGLE",
-          "name" : "ret 不等于(<>) 0",
-          "paramValue" : "0"
-        } ]
-      },
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION2"
-      }
-    } ],
-    "getRetPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "check_key_ret"
-    },
-    "topPos" : 370
+    "returnType" : "LOGICPARAM",
+    "topPos" : 414
   }, {
     "codeName" : "PREPAREPARAM4",
     "leftPos" : 810,
@@ -433,16 +312,53 @@
     } ],
     "topPos" : 430
   }, {
-    "codeName" : "END1",
-    "leftPos" : 450,
-    "logicNodeType" : "END",
-    "name" : "结束",
-    "getReturnParam" : {
+    "codeName" : "DEACTION2",
+    "getDstPSDEAction" : {
       "modelref" : true,
-      "id" : "sq_data"
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review/PSDEACTIONS/CheckKey.json"
     },
-    "returnType" : "LOGICPARAM",
-    "topPos" : 440
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "temp_sq_obj"
+    },
+    "getDstPSDataEntity" : {
+      "modelref" : true,
+      "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/review.json"
+    },
+    "leftPos" : 1150,
+    "logicNodeType" : "DEACTION",
+    "name" : "判断业务数据是否存在",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "判断是否存在数据",
+      "getPSDELogicLinkGroupCond" : {
+        "groupOP" : "AND",
+        "logicType" : "GROUP",
+        "name" : "连接条件组",
+        "getPSDELogicLinkConds" : [ {
+          "condOP" : "NOTEQ",
+          "getDstLogicParam" : {
+            "modelref" : true,
+            "id" : "check_key_ret"
+          },
+          "logicType" : "SINGLE",
+          "name" : "ret 不等于(<>) 0",
+          "paramValue" : "0"
+        } ]
+      },
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION2"
+      }
+    } ],
+    "getRetPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "check_key_ret"
+    },
+    "topPos" : 470
   }, {
     "codeName" : "DEDATASET2",
     "getDstPSDEDataSet" : {

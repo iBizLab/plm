@@ -4100,12 +4100,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1022,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
       "code" : "const report_id = uiLogic.ctrl.model.id;\r\nconst prefix = \"uxbireport__\";\r\nconst remainingId = report_id.replace(prefix, '');\r\nconst newRemainingId = remainingId.replace(/__(?!__)/, '.');\r\n\r\nconst result = await ibiz.util.biReport.openDesignPage(context, params, { mode: 'DATA', reportId: newRemainingId });\r\nreturn result;\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 581,
@@ -4129,7 +4123,7 @@
       "codeName" : "RAWJSCODE2",
       "leftPos" : 816,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "门户刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -4143,13 +4137,18 @@
         }
       } ],
       "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1022,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "ctrl",
-      "logicName" : "门户部件",
-      "name" : "门户部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -4157,10 +4156,11 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "当前视图",
-      "name" : "当前视图",
-      "activeViewParam" : true
+      "codeName" : "ctrl",
+      "logicName" : "门户部件",
+      "name" : "门户部件",
+      "activeCtrlParam" : true,
+      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

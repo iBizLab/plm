@@ -31,36 +31,6 @@
     "defaultMode" : false,
     "enableBackend" : true,
     "enablePagingBar" : false
-  }, {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
   } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
@@ -3453,6 +3423,7 @@
     "codeName" : "fill_bi_form_default",
     "defaultParamName" : "DEFAULT",
     "logicName" : "填充BI报表默认值",
+    "memo" : "填充BI报表默认值",
     "name" : "填充BI报表默认值",
     "scriptCode" : "if(!data){\n    data = {};\n}\nObject.keys(viewParam).forEach((key) =>{\n    data[key] = viewParam[key];\n})\nreturn data;",
     "customCode" : true,
@@ -8368,74 +8339,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "calc_column_action_state",
-    "defaultParamName" : "Default",
-    "logicName" : "计算表格列行为状态",
-    "memo" : "用于动态控制归档和激活行为的禁用状态",
-    "name" : "计算表格列行为状态",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "code" : "setTimeout(() => {\r\n\tconst rows = uiLogic.grid.state.rows;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.title;\r\n\t\t\tconst is_archived = row.data.is_archived;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n\t\t\t\t\t// 归档\r\n\t\t\t\t\tif (action.uiActionId === 'archive@ticket') {\r\n\t\t\t\t\t\taction.disabled = is_archived !== 0;\r\n\t\t\t\t\t} else if (action.uiActionId === 'activate@ticket') {\r\n\t\t\t\t\t\t// 激活\r\n\t\t\t\t\t\taction.disabled = is_archived === 0;\r\n\t\t\t\t\t} \r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n}, 1000);",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 420
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Grid",
-      "logicName" : "表格",
-      "name" : "表格",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "create_and_relation",
     "defaultParamName" : "Default",
     "logicName" : "新建工单并生成关联数据",
@@ -8972,192 +8875,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "create_relation",
-    "defaultParamName" : "Default",
-    "logicName" : "建立关联数据",
-    "memo" : "新建执行后，建立关联数据",
-    "name" : "建立关联数据",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 350,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 150,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 350,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "getReturnParam" : {
-        "modelref" : true,
-        "id" : "relation"
-      },
-      "returnType" : "LOGICPARAM",
-      "topPos" : 659
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 310,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "填充关联主数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "principal_type",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "relation"
-        },
-        "name" : "ctx[principal_type] ==> relation[principal_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "principal_type",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "principal_id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "relation"
-        },
-        "name" : "ctx[principal_id] ==> relation[principal_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "principal_id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "target_id",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "relation"
-        },
-        "name" : "Default[id] ==> relation[target_id]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "target_type",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "relation"
-        },
-        "name" : "ctx[target_type] ==> relation[target_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "target_type",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 290
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "create"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/relation.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "relation"
-      },
-      "leftPos" : 310,
-      "logicNodeType" : "DEACTION",
-      "name" : "建立关联关系",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "relation"
-      },
-      "topPos" : 510
-    }, {
-      "code" : "let relationobj = uiLogic.relation;\r\nrelationobj.id = relationobj.principal_id + \"_\" + relationobj.target_id;",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 310,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "拼接关联对象的主键",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 410
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "relation",
-      "logicName" : "relation",
-      "name" : "relation",
-      "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "ctx",
-      "name" : "ctx",
-      "navContextParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "customer_add_change",
     "defaultParamName" : "Default",
     "logicName" : "客户添加工单值变更",
@@ -9420,6 +9137,31 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 1022,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "if (uiLogic.ctrl) {\r\nuiLogic.ctrl.refresh();\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 727,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "门户刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
+    }, {
       "code" : "const report_id = uiLogic.ctrl.model.id;\r\nconst prefix = \"uxbireport__\";\r\nconst remainingId = report_id.replace(prefix, '');\r\nconst newRemainingId = remainingId.replace(/__(?!__)/, '.');\r\n\r\nconst result = await ibiz.util.biReport.openDesignPage(context, params, { mode: 'DATA', reportId: newRemainingId });\r\nreturn result;\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 531,
@@ -9438,31 +9180,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "code" : "if (uiLogic.ctrl) {\r\nuiLogic.ctrl.refresh();\r\n}",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 727,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1022,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -9529,79 +9246,6 @@
       "codeName" : "ctrl",
       "logicName" : "门户部件",
       "name" : "门户部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "get_ticket_total",
-    "defaultParamName" : "Default",
-    "logicName" : "获取工单总条数",
-    "memo" : "获取工单的总条数信息",
-    "name" : "获取工单总条数",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 461
-    }, {
-      "code" : "const total = uiLogic.ctrl.state.total;\r\nuiLogic.view.layoutPanel.state.data.total = total;\r\nif(!total){\r\n    view.layoutPanel.panelItems.grid.state.visible = false\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 160,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置总条数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 350
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "VIEW",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "CTRL",
-      "logicName" : "当前部件对象",
-      "name" : "当前部件对象",
       "activeCtrlParam" : true,
       "ctrlParam" : true
     } ],
@@ -9905,83 +9549,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "readonly_hide",
-    "defaultParamName" : "Default",
-    "logicName" : "只读隐藏",
-    "memo" : "工作项只读隐藏",
-    "name" : "只读隐藏",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 660,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "\r\n    const toolbar_state = uiLogic.toolbar.state.buttonsState;\r\n    const srfreadonly = context.srfreadonly;\r\n    if (srfreadonly === \"true\") {\r\n        toolbar_state.visible = false;\r\n        console.log(\"进入\")\r\n    }\r\n    console.log(toolbar_state);\r\n\r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 409,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "toolbar",
-      "logicName" : "工具栏",
-      "name" : "工具栏",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "表单",
-      "name" : "表单",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "refresh_counter",
     "defaultParamName" : "Default",
     "logicName" : "触发计数器刷新",
@@ -10007,79 +9574,17 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 434,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "END1",
       "leftPos" : 756,
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 200
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "refresh_ticket_grid",
-    "defaultParamName" : "Default",
-    "logicName" : "刷新工单表格",
-    "memo" : "刷新工单表格",
-    "name" : "刷新工单表格",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 629,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'ticket', srfkey: context.ticket})",
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: context.principal_type})",
       "codeName" : "RAWJSCODE1",
-      "leftPos" : 376,
+      "leftPos" : 434,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "触发计数器刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -10625,25 +10130,6 @@
       "topPos" : 340,
       "parallelOutput" : true
     }, {
-      "code" : "uiLogic.form.details.tabpanel1.state.activeTab = 'tabpage1'",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 378,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 348
-    }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
         "getPSAppDataEntity" : {
@@ -10661,18 +10147,37 @@
       "logicNodeType" : "DEUIACTION",
       "name" : "添加附件",
       "topPos" : 348
+    }, {
+      "code" : "uiLogic.form.details.tabpanel1.state.activeTab = 'tabpage1'",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 378,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "上传附件（工具栏）",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 348
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "form",
-      "logicName" : "表单",
-      "name" : "表单",
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "form",
+      "logicName" : "表单",
+      "name" : "表单",
+      "ctrlParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "视图",

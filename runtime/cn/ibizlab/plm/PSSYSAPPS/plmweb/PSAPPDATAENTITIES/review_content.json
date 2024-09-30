@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
     "codeName" : "add_review_content",
@@ -3387,11 +3356,17 @@
       "topPos" : 260,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
+    }, {
       "code" : "const rows = uiLogic.grid.state.rows;\r\nif (rows && rows.length > 0) {\r\n\trows.forEach(row => {\r\n\t\tconst titleColumn = row.uiActionGroupStates.target_title;\r\n\t\tconst review_state = row.data.review_data.state;\r\n\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\tObject.values(titleColumn).forEach(action => {\r\n\t\t\t\tif (action.uiActionId === 'remove_case@review_content') {\r\n\t\t\t\t\taction.visible = review_state == '10';\r\n\t\t\t\t}\r\n                if(action.uiActionId === 'remove_case@review_content' && context.srfreadonly ==true){\r\n                    action.visible = false;\r\n                }\r\n\t\t\t})\r\n\t\t}\r\n\t})\r\n}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "计算表格列行为状态",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -3405,12 +3380,6 @@
         }
       } ],
       "topPos" : 420
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -3433,6 +3402,7 @@
     "codeName" : "commit_review",
     "defaultParamName" : "Default",
     "logicName" : "提交评审",
+    "memo" : "提交评审",
     "name" : "提交评审",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -3492,6 +3462,25 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
+    }, {
+      "code" : "const choose_data = uiLogic.parent_form.details.choosed_content;\r\nchoose_data.setDataValue(null);\r\nuiLogic.parent_form.details.grouppanel6.state.keepAlive=true;\r\nuiLogic.parent_form.details.grouppanel6.state.visible=true;\r\nuiLogic.parent_form.details.review_results.state.visible=false;",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 30,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 458
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -3592,30 +3581,11 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 458
-    }, {
-      "code" : "const choose_data = uiLogic.parent_form.details.choosed_content;\r\nchoose_data.setDataValue(null);\r\nuiLogic.parent_form.details.grouppanel6.state.keepAlive=true;\r\nuiLogic.parent_form.details.grouppanel6.state.visible=true;\r\nuiLogic.parent_form.details.review_results.state.visible=false;",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 30,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 458
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "parent_view",
-      "logicName" : "父视图",
-      "name" : "父视图",
+      "codeName" : "parent_form",
+      "logicName" : "父表单",
+      "name" : "父表单",
       "entityParam" : true
     }, {
       "codeName" : "ctx",
@@ -3623,20 +3593,20 @@
       "name" : "上下文",
       "navContextParam" : true
     }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
     }, {
-      "codeName" : "parent_form",
-      "logicName" : "父表单",
-      "name" : "父表单",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
+      "codeName" : "parent_view",
+      "logicName" : "父视图",
+      "name" : "父视图",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -3647,6 +3617,7 @@
     "codeName" : "complete_cur_stage_review",
     "defaultParamName" : "Default",
     "logicName" : "完成当前阶段评审",
+    "memo" : "完成当前阶段评审",
     "name" : "完成当前阶段评审",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -3668,11 +3639,24 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1340,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
+      "code" : "const choose_data = uiLogic.parent_form.details.choosed_content;\r\nchoose_data.setDataValue(null);\r\n// uiLogic.parent_form.details.grouppanel6.state.keepAlive=true;\r\nuiLogic.parent_form.details.grouppanel6.state.visible=true;\r\n// uiLogic.parent_form.details.review_results.state.keepAlive=true;\r\nuiLogic.parent_form.details.review_results.state.visible=false;\r\n",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 521,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "默认显示阶段列表，隐藏评审结果",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        }
+      } ],
+      "topPos" : 208
     }, {
       "code" : "const need_refresh = uiLogic.parent_form.details.need_refresh;\r\nneed_refresh.setDataValue(true);",
       "codeName" : "RAWJSCODE2",
@@ -3689,6 +3673,83 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "uiLogic.parent_form.details.druipart2.embedView.call('Refresh')",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 860,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通过call刷新",
+      "topPos" : 470
+    }, {
+      "buttonsType" : "OKCANCEL",
+      "codeName" : "MSGBOX1",
+      "leftPos" : 317,
+      "logicNodeType" : "MSGBOX",
+      "message" : "请确认当前阶段所有评审已完成，完成评审后无法再对评审数据进行修改",
+      "msgBoxType" : "WARNING",
+      "name" : "消息弹窗",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'review', srfkey: context.review})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 1124,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "complete_review"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : 714,
+      "logicNodeType" : "DEACTION",
+      "name" : "完成评审",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
         }
       } ],
       "topPos" : 208
@@ -3752,118 +3813,23 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'review', srfkey: context.review})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 1124,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "uiLogic.parent_form.details.druipart2.embedView.call('Refresh')",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 860,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通过call刷新",
-      "topPos" : 470
-    }, {
-      "buttonsType" : "OKCANCEL",
-      "codeName" : "MSGBOX1",
-      "leftPos" : 317,
-      "logicNodeType" : "MSGBOX",
-      "message" : "请确认当前阶段所有评审已完成，完成评审后无法再对评审数据进行修改",
-      "msgBoxType" : "WARNING",
-      "name" : "消息弹窗",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE4"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "MSGBOX1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "const choose_data = uiLogic.parent_form.details.choosed_content;\r\nchoose_data.setDataValue(null);\r\n// uiLogic.parent_form.details.grouppanel6.state.keepAlive=true;\r\nuiLogic.parent_form.details.grouppanel6.state.visible=true;\r\n// uiLogic.parent_form.details.review_results.state.keepAlive=true;\r\nuiLogic.parent_form.details.review_results.state.visible=false;\r\n",
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : 521,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "默认显示阶段列表，隐藏评审结果",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE4"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "complete_review"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 714,
-      "logicNodeType" : "DEACTION",
-      "name" : "完成评审",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 208
+      "codeName" : "END1",
+      "leftPos" : 1340,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "parent_view",
       "logicName" : "父页面",
       "name" : "父页面",
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "当前视图",
-      "name" : "当前视图",
-      "activeViewParam" : true
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     }, {
       "codeName" : "parent_form",
       "logicName" : "父表单",
@@ -3874,6 +3840,11 @@
       "logicName" : "表格",
       "name" : "表格",
       "ctrlParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
     }, {
       "codeName" : "ctx",
       "logicName" : "上下文",
@@ -4022,6 +3993,7 @@
     "codeName" : "open_result",
     "defaultParamName" : "Default",
     "logicName" : "打开评审结果",
+    "memo" : "打开评审结果",
     "name" : "打开评审结果",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -4096,19 +4068,19 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "parent_form",
-      "logicName" : "父表单",
-      "name" : "父表单",
+      "codeName" : "choosed_content",
+      "logicName" : "选择的内容",
+      "name" : "选择的内容",
       "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
     }, {
       "codeName" : "parent_view",
       "logicName" : "父视图",
       "name" : "父视图",
+      "entityParam" : true
+    }, {
+      "codeName" : "parent_form",
+      "logicName" : "父表单",
+      "name" : "父表单",
       "entityParam" : true
     }, {
       "codeName" : "Default",
@@ -4122,10 +4094,10 @@
       "name" : "当前视图对象",
       "activeViewParam" : true
     }, {
-      "codeName" : "choosed_content",
-      "logicName" : "选择的内容",
-      "name" : "选择的内容",
-      "entityParam" : true
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -4135,6 +4107,7 @@
     "codeName" : "review_content_version_comparison",
     "defaultParamName" : "Default",
     "logicName" : "评审内容版本比对",
+    "memo" : "评审内容版本比对",
     "name" : "评审内容版本比对",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -4184,24 +4157,36 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "DEBUGPARAM1",
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+        },
+        "modelref" : true,
+        "id" : "review_content_version_comparison@version"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
+      },
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
-        "id" : "Default"
+        "id" : "review_content"
       },
-      "leftPos" : 347,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
+      "leftPos" : 936,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
+          "id" : "PREPAREJSPARAM2"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "DEUIACTION1"
         }
       } ],
       "topPos" : 208
@@ -4251,36 +4236,30 @@
       } ],
       "topPos" : 210
     }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-        },
-        "modelref" : true,
-        "id" : "review_content_version_comparison@version"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/version.json"
-      },
+      "codeName" : "END1",
+      "leftPos" : 1425,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "DEBUGPARAM1",
       "getDstPSDEUILogicParam" : {
         "modelref" : true,
-        "id" : "review_content"
+        "id" : "Default"
       },
-      "leftPos" : 936,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
+      "leftPos" : 347,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "PREPAREJSPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEUIACTION1"
+          "id" : "DEBUGPARAM1"
         }
       } ],
       "topPos" : 208
@@ -4303,111 +4282,23 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1425,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
+    }, {
       "codeName" : "review_content",
       "logicName" : "评审内容",
       "name" : "评审内容",
       "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "save_review_result",
-    "defaultParamName" : "Default",
-    "logicName" : "保存评审结果",
-    "name" : "保存评审结果",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "modelref" : true,
-        "id" : "Save"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/review_content.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 546,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1000,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -4417,6 +4308,7 @@
     "codeName" : "start_cur_stage_review",
     "defaultParamName" : "Default",
     "logicName" : "开始当前阶段评审",
+    "memo" : "开始当前阶段评审",
     "name" : "开始当前阶段评审",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -4437,28 +4329,6 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
-    }, {
-      "buttonsType" : "OKCANCEL",
-      "codeName" : "MSGBOX1",
-      "leftPos" : 332,
-      "logicNodeType" : "MSGBOX",
-      "message" : "确定开始当前阶段的评审吗？",
-      "msgBoxType" : "QUESTION",
-      "name" : "消息弹窗",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "MSGBOX1"
-        }
-      } ],
-      "title" : "评审",
-      "topPos" : 208
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 31,
@@ -4519,24 +4389,11 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "const need_refresh = uiLogic.parent_form.details.need_refresh;\r\nneed_refresh.setDataValue(true);",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 703,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
+      "codeName" : "END1",
+      "leftPos" : 1120,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -4568,11 +4425,46 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1120,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
+      "code" : "const need_refresh = uiLogic.parent_form.details.need_refresh;\r\nneed_refresh.setDataValue(true);",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 703,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "buttonsType" : "OKCANCEL",
+      "codeName" : "MSGBOX1",
+      "leftPos" : 332,
+      "logicNodeType" : "MSGBOX",
+      "message" : "确定开始当前阶段的评审吗？",
+      "msgBoxType" : "QUESTION",
+      "name" : "消息弹窗",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "MSGBOX1"
+        }
+      } ],
+      "title" : "评审",
+      "topPos" : 208
     }, {
       "code" : "ibiz.mc.command.update.send({ srfdecodename: 'review', srfkey: context.review})",
       "codeName" : "RAWJSCODE1",
@@ -4594,20 +4486,15 @@
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "parent_view",
-      "logicName" : "父视图",
-      "name" : "父视图",
-      "entityParam" : true
-    }, {
       "codeName" : "parent_form",
       "logicName" : "父表单",
       "name" : "父表单",
       "entityParam" : true
     }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
+      "codeName" : "grid",
+      "logicName" : "表格",
+      "name" : "表格",
+      "ctrlParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -4620,10 +4507,15 @@
       "name" : "当前视图",
       "activeViewParam" : true
     }, {
-      "codeName" : "grid",
-      "logicName" : "表格",
-      "name" : "表格",
-      "ctrlParam" : true
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
+    }, {
+      "codeName" : "parent_view",
+      "logicName" : "父视图",
+      "name" : "父视图",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

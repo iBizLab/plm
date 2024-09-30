@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
@@ -1214,6 +1183,7 @@
     "codeName" : "nothing",
     "defaultParamName" : "Default",
     "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
     "name" : "无操作",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -2953,67 +2923,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "refresh",
-    "defaultParamName" : "Default",
-    "logicName" : "通知刷新",
-    "name" : "通知刷新",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 90,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 681,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'insight_report', srfkey: context.insight_report})",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 421,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "remove_section_or_category",
     "defaultParamName" : "Default",
     "logicName" : "删除类别或分组",
@@ -3227,6 +3136,7 @@
     "codeName" : "use_cur_template",
     "defaultParamName" : "Default",
     "logicName" : "使用此模板",
+    "memo" : "使用此模板",
     "name" : "使用此模板",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -3247,22 +3157,6 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1072,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 394
-    }, {
-      "buttonsType" : "OKCANCEL",
-      "codeName" : "MSGBOX1",
-      "leftPos" : 58,
-      "logicNodeType" : "MSGBOX",
-      "message" : "请选择模板",
-      "msgBoxType" : "INFO",
-      "name" : "消息弹窗",
-      "title" : "提示",
-      "topPos" : 400
     }, {
       "code" : "ibiz.mc.command.create.send({ srfdecodename: 'insight_report'})",
       "codeName" : "RAWJSCODE3",
@@ -3305,43 +3199,11 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "view.state.isLoading = false;\r\nview.closeView();",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 840,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "关闭当前视图",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.ctx.dynadashboard = uiLogic.selecteddata[0].dynadashboardid;\r\n    uiLogic.dyna_dashboard_info = uiLogic.selecteddata[0];\r\n    uiLogic.dyna_dashboard_info.insight_view_id = uiLogic.ctx.insight_view_id;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 324,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置上下文",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
+      "codeName" : "END1",
+      "leftPos" : 1072,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 394
     }, {
       "code" : "const controllersMap = view.ctx.controllersMap;\r\nconst card_view = controllersMap.get(\"insight_reportcustom_card_view\");\r\nconst selectdata = card_view.layoutPanel.panelItems.dataview.control.state.selectedData;\r\nuiLogic.selecteddata = selectdata;\r\nconsole.log(selectdata);\r\n",
       "codeName" : "RAWJSCODE4",
@@ -3399,6 +3261,54 @@
       } ],
       "topPos" : 208
     }, {
+      "code" : "view.state.isLoading = false;\r\nview.closeView();",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 840,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "关闭当前视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.ctx.dynadashboard = uiLogic.selecteddata[0].dynadashboardid;\r\n    uiLogic.dyna_dashboard_info = uiLogic.selecteddata[0];\r\n    uiLogic.dyna_dashboard_info.insight_view_id = uiLogic.ctx.insight_view_id;\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 324,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置上下文",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "buttonsType" : "OKCANCEL",
+      "codeName" : "MSGBOX1",
+      "leftPos" : 58,
+      "logicNodeType" : "MSGBOX",
+      "message" : "请选择模板",
+      "msgBoxType" : "INFO",
+      "name" : "消息弹窗",
+      "title" : "提示",
+      "topPos" : 400
+    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -3439,10 +3349,15 @@
       "name" : "看板数据",
       "entityParam" : true
     }, {
-      "codeName" : "new_report",
-      "logicName" : "新建报表",
-      "name" : "新建报表",
-      "entityParam" : true
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -3450,20 +3365,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "selecteddata",
       "logicName" : "选中数据",
       "name" : "选中数据",
       "entityListParam" : true
     }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
+      "codeName" : "new_report",
+      "logicName" : "新建报表",
+      "name" : "新建报表",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

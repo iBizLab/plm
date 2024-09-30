@@ -982,6 +982,18 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem0716627632.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem0927087811.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem0927466471.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem0927710885.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDRITEMS/UsrDRItem0927918696.json"
   } ],
   "getAllPSDEDataImports" : [ {
     "batchSize" : 1000,
@@ -1010,10 +1022,6 @@
       "caption" : "状态",
       "name" : "STATE",
       "orderValue" : 110,
-      "getPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
-      },
       "getPSDEField" : {
         "name" : "STATE",
         "codeName" : "state"
@@ -2633,6 +2641,9 @@
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDATARELATIONS/Default_relation.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDATARELATIONS/mob_idea_relation_dr.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEDATARELATIONS/recover_tab_exp_view_DR.json"
   }, {
     "modelref" : true,
@@ -3517,10 +3528,6 @@
       "logicName" : "状态",
       "name" : "STATE",
       "orderValue" : 160,
-      "getPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
-      },
       "getPSDEField" : {
         "name" : "STATE",
         "codeName" : "state"
@@ -4117,10 +4124,6 @@
       "logicName" : "状态",
       "name" : "STATE",
       "orderValue" : 460,
-      "getPSCodeList" : {
-        "modelref" : true,
-        "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
-      },
       "getPSDEField" : {
         "name" : "STATE",
         "codeName" : "state"
@@ -4697,10 +4700,6 @@
     "getOnChangePSDEFLogic" : {
       "modelref" : true,
       "path" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDEFLOGICS/state_onchange.json"
-    },
-    "getPSCodeList" : {
-      "modelref" : true,
-      "path" : "PSMODULES/ProdMgmt/PSCODELISTS/idea_state.json"
     },
     "getPSDEDBTable" : {
       "modelref" : true,
@@ -12002,6 +12001,7 @@
     "defaultParamName" : "DEFAULT",
     "dynaModelFilePath" : "PSMODULES/ProdMgmt/PSDATAENTITIES/idea/PSDELOGICS/fill_bi_form_default.json",
     "logicName" : "填充BI报表默认值",
+    "memo" : "填充BI报表默认值",
     "name" : "填充BI报表默认值",
     "scriptCode" : "if(!data){\n    data = {};\n}\nObject.keys(viewParam).forEach((key) =>{\n    data[key] = viewParam[key];\n})\nreturn data;",
     "customCode" : true,
@@ -14857,7 +14857,7 @@
           "id" : "RENEWPARAM1"
         }
       } ],
-      "topPos" : 210
+      "topPos" : 220
     }, {
       "codeName" : "RENEWPARAM2",
       "getDstPSDELogicParam" : {
@@ -15064,10 +15064,10 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 397
+      "topPos" : 447
     }, {
       "codeName" : "PREPAREPARAM2",
-      "leftPos" : 1070,
+      "leftPos" : 1190,
       "logicNodeType" : "PREPAREPARAM",
       "name" : "填充正反向关系参数",
       "getPSDELogicLinks" : [ {
@@ -15110,7 +15110,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 490
+      "topPos" : 550
     }, {
       "codeName" : "END1",
       "leftPos" : 460,
@@ -15145,7 +15145,7 @@
           "id" : "DEACTION1"
         }
       } ],
-      "topPos" : 583
+      "topPos" : 713
     }, {
       "codeName" : "DEACTION2",
       "getDstPSDEAction" : {
@@ -15163,7 +15163,7 @@
       "leftPos" : 766,
       "logicNodeType" : "DEACTION",
       "name" : "生成反向关联数据",
-      "topPos" : 672
+      "topPos" : 832
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -15233,7 +15233,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM2"
+          "id" : "PREPAREPARAM1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -15242,27 +15242,6 @@
         }
       } ],
       "topPos" : -40
-    }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 149,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 36
     }, {
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 160,
@@ -15357,7 +15336,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 119
+      "topPos" : 89
     }, {
       "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null && forward_relation_obj.get(\"principal_type\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\") + '_' + forward_relation_obj.get(\"principal_type\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null && reverse_relation_obj.get(\"principal_type\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\") + '_' + reverse_relation_obj.get(\"principal_type\"));\r\n}",
       "codeName" : "RAWSFCODE1",
@@ -15368,7 +15347,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "DEACTION2"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -15376,28 +15355,7 @@
           "id" : "RAWSFCODE1"
         }
       } ],
-      "topPos" : 230
-    }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "forward_relation_obj"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 315
+      "topPos" : 220
     }, {
       "codeName" : "DEACTION2",
       "getDstPSDEAction" : {
@@ -18943,6 +18901,12 @@
     "realModelSubType" : "DEGRIDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_mpick_up_view",
+    "logicName" : "其他实体关联需求选择视图（移动端）",
+    "name" : "其他实体关联需求选择视图（移动端）",
+    "realModelSubType" : "DEMOBMPICKUPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "config_tab_exp_view",
     "logicName" : "需求配置分页导航视图",
     "name" : "需求配置分页导航视图",
@@ -18973,10 +18937,22 @@
     "realModelSubType" : "DEOPTVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_edit_view",
+    "logicName" : "需求移动端编辑视图",
+    "name" : "需求移动端编辑视图",
+    "realModelSubType" : "DEMOBEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "update_view",
     "logicName" : "需求修改视图",
     "name" : "需求修改视图",
     "realModelSubType" : "DEEDITVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_mpick_up_view_PickupMDView",
+    "logicName" : "需求移动端多项选择视图_选择数据视图",
+    "name" : "需求移动端多项选择视图_选择数据视图",
+    "realModelSubType" : "DEMOBPICKUPMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "advanced_search_grid_view",
@@ -19002,6 +18978,12 @@
     "logicName" : "需求排期视图",
     "name" : "需求排期视图",
     "realModelSubType" : "DEOPTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_idea_md_view",
+    "logicName" : "需求移动端多数据视图",
+    "name" : "需求移动端多数据视图",
+    "realModelSubType" : "DEMOBMDVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "tree_exp_view",
@@ -19119,6 +19101,13 @@
     "logicName" : "主编辑表单",
     "modelTag2" : "0",
     "name" : "主编辑表单",
+    "realModelSubType" : "EDITFORM",
+    "realModelType" : "PSDEFORM"
+  }, {
+    "codeName" : "mob_edit_view_Form",
+    "logicName" : "移动端需求编辑视图_表单",
+    "modelTag2" : "1",
+    "name" : "移动端需求编辑视图_表单",
     "realModelSubType" : "EDITFORM",
     "realModelType" : "PSDEFORM"
   }, {

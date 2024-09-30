@@ -22,17 +22,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_state;
             then
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "work_itemchange_statedebugparam1"
-            when
-            then
-                        update(work_itemchange_statedefault);//更新fact中变量值
-                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定选择数据对象]
             rule "bindparam1"
             ruleflow-group "work_itemchange_statebindparam1"
             when
@@ -42,11 +32,22 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_state;
                         update(work_itemchange_statesrfactionparam);//更新fact中变量值
             end
 
-            //逻辑处理节点[执行脚本代码]
+            //逻辑处理节点[设置工作项类型id]
             rule "rawsfcode1"
             ruleflow-group "work_itemchange_staterawsfcode1"
             when
             then
+                        update(work_itemchange_statedefault);//更新fact中变量值
+                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置状态]
+            rule "prepareparam2"
+            ruleflow-group "work_itemchange_stateprepareparam2"
+            when
+            then
+                            work_itemchange_statedefault.set("state",work_itemchange_statefor_temp_obj.get("state"));
                         update(work_itemchange_statedefault);//更新fact中变量值
                         update(work_itemchange_statefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_statesrfactionparam);//更新fact中变量值
@@ -68,17 +69,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_state;
             ruleflow-group "work_itemchange_stateloopsubcall1"
             when
             then
-                        update(work_itemchange_statedefault);//更新fact中变量值
-                        update(work_itemchange_statefor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_statesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam2"
-            ruleflow-group "work_itemchange_stateprepareparam2"
-            when
-            then
-                            work_itemchange_statedefault.set("state",work_itemchange_statefor_temp_obj.get("state"));
                         update(work_itemchange_statedefault);//更新fact中变量值
                         update(work_itemchange_statefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_statesrfactionparam);//更新fact中变量值

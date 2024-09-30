@@ -30,14 +30,14 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="实体数据集"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyloopsubcall2" id="loopsubcall2" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="绑定评审结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="处理每一个内容"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取评审内容数据集"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置评审内容过滤器"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallydebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置拒绝"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="跳出"/>
@@ -45,18 +45,16 @@
                         <sequenceFlow id="end2_end_line" sourceRef="end2" targetRef="end2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="可以生成最终评审结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="不可生成最终评审结果"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentgenerate_review_result_finallyprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置最终结果"/>
                         <endEvent id="prepareparam4_end" name="end"/>
                         <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
                     <sequenceFlow id="begin_prepareparam7" sourceRef="begin" targetRef="prepareparam7">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam5_deaction1" sourceRef="prepareparam5" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam4_prepareparam1" sourceRef="debugparam4" targetRef="prepareparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="dedataset1_loopsubcall2" sourceRef="dedataset1" targetRef="loopsubcall2">
-                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall2_debugparam4" sourceRef="loopsubcall2" targetRef="debugparam4">
+                    </sequenceFlow>
+                    <sequenceFlow id="debugparam4_prepareparam1" sourceRef="debugparam4" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_loopsubcall1" sourceRef="prepareparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
@@ -108,6 +106,8 @@
                             </conditionExpression>
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_end1" sourceRef="deaction1" targetRef="end1">
+                    </sequenceFlow>
+                    <sequenceFlow id="dedataset1_loopsubcall2" sourceRef="dedataset1" targetRef="loopsubcall2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam7_dedataset1" sourceRef="prepareparam7" targetRef="dedataset1">
                     </sequenceFlow>

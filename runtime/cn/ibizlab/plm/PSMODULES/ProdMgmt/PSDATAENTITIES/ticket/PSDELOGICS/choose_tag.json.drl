@@ -22,22 +22,11 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.choose_tag;
             then
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定选中标签]
             rule "bindparam1"
             ruleflow-group "ticketchoose_tagbindparam1"
             when
             then
-                        update(ticketchoose_tagdefault);//更新fact中变量值
-                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
-                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[变更工单标签信息]
-            rule "deaction1"
-            ruleflow-group "ticketchoose_tagdeaction1"
-            when
-            then
-                        ticketservice.update(ticketchoose_tagdefault);
                         update(ticketchoose_tagdefault);//更新fact中变量值
                         update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
                         update(ticketchoose_tagsrfactionparam);//更新fact中变量值
@@ -59,6 +48,17 @@ package cn.ibizlab.plm.prodmgmt.logic.ticketlogic.choose_tag;
             when
             then
                             ticketchoose_tagdefault.set("tags",ticketchoose_tagfor_temp_obj.get("tags"));
+                        update(ticketchoose_tagdefault);//更新fact中变量值
+                        update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
+                        update(ticketchoose_tagsrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[变更工单标签信息]
+            rule "deaction1"
+            ruleflow-group "ticketchoose_tagdeaction1"
+            when
+            then
+                        ticketservice.update(ticketchoose_tagdefault);
                         update(ticketchoose_tagdefault);//更新fact中变量值
                         update(ticketchoose_tagfor_temp_obj);//更新fact中变量值
                         update(ticketchoose_tagsrfactionparam);//更新fact中变量值

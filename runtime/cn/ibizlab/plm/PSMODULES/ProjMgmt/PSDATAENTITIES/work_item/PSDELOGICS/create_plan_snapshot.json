@@ -91,6 +91,34 @@
     } ],
     "topPos" : 150
   }, {
+    "codeName" : "PREPAREPARAM6",
+    "leftPos" : 306,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置快照状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM6"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "STATUS",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "baseline"
+      },
+      "name" : "直接值[3] ==> baseline[STATUS]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "3",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 150
+  }, {
     "codeName" : "DEACTION3",
     "getDstPSDEAction" : {
       "modelref" : true,
@@ -166,60 +194,6 @@
     } ],
     "topPos" : 342
   }, {
-    "codeName" : "LOOPSUBCALL1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "for_temp_obj"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "LOOPSUBCALL",
-    "name" : "循环子调用",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RESETPARAM2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "LOOPSUBCALL1"
-      },
-      "subCallLink" : true
-    } ],
-    "getSrcPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "page"
-    },
-    "topPos" : 568
-  }, {
-    "codeName" : "PREPAREPARAM6",
-    "leftPos" : 306,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置快照状态",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM6"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "STATUS",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "baseline"
-      },
-      "name" : "直接值[3] ==> baseline[STATUS]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "3",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : 150
-  }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
       "modelref" : true,
@@ -252,6 +226,32 @@
       "id" : "page"
     },
     "topPos" : 441
+  }, {
+    "codeName" : "LOOPSUBCALL1",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "for_temp_obj"
+    },
+    "leftPos" : 160,
+    "logicNodeType" : "LOOPSUBCALL",
+    "name" : "循环子调用",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RESETPARAM2"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "LOOPSUBCALL1"
+      },
+      "subCallLink" : true
+    } ],
+    "getSrcPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "page"
+    },
+    "topPos" : 568
   }, {
     "codeName" : "PREPAREPARAM3",
     "leftPos" : 876,
@@ -412,7 +412,7 @@
     },
     "leftPos" : 876,
     "logicNodeType" : "RESETPARAM",
-    "name" : "重置参数",
+    "name" : "重置版本参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,

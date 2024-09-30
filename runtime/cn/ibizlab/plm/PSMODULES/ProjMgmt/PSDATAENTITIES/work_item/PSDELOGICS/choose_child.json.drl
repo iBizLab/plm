@@ -24,7 +24,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
             then
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[设置父工作项id]
             rule "prepareparam2"
             ruleflow-group "work_itemchoose_childprepareparam2"
             when
@@ -50,7 +50,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
                         update(work_itemchoose_childupdate_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定子工作项]
             rule "bindparam1"
             ruleflow-group "work_itemchoose_childbindparam1"
             when
@@ -74,9 +74,21 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
                         update(work_itemchoose_childupdate_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[重新建立参数]
+            //逻辑处理节点[重新建立更新对象]
             rule "renewparam1"
             ruleflow-group "work_itemchoose_childrenewparam1"
+            when
+            then
+                        update(work_itemchoose_childdefault);//更新fact中变量值
+                        update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
+                        update(work_itemchoose_childparent_work_item);//更新fact中变量值
+                        update(work_itemchoose_childsrfactionparam);//更新fact中变量值
+                        update(work_itemchoose_childupdate_obj);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置子工作项标识]
+            rule "rawsfcode1"
+            ruleflow-group "work_itemchoose_childrawsfcode1"
             when
             then
                         update(work_itemchoose_childdefault);//更新fact中变量值
@@ -92,7 +104,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.choose_child;
             when
             then
                             work_itemchoose_childupdate_obj.set("pid",work_itemchoose_childparent_work_item.get("id"));
-                            work_itemchoose_childupdate_obj.set("id",work_itemchoose_childfor_temp_obj.get("owner_id"));
                         update(work_itemchoose_childdefault);//更新fact中变量值
                         update(work_itemchoose_childfor_temp_obj);//更新fact中变量值
                         update(work_itemchoose_childparent_work_item);//更新fact中变量值

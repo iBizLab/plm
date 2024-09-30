@@ -6386,11 +6386,17 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
+    }, {
       "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst titleColumn = row.uiActionGroupStates.name;\r\n\t\t\tconst is_favorite = row.data.is_favorite;\r\n\t\t\tif (titleColumn && Object.values(titleColumn).length > 0) {\r\n\t\t\t\tObject.values(titleColumn).forEach(action => {\r\n\t\t\t\t\t// 收藏\r\n\t\t\t\t\tif (action.uiActionId === 'add_favorite@space') {\r\n\t\t\t\t\t\taction.visible = is_favorite == 0;\r\n\t\t\t\t\t} else if (action.uiActionId === 'cancel_favorite@space') {\r\n\t\t\t\t\t\t// 取消收藏\r\n\t\t\t\t\t\taction.visible = is_favorite != 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "计算表格列行为状态",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -6404,25 +6410,19 @@
         }
       } ],
       "topPos" : 420
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "Grid",
       "logicName" : "表格",
       "name" : "表格",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

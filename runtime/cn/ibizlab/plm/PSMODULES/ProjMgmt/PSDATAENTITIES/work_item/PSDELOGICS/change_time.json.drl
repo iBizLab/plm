@@ -22,11 +22,23 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_time;
             then
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定工作项参数]
             rule "bindparam1"
             ruleflow-group "work_itemchange_timebindparam1"
             when
             then
+                        update(work_itemchange_timedefault);//更新fact中变量值
+                        update(work_itemchange_timefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_timesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置时间参数]
+            rule "prepareparam2"
+            ruleflow-group "work_itemchange_timeprepareparam2"
+            when
+            then
+                            work_itemchange_timedefault.set("endat",work_itemchange_timefor_temp_obj.get("endat"));
+                            work_itemchange_timedefault.set("startat",work_itemchange_timefor_temp_obj.get("startat"));
                         update(work_itemchange_timedefault);//更新fact中变量值
                         update(work_itemchange_timefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_timesrfactionparam);//更新fact中变量值
@@ -48,18 +60,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_time;
             ruleflow-group "work_itemchange_timeloopsubcall1"
             when
             then
-                        update(work_itemchange_timedefault);//更新fact中变量值
-                        update(work_itemchange_timefor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_timesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[设置时间参数]
-            rule "prepareparam2"
-            ruleflow-group "work_itemchange_timeprepareparam2"
-            when
-            then
-                            work_itemchange_timedefault.set("endat",work_itemchange_timefor_temp_obj.get("endat"));
-                            work_itemchange_timedefault.set("startat",work_itemchange_timefor_temp_obj.get("startat"));
                         update(work_itemchange_timedefault);//更新fact中变量值
                         update(work_itemchange_timefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_timesrfactionparam);//更新fact中变量值

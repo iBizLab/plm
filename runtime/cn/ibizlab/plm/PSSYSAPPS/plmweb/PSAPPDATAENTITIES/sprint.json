@@ -3943,12 +3943,14 @@
       "glyph" : "xf014@FontAwesome",
       "cssClass" : "fa fa-trash-o"
     },
+    "refreshMode" : 1,
     "successMsg" : "删除成功",
     "timeout" : 60000,
     "uIActionMode" : "BACKEND",
     "uIActionTag" : "remove",
     "uIActionType" : "DEUIACTION",
     "enableConfirm" : true,
+    "reloadData" : true,
     "id" : "remove@sprint"
   }, {
     "actionTarget" : "SINGLEKEY",
@@ -4646,6 +4648,31 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 1022,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "code" : "if (uiLogic.ctrl) {\r\nuiLogic.ctrl.refresh();\r\n}",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 800,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "门户刷新",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
+    }, {
       "code" : "const report_id = uiLogic.ctrl.model.id;\r\nconst prefix = \"uxbireport__\";\r\nconst remainingId = report_id.replace(prefix, '');\r\nconst newRemainingId = remainingId.replace(/__(?!__)/, '.');\r\n\r\nconst result = await ibiz.util.biReport.openDesignPage(context, params, { mode: 'DATA', reportId: newRemainingId });\r\nreturn result;\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 581,
@@ -4664,31 +4691,6 @@
         }
       } ],
       "topPos" : 208
-    }, {
-      "code" : "if (uiLogic.ctrl) {\r\nuiLogic.ctrl.refresh();\r\n}",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 800,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1022,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "ctrl",

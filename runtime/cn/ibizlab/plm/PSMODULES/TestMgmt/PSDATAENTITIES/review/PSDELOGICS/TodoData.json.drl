@@ -29,11 +29,13 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.tododata;
             then
             end
 
-            //逻辑处理节点[传入参数]
-            rule "debugparam3"
-            ruleflow-group "reviewtododatadebugparam3"
+            //逻辑处理节点[设置过滤器参数]
+            rule "prepareparam5"
+            ruleflow-group "reviewtododataprepareparam5"
             when
             then
+                                reviewtododatadefault.set("searchconds",null);
+                            reviewtododatadefault.set("n_biztype_eq","review");
                         update(reviewtododatadefault);//更新fact中变量值
                         update(reviewtododataall_sq_data_page);//更新fact中变量值
                         update(reviewtododatacheck_key_ret);//更新fact中变量值
@@ -48,22 +50,6 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.tododata;
             //逻辑处理节点[查询待办数据]
             rule "dedataset1"
             ruleflow-group "reviewtododatadedataset1"
-            when
-            then
-                        update(reviewtododatadefault);//更新fact中变量值
-                        update(reviewtododataall_sq_data_page);//更新fact中变量值
-                        update(reviewtododatacheck_key_ret);//更新fact中变量值
-                        update(reviewtododatasq_data);//更新fact中变量值
-                        update(reviewtododatasq_data_page);//更新fact中变量值
-                        update(reviewtododatasq_todo_data);//更新fact中变量值
-                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
-                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
-                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
-            end
-
-            //逻辑处理节点[查询结果]
-            rule "debugparam4"
-            ruleflow-group "reviewtododatadebugparam4"
             when
             then
                         update(reviewtododatadefault);//更新fact中变量值
@@ -93,43 +79,9 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.tododata;
                         update(reviewtododatatemp_todo_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
-            rule "prepareparam5"
-            ruleflow-group "reviewtododataprepareparam5"
-            when
-            then
-                                reviewtododatadefault.set("searchconds",null);
-                            reviewtododatadefault.set("n_biztype_eq","review");
-                        update(reviewtododatadefault);//更新fact中变量值
-                        update(reviewtododataall_sq_data_page);//更新fact中变量值
-                        update(reviewtododatacheck_key_ret);//更新fact中变量值
-                        update(reviewtododatasq_data);//更新fact中变量值
-                        update(reviewtododatasq_data_page);//更新fact中变量值
-                        update(reviewtododatasq_todo_data);//更新fact中变量值
-                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
-                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
-                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
-            end
-
-            //逻辑处理节点[重新建立参数]
+            //逻辑处理节点[重新建立临时待办对象]
             rule "renewparam1"
             ruleflow-group "reviewtododatarenewparam1"
-            when
-            then
-                        update(reviewtododatadefault);//更新fact中变量值
-                        update(reviewtododataall_sq_data_page);//更新fact中变量值
-                        update(reviewtododatacheck_key_ret);//更新fact中变量值
-                        update(reviewtododatasq_data);//更新fact中变量值
-                        update(reviewtododatasq_data_page);//更新fact中变量值
-                        update(reviewtododatasq_todo_data);//更新fact中变量值
-                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
-                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
-                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
-            end
-
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam5"
-            ruleflow-group "reviewtododatadebugparam5"
             when
             then
                         update(reviewtododatadefault);//更新fact中变量值
@@ -176,28 +128,11 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.tododata;
                         update(reviewtododatatemp_todo_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam2"
-            ruleflow-group "reviewtododatadebugparam2"
+            //逻辑处理节点[结束]
+            rule "end1"
+            ruleflow-group "reviewtododataend1"
             when
             then
-                        update(reviewtododatadefault);//更新fact中变量值
-                        update(reviewtododataall_sq_data_page);//更新fact中变量值
-                        update(reviewtododatacheck_key_ret);//更新fact中变量值
-                        update(reviewtododatasq_data);//更新fact中变量值
-                        update(reviewtododatasq_data_page);//更新fact中变量值
-                        update(reviewtododatasq_todo_data);//更新fact中变量值
-                        update(reviewtododatatemp_sq_obj);//更新fact中变量值
-                        update(reviewtododatatemp_todo_filter);//更新fact中变量值
-                        update(reviewtododatatemp_todo_obj);//更新fact中变量值
-            end
-
-            //逻辑处理节点[判断业务数据是否存在]
-            rule "deaction2"
-            ruleflow-group "reviewtododatadeaction2"
-            when
-            then
-                        reviewservice.checkKey(reviewtododatatemp_sq_obj);
                         update(reviewtododatadefault);//更新fact中变量值
                         update(reviewtododataall_sq_data_page);//更新fact中变量值
                         update(reviewtododatacheck_key_ret);//更新fact中变量值
@@ -228,11 +163,12 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.tododata;
                         update(reviewtododatatemp_todo_obj);//更新fact中变量值
             end
 
-            //逻辑处理节点[结束]
-            rule "end1"
-            ruleflow-group "reviewtododataend1"
+            //逻辑处理节点[判断业务数据是否存在]
+            rule "deaction2"
+            ruleflow-group "reviewtododatadeaction2"
             when
             then
+                        reviewservice.checkKey(reviewtododatatemp_sq_obj);
                         update(reviewtododatadefault);//更新fact中变量值
                         update(reviewtododataall_sq_data_page);//更新fact中变量值
                         update(reviewtododatacheck_key_ret);//更新fact中变量值

@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
     "codeName" : "check_access_password",
@@ -7395,27 +7364,6 @@
     "id" : "after_create_page@article_page"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "基础信息",
-    "codeName" : "base_info",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_base_info_edit_view.json",
-      "viewType" : "DEEDITVIEW"
-    },
-    "frontProcessType" : "WIZARD",
-    "fullCodeName" : "article_page_base_info",
-    "name" : "基础信息",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "base_info",
-    "uIActionType" : "DEUIACTION",
-    "id" : "base_info@article_page"
-  }, {
-    "actionTarget" : "SINGLEKEY",
     "caption" : "取消收藏",
     "codeName" : "cancel_favorite",
     "fullCodeName" : "article_page_cancel_favorite",
@@ -9180,113 +9128,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "auto_save",
-    "defaultParamName" : "Default",
-    "logicName" : "自动保存",
-    "memo" : "自动保存页面",
-    "name" : "自动保存",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 350,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 330,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 518,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置silent值为true",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "值是否变更",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "state.modified",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "FORM"
-            },
-            "logicType" : "SINGLE",
-            "name" : "FROM[state.modified] 等于(=) true",
-            "paramValue" : "true",
-            "value" : "true"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "silent",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "param"
-        },
-        "name" : "直接值[true] ==> param[silent]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 338
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "FORM"
-      },
-      "invokeMethod" : "save",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "param"
-      },
-      "leftPos" : 828,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "静默保存",
-      "topPos" : 338
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "param",
-      "logicName" : "参数",
-      "name" : "参数",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "FORM",
-      "logicName" : "表单",
-      "name" : "表单",
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "change_tree_state",
     "defaultParamName" : "Default",
     "logicName" : "切换导航树显示状态",
@@ -9785,7 +9626,7 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "复制共享链接",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -10443,101 +10284,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "get_stencil_info",
-    "defaultParamName" : "Default",
-    "logicName" : "获取模板",
-    "memo" : "测试。新建时获取模板信息",
-    "name" : "获取模板",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 516,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "selectdata"
-        },
-        "name" : "form[details.mdctrl1.mdController.state.selectedData] ==> selectdata",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "details.mdctrl1.mdController.state.selectedData",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "form"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1140,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "form",
-      "name" : "form",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "ctx",
-      "name" : "ctx",
-      "navContextParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "selectdata",
-      "logicName" : "选中数据",
-      "name" : "选中数据",
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "page_refresh",
     "defaultParamName" : "Default",
     "logicName" : "恢复历史版本并通知刷新",
@@ -10687,112 +10433,6 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "refresh_current_grid",
-    "defaultParamName" : "Default",
-    "logicName" : "刷新当前表格",
-    "memo" : "刷新表格",
-    "name" : "刷新当前表格",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 580,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "刷新表格",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "grid"
-            },
-            "logicType" : "SINGLE",
-            "name" : "grid 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "刷新视图",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "grid"
-            },
-            "logicType" : "SINGLE",
-            "name" : "grid 值为空(Nil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 40,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 646,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 268
-    }, {
-      "code" : "view.call('Refresh');\r\nsetTimeout(() => {\r\n    if (view.layoutPanel.panelItems.nav_pos && view.layoutPanel.panelItems.nav_pos.curNavViewMsg) {\r\n        // 找到当前的右侧视图\r\n        const viewId = view.layoutPanel.panelItems.nav_pos.curNavViewMsg.viewId;\r\n        if (viewId) {\r\n            const key = viewId.split('.').pop();\r\n            const viewPos = view.getController(key);\r\n            if (viewPos) {\r\n                viewPos.call('Refresh');\r\n            }\r\n        }\r\n    }\r\n}, 300)",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 444,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "刷新视图",
-      "topPos" : 268
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前工具栏",
-      "name" : "当前工具栏",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "grid",
-      "logicName" : "当前表格",
-      "name" : "当前表格",
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "save_notify_refresh",
     "defaultParamName" : "Default",
     "logicName" : "新建发布并通知刷新",
@@ -10817,106 +10457,6 @@
       } ],
       "topPos" : 60,
       "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 160,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_info"
-        },
-        "name" : "Default ==> page_info",
-        "paramAction" : "COPYPARAM",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 150
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "modelref" : true,
-        "id" : "Exit"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "page_info"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "退出",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        }
-      } ],
-      "topPos" : 548
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 771
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 160,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "设置发布状态到当前视图",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "is_published",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "name" : "page_info[is_published] ==> view[is_published]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "is_published",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "page_info"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 420
     }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
@@ -10970,6 +10510,106 @@
         }
       } ],
       "topPos" : 680
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 771
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "页面信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "name" : "Default ==> page_info",
+        "paramAction" : "COPYPARAM",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 170
+    }, {
+      "codeName" : "DEUIACTION2",
+      "getDstPSAppDEUIAction" : {
+        "modelref" : true,
+        "id" : "Exit"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/article_page.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "page_info"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "退出",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        }
+      } ],
+      "topPos" : 548
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "设置发布状态到当前视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "is_published",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "view"
+        },
+        "name" : "page_info[is_published] ==> view[is_published]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "is_published",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "page_info"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 420
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "view",
@@ -10977,15 +10617,15 @@
       "name" : "当前视图",
       "activeViewParam" : true
     }, {
+      "codeName" : "page_info",
+      "logicName" : "页面信息",
+      "name" : "页面信息",
+      "entityParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "page_info",
-      "logicName" : "页面信息",
-      "name" : "页面信息",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -11307,197 +10947,6 @@
       "modelref" : true,
       "id" : "Begin"
     }
-  }, {
-    "codeName" : "show_stencil",
-    "defaultParamName" : "Default",
-    "logicName" : "显示模板",
-    "memo" : "通过按钮触发，显示或隐藏模板信息",
-    "name" : "显示模板",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 190,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM3",
-      "leftPos" : 854,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "隐藏",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "state"
-        },
-        "name" : "直接值[false] ==> state[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "false",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 314
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 537,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "获取状态",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "已隐藏",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "visible",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "state"
-            },
-            "logicType" : "SINGLE",
-            "name" : "state[visible] 等于(=) false",
-            "paramValue" : "false",
-            "value" : "false"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM3"
-        },
-        "linkMode" : 0,
-        "name" : "已显示",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "visible",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "state"
-            },
-            "logicType" : "SINGLE",
-            "name" : "state[visible] 等于(=) true",
-            "paramValue" : "true",
-            "value" : "true"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "state"
-        },
-        "name" : "form[details.tabpanel1.state] ==> state",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "details.tabpanel1.state",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "form"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1100,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 220
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 864,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "显示",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "state"
-        },
-        "name" : "直接值[true] ==> state[visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 140
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "state",
-      "logicName" : "分页容器状态",
-      "name" : "分页容器状态",
-      "entityParam" : true
-    }, {
-      "codeName" : "form",
-      "logicName" : "form",
-      "name" : "form",
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
   } ],
   "getAllPSAppViews" : [ {
     "modelref" : true,
@@ -11511,10 +10960,6 @@
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_baseline_mpick_up_grid_view.json",
     "viewType" : "DEPICKUPGRIDVIEW"
-  }, {
-    "modelref" : true,
-    "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_base_info_edit_view.json",
-    "viewType" : "DEEDITVIEW"
   }, {
     "modelref" : true,
     "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/article_page_show_update_log_view.json",

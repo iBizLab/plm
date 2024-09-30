@@ -52,6 +52,34 @@
     } ],
     "topPos" : 70
   }, {
+    "codeName" : "PREPAREPARAM2",
+    "leftPos" : 170,
+    "logicNodeType" : "PREPAREPARAM",
+    "name" : "设置页面删除状态",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM2"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "dstFieldName" : "IS_DELETED",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "直接值[1] ==> Default[IS_DELETED]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcValue" : "1",
+      "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : -40
+  }, {
     "codeName" : "RAWSQLCALL1",
     "leftPos" : 170,
     "logicNodeType" : "RAWSQLCALL",
@@ -110,7 +138,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 290
+    "topPos" : 310
   }, {
     "codeName" : "DEDATASET1",
     "getDstPSDEDataSet" : {
@@ -185,35 +213,7 @@
       "modelref" : true,
       "id" : "selected_page"
     },
-    "topPos" : 440
-  }, {
-    "codeName" : "PREPAREPARAM2",
-    "leftPos" : 170,
-    "logicNodeType" : "PREPAREPARAM",
-    "name" : "设置页面删除状态",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM2"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "IS_DELETED",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "name" : "直接值[1] ==> Default[IS_DELETED]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcValue" : "1",
-      "srcValueType" : "SRCVALUE"
-    } ],
-    "topPos" : -40
+    "topPos" : 450
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
@@ -249,7 +249,7 @@
       "modelref" : true,
       "id" : "selected_page"
     },
-    "topPos" : 440
+    "topPos" : 450
   }, {
     "codeName" : "DELOGIC1",
     "getDstPSDELogic" : {
@@ -264,10 +264,10 @@
       "modelref" : true,
       "path" : "PSMODULES/Wiki/PSDATAENTITIES/article_page.json"
     },
-    "leftPos" : 770,
+    "leftPos" : 780,
     "logicNodeType" : "DELOGIC",
     "name" : "递归调用删除页面",
-    "topPos" : 440
+    "topPos" : 450
   }, {
     "codeName" : "END1",
     "leftPos" : 210,

@@ -27,12 +27,29 @@ package cn.ibizlab.plm.base.logic.relationlogic.work_item_del_relation_test_case
             then
             end
 
+            //逻辑处理节点[调试逻辑参数]
+            rule "debugparam1"
+            ruleflow-group "relationwork_item_del_relation_test_casedebugparam1"
+            when
+            then
+                        update(relationwork_item_del_relation_test_casedefault);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_casebug_relation_run);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_caseforward_relation_obj);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_caserelation_for_temp_obj);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_casereverse_relation_obj);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_caserun_relation_bug);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_caserun_relation_filter);//更新fact中变量值
+                        update(relationwork_item_del_relation_test_caserun_relation_page);//更新fact中变量值
+            end
+
             //逻辑处理节点[填充关联对象的主要关联属性]
             rule "prepareparam1"
             ruleflow-group "relationwork_item_del_relation_test_caseprepareparam1"
             when
             then
                             relationwork_item_del_relation_test_caseforward_relation_obj.set("principalid",relationwork_item_del_relation_test_casedefault.get("principalid"));
+                            relationwork_item_del_relation_test_caseforward_relation_obj.set("principaltype",relationwork_item_del_relation_test_casedefault.get("principaltype"));
+                            relationwork_item_del_relation_test_casereverse_relation_obj.set("principaltype",relationwork_item_del_relation_test_casedefault.get("targettype"));
                             relationwork_item_del_relation_test_casereverse_relation_obj.set("targetid",relationwork_item_del_relation_test_casedefault.get("principalid"));
                             relationwork_item_del_relation_test_casereverse_relation_obj.set("principalid",relationwork_item_del_relation_test_casedefault.get("targetid"));
                             relationwork_item_del_relation_test_caseforward_relation_obj.set("targetid",relationwork_item_del_relation_test_casedefault.get("targetid"));
@@ -93,7 +110,7 @@ package cn.ibizlab.plm.base.logic.relationlogic.work_item_del_relation_test_case
                         update(relationwork_item_del_relation_test_caserun_relation_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备执行用例过滤参数]
             rule "prepareparam2"
             ruleflow-group "relationwork_item_del_relation_test_caseprepareparam2"
             when
@@ -140,7 +157,7 @@ package cn.ibizlab.plm.base.logic.relationlogic.work_item_del_relation_test_case
                         update(relationwork_item_del_relation_test_caserun_relation_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[重置参数]
+            //逻辑处理节点[重置执行用例关联缺陷参数]
             rule "resetparam1"
             ruleflow-group "relationwork_item_del_relation_test_caseresetparam1"
             when
@@ -155,7 +172,7 @@ package cn.ibizlab.plm.base.logic.relationlogic.work_item_del_relation_test_case
                         update(relationwork_item_del_relation_test_caserun_relation_page);//更新fact中变量值
             end
 
-            //逻辑处理节点[重置参数]
+            //逻辑处理节点[重置缺陷关联执行用例参数]
             rule "resetparam2"
             ruleflow-group "relationwork_item_del_relation_test_caseresetparam2"
             when

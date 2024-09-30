@@ -27,21 +27,17 @@
                             <tns:global identifier="reviewtododatatemp_todo_obj" type="cn.ibizlab.plm.core.ebsx.domain.SysTodo" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="传入参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="设置过滤器参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="查询待办数据"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadebugparam4" id="debugparam4" implementation="http://www.jboss.org/drools/rule" name="查询结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatarenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadebugparam5" id="debugparam5" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatarenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立临时待办对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatabindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="设置分页查询结果"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备查询参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="判断业务数据是否存在"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="拷贝查询参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="拷贝查询参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="判断业务数据是否存在"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadedataset2" id="dedataset2" implementation="http://www.jboss.org/drools/rule" name="查询全部待办数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododatadeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="查询申请对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewtododataend2" id="end2" implementation="http://www.jboss.org/drools/rule" name="结束"/>
@@ -54,9 +50,9 @@
                         <sequenceFlow id="appendparam1_end_line" sourceRef="appendparam1" targetRef="appendparam1_end"/>
                     <sequenceFlow id="begin_prepareparam5" sourceRef="begin" targetRef="prepareparam5">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam3_dedataset1" sourceRef="debugparam3" targetRef="dedataset1">
+                    <sequenceFlow id="prepareparam5_dedataset1" sourceRef="prepareparam5" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-dedataset1_debugparam2" sourceRef="gateway-dedataset1" targetRef="debugparam2">
+                    <sequenceFlow id="gateway-dedataset1_end1" sourceRef="gateway-dedataset1" targetRef="end1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewtododatadefault:review();
                                             $reviewtododataall_sq_data_page:SysTodo();
@@ -72,7 +68,7 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="gateway-dedataset1_debugparam4" sourceRef="gateway-dedataset1" targetRef="debugparam4">
+                    <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
                                             $reviewtododatadefault:review();
                                             $reviewtododataall_sq_data_page:SysTodo();
@@ -88,23 +84,17 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam4_loopsubcall1" sourceRef="debugparam4" targetRef="loopsubcall1">
-                    </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_bindparam1" sourceRef="loopsubcall1" targetRef="bindparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam5_debugparam3" sourceRef="prepareparam5" targetRef="debugparam3">
-                    </sequenceFlow>
-                    <sequenceFlow id="renewparam1_debugparam5" sourceRef="renewparam1" targetRef="debugparam5">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam5_prepareparam1" sourceRef="debugparam5" targetRef="prepareparam1">
+                    <sequenceFlow id="renewparam1_prepareparam1" sourceRef="renewparam1" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_prepareparam4" sourceRef="bindparam1" targetRef="prepareparam4">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction2" sourceRef="prepareparam1" targetRef="deaction2">
                     </sequenceFlow>
-                    <sequenceFlow id="debugparam2_end1" sourceRef="debugparam2" targetRef="end1">
+                    <sequenceFlow id="prepareparam4_dedataset2" sourceRef="prepareparam4" targetRef="dedataset2">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction2_deaction1" sourceRef="gateway-deaction2" targetRef="deaction1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -121,8 +111,6 @@
                                 eval((RuleUtils.test($reviewtododatacheck_key_ret.get(""),"NOTEQ","0")))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam4_dedataset2" sourceRef="prepareparam4" targetRef="dedataset2">
                     </sequenceFlow>
                     <sequenceFlow id="dedataset2_prepareparam3" sourceRef="dedataset2" targetRef="prepareparam3">
                     </sequenceFlow>

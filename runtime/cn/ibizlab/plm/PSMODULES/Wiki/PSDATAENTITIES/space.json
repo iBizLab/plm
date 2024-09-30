@@ -1047,6 +1047,18 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem0704803056.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem0919221022.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem0919522635.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem0919544439.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDRITEMS/UsrDRItem0919780154.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -2364,6 +2376,9 @@
   "getAllPSDEDataRelations" : [ {
     "modelref" : true,
     "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDATARELATIONS/Default.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDATARELATIONS/mob_tab_exp_view_DR.json"
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDEDATARELATIONS/setting_view_dr.json"
@@ -5397,7 +5412,7 @@
       },
       "leftPos" : 900,
       "logicNodeType" : "RESETPARAM",
-      "name" : "重置参数",
+      "name" : "重置空间成员参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -5762,7 +5777,7 @@
       },
       "leftPos" : 360,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定用户列表参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -7965,7 +7980,7 @@
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 520,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "准备关联参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -8397,6 +8412,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Wiki/PSDATAENTITIES/space/PSDELOGICS/recognize_cur_user_role.json",
     "logicName" : "判断当前用户角色",
+    "memo" : "判断当前用户角色",
     "name" : "判断当前用户角色",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -8416,6 +8432,48 @@
       } ],
       "topPos" : -80,
       "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM2",
+      "leftPos" : 220,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "获取项目ID并设置过滤参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET3"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "N_PROJECT_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "Default[project] ==> project_filter[N_PROJECT_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "project",
+        "getSrcPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "N_USER_ID_EQ",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "project_filter"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> project_filter[N_USER_ID_EQ]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
+      } ],
+      "topPos" : -190
     }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : 220,
@@ -8534,6 +8592,34 @@
       },
       "topPos" : 51
     }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : -35,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "返回系统管理员权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "user_role",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[sys_admin] ==> Default[user_role]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "sys_admin",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 126
+    }, {
       "codeName" : "END2",
       "leftPos" : 5,
       "logicNodeType" : "END",
@@ -8544,48 +8630,6 @@
       },
       "returnType" : "LOGICPARAM",
       "topPos" : 244
-    }, {
-      "codeName" : "PREPAREPARAM2",
-      "leftPos" : 220,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "获取项目ID并设置过滤参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEDATASET3"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "N_PROJECT_ID_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "project_filter"
-        },
-        "name" : "Default[project] ==> project_filter[N_PROJECT_ID_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "project",
-        "getSrcPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "N_USER_ID_EQ",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "project_filter"
-        },
-        "name" : "用户全局对象[srfpersonid] ==> project_filter[N_USER_ID_EQ]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "srfpersonid",
-        "srcValueType" : "SESSION"
-      } ],
-      "topPos" : -190
     }, {
       "codeName" : "DEDATASET3",
       "getDstPSDEDataSet" : {
@@ -8665,7 +8709,7 @@
       "codeName" : "PREPAREPARAM4",
       "leftPos" : -381,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "只读参数设置为空",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -8771,174 +8815,6 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : -416
-    }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
-      "codeName" : "RAWSFCODE1",
-      "leftPos" : 766,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "只读权限",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : -190
-    }, {
-      "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
-      "codeName" : "RAWSFCODE3",
-      "codeType" : "Groovy",
-      "leftPos" : -35,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "判断系统管理员身份",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM2"
-        },
-        "name" : "非系统管理员(项目)",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "srfreadonly",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[srfreadonly] 值为空(Nil)"
-          }, {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "project",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[project] 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE3"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        },
-        "name" : "系统管理员",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "srfreadonly",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[srfreadonly] 等于(=) false",
-            "paramValue" : "false"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE3"
-        }
-      }, {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM6"
-        },
-        "name" : "非系统管理员（产品）",
-        "getPSDELogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "name" : "连接条件组",
-          "getPSDELogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "product",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[product] 值不为空(NotNil)"
-          }, {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "srfreadonly",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[srfreadonly] 值为空(Nil)"
-          } ]
-        },
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE3"
-        }
-      } ],
-      "topPos" : -72
-    }, {
-      "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
-      "codeName" : "RAWSFCODE4",
-      "codeType" : "JavaScript",
-      "leftPos" : 766,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "只读权限",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE4"
-        }
-      } ],
-      "topPos" : 51
-    }, {
-      "codeName" : "PREPAREPARAM3",
-      "leftPos" : -35,
-      "logicNodeType" : "PREPAREPARAM",
-      "name" : "返回系统管理员权限",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "END2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM3"
-        }
-      } ],
-      "getPSDELogicNodeParams" : [ {
-        "dstFieldName" : "user_role",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "直接值[sys_admin] ==> Default[user_role]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "sys_admin",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 126
     }, {
       "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"user\");",
       "codeName" : "RAWSFCODE6",
@@ -9077,6 +8953,24 @@
       } ],
       "topPos" : 432
     }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\n\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
+      "codeName" : "RAWSFCODE1",
+      "leftPos" : 766,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : -190
+    }, {
       "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", false);\r\ndefaultObj.set(\"user_role\", \"admin\");",
       "codeName" : "RAWSFCODE2",
       "codeType" : "JavaScript",
@@ -9125,6 +9019,128 @@
       },
       "returnType" : "LOGICPARAM",
       "topPos" : -60
+    }, {
+      "code" : "def _usercontext = sys.user();\r\ndef srfreadonly = _usercontext.testSysUniRes(\"SYSTEM\");\r\ndef _default = logic.param(\"default\").real;\r\nif(srfreadonly == true){\r\n    _default.set(\"srfreadonly\",false);\r\n}",
+      "codeName" : "RAWSFCODE3",
+      "codeType" : "Groovy",
+      "leftPos" : -35,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "判断系统管理员身份",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM2"
+        },
+        "name" : "非系统管理员(项目)",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 值为空(Nil)"
+          }, {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "project",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[project] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "系统管理员",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "EQ",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 等于(=) false",
+            "paramValue" : "false"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "非系统管理员（产品）",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "product",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[product] 值不为空(NotNil)"
+          }, {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "srfreadonly",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[srfreadonly] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE3"
+        }
+      } ],
+      "topPos" : -72
+    }, {
+      "code" : "var defaultObj = logic.getParam(\"default\");\r\ndefaultObj.set(\"srfreadonly\", true);\r\ndefaultObj.set(\"user_role\", \"reader\");",
+      "codeName" : "RAWSFCODE4",
+      "codeType" : "JavaScript",
+      "leftPos" : 766,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "只读权限",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE4"
+        }
+      } ],
+      "topPos" : 51
     } ],
     "getPSDELogicParams" : [ {
       "codeName" : "Default",
@@ -10279,6 +10295,18 @@
     "logicName" : "空间表格视图（个人空间）",
     "name" : "空间表格视图（个人空间）",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_list_view",
+    "logicName" : "空间移动端列表视图",
+    "name" : "空间移动端列表视图",
+    "realModelSubType" : "DEMOBLISTVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_tab_exp_view",
+    "logicName" : "空间移动端分页导航视图",
+    "name" : "空间移动端分页导航视图",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "all_grid_view",

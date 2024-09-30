@@ -27,7 +27,7 @@
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置父工作项iD",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -96,7 +96,7 @@
     },
     "leftPos" : 160,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "绑定子工作项",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -148,11 +148,11 @@
     },
     "leftPos" : 412,
     "logicNodeType" : "RENEWPARAM",
-    "name" : "重新建立参数",
+    "name" : "重新建立更新对象",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "PREPAREPARAM1"
+        "id" : "RAWSFCODE1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -162,8 +162,27 @@
     } ],
     "topPos" : 540
   }, {
+    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef update_obj = logic.param('update_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    update_obj.set('id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    update_obj.set('id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 605,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "设置子工作项标识",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "PREPAREPARAM1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 540
+  }, {
     "codeName" : "PREPAREPARAM1",
-    "leftPos" : 590,
+    "leftPos" : 780,
     "logicNodeType" : "PREPAREPARAM",
     "name" : "填充需要更新的父工作项标识",
     "getPSDELogicLinks" : [ {
@@ -191,20 +210,6 @@
         "id" : "parent_work_item"
       },
       "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "update_obj"
-      },
-      "name" : "for_temp_obj[owner_id] ==> update_obj[ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
     } ],
     "topPos" : 540
   }, {
@@ -221,7 +226,7 @@
       "modelref" : true,
       "path" : "PSMODULES/ProjMgmt/PSDATAENTITIES/work_item.json"
     },
-    "leftPos" : 778,
+    "leftPos" : 1088,
     "logicNodeType" : "DEACTION",
     "name" : "更新子工作项的父标识",
     "topPos" : 540

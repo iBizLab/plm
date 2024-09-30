@@ -31,7 +31,7 @@
     },
     "leftPos" : 160,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "绑定选中数据对象",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -53,7 +53,7 @@
     "codeName" : "PREPAREPARAM3",
     "leftPos" : 160,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置用例id",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -80,7 +80,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 407
+    "topPos" : 427
   }, {
     "codeName" : "LOOPSUBCALL1",
     "getDstPSDELogicParam" : {
@@ -144,7 +144,7 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 660,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置执行状态",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -170,6 +170,26 @@
         "id" : "for_temp_obj"
       },
       "srcValueType" : "SRCDLPARAM"
+    }, {
+      "dstFieldName" : "EXECUTOR_ID",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "用户全局对象[srfpersonid] ==> Default[EXECUTOR_ID]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonid",
+      "srcValueType" : "SESSION"
+    }, {
+      "dstFieldName" : "EXECUTOR_NAME",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "name" : "用户全局对象[srfpersonname] ==> Default[EXECUTOR_NAME]",
+      "paramAction" : "SETPARAMVALUE",
+      "srcFieldName" : "srfpersonname",
+      "srcValueType" : "SESSION"
     } ],
     "topPos" : 541
   }, {
@@ -205,7 +225,7 @@
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 880,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置执行结果",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -253,7 +273,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 640
+    "topPos" : 680
   }, {
     "codeName" : "DEACTION3",
     "getDstPSDEAction" : {

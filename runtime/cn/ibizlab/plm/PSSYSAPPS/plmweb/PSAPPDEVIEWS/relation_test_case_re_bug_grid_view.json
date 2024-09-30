@@ -502,17 +502,6 @@
       }
     } ],
     "getPSAppViewRefs" : [ {
-      "name" : "NEWDATA",
-      "realTitle" : "工作项关联编辑视图",
-      "getRealTitlePSLanguageRes" : {
-        "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
-      },
-      "getRefPSAppView" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
-        "viewType" : "DEEDITVIEW"
-      }
-    }, {
       "name" : "EDITDATA",
       "openMode" : "POPUPMODAL",
       "getPSNavigateContexts" : [ {
@@ -547,6 +536,17 @@
       "getRefPSAppView" : {
         "modelref" : true,
         "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/work_item_dyna_main_view.json",
+        "viewType" : "DEEDITVIEW"
+      }
+    }, {
+      "name" : "NEWDATA",
+      "realTitle" : "工作项关联编辑视图",
+      "getRealTitlePSLanguageRes" : {
+        "lanResTag" : "PAGE.TITLE.RELATION.EDITVIEW"
+      },
+      "getRefPSAppView" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/relation_edit_view.json",
         "viewType" : "DEEDITVIEW"
       }
     } ],
@@ -747,6 +747,9 @@
       "getPSControlParam" : {
         "autoLoad" : true,
         "showBusyIndicator" : true,
+        "ctrlParams" : {
+          "LOCATERECORDKEY" : "target_id"
+        },
         "id" : "GRID"
       },
       "getPSDEGridColumns" : [ {
@@ -885,7 +888,7 @@
               "refreshMode" : 1,
               "successMsg" : "取消关联成功",
               "timeout" : 60000,
-              "tooltip" : "取消关联",
+              "tooltip" : "取消关联测试用例",
               "uIActionMode" : "BACKEND",
               "uIActionTag" : "test_case_del_relation_bug",
               "uIActionType" : "DEUIACTION",
@@ -894,7 +897,7 @@
               "reloadData" : true,
               "id" : "test_case_del_relation_bug@relation"
             },
-            "tooltip" : "取消关联",
+            "tooltip" : "取消关联测试用例",
             "addSeparator" : false,
             "showCaption" : true,
             "showIcon" : true

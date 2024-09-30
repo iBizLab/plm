@@ -21,12 +21,11 @@
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="获取规则ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createddeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="根据ID获取规则"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createddebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置阶段数据"/>
                         <endEvent id="prepareparam2_end" name="end"/>
                         <sequenceFlow id="prepareparam2_end_line" sourceRef="prepareparam2" targetRef="prepareparam2_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置默认关注人"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="准备评审参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createddeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="保存评审数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_guideline_after_createdend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
@@ -35,9 +34,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_deaction1" sourceRef="prepareparam3" targetRef="deaction1">
                     </sequenceFlow>
-                    <sequenceFlow id="deaction1_debugparam2" sourceRef="deaction1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_prepareparam2" sourceRef="debugparam2" targetRef="prepareparam2">
+                    <sequenceFlow id="deaction1_prepareparam2" sourceRef="deaction1" targetRef="prepareparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam4_prepareparam5" sourceRef="prepareparam4" targetRef="prepareparam5">
                     </sequenceFlow>

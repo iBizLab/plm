@@ -5,6 +5,20 @@
   "columnEnableLink" : 2,
   "controlStyle" : "NUMBER_GRID",
   "controlType" : "GRID",
+  "getCreatePSControlAction" : {
+    "actionName" : "Create",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "create",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "create"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+    }
+  },
   "dynaModelFilePath" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer/PSGRIDS/main.json",
   "getFetchPSControlAction" : {
     "modelref" : true,
@@ -13,7 +27,35 @@
     "name" : "fetch",
     "getPSAppDEMethod" : {
       "modelref" : true,
-      "id" : "fetch_default"
+      "id" : "fetch_normal"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+    }
+  },
+  "getGetDraftPSControlAction" : {
+    "actionName" : "GetDraft",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "CREATE",
+    "name" : "loaddraft",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get_draft"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+    }
+  },
+  "getGetPSControlAction" : {
+    "actionName" : "Get",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "READ",
+    "name" : "load",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "get"
     },
     "getPSAppDataEntity" : {
       "modelref" : true,
@@ -27,7 +69,7 @@
     "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
   },
   "getPSControls" : [ {
-    "codeName" : "pick_up_grid_view_grid_batchtoolbar",
+    "codeName" : "all_grid_view_grid_batchtoolbar",
     "controlType" : "TOOLBAR",
     "logicName" : "客户批操作工具栏",
     "name" : "grid_batchtoolbar",
@@ -100,6 +142,67 @@
         "id" : "add_categories@customer"
       },
       "tooltip" : "设置类别",
+      "uIActionTarget" : "MULTIKEY",
+      "showCaption" : true,
+      "showIcon" : true
+    }, {
+      "getCapPSLanguageRes" : {
+        "lanResTag" : "TBB.TEXT.*.REMOVE"
+      },
+      "caption" : "删除",
+      "groupExtractMode" : "ITEM",
+      "itemType" : "DEUIACTION",
+      "name" : "deuiaction2",
+      "noPrivDisplayMode" : 1,
+      "getPSAppViewUIAction" : {
+        "modelref" : true,
+        "id" : "grid_batchtoolbar_deuiaction2"
+      },
+      "getPSControlLogics" : [ {
+        "itemName" : "deuiaction2",
+        "logicTag" : "grid_batchtoolbar",
+        "logicType" : "SCRIPT",
+        "name" : "deuiaction2",
+        "scriptCode" : "context.srfreadonly != true",
+        "triggerType" : "ITEMENABLE"
+      } ],
+      "getPSSysImage" : {
+        "glyph" : "xf014@FontAwesome",
+        "cssClass" : "fa fa-trash-o"
+      },
+      "getPSUIAction" : {
+        "actionTarget" : "MULTIKEY",
+        "noPrivDisplayMode" : 1,
+        "getCapPSLanguageRes" : {
+          "lanResTag" : "TBB.TEXT.*.REMOVE"
+        },
+        "caption" : "删除",
+        "codeName" : "Remove",
+        "dataAccessAction" : "DELETE",
+        "fullCodeName" : "Remove",
+        "name" : "表格界面_删除操作",
+        "getPSDEOPPriv" : {
+          "modelref" : true,
+          "id" : "DELETE"
+        },
+        "getPSSysImage" : {
+          "glyph" : "xf014@FontAwesome",
+          "cssClass" : "fa fa-trash-o"
+        },
+        "predefinedType" : "GRIDVIEW_REMOVEACTION",
+        "timeout" : 60000,
+        "tooltip" : "删除",
+        "getTooltipPSLanguageRes" : {
+          "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+        },
+        "uIActionMode" : "SYS",
+        "uIActionTag" : "Remove",
+        "uIActionType" : "DEUIACTION"
+      },
+      "tooltip" : "删除",
+      "getTooltipPSLanguageRes" : {
+        "lanResTag" : "TBB.TOOLTIP.*.REMOVE"
+      },
       "uIActionTarget" : "MULTIKEY",
       "showCaption" : true,
       "showIcon" : true
@@ -708,6 +811,7 @@
       },
       "editorStyle" : "PERSONEL_SELECT_PRODUCT",
       "editorType" : "PICKEREX_TRIGGER",
+      "handlerType" : "PickupText",
       "name" : "assignee_name",
       "getPSAppDEACMode" : {
         "modelref" : true,
@@ -843,14 +947,29 @@
     }
   },
   "sortMode" : "REMOTE",
+  "getUpdatePSControlAction" : {
+    "actionName" : "Update",
+    "actionType" : "DEACTION",
+    "dataAccessAction" : "UPDATE",
+    "name" : "update",
+    "getPSAppDEMethod" : {
+      "modelref" : true,
+      "id" : "update"
+    },
+    "getPSAppDataEntity" : {
+      "modelref" : true,
+      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/customer.json"
+    }
+  },
   "hasWFDataItems" : false,
   "enableColFilter" : false,
   "enableCustomized" : true,
   "enableGroup" : false,
+  "enableItemPrivilege" : true,
   "enablePagingBar" : true,
-  "enableRowEdit" : false,
+  "enableRowEdit" : true,
   "enableRowEditOrder" : false,
-  "enableRowNew" : false,
+  "enableRowNew" : true,
   "forceFit" : false,
   "hideHeader" : false,
   "noSort" : false,

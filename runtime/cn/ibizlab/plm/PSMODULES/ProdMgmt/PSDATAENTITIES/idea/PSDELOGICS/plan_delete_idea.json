@@ -13,7 +13,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM2"
+        "id" : "PREPAREPARAM1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -22,27 +22,6 @@
       }
     } ],
     "topPos" : -40
-  }, {
-    "codeName" : "DEBUGPARAM2",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 149,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "PREPAREPARAM1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM2"
-      }
-    } ],
-    "topPos" : 36
   }, {
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 160,
@@ -137,7 +116,7 @@
       },
       "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 119
+    "topPos" : 89
   }, {
     "code" : "// 获取正向关联对象的主键\r\nvar forward_relation_obj = logic.getParam(\"forward_relation_obj\");\r\nif(forward_relation_obj.get(\"principal_id\") != null && forward_relation_obj.get(\"target_id\") != null && forward_relation_obj.get(\"principal_type\") != null){\r\n    forward_relation_obj.set(\"id\", forward_relation_obj.get(\"principal_id\") + \"_\" + forward_relation_obj.get(\"target_id\") + '_' + forward_relation_obj.get(\"principal_type\"));\r\n}\r\n// 获取反向关联对象的主键\r\nvar reverse_relation_obj = logic.getParam(\"reverse_relation_obj\");\r\nif(reverse_relation_obj.get(\"principal_id\") != null && reverse_relation_obj.get(\"target_id\") != null && reverse_relation_obj.get(\"principal_type\") != null){\r\n    reverse_relation_obj.set(\"id\", reverse_relation_obj.get(\"principal_id\") + \"_\" + reverse_relation_obj.get(\"target_id\") + '_' + reverse_relation_obj.get(\"principal_type\"));\r\n}",
     "codeName" : "RAWSFCODE1",
@@ -148,7 +127,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEBUGPARAM1"
+        "id" : "DEACTION2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -156,28 +135,7 @@
         "id" : "RAWSFCODE1"
       }
     } ],
-    "topPos" : 230
-  }, {
-    "codeName" : "DEBUGPARAM1",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "forward_relation_obj"
-    },
-    "leftPos" : 160,
-    "logicNodeType" : "DEBUGPARAM",
-    "name" : "调试逻辑参数",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEACTION2"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "DEBUGPARAM1"
-      }
-    } ],
-    "topPos" : 315
+    "topPos" : 220
   }, {
     "codeName" : "DEACTION2",
     "getDstPSDEAction" : {

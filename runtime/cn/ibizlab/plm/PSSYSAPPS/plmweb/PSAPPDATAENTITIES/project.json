@@ -2928,6 +2928,7 @@
     "codeName" : "fill_bi_form_default",
     "defaultParamName" : "DEFAULT",
     "logicName" : "填充BI报表默认值",
+    "memo" : "填充BI报表默认值",
     "name" : "填充BI报表默认值",
     "scriptCode" : "if(!data){\n    data = {};\n}\nObject.keys(viewParam).forEach((key) =>{\n    data[key] = viewParam[key];\n})\nreturn data;",
     "customCode" : true,
@@ -7623,69 +7624,6 @@
     "id" : "open_project_main_view@project"
   }, {
     "actionTarget" : "SINGLEKEY",
-    "caption" : "打开项目主视图（kanban）",
-    "codeName" : "open_project_main_view_kanban",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_kanban_main_view.json",
-      "viewType" : "DETABEXPVIEW"
-    },
-    "frontProcessType" : "TOP",
-    "fullCodeName" : "project_open_project_main_view_kanban",
-    "name" : "打开项目主视图（kanban）",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_project_main_view_kanban",
-    "uIActionType" : "DEUIACTION",
-    "id" : "open_project_main_view_kanban@project"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开项目主视图（scrum）",
-    "codeName" : "open_project_main_view_scrum",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_scrum_main_view.json",
-      "viewType" : "DETABEXPVIEW"
-    },
-    "frontProcessType" : "TOP",
-    "fullCodeName" : "project_open_project_main_view_scrum",
-    "name" : "打开项目主视图（scrum）",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_project_main_view_scrum",
-    "uIActionType" : "DEUIACTION",
-    "id" : "open_project_main_view_scrum@project"
-  }, {
-    "actionTarget" : "SINGLEKEY",
-    "caption" : "打开项目主视图（waterfall）",
-    "codeName" : "open_project_main_view_waterfall",
-    "getFrontPSAppView" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDEVIEWS/project_waterfall_main_view.json",
-      "viewType" : "DETABEXPVIEW"
-    },
-    "frontProcessType" : "TOP",
-    "fullCodeName" : "project_open_project_main_view_waterfall",
-    "name" : "打开项目主视图（waterfall）",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "open_project_main_view_waterfall",
-    "uIActionType" : "DEUIACTION",
-    "id" : "open_project_main_view_waterfall@project"
-  }, {
-    "actionTarget" : "SINGLEKEY",
     "caption" : "项目成员",
     "codeName" : "open_project_member",
     "frontProcessType" : "OTHER",
@@ -7870,7 +7808,7 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "计算表格列行为状态",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -8080,7 +8018,7 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 383,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "通知刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -8106,184 +8044,6 @@
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "open_project_main_view",
-    "defaultParamName" : "Default",
-    "logicName" : "根据类型跳转项目主视图",
-    "memo" : "判断类型跳转不同的项目主视图",
-    "name" : "根据类型跳转项目主视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 570,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "敏捷项目",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "type",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[type] 等于(=) scrum",
-            "paramValue" : "scrum",
-            "value" : "scrum"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION2"
-        },
-        "linkMode" : 0,
-        "name" : "看板项目",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "type",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[type] 等于(=) kanban",
-            "paramValue" : "kanban",
-            "value" : "kanban"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION3"
-        },
-        "linkMode" : 0,
-        "name" : "瀑布项目",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "type",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[type] 等于(=) waterfall",
-            "paramValue" : "waterfall",
-            "value" : "waterfall"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 20,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-        },
-        "modelref" : true,
-        "id" : "open_project_main_view_scrum@project"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 300,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开SCRUM主视图",
-      "topPos" : 330
-    }, {
-      "codeName" : "DEUIACTION3",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-        },
-        "modelref" : true,
-        "id" : "open_project_main_view_waterfall@project"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 734,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开waterfall主视图",
-      "topPos" : 330
-    }, {
-      "codeName" : "DEUIACTION2",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-        },
-        "modelref" : true,
-        "id" : "open_project_main_view_kanban@project"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 530,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开kanban视图",
-      "topPos" : 330
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "getobj",
-      "logicName" : "getobj",
-      "name" : "getobj",
       "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
@@ -8335,131 +8095,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "project_relation_space",
-    "defaultParamName" : "Default",
-    "logicName" : "项目关联空间",
-    "memo" : "调用后台关联逻辑，项目关联空间并生成正反关联数据",
-    "name" : "项目关联空间",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 969,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 354,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "target_type",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "ctx[target_type] ==> Default[target_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "target_type",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "principal_type",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "name" : "ctx[principal_type] ==> Default[principal_type]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "principal_type",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "other_re_space"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 629,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建关联数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文参数",
-      "name" : "上下文参数",
-      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -9009,45 +8644,6 @@
         },
         "modelref" : true,
         "id" : "bi_report_view@project"
-      }
-    } ]
-  }, {
-    "codeName" : "Usr0801776924",
-    "name" : "过滤器门户行为组",
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/project.json"
-    },
-    "uniqueTag" : "project__Usr0801776924",
-    "getPSUIActionGroupDetails" : [ {
-      "caption" : "编辑",
-      "detailType" : "DEUIACTION",
-      "name" : "uc7a0de1",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-        },
-        "modelref" : true,
-        "id" : "edit_filter@insight_view"
-      }
-    }, {
-      "caption" : "显示生效报表",
-      "detailType" : "DEUIACTION",
-      "name" : "uc4544a3",
-      "addSeparator" : false,
-      "showCaption" : true,
-      "showIcon" : true,
-      "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-        },
-        "modelref" : true,
-        "id" : "hight_light_filter@insight_view"
       }
     } ]
   }, {

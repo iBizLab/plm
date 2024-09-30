@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
@@ -1891,17 +1860,11 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 484
-    }, {
       "code" : "\tconst rows = uiLogic.grid.state.rows;\r\n    console.log(rows);\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst is_system = row.data.is_system;\r\n\t\t\t\t\t if (is_system === 1) {\r\n\t\t\t\t\t\t// 禁用\r\n                        row.uaColStates.uagridcolumn1.visible = false;\r\n                        Object.values(row.uaColStates.uagridcolumn1).forEach(item => {\r\n                            item.visible = false;\r\n                            item.disabled = true;\r\n                        })\r\n\t\t\t\t\t} \t\r\n\t\t})\r\n\t}\r\n",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "判断操作列是否禁用",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -1915,6 +1878,12 @@
         }
       } ],
       "topPos" : 358
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 484
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",

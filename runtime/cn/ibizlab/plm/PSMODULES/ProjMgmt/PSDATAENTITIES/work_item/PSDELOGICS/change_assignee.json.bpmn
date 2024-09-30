@@ -16,19 +16,19 @@
                             <tns:global identifier="work_itemchange_assigneesrfactionparam" type="cn.ibizlab.plm.core.projmgmt.domain.work_item" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_assigneebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_assigneebindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定选择人员参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_assigneeprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="设置分配人信息"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_assigneedeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="分配负责人"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_assigneeloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemchange_assigneeprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                     <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="bindparam1_loopsubcall1" sourceRef="bindparam1" targetRef="loopsubcall1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
-                    </sequenceFlow>
                     <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_prepareparam2" sourceRef="loopsubcall1" targetRef="prepareparam2">
                     </sequenceFlow>
         </process>
     </definitions>

@@ -1,0 +1,110 @@
+{
+  "getAllPSPanelFields" : [ {
+    "id" : "owner_subtype",
+    "viewFieldName" : "owner_subtype"
+  }, {
+    "id" : "name",
+    "viewFieldName" : "name"
+  }, {
+    "id" : "owner_type",
+    "viewFieldName" : "owner_type"
+  } ],
+  "codeName" : "usr0925619219",
+  "controlType" : "PANEL",
+  "dynaModelFilePath" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent/PSPANELS/usr0925619219.json",
+  "layoutMode" : "FLEX",
+  "logicName" : "移动端最近使用卡片_卡片面板",
+  "getPSAppDataEntity" : {
+    "modelref" : true,
+    "path" : "PSSYSAPPS/plmmob/PSAPPDATAENTITIES/recent.json"
+  },
+  "getPSLayout" : {
+    "layout" : "FLEX"
+  },
+  "getRootPSPanelItems" : [ {
+    "itemStyle" : "DEFAULT",
+    "itemType" : "CONTAINER",
+    "name" : "container1",
+    "getPSLayout" : {
+      "layout" : "FLEX"
+    },
+    "getPSLayoutPos" : {
+      "grow" : -1,
+      "layout" : "FLEX"
+    },
+    "getPSPanelItems" : [ {
+      "caption" : "图片(动态)",
+      "contentHeight" : 20.0,
+      "height" : 20.0,
+      "itemStyle" : "DEFAULT",
+      "itemType" : "FIELD",
+      "name" : "owner_subtype",
+      "getPSEditor" : {
+        "editorHeight" : 20.0,
+        "editorType" : "SPAN",
+        "name" : "owner_subtype",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_use.json"
+        },
+        "predefinedType" : "FIELD_IMAGE",
+        "enableLinkView" : false
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "height" : 20,
+        "heightMode" : "PX",
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "owner_subtype",
+      "convertToCodeItemText" : true
+    }, {
+      "caption" : "文本(动态)",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "FIELD",
+      "name" : "name",
+      "getPSControlRenders" : [ {
+        "layoutPanelModel" : "`<div class='ibiz-span' title='${data?.name}'>${data?.name}</div>`",
+        "name" : "logic",
+        "renderType" : "LAYOUTPANEL_MODEL"
+      } ],
+      "getPSEditor" : {
+        "editorType" : "SPAN",
+        "name" : "name",
+        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+        "renderMode" : "TEXT_DYNAMIC",
+        "enableLinkView" : false
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "name"
+    }, {
+      "caption" : "文本(动态)",
+      "itemStyle" : "DEFAULT",
+      "itemType" : "FIELD",
+      "name" : "owner_type",
+      "getPSEditor" : {
+        "editorType" : "SPAN",
+        "name" : "owner_type",
+        "getPSAppCodeList" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmmob/PSAPPCODELISTS/Base__recent_type.json"
+        },
+        "predefinedType" : "FIELD_TEXT_DYNAMIC",
+        "renderMode" : "TEXT_DYNAMIC",
+        "enableLinkView" : false
+      },
+      "getPSLayoutPos" : {
+        "grow" : -1,
+        "layout" : "FLEX"
+      },
+      "viewFieldName" : "owner_type",
+      "convertToCodeItemText" : true
+    } ]
+  } ],
+  "layoutPanel" : true,
+  "modelid" : "89C81A24-BAAD-484F-89E3-A96F9DC55627",
+  "modeltype" : "PSSYSVIEWPANEL"
+}

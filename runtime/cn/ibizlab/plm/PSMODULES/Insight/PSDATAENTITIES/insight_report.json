@@ -2120,6 +2120,7 @@
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDEFLOGICS/calc_group_data.json",
     "logicName" : "计算分组信息",
     "logicSubType" : "DEFIELD",
+    "memo" : "计算分组信息",
     "name" : "计算分组信息",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -2201,6 +2202,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/copy_report.json",
     "logicName" : "复制报表",
+    "memo" : "复制报表",
     "name" : "复制报表",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -2285,66 +2287,6 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : -177,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "传入参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "var target_board = logic.getParam(\"target_board\");\r\nvar new_report = logic.getParam(\"new_report\");\r\nvar strModel = target_board.get(\"model\");\r\nvar modeljO = JSON.parse(strModel);\r\nvar modeljArray = modeljO.model;\r\nvar bireportids = [];\r\nvar replaceIds = {};\r\n//获取新建报表ID数据，同步生成仪表盘的模型数据\r\nvar portletId = (\"plmweb.uxbireport__\") + (new_report.get(\"id\").toLowerCase());\r\nvar portletCodeName = (\"uxbireport__\") + (new_report.get(\"id\").toLowerCase());\r\nvar new_board_report = {};\r\nnew_board_report.i = portletCodeName;\r\nnew_board_report.portletId = portletId;\r\nnew_board_report.portletCodeName = portletCodeName;\r\n\r\n\r\n",
-      "codeName" : "RAWSFCODE1",
-      "leftPos" : 532,
-      "logicNodeType" : "RAWSFCODE",
-      "name" : "执行脚本代码",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSFCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEBUGPARAM2",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "target_board"
-      },
-      "leftPos" : 722,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION4"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "DEACTION4",
       "getDstPSDEAction" : {
         "modelref" : true,
@@ -2370,6 +2312,27 @@
         "getSrcPSDELogicNode" : {
           "modelref" : true,
           "id" : "DEACTION4"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEBUGPARAM1",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "leftPos" : -177,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "传入参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM1"
         }
       } ],
       "topPos" : 208
@@ -2443,6 +2406,45 @@
           "id" : "form_data"
         },
         "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "var target_board = logic.getParam(\"target_board\");\r\nvar new_report = logic.getParam(\"new_report\");\r\nvar strModel = target_board.get(\"model\");\r\nvar modeljO = JSON.parse(strModel);\r\nvar modeljArray = modeljO.model;\r\nvar bireportids = [];\r\nvar replaceIds = {};\r\n//获取新建报表ID数据，同步生成仪表盘的模型数据\r\nvar portletId = (\"plmweb.uxbireport__\") + (new_report.get(\"id\").toLowerCase());\r\nvar portletCodeName = (\"uxbireport__\") + (new_report.get(\"id\").toLowerCase());\r\nvar new_board_report = {};\r\nnew_board_report.i = portletCodeName;\r\nnew_board_report.portletId = portletId;\r\nnew_board_report.portletCodeName = portletCodeName;\r\n\r\n\r\n",
+      "codeName" : "RAWSFCODE1",
+      "leftPos" : 532,
+      "logicNodeType" : "RAWSFCODE",
+      "name" : "执行脚本代码",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "RAWSFCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEBUGPARAM2",
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "target_board"
+      },
+      "leftPos" : 722,
+      "logicNodeType" : "DEBUGPARAM",
+      "name" : "调试逻辑参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION4"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEBUGPARAM2"
+        }
       } ],
       "topPos" : 208
     }, {
@@ -2640,6 +2642,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/create_bi_report.json",
     "logicName" : "建立报表扩展模型",
+    "memo" : "建立报表扩展模型",
     "name" : "建立报表扩展模型",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -3353,6 +3356,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/nothing.json",
     "logicName" : "无操作",
+    "memo" : "无操作逻辑，用于替换表单的获取数据行为",
     "name" : "无操作",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -3384,6 +3388,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/remove_bi_report.json",
     "logicName" : "移除报表扩展模型",
+    "memo" : "移除报表扩展模型",
     "name" : "移除报表扩展模型",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -3502,6 +3507,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/sync_model.json",
     "logicName" : "同步模板模型",
+    "memo" : "同步模板模型",
     "name" : "同步模板模型",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
@@ -3672,6 +3678,7 @@
     "defaultParamName" : "Default",
     "dynaModelFilePath" : "PSMODULES/Insight/PSDATAENTITIES/insight_report/PSDELOGICS/use_cur_template.json",
     "logicName" : "使用此模板",
+    "memo" : "使用此模板",
     "name" : "使用此模板",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",

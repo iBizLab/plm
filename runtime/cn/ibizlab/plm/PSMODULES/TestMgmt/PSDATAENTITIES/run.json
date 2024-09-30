@@ -6915,7 +6915,7 @@
       },
       "leftPos" : 160,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定选中数据对象",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -6937,7 +6937,7 @@
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "设置用例id",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -6964,7 +6964,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 407
+      "topPos" : 427
     }, {
       "codeName" : "LOOPSUBCALL1",
       "getDstPSDELogicParam" : {
@@ -7028,7 +7028,7 @@
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 660,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "设置执行状态",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -7054,6 +7054,26 @@
           "id" : "for_temp_obj"
         },
         "srcValueType" : "SRCDLPARAM"
+      }, {
+        "dstFieldName" : "EXECUTOR_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> Default[EXECUTOR_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
+      }, {
+        "dstFieldName" : "EXECUTOR_NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "用户全局对象[srfpersonname] ==> Default[EXECUTOR_NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonname",
+        "srcValueType" : "SESSION"
       } ],
       "topPos" : 541
     }, {
@@ -7089,7 +7109,7 @@
       "codeName" : "PREPAREPARAM2",
       "leftPos" : 880,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "设置执行结果",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -7137,7 +7157,7 @@
         },
         "srcValueType" : "SRCDLPARAM"
       } ],
-      "topPos" : 640
+      "topPos" : 680
     }, {
       "codeName" : "DEACTION3",
       "getDstPSDEAction" : {
@@ -7502,9 +7522,67 @@
     "name" : "记录执行结果",
     "getPSDELogicNodes" : [ {
       "codeName" : "Begin",
-      "leftPos" : 200,
+      "leftPos" : -140,
       "logicNodeType" : "BEGIN",
       "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM3"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNULL",
+            "dstFieldName" : "EXECUTOR_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[EXECUTOR_ID] 值为空(Nil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      }, {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM5"
+        },
+        "name" : "连接名称",
+        "getPSDELogicLinkGroupCond" : {
+          "groupOP" : "AND",
+          "logicType" : "GROUP",
+          "name" : "连接条件组",
+          "getPSDELogicLinkConds" : [ {
+            "condOP" : "ISNOTNULL",
+            "dstFieldName" : "EXECUTOR_ID",
+            "getDstLogicParam" : {
+              "modelref" : true,
+              "id" : "Default"
+            },
+            "logicType" : "SINGLE",
+            "name" : "Default[EXECUTOR_ID] 值不为空(NotNil)"
+          } ]
+        },
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 60,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM3",
+      "leftPos" : 140,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置执行人相关信息",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -7513,11 +7591,90 @@
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
           "modelref" : true,
-          "id" : "Begin"
+          "id" : "PREPAREPARAM3"
         }
       } ],
-      "topPos" : 60,
-      "parallelOutput" : true
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "EXECUTOR_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "run_history"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> run_history[EXECUTOR_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
+      }, {
+        "dstFieldName" : "EXECUTOR_NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "run_history"
+        },
+        "name" : "用户全局对象[srfpersonname] ==> run_history[EXECUTOR_NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonname",
+        "srcValueType" : "SESSION"
+      }, {
+        "dstFieldName" : "EXECUTOR_NAME",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "temp_obj"
+        },
+        "name" : "用户全局对象[srfpersonname] ==> temp_obj[EXECUTOR_NAME]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonname",
+        "srcValueType" : "SESSION"
+      }, {
+        "dstFieldName" : "EXECUTOR_ID",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "temp_obj"
+        },
+        "name" : "用户全局对象[srfpersonid] ==> temp_obj[EXECUTOR_ID]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "srfpersonid",
+        "srcValueType" : "SESSION"
+      } ],
+      "topPos" : -100
+    }, {
+      "codeName" : "DEACTION6",
+      "getDstPSDEAction" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
+      },
+      "leftPos" : 600,
+      "logicNodeType" : "DEACTION",
+      "name" : "创建执行结果",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM6"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION6"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "run_history"
+      },
+      "topPos" : -110
+    }, {
+      "codeName" : "END3",
+      "leftPos" : 1425,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 60
     }, {
       "codeName" : "PREPAREPARAM5",
       "leftPos" : 371,
@@ -7601,16 +7758,6 @@
         },
         "srcValueType" : "SRCDLPARAM"
       }, {
-        "dstFieldName" : "EXECUTOR_ID",
-        "getDstPSDELogicParam" : {
-          "modelref" : true,
-          "id" : "run_history"
-        },
-        "name" : "用户全局对象[srfpersonid] ==> run_history[EXECUTOR_ID]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "srfpersonid",
-        "srcValueType" : "SESSION"
-      }, {
         "dstFieldName" : "ID",
         "getDstPSDELogicParam" : {
           "modelref" : true,
@@ -7672,45 +7819,6 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 68
-    }, {
-      "codeName" : "DEACTION6",
-      "getDstPSDEAction" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history/PSDEACTIONS/Create.json"
-      },
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "getDstPSDataEntity" : {
-        "modelref" : true,
-        "path" : "PSMODULES/TestMgmt/PSDATAENTITIES/run_history.json"
-      },
-      "leftPos" : 600,
-      "logicNodeType" : "DEACTION",
-      "name" : "创建执行结果",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREPARAM6"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION6"
-        }
-      } ],
-      "getRetPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "run_history"
-      },
-      "topPos" : -100
-    }, {
-      "codeName" : "END3",
-      "leftPos" : 1425,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 60
     }, {
       "codeName" : "PREPAREPARAM6",
       "leftPos" : 780,
@@ -8762,7 +8870,7 @@
       },
       "leftPos" : 20,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定关联列表参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -8840,7 +8948,7 @@
       },
       "leftPos" : 796,
       "logicNodeType" : "RENEWPARAM",
-      "name" : "重新建立参数",
+      "name" : "重新建立正向关系参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -8861,7 +8969,7 @@
       },
       "leftPos" : 796,
       "logicNodeType" : "RENEWPARAM",
-      "name" : "重新建立参数",
+      "name" : "重新建立反向关系参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -9157,7 +9265,7 @@
       },
       "leftPos" : 484,
       "logicNodeType" : "RAWSQLCALL",
-      "name" : "直接SQL调用",
+      "name" : "测试计划对比分析",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -9388,7 +9496,7 @@
       },
       "leftPos" : 260,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定关联列表参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -9462,7 +9570,7 @@
       "codeName" : "PREPAREPARAM3",
       "leftPos" : 520,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "设置测试用例ID",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -9498,7 +9606,7 @@
       },
       "leftPos" : 740,
       "logicNodeType" : "COPYPARAM",
-      "name" : "拷贝参数",
+      "name" : "拷贝创建参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -9928,7 +10036,7 @@
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "RAWSQLCALL1"
         },
         "name" : "连接名称",
         "getSrcPSDELogicNode" : {
@@ -9950,27 +10058,6 @@
       "returnType" : "LOGICPARAM",
       "topPos" : 200
     }, {
-      "codeName" : "DEBUGPARAM1",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 342,
-      "logicNodeType" : "DEBUGPARAM",
-      "name" : "调试逻辑参数",
-      "getPSDELogicLinks" : [ {
-        "getDstPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "RAWSQLCALL1"
-        },
-        "name" : "连接名称",
-        "getSrcPSDELogicNode" : {
-          "modelref" : true,
-          "id" : "DEBUGPARAM1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "RAWSQLCALL1",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -9978,7 +10065,7 @@
       },
       "leftPos" : 583,
       "logicNodeType" : "RAWSQLCALL",
-      "name" : "直接SQL调用",
+      "name" : "每日执行用例趋势",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -10259,7 +10346,7 @@
       },
       "leftPos" : 583,
       "logicNodeType" : "RAWSQLCALL",
-      "name" : "直接SQL调用",
+      "name" : "每日测试次数统计",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -10558,7 +10645,7 @@
       "codeName" : "PREPAREPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREPARAM",
-      "name" : "准备参数",
+      "name" : "填充执行结果列表",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,

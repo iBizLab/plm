@@ -16,24 +16,18 @@
                             <tns:global identifier="ideaplan_delete_ideareverse_relation_obj" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_ideadebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_ideaprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充正反关联对象的主要关联属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_idearawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接正反关联对象的主键"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_ideadebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_ideadeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除正向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_ideadeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="删除反向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ideaplan_delete_ideaend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                    <sequenceFlow id="begin_debugparam2" sourceRef="begin" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_prepareparam1" sourceRef="debugparam2" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
                     </sequenceFlow>
-                    <sequenceFlow id="rawsfcode1_debugparam1" sourceRef="rawsfcode1" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_deaction2" sourceRef="debugparam1" targetRef="deaction2">
+                    <sequenceFlow id="rawsfcode1_deaction2" sourceRef="rawsfcode1" targetRef="deaction2">
                     </sequenceFlow>
                     <sequenceFlow id="deaction2_deaction3" sourceRef="deaction2" targetRef="deaction3">
                     </sequenceFlow>

@@ -22,11 +22,23 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_assignee;
             then
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定选择人员参数]
             rule "bindparam1"
             ruleflow-group "work_itemchange_assigneebindparam1"
             when
             then
+                        update(work_itemchange_assigneedefault);//更新fact中变量值
+                        update(work_itemchange_assigneefor_temp_obj);//更新fact中变量值
+                        update(work_itemchange_assigneesrfactionparam);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置分配人信息]
+            rule "prepareparam2"
+            ruleflow-group "work_itemchange_assigneeprepareparam2"
+            when
+            then
+                            work_itemchange_assigneedefault.set("assigneeid",work_itemchange_assigneefor_temp_obj.get("assigneeid"));
+                            work_itemchange_assigneedefault.set("assigneename",work_itemchange_assigneefor_temp_obj.get("assigneename"));
                         update(work_itemchange_assigneedefault);//更新fact中变量值
                         update(work_itemchange_assigneefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_assigneesrfactionparam);//更新fact中变量值
@@ -48,18 +60,6 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.change_assignee;
             ruleflow-group "work_itemchange_assigneeloopsubcall1"
             when
             then
-                        update(work_itemchange_assigneedefault);//更新fact中变量值
-                        update(work_itemchange_assigneefor_temp_obj);//更新fact中变量值
-                        update(work_itemchange_assigneesrfactionparam);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam2"
-            ruleflow-group "work_itemchange_assigneeprepareparam2"
-            when
-            then
-                            work_itemchange_assigneedefault.set("assigneeid",work_itemchange_assigneefor_temp_obj.get("assigneeid"));
-                            work_itemchange_assigneedefault.set("assigneename",work_itemchange_assigneefor_temp_obj.get("assigneename"));
                         update(work_itemchange_assigneedefault);//更新fact中变量值
                         update(work_itemchange_assigneefor_temp_obj);//更新fact中变量值
                         update(work_itemchange_assigneesrfactionparam);//更新fact中变量值

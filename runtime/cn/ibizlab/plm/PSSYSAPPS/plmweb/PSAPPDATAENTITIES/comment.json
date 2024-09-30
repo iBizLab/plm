@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
@@ -1884,111 +1853,6 @@
     "id" : "send_comment_wiki@comment"
   } ],
   "getAllPSAppDEUILogics" : [ {
-    "codeName" : "add_comment",
-    "defaultParamName" : "Default",
-    "logicName" : "添加回复",
-    "memo" : "添加回复按钮触发，显示评论区域",
-    "name" : "添加回复",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 885,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 337,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "panelItems"
-        },
-        "name" : "view[layoutPanel.panelItems] ==> panelItems",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "layoutPanel.panelItems",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      }, {
-        "dstFieldName" : "container_comment.state.visible",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "panelItems"
-        },
-        "name" : "直接值[true] ==> panelItems[container_comment.state.visible]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
-      } ],
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "panelItems",
-      "logicName" : "panelItems",
-      "name" : "panelItems",
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "STATE",
-      "logicName" : "STATE",
-      "name" : "STATE",
-      "entityParam" : true
-    }, {
-      "codeName" : "list",
-      "logicName" : "list",
-      "name" : "list",
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "add_comment_client",
     "defaultParamName" : "Default",
     "logicName" : "添加回复(客户沟通)",
@@ -2159,7 +2023,7 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 190,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "清空评论",
       "topPos" : 470
     } ],
     "getPSDEUILogicParams" : [ {
@@ -2207,7 +2071,7 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 190,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "清空评论(客户沟通)",
       "topPos" : 560
     }, {
       "codeName" : "PREPAREJSPARAM1",
@@ -2248,6 +2112,11 @@
       "name" : "评论框编辑器",
       "entityParam" : true
     }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
+    }, {
       "codeName" : "commentcustomer_connect_list_view",
       "logicName" : "嵌入视图",
       "name" : "嵌入视图",
@@ -2258,11 +2127,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2298,20 +2162,20 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "清空评论（知识库）",
       "topPos" : 377
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2512,13 +2376,13 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : -70,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "控制评论按钮隐藏（知识库）",
       "topPos" : 178
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "reset",
-      "logicName" : "清空",
-      "name" : "清空",
+      "codeName" : "send",
+      "logicName" : "评论",
+      "name" : "评论",
       "entityParam" : true
     }, {
       "codeName" : "icon",
@@ -2526,15 +2390,15 @@
       "name" : "图标",
       "entityParam" : true
     }, {
+      "codeName" : "view",
+      "logicName" : "视图",
+      "name" : "视图",
+      "activeViewParam" : true
+    }, {
       "codeName" : "context",
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
-    }, {
-      "codeName" : "send",
-      "logicName" : "评论",
-      "name" : "评论",
-      "entityParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2542,10 +2406,10 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "view",
-      "logicName" : "视图",
-      "name" : "视图",
-      "activeViewParam" : true
+      "codeName" : "reset",
+      "logicName" : "清空",
+      "name" : "清空",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2733,13 +2597,23 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 100,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "控制评论按钮显示（知识库）",
       "topPos" : 387
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "视图",
+      "name" : "视图",
+      "activeViewParam" : true
+    }, {
       "codeName" : "reset",
       "logicName" : "清空",
       "name" : "清空",
+      "entityParam" : true
+    }, {
+      "codeName" : "send",
+      "logicName" : "评论",
+      "name" : "评论",
       "entityParam" : true
     }, {
       "codeName" : "Default",
@@ -2748,25 +2622,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "context",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    }, {
-      "codeName" : "send",
-      "logicName" : "评论",
-      "name" : "评论",
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "视图",
-      "name" : "视图",
-      "activeViewParam" : true
-    }, {
       "codeName" : "icon",
       "logicName" : "图标",
       "name" : "图标",
       "entityParam" : true
+    }, {
+      "codeName" : "context",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

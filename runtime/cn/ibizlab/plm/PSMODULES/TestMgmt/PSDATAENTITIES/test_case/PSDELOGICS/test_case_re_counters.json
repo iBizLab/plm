@@ -104,7 +104,7 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 357,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "设置测试用例ID",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -255,72 +255,6 @@
     },
     "topPos" : 208
   }, {
-    "codeName" : "RAWSQLCALL9",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 1010,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "合并查询计数器",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL3"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL9"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "SELECT\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_idea,\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_test_case,\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_work_item\r\nFROM\r\n    `RELATION` t11\r\nJOIN\r\n    `test_case` t ON t.`ID` = t11.`PRINCIPAL_ID`\r\nLEFT JOIN\r\n    `idea` t1 ON t1.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `test_case` t2 ON t2.`ID` = t11.`TARGET_ID`\r\nLEFT JOIN\r\n    `work_item` t4 ON t4.ID = t11.TARGET_ID\r\nWHERE\r\n    (t11.`PRINCIPAL_ID` = ?);",
-    "topPos" : 208,
-    "fillDstLogicParam" : true
-  }, {
-    "codeName" : "RAWSQLCALL3",
-    "getDstPSDELogicParam" : {
-      "modelref" : true,
-      "id" : "Default"
-    },
-    "leftPos" : 1259,
-    "logicNodeType" : "RAWSQLCALL",
-    "name" : "测试用例关联缺陷",
-    "getPSDELogicLinks" : [ {
-      "getDstPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "END1"
-      },
-      "name" : "连接名称",
-      "getSrcPSDELogicNode" : {
-        "modelref" : true,
-        "id" : "RAWSQLCALL3"
-      }
-    } ],
-    "getPSDELogicNodeParams" : [ {
-      "name" : "Default[ID]",
-      "paramAction" : "SQLPARAM",
-      "srcFieldName" : "ID",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    } ],
-    "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_bug \r\nFROM\r\n\twork_item t, work_item_type t1 \r\nWHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'\r\nand\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'test_case'\r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND t.`IS_DELETED` = 0\r\n\t\t\t",
-    "topPos" : 208,
-    "fillDstLogicParam" : true
-  }, {
     "codeName" : "RAWSQLCALL4",
     "getDstPSDELogicParam" : {
       "modelref" : true,
@@ -384,6 +318,72 @@
       "srcValueType" : "SRCDLPARAM"
     } ],
     "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_version\r\nFROM\r\n\t`version` t \r\nWHERE\r\n    t.owner_id = ? and t.owner_type = 'TEST_CASE'",
+    "topPos" : 208,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL9",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 1010,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "合并查询计数器",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL3"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL9"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'idea' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t1.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_idea,\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'ticket' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t2.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_test_case,\r\n    COALESCE(SUM(CASE WHEN t11.`TARGET_TYPE` = 'work_item' AND t11.`PRINCIPAL_TYPE` = 'test_case' AND t4.IS_DELETED=0 THEN 1 ELSE 0 END),0) AS test_case_re_work_item\r\nFROM\r\n    `RELATION` t11\r\nJOIN\r\n    `test_case` t ON t.`ID` = t11.`PRINCIPAL_ID`\r\nLEFT JOIN\r\n    `idea` t1 ON t1.ID = t11.TARGET_ID \r\nLEFT JOIN\r\n    `test_case` t2 ON t2.`ID` = t11.`TARGET_ID`\r\nLEFT JOIN\r\n    `work_item` t4 ON t4.ID = t11.TARGET_ID\r\nWHERE\r\n    (t11.`PRINCIPAL_ID` = ?);",
+    "topPos" : 208,
+    "fillDstLogicParam" : true
+  }, {
+    "codeName" : "RAWSQLCALL3",
+    "getDstPSDELogicParam" : {
+      "modelref" : true,
+      "id" : "Default"
+    },
+    "leftPos" : 1259,
+    "logicNodeType" : "RAWSQLCALL",
+    "name" : "测试用例关联缺陷",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "END1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSQLCALL3"
+      }
+    } ],
+    "getPSDELogicNodeParams" : [ {
+      "name" : "Default[ID]",
+      "paramAction" : "SQLPARAM",
+      "srcFieldName" : "ID",
+      "getSrcPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "srcValueType" : "SRCDLPARAM"
+    } ],
+    "sql" : "SELECT\r\n\tcount( t.id ) AS test_case_re_bug \r\nFROM\r\n\twork_item t, work_item_type t1 \r\nWHERE t.work_item_type_id = t1.id and t1.`group` = 'bug'\r\nand\tEXISTS (\r\n\tSELECT\r\n\t\t* \r\n\tFROM\r\n\t\t`RELATION` t11 \r\n\tWHERE\r\n\t\tt.`ID` = t11.`TARGET_ID` \r\n\t\tAND (\r\n\t\t\tt11.`TARGET_TYPE` = 'work_item' \r\n\t\t\tAND t11.`PRINCIPAL_TYPE` = 'test_case'\r\n\t\t\tAND t11.`PRINCIPAL_ID` = ? ) )\r\n\t\t\tAND t.`IS_DELETED` = 0\r\n\t\t\t",
     "topPos" : 208,
     "fillDstLogicParam" : true
   }, {

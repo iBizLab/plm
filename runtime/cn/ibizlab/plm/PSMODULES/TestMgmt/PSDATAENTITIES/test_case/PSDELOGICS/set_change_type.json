@@ -215,7 +215,7 @@
     },
     "leftPos" : 456,
     "logicNodeType" : "RAWSQLCALL",
-    "name" : "直接SQL调用",
+    "name" : "获取评审测试用例",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -412,7 +412,7 @@
     "leftPos" : 960,
     "logicNodeType" : "RAWSFCODE",
     "memo" : "设置from-to都为最新版",
-    "name" : "执行脚本代码",
+    "name" : "设置from-to都为最新版",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -428,9 +428,10 @@
   }, {
     "code" : "var version_pages_results = logic.getParam(\"version_pages_results\");\r\nif (version_pages_results) {\r\n    var change_version = {};\r\n    var for_obj = logic.getParam(\"for_obj\");\r\n    for (var i = 0; i < version_pages_results.length; i++) {\r\n        if (i === 0) {\r\n            change_version[\"from\"] = version_pages_results.get(i);\r\n            change_version[\"to\"] = version_pages_results.get(i);\r\n            sys.info(\"进入1\");\r\n        } else if (i === 1) {\r\n            change_version[\"from\"] = version_pages_results.get(i);\r\n            sys.info(\"进入2\");\r\n        }\r\n    }\r\n    for_obj.set(\"change_version\", change_version);}",
     "codeName" : "RAWSFCODE2",
+    "codeType" : "JavaScript",
     "leftPos" : 1310,
     "logicNodeType" : "RAWSFCODE",
-    "name" : "执行脚本代码",
+    "name" : "设置改变版本信息",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,

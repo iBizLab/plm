@@ -29,21 +29,6 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
             then
             end
 
-            //逻辑处理节点[设置提交时间]
-            rule "rawsfcode1"
-            ruleflow-group "reviewsubmit_reviewrawsfcode1"
-            when
-            then
-                        update(reviewsubmit_reviewdefault);//更新fact中变量值
-                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
-                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
-                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
-                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
-                        update(reviewsubmit_reviewstage);//更新fact中变量值
-                        update(reviewsubmit_reviewstages);//更新fact中变量值
-                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
-            end
-
             //逻辑处理节点[设置提交人、状态]
             rule "prepareparam1"
             ruleflow-group "reviewsubmit_reviewprepareparam1"
@@ -52,24 +37,6 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                                 reviewsubmit_reviewdefault.set("submittername",curuser.getSessionParams().get("srfpersonname"));
                                 reviewsubmit_reviewdefault.set("submitterid",curuser.getSessionParams().get("srfpersonid"));
                             reviewsubmit_reviewdefault.set("state","20");
-                        update(reviewsubmit_reviewdefault);//更新fact中变量值
-                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
-                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
-                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
-                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
-                        update(reviewsubmit_reviewstage);//更新fact中变量值
-                        update(reviewsubmit_reviewstages);//更新fact中变量值
-                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
-            end
-
-            //逻辑处理节点[设置阶段的状态]
-            rule "prepareparam2"
-            ruleflow-group "reviewsubmit_reviewprepareparam2"
-            when
-            then
-                            reviewsubmit_reviewstages.set("",reviewsubmit_reviewdefault.get("stage"));
-                            reviewsubmit_reviewstage.set("",reviewsubmit_reviewstages.get("0"));
-                            reviewsubmit_reviewstage.set("stagestate","20");
                         update(reviewsubmit_reviewdefault);//更新fact中变量值
                         update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
                         update(reviewsubmit_reviewrelation_page);//更新fact中变量值
@@ -111,7 +78,40 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[实体数据集]
+            //逻辑处理节点[设置提交时间]
+            rule "rawsfcode1"
+            ruleflow-group "reviewsubmit_reviewrawsfcode1"
+            when
+            then
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[设置阶段的状态]
+            rule "prepareparam2"
+            ruleflow-group "reviewsubmit_reviewprepareparam2"
+            when
+            then
+                            reviewsubmit_reviewstages.set("",reviewsubmit_reviewdefault.get("stage"));
+                            reviewsubmit_reviewstage.set("",reviewsubmit_reviewstages.get("0"));
+                            reviewsubmit_reviewstage.set("stagestate","20");
+                        update(reviewsubmit_reviewdefault);//更新fact中变量值
+                        update(reviewsubmit_reviewfor_reltion);//更新fact中变量值
+                        update(reviewsubmit_reviewrelation_page);//更新fact中变量值
+                        update(reviewsubmit_reviewreltion_filter);//更新fact中变量值
+                        update(reviewsubmit_reviewreview_content);//更新fact中变量值
+                        update(reviewsubmit_reviewstage);//更新fact中变量值
+                        update(reviewsubmit_reviewstages);//更新fact中变量值
+                        update(reviewsubmit_reviewtest_case);//更新fact中变量值
+            end
+
+            //逻辑处理节点[获取关系信息]
             rule "dedataset1"
             ruleflow-group "reviewsubmit_reviewdedataset1"
             when
@@ -126,7 +126,7 @@ package cn.ibizlab.plm.testmgmt.logic.reviewlogic.submit_review;
                         update(reviewsubmit_reviewtest_case);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[设置关系过滤参数]
             rule "prepareparam3"
             ruleflow-group "reviewsubmit_reviewprepareparam3"
             when

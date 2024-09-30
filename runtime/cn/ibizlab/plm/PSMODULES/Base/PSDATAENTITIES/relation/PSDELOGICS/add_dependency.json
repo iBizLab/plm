@@ -45,7 +45,7 @@
     },
     "leftPos" : 114,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "绑定关联列表参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -83,11 +83,11 @@
     "codeName" : "PREPAREPARAM1",
     "leftPos" : 680,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "准备前置依赖参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "RAWSFCODE1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -96,20 +96,6 @@
       }
     } ],
     "getPSDELogicNodeParams" : [ {
-      "dstFieldName" : "PRINCIPAL_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "dependency"
-      },
-      "name" : "for_temp_obj[owner_id] ==> dependency[PRINCIPAL_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
       "dstFieldName" : "PRINCIPAL_TYPE",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -143,6 +129,25 @@
       "paramAction" : "SETPARAMVALUE",
       "srcValue" : "1",
       "srcValueType" : "SRCVALUE"
+    } ],
+    "topPos" : 180
+  }, {
+    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef dependency = logic.param('dependency').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    dependency.set('principal_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    dependency.set('principal_id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 854,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "填充principal_id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
     } ],
     "topPos" : 180
   }, {
@@ -189,7 +194,7 @@
     },
     "leftPos" : 436,
     "logicNodeType" : "RENEWPARAM",
-    "name" : "重新建立参数",
+    "name" : "重新建立循环临时参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -258,7 +263,7 @@
       "modelref" : true,
       "path" : "PSMODULES/Base/PSDATAENTITIES/relation.json"
     },
-    "leftPos" : 932,
+    "leftPos" : 1132,
     "logicNodeType" : "DEACTION",
     "name" : "添加依赖",
     "topPos" : 300
@@ -266,11 +271,11 @@
     "codeName" : "PREPAREPARAM2",
     "leftPos" : 680,
     "logicNodeType" : "PREPAREPARAM",
-    "name" : "准备参数",
+    "name" : "准备后置依赖参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "RAWSFCODE2"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -299,20 +304,6 @@
       "srcValue" : "1",
       "srcValueType" : "SRCVALUE"
     }, {
-      "dstFieldName" : "TARGET_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "dependency"
-      },
-      "name" : "for_temp_obj[owner_id] ==> dependency[TARGET_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
       "dstFieldName" : "PRINCIPAL_ID",
       "getDstPSDELogicParam" : {
         "modelref" : true,
@@ -326,6 +317,25 @@
         "id" : "Default"
       },
       "srcValueType" : "SRCDLPARAM"
+    } ],
+    "topPos" : 350
+  }, {
+    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef dependency = logic.param('dependency').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    dependency.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    dependency.set('target_id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+    "codeName" : "RAWSFCODE2",
+    "codeType" : "Groovy",
+    "leftPos" : 854,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "填充target_id",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE2"
+      }
     } ],
     "topPos" : 350
   }, {

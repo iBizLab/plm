@@ -1,35 +1,5 @@
 {
   "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "DYNADASHBOARDID",
-        "codeName" : "dyna_dashboard_id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "DYNADASHBOARDNAME",
-        "codeName" : "dyna_dashboard_name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "DYNADASHBOARDNAME",
-      "codeName" : "dyna_dashboard_name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "DYNADASHBOARDID",
-      "codeName" : "dyna_dashboard_id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  }, {
     "codeName" : "create_dynadashboard",
     "logicName" : "新建仪表盘",
     "name" : "create_dynadashboard",
@@ -2432,67 +2402,6 @@
     "id" : "panel_usr0702065870_button_calluilogic_click@dyna_dashboard"
   } ],
   "getAllPSAppDEUILogics" : [ {
-    "codeName" : "close_view",
-    "defaultParamName" : "Default",
-    "logicName" : "关闭视图",
-    "name" : "关闭视图",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 210,
-      "parallelOutput" : true
-    }, {
-      "code" : "view.state.isLoading = false;\r\nview.closeView();",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 339,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 218
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 631,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 210
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "control_del",
     "defaultParamName" : "Default",
     "logicName" : "仪表盘操作列",
@@ -2564,6 +2473,7 @@
     "codeName" : "fill_choosed_board_name",
     "defaultParamName" : "Default",
     "logicName" : "获取选中模板名称",
+    "memo" : "获取选中模板名称",
     "name" : "获取选中模板名称",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -2611,32 +2521,32 @@
       "topPos" : 560
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "board_title",
-      "logicName" : "仪表盘标题",
-      "name" : "仪表盘标题",
-      "entityParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "params",
-      "logicName" : "视图导航参数",
-      "name" : "视图导航参数",
-      "viewNavDataParam" : true
+      "codeName" : "board_title",
+      "logicName" : "仪表盘标题",
+      "name" : "仪表盘标题",
+      "entityParam" : true
     }, {
       "codeName" : "ctrl",
       "logicName" : "ctrl",
       "name" : "ctrl",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "params",
+      "logicName" : "视图导航参数",
+      "name" : "视图导航参数",
+      "viewNavDataParam" : true
+    }, {
+      "codeName" : "view",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2646,6 +2556,7 @@
     "codeName" : "fill_other_board",
     "defaultParamName" : "Default",
     "logicName" : "获取其他仪表盘",
+    "memo" : "获取其他仪表盘",
     "name" : "获取其他仪表盘",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -2667,10 +2578,53 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
+      "codeName" : "END1",
+      "leftPos" : 1256,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
+    }, {
+      "codeName" : "PREPAREJSPARAM1",
+      "leftPos" : 327,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM1"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "insight_view",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "board_info"
+        },
+        "name" : "ctx[insight_view] ==> board_info[insight_view]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "insight_view",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+        },
         "modelref" : true,
-        "id" : "fill_other_board"
+        "id" : "open_new_board@dyna_dashboard"
       },
       "getDstPSAppDataEntity" : {
         "modelref" : true,
@@ -2680,25 +2634,21 @@
         "modelref" : true,
         "id" : "board_info"
       },
-      "leftPos" : 510,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
+      "leftPos" : 1076,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "界面行为",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEBUGPARAM1"
+          "id" : "END1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEACTION1"
+          "id" : "DEUIACTION1"
         }
       } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "board_info"
-      },
       "topPos" : 208
     }, {
       "codeName" : "PREPAREJSPARAM2",
@@ -2784,53 +2734,10 @@
       } ],
       "topPos" : 208
     }, {
-      "codeName" : "END1",
-      "leftPos" : 1256,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 327,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "insight_view",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "board_info"
-        },
-        "name" : "ctx[insight_view] ==> board_info[insight_view]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "insight_view",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
-        },
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
         "modelref" : true,
-        "id" : "open_new_board@dyna_dashboard"
+        "id" : "fill_other_board"
       },
       "getDstPSAppDataEntity" : {
         "modelref" : true,
@@ -2840,24 +2747,39 @@
         "modelref" : true,
         "id" : "board_info"
       },
-      "leftPos" : 1076,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
+      "leftPos" : 510,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "DEBUGPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEUIACTION1"
+          "id" : "DEACTION1"
         }
       } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "board_info"
+      },
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "board_info",
+      "logicName" : "报表信息",
+      "name" : "报表信息",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
       "codeName" : "view",
       "logicName" : "当前视图",
       "name" : "当前视图",
@@ -2867,17 +2789,6 @@
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "board_info",
-      "logicName" : "报表信息",
-      "name" : "报表信息",
-      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2887,6 +2798,7 @@
     "codeName" : "list_load_success",
     "defaultParamName" : "Default",
     "logicName" : "列表加载完成",
+    "memo" : "列表加载完成",
     "name" : "列表加载完成",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -2933,308 +2845,10 @@
       "id" : "Begin"
     }
   }, {
-    "codeName" : "use_cur_template",
-    "defaultParamName" : "Default",
-    "logicName" : "使用此模板",
-    "name" : "使用此模板",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 10,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 154,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "获取列表导航选中数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "dstFieldName" : "board_name",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[board_name] 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "MSGBOX1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "dstFieldName" : "board_name",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[board_name] 值为空(Nil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "selecteddata"
-        },
-        "name" : "listexpbar[xDataController.state.selectedData] ==> selecteddata",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "xDataController.state.selectedData",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "listexpbar"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 549,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "board_name",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "dyna_dashboard_info"
-        },
-        "name" : "Default[board_name] ==> dyna_dashboard_info[board_name]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "board_name",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "view.state.isLoading = false;\r\nview.closeView();",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 1074,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "关闭当前视图",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "buttonsType" : "OK",
-      "codeName" : "MSGBOX1",
-      "leftPos" : 154,
-      "logicNodeType" : "MSGBOX",
-      "message" : "标题不能为空",
-      "msgBoxType" : "INFO",
-      "name" : "消息弹窗",
-      "title" : "注意",
-      "topPos" : 387
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
-        },
-        "modelref" : true,
-        "id" : "open_new_board@dyna_dashboard"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "new_dynadashboard"
-      },
-      "leftPos" : 1200,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "界面行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        }
-      } ],
-      "topPos" : 320
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1472,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "use_cur_template"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dyna_dashboard_info"
-      },
-      "leftPos" : 731,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "new_dynadashboard"
-      },
-      "topPos" : 208
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'insight_view', srfkey: context.insight_view})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 1380,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "topPos" : 60
-    }, {
-      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.ctx.dynadashboard = uiLogic.selecteddata[0].dynadashboardid;\r\n    uiLogic.dyna_dashboard_info = uiLogic.selecteddata[0];\r\n    uiLogic.dyna_dashboard_info.owner_id = uiLogic.ctx.insight_view_id;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 374,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置上下文",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "listexpbar",
-      "logicName" : "列表对象",
-      "name" : "列表对象",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "new_dynadashboard",
-      "logicName" : "新仪表盘",
-      "name" : "新仪表盘",
-      "entityParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "dyna_dashboard_info",
-      "logicName" : "看板数据",
-      "name" : "看板数据",
-      "entityParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    }, {
-      "codeName" : "selecteddata",
-      "logicName" : "选中数据",
-      "name" : "选中数据",
-      "entityListParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
     "codeName" : "use_cur_template_no_closed",
     "defaultParamName" : "Default",
     "logicName" : "使用此模板(禁止关闭)",
+    "memo" : "使用此模板(禁止关闭)",
     "name" : "使用此模板(禁止关闭)",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -3256,118 +2870,6 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "const new_dynadashboard = uiLogic.new_dynadashboard;\r\nconst insight_view_id = context.insight_view_id;\r\nconst dyna_dashboard_id = new_dynadashboard.dyna_dashboard_id;\r\n window.location.hash= `/-/index/insight_view=${insight_view_id}/insight_view_index_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.insight_view_all_grid_view%2540plmweb.insight_view.all_grid_view_grid%2522%257D;srfnav=usrdrgroup0517936766/insight_view_custom_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%252C%2522dyna_dashboard%2522%253A%2522${dyna_dashboard_id}%2522%257D`\r\n\r\n",
-      "codeName" : "RAWJSCODE4",
-      "leftPos" : 940,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE4"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 549,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "board_name",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "dyna_dashboard_info"
-        },
-        "name" : "Default[board_name] ==> dyna_dashboard_info[board_name]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "board_name",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "Default"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "use_cur_template"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dyna_dashboard_info"
-      },
-      "leftPos" : 731,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE4"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "new_dynadashboard"
-      },
-      "topPos" : 208
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'insight_view', srfkey: context.insight_view})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 1380,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "topPos" : 60
-    }, {
-      "code" : "view.state.isLoading = false;\r\nview.closeView();",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 1150,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "关闭当前视图",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 154,
       "logicNodeType" : "PREPAREJSPARAM",
@@ -3439,40 +2941,37 @@
       } ],
       "topPos" : 208
     }, {
-      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.ctx.dynadashboard = uiLogic.selecteddata[0].dynadashboardid;\r\n    uiLogic.dyna_dashboard_info = uiLogic.selecteddata[0];\r\n    uiLogic.dyna_dashboard_info.owner_id = uiLogic.ctx.insight_view_id;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 374,
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'insight_view', srfkey: context.insight_view})",
+      "codeName" : "RAWJSCODE3",
+      "leftPos" : 1380,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "设置上下文",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "buttonsType" : "OK",
-      "codeName" : "MSGBOX1",
-      "leftPos" : 154,
-      "logicNodeType" : "MSGBOX",
-      "message" : "标题不能为空",
-      "msgBoxType" : "INFO",
-      "name" : "消息弹窗",
-      "title" : "注意",
-      "topPos" : 387
+      "name" : "通知刷新",
+      "topPos" : 60
     }, {
       "codeName" : "END1",
       "leftPos" : 1460,
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 200
+    }, {
+      "code" : "const new_dynadashboard = uiLogic.new_dynadashboard;\r\nconst insight_view_id = context.insight_view_id;\r\nconst dyna_dashboard_id = new_dynadashboard.dyna_dashboard_id;\r\n window.location.hash= `/-/index/insight_view=${insight_view_id}/insight_view_index_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmweb.insight_view_all_grid_view%2540plmweb.insight_view.all_grid_view_grid%2522%257D;srfnav=usrdrgroup0517936766/insight_view_custom_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%252C%2522dyna_dashboard%2522%253A%2522${dyna_dashboard_id}%2522%257D`\r\n\r\n",
+      "codeName" : "RAWJSCODE4",
+      "leftPos" : 940,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "打开视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        }
+      } ],
+      "topPos" : 208
     }, {
       "codeName" : "DEUIACTION1",
       "getDstPSAppDEUIAction" : {
@@ -3495,27 +2994,137 @@
       "logicNodeType" : "DEUIACTION",
       "name" : "打开新建的仪表盘",
       "topPos" : 350
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 549,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "准备参数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "board_name",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "dyna_dashboard_info"
+        },
+        "name" : "Default[board_name] ==> dyna_dashboard_info[board_name]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "board_name",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "view.state.isLoading = false;\r\nview.closeView();",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 1150,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "关闭当前视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.ctx.dynadashboard = uiLogic.selecteddata[0].dynadashboardid;\r\n    uiLogic.dyna_dashboard_info = uiLogic.selecteddata[0];\r\n    uiLogic.dyna_dashboard_info.owner_id = uiLogic.ctx.insight_view_id;\r\n}",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 374,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "设置上下文",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "DEACTION1",
+      "getDstPSAppDEAction" : {
+        "modelref" : true,
+        "id" : "use_cur_template"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/dyna_dashboard.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "dyna_dashboard_info"
+      },
+      "leftPos" : 731,
+      "logicNodeType" : "DEACTION",
+      "name" : "实体行为",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE4"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEACTION1"
+        }
+      } ],
+      "getRetPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "new_dynadashboard"
+      },
+      "topPos" : 208
+    }, {
+      "buttonsType" : "OK",
+      "codeName" : "MSGBOX1",
+      "leftPos" : 154,
+      "logicNodeType" : "MSGBOX",
+      "message" : "标题不能为空",
+      "msgBoxType" : "INFO",
+      "name" : "消息弹窗",
+      "title" : "注意",
+      "topPos" : 387
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "selecteddata",
-      "logicName" : "选中数据",
-      "name" : "选中数据",
-      "entityListParam" : true
-    }, {
-      "codeName" : "dyna_dashboard_info",
-      "logicName" : "看板数据",
-      "name" : "看板数据",
-      "entityParam" : true
-    }, {
       "codeName" : "new_dynadashboard",
       "logicName" : "新仪表盘",
       "name" : "新仪表盘",
       "entityParam" : true
     }, {
-      "codeName" : "listexpbar",
-      "logicName" : "列表对象",
-      "name" : "列表对象",
-      "ctrlParam" : true
+      "codeName" : "selecteddata",
+      "logicName" : "选中数据",
+      "name" : "选中数据",
+      "entityListParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
     }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
@@ -3528,10 +3137,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
+      "codeName" : "listexpbar",
+      "logicName" : "列表对象",
+      "name" : "列表对象",
+      "ctrlParam" : true
+    }, {
+      "codeName" : "dyna_dashboard_info",
+      "logicName" : "看板数据",
+      "name" : "看板数据",
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,

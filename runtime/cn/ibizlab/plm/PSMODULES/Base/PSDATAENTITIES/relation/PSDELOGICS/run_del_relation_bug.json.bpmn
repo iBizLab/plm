@@ -32,12 +32,12 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="拼接关联对象的主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="删除正向关联"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="删除反向关联"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugdeaction6" id="deaction6" implementation="http://www.jboss.org/drools/rule" name="获取执行用例"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="对应测试用例关联缺陷"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充正反关联对象的主要关联属性"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="准备执行用例参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备关联数据过滤参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="填充主键"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugdeaction4" id="deaction4" implementation="http://www.jboss.org/drools/rule" name="删除测试用例关联缺陷数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationrun_del_relation_bugdeaction5" id="deaction5" implementation="http://www.jboss.org/drools/rule" name="删除缺陷关联测试用例数据"/>
@@ -50,8 +50,6 @@
                     <sequenceFlow id="deaction2_deaction3" sourceRef="deaction2" targetRef="deaction3">
                     </sequenceFlow>
                     <sequenceFlow id="deaction3_prepareparam3" sourceRef="deaction3" targetRef="prepareparam3">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam3_deaction6" sourceRef="prepareparam3" targetRef="deaction6">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-deaction6_prepareparam2" sourceRef="gateway-deaction6" targetRef="prepareparam2">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -68,8 +66,6 @@
                                 eval((RuleUtils.test($relationrun_del_relation_bugrun.get("caseId"),"ISNOTNULL","")))
                                 ]]>
                             </conditionExpression>
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-dedataset1_loopsubcall1" sourceRef="gateway-dedataset1" targetRef="loopsubcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -90,6 +86,10 @@
                     <sequenceFlow id="loopsubcall1_rawsfcode2" sourceRef="loopsubcall1" targetRef="rawsfcode2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam3_deaction6" sourceRef="prepareparam3" targetRef="deaction6">
+                    </sequenceFlow>
+                    <sequenceFlow id="prepareparam2_dedataset1" sourceRef="prepareparam2" targetRef="dedataset1">
                     </sequenceFlow>
                     <sequenceFlow id="rawsfcode2_deaction4" sourceRef="rawsfcode2" targetRef="deaction4">
                     </sequenceFlow>

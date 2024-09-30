@@ -21,13 +21,11 @@
                             <tns:global identifier="reviewadd_review_contentselectdata" type="cn.ibizlab.plm.core.testmgmt.domain.review" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentbindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定关联列表参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立正向参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentrenewparam2" id="renewparam2" implementation="http://www.jboss.org/drools/rule" name="重新建立反向参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="填充需要的属性值"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="调试逻辑参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -35,9 +33,7 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="reviewadd_review_contentdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="生成反向关联数据"/>
                         <endEvent id="deaction2_end" name="end"/>
                         <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_bindparam1" sourceRef="debugparam1" targetRef="bindparam1">
+                    <sequenceFlow id="begin_bindparam1" sourceRef="begin" targetRef="bindparam1">
                     </sequenceFlow>
                     <sequenceFlow id="gateway-bindparam1_loopsubcall1" sourceRef="gateway-bindparam1" targetRef="loopsubcall1">
                             <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
@@ -59,9 +55,7 @@
                     </sequenceFlow>
                     <sequenceFlow id="renewparam2_prepareparam1" sourceRef="renewparam2" targetRef="prepareparam1">
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_debugparam2" sourceRef="prepareparam1" targetRef="debugparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam2_deaction1" sourceRef="debugparam2" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="deaction1_deaction2" sourceRef="deaction1" targetRef="deaction2">
                     </sequenceFlow>

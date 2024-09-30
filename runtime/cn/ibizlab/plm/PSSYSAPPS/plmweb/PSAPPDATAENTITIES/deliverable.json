@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "TITLE",
-        "codeName" : "title"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "TITLE",
-      "codeName" : "title"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CHECKKEY",
     "actionTag" : "CheckKey",
@@ -1844,17 +1813,11 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 571
-    }, {
       "code" : "setTimeout(() => {\r\n\tconst rows = uiLogic.grid.state.rows;\r\n\tconst srfreadonly = context.srfreadonly;\r\n\tif (rows && rows.length > 0) {\r\n\t\trows.forEach(row => {\r\n\t\t\tconst actionColumn = row.uiActionGroupStates.create_time;\r\n\t\t\tif (actionColumn && Object.values(actionColumn).length > 0) {\r\n\t\t\t\tObject.values(actionColumn).forEach(action => {\r\n                    if(srfreadonly == true){\r\n\t\t\t\t\t    // 提交\r\n\t\t\t\t\t    if (action.uiActionId === 'submit_form@deliverable') {\r\n                            action.disabled = true;\r\n                        }\r\n                        // 删除\r\n\t\t\t\t\t    if (action.uiActionId === 'del_form@deliverable') {\r\n                            action.disabled = true;\r\n                        }\r\n\t\t\t\t\t}\r\n\t\t\t\t})\r\n\t\t\t}\r\n\t\t})\r\n\t}\r\n}, 1000);",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "计算表格列行为状态",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -1868,19 +1831,25 @@
         }
       } ],
       "topPos" : 420
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 571
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "Grid",
       "logicName" : "表格",
       "name" : "表格",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2410,25 +2379,6 @@
       "topPos" : 300,
       "parallelOutput" : true
     }, {
-      "code" : "uiLogic.view.layoutPanel.panelItems.total.data.total = uiLogic.view.layoutPanel.panelItems.grid.control.state.items.length;\r\nif(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){\r\n    view.layoutPanel.panelItems.grid.state.visible = false\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true\r\n}\r\n",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 170,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 430
-    }, {
       "code" : "ibiz.mc.command.update.send({ srfdecodename: 'work_item'})",
       "codeName" : "RAWJSCODE3",
       "leftPos" : 170,
@@ -2448,6 +2398,25 @@
       } ],
       "topPos" : 550
     }, {
+      "code" : "uiLogic.view.layoutPanel.panelItems.total.data.total = uiLogic.view.layoutPanel.panelItems.grid.control.state.items.length;\r\nif(uiLogic.view.layoutPanel.panelItems.total.data.total == 0){\r\n    view.layoutPanel.panelItems.grid.state.visible = false\r\n}else{\r\n    view.layoutPanel.panelItems.grid.state.visible = true\r\n}\r\n",
+      "codeName" : "RAWJSCODE2",
+      "leftPos" : 170,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "获取交付目标总条数",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE3"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE2"
+        }
+      } ],
+      "topPos" : 430
+    }, {
       "codeName" : "END1",
       "leftPos" : 210,
       "logicNodeType" : "END",
@@ -2455,27 +2424,27 @@
       "topPos" : 671
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "VIEW",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
       "codeName" : "deliverable",
       "logicName" : "交付物列表",
       "name" : "交付物列表",
       "entityListParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
+      "codeName" : "VIEW",
+      "logicName" : "当前视图对象",
+      "name" : "当前视图对象",
+      "activeViewParam" : true
     }, {
       "codeName" : "CTRL",
       "logicName" : "当前部件对象",
       "name" : "当前部件对象",
       "activeCtrlParam" : true,
       "ctrlParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2510,7 +2479,7 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "输入框区域隐藏",
       "topPos" : 320
     } ],
     "getPSDEUILogicParams" : [ {
@@ -2559,20 +2528,20 @@
       "codeName" : "RAWJSCODE1",
       "leftPos" : 820,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "输入框区域展示",
       "topPos" : 435
     } ],
     "getPSDEUILogicParams" : [ {
+      "codeName" : "view",
+      "logicName" : "当前视图",
+      "name" : "当前视图",
+      "activeViewParam" : true
+    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "当前视图",
-      "name" : "当前视图",
-      "activeViewParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -2792,21 +2761,6 @@
       } ],
       "topPos" : 320
     }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "form"
-      },
-      "invokeMethod" : "save",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "files"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 787
-    }, {
       "code" : "uiLogic.default.name = uiLogic.files[0].name;\r\nuiLogic.default.file_id = uiLogic.files[0].id;",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
@@ -2829,7 +2783,7 @@
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
       "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "准备参数",
+      "name" : "设置上下文参数",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -2872,11 +2826,26 @@
       } ],
       "topPos" : 553
     }, {
+      "codeName" : "VIEWCTRLINVOKE1",
+      "getInvokeCtrl" : {
+        "modelref" : true,
+        "id" : "form"
+      },
+      "invokeMethod" : "save",
+      "getInvokeParam" : {
+        "modelref" : true,
+        "id" : "files"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "VIEWCTRLINVOKE",
+      "name" : "视图部件调用",
+      "topPos" : 787
+    }, {
       "code" : "ibiz.hub.getApp(context.srfappid).deService.exec(\r\n    'plmweb.deliverable',\r\n    'update',\r\n    context,\r\n    uiLogic.default,\r\n);",
       "codeName" : "RAWJSCODE2",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "提交（表单中）",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,

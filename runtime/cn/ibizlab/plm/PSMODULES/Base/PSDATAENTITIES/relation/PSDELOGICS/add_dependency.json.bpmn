@@ -18,14 +18,16 @@
                             <tns:global identifier="relationadd_dependencyselectdata" type="cn.ibizlab.plm.core.base.domain.relation" />
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencybindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定参数"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencybindparam1" id="bindparam1" implementation="http://www.jboss.org/drools/rule" name="绑定关联列表参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="准备前置依赖参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyrawsfcode1" id="rawsfcode1" implementation="http://www.jboss.org/drools/rule" name="填充principal_id"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyrenewparam1" id="renewparam1" implementation="http://www.jboss.org/drools/rule" name="重新建立循环临时参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencydeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="添加依赖"/>
                         <endEvent id="deaction1_end" name="end"/>
                         <sequenceFlow id="deaction1_end_line" sourceRef="deaction1" targetRef="deaction1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="准备后置依赖参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyrawsfcode2" id="rawsfcode2" implementation="http://www.jboss.org/drools/rule" name="填充target_id"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="relationadd_dependencyend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
@@ -51,7 +53,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam1_rawsfcode1" sourceRef="prepareparam1" targetRef="rawsfcode1">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode1_deaction1" sourceRef="rawsfcode1" targetRef="deaction1">
                     </sequenceFlow>
                     <sequenceFlow id="loopsubcall1_renewparam1" sourceRef="loopsubcall1" targetRef="renewparam1">
                     </sequenceFlow>
@@ -79,7 +83,9 @@
                                 ]]>
                             </conditionExpression>
                     </sequenceFlow>
-                    <sequenceFlow id="prepareparam2_deaction1" sourceRef="prepareparam2" targetRef="deaction1">
+                    <sequenceFlow id="prepareparam2_rawsfcode2" sourceRef="prepareparam2" targetRef="rawsfcode2">
+                    </sequenceFlow>
+                    <sequenceFlow id="rawsfcode2_deaction1" sourceRef="rawsfcode2" targetRef="deaction1">
                     </sequenceFlow>
                             <exclusiveGateway id="gateway-begin" name="Gateway" gatewayDirection="Diverging" default="gateway-begin_end_line"></exclusiveGateway>
                             <sequenceFlow id="begin_gateway-begin_gatewayline" sourceRef="begin" targetRef="gateway-begin"></sequenceFlow>

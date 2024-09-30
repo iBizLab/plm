@@ -23,7 +23,7 @@ package cn.ibizlab.plm.base.logic.relationlogic.add_dependency;
             then
             end
 
-            //逻辑处理节点[绑定参数]
+            //逻辑处理节点[绑定关联列表参数]
             rule "bindparam1"
             ruleflow-group "relationadd_dependencybindparam1"
             when
@@ -34,15 +34,25 @@ package cn.ibizlab.plm.base.logic.relationlogic.add_dependency;
                         update(relationadd_dependencyselectdata);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备前置依赖参数]
             rule "prepareparam1"
             ruleflow-group "relationadd_dependencyprepareparam1"
             when
             then
-                            relationadd_dependencydependency.set("principalid",relationadd_dependencyfor_temp_obj.get("owner_id"));
                             relationadd_dependencydependency.set("principaltype","dependency");
                             relationadd_dependencydependency.set("targetid",relationadd_dependencydefault.get("principalid"));
                             relationadd_dependencydependency.set("relationtype","1");
+                        update(relationadd_dependencydefault);//更新fact中变量值
+                        update(relationadd_dependencydependency);//更新fact中变量值
+                        update(relationadd_dependencyfor_temp_obj);//更新fact中变量值
+                        update(relationadd_dependencyselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充principal_id]
+            rule "rawsfcode1"
+            ruleflow-group "relationadd_dependencyrawsfcode1"
+            when
+            then
                         update(relationadd_dependencydefault);//更新fact中变量值
                         update(relationadd_dependencydependency);//更新fact中变量值
                         update(relationadd_dependencyfor_temp_obj);//更新fact中变量值
@@ -60,7 +70,7 @@ package cn.ibizlab.plm.base.logic.relationlogic.add_dependency;
                         update(relationadd_dependencyselectdata);//更新fact中变量值
             end
 
-            //逻辑处理节点[重新建立参数]
+            //逻辑处理节点[重新建立循环临时参数]
             rule "renewparam1"
             ruleflow-group "relationadd_dependencyrenewparam1"
             when
@@ -83,15 +93,25 @@ package cn.ibizlab.plm.base.logic.relationlogic.add_dependency;
                         update(relationadd_dependencyselectdata);//更新fact中变量值
             end
 
-            //逻辑处理节点[准备参数]
+            //逻辑处理节点[准备后置依赖参数]
             rule "prepareparam2"
             ruleflow-group "relationadd_dependencyprepareparam2"
             when
             then
                             relationadd_dependencydependency.set("principaltype","dependency");
                             relationadd_dependencydependency.set("relationtype","1");
-                            relationadd_dependencydependency.set("targetid",relationadd_dependencyfor_temp_obj.get("owner_id"));
                             relationadd_dependencydependency.set("principalid",relationadd_dependencydefault.get("principalid"));
+                        update(relationadd_dependencydefault);//更新fact中变量值
+                        update(relationadd_dependencydependency);//更新fact中变量值
+                        update(relationadd_dependencyfor_temp_obj);//更新fact中变量值
+                        update(relationadd_dependencyselectdata);//更新fact中变量值
+            end
+
+            //逻辑处理节点[填充target_id]
+            rule "rawsfcode2"
+            ruleflow-group "relationadd_dependencyrawsfcode2"
+            when
+            then
                         update(relationadd_dependencydefault);//更新fact中变量值
                         update(relationadd_dependencydependency);//更新fact中变量值
                         update(relationadd_dependencyfor_temp_obj);//更新fact中变量值

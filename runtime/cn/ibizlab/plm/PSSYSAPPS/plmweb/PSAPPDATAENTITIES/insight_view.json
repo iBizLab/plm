@@ -1880,6 +1880,7 @@
     "codeName" : "fill_bi_form_default",
     "defaultParamName" : "DEFAULT",
     "logicName" : "填充BI报表默认值",
+    "memo" : "填充BI报表默认值",
     "name" : "填充BI报表默认值",
     "scriptCode" : "if(!data){\n    data = {};\n}\nObject.keys(viewParam).forEach((key) =>{\n    data[key] = viewParam[key];\n})\nreturn data;",
     "customCode" : true,
@@ -3978,50 +3979,6 @@
     "reloadData" : true,
     "id" : "delete@insight_view"
   }, {
-    "actionTarget" : "NONE",
-    "caption" : "编辑",
-    "codeName" : "edit_filter",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "insight_view_edit_filter",
-    "name" : "过滤器编辑",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "filter_porlet_edit"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "edit_filter",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "globalUIAction" : true,
-    "id" : "edit_filter@insight_view"
-  }, {
-    "actionTarget" : "NONE",
-    "caption" : "显示生效报表",
-    "codeName" : "hight_light_filter",
-    "frontProcessType" : "OTHER",
-    "fullCodeName" : "insight_view_hight_light_filter",
-    "name" : "过滤器高亮",
-    "getPSAppDEUILogic" : {
-      "modelref" : true,
-      "id" : "filter_porlet_hight_light"
-    },
-    "getPSAppDataEntity" : {
-      "modelref" : true,
-      "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-    },
-    "timeout" : 60000,
-    "uIActionMode" : "FRONT",
-    "uIActionTag" : "hight_light_filter",
-    "uIActionType" : "DEUIACTION",
-    "uILogicAttachMode" : "REPLACE",
-    "globalUIAction" : true,
-    "id" : "hight_light_filter@insight_view"
-  }, {
     "actionTarget" : "SINGLEKEY",
     "caption" : "移动视图",
     "codeName" : "move_view",
@@ -4404,6 +4361,7 @@
     "codeName" : "choose_template",
     "defaultParamName" : "Default",
     "logicName" : "选择模板",
+    "memo" : "选择模板",
     "name" : "选择模板",
     "getPSDEUILogicNodes" : [ {
       "codeName" : "Begin",
@@ -4424,12 +4382,6 @@
       } ],
       "topPos" : 200,
       "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1076,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 200
     }, {
       "codeName" : "DEBUGPARAM2",
       "getDstPSDEUILogicParam" : {
@@ -4490,46 +4442,6 @@
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
           "id" : "DEBUGPARAM2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "END2",
-      "leftPos" : 727,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 607
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-        },
-        "modelref" : true,
-        "id" : "open_choose_template@insight_view"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "insight_view_info"
-      },
-      "leftPos" : 880,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "弹出模板选择",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
         }
       } ],
       "topPos" : 208
@@ -4614,6 +4526,52 @@
         "srcValueType" : "SRCDLPARAM"
       } ],
       "topPos" : 403
+    }, {
+      "codeName" : "END2",
+      "leftPos" : 727,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 607
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+        },
+        "modelref" : true,
+        "id" : "open_choose_template@insight_view"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "insight_view_info"
+      },
+      "leftPos" : 880,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "弹出模板选择",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : 208
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 1076,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 200
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "params",
@@ -4621,124 +4579,26 @@
       "name" : "视图参数",
       "viewNavDataParam" : true
     }, {
+      "codeName" : "insight_view_info",
+      "logicName" : "效能度量详情",
+      "name" : "效能度量详情",
+      "entityParam" : true
+    }, {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "default" : true,
+      "entityParam" : true
+    }, {
       "codeName" : "ctx",
       "logicName" : "上下文",
       "name" : "上下文",
       "navContextParam" : true
     }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
       "codeName" : "view",
       "logicName" : "当前视图对象",
       "name" : "当前视图对象",
       "activeViewParam" : true
-    }, {
-      "codeName" : "insight_view_info",
-      "logicName" : "效能度量详情",
-      "name" : "效能度量详情",
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "filter_porlet_edit",
-    "defaultParamName" : "Default",
-    "logicName" : "过滤器门户编辑",
-    "name" : "过滤器门户编辑",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "code" : "if (uiLogic.ctrl) {\r\n    const id = uiLogic.ctrl.model.id;\r\n    uiLogic.ctrl.dashboard.openFilterDesignPage({id})\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 371,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "编辑门户",
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "ctrl",
-      "logicName" : "门户部件",
-      "name" : "门户部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "filter_porlet_hight_light",
-    "defaultParamName" : "Default",
-    "logicName" : "过滤器门户高亮",
-    "name" : "过滤器门户高亮",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "code" : "if (uiLogic.ctrl) {\r\n    uiLogic.ctrl.showEffectiveCtrl()\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 371,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "编辑门户",
-      "topPos" : 208
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "ctrl",
-      "logicName" : "门户部件",
-      "name" : "门户部件",
-      "activeCtrlParam" : true,
-      "ctrlParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -4770,11 +4630,17 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 496
+    }, {
       "code" : "ibiz.mc.command.update.send({ srfdecodename: 'insight_view', srfkey: params.owner_id})",
       "codeName" : "RAWJSCODE1",
       "leftPos" : 160,
       "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
+      "name" : "通知刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -4788,12 +4654,6 @@
         }
       } ],
       "topPos" : 350
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 496
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",
@@ -4873,192 +4733,6 @@
       "name" : "传入变量",
       "default" : true,
       "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "use_cur_template",
-    "defaultParamName" : "Default",
-    "logicName" : "使用此模板",
-    "name" : "使用此模板",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 200,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 1142,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 208
-    }, {
-      "code" : "view.state.isLoading = false;\r\nview.closeView();",
-      "codeName" : "RAWJSCODE2",
-      "leftPos" : 793,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "关闭当前试听",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "use_cur_template"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "dyna_dashboard_info"
-      },
-      "leftPos" : 641,
-      "logicNodeType" : "DEACTION",
-      "name" : "实体行为",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE2"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "if(uiLogic.selecteddata && uiLogic.selecteddata.length >0){\r\n    uiLogic.ctx.dynadashboard = uiLogic.selecteddata[0].dynadashboardid;\r\n    uiLogic.dyna_dashboard_info = uiLogic.selecteddata[0];\r\n    uiLogic.dyna_dashboard_info.owner_id = uiLogic.ctx.insight_view;\r\n}",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 454,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "设置上下文",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
-      "codeName" : "PREPAREJSPARAM1",
-      "leftPos" : 294,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "获取列表导航选中数据",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM1"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "selecteddata"
-        },
-        "name" : "listexpbar[xDataController.state.selectedData] ==> selecteddata",
-        "paramAction" : "BINDPARAM",
-        "srcFieldName" : "xDataController.state.selectedData",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "listexpbar"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 208
-    }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'insight_view', srfkey: context.insight_view})",
-      "codeName" : "RAWJSCODE3",
-      "leftPos" : 957,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "通知刷新",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE3"
-        }
-      } ],
-      "topPos" : 216
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前视图对象",
-      "name" : "当前视图对象",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    }, {
-      "codeName" : "listexpbar",
-      "logicName" : "列表对象",
-      "name" : "列表对象",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "dyna_dashboard_info",
-      "logicName" : "看板数据",
-      "name" : "看板数据",
-      "entityParam" : true
-    }, {
-      "codeName" : "selecteddata",
-      "logicName" : "选中数据",
-      "name" : "选中数据",
-      "entityListParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
@@ -5487,12 +5161,8 @@
       "showCaption" : true,
       "showIcon" : true,
       "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-        },
         "modelref" : true,
-        "id" : "edit_filter@insight_view"
+        "id" : "edit_filter"
       }
     }, {
       "caption" : "显示生效报表",
@@ -5502,12 +5172,8 @@
       "showCaption" : true,
       "showIcon" : true,
       "getPSUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/insight_view.json"
-        },
         "modelref" : true,
-        "id" : "hight_light_filter@insight_view"
+        "id" : "hight_light_filter"
       }
     } ]
   } ]

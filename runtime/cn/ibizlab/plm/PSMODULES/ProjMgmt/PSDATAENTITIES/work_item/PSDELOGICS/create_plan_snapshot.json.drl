@@ -46,6 +46,22 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_plan_snapshot;
                         update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
             end
 
+            //逻辑处理节点[设置快照状态]
+            rule "prepareparam6"
+            ruleflow-group "work_itemcreate_plan_snapshotprepareparam6"
+            when
+            then
+                            work_itemcreate_plan_snapshotbaseline.set("status","3");
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
             //逻辑处理节点[新建快照]
             rule "deaction3"
             ruleflow-group "work_itemcreate_plan_snapshotdeaction3"
@@ -79,40 +95,24 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_plan_snapshot;
                         update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[循环子调用]
-            rule "loopsubcall1"
-            ruleflow-group "work_itemcreate_plan_snapshotloopsubcall1"
-            when
-            then
-                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
-            end
-
-            //逻辑处理节点[设置快照状态]
-            rule "prepareparam6"
-            ruleflow-group "work_itemcreate_plan_snapshotprepareparam6"
-            when
-            then
-                            work_itemcreate_plan_snapshotbaseline.set("status","3");
-                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
-                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
-            end
-
             //逻辑处理节点[获取指定项目下的所有工作项]
             rule "dedataset1"
             ruleflow-group "work_itemcreate_plan_snapshotdedataset1"
+            when
+            then
+                        update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotbaseline);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfilter);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotfor_temp_obj);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotpage);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotrelation);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotsrfactionparam);//更新fact中变量值
+                        update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
+            end
+
+            //逻辑处理节点[循环子调用]
+            rule "loopsubcall1"
+            ruleflow-group "work_itemcreate_plan_snapshotloopsubcall1"
             when
             then
                         update(work_itemcreate_plan_snapshotdefault);//更新fact中变量值
@@ -190,7 +190,7 @@ package cn.ibizlab.plm.projmgmt.logic.work_itemlogic.create_plan_snapshot;
                         update(work_itemcreate_plan_snapshotversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[重置参数]
+            //逻辑处理节点[重置版本参数]
             rule "resetparam1"
             ruleflow-group "work_itemcreate_plan_snapshotresetparam1"
             when

@@ -5203,128 +5203,17 @@
       "topPos" : 200,
       "parallelOutput" : true
     }, {
-      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'product', srfkey: params.owner_id})",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 383,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 208
-    }, {
       "codeName" : "END1",
       "leftPos" : 680,
       "logicNodeType" : "END",
       "name" : "结束",
       "topPos" : 200
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "product_readonly_recognize",
-    "defaultParamName" : "Default",
-    "logicName" : "产品只读用户判断",
-    "memo" : "判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回",
-    "name" : "产品只读用户判断",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 60,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 200,
-      "parallelOutput" : true
     }, {
-      "codeName" : "DEACTION1",
-      "getDstPSAppDEAction" : {
-        "modelref" : true,
-        "id" : "product_readonly_recognize"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/product.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 195,
-      "logicNodeType" : "DEACTION",
-      "name" : "获取产品成员（判断）",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        },
-        "linkMode" : 0,
-        "name" : "返回readonly为true",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "EQ",
-            "dstFieldName" : "srfreadonly",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "Default"
-            },
-            "logicType" : "SINGLE",
-            "name" : "Default[srfreadonly] 等于(=) 0",
-            "paramValue" : "0",
-            "value" : "0"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEACTION1"
-        }
-      } ],
-      "getRetPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "topPos" : 208
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 802,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 352
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 762,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "传递是否只读给页面",
+      "code" : "ibiz.mc.command.update.send({ srfdecodename: 'product', srfkey: params.owner_id})",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 383,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "通知刷新",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
@@ -5334,155 +5223,12 @@
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
+          "id" : "RAWJSCODE1"
         }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "context.srfreadonly",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "view"
-        },
-        "name" : "直接值[true] ==> view[context.srfreadonly]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "readonly",
-        "srcValue" : "true",
-        "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 208
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "form",
-      "logicName" : "表单",
-      "name" : "表单",
-      "ctrlParam" : true
-    }, {
-      "codeName" : "view_params",
-      "logicName" : "视图参数",
-      "name" : "视图参数",
-      "entityParam" : true
-    }, {
-      "codeName" : "members",
-      "logicName" : "成员信息",
-      "name" : "成员信息",
-      "entityPageParam" : true
-    }, {
-      "codeName" : "Default",
-      "logicName" : "传入变量",
-      "name" : "传入变量",
-      "default" : true,
-      "entityParam" : true
-    }, {
-      "codeName" : "view",
-      "logicName" : "view",
-      "name" : "view",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "viewctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
-    } ],
-    "getStartPSDEUILogicNode" : {
-      "modelref" : true,
-      "id" : "Begin"
-    }
-  }, {
-    "codeName" : "refresh_current_grid",
-    "defaultParamName" : "Default",
-    "logicName" : "刷新当前表格",
-    "memo" : "刷新当前表格",
-    "name" : "刷新当前表格",
-    "getPSDEUILogicNodes" : [ {
-      "codeName" : "Begin",
-      "leftPos" : 700,
-      "logicNodeType" : "BEGIN",
-      "name" : "开始",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "VIEWCTRLINVOKE1"
-        },
-        "linkMode" : 0,
-        "name" : "刷新表格",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNOTNULL",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "grid"
-            },
-            "logicType" : "SINGLE",
-            "name" : "grid 值不为空(NotNil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      }, {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        },
-        "linkMode" : 0,
-        "name" : "刷新视图",
-        "getPSDEUILogicLinkGroupCond" : {
-          "groupOP" : "AND",
-          "logicType" : "GROUP",
-          "getPSDEUILogicLinkConds" : [ {
-            "condOP" : "ISNULL",
-            "getDstLogicParam" : {
-              "modelref" : true,
-              "id" : "grid"
-            },
-            "logicType" : "SINGLE",
-            "name" : "grid 值为空(Nil)"
-          } ]
-        },
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "Begin"
-        }
-      } ],
-      "topPos" : 70,
-      "parallelOutput" : true
-    }, {
-      "code" : "view.call('Refresh');\r\nsetTimeout(() => {\r\n    if (view.layoutPanel.panelItems.nav_pos && view.layoutPanel.panelItems.nav_pos.curNavViewMsg) {\r\n        // 找到当前的右侧视图\r\n        const viewId = view.layoutPanel.panelItems.nav_pos.curNavViewMsg.viewId;\r\n        if (viewId) {\r\n            const key = viewId.split('.').pop();\r\n            const viewPos = view.getController(key);\r\n            if (viewPos) {\r\n                viewPos.call('Refresh');\r\n            }\r\n        }\r\n    }\r\n}, 300)",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 580,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "刷新视图",
-      "topPos" : 290
-    }, {
-      "codeName" : "VIEWCTRLINVOKE1",
-      "getInvokeCtrl" : {
-        "modelref" : true,
-        "id" : "grid"
-      },
-      "invokeMethod" : "refresh",
-      "getInvokeParam" : {
-        "modelref" : true,
-        "id" : "Default"
-      },
-      "leftPos" : 780,
-      "logicNodeType" : "VIEWCTRLINVOKE",
-      "name" : "视图部件调用",
-      "topPos" : 290
-    } ],
-    "getPSDEUILogicParams" : [ {
-      "codeName" : "view",
-      "logicName" : "当前工具栏",
-      "name" : "当前工具栏",
-      "activeViewParam" : true
-    }, {
-      "codeName" : "grid",
-      "logicName" : "当前表格",
-      "name" : "当前表格",
-      "ctrlParam" : true
-    }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
       "name" : "传入变量",

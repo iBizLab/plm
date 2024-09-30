@@ -30,18 +30,18 @@
             </extensionElements>
                         <startEvent id="begin" isInterrupting="true"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam7" id="prepareparam7" implementation="http://www.jboss.org/drools/rule" name="设置基线状态"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置快照状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotdeaction3" id="deaction3" implementation="http://www.jboss.org/drools/rule" name="新建快照"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="传入项目标识至查询过滤器"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam6" id="prepareparam6" implementation="http://www.jboss.org/drools/rule" name="设置快照状态"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotdedataset1" id="dedataset1" implementation="http://www.jboss.org/drools/rule" name="获取指定项目下的所有工作项"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotloopsubcall1" id="loopsubcall1" implementation="http://www.jboss.org/drools/rule" name="循环子调用"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="关联对象版本标识"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotresetparam2" id="resetparam2" implementation="http://www.jboss.org/drools/rule" name="重置关联对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="将工作项标识赋值于关联对象"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="建立关联数据"/>
                         <endEvent id="deaction2_end" name="end"/>
                         <sequenceFlow id="deaction2_end_line" sourceRef="deaction2" targetRef="deaction2_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotresetparam1" id="resetparam1" implementation="http://www.jboss.org/drools/rule" name="重置版本参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="填充初始化版本属性"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="修复初始化版本"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="work_itemcreate_plan_snapshotprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="关联对象版本标识"/>
@@ -77,15 +77,15 @@
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam7_deaction3" sourceRef="prepareparam7" targetRef="deaction3">
                     </sequenceFlow>
+                    <sequenceFlow id="prepareparam6_deaction3" sourceRef="prepareparam6" targetRef="deaction3">
+                    </sequenceFlow>
                     <sequenceFlow id="deaction3_prepareparam1" sourceRef="deaction3" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_dedataset1" sourceRef="prepareparam1" targetRef="dedataset1">
                     </sequenceFlow>
-                    <sequenceFlow id="loopsubcall1_resetparam2" sourceRef="loopsubcall1" targetRef="resetparam2">
-                    </sequenceFlow>
-                    <sequenceFlow id="prepareparam6_deaction3" sourceRef="prepareparam6" targetRef="deaction3">
-                    </sequenceFlow>
                     <sequenceFlow id="dedataset1_loopsubcall1" sourceRef="dedataset1" targetRef="loopsubcall1">
+                    </sequenceFlow>
+                    <sequenceFlow id="loopsubcall1_resetparam2" sourceRef="loopsubcall1" targetRef="resetparam2">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam3_deaction2" sourceRef="prepareparam3" targetRef="deaction2">
                     </sequenceFlow>

@@ -25,7 +25,6 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewend1" id="end1" implementation="http://www.jboss.org/drools/rule" name="结束"/>
                         <endEvent id="end1_end" name="end"/>
                         <sequenceFlow id="end1_end_line" sourceRef="end1" targetRef="end1_end"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdebugparam1" id="debugparam1" implementation="http://www.jboss.org/drools/rule" name="传入参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam1" id="prepareparam1" implementation="http://www.jboss.org/drools/rule" name="获取评审详情ID"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdeaction1" id="deaction1" implementation="http://www.jboss.org/drools/rule" name="获取评审详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam2" id="prepareparam2" implementation="http://www.jboss.org/drools/rule" name="获取阶段信息"/>
@@ -33,15 +32,13 @@
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewsortparam1" id="sortparam1" implementation="http://www.jboss.org/drools/rule" name="排序数组参数"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam5" id="prepareparam5" implementation="http://www.jboss.org/drools/rule" name="绑定阶段数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdebugparam3" id="debugparam3" implementation="http://www.jboss.org/drools/rule" name="最后评审详情"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="实体行为"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdeaction2" id="deaction2" implementation="http://www.jboss.org/drools/rule" name="获取评审详情"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewdebugparam2" id="debugparam2" implementation="http://www.jboss.org/drools/rule" name="当前阶段数据"/>
                         <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam3" id="prepareparam3" implementation="http://www.jboss.org/drools/rule" name="设置阶段完成"/>
-                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+                        <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="review_contentstart_reviewprepareparam4" id="prepareparam4" implementation="http://www.jboss.org/drools/rule" name="设置阶段数据参数"/>
                         <endEvent id="prepareparam4_end" name="end"/>
                         <sequenceFlow id="prepareparam4_end_line" sourceRef="prepareparam4" targetRef="prepareparam4_end"/>
-                    <sequenceFlow id="begin_debugparam1" sourceRef="begin" targetRef="debugparam1">
-                    </sequenceFlow>
-                    <sequenceFlow id="debugparam1_prepareparam1" sourceRef="debugparam1" targetRef="prepareparam1">
+                    <sequenceFlow id="begin_prepareparam1" sourceRef="begin" targetRef="prepareparam1">
                     </sequenceFlow>
                     <sequenceFlow id="prepareparam1_deaction1" sourceRef="prepareparam1" targetRef="deaction1">
                     </sequenceFlow>

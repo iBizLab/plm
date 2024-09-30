@@ -36,18 +36,6 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.set_name_version;
                         update(article_pageset_name_versionversion);//更新fact中变量值
             end
 
-            //逻辑处理节点[调试逻辑参数]
-            rule "debugparam1"
-            ruleflow-group "article_pageset_name_versiondebugparam1"
-            when
-            then
-                        update(article_pageset_name_versiondefault);//更新fact中变量值
-                        update(article_pageset_name_versionform_data);//更新fact中变量值
-                        update(article_pageset_name_versionpage_detail);//更新fact中变量值
-                        update(article_pageset_name_versionsrfactionparam);//更新fact中变量值
-                        update(article_pageset_name_versionversion);//更新fact中变量值
-            end
-
             //逻辑处理节点[获取操作表单数据]
             rule "prepareparam2"
             ruleflow-group "article_pageset_name_versionprepareparam2"
@@ -83,26 +71,6 @@ package cn.ibizlab.plm.wiki.logic.article_pagelogic.set_name_version;
             when
             then
                         versionservice.update(article_pageset_name_versionversion);
-                        update(article_pageset_name_versiondefault);//更新fact中变量值
-                        update(article_pageset_name_versionform_data);//更新fact中变量值
-                        update(article_pageset_name_versionpage_detail);//更新fact中变量值
-                        update(article_pageset_name_versionsrfactionparam);//更新fact中变量值
-                        update(article_pageset_name_versionversion);//更新fact中变量值
-            end
-
-            //逻辑处理节点[准备参数]
-            rule "prepareparam1"
-            ruleflow-group "article_pageset_name_versionprepareparam1"
-            when
-            then
-                            article_pageset_name_versionpage_detail.set("",article_pageset_name_versiondefault.get(""));
-                            article_pageset_name_versionversion.set("isnamed","1");
-                            article_pageset_name_versionsrfactionparam.set("",article_pageset_name_versiondefault.get("srfactionparam"));
-                            article_pageset_name_versionform_data.set("",article_pageset_name_versionsrfactionparam.get("0"));
-                            article_pageset_name_versionpage_detail.set("curversionname",article_pageset_name_versionform_data.get("version_name"));
-                            article_pageset_name_versionform_data.set("version_id",article_pageset_name_versionsrfactionparam.get("version_id"));
-                            article_pageset_name_versionversion.set("id",article_pageset_name_versionform_data.get("version_id"));
-                            article_pageset_name_versionversion.set("name",article_pageset_name_versionform_data.get("version_name"));
                         update(article_pageset_name_versiondefault);//更新fact中变量值
                         update(article_pageset_name_versionform_data);//更新fact中变量值
                         update(article_pageset_name_versionpage_detail);//更新fact中变量值

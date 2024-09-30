@@ -536,6 +536,9 @@
   }, {
     "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEDRITEMS/UsrDRItem0314259450.json"
+  }, {
+    "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEDRITEMS/UsrDRItem0920797977.json"
   } ],
   "getAllPSDEDataQueries" : [ {
     "getAllPSDEDataQueryCodes" : [ {
@@ -1899,6 +1902,9 @@
     "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEDATARELATIONS/OverView_DR.json"
   }, {
     "modelref" : true,
+    "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEDATARELATIONS/mob_tab_exp_dr.json"
+  }, {
+    "modelref" : true,
     "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDEDATARELATIONS/my_charge_item.json"
   }, {
     "modelref" : true,
@@ -1934,6 +1940,35 @@
     "defaultMode" : true,
     "enableBackend" : true,
     "enableFront" : true
+  }, {
+    "actionHolder" : 1,
+    "codeName" : "only_ten_access_use",
+    "dataSetType" : "DELOGIC",
+    "logicName" : "最近使用（10条）",
+    "name" : "only_ten_access_use",
+    "getPSDEDataSetInput" : {
+      "name" : "Only_ten_access_useInput",
+      "getPSDEFilterDTO" : {
+        "modelref" : true,
+        "id" : "recent_filter_dto"
+      },
+      "type" : "DTO"
+    },
+    "getPSDEDataSetReturn" : {
+      "name" : "Only_ten_access_useResult",
+      "getPSDEMethodDTO" : {
+        "modelref" : true,
+        "id" : "recent_dto"
+      },
+      "type" : "PAGE"
+    },
+    "getPSDELogic" : {
+      "modelref" : true,
+      "path" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDELOGICS/recent_use.json"
+    },
+    "predefinedType" : "DELOGIC",
+    "enableBackend" : true,
+    "enableFront" : false
   }, {
     "codeName" : "recent_access",
     "logicName" : "最近访问",
@@ -4526,7 +4561,7 @@
       },
       "leftPos" : 757,
       "logicNodeType" : "BINDPARAM",
-      "name" : "绑定参数",
+      "name" : "绑定结果参数",
       "getPSDELogicLinks" : [ {
         "getDstPSDELogicNode" : {
           "modelref" : true,
@@ -4966,6 +5001,130 @@
     },
     "enableBackend" : true,
     "enableFront" : false
+  }, {
+    "codeName" : "recent_use",
+    "defaultParamName" : "Default",
+    "dynaModelFilePath" : "PSMODULES/Base/PSDATAENTITIES/recent/PSDELOGICS/recent_use.json",
+    "logicName" : "最近使用",
+    "memo" : "查询最近使用数据(项目/产品/空间)，仅查询10条",
+    "name" : "最近使用",
+    "getPSDELogicNodes" : [ {
+      "codeName" : "Begin",
+      "leftPos" : 200,
+      "logicNodeType" : "BEGIN",
+      "name" : "开始",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "Begin"
+        }
+      } ],
+      "topPos" : 170,
+      "parallelOutput" : true
+    }, {
+      "codeName" : "PREPAREPARAM1",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREPARAM",
+      "name" : "设置分页参数",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREPARAM1"
+        }
+      } ],
+      "getPSDELogicNodeParams" : [ {
+        "dstFieldName" : "size",
+        "getDstPSDELogicParam" : {
+          "modelref" : true,
+          "id" : "Default"
+        },
+        "name" : "直接值[10] ==> Default[size]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcValue" : "10",
+        "srcValueType" : "SRCVALUE"
+      } ],
+      "topPos" : 276
+    }, {
+      "codeName" : "DEDATASET1",
+      "getDstPSDEDataSet" : {
+        "modelref" : true,
+        "id" : "recent_use"
+      },
+      "getDstPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "Default"
+      },
+      "getDstPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEDATASET",
+      "name" : "最近使用",
+      "getPSDELogicLinks" : [ {
+        "getDstPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "name" : "连接名称",
+        "getSrcPSDELogicNode" : {
+          "modelref" : true,
+          "id" : "DEDATASET1"
+        }
+      } ],
+      "getRetPSDELogicParam" : {
+        "modelref" : true,
+        "id" : "result_page"
+      },
+      "topPos" : 388
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "getReturnParam" : {
+        "modelref" : true,
+        "id" : "result_page"
+      },
+      "returnType" : "LOGICPARAM",
+      "topPos" : 515
+    } ],
+    "getPSDELogicParams" : [ {
+      "codeName" : "Default",
+      "logicName" : "传入变量",
+      "name" : "传入变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "default" : true,
+      "filterParam" : true
+    }, {
+      "codeName" : "result_page",
+      "logicName" : "分页查询结果变量",
+      "name" : "分页查询结果变量",
+      "getParamPSDataEntity" : {
+        "modelref" : true,
+        "path" : "PSMODULES/Base/PSDATAENTITIES/recent.json"
+      },
+      "entityPageParam" : true
+    } ],
+    "getStartPSDELogicNode" : {
+      "modelref" : true,
+      "id" : "Begin"
+    },
+    "enableBackend" : true,
+    "enableFront" : false
   } ],
   "getAllPSDEMethodDTOs" : [ {
     "name" : "recent_dto",
@@ -5380,6 +5539,12 @@
     "realModelSubType" : "DEDATAVIEWEXPVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
+    "codeName" : "mob_tab_exp_view",
+    "logicName" : "工作台移动端分页导航视图",
+    "name" : "工作台移动端分页导航视图",
+    "realModelSubType" : "DEMOBTABEXPVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
     "codeName" : "my_created_tab_exp_view",
     "logicName" : "我创建的事项分页导航视图",
     "name" : "我创建的事项分页导航视图",
@@ -5422,6 +5587,12 @@
     "logicName" : "最近访问用例表格视图",
     "name" : "最近访问用例表格视图",
     "realModelSubType" : "DEGRIDVIEW",
+    "realModelType" : "PSDEVIEWBASE"
+  }, {
+    "codeName" : "mob_home_view",
+    "logicName" : "工作台首页（移动端）",
+    "name" : "工作台首页（移动端）",
+    "realModelSubType" : "DEMOBCUSTOMVIEW",
     "realModelType" : "PSDEVIEWBASE"
   }, {
     "codeName" : "GridView",

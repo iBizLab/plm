@@ -1,35 +1,4 @@
 {
-  "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  } ],
   "getAllPSAppDEActions" : [ {
     "actionMode" : "CUSTOM",
     "codeName" : "active_member",
@@ -2068,6 +2037,31 @@
       "topPos" : 210,
       "parallelOutput" : true
     }, {
+      "codeName" : "END1",
+      "leftPos" : 320,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 673
+    }, {
+      "code" : "let nums = uiLogic.view.layoutPanel.panelItems;\r\nif (uiLogic && uiLogic.datas.lastday_active_count) {\r\n    //昨日活跃人数\r\n    nums.lastday_active_count.data.lastday_active_count = uiLogic.datas.lastday_active_count;\r\n}\r\nif (uiLogic && uiLogic.datas.lastday_active_rate) {\r\n    //昨日活跃率\r\n    nums.lastday_active_rate.data.lastday_active_rate = uiLogic.datas.lastday_active_rate;\r\n}\r\nif (uiLogic && uiLogic.datas.sevenday_active_count) {\r\n    //近七日活跃人数\r\n    nums.sevenday_active_count.data.sevenday_active_count = Math.floor(uiLogic.datas.sevenday_active_count);\r\n}\r\nif (uiLogic && uiLogic.datas.sevenday_active_rate) {\r\n    //近七日活跃率\r\n    nums.sevenday_active_rate.data.sevenday_active_rate = uiLogic.datas.sevenday_active_rate;\r\n}\r\n\r\n\r\n      \r\n    \r\n",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 280,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "计算活跃成员数据信息",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "RAWJSCODE1"
+        }
+      } ],
+      "topPos" : 538
+    }, {
       "codeName" : "DEACTION1",
       "getDstPSAppDEAction" : {
         "modelref" : true,
@@ -2097,31 +2091,6 @@
         "id" : "datas"
       },
       "topPos" : 363
-    }, {
-      "codeName" : "END1",
-      "leftPos" : 320,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 673
-    }, {
-      "code" : "let nums = uiLogic.view.layoutPanel.panelItems;\r\nif (uiLogic && uiLogic.datas.lastday_active_count) {\r\n    //昨日活跃人数\r\n    nums.lastday_active_count.data.lastday_active_count = uiLogic.datas.lastday_active_count;\r\n}\r\nif (uiLogic && uiLogic.datas.lastday_active_rate) {\r\n    //昨日活跃率\r\n    nums.lastday_active_rate.data.lastday_active_rate = uiLogic.datas.lastday_active_rate;\r\n}\r\nif (uiLogic && uiLogic.datas.sevenday_active_count) {\r\n    //近七日活跃人数\r\n    nums.sevenday_active_count.data.sevenday_active_count = Math.floor(uiLogic.datas.sevenday_active_count);\r\n}\r\nif (uiLogic && uiLogic.datas.sevenday_active_rate) {\r\n    //近七日活跃率\r\n    nums.sevenday_active_rate.data.sevenday_active_rate = uiLogic.datas.sevenday_active_rate;\r\n}\r\n\r\n\r\n      \r\n    \r\n",
-      "codeName" : "RAWJSCODE1",
-      "leftPos" : 280,
-      "logicNodeType" : "RAWJSCODE",
-      "name" : "注入脚本代码",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "END1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "RAWJSCODE1"
-        }
-      } ],
-      "topPos" : 538
     } ],
     "getPSDEUILogicParams" : [ {
       "codeName" : "Default",

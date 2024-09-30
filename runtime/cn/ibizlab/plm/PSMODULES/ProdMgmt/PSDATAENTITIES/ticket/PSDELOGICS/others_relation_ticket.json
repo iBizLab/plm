@@ -46,7 +46,7 @@
     },
     "leftPos" : 20,
     "logicNodeType" : "BINDPARAM",
-    "name" : "绑定参数",
+    "name" : "绑定关联列表参数",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -124,7 +124,7 @@
     },
     "leftPos" : 766,
     "logicNodeType" : "RENEWPARAM",
-    "name" : "重新建立参数",
+    "name" : "重新建立正向关系对象",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -145,7 +145,7 @@
     },
     "leftPos" : 766,
     "logicNodeType" : "RENEWPARAM",
-    "name" : "重新建立参数",
+    "name" : "重新建立反向关系对象",
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
@@ -166,7 +166,7 @@
     "getPSDELogicLinks" : [ {
       "getDstPSDELogicNode" : {
         "modelref" : true,
-        "id" : "DEACTION1"
+        "id" : "RAWSFCODE1"
       },
       "name" : "连接名称",
       "getSrcPSDELogicNode" : {
@@ -200,20 +200,6 @@
       "getSrcPSDELogicParam" : {
         "modelref" : true,
         "id" : "Default"
-      },
-      "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "PRINCIPAL_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "reverse_relation_obj"
-      },
-      "name" : "for_temp_obj[owner_id] ==> reverse_relation_obj[PRINCIPAL_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
       },
       "srcValueType" : "SRCDLPARAM"
     }, {
@@ -288,28 +274,33 @@
       },
       "srcValue" : "idea",
       "srcValueType" : "SRCDLPARAM"
-    }, {
-      "dstFieldName" : "TARGET_ID",
-      "getDstPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "forward_relation_obj"
-      },
-      "name" : "for_temp_obj[owner_id] ==> forward_relation_obj[TARGET_ID]",
-      "paramAction" : "SETPARAMVALUE",
-      "srcFieldName" : "owner_id",
-      "getSrcPSDELogicParam" : {
-        "modelref" : true,
-        "id" : "for_temp_obj"
-      },
-      "srcValueType" : "SRCDLPARAM"
     } ],
-    "topPos" : 467
+    "topPos" : 484
   }, {
     "codeName" : "END1",
     "leftPos" : 410,
     "logicNodeType" : "END",
     "name" : "结束",
     "topPos" : 494
+  }, {
+    "code" : "def for_temp_obj = logic.param('for_temp_obj').getReal()\r\n\r\ndef reverse_relation_obj = logic.param('reverse_relation_obj').getReal()\r\n\r\ndef forward_relation_obj = logic.param('forward_relation_obj').getReal()\r\n\r\n\r\n// PC端 使用owner_id   mob端 使用id \r\nif(for_temp_obj.get('id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('id'))\r\n}\r\nif(for_temp_obj.get('owner_id') != null){\r\n    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))\r\n    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))\r\n}\r\n\r\n\r\n",
+    "codeName" : "RAWSFCODE1",
+    "codeType" : "Groovy",
+    "leftPos" : 766,
+    "logicNodeType" : "RAWSFCODE",
+    "name" : "移动端和PC端关联关系",
+    "getPSDELogicLinks" : [ {
+      "getDstPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "DEACTION1"
+      },
+      "name" : "连接名称",
+      "getSrcPSDELogicNode" : {
+        "modelref" : true,
+        "id" : "RAWSFCODE1"
+      }
+    } ],
+    "topPos" : 594
   }, {
     "codeName" : "DEACTION1",
     "getDstPSDEAction" : {
@@ -338,7 +329,7 @@
         "id" : "DEACTION1"
       }
     } ],
-    "topPos" : 570
+    "topPos" : 720
   }, {
     "codeName" : "DEACTION2",
     "getDstPSDEAction" : {
@@ -356,7 +347,7 @@
     "leftPos" : 766,
     "logicNodeType" : "DEACTION",
     "name" : "生成反向关联数据",
-    "topPos" : 670
+    "topPos" : 830
   } ],
   "getPSDELogicParams" : [ {
     "codeName" : "Default",

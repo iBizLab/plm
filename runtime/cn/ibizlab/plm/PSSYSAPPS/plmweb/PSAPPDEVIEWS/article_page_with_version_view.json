@@ -693,7 +693,7 @@
                 "editorParams" : {
                   "contenttype" : "HTML",
                   "TITLE" : "name",
-                  "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
+                  "PARSESCRIPT" : "value?.replace(/@{[^,]*,\"name\":\"(.*?)\"}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/@{[^,]*,name=(.*?)}/g,\"<span class=\\'comment-tag\\'>@$1</span>\").replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"type\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g,(match, id, name, identifier, type, icon) => { const tempIcon = icon.trim(); const params = JSON.stringify({ id, name, identifier, type, }); return `<span markerClick='marker' params='${params}' class='comment-tag is-click'>${tempIcon} ${identifier} ${name}</span>`;}).replace(/#{\"id\":\"(.+?)\",\"name\":\"(.+?)\",\"identifier\":\"(.+?)\",\"icon\":\"((.|[\\t\\r\\f\\n\\s])+?)\"}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replace(/#{id=(.+?),name=(.+?),identifier=(.+?),icon=((.|[\\t\\r\\f\\n\\s])+?)}/g, \"<span class=\\'comment-tag\\'>$4 $3 $2</span>\").replaceAll(/\\{\\\"\\emoji\\\":\\\"(.+?)\\\"\\}/g,(x, emoji) => {const tempVal = decodeURIComponent(atob(emoji)); return `<span class=\"emoji-tag\">${tempVal}</span>`})"
                 },
                 "editorStyle" : "ANCHO_HTML",
                 "editorType" : "RAW",
@@ -718,6 +718,7 @@
               "detailType" : "FORMITEM",
               "enableCond" : 0,
               "ignoreInput" : 12,
+              "itemHeight" : 1.0,
               "labelPos" : "NONE",
               "labelWidth" : 0,
               "name" : "formitem1",
@@ -754,6 +755,7 @@
                 "notMode" : false
               } ],
               "getPSEditor" : {
+                "editorHeight" : 1.0,
                 "editorType" : "MARKDOWN",
                 "maxLength" : 16777215,
                 "mode" : "EDIT",

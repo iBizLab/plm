@@ -1,35 +1,5 @@
 {
   "getAllPSAppDEACModes" : [ {
-    "codeName" : "Default",
-    "logicName" : "DEFAULT",
-    "name" : "DEFAULT",
-    "getPSDEACModeDataItems" : [ {
-      "dataType" : 25,
-      "name" : "value",
-      "getPSAppDEField" : {
-        "name" : "ID",
-        "codeName" : "id"
-      }
-    }, {
-      "dataType" : 25,
-      "name" : "text",
-      "getPSAppDEField" : {
-        "name" : "NAME",
-        "codeName" : "name"
-      }
-    } ],
-    "pagingSize" : 50,
-    "getTextPSAppDEField" : {
-      "name" : "NAME",
-      "codeName" : "name"
-    },
-    "getValuePSAppDEField" : {
-      "name" : "ID",
-      "codeName" : "id"
-    },
-    "defaultMode" : true,
-    "enablePagingBar" : false
-  }, {
     "codeName" : "create_resource",
     "getItemPSLayoutPanel" : {
       "getAllPSPanelFields" : [ {
@@ -2175,7 +2145,7 @@
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "BINDPARAM1"
+          "id" : "RAWJSCODE1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
@@ -2189,39 +2159,6 @@
         "id" : "addon_resource_page"
       },
       "topPos" : 407
-    }, {
-      "codeName" : "PREPAREJSPARAM2",
-      "leftPos" : 160,
-      "logicNodeType" : "PREPAREJSPARAM",
-      "name" : "将项目资源组件标识填充至上下文中",
-      "getPSDEUILogicLinks" : [ {
-        "getDstPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "DEUIACTION1"
-        },
-        "linkMode" : 0,
-        "name" : "连接名称",
-        "getSrcPSDEUILogicNode" : {
-          "modelref" : true,
-          "id" : "PREPAREJSPARAM2"
-        }
-      } ],
-      "getPSDEUILogicNodeParams" : [ {
-        "dstFieldName" : "addon_resource",
-        "getDstPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "ctx"
-        },
-        "name" : "addon_resource[id] ==> ctx[addon_resource]",
-        "paramAction" : "SETPARAMVALUE",
-        "srcFieldName" : "id",
-        "getSrcPSDEUILogicParam" : {
-          "modelref" : true,
-          "id" : "addon_resource"
-        },
-        "srcValueType" : "SRCDLPARAM"
-      } ],
-      "topPos" : 630
     }, {
       "codeName" : "BINDPARAM1",
       "getDstPSDEUILogicParam" : {
@@ -2250,45 +2187,24 @@
       },
       "topPos" : 540
     }, {
-      "codeName" : "END1",
-      "leftPos" : 200,
-      "logicNodeType" : "END",
-      "name" : "结束",
-      "topPos" : 857
-    }, {
-      "codeName" : "DEUIACTION1",
-      "getDstPSAppDEUIAction" : {
-        "getPSAppDataEntity" : {
-          "modelref" : true,
-          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
-        },
-        "modelref" : true,
-        "id" : "open_project_capacity@addon_resource"
-      },
-      "getDstPSAppDataEntity" : {
-        "modelref" : true,
-        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
-      },
-      "getDstPSDEUILogicParam" : {
-        "modelref" : true,
-        "id" : "ctx"
-      },
-      "leftPos" : 160,
-      "logicNodeType" : "DEUIACTION",
-      "name" : "打开项目容量设置视图",
+      "code" : "console.log('测试');",
+      "codeName" : "RAWJSCODE1",
+      "leftPos" : 370,
+      "logicNodeType" : "RAWJSCODE",
+      "name" : "注入脚本代码",
       "getPSDEUILogicLinks" : [ {
         "getDstPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "END1"
+          "id" : "BINDPARAM1"
         },
         "linkMode" : 0,
         "name" : "连接名称",
         "getSrcPSDEUILogicNode" : {
           "modelref" : true,
-          "id" : "DEUIACTION1"
+          "id" : "RAWJSCODE1"
         }
       } ],
-      "topPos" : 730
+      "topPos" : 467
     }, {
       "codeName" : "PREPAREJSPARAM1",
       "leftPos" : 160,
@@ -2342,12 +2258,90 @@
         "srcValueType" : "SRCVALUE"
       } ],
       "topPos" : 320
+    }, {
+      "codeName" : "DEUIACTION1",
+      "getDstPSAppDEUIAction" : {
+        "getPSAppDataEntity" : {
+          "modelref" : true,
+          "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+        },
+        "modelref" : true,
+        "id" : "open_project_capacity@addon_resource"
+      },
+      "getDstPSAppDataEntity" : {
+        "modelref" : true,
+        "path" : "PSSYSAPPS/plmweb/PSAPPDATAENTITIES/addon_resource.json"
+      },
+      "getDstPSDEUILogicParam" : {
+        "modelref" : true,
+        "id" : "ctx"
+      },
+      "leftPos" : 160,
+      "logicNodeType" : "DEUIACTION",
+      "name" : "打开项目容量设置视图",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "END1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        }
+      } ],
+      "topPos" : 730
+    }, {
+      "codeName" : "END1",
+      "leftPos" : 200,
+      "logicNodeType" : "END",
+      "name" : "结束",
+      "topPos" : 857
+    }, {
+      "codeName" : "PREPAREJSPARAM2",
+      "leftPos" : 160,
+      "logicNodeType" : "PREPAREJSPARAM",
+      "name" : "将项目资源组件标识填充至上下文中",
+      "getPSDEUILogicLinks" : [ {
+        "getDstPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "DEUIACTION1"
+        },
+        "linkMode" : 0,
+        "name" : "连接名称",
+        "getSrcPSDEUILogicNode" : {
+          "modelref" : true,
+          "id" : "PREPAREJSPARAM2"
+        }
+      } ],
+      "getPSDEUILogicNodeParams" : [ {
+        "dstFieldName" : "addon_resource",
+        "getDstPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "ctx"
+        },
+        "name" : "addon_resource[id] ==> ctx[addon_resource]",
+        "paramAction" : "SETPARAMVALUE",
+        "srcFieldName" : "id",
+        "getSrcPSDEUILogicParam" : {
+          "modelref" : true,
+          "id" : "addon_resource"
+        },
+        "srcValueType" : "SRCDLPARAM"
+      } ],
+      "topPos" : 630
     } ],
     "getPSDEUILogicParams" : [ {
-      "codeName" : "addon_resource",
-      "logicName" : "当前项目下的资源组件",
-      "name" : "当前项目下的资源组件",
-      "entityParam" : true
+      "codeName" : "addon_resource_page",
+      "logicName" : "资源组件分页查询结果变量",
+      "name" : "资源组件分页查询结果变量",
+      "entityPageParam" : true
+    }, {
+      "codeName" : "ctx",
+      "logicName" : "上下文",
+      "name" : "上下文",
+      "navContextParam" : true
     }, {
       "codeName" : "Default",
       "logicName" : "传入变量",
@@ -2355,20 +2349,15 @@
       "default" : true,
       "entityParam" : true
     }, {
-      "codeName" : "ctx",
-      "logicName" : "上下文",
-      "name" : "上下文",
-      "navContextParam" : true
+      "codeName" : "addon_resource",
+      "logicName" : "当前项目下的资源组件",
+      "name" : "当前项目下的资源组件",
+      "entityParam" : true
     }, {
       "codeName" : "addon_resource_filter",
       "logicName" : "资源组件过滤器",
       "name" : "资源组件过滤器",
       "filterParam" : true
-    }, {
-      "codeName" : "addon_resource_page",
-      "logicName" : "资源组件分页查询结果变量",
-      "name" : "资源组件分页查询结果变量",
-      "entityPageParam" : true
     } ],
     "getStartPSDEUILogicNode" : {
       "modelref" : true,
