@@ -125,6 +125,7 @@
 |[计算迭代工作项数量](module/ProjMgmt/sprint/logic/cal_sprint_work_item_num)|cal_sprint_work_item_num|无||迭代工作项数量计算|
 |[迭代关联发布](module/ProjMgmt/sprint/logic/sprint_relation_release)|sprint_relation_release|无||迭代关联发布|
 |[迭代操作标识业务计算逻辑](module/ProjMgmt/sprint/logic/oppriv_logic)|oppriv_logic|实体操作标识计算逻辑||迭代操作标识业务计算逻辑|
+|[项目下迭代（移动端）](module/ProjMgmt/sprint/logic/mob_project_sprint)|mob_project_sprint|无||设置进度条信息|
 
 ## 主状态控制
 
@@ -245,6 +246,7 @@
 |[移动至(choose_move)](module/ProjMgmt/sprint/dataset/choose_move)|choose_move|数据查询|否||确认迭代完成时，选择移动至其他迭代|
 |[选择关联的迭代(choose_sprint_relation)](module/ProjMgmt/sprint/dataset/choose_sprint_relation)|choose_sprint_relation|数据查询|否|||
 |[当前项目未完成的迭代(cur_sprint_not_finish)](module/ProjMgmt/sprint/dataset/cur_sprint_not_finish)|cur_sprint_not_finish|数据查询|否|||
+|[项目下迭代（移动端）(mob_project_sprint)](module/ProjMgmt/sprint/dataset/mob_project_sprint)|mob_project_sprint|[实体逻辑](module/ProjMgmt/sprint/logic/mob_project_sprint)|否|||
 |[未结束的迭代(not_finish)](module/ProjMgmt/sprint/dataset/not_finish)|not_finish|数据查询|否|||
 |[只读用户(reader)](module/ProjMgmt/sprint/dataset/reader)|reader|数据查询|否|||
 |[发布关联迭代(release_relation)](module/ProjMgmt/sprint/dataset/release_relation)|release_relation|数据查询|否|||

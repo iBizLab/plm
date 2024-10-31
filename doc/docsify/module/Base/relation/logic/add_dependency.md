@@ -15,12 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_dependency#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./add_dependency#bindparam1 {"绑定参数"}]]
+state "绑定关联列表参数" as BINDPARAM1  [[$./add_dependency#bindparam1 {"绑定关联列表参数"}]]
 state "结束" as END1 <<end>> [[$./add_dependency#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./add_dependency#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./add_dependency#renewparam1 {"重新建立参数"}]]
-state "准备参数" as PREPAREPARAM2  [[$./add_dependency#prepareparam2 {"准备参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./add_dependency#prepareparam1 {"准备参数"}]]
+state "重新建立循环临时参数" as RENEWPARAM1  [[$./add_dependency#renewparam1 {"重新建立循环临时参数"}]]
+state "准备后置依赖参数" as PREPAREPARAM2  [[$./add_dependency#prepareparam2 {"准备后置依赖参数"}]]
+state "填充target_id" as RAWSFCODE2  [[$./add_dependency#rawsfcode2 {"填充target_id"}]]
+state "准备前置依赖参数" as PREPAREPARAM1  [[$./add_dependency#prepareparam1 {"准备前置依赖参数"}]]
+state "填充principal_id" as RAWSFCODE1  [[$./add_dependency#rawsfcode1 {"填充principal_id"}]]
 state "添加依赖" as DEACTION1  [[$./add_dependency#deaction1 {"添加依赖"}]]
 }
 
@@ -29,9 +31,11 @@ Begin --> BINDPARAM1 : [[$./add_dependency#begin-bindparam1{存在主要关联�
 BINDPARAM1 --> LOOPSUBCALL1 : [[$./add_dependency#bindparam1-loopsubcall1{存在选中数据} 存在选中数据]]
 LOOPSUBCALL1 --> RENEWPARAM1
 RENEWPARAM1 --> PREPAREPARAM2 : [[$./add_dependency#renewparam1-prepareparam2{后置任务} 后置任务]]
-PREPAREPARAM2 --> DEACTION1
+PREPAREPARAM2 --> RAWSFCODE2
+RAWSFCODE2 --> DEACTION1
 RENEWPARAM1 --> PREPAREPARAM1 : [[$./add_dependency#renewparam1-prepareparam1{前置任务} 前置任务]]
-PREPAREPARAM1 --> DEACTION1
+PREPAREPARAM1 --> RAWSFCODE1
+RAWSFCODE1 --> DEACTION1
 LOOPSUBCALL1 --> END1
 
 
@@ -46,26 +50,49 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定关联列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
 绑定参数`Default(传入变量)` 到 `selectdata(关联列表)`
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备前置依赖参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
-1. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `dependency(依赖).PRINCIPAL_ID(关联主体标识)`
-2. 将`dependency` 设置给  `dependency(依赖).PRINCIPAL_TYPE(关联主体类型)`
-3. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `dependency(依赖).TARGET_ID(关联目标标识)`
-4. 将`1` 设置给  `dependency(依赖).RELATION_TYPE(关联类型)`
+1. 将`dependency` 设置给  `dependency(依赖).PRINCIPAL_TYPE(关联主体类型)`
+2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `dependency(依赖).TARGET_ID(关联目标标识)`
+3. 将`1` 设置给  `dependency(依赖).RELATION_TYPE(关联类型)`
+
+#### 填充principal_id :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def dependency = logic.param('dependency').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    dependency.set('principal_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    dependency.set('principal_id', for_temp_obj.get('owner_id'))
+}
+
+
+
+```
 
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 
 
 
 循环参数`selectdata(关联列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立循环临时参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
@@ -76,14 +103,37 @@ LOOPSUBCALL1 --> END1
 
 调用实体 [关联(RELATION)](module/Base/relation.md) 行为 [Save](module/Base/relation#行为) ，行为参数为`dependency(依赖)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备后置依赖参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`dependency` 设置给  `dependency(依赖).PRINCIPAL_TYPE(关联主体类型)`
 2. 将`1` 设置给  `dependency(依赖).RELATION_TYPE(关联类型)`
-3. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `dependency(依赖).TARGET_ID(关联目标标识)`
-4. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `dependency(依赖).PRINCIPAL_ID(关联主体标识)`
+3. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `dependency(依赖).PRINCIPAL_ID(关联主体标识)`
+
+#### 填充target_id :id=RAWSFCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def dependency = logic.param('dependency').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    dependency.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    dependency.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
+```
 
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

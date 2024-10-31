@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./choose_tag#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./choose_tag#bindparam1 {"绑定参数"}]]
+state "绑定选中标签" as BINDPARAM1  [[$./choose_tag#bindparam1 {"绑定选中标签"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./choose_tag#loopsubcall1 {"循环子调用"}]] #green {
 state "设置工单标签信息" as PREPAREPARAM2  [[$./choose_tag#prepareparam2 {"设置工单标签信息"}]]
 state "变更工单标签信息" as DEACTION1  [[$./choose_tag#deaction1 {"变更工单标签信息"}]]
@@ -39,7 +39,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中标签 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

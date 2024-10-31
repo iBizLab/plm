@@ -1,5 +1,20 @@
 # 行为附加 <!-- {docsify-ignore-all} -->
 
+## [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme.md)  :id=app_view_theme
+
+#### [Get](module/ebsx/app_view_theme#行为) :id=app_view_theme_Get
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [获取过滤条件(fill_search_conds)](module/ebsx/app_view_theme/logic/fill_search_conds.md)
+
+
+
 ## [关注(ATTENTION)](module/Base/attention.md)  :id=attention
 
 #### [Create](module/Base/attention#行为) :id=attention_Create
@@ -117,6 +132,21 @@
 
 
 
+## [讨论(DISCUSS_POST)](module/Team/discuss_post.md)  :id=discuss_post
+
+#### [Get](module/Team/discuss_post#行为) :id=discuss_post_Get
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member.md)
+
+
+
 ## [话题(DISCUSS_TOPIC)](module/Team/discuss_topic.md)  :id=discuss_topic
 
 #### [Create](module/Team/discuss_topic#行为) :id=discuss_topic_Create
@@ -129,6 +159,18 @@
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [自动创建人员(auto_create_members)](module/Team/discuss_topic/logic/auto_create_members.md)
+
+
+#### [Get](module/Team/discuss_topic#行为) :id=discuss_topic_Get
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [获取话题成员(get_discuss_member_one)](module/Team/discuss_topic/logic/get_discuss_member_one.md)
 
 
 
@@ -172,6 +214,9 @@
 
 <p class="panel-title"><b>操作之后</b></p>
 <br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [新建后关联客户(after_create_relation)](module/ProdMgmt/idea/logic/after_create_relation.md)
 
 > [!NOTE|label:内部逻辑]
 > 执行处理逻辑 [生成最近访问(create_recent)](module/ProdMgmt/idea/logic/create_recent.md)
@@ -1082,6 +1127,21 @@
 > 执行处理逻辑 [新建版本时填充默认版本名称(fill_default_name)](module/Base/version/logic/fill_default_name.md)
 
 
+
+
+
+## [视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting.md)  :id=view_theme_setting
+
+#### [Get](module/Base/view_theme_setting#行为) :id=view_theme_setting_Get
+
+
+
+
+<p class="panel-title"><b>操作之后</b></p>
+<br>
+
+> [!NOTE|label:内部逻辑]
+> 执行处理逻辑 [获取过滤条件(fill_search_conds)](module/Base/view_theme_setting/logic/fill_search_conds.md)
 
 
 

@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./resource_member_setting#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./resource_member_setting#bindparam1 {"绑定参数"}]]
+state "绑定选择成员列表" as BINDPARAM1  [[$./resource_member_setting#bindparam1 {"绑定选择成员列表"}]]
 state "资源组件（全局）标识" as PREPAREPARAM3  [[$./resource_member_setting#prepareparam3 {"资源组件（全局）标识"}]]
 state "获取资源组件" as DEACTION1  [[$./resource_member_setting#deaction1 {"获取资源组件"}]]
-state "绑定参数" as BINDPARAM2  [[$./resource_member_setting#bindparam2 {"绑定参数"}]]
+state "绑定资源成员列表" as BINDPARAM2  [[$./resource_member_setting#bindparam2 {"绑定资源成员列表"}]]
 state "资源成员绑定至组件" as RAWSFCODE3  [[$./resource_member_setting#rawsfcode3 {"资源成员绑定至组件"}]]
 state "保存资源成员" as DEACTION2  [[$./resource_member_setting#deaction2 {"保存资源成员"}]]
 state "循环子调用" as LOOPSUBCALL2  [[$./resource_member_setting#loopsubcall2 {"循环子调用"}]] #green {
@@ -29,7 +29,7 @@ state "附加到数组参数" as APPENDPARAM2  [[$./resource_member_setting#appe
 }
 state "循环子调用" as LOOPSUBCALL1  [[$./resource_member_setting#loopsubcall1 {"循环子调用"}]] #green {
 state "判断此成员是否已加入至资源" as RAWSFCODE4  [[$./resource_member_setting#rawsfcode4 {"判断此成员是否已加入至资源"}]]
-state "重新建立参数" as RENEWPARAM1  [[$./resource_member_setting#renewparam1 {"重新建立参数"}]]
+state "重新建立资源成员对象" as RENEWPARAM1  [[$./resource_member_setting#renewparam1 {"重新建立资源成员对象"}]]
 state "填充默认容量/工作日" as PREPAREPARAM1  [[$./resource_member_setting#prepareparam1 {"填充默认容量/工作日"}]]
 state "资源成员绑定容量属性" as RAWSFCODE2  [[$./resource_member_setting#rawsfcode2 {"资源成员绑定容量属性"}]]
 state "附加到数组参数" as APPENDPARAM1  [[$./resource_member_setting#appendparam1 {"附加到数组参数"}]]
@@ -66,7 +66,7 @@ DEACTION1 --> LOOPSUBCALL1 : [[$./resource_member_setting#deaction1-loopsubcall1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选择成员列表 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -85,7 +85,7 @@ DEACTION1 --> LOOPSUBCALL1 : [[$./resource_member_setting#deaction1-loopsubcall1
 
 将执行结果返回给参数`addon_resource(资源组件对象)`
 
-#### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定资源成员列表 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -136,7 +136,7 @@ insert_members.each { item ->
 
 ```
 
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立资源成员对象 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

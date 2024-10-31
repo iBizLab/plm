@@ -15,20 +15,16 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./TodoData#begin {"开始"}]]
-state "传入参数" as DEBUGPARAM3  [[$./TodoData#debugparam3 {"传入参数"}]]
+state "设置过滤器参数" as PREPAREPARAM5  [[$./TodoData#prepareparam5 {"设置过滤器参数"}]]
 state "查询待办数据" as DEDATASET1  [[$./TodoData#dedataset1 {"查询待办数据"}]]
-state "查询结果" as DEBUGPARAM4  [[$./TodoData#debugparam4 {"查询结果"}]]
-state "准备参数" as PREPAREPARAM5  [[$./TodoData#prepareparam5 {"准备参数"}]]
 state "设置分页查询结果" as BINDPARAM1  [[$./TodoData#bindparam1 {"设置分页查询结果"}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./TodoData#debugparam2 {"调试逻辑参数"}]]
-state "拷贝查询参数" as PREPAREPARAM4  [[$./TodoData#prepareparam4 {"拷贝查询参数"}]]
 state "结束" as END1 <<end>> [[$./TodoData#end1 {"结束"}]]
+state "拷贝查询参数" as PREPAREPARAM4  [[$./TodoData#prepareparam4 {"拷贝查询参数"}]]
 state "查询全部待办数据" as DEDATASET2  [[$./TodoData#dedataset2 {"查询全部待办数据"}]]
 state "结束" as END2 <<end>> [[$./TodoData#end2 {"结束"}]]
 state "设置分页参数" as PREPAREPARAM3  [[$./TodoData#prepareparam3 {"设置分页参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./TodoData#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./TodoData#renewparam1 {"重新建立参数"}]]
-state "调试逻辑参数" as DEBUGPARAM5  [[$./TodoData#debugparam5 {"调试逻辑参数"}]]
+state "重新建立临时待办对象" as RENEWPARAM1  [[$./TodoData#renewparam1 {"重新建立临时待办对象"}]]
 state "准备查询参数" as PREPAREPARAM1  [[$./TodoData#prepareparam1 {"准备查询参数"}]]
 state "判断业务数据是否存在" as DEACTION2  [[$./TodoData#deaction2 {"判断业务数据是否存在"}]]
 state "查询申请对象" as DEACTION1  [[$./TodoData#deaction1 {"查询申请对象"}]]
@@ -38,15 +34,11 @@ state "附加到数组参数" as APPENDPARAM1  [[$./TodoData#appendparam1 {"附�
 
 
 Begin --> PREPAREPARAM5
-PREPAREPARAM5 --> DEBUGPARAM3
-DEBUGPARAM3 --> DEDATASET1
-DEDATASET1 --> DEBUGPARAM2 : [[$./TodoData#dedataset1-debugparam2{待办数据为空} 待办数据为空]]
-DEBUGPARAM2 --> END1
-DEDATASET1 --> DEBUGPARAM4 : [[$./TodoData#dedataset1-debugparam4{待办数据不为空} 待办数据不为空]]
-DEBUGPARAM4 --> LOOPSUBCALL1
+PREPAREPARAM5 --> DEDATASET1
+DEDATASET1 --> END1 : [[$./TodoData#dedataset1-end1{待办数据为空} 待办数据为空]]
+DEDATASET1 --> LOOPSUBCALL1 : [[$./TodoData#dedataset1-loopsubcall1{待办数据不为空} 待办数据不为空]]
 LOOPSUBCALL1 --> RENEWPARAM1
-RENEWPARAM1 --> DEBUGPARAM5
-DEBUGPARAM5 --> PREPAREPARAM1
+RENEWPARAM1 --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION2
 DEACTION2 --> DEACTION1 : [[$./TodoData#deaction2-deaction1{判断是否存在数据} 判断是否存在数据]]
 DEACTION1 --> PREPAREPARAM2
@@ -69,20 +61,12 @@ PREPAREPARAM3 --> END2
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置过滤器参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`空值（NULL）` 设置给  `Default(传入变量).searchconds`
 2. 将`review` 设置给  `Default(传入变量).N_BIZTYPE_EQ`
-
-#### 传入参数 :id=DEBUGPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
 
 #### 查询待办数据 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -92,32 +76,16 @@ PREPAREPARAM3 --> END2
 
 将执行结果返回给参数`sq_todo_data(申请待办数据)`
 
-#### 查询结果 :id=DEBUGPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`sq_todo_data(申请待办数据)`的详细信息
-
-
 #### 循环子调用 :id=LOOPSUBCALL1<sup class="footnote-symbol"> <font color=gray size=1>[循环子调用]</font></sup>
 
 
 
 循环参数`sq_todo_data(申请待办数据)`，子循环参数使用`temp_todo_obj(临时待办对象)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立临时待办对象 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
 重建参数```temp_sq_obj(临时申请对象)```
-#### 调试逻辑参数 :id=DEBUGPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`temp_todo_obj(临时待办对象)`的详细信息
-
-
 #### 设置分页查询结果 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
@@ -129,21 +97,11 @@ PREPAREPARAM3 --> END2
 
 1. 将`temp_todo_obj(临时待办对象).BIZKEY(业务数据标识)` 设置给  `temp_sq_obj(临时申请对象).ID(标识)`
 
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`sq_data_page(申请数据分页对象)`的详细信息
-
-
-#### 判断业务数据是否存在 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
-
-
-
-调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [CheckKey](module/TestMgmt/review#行为) ，行为参数为`temp_sq_obj(临时申请对象)`
-
-将执行结果返回给参数`check_key_ret(返回结果)`
+返回 `sq_data(申请工作流数据)`
 
 #### 拷贝查询参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -153,11 +111,13 @@ PREPAREPARAM3 --> END2
 2. 将`0` 设置给  `temp_todo_filter(临时待办过滤器).page`
 3. 将`100000000` 设置给  `temp_todo_filter(临时待办过滤器).size`
 
-#### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
+#### 判断业务数据是否存在 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
-返回 `sq_data(申请工作流数据)`
+调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [CheckKey](module/TestMgmt/review#行为) ，行为参数为`temp_sq_obj(临时申请对象)`
+
+将执行结果返回给参数`check_key_ret(返回结果)`
 
 #### 查询全部待办数据 :id=DEDATASET2<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -207,10 +167,10 @@ PREPAREPARAM3 --> END2
 将参数`temp_sq_obj(临时申请对象)` 添加到数组参数`sq_data(申请工作流数据)` 的 `0` 位置
 
 ### 连接条件说明
-#### 待办数据为空 :id=DEDATASET1-DEBUGPARAM2
+#### 待办数据为空 :id=DEDATASET1-END1
 
 `sq_todo_data(申请待办数据).size` EQ `0`
-#### 待办数据不为空 :id=DEDATASET1-DEBUGPARAM4
+#### 待办数据不为空 :id=DEDATASET1-LOOPSUBCALL1
 
 `sq_todo_data(申请待办数据).size` GT `0`
 #### 判断是否存在数据 :id=DEACTION2-DEACTION1

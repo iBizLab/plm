@@ -16,10 +16,10 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./submit_form#begin {开始}]]
 state "上传" as DEUIACTION1  [[$./submit_form#deuiaction1 {上传}]]
-state "视图部件调用" as VIEWCTRLINVOKE1  [[$./submit_form#viewctrlinvoke1 {视图部件调用}]]
 state "获取文件名称" as RAWJSCODE1  [[$./submit_form#rawjscode1 {获取文件名称}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./submit_form#preparejsparam1 {准备参数}]]
-state "注入脚本代码" as RAWJSCODE2  [[$./submit_form#rawjscode2 {注入脚本代码}]]
+state "设置上下文参数" as PREPAREJSPARAM1  [[$./submit_form#preparejsparam1 {设置上下文参数}]]
+state "视图部件调用" as VIEWCTRLINVOKE1  [[$./submit_form#viewctrlinvoke1 {视图部件调用}]]
+state "提交（表单中）" as RAWJSCODE2  [[$./submit_form#rawjscode2 {提交（表单中）}]]
 
 
 Begin --> DEUIACTION1
@@ -57,14 +57,14 @@ uiLogic.default.name = uiLogic.files[0].name;
 uiLogic.default.file_id = uiLogic.files[0].id;
 ```
 
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置上下文参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).id` 设置给  `context(上下文).deliverable`
 2. 将`view(当前视图对象).parentView.layoutPanel.panelItems.form.control` 设置给  `form(主表单对象)`
 
-#### 注入脚本代码 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 提交（表单中） :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

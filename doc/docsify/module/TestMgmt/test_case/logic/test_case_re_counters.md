@@ -18,12 +18,12 @@ state "开始" as Begin <<start>> [[$./test_case_re_counters#begin {"开始"}]]
 state "测试用例关联产品需求" as RAWSQLCALL1  [[$./test_case_re_counters#rawsqlcall1 {"测试用例关联产品需求"}]]
 state "测试用例关联工作项" as RAWSQLCALL2  [[$./test_case_re_counters#rawsqlcall2 {"测试用例关联工作项"}]]
 state "结束" as END1 <<end>> [[$./test_case_re_counters#end1 {"结束"}]]
-state "准备参数" as PREPAREPARAM1  [[$./test_case_re_counters#prepareparam1 {"准备参数"}]]
+state "设置测试用例ID" as PREPAREPARAM1  [[$./test_case_re_counters#prepareparam1 {"设置测试用例ID"}]]
 state "获取测试用例当前版本" as DEACTION1  [[$./test_case_re_counters#deaction1 {"获取测试用例当前版本"}]]
-state "合并查询计数器" as RAWSQLCALL9  [[$./test_case_re_counters#rawsqlcall9 {"合并查询计数器"}]]
-state "测试用例关联缺陷" as RAWSQLCALL3  [[$./test_case_re_counters#rawsqlcall3 {"测试用例关联缺陷"}]]
 state "测试用例执行历史" as RAWSQLCALL4  [[$./test_case_re_counters#rawsqlcall4 {"测试用例执行历史"}]]
 state "测试用例版本" as RAWSQLCALL5  [[$./test_case_re_counters#rawsqlcall5 {"测试用例版本"}]]
+state "合并查询计数器" as RAWSQLCALL9  [[$./test_case_re_counters#rawsqlcall9 {"合并查询计数器"}]]
+state "测试用例关联缺陷" as RAWSQLCALL3  [[$./test_case_re_counters#rawsqlcall3 {"测试用例关联缺陷"}]]
 state "测试用例关联产品需求" as RAWSQLCALL6  [[$./test_case_re_counters#rawsqlcall6 {"测试用例关联产品需求"}]]
 state "测试用例关联工作项" as RAWSQLCALL7  [[$./test_case_re_counters#rawsqlcall7 {"测试用例关联工作项"}]]
 state "测试用例关联缺陷" as RAWSQLCALL8  [[$./test_case_re_counters#rawsqlcall8 {"测试用例关联缺陷"}]]
@@ -169,7 +169,7 @@ WHERE
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置测试用例ID :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

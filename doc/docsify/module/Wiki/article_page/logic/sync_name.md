@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./sync_name#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./sync_name#end1 {"结束"}]]
-state "准备参数" as PREPAREPARAM1  [[$./sync_name#prepareparam1 {"准备参数"}]]
+state "设置共享人名称" as PREPAREPARAM1  [[$./sync_name#prepareparam1 {"设置共享人名称"}]]
 
 
 Begin --> PREPAREPARAM1 : [[$./sync_name#begin-prepareparam1{连接名称} 连接名称]]
@@ -40,7 +40,7 @@ PREPAREPARAM1 --> END1
 
 *- N/A*
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置共享人名称 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

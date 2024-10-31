@@ -18,7 +18,7 @@ state "开始" as Begin <<start>> [[$./program_plan#begin {"开始"}]]
 state "绑定参数" as BINDPARAM1  [[$./program_plan#bindparam1 {"绑定参数"}]]
 state "结束" as END1 <<end>> [[$./program_plan#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./program_plan#loopsubcall1 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM1  [[$./program_plan#prepareparam1 {"准备参数"}]]
+state "设置创建数据对象" as PREPAREPARAM1  [[$./program_plan#prepareparam1 {"设置创建数据对象"}]]
 state "创建执行用例" as DEACTION1  [[$./program_plan#deaction1 {"创建执行用例"}]]
 state "设置默认关注信息" as PREPAREPARAM2  [[$./program_plan#prepareparam2 {"设置默认关注信息"}]]
 state "保存关注信息" as DEACTION2  [[$./program_plan#deaction2 {"保存关注信息"}]]
@@ -57,7 +57,7 @@ Begin --> END1 : [[$./program_plan#begin-end1{不存在principal_id} 不存在pr
 
 
 循环参数`selectdata(关联列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置创建数据对象 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

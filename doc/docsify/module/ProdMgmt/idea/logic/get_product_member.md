@@ -17,7 +17,6 @@ hide empty description
 state "开始" as Begin <<start>> [[$./get_product_member#begin {"开始"}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./get_product_member#debugparam1 {"调试逻辑参数"}]]
 state "判断系统管理员身份" as RAWSFCODE3  [[$./get_product_member#rawsfcode3 {"判断系统管理员身份"}]]
-state "只读权限" as RAWSFCODE4  [[$./get_product_member#rawsfcode4 {"只读权限"}]]
 state "结束" as END2 <<end>> [[$./get_product_member#end2 {"结束"}]]
 state "获取产品ID并设置过滤参数" as PREPAREPARAM2  [[$./get_product_member#prepareparam2 {"获取产品ID并设置过滤参数"}]]
 state "查询当前用户是否为产品成员" as DEDATASET3  [[$./get_product_member#dedataset3 {"查询当前用户是否为产品成员"}]]
@@ -25,6 +24,7 @@ state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_product_member#p
 state "只读权限" as RAWSFCODE1  [[$./get_product_member#rawsfcode1 {"只读权限"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_product_member#rawsfcode2 {"非只读权限"}]]
 state "结束" as END6 <<end>> [[$./get_product_member#end6 {"结束"}]]
+state "只读权限" as RAWSFCODE4  [[$./get_product_member#rawsfcode4 {"只读权限"}]]
 
 
 Begin --> DEBUGPARAM1

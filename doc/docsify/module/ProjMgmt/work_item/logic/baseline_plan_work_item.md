@@ -20,7 +20,7 @@ state "准备版本过滤器" as PREPAREPARAM1  [[$./baseline_plan_work_item#pre
 state "获取版本数据" as DEDATASET2  [[$./baseline_plan_work_item#dedataset2 {"获取版本数据"}]]
 state "结束" as END1 <<end>> [[$./baseline_plan_work_item#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./baseline_plan_work_item#loopsubcall1 {"循环子调用"}]] #green {
-state "执行脚本代码" as RAWSFCODE1  [[$./baseline_plan_work_item#rawsfcode1 {"执行脚本代码"}]]
+state "设置工作项版本id" as RAWSFCODE1  [[$./baseline_plan_work_item#rawsfcode1 {"设置工作项版本id"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./baseline_plan_work_item#loopsubcall2 {"循环子调用"}]] #green {
 }
@@ -28,7 +28,7 @@ state "循环子调用" as LOOPSUBCALL3  [[$./baseline_plan_work_item#loopsubcal
 state "填充当前版本名称" as PREPAREPARAM2  [[$./baseline_plan_work_item#prepareparam2 {"填充当前版本名称"}]]
 }
 state "循环子调用" as LOOPSUBCALL4  [[$./baseline_plan_work_item#loopsubcall4 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM3  [[$./baseline_plan_work_item#prepareparam3 {"准备参数"}]]
+state "填充默认版本信息" as PREPAREPARAM3  [[$./baseline_plan_work_item#prepareparam3 {"填充默认版本信息"}]]
 }
 
 
@@ -70,7 +70,7 @@ LOOPSUBCALL1 --> LOOPSUBCALL4 : [[$./baseline_plan_work_item#loopsubcall1-loopsu
 
 
 循环参数`page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 执行脚本代码 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 设置工作项版本id :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 
@@ -125,7 +125,7 @@ if(for_temp_obj.get("cur_version_id")){
 
 
 循环参数`page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充默认版本信息 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

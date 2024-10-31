@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_active_member_info#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./calc_active_member_info#deaction1 {实体行为}]]
 state "结束" as END1 <<end>> [[$./calc_active_member_info#end1 {结束}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./calc_active_member_info#rawjscode1 {注入脚本代码}]]
+state "计算活跃成员数据信息" as RAWJSCODE1  [[$./calc_active_member_info#rawjscode1 {计算活跃成员数据信息}]]
+state "实体行为" as DEACTION1  [[$./calc_active_member_info#deaction1 {实体行为}]]
 
 
 Begin --> DEACTION1
@@ -44,7 +44,7 @@ RAWJSCODE1 --> END1
 
 将执行结果返回给参数`datas(返回数据)`
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 计算活跃成员数据信息 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

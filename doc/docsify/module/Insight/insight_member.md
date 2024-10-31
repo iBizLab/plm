@@ -91,7 +91,6 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[新建视图默认临时成员](module/Insight/insight_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到视图临时成员内|
-|[跳转至成员设置](module/Insight/insight_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至产品成员设置|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

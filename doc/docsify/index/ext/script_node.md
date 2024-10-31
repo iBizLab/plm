@@ -1,5 +1,5 @@
 
-## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[175]</font></sup>
+## 使用脚本的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[196]</font></sup>
 
 #### [组件(ADDON)](module/Base/addon)的处理逻辑[组件权限计数器(addon_authority)](module/Base/addon/logic/addon_authority)
 
@@ -13,6 +13,18 @@ for(var i=0 ;i<addons.size;i++){
     var addon = addons.get(i);
     result.set(addon.get('ddon_type'),addon.get('is_enabled'));
 }
+```
+#### [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme)的处理逻辑[获取过滤条件(fill_search_conds)](module/ebsx/app_view_theme/logic/fill_search_conds)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def deRuntime = logic.param('Default').getDataEntityRuntime();
+def strThemeModel = _default.get("theme_model")
+def themeModel = deRuntime.deserializeEntity(strThemeModel);
+_default.set("search_conds",themeModel.get("searchconds"))
 ```
 #### [基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)的处理逻辑[基线对比数据查询(baseline_comparison)](module/ProdMgmt/baseline_idea/logic/baseline_comparison)
 
@@ -300,6 +312,48 @@ result.set("unknown_precent", unknown_precent)
 result.set("not_important_precent", not_important_precent)
 result.set("score_precent", score_precent)
 ```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
+#### [讨论(DISCUSS_POST)](module/Team/discuss_post)的处理逻辑[获取话题成员（移动端）(mob_get_topic_member)](module/Team/discuss_post/logic/mob_get_topic_member)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
+```
 #### [话题(DISCUSS_TOPIC)](module/Team/discuss_topic)的处理逻辑[获取快速新建话题集合(quick_create)](module/Team/discuss_topic/logic/quick_create)
 
 节点：判断系统管理员身份
@@ -312,6 +366,38 @@ def _default = logic.param("default").real;
 if(srfreadonly == true){
     _default.set("srfreadonly",false);
 }
+```
+#### [话题(DISCUSS_TOPIC)](module/Team/discuss_topic)的处理逻辑[获取话题成员(get_discuss_member_one)](module/Team/discuss_topic/logic/get_discuss_member_one)
+
+节点：非只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+defaultObj.set("srfreadonly", false);
+```
+#### [话题(DISCUSS_TOPIC)](module/Team/discuss_topic)的处理逻辑[获取话题成员(get_discuss_member_one)](module/Team/discuss_topic/logic/get_discuss_member_one)
+
+节点：判断系统管理员身份
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _usercontext = sys.user();
+def srfreadonly = _usercontext.testSysUniRes("SYSTEM");
+def _default = logic.param("default").real;
+if(srfreadonly == true){
+    _default.set("srfreadonly",false);
+}
+```
+#### [话题(DISCUSS_TOPIC)](module/Team/discuss_topic)的处理逻辑[获取话题成员(get_discuss_member_one)](module/Team/discuss_topic/logic/get_discuss_member_one)
+
+节点：只读权限
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var defaultObj = logic.getParam("default");
+
+defaultObj.set("srfreadonly", true);
 ```
 #### [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard)的处理逻辑[使用此模板(use_cur_template)](module/Base/dyna_dashboard/logic/use_cur_template)
 
@@ -1071,6 +1157,33 @@ if(_default.get('shared_page') != null){
 }
 
 ```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[添加共享页面非空间下成员（移动端）(mob_add_shared_page_member)](module/Base/member/logic/mob_add_shared_page_member)
+
+节点：添加共享页面成员
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def choose_member = _default.get('choose_member')
+def choose_member_ids = _default.get('choose_member_ids')
+def member_ids = choose_member_ids.split(',')
+def member_names = choose_member.split(',')
+def member_runtime = sys.dataentity('member')
+if(_default.get('shared_page') != null){
+    member_ids.eachWithIndex { item, index ->
+        def newMember = member_runtime.entity()
+        newMember.set('owner_type', 'PAGE')
+        newMember.set('role_id', _default.get('check_type', 'reader'))
+        newMember.set('owner_subtype', 'SHARED')
+        newMember.set('owner_id', _default.get('shared_page'))
+        newMember.set('user_id', item) 
+        newMember.set('name', member_names[index])
+        member_runtime.save(newMember)
+    }
+
+}
+
+```
 #### [成员(MEMBER)](module/Base/member)的处理逻辑[选择资源成员（全局）(choose_resource_member)](module/Base/member/logic/choose_resource_member)
 
 节点：分页参数
@@ -1100,6 +1213,34 @@ for (var i = 0; i < group_page.length; i++) {
 }
 if(user_ids != ""){
     user_filter.in("id",user_ids);
+}
+```
+#### [成员(MEMBER)](module/Base/member)的处理逻辑[非空间下成员(not_space_mmeber)](module/Base/member/logic/not_space_mmeber)
+
+节点：填充user过滤器ni参数
+<p class="panel-title"><b>执行代码[JavaScript]</b></p>
+
+```javascript
+var space_members = logic.getParam("space_members");
+var shared_page_members = logic.getParam("shared_page_members");
+var user_filter = logic.getParam("Default");
+var user_ids = "";
+for (var i = 0; i < space_members.length; i++) {
+    if(i>0){
+        user_ids = user_ids+",";
+    }
+    var space_member = space_members.get(i);
+    user_ids = user_ids + space_member.get("user_id");
+}
+for (var i = 0; i < shared_page_members.length; i++) {
+    if(user_ids != ""){
+        user_ids = user_ids+",";
+    }
+    var shared_page_member = shared_page_members.get(i);
+    user_ids = user_ids + shared_page_member.get("user_id");
+}
+if(user_ids != ""){
+    user_filter.ni("id",user_ids);
 }
 ```
 #### [页面(PAGE)](module/Wiki/article_page)的处理逻辑[共享设置(shared_setting)](module/Wiki/article_page/logic/shared_setting)
@@ -1925,12 +2066,12 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 ```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[工作项取消关联测试用例(work_item_del_relation_test_case)](module/Base/relation/logic/work_item_del_relation_test_case)
@@ -1948,6 +2089,50 @@ if(relation_for_temp_obj.get("id") != null && relation_for_temp_obj.get("target_
     // 获取缺陷关联执行用例对象的主键
     bug_relation_run.set("id", relation_for_temp_obj.get("target_id") + "_" + relation_for_temp_obj.get("principal_id"));
 }
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[工作项添加依赖(add_dependency)](module/Base/relation/logic/add_dependency)
+
+节点：填充principal_id
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def dependency = logic.param('dependency').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    dependency.set('principal_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    dependency.set('principal_id', for_temp_obj.get('owner_id'))
+}
+
+
+
+```
+#### [关联(RELATION)](module/Base/relation)的处理逻辑[工作项添加依赖(add_dependency)](module/Base/relation/logic/add_dependency)
+
+节点：填充target_id
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def dependency = logic.param('dependency').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    dependency.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    dependency.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
 ```
 #### [关联(RELATION)](module/Base/relation)的处理逻辑[执行用例取消关联缺陷(run_del_relation_bug)](module/Base/relation/logic/run_del_relation_bug)
 
@@ -2194,6 +2379,25 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
     reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id") + '_release');
 }
 ```
+#### [项目发布(RELEASE)](module/ProjMgmt/release)的处理逻辑[项目下发布（移动端）(mob_project_release)](module/ProjMgmt/release/logic/mob_project_release)
+
+节点：设置进度
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def release_page_result = logic.param('release_page_result').getReal()
+release_page_result.each { release ->
+    def all_work_items = release.get('all_work_items')
+    def completed_work_items = release.get('completed_work_items')
+    def schedule = 0
+    if (all_work_items != 0 && completed_work_items != 0) {
+        schedule = Math.round(completed_work_items / all_work_items * 100)
+    }
+    release.set('schedule', schedule)
+    release.set('schedule_text', schedule + "%")
+}
+
+```
 #### [评审(REVIEW)](module/TestMgmt/review)的处理逻辑[提交评审(submit_review)](module/TestMgmt/review/logic/submit_review)
 
 节点：设置提交时间
@@ -2220,6 +2424,32 @@ defaultObj.set("COMPLETED_AT", new Date());
 ```javascript
 var review_detail = logic.getParam("review_detail");
 review_detail.set("submitted_at", new Date());
+```
+#### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[其他实体关联执行用例(others_relation_run)](module/TestMgmt/run/logic/others_relation_run)
+
+节点：关联标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def reverse_relation_obj = logic.param('reverse_relation_obj').getReal()
+
+def forward_relation_obj = logic.param('forward_relation_obj').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
 ```
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/run/logic/get_library_member)
 
@@ -2698,6 +2928,51 @@ if(completed_num == 0 || total_num == 0){
     _default.set('work_item_complete_percent', completed_num / total_num)
 }
 ```
+#### [迭代(SPRINT)](module/ProjMgmt/sprint)的处理逻辑[项目下迭代（移动端）(mob_project_sprint)](module/ProjMgmt/sprint/logic/mob_project_sprint)
+
+节点：填充进度信息
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def sprint_page_result = logic.param('sprint_page_result').getReal()
+sprint_page_result.each { sprint ->
+    def all_work_items = sprint.get('all_work_items')
+    def completed_work_items = sprint.get('completed_work_items')
+    def schedule = 0
+    if (all_work_items != 0 && completed_work_items != 0) {
+        schedule = Math.round(completed_work_items / all_work_items * 100)
+    }
+    sprint.set('schedule', schedule)
+    sprint.set('schedule_text', "${schedule}%")
+}
+
+```
+#### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[其他实体关联用例(others_relation_test_case)](module/TestMgmt/test_case/logic/others_relation_test_case)
+
+节点：关联标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def reverse_relation_obj = logic.param('reverse_relation_obj').getReal()
+
+def forward_relation_obj = logic.param('forward_relation_obj').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
+```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[基线规划用例数据查询(baseline_plan_case)](module/TestMgmt/test_case/logic/baseline_plan_case)
 
 节点：执行脚本代码
@@ -2718,7 +2993,7 @@ if(for_temp_obj.get("cur_version_id")){
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[填充最近执行(fill_latest_executed)](module/TestMgmt/test_case/logic/fill_latest_executed)
 
-节点：执行脚本代码
+节点：填充最近执行
 <p class="panel-title"><b>执行代码[Groovy]</b></p>
 
 ```groovy
@@ -2734,7 +3009,7 @@ _default.set("latest_executed", page.getContent());
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type)
 
-节点：执行脚本代码
+节点：设置from-to都为最新版
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -2755,7 +3030,7 @@ if (version_pages_results) {
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type)
 
-节点：执行脚本代码
+节点：设置改变版本信息
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -2809,13 +3084,39 @@ defaultObj.set("srfreadonly", true);
 ```
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取测试库成员(get_library_member)](module/TestMgmt/test_case/logic/get_library_member)
 
-节点：执行脚本代码
+节点：设置只读权限
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
 var defaultObj = logic.getParam("default");
 
 defaultObj.set("srfreadonly", true);
+```
+#### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[其他实体关联工单(others_relation_ticket)](module/ProdMgmt/ticket/logic/others_relation_ticket)
+
+节点：移动端和PC端关联关系
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def reverse_relation_obj = logic.param('reverse_relation_obj').getReal()
+
+def forward_relation_obj = logic.param('forward_relation_obj').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
 ```
 #### [工单(TICKET)](module/ProdMgmt/ticket)的处理逻辑[查询归档数据(get_archived_info)](module/ProdMgmt/ticket/logic/get_archived_info)
 
@@ -2954,6 +3255,40 @@ if(cur_version_identifier){
 
 
 ```
+#### [视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting)的处理逻辑[数据去重(distinctData)](module/Base/view_theme_setting/logic/distinctData)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _settingList = logic.param('settingList').getReal()
+def _outSettingList = logic.param('outSettingList').getReal()
+def existMap = [:]
+for(def i=0;i<_settingList.content.size();i++){
+     def _setting = _settingList.content.getAt(i)
+     def appViewTag = _setting.get("app_view_tag")
+     def _name = _setting.get("name")
+     def ownertype = _setting.get("owner_type")
+     def tag = String.format("%s|%s",appViewTag,_name)
+     if(existMap.containsKey(tag) && ownertype != "PERSONAL"){
+         continue
+     }
+     existMap[tag] = _setting
+     _outSettingList.add(_setting)
+}
+```
+#### [视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting)的处理逻辑[获取过滤条件(fill_search_conds)](module/Base/view_theme_setting/logic/fill_search_conds)
+
+节点：执行脚本代码
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def _default = logic.param('Default').getReal()
+def deRuntime = logic.param('Default').getDataEntityRuntime();
+def strThemeModel = _default.get("theme_model")
+def themeModel = deRuntime.deserializeEntity(strThemeModel);
+_default.set("search_conds",themeModel.get("searchconds"))
+```
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[删除工时记录前附加逻辑(before_remove)](module/Base/workload/logic/before_remove)
 
 节点：计算剩余工时
@@ -3016,9 +3351,35 @@ if(principal_type == 'TEST_CASE'){
 }
 
 ```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[其他实体关联工作项(others_relation_work_item)](module/ProjMgmt/work_item/logic/others_relation_work_item)
+
+节点：关联标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def reverse_relation_obj = logic.param('reverse_relation_obj').getReal()
+
+def forward_relation_obj = logic.param('forward_relation_obj').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
+```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[变更状态(change_state)](module/ProjMgmt/work_item/logic/change_state)
 
-节点：执行脚本代码
+节点：设置工作项类型id
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -3031,7 +3392,7 @@ _default.set("work_item_type_id", first_value);
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[基线规划工作项数据查询(baseline_plan_work_item)](module/ProjMgmt/work_item/logic/baseline_plan_work_item)
 
-节点：执行脚本代码
+节点：设置工作项版本id
 <p class="panel-title"><b>执行代码[JavaScript]</b></p>
 
 ```javascript
@@ -3342,6 +3703,28 @@ if(assignee_id != null){
         result_list.add(for_obj)
     }
 }
+```
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[选择子工作项(choose_child)](module/ProjMgmt/work_item/logic/choose_child)
+
+节点：设置子工作项标识
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def update_obj = logic.param('update_obj').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    update_obj.set('id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    update_obj.set('id', for_temp_obj.get('owner_id'))
+}
+
+
+
 ```
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[需求数量燃尽图(require_burn_out)](module/ProjMgmt/work_item/logic/require_burn_out)
 

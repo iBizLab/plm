@@ -10,9 +10,11 @@
 |访问密码|ACCESS_PASSWORD|文本，可指定长度|100|是||
 |附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
+|关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
 |类别路径|CATEGORIES|长文本，长度1000|2000|是||
 |选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
 |选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|评论数|COMMENT_COUNT|文本，可指定长度|200|是||
 |正文|CONTENT|长文本，没有长度限制|16777215|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
@@ -204,6 +206,7 @@
 |删除|delete|[实体处理逻辑](module/Wiki/article_page/logic/delete "删除")|默认|不支持||||
 |导出页面为PDF|export_to_pdf|[实体处理逻辑](module/Wiki/article_page/logic/export_to_pdf "导出页面为pdf")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Wiki/article_page/logic/favorite "设置星标")|默认|不支持||||
+|完成关注|finish_add_attention|[实体处理逻辑](module/Wiki/article_page/logic/finish_add_attention "完成关注")|默认|不支持||||
 |获取草稿页面|get_draft_pages|[实体处理逻辑](module/Wiki/article_page/logic/get_draft_pages "获取草稿页面")|默认|不支持||||
 |锁定页面|lock_page|[实体处理逻辑](module/Wiki/article_page/logic/lock_page "锁定页面")|默认|不支持||||
 |移动需求|move_order|用户自定义|默认|不支持||||
@@ -240,6 +243,7 @@
 |[基线规划页面数据查询](module/Wiki/article_page/logic/baseline_plan_page)|baseline_plan_page|无||基线规划工作项时，填充页面当前版本名称|
 |[复制子页面](module/Wiki/article_page/logic/copy_child_page)|copy_child_page|无||复制页面时调用|
 |[复制页面](module/Wiki/article_page/logic/copy_page)|copy_page|无||复制页面，会调用复制子页面处理逻辑|
+|[完成关注](module/Wiki/article_page/logic/finish_add_attention)|finish_add_attention|无|||
 |[导出页面为pdf](module/Wiki/article_page/logic/export_to_pdf)|export_to_pdf|无||导出页面为pdf|
 |[恢复](module/Wiki/article_page/logic/recover)|recover|无||恢复已删除状态页面数据，修改页面的是否删除属性值，并恢复访问记录|
 |[恢复历史版本](module/Wiki/article_page/logic/recover_version)|recover_version|无||恢复页面版本至某一指定历史版本|
@@ -313,6 +317,7 @@
 |[过滤器默认查询(my_filter)](module/Wiki/article_page/dataset/my_filter)|my_filter|数据查询|否|||
 |[无父页面(no_parent_page)](module/Wiki/article_page/dataset/no_parent_page)|no_parent_page|数据查询|否|||
 |[正常(normal)](module/Wiki/article_page/dataset/normal)|normal|数据查询|否|||
+|[空间页面(移动端)(normal_tree_page)](module/Wiki/article_page/dataset/normal_tree_page)|normal_tree_page|数据查询|否|[TreeGridDEDataSetRuntime](index/plugin_index#UsrSFPlugin0407757309)||
 |[仅页面(only_page)](module/Wiki/article_page/dataset/only_page)|only_page|数据查询|否||只查询页面。不包含分组及草稿|
 |[reader](module/Wiki/article_page/dataset/reader)|reader|数据查询|否|||
 |[共享页面(shared_page)](module/Wiki/article_page/dataset/shared_page)|shared_page|数据查询|否|||
@@ -438,18 +443,23 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 移动端重命名 | mob_rename | 重命名 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_rename_view)</details>||
 | 上传图标 | upload_icon | 上传图标 |单项数据|<details><summary>打开视图或向导（模态）</summary>[上传图标](app/view/article_page_upload_icon_option_view)</details>||
 | 页面导入 | page_upload | 导入页面 |无数据|<details><summary>打开数据导入视图</summary>[多类型页面数据导入]()</details>||
 | 删除 | toolbar_tree_exp_view_draft_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node4_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 发布 | release | 发布 |单项数据|用户自定义||
+| 新建页面（移动端） | mob_create_page | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_create_view)</details>||
 | 解锁页面 | unlock_page | 解锁页面 |单项数据（主键）|<details><summary>后台调用</summary>[unlock_page](#行为)||
 | 移动页面 | move_page | 移动页面 |单项数据（主键）|<details><summary>后台调用</summary>[move_page](#行为)||
 | 重命名 | toolbar_tree_exp_view_node5_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
+| 打开界面编辑页（移动端） | mob_open_page_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_document_edit_view)</details>||
 | 新建子分组 | toolbar_tree_exp_view_node3_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
 | 切换草稿 | draft | 草稿 |无数据|用户自定义||
+| 草稿箱(移动端) | mob_draft | 草稿箱 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[草稿箱](app/view/article_page_mob_draft_list_view)</details>||
 | 保存命名版本 | set_name_version | 保存命名版本 |单项数据|<details><summary>后台调用</summary>[name_version_save](#行为)||
 | 新建子分组 | toolbar_tree_exp_view_draft_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
+| 评论 | toolbar_model_show_view_noupdown_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 关闭 | toolbar_show_custom_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 打开界面编辑页 | open_page_edit_view | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_document_edit_view)</details>||
 | 新建页面（快速新建） | quick_new_page | 新建页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_quick_new_page_option_view)</details>||
@@ -464,21 +474,27 @@
 | 删除 | toolbar_tree_exp_view_node5_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node4_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
+| 移动端删除 | mob_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 与我共享_编辑 | shared_with_me_edit | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_document_edit_view)</details>||
 | 恢复历史版本 | recover_version | 恢复此版本 |单项数据（主键）|<details><summary>后台调用</summary>[recover_version](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 评论 | toolbar_model_show_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
+| 页面共享设置（移动端） | mob_shared_setting | 页面共享 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_option_view)</details>||
 | 重命名 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 恢复历史版本并通知刷新 | recover_version_refresh | 恢复历史版本并通知刷新 |单项数据（主键）|用户自定义||
+| 移动端新建子分组 | mob_new_section | 新建子分组 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_add_childgroup_view)</details>||
 | 新建子分组 | toolbar_tree_exp_view_node1_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
+| 关闭共享（移动端） | closed_shared_mob | 关闭共享 |单项数据（主键）|<details><summary>后台调用</summary>[closed_shared](#行为)||
 | 复制共享页面链接 | copy_shared_url | 复制链接 |单项数据|用户自定义||
 | 评论 | toolbar_re_show_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 重命名 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 重命名 |单项数据|用户自定义||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 移动端新建子页面（文档） | mob_create_child_document | 新建子页面 |无数据|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_create_view)</details>||
 | 快速新建页面后续操作 | after_create_page | 新建文档 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_after_new_edit_view)</details>||
 | 从模板新建（打开从模板新建视图） | get_form_stencil | 从模版新建 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_create_form_stencil_edit_view)</details>||
 | 关闭 | toolbar_model_show_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
+| 打开评论列表（移动端） | mob_open_comment_list | 打开评论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[评论](app/view/comment_mob_comment_md_view)</details>||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 关闭共享 | closed_shared | 关闭共享 |单项数据（主键）|<details><summary>后台调用</summary>[closed_shared](#行为)||
 | 共享设置（管理表格操作列） | open_shared_setting_management | 共享设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[共享设置](app/view/article_page_shared_setting_view)</details>||
@@ -486,6 +502,7 @@
 | 打开历史版本视图 | open_version_view | 历史版本 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[历史版本](app/view/page_version_list_exp_view)</details>||
 | 关闭 | toolbar_show_view_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 取消收藏 | cancel_favorite | 取消收藏 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
+| 打开关注列表（移动端） | open_attention_list | 打开关注列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[页面关注](app/view/attention_mob_page_md_view)</details>||
 | 删除 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 删除 |单项数据|用户自定义||
 | 另存为模板 | save_to_stencil | 另存为模板 |单项数据|<details><summary>后台调用</summary>[save_to_stencil](#行为)||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
@@ -499,8 +516,11 @@
 | 新建子页面（文档） | create_child_document | 新建文档 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建页面](app/view/article_page_qucik_create_view)</details>||
 | 共享设置 | open_shared_setting | 共享设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[共享设置](app/view/article_page_shared_setting_view)</details>||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建分组 |单项数据|用户自定义||
+| 开启页面共享（移动端） | mob_open_shared | 开启页面共享 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_mob_option_view)</details>||
+| 移动端收藏 | mob_add_favorite | 收藏 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 评论 | toolbar_show_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 演示 | demonstrate_document | 演示 |无数据|用户自定义||
+| 关闭 | toolbar_model_show_view_noupdown_toolbar_deuiaction3_click | 关闭 |单项数据|用户自定义||
 | 评论 | toolbar_show_custom_view_toolbar_deuiaction2_click | 评论 |单项数据|用户自定义||
 | 新建子分组 | toolbar_tree_exp_view_node4_cm_deuiaction4_click | 新建子分组 |单项数据|用户自定义||
 
@@ -513,19 +533,15 @@
 |[切换导航树显示状态](module/Wiki/article_page/uilogic/change_tree_state)|change_tree_state|切换页面导航树显示状态|
 |[删除页面](module/Wiki/article_page/uilogic/delete_page)|delete_page|调用树节点的删除方法，删除指定页面|
 |[删除页面显示隐藏](module/Wiki/article_page/uilogic/deleted_visible)|deleted_visible|已删除页面显示隐藏|
-|[刷新当前表格](module/Wiki/article_page/uilogic/refresh_current_grid)|refresh_current_grid|刷新表格|
 |[后续刷新](module/Wiki/article_page/uilogic/refresh)|refresh|后续刷新页面共享视图|
 |[复制共享链接](module/Wiki/article_page/uilogic/copy_shared_url)|copy_shared_url|复制共享页面链接|
 |[恢复历史版本并通知刷新](module/Wiki/article_page/uilogic/page_refresh)|page_refresh|恢复到指定版本，并调用刷新方法|
 |[新建分组](module/Wiki/article_page/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建发布并通知刷新](module/Wiki/article_page/uilogic/save_notify_refresh)|save_notify_refresh|保存当前页面内容并刷新页面，点击发布按钮，触发保存非草稿页面|
 |[新建子分组](module/Wiki/article_page/uilogic/create_children_section)|create_children_section|调用树节点新建方法，新建子分组|
-|[显示模板](module/Wiki/article_page/uilogic/show_stencil)|show_stencil|通过按钮触发，显示或隐藏模板信息|
 |[显示评论区](module/Wiki/article_page/uilogic/show_commnet)|show_commnet|打开评论区，同时隐藏评论按钮|
 |[添加附件数据](module/Wiki/article_page/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[编辑节点](module/Wiki/article_page/uilogic/edit_section_or_category)|edit_section_or_category|编辑树节点|
-|[自动保存](module/Wiki/article_page/uilogic/auto_save)|auto_save|自动保存页面|
-|[获取模板](module/Wiki/article_page/uilogic/get_stencil_info)|get_stencil_info|测试。新建时获取模板信息|
 
 ## 导入模式
 

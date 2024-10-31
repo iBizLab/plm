@@ -16,9 +16,9 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./completed_review#begin {"开始"}]]
 state "完成评审" as DEACTION2  [[$./completed_review#deaction2 {"完成评审"}]]
-state "准备参数" as PREPAREPARAM10  [[$./completed_review#prepareparam10 {"准备参数"}]]
-state "实体数据集" as DEDATASET1  [[$./completed_review#dedataset1 {"实体数据集"}]]
-state "准备参数" as PREPAREPARAM9  [[$./completed_review#prepareparam9 {"准备参数"}]]
+state "设置评审内容过滤器" as PREPAREPARAM10  [[$./completed_review#prepareparam10 {"设置评审内容过滤器"}]]
+state "获取评审内容" as DEDATASET1  [[$./completed_review#dedataset1 {"获取评审内容"}]]
+state "准备评审参数" as PREPAREPARAM9  [[$./completed_review#prepareparam9 {"准备评审参数"}]]
 state "循环子调用" as LOOPSUBCALL3  [[$./completed_review#loopsubcall3 {"循环子调用"}]] #green {
 state "设置变量" as PREPAREPARAM7  [[$./completed_review#prepareparam7 {"设置变量"}]]
 }
@@ -67,7 +67,7 @@ LOOPSUBCALL3 --> DEACTION2 : [[$./completed_review#loopsubcall3-deaction2{不需
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM9<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备评审参数 :id=PREPAREPARAM9<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -78,13 +78,13 @@ LOOPSUBCALL3 --> DEACTION2 : [[$./completed_review#loopsubcall3-deaction2{不需
 
 
 循环参数`srfactionparam(入参)`，子循环参数使用`tmp_obj(循环变量)`
-#### 准备参数 :id=PREPAREPARAM10<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置评审内容过滤器 :id=PREPAREPARAM10<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `content_fliter(评审内容过滤器).N_PRINCIPAL_ID_EQ`
 
-#### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+#### 获取评审内容 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 

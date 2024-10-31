@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_assignee#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./change_assignee#bindparam1 {"绑定参数"}]]
+state "绑定选择人员参数" as BINDPARAM1  [[$./change_assignee#bindparam1 {"绑定选择人员参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./change_assignee#loopsubcall1 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM2  [[$./change_assignee#prepareparam2 {"准备参数"}]]
+state "设置分配人信息" as PREPAREPARAM2  [[$./change_assignee#prepareparam2 {"设置分配人信息"}]]
 state "分配负责人" as DEACTION1  [[$./change_assignee#deaction1 {"分配负责人"}]]
 }
 
@@ -39,7 +39,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选择人员参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -49,7 +49,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 循环参数`srfactionparam(选择数据对象)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置分配人信息 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

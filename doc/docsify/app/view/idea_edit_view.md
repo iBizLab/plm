@@ -23,9 +23,9 @@ false
 
 
 ### 关联界面行为
-  * [需求(IDEA)](module/ProdMgmt/idea) : [查看客户统计信息](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [查看工单统计信息](module/ProdMgmt/idea#界面行为)
   * [需求(IDEA)](module/ProdMgmt/idea) : [编辑界面_保存并退出操作](module/ProdMgmt/idea#界面行为)
+  * [需求(IDEA)](module/ProdMgmt/idea) : [查看客户统计信息](module/ProdMgmt/idea#界面行为)
 
 ### 关联界面逻辑
   * [需求(IDEA)](module/ProdMgmt/idea) : [获取需求工时进度](module/ProdMgmt/idea/uilogic/get_workload_schedule)

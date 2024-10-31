@@ -1,4 +1,4 @@
-# 工单类型(product_ticket_type_global_setting_view)  <!-- {docsify-ignore-all} -->
+# 产品工单类型(product_ticket_type_global_setting_view)  <!-- {docsify-ignore-all} -->
 
 
 
@@ -6,7 +6,8 @@
 #### CAPTIONBAR(captionbar)
 #### 数据表格(grid)
 #### 搜索栏(searchbar)
-#### 工具栏(toolbar)
+#### 搜索栏(tabsearchbar)
+#### 工具栏(tabtoolbar)
 
 ## 视图界面逻辑
   * newdata(预置新建数据逻辑)

@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./run_history_get#begin {"开始"}]]
 state "获取执行用例关联的执行结果" as RAWSQLCALL1  [[$./run_history_get#rawsqlcall1 {"获取执行用例关联的执行结果"}]]
-state "准备参数" as PREPAREPARAM1  [[$./run_history_get#prepareparam1 {"准备参数"}]]
+state "填充执行结果列表" as PREPAREPARAM1  [[$./run_history_get#prepareparam1 {"填充执行结果列表"}]]
 state "结束" as END1 <<end>> [[$./run_history_get#end1 {"结束"}]]
 
 
@@ -52,7 +52,7 @@ SELECT * FROM run_history t1 WHERE t1.RUN_ID = ? order by t1.create_time desc
 
 重置参数`run_history_list(执行结果列表)`，并将执行sql结果赋值给参数`run_history_list(执行结果列表)`
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充执行结果列表 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

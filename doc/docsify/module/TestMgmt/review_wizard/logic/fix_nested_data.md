@@ -1,6 +1,6 @@
 ## 创建后修改附加数据归属 <!-- {docsify-ignore-all} -->
 
-   
+   创建后修改附加数据归属
 
 ### 处理过程
 
@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./fix_nested_data#begin {"开始"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./fix_nested_data#rawsqlcall1 {"直接SQL调用"}]]
+state "创建后修改附加数据归属" as RAWSQLCALL1  [[$./fix_nested_data#rawsqlcall1 {"创建后修改附加数据归属"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -32,7 +32,7 @@ Begin --> RAWSQLCALL1
 
 
 *- N/A*
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 创建后修改附加数据归属 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

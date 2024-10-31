@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./submit_review#begin {"开始"}]]
-state "设置提交时间" as RAWSFCODE1  [[$./submit_review#rawsfcode1 {"设置提交时间"}]]
 state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#prepareparam1 {"设置提交人、状态"}]]
-state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
 state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
 state "传入参数" as DEBUGPARAM1  [[$./submit_review#debugparam1 {"传入参数"}]]
-state "实体数据集" as DEDATASET1  [[$./submit_review#dedataset1 {"实体数据集"}]]
-state "准备参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"准备参数"}]]
+state "设置提交时间" as RAWSFCODE1  [[$./submit_review#rawsfcode1 {"设置提交时间"}]]
+state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
+state "获取关系信息" as DEDATASET1  [[$./submit_review#dedataset1 {"获取关系信息"}]]
+state "设置关系过滤参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"设置关系过滤参数"}]]
 state "结束" as END1 <<end>> [[$./submit_review#end1 {"结束"}]]
 state "评审内容为空" as THROWEXCEPTION1  [[$./submit_review#throwexception1 {"评审内容为空"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./submit_review#loopsubcall1 {"循环子调用"}]] #green {
@@ -102,14 +102,14 @@ default_obj.set("submitted_at", new Date());
 
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [Update](module/TestMgmt/review#行为) ，行为参数为`Default(传入变量)`
 
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置关系过滤参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `reltion_filter(relation过滤器).N_PRINCIPAL_ID_EQ`
 2. 将`REVIEW` 设置给  `reltion_filter(relation过滤器).N_PRINCIPAL_TYPE_EQ`
 
-#### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+#### 获取关系信息 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 

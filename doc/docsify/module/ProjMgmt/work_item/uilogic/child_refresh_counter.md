@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./child_refresh_counter#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./child_refresh_counter#rawjscode1 {注入脚本代码}]]
+state "更新上下文信息" as RAWJSCODE1  [[$./child_refresh_counter#rawjscode1 {更新上下文信息}]]
 
 
 Begin --> RAWJSCODE1
@@ -32,7 +32,7 @@ Begin --> RAWJSCODE1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 更新上下文信息 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

@@ -24,7 +24,7 @@ state "获取待复制的页面" as DEACTION1  [[$./copy_page#deaction1 {"获取
 state "设置待保存的页面" as PREPAREPARAM3  [[$./copy_page#prepareparam3 {"设置待保存的页面"}]]
 state "保存页面" as DEACTION2  [[$./copy_page#deaction2 {"保存页面"}]]
 state "准备子页面复制参数" as PREPAREPARAM5  [[$./copy_page#prepareparam5 {"准备子页面复制参数"}]]
-state "实体处理逻辑" as DELOGIC1  [[$./copy_page#delogic1 {"实体处理逻辑"}]]
+state "复制子页面" as DELOGIC1  [[$./copy_page#delogic1 {"复制子页面"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./copy_page#loopsubcall2 {"循环子调用"}]] #green {
 state "设置附件数据" as PREPAREPARAM4  [[$./copy_page#prepareparam4 {"设置附件数据"}]]
@@ -154,7 +154,7 @@ LOOPSUBCALL1 --> END1
 2. 将`page_obj(页面对象).ID(标识)` 设置给  `child_data(子页面复制参数).new_parent_id`
 3. 将`target_space_id(目标空间id)` 设置给  `child_data(子页面复制参数).new_space_id`
 
-#### 实体处理逻辑 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
+#### 复制子页面 :id=DELOGIC1<sup class="footnote-symbol"> <font color=gray size=1>[实体逻辑]</font></sup>
 
 
 

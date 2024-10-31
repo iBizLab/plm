@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./release_relation_sprint#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./release_relation_sprint#bindparam1 {"绑定参数"}]]
+state "绑定关联的迭代列表参数" as BINDPARAM1  [[$./release_relation_sprint#bindparam1 {"绑定关联的迭代列表参数"}]]
 state "结束" as END1 <<end>> [[$./release_relation_sprint#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./release_relation_sprint#loopsubcall1 {"循环子调用"}]] #green {
 state "重置反向关系参数" as RESETPARAM1  [[$./release_relation_sprint#resetparam1 {"重置反向关系参数"}]]
 state "重置正向关系参数" as RESETPARAM2  [[$./release_relation_sprint#resetparam2 {"重置正向关系参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./release_relation_sprint#prepareparam1 {"准备参数"}]]
+state "准备关联参数" as PREPAREPARAM1  [[$./release_relation_sprint#prepareparam1 {"准备关联参数"}]]
 state "生成反向关联数据" as DEACTION1  [[$./release_relation_sprint#deaction1 {"生成反向关联数据"}]]
 state "生成正向关联数据" as DEACTION2  [[$./release_relation_sprint#deaction2 {"生成正向关联数据"}]]
 }
@@ -47,7 +47,7 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定关联的迭代列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -67,7 +67,7 @@ LOOPSUBCALL1 --> END1
 
 
 重置参数```forward_relation_obj(正向关系对象)```
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备关联参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

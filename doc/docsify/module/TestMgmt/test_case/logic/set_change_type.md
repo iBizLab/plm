@@ -18,16 +18,16 @@ state "开始" as Begin <<start>> [[$./set_change_type#begin {"开始"}]]
 state "调试逻辑参数" as DEBUGPARAM3  [[$./set_change_type#debugparam3 {"调试逻辑参数"}]]
 state "查询用例分页数据" as DEDATASET1  [[$./set_change_type#dedataset1 {"查询用例分页数据"}]]
 state "调试逻辑参数" as DEBUGPARAM4  [[$./set_change_type#debugparam4 {"调试逻辑参数"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./set_change_type#rawsqlcall1 {"直接SQL调用"}]]
+state "获取评审测试用例" as RAWSQLCALL1  [[$./set_change_type#rawsqlcall1 {"获取评审测试用例"}]]
 state "结束" as END1 <<end>> [[$./set_change_type#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_change_type#loopsubcall1 {"循环子调用"}]] #green {
 state "设置版本过滤器" as PREPAREPARAM1  [[$./set_change_type#prepareparam1 {"设置版本过滤器"}]]
 state "查询符合条件的版本" as DEDATASET2  [[$./set_change_type#dedataset2 {"查询符合条件的版本"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./set_change_type#debugparam2 {"调试逻辑参数"}]]
 state "设置变更类型为新增" as PREPAREPARAM2  [[$./set_change_type#prepareparam2 {"设置变更类型为新增"}]]
-state "执行脚本代码" as RAWSFCODE1  [[$./set_change_type#rawsfcode1 {"执行脚本代码"}]]
+state "设置from-to都为最新版" as RAWSFCODE1  [[$./set_change_type#rawsfcode1 {"设置from-to都为最新版"}]]
 state "设置变更类型为修改" as PREPAREPARAM3  [[$./set_change_type#prepareparam3 {"设置变更类型为修改"}]]
-state "执行脚本代码" as RAWSFCODE2  [[$./set_change_type#rawsfcode2 {"执行脚本代码"}]]
+state "设置改变版本信息" as RAWSFCODE2  [[$./set_change_type#rawsfcode2 {"设置改变版本信息"}]]
 }
 
 
@@ -95,7 +95,7 @@ DEBUGPARAM4 --> LOOPSUBCALL1
 1. 将`for_obj(循环临时变量).ID(标识)` 设置给  `version_filter(版本过滤器).N_OWNER_ID_EQ`
 2. 将`2` 设置给  `version_filter(版本过滤器).SIZE`
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 获取评审测试用例 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
@@ -158,7 +158,7 @@ DEBUGPARAM4 --> LOOPSUBCALL1
 
 1. 将`1` 设置给  `for_obj(循环临时变量).change_type`
 
-#### 执行脚本代码 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 设置from-to都为最新版 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 设置from-to都为最新版
 
@@ -181,7 +181,7 @@ if (version_pages_results) {
 }
 ```
 
-#### 执行脚本代码 :id=RAWSFCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 设置改变版本信息 :id=RAWSFCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 

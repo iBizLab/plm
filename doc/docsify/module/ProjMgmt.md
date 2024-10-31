@@ -16,15 +16,15 @@
 |[项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag)|project_tag|主实体|SQL|PROJECT_TAG|否|否|自控制|否|用于分类和识别不同项目的标签系统，便于管理和检索；所有项目共用。|
 |[项目发布(RELEASE)](module/ProjMgmt/release)|release|主实体|SQL|PROJECT_RELEASE|否|否|附属主实体控制（未映射自控）|否|跟踪和管理项目的发布。|
 |[迭代(SPRINT)](module/ProjMgmt/sprint)|sprint|主实体|SQL|SPRINT|否|是|附属主实体控制（未映射自控）|否|产品开发过程中的一次迭代或冲刺，用于规划和跟踪一段时间内的开发任务。|
-|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration)|sprint_alteration|主实体|SQL|SPRINT_ALTERATION|否|否|附属主实体控制|否||
+|[迭代变更(SPRINT_ALTERATION)](module/ProjMgmt/sprint_alteration)|sprint_alteration|主实体|SQL|SPRINT_ALTERATION|否|否|附属主实体控制|否|迭代变更信息|
 |[发布阶段(STAGE)](module/ProjMgmt/stage)|stage|主实体|SQL|STAGE|否|否|附属主实体控制（未映射自控）|否|跟踪项目发布的各个阶段。|
 |[泳道(SWIMLANE)](module/ProjMgmt/swimlane)|swimlane|主实体|SQL|SWIMLANE|否|否|附属主实体控制（未映射自控）|否|在项目开发工作中使用，用于区分不同流程阶段。|
 |[流转记录(TRANSITION_HISTORY)](module/ProjMgmt/transition_history)|transition_history|主实体|SQL|TRANSITION_HISTORY|否|否|自控制|否|记录工作项状态变更的历史记录。|
 |[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|work_item|主实体|SQL|WORK_ITEM|否|是|附属主实体控制（未映射自控）|是|项目管理中的基本单元，可包含不同类型的工作项如任务、需求、缺陷等。|
 |[工作项状态(WORK_ITEM_STATE)](module/ProjMgmt/work_item_state)|work_item_state|主实体|SQL|WORK_ITEM_STATE|否|否|自控制|否|代表工作项在生命周期中的不同阶段状态，支持用户为工作项自定义状态。|
 |[工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type)|work_item_type|主实体|SQL|WORK_ITEM_TYPE|否|否|自控制|否|仅瀑布类型项目可以自定义工作项类型（定义瀑布型项目中可自定义的不同工作项类别。）|
-|[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard)|work_item_wizard|主实体|无存储||否|否|自控制|否||
-|[工作项操作向导明细(WORK_ITEM_WIZARD_DETAIL)](module/ProjMgmt/work_item_wizard_detail)|work_item_wizard_detail|主实体|无存储||否|否|自控制|否||
+|[工作项操作向导(WORK_ITEM_WIZARD)](module/ProjMgmt/work_item_wizard)|work_item_wizard|主实体|无存储||否|否|自控制|否|工作项变更操作向导信息|
+|[工作项操作向导明细(WORK_ITEM_WIZARD_DETAIL)](module/ProjMgmt/work_item_wizard_detail)|work_item_wizard_detail|主实体|无存储||否|否|自控制|否|工作项变更操作向导明细信息|
 
 ### ER图
 

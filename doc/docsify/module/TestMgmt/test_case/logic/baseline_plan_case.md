@@ -28,7 +28,7 @@ state "循环子调用" as LOOPSUBCALL3  [[$./baseline_plan_case#loopsubcall3 {"
 state "填充当前版本名称" as PREPAREPARAM2  [[$./baseline_plan_case#prepareparam2 {"填充当前版本名称"}]]
 }
 state "循环子调用" as LOOPSUBCALL4  [[$./baseline_plan_case#loopsubcall4 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM3  [[$./baseline_plan_case#prepareparam3 {"准备参数"}]]
+state "准备版本参数" as PREPAREPARAM3  [[$./baseline_plan_case#prepareparam3 {"准备版本参数"}]]
 }
 
 
@@ -125,7 +125,7 @@ if(for_temp_obj.get("cur_version_id")){
 
 
 循环参数`page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备版本参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

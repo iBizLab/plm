@@ -18,13 +18,15 @@ state "开始" as Begin <<start>> [[$./run_re_counters#begin {"开始"}]]
 state "测试用例关联产品需求" as RAWSQLCALL1  [[$./run_re_counters#rawsqlcall1 {"测试用例关联产品需求"}]]
 state "测试用例关联工作项" as RAWSQLCALL2  [[$./run_re_counters#rawsqlcall2 {"测试用例关联工作项"}]]
 state "结束" as END1 <<end>> [[$./run_re_counters#end1 {"结束"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./run_re_counters#debugparam1 {"调试逻辑参数"}]]
 state "执行用例关联缺陷" as RAWSQLCALL3  [[$./run_re_counters#rawsqlcall3 {"执行用例关联缺陷"}]]
 state "执行用例结果附件" as RAWSQLCALL5  [[$./run_re_counters#rawsqlcall5 {"执行用例结果附件"}]]
 state "测试用例执行历史" as RAWSQLCALL4  [[$./run_re_counters#rawsqlcall4 {"测试用例执行历史"}]]
 state "合并查询计数器" as RAWSQLCALL6  [[$./run_re_counters#rawsqlcall6 {"合并查询计数器"}]]
 
 
-Begin --> RAWSQLCALL1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> RAWSQLCALL1
 RAWSQLCALL1 --> RAWSQLCALL2
 RAWSQLCALL2 --> RAWSQLCALL3
 RAWSQLCALL3 --> RAWSQLCALL5
@@ -107,16 +109,19 @@ AND	EXISTS (
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
-#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
-
-
-
-*- N/A*
 #### 结束 :id=END1<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 
 
 
 返回 `Default(传入变量)`
+
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
 
 #### 执行用例关联缺陷 :id=RAWSQLCALL3<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
@@ -184,6 +189,11 @@ WHERE
 
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 
+#### 开始 :id=Begin<sup class="footnote-symbol"> <font color=gray size=1>[开始]</font></sup>
+
+
+
+*- N/A*
 #### 合并查询计数器 :id=RAWSQLCALL6<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 

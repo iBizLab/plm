@@ -19,7 +19,7 @@ state "获取选中数据" as BINDPARAM1  [[$./move_test_case#bindparam1 {"获�
 state "绑定ID" as BINDPARAM2  [[$./move_test_case#bindparam2 {"绑定ID"}]]
 state "结束" as END1 <<end>> [[$./move_test_case#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./move_test_case#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./move_test_case#renewparam1 {"重新建立参数"}]]
+state "重新建立测试用例参数" as RENEWPARAM1  [[$./move_test_case#renewparam1 {"重新建立测试用例参数"}]]
 state "获取当前用例详情" as DEACTION2  [[$./move_test_case#deaction2 {"获取当前用例详情"}]]
 state "设置当前用例参数" as PREPAREPARAM1  [[$./move_test_case#prepareparam1 {"设置当前用例参数"}]]
 state "设置用例模块标识" as PREPAREPARAM2  [[$./move_test_case#prepareparam2 {"设置用例模块标识"}]]
@@ -65,7 +65,7 @@ PREPAREPARAM1 --> DEACTION1 : [[$./move_test_case#prepareparam1-deaction1{用例
 
 
 循环参数`srfactionparam(选中的数据对象)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立测试用例参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

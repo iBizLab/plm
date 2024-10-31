@@ -49,7 +49,8 @@ t1.`NAME`,
 t1.`PASSWORD`,
 t1.`STATUS`,
 t1.`UPDATE_MAN`,
-t1.`UPDATE_TIME`
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
 FROM `` t1 
 
 

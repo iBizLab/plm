@@ -42,7 +42,9 @@
 ```sql
 SELECT
 t1.`ACCESS_PASSWORD`,
+(SELECT COUNT( att.ID ) AS comment_count FROM page p LEFT JOIN `attention` att ON p.ID = att.OWNER_ID WHERE p.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 t1.`CATEGORIES`,
+(SELECT COUNT( com.ID ) AS comment_count FROM page p LEFT JOIN `comment` com ON p.ID = com.PRINCIPAL_ID WHERE p.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,

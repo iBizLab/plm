@@ -90,7 +90,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[生成阶段排序值](module/TestMgmt/guideline/logic/fill_stage_order)|fill_stage_order|无|||
+|[生成阶段排序值](module/TestMgmt/guideline/logic/fill_stage_order)|fill_stage_order|无||生成阶段排序值|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

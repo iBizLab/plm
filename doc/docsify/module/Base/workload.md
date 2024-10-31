@@ -119,6 +119,7 @@
 |Update|Update|内置方法|默认|不支持||||
 |登记工时并更新剩余工时|create_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/Base/workload/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
+|填充工时数据|fill_workload_data|[实体处理逻辑](module/Base/workload/logic/fill_workload_data "填充工时数据")|默认|不支持||||
 |获取已登记工时|get_register_workload|[实体处理逻辑](module/Base/workload/logic/get_register_workload "获取已登记工时")|默认|不支持|||修改实际工时表单获取数据行为|
 |修改工时并更新剩余工时|update_workload|[实体处理逻辑](module/Base/workload/logic/save_workload "登记工时并更新剩余工时")|默认|不支持||||
 
@@ -131,7 +132,8 @@
 |[删除工时记录前附加逻辑](module/Base/workload/logic/before_remove)|before_remove|无||更新动态存储中的剩余工时|
 |[团队下成员工时日历查询](module/Base/workload/logic/group_member_dimension)|group_member_dimension|无||通过团队标识，查询此团队下的成员工时日历|
 |[团队维度工时日历查询](module/Base/workload/logic/user_group_dimension)|user_group_dimension|无||工时管理菜单中工时日历：团队维度查询数据使用|
-|[填充BI报表默认值](module/Base/workload/logic/fill_bi_form_default)|fill_bi_form_default|无|||
+|[填充BI报表默认值](module/Base/workload/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
+|[填充工时数据](module/Base/workload/logic/fill_workload_data)|fill_workload_data|无||移动端，工时日历详情使用|
 |[工作类别维度工时日历查询](module/Base/workload/logic/type_of_dimension)|type_of_dimension|无||首页工作台工时日历：工作类型维度查询数据使用|
 |[工作类别维度管理工时日历查询](module/Base/workload/logic/type_of_management_dimension)|type_of_management_dimension|无||工时管理菜单中工时日历：工作类型维度查询数据使用|
 |[工作项维度工时日历查询](module/Base/workload/logic/work_item_dimension)|work_item_dimension|无||首页工作台工时日历：项目/工作项维度查询数据使用|
@@ -154,6 +156,7 @@
 |[我的工时日历(my_calendar)](module/Base/workload/query/my_calendar)|my_calendar|否|否 |否 ||
 |[我的产品需求工时(my_idea_workload)](module/Base/workload/query/my_idea_workload)|my_idea_workload|否|否 |否 ||
 |[我登记的工时日志(my_log)](module/Base/workload/query/my_log)|my_log|否|否 |否 ||
+|[工时日志(my_mob_log)](module/Base/workload/query/my_mob_log)|my_mob_log|否|否 |否 |移动端我的工时日志|
 |[我的测试用例工时(my_test_case_workload)](module/Base/workload/query/my_test_case_workload)|my_test_case_workload|否|否 |否 ||
 |[我的工作类别记录(my_type_of)](module/Base/workload/query/my_type_of)|my_type_of|否|否 |否 ||
 |[我的工作项工时(my_work_item_workload)](module/Base/workload/query/my_work_item_workload)|my_work_item_workload|否|否 |否 ||
@@ -176,9 +179,11 @@
 |[产品需求工时(idea_workload)](module/Base/workload/dataset/idea_workload)|idea_workload|数据查询|否|||
 |[工时日志(log)](module/Base/workload/dataset/log)|log|数据查询|否|||
 |[人员维度(member_dimension)](module/Base/workload/dataset/member_dimension)|member_dimension|数据查询|否|[MemberWorklaodDEDataSetRuntime](index/plugin_index#UsrSFPlugin0508758798)||
+|[工时日历移动端(mob_calendar)](module/Base/workload/dataset/mob_calendar)|mob_calendar|数据查询|否|[GroupNestedFieldsDEDataSetRuntime](index/plugin_index#UsrSFPlugin1018391929)||
 |[我的工时日历(my_calendar)](module/Base/workload/dataset/my_calendar)|my_calendar|数据查询|否|||
 |[我的产品需求工时(my_idea_workload)](module/Base/workload/dataset/my_idea_workload)|my_idea_workload|数据查询|否|||
 |[我登记的工时日志(my_log)](module/Base/workload/dataset/my_log)|my_log|数据查询|否|||
+|[工时日志(my_mob_log)](module/Base/workload/dataset/my_mob_log)|my_mob_log|数据查询|否||移动端我的工时日志|
 |[我的测试用例工时(my_test_case_workload)](module/Base/workload/dataset/my_test_case_workload)|my_test_case_workload|数据查询|否|||
 |[我的工作类别记录(my_type_of)](module/Base/workload/dataset/my_type_of)|my_type_of|数据查询|否|||
 |[我的工作项工时(my_work_item_workload)](module/Base/workload/dataset/my_work_item_workload)|my_work_item_workload|数据查询|否|||
@@ -284,6 +289,7 @@
 | 工时日历链接日志表格视图 | calendar_link_log_view | 工时日历链接日志表格视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_calendar_duration_link_grid_view)</details>|工作台->工时日志->工作项/产品需求/测试用例维度->工时时长链接|
 | 工时明细返回执行用例主表单 | back_run_main_view | 返回 |无数据|用户自定义||
 | 打开成员工时记录 | open_member_workload_detail | 打开成员工时记录 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->人员维度->工时时长链接|
+| 打开工时移动端重定向视图 | open_workload_mob_redirect | 打开工时移动端重定向视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时](app/view/workload_mob_redirect_view)</details>||
 | 打开BI报表配置表单_工时类别占比 | open_bi_form_workload_type_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
 | 工时日历链接日志表格视图（管理） | management_calendar_duration_link | 工时日历链接日志表格视图（管理） |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工时日志](app/view/workload_management_duration_link_grid_view)</details>|工时管理->工时日历->工作项/产品需求/测试用例维度->工时时长链接|
 | 团队维度表格列行为 | group_dimension | 团队维度表格列行为 |单项数据|用户自定义|工时管理->工时日历->团队维度->时长表格列->绑定行为|

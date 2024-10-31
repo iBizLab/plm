@@ -28,6 +28,11 @@
 
 
 
+### 查询条件
+
+(`IS_DELETED(是否已删除)` EQ `'0'`)
+
+
 
 
 
@@ -58,7 +63,7 @@ t1.`UPDATE_TIME`
 FROM `CUSTOMER` t1 
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 
-
+WHERE ( t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

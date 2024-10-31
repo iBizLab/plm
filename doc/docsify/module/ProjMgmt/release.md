@@ -119,6 +119,7 @@
 |[规划工作项](module/ProjMgmt/release/logic/plan_work_item)|plan_work_item|无||规划工作项至指定发布|
 |[计算发布工作项数量](module/ProjMgmt/release/logic/cal_release_work_item_num)|cal_release_work_item_num|无||发布工作项数量计算|
 |[迭代取消关联发布](module/ProjMgmt/release/logic/del_relation)|del_relation|无||迭代取消关联发布|
+|[项目下发布（移动端）](module/ProjMgmt/release/logic/mob_project_release)|mob_project_release|无|||
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -139,6 +140,7 @@
 |[BI反查(bi_detail)](module/ProjMgmt/release/dataset/bi_detail)|bi_detail|数据查询|否|||
 |[BI查询(bi_search)](module/ProjMgmt/release/dataset/bi_search)|bi_search|数据查询|否|||
 |[选择发布关联(choose_relese_relation)](module/ProjMgmt/release/dataset/choose_relese_relation)|choose_relese_relation|数据查询|否|||
+|[项目下发布（移动端）(mob_project_release)](module/ProjMgmt/release/dataset/mob_project_release)|mob_project_release|[实体逻辑](module/ProjMgmt/release/logic/mob_project_release)|否|||
 |[未已发布(not_published)](module/ProjMgmt/release/dataset/not_published)|not_published|数据查询|否|||
 |[只读用户(reader)](module/ProjMgmt/release/dataset/reader)|reader|数据查询|否|||
 |[迭代关联发布(sprint_relation)](module/ProjMgmt/release/dataset/sprint_relation)|sprint_relation|数据查询|否|||

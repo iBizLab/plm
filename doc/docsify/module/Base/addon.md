@@ -73,7 +73,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[无操作](module/Base/addon/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[组件权限计数器](module/Base/addon/logic/addon_authority)|addon_authority|无||获取组件权限计数器是数值|
-|[获取视图消息](module/Base/addon/logic/get_view_msg)|get_view_msg|无|||
+|[获取视图消息](module/Base/addon/logic/get_view_msg)|get_view_msg|无||获取视图消息|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

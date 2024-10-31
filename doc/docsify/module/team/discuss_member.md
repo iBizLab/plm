@@ -48,15 +48,19 @@
 |Get|Get|内置方法|默认|不支持||||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |Remove|Remove|内置方法|默认|支持||||
+|重启|Restart|用户自定义|默认|不支持||||
 |Save|Save|内置方法|默认|不支持||||
+|停止|Stop|用户自定义|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Team/discuss_member/logic/change_role "变更角色")|默认|不支持||||
+|新建话题成员（移动端）|mob_create_topic_member|[实体处理逻辑](module/Team/discuss_member/logic/mob_create_topic_member "新建话题成员（移动端）")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Team/discuss_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[变更角色](module/Team/discuss_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[新建话题成员（移动端）](module/Team/discuss_member/logic/mob_create_topic_member)|mob_create_topic_member|无|||
 |[无操作](module/Team/discuss_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 
 ## 数据查询
@@ -99,6 +103,8 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 话题添加成员（移动端） | mob_add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[mob_create_topic_member](#行为)||
+| 设置角色（移动端） | mob_setting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 设置角色 | setting_role | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 

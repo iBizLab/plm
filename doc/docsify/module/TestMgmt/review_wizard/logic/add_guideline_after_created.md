@@ -15,20 +15,16 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_guideline_after_created#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./add_guideline_after_created#debugparam2 {"调试逻辑参数"}]]
 state "获取流程准则ID" as PREPAREPARAM3  [[$./add_guideline_after_created#prepareparam3 {"获取流程准则ID"}]]
 state "查询流程准则" as DEACTION1  [[$./add_guideline_after_created#deaction1 {"查询流程准则"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./add_guideline_after_created#debugparam1 {"调试逻辑参数"}]]
 state "获取步骤及类型" as PREPAREPARAM2  [[$./add_guideline_after_created#prepareparam2 {"获取步骤及类型"}]]
 state "保存评审" as DEACTION2  [[$./add_guideline_after_created#deaction2 {"保存评审"}]]
 state "结束" as END1 <<end>> [[$./add_guideline_after_created#end1 {"结束"}]]
 
 
-Begin --> DEBUGPARAM2
-DEBUGPARAM2 --> PREPAREPARAM3
+Begin --> PREPAREPARAM3
 PREPAREPARAM3 --> DEACTION1
-DEACTION1 --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREPARAM2
+DEACTION1 --> PREPAREPARAM2
 PREPAREPARAM2 --> DEACTION2
 DEACTION2 --> END1
 
@@ -44,14 +40,6 @@ DEACTION2 --> END1
 
 
 *- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 获取流程准则ID :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -65,14 +53,6 @@ DEACTION2 --> END1
 调用实体 [流程准则(GUIDELINE)](module/TestMgmt/guideline.md) 行为 [Get](module/TestMgmt/guideline#行为) ，行为参数为`guideline_detail(选择的评审规则详情)`
 
 将执行结果返回给参数`guideline_detail(选择的评审规则详情)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`guideline_detail(选择的评审规则详情)`的详细信息
-
 
 #### 获取步骤及类型 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 

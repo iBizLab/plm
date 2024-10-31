@@ -1,6 +1,6 @@
 ## 判断当前用户角色 <!-- {docsify-ignore-all} -->
 
-   
+   判断当前用户角色
 
 ### 处理过程
 
@@ -15,23 +15,23 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./recognize_cur_user_role#begin {"开始"}]]
+state "获取项目ID并设置过滤参数" as PREPAREPARAM2  [[$./recognize_cur_user_role#prepareparam2 {"获取项目ID并设置过滤参数"}]]
 state "获取产品ID并设置过滤参数" as PREPAREPARAM6  [[$./recognize_cur_user_role#prepareparam6 {"获取产品ID并设置过滤参数"}]]
 state "查询当前用户是否为产品成员" as DEDATASET2  [[$./recognize_cur_user_role#dedataset2 {"查询当前用户是否为产品成员"}]]
-state "结束" as END2 <<end>> [[$./recognize_cur_user_role#end2 {"结束"}]]
-state "获取项目ID并设置过滤参数" as PREPAREPARAM2  [[$./recognize_cur_user_role#prepareparam2 {"获取项目ID并设置过滤参数"}]]
-state "查询当前用户是否为项目成员" as DEDATASET3  [[$./recognize_cur_user_role#dedataset3 {"查询当前用户是否为项目成员"}]]
-state "准备参数" as PREPAREPARAM4  [[$./recognize_cur_user_role#prepareparam4 {"准备参数"}]]
-state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./recognize_cur_user_role#prepareparam5 {"绑定用户数据到for_obj"}]]
-state "只读权限" as RAWSFCODE1  [[$./recognize_cur_user_role#rawsfcode1 {"只读权限"}]]
-state "判断系统管理员身份" as RAWSFCODE3  [[$./recognize_cur_user_role#rawsfcode3 {"判断系统管理员身份"}]]
-state "只读权限" as RAWSFCODE4  [[$./recognize_cur_user_role#rawsfcode4 {"只读权限"}]]
 state "返回系统管理员权限" as PREPAREPARAM3  [[$./recognize_cur_user_role#prepareparam3 {"返回系统管理员权限"}]]
+state "结束" as END2 <<end>> [[$./recognize_cur_user_role#end2 {"结束"}]]
+state "查询当前用户是否为项目成员" as DEDATASET3  [[$./recognize_cur_user_role#dedataset3 {"查询当前用户是否为项目成员"}]]
+state "只读参数设置为空" as PREPAREPARAM4  [[$./recognize_cur_user_role#prepareparam4 {"只读参数设置为空"}]]
+state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./recognize_cur_user_role#prepareparam5 {"绑定用户数据到for_obj"}]]
 state "普通用户" as RAWSFCODE6  [[$./recognize_cur_user_role#rawsfcode6 {"普通用户"}]]
 state "绑定用户数据到for_obj" as PREPAREPARAM7  [[$./recognize_cur_user_role#prepareparam7 {"绑定用户数据到for_obj"}]]
 state "管理员" as RAWSFCODE5  [[$./recognize_cur_user_role#rawsfcode5 {"管理员"}]]
+state "只读权限" as RAWSFCODE1  [[$./recognize_cur_user_role#rawsfcode1 {"只读权限"}]]
 state "管理员" as RAWSFCODE2  [[$./recognize_cur_user_role#rawsfcode2 {"管理员"}]]
 state "普通用户" as RAWSFCODE7  [[$./recognize_cur_user_role#rawsfcode7 {"普通用户"}]]
 state "结束" as END6 <<end>> [[$./recognize_cur_user_role#end6 {"结束"}]]
+state "判断系统管理员身份" as RAWSFCODE3  [[$./recognize_cur_user_role#rawsfcode3 {"判断系统管理员身份"}]]
+state "只读权限" as RAWSFCODE4  [[$./recognize_cur_user_role#rawsfcode4 {"只读权限"}]]
 
 
 Begin --> PREPAREPARAM4
@@ -129,7 +129,7 @@ defaultObj.set("user_role", "reader");
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 只读参数设置为空 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

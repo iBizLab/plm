@@ -1,6 +1,9 @@
 # 工作项操作向导(work_item_wizard)  <!-- {docsify-ignore-all} -->
 
 
+工作项变更操作向导信息
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -75,11 +78,6 @@
 |N_ID_EQ|标识|EQ||
 |N_NAME_LIKE|名称|LIKE||
 
-## 界面逻辑
-|  中文名col200 | 代码名col150 | 备注col900 |
-| --------|--------|--------|
-|[批量删除临时数据](module/ProjMgmt/work_item_wizard/uilogic/remove_batch_temp)|remove_batch_temp|删除临时数据|
-
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -104,9 +102,6 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard?id=搜索模式`">
   搜索模式
-</el-anchor-link>
-<el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard?id=界面逻辑`">
-  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

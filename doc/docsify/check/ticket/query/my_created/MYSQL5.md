@@ -22,6 +22,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -35,5 +36,5 @@ FROM `TICKET` t1
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```

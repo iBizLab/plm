@@ -15,15 +15,15 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./create_double_relation#begin {开始}]]
-state "填充测试用例属性" as PREPAREJSPARAM3  [[$./create_double_relation#preparejsparam3 {填充测试用例属性}]]
 state "表格刷新" as VIEWCTRLINVOKE1  [[$./create_double_relation#viewctrlinvoke1 {表格刷新}]]
-state "绑定表格部件" as PREPAREJSPARAM2  [[$./create_double_relation#preparejsparam2 {绑定表格部件}]]
 state "建立关联关系" as DEACTION2  [[$./create_double_relation#deaction2 {建立关联关系}]]
-state "注入脚本代码" as RAWJSCODE3  [[$./create_double_relation#rawjscode3 {注入脚本代码}]]
 state "隐藏下拉框" as RAWJSCODE2  [[$./create_double_relation#rawjscode2 {隐藏下拉框}]]
-state "建立关联关系" as DEACTION1  [[$./create_double_relation#deaction1 {建立关联关系}]]
+state "填充测试用例属性" as PREPAREJSPARAM3  [[$./create_double_relation#preparejsparam3 {填充测试用例属性}]]
 state "填充关联数据属性" as PREPAREJSPARAM1  [[$./create_double_relation#preparejsparam1 {填充关联数据属性}]]
 state "结束" as END1 <<end>> [[$./create_double_relation#end1 {结束}]]
+state "建立关联关系" as DEACTION1  [[$./create_double_relation#deaction1 {建立关联关系}]]
+state "绑定表格部件" as PREPAREJSPARAM2  [[$./create_double_relation#preparejsparam2 {绑定表格部件}]]
+state "更新srfdecodename" as RAWJSCODE3  [[$./create_double_relation#rawjscode3 {更新srfdecodename}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -110,7 +110,7 @@ if (panel) {
 
 
 调用`grid(表格对象)`的方法`refresh`，参数为`grid(表格对象)`
-#### 注入脚本代码 :id=RAWJSCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 更新srfdecodename :id=RAWJSCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -135,9 +135,9 @@ ibiz.mc.command.update.send({ srfdecodename: context.principal_type})
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |表格对象|grid|部件对象||
-|正向关联对象|relation|数据对象||
+|当前视图对象|view|当前视图对象||
 |ctx|ctx|导航视图参数绑定参数||
+|正向关联对象|relation|数据对象||
 |反向关联对象|relation2|数据对象||

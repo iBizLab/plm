@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./export_to_pdf#begin {"开始"}]]
-state "实体行为" as DEACTION1  [[$./export_to_pdf#deaction1 {"实体行为"}]]
+state "获取页面信息" as DEACTION1  [[$./export_to_pdf#deaction1 {"获取页面信息"}]]
 state "结束" as END1 <<end>> [[$./export_to_pdf#end1 {"结束"}]]
 state "服务插件" as SFPLUGIN1  [[$./export_to_pdf#sfplugin1 {"服务插件"}]]
 
@@ -36,7 +36,7 @@ SFPLUGIN1 --> END1
 
 
 *- N/A*
-#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 获取页面信息 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

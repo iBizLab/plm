@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./work_item_test_plan_project#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./work_item_test_plan_project#prepareparam1 {"准备参数"}]]
+state "绑定测试计划ID" as PREPAREPARAM1  [[$./work_item_test_plan_project#prepareparam1 {"绑定测试计划ID"}]]
 state "获取TEST_PLAN关联项目" as DEACTION1  [[$./work_item_test_plan_project#deaction1 {"获取TEST_PLAN关联项目"}]]
 state "赋值ProjectId" as PREPAREPARAM2  [[$./work_item_test_plan_project#prepareparam2 {"赋值ProjectId"}]]
 state "设置默认缺陷类型" as RAWSFCODE1  [[$./work_item_test_plan_project#rawsfcode1 {"设置默认缺陷类型"}]]
@@ -43,7 +43,7 @@ PREPAREPARAM3 --> END1
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 绑定测试计划ID :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

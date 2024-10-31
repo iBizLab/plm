@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./program_plan#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./program_plan#bindparam1 {"绑定参数"}]]
+state "绑定关联列表参数" as BINDPARAM1  [[$./program_plan#bindparam1 {"绑定关联列表参数"}]]
 state "结束" as END1 <<end>> [[$./program_plan#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./program_plan#loopsubcall1 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM3  [[$./program_plan#prepareparam3 {"准备参数"}]]
-state "拷贝参数" as COPYPARAM1  [[$./program_plan#copyparam1 {"拷贝参数"}]]
+state "设置测试用例ID" as PREPAREPARAM3  [[$./program_plan#prepareparam3 {"设置测试用例ID"}]]
+state "拷贝创建参数" as COPYPARAM1  [[$./program_plan#copyparam1 {"拷贝创建参数"}]]
 state "获取测试用例详情" as DEACTION2  [[$./program_plan#deaction2 {"获取测试用例详情"}]]
 state "准备执行用例数据" as PREPAREPARAM2  [[$./program_plan#prepareparam2 {"准备执行用例数据"}]]
 state "创建执行用例" as DEACTION1  [[$./program_plan#deaction1 {"创建执行用例"}]]
@@ -47,7 +47,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定关联列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -57,13 +57,13 @@ PREPAREPARAM2 --> DEACTION1
 
 
 循环参数`selectdata(关联列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置测试用例ID :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `TEST_CASE_INFO(测试用例信息).ID(标识)`
 
-#### 拷贝参数 :id=COPYPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[拷贝参数]</font></sup>
+#### 拷贝创建参数 :id=COPYPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[拷贝参数]</font></sup>
 
 
 

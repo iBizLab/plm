@@ -1,6 +1,9 @@
 # 评审向导(review_wizard)  <!-- {docsify-ignore-all} -->
 
 
+评审向导信息
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -79,7 +82,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[创建后修改附加数据归属](module/TestMgmt/review_wizard/logic/fix_nested_data)|fix_nested_data|无|||
+|[创建后修改附加数据归属](module/TestMgmt/review_wizard/logic/fix_nested_data)|fix_nested_data|无||创建后修改附加数据归属|
 |[创建后附加评审规则](module/TestMgmt/review_wizard/logic/add_guideline_after_created)|add_guideline_after_created|无|| 进行中|
 |[填充评审规则](module/TestMgmt/review_wizard/logic/fill_guideline)|fill_guideline|无||获取评审规则并返回|
 

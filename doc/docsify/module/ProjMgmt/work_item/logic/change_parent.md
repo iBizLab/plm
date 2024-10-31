@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_parent#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./change_parent#bindparam1 {"绑定参数"}]]
+state "绑定选中数据列表参数" as BINDPARAM1  [[$./change_parent#bindparam1 {"绑定选中数据列表参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./change_parent#loopsubcall1 {"循环子调用"}]] #green {
 state "填充工作项父级标识" as PREPAREPARAM1  [[$./change_parent#prepareparam1 {"填充工作项父级标识"}]]
 state "变更父工作项" as DEACTION1  [[$./change_parent#deaction1 {"变更父工作项"}]]
@@ -39,7 +39,7 @@ PREPAREPARAM1 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中数据列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

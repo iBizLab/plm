@@ -1,6 +1,9 @@
 # 通知设置(system_extension_notify_setting)  <!-- {docsify-ignore-all} -->
 
 
+通知设置信息
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |

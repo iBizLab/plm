@@ -2,9 +2,11 @@
 SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
+(SELECT COUNT( att.ID ) AS comment_count FROM idea tc LEFT JOIN `attention` att ON tc.ID = att.OWNER_ID WHERE tc.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 t21.`CATEGORIES`,
 t1.`CATEGORY_ID`,
 t21.`NAME` AS `CATEGORY_NAME`,
+(SELECT COUNT( com.ID ) AS comment_count FROM idea tc LEFT JOIN `comment` com ON tc.ID = com.PRINCIPAL_ID WHERE tc.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,

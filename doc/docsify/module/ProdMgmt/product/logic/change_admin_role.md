@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_admin_role#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./change_admin_role#bindparam1 {"绑定参数"}]]
+state "绑定srfactionparam参数" as BINDPARAM1  [[$./change_admin_role#bindparam1 {"绑定srfactionparam参数"}]]
 state "结束" as END1 <<end>> [[$./change_admin_role#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./change_admin_role#loopsubcall1 {"循环子调用"}]] #green {
 state "重新建立更新成员信息参数" as RENEWPARAM4  [[$./change_admin_role#renewparam4 {"重新建立更新成员信息参数"}]]
@@ -44,7 +44,7 @@ BINDPARAM1 --> END1 : [[$./change_admin_role#bindparam1-end1{未勾选添加成�
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定srfactionparam参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

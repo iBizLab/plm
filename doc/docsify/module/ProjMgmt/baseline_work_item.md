@@ -136,7 +136,6 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[移出基线后刷新表格](module/ProjMgmt/baseline_work_item/uilogic/shift_out_refresh)|shift_out_refresh|移出基线后刷新表格|
 |[规划快照查看](module/ProjMgmt/baseline_work_item/uilogic/plan_snapshot_check)|plan_snapshot_check|规划快照查看：打开快照甘特图视图时依据快照状态，显示操作按钮|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

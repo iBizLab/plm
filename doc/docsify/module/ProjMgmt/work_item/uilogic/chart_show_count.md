@@ -16,8 +16,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./chart_show_count#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./chart_show_count#rawjscode1 {注入脚本代码}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./chart_show_count#preparejsparam1 {准备参数}]]
+state "图标参数" as PREPAREJSPARAM1  [[$./chart_show_count#preparejsparam1 {图标参数}]]
+state "图表显示总数" as RAWJSCODE1  [[$./chart_show_count#rawjscode1 {图表显示总数}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -35,13 +35,13 @@ PREPAREJSPARAM1 --> RAWJSCODE1
 
 
 
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 图标参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`chart(图表)` 设置给  `chart(图表)`
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 图表显示总数 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

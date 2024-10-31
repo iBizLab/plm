@@ -13,7 +13,7 @@
 |文件标识|FILE_ID|文件|500|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |产品需求|IDEA|外键值对象|1048576|是||
-|名称|NAME|文本，可指定长度|200|是||
+|文件名称|NAME|文本，可指定长度|200|是||
 |所属数据标识|OWNER_ID|文本，可指定长度|100|是||
 |所属数据编号|OWNER_IDENTIFIER|文本，可指定长度|100|是||
 |所属数据父标识|OWNER_PARENT_ID|文本，可指定长度|100|是||
@@ -64,6 +64,8 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
+|[产品中需求或工单的附件](module/Base/search_attachment/logic/cur_product)|cur_product|无||当前产品下的全部附件，用于填充所属相关信息字段|
+|[项目中工作项的附件](module/Base/search_attachment/logic/cur_project)|cur_project|无||当前项目下的全部附件，用于填充所属相关信息字段|
 |[高级搜索](module/Base/search_attachment/logic/advanced_search)|advanced_search|无||高级搜索，用于填充所属相关信息字段|
 
 ## 数据查询
@@ -71,6 +73,8 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/search_attachment/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/search_attachment/query/View)|VIEW|否|否 |否 ||
+|[当前产品下的附件(cur_product)](module/Base/search_attachment/query/cur_product)|cur_product|否|否 |否 ||
+|[当前项目下的附件(cur_project)](module/Base/search_attachment/query/cur_project)|cur_project|否|否 |否 ||
 |[关联查询(relation)](module/Base/search_attachment/query/relation)|relation|否|否 |是 ||
 
 ## 数据集合
@@ -78,6 +82,10 @@
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/search_attachment/dataset/Default)|DEFAULT|数据查询|是|||
 |[高级搜索(advanced_search)](module/Base/search_attachment/dataset/advanced_search)|advanced_search|[实体逻辑](module/Base/search_attachment/logic/advanced_search)|否|||
+|[当前产品下的附件(cur_product)](module/Base/search_attachment/dataset/cur_product)|cur_product|数据查询|否|||
+|[当前项目下的附件(cur_project)](module/Base/search_attachment/dataset/cur_project)|cur_project|数据查询|否|||
+|[产品附件(product_file)](module/Base/search_attachment/dataset/product_file)|product_file|[实体逻辑](module/Base/search_attachment/logic/cur_product)|否|||
+|[项目附件(project_file)](module/Base/search_attachment/dataset/project_file)|project_file|[实体逻辑](module/Base/search_attachment/logic/cur_project)|否|||
 |[关联查询(relation)](module/Base/search_attachment/dataset/relation)|relation|数据查询|否|||
 
 ## 搜索模式
@@ -87,27 +95,25 @@
 |N_CREATE_TIME_GTANDEQ|建立时间|GTANDEQ||
 |N_CREATE_TIME_LTANDEQ|建立时间|LTANDEQ||
 |N_ID_EQ|标识|EQ||
-|N_NAME_LIKE|名称|LIKE||
+|N_NAME_LIKE|文件名称|LIKE||
 |N_OWNER_ID_EQ|所属数据标识|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开产品主视图 | open_product_main_view | 打开产品主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_main_view)</details>||
+| 附件下载 | download | 下载 |单项数据|用户自定义||
 | 打开客户主视图 | open_customer_main_view | 打开客户主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_main_view)</details>||
-| 打开空间主视图 | open_space_main_view | 打开空间主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[空间](app/view/space_index_view)</details>||
-| 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
+| 打开主数据详情视图 | open_detail_view | 打开主数据详情视图 |单项数据|用户自定义||
+| 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 | 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
-| 打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_redirect_view)</details>||
 | 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
-| 打开测试库主视图 | open_library_main_view | 打开测试库主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_main_view)</details>||
 | 打开页面主视图 | open_page_main_view | 打开页面主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_show_view)</details>||
 | 打开工单主视图 | open_ticket_main_view | 打开工单主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[打开所属主页视图](module/Base/search_attachment/uilogic/open_parent_index_view)|open_parent_index_view|链接跳转项目/产品/测试库/空间首页视图|
+|[下载按钮是否显示](module/Base/search_attachment/uilogic/download_show)|download_show|下载按钮根据上下文的srfreadonly是否显示|
 |[打开详情视图](module/Base/search_attachment/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例/工单/客户/页面详情主视图|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

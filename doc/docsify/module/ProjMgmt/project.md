@@ -186,7 +186,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[删除](module/ProjMgmt/project/logic/delete)|delete|无||项目数据的逻辑删除，修改产品的是否删除属性值|
 |[取消星标](module/ProjMgmt/project/logic/un_favorite)|un_favorite|无||项目取消星标|
 |[变更管理员角色](module/ProjMgmt/project/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
-|[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无|||
+|[填充BI报表默认值](module/ProjMgmt/project/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
 |[归档](module/ProjMgmt/project/logic/archive)|archive|无||未归档项目数据的归档处理，修改项目的归档状态为已归档|
 |[恢复](module/ProjMgmt/project/logic/recover)|recover|无||恢复已删除状态项目数据，修改项目的是否删除属性值，并恢复访问记录|
 |[批量更新最近访问父名称](module/ProjMgmt/project/logic/recent_parent_name)|recent_parent_name|属性逻辑||当项目名称变更时，触发此逻辑，批量对最近访问的父标识进行更新|
@@ -252,6 +252,7 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 |[已删除(deleted)](module/ProjMgmt/project/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/ProjMgmt/project/dataset/favorite)|favorite|数据查询|否|||
 |[主表格查询(main)](module/ProjMgmt/project/dataset/main)|main|数据查询|否|||
+|[主查询（移动端）(mob_main)](module/ProjMgmt/project/dataset/mob_main)|mob_main|数据查询|否|||
 |[正常状态(normal)](module/ProjMgmt/project/dataset/normal)|normal|数据查询|否|||
 |[快速新建查询(quick)](module/ProjMgmt/project/dataset/quick)|quick|[实体逻辑](module/ProjMgmt/project/logic/quick_create)|否|||
 |[快速新建查询（管理用户）(quick_user)](module/ProjMgmt/project/dataset/quick_user)|quick_user|数据查询|否|||
@@ -368,46 +369,51 @@ PLM系统的核心业务实体，代表一个项目整体，包含项目的基�
 | 打开项目配置(全局) | open_global_setting | 项目配置 |无数据|用户自定义||
 | 项目成员 | open_project_member | 项目成员 |单项数据（主键）|用户自定义||
 | 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 打开项目主视图（scrum） | open_project_main_view_scrum | 打开项目主视图（scrum） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_scrum_main_view)</details>||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
-| 打开项目主视图（kanban） | open_project_main_view_kanban | 打开项目主视图（kanban） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_kanban_main_view)</details>||
+| 项目设置（移动端） | mob_setting | 项目设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目设置](app/view/project_mob_setting_view)</details>||
 | 打开项目导航页 | open_project_exp_view | 打开项目导航页 |无数据|<details><summary>打开顶级视图</summary>[项目管理](app/view/project_tree_exp_view)</details>||
 | 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | 编辑公告 | edit_notice | 编辑公告 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑公告](app/view/project_notice_edit_view)</details>||
+| 项目成员（移动端） | mob_project_member | 项目成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[项目成员](app/view/project_member_mob_list_view)</details>||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
 | 回收站 | open_deleted_project | 回收站 |单项数据（主键）|用户自定义||
+| 添加项目成员 | add_project_member | 添加成员 |无数据|系统预定义||
 | 新建项目 | create_project | 新建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_create_wizard_view)</details>||
 | 项目信息 | open_show_view | 项目信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[项目信息](app/view/project_show_edit_view)</details>||
 | 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 新开窗口（项目） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/project=${data.id}/project_redirect_view/project=${data.id}*</details>||
-| 打开项目主视图（waterfall） | open_project_main_view_waterfall | 打开项目主视图（waterfall） |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_waterfall_main_view)</details>||
 | 打开新建项目 | open_new_project | 打开新建项目 |单项数据|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
+| 进行中_删除（移动端） | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 | 移动项目 | move_project | 移动项目 |单项数据（主键）|<details><summary>后台调用</summary>[project_move](#行为)||
+| 回收站（移动端） | mob_recycle_bin | 回收站 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/work_item_mob_recycle_bin_md_view)</details>||
 | 打开BI报表配置表单_项目_风险占比 | open_bi_form_project_risk_ratio | 配置 |无数据|<details><summary>打开快捷编辑</summary></details>||
 | 反查打开项目 | bi_open_project | 打开项目 |单项数据|用户自定义||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 从项目集中移除 | remove_from_project_set | 移除 |单项数据（主键）|<details><summary>后台调用</summary>[remove_from_project_set](#行为)||
 | 根据类型打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据（主键）|<details><summary>打开顶级视图</summary>[项目](app/view/project_redirect_view)</details>||
+| 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/project_mob_advanced_setting_view)</details>||
+| 全屏展示（移动端） | full_screen | 全屏 |无数据|用户自定义||
+| 创建项目（移动端） | mob_create_project | 创建项目 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建项目](app/view/project_mob_create_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[刷新当前表格](module/ProjMgmt/project/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前视图的表格|
+|[图表全屏（移动端）](module/ProjMgmt/project/uilogic/mob_full_screen)|mob_full_screen||
 |[批量删除项目成员临时数据](module/ProjMgmt/project/uilogic/remove_batch_temp)|remove_batch_temp|获取项目内所有临时成员数据并删除|
-|[根据类型跳转项目主视图](module/ProjMgmt/project/uilogic/open_project_main_view)|open_project_main_view|判断类型跳转不同的项目主视图|
 |[计算表格列行为状态(project)](module/ProjMgmt/project/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
+|[设置默认项目成员（移动端）](module/ProjMgmt/project/uilogic/mob_set_default_project_member)|mob_set_default_project_member|新建项目时，默认将创建人添加到此项目成员|
 |[通知刷新](module/ProjMgmt/project/uilogic/notify_refresh)|notify_refresh|通知页面刷新|
 |[门户全屏](module/ProjMgmt/project/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/ProjMgmt/project/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/ProjMgmt/project/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|
-|[项目关联空间](module/ProjMgmt/project/uilogic/project_relation_space)|project_relation_space|调用后台关联逻辑，项目关联空间并生成正反关联数据|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

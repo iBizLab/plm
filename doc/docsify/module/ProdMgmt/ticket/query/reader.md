@@ -36,7 +36,7 @@
     * **PRODUCT_MEMBER存在1:N（EXISTS (SELECT)）DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID**<br>
 连接关系：[DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID](der/DER1N_PRODUCT_MEMBER_PRODUCT_PRODUCT_ID)<br>
 连接实体：[产品](module/ProdMgmt/product)<br>
-连接条件：(`USER_ID(登录名)` EQ `用户上下文.srfpersonid`)<br>
+连接条件：(`USER_ID(登录名)` EQ `用户上下文.srfpersonid` AND `ROLE_ID(角色)` NOTEQ `'customer'`)<br>
 
 
 
@@ -67,6 +67,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -82,7 +83,7 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
  WHERE 
- t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t31.`ROLE_ID` <> 'customer' ) )
 ```
 
 </el-dialog>

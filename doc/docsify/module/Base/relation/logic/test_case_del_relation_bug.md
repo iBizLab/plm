@@ -22,8 +22,8 @@ state "删除缺陷关联测试用例数据" as DEACTION3  [[$./test_case_del_re
 state "准备参数" as PREPAREPARAM2  [[$./test_case_del_relation_bug#prepareparam2 {"准备参数"}]]
 state "查询对应的执行用例存在关联此缺陷" as DEDATASET1  [[$./test_case_del_relation_bug#dedataset1 {"查询对应的执行用例存在关联此缺陷"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./test_case_del_relation_bug#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./test_case_del_relation_bug#resetparam1 {"重置参数"}]]
-state "重置参数" as RESETPARAM2  [[$./test_case_del_relation_bug#resetparam2 {"重置参数"}]]
+state "重置执行用例关联缺陷参数" as RESETPARAM1  [[$./test_case_del_relation_bug#resetparam1 {"重置执行用例关联缺陷参数"}]]
+state "重置缺陷关联执行用例参数" as RESETPARAM2  [[$./test_case_del_relation_bug#resetparam2 {"重置缺陷关联执行用例参数"}]]
 state "获取执行用例关联缺陷对象主键" as RAWSFCODE2  [[$./test_case_del_relation_bug#rawsfcode2 {"获取执行用例关联缺陷对象主键"}]]
 state "删除执行用例关联缺陷" as DEACTION4  [[$./test_case_del_relation_bug#deaction4 {"删除执行用例关联缺陷"}]]
 state "删除缺陷关联执行用例" as DEACTION5  [[$./test_case_del_relation_bug#deaction5 {"删除缺陷关联执行用例"}]]
@@ -115,12 +115,12 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 
 循环参数`run_relation_page(执行用例关联缺陷分页结果对象)`，子循环参数使用`relation_for_temp_obj(临时循环变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置执行用例关联缺陷参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```run_relation_bug(执行用例关联缺陷)```
-#### 重置参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置缺陷关联执行用例参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 

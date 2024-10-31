@@ -17,7 +17,7 @@ hide empty description
 state "开始" as Begin <<start>> [[$./delete_section#begin {"开始"}]]
 state "删除类别" as DEACTION2  [[$./delete_section#deaction2 {"删除类别"}]]
 state "设置过滤器参数" as PREPAREPARAM1  [[$./delete_section#prepareparam1 {"设置过滤器参数"}]]
-state "实体数据集" as DEDATASET1  [[$./delete_section#dedataset1 {"实体数据集"}]]
+state "获取分类数据集" as DEDATASET1  [[$./delete_section#dedataset1 {"获取分类数据集"}]]
 state "修改需求信息" as RAWSQLCALL1  [[$./delete_section#rawsqlcall1 {"修改需求信息"}]]
 state "结束" as END1 <<end>> [[$./delete_section#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./delete_section#loopsubcall1 {"循环子调用"}]] #green {
@@ -79,7 +79,7 @@ WHERE (t21.SECTION_ID = ? )
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `category_filter(模块过滤器).N_SECTION_ID_EQ`
 
-#### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+#### 获取分类数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 

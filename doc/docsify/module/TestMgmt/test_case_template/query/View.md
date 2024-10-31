@@ -26,6 +26,12 @@
 
 * `全部数据`
 
+> [!ATTENTION|label:存在长文本属性]
+>
+> `DESCRIPTION(描述)`
+>
+> `PRECONDITION(前置条件)`
+
 
 
 

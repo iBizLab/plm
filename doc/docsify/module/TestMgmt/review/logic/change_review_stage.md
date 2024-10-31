@@ -1,6 +1,6 @@
 ## 变更评审内阶段 <!-- {docsify-ignore-all} -->
 
-   
+   变更评审内阶段
 
 ### 处理过程
 
@@ -19,7 +19,7 @@ state "结束" as END1 <<end>> [[$./change_review_stage#end1 {"结束"}]]
 state "传入参数" as DEBUGPARAM1  [[$./change_review_stage#debugparam1 {"传入参数"}]]
 state "获取评审ID" as PREPAREPARAM1  [[$./change_review_stage#prepareparam1 {"获取评审ID"}]]
 state "获取评审" as DEACTION1  [[$./change_review_stage#deaction1 {"获取评审"}]]
-state "准备参数" as PREPAREPARAM5  [[$./change_review_stage#prepareparam5 {"准备参数"}]]
+state "设置阶段集合参数" as PREPAREPARAM5  [[$./change_review_stage#prepareparam5 {"设置阶段集合参数"}]]
 state "评审列表返回评审" as PREPAREPARAM4  [[$./change_review_stage#prepareparam4 {"评审列表返回评审"}]]
 state "更新前评审数据" as DEBUGPARAM3  [[$./change_review_stage#debugparam3 {"更新前评审数据"}]]
 state "保存评审" as DEACTION2  [[$./change_review_stage#deaction2 {"保存评审"}]]
@@ -82,7 +82,7 @@ DEACTION2 --> END1
 
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [Get](module/TestMgmt/review#行为) ，行为参数为`review_info(评审信息)`
 
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置阶段集合参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

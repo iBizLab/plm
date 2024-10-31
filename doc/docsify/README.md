@@ -14,8 +14,9 @@
 |[效能度量](module/Insight)|Insight||主要包含效能度量相关业务实体的管理，如仪表盘、报表等。|
 |[全文检索](module/FTR)|FTR||全文检索相关业务实体管理。|
 |[系统管理](module/ibizsysmgr)|ibizsysmgr|ibizsysmgr[^ibizsysmgr]|部门及人员业务实体的映射。|
-|[ebsx系统管理](module/ebsx)|ebsx|ebsx模型组[^ebsx]||
-|[模型扩展](module/extension)|extension|||
+|[ebsx系统管理](module/ebsx)|ebsx|ebsx模型组[^ebsx]|ebsx部门及人员业务实体的映射。|
+|[模型扩展](module/extension)|extension||主要包含模型扩展类实体。|
+|[DevOps数据集成](module/DevOps)|DevOps||DevOps数据集成|
 
 
 #### 服务接口
@@ -37,8 +38,9 @@
 
 |  中文名col200      |   代码名col200  |   备注col600  |
 |  --------   |------------ |  -----   |
-|[<i class="fa-solid fa-desktop"></i>产品生命周期管理系统](app/plmweb)|plmweb||
-|[<i class="fa-solid fa-desktop"></i>产品生命周期管理系统](app/plmwiki)|plmwiki||
+|[<i class="fa-solid fa-mobile"></i>软件生命周期管理系统](app/plmmob)|plmmob||
+|[<i class="fa-solid fa-desktop"></i>软件生命周期管理系统](app/plmweb)|plmweb||
+|[<i class="fa-solid fa-desktop"></i>软件生命周期管理系统](app/plmwiki)|plmwiki||
 
 
 #### 国际化支持

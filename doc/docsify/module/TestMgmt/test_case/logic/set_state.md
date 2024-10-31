@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_state#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./set_state#bindparam1 {"绑定参数"}]]
+state "绑定选择数据对象" as BINDPARAM1  [[$./set_state#bindparam1 {"绑定选择数据对象"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_state#loopsubcall1 {"循环子调用"}]] #green {
 state "设置用例状态参数" as PREPAREPARAM2  [[$./set_state#prepareparam2 {"设置用例状态参数"}]]
 state "变更状态" as DEACTION1  [[$./set_state#deaction1 {"变更状态"}]]
@@ -39,7 +39,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选择数据对象 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

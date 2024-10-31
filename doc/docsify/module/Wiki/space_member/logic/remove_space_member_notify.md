@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./remove_space_member_notify#begin {"开始"}]]
-state "获取数据" as DEACTION1  [[$./remove_space_member_notify#deaction1 {"获取数据"}]]
+state "获取空间成员数据" as DEACTION1  [[$./remove_space_member_notify#deaction1 {"获取空间成员数据"}]]
 state "绑定当前操作人" as PREPAREPARAM1  [[$./remove_space_member_notify#prepareparam1 {"绑定当前操作人"}]]
 state "获取当前操作时间" as RAWSFCODE1  [[$./remove_space_member_notify#rawsfcode1 {"获取当前操作时间"}]]
 state "移除空间成员通知" as DENOTIFY1  [[$./remove_space_member_notify#denotify1 {"移除空间成员通知"}]]
@@ -40,7 +40,7 @@ DENOTIFY1 --> END1
 
 
 *- N/A*
-#### 获取数据 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 获取空间成员数据 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

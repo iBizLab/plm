@@ -76,6 +76,7 @@
 |添加共享页面非空间下成员|add_shared_page_member|[实体处理逻辑](module/Base/member/logic/add_shared_page_member "添加共享页面非空间下成员")|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Base/member/logic/change_role "变更角色")|默认|不支持||||
 |新建成员|create_member|[实体处理逻辑](module/Base/member/logic/create_member "新建成员")|默认|不支持||||
+|添加共享页面成员（移动端）|mob_add_shared_member|[实体处理逻辑](module/Base/member/logic/mob_add_shared_page_member "添加共享页面非空间下成员（移动端）")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Base/member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
@@ -85,18 +86,21 @@
 |[新建成员](module/Base/member/logic/create_member)|create_member|无||批量新建团队成员|
 |[无操作](module/Base/member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加共享页面非空间下成员](module/Base/member/logic/add_shared_page_member)|add_shared_page_member|无||添加共享页面非空间下成员|
+|[添加共享页面非空间下成员（移动端）](module/Base/member/logic/mob_add_shared_page_member)|mob_add_shared_page_member|无||添加共享页面非空间下成员（移动端）|
 |[获取当前项目下资源成员](module/Base/member/logic/cur_project_resource)|cur_project_resource|无||获取当前项目下资源成员|
 |[获取当前项目集下资源成员](module/Base/member/logic/cur_portfolio_resource)|cur_portfolio_resource|无||获取当前项目集下资源成员|
 |[获取资源成员（全局）](module/Base/member/logic/resource_member)|resource_member|无||获取资源成员（全局）|
 |[选择资源成员（全局）](module/Base/member/logic/choose_resource_member)|choose_resource_member|无||选择资源成员（全局）|
 |[选择项目资源成员](module/Base/member/logic/choose_project_resource)|choose_project_resource|无||项目资源分配下设置成员：当前项目下成员/部门/团队|
 |[选择项目集资源成员](module/Base/member/logic/choose_portfolio_resource)|choose_portfolio_resource|无||项目集资源分配下设置成员：当前项目下成员/部门/团队|
+|[非空间下成员](module/Base/member/logic/not_space_mmeber)|not_space_mmeber|无||非空间下成员|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/member/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/member/query/View)|VIEW|否|否 |否 ||
+|[未关注成员(no_attention)](module/Base/member/query/no_attention)|no_attention|否|否 |否 ||
 |[共享页面_非空间成员(shared_page_member)](module/Base/member/query/shared_page_member)|shared_page_member|否|否 |否 ||
 |[团队管理员(user_group_admin)](module/Base/member/query/user_group_admin)|user_group_admin|否|否 |否 ||
 
@@ -109,6 +113,8 @@
 |[选择资源成员（全局）(choose_resource_member)](module/Base/member/dataset/choose_resource_member)|choose_resource_member|[实体逻辑](module/Base/member/logic/choose_resource_member)|否|||
 |[获取当前项目集下资源成员(cur_portfolio_resource)](module/Base/member/dataset/cur_portfolio_resource)|cur_portfolio_resource|[实体逻辑](module/Base/member/logic/cur_portfolio_resource)|否|||
 |[获取当前项目下资源成员(cur_project_resource)](module/Base/member/dataset/cur_project_resource)|cur_project_resource|[实体逻辑](module/Base/member/logic/cur_project_resource)|否|||
+|[未关注成员(no_attention)](module/Base/member/dataset/no_attention)|no_attention|数据查询|否|||
+|[非空间下成员(not_space_mmeber)](module/Base/member/dataset/not_space_mmeber)|not_space_mmeber|[实体逻辑](module/Base/member/logic/not_space_mmeber)|否|||
 |[获取资源成员（全局）(resource_member)](module/Base/member/dataset/resource_member)|resource_member|[实体逻辑](module/Base/member/logic/resource_member)|否|||
 |[共享页面_非空间成员(shared_page_member)](module/Base/member/dataset/shared_page_member)|shared_page_member|数据查询|否|||
 |[团队管理员(user_group_admin)](module/Base/member/dataset/user_group_admin)|user_group_admin|数据查询|否|||
@@ -146,13 +152,17 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 删除页面共享成员 | del_shared_member | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 移动端添加共享成员（test） | mob_add | 移动端添加共享成员 |无数据|用户自定义||
 | 添加页面共享成员 | add_shared_mmeber | 添加 |无数据|用户自定义||
+| 打开页面共享成员选择页（移动端） | share_member_mob_list | 添加页面共享成员 |无数据|<details><summary>后台调用</summary>[mob_add_shared_member](#行为)||
 | 设置 | open_role_edit_view | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 添加成员 | add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[create_member](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[成员权限值变更](module/Base/member/uilogic/member_role_change)|member_role_change||
+|[打开页面共享成员选择页（移动端）](module/Base/member/uilogic/open_choose_shared_member)|open_choose_shared_member|打开页面共享成员选择页（移动端）|
 |[添加页面共享成员](module/Base/member/uilogic/add_shared_member)|add_shared_member|添加页面共享成员：非空间下成员|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

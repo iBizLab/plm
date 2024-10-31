@@ -15,11 +15,10 @@
 
 
 ### 关联界面行为
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例（无权限）](module/TestMgmt/review_content#界面行为)
+  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [评审内容版本比对](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [表格界面_保存行](module/TestMgmt/review_content#界面行为)
   * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [表格界面_新建操作](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [评审内容版本比对](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例（无权限）](module/TestMgmt/review_content#界面行为)
-  * [评审内容(REVIEW_CONTENT)](module/TestMgmt/review_content) : [移出用例（无权限）](module/TestMgmt/review_content#界面行为)
 
 ### 关联视图
   * [评审内容(review_content_edit_view)](app/view/review_content_edit_view)

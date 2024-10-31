@@ -17,18 +17,16 @@ hide empty description
 state "开始" as Begin <<start>> [[$./add_guideline_after_created#begin {"开始"}]]
 state "获取规则ID" as PREPAREPARAM3  [[$./add_guideline_after_created#prepareparam3 {"获取规则ID"}]]
 state "根据ID获取规则" as DEACTION1  [[$./add_guideline_after_created#deaction1 {"根据ID获取规则"}]]
-state "调试逻辑参数" as DEBUGPARAM2  [[$./add_guideline_after_created#debugparam2 {"调试逻辑参数"}]]
 state "设置阶段数据" as PREPAREPARAM2  [[$./add_guideline_after_created#prepareparam2 {"设置阶段数据"}]]
 state "设置默认关注人" as PREPAREPARAM4  [[$./add_guideline_after_created#prepareparam4 {"设置默认关注人"}]]
-state "准备参数" as PREPAREPARAM5  [[$./add_guideline_after_created#prepareparam5 {"准备参数"}]]
+state "准备评审参数" as PREPAREPARAM5  [[$./add_guideline_after_created#prepareparam5 {"准备评审参数"}]]
 state "保存评审数据" as DEACTION2  [[$./add_guideline_after_created#deaction2 {"保存评审数据"}]]
 state "结束" as END1 <<end>> [[$./add_guideline_after_created#end1 {"结束"}]]
 
 
 Begin --> PREPAREPARAM3
 PREPAREPARAM3 --> DEACTION1
-DEACTION1 --> DEBUGPARAM2
-DEBUGPARAM2 --> PREPAREPARAM2
+DEACTION1 --> PREPAREPARAM2
 
 
 @enduml
@@ -50,14 +48,6 @@ DEBUGPARAM2 --> PREPAREPARAM2
 调用实体 [流程准则(GUIDELINE)](module/TestMgmt/guideline.md) 行为 [Get](module/TestMgmt/guideline#行为) ，行为参数为`guideline_detail(选择的评审规则详情)`
 
 将执行结果返回给参数`guideline_detail(选择的评审规则详情)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`guideline_detail(选择的评审规则详情)`的详细信息
-
 
 #### 设置阶段数据 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -82,7 +72,7 @@ DEBUGPARAM2 --> PREPAREPARAM2
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备评审参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

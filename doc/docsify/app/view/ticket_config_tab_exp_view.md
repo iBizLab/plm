@@ -8,7 +8,7 @@
 
 
 ### 关联视图
-  * [工单类型(product_ticket_type_global_setting_view)](app/view/product_ticket_type_global_setting_view)
+  * [产品工单类型(product_ticket_type_global_setting_view)](app/view/product_ticket_type_global_setting_view)
 
 <script>
  const { createApp } = Vue

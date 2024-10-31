@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./other_re_space#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./other_re_space#prepareparam1 {"准备参数"}]]
+state "填充关联参数" as PREPAREPARAM1  [[$./other_re_space#prepareparam1 {"填充关联参数"}]]
 state "生成正向关联数据" as DEACTION1  [[$./other_re_space#deaction1 {"生成正向关联数据"}]]
 state "生成反向关联数据" as DEACTION2  [[$./other_re_space#deaction2 {"生成反向关联数据"}]]
 state "抛出异常" as THROWEXCEPTION1  [[$./other_re_space#throwexception1 {"抛出异常"}]]
@@ -40,7 +40,7 @@ Begin --> THROWEXCEPTION1 : [[$./other_re_space#begin-throwexception1{无值} �
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充关联参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

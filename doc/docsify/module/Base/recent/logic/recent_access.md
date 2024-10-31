@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./recent_access#begin {"开始"}]]
 state "查询20条最近访问数据" as DEDATASET1  [[$./recent_access#dedataset1 {"查询20条最近访问数据"}]]
-state "绑定参数" as BINDPARAM1  [[$./recent_access#bindparam1 {"绑定参数"}]]
+state "绑定结果参数" as BINDPARAM1  [[$./recent_access#bindparam1 {"绑定结果参数"}]]
 state "结束" as END2 <<end>> [[$./recent_access#end2 {"结束"}]]
 state "结束" as END1 <<end>> [[$./recent_access#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./recent_access#loopsubcall1 {"循环子调用"}]] #green {
@@ -83,7 +83,7 @@ BINDPARAM1 --> END2
 
 1. 将`temp_access_data(最近访问临时对象).OWNER_ID(所属数据标识)` 绑定给  `owner_id(所属对象ID)`
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定结果参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

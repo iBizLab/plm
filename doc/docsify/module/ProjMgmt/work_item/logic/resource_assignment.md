@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./resource_assignment#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./resource_assignment#prepareparam1 {"准备参数"}]]
+state "设置过滤参数" as PREPAREPARAM1  [[$./resource_assignment#prepareparam1 {"设置过滤参数"}]]
 state "获取组件数据" as DEACTION1  [[$./resource_assignment#deaction1 {"获取组件数据"}]]
 state "获取工作项" as DEDATASET1  [[$./resource_assignment#dedataset1 {"获取工作项"}]]
 state "获取MEMBERS中的USER_ID" as RAWSFCODE1  [[$./resource_assignment#rawsfcode1 {"获取MEMBERS中的USER_ID"}]]
@@ -41,7 +41,7 @@ RAWSFCODE1 --> END1 : [[$./resource_assignment#rawsfcode1-end1{资源组件下�
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置过滤参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

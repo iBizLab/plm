@@ -35,9 +35,11 @@
 
 ```sql
 SELECT
+(SELECT COUNT( att.ID ) AS attention_count FROM RUN r LEFT JOIN `attention` att ON r.ID = att.OWNER_ID WHERE r.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
+(SELECT COUNT( com.ID ) AS comment_count FROM RUN r LEFT JOIN `comment` com ON r.ID = com.PRINCIPAL_ID WHERE r.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,

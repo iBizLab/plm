@@ -16,14 +16,12 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./fill_type_of_state#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./fill_type_of_state#end1 {"结束"}]]
-state "工作项状态" as DEBUGPARAM1  [[$./fill_type_of_state#debugparam1 {"工作项状态"}]]
 state "准备id" as PREPAREPARAM1  [[$./fill_type_of_state#prepareparam1 {"准备id"}]]
 state "获取工作项状态" as DEACTION1  [[$./fill_type_of_state#deaction1 {"获取工作项状态"}]]
-state "准备参数" as PREPAREPARAM2  [[$./fill_type_of_state#prepareparam2 {"准备参数"}]]
+state "设置工作项状态" as PREPAREPARAM2  [[$./fill_type_of_state#prepareparam2 {"设置工作项状态"}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREPARAM1
+Begin --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> PREPAREPARAM2
 PREPAREPARAM2 --> END1
@@ -46,14 +44,6 @@ PREPAREPARAM2 --> END1
 
 返回 `item_state(工作项状态)`
 
-#### 工作项状态 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 准备id :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -68,7 +58,7 @@ PREPAREPARAM2 --> END1
 
 将执行结果返回给参数`item_state(工作项状态)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置工作项状态 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

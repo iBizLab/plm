@@ -1,6 +1,6 @@
 ## 完成当前阶段评审 <!-- {docsify-ignore-all} -->
 
-   
+   完成当前阶段评审
 
 ### 处理过程
 
@@ -15,14 +15,14 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./complete_cur_stage_review#begin {开始}]]
-state "结束" as END1 <<end>> [[$./complete_cur_stage_review#end1 {结束}]]
+state "默认显示阶段列表，隐藏评审结果" as RAWJSCODE4  [[$./complete_cur_stage_review#rawjscode4 {默认显示阶段列表，隐藏评审结果}]]
 state "为主表单设置值" as RAWJSCODE2  [[$./complete_cur_stage_review#rawjscode2 {为主表单设置值}]]
-state "获取阶段数据与父标识" as PREPAREJSPARAM1  [[$./complete_cur_stage_review#preparejsparam1 {获取阶段数据与父标识}]]
-state "通知刷新" as RAWJSCODE3  [[$./complete_cur_stage_review#rawjscode3 {通知刷新}]]
 state "通过call刷新" as RAWJSCODE1  [[$./complete_cur_stage_review#rawjscode1 {通过call刷新}]]
 state "消息弹窗" as MSGBOX1  [[$./complete_cur_stage_review#msgbox1 {消息弹窗}]]
-state "默认显示阶段列表，隐藏评审结果" as RAWJSCODE4  [[$./complete_cur_stage_review#rawjscode4 {默认显示阶段列表，隐藏评审结果}]]
+state "通知刷新" as RAWJSCODE3  [[$./complete_cur_stage_review#rawjscode3 {通知刷新}]]
 state "完成评审" as DEACTION1  [[$./complete_cur_stage_review#deaction1 {完成评审}]]
+state "获取阶段数据与父标识" as PREPAREJSPARAM1  [[$./complete_cur_stage_review#preparejsparam1 {获取阶段数据与父标识}]]
+state "结束" as END1 <<end>> [[$./complete_cur_stage_review#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -122,9 +122,9 @@ uiLogic.parent_form.details.druipart2.embedView.call('Refresh')
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |父页面|parent_view|数据对象||
-|当前视图|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |父表单|parent_form|数据对象||
 |表格|grid|部件对象||
+|当前视图|view|当前视图对象||
 |上下文|ctx|导航视图参数绑定参数||

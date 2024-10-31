@@ -15,12 +15,13 @@
 
 
 ### 关联界面行为
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [添加至类别（多选）](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [客户自定义导入](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [删除](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [表格界面_导出操作（Excel）](module/ProdMgmt/customer#界面行为)
-  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [表格界面_新建操作_子数据](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [添加至类别（多选）](module/ProdMgmt/customer#界面行为)
   * [客户(CUSTOMER)](module/ProdMgmt/customer) : [表格界面_删除操作](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [客户自定义导入](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [新建客户](module/ProdMgmt/customer#界面行为)
+  * [客户(CUSTOMER)](module/ProdMgmt/customer) : [添加至类别（多选）](module/ProdMgmt/customer#界面行为)
 
 ### 关联视图
   * [选择类别(customer_add_category_option_view)](app/view/customer_add_category_option_view)

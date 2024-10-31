@@ -8,9 +8,12 @@
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
 |评论|COMMENTS|一对多关系数据集合|1048576|是||
+|回复评论数|COMMENT_COUNT|文本，可指定长度|200|是||
+|回复评论数|COMMENT_NUM|文本，可指定长度|200|是||
 |回复内容|CONTENT|长文本，没有长度限制|1048576|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
+|讨论名称|DISCUSS_NAME|外键值文本|200|是||
 |标识<sup class="footnote-symbol"><font color=orange>[PK]</font></sup>|ID|全局唯一标识，文本类型，用户不可见|100|否||
 |名称|NAME|文本，可指定长度|200|是||
 |讨论标识|POST_ID|外键值|100|是||
@@ -107,6 +110,7 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 发表评论 | panel_usr0522435547_btn_show_click | 发表评论 |单项数据|用户自定义||
+| 讨论回复（移动端） | mob_descuss_reply | 回复 |无数据|<details><summary>打开视图或向导（模态）</summary>[回复](app/view/discuss_reply_mob_dr_create_view)</details>||
 | 删除回复 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[del_reply](#行为)||
 | 回复下发送评论 | reply_comment | 发送评论 |无数据|用户自定义||
 | 回复下删除评论 | del_commnet | 删除评论 |单项数据（主键）|用户自定义||
@@ -117,6 +121,7 @@
 |[回复下删除评论](module/Team/discuss_reply/uilogic/rely_del_comment)|rely_del_comment|回复下删除评论|
 |[回复下发送评论](module/Team/discuss_reply/uilogic/reply_send_comment)|reply_send_comment|回复下发送评论|
 |[点击发表评论](module/Team/discuss_reply/uilogic/click_send_comment)|click_send_comment|未完成|
+|[获取回复列表总条数（移动端）](module/Team/discuss_reply/uilogic/mob_get_reply_total)|mob_get_reply_total||
 |[获取回复列表条数](module/Team/discuss_reply/uilogic/get_reply_num)|get_reply_num|获取回复列表条数|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

@@ -87,7 +87,7 @@ DEDATASET1 --> END1 : [[$./archive#dedataset1-end1{不存在子级工作项} 不
 
 
 
-*- N/A*
+返回 `Default(传入变量)`
 
 
 ### 连接条件说明

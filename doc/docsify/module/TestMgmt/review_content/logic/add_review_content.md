@@ -15,12 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_review_content#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./add_review_content#debugparam1 {"调试逻辑参数"}]]
-state "绑定参数" as BINDPARAM1  [[$./add_review_content#bindparam1 {"绑定参数"}]]
+state "绑定选中参数" as BINDPARAM1  [[$./add_review_content#bindparam1 {"绑定选中参数"}]]
 state "结束" as END1 <<end>> [[$./add_review_content#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./add_review_content#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./add_review_content#renewparam1 {"重新建立参数"}]]
-state "重新建立参数" as RENEWPARAM2  [[$./add_review_content#renewparam2 {"重新建立参数"}]]
+state "重新建立正向参数" as RENEWPARAM1  [[$./add_review_content#renewparam1 {"重新建立正向参数"}]]
+state "重新建立反向参数" as RENEWPARAM2  [[$./add_review_content#renewparam2 {"重新建立反向参数"}]]
 state "填充需要的属性值" as PREPAREPARAM1  [[$./add_review_content#prepareparam1 {"填充需要的属性值"}]]
 state "正向关联数据" as DEBUGPARAM3  [[$./add_review_content#debugparam3 {"正向关联数据"}]]
 state "生成正向关联数据" as DEACTION1  [[$./add_review_content#deaction1 {"生成正向关联数据"}]]
@@ -28,8 +27,7 @@ state "生成反向关联数据" as DEACTION2  [[$./add_review_content#deaction2
 }
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> BINDPARAM1
+Begin --> BINDPARAM1
 BINDPARAM1 --> LOOPSUBCALL1 : [[$./add_review_content#bindparam1-loopsubcall1{存在选中数据} 存在选中数据]]
 LOOPSUBCALL1 --> RENEWPARAM1
 RENEWPARAM1 --> RENEWPARAM2
@@ -51,15 +49,7 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -69,12 +59,12 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`selectdata(关联列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立正向参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
 重建参数```forward_relation_obj(正向关系对象)```
-#### 重新建立参数 :id=RENEWPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立反向参数 :id=RENEWPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

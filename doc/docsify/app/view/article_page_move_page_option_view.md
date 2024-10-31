@@ -9,8 +9,8 @@
 
 
 ### 关联界面行为
-  * [页面(PAGE)](module/Wiki/article_page) : [视图_确定](module/Wiki/article_page#界面行为)
   * [页面(PAGE)](module/Wiki/article_page) : [视图_取消](module/Wiki/article_page#界面行为)
+  * [页面(PAGE)](module/Wiki/article_page) : [视图_确定](module/Wiki/article_page#界面行为)
 
 ### 关联视图
   * [页面选择(article_page_pick_up_tree_view)](app/view/article_page_pick_up_tree_view)

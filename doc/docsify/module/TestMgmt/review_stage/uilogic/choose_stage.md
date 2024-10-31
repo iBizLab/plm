@@ -1,6 +1,6 @@
 ## 选中阶段 <!-- {docsify-ignore-all} -->
 
-   
+   选中阶段
 
 ### 处理过程
 
@@ -15,19 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./choose_stage#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./choose_stage#deaction1 {实体行为}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./choose_stage#preparejsparam2 {准备参数}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./choose_stage#debugparam1 {调试逻辑参数}]]
-state "绑定父级页面/表单" as PREPAREJSPARAM1  [[$./choose_stage#preparejsparam1 {绑定父级页面/表单}]]
-state "设置选中值" as RAWJSCODE1  [[$./choose_stage#rawjscode1 {设置选中值}]]
 state "设置选中值" as RAWJSCODE3  [[$./choose_stage#rawjscode3 {设置选中值}]]
+state "绑定父级页面/表单" as PREPAREJSPARAM1  [[$./choose_stage#preparejsparam1 {绑定父级页面/表单}]]
 state "准备参数" as PREPAREJSPARAM3  [[$./choose_stage#preparejsparam3 {准备参数}]]
 state "取消选中值" as RAWJSCODE2  [[$./choose_stage#rawjscode2 {取消选中值}]]
+state "实体行为" as DEACTION1  [[$./choose_stage#deaction1 {实体行为}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./choose_stage#preparejsparam2 {准备参数}]]
+state "设置选中值" as RAWJSCODE1  [[$./choose_stage#rawjscode1 {设置选中值}]]
 
 
 Begin --> DEACTION1
-DEACTION1 --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREJSPARAM1
+DEACTION1 --> PREPAREJSPARAM1
 PREPAREJSPARAM1 --> PREPAREJSPARAM2 : [[$./choose_stage#preparejsparam1-preparejsparam2{选中（单人）} 选中（单人）]]
 PREPAREJSPARAM2 --> RAWJSCODE1
 PREPAREJSPARAM1 --> RAWJSCODE2 : [[$./choose_stage#preparejsparam1-rawjscode2{取消选中} 取消选中]]
@@ -76,13 +74,6 @@ curstage_id.setDataValue(uiLogic.default.id);
 调用实体 [评审(REVIEW)](module/TestMgmt/review.md) 行为 [填充阶段评审人(fill_stage_reviewer)](module/TestMgmt/review#行为) ，行为参数为`Default(传入变量)`
 
 将执行结果返回给参数`review_info(评审信息)`
-
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`评审信息`的详细信息
 
 #### 绑定父级页面/表单 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -143,8 +134,8 @@ curstage_id.setDataValue(null);
 | --------| --------| --------  | --------   |
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |评审信息|review_info|数据对象||
+|父表单|parent_form|数据对象||
 |列表对象|list|部件对象||
 |父视图对象|parent_view|数据对象||
-|当前视图对象|view|当前视图对象||
-|父表单|parent_form|数据对象||
 |上下文|ctx|导航视图参数绑定参数||
+|当前视图对象|view|当前视图对象||

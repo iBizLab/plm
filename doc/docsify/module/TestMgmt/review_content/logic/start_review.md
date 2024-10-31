@@ -16,23 +16,21 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./start_review#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./start_review#end1 {"结束"}]]
-state "传入参数" as DEBUGPARAM1  [[$./start_review#debugparam1 {"传入参数"}]]
 state "获取评审详情ID" as PREPAREPARAM1  [[$./start_review#prepareparam1 {"获取评审详情ID"}]]
 state "获取评审详情" as DEACTION1  [[$./start_review#deaction1 {"获取评审详情"}]]
 state "获取阶段信息" as PREPAREPARAM2  [[$./start_review#prepareparam2 {"获取阶段信息"}]]
 state "排序数组参数" as SORTPARAM1  [[$./start_review#sortparam1 {"排序数组参数"}]]
 state "绑定阶段数据" as PREPAREPARAM5  [[$./start_review#prepareparam5 {"绑定阶段数据"}]]
 state "最后评审详情" as DEBUGPARAM3  [[$./start_review#debugparam3 {"最后评审详情"}]]
-state "实体行为" as DEACTION2  [[$./start_review#deaction2 {"实体行为"}]]
+state "获取评审详情" as DEACTION2  [[$./start_review#deaction2 {"获取评审详情"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./start_review#loopsubcall1 {"循环子调用"}]] #green {
 state "当前阶段数据" as DEBUGPARAM2  [[$./start_review#debugparam2 {"当前阶段数据"}]]
 state "设置阶段完成" as PREPAREPARAM3  [[$./start_review#prepareparam3 {"设置阶段完成"}]]
-state "准备参数" as PREPAREPARAM4  [[$./start_review#prepareparam4 {"准备参数"}]]
+state "设置阶段数据参数" as PREPAREPARAM4  [[$./start_review#prepareparam4 {"设置阶段数据参数"}]]
 }
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREPARAM1
+Begin --> PREPAREPARAM1
 PREPAREPARAM1 --> DEACTION1
 DEACTION1 --> PREPAREPARAM2
 PREPAREPARAM2 --> LOOPSUBCALL1
@@ -63,14 +61,6 @@ DEBUGPARAM2 --> PREPAREPARAM4
 
 
 返回 `Default(传入变量)`
-
-#### 传入参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
 
 #### 获取评审详情ID :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
@@ -114,7 +104,7 @@ DEBUGPARAM2 --> PREPAREPARAM4
 > 调试输出参数`review_detail(评审详情)`的详细信息
 
 
-#### 实体行为 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 获取评审详情 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -134,7 +124,7 @@ DEBUGPARAM2 --> PREPAREPARAM4
 
 1. 将`20` 设置给  `for_stage(当前循环阶段).STAGE_STATE(评审阶段状态)`
 
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置阶段数据参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_current_stage_info#begin {"开始"}]]
-state "实体行为" as DEACTION2  [[$./get_current_stage_info#deaction2 {"实体行为"}]]
-state "准备参数" as PREPAREPARAM3  [[$./get_current_stage_info#prepareparam3 {"准备参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./get_current_stage_info#prepareparam4 {"准备参数"}]]
+state "获取评审数据" as DEACTION2  [[$./get_current_stage_info#deaction2 {"获取评审数据"}]]
+state "设置评审id" as PREPAREPARAM3  [[$./get_current_stage_info#prepareparam3 {"设置评审id"}]]
+state "设置评审阶段列表参数" as PREPAREPARAM4  [[$./get_current_stage_info#prepareparam4 {"设置评审阶段列表参数"}]]
 state "结束" as END1 <<end>> [[$./get_current_stage_info#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./get_current_stage_info#loopsubcall1 {"循环子调用"}]] #green {
 state "获取未完成的评审内容数量" as RAWSQLCALL1  [[$./get_current_stage_info#rawsqlcall1 {"获取未完成的评审内容数量"}]]
@@ -45,13 +45,13 @@ RAWSQLCALL1 --> PREPAREPARAM6
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置评审id :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).review_id` 设置给  `review_obj(评审数据).ID(标识)`
 
-#### 实体行为 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 获取评审数据 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -59,7 +59,7 @@ RAWSQLCALL1 --> PREPAREPARAM6
 
 将执行结果返回给参数`review_obj(评审数据)`
 
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置评审阶段列表参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

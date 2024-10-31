@@ -21,7 +21,7 @@ state "生成用户数据" as DEACTION2  [[$./auto_create_members#deaction2 {"�
 state "查询用户数据" as DEDATASET1  [[$./auto_create_members#dedataset1 {"查询用户数据"}]]
 state "结束" as END1 <<end>> [[$./auto_create_members#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./auto_create_members#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./auto_create_members#resetparam1 {"重置参数"}]]
+state "重置空间成员参数" as RESETPARAM1  [[$./auto_create_members#resetparam1 {"重置空间成员参数"}]]
 state "准备用户数据" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"准备用户数据"}]]
 state "生成用户数据" as DEACTION3  [[$./auto_create_members#deaction3 {"生成用户数据"}]]
 }
@@ -85,7 +85,7 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`member_page(用户分页结果数据)`，子循环参数使用`member_obj(用户结果变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置空间成员参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 

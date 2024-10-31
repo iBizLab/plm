@@ -19,9 +19,9 @@ state "获取评审详情" as DEACTION4  [[$./submit_review#deaction4 {"获取�
 state "设置提交时间" as RAWSFCODE1  [[$./submit_review#rawsfcode1 {"设置提交时间"}]]
 state "设置提交人、状态" as PREPAREPARAM1  [[$./submit_review#prepareparam1 {"设置提交人、状态"}]]
 state "设置阶段的状态" as PREPAREPARAM2  [[$./submit_review#prepareparam2 {"设置阶段的状态"}]]
-state "准备参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"准备参数"}]]
+state "设置关系过滤器参数" as PREPAREPARAM3  [[$./submit_review#prepareparam3 {"设置关系过滤器参数"}]]
 state "更新评审" as DEACTION1  [[$./submit_review#deaction1 {"更新评审"}]]
-state "实体数据集" as DEDATASET1  [[$./submit_review#dedataset1 {"实体数据集"}]]
+state "获取关系数据集" as DEDATASET1  [[$./submit_review#dedataset1 {"获取关系数据集"}]]
 state "获取评审ID" as PREPAREPARAM6  [[$./submit_review#prepareparam6 {"获取评审ID"}]]
 state "结束" as END1 <<end>> [[$./submit_review#end1 {"结束"}]]
 state "评审内容为空" as THROWEXCEPTION1  [[$./submit_review#throwexception1 {"评审内容为空"}]]
@@ -96,14 +96,14 @@ review_detail.set("submitted_at", new Date());
 2. 将`stages(评审阶段).0` 绑定给  `stage(阶段)`
 3. 将`20` 设置给  `stage(阶段).STAGE_STATE(评审阶段状态)`
 
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置关系过滤器参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reltion_filter(relation过滤器).N_PRINCIPAL_ID_EQ`
 2. 将`REVIEW` 设置给  `reltion_filter(relation过滤器).N_PRINCIPAL_TYPE_EQ`
 
-#### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+#### 获取关系数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 

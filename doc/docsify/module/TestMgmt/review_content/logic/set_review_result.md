@@ -15,18 +15,16 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./set_review_result#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./set_review_result#debugparam1 {"调试逻辑参数"}]]
 state "获取评审结果列表" as PREPAREPARAM1  [[$./set_review_result#prepareparam1 {"获取评审结果列表"}]]
 state "结束" as END1 <<end>> [[$./set_review_result#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./set_review_result#loopsubcall1 {"循环子调用"}]] #green {
 state "调试逻辑参数" as DEBUGPARAM2  [[$./set_review_result#debugparam2 {"调试逻辑参数"}]]
 state "获取当前评审阶段ID" as PREPAREPARAM2  [[$./set_review_result#prepareparam2 {"获取当前评审阶段ID"}]]
-state "实体行为" as DEACTION1  [[$./set_review_result#deaction1 {"实体行为"}]]
+state "更新" as DEACTION1  [[$./set_review_result#deaction1 {"更新"}]]
 }
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREPARAM1
+Begin --> PREPAREPARAM1
 PREPAREPARAM1 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> DEBUGPARAM2
 DEBUGPARAM2 --> PREPAREPARAM2
@@ -45,14 +43,6 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 获取评审结果列表 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -80,7 +70,7 @@ LOOPSUBCALL1 --> END1
 2. 将`for_result(循环评审数据).COMMENT(评审意见)` 设置给  `result(评审结果).comment(评审意见)`
 3. 将`Default(传入变量).cur_result_state` 设置给  `result(评审结果).result_state(状态)`
 
-#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 更新 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

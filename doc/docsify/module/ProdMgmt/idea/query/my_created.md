@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-((`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` OR `CREATE_MAN(建立人)` EQ `用户上下文.srfpersonname`))
+((`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` OR `CREATE_MAN(建立人)` EQ `用户上下文.srfpersonname`) AND `IS_ARCHIVED(是否已归档)` EQ `'0'` AND `IS_DELETED(是否已删除)` EQ `'0'`)
 
 
 
@@ -83,7 +83,7 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
-WHERE ( ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  OR  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonname} ) )
+WHERE ( ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  OR  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonname} )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

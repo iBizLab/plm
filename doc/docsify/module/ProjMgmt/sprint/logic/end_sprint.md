@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./end_sprint#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./end_sprint#bindparam1 {"绑定参数"}]]
+state "绑定选中对象" as BINDPARAM1  [[$./end_sprint#bindparam1 {"绑定选中对象"}]]
 state "设置迭代状态（结束）" as PREPAREPARAM1  [[$./end_sprint#prepareparam1 {"设置迭代状态（结束）"}]]
 state "更新迭代状态" as DEACTION2  [[$./end_sprint#deaction2 {"更新迭代状态"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./end_sprint#loopsubcall1 {"循环子调用"}]] #green {
@@ -23,7 +23,7 @@ state "准备过滤器参数" as PREPAREPARAM5  [[$./end_sprint#prepareparam5 {"
 state "查询该迭代下未完成的工作项" as DEDATASET1  [[$./end_sprint#dedataset1 {"查询该迭代下未完成的工作项"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./end_sprint#loopsubcall2 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./end_sprint#renewparam1 {"重新建立参数"}]]
+state "重新建立工作项更新参数" as RENEWPARAM1  [[$./end_sprint#renewparam1 {"重新建立工作项更新参数"}]]
 state "工作项状态设置为已完成" as PREPAREPARAM2  [[$./end_sprint#prepareparam2 {"工作项状态设置为已完成"}]]
 state "更改工作项的迭代标识" as PREPAREPARAM3  [[$./end_sprint#prepareparam3 {"更改工作项的迭代标识"}]]
 state "置空迭代标识" as PREPAREPARAM4  [[$./end_sprint#prepareparam4 {"置空迭代标识"}]]
@@ -58,7 +58,7 @@ PREPAREPARAM3 --> DEACTION1 : [[$./end_sprint#prepareparam3-deaction1{移动至�
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中对象 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -113,7 +113,7 @@ PREPAREPARAM3 --> DEACTION1 : [[$./end_sprint#prepareparam3-deaction1{移动至�
 
 
 循环参数`work_item_page(工作项分页结果对象)`，子循环参数使用`for_work_item_temp(工作项循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立工作项更新参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

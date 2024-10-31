@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./program_test_case#begin {"开始"}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./program_test_case#debugparam1 {"调试逻辑参数"}]]
-state "绑定参数" as BINDPARAM1  [[$./program_test_case#bindparam1 {"绑定参数"}]]
+state "绑定关联列表" as BINDPARAM1  [[$./program_test_case#bindparam1 {"绑定关联列表"}]]
 state "结束" as END1 <<end>> [[$./program_test_case#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./program_test_case#loopsubcall1 {"循环子调用"}]] #green {
 state "重新建立参数" as RENEWPARAM1  [[$./program_test_case#renewparam1 {"重新建立参数"}]]
@@ -57,7 +57,7 @@ LOOPSUBCALL1 --> END1
 > 调试输出参数`Default(传入变量)`的详细信息
 
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定关联列表 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

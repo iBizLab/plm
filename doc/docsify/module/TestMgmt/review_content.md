@@ -94,7 +94,7 @@
 |[完成评审](module/TestMgmt/review_content/logic/complete_review)|complete_review|无||完成评审，判断是否为最终阶段，如果是变更评审的状态|
 |[开始评审](module/TestMgmt/review_content/logic/start_review)|start_review|无||开启当前阶段评审|
 |[提交评审](module/TestMgmt/review_content/logic/submit_review)|submit_review|无||测试|
-|[无操作](module/TestMgmt/review_content/logic/nothing)|nothing|无|||
+|[无操作](module/TestMgmt/review_content/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加内容](module/TestMgmt/review_content/logic/add_review_content)|add_review_content|无||添加内容，生成正反向关联数据|
 |[生成最终评审结果](module/TestMgmt/review_content/logic/generate_review_result_finally)|generate_review_result_finally|无||评审完成后生成最终的评审结果|
 |[生成评审结果](module/TestMgmt/review_content/logic/generate_review_results)|generate_review_results|无||创建后自动生成评审结果|
@@ -174,14 +174,13 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[保存评审结果](module/TestMgmt/review_content/uilogic/save_review_result)|save_review_result||
-|[完成当前阶段评审](module/TestMgmt/review_content/uilogic/complete_cur_stage_review)|complete_cur_stage_review||
-|[开始当前阶段评审](module/TestMgmt/review_content/uilogic/start_cur_stage_review)|start_cur_stage_review||
-|[打开评审结果](module/TestMgmt/review_content/uilogic/open_result)|open_result||
-|[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|commit_review||
+|[完成当前阶段评审](module/TestMgmt/review_content/uilogic/complete_cur_stage_review)|complete_cur_stage_review|完成当前阶段评审|
+|[开始当前阶段评审](module/TestMgmt/review_content/uilogic/start_cur_stage_review)|start_cur_stage_review|开始当前阶段评审|
+|[打开评审结果](module/TestMgmt/review_content/uilogic/open_result)|open_result|打开评审结果|
+|[提交评审](module/TestMgmt/review_content/uilogic/commit_review)|commit_review|提交评审|
 |[获取评审内容总条数](module/TestMgmt/review_content/uilogic/get_review_content_total)|get_review_content_total|获取评审内容总条数|
 |[计算表格列行为状态(review)](module/TestMgmt/review_content/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制界面行为组内界面行为的禁用状态|
-|[评审内容版本比对](module/TestMgmt/review_content/uilogic/review_content_version_comparison)|review_content_version_comparison||
+|[评审内容版本比对](module/TestMgmt/review_content/uilogic/review_content_version_comparison)|review_content_version_comparison|评审内容版本比对|
 |[返回](module/TestMgmt/review_content/uilogic/back)|back|查看评审结果后，返回主表单按钮使用|
 |[返回（历史）](module/TestMgmt/review_content/uilogic/back_history)|back_history|查看评审历史后，返回测试用例主表单按钮使用|
 

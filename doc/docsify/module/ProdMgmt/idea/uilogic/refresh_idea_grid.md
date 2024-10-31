@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./refresh_idea_grid#begin {开始}]]
 state "结束" as END1 <<end>> [[$./refresh_idea_grid#end1 {结束}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./refresh_idea_grid#rawjscode1 {注入脚本代码}]]
+state "刷新需求表格" as RAWJSCODE1  [[$./refresh_idea_grid#rawjscode1 {刷新需求表格}]]
 
 
 Begin --> RAWJSCODE1
@@ -39,7 +39,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 刷新需求表格 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

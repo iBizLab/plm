@@ -9,14 +9,12 @@
 #### 树视图导航栏(treeexpbar)
 
 
-### 关联界面行为
-  * [企业用户(USER)](module/Base/user) : [视图_取消](module/Base/user#界面行为)
-  * [企业用户(USER)](module/Base/user) : [视图_确定](module/Base/user#界面行为)
-
 ### 关联视图
+  * [成员帐号(user_account_tab_exp_view)](app/view/user_account_tab_exp_view)
   * [用户选择(user_choose_pick_up_grid_view)](app/view/user_choose_pick_up_grid_view)
-  * [成员管理(user_grid_view)](app/view/user_grid_view)
+  * [失效帐号管理(user_invalid_grid_view)](app/view/user_invalid_grid_view)
   * [成员管理(user_unassigned_dept_grid_view)](app/view/user_unassigned_dept_grid_view)
+  * [正常帐号管理(user_valid_grid_view)](app/view/user_valid_grid_view)
 
 <script>
  const { createApp } = Vue

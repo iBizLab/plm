@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./open_bi_report_design#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./open_bi_report_design#rawjscode1 {注入脚本代码}]]
 state "结束" as END1 <<end>> [[$./open_bi_report_design#end1 {结束}]]
+state "打开BI报表设计界面" as RAWJSCODE1  [[$./open_bi_report_design#rawjscode1 {打开BI报表设计界面}]]
 
 
 Begin --> RAWJSCODE1
@@ -34,7 +34,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 打开BI报表设计界面 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

@@ -51,6 +51,7 @@
 |Update|Update|内置方法|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/ProdMgmt/product_member/logic/change_role "变更角色")|默认|不支持||||
 |新建产品成员|create_product_member|[实体处理逻辑](module/ProdMgmt/product_member/logic/create_product_member "新建产品成员")|默认|不支持||||
+|新建产品成员（移动端）|mob_create_product_member|[实体处理逻辑](module/ProdMgmt/product_member/logic/mob_create_product_member "新建产品成员（移动端）")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/ProdMgmt/product_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
@@ -58,6 +59,7 @@
 | -------- |---------- |----------- |------------|----------|
 |[变更角色](module/ProdMgmt/product_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
 |[新建产品成员](module/ProdMgmt/product_member/logic/create_product_member)|create_product_member|无||新建产品成员|
+|[新建产品成员（移动端）](module/ProdMgmt/product_member/logic/mob_create_product_member)|mob_create_product_member|无|||
 |[无操作](module/ProdMgmt/product_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除产品成员通知](module/ProdMgmt/product_member/logic/remove_product_member_notify)|remove_product_member_notify|无||移除产品成员时向对应用户发送通知消息|
 
@@ -72,12 +74,14 @@
 |[数据查询(DEFAULT)](module/ProdMgmt/product_member/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/ProdMgmt/product_member/query/View)|VIEW|否|否 |否 ||
 |[当前产品(cur_product)](module/ProdMgmt/product_member/query/cur_product)|cur_product|否|否 |否 ||
+|[产品下成员(with_product)](module/ProdMgmt/product_member/query/with_product)|with_product|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/ProdMgmt/product_member/dataset/Default)|DEFAULT|数据查询|是|||
 |[当前产品成员(cur_product)](module/ProdMgmt/product_member/dataset/cur_product)|cur_product|数据查询|否|||
+|[产品下成员(with_product)](module/ProdMgmt/product_member/dataset/with_product)|with_product|数据查询|否|||
 
 ## 数据权限
 
@@ -114,14 +118,15 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 产品添加成员（移动端） | mob_add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[mob_create_product_member](#行为)||
 | 设置角色 | setting_role | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
+| 设置角色（移动端） | mob_seting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[建立产品成员](module/ProdMgmt/product_member/uilogic/create_product_member)|create_product_member|根据表格选中数据，生成产品成员|
 |[新建产品默认临时成员](module/ProdMgmt/product_member/uilogic/create_default_temp_members)|create_default_temp_members|创建临时数据，并将当前用户加入到产品临时成员内|
 |[跳转至成员设置](module/ProdMgmt/product_member/uilogic/jump_to_member_set)|jump_to_member_set|通过路由跳转至产品成员设置|
 

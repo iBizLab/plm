@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./get_workload_schedule#begin {开始}]]
-state "获取基线名称" as DEACTION1  [[$./get_workload_schedule#deaction1 {获取基线名称}]]
-state "计算工时进度" as RAWJSCODE1  [[$./get_workload_schedule#rawjscode1 {计算工时进度}]]
+state "结束" as END1 <<end>> [[$./get_workload_schedule#end1 {结束}]]
 state "填充测试用例属性" as PREPAREJSPARAM2  [[$./get_workload_schedule#preparejsparam2 {填充测试用例属性}]]
 state "填充基线名称" as PREPAREJSPARAM1  [[$./get_workload_schedule#preparejsparam1 {填充基线名称}]]
-state "结束" as END1 <<end>> [[$./get_workload_schedule#end1 {结束}]]
+state "获取基线名称" as DEACTION1  [[$./get_workload_schedule#deaction1 {获取基线名称}]]
 state "动态显示组件" as RAWJSCODE2  [[$./get_workload_schedule#rawjscode2 {动态显示组件}]]
+state "计算工时进度" as RAWJSCODE1  [[$./get_workload_schedule#rawjscode1 {计算工时进度}]]
 
 
 Begin --> RAWJSCODE1
@@ -123,5 +123,5 @@ if(srfreadonly === true || srfreadonly === 'true'){
 | --------| --------| --------  | --------   |
 |表单|form|当前部件对象||
 |当期视图对象|view|当前视图对象||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |测试用例|test_case|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

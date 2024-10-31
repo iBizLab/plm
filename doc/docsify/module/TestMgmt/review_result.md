@@ -51,7 +51,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[设置评审结果](module/TestMgmt/review_result/logic/set_result)|set_result|无|||
+|[设置评审结果](module/TestMgmt/review_result/logic/set_result)|set_result|无||设置评审结果|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -82,8 +82,8 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[拒绝](module/TestMgmt/review_result/uilogic/refuse)|refuse||
-|[通过](module/TestMgmt/review_result/uilogic/pass)|pass||
+|[拒绝](module/TestMgmt/review_result/uilogic/refuse)|refuse|拒绝|
+|[通过](module/TestMgmt/review_result/uilogic/pass)|pass|评审通过|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

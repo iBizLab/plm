@@ -123,6 +123,28 @@
 |PROJECT_ID|产品标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 代码分支(BRANCH)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|REPOSITORY_ID|仓库标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 分支提交关联(BRANCH_REF_COMMIT)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|META_ID|标识|VARCHAR|是|100|||
+|NAME|名称|VARCHAR|是|200|||
+|REPOSITORY_ID|仓库标识|VARCHAR|是|100|||
+|SHA|SHA值|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 用例执行历史(CASE_HISTORY)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -242,6 +264,7 @@
 |CONTENT|回复内容|TEXT|是|1048576|||
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
+|DISCUSS_NAME|属性|VARCHAR|是|100|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |NAME|名称|VARCHAR|是|200|||
 |POST_ID|讨论标识|VARCHAR|是|100|||
@@ -797,6 +820,16 @@
 |NAME|名称|VARCHAR|是|200|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+#### 拉取提交(PULL_REQUEST)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|REPOSITORY_ID|仓库标识|VARCHAR|是|100|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
 #### 最近访问(RECENT)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -920,6 +953,22 @@
 |RUN_ID|执行用例标识|VARCHAR|是|100|||
 |STATUS|执行结果|VARCHAR|是|60|||
 |STEPS|步骤|TEXT|是|1048576|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+#### 代码提交(SCM_COMMIT)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|MESSAGE|提交消息|VARCHAR|是|200|||
+|SHA<i class="fa fa-key"></i>|SHA值|VARCHAR|否|100|||
+#### 代码评审(SCM_REVIEW)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|PULL_REQUEST_ID|拉取提交标识|VARCHAR|是|100|||
+|REPOSITORY_ID|仓库标识|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 #### 分组(SECTION)
@@ -1061,7 +1110,7 @@
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
 |CUR_VERSION_ID|当前版本标识|VARCHAR|是|100|||
-|DESCRIPTION|描述|VARCHAR|是|2000|||
+|DESCRIPTION|描述|TEXT|是|1048576|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IDENTIFIER|编号|VARCHAR|是|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
@@ -1070,7 +1119,7 @@
 |MAINTENANCE_ID|维护人标识|VARCHAR|是|100|||
 |MAINTENANCE_NAME|维护人|VARCHAR|是|100|||
 |NAME|名称|VARCHAR|是|200|||
-|PRECONDITION|前置条件|VARCHAR|是|2000|||
+|PRECONDITION|前置条件|TEXT|是|1048576|||
 |REVIEW_RESULT_STATE|评审结果|VARCHAR|是|60|||
 |STATE|评审状态|VARCHAR|是|60|||
 |STEPS|用例步骤|TEXT|是|1048576|||
@@ -1086,13 +1135,13 @@
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
 |CREATE_MAN|建立人|VARCHAR|是|100|||
 |CREATE_TIME|建立时间|DATETIME|是||||
-|DESCRIPTION|描述|VARCHAR|是|2000|||
+|DESCRIPTION|描述|TEXT|是|1048576|||
 |ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
 |IS_ARCHIVED|是否已归档|INT|是||||
 |IS_DELETED|是否已删除|INT|是||||
 |LEVEL|重要程度|VARCHAR|是|60|||
 |NAME|名称|VARCHAR|是|200|||
-|PRECONDITION|前置条件|VARCHAR|是|2000|||
+|PRECONDITION|前置条件|TEXT|是|1048576|||
 |STATE|评审状态|VARCHAR|是|60|||
 |STEPS|步骤|TEXT|是|1048576|||
 |SUITE_ID|用例模块标识|VARCHAR|是|100|||
@@ -1157,6 +1206,7 @@
 |PRIORITY|优先级|VARCHAR|是|60|||
 |PRODUCT_ID|产品标识|VARCHAR|是|100|||
 |SOLUTION|解决方案|VARCHAR|是|60|||
+|SOLUTION_WAY|解决办法|VARCHAR|是|2000|||
 |STATE|状态|VARCHAR|是|60|||
 |SUBMITTED_AT|提交时间|DATETIME|是||||
 |SUBMITTER_ID|提交人标识|VARCHAR|是|100|||
@@ -1288,6 +1338,7 @@
 |TYPE_ID|类别|VARCHAR|是|100|||
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
+|WORK_ITEM_TYPE_ID|工作项类型|TEXT|是|1048576|||
 #### 工时类别(WORKLOAD_TYPE)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |
@@ -1329,6 +1380,7 @@
 |RISK|风险|VARCHAR|是|60|||
 |SEQUENCE|序号|DECIMAL|是||||
 |SEVERITY|严重程度|VARCHAR|是|60|||
+|SOLUTION_WAY|解决办法|VARCHAR|是|2000|||
 |SPRINT_ID|迭代标识|VARCHAR|是|100|||
 |START_AT|开始时间|DATETIME|是||||
 |STATE|状态|VARCHAR|是|100|||
@@ -1428,6 +1480,23 @@
 |UPDATE_MAN|更新人|VARCHAR|是|100|||
 |UPDATE_TIME|更新时间|DATETIME|是||||
 ### db2
+#### 应用视图主题(APP_VIEW_THEME)
+|  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
+| --------|------------ |   -------- | -------- | -------- | -------- |-------- |
+|APP_TAG|应用标记|VARCHAR|是|100|||
+|APP_VIEW_TAG|应用视图标记|VARCHAR|是|100|||
+|CAPTION|标题|VARCHAR|是|200|||
+|CREATE_MAN|建立人|VARCHAR|是|100|||
+|CREATE_TIME|建立时间|DATETIME|是||||
+|ID<i class="fa fa-key"></i>|标识|VARCHAR|否|100|||
+|NAME|名称|VARCHAR|是|200|||
+|ORDER_VALUE|排序值|INT|是||||
+|OWNER_TYPE|所有者类型|VARCHAR|是|30|||
+|SYSTEM_TAG|系统标记|VARCHAR|是|100|||
+|THEME_MODEL|主题模型|TEXT|是|1048576|||
+|UPDATE_MAN|更新人|VARCHAR|是|100|||
+|UPDATE_TIME|更新时间|DATETIME|是||||
+|VALID_FLAG|启用标记|INT|是||||
 #### 认证日志(IBZAUTHLOG)
 |  列名col150 |  中文名col150 | 数据类型col150 |允许为空col100 |长度col100|精度col100 | 备注col500 |
 | --------|------------ |   -------- | -------- | -------- | -------- |-------- |

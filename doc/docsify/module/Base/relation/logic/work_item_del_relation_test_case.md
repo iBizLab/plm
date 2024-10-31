@@ -15,22 +15,24 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./work_item_del_relation_test_case#begin {"开始"}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./work_item_del_relation_test_case#debugparam1 {"调试逻辑参数"}]]
 state "填充关联对象的主要关联属性" as PREPAREPARAM1  [[$./work_item_del_relation_test_case#prepareparam1 {"填充关联对象的主要关联属性"}]]
 state "拼接关联对象的主键" as RAWSFCODE1  [[$./work_item_del_relation_test_case#rawsfcode1 {"拼接关联对象的主键"}]]
 state "删除工作项关联测试用例数据" as DEACTION2  [[$./work_item_del_relation_test_case#deaction2 {"删除工作项关联测试用例数据"}]]
 state "删除测试用例关联工作项数据" as DEACTION3  [[$./work_item_del_relation_test_case#deaction3 {"删除测试用例关联工作项数据"}]]
-state "准备参数" as PREPAREPARAM2  [[$./work_item_del_relation_test_case#prepareparam2 {"准备参数"}]]
+state "准备执行用例过滤参数" as PREPAREPARAM2  [[$./work_item_del_relation_test_case#prepareparam2 {"准备执行用例过滤参数"}]]
 state "查询对应的执行用例存在关联此缺陷" as DEDATASET1  [[$./work_item_del_relation_test_case#dedataset1 {"查询对应的执行用例存在关联此缺陷"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./work_item_del_relation_test_case#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./work_item_del_relation_test_case#resetparam1 {"重置参数"}]]
-state "重置参数" as RESETPARAM2  [[$./work_item_del_relation_test_case#resetparam2 {"重置参数"}]]
+state "重置执行用例关联缺陷参数" as RESETPARAM1  [[$./work_item_del_relation_test_case#resetparam1 {"重置执行用例关联缺陷参数"}]]
+state "重置缺陷关联执行用例参数" as RESETPARAM2  [[$./work_item_del_relation_test_case#resetparam2 {"重置缺陷关联执行用例参数"}]]
 state "获取执行用例关联缺陷对象主键" as RAWSFCODE2  [[$./work_item_del_relation_test_case#rawsfcode2 {"获取执行用例关联缺陷对象主键"}]]
 state "删除执行用例关联缺陷" as DEACTION4  [[$./work_item_del_relation_test_case#deaction4 {"删除执行用例关联缺陷"}]]
 state "删除缺陷关联执行用例" as DEACTION5  [[$./work_item_del_relation_test_case#deaction5 {"删除缺陷关联执行用例"}]]
 }
 
 
-Begin --> PREPAREPARAM1
+Begin --> DEBUGPARAM1
+DEBUGPARAM1 --> PREPAREPARAM1
 PREPAREPARAM1 --> RAWSFCODE1
 RAWSFCODE1 --> DEACTION2
 DEACTION2 --> DEACTION3
@@ -55,14 +57,24 @@ DEACTION4 --> DEACTION5
 
 
 *- N/A*
+#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
+
+
+
+> [!NOTE|label:调试信息|icon:fa fa-bug]
+> 调试输出参数`Default(传入变量)`的详细信息
+
+
 #### 填充关联对象的主要关联属性 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
-3. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
-4. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).PRINCIPAL_TYPE(关联主体类型)` 设置给  `forward_relation_obj(正向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+3. 将`Default(传入变量).TARGET_TYPE(关联目标类型)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_TYPE(关联主体类型)`
+4. 将`Default(传入变量).PRINCIPAL_ID(关联主体标识)` 设置给  `reverse_relation_obj(反向关联对象).TARGET_ID(关联目标标识)`
+5. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `reverse_relation_obj(反向关联对象).PRINCIPAL_ID(关联主体标识)`
+6. 将`Default(传入变量).TARGET_ID(关联目标标识)` 设置给  `forward_relation_obj(正向关联对象).TARGET_ID(关联目标标识)`
 
 #### 拼接关联对象的主键 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
@@ -74,12 +86,12 @@ DEACTION4 --> DEACTION5
 // 获取正向关联对象的主键
 var forward_relation_obj = logic.getParam("forward_relation_obj");
 if(forward_relation_obj.get("principal_id") != null && forward_relation_obj.get("target_id") != null){
-    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id"));
+    forward_relation_obj.set("id", forward_relation_obj.get("principal_id") + "_" + forward_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 // 获取反向关联对象的主键
 var reverse_relation_obj = logic.getParam("reverse_relation_obj");
 if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get("target_id") != null){
-    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id"));
+    reverse_relation_obj.set("id", reverse_relation_obj.get("principal_id") + "_" + reverse_relation_obj.get("target_id")+ '_' + forward_relation_obj.get("principal_type"));
 }
 ```
 
@@ -95,7 +107,7 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 调用实体 [关联(RELATION)](module/Base/relation.md) 行为 [Remove](module/Base/relation#行为) ，行为参数为`reverse_relation_obj(反向关联对象)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备执行用例过滤参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -115,12 +127,12 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 
 循环参数`run_relation_page(执行用例关联缺陷分页结果对象)`，子循环参数使用`relation_for_temp_obj(临时循环变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置执行用例关联缺陷参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```run_relation_bug(执行用例关联缺陷)```
-#### 重置参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置缺陷关联执行用例参数 :id=RESETPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 

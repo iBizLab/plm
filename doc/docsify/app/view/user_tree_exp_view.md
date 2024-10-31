@@ -13,8 +13,10 @@
 
 
 ### 关联视图
-  * [成员管理(user_grid_view)](app/view/user_grid_view)
+  * [成员帐号(user_account_tab_exp_view)](app/view/user_account_tab_exp_view)
+  * [失效帐号管理(user_invalid_grid_view)](app/view/user_invalid_grid_view)
   * [成员管理(user_unassigned_dept_grid_view)](app/view/user_unassigned_dept_grid_view)
+  * [正常帐号管理(user_valid_grid_view)](app/view/user_valid_grid_view)
 
 <script>
  const { createApp } = Vue

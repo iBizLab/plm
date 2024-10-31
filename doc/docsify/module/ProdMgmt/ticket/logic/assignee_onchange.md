@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./assignee_onchange#begin {"开始"}]]
 state "负责人变更通知" as DENOTIFY2  [[$./assignee_onchange#denotify2 {"负责人变更通知"}]]
-state "准备参数" as PREPAREPARAM1  [[$./assignee_onchange#prepareparam1 {"准备参数"}]]
+state "设置更新人更新时间" as PREPAREPARAM1  [[$./assignee_onchange#prepareparam1 {"设置更新人更新时间"}]]
 state "分配负责人通知" as DENOTIFY1  [[$./assignee_onchange#denotify1 {"分配负责人通知"}]]
 state "取消分配负责人通知" as DENOTIFY3  [[$./assignee_onchange#denotify3 {"取消分配负责人通知"}]]
 
@@ -43,7 +43,7 @@ PREPAREPARAM1 --> DENOTIFY3
 
 
 调用实体 [工单(TICKET)](module/ProdMgmt/ticket.md) 通知 [工单负责人变更通知(assignee_onchange_notify)](module/ProdMgmt/ticket/notify/assignee_onchange_notify) ，参数为`Default(传入变量)`
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置更新人更新时间 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

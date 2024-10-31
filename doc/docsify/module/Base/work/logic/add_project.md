@@ -17,8 +17,8 @@ hide empty description
 state "开始" as Begin <<start>> [[$./add_project#begin {"开始"}]]
 state "获取选中数据" as PREPAREPARAM2  [[$./add_project#prepareparam2 {"获取选中数据"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./add_project#loopsubcall1 {"循环子调用"}]] #green {
-state "重置参数" as RESETPARAM1  [[$./add_project#resetparam1 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./add_project#prepareparam1 {"准备参数"}]]
+state "重置工作对象参数" as RESETPARAM1  [[$./add_project#resetparam1 {"重置工作对象参数"}]]
+state "准备工作对象参数" as PREPAREPARAM1  [[$./add_project#prepareparam1 {"准备工作对象参数"}]]
 state "添加项目" as DEACTION1  [[$./add_project#deaction1 {"添加项目"}]]
 }
 
@@ -52,12 +52,12 @@ PREPAREPARAM1 --> DEACTION1
 
 
 循环参数`srfactionparam(所选项目列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置工作对象参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
 重置参数```create_obj(工作对象)```
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备工作对象参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

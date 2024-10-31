@@ -1,6 +1,9 @@
 # 实体通知(PSDENotify)  <!-- {docsify-ignore-all} -->
 
 
+实体通知
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -97,6 +100,18 @@
 * `UPDATE`
 * `READ`
 * `CREATE`
+
+
+
+##### 操作角色（读） :id=PSDENotify-USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `无`
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
 
 
 

@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./fill_latest_executed#begin {"开始"}]]
-state "执行脚本代码" as RAWSFCODE1  [[$./fill_latest_executed#rawsfcode1 {"执行脚本代码"}]]
+state "填充最近执行" as RAWSFCODE1  [[$./fill_latest_executed#rawsfcode1 {"填充最近执行"}]]
 
 
 Begin --> RAWSFCODE1
@@ -32,7 +32,7 @@ Begin --> RAWSFCODE1
 
 
 *- N/A*
-#### 执行脚本代码 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 填充最近执行 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 

@@ -20,7 +20,7 @@ state "查询用户数据" as DEDATASET1  [[$./auto_create_members#dedataset1 {"
 state "结束" as END1 <<end>> [[$./auto_create_members#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./auto_create_members#loopsubcall1 {"循环子调用"}]] #green {
 state "重置参数" as RESETPARAM1  [[$./auto_create_members#resetparam1 {"重置参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"准备参数"}]]
+state "设置产品成员" as PREPAREPARAM4  [[$./auto_create_members#prepareparam4 {"设置产品成员"}]]
 state "生成用户数据" as DEACTION3  [[$./auto_create_members#deaction3 {"生成用户数据"}]]
 }
 
@@ -70,7 +70,7 @@ LOOPSUBCALL1 --> END1
 
 
 重置参数```product_member(成员参数)```
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置产品成员 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

@@ -15,17 +15,17 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./resource_member_setting#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./resource_member_setting#bindparam1 {"绑定参数"}]]
+state "绑定srfactionparam参数" as BINDPARAM1  [[$./resource_member_setting#bindparam1 {"绑定srfactionparam参数"}]]
 state "设置资源组件查询过滤器参数" as PREPAREPARAM3  [[$./resource_member_setting#prepareparam3 {"设置资源组件查询过滤器参数"}]]
 state "获取此项目集下的资源组件" as DEDATASET1  [[$./resource_member_setting#dedataset1 {"获取此项目集下的资源组件"}]]
 state "绑定资源组件" as BINDPARAM3  [[$./resource_member_setting#bindparam3 {"绑定资源组件"}]]
-state "绑定参数" as BINDPARAM2  [[$./resource_member_setting#bindparam2 {"绑定参数"}]]
+state "绑定成员参数" as BINDPARAM2  [[$./resource_member_setting#bindparam2 {"绑定成员参数"}]]
 state "资源成员绑定至组件" as RAWSFCODE3  [[$./resource_member_setting#rawsfcode3 {"资源成员绑定至组件"}]]
 state "保存资源成员" as DEACTION2  [[$./resource_member_setting#deaction2 {"保存资源成员"}]]
 state "循环子调用" as LOOPSUBCALL2  [[$./resource_member_setting#loopsubcall2 {"循环子调用"}]] #green {
 }
 state "循环子调用" as LOOPSUBCALL3  [[$./resource_member_setting#loopsubcall3 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM4  [[$./resource_member_setting#prepareparam4 {"准备参数"}]]
+state "空节点（为了增加条件判断）" as PREPAREPARAM4  [[$./resource_member_setting#prepareparam4 {"空节点（为了增加条件判断）"}]]
 state "附加到数组参数" as APPENDPARAM2  [[$./resource_member_setting#appendparam2 {"附加到数组参数"}]]
 }
 state "循环子调用" as LOOPSUBCALL1  [[$./resource_member_setting#loopsubcall1 {"循环子调用"}]] #green {
@@ -68,7 +68,7 @@ BINDPARAM3 --> LOOPSUBCALL1 : [[$./resource_member_setting#bindparam3-loopsubcal
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定srfactionparam参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -94,7 +94,7 @@ BINDPARAM3 --> LOOPSUBCALL1 : [[$./resource_member_setting#bindparam3-loopsubcal
 
 
 绑定参数`addon_resource_page(资源组件分页查询结果变量)` 到 `addon_resource(资源组件对象)`
-#### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定成员参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -109,7 +109,7 @@ BINDPARAM3 --> LOOPSUBCALL1 : [[$./resource_member_setting#bindparam3-loopsubcal
 
 
 循环参数`srfactionparam(选择成员列表)`，子循环参数使用`for_choose_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 空节点（为了增加条件判断） :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

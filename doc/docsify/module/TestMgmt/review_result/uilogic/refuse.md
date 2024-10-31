@@ -1,6 +1,6 @@
 ## 拒绝 <!-- {docsify-ignore-all} -->
 
-   
+   拒绝
 
 ### 处理过程
 
@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./refuse#begin {开始}]]
-state "结束" as END1 <<end>> [[$./refuse#end1 {结束}]]
-state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./refuse#preparejsparam1 {获取父表单及评审内容表格}]]
+state "控制表单状态" as RAWJSCODE2  [[$./refuse#rawjscode2 {控制表单状态}]]
 state "实体行为" as DEACTION1  [[$./refuse#deaction1 {实体行为}]]
-state "注入脚本代码" as RAWJSCODE2  [[$./refuse#rawjscode2 {注入脚本代码}]]
-state "注入脚本代码" as RAWJSCODE3  [[$./refuse#rawjscode3 {注入脚本代码}]]
+state "获取父表单及评审内容表格" as PREPAREJSPARAM1  [[$./refuse#preparejsparam1 {获取父表单及评审内容表格}]]
+state "控制表单状态" as RAWJSCODE3  [[$./refuse#rawjscode3 {控制表单状态}]]
+state "结束" as END1 <<end>> [[$./refuse#end1 {结束}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -36,7 +36,7 @@ RAWJSCODE3 --> END1
 
 ### 处理步骤说明
 
-#### 注入脚本代码 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 控制表单状态 :id=RAWJSCODE2<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -108,7 +108,7 @@ if (rows && rows.length > 0) {
 
 将执行结果返回给参数`review_content(评审内容)`
 
-#### 注入脚本代码 :id=RAWJSCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 控制表单状态 :id=RAWJSCODE3<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -135,12 +135,12 @@ if (rows && rows.length > 0) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|评审内容表格视图|grid_view|数据对象||
+|上下文|ctx|导航视图参数绑定参数||
+|当前视图对象|view|当前视图对象||
+|评审内容表格|content_grid|数据对象||
+|父视图|parentView|数据对象||
+|评审内容|review_content|数据对象||
 |当前表单|form|部件对象||
 |父表单|parent_form|数据对象||
-|父视图|parentView|数据对象||
-|评审内容表格|content_grid|数据对象||
-|上下文|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|评审内容|review_content|数据对象||
-|当前视图对象|view|当前视图对象||
+|评审内容表格视图|grid_view|数据对象||

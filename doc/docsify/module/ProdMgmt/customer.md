@@ -113,7 +113,7 @@
 |[无操作](module/ProdMgmt/customer/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[添加至类别](module/ProdMgmt/customer/logic/add_categories)|add_categories|无||添加客户类别操作|
 |[获取产品成员](module/ProdMgmt/customer/logic/get_product_member)|get_product_member|无||获取产品成员信息，用于判断当前用户权限|
-|[获取需求中客户信息](module/ProdMgmt/customer/logic/get_idea_customer_info)|get_idea_customer_info|无|||
+|[获取需求中客户信息](module/ProdMgmt/customer/logic/get_idea_customer_info)|get_idea_customer_info|无||获取需求中客户信息|
 
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|
@@ -199,6 +199,7 @@
 | 测试界面行为权限 | test_aciton | 测试 |无数据|用户自定义||
 | 添加客户（其他实体关联） | other_add_relation_customer | 添加客户 |无数据|用户自定义||
 | 取消关联 | del_relation | 取消关联 |单项数据（主键）|<details><summary>后台调用</summary>[del_relation](#行为)||
+| 新建客户 | new_customer | 新建客户 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建客户](app/view/customer_quick_create_view)</details>||
 | 删除 | delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除（工具栏） | toolbar_delete_customer | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
@@ -210,21 +211,17 @@
 | 添加至类别（多选） | add_categories | 设置类别 |多项数据（主键）|<details><summary>后台调用</summary>[add_categories](#行为)||
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建分组 |单项数据|用户自定义||
+| 新建客户（移动端） | mob_add_customer | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_mob_edit_view)</details>||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[关联客户值变更](module/ProdMgmt/customer/uilogic/relation_customer_change)|relation_customer_change|关联客户值变更时，调用处理逻辑，生成正反向关联数据|
 |[删除类别或分组](module/ProdMgmt/customer/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
-|[刷新客户表格](module/ProdMgmt/customer/uilogic/refresh_customer_grid)|refresh_customer_grid|刷新客户表格|
-|[客户只读用户判断](module/ProdMgmt/customer/uilogic/customer_get_only_read)|customer_get_only_read|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
 |[新建分组](module/ProdMgmt/customer/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/ProdMgmt/customer/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/ProdMgmt/customer/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
-|[获取客户分数](module/ProdMgmt/customer/uilogic/get_customer_score)|get_customer_score|获取客户分数以及百分比|
 |[获取客户分数(初始化使用)](module/ProdMgmt/customer/uilogic/get_customer_score_2)|get_customer_score_2|获取客户分数以及百分比（初始化使用）|
-|[表格行为列状态](module/ProdMgmt/customer/uilogic/readonly_grid_uiaction)|readonly_grid_uiaction|表格根据上下文srfreadonly判断行为列是否启用|
 |[触发计数器刷新](module/ProdMgmt/customer/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
 |[返回](module/ProdMgmt/customer/uilogic/back)|back|查看客户统计信息后，返回主表单按钮使用|
 |[选择下拉框区域展示](module/ProdMgmt/customer/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|

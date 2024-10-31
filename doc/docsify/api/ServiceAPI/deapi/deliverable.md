@@ -22,6 +22,7 @@
 |<el-row justify="space-between"><el-col :span="20">file_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件标识|
 |<el-row justify="space-between"><el-col :span="20">work_item_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项编号|
 |<el-row justify="space-between"><el-col :span="20">work_item_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -37,6 +38,7 @@
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -58,6 +60,7 @@
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -99,6 +102,7 @@
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -159,6 +163,7 @@
 |<el-row justify="space-between"><el-col :span="20">file_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件标识|
 |<el-row justify="space-between"><el-col :span="20">work_item_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项编号|
 |<el-row justify="space-between"><el-col :span="20">work_item_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -174,6 +179,7 @@
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -195,6 +201,7 @@
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -229,6 +236,7 @@
 |<el-row justify="space-between"><el-col :span="20">file_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件标识|
 |<el-row justify="space-between"><el-col :span="20">work_item_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项编号|
 |<el-row justify="space-between"><el-col :span="20">work_item_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -244,6 +252,7 @@
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -258,6 +267,48 @@
 ##### 响应示例： {docsify-ignore}
 ```json
 Integer
+```
+
+## 获取交付物详情
+
+<el-row>
+<div style="width: 80px">
+<el-alert center title="GET" type="success" :closable="false" ></el-alert>
+</div>
+<div style="margin-left:5px;width: calc(100% - 85px)">
+<el-alert title="/deliverables/{key}/get_delivery" type="info" :closable="false" ></el-alert>
+</div>
+</el-row>
+权限标识：`READ`
+
+##### 路径参数 {docsify-ignore}
+|字段col300|类型col150|备注col400|
+|---|---|----|
+|key|String|标识|
+
+
+
+
+##### 响应示例： {docsify-ignore}
+```json
+
+{
+  "owner_id" : null,
+  "owner_type" : null,
+  "owner_subtype" : null,
+  "file_id" : null,
+  "work_item_identifier" : null,
+  "work_item_title" : null,
+  "work_item_type_id" : null,
+  "title" : null,
+  "create_man" : null,
+  "create_time" : null,
+  "id" : null,
+  "name" : null,
+  "update_man" : null,
+  "update_time" : null,
+}
+
 ```
 
 ## 获取交付物草稿
@@ -283,6 +334,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">file_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件标识|
 |<el-row justify="space-between"><el-col :span="20">work_item_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项编号|
 |<el-row justify="space-between"><el-col :span="20">work_item_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -298,6 +350,7 @@ Integer
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -319,6 +372,7 @@ Integer
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -353,6 +407,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">file_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|文件标识|
 |<el-row justify="space-between"><el-col :span="20">work_item_identifier</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项编号|
 |<el-row justify="space-between"><el-col :span="20">work_item_title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项标题|
+|<el-row justify="space-between"><el-col :span="20">work_item_type_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|工作项类型|
 |<el-row justify="space-between"><el-col :span="20">title</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|标题|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
 |<el-row justify="space-between"><el-col :span="20">name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|名称|
@@ -368,6 +423,7 @@ Integer
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -389,6 +445,7 @@ Integer
   "file_id" : null,
   "work_item_identifier" : null,
   "work_item_title" : null,
+  "work_item_type_id" : null,
   "title" : null,
   "create_man" : null,
   "create_time" : null,
@@ -446,6 +503,7 @@ Integer
     "file_id" : null,
     "work_item_identifier" : null,
     "work_item_title" : null,
+    "work_item_type_id" : null,
     "title" : null,
     "create_man" : null,
     "create_time" : null,
@@ -503,6 +561,7 @@ Integer
     "file_id" : null,
     "work_item_identifier" : null,
     "work_item_title" : null,
+    "work_item_type_id" : null,
     "title" : null,
     "create_man" : null,
     "create_time" : null,

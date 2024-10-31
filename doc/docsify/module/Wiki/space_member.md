@@ -50,12 +50,14 @@
 |Save|Save|内置方法|默认|不支持||||
 |Update|Update|内置方法|默认|不支持||||
 |变更角色|change_role|[实体处理逻辑](module/Wiki/space_member/logic/change_role "变更角色")|默认|不支持||||
+|新建项目成员（移动端）|mob_create_space_member|[实体处理逻辑](module/Wiki/space_member/logic/mob_create_project_member "新建空间成员（移动端）")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Wiki/space_member/logic/nothing "无操作")|默认|不支持||||
 
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[变更角色](module/Wiki/space_member/logic/change_role)|change_role|无||批量设置角色身份（role_id）|
+|[新建空间成员（移动端）](module/Wiki/space_member/logic/mob_create_project_member)|mob_create_project_member|无||新建空间成员（移动端）|
 |[无操作](module/Wiki/space_member/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[移除空间成员发送通知](module/Wiki/space_member/logic/remove_space_member_notify)|remove_space_member_notify|无||移除空间成员时向对应用户发送通知消息|
 
@@ -70,12 +72,14 @@
 |[数据查询(DEFAULT)](module/Wiki/space_member/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Wiki/space_member/query/View)|VIEW|否|否 |否 ||
 |[当前空间下成员(cur_space)](module/Wiki/space_member/query/cur_space)|cur_space|否|否 |否 ||
+|[未关注用户(测试用例)(no_attention)](module/Wiki/space_member/query/no_attention)|no_attention|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Wiki/space_member/dataset/Default)|DEFAULT|数据查询|是|||
 |[当前空间下成员(cur_space)](module/Wiki/space_member/dataset/cur_space)|cur_space|数据查询|否|||
+|[未关注用户(测试用例)(no_attention)](module/Wiki/space_member/dataset/no_attention)|no_attention|数据查询|否|||
 ## 消息通知
 
 |    中文名col200   | 代码名col150       |  消息队列col200   |  消息模板col200 |  通知目标col150     |  备注col350  |
@@ -97,6 +101,8 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 添加成员（移动端） | mob_add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[mob_create_space_member](#行为)||
+| 设置角色（移动端） | mob_setting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 设置角色 | setting_role | 设置 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 移除成员 | remove_member | 移除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 

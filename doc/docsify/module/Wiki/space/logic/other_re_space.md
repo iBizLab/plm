@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./other_re_space#begin {"开始"}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./other_re_space#debugparam1 {"调试逻辑参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./other_re_space#prepareparam1 {"准备参数"}]]
+state "准备关联参数" as PREPAREPARAM1  [[$./other_re_space#prepareparam1 {"准备关联参数"}]]
 state "生成正向关联数据" as DEACTION1  [[$./other_re_space#deaction1 {"生成正向关联数据"}]]
 state "生成反向关联数据" as DEACTION2  [[$./other_re_space#deaction2 {"生成反向关联数据"}]]
 state "抛出异常" as THROWEXCEPTION1  [[$./other_re_space#throwexception1 {"抛出异常"}]]
@@ -50,7 +50,7 @@ DEBUGPARAM1 --> THROWEXCEPTION1 : [[$./other_re_space#debugparam1-throwexception
 > 调试输出参数`Default(传入变量)`的详细信息
 
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备关联参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

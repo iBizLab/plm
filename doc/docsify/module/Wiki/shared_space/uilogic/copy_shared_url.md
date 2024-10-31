@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./copy_shared_url#begin {开始}]]
 state "结束" as END1 <<end>> [[$./copy_shared_url#end1 {结束}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./copy_shared_url#rawjscode1 {注入脚本代码}]]
+state "复制共享链接" as RAWJSCODE1  [[$./copy_shared_url#rawjscode1 {复制共享链接}]]
 
 
 Begin --> RAWJSCODE1
@@ -34,7 +34,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 复制共享链接 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

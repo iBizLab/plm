@@ -114,6 +114,8 @@
 
 超链接：`view://ticket_main_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://ticket_mob_edit_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -157,6 +159,12 @@ ${data.update_mantext}给你分配了工单：${data.title}
 超链接：`<#if data.parent("owner_id")??>
 <#assign parent= data.parent("owner_id")>
 view://${data.owner_type?lower_case}_main_view?
+srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "library":"${parent.parent("case_id").test_library_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null }</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+<#assign parent= data.parent("owner_id")>
+view://run_mob_edit_view?
 srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "library":"${parent.parent("case_id").test_library_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null }</#if>`
 
@@ -216,6 +224,8 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 
 超链接：`route://-/index/product=${data.product_id}/product_index_view/srfnav=usrdrgroup1228809432/idea_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/idea_all_grid_view/-`
 
+移动端超链接：`route://-/home/product=${data.product_id}/product_mob_product_tree/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.product_mob_list_view%2540plmmob.product.mob_product_list%2522%252C%2522srfnavlogicid%2522%253A%252247ffde66-27f3-ba5a-eb7b-d5c99a6c4437%253A5391c5e3-06d4-b72b-aaa9-7a83afb06b78%2522%257D`
+
 标题：
 ```
 加入产品成员
@@ -262,6 +272,8 @@ ${data.create_mantext}把你加入了产品：${data.product_name}
 内容类型：`HTML网页`
 
 超链接：`view://idea_main_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
+
+移动端超链接：`view://idea_mob_edit_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
 
 内容：
 ```
@@ -397,6 +409,10 @@ ${data.update_mantext}把你移除了产品：${data.product_name}
 view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.parent("principal_id").id}","project":"${data.parent("principal_id").project_id}", "srfdatatype" : "${data.parent("principal_id").work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.parent("principal_id").work_item_type_id}
 </#if>`
 
+移动端超链接：`<#if data.parent("principal_id")??>
+view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.parent("principal_id").id}","project":"${data.parent("principal_id").project_id}", "srfdatatype" : "${data.parent("principal_id").work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.parent("principal_id").work_item_type_id}
+</#if>`
+
 标题：
 ```
 评论工作项通知
@@ -482,6 +498,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 
 超链接：`view://ticket_main_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://ticket_mob_edit_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -523,6 +541,8 @@ ${data.update_mantext}变更了工单：${data.title}的负责人
 内容类型：`HTML网页`
 
 超链接：`<#if data.project_type == 'scrum'>route://-/index/project=${data.project_id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.project_type == 'kanban'>route://-/index/project=${data.project_id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.project_type == 'waterfall'>route://-/index/project=${data.project_id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if>`
+
+移动端超链接：`route://-/home/project=${data.project_id}/project_mob_${data.project_type}_tree_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.project_mob_list_view%2540plmmob.project.mob_main_list%2522%252C%2522srfnavlogicid%2522%253A%2522ba246ac0-32a9-f2eb-2ec5-2593e31969b5%253Aa5ca9459-7782-b84a-b807-17c58b11a452%2522%257D`
 
 标题：
 ```
@@ -571,6 +591,8 @@ ${data.create_mantext}把你加入了项目：${data.project_name}
 
 超链接：`route://-/index/library=${data.library_id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_main_view/srfnavctx={"test_plan":"${data.id}"};srfnav=run/run_tree_exp_view/srfnav=root:node/run_all_grid_view/-`
 
+移动端超链接：`view://library_test_mob_tab_exp_view?srfnavctx={"test_plan":"${data.id}","library":"${data.library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -612,6 +634,12 @@ ${data.update_mantext}取消分配了测试计划：${data.name}
 超链接：`<#if data.parent("principal_id")??>
 <#assign parent= data.parent("principal_id")>
 view://${data.principal_type?lower_case}_main_view?
+srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "library":"${parent.parent("case_id").test_library_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null }</#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??>
+<#assign parent= data.parent("principal_id")>
+view://run_mob_edit_view?
 srfnavctx={"run":"${parent.id}","test_case": "${parent.parent("case_id").id}", "library":"${parent.parent("case_id").test_library_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null }</#if>`
 
@@ -700,6 +728,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 
 超链接：`route://-/index/space=${data.space_id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node@${data.space_id}/article_page_show_view/srfnavctx={"article_page":"${data.space_id}"}`
 
+移动端超链接：`route://-/home/space=${data.space_id}/article_page_mob_list_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.space_mob_list_view%2540plmmob.space.mob_list_view_mob_list%2522%252C%2522srfnavlogicid%2522%253A%252292b6112f-e53d-26c2-af0b-fc617ca4fe82%253A8eb5d724-4d71-6e1c-8b2f-63eb866708e9%2522%257D`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -738,6 +768,8 @@ ${data.create_mantext}把你加入了空间：${data.space_name}
 内容类型：`HTML网页`
 
 超链接：`view://test_case_main_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
+
+移动端超链接：`view://test_case_mob_edit_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
 
 内容：
 ```
@@ -782,6 +814,11 @@ ${data.update_mantext}变更了测试用例：${data.title}的维护人
 
 超链接：`<#if data.parent("owner_id")??>
 view://${data.owner_type?lower_case}_main_view?
+srfnavctx={"ticket":"${data.parent("owner_id").id}","product":"${data.parent("owner_id").product_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "library": null, "test_case": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+view://ticket_mob_edit_view?
 srfnavctx={"ticket":"${data.parent("owner_id").id}","product":"${data.parent("owner_id").product_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "library": null, "test_case": null, "run": null }</#if>`
 
@@ -841,6 +878,11 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 
 超链接：`<#if data.parent("owner_id")??>
 view://work_item_dyna_main_view?
+srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent("owner_id").project_id}","srfdatatype" : "${data.parent("owner_id").work_item_type_id}",
+"space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }&srfdatatype=${data.parent("owner_id").work_item_type_id}</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+view://work_item_mob_common_edit_view?
 srfnavctx={"work_item":"${data.parent("owner_id").id}","project":"${data.parent("owner_id").project_id}","srfdatatype" : "${data.parent("owner_id").work_item_type_id}",
 "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }&srfdatatype=${data.parent("owner_id").work_item_type_id}</#if>`
 
@@ -940,6 +982,8 @@ ${data.create_mantext}把你移除了项目集：${data.portfolio_name}
 
 超链接：`view://customer_main_view?srfnavctx={"customer":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "ticket": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://customer_mob_edit_view?srfnavctx={"customer":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "ticket": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -978,7 +1022,11 @@ ${data.update_mantext}取消分配了客户：${data.name}
 
 内容类型：`HTML网页`
 
-超链接：`<#if data.is_deleted==0>route://-/index/library=${data.library_id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/test_plan_all_grid_view/-</#if>`
+超链接：`<#if data.is_deleted==0>route://-/index/library=${data.id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/test_plan_all_grid_view/-</#if>`
+
+移动端超链接：`<#if data.is_deleted==0>
+route://-/home/library=${data.id}/library_test_mob_tab_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.library_test_mob_list_vew%2540plmmob.library.test_mob_list_vew_mob_list%2522%252C%2522srfnavlogicid%2522%253A%2522dd98444f-4da4-d20c-67cb-d2107de2d96d%253Afa4d4f60-ba1d-6d62-53c2-e502f4b7274d%2522%257D;srfnav=plan/test_plan_plan_mob_md_view/-
+</#if>`
 
 标题：
 ```
@@ -1027,6 +1075,8 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -1069,6 +1119,8 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了${data
 
 超链接：`view://idea_main_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://idea_mob_edit_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -1110,6 +1162,8 @@ ${data.update_mantext}变更了需求：${data.title}的负责人
 内容类型：`HTML网页`
 
 超链接：`view://customer_main_view?srfnavctx={"customer":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "ticket": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
+移动端超链接：`view://customer_mob_edit_view?srfnavctx={"customer":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "ticket": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
 内容：
 ```
@@ -1154,6 +1208,8 @@ ${data.update_mantext}给你分配了客户：${data.name}
 <#if data.principal_type=='PAGE'>view://article_page_model_show_view?srfnavctx={"article_page":"${p.id}","space":"${p.space_id}"}
 <#elseif data.principal_type=='WORK_ITEM'>view://work_item_dyna_main_view?srfnavctx={"work_item":"${p.id}","project":"${p.project_id}","srfdatatype":"${p.work_item_type_id}"}&srfdatatype=${p.work_item_type_id}
 <#else>view://${data.principal_type?lower_case}_main_view?srfnavctx={"${data.principal_type?lower_case}":"${data.principal_id}"<#if p.parent("product_id")??>,"product":"${p.parent('product_id').id}"<#elseif p.parent("test_library_id")??>,"library":"${p.parent('test_library_id').id}"<#elseif p.parent("case_id")??>,"test_case":"${p.parent('case_id').id}","library":"${p.parent('case_id').test_library_id}"</#if>,"space":null, "article_page": null}</#if></#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??><#assign p = data.parent("principal_id")><#if data.principal_type=='PAGE'>view://article_page_mob_edit_view?srfnavctx={"article_page":"${p.id}","space":"${p.space_id}"}<#elseif data.principal_type=='WORK_ITEM'>view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${p.id}","project":"${p.project_id}","srfdatatype":"${p.work_item_type_id}"}&srfdatatype=${p.work_item_type_id}<#else>view://${data.principal_type?lower_case}_mob_edit_view?srfnavctx={"${data.principal_type?lower_case}":"${data.principal_id}"<#if p.parent("product_id")??>,"product":"${p.parent('product_id').id}"<#elseif p.parent("test_library_id")??>,"library":"${p.parent('test_library_id').id}"<#elseif p.parent("case_id")??>,"test_case":"${p.parent('case_id').id}","library":"${p.parent('case_id').test_library_id}"</#if>,"space":null, "article_page": null}</#if></#if>`
 
 标题：
 ```
@@ -1240,6 +1296,8 @@ ${data.update_mantext}在<#if data.principal_type == 'WORK_ITEM'>${data.parent("
 
 超链接：`view://ticket_main_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://ticket_mob_edit_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
 标题：
 ```
 工单状态变更
@@ -1310,6 +1368,11 @@ ${data.update_mantext}}更改了工单 ${data.title}状态：<#if last.codeitem(
 
 超链接：`<#if data.parent("principal_id")??>
 view://${data.principal_type?lower_case}_main_view?
+srfnavctx={"idea":"${data.parent("principal_id").id}","product":"${data.parent("principal_id").product_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??>
+view://idea_mob_edit_view?
 srfnavctx={"idea":"${data.parent("principal_id").id}","product":"${data.parent("principal_id").product_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
 
@@ -1398,6 +1461,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${eventdata.id}","project":"${eventdata.project_id}", "srfdatatype" : "${eventdata.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${eventdata.work_item_type_id}`
 
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${eventdata.id}","project":"${eventdata.project_id}", "srfdatatype" : "${eventdata.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${eventdata.work_item_type_id}`
+
 标题：
 ```
 工作项通知
@@ -1439,6 +1504,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 内容类型：`HTML网页`
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
 内容：
 ```
@@ -1482,6 +1549,8 @@ ${data.update_mantext}取消分配了${data.work_item_type_name}：${data.title}
 
 超链接：`view://idea_main_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://idea_mob_edit_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -1523,6 +1592,8 @@ ${data.update_mantext}给你分配了需求：${data.title}
 内容类型：`HTML网页`
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
 标题：
 ```
@@ -1566,6 +1637,8 @@ ${data.update_mantext}给你分配了需求：${data.title}
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -1608,6 +1681,10 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了${dat
 
 超链接：`<#if data.is_deleted==0>route://-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node@${data.id}/article_page_show_view/srfnavctx={"article_page":"${data.id}"}</#if>`
 
+移动端超链接：`<#if data.is_deleted==0>
+route://-/home/space=${data.id}/article_page_mob_list_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.space_mob_list_view%2540plmmob.space.mob_list_view_mob_list%2522%252C%2522srfnavlogicid%2522%253A%252292b6112f-e53d-26c2-af0b-fc617ca4fe82%253A8eb5d724-4d71-6e1c-8b2f-63eb866708e9%2522%257D
+</#if>`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -1649,6 +1726,8 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了空间
 内容类型：`HTML网页`
 
 超链接：`<#if data.type == 'scrum'>route://-/index/project=${data.id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'kanban'>route://-/index/project=${data.id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'waterfall'>route://-/index/project=${data.id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if>`
+
+移动端超链接：`route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.project_mob_list_view%2540plmmob.project.mob_main_list%2522%252C%2522srfnavlogicid%2522%253A%2522ba246ac0-32a9-f2eb-2ec5-2593e31969b5%253Aa5ca9459-7782-b84a-b807-17c58b11a452%2522%257D`
 
 内容：
 ```
@@ -1704,6 +1783,8 @@ ${data.update_mantext}给你分配了项目：${data.name}
 内容类型：`HTML网页`
 
 超链接：`<#if data.parent("principal_id")??>view://article_page_model_show_view?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}</#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??>view://article_page_mob_edit_view?srfnavctx={"article_page":"${data.parent("principal_id").id}","space":"${data.parent("principal_id").space_id}"}</#if>`
 
 标题：
 ```
@@ -1772,6 +1853,8 @@ ${data.update_mantext}评论了页面：${data.parent("principal_id").name}
 内容类型：`HTML网页`
 
 超链接：`view://ticket_main_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
+移动端超链接：`view://ticket_mob_edit_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
 内容：
 ```
@@ -1857,6 +1940,8 @@ ${data.create_mantext}把你加入了项目集：${data.portfolio_name}
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -1899,6 +1984,11 @@ ${data.update_mantext}给你分配了${data.work_item_type_name}：${data.title}
 
 超链接：`<#if data.parent("principal_id")??>
 view://${data.principal_type?lower_case}_main_view?
+srfnavctx={"customer":"${data.parent("principal_id").id}","product":"${data.parent("principal_id").product_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??>
+view://customer_mob_edit_view?
 srfnavctx={"customer":"${data.parent("principal_id").id}","product":"${data.parent("principal_id").product_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
 
@@ -1987,6 +2077,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
 标题：
 ```
 工作项状态变更
@@ -2042,6 +2134,11 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 </div>
 ```
 
+即时消息内容：
+```
+${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
+```
+
 钉钉内容：
 ```
 ${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态：<#if last.codeitem("STATE")??>${last.codeitem("STATE").text}<#else>无</#if>  → <#if data.codeitem("STATE")??>${data.codeitem("STATE").text}<#else>无</#if>
@@ -2056,6 +2153,10 @@ ${data.update_mantext}更改了${data.work_item_type_name} ${data.title}状态�
 内容类型：`HTML网页`
 
 超链接：`<#if data.is_archived==0><#if data.type == 'scrum'>route://-/index/project=${data.id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'kanban'>route://-/index/project=${data.id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'waterfall'>route://-/index/project=${data.id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if></#if>`
+
+移动端超链接：`<#if data.is_archived==0>
+route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.project_mob_list_view%2540plmmob.project.mob_main_list%2522%252C%2522srfnavlogicid%2522%253A%2522ba246ac0-32a9-f2eb-2ec5-2593e31969b5%253Aa5ca9459-7782-b84a-b807-17c58b11a452%2522%257D
+</#if>`
 
 内容：
 ```
@@ -2098,6 +2199,8 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了项�
 内容类型：`HTML网页`
 
 超链接：`view://test_case_main_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
+
+移动端超链接：`view://test_case_mob_edit_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
 
 内容：
 ```
@@ -2142,6 +2245,10 @@ ${data.update_mantext}给你分配了测试用例：${data.title}
 
 超链接：`<#if data.is_archived==0>route://-/index/space=${data.id}/space_index_view/srfnav=drgroup/article_page_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node@${data.id}/article_page_show_view/srfnavctx={"article_page":"${data.id}"}</#if>`
 
+移动端超链接：`<#if data.is_archived==0>
+route://-/home/space=${data.id}/article_page_mob_list_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.space_mob_list_view%2540plmmob.space.mob_list_view_mob_list%2522%252C%2522srfnavlogicid%2522%253A%252292b6112f-e53d-26c2-af0b-fc617ca4fe82%253A8eb5d724-4d71-6e1c-8b2f-63eb866708e9%2522%257D
+</#if>`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2184,6 +2291,10 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了空�
 
 超链接：`<#if data.is_archived==0>route://-/index/product=${data.id}/product_index_view/srfnav=usrdrgroup1228809432/idea_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/idea_all_grid_view/-</#if>`
 
+移动端超链接：`<#if data.is_archived==0>
+route://-/home/product=${data.id}/product_mob_product_tree/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.product_mob_list_view%2540plmmob.product.mob_product_list%2522%252C%2522srfnavlogicid%2522%253A%252247ffde66-27f3-ba5a-eb7b-d5c99a6c4437%253A5391c5e3-06d4-b72b-aaa9-7a83afb06b78%2522%257D
+</#if>`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2225,6 +2336,8 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了产�
 内容类型：`HTML网页`
 
 超链接：`route://-/index/library=${data.library_id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/test_plan_all_grid_view/-`
+
+移动端超链接：`route://-/home/library=${data.library_id}/library_test_mob_tab_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.library_test_mob_list_vew%2540plmmob.library.test_mob_list_vew_mob_list%2522%252C%2522srfnavlogicid%2522%253A%2522dd98444f-4da4-d20c-67cb-d2107de2d96d%253Afa4d4f60-ba1d-6d62-53c2-e502f4b7274d%2522%257D;srfnav=plan/test_plan_plan_mob_md_view/-`
 
 标题：
 ```
@@ -2273,6 +2386,10 @@ ${data.create_mantext}把你加入了测试库：${data.library_name}
 
 超链接：`<#if data.is_deleted==0>route://-/index/product=${data.id}/product_index_view/srfnav=usrdrgroup1228809432/idea_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/idea_all_grid_view/-</#if>`
 
+移动端超链接：`<#if data.is_deleted==0>
+route://-/home/product=${data.id}/product_mob_product_tree/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.product_mob_list_view%2540plmmob.product.mob_product_list%2522%252C%2522srfnavlogicid%2522%253A%25222c53d0f1-145f-e89d-8c0b-da7bb6992e72%253Ad1a85b2c-d55f-6896-fcc9-b72d4bc94040%2522%257D
+</#if>`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2314,6 +2431,8 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了产品
 内容类型：`HTML网页`
 
 超链接：`view://ticket_main_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
+移动端超链接：`view://ticket_mob_edit_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
 内容：
 ```
@@ -2357,6 +2476,11 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了工�
 
 超链接：`<#if data.parent("principal_id")??>
 view://${data.principal_type?lower_case}_main_view?
+srfnavctx={"ticket":"${data.parent("principal_id").id}","product":"${data.parent("principal_id").product_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "library": null, "test_case": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??>
+view://ticket_mob_edit_view?
 srfnavctx={"ticket":"${data.parent("principal_id").id}","product":"${data.parent("principal_id").product_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "library": null, "test_case": null, "run": null }</#if>`
 
@@ -2445,6 +2569,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 
 超链接：`view://customer_main_view?srfnavctx={"customer":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "ticket": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://customer_mob_edit_view?srfnavctx={"customer":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "ticket": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
 标题：
 ```
 客户负责人变更
@@ -2490,6 +2616,8 @@ ${data.update_mantext}变更了客户：${data.name}的负责人
 
 超链接：`view://ticket_main_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://ticket_mob_edit_view?srfnavctx={"ticket":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2531,6 +2659,8 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测工
 内容类型：`HTML网页`
 
 超链接：`view://idea_main_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
+
+移动端超链接：`view://idea_mob_edit_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
 
 内容：
 ```
@@ -2574,6 +2704,8 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了需求
 
 超链接：`<#if data.type == 'scrum'>route://-/index/project=${data.id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'kanban'>route://-/index/project=${data.id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'waterfall'>route://-/index/project=${data.id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if>`
 
+移动端超链接：`route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.project_mob_list_view%2540plmmob.project.mob_main_list%2522%252C%2522srfnavlogicid%2522%253A%2522ba246ac0-32a9-f2eb-2ec5-2593e31969b5%253Aa5ca9459-7782-b84a-b807-17c58b11a452%2522%257D`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2616,6 +2748,8 @@ ${data.update_mantext}变更了项目${data.name}的负责人
 
 超链接：`view://idea_main_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://idea_mob_edit_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2657,6 +2791,10 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了需�
 内容类型：`HTML网页`
 
 超链接：`<#if data.is_deleted==0><#if data.type == 'scrum'>route://-/index/project=${data.id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'kanban'>route://-/index/project=${data.id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'waterfall'>route://-/index/project=${data.id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if></#if>`
+
+移动端超链接：`<#if data.is_deleted==0>
+route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.project_mob_list_view%2540plmmob.project.mob_main_list%2522%252C%2522srfnavlogicid%2522%253A%2522ba246ac0-32a9-f2eb-2ec5-2593e31969b5%253Aa5ca9459-7782-b84a-b807-17c58b11a452%2522%257D
+</#if>`
 
 内容：
 ```
@@ -2746,6 +2884,11 @@ view://${data.owner_type?lower_case}_main_view?
 srfnavctx={"idea":"${data.parent("owner_id").id}","product":"${data.parent("owner_id").product_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
 
+移动端超链接：`<#if data.parent("owner_id")??>
+view://idea_mob_edit_view?
+srfnavctx={"idea":"${data.parent("owner_id").id}","product":"${data.parent("owner_id").product_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2800,7 +2943,11 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 
 内容类型：`HTML网页`
 
-超链接：`<#if data.is_archived==0>route://-/index/library=${data.library_id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/test_plan_all_grid_view/-</#if>`
+超链接：`<#if data.is_archived==0>route://-/index/library=${data.id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root:node/test_plan_all_grid_view/-</#if>`
+
+移动端超链接：`<#if data.is_archived==0>
+route://-/home/library=${data.id}/library_test_mob_tab_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.library_test_mob_list_vew%2540plmmob.library.test_mob_list_vew_mob_list%2522%252C%2522srfnavlogicid%2522%253A%2522dd98444f-4da4-d20c-67cb-d2107de2d96d%253Afa4d4f60-ba1d-6d62-53c2-e502f4b7274d%2522%257D;srfnav=plan/test_plan_plan_mob_md_view/-
+</#if>`
 
 标题：
 ```
@@ -2849,6 +2996,11 @@ ${data.update_mantext}<#if data.is_archived==1>归档<#else>激活</#if>了测�
 
 超链接：`<#if data.parent("principal_id")??>
 view://${data.principal_type?lower_case}_main_view?
+srfnavctx={"test_case":"${data.parent("principal_id").id}","library":"${data.parent("principal_id").test_library_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("principal_id")??>
+view://test_case_mob_edit_view?
 srfnavctx={"test_case":"${data.parent("principal_id").id}","library":"${data.parent("principal_id").test_library_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null, "run": null }</#if>`
 
@@ -2937,6 +3089,8 @@ ${data.update_mantext}评论了<#if data.principal_type == 'WORK_ITEM'>${data.pa
 
 超链接：`view://test_case_main_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
 
+移动端超链接：`view://test_case_mob_edit_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -2980,6 +3134,11 @@ ${data.update_mantext}<#if data.is_deleted==1>删除<#else>恢复</#if>了测试
 
 超链接：`<#if data.parent("owner_id")??>
 view://${data.owner_type?lower_case}_main_view?
+srfnavctx={"test_case":"${data.parent("owner_id").id}","library":"${data.parent("owner_id").test_library_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+view://test_case_mob_edit_view?
 srfnavctx={"test_case":"${data.parent("owner_id").id}","library":"${data.parent("owner_id").test_library_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "customer": null, "product": null, "ticket": null, "run": null }</#if>`
 
@@ -3039,6 +3198,8 @@ ${data.update_mantext}提醒你关注<#if data.owner_type == 'WORK_ITEM'>${data.
 
 超链接：`route://-/index/library=${data.library_id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_main_view/srfnavctx={"test_plan":"${data.id}"};srfnav=run/run_tree_exp_view/srfnav=root:node/run_all_grid_view/-`
 
+移动端超链接：`view://library_test_mob_tab_exp_view?srfnavctx={"test_plan":"${data.id}","library":"${data.library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -3078,6 +3239,8 @@ ${data.update_mantext}给你分配了测试计划：${data.name}
 内容类型：`HTML网页`
 
 超链接：`view://test_case_main_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
+
+移动端超链接：`view://test_case_mob_edit_view?srfnavctx={"test_case":"${data.id}","library":"${data.test_library_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "product": null, "ticket": null, "run": null}`
 
 内容：
 ```
@@ -3159,6 +3322,8 @@ ${data.update_mantext}把你移除了空间：${data.space_name}
 
 超链接：`view://idea_main_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
 
+移动端超链接：`view://idea_mob_edit_view?srfnavctx={"idea":"${data.id}","product":"${data.product_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}`
+
 标题：
 ```
 需求状态变更
@@ -3228,6 +3393,8 @@ ${data.update_mantext}更改了需求 ${data.title}状态：<#if last.codeitem("
 内容类型：`HTML网页`
 
 超链接：`view://run_main_view?srfnavctx={"run":"${data.id}","library":"${data.library_id}", "test_case":"${data.case_id}", "test_plan":"${data.plan_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "ticket": null, "product": null}`
+
+移动端超链接：`view://run_mob_edit_view?srfnavctx={"run":"${data.id}","library":"${data.library_id}", "test_case":"${data.case_id}", "test_plan":"${data.plan_id}", "space": null, "article_page": null, "project": null,"work_item": null, "customer": null, "idea": null, "ticket": null, "product": null}`
 
 内容：
 ```
@@ -3316,6 +3483,8 @@ ${data.update_mantext}把你移除了项目：${data.project_name}
 
 超链接：`<#if data.type == 'scrum'>route://-/index/project=${data.id}/project_scrum_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'kanban'>route://-/index/project=${data.id}/project_kanban_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D<#elseif data.type == 'waterfall'>route://-/index/project=${data.id}/project_waterfall_index_view/srfnav=usrdrgroup1225572368/project_over_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D</#if>`
 
+移动端超链接：`route://-/home/project=${data.id}/project_mob_${data.type}_tree_exp_view/srfnavctx=%257B%2522srfnavctrlid%2522%253A%2522plmmob.project_mob_list_view%2540plmmob.project.mob_main_list%2522%252C%2522srfnavlogicid%2522%253A%2522ba246ac0-32a9-f2eb-2ec5-2593e31969b5%253Aa5ca9459-7782-b84a-b807-17c58b11a452%2522%257D`
+
 标题：
 ```
 项目状态变更
@@ -3386,6 +3555,8 @@ ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("S
 
 超链接：`<#if data.parent("owner_id")??>view://article_page_model_show_view?srfnavctx={"article_page":"${data.parent("owner_id").id}","space":"${data.parent("owner_id").space_id}"}</#if>`
 
+移动端超链接：`<#if data.parent("owner_id")??>view://article_page_mob_edit_view?srfnavctx={"article_page":"${data.parent("owner_id").id}","space":"${data.parent("owner_id").space_id}"}</#if>`
+
 内容：
 ```
 <div class="notice-card" style="display: flex; align-items: flex-start;">
@@ -3428,6 +3599,11 @@ ${data.update_mantext}更改了项目 ${data.name}状态：<#if last.codeitem("S
 
 超链接：`<#if data.parent("owner_id")??>
 view://${data.owner_type?lower_case}_main_view?
+srfnavctx={"customer":"${data.parent("owner_id").id}","product":"${data.parent("owner_id").product_id}",
+"space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
+
+移动端超链接：`<#if data.parent("owner_id")??>
+view://customer_mob_edit_view?
 srfnavctx={"customer":"${data.parent("owner_id").id}","product":"${data.parent("owner_id").product_id}",
 "space": null, "article_page": null, "project": null,"work_item": null, "idea": null, "ticket": null, "library": null, "test_case": null, "run": null }</#if>`
 
@@ -3591,6 +3767,8 @@ ${it.get("content", "")}
 内容类型：`HTML网页`
 
 超链接：`view://work_item_dyna_main_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
+
+移动端超链接：`view://work_item_mob_common_edit_view?srfnavctx={"work_item":"${data.id}","project":"${data.project_id}", "srfdatatype" : "${data.work_item_type_id}",  "space": null, "article_page": null, "product": null,"idea": null, "customer": null, "ticket": null, "library": null, "test_case": null, "run": null}&srfdatatype=${data.work_item_type_id}`
 
 内容：
 ```

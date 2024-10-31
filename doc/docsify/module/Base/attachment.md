@@ -78,6 +78,7 @@
 | --------  | --------   | :----:  |:----:  | :----:  |----- |
 |[数据查询(DEFAULT)](module/Base/attachment/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/Base/attachment/query/View)|VIEW|否|否 |否 ||
+|[移动端工作项附件(mob_work_item_attachment)](module/Base/attachment/query/mob_work_item_attachment)|mob_work_item_attachment|否|否 |否 ||
 |[项目下的交付物(project_deliverable)](module/Base/attachment/query/project_deliverable)|project_deliverable|否|否 |是 ||
 |[工作项交付物(work_item_deliverable)](module/Base/attachment/query/work_item_deliverable)|work_item_deliverable|否|否 |否 ||
 
@@ -85,6 +86,7 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/attachment/dataset/Default)|DEFAULT|数据查询|是|||
+|[移动端工作项附件(mob_work_item_attachment)](module/Base/attachment/dataset/mob_work_item_attachment)|mob_work_item_attachment|数据查询|否|||
 |[项目下的交付物(project_deliverable)](module/Base/attachment/dataset/project_deliverable)|project_deliverable|数据查询|否|||
 |[工作项交付物(work_item_deliverable)](module/Base/attachment/dataset/work_item_deliverable)|work_item_deliverable|数据查询|否|||
 
@@ -121,6 +123,8 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 附件下载 | download | 下载 |单项数据|用户自定义||
+| 附件删除（移动端） | mob_attachment_delete | 删除 |单项数据（主键）|用户自定义||
+| 添加附件 | panel_usr1016756890_upload_click | 添加附件 |单项数据|用户自定义||
 | 附件删除（表格） | delete_grid | 删除 |单项数据|用户自定义||
 | 添加附件数据（表格） | add_attachments_grid | 添加附件数据 |无数据|用户自定义||
 | 附件删除 | delete | 删除 |单项数据（主键）|用户自定义||
@@ -129,10 +133,11 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[添加附件数据](module/Base/attachment/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[添加附件数据(表格)](module/Base/attachment/uilogic/add_attachment_grid)|add_attachment_grid|调用附件上传行为，添加附件数据|
+|[添加附件数据（移动端）](module/Base/attachment/uilogic/mob_add_attachment)|mob_add_attachment|调用附件上传行为，添加附件数据|
 |[计算附件是否隐藏逻辑](module/Base/attachment/uilogic/calc_attachment_hidden)|calc_attachment_hidden|根据表格数据判断附件表格的显示或隐藏|
 |[附件删除](module/Base/attachment/uilogic/remove_attachment)|remove_attachment|自动判断为表格或表单附件，按类别删除|
+|[附件删除（移动端）](module/Base/attachment/uilogic/mob_remove_attachment)|mob_remove_attachment|自动判断为列表或表单附件，按类别删除|
 |[附件删除（表格）](module/Base/attachment/uilogic/remove_attachment_grid)|remove_attachment_grid|调用表格的行删除方法，删除指定行附件|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

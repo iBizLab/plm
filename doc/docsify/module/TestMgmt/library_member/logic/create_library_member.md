@@ -63,7 +63,7 @@ BINDPARAM1 --> END1 : [[$./create_library_member#bindparam1-end1{未勾选添加
 
 
 
-1. 将`for_temp_obj(循环临时变量).ID(标识)` 设置给  `member_obj(关系对象).USER_ID(登录名)`
+1. 将`for_temp_obj(循环临时变量).USER_ID(用户ID)` 设置给  `member_obj(关系对象).USER_ID(登录名)`
 2. 将`for_temp_obj(循环临时变量).DISPLAY_NAME(姓名)` 设置给  `member_obj(关系对象).NAME(姓名)`
 3. 将`Default(传入变量).LIBRARY_ID(测试库标识)` 设置给  `member_obj(关系对象).LIBRARY_ID(测试库标识)`
 

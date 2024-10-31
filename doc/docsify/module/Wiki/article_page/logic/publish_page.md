@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./publish_page#begin {"开始"}]]
 state "设置发布信息" as PREPAREPARAM1  [[$./publish_page#prepareparam1 {"设置发布信息"}]]
-state "准备参数" as PREPAREPARAM5  [[$./publish_page#prepareparam5 {"准备参数"}]]
+state "仅充当判断节点" as PREPAREPARAM5  [[$./publish_page#prepareparam5 {"仅充当判断节点"}]]
 state "设置发布时间" as RAWSFCODE1  [[$./publish_page#rawsfcode1 {"设置发布时间"}]]
 state "重置ID" as PREPAREPARAM4  [[$./publish_page#prepareparam4 {"重置ID"}]]
 state "设置发布状态" as PREPAREPARAM2  [[$./publish_page#prepareparam2 {"设置发布状态"}]]
@@ -65,7 +65,7 @@ defaultObj.set("publish_time", new Date());
 2. 将`Default(传入变量).NAME(主题)` 设置给  `Default(传入变量).PUBLISH_NAME(发布主题)`
 3. 将`用户全局对象.srfpersonid` 设置给  `Default(传入变量).PUBLISH_MAN(发布人)`
 
-#### 准备参数 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 仅充当判断节点 :id=PREPAREPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

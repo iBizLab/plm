@@ -131,6 +131,7 @@
 |[管理员(admin)](module/ProdMgmt/product/query/admin)|admin|否|否 |否 ||
 |[已归档(archived)](module/ProdMgmt/product/query/archived)|archived|否|否 |否 ||
 |[当前产品(cur_product)](module/ProdMgmt/product/query/cur_product)|cur_product|否|否 |否 ||
+|[特定用户(customer_user)](module/ProdMgmt/product/query/customer_user)|customer_user|否|否 |否 ||
 |[已删除(deleted)](module/ProdMgmt/product/query/deleted)|deleted|否|否 |否 ||
 |[查询星标(favorite)](module/ProdMgmt/product/query/favorite)|favorite|否|否 |否 ||
 |[查询星标（管理用户）(favorite_user)](module/ProdMgmt/product/query/favorite_user)|favorite_user|否|否 |否 ||
@@ -148,9 +149,11 @@
 |[管理员(admin)](module/ProdMgmt/product/dataset/admin)|admin|数据查询|否|||
 |[已归档(archived)](module/ProdMgmt/product/dataset/archived)|archived|数据查询|否|||
 |[当前产品(cur_product)](module/ProdMgmt/product/dataset/cur_product)|cur_product|数据查询|否|||
+|[特定用户(customer_user)](module/ProdMgmt/product/dataset/customer_user)|customer_user|数据查询|否|||
 |[已删除(deleted)](module/ProdMgmt/product/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/ProdMgmt/product/dataset/favorite)|favorite|数据查询|否|||
 |[主表格查询(main)](module/ProdMgmt/product/dataset/main)|main|数据查询|否|||
+|[主表格查询（移动端）(mob_main)](module/ProdMgmt/product/dataset/mob_main)|mob_main|数据查询|否|||
 |[正常状态(normal)](module/ProdMgmt/product/dataset/normal)|normal|数据查询|否|||
 |[快速新建查询(quick)](module/ProdMgmt/product/dataset/quick)|quick|[实体逻辑](module/ProdMgmt/product/logic/quick_create)|否|||
 |[快速新建查询（管理用户）(quick_user)](module/ProdMgmt/product/dataset/quick_user)|quick_user|数据查询|否|||
@@ -202,6 +205,18 @@
 
 
 
+##### 特定用户（读） :id=product-CUSTOMER_USER_R
+
+<p class="panel-title"><b>数据范围</b></p>
+
+* `数据集合` ：[特定用户(customer_user)](module/ProdMgmt/product#数据集合)
+
+<p class="panel-title"><b>数据能力</b></p>
+
+* `READ`
+
+
+
 ##### 只读用户（读） :id=product-USER_R
 
 <p class="panel-title"><b>数据范围</b></p>
@@ -249,33 +264,40 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 产品新建（移动端） | mob_product_create | 产品新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品新建](app/view/product_mob_create_view)</details>||
 | 添加产品成员 | add_product_member | 添加成员 |无数据|系统预定义||
 | 打开产品配置 | open_global_setting | 产品配置 |无数据|用户自定义||
+| 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
+| 产品设置（移动端） | mob_product_setting | 产品设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品设置](app/view/product_mob_setting_view)</details>||
+| 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 产品成员（移动端） | mob_project_member | 产品成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品成员](app/view/product_member_mob_list_view)</details>||
+| 配置 | panel_usr1021297820_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 更多设置 | opne_setting_view | 更多设置 |单项数据（主键）|用户自定义||
+| 移动产品 | product_move | 移动产品 |单项数据（主键）|<details><summary>后台调用</summary>[product_move](#行为)||
+| 产品信息 | open_show_view | 产品信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品信息](app/view/product_show_edit_view)</details>||
+| 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 打开产品列表（移动端） | mob_open_product_list | 打开产品列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_mob_list_view)</details>||
+| 打开产品导航页 | open_product_exp_page | 打开产品导航页 |无数据|<details><summary>打开顶级视图</summary>[产品管理](app/view/product_tree_exp_view)</details>||
+| 新开窗口（产品） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/product=${data.id}/product_index_view/srfnav=usrdrgroup1228809432/idea_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode/idea_all_grid_view/-*</details>||
+| 打开产品首页视图 | open_index_view | 打开产品首页视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_index_view)</details>||
 | 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
-| 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
+| 产品删除（进行中-移动端） | mob_in_progress_into_deleted | 产品删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 新建产品 | create_product | 新建产品 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建产品](app/view/product_create_wizard_view)</details>||
-| 已归档_删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 产品成员 | open_product_member | 产品成员 |单项数据（主键）|用户自定义||
-| 更多设置 | opne_setting_view | 更多设置 |单项数据（主键）|用户自定义||
-| 移动产品 | product_move | 移动产品 |单项数据（主键）|<details><summary>后台调用</summary>[product_move](#行为)||
-| 产品信息 | open_show_view | 产品信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品信息](app/view/product_show_edit_view)</details>||
-| 进行中_归档 | in_progress_into_archived | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 产品回收站（移动端） | mob_product_recycle_bin | 回收站 |单项数据|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/product_mob_recycle_tab_view)</details>||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
 | 打开新建产品 | open_new_product | 打开新建产品 |单项数据|<details><summary>打开顶级视图</summary>[产品](app/view/product_index_view)</details>||
-| 打开产品导航页 | open_product_exp_page | 打开产品导航页 |无数据|<details><summary>打开顶级视图</summary>[产品管理](app/view/product_tree_exp_view)</details>||
-| 新开窗口（产品） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/product=${data.id}/product_index_view/srfnav=usrdrgroup1228809432/idea_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode/idea_all_grid_view/-*</details>||
-| 打开产品首页视图 | open_index_view | 打开产品首页视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_index_view)</details>||
+| 产品高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/product_mob_ad_setting_view)</details>||
+| 产品归档（进行中-移动端） | mob_in_progress_into_archived | 产品归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[产品只读用户判断](module/ProdMgmt/product/uilogic/product_readonly_recognize)|product_readonly_recognize|判断当前用户是否为只读用户，调用后台处理逻辑获取当前产品成员并判断返回|
-|[刷新当前表格](module/ProdMgmt/product/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[批量删除产品成员临时数据](module/ProdMgmt/product/uilogic/remove_batch_temp)|remove_batch_temp|获取产品内所有临时成员数据并删除|
 |[计算表格列行为状态(product)](module/ProdMgmt/product/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[通知刷新](module/ProdMgmt/product/uilogic/notify_refresh)|notify_refresh|通知页面刷新|

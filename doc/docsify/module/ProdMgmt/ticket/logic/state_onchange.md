@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./state_onchange#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./state_onchange#prepareparam1 {"准备参数"}]]
+state "准备流转对象参数" as PREPAREPARAM1  [[$./state_onchange#prepareparam1 {"准备流转对象参数"}]]
 state "创建流转历史" as DEACTION1  [[$./state_onchange#deaction1 {"创建流转历史"}]]
 state "工单状态变更通知" as DENOTIFY1  [[$./state_onchange#denotify1 {"工单状态变更通知"}]]
 state "结束" as END1 <<end>> [[$./state_onchange#end1 {"结束"}]]
@@ -38,7 +38,7 @@ DENOTIFY1 --> END1
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备流转对象参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

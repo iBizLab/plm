@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_comment_client#begin {开始}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./add_comment_client#preparejsparam1 {准备参数}]]
-state "结束" as END1 <<end>> [[$./add_comment_client#end1 {结束}]]
 state "设置评论输入框默认展开" as RAWJSCODE1  [[$./add_comment_client#rawjscode1 {设置评论输入框默认展开}]]
+state "结束" as END1 <<end>> [[$./add_comment_client#end1 {结束}]]
+state "准备参数" as PREPAREJSPARAM1  [[$./add_comment_client#preparejsparam1 {准备参数}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -46,18 +46,23 @@ RAWJSCODE1 --> END1
 
 
 1. 将`view.parentView` 设置给  `parentView(父视图)`
-2. 将`parentView(父视图).layoutPanel.panelItems` 设置给  `panelItems`
-3. 将`true` 设置给  `panelItems.client_panel_container.state.visible`
-4. 将`true` 设置给  `panelItems.client_panel_container.dynaLogicResult.visible`
+2. 将`parentView(父视图).layoutPanel.panelItems.client_field_textbox.editor` 设置给  `comment(评论)`
+3. 将`parentView(父视图).layoutPanel.panelItems` 设置给  `panelItems`
+4. 将`true` 设置给  `panelItems.client_panel_container.state.visible`
+5. 将`true` 设置给  `panelItems.client_panel_container.dynaLogicResult.visible`
 
 #### 设置评论输入框默认展开 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
-
+需要提前清除回复
 
 <p class="panel-title"><b>执行代码</b></p>
 
 ```javascript
-uiLogic.panelitems.client_field_textbox.editor.toggleCollapse(true);
+uiLogic.comment.clear();
+uiLogic.view.edit_comment_id=null;
+uiLogic.view.reply_comment_id=null;
+uiLogic.comment.toggleCollapse(true);
+uiLogic.comment.focus();
 ```
 
 
@@ -66,7 +71,8 @@ uiLogic.panelitems.client_field_textbox.editor.toggleCollapse(true);
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|父视图|parentView|数据对象||
-|panelItems|panelItems|数据对象||
 |view|view|当前视图对象||
+|panelItems|panelItems|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|评论|comment|数据对象||
+|父视图|parentView|数据对象||

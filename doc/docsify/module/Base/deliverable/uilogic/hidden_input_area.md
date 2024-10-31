@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./hidden_input_area#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./hidden_input_area#rawjscode1 {注入脚本代码}]]
+state "输入框区域隐藏" as RAWJSCODE1  [[$./hidden_input_area#rawjscode1 {输入框区域隐藏}]]
 
 
 Begin --> RAWJSCODE1
@@ -32,7 +32,7 @@ Begin --> RAWJSCODE1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 输入框区域隐藏 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

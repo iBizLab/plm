@@ -78,7 +78,9 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 附件下载 | download | 下载 |单项数据|用户自定义||
+| 附件删除（移动端） | mob_attachment_delete | 删除 |单项数据（主键）|用户自定义||
 | 添加附件 | add_attachments | 添加附件 |无数据|用户自定义||
+| 添加附件(移动端) | mob_add_attachments | 添加附件 |无数据|用户自定义||
 | 删除 | del | 删除 |单项数据（主键）|用户自定义||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
 
@@ -87,7 +89,10 @@
 | --------|--------|--------|
 |[删除](module/TestMgmt/run_attachment/uilogic/del)|del|执行删除方法，并根据条件隐藏表格（数据为空）|
 |[添加附件数据](module/TestMgmt/run_attachment/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
+|[添加附件数据（移动端）](module/TestMgmt/run_attachment/uilogic/mob_add_attachment)|mob_add_attachment|调用附件上传行为，添加附件数据|
+|[获取移动端结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_mob_run_attachment)|get_mob_run_attachment||
 |[获取结果附件总条数](module/TestMgmt/run_attachment/uilogic/get_run_attachment_total)|get_run_attachment_total|获取结果附件总条数|
+|[附件删除（移动端）](module/TestMgmt/run_attachment/uilogic/mob_remove_attachment)|mob_remove_attachment|自动判断为列表或表单附件，按类别删除|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

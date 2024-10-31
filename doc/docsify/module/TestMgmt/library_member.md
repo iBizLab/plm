@@ -73,12 +73,16 @@
 |[数据查询(DEFAULT)](module/TestMgmt/library_member/query/Default)|DEFAULT|是|否 |否 ||
 |[默认（全部数据）(VIEW)](module/TestMgmt/library_member/query/View)|VIEW|否|否 |否 ||
 |[当前测试库成员(cur_library_member)](module/TestMgmt/library_member/query/cur_library_member)|cur_library_member|否|否 |否 ||
+|[移动端当前测试库成员(mob_cur_member)](module/TestMgmt/library_member/query/mob_cur_member)|mob_cur_member|否|否 |否 ||
+|[未关注用户(测试用例)(no_attention)](module/TestMgmt/library_member/query/no_attention)|no_attention|否|否 |否 ||
 
 ## 数据集合
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/TestMgmt/library_member/dataset/Default)|DEFAULT|数据查询|是|||
 |[当前测试库成员(cur_library_member)](module/TestMgmt/library_member/dataset/cur_library_member)|cur_library_member|数据查询|否|||
+|[移动端当前测试库成员(mob_cur_member)](module/TestMgmt/library_member/dataset/mob_cur_member)|mob_cur_member|数据查询|否|||
+|[未关注用户(测试用例)(no_attention)](module/TestMgmt/library_member/dataset/no_attention)|no_attention|数据查询|否|||
 
 ## 数据权限
 
@@ -115,8 +119,11 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 添加测试库成员（移动端） | mob_add_member | 添加成员 |无数据|<details><summary>后台调用</summary>[create_library_member](#行为)||
+| 设置角色（移动端） | mob_setting_role | 设置角色 |单项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 设置角色 | setting_role | 设置角色 |多项数据（主键）|<details><summary>后台调用</summary>[change_role](#行为)||
 | 跳转至成员设置 | jump_to_member_set | 跳转至成员设置 |无数据|用户自定义||
+| 删除成员（移动端） | mob_delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | 删除成员 | delete_member | 删除成员 |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 
 ## 界面逻辑

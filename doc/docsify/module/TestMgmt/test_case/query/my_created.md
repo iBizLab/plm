@@ -30,7 +30,7 @@
 
 ### 查询条件
 
-(`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid`)
+(`CREATE_MAN(建立人)` EQ `用户上下文.srfpersonid` AND `IS_DELETED(是否已删除)` EQ `'0'` AND `IS_ARCHIVED(是否已归档)` EQ `'0'`)
 
 
 
@@ -43,7 +43,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -53,7 +52,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -72,7 +70,7 @@ FROM `TEST_CASE` t1
 LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
 LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
 </el-dialog>

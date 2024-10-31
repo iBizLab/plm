@@ -25,6 +25,7 @@
 |状态|STATUS|文本，可指定长度|100|是||
 |更新人|UPDATE_MAN|文本，可指定长度|100|否||
 |更新时间|UPDATE_TIME|日期时间型||否||
+|用户ID|USER_ID|文本，可指定长度|100|是||
 
 
 ## 关系
@@ -167,20 +168,26 @@
 |N_JOB_NAME_EQ|职位名称|EQ||
 |N_JOB_NAME_LIKE|职位名称|LIKE||
 |N_NAME_LIKE|登录名|LIKE||
+|N_STATUS_EQ|状态|EQ||
 
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 修改密码（移动端表单） | mob_chang_pas | 确认 |无数据|用户自定义||
 | 帐号设置 | account_setting | 帐号设置 |无数据|<details><summary>打开顶级视图</summary>[帐号设置](app/view/user_setting_view)</details>|当前用户帐号设置|
+| 打开用户设置 | open_user_setting | 打开用户设置 |无数据|<details><summary>打开视图或向导（模态）</summary>[企业用户](app/view/user_custom_setting_view)</details>||
 | 主题设置 | theme_setting | 主题设置 |无数据|用户自定义||
 | 修改密码（表单） | chang_pas | 确认 |无数据|用户自定义||
 | 打开日志列表 | open_log_list | 打开日志列表 |无数据|<details><summary>打开顶级视图</summary>[PLM系统更新日志](app/view/article_page_updated_logs)</details>||
 | 停止统计 | cancel_report_flag | 停止统计 |多项数据（主键）|<details><summary>后台调用</summary>[cancel_report_flag](#行为)||
+| 打开密码修改页 | open_change_password | 打开密码修改页 |单项数据|<details><summary>打开视图或向导（模态）</summary>[修改密码](app/view/user_change_password_view)</details>||
+| 打开用户基本信息 | open_user_info | 打开用户基本信息 |无数据|<details><summary>打开视图或向导（模态）</summary>[企业用户](app/view/user_mob_user_info_view)</details>||
 | 开启统计 | set_report_flag | 开启统计 |多项数据（主键）|<details><summary>后台调用</summary>[set_report_flag](#行为)||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[修改密码（移动端表单）](module/Base/user/uilogic/mob_change_pas)|mob_change_pas|修改密码|
 |[修改密码（表单）](module/Base/user/uilogic/change_pas)|change_pas|修改密码|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

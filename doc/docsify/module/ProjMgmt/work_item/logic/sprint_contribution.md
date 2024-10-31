@@ -17,7 +17,7 @@ hide empty description
 state "开始" as Begin <<start>> [[$./sprint_contribution#begin {"开始"}]]
 state "准备工作项查询过滤器参数" as PREPAREPARAM1  [[$./sprint_contribution#prepareparam1 {"准备工作项查询过滤器参数"}]]
 state "查询此迭代下的工作项" as DEDATASET1  [[$./sprint_contribution#dedataset1 {"查询此迭代下的工作项"}]]
-state "绑定参数" as BINDPARAM1  [[$./sprint_contribution#bindparam1 {"绑定参数"}]]
+state "绑定工作项分页查询结果" as BINDPARAM1  [[$./sprint_contribution#bindparam1 {"绑定工作项分页查询结果"}]]
 state "结束" as END1 <<end>> [[$./sprint_contribution#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./sprint_contribution#loopsubcall1 {"循环子调用"}]] #green {
 state "计算统计数字" as RAWSFCODE1  [[$./sprint_contribution#rawsfcode1 {"计算统计数字"}]]
@@ -117,7 +117,7 @@ if(assignee_id != null){
 }
 ```
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定工作项分页查询结果 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

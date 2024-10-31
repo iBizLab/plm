@@ -18,8 +18,8 @@
 
 
 ### 关联界面行为
-  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [新建工作项类型](module/ProjMgmt/work_item_type#界面行为)
   * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_编辑操作](module/ProjMgmt/work_item_type#界面行为)
+  * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [新建工作项类型](module/ProjMgmt/work_item_type#界面行为)
   * [工作项类型(WORK_ITEM_TYPE)](module/ProjMgmt/work_item_type) : [表格界面_删除操作](module/ProjMgmt/work_item_type#界面行为)
 
 ### 关联界面逻辑

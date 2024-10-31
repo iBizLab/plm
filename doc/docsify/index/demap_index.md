@@ -22,3 +22,7 @@
 
 * [ebsx映射(ebsx_mapping)](module/Base/user/demap/ebsx_mapping.md)
 * [ibizsysmgr人员映射](module/Base/user/demap/ibizsysmgr.md)
+
+## [视图主题设置(VIEW_THEME_SETTING)](module/Base/view_theme_setting.md) :id=view_theme_setting
+
+* [实体映射](module/Base/view_theme_setting/demap/DEMap.md)

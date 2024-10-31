@@ -10,8 +10,8 @@
 
 
 ### 关联界面行为
-  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [移除全部数据（数据选择）](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [视图_取消](module/ProjMgmt/sprint#界面行为)
+  * [迭代(SPRINT)](module/ProjMgmt/sprint) : [移除全部数据（数据选择）](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [移除选中数据（数据选择）](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [视图_确定](module/ProjMgmt/sprint#界面行为)
   * [迭代(SPRINT)](module/ProjMgmt/sprint) : [添加选中数据（数据选择）](module/ProjMgmt/sprint#界面行为)

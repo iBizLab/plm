@@ -1,5 +1,7 @@
 ```sql
 SELECT
+(SELECT COUNT( att.ID ) AS attention_count FROM test_case tc LEFT JOIN `attention` att ON tc.ID = att.OWNER_ID WHERE tc.ID = t1.`ID`) AS `ATTENTION_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM test_case tc LEFT JOIN `comment` com ON tc.ID = com.PRINCIPAL_ID WHERE tc.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,

@@ -18,9 +18,9 @@
 
 
 ### 关联界面行为
-  * [项目发布(RELEASE)](module/ProjMgmt/release) : [表格界面_新建操作_子数据](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [删除](module/ProjMgmt/release#界面行为)
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [编辑](module/ProjMgmt/release#界面行为)
+  * [项目发布(RELEASE)](module/ProjMgmt/release) : [表格界面_新建操作_子数据](module/ProjMgmt/release#界面行为)
 
 ### 关联界面逻辑
   * [项目发布(RELEASE)](module/ProjMgmt/release) : [计算进度](module/ProjMgmt/release/uilogic/cal_schedule)

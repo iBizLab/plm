@@ -54,6 +54,10 @@
   * `END_AT(截止时间)`
   * `START_AT(开始时间)`
   * `STATE_TYPE(工作项状态类型)`
+  * `CREATE_MAN(建立人)`
+  * `UPDATE_TIME(更新时间)`
+  * `UPDATE_MAN(更新人)`
+  * `IS_OVERTIME(是否超时)`
 
 
 
@@ -73,6 +77,7 @@ t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
@@ -80,6 +85,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -96,6 +102,8 @@ t1.`STATE`,
 t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 

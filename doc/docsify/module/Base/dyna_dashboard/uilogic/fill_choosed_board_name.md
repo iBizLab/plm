@@ -1,6 +1,6 @@
 ## 获取选中模板名称 <!-- {docsify-ignore-all} -->
 
-   
+   获取选中模板名称
 
 ### 处理过程
 
@@ -57,8 +57,8 @@ view.layoutPanel.panelItems.board_title.setDataValue(uiLogic.ctrl.inputData.dyna
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
-|仪表盘标题|board_title|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|视图导航参数|params|||
+|仪表盘标题|board_title|数据对象||
 |ctrl|ctrl|当前部件对象||
+|视图导航参数|params|||
+|当前视图对象|view|当前视图对象||

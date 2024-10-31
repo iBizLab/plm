@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./clear_comment_client#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./clear_comment_client#rawjscode1 {注入脚本代码}]]
+state "清空评论(客户沟通)" as RAWJSCODE1  [[$./clear_comment_client#rawjscode1 {清空评论(客户沟通)}]]
 state "获取评论编辑器" as PREPAREJSPARAM1  [[$./clear_comment_client#preparejsparam1 {获取评论编辑器}]]
 
 
@@ -40,7 +40,7 @@ PREPAREJSPARAM1 --> RAWJSCODE1
 
 1. 将`view(当前视图对象).layoutPanel.panelItems.client_field_textbox.editor` 设置给  `editor(评论框编辑器)`
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 清空评论(客户沟通) :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

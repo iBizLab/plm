@@ -16,15 +16,15 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./create_plan_snapshot#begin {"开始"}]]
 state "设置基线状态" as PREPAREPARAM7  [[$./create_plan_snapshot#prepareparam7 {"设置基线状态"}]]
+state "设置快照状态" as PREPAREPARAM6  [[$./create_plan_snapshot#prepareparam6 {"设置快照状态"}]]
 state "新建快照" as DEACTION3  [[$./create_plan_snapshot#deaction3 {"新建快照"}]]
 state "传入项目标识至查询过滤器" as PREPAREPARAM1  [[$./create_plan_snapshot#prepareparam1 {"传入项目标识至查询过滤器"}]]
-state "设置快照状态" as PREPAREPARAM6  [[$./create_plan_snapshot#prepareparam6 {"设置快照状态"}]]
 state "获取指定项目下的所有工作项" as DEDATASET1  [[$./create_plan_snapshot#dedataset1 {"获取指定项目下的所有工作项"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./create_plan_snapshot#loopsubcall1 {"循环子调用"}]] #green {
 state "重置关联对象" as RESETPARAM2  [[$./create_plan_snapshot#resetparam2 {"重置关联对象"}]]
 state "将工作项标识赋值于关联对象" as PREPAREPARAM2  [[$./create_plan_snapshot#prepareparam2 {"将工作项标识赋值于关联对象"}]]
 state "关联对象版本标识" as PREPAREPARAM3  [[$./create_plan_snapshot#prepareparam3 {"关联对象版本标识"}]]
-state "重置参数" as RESETPARAM1  [[$./create_plan_snapshot#resetparam1 {"重置参数"}]]
+state "重置版本参数" as RESETPARAM1  [[$./create_plan_snapshot#resetparam1 {"重置版本参数"}]]
 state "填充初始化版本属性" as PREPAREPARAM4  [[$./create_plan_snapshot#prepareparam4 {"填充初始化版本属性"}]]
 state "修复初始化版本" as DEACTION1  [[$./create_plan_snapshot#deaction1 {"修复初始化版本"}]]
 state "关联对象版本标识" as PREPAREPARAM5  [[$./create_plan_snapshot#prepareparam5 {"关联对象版本标识"}]]
@@ -128,7 +128,7 @@ PREPAREPARAM6 --> DEACTION3
 
 将执行结果返回给参数`relation(关联对象)`
 
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置版本参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 

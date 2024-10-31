@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./assignee_onchange#begin {"开始"}]]
-state "准备参数" as PREPAREPARAM1  [[$./assignee_onchange#prepareparam1 {"准备参数"}]]
+state "设置更新人和更新时间" as PREPAREPARAM1  [[$./assignee_onchange#prepareparam1 {"设置更新人和更新时间"}]]
 state "分配负责人通知" as DENOTIFY1  [[$./assignee_onchange#denotify1 {"分配负责人通知"}]]
 state "取消分配负责人通知" as DENOTIFY2  [[$./assignee_onchange#denotify2 {"取消分配负责人通知"}]]
 
@@ -36,7 +36,7 @@ PREPAREPARAM1 --> DENOTIFY2
 
 
 *- N/A*
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置更新人和更新时间 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

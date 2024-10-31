@@ -20,12 +20,12 @@ state "获取已登记工时" as RAWSQLCALL2  [[$./before_remove#rawsqlcall2 {"�
 state "准备查询过滤器参数" as PREPAREPARAM1  [[$./before_remove#prepareparam1 {"准备查询过滤器参数"}]]
 state "获取预估工时" as DEDATASET1  [[$./before_remove#dedataset1 {"获取预估工时"}]]
 state "绑定预估工时" as BINDPARAM1  [[$./before_remove#bindparam1 {"绑定预估工时"}]]
-state "准备参数" as PREPAREPARAM2  [[$./before_remove#prepareparam2 {"准备参数"}]]
+state "填充实际工时和剩余工时" as PREPAREPARAM2  [[$./before_remove#prepareparam2 {"填充实际工时和剩余工时"}]]
 state "获取剩余工时" as DEDATASET2  [[$./before_remove#dedataset2 {"获取剩余工时"}]]
 state "绑定剩余工时" as BINDPARAM2  [[$./before_remove#bindparam2 {"绑定剩余工时"}]]
 state "计算剩余工时" as RAWSFCODE1  [[$./before_remove#rawsfcode1 {"计算剩余工时"}]]
 state "更新剩余工时" as DEACTION2  [[$./before_remove#deaction2 {"更新剩余工时"}]]
-state "准备参数" as PREPAREPARAM3  [[$./before_remove#prepareparam3 {"准备参数"}]]
+state "置空实际工时" as PREPAREPARAM3  [[$./before_remove#prepareparam3 {"置空实际工时"}]]
 state "更新实际工时" as DEACTION3  [[$./before_remove#deaction3 {"更新实际工时"}]]
 
 
@@ -103,7 +103,7 @@ select sum(DURATION) as `DURATION` from workload where  PRINCIPAL_TYPE = ? and P
 
 
 绑定参数`estimated_page(预估工时查询结果对象)` 到 `estimated(预估工时)`
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充实际工时和剩余工时 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -164,7 +164,7 @@ actualObj.set("decimal_value", actual);
 
 调用实体 [扩展存储(EXTEND_STORAGE)](module/Base/extend_storage.md) 行为 [Save](module/Base/extend_storage#行为) ，行为参数为`remaining(剩余工时)`
 
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 置空实际工时 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

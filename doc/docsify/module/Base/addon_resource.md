@@ -60,7 +60,7 @@
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
 |[检验资源是否已删除](module/Base/addon_resource/logic/check_resource_is_deleted)|check_resource_is_deleted|无||判断资源是否已删除，用于视图切换逻辑|
-|[空查询](module/Base/addon_resource/logic/empty)|empty|无|||
+|[空查询](module/Base/addon_resource/logic/empty)|empty|无||空查询|
 
 ## 功能配置
 | 中文名col200    | 功能类型col150    | 功能实体col200 |  备注col700|

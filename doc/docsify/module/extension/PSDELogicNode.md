@@ -1,6 +1,9 @@
 # 实体处理逻辑节点(PSDELogicNode)  <!-- {docsify-ignore-all} -->
 
 
+实体处理逻辑节点
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -101,7 +104,7 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 添加状态 | addStatus | 添加状态 |无数据|<details><summary>打开视图或向导（模态）</summary>[实体处理逻辑节点](app/view/psdelogicnodequickcreateview_msnode2)</details>||
+| 添加状态 | addStatus | 添加状态 |无数据|<details><summary>打开视图或向导（模态）</summary>[实体处理逻辑节点](app/view/psdelogicnodequickcreateview_msnode)</details>||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

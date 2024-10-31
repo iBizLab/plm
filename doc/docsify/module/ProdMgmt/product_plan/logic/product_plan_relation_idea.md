@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./product_plan_relation_idea#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./product_plan_relation_idea#bindparam1 {"绑定参数"}]]
+state "绑定srfactionparam参数" as BINDPARAM1  [[$./product_plan_relation_idea#bindparam1 {"绑定srfactionparam参数"}]]
 state "结束" as END1 <<end>> [[$./product_plan_relation_idea#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./product_plan_relation_idea#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./product_plan_relation_idea#renewparam1 {"重新建立参数"}]]
-state "重新建立参数" as RENEWPARAM2  [[$./product_plan_relation_idea#renewparam2 {"重新建立参数"}]]
+state "重新建立正向关联参数" as RENEWPARAM1  [[$./product_plan_relation_idea#renewparam1 {"重新建立正向关联参数"}]]
+state "重新建立反向关联参数" as RENEWPARAM2  [[$./product_plan_relation_idea#renewparam2 {"重新建立反向关联参数"}]]
 state "填充需要的属性值" as PREPAREPARAM1  [[$./product_plan_relation_idea#prepareparam1 {"填充需要的属性值"}]]
-state "准备参数" as PREPAREPARAM2  [[$./product_plan_relation_idea#prepareparam2 {"准备参数"}]]
+state "设置关联参数" as PREPAREPARAM2  [[$./product_plan_relation_idea#prepareparam2 {"设置关联参数"}]]
 state "生成正向关联数据" as DEACTION1  [[$./product_plan_relation_idea#deaction1 {"生成正向关联数据"}]]
 state "生成反向关联数据" as DEACTION2  [[$./product_plan_relation_idea#deaction2 {"生成反向关联数据"}]]
 }
@@ -50,7 +50,7 @@ LOOPSUBCALL1 --> END1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定srfactionparam参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -60,12 +60,12 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`selectdata(关联列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立正向关联参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
 重建参数```relationobj(关系对象)```
-#### 重新建立参数 :id=RENEWPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立反向关联参数 :id=RENEWPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
@@ -83,7 +83,7 @@ LOOPSUBCALL1 --> END1
 7. 将`Default(传入变量).target_type` 设置给  `relationobj(关系对象).TARGET_TYPE(关联目标类型)`
 8. 将`for_temp_obj(循环临时变量).id(标识)` 设置给  `relationobj(关系对象).TARGET_ID(关联目标标识)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置关联参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

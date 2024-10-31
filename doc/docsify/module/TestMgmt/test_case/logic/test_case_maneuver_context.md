@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./test_case_maneuver_context#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./test_case_maneuver_context#end1 {"结束"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./test_case_maneuver_context#rawsqlcall1 {"直接SQL调用"}]]
+state " 测试用例活动情况" as RAWSQLCALL1  [[$./test_case_maneuver_context#rawsqlcall1 {" 测试用例活动情况"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -40,7 +40,7 @@ RAWSQLCALL1 --> END1
 
 返回 `result(结果)`
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+####  测试用例活动情况 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

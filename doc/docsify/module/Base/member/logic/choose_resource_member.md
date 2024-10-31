@@ -78,7 +78,8 @@ user_filter.setPageable(_default.getPageable())
 
 
 1. 将`Default(传入变量).n_department_id_eq` 设置给  `user_filter(用户过滤器).n_department_id_eq`
-2. 将`Default(传入变量).n_name_like` 设置给  `user_filter(用户过滤器).n_display_name_like`
+2. 将`1` 设置给  `user_filter(用户过滤器).n_status_eq`
+3. 将`Default(传入变量).n_name_like` 设置给  `user_filter(用户过滤器).n_display_name_like`
 
 #### 获取团队成员 :id=DEDATASET3<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
@@ -136,7 +137,7 @@ if(user_ids != ""){
 
 
 1. 将`for_user_obj(部门成员循环临时变量).DISPLAY_NAME(姓名)` 设置给  `for_user_obj(部门成员循环临时变量).NAME(登录名)`
-2. 将`for_user_obj(部门成员循环临时变量).ID(标识)` 设置给  `for_user_obj(部门成员循环临时变量).user_id`
+2. 将`for_user_obj(部门成员循环临时变量).ID(标识)` 设置给  `for_user_obj(部门成员循环临时变量).user_id(用户ID)`
 
 #### 结束 :id=END2<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

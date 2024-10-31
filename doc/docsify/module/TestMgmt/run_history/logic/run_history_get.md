@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./run_history_get#begin {"开始"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./run_history_get#rawsqlcall1 {"直接SQL调用"}]]
+state "执行结果获取" as RAWSQLCALL1  [[$./run_history_get#rawsqlcall1 {"执行结果获取"}]]
 state "结束" as END1 <<end>> [[$./run_history_get#end1 {"结束"}]]
 
 
@@ -34,7 +34,7 @@ RAWSQLCALL1 --> END1
 
 
 *- N/A*
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 执行结果获取 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

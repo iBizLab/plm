@@ -17,7 +17,7 @@ hide empty description
 state "开始" as Begin <<start>> [[$./get_not_finish#begin {"开始"}]]
 state "获取迭代" as DEACTION1  [[$./get_not_finish#deaction1 {"获取迭代"}]]
 state "查询该迭代下未完成的工作项" as RAWSQLCALL1  [[$./get_not_finish#rawsqlcall1 {"查询该迭代下未完成的工作项"}]]
-state "准备参数" as PREPAREPARAM1  [[$./get_not_finish#prepareparam1 {"准备参数"}]]
+state "填充完成信息" as PREPAREPARAM1  [[$./get_not_finish#prepareparam1 {"填充完成信息"}]]
 state "添加未完成提醒内容" as RAWSFCODE1  [[$./get_not_finish#rawsfcode1 {"添加未完成提醒内容"}]]
 state "结束" as END1 <<end>> [[$./get_not_finish#end1 {"结束"}]]
 
@@ -79,7 +79,7 @@ sprint.set("remind", "该迭代仍有" + not_finish_num + "个工作项没有完
 
 ```
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充完成信息 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

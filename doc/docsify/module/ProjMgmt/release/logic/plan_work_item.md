@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./plan_work_item#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./plan_work_item#bindparam1 {"绑定参数"}]]
+state "绑定选中数据列表参数" as BINDPARAM1  [[$./plan_work_item#bindparam1 {"绑定选中数据列表参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./plan_work_item#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./plan_work_item#renewparam1 {"重新建立参数"}]]
-state "准备参数" as PREPAREPARAM1  [[$./plan_work_item#prepareparam1 {"准备参数"}]]
+state "重新建立发布参数" as RENEWPARAM1  [[$./plan_work_item#renewparam1 {"重新建立发布参数"}]]
+state "准备更新发布参数" as PREPAREPARAM1  [[$./plan_work_item#prepareparam1 {"准备更新发布参数"}]]
 state "更新工作项" as DEACTION1  [[$./plan_work_item#deaction1 {"更新工作项"}]]
 }
 
@@ -41,7 +41,7 @@ PREPAREPARAM1 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中数据列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -51,12 +51,12 @@ PREPAREPARAM1 --> DEACTION1
 
 
 循环参数`srfactionparam(选中数据列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立发布参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
 重建参数```update_obj(更新对象)```
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备更新发布参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

@@ -18,11 +18,11 @@ state "开始" as Begin <<start>> [[$./run_del_relation_bug#begin {"开始"}]]
 state "拼接关联对象的主键" as RAWSFCODE1  [[$./run_del_relation_bug#rawsfcode1 {"拼接关联对象的主键"}]]
 state "删除正向关联" as DEACTION2  [[$./run_del_relation_bug#deaction2 {"删除正向关联"}]]
 state "删除反向关联" as DEACTION3  [[$./run_del_relation_bug#deaction3 {"删除反向关联"}]]
-state "准备参数" as PREPAREPARAM3  [[$./run_del_relation_bug#prepareparam3 {"准备参数"}]]
 state "获取执行用例" as DEACTION6  [[$./run_del_relation_bug#deaction6 {"获取执行用例"}]]
-state "准备参数" as PREPAREPARAM2  [[$./run_del_relation_bug#prepareparam2 {"准备参数"}]]
 state "对应测试用例关联缺陷" as DEDATASET1  [[$./run_del_relation_bug#dedataset1 {"对应测试用例关联缺陷"}]]
 state "填充正反关联对象的主要关联属性" as PREPAREPARAM1  [[$./run_del_relation_bug#prepareparam1 {"填充正反关联对象的主要关联属性"}]]
+state "准备执行用例参数" as PREPAREPARAM3  [[$./run_del_relation_bug#prepareparam3 {"准备执行用例参数"}]]
+state "准备关联数据过滤参数" as PREPAREPARAM2  [[$./run_del_relation_bug#prepareparam2 {"准备关联数据过滤参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./run_del_relation_bug#loopsubcall1 {"循环子调用"}]] #green {
 state "填充主键" as RAWSFCODE2  [[$./run_del_relation_bug#rawsfcode2 {"填充主键"}]]
 state "删除测试用例关联缺陷数据" as DEACTION4  [[$./run_del_relation_bug#deaction4 {"删除测试用例关联缺陷数据"}]]
@@ -95,7 +95,7 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 调用实体 [关联(RELATION)](module/Base/relation.md) 行为 [Remove](module/Base/relation#行为) ，行为参数为`reverse_relation_obj(反向关联对象)`
 
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备执行用例参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -109,7 +109,7 @@ if(reverse_relation_obj.get("principal_id") != null && reverse_relation_obj.get(
 
 将执行结果返回给参数`run(执行用例)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备关联数据过滤参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

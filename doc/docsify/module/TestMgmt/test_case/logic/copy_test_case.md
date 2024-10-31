@@ -20,12 +20,12 @@ state "绑定ID" as BINDPARAM2  [[$./copy_test_case#bindparam2 {"绑定ID"}]]
 state "结束" as END1 <<end>> [[$./copy_test_case#end1 {"结束"}]]
 state "结束" as END2 <<end>> [[$./copy_test_case#end2 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./copy_test_case#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./copy_test_case#renewparam1 {"重新建立参数"}]]
+state "重新建立循环临时参数" as RENEWPARAM1  [[$./copy_test_case#renewparam1 {"重新建立循环临时参数"}]]
 state "获取用例" as DEACTION2  [[$./copy_test_case#deaction2 {"获取用例"}]]
 state "设置用例信息" as PREPAREPARAM1  [[$./copy_test_case#prepareparam1 {"设置用例信息"}]]
 state "创建测试用例" as DEACTION1  [[$./copy_test_case#deaction1 {"创建测试用例"}]]
-state "准备参数" as PREPAREPARAM3  [[$./copy_test_case#prepareparam3 {"准备参数"}]]
-state "实体行为" as DEACTION4  [[$./copy_test_case#deaction4 {"实体行为"}]]
+state "准备附件参数" as PREPAREPARAM3  [[$./copy_test_case#prepareparam3 {"准备附件参数"}]]
+state "创建附件" as DEACTION4  [[$./copy_test_case#deaction4 {"创建附件"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./copy_test_case#loopsubcall2 {"循环子调用"}]] #green {
 state "置空附件ID及owner_id" as PREPAREPARAM2  [[$./copy_test_case#prepareparam2 {"置空附件ID及owner_id"}]]
@@ -75,7 +75,7 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`srfactionparam(选择的数据对象)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立循环临时参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
@@ -133,7 +133,7 @@ LOOPSUBCALL1 --> END1
 
 *- N/A*
 
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备附件参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -145,7 +145,7 @@ LOOPSUBCALL1 --> END1
 6. 将`test_case_new(新测试用例).ID(标识)` 设置给  `attention(关注人).OWNER_ID(所属数据标识)`
 7. 将`TEST_CASE` 设置给  `attention(关注人).OWNER_TYPE(所属数据对象)`
 
-#### 实体行为 :id=DEACTION4<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 创建附件 :id=DEACTION4<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

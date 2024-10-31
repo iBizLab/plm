@@ -170,9 +170,9 @@
 |[nothing](module/TestMgmt/review/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[全部提交](module/TestMgmt/review/logic/all_submit)|all_submit|无||未完成|
 |[创建后附加评审规则](module/TestMgmt/review/logic/add_guideline_after_created)|add_guideline_after_created|无||在创建评审后，自动获取规则的值并赋予|
-|[变更评审内阶段](module/TestMgmt/review/logic/change_review_stage)|change_review_stage|无|||
+|[变更评审内阶段](module/TestMgmt/review/logic/change_review_stage)|change_review_stage|无||变更评审内阶段|
 |[填充评审规则](module/TestMgmt/review/logic/fill_guideline)|fill_guideline|无||填充评审规则|
-|[填充阶段评审人](module/TestMgmt/review/logic/fill_stage_reviewer)|fill_stage_reviewer|无|||
+|[填充阶段评审人](module/TestMgmt/review/logic/fill_stage_reviewer)|fill_stage_reviewer|无||填充阶段评审人|
 |[完成评审](module/TestMgmt/review/logic/completed_review)|completed_review|无||完成评审，修改评审状态以及设置那些未评审用例的评审结果|
 |[待办数据](module/TestMgmt/review/logic/TodoData)|TodoData|无||测试|
 |[提交评审](module/TestMgmt/review/logic/submit_review)|submit_review|无||测试|
@@ -239,10 +239,8 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[删除类别或分组](module/TestMgmt/review/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
-|[刷新评审主视图](module/TestMgmt/review/uilogic/refresh_main_view)|refresh_main_view||
+|[刷新评审主视图](module/TestMgmt/review/uilogic/refresh_main_view)|refresh_main_view|刷新评审主视图|
 |[批量删除评审用例临时数据](module/TestMgmt/review/uilogic/remove_batch_temp)|remove_batch_temp|获取评审所有临时用例并删除|
-|[提交评审](module/TestMgmt/review/uilogic/commit_review)|commit_review|提交评审|
-|[撤销评审](module/TestMgmt/review/uilogic/repeal_review)|repeal_review|将评审状态设置为已撤回|
 |[新建分组](module/TestMgmt/review/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
 |[新建类别](module/TestMgmt/review/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[添加附件数据（通用）](module/TestMgmt/review/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|

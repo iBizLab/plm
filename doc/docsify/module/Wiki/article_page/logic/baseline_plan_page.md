@@ -21,7 +21,7 @@ state "获取版本数据" as DEDATASET2  [[$./baseline_plan_page#dedataset2 {"�
 state "结束" as END1 <<end>> [[$./baseline_plan_page#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./baseline_plan_page#loopsubcall1 {"循环子调用"}]] #green {
 state "执行脚本代码" as RAWSFCODE1  [[$./baseline_plan_page#rawsfcode1 {"执行脚本代码"}]]
-state "准备参数" as PREPAREPARAM4  [[$./baseline_plan_page#prepareparam4 {"准备参数"}]]
+state "设置当前版本" as PREPAREPARAM4  [[$./baseline_plan_page#prepareparam4 {"设置当前版本"}]]
 }
 state "循环子调用" as LOOPSUBCALL2  [[$./baseline_plan_page#loopsubcall2 {"循环子调用"}]] #green {
 }
@@ -29,7 +29,7 @@ state "循环子调用" as LOOPSUBCALL3  [[$./baseline_plan_page#loopsubcall3 {"
 state "填充当前版本名称" as PREPAREPARAM2  [[$./baseline_plan_page#prepareparam2 {"填充当前版本名称"}]]
 }
 state "循环子调用" as LOOPSUBCALL4  [[$./baseline_plan_page#loopsubcall4 {"循环子调用"}]] #green {
-state "准备参数" as PREPAREPARAM3  [[$./baseline_plan_page#prepareparam3 {"准备参数"}]]
+state "设置当前版本" as PREPAREPARAM3  [[$./baseline_plan_page#prepareparam3 {"设置当前版本"}]]
 }
 
 
@@ -92,7 +92,7 @@ if(for_temp_obj.get("cur_version_id")){
 }
 ```
 
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置当前版本 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -133,7 +133,7 @@ if(for_temp_obj.get("cur_version_id")){
 
 
 循环参数`page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置当前版本 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

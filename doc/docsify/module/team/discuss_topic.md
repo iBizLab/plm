@@ -47,7 +47,7 @@
 |Create|Create|内置方法|默认|不支持|[附加操作](index/action_logic_index#discuss_topic_Create)|||
 |CreateTemp|CreateTemp|内置方法|默认|不支持||||
 |CreateTempMajor|CreateTempMajor|内置方法|默认|不支持||||
-|Get|Get|内置方法|默认|不支持||||
+|Get|Get|内置方法|默认|不支持|[附加操作](index/action_logic_index#discuss_topic_Get)|||
 |GetDraft|GetDraft|内置方法|默认|不支持||||
 |GetDraftTemp|GetDraftTemp|内置方法|默认|不支持||||
 |GetDraftTempMajor|GetDraftTempMajor|内置方法|默认|不支持||||
@@ -65,6 +65,7 @@
 |变更管理员角色|change_admin_role|[实体处理逻辑](module/Team/discuss_topic/logic/change_admin_role "变更管理员角色")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/Team/discuss_topic/logic/delete "删除")|默认|不支持||||
 |设置星标|favorite|[实体处理逻辑](module/Team/discuss_topic/logic/favorite "设置星标")|默认|不支持||||
+|变更管理员角色（移动端）|mob_change_admin_role|[实体处理逻辑](module/Team/discuss_topic/logic/mob_change_admin_role "变更管理员角色（移动端）")|默认|不支持||||
 |移动话题|move_discuss_topic|[实体处理逻辑](module/Team/discuss_topic/logic/move_discuss_topic "移动话题")|默认|不支持||||
 |无操作|nothing|[实体处理逻辑](module/Team/discuss_topic/logic/nothing "无操作")|默认|不支持||||
 |恢复|recover|[实体处理逻辑](module/Team/discuss_topic/logic/recover "恢复")|默认|不支持||||
@@ -76,6 +77,7 @@
 |[删除](module/Team/discuss_topic/logic/delete)|delete|无||话题数据的逻辑删除，修改话题的是否删除属性值|
 |[取消星标](module/Team/discuss_topic/logic/un_favorite)|un_favorite|无||话题取消星标|
 |[变更管理员角色](module/Team/discuss_topic/logic/change_admin_role)|change_admin_role|无||批量变更管理员角色身份（role_id）|
+|[变更管理员角色（移动端）](module/Team/discuss_topic/logic/mob_change_admin_role)|mob_change_admin_role|无|||
 |[归档](module/Team/discuss_topic/logic/archive)|archive|无||未归档话题数据的归档处理，修改话题的归档状态为已归档|
 |[恢复](module/Team/discuss_topic/logic/recover)|recover|无||恢复已删除状态话题数据，修改话题的是否删除属性值，并恢复访问记录|
 |[无操作](module/Team/discuss_topic/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
@@ -83,6 +85,7 @@
 |[移动话题](module/Team/discuss_topic/logic/move_discuss_topic)|move_discuss_topic|无||高级设置中移动项目|
 |[自动创建人员](module/Team/discuss_topic/logic/auto_create_members)|auto_create_members|无||当所属选择"团队"时，点击完成后自动添加团队下的所有成员。|
 |[获取快速新建话题集合](module/Team/discuss_topic/logic/quick_create)|quick_create|无||用于获取可快速新建的话题集合|
+|[获取话题成员](module/Team/discuss_topic/logic/get_discuss_member_one)|get_discuss_member_one|无||获取话题成员信息，用于判断当前用户权限|
 |[设置星标](module/Team/discuss_topic/logic/favorite)|favorite|无||设置为星标话题|
 
 ## 数据查询
@@ -206,27 +209,33 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 话题成员 | open_member_view | 话题成员 |单项数据（主键）|用户自定义||
+| 归档话题（移动端） | mob_archived | 归档话题 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 打开话题列表视图（移动端） | mob_open_topic_list | 打开话题列表视图 |无数据|<details><summary>打开视图或向导（模态）</summary>[话题](app/view/discuss_topic_mob_list_view)</details>||
+| 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 打开新建话题 | open_new_topic | 打开新建话题 |单项数据|<details><summary>打开顶级视图</summary>[话题](app/view/discuss_topic_index_view)</details>||
+| 删除话题 | delete | 删除话题 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
+| 已归档-删除（移动端） | mob_archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 归档话题 | archived | 归档话题 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 打开话题配置 | open_discuss_topic_setting | 打开话题配置 |无数据|用户自定义||
+| 设置管理员（移动端） | mob_set_admin | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[mob_change_admin_role](#行为)||
+| 打开话题导航页 | open_topic_exp_page | 打开话题导航页 |无数据|<details><summary>打开顶级视图</summary>[协助空间](app/view/discuss_topic_tree_exp_view)</details>||
+| 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 新建话题 | create_discuss_topic | 新建话题 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建话题](app/view/discuss_topic_create_wizard_view)</details>||
+| 新开窗口（话题） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/discuss_topic=${data.id}/discuss_topic_index_view/srfnav=usrdrgroup0515813208/discuss_post_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_4%3Anode/discuss_post_all_grid_view/-*</details>||
+| 打开话题首页视图 | open_index_view | 打开话题首页视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[话题](app/view/discuss_topic_index_view)</details>||
+| 取消星标 | cancel_favorite | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
 | 已删除_恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
 | 编辑基本信息 | open_edit_view | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 设置星标 | add_favorite | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
-| 进行中_删除 | in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
-| 打开新建话题 | open_new_topic | 打开新建话题 |单项数据|<details><summary>打开顶级视图</summary>[话题](app/view/discuss_topic_index_view)</details>||
-| 删除话题 | delete | 删除话题 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 更多设置 | open_setting_view | 更多设置 |单项数据（主键）|用户自定义||
-| 归档话题 | archived | 归档话题 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
-| 打开话题配置 | open_discuss_topic_setting | 打开话题配置 |无数据|用户自定义||
-| 打开话题导航页 | open_topic_exp_page | 打开话题导航页 |无数据|<details><summary>打开顶级视图</summary>[协助空间](app/view/discuss_topic_tree_exp_view)</details>||
+| 添加话题成员 | add_discuss_topic_member | 添加成员 |无数据|系统预定义||
+| 删除话题（移动端） | mob_delete | 删除话题 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
-| 已归档_删除 | archived_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 新建话题 | create_discuss_topic | 新建话题 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建话题](app/view/discuss_topic_create_wizard_view)</details>||
 | 移动话题 | move_discuss_topic | 移动话题 |单项数据（主键）|<details><summary>后台调用</summary>[move_discuss_topic](#行为)||
-| 新开窗口（话题） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/discuss_topic=${data.id}/discuss_topic_index_view/srfnav=usrdrgroup0515813208/discuss_post_tree_exp_view/srfnavctx=%257B%2522srfdefaulttoroutedepth%2522%253A3%257D;srfnav=root%3Anode_4%3Anode/discuss_post_all_grid_view/-*</details>||
 | 设置管理员 | set_admin | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
-| 打开话题首页视图 | open_index_view | 打开话题首页视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[话题](app/view/discuss_topic_index_view)</details>||
 | 话题信息 | topic_info | 话题信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[话题](app/view/discuss_topic_show_edit_view)</details>||
 
 ## 界面逻辑

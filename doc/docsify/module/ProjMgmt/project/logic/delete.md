@@ -58,7 +58,7 @@ RAWSQLCALL1 --> END1
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-update recent set IS_DELETED=1 where owner_id=? and owner_subtype='project'
+update recent set IS_DELETED=1 where owner_id=? and owner_type='project'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>

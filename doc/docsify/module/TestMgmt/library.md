@@ -144,6 +144,7 @@
 |[已删除(deleted)](module/TestMgmt/library/dataset/deleted)|deleted|数据查询|否|||
 |[查询星标(favorite)](module/TestMgmt/library/dataset/favorite)|favorite|数据查询|否|||
 |[主表格查询(main)](module/TestMgmt/library/dataset/main)|main|数据查询|否|||
+|[主列表查询(mob_main)](module/TestMgmt/library/dataset/mob_main)|mob_main|数据查询|否|||
 |[正常状态(normal)](module/TestMgmt/library/dataset/normal)|normal|数据查询|否|||
 |[与项目关联的测试库(project_relation_library)](module/TestMgmt/library/dataset/project_relation_library)|project_relation_library|数据查询|否||通过测试计划中进行关联项目展示测试库|
 |[快速新建查询(quick)](module/TestMgmt/library/dataset/quick)|quick|[实体逻辑](module/TestMgmt/library/logic/quick_create)|否|||
@@ -243,30 +244,37 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开测试库配置 | open_global_setting | 测试库配置 |无数据|用户自定义||
 | 取消星标 | unstar | 取消星标 |单项数据（主键）|<details><summary>后台调用</summary>[un_favorite](#行为)||
-| 更多设置 | open_details_setting_view | 更多设置 |单项数据（主键）|用户自定义||
+| 打开测试库配置 | open_global_setting | 测试库配置 |无数据|用户自定义||
 | 测试库信息 | open_show_edit_view | 测试库信息 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库信息](app/view/library_show_edit_view)</details>||
-| 新建测试库 | create_library | 新建测试库 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建测试库](app/view/library_create_wizard_view)</details>||
-| 恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
-| 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
-| 设置星标 | star | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
 | 设置管理员 | change_admin_role | 设置管理员 |单项数据（主键）|<details><summary>后台调用</summary>[change_admin_role](#行为)||
-| 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 测试库设置（移动端） | mob_setting | 测试库设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库设置](app/view/library_mob_setting_view)</details>||
 | 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 移动测试库（移动端） | mob_move_library | 移动测试库 |单项数据（主键）|<details><summary>后台调用</summary>[move_library](#行为)||
 | 打开测试库导航页 | open_library_exp_view | 打开测试库导航页 |无数据|<details><summary>打开顶级视图</summary>[测试管理](app/view/library_tree_exp_view)</details>||
 | 移动测试库 | move_library | 移动测试库 |单项数据（主键）|<details><summary>后台调用</summary>[move_library](#行为)||
 | 测试库成员 | setting_library_member | 测试库成员 |单项数据（主键）|用户自定义||
-| 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
-| 编辑基本信息 | setting_base_info | 编辑基本信息 |单项数据（主键）|用户自定义||
 | 打开新建测试库 | open_new_library | 打开新建测试库 |单项数据|<details><summary>打开顶级视图</summary>[测试库](app/view/library_index_view)</details>||
 | 新开窗口（测试库） | open_new | 新窗口打开 |单项数据（主键）|<details><summary>打开HTML页面</summary>*./#/-/index/library=${data.id}/library_index_view/srfnav=usrdrgroup1227882118/test_plan_tree_exp_view/srfnav=root%3Anode/test_plan_all_grid_view/n_library_id_eq=${data.id}*</details>||
 | 打开测试库主视图 | open_index_view | 打开测试库主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_index_view)</details>||
+| 测试库成员（移动端） | mob_library_member | 测试库成员 |无数据|<details><summary>打开视图或向导（模态）</summary>[测试库成员](app/view/library_member_mob_list_view)</details>||
+| 更多设置 | open_details_setting_view | 更多设置 |单项数据（主键）|用户自定义||
+| 添加测试库成员 | add_library_member | 添加成员 |无数据|系统预定义||
+| 新建测试库 | create_library | 新建测试库 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建测试库](app/view/library_create_wizard_view)</details>||
+| 恢复 | recover | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
+| 设置星标 | star | 设置星标 |单项数据（主键）|<details><summary>后台调用</summary>[favorite](#行为)||
+| 回收站 | open_deleted_view | 回收站 |单项数据（主键）|用户自定义||
+| 进行中_删除（移动端） | mob_in_progress_into_deleted | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 进行中_归档 | archive | 归档 |单项数据（主键）|<details><summary>后台调用</summary>[archive](#行为)||
+| 回收站（移动端） | mob_recycle_bin | 回收站 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[回收站](app/view/test_case_mob_recycle_md_view)</details>||
+| 创建测试库（移动端） | mob_create_library | 创建测试库 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建测试库](app/view/library_mob_create_view)</details>||
+| 已归档_激活 | activate | 激活 |单项数据（主键）|<details><summary>后台调用</summary>[activate](#行为)||
+| 编辑基本信息 | setting_base_info | 编辑基本信息 |单项数据（主键）|用户自定义||
+| 高级设置（移动端） | mob_advanced_setting | 高级设置 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[高级设置](app/view/library_mob_advanced_setting_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[刷新当前表格](module/TestMgmt/library/uilogic/refresh_current_grid)|refresh_current_grid|按钮触发，通过脚本切换显示组件|
 |[批量删除测试库成员临时数据](module/TestMgmt/library/uilogic/remove_batch_temp)|remove_batch_temp|获取测试库内所有临时成员数据并删除|
 |[计算表格列行为状态(library)](module/TestMgmt/library/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|
 |[通知刷新](module/TestMgmt/library/uilogic/notify_refresh)|notify_refresh|通知页面刷新|

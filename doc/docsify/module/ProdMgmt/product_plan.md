@@ -99,17 +99,18 @@
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
 | 编辑 | toolbar_tree_exp_view_node3_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
+| 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 移动新建排期 | mob_create_view | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/product_plan_mob_create_view)</details>||
+| 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
+| 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 切换显示模式 | swtich_show_mode | 切换模式 |无数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node1_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 添加需求（排期） | product_plan_relation_idea | 添加需求 |无数据|<details><summary>后台调用</summary>[product_plan_relation_idea](#行为)||
 | 新建分组 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction2_click | 新建分组 |单项数据|用户自定义||
-| 删除 | toolbar_tree_exp_view_node2_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 编辑 | toolbar_tree_exp_view_node2_cm_deuiaction1_click | 编辑 |单项数据|用户自定义||
 | 新建类别 | toolbar_tree_exp_view_treeexpbar_toolbar_deuiaction1_click | 新建类别 |单项数据|用户自定义||
 | 删除 | toolbar_tree_exp_view_node1_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
 | 编辑 | edit_plan | 编辑 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑计划](app/view/product_plan_edit_option_view)</details>||
-| 删除 | toolbar_tree_exp_view_node3_cm_deuiaction2_click | 删除 |单项数据|用户自定义||
-| 删除 | delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
-| 切换显示模式 | swtich_show_mode | 切换模式 |无数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |

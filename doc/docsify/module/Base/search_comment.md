@@ -95,22 +95,17 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
-| 打开产品主视图 | open_product_main_view | 打开产品主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品](app/view/product_main_view)</details>||
 | 打开客户主视图 | open_customer_main_view | 打开客户主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[客户](app/view/customer_main_view)</details>||
-| 打开空间主视图 | open_space_main_view | 打开空间主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[空间](app/view/space_index_view)</details>||
 | 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 | 打开产品需求主视图 | open_idea_main_view | 打开产品需求主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[需求](app/view/idea_main_view)</details>||
-| 打开项目主视图 | open_project_main_view | 打开项目主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[项目](app/view/project_redirect_view)</details>||
 | 打开测试用例主视图 | open_test_case_main_view | 打开测试用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_main_view)</details>||
 | 打开执行用例主视图 | open_run_main_view | 打开执行用例主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[执行用例](app/view/run_main_view)</details>||
-| 打开测试库主视图 | open_library_main_view | 打开测试库主视图 |单项数据|<details><summary>打开视图或向导（模态）</summary>[测试库](app/view/library_main_view)</details>||
 | 打开页面主视图 | open_page_main_view | 打开页面主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[页面](app/view/article_page_show_view)</details>||
 | 打开工单主视图 | open_ticket_main_view | 打开工单主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工单](app/view/ticket_main_view)</details>||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[打开所属主页视图](module/Base/search_comment/uilogic/open_parent_index_view)|open_parent_index_view|链接跳转项目/产品/测试库/空间首页视图|
 |[打开详情视图](module/Base/search_comment/uilogic/open_main_view)|open_main_view|链接跳转工作项/产品需求/测试用例/工单/客户/页面详情主视图|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

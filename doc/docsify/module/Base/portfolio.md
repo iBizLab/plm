@@ -222,7 +222,6 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[刷新当前表格](module/Base/portfolio/uilogic/refresh_current_grid)|refresh_current_grid|刷新当前表格|
 |[打开项目集资源容量设置](module/Base/portfolio/uilogic/open_resource_capacity)|open_resource_capacity|根据当前项目集标识，获取项目集下的资源组件|
 |[批量删除项目集成员临时数据](module/Base/portfolio/uilogic/remove_batch_temp)|remove_batch_temp|获取项目集内所有临时成员数据并删除|
 |[计算表格列行为状态(portfolio)](module/Base/portfolio/uilogic/calc_column_action_state)|calc_column_action_state|用于动态控制收藏和取消收藏的禁用状态|

@@ -22,6 +22,9 @@
   * [测试库管理(library_config_tab_exp_view)](app/view/library_config_tab_exp_view)
   * [测试库管理(library_deleted_grid_view)](app/view/library_deleted_grid_view)
   * [测试库管理(library_in_progress_grid_view)](app/view/library_in_progress_grid_view)
+  * [实体属性(psde_field_global_test_case_grid_view)](app/view/psde_field_global_test_case_grid_view)
+  * [用例(test_case_global_setting_tab_exp_view)](app/view/test_case_global_setting_tab_exp_view)
+  * [用例(test_case_global_setting_view)](app/view/test_case_global_setting_view)
 
 <script>
  const { createApp } = Vue

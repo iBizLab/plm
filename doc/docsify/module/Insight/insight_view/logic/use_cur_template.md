@@ -1,6 +1,6 @@
 ## 使用此模板 <!-- {docsify-ignore-all} -->
 
-   
+   使用此模板
 
 ### 处理过程
 
@@ -21,9 +21,9 @@ state "设置过滤参数" as PREPAREPARAM3  [[$./use_cur_template#prepareparam3
 state "查询当前视图下的看板" as DEDATASET1  [[$./use_cur_template#dedataset1 {"查询当前视图下的看板"}]]
 state "获取选中看板ID" as PREPAREPARAM1  [[$./use_cur_template#prepareparam1 {"获取选中看板ID"}]]
 state "获取选中看板数据" as DEACTION1  [[$./use_cur_template#deaction1 {"获取选中看板数据"}]]
-state "准备参数" as PREPAREPARAM2  [[$./use_cur_template#prepareparam2 {"准备参数"}]]
+state "准备新看板参数" as PREPAREPARAM2  [[$./use_cur_template#prepareparam2 {"准备新看板参数"}]]
 state "调试逻辑参数" as DEBUGPARAM2  [[$./use_cur_template#debugparam2 {"调试逻辑参数"}]]
-state "准备参数" as PREPAREPARAM4  [[$./use_cur_template#prepareparam4 {"准备参数"}]]
+state "准备新看板参数" as PREPAREPARAM4  [[$./use_cur_template#prepareparam4 {"准备新看板参数"}]]
 state "生成报表" as RAWSFCODE1  [[$./use_cur_template#rawsfcode1 {"生成报表"}]]
 state "创建看板" as DEACTION2  [[$./use_cur_template#deaction2 {"创建看板"}]]
 
@@ -93,7 +93,7 @@ DEDATASET1 --> PREPAREPARAM1 : [[$./use_cur_template#dedataset1-prepareparam1{�
 
 调用实体 [动态数据看板(DYNADASHBOARD)](module/Base/dyna_dashboard.md) 行为 [Get](module/Base/dyna_dashboard#行为) ，行为参数为`dynadashboard(仪表盘)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备新看板参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -113,7 +113,7 @@ DEDATASET1 --> PREPAREPARAM1 : [[$./use_cur_template#dedataset1-prepareparam1{�
 > 调试输出参数`board_page(仪表盘分页查询结果)`的详细信息
 
 
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 准备新看板参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

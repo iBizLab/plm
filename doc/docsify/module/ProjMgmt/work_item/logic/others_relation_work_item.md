@@ -20,6 +20,7 @@ state "结束" as END1 <<end>> [[$./others_relation_work_item#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./others_relation_work_item#loopsubcall1 {"循环子调用"}]] #green {
 state "重新建立参数" as RENEWPARAM1  [[$./others_relation_work_item#renewparam1 {"重新建立参数"}]]
 state "重新建立参数" as RENEWPARAM2  [[$./others_relation_work_item#renewparam2 {"重新建立参数"}]]
+state "关联标识" as RAWSFCODE1  [[$./others_relation_work_item#rawsfcode1 {"关联标识"}]]
 state "填充需要的属性值" as PREPAREPARAM1  [[$./others_relation_work_item#prepareparam1 {"填充需要的属性值"}]]
 state "存在关联类型" as PREPAREPARAM2  [[$./others_relation_work_item#prepareparam2 {"存在关联类型"}]]
 state "重复或关联" as PREPAREPARAM3  [[$./others_relation_work_item#prepareparam3 {"重复或关联"}]]
@@ -36,7 +37,8 @@ Begin --> BINDPARAM1 : [[$./others_relation_work_item#begin-bindparam1{存在主
 BINDPARAM1 --> LOOPSUBCALL1 : [[$./others_relation_work_item#bindparam1-loopsubcall1{存在选中数据} 存在选中数据]]
 LOOPSUBCALL1 --> RENEWPARAM1
 RENEWPARAM1 --> RENEWPARAM2
-RENEWPARAM2 --> PREPAREPARAM1
+RENEWPARAM2 --> RAWSFCODE1
+RAWSFCODE1 --> PREPAREPARAM1
 PREPAREPARAM1 --> PREPAREPARAM2 : [[$./others_relation_work_item#prepareparam1-prepareparam2{工作项关联工作项} 工作项关联工作项]]
 PREPAREPARAM2 --> PREPAREPARAM3 : [[$./others_relation_work_item#prepareparam2-prepareparam3{关联类型为重复或关联} 关联类型为重复或关联]]
 PREPAREPARAM3 --> DEACTION1
@@ -84,18 +86,44 @@ LOOPSUBCALL1 --> END1
 
 
 重建参数```reverse_relation_obj(反向关系对象)```
+#### 关联标识 :id=RAWSFCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+
+
+
+<p class="panel-title"><b>执行代码[Groovy]</b></p>
+
+```groovy
+def for_temp_obj = logic.param('for_temp_obj').getReal()
+
+def reverse_relation_obj = logic.param('reverse_relation_obj').getReal()
+
+def forward_relation_obj = logic.param('forward_relation_obj').getReal()
+
+
+// PC端 使用owner_id   mob端 使用id 
+if(for_temp_obj.get('id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('id'))
+}
+if(for_temp_obj.get('owner_id') != null){
+    reverse_relation_obj.set('principal_id', for_temp_obj.get('owner_id'))
+    forward_relation_obj.set('target_id', for_temp_obj.get('owner_id'))
+}
+
+
+
+```
+
 #### 填充需要的属性值 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).principal_id` 设置给  `forward_relation_obj(正向关系对象).PRINCIPAL_ID(关联主体标识)`
-2. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_ID(关联主体标识)`
-3. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关系对象).TARGET_ID(关联目标标识)`
-4. 将`Default(传入变量).target_type` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
-5. 将`Default(传入变量).principal_type` 设置给  `reverse_relation_obj(反向关系对象).TARGET_TYPE(关联目标类型)`
-6. 将`Default(传入变量).principal_type` 设置给  `forward_relation_obj(正向关系对象).PRINCIPAL_TYPE(关联主体类型)`
-7. 将`Default(传入变量).target_type` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
-8. 将`for_temp_obj(循环临时变量).owner_id` 设置给  `forward_relation_obj(正向关系对象).TARGET_ID(关联目标标识)`
+2. 将`Default(传入变量).principal_id` 设置给  `reverse_relation_obj(反向关系对象).TARGET_ID(关联目标标识)`
+3. 将`Default(传入变量).target_type` 设置给  `reverse_relation_obj(反向关系对象).PRINCIPAL_TYPE(关联主体类型)`
+4. 将`Default(传入变量).principal_type` 设置给  `reverse_relation_obj(反向关系对象).TARGET_TYPE(关联目标类型)`
+5. 将`Default(传入变量).principal_type` 设置给  `forward_relation_obj(正向关系对象).PRINCIPAL_TYPE(关联主体类型)`
+6. 将`Default(传入变量).target_type` 设置给  `forward_relation_obj(正向关系对象).TARGET_TYPE(关联目标类型)`
 
 #### 存在关联类型 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 

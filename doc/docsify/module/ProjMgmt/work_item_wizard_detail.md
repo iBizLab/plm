@@ -1,6 +1,9 @@
 # 工作项操作向导明细(work_item_wizard_detail)  <!-- {docsify-ignore-all} -->
 
 
+工作项变更操作向导明细信息
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -103,11 +106,6 @@
 |N_TARGET_TYPE_EQ|目标类型|EQ||
 |N_WIZARD_ID_EQ|向导标识|EQ||
 
-## 界面逻辑
-|  中文名col200 | 代码名col150 | 备注col900 |
-| --------|--------|--------|
-|[创建临时数据](module/ProjMgmt/work_item_wizard_detail/uilogic/create_temp_data)|create_temp_data||
-
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -132,9 +130,6 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard_detail?id=搜索模式`">
   搜索模式
-</el-anchor-link>
-<el-anchor-link :href="`#/module/ProjMgmt/work_item_wizard_detail?id=界面逻辑`">
-  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

@@ -24,6 +24,7 @@
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -44,6 +45,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -70,6 +72,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -116,6 +119,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -181,6 +185,7 @@
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -201,6 +206,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -227,6 +233,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -271,6 +278,7 @@
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -291,6 +299,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -336,6 +345,7 @@
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -356,6 +366,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -396,6 +407,7 @@
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -416,6 +428,7 @@
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -460,6 +473,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -480,6 +494,7 @@ Integer
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -506,6 +521,7 @@ Integer
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -550,6 +566,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -570,6 +587,7 @@ Integer
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -610,6 +628,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -630,6 +649,7 @@ Integer
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -656,6 +676,7 @@ Integer
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -700,6 +721,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">avatar</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|头像|
 |<el-row justify="space-between"><el-col :span="20">status</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 |<el-row justify="space-between"><el-col :span="20">report_flag</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|Integer|统计|
+|<el-row justify="space-between"><el-col :span="20">user_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|用户ID|
 |<el-row justify="space-between"><el-col :span="20">department_id</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门标识|
 |<el-row justify="space-between"><el-col :span="20">department_name</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|部门名称|
 |<el-row justify="space-between"><el-col :span="20">id</el-col><el-col :span="4" style="text-align:right"></el-col> </el-row>|String|标识|
@@ -720,6 +742,7 @@ Integer
   "avatar" : null,
   "status" : null,
   "report_flag" : null,
+  "user_id" : null,
   "create_man" : null,
   "create_time" : null,
   "department_id" : null,
@@ -763,6 +786,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_job_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_job_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 
 
 
@@ -783,6 +807,7 @@ Integer
   "n_job_name_eq" : null,
   "n_job_name_like" : null,
   "n_name_like" : null,
+  "n_status_eq" : null,
 }
 ```
 
@@ -799,6 +824,7 @@ Integer
     "avatar" : null,
     "status" : null,
     "report_flag" : null,
+    "user_id" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -841,6 +867,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_job_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_job_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 
 
 
@@ -861,6 +888,7 @@ Integer
   "n_job_name_eq" : null,
   "n_job_name_like" : null,
   "n_name_like" : null,
+  "n_status_eq" : null,
 }
 ```
 
@@ -877,6 +905,7 @@ Integer
     "avatar" : null,
     "status" : null,
     "report_flag" : null,
+    "user_id" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -919,6 +948,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_job_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_job_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 
 
 
@@ -939,6 +969,7 @@ Integer
   "n_job_name_eq" : null,
   "n_job_name_like" : null,
   "n_name_like" : null,
+  "n_status_eq" : null,
 }
 ```
 
@@ -955,6 +986,7 @@ Integer
     "avatar" : null,
     "status" : null,
     "report_flag" : null,
+    "user_id" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -997,6 +1029,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_job_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_job_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 
 
 
@@ -1017,6 +1050,7 @@ Integer
   "n_job_name_eq" : null,
   "n_job_name_like" : null,
   "n_name_like" : null,
+  "n_status_eq" : null,
 }
 ```
 
@@ -1033,6 +1067,7 @@ Integer
     "avatar" : null,
     "status" : null,
     "report_flag" : null,
+    "user_id" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,
@@ -1075,6 +1110,7 @@ Integer
 |<el-row justify="space-between"><el-col :span="20">n_job_name_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_job_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|职位名称|
 |<el-row justify="space-between"><el-col :span="20">n_name_like</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|登录名|
+|<el-row justify="space-between"><el-col :span="20">n_status_eq</el-col><el-col :span="4" style="text-align:right"><el-text size="small" type="success">可选</el-text></el-col> </el-row>|String|状态|
 
 
 
@@ -1095,6 +1131,7 @@ Integer
   "n_job_name_eq" : null,
   "n_job_name_like" : null,
   "n_name_like" : null,
+  "n_status_eq" : null,
 }
 ```
 
@@ -1111,6 +1148,7 @@ Integer
     "avatar" : null,
     "status" : null,
     "report_flag" : null,
+    "user_id" : null,
     "create_man" : null,
     "create_time" : null,
     "department_id" : null,

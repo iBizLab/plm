@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./program_analyze#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./program_analyze#end1 {"结束"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./program_analyze#rawsqlcall1 {"直接SQL调用"}]]
+state "测试用例规划分析" as RAWSQLCALL1  [[$./program_analyze#rawsqlcall1 {"测试用例规划分析"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -40,7 +40,7 @@ RAWSQLCALL1 --> END1
 
 返回 `result(结果)`
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 测试用例规划分析 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

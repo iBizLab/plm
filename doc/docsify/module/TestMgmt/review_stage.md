@@ -69,8 +69,8 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[变更阶段评审人](module/TestMgmt/review_stage/uilogic/set_stage_reviewer)|set_stage_reviewer||
-|[选中阶段](module/TestMgmt/review_stage/uilogic/choose_stage)|choose_stage||
+|[变更阶段评审人](module/TestMgmt/review_stage/uilogic/set_stage_reviewer)|set_stage_reviewer|变更阶段评审人|
+|[选中阶段](module/TestMgmt/review_stage/uilogic/choose_stage)|choose_stage|选中阶段|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

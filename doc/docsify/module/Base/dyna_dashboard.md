@@ -81,9 +81,9 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[使用此模板](module/Base/dyna_dashboard/logic/use_cur_template)|use_cur_template|无|||
-|[更新看板部件模型](module/Base/dyna_dashboard/logic/sync_portlet_model)|sync_portlet_model|无|||
-|[获取其他仪表盘](module/Base/dyna_dashboard/logic/fill_other_board)|fill_other_board|无|||
+|[使用此模板](module/Base/dyna_dashboard/logic/use_cur_template)|use_cur_template|无||使用此模板|
+|[更新看板部件模型](module/Base/dyna_dashboard/logic/sync_portlet_model)|sync_portlet_model|无||更新看板部件模型|
+|[获取其他仪表盘](module/Base/dyna_dashboard/logic/fill_other_board)|fill_other_board|无||获取其他仪表盘|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -143,12 +143,11 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[仪表盘操作列](module/Base/dyna_dashboard/uilogic/control_del)|control_del|仪表盘为最后一个时禁止删除|
-|[使用此模板](module/Base/dyna_dashboard/uilogic/use_cur_template)|use_cur_template||
-|[使用此模板(禁止关闭)](module/Base/dyna_dashboard/uilogic/use_cur_template_no_closed)|use_cur_template_no_closed||
-|[关闭视图](module/Base/dyna_dashboard/uilogic/close_view)|close_view||
-|[列表加载完成](module/Base/dyna_dashboard/uilogic/list_load_success)|list_load_success||
-|[获取其他仪表盘](module/Base/dyna_dashboard/uilogic/fill_other_board)|fill_other_board||
-|[获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)|fill_choosed_board_name||
+|[使用此模板(禁止关闭)](module/Base/dyna_dashboard/uilogic/use_cur_template_no_closed)|use_cur_template_no_closed|使用此模板(禁止关闭)|
+|[列表加载完成](module/Base/dyna_dashboard/uilogic/list_load_success)|list_load_success|列表加载完成|
+|[获取其他仪表盘](module/Base/dyna_dashboard/uilogic/fill_other_board)|fill_other_board|获取其他仪表盘|
+|[获取选中模板名称](module/Base/dyna_dashboard/uilogic/fill_choosed_board_name)|fill_choosed_board_name|获取选中模板名称|
+|[通知刷新](module/Base/dyna_dashboard/uilogic/notify_refresh)|notify_refresh||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

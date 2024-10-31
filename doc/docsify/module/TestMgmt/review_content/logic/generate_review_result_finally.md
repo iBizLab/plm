@@ -17,10 +17,10 @@ hide empty description
 state "开始" as Begin <<start>> [[$./generate_review_result_finally#begin {"开始"}]]
 state "设置通过" as PREPAREPARAM5  [[$./generate_review_result_finally#prepareparam5 {"设置通过"}]]
 state "结束" as END1 <<end>> [[$./generate_review_result_finally#end1 {"结束"}]]
-state "实体数据集" as DEDATASET1  [[$./generate_review_result_finally#dedataset1 {"实体数据集"}]]
 state "调试逻辑参数" as DEBUGPARAM3  [[$./generate_review_result_finally#debugparam3 {"调试逻辑参数"}]]
-state "实体行为" as DEACTION1  [[$./generate_review_result_finally#deaction1 {"实体行为"}]]
-state "准备参数" as PREPAREPARAM7  [[$./generate_review_result_finally#prepareparam7 {"准备参数"}]]
+state "处理每一个内容" as DEACTION1  [[$./generate_review_result_finally#deaction1 {"处理每一个内容"}]]
+state "获取评审内容数据集" as DEDATASET1  [[$./generate_review_result_finally#dedataset1 {"获取评审内容数据集"}]]
+state "设置评审内容过滤器" as PREPAREPARAM7  [[$./generate_review_result_finally#prepareparam7 {"设置评审内容过滤器"}]]
 state "设置拒绝" as PREPAREPARAM6  [[$./generate_review_result_finally#prepareparam6 {"设置拒绝"}]]
 state "跳出" as END2 <<end>> [[$./generate_review_result_finally#end2 {"跳出"}]]
 state "循环子调用" as LOOPSUBCALL2  [[$./generate_review_result_finally#loopsubcall2 {"循环子调用"}]] #green {
@@ -30,7 +30,7 @@ state "绑定评审结果" as PREPAREPARAM1  [[$./generate_review_result_finally
 state "循环子调用" as LOOPSUBCALL1  [[$./generate_review_result_finally#loopsubcall1 {"循环子调用"}]] #green {
 state "调试逻辑参数" as DEBUGPARAM2  [[$./generate_review_result_finally#debugparam2 {"调试逻辑参数"}]]
 state "可以生成最终评审结果" as PREPAREPARAM2  [[$./generate_review_result_finally#prepareparam2 {"可以生成最终评审结果"}]]
-state "准备参数" as PREPAREPARAM4  [[$./generate_review_result_finally#prepareparam4 {"准备参数"}]]
+state "设置最终结果" as PREPAREPARAM4  [[$./generate_review_result_finally#prepareparam4 {"设置最终结果"}]]
 state "不可生成最终评审结果" as PREPAREPARAM3  [[$./generate_review_result_finally#prepareparam3 {"不可生成最终评审结果"}]]
 }
 
@@ -77,14 +77,14 @@ PREPAREPARAM6 --> DEACTION1
 
 返回 `Default(传入变量)`
 
-#### 准备参数 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置评审内容过滤器 :id=PREPAREPARAM7<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`Default(传入变量).ID(标识)` 设置给  `filter_content(评审内容过滤器).N_PRINCIPAL_ID_EQ`
 2. 将`REVIEW` 设置给  `filter_content(评审内容过滤器).N_PRINCIPAL_TYPE_EQ`
 
-#### 实体数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
+#### 获取评审内容数据集 :id=DEDATASET1<sup class="footnote-symbol"> <font color=gray size=1>[实体数据集]</font></sup>
 
 
 
@@ -126,7 +126,7 @@ PREPAREPARAM6 --> DEACTION1
 > 调试输出参数`for_content(评审内容循环数据)`的详细信息
 
 
-#### 实体行为 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 处理每一个内容 :id=DEACTION1<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 
@@ -164,7 +164,7 @@ PREPAREPARAM6 --> DEACTION1
 
 1. 将`false` 设置给  `finally_result(最终结果).FINAL_STAGE_RESULTS(最终评审结果)`
 
-#### 准备参数 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置最终结果 :id=PREPAREPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

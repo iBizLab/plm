@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_stage#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./change_stage#bindparam1 {"绑定参数"}]]
+state "绑定发布阶段列表参数" as BINDPARAM1  [[$./change_stage#bindparam1 {"绑定发布阶段列表参数"}]]
 state "设置发布更新对象的标识" as PREPAREPARAM1  [[$./change_stage#prepareparam1 {"设置发布更新对象的标识"}]]
 state "准备阶段查询参数" as PREPAREPARAM2  [[$./change_stage#prepareparam2 {"准备阶段查询参数"}]]
 state "查询发布阶段" as DEDATASET1  [[$./change_stage#dedataset1 {"查询发布阶段"}]]
@@ -42,7 +42,7 @@ RAWSFCODE2 --> END1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定发布阶段列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

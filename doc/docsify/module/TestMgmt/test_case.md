@@ -11,13 +11,15 @@
 |附件|ATTACHMENTS|一对多关系数据集合|1048576|是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
 |选择版本标识|CHOOSE_VERSION_ID|文本，可指定长度|100|是||
 |选择版本名称|CHOOSE_VERSION_NAME|文本，可指定长度|100|是||
+|评论数|COMMENT_COUNT|文本，可指定长度|200|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
 |当前版本名称|CUR_VERSION_NAME|文本，可指定长度|100|是||
-|描述|DESCRIPTION|长文本，长度1000|2000|是||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |执行时间|EXECUTED_AT|日期时间型||是||
 |执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
@@ -31,7 +33,7 @@
 |维护人|MAINTENANCE_ID|外键值|100|是||
 |维护人|MAINTENANCE_NAME|外键值文本|100|是||
 |名称|NAME|文本，可指定长度|200|是||
-|前置条件|PRECONDITION|长文本，长度1000|2000|是||
+|前置条件|PRECONDITION|长文本，没有长度限制|1048576|是||
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |评审结果|REVIEW_RESULT_STATE|[单项选择(文本值)](index/dictionary_index#review_result "评审结果")|60|是||
@@ -181,6 +183,7 @@
 |复制用例|copy_case|[实体处理逻辑](module/TestMgmt/test_case/logic/copy_test_case "复制用例")|默认|不支持||||
 |删除|delete|[实体处理逻辑](module/TestMgmt/test_case/logic/delete "删除")|默认|不支持||||
 |填充BI报表默认值|fill_bi_form_default|[实体处理逻辑](module/TestMgmt/test_case/logic/fill_bi_form_default "填充BI报表默认值")|默认|不支持||||
+|完成关注|finish_add_attention|[实体处理逻辑](module/TestMgmt/test_case/logic/finish_add_attention "完成关注")|默认|不支持||||
 |获取关注人|get_attention|内置方法|默认|不支持||||
 |获取基线名称|get_baseline_name|[实体处理逻辑](module/TestMgmt/test_case/logic/get_baseline_name "获取基线名称")|默认|不支持||||
 |移动用例|move_case|[实体处理逻辑](module/TestMgmt/test_case/logic/move_test_case "移动用例")|默认|不支持||||
@@ -200,9 +203,10 @@
 |[其他实体关联用例](module/TestMgmt/test_case/logic/others_relation_test_case)|others_relation_test_case|无||测试用例实体的关联操作，生成正向，反向关联数据|
 |[删除](module/TestMgmt/test_case/logic/delete)|delete|无||测试用例数据的逻辑删除，修改产品的是否删除属性值|
 |[基线规划用例数据查询](module/TestMgmt/test_case/logic/baseline_plan_case)|baseline_plan_case|无||基线规划用例时，填充用例当前版本名称|
-|[填充BI报表默认值](module/TestMgmt/test_case/logic/fill_bi_form_default)|fill_bi_form_default|无|||
+|[填充BI报表默认值](module/TestMgmt/test_case/logic/fill_bi_form_default)|fill_bi_form_default|无||填充BI报表默认值|
 |[填充最近执行](module/TestMgmt/test_case/logic/fill_latest_executed)|fill_latest_executed|无||填充最近执行|
 |[复制用例](module/TestMgmt/test_case/logic/copy_test_case)|copy_test_case|无||复制测试用例|
+|[完成关注](module/TestMgmt/test_case/logic/finish_add_attention)|finish_add_attention|无|||
 |[恢复](module/TestMgmt/test_case/logic/recover)|recover|无||恢复已删除状态测试用例数据，修改测试用例的是否删除属性值，并恢复访问记录|
 |[无操作](module/TestMgmt/test_case/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
 |[是否删除变更附加逻辑](module/TestMgmt/test_case/logic/is_deleted_onchange)|is_deleted_onchange|属性逻辑||测试用例删除或恢复时触发相应的通知消息|
@@ -418,6 +422,9 @@
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 添加实际工时 | add_actual_workload | 添加实际工时 |无数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_quick_create_view)</details>||
 | 删除 | delete | 删除 |多项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 打开评论列表 | open_comment_list | 打开评论列表 |单项数据|<details><summary>打开视图或向导（模态）</summary>[评论](app/view/comment_mob_comment_md_view)</details>||
+| 配置 | panel_usr1022245764_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
+| 删除（移动端工具栏） | mob_toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 查看已规划基线 | check_baseline_version | 已规划基线 |单项数据|用户自定义||
 | 移动用例 | move_idea | 移动 |多项数据（主键）|<details><summary>后台调用</summary>[move_case](#行为)||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
@@ -426,17 +433,25 @@
 | 关联缺陷（工具栏） | toolbar_link_bug | 关联缺陷 |无数据|用户自定义||
 | 工具栏上传附件 | toolbar_update_file | 工具栏上传附件 |无数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
+| 测试用例关联需求（移动端） | mob_add_idea | 测试用例关联需求 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
+| 配置 | panel_usr1022211556_button_calluilogic_click | 表单设计 |单项数据|<details><summary>打开视图或向导（模态）</summary>[表单设计](app/view/psdeformdesign_modal)</details>||
 | 删除（工具栏） | toolbar_delete | 删除 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
+| 测试用例关联缺陷（移动端） | mob_add_bug | 测试用例关联缺陷 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
+| 测试用例关联工作项（移动端） | mob_add_work_item | 测试用例关联工作项 |无数据|<details><summary>后台调用</summary>[others_relation_case](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
+| 打开关注列表 | open_attention_list | 打开关注列表 |无数据|<details><summary>打开视图或向导（模态）</summary>[关注](app/view/attention_mob_md_view)</details>||
 | 移动 | move | 移动 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[移动用例](app/view/test_case_move_case_option_view)</details>||
 | 恢复 | recover | 恢复 |多项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 移入计划（气泡） | case_move_plan | 移入计划 |多项数据（主键）|<details><summary>后台调用</summary>[case_move_plan](#行为)||
 | 查看评审历史 | check_review_history | 查看评审历史 |无数据|用户自定义||
 | 自定义测试用例导入 | test_case_import_data | 导入测试用例 |无数据|<details><summary>打开数据导入视图</summary>[测试用例导入]()</details>||
+| 新建测试用例（移动端） | mob_create_case | 新建测试用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建](app/view/test_case_mob_create_view)</details>||
 | 恢复_视图消息 | recover_message | 恢复 |单项数据（主键）|<details><summary>后台调用</summary>[recover](#行为)||
 | 选择模板 | choose_case_template | 选择模板 |无数据|<details><summary>打开编辑表单</summary></details>||
 | 上传附件 | upload_attachment | 上传 |无数据|用户自定义||
+| 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 复制用例 | copy_test_case | 复制用例 |多项数据（主键）|<details><summary>后台调用</summary>[copy_case](#行为)||
+| 添加实际工时（移动端） | mob_add_actual_workload | 添加实际工时 |单项数据|<details><summary>打开视图或向导（模态）</summary>[登记工时](app/view/workload_register_mob_edit_view)</details>||
 | 设置评审状态 | set_state | 设置评审状态 |多项数据（主键）|<details><summary>后台调用</summary>[set_state](#行为)||
 | 设置维护人 | set_maintenance | 设置维护人 |多项数据（主键）|<details><summary>后台调用</summary>[set_maintenance](#行为)||
 | 关联需求（工具栏） | toolbar_link_idea | 关联需求 |无数据|用户自定义||
@@ -446,29 +461,20 @@
 | --------|--------|--------|
 |[上传附件（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_add_attachment)|toolbar_add_attachment|工具栏按钮触发上传附件功能|
 |[关联工作项（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_work_item)|toolbar_link_work_item|主视图工具栏上点击触发，切换分页，打开下拉菜单|
-|[关联测试用例值变更](module/TestMgmt/test_case/uilogic/relation_test_case_change)|relation_test_case_change|关联测试用例值变更时，调用处理逻辑，生成正反向关联数据|
 |[关联缺陷（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_bug)|toolbar_link_bug|主视图工具栏上点击触发，切换分页，打开下拉菜单|
 |[关联需求（工具栏）](module/TestMgmt/test_case/uilogic/toolbar_link_idea)|toolbar_link_idea|主视图工具栏上点击触发，切换分页，打开下拉菜单|
-|[删除类别或分组](module/TestMgmt/test_case/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
-|[刷新测试用例表格](module/TestMgmt/test_case/uilogic/refresh_test_case_grid)|refresh_test_case_grid|刷新测试用例表格|
 |[工作项关联用例](module/TestMgmt/test_case/uilogic/work_item_relation_test_case)|work_item_relation_test_case|值变更时触发，工作项关联用例，调用处理逻辑生成正反向数据|
 |[已删除用例显示隐藏](module/TestMgmt/test_case/uilogic/deleted_visible)|deleted_visible|已删除用例显示隐藏|
-|[新建分组](module/TestMgmt/test_case/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
-|[新建类别](module/TestMgmt/test_case/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
-|[显示下拉并展开选项（嵌入视图）](module/TestMgmt/test_case/uilogic/toolbar_show_dorpdown_data)|toolbar_show_dorpdown_data|显示下拉区域并展开选项(工具栏)|
 |[显示表单侧边栏](module/TestMgmt/test_case/uilogic/show_form_sidebar)|show_form_sidebar|每次需求主表单刷新时，将右侧侧边栏默认显示出来。|
 |[查看工时明细](module/TestMgmt/test_case/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[查看已规划基线](module/TestMgmt/test_case/uilogic/check_baseline_version)|check_baseline_version|按钮触发，通过脚本切换显示组件|
 |[查看评审历史](module/TestMgmt/test_case/uilogic/check_review_history)|check_review_history|按钮触发，通过脚本切换显示组件|
 |[添加附件数据（通用）](module/TestMgmt/test_case/uilogic/add_attachment)|add_attachment|调用附件上传行为，添加附件数据|
 |[清空表单关注人](module/TestMgmt/test_case/uilogic/clean_attentions)|clean_attentions|清空表单关注人|
-|[编辑类别或分组](module/TestMgmt/test_case/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
-|[获取测试用例总条数](module/TestMgmt/test_case/uilogic/get_test_case_total)|get_test_case_total|获取测试用例的总条数信息|
+|[获取关注人与评论数](module/TestMgmt/test_case/uilogic/fill_att_com_count)|fill_att_com_count||
 |[获取用例工时进度](module/TestMgmt/test_case/uilogic/get_workload_schedule)|get_workload_schedule|获取工时信息，并计算工时进度|
-|[触发计数器刷新](module/TestMgmt/test_case/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
-|[计算变更版本](module/TestMgmt/test_case/uilogic/cal_change_type)|cal_change_type|未完成|
-|[选择下拉框区域展示](module/TestMgmt/test_case/uilogic/show_choose_area)|show_choose_area|逻辑控制关联表格下方选项区域动态显示|
 |[选择用例模板](module/TestMgmt/test_case/uilogic/choose_case_template)|choose_case_template|选择用例模板后回填所选模板数据至表单|
+|[通知刷新（移动端）](module/TestMgmt/test_case/uilogic/send_refresh)|send_refresh||
 |[门户全屏](module/TestMgmt/test_case/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/test_case/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/test_case/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|

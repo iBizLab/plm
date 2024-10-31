@@ -15,9 +15,9 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./plan_work_item#begin {"开始"}]]
-state "绑定选择数据" as BINDPARAM1  [[$./plan_work_item#bindparam1 {"绑定选择数据"}]]
+state "绑定选择工作项数据" as BINDPARAM1  [[$./plan_work_item#bindparam1 {"绑定选择工作项数据"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./plan_work_item#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./plan_work_item#renewparam1 {"重新建立参数"}]]
+state "重新建立工作项更新参数" as RENEWPARAM1  [[$./plan_work_item#renewparam1 {"重新建立工作项更新参数"}]]
 state "设置规划信息" as PREPAREPARAM1  [[$./plan_work_item#prepareparam1 {"设置规划信息"}]]
 state "修改工作项" as DEACTION1  [[$./plan_work_item#deaction1 {"修改工作项"}]]
 }
@@ -41,7 +41,7 @@ PREPAREPARAM1 --> DEACTION1
 
 
 *- N/A*
-#### 绑定选择数据 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选择工作项数据 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -51,7 +51,7 @@ PREPAREPARAM1 --> DEACTION1
 
 
 循环参数`srfactionparam(选中数据列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立工作项更新参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

@@ -121,11 +121,6 @@
 | 规划需求 | baseline_plan_idea | 规划需求 |无数据|<details><summary>后台调用</summary>[shift_in_baseline](#行为)||
 | 版本对比（基线列表） | version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/idea_version_comparison_view)</details>||
 
-## 界面逻辑
-|  中文名col200 | 代码名col150 | 备注col900 |
-| --------|--------|--------|
-|[返回](module/ProdMgmt/baseline_idea/uilogic/back)|back|查看已规划基线后，返回主表单按钮使用|
-
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 
 ##### 导航
@@ -153,9 +148,6 @@
 </el-anchor-link>
 <el-anchor-link :href="`#/module/ProdMgmt/baseline_idea?id=界面行为`">
   界面行为
-</el-anchor-link>
-<el-anchor-link :href="`#/module/ProdMgmt/baseline_idea?id=界面逻辑`">
-  界面逻辑
 </el-anchor-link>
 </el-anchor>
 </div>

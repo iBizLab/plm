@@ -18,17 +18,17 @@ state "开始" as Begin <<start>> [[$./advanced_search#begin {"开始"}]]
 state "关联查询" as DEDATASET1  [[$./advanced_search#dedataset1 {"关联查询"}]]
 state "结束" as END1 <<end>> [[$./advanced_search#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./advanced_search#loopsubcall1 {"循环子调用"}]] #green {
-state "绑定参数" as BINDPARAM1  [[$./advanced_search#bindparam1 {"绑定参数"}]]
+state "绑定工作项参数" as BINDPARAM1  [[$./advanced_search#bindparam1 {"绑定工作项参数"}]]
 state "填充工作项展示属性" as PREPAREPARAM1  [[$./advanced_search#prepareparam1 {"填充工作项展示属性"}]]
-state "绑定参数" as BINDPARAM2  [[$./advanced_search#bindparam2 {"绑定参数"}]]
+state "绑定产品需求参数" as BINDPARAM2  [[$./advanced_search#bindparam2 {"绑定产品需求参数"}]]
 state "填充产品需求展示属性" as PREPAREPARAM2  [[$./advanced_search#prepareparam2 {"填充产品需求展示属性"}]]
-state "绑定参数" as BINDPARAM3  [[$./advanced_search#bindparam3 {"绑定参数"}]]
+state "绑定工单参数" as BINDPARAM3  [[$./advanced_search#bindparam3 {"绑定工单参数"}]]
 state "填充工单展示属性" as PREPAREPARAM3  [[$./advanced_search#prepareparam3 {"填充工单展示属性"}]]
-state "绑定参数" as BINDPARAM4  [[$./advanced_search#bindparam4 {"绑定参数"}]]
+state "绑定客户参数" as BINDPARAM4  [[$./advanced_search#bindparam4 {"绑定客户参数"}]]
 state "填充客户展示属性" as PREPAREPARAM4  [[$./advanced_search#prepareparam4 {"填充客户展示属性"}]]
-state "绑定参数" as BINDPARAM5  [[$./advanced_search#bindparam5 {"绑定参数"}]]
+state "绑定测试用例参数" as BINDPARAM5  [[$./advanced_search#bindparam5 {"绑定测试用例参数"}]]
 state "填充测试用例展示属性" as PREPAREPARAM5  [[$./advanced_search#prepareparam5 {"填充测试用例展示属性"}]]
-state "绑定参数" as BINDPARAM6  [[$./advanced_search#bindparam6 {"绑定参数"}]]
+state "绑定页面参数" as BINDPARAM6  [[$./advanced_search#bindparam6 {"绑定页面参数"}]]
 state "填充页面展示属性" as PREPAREPARAM6  [[$./advanced_search#prepareparam6 {"填充页面展示属性"}]]
 }
 
@@ -61,7 +61,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定工作项参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -83,7 +83,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 将执行结果返回给参数`result_page(分页查询结果变量)`
 
-#### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定产品需求参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -102,7 +102,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 
 循环参数`result_page(分页查询结果变量)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 绑定参数 :id=BINDPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定工单参数 :id=BINDPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -116,7 +116,7 @@ BINDPARAM6 --> PREPAREPARAM6
 3. 将`ticket(工单).PRODUCT_NAME(所属产品)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_NAME(所属数据父名称)`
 4. 将`ticket(工单).SHOW_IDENTIFIER(编号)` 设置给  `for_temp_obj(循环临时变量).OWNER_IDENTIFIER(所属数据编号)`
 
-#### 绑定参数 :id=BINDPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定客户参数 :id=BINDPARAM4<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -129,7 +129,7 @@ BINDPARAM6 --> PREPAREPARAM6
 2. 将`customer(客户).PRODUCT_ID(产品标识)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_ID(所属数据父标识)`
 3. 将`customer(客户).PRODUCT_NAME(产品名称)` 设置给  `for_temp_obj(循环临时变量).OWNER_PARENT_NAME(所属数据父名称)`
 
-#### 绑定参数 :id=BINDPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定测试用例参数 :id=BINDPARAM5<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -149,7 +149,7 @@ BINDPARAM6 --> PREPAREPARAM6
 
 返回 `result_page(分页查询结果变量)`
 
-#### 绑定参数 :id=BINDPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定页面参数 :id=BINDPARAM6<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

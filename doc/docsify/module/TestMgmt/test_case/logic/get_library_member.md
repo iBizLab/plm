@@ -23,7 +23,7 @@ state "绑定用户数据到for_obj" as PREPAREPARAM5  [[$./get_library_member#p
 state "只读权限" as RAWSFCODE1  [[$./get_library_member#rawsfcode1 {"只读权限"}]]
 state "非只读权限" as RAWSFCODE2  [[$./get_library_member#rawsfcode2 {"非只读权限"}]]
 state "结束" as END6 <<end>> [[$./get_library_member#end6 {"结束"}]]
-state "执行脚本代码" as RAWSFCODE4  [[$./get_library_member#rawsfcode4 {"执行脚本代码"}]]
+state "设置只读权限" as RAWSFCODE4  [[$./get_library_member#rawsfcode4 {"设置只读权限"}]]
 
 
 Begin --> RAWSFCODE3 : [[$./get_library_member#begin-rawsfcode3{连接名称} 连接名称]]
@@ -121,7 +121,7 @@ defaultObj.set("srfreadonly", true);
 
 *- N/A*
 
-#### 执行脚本代码 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
+#### 设置只读权限 :id=RAWSFCODE4<sup class="footnote-symbol"> <font color=gray size=1>[直接后台代码]</font></sup>
 
 
 

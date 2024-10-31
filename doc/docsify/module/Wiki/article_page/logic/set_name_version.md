@@ -16,15 +16,12 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./set_name_version#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./set_name_version#end1 {"结束"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./set_name_version#debugparam1 {"调试逻辑参数"}]]
 state "获取操作表单数据" as PREPAREPARAM2  [[$./set_name_version#prepareparam2 {"获取操作表单数据"}]]
 state "版本数据" as PREPAREPARAM3  [[$./set_name_version#prepareparam3 {"版本数据"}]]
 state "更新版本数据" as DEACTION2  [[$./set_name_version#deaction2 {"更新版本数据"}]]
-state "准备参数" as PREPAREPARAM1  [[$./set_name_version#prepareparam1 {"准备参数"}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> PREPAREPARAM2
+Begin --> PREPAREPARAM2
 PREPAREPARAM2 --> PREPAREPARAM3
 PREPAREPARAM3 --> DEACTION2
 DEACTION2 --> END1
@@ -47,14 +44,6 @@ DEACTION2 --> END1
 
 *- N/A*
 
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 获取操作表单数据 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
@@ -75,20 +64,6 @@ DEACTION2 --> END1
 
 
 调用实体 [版本(VERSION)](module/Base/version.md) 行为 [Update](module/Base/version#行为) ，行为参数为`version(版本)`
-
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
-
-
-
-1. 将`Default(传入变量)` 拷贝到  `page_detail(页面详情)`
-2. 将`1` 设置给  `version(版本).IS_NAMED(是否命名)`
-3. 将`无值（NONE）` 设置给  `page_detail(页面详情).ATTENTIONS(关注)`
-4. 将`Default(传入变量).srfactionparam` 绑定给  `srfactionparam`
-5. 将`srfactionparam.0` 绑定给  `form_data(表单数据)`
-6. 将`form_data(表单数据).version_name` 设置给  `page_detail(页面详情).CUR_VERSION_NAME(当前版本名称)`
-7. 将`srfactionparam.version_id` 设置给  `form_data(表单数据).version_id`
-8. 将`form_data(表单数据).version_id` 设置给  `version(版本).ID(标识)`
-9. 将`form_data(表单数据).version_name` 设置给  `version(版本).NAME(名称)`
 
 
 

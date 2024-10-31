@@ -1,6 +1,6 @@
 ## 获取其他仪表盘 <!-- {docsify-ignore-all} -->
 
-   
+   获取其他仪表盘
 
 ### 处理过程
 
@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./fill_other_board#begin {开始}]]
-state "实体行为" as DEACTION1  [[$./fill_other_board#deaction1 {实体行为}]]
-state "准备参数" as PREPAREJSPARAM2  [[$./fill_other_board#preparejsparam2 {准备参数}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./fill_other_board#debugparam1 {调试逻辑参数}]]
 state "结束" as END1 <<end>> [[$./fill_other_board#end1 {结束}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./fill_other_board#preparejsparam1 {准备参数}]]
 state "界面行为" as DEUIACTION1  [[$./fill_other_board#deuiaction1 {界面行为}]]
+state "准备参数" as PREPAREJSPARAM2  [[$./fill_other_board#preparejsparam2 {准备参数}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./fill_other_board#debugparam1 {调试逻辑参数}]]
+state "实体行为" as DEACTION1  [[$./fill_other_board#deaction1 {实体行为}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -88,7 +88,7 @@ DEUIACTION1 --> END1
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
+|报表信息|board_info|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图|view|当前视图对象||
 |上下文|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|报表信息|board_info|数据对象||

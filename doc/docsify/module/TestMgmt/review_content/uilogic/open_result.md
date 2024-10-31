@@ -1,6 +1,6 @@
 ## 打开评审结果 <!-- {docsify-ignore-all} -->
 
-   
+   打开评审结果
 
 ### 处理过程
 
@@ -61,9 +61,9 @@ uiLogic.parent_form.control.details.review_results.state.visible=true;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|父表单|parent_form|数据对象||
-|上下文|ctx|导航视图参数绑定参数||
+|选择的内容|choosed_content|数据对象||
 |父视图|parent_view|数据对象||
+|父表单|parent_form|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
 |当前视图对象|view|当前视图对象||
-|选择的内容|choosed_content|数据对象||
+|上下文|ctx|导航视图参数绑定参数||

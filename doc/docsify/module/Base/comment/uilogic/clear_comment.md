@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./clear_comment#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./clear_comment#rawjscode1 {注入脚本代码}]]
+state "清空评论" as RAWJSCODE1  [[$./clear_comment#rawjscode1 {清空评论}]]
 
 
 Begin --> RAWJSCODE1
@@ -32,7 +32,7 @@ Begin --> RAWJSCODE1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 清空评论 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

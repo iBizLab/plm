@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./calc_children_work_item_type_context#begin {开始}]]
-state "计算项目子类型" as RAWJSCODE1  [[$./calc_children_work_item_type_context#rawjscode1 {计算项目子类型}]]
 state "绑定父视图中表单数据" as PREPAREJSPARAM3  [[$./calc_children_work_item_type_context#preparejsparam3 {绑定父视图中表单数据}]]
+state "计算项目子类型" as RAWJSCODE1  [[$./calc_children_work_item_type_context#rawjscode1 {计算项目子类型}]]
 state "获取工作项类型" as PREPAREJSPARAM1  [[$./calc_children_work_item_type_context#preparejsparam1 {获取工作项类型}]]
 state "结束" as END2 <<end>> [[$./calc_children_work_item_type_context#end2 {结束}]]
 
@@ -85,10 +85,10 @@ RAWJSCODE1 --> END2
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|上下文|context|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|子工作项类型|children_type|数据对象||
-|工作项类型|type|数据对象||
-|视图参数|params|||
 |父视图表单数据|parentview_form_data|数据对象||
+|视图参数|params|||
+|上下文|context|导航视图参数绑定参数||
 |view|view|当前视图对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|工作项类型|type|数据对象||
+|子工作项类型|children_type|数据对象||

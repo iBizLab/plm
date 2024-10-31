@@ -1,6 +1,6 @@
 ## 选择模板 <!-- {docsify-ignore-all} -->
 
-   
+   选择模板
 
 ### 处理过程
 
@@ -15,12 +15,12 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./choose_template#begin {开始}]]
-state "结束" as END1 <<end>> [[$./choose_template#end1 {结束}]]
 state "返回参数" as DEBUGPARAM2  [[$./choose_template#debugparam2 {返回参数}]]
-state "结束" as END2 <<end>> [[$./choose_template#end2 {结束}]]
-state "弹出模板选择" as DEUIACTION1  [[$./choose_template#deuiaction1 {弹出模板选择}]]
 state "判断是否需要选择模板" as DEACTION1  [[$./choose_template#deaction1 {判断是否需要选择模板}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./choose_template#preparejsparam1 {准备参数}]]
+state "结束" as END2 <<end>> [[$./choose_template#end2 {结束}]]
+state "弹出模板选择" as DEUIACTION1  [[$./choose_template#deuiaction1 {弹出模板选择}]]
+state "结束" as END1 <<end>> [[$./choose_template#end1 {结束}]]
 
 
 Begin --> DEACTION1
@@ -94,7 +94,7 @@ PREPAREJSPARAM1 --> END2
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |视图参数|params|||
-|上下文|ctx|导航视图参数绑定参数||
-|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
-|当前视图对象|view|当前视图对象||
 |效能度量详情|insight_view_info|数据对象||
+|传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|上下文|ctx|导航视图参数绑定参数||
+|当前视图对象|view|当前视图对象||

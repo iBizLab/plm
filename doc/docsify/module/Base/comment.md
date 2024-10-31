@@ -151,35 +151,46 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 打开最近访问选择视图（移动端） | open_recent_pickup_view | 选择事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_mob_pickup_view)</details>||
 | 编辑 | panel_usr0322433346_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
+| 打开人员选择视图（移动端） | open_project_member | 选择人员 |无数据|<details><summary>打开视图或向导（模态）</summary>[空间成员](app/view/space_member_mob_pickup_view)</details>||
 | 添加回复（客户沟通） | add_comment_client | 添加回复 |无数据|用户自定义||
 | 编辑 | panel_usr0228764297_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
 | 回复 | panel_usr0322433346_button_calluilogic2_click | 回复 |单项数据|用户自定义||
+| 回复 | panel_usr1009329700_button_calluilogic1_click | 回复 |单项数据|用户自定义||
 | 删除评论 | del_comment | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 回复 | panel_usr0103471499_button_calluilogic2_click | 回复 |单项数据|用户自定义||
+| 回复 | panel_usr0322433347_button_calluilogic2_click | 回复 |单项数据|用户自定义||
+| 发送评论（移动端） | send_comment_mob | 发送评论 |无数据|用户自定义||
+| 刷新评论列表 | refresh_comment_list | 刷新评论列表 |无数据|用户自定义||
 | 发送评论 | send_comment | 发送评论 |无数据|用户自定义||
+| 编辑 | panel_usr0322433347_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
 | 清空评论(客户沟通) | clear_comment_client | 清空 |无数据|用户自定义||
 | 发送评论（知识库） | send_comment_wiki | 发送评论 |无数据|用户自定义||
 | 清空评论（知识库） | clear_comment_wiki | 清空 |无数据|用户自定义||
 | 清空评论 | clear_comment | 清空 |无数据|用户自定义||
 | 发送评论（客户沟通） | send_comment_customer_comment | 发送评论 |无数据|用户自定义||
+| 删除评论（知识库） | delete_comment_space | 删除评论 |单项数据（主键）|<details><summary>后台调用</summary>[delete](#行为)||
 | 回复 | panel_usr0228764297_button_calluilogic2_click | 回复 |单项数据|用户自定义||
 | 编辑 | panel_usr0103471499_button_calluilogic1_click | 编辑 |单项数据|用户自定义||
 
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
+|[刷新评论列表](module/Base/comment/uilogic/refresh_comment_list)|refresh_comment_list|刷新|
+|[刷新评论列表（移动端）](module/Base/comment/uilogic/refresh_comment)|refresh_comment|刷新|
 |[发送评论](module/Base/comment/uilogic/send_comment)|send_comment|发送评论，并关闭评论输入框|
 |[发送评论(客户沟通)](module/Base/comment/uilogic/send_comment_customer_comment)|send_comment_customer_comment|发送评论，并关闭评论输入框，刷新评论列表|
 |[发送评论(知识库)](module/Base/comment/uilogic/send_comment_wiki)|send_comment_wiki|发送评论，并关闭评论输入框，刷新评论列表|
+|[发送评论（移动端）](module/Base/comment/uilogic/send_comment_mob)|send_comment_mob|发送评论，并关闭评论输入框|
 |[回复评论](module/Base/comment/uilogic/reply_comment)|reply_comment|获取回复对象评论信息，并展开评论输入框，显示回复组件|
 |[回复评论（知识库）](module/Base/comment/uilogic/reply_comment_wiki)|reply_comment_wiki|获取回复对象评论信息，并展开评论输入框，显示回复组件|
 |[回复评论（知识库）(客户沟通)](module/Base/comment/uilogic/reply_comment_wiki_client)|reply_comment_wiki_client|获取回复对象评论信息，并展开评论输入框，显示回复组件|
+|[回复评论（移动端）](module/Base/comment/uilogic/reply_comment_mob)|reply_comment_mob|获取回复对象评论信息，并回填评论输入框，显示回复组件|
 |[控制评论按钮显示](module/Base/comment/uilogic/comment_icon_show)|comment_icon_show|显示评论按钮|
 |[控制评论按钮显示（知识库）](module/Base/comment/uilogic/comment_icon_show_wiki)|comment_icon_show_wiki|知识库评论按钮显示|
 |[控制评论按钮隐藏](module/Base/comment/uilogic/comment_icon_hidden)|comment_icon_hidden|获取部件状态信息，通过直接赋值，控制指定部件显示隐藏|
 |[控制评论按钮隐藏（知识库）](module/Base/comment/uilogic/comment_icon_hidden_wiki)|comment_icon_hidden_wiki|知识库评论按钮隐藏|
-|[添加回复](module/Base/comment/uilogic/add_comment)|add_comment|添加回复按钮触发，显示评论区域|
 |[添加回复(客户沟通)](module/Base/comment/uilogic/add_comment_client)|add_comment_client|获取指定评论数据，并展开评论输入框|
 |[清空评论](module/Base/comment/uilogic/clear_comment)|clear_comment|清空当前输入框内已输入内容|
 |[清空评论(客户沟通)](module/Base/comment/uilogic/clear_comment_client)|clear_comment_client|清空评论输入框内容，并隐藏输入框|
@@ -187,6 +198,7 @@
 |[编辑评论](module/Base/comment/uilogic/edit_comment)|edit_comment|编辑评论，获取评论数据，展开评论输入框并赋值|
 |[编辑评论（知识库）](module/Base/comment/uilogic/edit_comment_wiki)|edit_comment_wiki|编辑评论，获取评论数据，展开评论输入框并赋值|
 |[编辑评论（知识库）(客户沟通)](module/Base/comment/uilogic/edit_comment_wiki_client)|edit_comment_wiki_client|编辑评论，获取评论数据，展开评论输入框并赋值|
+|[获取列表总条数](module/Base/comment/uilogic/get_list_total)|get_list_total|获取列表总条数|
 |[获取客户沟通总条数](module/Base/comment/uilogic/get_customer_comment_total)|get_customer_comment_total|获取客户沟通的总条数信息|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

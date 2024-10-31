@@ -1,6 +1,9 @@
 # 智能报表(PSSysBIReport)  <!-- {docsify-ignore-all} -->
 
 
+智能报表
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -51,7 +54,7 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[更新报表](module/extension/PSSysBIReport/logic/update_report)|update_report|无|||
+|[更新报表](module/extension/PSSysBIReport/logic/update_report)|update_report|无||更新报表|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|

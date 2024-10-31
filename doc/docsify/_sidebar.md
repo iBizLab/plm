@@ -10,6 +10,7 @@
   * [系统管理](module/ibizsysmgr)
   * [ebsx系统管理](module/ebsx)
   * [模型扩展](module/extension)
+  * [DevOps数据集成](module/DevOps)
 
 * <i class="fa-solid fa-cube"></i> 智能报表
   * [智能报表](bi_scheme/BIScheme/BIScheme)
@@ -24,6 +25,7 @@
   * [ibizsysmgr](client/ibizsysmgr/ibizsysmgr)
 
 * <i class="fa fa-desktop"></i> 系统应用
+  * [PLMMob](app/plmmob)
   * [PLMWeb](app/plmweb)
   * [PLMWiki](app/plmwiki)
 

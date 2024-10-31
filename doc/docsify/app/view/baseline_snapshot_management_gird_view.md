@@ -15,8 +15,8 @@
 
 
 ### 关联界面行为
-  * [基线(BASELINE)](module/Base/baseline) : [新建快照](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [删除快照](module/Base/baseline#界面行为)
+  * [基线(BASELINE)](module/Base/baseline) : [新建快照](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [编辑快照](module/Base/baseline#界面行为)
   * [基线(BASELINE)](module/Base/baseline) : [查看快照](module/Base/baseline#界面行为)
 

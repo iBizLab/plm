@@ -80,6 +80,13 @@
 
 
 
+### 查询连接
+* **PROJECT相关N:1（INNER JOIN）DER1N_WORK_ITEM_PROJECT_PROJECT_ID**<br>
+连接关系：[DER1N_WORK_ITEM_PROJECT_PROJECT_ID](der/DER1N_WORK_ITEM_PROJECT_PROJECT_ID)<br>
+连接实体：[项目](module/ProjMgmt/project)<br>
+连接条件：(`IS_DELETED(是否已删除)` EQ `'0'`)<br>
+
+
 
 
 <el-dialog v-model="MYSQL5" title="MYSQL5">
@@ -139,7 +146,7 @@ LEFT JOIN `BOARD` t51 ON t1.`BOARD_ID` = t51.`ID`
 LEFT JOIN `SPRINT` t61 ON t1.`SPRINT_ID` = t61.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t71 ON t1.`RELEASE_ID` = t71.`ID` 
 
-
+WHERE ( t11.`IS_DELETED` = 0 )
 ```
 
 </el-dialog>

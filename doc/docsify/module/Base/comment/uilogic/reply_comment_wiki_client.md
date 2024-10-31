@@ -15,10 +15,10 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./reply_comment_wiki_client#begin {开始}]]
-state "展开评论输入框并设值回复" as RAWJSCODE1  [[$./reply_comment_wiki_client#rawjscode1 {展开评论输入框并设值回复}]]
 state "结束" as END1 <<end>> [[$./reply_comment_wiki_client#end1 {结束}]]
 state "获取评论编辑器" as PREPAREJSPARAM1  [[$./reply_comment_wiki_client#preparejsparam1 {获取评论编辑器}]]
 state "显示评论容器" as DEUIACTION1  [[$./reply_comment_wiki_client#deuiaction1 {显示评论容器}]]
+state "展开评论输入框并设值回复" as RAWJSCODE1  [[$./reply_comment_wiki_client#rawjscode1 {展开评论输入框并设值回复}]]
 
 
 Begin --> PREPAREJSPARAM1
@@ -82,7 +82,7 @@ uiLogic.view.reply_comment_id=uiLogic.default.id;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|当前视图对象|view|当前视图对象||
-|评论对象|comment|数据对象||
 |父视图|parentView|数据对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图对象|view|当前视图对象||
+|评论对象|comment|数据对象||

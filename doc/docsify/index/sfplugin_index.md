@@ -4,27 +4,29 @@
 |  --------  | ----- | -----    |-----    |----    |
 |项目工作项代码表||PSCodeListImpl|[MSLogicCodeListRuntimeEx](#UsrSFPlugin0623056576)||
 |SysDEBIReportProxyUtilRuntime||PSSysUtilImpl|[SysDEBIReportProxyUtilRuntime](#UsrSFPlugin0702700490)||
-|SysPSDEModelUtilRuntime||PSSysUtilImpl|[SysPSDEModelUtilRuntime](#UsrSFPlugin0606633396)||
+|SysPSDEModelUtilRuntime||PSSysUtilImpl|[PLMSysPSDEModelUtilRuntime](#PLMSysPSDEModelUtilRuntime)||
 |用例步骤导入增强||PSSysTranslatorImpl|[One2ManyCaseStepImpTransRuntime](#UsrSFPlugin0515997865)|开发中，暂未使用|
 |用户导入增强||PSSysTranslatorImpl|[One2ManyUserImpTransRuntime](#UsrSFPlugin0424744613)|参数名               说明                                   默认值<br>username       指定从用户实体对象中获取值名称名称             display_name<br>userdename     指定用户数据实体名称                          user<br>one2manyfield  指定转换器属性映射的1对多集合属性名称          attentions<br>one2manyuserid 指定映射的1对多集合属性中存储用户标识属性名称   user_id|
-|@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)||
+|@内容||PSSysTranslatorImpl|[SysAtContentTranslatorRuntime](#UsrSFPlugin0201416283)|评论@转换器|
 |结束时间边界值||PSSysTranslatorImpl|[SysEndOfDayTranslatorRuntime](#UsrSFPlugin0401275996)||
 |工作项通知模板(运行时)||PSSysMsgTemplImpl|[[消息模板]工作项通知模板(运行时)](#UsrSFPlugin0204714710)||
 |填充产品需求版本数据(fill_version_data)|[基线需求(BASELINE_IDEA)](module/ProdMgmt/baseline_idea)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充页面版本数据(fill_version_data)|[基线页面(BASELINE_PAGE)](module/Wiki/baseline_page)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充测试用例版本数据(fill_version_data)|[基线用例(BASELINE_TEST_CASE)](module/TestMgmt/baseline_test_case)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
 |填充工作项版本数据(fill_version_data)|[基线工作项(BASELINE_WORK_ITEM)](module/ProjMgmt/baseline_work_item)|PSDEDataSetImpl|[FillVersionDataDEDataSetRuntime](#UsrSFPlugin0421357755)|cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.FillVersionDataDEDataSetRuntime|
+|空间页面(移动端)(normal_tree_page)|[页面(PAGE)](module/Wiki/article_page)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)|数据集合获取树表格层级数据|
 |多类型页面数据导入|[页面(PAGE)](module/Wiki/article_page)|PSDEDataImportImpl|[PageDataImportRuntimeEx](#PageDataImportRuntimeEx)|页面导入使用|
 |version|[页面(PAGE)](module/Wiki/article_page)|PSDEUtilImpl|[DEVersionControlUtilRuntimeEx](#UsrSFPlugin0628633282)|排除新建模式行为自动建立版本|
-|版本数据存储|[关联(RELATION)](module/Base/relation)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)||
-|版本数据存储|[执行用例(RUN)](module/TestMgmt/run)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)||
-|提交版本(COMMIT)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[CommitVersionDEActionRuntime](#UsrSFPlugin0324806543)||
-|修复版本(FixCommit)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[FixCommitVersionDEActionRuntime](#UsrSFPlugin0424197954)||
+|版本数据存储|[关联(RELATION)](module/Base/relation)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)|查询版本关联数据|
+|版本数据存储|[执行用例(RUN)](module/TestMgmt/run)|PSDEUtilImpl|[DEVersionStorageUtilRuntimeEx](#UsrSFPlugin0425071911)|查询版本关联数据|
+|提交版本(COMMIT)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[CommitVersionDEActionRuntime](#UsrSFPlugin0324806543)|创建版本数据|
+|修复版本(FixCommit)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[FixCommitVersionDEActionRuntime](#UsrSFPlugin0424197954)|初始化版本数据（修复版本）|
 |恢复指定版本(RESTORE)|[版本(VERSION)](module/Base/version)|PSDEUserCustomActionImpl|[RestoreVersionDEActionRuntime](#UsrSFPlugin0324899435)||
 |人员维度(member_dimension)|[工时(WORKLOAD)](module/Base/workload)|PSDEDataSetImpl|[MemberWorklaodDEDataSetRuntime](#UsrSFPlugin0508758798)|工时管理，人员维度数据集合后台插件|
+|工时日历移动端(mob_calendar)|[工时(WORKLOAD)](module/Base/workload)|PSDEDataSetImpl|[GroupNestedFieldsDEDataSetRuntime](#UsrSFPlugin1018391929)|分组数据集填充嵌套数据|
 |看板工作项移动位置(board_move_position)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEUserCustomActionImpl|[BoardMovePositionDEActionRuntime](#UsrSFPlugin0618803950)|看板工作项移动排序|
-|需求树表查询(requirement_tree)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)||
-|树表数据集合(tree)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)||
+|需求树表查询(requirement_tree)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)|数据集合获取树表格层级数据|
+|树表数据集合(tree)|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataSetImpl|[TreeGridDEDataSetRuntime](#UsrSFPlugin0407757309)|数据集合获取树表格层级数据|
 |瀑布需求导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 |Scrum工作项缺陷导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
 |Scrum工作项需求导入|[工作项(WORK_ITEM)](module/ProjMgmt/work_item)|PSDEDataImportImpl|[NestedDataImportRuntimeEx](#NestedDataImportRuntimeEx)||
@@ -403,6 +405,27 @@ public class NestedDataImportRuntimeEx extends POIDEDataImportRuntime  {
 
 }
 ```
+### PLMSysPSDEModelUtilRuntime :id=PLMSysPSDEModelUtilRuntime
+
+
+```cn.ibizlab.plm.user.plugin.groovy.sysutil.PLMSysPSDEModelUtilRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.sysutil;
+
+
+import net.ibizsys.central.plugin.extension.sysutil.SysPSDEModelUtilRuntime;
+import net.ibizsys.central.plugin.extension.sysutil.addin.ISysPSDEModelUtilRTAddin;
+import net.ibizsys.central.plugin.extension.sysutil.addin.PSDESearchBarSyncTool;
+import net.ibizsys.runtime.plugin.RuntimeObjectFactory;
+
+public class PLMSysPSDEModelUtilRuntime extends SysPSDEModelUtilRuntime {
+    static {
+        RuntimeObjectFactory.getInstance().registerObjectIf(ISysPSDEModelUtilRTAddin.class, "*:PSDEMODELSYNCTOOL:PSSYSSEARCHBAR", PSDESearchBarSyncTool.class);
+    }
+}
+
+```
 ### PageDataImportRuntimeEx :id=PageDataImportRuntimeEx
 页面导入使用
 
@@ -434,7 +457,7 @@ public class PageDataImportRuntimeEx extends POIDEDataImportRuntime  {
 }
 ```
 ### SysAtContentTranslatorRuntime :id=UsrSFPlugin0201416283
-
+评论@转换器
 
 ```net.ibizsys.central.res.SysAtContentTranslatorRuntime```
 
@@ -481,7 +504,7 @@ class WorkItemNotifyMsgTemplRuntime extends net.ibizsys.central.msg.SysMsgTemplR
 
 ```
 ### CommitVersionDEActionRuntime :id=UsrSFPlugin0324806543
-
+创建版本数据
 
 ```net.ibizsys.central.plugin.version.dataentity.action.CommitVersionDEActionRuntime```
 
@@ -505,7 +528,7 @@ null
 null
 ```
 ### TreeGridDEDataSetRuntime :id=UsrSFPlugin0407757309
-
+数据集合获取树表格层级数据
 
 ```net.ibizsys.central.plugin.util.dataentity.ds.TreeGridDEDataSetRuntime```
 
@@ -726,7 +749,7 @@ public class POIDEDataImportRuntimeEx extends POIDEDataImportRuntime  {
 }
 ```
 ### FixCommitVersionDEActionRuntime :id=UsrSFPlugin0424197954
-
+初始化版本数据（修复版本）
 
 ```net.ibizsys.central.plugin.version.dataentity.action.FixCommitVersionDEActionRuntime```
 
@@ -850,7 +873,7 @@ class One2ManyUserImpTransRuntime extends SysTranslatorRuntimeBase {
 
 ```
 ### DEVersionStorageUtilRuntimeEx :id=UsrSFPlugin0425071911
-
+查询版本关联数据
 
 ```cn.ibizlab.plm.user.plugin.groovy.dataentity.util.DEVersionStorageUtilRuntimeEx```
 
@@ -1192,7 +1215,7 @@ class One2ManyCaseStepImpTransRuntime extends SysTranslatorRuntimeBase {
 null
 ```
 ### HtmlToPdfTransRuntime :id=UsrSFPlugin0612360832
-
+Html转PDF格式
 
 ```cn.ibizlab.plm.user.plugin.groovy.dataentity.logicnode.HtmlToPdfTransRuntime```
 
@@ -1387,7 +1410,7 @@ class BoardMovePositionDEActionRuntime extends DEActionRuntimeBase{
 }
 ```
 ### CreateWorkItemLogicNodeRuntime :id=UsrSFPlugin0619559336
-
+工作项自定义工作项类型创建逻辑节点
 
 ```cn.ibizlab.plm.user.plugin.groovy.dataentity.logic.CreateWorkItemLogicNodeRuntime```
 
@@ -1650,6 +1673,222 @@ public class DEVersionControlUtilRuntimeEx extends DEVersionControlUtilRuntime {
 
 ```groovy
 null
+```
+### GroupNestedFieldsDEDataSetRuntime :id=UsrSFPlugin1018391929
+分组数据集填充嵌套数据
+
+```cn.ibizlab.plm.user.plugin.groovy.dataentity.ds.GroupNestedFieldsDEDataSetRuntime```
+
+```groovy
+package cn.ibizlab.plm.user.plugin.groovy.dataentity.ds;
+
+import groovy.transform.CompileStatic
+import net.ibizsys.central.util.PageImpl
+import net.ibizsys.central.plugin.util.dataentity.ds.DEDataSetRuntimeBase;
+import org.springframework.data.domain.Page;
+import net.ibizsys.central.util.IEntityDTO;
+import net.ibizsys.central.util.ISearchContextDTO;
+
+import net.ibizsys.model.PSModelEnums;
+import net.ibizsys.model.dataentity.defield.IPSDEFGroup;
+
+@CompileStatic
+class GroupNestedFieldsDEDataSetRuntime extends DEDataSetRuntimeBase {
+    @Override
+    protected Page<?> doFetchReal(ISearchContextDTO iSearchContextDTO) throws Throwable {
+        if (this.getDataEntityRuntime().getSystemPersistentAdapter() == null) {
+            throw new Exception("实体未提供系统持久化设置器");
+        }
+
+        Page<?> ret = this.getDataEntityRuntime().getSystemPersistentAdapter().fetchDataSet(this.getDataEntityRuntime(), this.getPSDEDataSet(), iSearchContextDTO, null);
+        Page<IEntityDTO> page = this.getDataEntityRuntime().getEntityDTOPage(ret, this.getPSDEDataSet(), iSearchContextDTO.getPageable());
+
+        return new PageImpl<IEntityDTO>(page.getContent(), iSearchContextDTO.getPageable(), ret.getTotalElements(), page.getTotalPages());
+
+    }
+
+    @Override
+    protected Page<IEntityDTO> translatePageAfterProceed(Page<?> ret, ISearchContextDTO iSearchContextDTO) throws Throwable{
+        Page<IEntityDTO> page = this.getDataEntityRuntime().getEntityDTOPage(ret, this.getPSDEDataSet(), iSearchContextDTO.getPageable());
+        if(isFillEntityDTOPageNestedFields() && iSearchContextDTO.isFillNestedField()) {
+            // this.getDataEntityRuntime().fillEntityDTOPageNestedFields(page, this.getPSDEDataSet());
+            if(this.getPSDEDataSet().getViewLevel() == PSModelEnums.DEDataQueryViewLevel.ALL.value) {
+                this.getDataEntityRuntime().fillEntityDTONestedFields(page.getContent(), (IPSDEFGroup)null);
+            }
+        }
+        return page;
+    }
+}
+```
+### PSDESearchBarSyncTool :id=UsrSFPlugin1021369361
+
+
+```cn.ibizlab.plm.user.plugin.groovy.sysutil.addin.PSDESearchBarSyncTool```
+
+```groovy
+package net.ibizsys.central.plugin.extension.sysutil.addin
+
+import com.fasterxml.jackson.databind.JsonNode;
+import net.ibizsys.model.app.IPSApplication;
+import net.ibizsys.model.app.dataentity.IPSAppDataEntity;
+import net.ibizsys.model.app.view.IPSAppDEGridView
+import net.ibizsys.model.app.view.IPSAppDETreeGridView;
+import net.ibizsys.model.app.view.IPSAppView;
+import net.ibizsys.model.control.searchbar.IPSSearchBar;
+import net.ibizsys.model.control.searchbar.IPSSearchBarGroup
+import net.ibizsys.runtime.util.JsonUtils;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.util.ObjectUtils;
+import net.ibizsys.central.dataentity.IDataEntityRuntime;
+import net.ibizsys.central.util.IEntityDTO;
+import net.ibizsys.central.util.ISearchContextDTO;
+import net.ibizsys.model.dataentity.IPSDataEntity;
+import net.ibizsys.model.dataentity.der.IPSDERBase;
+import net.ibizsys.model.dataentity.der.IPSDERCustom;
+import net.ibizsys.model.dataentity.ds.IPSDEDataSet;
+
+public class PSDESearchBarSyncTool extends PSDEModelSyncToolBase {
+
+	private static final org.apache.commons.logging.Log log = LogFactory.getLog(PSDESearchBarSyncTool.class);
+
+	@Override
+	protected void onSync(IPSDataEntity iPSDataEntity, Object param) throws Throwable {
+
+// 		Map<String, Object> params = null;
+// 		if(param instanceof Map) {
+// 			params = (Map)param;
+// 		}
+// 		IDataEntityRuntime iDataEntityRuntime = this.getSystemRuntime().getDataEntityRuntime(iPSDataEntity.getId());
+
+// 		List<Map> mapList = new ArrayList<Map>();
+
+// 		List<IPSDERBase> psDERBaseList = iPSDataEntity.getMinorPSDERs();
+// 		if(!ObjectUtils.isEmpty(psDERBaseList)) {
+// 			for(IPSDERBase iPSDERBase : psDERBaseList) {
+
+// 				if(!(iPSDERBase instanceof IPSDERCustom)) {
+// 					continue;
+// 				}
+
+// 				IPSDERCustom iPSDERCustom = (IPSDERCustom)iPSDERBase;
+
+// 				//获取相应的视图
+// 				IPSDataEntity majorPSDataEntity = iPSDERCustom.getMajorPSDataEntityMust();
+// 				Set<String> viewCache = new HashSet<>();
+// 				for(IPSApplication application : getSystemRuntime().getPSSystem().getAllPSApps()){
+// 					IPSAppDataEntity majorPSAppDataEntity;
+// 					for(IPSAppDataEntity appDataEntity: application.getAllPSAppDataEntities()){
+// 						if(appDataEntity.getName().equals(majorPSDataEntity.getName())){
+// 							majorPSAppDataEntity = appDataEntity;
+// 							break;
+// 						}
+// 					}
+// 					if (majorPSAppDataEntity == null){
+// 						break;
+// 					}
+// 					for (IPSAppView appView : majorPSAppDataEntity.getAllPSAppViews()){
+// 						//仅支持表格视图中绑定的搜索栏
+// 						if(appView instanceof IPSAppDEGridView || appView instanceof IPSAppDETreeGridView){
+// 							//避免重复添加
+// 							if(viewCache.contains(appView.getCodeName())){
+// 								continue;
+// 							}
+// 							viewCache.add(appView.getCodeName());
+// 							IPSSearchBar searchbar = (IPSSearchBar)appView.getPSControl("searchbar",true);
+// 							if(searchbar == null){
+// 								searchbar = appView.getPSViewLayoutPanel().getPSControl("searchbar",true);
+// 							}
+// 							if(searchbar != null){
+// 								int ordervalueindex = 1;
+// 								for (IPSSearchBarGroup group : searchbar.getPSSearchBarGroups()) {
+
+// 									Map<String, Object> obj = new LinkedHashMap<String, Object>();
+// 									obj.put("APP_VIEW_TAG", appView.getCodeName());
+// //									obj.put("APP_TAG", application.getCodeName());
+// 									obj.put("NAME", group.getName());
+// 									obj.put("OWNER_TYPE", "SYSTEM");
+// 									if (!ObjectUtils.isEmpty(group.getData())){
+// 										try {
+// 											JsonNode jsonNode = JsonUtils.MAPPER.readTree(group.getData())
+// 											obj.put("THEME_MODEL",jsonNode.get("theme_model").toString());
+// 										} catch (Exception e) {
+// 											continue;
+// 										}
+// 									}
+// 									obj.put("SYSTEM_TAG", getSystemRuntime().getDeploySystemId());
+// 									obj.put("VALID_FLAG", 1);
+// 									obj.put("ORDER_VALUE", ordervalueindex * 100);
+// 									obj.put("CAPTION",  group.getCaption());
+// 									mapList.add(obj);
+// 									ordervalueindex = ordervalueindex+1;
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+
+// 		//查询历史数据
+// 		Map<String, IEntityDTO> lastEntityDTOMap = null;
+
+// 		IPSDEDataSet iPSDEDataSet = iDataEntityRuntime.getPSDEDataSetByTag(PSMODELSYNC_PREDEFINEDDATASET_PSMODELSYNC, true);
+// 		if(iPSDEDataSet != null) {
+
+// 			lastEntityDTOMap = new HashMap<String, IEntityDTO>();
+// 			ISearchContextDTO iSearchContextDTO = iDataEntityRuntime.createSearchContext();
+// 			iSearchContextDTO.all().count(false);
+// 			iSearchContextDTO.eq("SYSTEM_TAG",getSystemRuntime().getDeploySystemId());
+// 			List<IEntityDTO> list = iDataEntityRuntime.selectDataSet(iPSDEDataSet, iSearchContextDTO);
+// 			for(IEntityDTO item : list) {
+// 				String unionTag = String.format("%s|%s", item.get("APP_VIEW_TAG"),item.get("NAME"));
+// 				lastEntityDTOMap.put(unionTag, item);
+// 			}
+// 		}
+
+
+// 		//执行批保存
+// 		List<IEntityDTO> updateentityList = new ArrayList<IEntityDTO>();
+// 		List<IEntityDTO> createentityList = new ArrayList<IEntityDTO>();
+// 		for(Map<String, Object> item : mapList) {
+// 			IEntityDTO iEntityDTO = iDataEntityRuntime.createEntity(item);
+// 			String unionTag = String.format("%s|%s", item.get("APP_VIEW_TAG"),item.get("NAME"));
+// 			if(lastEntityDTOMap != null && lastEntityDTOMap.containsKey(unionTag)) {
+// 				IEntityDTO lastEntity = lastEntityDTOMap.get(unionTag);
+// 				iEntityDTO.set(iDataEntityRuntime.getKeyPSDEField().getLowerCaseName(),lastEntity.get(iDataEntityRuntime.getKeyPSDEField().getLowerCaseName(),null));
+// 				if(lastEntity.get("CAPTION").equals(item.get("CAPTION")) &&lastEntity.get("THEME_MODEL").equals(item.get("THEME_MODEL"))){
+// 					continue;
+// 				}
+// 				updateentityList.add(iEntityDTO);
+// 			}else {
+// 				createentityList.add(iEntityDTO);
+// 			}
+// 		}
+
+
+// 		for(IEntityDTO iEntityDTO : createentityList) {
+// 			iDataEntityRuntime.fillEntityKeyValue(iEntityDTO);
+// 		}
+
+// 		if(ObjectUtils.isEmpty(createentityList)&& ObjectUtils.isEmpty(updateentityList)){
+// 			return;
+// 		}
+
+// 		try {
+// 			if(!ObjectUtils.isEmpty(createentityList) ) {
+// 				iDataEntityRuntime.rawCreate(createentityList, true);
+// 			}
+// 			if(!ObjectUtils.isEmpty(updateentityList) ) {
+// 				iDataEntityRuntime.rawUpdate(updateentityList, true);
+// 			}
+// 		}
+// 		catch (Throwable ex) {
+// 			log.error(String.format("同步搜索栏发生异常，%s", ex.getMessage()), ex);
+// 		}
+	}
+
+}
+
 ```
 ### SimpleSysExtensionUtilRuntime :id=sysextension
 

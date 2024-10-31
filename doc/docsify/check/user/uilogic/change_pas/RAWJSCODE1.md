@@ -4,16 +4,13 @@
 (async function() { 
 const bol = await uiLogic.form.validate();
 if (bol) {
-    ibiz.util.action.execAndResolved(
-      'change_password',
-      {
-        context: uiLogic.form.context,
-        params: uiLogic.form.params,
-        data: [uiLogic.default],
-        view: uiLogic.view,
-      },
-      uiLogic.form.model.appId,
-    );
+    const {old_password,new_password,sure_password} = uiLogic.default;
+    const result = await ibiz.appUtil.changePwd(old_password,new_password,{surePwd: sure_password})
+    if (result && result.ok) {
+      ibiz.message.success('修改密码成功');
+    } else {
+      ibiz.message.error(`修改密码失败`);
+    }
 } else {
     ibiz.message.error('请检查表单填写！');
 }

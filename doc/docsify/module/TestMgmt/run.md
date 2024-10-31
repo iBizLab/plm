@@ -10,9 +10,11 @@
 |实际工时|ACTUAL_WORKLOAD|数值||是||
 |关注|ATTENTIONS|一对多关系数据集合|1048576|是||
 |关注人|ATTENTIONS_IMP|文本，可指定长度|100|是||
+|关注数|ATTENTION_COUNT|文本，可指定长度|200|是||
 |bi测试计划名称|BI_PLAN_NAME|文本，可指定长度|200|是||
 |测试用例标识|CASE_ID|外键值|100|是||
 |名称|CASE_NAME|外键值文本|200|是||
+|评论数|COMMENT_COUNT|文本，可指定长度|200|是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
 |当前版本标识|CUR_VERSION_ID|文本，可指定长度|100|是||
@@ -32,7 +34,7 @@
 |父对象版本标识|PARENT_VERSION_ID|文本，可指定长度|100|是||
 |测试计划标识|PLAN_ID|外键值|100|是||
 |测试计划|PLAN_NAME|外键值文本|200|是||
-|前置条件|PRECONDITION|外键值附加数据|2000|是||
+|前置条件|PRECONDITION|外键值附加数据|1048576|是||
 |优先级|PRIORITY|[单项选择(文本值)](index/dictionary_index#work_item_priority "优先级")|60|是||
 |最近创建日期|RECENT_CREATE_DAYS|整型||是||
 |关联缺陷数|RELATION_TOTAL_BUG|数值||是||
@@ -323,19 +325,22 @@
 | --------| --------| -------- |------------|------------|------------|
 | 全部通过 | all_pass | 全部通过 |无数据|用户自定义||
 | 移出 | delete_run | 移出 |多项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
+| 移出（移动端） | mob_delete_run | 移出(移动端) |单项数据（主键）|<details><summary>后台调用</summary>[Remove](#行为)||
 | BI编辑 | bi_report_view | 编辑 |无数据|用户自定义||
 | 打开选项操作视图（门户）（测试） | open_optview_portlet | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_test_option_view)</details>||
 | 设置执行人 | open_setting_actual_executor | 设置执行人 |多项数据（主键）|<details><summary>后台调用</summary>[set_executor](#行为)||
-| 打开选项操作视图（门户）（执行结果） | open_optview_Implementationresults | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_implementationresults_option_view)</details>||
 | 重置为未测 | reset_not_test | 重置为未测 |多项数据（主键）|<details><summary>后台调用</summary>[reset_not_test](#行为)||
+| 打开选项操作视图（门户）（执行结果） | open_optview_Implementationresults | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_implementationresults_option_view)</details>||
 | BI全屏 | bi_full_screen | 全屏 |无数据|用户自定义||
 | BI刷新 | bi_refresh | 刷新 |无数据|用户自定义||
+| 查看工时明细（移动端） | mob_check_workload_detail | 查看工时明细 |无数据|<details><summary>打开视图或向导（模态）</summary>[工时记录](app/view/workload_mob_detail_view)</details>||
 | 打开关联用例 | open_re_run | 打开关联用例 |无数据|<details><summary>打开视图或向导（模态）</summary>[用例](app/view/test_case_re_run_main_view)</details>||
 | 打开选项操作视图（门户）（每日执行用例趋势） | open_optview_portlet_daily_tendencies | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_daily_tendencies_option_view)</details>|打开选项操作视图（门户）（每日执行用例趋势）|
 | 选择用例 | choose_test_case | 选择用例 |无数据|<details><summary>后台调用</summary>[program_plan](#行为)||
 | 打开选项操作视图（门户）（成员执行） | open_optview_members_distribution | 编辑 |无数据|<details><summary>打开视图或向导（模态）</summary>[编辑部件](app/view/run_members_distribution_option_view)</details>||
 | 记录执行结果 | save_run_history | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 设置执行结果 | update_run_status | 设置执行结果 |多项数据（主键）|<details><summary>后台调用</summary>[batch_save_run_history](#行为)||
+| 执行用例关联缺陷（移动端） | mob_add_bug | 执行用例关联缺陷 |无数据|<details><summary>后台调用</summary>[other_relation_run](#行为)||
 | 记录执行结果并开启下一条 | save_run_history_and_next | 保存执行结果 |单项数据|<details><summary>后台调用</summary>[save_run_history](#行为)||
 | 查看工时明细 | check_workload_detail | 查看工时明细 |无数据|用户自定义||
 
@@ -347,8 +352,7 @@
 |[打开关联用例](module/TestMgmt/run/uilogic/open_re_run)|open_re_run|调用界面行为，打开关联用例|
 |[查看工时明细](module/TestMgmt/run/uilogic/check_workload_detail)|check_workload_detail|按钮触发，通过脚本切换显示组件|
 |[获取实际工时](module/TestMgmt/run/uilogic/get_actual_workload)|get_actual_workload|获取工时信息，并计算实际工时|
-|[获取执行结果总条数](module/TestMgmt/run/uilogic/get_run_result_total)|get_run_result_total|获取执行结果的总条数信息|
-|[触发计数器刷新(run)](module/TestMgmt/run/uilogic/refresh_counter_run)|refresh_counter_run|关联数据变更后，触发计数器刷新|
+|[通知刷新（移动端）](module/TestMgmt/run/uilogic/send_refresh)|send_refresh||
 |[门户全屏](module/TestMgmt/run/uilogic/full_screen)|full_screen|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户刷新](module/TestMgmt/run/uilogic/portlet_refresh)|portlet_refresh|所有门户部件行为栏上配置该逻辑可触发全屏|
 |[门户编辑](module/TestMgmt/run/uilogic/edit_to_design)|edit_to_design|所有门户部件配置该逻辑触发跳转至编辑页|

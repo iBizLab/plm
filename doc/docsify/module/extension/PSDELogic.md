@@ -1,6 +1,9 @@
 # 实体处理逻辑(PSDELogic)  <!-- {docsify-ignore-all} -->
 
 
+实体处理逻辑
+
+
 ## 属性
 |    中文名col150 | 属性名称col200           | 类型col200     | 长度col100    |允许为空col100    |  备注col500  |
 | --------   |------------| -----  | -----  | :----: | -------- |
@@ -141,10 +144,10 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[WebHook地址](module/extension/PSDELogic/logic/WebHook)|WebHook|属性逻辑|||
+|[WebHook地址](module/extension/PSDELogic/logic/WebHook)|WebHook|属性逻辑||WebHook地址|
 |[从模板建立规则](module/extension/PSDELogic/logic/create_by_template)|create_by_template|无||从模板建立规则|
-|[切换启用状态](module/extension/PSDELogic/logic/valid)|valid|属性逻辑|||
-|[失败率计算](module/extension/PSDELogic/logic/failure_per)|failure_per|属性逻辑|||
+|[切换启用状态](module/extension/PSDELogic/logic/valid)|valid|属性逻辑||切换启用状态|
+|[失败率计算](module/extension/PSDELogic/logic/failure_per)|failure_per|属性逻辑||失败率计算|
 |[获取最后运行状态](module/extension/PSDELogic/logic/get_last_run_info)|get_last_run_info|无||获取最后运行状态|
 
 ## 数据查询

@@ -1,6 +1,6 @@
 ## 提交评审 <!-- {docsify-ignore-all} -->
 
-   
+   提交评审
 
 ### 处理过程
 
@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./commit_review#begin {开始}]]
+state "注入脚本代码" as RAWJSCODE2  [[$./commit_review#rawjscode2 {注入脚本代码}]]
 state "实体行为" as DEACTION1  [[$./commit_review#deaction1 {实体行为}]]
 state "结束" as END1 <<end>> [[$./commit_review#end1 {结束}]]
 state "通知刷新" as RAWJSCODE1  [[$./commit_review#rawjscode1 {通知刷新}]]
 state "准备参数" as PREPAREJSPARAM1  [[$./commit_review#preparejsparam1 {准备参数}]]
-state "注入脚本代码" as RAWJSCODE2  [[$./commit_review#rawjscode2 {注入脚本代码}]]
 
 
 Begin --> PREPAREJSPARAM1 : [[$./commit_review#begin-preparejsparam1{表单内} 表单内]]
@@ -96,8 +96,8 @@ uiLogic.parent_form.details.review_results.state.visible=false;
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|父视图|parent_view|数据对象||
-|上下文|ctx|导航视图参数绑定参数||
-|当前视图对象|view|当前视图对象||
 |父表单|parent_form|数据对象||
+|上下文|ctx|导航视图参数绑定参数||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|当前视图对象|view|当前视图对象||
+|父视图|parent_view|数据对象||

@@ -15,13 +15,13 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./batch_save_run_history#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./batch_save_run_history#bindparam1 {"绑定参数"}]]
-state "准备参数" as PREPAREPARAM3  [[$./batch_save_run_history#prepareparam3 {"准备参数"}]]
+state "绑定选中数据对象" as BINDPARAM1  [[$./batch_save_run_history#bindparam1 {"绑定选中数据对象"}]]
+state "设置用例id" as PREPAREPARAM3  [[$./batch_save_run_history#prepareparam3 {"设置用例id"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./batch_save_run_history#loopsubcall1 {"循环子调用"}]] #green {
 state "获取执行用例详情" as DEACTION1  [[$./batch_save_run_history#deaction1 {"获取执行用例详情"}]]
-state "准备参数" as PREPAREPARAM1  [[$./batch_save_run_history#prepareparam1 {"准备参数"}]]
+state "设置执行状态" as PREPAREPARAM1  [[$./batch_save_run_history#prepareparam1 {"设置执行状态"}]]
 state "修改执行用例" as DEACTION2  [[$./batch_save_run_history#deaction2 {"修改执行用例"}]]
-state "准备参数" as PREPAREPARAM2  [[$./batch_save_run_history#prepareparam2 {"准备参数"}]]
+state "设置执行结果" as PREPAREPARAM2  [[$./batch_save_run_history#prepareparam2 {"设置执行结果"}]]
 state "创建执行结果" as DEACTION3  [[$./batch_save_run_history#deaction3 {"创建执行结果"}]]
 }
 
@@ -47,12 +47,12 @@ PREPAREPARAM2 --> DEACTION3
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中数据对象 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选中数据对象)`
-#### 准备参数 :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置用例id :id=PREPAREPARAM3<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -71,11 +71,13 @@ PREPAREPARAM2 --> DEACTION3
 
 将执行结果返回给参数`Default(传入变量)`
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置执行状态 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
 1. 将`for_temp_obj(临时循环变量).STATUS(执行结果)` 设置给  `Default(传入变量).STATUS(执行结果)`
+2. 将`用户全局对象.srfpersonid` 设置给  `Default(传入变量).EXECUTOR_ID(执行人标识)`
+3. 将`用户全局对象.srfpersonname` 设置给  `Default(传入变量).EXECUTOR_NAME(执行人)`
 
 #### 修改执行用例 :id=DEACTION2<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
@@ -83,7 +85,7 @@ PREPAREPARAM2 --> DEACTION3
 
 调用实体 [执行用例(RUN)](module/TestMgmt/run.md) 行为 [Update](module/TestMgmt/run#行为) ，行为参数为`Default(传入变量)`
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置执行结果 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

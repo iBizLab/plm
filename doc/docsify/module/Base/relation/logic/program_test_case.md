@@ -16,11 +16,11 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./program_test_case#begin {"开始"}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./program_test_case#debugparam1 {"调试逻辑参数"}]]
-state "绑定参数" as BINDPARAM1  [[$./program_test_case#bindparam1 {"绑定参数"}]]
+state "绑定关联列表参数" as BINDPARAM1  [[$./program_test_case#bindparam1 {"绑定关联列表参数"}]]
 state "结束" as END1 <<end>> [[$./program_test_case#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./program_test_case#loopsubcall1 {"循环子调用"}]] #green {
-state "重新建立参数" as RENEWPARAM1  [[$./program_test_case#renewparam1 {"重新建立参数"}]]
-state "重新建立参数" as RENEWPARAM2  [[$./program_test_case#renewparam2 {"重新建立参数"}]]
+state "重新建立正向关系参数" as RENEWPARAM1  [[$./program_test_case#renewparam1 {"重新建立正向关系参数"}]]
+state "重新建立反向关系参数" as RENEWPARAM2  [[$./program_test_case#renewparam2 {"重新建立反向关系参数"}]]
 state "填充需要的属性值" as PREPAREPARAM1  [[$./program_test_case#prepareparam1 {"填充需要的属性值"}]]
 state "生成正向关联数据" as DEACTION1  [[$./program_test_case#deaction1 {"生成正向关联数据"}]]
 state "生成反向关联数据" as DEACTION2  [[$./program_test_case#deaction2 {"生成反向关联数据"}]]
@@ -57,7 +57,7 @@ LOOPSUBCALL1 --> END1
 > 调试输出参数`Default(传入变量)`的详细信息
 
 
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定关联列表参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -67,12 +67,12 @@ LOOPSUBCALL1 --> END1
 
 
 循环参数`selectdata(关联列表)`，子循环参数使用`for_temp_obj(循环临时变量)`
-#### 重新建立参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立正向关系参数 :id=RENEWPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 
 重建参数```forward_relation_obj(正向关系对象)```
-#### 重新建立参数 :id=RENEWPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
+#### 重新建立反向关系参数 :id=RENEWPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[重新建立参数]</font></sup>
 
 
 

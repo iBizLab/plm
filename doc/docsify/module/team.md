@@ -10,10 +10,10 @@
 |[讨论(DISCUSS_POST)](module/Team/discuss_post)|discuss_post|主实体|SQL|DISCUSS_POST|否|否|附属主实体控制（未映射自控）|否|根据话题发起的讨论，使成员围绕话题展开讨论|
 |[讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)|discuss_reply|主实体|SQL|DISCUSS_REPLY|否|否|附属主实体控制（未映射自控）|否|记录讨论下的回复信息，包括回复内容、回复人等信息。|
 |[话题(DISCUSS_TOPIC)](module/Team/discuss_topic)|discuss_topic|主实体|SQL|DISCUSS_TOPIC|否|否|自控制|否|话题是交流信息和分享知识的讨论集合。|
-|[关键结果(KEY_RESULT)](module/Team/key_result)|key_result|主实体|SQL|KEY_RESULT|否|否|自控制|否||
-|[目标(OBJECTIVE)](module/Team/objective)|objective|主实体|SQL|OBJECTIVE|否|否|自控制|否||
+|[关键结果(KEY_RESULT)](module/Team/key_result)|key_result|主实体|SQL|KEY_RESULT|否|否|自控制|否|关键结果信息|
+|[目标(OBJECTIVE)](module/Team/objective)|objective|主实体|SQL|OBJECTIVE|否|否|自控制|否|记录目标数据信息|
 |[周期(PERIOD)](module/Team/period)|period|主实体|SQL|PERIOD|否|否|自控制|否|OKR周期|
-|[进展(UPDATE_RECORD)](module/Team/update_record)|update_record|主实体|SQL|UPDATE_RECORD|否|否|自控制|否||
+|[进展(UPDATE_RECORD)](module/Team/update_record)|update_record|主实体|SQL|UPDATE_RECORD|否|否|自控制|否|记录进展数据信息|
 
 ### ER图
 

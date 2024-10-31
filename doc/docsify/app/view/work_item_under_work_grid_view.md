@@ -18,7 +18,6 @@
 ### 关联视图
   * [工作项(work_item_dyna_main_view)](app/view/work_item_dyna_main_view)
   * [工作项(work_item_edit_view)](app/view/work_item_edit_view)
-  * [工作项(work_item_main_view)](app/view/work_item_main_view)
 
 <script>
  const { createApp } = Vue

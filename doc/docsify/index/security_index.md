@@ -586,31 +586,10 @@
 
 </tr>
 
-  <tr>
 
-<td rowspan="1"><a href ="#/module/Base/attachment">附件(ATTACHMENT)</a></td>
 
-<td><a href ="#/module/Base/attachment#attachment-all_rw">全部数据（读写）</a></td>
-<td align="center">
 
-</td>
-<td align="center">
 
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-
-</tr>
 
 
 
@@ -647,6 +626,7 @@
 </td>
 
 </tr>
+
 
 
 
@@ -1039,6 +1019,153 @@
 </tr>
 
 
+  <tr>
+
+<td rowspan="6"><a href ="#/module/ProdMgmt/idea">需求(IDEA)</a></td>
+
+<td><a href ="#/module/ProdMgmt/idea#idea-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/idea#idea-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/idea#idea-customer_user_rw">特定用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/idea#idea-user_r">只读用户(读)</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/idea#idea-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/idea#idea-user_w">操作用户(写)</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
 
   <tr>
@@ -1651,7 +1778,7 @@
 
   <tr>
 
-<td rowspan="5"><a href ="#/module/ProdMgmt/product">产品(PRODUCT)</a></td>
+<td rowspan="6"><a href ="#/module/ProdMgmt/product">产品(PRODUCT)</a></td>
 
 <td><a href ="#/module/ProdMgmt/product#product-admin_rw">管理员（读写）</a></td>
 <td align="center">
@@ -1716,6 +1843,30 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/product#product-customer_user_r">特定用户（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">
@@ -1959,7 +2110,7 @@
 
   <tr>
 
-<td rowspan="1"><a href ="#/module/extension/PSDEField">实体属性(PSDEFIELD)</a></td>
+<td rowspan="2"><a href ="#/module/extension/PSDEField">实体属性(PSDEFIELD)</a></td>
 
 <td><a href ="#/module/extension/PSDEField#psdefield-all_rw">全部数据（读写）</a></td>
 <td align="center">
@@ -1976,6 +2127,30 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/extension/PSDEField#psdefield-user_r">操作用户（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">
@@ -2017,7 +2192,7 @@
 
   <tr>
 
-<td rowspan="1"><a href ="#/module/extension/PSDENotify">实体通知(PSDENOTIFY)</a></td>
+<td rowspan="2"><a href ="#/module/extension/PSDENotify">实体通知(PSDENOTIFY)</a></td>
 
 <td><a href ="#/module/extension/PSDENotify#psdenotify-all_rw">全部数据（读写）</a></td>
 <td align="center">
@@ -2034,6 +2209,30 @@
 
 </td>
 <td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/extension/PSDENotify#psdenotify-user_r">操作角色（读）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
 
 </td>
 <td align="center">
@@ -2131,6 +2330,7 @@
 
 
 
+
   <tr>
 
 <td rowspan="2"><a href ="#/module/Base/recent">最近访问(RECENT)</a></td>
@@ -2182,32 +2382,8 @@
 </tr>
 
 
-  <tr>
 
-<td rowspan="1"><a href ="#/module/Base/relation">关联(RELATION)</a></td>
 
-<td><a href ="#/module/Base/relation#relation-all_rw">全部数据（读写）</a></td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-
-</td>
-<td align="center">
-<i class="fa fa-check"></i>
-
-</td>
-<td align="center">
-
-</td>
-
-</tr>
 
 
 
@@ -2691,6 +2867,153 @@
 
 
 
+  <tr>
+
+<td rowspan="6"><a href ="#/module/ProdMgmt/ticket">工单(TICKET)</a></td>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-admin_rw">管理员（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-customer_user_rw">特定用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-user_r">只读用户(读)</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-user_rw">普通用户（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
+  <tr>
+
+<td><a href ="#/module/ProdMgmt/ticket#ticket-user_w">操作用户(写)</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
   <tr>
 
@@ -2847,6 +3170,34 @@
 </tr>
 
 
+
+  <tr>
+
+<td rowspan="1"><a href ="#/module/Base/view_theme_setting">视图主题设置(VIEW_THEME_SETTING)</a></td>
+
+<td><a href ="#/module/Base/view_theme_setting#view_theme_setting-all_rw">全部数据（读写）</a></td>
+<td align="center">
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+<td align="center">
+<i class="fa fa-check"></i>
+
+</td>
+<td align="center">
+
+</td>
+
+</tr>
 
 
   <tr>

@@ -15,10 +15,11 @@
   * [需求模板(idea_template_all_grid_view)](app/view/idea_template_all_grid_view)
   * [高级设置(product_advanced_setting_edit_view)](app/view/product_advanced_setting_edit_view)
   * [基本信息(product_base_information_edit_view)](app/view/product_base_information_edit_view)
+  * [产品(product_idea_configuration_tab_exp_view)](app/view/product_idea_configuration_tab_exp_view)
   * [产品成员(product_member_config_grid_view)](app/view/product_member_config_grid_view)
   * [产品(product_recover_tab_exp_view)](app/view/product_recover_tab_exp_view)
   * [标签管理(product_tag_tag_grid_view)](app/view/product_tag_tag_grid_view)
-  * [工单类型(product_ticket_type_global_setting_view)](app/view/product_ticket_type_global_setting_view)
+  * [产品(product_ticket_configuration_tab_exp_view)](app/view/product_ticket_configuration_tab_exp_view)
   * [工单(ticket_recover_grid_view)](app/view/ticket_recover_grid_view)
 
 <script>

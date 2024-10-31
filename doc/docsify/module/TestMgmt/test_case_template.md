@@ -10,7 +10,7 @@
 |实际工时|ACTUAL_WORKLOAD|数值||是||
 |建立人|CREATE_MAN|文本，可指定长度|100|否||
 |建立时间|CREATE_TIME|日期时间型||否||
-|描述|DESCRIPTION|长文本，长度1000|2000|是||
+|描述|DESCRIPTION|长文本，没有长度限制|1048576|是||
 |预估工时|ESTIMATED_WORKLOAD|数值||是||
 |执行时间|EXECUTED_AT|日期时间型||是||
 |执行人|EXECUTOR_NAME|文本，可指定长度|100|是||
@@ -19,7 +19,7 @@
 |是否已删除|IS_DELETED|是否逻辑||是||
 |重要程度|LEVEL|[单项选择(文本值)](index/dictionary_index#test_case_level "用例重要程度")|60|是||
 |名称|NAME|文本，可指定长度|200|是||
-|前置条件|PRECONDITION|长文本，长度1000|2000|是||
+|前置条件|PRECONDITION|长文本，没有长度限制|1048576|是||
 |剩余工时|REMAINING_WORKLOAD|数值||是||
 |执行结果|RUN_STATUS|[单项选择(文本值)](index/dictionary_index#run_status "执行用例状态")|200|是||
 |评审状态|STATE|[单项选择(文本值)](index/dictionary_index#test_case_state "用例评审状态")|60|是||

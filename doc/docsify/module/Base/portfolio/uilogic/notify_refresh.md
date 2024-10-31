@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./notify_refresh#begin {开始}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./notify_refresh#rawjscode1 {注入脚本代码}]]
+state "通知刷新" as RAWJSCODE1  [[$./notify_refresh#rawjscode1 {通知刷新}]]
 state "结束" as END1 <<end>> [[$./notify_refresh#end1 {结束}]]
 
 
@@ -39,7 +39,7 @@ RAWJSCODE1 --> END1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 通知刷新 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

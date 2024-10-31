@@ -15,24 +15,22 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./case_move_plan#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./case_move_plan#debugparam1 {"调试逻辑参数"}]]
 state "获取表单数据" as BINDPARAM1  [[$./case_move_plan#bindparam1 {"获取表单数据"}]]
-state "绑定参数" as BINDPARAM2  [[$./case_move_plan#bindparam2 {"绑定参数"}]]
+state "绑定id参数" as BINDPARAM2  [[$./case_move_plan#bindparam2 {"绑定id参数"}]]
 state "结束" as END2 <<end>> [[$./case_move_plan#end2 {"结束"}]]
 state "结束" as END1 <<end>> [[$./case_move_plan#end1 {"结束"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./case_move_plan#loopsubcall1 {"循环子调用"}]] #green {
 state "重新建立参数" as RENEWPARAM1  [[$./case_move_plan#renewparam1 {"重新建立参数"}]]
 state "获取数据" as DEACTION2  [[$./case_move_plan#deaction2 {"获取数据"}]]
 state "设置执行用例信息（附件置空）" as PREPAREPARAM1  [[$./case_move_plan#prepareparam1 {"设置执行用例信息（附件置空）"}]]
-state "重置参数" as RESETPARAM1  [[$./case_move_plan#resetparam1 {"重置参数"}]]
+state "重置关注信息" as RESETPARAM1  [[$./case_move_plan#resetparam1 {"重置关注信息"}]]
 state "创建执行用例" as DEACTION1  [[$./case_move_plan#deaction1 {"创建执行用例"}]]
 state "关注信息" as PREPAREPARAM2  [[$./case_move_plan#prepareparam2 {"关注信息"}]]
-state "实体行为" as DEACTION3  [[$./case_move_plan#deaction3 {"实体行为"}]]
+state "保存关注信息" as DEACTION3  [[$./case_move_plan#deaction3 {"保存关注信息"}]]
 }
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> BINDPARAM1
+Begin --> BINDPARAM1
 BINDPARAM1 --> BINDPARAM2
 BINDPARAM2 --> LOOPSUBCALL1
 LOOPSUBCALL1 --> END1
@@ -57,20 +55,12 @@ DEACTION3 --> END2
 
 
 *- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 获取表单数据 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
 绑定参数`Default(传入变量)` 到 `srfactionparam(选择的数据对象)`
-#### 绑定参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定id参数 :id=BINDPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 
@@ -106,7 +96,7 @@ DEACTION3 --> END2
 7. 将`temp_obj(临时变量).ID(标识)` 设置给  `RUNINFO(RUN信息).CASE_ID(测试用例标识)`
 8. 将`for_temp_obj(循环临时变量).test_plan` 设置给  `RUNINFO(RUN信息).PLAN_ID(测试计划标识)`
 
-#### 重置参数 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
+#### 重置关注信息 :id=RESETPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[重置参数]</font></sup>
 
 
 
@@ -134,7 +124,7 @@ DEACTION3 --> END2
 5. 将`RUN` 设置给  `attention_info(关注信息).OWNER_SUBTYPE(所属对象子类型)`
 6. 将`40` 设置给  `attention_info(关注信息).TYPE(关注类型)`
 
-#### 实体行为 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
+#### 保存关注信息 :id=DEACTION3<sup class="footnote-symbol"> <font color=gray size=1>[实体行为]</font></sup>
 
 
 

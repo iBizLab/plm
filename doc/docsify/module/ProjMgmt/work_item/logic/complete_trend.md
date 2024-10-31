@@ -15,7 +15,6 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./complete_trend#begin {"开始"}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./complete_trend#debugparam1 {"调试逻辑参数"}]]
 state "七天前创建且未完成的工作项数量" as RAWSQLCALL1  [[$./complete_trend#rawsqlcall1 {"七天前创建且未完成的工作项数量"}]]
 state "七天前完成的工作项数量" as RAWSQLCALL2  [[$./complete_trend#rawsqlcall2 {"七天前完成的工作项数量"}]]
 state "获取七天内创建或完成的工作项" as DEDATASET1  [[$./complete_trend#dedataset1 {"获取七天内创建或完成的工作项"}]]
@@ -24,8 +23,7 @@ state "绑定返回统计结果" as BINDPARAM1  [[$./complete_trend#bindparam1 {
 state "绑定返回结果" as END1 <<end>> [[$./complete_trend#end1 {"绑定返回结果"}]]
 
 
-Begin --> DEBUGPARAM1
-DEBUGPARAM1 --> RAWSQLCALL1
+Begin --> RAWSQLCALL1
 RAWSQLCALL1 --> RAWSQLCALL2
 RAWSQLCALL2 --> DEDATASET1
 DEDATASET1 --> RAWSFCODE1
@@ -44,14 +42,6 @@ BINDPARAM1 --> END1
 
 
 *- N/A*
-#### 调试逻辑参数 :id=DEBUGPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[调试逻辑参数]</font></sup>
-
-
-
-> [!NOTE|label:调试信息|icon:fa fa-bug]
-> 调试输出参数`Default(传入变量)`的详细信息
-
-
 #### 七天前创建且未完成的工作项数量 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 

@@ -17,7 +17,7 @@ hide empty description
 state "开始" as Begin <<start>> [[$./delete_categories#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./delete_categories#end1 {"结束"}]]
 state "调试逻辑参数" as DEBUGPARAM1  [[$./delete_categories#debugparam1 {"调试逻辑参数"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./delete_categories#rawsqlcall1 {"直接SQL调用"}]]
+state "删除类别" as RAWSQLCALL1  [[$./delete_categories#rawsqlcall1 {"删除类别"}]]
 
 
 Begin --> DEBUGPARAM1
@@ -50,7 +50,7 @@ RAWSQLCALL1 --> END1
 > 调试输出参数`Default(传入变量)`的详细信息
 
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 删除类别 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 

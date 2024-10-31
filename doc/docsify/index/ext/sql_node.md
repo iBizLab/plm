@@ -1,5 +1,5 @@
 
-## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[192]</font></sup>
+## 存在直接SQL调用的处理逻辑节点<sup class="footnote-symbol"> <font color=orange>[194]</font></sup>
 
 #### [基线(BASELINE)](module/Base/baseline)的处理逻辑[删除基线前附加逻辑(before_remove)](module/Base/baseline/logic/before_remove)
 
@@ -200,7 +200,7 @@ where exists(select 1 from discuss_reply t2 where t1.id = t2.post_id and t2.id =
 
 <p class="panel-title"><b>执行sql参数</b></p>
 
-1. `Default(传入变量).comment_num`
+1. `Default(传入变量).comment_num(回复评论数)`
 2. `Default(传入变量).ID(标识)`
 
 #### [讨论回复(DISCUSS_REPLY)](module/Team/discuss_reply)的处理逻辑[删除回复(del_reply)](module/Team/discuss_reply/logic/del_reply)
@@ -1091,7 +1091,7 @@ update recent set RECENT_PARENT_IDENTIFIER = ? where RECENT_PARENT=?
 
 #### [排期(PRODUCT_PLAN)](module/ProdMgmt/product_plan)的处理逻辑[删除类别(delete_categories)](module/ProdMgmt/product_plan/logic/delete_categories)
 
-节点：直接SQL调用
+节点：删除类别
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -1154,7 +1154,7 @@ delete from `work` where PORTFOLIO_ID = ? and PRINCIPAL_ID = ?
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
-update recent set IS_DELETED=1 where owner_id=? and owner_subtype='project'
+update recent set IS_DELETED=1 where owner_id=? and owner_type='project'
 ```
 
 <p class="panel-title"><b>执行sql参数</b></p>
@@ -1629,7 +1629,7 @@ FROM
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [评审向导(REVIEW_WIZARD)](module/TestMgmt/review_wizard)的处理逻辑[创建后修改附加数据归属(fix_nested_data)](module/TestMgmt/review_wizard/logic/fix_nested_data)
 
-节点：直接SQL调用
+节点：创建后修改附加数据归属
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -1808,7 +1808,7 @@ SELECT * FROM run_history t1 WHERE t1.RUN_ID = ? order by t1.create_time desc
 重置参数`run_history_list(执行结果列表)`，并将执行sql结果赋值给参数`run_history_list(执行结果列表)`
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[每日执行用例趋势(run_daily_tendencies)](module/TestMgmt/run/logic/run_daily_tendencies)
 
-节点：直接SQL调用
+节点：每日执行用例趋势
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -1874,7 +1874,7 @@ ORDER BY date_series.date;
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[每日测试次数统计(run_everyday_test)](module/TestMgmt/run/logic/run_everyday_test)
 
-节点：直接SQL调用
+节点：每日测试次数统计
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -1937,7 +1937,7 @@ ORDER BY date_series.date;
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [执行用例(RUN)](module/TestMgmt/run)的处理逻辑[测试计划对比分析(plan_compar_ative_analysis)](module/TestMgmt/run/logic/plan_compar_ative_analysis)
 
-节点：直接SQL调用
+节点：测试计划对比分析
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -2091,7 +2091,7 @@ ORDER BY
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [执行结果(RUN_HISTORY)](module/TestMgmt/run_history)的处理逻辑[执行结果获取(run_history_get)](module/TestMgmt/run_history/logic/run_history_get)
 
-节点：直接SQL调用
+节点：执行结果获取
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -2668,7 +2668,7 @@ AND EXISTS (
 重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例活动情况(test_case_maneuver_context)](module/TestMgmt/test_case/logic/test_case_maneuver_context)
 
-节点：直接SQL调用
+节点： 测试用例活动情况
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -2745,7 +2745,7 @@ ORDER BY date_series.date;
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[测试用例规划分析(program_analyze)](module/TestMgmt/test_case/logic/program_analyze)
 
-节点：直接SQL调用
+节点：测试用例规划分析
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -2866,7 +2866,7 @@ WHERE PRINCIPAL_ID = ? and PRINCIPAL_TYPE = 'TEST_CASE'
 
 #### [用例(TEST_CASE)](module/TestMgmt/test_case)的处理逻辑[获取变更类型与变更版本(set_change_type)](module/TestMgmt/test_case/logic/set_change_type)
 
-节点：直接SQL调用
+节点：获取评审测试用例
 <p class="panel-title"><b>执行sql语句</b></p>
 
 ```sql
@@ -3265,6 +3265,30 @@ select sum(DURATION) as `DURATION` from workload where  PRINCIPAL_TYPE = ? and P
 2. `Default(传入变量).PRINCIPAL_ID(工时主体标识)`
 
 重置参数`total_register(已登记总工时)`，并将执行sql结果赋值给参数`total_register(已登记总工时)`
+#### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[填充工时数据(fill_workload_data)](module/Base/workload/logic/fill_workload_data)
+
+节点：获取工时信息外加work_item_type_id
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT t1.PRINCIPAL_ID,
+       t1.PRINCIPAL_TYPE,
+       t1.DURATION,
+       t2.WORK_ITEM_TYPE_ID,
+       t1.`ID`,
+       t1.`NAME`,
+       t1.`PRINCIPAL_TYPE`,
+       concat(t1.`RECENT_PARENT_IDENTIFIER`, '-', t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`
+FROM workload t1
+         LEFT JOIN `work_item` t2 ON t1.PRINCIPAL_ID = t2.ID
+where t1.PRINCIPAL_ID = ? limit 1
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `obj(工时).principal_id`
+
+重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
 #### [工时(WORKLOAD)](module/Base/workload)的处理逻辑[登记工时并更新剩余工时(save_workload)](module/Base/workload/logic/save_workload)
 
 节点：合计已登记工时
@@ -3372,6 +3396,24 @@ GROUP BY
 7. `Default(传入变量).n_create_time_ltandeq`
 
 重置参数`result(结果)`，并将执行sql结果赋值给参数`result(结果)`
+#### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[填充待完成事项数量(fill_not_completed_num)](module/ProjMgmt/work_item/logic/fill_not_completed_num)
+
+节点：获取待完成事项数量
+<p class="panel-title"><b>执行sql语句</b></p>
+
+```sql
+SELECT count(1) as `not_completed_num`
+FROM `WORK_ITEM` t1 
+LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
+WHERE 
+( t1.`ASSIGNEE_ID` = ?  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t31.`TYPE` <> 'completed' )
+```
+
+<p class="panel-title"><b>执行sql参数</b></p>
+
+1. `用户全局对象.srfpersonid`
+
+重置参数`Default(传入变量)`，并将执行sql结果赋值给参数`Default(传入变量)`
 #### [工作项(WORK_ITEM)](module/ProjMgmt/work_item)的处理逻辑[工作项关联分页计数器(work_item_re_counters)](module/ProjMgmt/work_item/logic/work_item_re_counters)
 
 节点：合并查询计数器

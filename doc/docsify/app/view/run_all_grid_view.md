@@ -14,11 +14,11 @@
 
 
 ### 关联界面行为
-  * [执行用例(RUN)](module/TestMgmt/run) : [设置执行结果](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [重置为未测](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [设置执行人](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [选择用例](module/TestMgmt/run#界面行为)
   * [执行用例(RUN)](module/TestMgmt/run) : [移出](module/TestMgmt/run#界面行为)
-  * [执行用例(RUN)](module/TestMgmt/run) : [设置执行人](module/TestMgmt/run#界面行为)
+  * [执行用例(RUN)](module/TestMgmt/run) : [设置执行结果](module/TestMgmt/run#界面行为)
 
 ### 关联视图
   * [执行用例(run_main_view)](app/view/run_main_view)

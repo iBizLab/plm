@@ -40,6 +40,7 @@
   * [规则模板](api/ServiceAPI/deapi/template_flow#template_flow)
   * [企业用户](api/ServiceAPI/deapi/user#user)
   * [版本](api/ServiceAPI/deapi/version#version)
+  * [视图主题设置](api/ServiceAPI/deapi/view_theme_setting#view_theme_setting)
   * [工作](api/ServiceAPI/deapi/work#work)
   * [工时](api/ServiceAPI/deapi/workload#workload)
   * [工时类别](api/ServiceAPI/deapi/workload_type#workload_type)
@@ -116,6 +117,7 @@
   * [检索中心](api/ServiceAPI/deapi/search_hub#search_hub)
 * 系统管理
 * ebsx系统管理
+  * [应用视图主题](api/ServiceAPI/deapi/app_view_theme#app_view_theme)
   * [认证日志](api/ServiceAPI/deapi/auth_log_admin#auth_log_admin)
   * [待办](api/ServiceAPI/deapi/SysTodo#SysTodo)
 * 模型扩展
@@ -139,3 +141,4 @@
   * [智能报表](api/ServiceAPI/deapi/PSSysBIReport#PSSysBIReport)
   * [智能报表项](api/ServiceAPI/deapi/PSSysBIReportItem#PSSysBIReportItem)
   * [通知设置](api/ServiceAPI/deapi/system_extension_notify_setting#system_extension_notify_setting)
+* DevOps数据集成

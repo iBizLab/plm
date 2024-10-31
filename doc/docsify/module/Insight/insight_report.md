@@ -67,15 +67,15 @@
 ## 处理逻辑
 | 中文名col200    | 代码名col150    | 子类型col150    | 插件col200    |  备注col550  |
 | -------- |---------- |----------- |------------|----------|
-|[使用此模板](module/Insight/insight_report/logic/use_cur_template)|use_cur_template|无|||
+|[使用此模板](module/Insight/insight_report/logic/use_cur_template)|use_cur_template|无||使用此模板|
 |[删除类别](module/Insight/insight_report/logic/delete_categories)|delete_categories|无||当类别删除时修改发布的类别属性|
-|[同步模板模型](module/Insight/insight_report/logic/sync_model)|sync_model|无|||
-|[复制报表](module/Insight/insight_report/logic/copy_report)|copy_report|无|||
-|[建立报表扩展模型](module/Insight/insight_report/logic/create_bi_report)|create_bi_report|无|||
-|[无操作](module/Insight/insight_report/logic/nothing)|nothing|无|||
-|[移除报表扩展模型](module/Insight/insight_report/logic/remove_bi_report)|remove_bi_report|无|||
+|[同步模板模型](module/Insight/insight_report/logic/sync_model)|sync_model|无||同步模板模型|
+|[复制报表](module/Insight/insight_report/logic/copy_report)|copy_report|无||复制报表|
+|[建立报表扩展模型](module/Insight/insight_report/logic/create_bi_report)|create_bi_report|无||建立报表扩展模型|
+|[无操作](module/Insight/insight_report/logic/nothing)|nothing|无||无操作逻辑，用于替换表单的获取数据行为|
+|[移除报表扩展模型](module/Insight/insight_report/logic/remove_bi_report)|remove_bi_report|无||移除报表扩展模型|
 |[获取视图成员](module/Insight/insight_report/logic/get_view_member)|get_view_member|无||获取视图成员信息，用于判断当前用户权限|
-|[计算分组信息](module/Insight/insight_report/logic/calc_group_data)|calc_group_data|属性逻辑|||
+|[计算分组信息](module/Insight/insight_report/logic/calc_group_data)|calc_group_data|属性逻辑||计算分组信息|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -170,12 +170,11 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[使用此模板](module/Insight/insight_report/uilogic/use_cur_template)|use_cur_template||
+|[使用此模板](module/Insight/insight_report/uilogic/use_cur_template)|use_cur_template|使用此模板|
 |[删除类别或分组](module/Insight/insight_report/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
 |[新建分组](module/Insight/insight_report/uilogic/create_section)|create_section|新建效能度量报表分组|
 |[新建类别](module/Insight/insight_report/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/Insight/insight_report/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
-|[通知刷新](module/Insight/insight_report/uilogic/refresh)|refresh||
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

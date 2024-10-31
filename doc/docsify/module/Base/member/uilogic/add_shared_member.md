@@ -15,11 +15,11 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./add_shared_member#begin {开始}]]
-state "调试逻辑参数" as DEBUGPARAM1  [[$./add_shared_member#debugparam1 {调试逻辑参数}]]
 state "添加共享页面成员" as DEACTION1  [[$./add_shared_member#deaction1 {添加共享页面成员}]]
+state "调试逻辑参数" as DEBUGPARAM1  [[$./add_shared_member#debugparam1 {调试逻辑参数}]]
+state "添加页面共享成员" as RAWJSCODE1  [[$./add_shared_member#rawjscode1 {添加页面共享成员}]]
+state "绑定当前分页" as PREPAREJSPARAM1  [[$./add_shared_member#preparejsparam1 {绑定当前分页}]]
 state "抛出异常" as THROWEXCEPTION1  [[$./add_shared_member#throwexception1 {抛出异常}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./add_shared_member#rawjscode1 {注入脚本代码}]]
-state "准备参数" as PREPAREJSPARAM1  [[$./add_shared_member#preparejsparam1 {准备参数}]]
 
 
 Begin --> DEBUGPARAM1 : [[$./add_shared_member#begin-debugparam1{已选择用户} 已选择用户]]
@@ -54,7 +54,7 @@ Begin --> THROWEXCEPTION1 : [[$./add_shared_member#begin-throwexception1{未选�
 > [!NOTE|label:调试信息|icon:fa fa-bug]
 > 调试输出参数`view`的详细信息
 
-#### 准备参数 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 绑定当前分页 :id=PREPAREJSPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 
@@ -66,7 +66,7 @@ Begin --> THROWEXCEPTION1 : [[$./add_shared_member#begin-throwexception1{未选�
 
 调用实体 [成员(MEMBER)](module/Base/member.md) 行为 [添加共享页面非空间下成员(add_shared_page_member)](module/Base/member#行为) ，行为参数为`Default(传入变量)`
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 添加页面共享成员 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 
@@ -90,5 +90,5 @@ view.layoutPanel.panelItems.choose_member.setDataValue(null);
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
 |应用上下文变量|ctx|导航视图参数绑定参数||
-|view|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||
+|view|view|当前视图对象||

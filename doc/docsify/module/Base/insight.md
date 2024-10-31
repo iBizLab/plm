@@ -96,8 +96,6 @@
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
 |[删除类别或分组](module/Base/insight/uilogic/remove_section_or_category)|remove_section_or_category|调用树节点删除方法，删除当前树节点数据|
-|[新建分组](module/Base/insight/uilogic/create_section)|create_section|调用树节点新建方法，新建分组|
-|[新建类别](module/Base/insight/uilogic/create_category)|create_category|调用树节点新建方法新建类别|
 |[编辑类别或分组](module/Base/insight/uilogic/edit_section_or_category)|edit_section_or_category|调用树节点修改方法，编辑当前树节点的类别或分组|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">

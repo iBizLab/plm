@@ -17,7 +17,7 @@ hide empty description
 state "开始" as Begin <<start>> [[$./shared_setting#begin {"开始"}]]
 state "置空有效期" as PREPAREPARAM1  [[$./shared_setting#prepareparam1 {"置空有效期"}]]
 state "抛出异常" as THROWEXCEPTION1  [[$./shared_setting#throwexception1 {"抛出异常"}]]
-state "准备参数" as PREPAREPARAM2  [[$./shared_setting#prepareparam2 {"准备参数"}]]
+state "设置共享参数" as PREPAREPARAM2  [[$./shared_setting#prepareparam2 {"设置共享参数"}]]
 state "抛出异常" as THROWEXCEPTION2  [[$./shared_setting#throwexception2 {"抛出异常"}]]
 state "置空密码" as PREPAREPARAM3  [[$./shared_setting#prepareparam3 {"置空密码"}]]
 state "填充共享时间、共享人" as RAWSFCODE1  [[$./shared_setting#rawsfcode1 {"填充共享时间、共享人"}]]
@@ -61,7 +61,7 @@ Begin --> THROWEXCEPTION1 : [[$./shared_setting#begin-throwexception1{开启有�
 > [!ATTENTION|label:抛出异常|icon:fa fa-warning]
 > 错误信息：未设置有效期！
 
-#### 准备参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 设置共享参数 :id=PREPAREPARAM2<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

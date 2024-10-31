@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./change_pas#begin {开始}]]
-state "结束" as END1 <<end>> [[$./change_pas#end1 {结束}]]
 state "校验表单" as RAWJSCODE1  [[$./change_pas#rawjscode1 {校验表单}]]
+state "结束" as END1 <<end>> [[$./change_pas#end1 {结束}]]
 
 
 Begin --> RAWJSCODE1
@@ -49,16 +49,13 @@ RAWJSCODE1 --> END1
 (async function() { 
 const bol = await uiLogic.form.validate();
 if (bol) {
-    ibiz.util.action.execAndResolved(
-      'change_password',
-      {
-        context: uiLogic.form.context,
-        params: uiLogic.form.params,
-        data: [uiLogic.default],
-        view: uiLogic.view,
-      },
-      uiLogic.form.model.appId,
-    );
+    const {old_password,new_password,sure_password} = uiLogic.default;
+    const result = await ibiz.appUtil.changePwd(old_password,new_password,{surePwd: sure_password})
+    if (result && result.ok) {
+      ibiz.message.success('修改密码成功');
+    } else {
+      ibiz.message.error(`修改密码失败`);
+    }
 } else {
     ibiz.message.error('请检查表单填写！');
 }
@@ -71,6 +68,6 @@ if (bol) {
 
 |    中文名   |    代码名    |  数据类型      |备注 |
 | --------| --------| --------  | --------   |
-|视图|view|当前视图对象||
 |表单|form|部件对象||
+|视图|view|当前视图对象||
 |传入变量(<i class="fa fa-check"/></i>)|Default|数据对象||

@@ -151,7 +151,6 @@
 | 编辑版本 | edit_version | 编辑版本 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[编辑版本](app/view/version_edit_version_view)</details>||
 | 恢复版本 | restore | 恢复版本 |单项数据|<details><summary>后台调用</summary>[Restore](#行为)||
 | 评审内容版本对比 | review_content_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/test_case_version_comparison_view)</details>||
-| 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 | 建立版本 | create_new_version | 创建新版本 |无数据|<details><summary>打开视图或向导（模态）</summary>[建立版本](app/view/version_quick_create_view)</details>||
 | 工作项版本对比 | work_item_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/work_item_version_comparison_view)</details>||
 | 用例版本对比 | test_case_version_comparison | 版本对比 |单项数据|<details><summary>打开视图或向导（模态）</summary>[版本对比](app/view/test_case_version_comparison_view)</details>||
@@ -159,10 +158,7 @@
 ## 界面逻辑
 |  中文名col200 | 代码名col150 | 备注col900 |
 | --------|--------|--------|
-|[打开工作项主视图](module/Base/version/uilogic/open_work_item_main_view)|open_work_item_main_view|打开工作项主视图|
-|[查看已发布版本](module/Base/version/uilogic/is_published_version)|is_published_version|查看已发布的版本（页面）|
 |[版本变化后刷新主表单](module/Base/version/uilogic/version_change_after_refresh)|version_change_after_refresh|版本变化后，触发主表单重新加载|
-|[版本表格列行为是否启用](module/Base/version/uilogic/action_disabled)|action_disabled|用于动态启用列绑定的界面行为|
 |[获取版本总条数](module/Base/version/uilogic/get_version_total)|get_version_total|获取版本的总条数信息|
 |[触发计数器刷新](module/Base/version/uilogic/refresh_counter)|refresh_counter|关联数据变更后，触发计数器刷新|
 |[计算表格列行为状态（version）](module/Base/version/uilogic/calc_column_button_state)|calc_column_button_state|判断版本是否与当前版本一致，是否可恢复此版本|

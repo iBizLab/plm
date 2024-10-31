@@ -150,7 +150,7 @@ LOOPSUBCALL2 --> END4
 
 
 1. 将`for_user_obj(部门成员循环临时变量).DISPLAY_NAME(姓名)` 设置给  `for_user_obj(部门成员循环临时变量).NAME(登录名)`
-2. 将`for_user_obj(部门成员循环临时变量).ID(标识)` 设置给  `for_user_obj(部门成员循环临时变量).user_id`
+2. 将`for_user_obj(部门成员循环临时变量).ID(标识)` 设置给  `for_user_obj(部门成员循环临时变量).user_id(用户ID)`
 
 #### 结束 :id=END3<sup class="footnote-symbol"> <font color=gray size=1>[结束]</font></sup>
 

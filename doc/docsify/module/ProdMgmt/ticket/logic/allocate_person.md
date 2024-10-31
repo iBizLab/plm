@@ -15,7 +15,7 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./allocate_person#begin {"开始"}]]
-state "绑定参数" as BINDPARAM1  [[$./allocate_person#bindparam1 {"绑定参数"}]]
+state "绑定选中负责人参数" as BINDPARAM1  [[$./allocate_person#bindparam1 {"绑定选中负责人参数"}]]
 state "循环子调用" as LOOPSUBCALL1  [[$./allocate_person#loopsubcall1 {"循环子调用"}]] #green {
 state "填充负责人" as PREPAREPARAM2  [[$./allocate_person#prepareparam2 {"填充负责人"}]]
 state "变更负责人" as DEACTION1  [[$./allocate_person#deaction1 {"变更负责人"}]]
@@ -39,7 +39,7 @@ PREPAREPARAM2 --> DEACTION1
 
 
 *- N/A*
-#### 绑定参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
+#### 绑定选中负责人参数 :id=BINDPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[绑定参数]</font></sup>
 
 
 

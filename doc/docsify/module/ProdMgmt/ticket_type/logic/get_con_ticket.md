@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./get_con_ticket#begin {"开始"}]]
 state "查询所关联的工单数量" as RAWSQLCALL1  [[$./get_con_ticket#rawsqlcall1 {"查询所关联的工单数量"}]]
-state "准备参数" as PREPAREPARAM1  [[$./get_con_ticket#prepareparam1 {"准备参数"}]]
+state "填充工单提示默认值" as PREPAREPARAM1  [[$./get_con_ticket#prepareparam1 {"填充工单提示默认值"}]]
 state "添加工单数量提醒内容" as RAWSFCODE1  [[$./get_con_ticket#rawsfcode1 {"添加工单数量提醒内容"}]]
 state "结束" as END1 <<end>> [[$./get_con_ticket#end1 {"结束"}]]
 
@@ -68,7 +68,7 @@ ticket.set("remind", "该工单类型关联了" + ticket_num + "个工单，请�
 ticket.set("disabled",1)
 ```
 
-#### 准备参数 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
+#### 填充工单提示默认值 :id=PREPAREPARAM1<sup class="footnote-symbol"> <font color=gray size=1>[准备参数]</font></sup>
 
 
 

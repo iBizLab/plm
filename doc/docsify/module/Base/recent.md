@@ -80,7 +80,9 @@
 | -------- |---------- |----------- |------------|----------|
 |[我创建的事项](module/Base/recent/logic/my_created_entry)|my_created_entry|无||查询当前用户创建的事项|
 |[我负责的事项](module/Base/recent/logic/my_charge_entry)|my_charge_entry|无||查询我负责的事项，工作台的计数器使用|
+|[最近使用](module/Base/recent/logic/recent_use)|recent_use|无||查询最近使用数据(项目/产品/空间)，仅查询10条|
 |[最近访问](module/Base/recent/logic/recent_access)|recent_access|无||查询最近访问数据，并获取他们的父级|
+|[移动端首页_最近访问](module/Base/recent/logic/mob_home_recent_access)|mob_home_recent_access|无||仅查询最近5条访问|
 
 ## 数据查询
 | 中文名col200    | 代码名col150    | 默认查询col100 | 权限使用col100 | 自定义SQLcol100 |  备注col600|
@@ -108,6 +110,8 @@
 | 中文名col200  | 代码名col150  | 类型col100 | 默认集合col100 |   插件col200|   备注col500|
 | --------  | --------   | :----:   | :----:   | ----- |----- |
 |[数据集(DEFAULT)](module/Base/recent/dataset/Default)|DEFAULT|数据查询|是|||
+|[移动端首页_最近访问(mob_home_recent_access)](module/Base/recent/dataset/mob_home_recent_access)|mob_home_recent_access|[实体逻辑](module/Base/recent/logic/mob_home_recent_access)|否|||
+|[最近使用（10条）(only_ten_access_use)](module/Base/recent/dataset/only_ten_access_use)|only_ten_access_use|[实体逻辑](module/Base/recent/logic/recent_use)|否|||
 |[最近访问(recent_access)](module/Base/recent/dataset/recent_access)|recent_access|数据查询|否|||
 |[最近访问（逻辑生成）(recent_access_logic)](module/Base/recent/dataset/recent_access_logic)|recent_access_logic|[实体逻辑](module/Base/recent/logic/recent_access)|否|||
 |[最近浏览当前产品内工单(recent_curproduct_ticket)](module/Base/recent/dataset/recent_curproduct_ticket)|recent_curproduct_ticket|数据查询|否|||
@@ -173,18 +177,26 @@
 ## 界面行为
 |  中文名col200 |  代码名col150 |  标题col100   |     处理目标col100   |    处理类型col200        |  备注col500       |
 | --------| --------| -------- |------------|------------|------------|
+| 打开移动端事项分页导航视图(我创建的事项) | open_my_tab_created | 打开移动端事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_my_mob_tab_view)</details>||
+| 显示更多_最近访问的项目（移动端仪表盘） | show_more_access_project | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问的项目](app/view/recent_recent_access_project_mobbash)</details>||
 | 新建工作项（测试用例） | test_case_create_new_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 首页 | panel_de_custom_index_view_layout_overview_button_calluilogic_click | 产品管理 |单项数据|<details><summary>打开视图或向导（模态）</summary>[产品管理](app/view/product_tree_exp_view)</details>||
+| 打开移动端事项分页导航视图(我关注的事项) | open_my_tab_attention | 打开移动端事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_my_mob_tab_view)</details>||
 | 新建工单 | create_new_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
+| 打开移动端事项分页导航视图(待完成事项) | open_my_tab_not_completed | 打开移动端事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_my_mob_tab_view)</details>||
 | 新建子工作项 | create_child_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建需求 | create_new_idea | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建需求](app/view/idea_quick_create_view)</details>||
+| 打开最近访问（移动端） | mob_open_recent_access | 打开最近访问 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_mob_recent_md_view)</details>||
 | 新建缺陷 | create_new_work_item_bug | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
+| 移动端通过重定向视图跳转 | mob_jump | 移动端通过重定向视图跳转 |单项数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_mob_redirect_view)</details>||
+| 打开移动端事项分页导航视图(我负责的事项) | open_my_tab_assignee | 打开移动端事项 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_my_mob_tab_view)</details>||
 | 新建测试用例 | create_new_test_case | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建用例](app/view/test_case_quick_create_view)</details>||
 | 打开工作项主视图 | open_work_item_main_view | 打开工作项主视图 |单项数据（主键）|<details><summary>打开视图或向导（模态）</summary>[工作项](app/view/work_item_dyna_main_view)</details>||
 | 新建执行后（建立双向关联数据) | after_creat_double_relation | 新建执行后（建立双向关联数据) |单项数据（主键）|用户自定义||
 | 新建工作项 | create_new_work_item | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建缺陷(执行用例) | run_create_new_work_item_bug | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工作项](app/view/work_item_quick_create_view)</details>||
 | 新建工单（客户） | customer_create_ticket | 新建 |无数据|<details><summary>打开视图或向导（模态）</summary>[新建工单](app/view/ticket_quick_create_view)</details>||
+| 显示更多_最近访问的用例（移动端仪表盘） | show_more_access_case | 显示更多 |无数据|<details><summary>打开视图或向导（模态）</summary>[最近访问的用例](app/view/recent_recent_access_case_mobbash)</details>||
 | 通过重定向视图跳转 | jump | 通过重定向视图跳转 |单项数据|<details><summary>打开视图或向导（模态）</summary>[最近访问](app/view/recent_redirect_view)</details>||
 
 ## 界面逻辑
@@ -192,6 +204,7 @@
 | --------|--------|--------|
 |[建立双向关联数据](module/Base/recent/uilogic/create_double_relation)|create_double_relation|工作项关联工作项（新建）|
 |[最近访问跳转其他视图](module/Base/recent/uilogic/recent_jump_other_view)|recent_jump_other_view|首页最近访问点击后跳转其他视图|
+|[移动端最近访问跳转其他视图](module/Base/recent/uilogic/mob_recent_jump_other_view)|mob_recent_jump_other_view|移动端首页最近访问点击后跳转其他视图|
 
 <div style="display: block; overflow: hidden; position: fixed; top: 140px; right: 100px;">
 

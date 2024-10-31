@@ -15,8 +15,8 @@ root {
 
 hide empty description
 state "开始" as Begin <<start>> [[$./toolbar_add_attachment#begin {开始}]]
+state "上传附件（工具栏）" as RAWJSCODE1  [[$./toolbar_add_attachment#rawjscode1 {上传附件（工具栏）}]]
 state "添加附件" as DEUIACTION1  [[$./toolbar_add_attachment#deuiaction1 {添加附件}]]
-state "注入脚本代码" as RAWJSCODE1  [[$./toolbar_add_attachment#rawjscode1 {注入脚本代码}]]
 
 
 Begin --> RAWJSCODE1
@@ -34,7 +34,7 @@ RAWJSCODE1 --> DEUIACTION1
 
 
 
-#### 注入脚本代码 :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
+#### 上传附件（工具栏） :id=RAWJSCODE1<sup class="footnote-symbol"> <font color=gray size=1>[直接前台代码]</font></sup>
 
 
 

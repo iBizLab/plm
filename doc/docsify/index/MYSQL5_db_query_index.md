@@ -291,6 +291,139 @@ FROM `ADDON_ROLE_MEMBER` t1
 ```
 
 
+## [应用视图主题(APP_VIEW_THEME)](module/ebsx/app_view_theme.md) :id=app_view_theme
+
+#### 数据查询(DEFAULT) :id=app_view_theme-Default
+```sql
+SELECT
+t1.`APP_TAG`,
+t1.`APP_VIEW_TAG`,
+t1.`CAPTION`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_TYPE`,
+t1.`SYSTEM_TAG`,
+t1.`THEME_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALID_FLAG`
+FROM `APP_VIEW_THEME` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=app_view_theme-View
+```sql
+SELECT
+t1.`APP_TAG`,
+t1.`APP_VIEW_TAG`,
+t1.`CAPTION`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_TYPE`,
+t1.`SYSTEM_TAG`,
+t1.`THEME_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALID_FLAG`
+FROM `APP_VIEW_THEME` t1 
+
+```
+
+#### 当前系统（全局）(CUR_SYSTEM) :id=app_view_theme-cur_system
+```sql
+SELECT
+t1.`APP_TAG`,
+t1.`APP_VIEW_TAG`,
+t1.`CAPTION`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_TYPE`,
+t1.`SYSTEM_TAG`,
+t1.`THEME_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALID_FLAG`
+FROM `APP_VIEW_THEME` t1 
+
+WHERE ( t1.`SYSTEM_TAG` = #{ctx.sessioncontext.srfdcsystemid}  AND  t1.`OWNER_TYPE` = 'SYSTEM' )
+```
+
+#### 当前系统全部（含用户）(CUR_SYSTEM_ALL) :id=app_view_theme-cur_system_all
+```sql
+SELECT
+t1.`APP_TAG`,
+t1.`APP_VIEW_TAG`,
+t1.`CAPTION`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_TYPE`,
+t1.`SYSTEM_TAG`,
+t1.`THEME_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALID_FLAG`
+FROM `APP_VIEW_THEME` t1 
+
+WHERE ( t1.`SYSTEM_TAG` = #{ctx.sessioncontext.srfdcsystemid} )
+```
+
+#### 当前用户(CUR_USER) :id=app_view_theme-cur_user
+```sql
+SELECT
+t1.`APP_TAG`,
+t1.`APP_VIEW_TAG`,
+t1.`CAPTION`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_TYPE`,
+t1.`SYSTEM_TAG`,
+t1.`THEME_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALID_FLAG`
+FROM `APP_VIEW_THEME` t1 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfuserid}  AND  t1.`SYSTEM_TAG` = #{ctx.sessioncontext.srfdcsystemid} )
+```
+
+#### 实体数据关系界面组（同步）(PSMODEL_SYNC) :id=app_view_theme-psmodel_sync
+```sql
+SELECT
+t1.`APP_TAG`,
+t1.`APP_VIEW_TAG`,
+t1.`CAPTION`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ORDER_VALUE`,
+t1.`OWNER_TYPE`,
+t1.`SYSTEM_TAG`,
+t1.`THEME_MODEL`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VALID_FLAG`
+FROM `APP_VIEW_THEME` t1 
+
+WHERE ( t1.`OWNER_TYPE` = 'SYSTEM' )
+```
+
+
 ## [页面(PAGE)](module/Wiki/article_page.md) :id=article_page
 
 #### 数据查询(DEFAULT) :id=article_page-Default
@@ -337,7 +470,9 @@ LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID`
 ```sql
 SELECT
 t1.`ACCESS_PASSWORD`,
+(SELECT COUNT( att.ID ) AS comment_count FROM page p LEFT JOIN `attention` att ON p.ID = att.OWNER_ID WHERE p.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 t1.`CATEGORIES`,
+(SELECT COUNT( com.ID ) AS comment_count FROM page p LEFT JOIN `comment` com ON p.ID = com.PRINCIPAL_ID WHERE p.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
@@ -1190,6 +1325,26 @@ FROM `ATTACHMENT` t1
 
 ```
 
+#### 移动端工作项附件(mob_work_item_attachment) :id=attachment-mob_work_item_attachment
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FILE_ID`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ATTACHMENT` t1 
+
+WHERE ( t1.`OWNER_ID` = #{ctx.webcontext.work_item} )
+```
+
 #### 项目下的交付物(project_deliverable) :id=attachment-project_deliverable
 ```sql
 SELECT
@@ -1533,6 +1688,72 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 WHERE EXISTS(SELECT * FROM `PROJECT_MEMBER` t21 
  WHERE 
  t11.`ID` = t21.`PROJECT_ID`  AND  ( t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
+
+## [代码分支(BRANCH)](module/DevOps/branch.md) :id=branch
+
+#### 数据查询(DEFAULT) :id=branch-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BRANCH` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=branch-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BRANCH` t1 
+
+```
+
+
+## [分支提交关联(BRANCH_REF_COMMIT)](module/DevOps/branch_ref_commit.md) :id=branch_ref_commit
+
+#### 数据查询(DEFAULT) :id=branch_ref_commit-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`META_ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`SHA`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BRANCH_REF_COMMIT` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=branch_ref_commit-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`META_ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`SHA`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `BRANCH_REF_COMMIT` t1 
+
 ```
 
 
@@ -1932,6 +2153,27 @@ LEFT JOIN `COMMENT` t11 ON t1.`PID` = t11.`ID`
 ```
 
 
+## [代码提交(COMMIT)](module/DevOps/commit.md) :id=commit
+
+#### 数据查询(DEFAULT) :id=commit-Default
+```sql
+SELECT
+t1.`MESSAGE`,
+t1.`SHA`
+FROM `scm_commit` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=commit-View
+```sql
+SELECT
+t1.`MESSAGE`,
+t1.`SHA`
+FROM `scm_commit` t1 
+
+```
+
+
 ## [客户(CUSTOMER)](module/ProdMgmt/customer.md) :id=customer
 
 #### 数据查询(DEFAULT) :id=customer-Default
@@ -2089,6 +2331,7 @@ t1.`UPDATE_TIME`
 FROM `CUSTOMER` t1 
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 
+WHERE ( t1.`IS_DELETED` = 0 )
 ```
 
 #### 客户通知负责人(notify_assignee) :id=customer-notify_assignee
@@ -2183,7 +2426,8 @@ t1.`OWNER_SUBTYPE`,
 t1.`OWNER_TYPE`,
 t1.`TITLE`,
 t2.TITLE as `WORK_ITEM_TITLE`,
-t2.IDENTIFIER as `WORK_ITEM_IDENTIFIER`
+t2.IDENTIFIER as `WORK_ITEM_IDENTIFIER`,
+t2.WORK_ITEM_TYPE_ID as `WORK_ITEM_TYPE_ID`
 FROM `ATTACHMENT` `t1`, `WORK_ITEM` `t2`
 WHERE t1.OWNER_ID = t2.ID and t1.OWNER_TYPE = 'WORK_ITEM' and t1.OWNER_SUBTYPE = 'DELIVERABLE'
 and t2.is_archived = 0 and t2.is_deleted = 0
@@ -2342,6 +2586,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2355,6 +2600,8 @@ LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID`
 #### 默认（全部数据）(VIEW) :id=discuss_post-View
 ```sql
 SELECT
+(SELECT COUNT( att.ID ) AS comment_count FROM discuss_post tc LEFT JOIN `attention` att ON tc.ID = att.OWNER_ID WHERE tc.ID = t1.`ID`) AS `ATTENTION_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM discuss_post tc LEFT JOIN `comment` com ON tc.ID = com.PRINCIPAL_ID WHERE tc.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
@@ -2362,6 +2609,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2381,6 +2629,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2392,6 +2641,27 @@ LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID`
 WHERE ( t1.`IS_DELETED` = 1 )
 ```
 
+#### 讨论集合(mob_discuss_post_list) :id=discuss_post-mob_discuss_post_list
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`HEAT`,
+t1.`ID`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
+t1.`STATUS`,
+t1.`TOPIC_ID`,
+t11.`NAME` AS `TOPIC_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `DISCUSS_POST` t1 
+LEFT JOIN `DISCUSS_TOPIC` t11 ON t1.`TOPIC_ID` = t11.`ID` 
+
+WHERE ( t11.`IS_ARCHIVED` = 0  AND  t11.`IS_DELETED` = 0 ) AND ( t1.`IS_DELETED` = 0 )
+```
+
 #### 我关注的(my_attention) :id=discuss_post-my_attention
 ```sql
 SELECT
@@ -2401,6 +2671,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2423,6 +2694,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2443,6 +2715,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2465,6 +2738,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2485,6 +2759,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2505,6 +2780,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2525,6 +2801,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2547,6 +2824,7 @@ t1.`HEAT`,
 t1.`ID`,
 t1.`IS_DELETED`,
 t1.`NAME`,
+(SELECT COUNT( reply.ID ) AS reply_count FROM DISCUSS_REPLY reply LEFT JOIN discuss_post dis ON dis.ID = reply.POST_ID WHERE dis.ID = t1.`ID`) AS `REPLIES`,
 t1.`STATUS`,
 t1.`TOPIC_ID`,
 t11.`NAME` AS `TOPIC_NAME`,
@@ -2564,45 +2842,57 @@ WHERE ( t11.`IS_DELETED` = 0 ) AND ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) <= 30 
 #### 数据查询(DEFAULT) :id=discuss_reply-Default
 ```sql
 SELECT
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_NUM`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
+LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
 
 ```
 
 #### 默认（全部数据）(VIEW) :id=discuss_reply-View
 ```sql
 SELECT
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_NUM`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
+LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
 
 ```
 
 #### 我的回复(my_reply) :id=discuss_reply-my_reply
 ```sql
 SELECT
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_NUM`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
+LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
 
 WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 1 from discuss_post t2, discuss_topic t3 where t2.topic_id = t3.id 
  and t1.post_id = t2.id and t3.id = #{ctx.webcontext.discuss_topic}) )
@@ -2611,15 +2901,19 @@ WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  exists(select 
 #### 最新回复(recent) :id=discuss_reply-recent
 ```sql
 SELECT
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM DISCUSS_REPLY reply LEFT JOIN `COMMENT` com ON reply.ID = com.PRINCIPAL_ID WHERE reply.ID = t1.`ID`) AS `COMMENT_NUM`,
 t1.`CONTENT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
+t11.`NAME` AS `DISCUSS_NAME`,
 t1.`ID`,
 t1.`NAME`,
 t1.`POST_ID`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `DISCUSS_REPLY` t1 
+LEFT JOIN `DISCUSS_POST` t11 ON t1.`POST_ID` = t11.`ID` 
 
 WHERE ( DATEDIFF(sysdate(),t1.`CREATE_TIME`) <= 30  AND  exists(select 1 from `discuss_post` t2, `member` t3 where t1.post_id = t2.id and t2.topic_id = t3.owner_id and t3.user_id = #{ctx.sessioncontext.srfpersonid})  AND  exists(select 1 from discuss_post t2, discuss_topic t3 where t2.topic_id = t3.id 
  and t1.post_id = t2.id and t3.id = #{ctx.webcontext.discuss_topic}) )
@@ -3644,9 +3938,11 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
+(SELECT COUNT( att.ID ) AS comment_count FROM idea tc LEFT JOIN `attention` att ON tc.ID = att.OWNER_ID WHERE tc.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 t21.`CATEGORIES`,
 t1.`CATEGORY_ID`,
 t21.`NAME` AS `CATEGORY_NAME`,
+(SELECT COUNT( com.ID ) AS comment_count FROM idea tc LEFT JOIN `comment` com ON tc.ID = com.PRINCIPAL_ID WHERE tc.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
@@ -3691,6 +3987,57 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
+```
+
+#### 管理员(admin) :id=idea-admin
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
+ WHERE 
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`ROLE_ID` = 'admin'  AND  t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 #### 高级搜索(advanced_search) :id=idea-advanced_search
@@ -3962,6 +4309,57 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 WHERE ( t1.`IS_DELETED` = 0  AND  ( <choose><when test="ctx.webcontext.category_id !=null ">  t21.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.category_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test="ctx.webcontext.category_id !=null ">  t1.`CATEGORY_ID` = #{ctx.webcontext.category_id}  </when><otherwise>1=1</otherwise></choose> ) )
 ```
 
+#### 特定用户(customer_user) :id=idea-customer_user
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
+ WHERE 
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`ROLE_ID` = 'customer'  AND  t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
 #### 已删除(deleted) :id=idea-deleted
 ```sql
 SELECT
@@ -4009,6 +4407,55 @@ LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID`
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 1 )
+```
+
+#### 需求未归档集合过滤（移动端）(mob_not_archived) :id=idea-mob_not_archived
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  ( <choose><when test="ctx.webcontext.category_id !=null ">  t21.`CATEGORIES` LIKE CONCAT('%',#{ctx.webcontext.category_id},'%')  </when><otherwise>1=1</otherwise></choose>  OR  <choose><when test="ctx.webcontext.category_id !=null ">  t1.`CATEGORY_ID` = #{ctx.webcontext.category_id}  </when><otherwise>1=1</otherwise></choose> ) )
 ```
 
 #### 移动需求(move_idea) :id=idea-move_idea
@@ -4204,7 +4651,7 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
-WHERE ( ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  OR  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonname} ) )
+WHERE ( ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  OR  t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonname} )  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 过滤器默认查询(my_filter) :id=idea-my_filter
@@ -4515,7 +4962,7 @@ LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
  WHERE 
- t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t41.`ROLE_ID` <> 'customer' ) )
 ```
 
 #### 最近浏览(recent_idea) :id=idea-recent_idea
@@ -4565,6 +5012,57 @@ LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID`
 LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
 
 WHERE ( t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  exists(select 1 from recent t2 where t1.id=t2.owner_id and t2.create_man=#{ctx.sessioncontext.srfpersonid} )  AND  NOT EXISTS(SELECT 1 FROM `RELATION` t3 WHERE t1.`ID` = t3.`TARGET_ID` AND  t3.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}   ) )
+```
+
+#### 普通用户(user) :id=idea-user
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t21.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t21.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`IDEA_FROM`,
+t1.`IDEA_TYPE`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PLAN_AT`,
+t1.`PLAN_AT_FROM`,
+t1.`PLAN_AT_GRANULARITY`,
+t1.`PLAN_AT_TO`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`PROGRESS`,
+t1.`REAL_AT`,
+t1.`REAL_AT_FROM`,
+t1.`REAL_AT_GRANULARITY`,
+t1.`REAL_AT_TO`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+t21.`SECTION_ID`,
+t31.`NAME` AS `SECTION_NAME`,
+t1.`SEQUENCE`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`STATE`,
+t1.`SUITE`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `IDEA` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CATEGORY` t21 ON t1.`CATEGORY_ID` = t21.`ID` 
+LEFT JOIN `SECTION` t31 ON t21.`SECTION_ID` = t31.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t41 
+ WHERE 
+ t11.`ID` = t41.`PRODUCT_ID`  AND  ( t41.`ROLE_ID` = 'user'  AND  t41.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 
@@ -5480,6 +5978,45 @@ LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID`
 WHERE ( <choose><when test="ctx.datacontext.library_id !=null ">  t1.`LIBRARY_ID` = #{ctx.datacontext.library_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`LIBRARY_ID` = #{ctx.datacontext.id} )
 ```
 
+#### 移动端当前测试库成员(mob_cur_member) :id=library_member-mob_cur_member
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`LIBRARY_ID`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `LIBRARY_MEMBER` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
+
+```
+
+#### 未关注用户(测试用例)(no_attention) :id=library_member-no_attention
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`LIBRARY_ID`,
+t11.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
+t11.`NAME` AS `LIBRARY_NAME`,
+t1.`NAME`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `LIBRARY_MEMBER` t1 
+LEFT JOIN `LIBRARY` t11 ON t1.`LIBRARY_ID` = t11.`ID` 
+
+WHERE ( ( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.test_case} )) )
+```
+
 
 ## [部门(LOCAL_DEPARTMENT)](module/Base/local_department.md) :id=local_department
 
@@ -5599,6 +6136,25 @@ t1.`UPDATE_TIME`,
 t1.`USER_ID`
 FROM `MEMBER` t1 
 
+```
+
+#### 未关注成员(no_attention) :id=member-no_attention
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `MEMBER` t1 
+
+WHERE ( ( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.principal_id} )) )
 ```
 
 #### 共享页面_非空间成员(shared_page_member) :id=member-shared_page_member
@@ -6172,6 +6728,31 @@ FROM `PRODUCT` t1
 WHERE ( t1.`ID` = #{ctx.webcontext.product} )
 ```
 
+#### 特定用户(customer_user) :id=product-customer_user
+```sql
+SELECT
+t1.`COLOR`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `PRODUCT` t1 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t11 
+ WHERE 
+ t1.`ID` = t11.`PRODUCT_ID`  AND  ( t11.`ROLE_ID` = 'customer'  AND  t11.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+```
+
 #### 已删除(deleted) :id=product-deleted
 ```sql
 SELECT
@@ -6446,6 +7027,26 @@ FROM `PRODUCT_MEMBER` t1
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 
 WHERE ( <choose><when test="ctx.datacontext.product_id !=null ">  t1.`PRODUCT_ID` = #{ctx.datacontext.product_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`PRODUCT_ID` = #{ctx.datacontext.id} )
+```
+
+#### 产品下成员(with_product) :id=product_member-with_product
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `PRODUCT_MEMBER` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+
+WHERE ( t1.`PRODUCT_ID` = #{ctx.webcontext.product_id} )
 ```
 
 
@@ -7400,6 +8001,28 @@ LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID`
 WHERE ( <choose><when test="ctx.datacontext.project_id !=null ">  t1.`PROJECT_ID` = #{ctx.datacontext.project_id}  </when><otherwise>1=1</otherwise></choose>  AND  t1.`PROJECT_ID` = #{ctx.datacontext.id}  AND  t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid} )
 ```
 
+#### 未关注用户(工作项)(no_attention) :id=project_member-no_attention
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PROJECT_ID`,
+t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
+t11.`NAME` AS `PROJECT_NAME`,
+t11.`TYPE` AS `PROJECT_TYPE`,
+t1.`ROLE_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`,
+t1.`WEEKDAY`
+FROM `PROJECT_MEMBER` t1 
+LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
+
+WHERE ( ( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.work_item} )) )
+```
+
 
 ## [项目标签(PROJECT_TAG)](module/ProjMgmt/project_tag.md) :id=project_tag
 
@@ -7426,6 +8049,37 @@ t1.`NAME`,
 t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `PROJECT_TAG` t1 
+
+```
+
+
+## [拉取提交(PULL_REQUEST)](module/DevOps/pull_request.md) :id=pull_request
+
+#### 数据查询(DEFAULT) :id=pull_request-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PULL_REQUEST` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=pull_request-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`REPOSITORY_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `PULL_REQUEST` t1 
 
 ```
 
@@ -7743,7 +8397,7 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `RECENT` t1 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`TYPE` = '1' )
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`TYPE` = '1'  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 最近浏览_工作项(recent_work_item) :id=recent-recent_work_item
@@ -7868,6 +8522,29 @@ WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
 
 
 ## [关联(RELATION)](module/Base/relation.md) :id=relation
+
+#### 数据查询2(DATAQUERY2) :id=relation-DataQuery2
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUR_VERSION_ID`,
+t1.`ID`,
+t1.`LEVEL`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RELATION_TYPE`,
+t1.`TARGET_ID`,
+t1.`TARGET_TYPE`,
+t1.`TARGET_VERSION_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `RELATION` t1 
+
+```
 
 #### 数据查询(DEFAULT) :id=relation-Default
 ```sql
@@ -9105,7 +9782,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9152,7 +9828,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9178,9 +9853,11 @@ LEFT JOIN `LIBRARY` t41 ON t21.`LIBRARY_ID` = t41.`ID`
 #### 默认（全部数据）(VIEW) :id=run-View
 ```sql
 SELECT
+(SELECT COUNT( att.ID ) AS attention_count FROM RUN r LEFT JOIN `attention` att ON r.ID = att.OWNER_ID WHERE r.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 concat(t41.`IDENTIFIER`,'-',t21.`NAME`) AS `BI_PLAN_NAME`,
 t1.`CASE_ID`,
 t11.`NAME` AS `CASE_NAME`,
+(SELECT COUNT( com.ID ) AS comment_count FROM RUN r LEFT JOIN `comment` com ON r.ID = com.PRINCIPAL_ID WHERE r.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
@@ -9249,7 +9926,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9348,7 +10024,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9395,7 +10070,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9442,7 +10116,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9489,7 +10162,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9537,7 +10209,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9585,7 +10256,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9633,7 +10303,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9680,7 +10349,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9728,7 +10396,6 @@ t1.`NAME`,
 t1.`PARENT_VERSION_ID`,
 t1.`PLAN_ID`,
 t21.`NAME` AS `PLAN_NAME`,
-t11.`PRECONDITION`,
 t1.`PRIORITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REMARK`,
@@ -9868,6 +10535,39 @@ WHERE ( t1.`RUN_ID` = #{ctx.webcontext.run} )
 ```
 
 
+## [代码评审(SCM_REVIEW)](module/DevOps/scm_review.md) :id=scm_review
+
+#### 数据查询(DEFAULT) :id=scm_review-Default
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PULL_REQUEST_ID`,
+t1.`REPOSITORY_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SCM_REVIEW` t1 
+
+```
+
+#### 默认（全部数据）(VIEW) :id=scm_review-View
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`PULL_REQUEST_ID`,
+t1.`REPOSITORY_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `SCM_REVIEW` t1 
+
+```
+
+
 ## [附件搜索(SEARCH_ATTACHMENT)](module/Base/search_attachment.md) :id=search_attachment
 
 #### 数据查询(DEFAULT) :id=search_attachment-Default
@@ -9906,6 +10606,47 @@ t1.`UPDATE_MAN`,
 t1.`UPDATE_TIME`
 FROM `ATTACHMENT` t1 
 
+```
+
+#### 当前产品下的附件(cur_product) :id=search_attachment-cur_product
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FILE_ID`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ATTACHMENT` t1 
+
+WHERE ( (exists(select 1 from idea t2 where t1.owner_id = t2.id and t2.product_id = #{ctx.webcontext.product_id})
+or exists(select 1 from ticket t3 where t1.owner_id = t3.id and t3.product_id = #{ctx.webcontext.product_id}))  AND  t1.`OWNER_TYPE` IN ('TICKET','IDEA')  AND  t1.`FILE_ID` IS NOT NULL )
+```
+
+#### 当前项目下的附件(cur_project) :id=search_attachment-cur_project
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`FILE_ID`,
+t1.`ID`,
+t1.`NAME`,
+t1.`OWNER_ID`,
+t1.`OWNER_SUBTYPE`,
+t1.`OWNER_TYPE`,
+t1.`PARENT_VERSION_ID`,
+t1.`TITLE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `ATTACHMENT` t1 
+
+WHERE ( exists(select 1 from work_item t2 where t1.owner_id = t2.id and t2.project_id = #{ctx.webcontext.project_id})  AND  t1.`OWNER_TYPE` = 'WORK_ITEM'  AND  t1.`FILE_ID` IS NOT NULL )
 ```
 
 #### 关联查询(relation) :id=search_attachment-relation
@@ -10521,6 +11262,36 @@ WHERE EXISTS(SELECT * FROM `SPACE_MEMBER` t21
  t1.`ID` = t21.`SPACE_ID`  AND  ( t21.`ROLE_ID` <> 'reader'  AND  t21.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '1'  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
+#### 移动端非星标空间(mob_unfavorite) :id=space-mob_unfavorite
+```sql
+SELECT
+t11.`CATEGORIES`,
+t1.`CATEGORY_ID`,
+t11.`NAME` AS `CATEGORY_NAME`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+(select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) AS `IS_FAVORITE`,
+t1.`IS_SHARED`,
+t1.`NAME`,
+t1.`SCOPE_ID`,
+t1.`SCOPE_TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`VISIBILITY`
+FROM `SPACE` t1 
+LEFT JOIN `CATEGORY` t11 ON t1.`CATEGORY_ID` = t11.`ID` 
+where 
+ t1.`IS_DELETED` = 0  AND  (select count(1) from favorite where create_man=#{ctx.sessioncontext.srfpersonid} and OWNER_ID=t1.`ID` ) = '0'  AND  t1.`IS_ARCHIVED` = 0 
+ ORDER BY t1.`UPDATE_TIME` DESC
+
+
+```
+
 #### 未存在目录中的空间(no_category_space) :id=space-no_category_space
 ```sql
 SELECT
@@ -10833,6 +11604,26 @@ FROM `SPACE_MEMBER` t1
 LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
 
 WHERE ( t1.`USER_ID` <> #{ctx.sessioncontext.srfpersonid}  AND  t1.`SPACE_ID` = #{ctx.datacontext.id} )
+```
+
+#### 未关注用户(测试用例)(no_attention) :id=space_member-no_attention
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`ID`,
+t1.`NAME`,
+t1.`ROLE_ID`,
+t1.`SPACE_ID`,
+t11.`IDENTIFIER` AS `SPACE_IDENTIFIER`,
+t11.`NAME` AS `SPACE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
+t1.`USER_ID`
+FROM `SPACE_MEMBER` t1 
+LEFT JOIN `SPACE` t11 ON t1.`SPACE_ID` = t11.`ID` 
+
+WHERE ( ( USER_ID NOT IN (SELECT user_id from attention t2 where t2.OWNER_ID = #{ctx.webcontext.test_case} )) )
 ```
 
 
@@ -11540,7 +12331,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11550,7 +12340,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11577,7 +12366,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11587,7 +12375,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11614,7 +12401,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11624,7 +12410,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11648,6 +12433,8 @@ LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID`
 #### 默认（全部数据）(VIEW) :id=test_case-View
 ```sql
 SELECT
+(SELECT COUNT( att.ID ) AS attention_count FROM test_case tc LEFT JOIN `attention` att ON tc.ID = att.OWNER_ID WHERE tc.ID = t1.`ID`) AS `ATTENTION_COUNT`,
+(SELECT COUNT( com.ID ) AS comment_count FROM test_case tc LEFT JOIN `comment` com ON tc.ID = com.PRINCIPAL_ID WHERE tc.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
@@ -11689,7 +12476,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11699,7 +12485,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11727,7 +12512,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11737,7 +12521,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11764,7 +12547,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11774,7 +12556,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11804,7 +12585,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11814,7 +12594,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11867,7 +12646,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11877,7 +12655,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11904,7 +12681,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11914,7 +12690,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11952,7 +12727,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11962,7 +12736,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -11989,7 +12762,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -11999,7 +12771,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12026,7 +12797,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12036,7 +12806,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12064,7 +12833,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12074,7 +12842,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12101,7 +12868,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12111,7 +12877,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12141,7 +12906,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12151,7 +12915,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12179,7 +12942,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12189,7 +12951,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12217,7 +12978,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12227,7 +12987,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12246,7 +13005,7 @@ FROM `TEST_CASE` t1
 LEFT JOIN `TEST_SUITE` t11 ON t1.`SUITE_ID` = t11.`ID` 
 LEFT JOIN `LIBRARY` t21 ON t1.`TEST_LIBRARY_ID` = t21.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
 #### 过滤器默认查询(my_filter) :id=test_case-my_filter
@@ -12255,7 +13014,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12265,7 +13023,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12293,7 +13050,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12303,7 +13059,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12331,7 +13086,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12341,7 +13095,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12369,7 +13122,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12379,7 +13131,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12411,7 +13162,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12421,7 +13171,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12451,7 +13200,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12461,7 +13209,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12489,7 +13236,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12499,7 +13245,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12526,7 +13271,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12536,7 +13280,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12563,7 +13306,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12573,7 +13315,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12601,7 +13342,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12611,7 +13351,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12641,7 +13380,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12651,7 +13389,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12679,7 +13416,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12689,7 +13425,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12717,7 +13452,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12727,7 +13461,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12754,7 +13487,6 @@ SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
@@ -12764,7 +13496,6 @@ t21.`IDENTIFIER` AS `LIBRARY_IDENTIFIER`,
 t1.`MAINTENANCE_ID`,
 t1.`MAINTENANCE_NAME`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`REVIEW_RESULT_STATE`,
 concat(t21.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
@@ -12796,13 +13527,11 @@ WHERE EXISTS(SELECT * FROM `RELATION` t31
 SELECT
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
-t1.`DESCRIPTION`,
 t1.`ID`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`LEVEL`,
 t1.`NAME`,
-t1.`PRECONDITION`,
 t1.`STATE`,
 t11.`SUITES`,
 t1.`SUITE_ID`,
@@ -13378,6 +14107,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13394,6 +14124,49 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 ```
 
 #### 默认（全部数据）(VIEW) :id=ticket-View
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+(SELECT COUNT( att.ID ) AS comment_count FROM ticket tc LEFT JOIN `attention` att ON tc.ID = att.OWNER_ID WHERE tc.ID = t1.`ID`) AS `ATTENTION_COUNT`,
+t1.`CHANNEL`,
+(SELECT COUNT( com.ID ) AS comment_count FROM ticket tc LEFT JOIN `comment` com ON tc.ID = com.PRINCIPAL_ID WHERE tc.ID = t1.`ID`) AS `COMMENT_COUNT`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+```
+
+#### 管理员(admin) :id=ticket-admin
 ```sql
 SELECT
 t1.`ASSIGNEE_ID`,
@@ -13418,6 +14191,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13431,6 +14205,9 @@ FROM `TICKET` t1
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
+ WHERE 
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`ROLE_ID` = 'admin'  AND  t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 #### 高级搜索(advanced_search) :id=ticket-advanced_search
@@ -13473,6 +14250,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13514,6 +14292,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13600,6 +14379,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13641,6 +14421,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13682,6 +14463,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13696,6 +14478,50 @@ LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID`
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
 WHERE ( t1.`IS_DELETED` = 0 )
+```
+
+#### 特定用户(customer_user) :id=ticket-customer_user
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
+ WHERE 
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`ROLE_ID` = 'customer'  AND  t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) ) AND ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
 ```
 
 #### 已删除(deleted) :id=ticket-deleted
@@ -13723,6 +14549,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13764,6 +14591,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13780,6 +14608,48 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 WHERE EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
  t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea' ) ) AND ( t1.`IS_DELETED` = 0 )
+```
+
+#### 产品工单集合（移动端）(mob_ticket_list) :id=ticket-mob_ticket_list
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE ( t1.`IS_DELETED` = 0  AND  t1.`IS_ARCHIVED` = 0 )
 ```
 
 #### 我负责的(my_assign) :id=ticket-my_assign
@@ -13807,6 +14677,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13848,6 +14719,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13889,6 +14761,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13902,7 +14775,7 @@ FROM `TICKET` t1
 LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
 LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 过滤器默认查询(my_filter) :id=ticket-my_filter
@@ -13930,6 +14803,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -13971,6 +14845,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14012,6 +14887,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14066,6 +14942,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14107,6 +14984,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14122,7 +15000,7 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 
 WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
  WHERE 
- t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t31.`ROLE_ID` <> 'customer' ) )
 ```
 
 #### 最近浏览(recent_ticket) :id=ticket-recent_ticket
@@ -14150,6 +15028,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14191,6 +15070,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14232,6 +15112,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14275,6 +15156,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14291,6 +15173,50 @@ LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID`
 WHERE EXISTS(SELECT * FROM `RELATION` t31 
  WHERE 
  t1.`ID` = t31.`TARGET_ID`  AND  ( t31.`PRINCIPAL_ID` = #{ctx.webcontext.principal_id}  AND  t31.`TARGET_TYPE` = 'ticket'  AND  t31.`PRINCIPAL_TYPE` = 'idea' ) ) AND ( t1.`IS_DELETED` = 0 )
+```
+
+#### 普通用户(user) :id=ticket-user
+```sql
+SELECT
+t1.`ASSIGNEE_ID`,
+t1.`ASSIGNEE_NAME`,
+t1.`CHANNEL`,
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`CUSTOMER_ID`,
+t21.`NAME` AS `CUSTOMER_NAME`,
+t1.`DESCRIPTION`,
+t1.`ESTIMATED_AT`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`IS_ARCHIVED`,
+t1.`IS_DELETED`,
+t1.`NAME`,
+t1.`PRIORITY`,
+t1.`PRODUCT_ID`,
+t11.`IDENTIFIER` AS `PRODUCT_IDENTIFIER`,
+t11.`NAME` AS `PRODUCT_NAME`,
+DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
+1 AS `REP_NUM`,
+concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
+t1.`STATE`,
+t1.`SUBMITTED_AT`,
+t1.`SUBMITTER_ID`,
+t1.`SUBMITTER_NAME`,
+t1.`TAGS`,
+t1.`TITLE`,
+t1.`TYPE`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `TICKET` t1 
+LEFT JOIN `PRODUCT` t11 ON t1.`PRODUCT_ID` = t11.`ID` 
+LEFT JOIN `CUSTOMER` t21 ON t1.`CUSTOMER_ID` = t21.`ID` 
+
+WHERE EXISTS(SELECT * FROM `PRODUCT_MEMBER` t31 
+ WHERE 
+ t11.`ID` = t31.`PRODUCT_ID`  AND  ( t31.`ROLE_ID` = 'user'  AND  t31.`USER_ID` = #{ctx.sessioncontext.srfpersonid} ) )
 ```
 
 #### 工作项关联工单(work_item_relation_ticket) :id=ticket-work_item_relation_ticket
@@ -14318,6 +15244,7 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 1 AS `REP_NUM`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
 t1.`SOLUTION`,
+t1.`SOLUTION_WAY`,
 t1.`STATE`,
 t1.`SUBMITTED_AT`,
 t1.`SUBMITTER_ID`,
@@ -14670,6 +15597,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -14677,23 +15605,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -14710,10 +15640,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -14725,10 +15655,12 @@ LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID`
 SELECT
 t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
+(SELECT COUNT( att.ID ) AS attention_count FROM work_item w LEFT JOIN `attention` att ON w.ID = att.OWNER_ID WHERE w.ID = t1.`ID`) AS `ATTENTION_COUNT`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
 t1.`BOARD_ID`,
 t81.`NAME` AS `BOARD_NAME`,
+(SELECT COUNT( com.ID ) AS comment_count FROM work_item p LEFT JOIN `comment` com ON p.ID = com.PRINCIPAL_ID WHERE p.ID = t1.`ID`) AS `COMMENT_COUNT`,
 t1.`COMPLETED_AT`,
 t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
@@ -14744,6 +15676,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -14751,7 +15684,8 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 (SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='IDEA') AS `RELATION_TOTAL_IDEA`,
@@ -14759,19 +15693,20 @@ DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 (SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='TICKET') AS `RELATION_TOTAL_TICKET`,
 (SELECT COUNT(1) FROM RELATION WHERE PRINCIPAL_ID = t1.`ID` AND TARGET_TYPE ='WORK_ITEM') AS `RELATION_TOTAL_WORK_ITEM`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -14788,10 +15723,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -14821,6 +15756,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -14828,23 +15764,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -14861,10 +15799,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -14895,6 +15833,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -14902,23 +15841,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -14935,10 +15876,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -14991,6 +15932,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -14998,23 +15940,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15031,10 +15975,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15097,6 +16041,7 @@ LEFT JOIN `BOARD` t51 ON t1.`BOARD_ID` = t51.`ID`
 LEFT JOIN `SPRINT` t61 ON t1.`SPRINT_ID` = t61.`ID` 
 LEFT JOIN `PROJECT_RELEASE` t71 ON t1.`RELEASE_ID` = t71.`ID` 
 
+WHERE ( t11.`IS_DELETED` = 0 )
 ```
 
 #### 缺陷工作项(bug) :id=work_item-bug
@@ -15122,6 +16067,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15129,23 +16075,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15162,10 +16110,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15196,6 +16144,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15203,23 +16152,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15236,10 +16187,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15270,6 +16221,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15277,23 +16229,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15310,10 +16264,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15355,6 +16309,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15362,23 +16317,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15395,10 +16352,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15429,6 +16386,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15436,23 +16394,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15469,10 +16429,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15498,6 +16458,7 @@ t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
@@ -15505,6 +16466,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -15521,6 +16483,8 @@ t1.`STATE`,
 t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
@@ -15538,6 +16502,7 @@ t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
@@ -15545,6 +16510,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -15561,6 +16527,8 @@ t1.`STATE`,
 t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
@@ -15595,6 +16563,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15602,23 +16571,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15635,10 +16606,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15669,6 +16640,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15676,23 +16648,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15709,10 +16683,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15743,6 +16717,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15750,23 +16725,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15783,10 +16760,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15817,6 +16794,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15824,23 +16802,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15857,10 +16837,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15891,6 +16871,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15898,23 +16879,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -15931,10 +16914,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -15965,6 +16948,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -15972,23 +16956,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16005,10 +16991,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16039,6 +17025,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16046,23 +17033,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16079,15 +17068,15 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0 )
 ```
 
 #### 过滤器默认查询(my_filter) :id=work_item-my_filter
@@ -16113,6 +17102,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16120,23 +17110,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16153,10 +17145,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16187,6 +17179,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16194,23 +17187,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16227,15 +17222,15 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t1.`STATE` <> '40' )
+WHERE ( t1.`ASSIGNEE_ID` = #{ctx.sessioncontext.srfpersonid}  AND  t1.`IS_ARCHIVED` = 0  AND  t1.`IS_DELETED` = 0  AND  t41.`TYPE` <> 'completed' )
 ```
 
 #### 排除缺陷类型的工作项(no_bug_work_item) :id=work_item-no_bug_work_item
@@ -16261,6 +17256,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16268,23 +17264,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16301,10 +17299,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16337,6 +17335,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16344,23 +17343,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16377,10 +17378,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16411,6 +17412,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16418,23 +17420,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16451,10 +17455,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16487,6 +17491,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16494,23 +17499,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16527,10 +17534,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16563,6 +17570,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16570,23 +17578,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16603,10 +17613,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16650,6 +17660,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16657,23 +17668,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16690,10 +17703,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16762,6 +17775,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16769,23 +17783,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16802,10 +17818,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16836,6 +17852,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16843,23 +17860,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16876,10 +17895,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16912,6 +17931,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -16919,23 +17939,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -16952,10 +17974,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -16970,6 +17992,7 @@ t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
@@ -16977,6 +18000,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -16993,6 +18017,8 @@ t1.`STATE`,
 t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
@@ -17026,6 +18052,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17033,23 +18060,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17066,10 +18095,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17100,6 +18129,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17107,23 +18137,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17140,10 +18172,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17158,6 +18190,7 @@ t1.`ASSIGNEE_ID`,
 t1.`ASSIGNEE_NAME`,
 t1.`BACKLOG_FROM`,
 t1.`BACKLOG_TYPE`,
+t1.`CREATE_MAN`,
 t1.`CREATE_TIME`,
 t1.`CUR_VERSION_ID`,
 t1.`END_AT`,
@@ -17165,6 +18198,7 @@ t1.`ID`,
 t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
+(CASE WHEN t21.`TYPE` <> 'completed' and t21.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`PID`,
 t1.`PRIORITY`,
 t1.`PROJECT_ID`,
@@ -17181,6 +18215,8 @@ t1.`STATE`,
 t21.`TYPE` AS `STATE_TYPE`,
 t1.`TITLE`,
 t1.`TOP_ID`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`,
 t1.`WORK_ITEM_TYPE_ID`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
@@ -17215,6 +18251,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17222,23 +18259,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17255,10 +18294,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17292,6 +18331,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17299,23 +18339,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17332,10 +18374,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17366,6 +18408,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17373,23 +18416,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17406,10 +18451,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17440,6 +18485,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17447,23 +18493,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17480,15 +18528,15 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
 
-WHERE ( t1.`COMPLETED_AT` IS NOT NULL  AND  t31.`TYPE` = 'completed' )
+WHERE ( t1.`COMPLETED_AT` IS NOT NULL  AND  t41.`TYPE` = 'completed' )
 ```
 
 #### 迭代工作项统计(sprint_work_item_chart) :id=work_item-sprint_work_item_chart
@@ -17514,6 +18562,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17521,23 +18570,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17554,10 +18605,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17588,6 +18639,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17595,23 +18647,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17628,10 +18682,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17682,6 +18736,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17689,23 +18744,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17722,10 +18779,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17756,6 +18813,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17763,23 +18821,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17796,10 +18856,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -17830,6 +18890,7 @@ t1.`IDENTIFIER`,
 t1.`IS_ARCHIVED`,
 t1.`IS_DELETED`,
 t1.`IS_LEAF`,
+(CASE WHEN t41.`TYPE` <> 'completed' and t41.`TYPE` <> 'closed' and t1.`END_AT` < CURDATE() THEN 1 else 0 END) AS `IS_OVERTIME`,
 t1.`JOB_TYPE`,
 t1.`PID`,
 t1.`PRIORITY`,
@@ -17837,23 +18898,25 @@ t1.`PROJECT_ID`,
 t11.`IDENTIFIER` AS `PROJECT_IDENTIFIER`,
 t11.`NAME` AS `PROJECT_NAME`,
 t11.`TYPE` AS `PROJECT_TYPE`,
-t61.`TITLE` AS `PTITLE`,
+t31.`TITLE` AS `PTITLE`,
+t31.`WORK_ITEM_TYPE_ID` AS `P_WORK_ITEM_TYPE_ID`,
 t1.`REAPPEAR_PROBABILITY`,
 DATEDIFF(CURDATE(), t1.`CREATE_TIME`) AS `RECENT_CREATE_DAYS`,
 t1.`RELEASE_ID`,
-t51.`NAME` AS `RELEASE_NAME`,
-t51.`STATUS` AS `RELEASE_STATUS`,
+t61.`NAME` AS `RELEASE_NAME`,
+t61.`STATUS` AS `RELEASE_STATUS`,
 1 AS `REP_NUM`,
 t1.`RISK`,
 t1.`SEQUENCE`,
 t1.`SEVERITY`,
 concat(t11.`IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`SOLUTION_WAY`,
 t1.`SPRINT_ID`,
-t41.`NAME` AS `SPRINT_NAME`,
-t41.`STATUS` AS `SPRINT_STATUS`,
+t51.`NAME` AS `SPRINT_NAME`,
+t51.`STATUS` AS `SPRINT_STATUS`,
 t1.`START_AT`,
 t1.`STATE`,
-t31.`TYPE` AS `STATE_TYPE`,
+t41.`TYPE` AS `STATE_TYPE`,
 t1.`SWIMLANE_ID`,
 t1.`TAGS`,
 t1.`TITLE`,
@@ -17870,10 +18933,10 @@ t21.`SEQUENCE` AS `WORK_ITEM_TYPE_SEQUENCE`
 FROM `WORK_ITEM` t1 
 LEFT JOIN `PROJECT` t11 ON t1.`PROJECT_ID` = t11.`ID` 
 LEFT JOIN `WORK_ITEM_TYPE` t21 ON t1.`WORK_ITEM_TYPE_ID` = t21.`ID` 
-LEFT JOIN `WORK_ITEM_STATE` t31 ON t1.`STATE` = t31.`ID` 
-LEFT JOIN `SPRINT` t41 ON t1.`SPRINT_ID` = t41.`ID` 
-LEFT JOIN `PROJECT_RELEASE` t51 ON t1.`RELEASE_ID` = t51.`ID` 
-LEFT JOIN `WORK_ITEM` t61 ON t1.`PID` = t61.`ID` 
+LEFT JOIN `WORK_ITEM` t31 ON t1.`PID` = t31.`ID` 
+LEFT JOIN `WORK_ITEM_STATE` t41 ON t1.`STATE` = t41.`ID` 
+LEFT JOIN `SPRINT` t51 ON t1.`SPRINT_ID` = t51.`ID` 
+LEFT JOIN `PROJECT_RELEASE` t61 ON t1.`RELEASE_ID` = t61.`ID` 
 LEFT JOIN `ENTRY` t71 ON t1.`ENTRY_ID` = t71.`ID` 
 LEFT JOIN `BOARD` t81 ON t1.`BOARD_ID` = t81.`ID` 
 LEFT JOIN `WORK_ITEM` t91 ON t1.`TOP_ID` = t91.`ID` 
@@ -18391,6 +19454,34 @@ WHERE ( t1.`PRINCIPAL_TYPE` = 'IDEA'  AND  t1.`CREATE_MAN` = #{ctx.sessioncontex
 ```
 
 #### 我登记的工时日志(my_log) :id=workload-my_log
+```sql
+SELECT
+t1.`CREATE_MAN`,
+t1.`CREATE_TIME`,
+t1.`DESCRIPTION`,
+t1.`DURATION`,
+t1.`ID`,
+t1.`IDENTIFIER`,
+t1.`NAME`,
+t1.`OWNER_TYPE`,
+t1.`PRINCIPAL_ID`,
+t1.`PRINCIPAL_TYPE`,
+t1.`RECENT_PARENT`,
+t1.`RECENT_PARENT_IDENTIFIER`,
+t1.`RECENT_PARENT_NAME`,
+t1.`REGISTER_DATE`,
+concat(t1.`RECENT_PARENT_IDENTIFIER`,'-',t1.`IDENTIFIER`) AS `SHOW_IDENTIFIER`,
+t1.`TYPE_ID`,
+t11.`NAME` AS `TYPE_NAME`,
+t1.`UPDATE_MAN`,
+t1.`UPDATE_TIME`
+FROM `WORKLOAD` t1 
+LEFT JOIN `WORKLOAD_TYPE` t11 ON t1.`TYPE_ID` = t11.`ID` 
+
+WHERE ( t1.`CREATE_MAN` = #{ctx.sessioncontext.srfpersonid} )
+```
+
+#### 工时日志(my_mob_log) :id=workload-my_mob_log
 ```sql
 SELECT
 t1.`CREATE_MAN`,

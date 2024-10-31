@@ -16,7 +16,7 @@ root {
 hide empty description
 state "开始" as Begin <<start>> [[$./run_everyday_test#begin {"开始"}]]
 state "结束" as END1 <<end>> [[$./run_everyday_test#end1 {"结束"}]]
-state "直接SQL调用" as RAWSQLCALL1  [[$./run_everyday_test#rawsqlcall1 {"直接SQL调用"}]]
+state "每日测试次数统计" as RAWSQLCALL1  [[$./run_everyday_test#rawsqlcall1 {"每日测试次数统计"}]]
 
 
 Begin --> RAWSQLCALL1
@@ -40,7 +40,7 @@ RAWSQLCALL1 --> END1
 
 返回 `result(结果)`
 
-#### 直接SQL调用 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
+#### 每日测试次数统计 :id=RAWSQLCALL1<sup class="footnote-symbol"> <font color=gray size=1>[直接SQL调用]</font></sup>
 
 
 
